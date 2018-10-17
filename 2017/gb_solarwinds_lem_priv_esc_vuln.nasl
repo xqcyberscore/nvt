@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_priv_esc_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
+# $Id: gb_solarwinds_lem_priv_esc_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # SolarWinds Log and Event Manager SSH Jailbreak and Privilege Escalation Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106698");
-  script_version("$Revision: 8371 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
-  script_tag(name: "cvss_base", value: "7.2");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-5198", "CVE-2017-5199");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SolarWinds Log and Event Manager SSH Jailbreak and Privilege Escalation Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_solarwinds_log_event_manager_version.nasl");
   script_mandatory_keys("solarwinds_lem/version");
 
-  script_tag(name: "summary", value: "SolarWinds LEM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SolarWinds LEM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SolarWinds LEM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SolarWinds LEM is prone to multiple vulnerabilities:
 
-- Incorrect permissions on management scripts allows privilege escalation. (CVE-2017-5198)
+  - Incorrect permissions on management scripts allows privilege escalation. (CVE-2017-5198)
 
-- Authenticated custom shell Jailbreak and command execution (CVE-2017-5199)");
+  - Authenticated custom shell Jailbreak and command execution (CVE-2017-5199)");
 
-  script_tag(name: "affected", value: "SolarWinds Log and Event Manager version 6.3.1 an prior.");
+  script_tag(name:"affected", value:"SolarWinds Log and Event Manager version 6.3.1 an prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.3.1 Hotfix 3 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 6.3.1 Hotfix 3 or later.");
 
-  script_xref(name: "URL", value: "http://blog.0xlabs.com/2017/03/solarwinds-lem-ssh-jailbreak-and.html");
+  script_xref(name:"URL", value:"http://blog.0xlabs.com/2017/03/solarwinds-lem-ssh-jailbreak-and.html");
 
   exit(0);
 }

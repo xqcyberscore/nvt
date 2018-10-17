@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vegadns_rce_vuln.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_vegadns_rce_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # VegaDNS Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:vegadns:vegadns";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106275");
-  script_version("$Revision: 11647 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 11922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 09:06:56 +0700 (Thu, 22 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -59,11 +59,12 @@ if (description)
 
   script_tag(name:"impact", value:"An unauthorized attacker may execute arbitrary commands.");
 
-  script_tag(name:"solution", value:"Update to VegaDNS 0.13.3. Refer to http://www.vegadns.org/ for updates.");
+  script_tag(name:"solution", value:"Update to VegaDNS 0.13.3. for updates.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40402/");
   script_xref(name:"URL", value:"https://github.com/shupp/VegaDNS/blob/master/CHANGELOG");
 
+  script_xref(name:"URL", value:"http://www.vegadns.org/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 9951 2018-05-24 13:51:37Z cfischer $
+# $Id: gb_zenbership_mul_sql_inj_vuln.nasl 11917 2018-10-16 08:38:33Z asteins $
 #
 # Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = 'cpe:/a:castlamp:zenbership';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107222");
-  script_version("$Revision: 9951 $");
+  script_version("$Revision: 11917 $");
   script_cve_id("CVE-2017-9759");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:38:33 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-19 11:59:56 +0200 (Mon, 19 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"6.5");
@@ -41,23 +41,24 @@ if(description)
 
   script_name("Zenbership 1.0.8 CMS - Multiple SQL Injection Vulnerabilities");
 
-  script_tag(name: "summary", value: "Zenbership is vulnerable to multiple SQL injection vulnerabilities.");
+  script_tag(name:"summary", value:"Zenbership is vulnerable to multiple SQL injection vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of a detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The vulnerabilities are located in the error_codes, subscriptions, widget and logins parameters of the ./admin/index.php");
+  script_tag(name:"insight", value:"The vulnerabilities are located in the error_codes, subscriptions, widget and logins parameters of the ./admin/index.php.");
 
-  script_tag(name: "impact" , value: "Attackers with privileged web-application user accounts are able to execute malicious sql commands via GET method 
+  script_tag(name:"impact", value:"Attackers with privileged web-application user accounts are able to execute malicious sql commands via GET method
 request.");
 
-  script_tag(name: "affected", value: "Zenbership - Content Management System (Web-Application) 1.0.8");
+  script_tag(name:"affected", value:"Zenbership - Content Management System (Web-Application) 1.0.8.");
 
-  # https://github.com/castlamp/zenbership/issues/110 says "this has been addressed" 
-  script_tag(name: "solution", value: "No known solution is available as of 24th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  # https://github.com/castlamp/zenbership/issues/110 says "this has been addressed"
+  script_tag(name:"solution", value:"The developer states that this was already fixed in newer releases,
+  therefore install the latest available version to mitigate the issue.");
 
-  script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/16");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jun/16");
+  script_xref(name:"URL", value:"https://github.com/castlamp/zenbership/issues/110");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 
@@ -73,17 +74,17 @@ regarding this issue will be updated once solution details are available.");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!Port = get_app_port(cpe:CPE)){
+if(!Port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!Ver = get_app_version(cpe:CPE, port:Port))  exit(0);
+if(!Ver = get_app_version(cpe:CPE, port:Port))
+  exit(0);
 
 if(version_is_equal(version:Ver, test_version:"108"))
 {
-  report =  report_fixed_ver(installed_version:Ver, fixed_version:"None Available");
+  report =  report_fixed_ver(installed_version:Ver, fixed_version:"Install the latest available version");
   security_message(data:report, port:Port);
-  exit( 0 );
+  exit(0);
 }
 
-exit ( 99 );
+exit(99);

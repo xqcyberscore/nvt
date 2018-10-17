@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_xss_vuln.nasl 9749 2018-05-08 03:50:15Z ckuersteiner $
+# $Id: gb_axis_network_camera_xss_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Axis Network Camera Cross-Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811276");
-  script_version("$Revision: 9749 $");
+  script_version("$Revision: 11935 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 05:50:15 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 18:10:07 +0530 (Mon, 07 Aug 2017)");
 
   script_cve_id("CVE-2017-12413");
@@ -45,19 +45,17 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks the version");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an improper sanitization
+  script_tag(name:"insight", value:"The flaw exists due to an improper sanitization
   of input to 'admin.shtml' page.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute javascript code in the context of current user.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute javascript code in the context of current user.");
 
   script_tag(name:"affected", value:"Axis Camera model 2100 Network Camera 2.43");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

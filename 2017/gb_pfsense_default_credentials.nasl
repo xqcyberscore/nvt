@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_default_credentials.nasl 7805 2017-11-17 08:42:10Z cfischer $ # auto-updated by SVN
+# $Id: gb_pfsense_default_credentials.nasl 11936 2018-10-17 09:05:37Z mmartin $ # auto-updated by SVN
 #
 # pfSense Default Admin Credentials
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112122");
-  script_version("$Revision: 7805 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 09:42:10 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-14 10:54:12 +0100 (Tue, 14 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -85,7 +85,6 @@ if(magic_var = eregmatch(pattern:'var csrfMagicName = "(.*)";</script>', string:
   magic_var = '__csrf_magic';
 }
 
-# Constructing parameters for a valid POST request
 cookie_1 = get_cookie_from_header(buf:res_1, pattern:'Set-Cookie: (.*); path=/');
 data = magic_var + '=' + magic_token + '&usernamefld=admin&passwordfld=pfsense&login=Sign+In';
 accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';

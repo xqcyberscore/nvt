@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_rce_vuln_win.nasl 9239 2018-03-28 09:30:02Z ckuersteiner $
+# $Id: gb_cacti_rce_vuln_win.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Cacti RCE Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112110");
-  script_version("$Revision: 9239 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 11:30:02 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-08 08:17:48 +0100 (Wed, 08 Nov 2017)");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-08 08:17:48 +0100 (Wed, 08 Nov 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-16641");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cacti RCE Vulnerability (Windows)");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("cacti/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "lib/rrd.php in Cacti 1.1.27 allows remote authenticated administrators
+  script_tag(name:"summary", value:"lib/rrd.php in Cacti 1.1.27 allows remote authenticated administrators
   to execute arbitrary OS commands via the path_rrdtool parameter in an action=save request to settings.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Cacti version 1.1.27.");
+  script_tag(name:"affected", value:"Cacti version 1.1.27.");
 
-  script_tag(name: "solution", value: "Update to versijon 1.1.28 or later.");
+  script_tag(name:"solution", value:"Update to versijon 1.1.28 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/1057");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/1057");
 
   exit(0);
 }

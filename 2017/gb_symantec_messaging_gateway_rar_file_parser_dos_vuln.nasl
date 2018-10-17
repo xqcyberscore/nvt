@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_rar_file_parser_dos_vuln.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_rar_file_parser_dos_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Symantec Messaging Gateway RAR File Parser DoS Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810915");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 11935 $");
   script_cve_id("CVE-2016-5309", "CVE-2016-5310");
   script_bugtraq_id(92866, 92868);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-25 12:27:02 +0530 (Tue, 25 Apr 2017)");
   script_name("Symantec Messaging Gateway RAR File Parser DoS Vulnerabilities");
 
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Symantec Messaging Gateway (SMG) before 10.6.2");
 
   script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway (SMG)
-  10.6.2 or later. For updates refer to https://www.symantec.com");
+  10.6.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

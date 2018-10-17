@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_ab57a100f3_rpm_fc25.nasl 7983 2017-12-04 13:10:03Z santu $
+# $Id: gb_fedora_2017_ab57a100f3_rpm_fc25.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # Fedora Update for rpm FEDORA-2017-ab57a100f3
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873824");
-  script_version("$Revision: 7983 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 14:10:03 +0100 (Mon, 04 Dec 2017) $");
+  script_version("$Revision: 11933 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:47:58 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-7500", "CVE-2017-7501");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for rpm FEDORA-2017-ab57a100f3");
   script_tag(name: "summary", value: "Check the version of rpm");

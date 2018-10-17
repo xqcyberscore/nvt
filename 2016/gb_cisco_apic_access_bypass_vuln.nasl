@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_access_bypass_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_apic_access_bypass_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability
 #
@@ -32,10 +32,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.809051");
   script_cve_id("CVE-2015-6424");
   script_bugtraq_id(79410);
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-21 19:23:26 +0530 (Wed, 21 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability");
@@ -58,8 +58,7 @@ if (description)
   Controller running software version 1.1(0.920a)");
 
   script_tag(name:"solution", value:"Upgrade to Cisco Application Policy
-  Infrastructure Controller software version as mentioned in vendor link.
-  For updates refer to http://www.cisco.com");
+  Infrastructure Controller software version as mentioned in vendor link.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if (description)
   script_dependencies("gb_cisco_apic_web_detect.nasl");
   script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
   script_require_ports("Services/www", 80, 443);
+  script_xref(name:"URL", value:"http://www.cisco.com");
   exit(0);
 }
 

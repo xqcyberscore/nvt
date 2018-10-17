@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln_jan.nasl 10292 2018-06-22 03:53:38Z cfischer $
+# $Id: gb_advantech_webaccess_mult_vuln_jan.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106514");
-  script_version("$Revision: 10292 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-22 05:53:38 +0200 (Fri, 22 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-01-13 14:10:12 +0700 (Fri, 13 Jan 2017)");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-13 14:10:12 +0700 (Fri, 13 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5152", "CVE-2017-5154", "CVE-2017-5175", "CVE-2017-7929");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
@@ -51,28 +51,28 @@ if (description)
   script_dependencies("gb_advantech_webaccess_detect.nasl");
   script_mandatory_keys("Advantech/WebAccess/installed");
 
-  script_tag(name: "summary", value: "Advantech WebAccess is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Advantech WebAccess is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Advantech WebAccess is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Advantech WebAccess is prone to multiple vulnerabilities:
 
-- SQL Injection (CVE-2017-5154)
+  - SQL Injection (CVE-2017-5154)
 
-- Authentication Bypass (CVE-2017-5152)
+  - Authentication Bypass (CVE-2017-5152)
 
-- DLL Hijacking (CVE-2017-5175)");
+  - DLL Hijacking (CVE-2017-5175)");
 
-  script_tag(name: "impact", value: "A remote attacker may gain administrative access to the application and its
+  script_tag(name:"impact", value:"A remote attacker may gain administrative access to the application and its
 data files.");
 
-  script_tag(name: "affected", value: "WebAccess versions prior to 8.2");
+  script_tag(name:"affected", value:"WebAccess versions prior to 8.2");
 
-  script_tag(name: "solution", value: "Upgrade to Version 8.2 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 8.2 or later");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-012-01");
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-045-01");
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-124-03");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-012-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-045-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-124-03");
 
   exit(0);
 }

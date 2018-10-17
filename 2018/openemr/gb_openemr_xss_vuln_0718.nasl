@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_xss_vuln_0718.nasl 11062 2018-08-21 07:59:03Z asteins $
+# $Id: gb_openemr_xss_vuln_0718.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # OpenEMR <= 5.0.1.4 XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112357");
-  script_version("$Revision: 11062 $");
+  script_version("$Revision: 11933 $");
   script_cve_id("CVE-2018-1000218", "CVE-2018-1000219");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 09:59:03 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 09:48:12 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

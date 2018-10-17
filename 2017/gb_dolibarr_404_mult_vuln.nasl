@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_404_mult_vuln.nasl 6834 2017-08-02 12:03:22Z asteins $
+# $Id: gb_dolibarr_404_mult_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108160");
-  script_version("$Revision: 6834 $");
+  script_version("$Revision: 11935 $");
   script_cve_id("CVE-2017-7886", "CVE-2017-7887", "CVE-2017-7888", "CVE-2017-8879");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-02 14:03:22 +0200 (Wed, 02 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-15 10:42:44 +0200 (Mon, 15 May 2017)");
   script_name("Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -47,17 +47,11 @@ if(description)
   script_xref(name:"URL", value:"https://www.foxmole.com/advisories/foxmole-2017-02-23.txt");
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/issues/6504");
 
-  tag_summary = "This host is running Dolibarr ERP & CRM and is prone to multiple vulnerabilities.";
-
-  tag_impact = "Successful exploitation will allow an attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of a vulnerable site and to cause
-  SQL Injection attacks to gain sensitive information.
-
-  Impact Level: Application/System";
-
-  tag_affected = "Dolibarr version 4.0.4 is vulnerable; other versions may also be affected.";
-
-  tag_insight = "Multiple flaws exists:
+  SQL Injection attacks to gain sensitive information.");
+  script_tag(name:"affected", value:"Dolibarr version 4.0.4 is vulnerable; other versions may also be affected.");
+  script_tag(name:"insight", value:"Multiple flaws exists:
 
   - SQL Injection in /theme/eldy/style.css.php via the lang parameter.
 
@@ -66,19 +60,14 @@ if(description)
   - storing of passwords with the MD5 algorithm, which makes brute-force attacks easier.
 
   - allowing password changes without supplying the current password, which makes it easier for
-  physically proximate attackers to obtain access via an unattended workstation.";
-
-  tag_solution = "Upgrade to Dolibarr ERP/CRM version 4.0.7/5.0.3/6.0.0 or later. For updates refer to https://www.dolibarr.org";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  physically proximate attackers to obtain access via an unattended workstation.");
+  script_tag(name:"solution", value:"Upgrade to Dolibarr ERP/CRM version 4.0.7/5.0.3/6.0.0 or later.");
+  script_tag(name:"summary", value:"This host is running Dolibarr ERP & CRM and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"https://www.dolibarr.org");
   exit(0);
 }
 

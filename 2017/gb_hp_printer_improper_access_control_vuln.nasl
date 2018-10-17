@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_improper_access_control_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_hp_printer_improper_access_control_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # HP Printer Wi-Fi Direct Improper Access Control Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807397");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11919 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 12:24:12 +0530 (Tue, 14 Feb 2017)");
   script_name("HP Printer Wi-Fi Direct Improper Access Control Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   with the help of detect NVT and try to access restricted pages for checking
   vulnerable or not.");
 
-  script_tag(name: "insight" , value:"HP printers with Wi-Fi Direct support,
+  script_tag(name:"insight", value:"HP printers with Wi-Fi Direct support,
   let you print from a mobile device directly to the printer without connecting
   to a wireless network. Several of these printers are prone to a security
   vulnerability that allows an external system to obtain unrestricted remote
@@ -49,12 +49,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   un authenticated users to access certain files on the target system that are
-  not intended to be shared with them.
+  not intended to be shared with them.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  HP OfficeJet Pro 8710 firmware version WBP2CN1619BR
+  script_tag(name:"affected", value:"HP OfficeJet Pro 8710 firmware version WBP2CN1619BR
   HP OfficeJet Pro 8620 firmware version FDP1CN1547AR");
 
   script_tag(name:"solution", value:"Apply the some mitigation actions:
@@ -74,7 +71,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_hp_printer_detect.nasl");
   script_mandatory_keys("hp_printer/installed", "target_is_printer");
-  script_require_ports("Services/www", 80); 
+  script_require_ports("Services/www", 80);
   exit(0);
 }
 
@@ -87,36 +84,30 @@ hpPort = "";
 fw_ver = "";
 model = "";
 
-## get the port
 hpPort = get_kb_item("hp_printer/port");
 if(!hpPort){
   hpPort = 0;
 }
 
-## Get the firmware details
 fw_ver = get_kb_item("hp_fw_ver");
 if(!fw_ver){
   exit(0);
 }
 
-## get the model details
 model = get_kb_item("hp_model");
 if(!model){
   exit(0);
 }
 
-## check for the affected model
 if("Officejet Pro 8620" >< model || "Officejet Pro 8710" >< model)
 {
-  ## Check the vulnerable firmware version
   if("WBP2CN1619BR" == fw_ver || "FDP1CN1547AR" == fw_ver)
   {
     vuln_url = "/DevMgmt/Email/Contacts";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:hpPort, url:vuln_url , check_header:TRUE,  pattern:"<emaildyn:EmailContacts xmlns:dd=",
        extra_check:make_list("www.hp.com", "xmlns:emaildyn=", "emailservicedyn", "dictionaries")))
-    { 
+    {
       report = report_vuln_url(port:hpPort, url:vuln_url);
       security_message(port:hpPort, data:report);
       exit(0);

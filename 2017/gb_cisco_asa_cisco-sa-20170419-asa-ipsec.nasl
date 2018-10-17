@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170419-asa-ipsec.nasl 5986 2017-04-20 07:10:53Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20170419-asa-ipsec.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Cisco ASA Software IPsec Denial of Service Vulnerability
 #
@@ -29,24 +29,24 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106766");
- script_cve_id("CVE-2017-6609");
- script_tag(name: "cvss_base", value: "6.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version("$Revision: 5986 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106766");
+  script_cve_id("CVE-2017-6609");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11923 $");
 
- script_name("Cisco ASA Software IPsec Denial of Service Vulnerability");
+  script_name("Cisco ASA Software IPsec Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-ipsec");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-ipsec");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the IPsec code of Cisco ASA Software could allow an
+  script_tag(name:"summary", value:"A vulnerability in the IPsec code of Cisco ASA Software could allow an
 authenticated, remote attacker to cause a reload of the affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper parsing of malformed IPsec packets. An
+  script_tag(name:"insight", value:"The vulnerability is due to improper parsing of malformed IPsec packets. An
 attacker could exploit this vulnerability by sending malformed IPsec packets to the affected system.
 
 Only traffic directed to the affected system can be used to exploit this vulnerability. This vulnerability
@@ -54,20 +54,20 @@ affects systems configured in routed firewall mode only and in single or multipl
 vulnerability can be triggered by IPv4 and IPv6 traffic. An attacker needs to establish a valid IPsec tunnel
 before exploiting this vulnerability.");
 
- script_tag(name: "impact", value: "An authenticated attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An authenticated attacker may cause a denial of service condition.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-20 09:10:53 +0200 (Thu, 20 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-20 08:05:15 +0200 (Thu, 20 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-20 08:05:15 +0200 (Thu, 20 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

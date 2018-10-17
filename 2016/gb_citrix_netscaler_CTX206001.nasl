@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX206001.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_citrix_netscaler_CTX206001.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Citrix NetScaler Application Delivery Controller and NetScaler Gateway Multiple Security Updates
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-2071", "CVE-2016-2072");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_name("Citrix NetScaler Application Delivery Controller and NetScaler Gateway Multiple Security Updates (CTX206001)");
 
@@ -45,7 +45,7 @@ if (description)
 
   - CVE-2016-2071: Citrix NetScaler Application Delivery Controller and NetScaler Gateway Command Privilege Elevation Vulnerability Through Un-sanitised NS Web GUI Commands.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available");
 
   script_tag(name:"summary", value:"A number of vulnerabilities have been identified in Citrix NetScaler Application Delivery Controller (ADC) and NetScaler Gateway that could allow a malicious, unprivileged user to perform privileged operations or execute commands.");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 17:00:25 +0100 (Thu, 11 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -63,7 +63,7 @@ if (description)
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

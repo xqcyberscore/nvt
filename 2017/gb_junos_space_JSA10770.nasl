@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10770.nasl 4991 2017-01-12 05:10:23Z ckuerste $
+# $Id: gb_junos_space_JSA10770.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Junos Space Multiple Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:juniper:junos_space";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106510");
-  script_version("$Revision: 4991 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-12 06:10:23 +0100 (Thu, 12 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-12 11:36:50 +0700 (Thu, 12 Jan 2017)");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-12 11:36:50 +0700 (Thu, 12 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,9 +43,9 @@ if (description)
 "CVE-2016-6662", "CVE-2016-5195", "CVE-2017-2305", "CVE-2017-2306", "CVE-2017-2307", "CVE-2017-2308",
 "CVE-2017-2309", "CVE-2017-2310", "CVE-2017-2311");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Space Multiple Vulnerabilities");
 
@@ -56,19 +56,19 @@ if (description)
   script_dependencies("gb_junos_space_version.nasl");
   script_mandatory_keys("junos_space/installed");
 
-  script_tag(name: "summary", value: "Junos Space is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Junos Space is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Junos Space is prone to multiple vulnerabilities in OpenSSH, MySQL, Apache
-HTTP Server, OpenJDK, LibXML, OpenSSL,Linux Kernel and Junos Space itself. ");
+  script_tag(name:"insight", value:"Junos Space is prone to multiple vulnerabilities in OpenSSH, MySQL, Apache
+HTTP Server, OpenJDK, LibXML, OpenSSL, Linux Kernel and Junos Space itself. ");
 
-  script_tag(name: "affected", value: "This issue can affect any product or platform running Junos Space before
+  script_tag(name:"affected", value:"This issue can affect any product or platform running Junos Space before
 16.1R1.");
 
-  script_tag(name: "solution", value: "Update to version 16.1R1 or later.");
+  script_tag(name:"solution", value:"Update to version 16.1R1 or later.");
 
-  script_xref(name: "URL", value: "http://kb.juniper.net/JSA10770");
+  script_xref(name:"URL", value:"http://kb.juniper.net/JSA10770");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

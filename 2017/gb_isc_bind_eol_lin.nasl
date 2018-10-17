@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_eol_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_isc_bind_eol_lin.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # BIND End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113016");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 11935 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 12:39:40 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,24 +47,16 @@ if( description )
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_unixoide");
 
-  tag_summary = "The BIND version on the remote host has reached the end of life and should not be used anymore.";
-
-  tag_impact = "An end of life version of BIND is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-    might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the BIND version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detection NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The BIND version on the remote host has reached the end of life and should not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of BIND is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+    might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the BIND version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://www.isc.org/downloads/software-support-policy/");
   script_xref(name:"URL", value:"https://www.isc.org/downloads/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:isc:bind";

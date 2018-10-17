@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_info_disc_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_splunk_enterprise_info_disc_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Splunk Enterprise Information Disclosure Vulnerability
 #
@@ -30,16 +30,16 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106715");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-5607");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Enterprise Information Disclosure Vulnerability");
 
@@ -50,20 +50,20 @@ if (description)
   script_dependencies("gb_splunk_detect.nasl");
   script_mandatory_keys("Splunk/installed");
 
-  script_tag(name: "summary", value: "Splunk Enterprise is prone to an information disclosure vulnerability via
+  script_tag(name:"summary", value:"Splunk Enterprise is prone to an information disclosure vulnerability via
 JavaScript.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value:"Splunk Enterprise is affected by a vulnerability that could allow a remote
+  script_tag(name:"insight", value:"Splunk Enterprise is affected by a vulnerability that could allow a remote
 attacker to obtain logged-in username and Splunk version-related information via JavaScript.");
 
-  script_tag(name: "affected", value: "Splunk Enterprise 5.0.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x and 6.5.x.");
+  script_tag(name:"affected", value:"Splunk Enterprise 5.0.x, 6.0.x, 6.1.x, 6.2.x, 6.3.x, 6.4.x and 6.5.x.");
 
-  script_tag(name: "solution", value: "Update to version 5.0.18, 6.0.14, 6.1.13, 6.2.13, 6.3.10, 6.4.6, 6.5.3 or
+  script_tag(name:"solution", value:"Update to version 5.0.18, 6.0.14, 6.1.13, 6.2.13, 6.3.10, 6.4.6, 6.5.3 or
 later.");
 
-  script_xref(name: "URL", value: "https://www.splunk.com/view/SP-CAAAPZ3");
+  script_xref(name:"URL", value:"https://www.splunk.com/view/SP-CAAAPZ3");
 
   exit(0);
 }
@@ -82,7 +82,7 @@ if (version =~ "^5\.0") {
     report = report_fixed_ver(installed_version: version, fixed_version: "5.0.18");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.0") {
@@ -90,7 +90,7 @@ if (version =~ "^6\.0") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.0.14");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.1") {
@@ -98,7 +98,7 @@ if (version =~ "^6\.1") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.1.13");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.2") {
@@ -106,7 +106,7 @@ if (version =~ "^6\.2") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.2.13");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.3") {
@@ -114,7 +114,7 @@ if (version =~ "^6\.3") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.3.10");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.4") {
@@ -122,7 +122,7 @@ if (version =~ "^6\.4") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.4.6");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 if (version =~ "^6\.5") {
@@ -130,7 +130,7 @@ if (version =~ "^6\.5") {
     report = report_fixed_ver(installed_version: version, fixed_version: "6.5.3");
     security_message(port: port, data: report);
     exit(0);
-  } 
+  }
 }
 
 exit(0);

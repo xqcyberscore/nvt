@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Squid 'http.cc' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807450");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-2572");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 11:34:15 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid 'http.cc' Denial of Service Vulnerability (Windows)");
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Squid version 4.x before 4.0.7 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Squid version 4.0.7 or later,
-  For updates refer to http://www.squid-cache.org");
+  script_tag(name:"solution", value:"Upgrade to Squid version 4.0.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

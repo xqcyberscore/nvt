@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miele_pst10_dir_trav_vuln.nasl 7180 2017-09-19 03:11:15Z ckuersteiner $
+# $Id: gb_miele_pst10_dir_trav_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Miele Professional PG 8528 Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108109");
-  script_version("$Revision: 7180 $");
+  script_version("$Revision: 11919 $");
   script_cve_id("CVE-2017-7240");
   script_bugtraq_id(97080);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 05:11:15 +0200 (Tue, 19 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("Miele Professional PG 8528 Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -53,11 +53,9 @@ if(description)
   and check whether it is able to read local file or not.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to read arbitrary files on the target system.
+  remote attackers to read arbitrary files on the target system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"solution", value: "See the advisory for a solution.");
+  script_tag(name:"solution", value:"See the advisory for a solution.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");

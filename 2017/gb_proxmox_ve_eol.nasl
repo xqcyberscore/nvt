@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proxmox_ve_eol.nasl 7556 2017-10-25 07:28:33Z cfischer $
+# $Id: gb_proxmox_ve_eol.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Proxmox Virtual Environment End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:proxmox:ve";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108283");
-  script_version("$Revision: 7556 $");
+  script_version("$Revision: 11936 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 09:28:33 +0200 (Wed, 25 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 08:00:00 +0200 (Wed, 25 Oct 2017)");
   script_name("Proxmox Virtual Environment End Of Life Detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -44,20 +44,12 @@ if(description)
 
   script_xref(name:"URL", value:"https://pve.proxmox.com/wiki/FAQ");
 
-  tag_summary = "The Proxmox Virtual Environment version on the remote host has reached the end of life and should
-  not be used anymore.";
-
-  tag_impact = "An end of life version of Proxmox Virtual Environment is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-  might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the Proxmox Virtual Environment version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the Detection-NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The Proxmox Virtual Environment version on the remote host has reached the end of life and should
+  not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of Proxmox Virtual Environment is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the Proxmox Virtual Environment version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

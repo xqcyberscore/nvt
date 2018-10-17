@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2384_kernel_centos7.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_CESA-2018_2384_kernel_centos7.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # CentOS Update for kernel CESA-2018:2384 centos7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882935");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 11933 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:18:41 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2017-13215", "CVE-2018-3620", "CVE-2018-3646", "CVE-2018-3693", "CVE-2018-5390", "CVE-2018-7566", "CVE-2018-10675");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kernel CESA-2018:2384 centos7 ");
   script_tag(name:"summary", value:"Check the version of kernel");

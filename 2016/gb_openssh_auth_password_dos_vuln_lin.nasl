@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_auth_password_dos_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_openssh_auth_password_dos_vuln_lin.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # OpenSSH Denial of Service And User Enumeration Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809154");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-6515", "CVE-2016-6210");
   script_bugtraq_id(92212);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-25 18:35:09 +0530 (Thu, 25 Aug 2016)");
   script_name("OpenSSH Denial of Service And User Enumeration Vulnerabilities (Linux)");
 
@@ -59,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.3 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.3 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

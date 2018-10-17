@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_free_antivirus_multiple_vuln.nasl 6116 2017-05-12 10:10:27Z teissa $
+# $Id: gb_avast_free_antivirus_multiple_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Avast Free Antivirus Multiple Vulnerabilities
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:avast:avast_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811020");
-  script_version("$Revision: 6116 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-8308", "CVE-2017-8307");
   script_bugtraq_id(98084, 98086);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 12:10:27 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 12:59:15 +0530 (Fri, 05 May 2017)");
   script_name("Avast Free Antivirus Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with Avast Free
   Antivirus and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to design errors in
   the application. Using LPC interface API exposed by the AvastSVC.exe Windows
@@ -51,24 +50,23 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct a denial-of-service condition, execute arbitrary code and bypass
-  certain security features on the affected system.
-
-  Impact Level: System/Application");
+  certain security features on the affected system.");
 
   script_tag(name:"affected", value:"Avast Free Antivirus version prior to
   version 17.0");
 
   script_tag(name:"solution", value:"Upgrade to Avast Free Antivirus version
-  17.0 or later. For updates refer to https://www.avast.com");
+  17.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://www.trustwave.com/Resources/Security-Advisories/Advisories/Multiple-Vulnerabilities-in-Avast-Antivirus/?fid=9201");
+  script_xref(name:"URL", value:"https://www.trustwave.com/Resources/Security-Advisories/Advisories/Multiple-Vulnerabilities-in-Avast-Antivirus/?fid=9201");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_avast_av_detect_win.nasl");
   script_mandatory_keys("Avast!/AV/Win/Ver");
+  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 
@@ -76,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-avastVer = "";
-
-## Get version
 if(!avastVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:avastVer, test_version:"17.0"))
 {
   report = report_fixed_ver(installed_version:avastVer, fixed_version:"17.0");

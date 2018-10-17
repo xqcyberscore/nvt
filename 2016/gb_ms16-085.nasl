@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-085.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-085.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Edge Multiple Vulnerabilities (3169999)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807346");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-3244", "CVE-2016-3246", "CVE-2016-3248", "CVE-2016-3259",
                 "CVE-2016-3260", "CVE-2016-3264", "CVE-2016-3265", "CVE-2016-3269",
                 "CVE-2016-3271", "CVE-2016-3273", "CVE-2016-3274", "CVE-2016-3276",
@@ -36,7 +36,7 @@ if(description)
                     91576, 91591, 91593, 91596);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:14:54 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Vulnerabilities (3169999)");
@@ -76,7 +76,7 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS16-085");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,7 +91,6 @@ if(description)
   script_mandatory_keys("MS/Edge/Installed");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -108,7 +107,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgedllVer = fetch_file_version(sysPath, file_name:"system32\edgehtml.dll");
+edgedllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\edgehtml.dll");
 if(!edgedllVer){
   exit(0);
 }
@@ -137,4 +136,5 @@ if(VULN)
   security_message(data:report);
   exit(0);
 }
+
 exit(0);

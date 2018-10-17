@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17119920.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_f5_big_ip_sol17119920.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # F5 BIG-IP - SOL17119920 - BIG-IP ASM Proactive Bot Defense vulnerability CVE-2016-7472
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-7472");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_name("F5 BIG-IP - SOL17119920 - BIG-IP ASM Proactive Bot Defense vulnerability CVE-2016-7472");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/17/sol17119920.html");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"When Proactive Bot Defense is configured, BIG-IP ASM 12.1.0 and 12.1.1 systems may allow remote attackers to cause a denial of service (DoS) via a crafted HTTP header. (CVE-2016-7472)");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 14:09:42 +0100 (Mon, 14 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

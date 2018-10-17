@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_priv_esc_vuln.nasl 6181 2017-05-19 14:58:21Z teissa $
+# $Id: gb_emc_data_domain_priv_esc_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # EMC Data Domain Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:emc:data_domain_os";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106806");
-  script_version("$Revision: 6181 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 16:58:21 +0200 (Fri, 19 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-16 16:28:36 +0700 (Tue, 16 May 2017)");
+  script_version("$Revision: 11935 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-16 16:28:36 +0700 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-4983");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Data Domain Privilege Escalation Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_emc_data_domain_version.nasl");
   script_mandatory_keys("emc/data_domain/version");
 
-  script_tag(name: "summary", value: "EMC Data Domain  OS is affected by a privilege escalation vulnerability
+  script_tag(name:"summary", value:"EMC Data Domain  OS is affected by a privilege escalation vulnerability
 that may potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Data Domain OS is potentially vulnerable to a privilege escalation
+  script_tag(name:"insight", value:"EMC Data Domain OS is potentially vulnerable to a privilege escalation
 vulnerability. A rogue administrator may be able to log in as the Security Office (SO) and escalate privileges
 by using SO user's public key that is stored unprotected on the Data Domain system.");
 
-  script_tag(name: "affected", value: "EMC Data Domain OS 5.2.x, 5.4.x, 5.5.x, 5.6.x, 5.7.x and 6.0.x.");
+  script_tag(name:"affected", value:"EMC Data Domain OS 5.2.x, 5.4.x, 5.5.x, 5.6.x, 5.7.x and 6.0.x.");
 
-  script_tag(name: "solution", value: "Update to 5.7.3.0, 6.0.1.0 or later versions.");
+  script_tag(name:"solution", value:"Update to 5.7.3.0, 6.0.1.0 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2017/May/att-12/ESA-2017-036.txt");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/May/att-12/ESA-2017-036.txt");
 
   exit(0);
 }

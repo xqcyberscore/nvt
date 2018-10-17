@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_sawmill_61075.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: sw_sawmill_61075.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Sawmill < 8.6.3 Unspecified Remote Security Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:sawmill:sawmill";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111083");
-  script_version("$Revision: 11493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:00:00 +0100 (Tue, 02 Feb 2016)");
   script_bugtraq_id(61075);
   script_cve_id("CVE-2013-4947");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms16-029.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms_word_ms16-029.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (3141806)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806899");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-0021", "CVE-2016-0057", "CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 13:44:08 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (3141806)");
@@ -53,8 +53,7 @@ if(description)
   Microsoft Word 2016 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/security/bulletin/ms16-029");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Word/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms16-029");
   exit(0);
 }
 

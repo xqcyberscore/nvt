@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freerdp_dos_vuln02_lin.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_freerdp_dos_vuln02_lin.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # FreeRDP Denial of Service Vulnerability-02 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:freerdp_project:freerdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809739");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2013-4119");
   script_bugtraq_id(61072);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 17:47:04 +0530 (Thu, 01 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("FreeRDP Denial of Service Vulnerability-02 (Linux)");
@@ -52,7 +52,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to FreeRDP 1.1.0-beta+2013071101
-  or later. For updates refer to http://www.freerdp.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/07/12/2");
@@ -62,6 +62,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_freerdp_detect_lin.nasl");
   script_mandatory_keys("FreeRDP/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.freerdp.com");
   exit(0);
 }
 

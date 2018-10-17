@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raritan_poweriq_rce_vuln.nasl 6184 2017-05-22 10:25:33Z ckuerste $
+# $Id: gb_raritan_poweriq_rce_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Raritan PowerIQ Rails RCE Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:raritan:power_iq";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106818");
-  script_version("$Revision: 6184 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-22 12:25:33 +0200 (Mon, 22 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-22 15:05:20 +0700 (Mon, 22 May 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-22 15:05:20 +0700 (Mon, 22 May 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Raritan PowerIQ Rails RCE Vulnerability");
 
@@ -49,20 +49,20 @@ if (description)
   script_dependencies("gb_raritan_poweriq_detect.nasl");
   script_mandatory_keys("raritan_poweriq/detected");
 
-  script_tag(name: "summary", value: "Raritan PowerIQ is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Raritan PowerIQ is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "insight", value: "Raritan PowerIQ versions 4.1, 4.2, and 4.3 ship with a Rails 2 web interface
+  script_tag(name:"insight", value:"Raritan PowerIQ versions 4.1, 4.2, and 4.3 ship with a Rails 2 web interface
 with a hardcoded session secret of 8e238c9702412d475a4c44b7726a0537.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code as the nginx user.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code as the nginx user.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "affected", value: "Raritran PowerIQ version 4.1, 4.2 and 4.3.");
+  script_tag(name:"affected", value:"Raritran PowerIQ version 4.1, 4.2 and 4.3.");
 
-  script_tag(name: "solution", value: "Upgrade to the latest version.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/130797/raritanpoweriq-staticsecret.txt");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/130797/raritanpoweriq-staticsecret.txt");
 
   exit(0);
 }

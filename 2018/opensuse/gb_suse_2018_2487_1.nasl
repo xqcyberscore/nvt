@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2487_1.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_suse_2018_2487_1.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # SuSE Update for libXcursor openSUSE-SU-2018:2487-1 (libXcursor)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851867");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11933 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-25 06:54:46 +0200 (Sat, 25 Aug 2018)");
   script_cve_id("CVE-2015-9262");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libXcursor openSUSE-SU-2018:2487-1 (libXcursor)");
   script_tag(name:"summary", value:"Check the version of libXcursor");

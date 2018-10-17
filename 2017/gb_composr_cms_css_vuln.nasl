@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_css_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_composr_cms_css_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # Composr CMS v10.0.0 - Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:composr:cms';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107215");
-  script_version("$Revision: 11900 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 11916 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,11 +52,12 @@ if(description)
 
   script_tag(name:"affected", value:"Composr CMS version 10.0.0.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 24th May, 2018. Information regarding this issue will be updated once
-  solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jun/15");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 
@@ -81,7 +82,7 @@ if(!Ver = get_app_version(cpe: CPE, port: Port))
 
 if(version_is_equal(version: Ver, test_version: "10.0.0"))
 {
-  report =  report_fixed_ver(installed_version: Ver, fixed_version: "None Available");
+  report =  report_fixed_ver(installed_version: Ver, fixed_version: "WillNotFix");
   security_message(data: report, port: Port);
   exit(0);
 }

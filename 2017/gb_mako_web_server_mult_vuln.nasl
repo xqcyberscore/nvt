@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 10322 2018-06-26 06:37:28Z cfischer $
+# $Id: gb_mako_web_server_mult_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 10322 $");
+  script_version("$Revision: 11935 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_name("Mako Web Server Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -58,7 +58,7 @@ if(description)
     the input passed to a function responsible for accessing the filesystem.
 
   - Mako web-server tutorial is not sufficiently sanitizing GET requests when
-    a user sends GET request to the URI 'IP/fs/../..' , the input is passed
+    a user sends GET request to the URI 'IP/fs/../..', the input is passed
     without modification and the response with the file content is returned.
 
   - Mako web-server tutorial is not sufficiently sanitizing incoming POST
@@ -68,9 +68,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary commands, gain access to potentially sensitive
-  and conduct cross site request forgery attacks.
-
-  Impact Level: System/Application");
+  and conduct cross site request forgery attacks.");
 
   script_tag(name:"affected", value:"Mako Web Server version 2.5. Other versions
   may also be affected.");

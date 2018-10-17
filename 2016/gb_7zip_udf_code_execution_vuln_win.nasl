@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # 7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:7-zip:7-zip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808160");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-2335");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 16:27:54 +0530 (Mon, 13 Jun 2016)");
   script_name("7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability");
 
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"7Zip version 9.20 and 15.05 beta.");
 
-  script_tag(name:"solution", value:"Upgrade to 7Zip version 16.04 or later.
-  For updates refer to http://www.7-zip.org/history.txt");
+  script_tag(name:"solution", value:"Upgrade to 7Zip version 16.04 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_7zip_detect_portable_win.nasl");
   script_mandatory_keys("7zip/Win/Ver");
+  script_xref(name:"URL", value:"http://www.7-zip.org/history.txt");
   exit(0);
 }
 

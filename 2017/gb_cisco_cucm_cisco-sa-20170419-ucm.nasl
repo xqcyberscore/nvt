@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170419-ucm.nasl 5991 2017-04-20 14:40:36Z ckuerste $
+# $Id: gb_cisco_cucm_cisco-sa-20170419-ucm.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Cisco Unified Communications Manager Denial of Service Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106780");
- script_cve_id("CVE-2017-3808");
- script_tag(name: "cvss_base", value: "7.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5991 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106780");
+  script_cve_id("CVE-2017-3808");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11923 $");
 
- script_name("Cisco Unified Communications Manager Denial of Service Vulnerability");
+  script_name("Cisco Unified Communications Manager Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-ucm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-ucm");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Session Initiation Protocol (SIP) UDP throttling
+  script_tag(name:"summary", value:"A vulnerability in the Session Initiation Protocol (SIP) UDP throttling
 process of Cisco Unified Communications Manager (Cisco Unified CM) could allow an unauthenticated, remote
 attacker to cause a denial of service (DoS) condition on an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient rate limiting protection. An
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient rate limiting protection. An
 attacker could exploit this vulnerability by sending the affected device a high rate of SIP messages.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the device to reload
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the device to reload
 unexpectedly. The device and services will restart automatically.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-20 16:40:36 +0200 (Thu, 20 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-20 16:25:38 +0200 (Thu, 20 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-20 16:25:38 +0200 (Thu, 20 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_sql_vuln_2.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
+# $Id: gb_bigtree_sql_vuln_2.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # BigTree CMS SQL Injection Vulnerability (2)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112141");
-  script_version("$Revision: 8430 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-28 08:33:19 +0100 (Tue, 28 Nov 2017)");
+  script_version("$Revision: 11935 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-28 08:33:19 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-16961");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("BigTree CMS SQL Injection Vulnerability (2)");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_bigtree_detect.nasl");
   script_mandatory_keys("BigTree/Installed");
 
-  script_tag(name: "summary", value: "BigTree CMS is prone to an SQL injection vulnerability.");
+  script_tag(name:"summary", value:"BigTree CMS is prone to an SQL injection vulnerability.");
 
-  script_tag(name: "insight", value: "An SQL injection vulnerability in core/inc/auto-modules.php in BigTree CMS allows
+  script_tag(name:"insight", value:"An SQL injection vulnerability in core/inc/auto-modules.php in BigTree CMS allows
 remote authenticated attackers to obtain information in the context of the user used by the application to retrieve data from the database.
 The attack uses an admin/trees/add/process request with a crafted _tags[] parameter that is mishandled in a later admin/ajax/dashboard/approve-change request.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Update to version 4.2.20 or later.");
+  script_tag(name:"solution", value:"Update to version 4.2.20 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/bigtreecms/BigTree-CMS/issues/323");
+  script_xref(name:"URL", value:"https://github.com/bigtreecms/BigTree-CMS/issues/323");
 
   exit(0);
 }

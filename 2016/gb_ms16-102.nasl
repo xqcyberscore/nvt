@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-102.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-102.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808647");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-3319");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 09:19:34 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)");
 
@@ -52,9 +52,7 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-102");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-102");
   exit(0);
 }
 
@@ -88,8 +87,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Glcndfilter.dll");
-dllVer2 = fetch_file_version(sysPath, file_name:"System32\Windows.data.pdf.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Glcndfilter.dll");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Windows.data.pdf.dll");
 if(!dllVer1 && !dllVer2){
   exit(0);
 }

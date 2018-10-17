@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # MongoDB engine_v8 Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808149");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2013-3969");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:55:52 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB engine_v8 Denial of Service Vulnerability (Linux)");
 
@@ -41,14 +41,12 @@ if (description)
   remote authenticated users to cause a denial of service condition by
   dereferencing an uninitialized pointer.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of MongoDB
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An error exists in engine_v8 which fails
   to parse certain regular expressions.");
 
-  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.4.5 or 2.5.1 or later,
-  For updates refer to http://www.mongodb.org");
+  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.4.5 or 2.5.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running MongoDB and is prone
   to a denial of service vulnerability.");

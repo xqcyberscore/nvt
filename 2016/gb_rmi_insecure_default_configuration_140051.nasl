@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rmi_insecure_default_configuration_140051.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_rmi_insecure_default_configuration_140051.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Java RMI Server Insecure Default Configuration Remote Code Execution Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140051");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"summary", value:"Multiple Java products that implement the RMI Server contain a vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system with elevated privileges.");
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_active");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 14:34:52 +0100 (Fri, 04 Nov 2016)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_rmi_registry_detect.nasl");
   script_require_ports("Services/rmi_registry");
 
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140163");
- script_cve_id("CVE-2016-9269","CVE-2016-9314","CVE-2016-9315","CVE-2016-9316");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 7076 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140163");
+  script_cve_id("CVE-2016-9269", "CVE-2016-9314", "CVE-2016-9315", "CVE-2016-9316");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11923 $");
 
- script_name("Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities");
+  script_name("Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1116672#");
+  script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1116672#");
 
- script_tag(name: "vuldetect" , value:"Check the version/build.");
+  script_tag(name:"vuldetect", value:"Check the version/build.");
 
- script_tag(name: "insight" , value:"This update resolves multiple vulnerabilities in Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5 in which a remote attacker could potentially attain code execution.
+  script_tag(name:"insight", value:"This update resolves multiple vulnerabilities in Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5 in which a remote attacker could potentially attain code execution.
 
 These include:
 
@@ -49,24 +49,24 @@ Remote Command Execution (RCE)
 Privilege Escalation
 Stored Cross Site Scripting (XSS) vulnerabilities");
 
- script_tag(name: "solution" , value:"Update to version 6.5 CP 1737 or newer.");
+  script_tag(name:"solution", value:"Update to version 6.5 CP 1737 or newer.");
 
- script_tag(name: "summary" , value:"Trend Micro has released a new build of Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5.  This build resolves vulnerabilities in the product that could potentially allow a remote attacker to execute artibtrary code on vulnerable installations.");
+  script_tag(name:"summary", value:"Trend Micro has released a new build of Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5.  This build resolves vulnerabilities in the product that could potentially allow a remote attacker to execute artibtrary code on vulnerable installations.");
 
- script_tag(name: "affected" , value:"Version 6.5");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Version 6.5");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
- script_tag(name:"creation_date", value:"2017-02-16 14:19:46 +0100 (Thu, 16 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
- script_mandatory_keys("IWSVA/version","IWSVA/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 14:19:46 +0100 (Thu, 16 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
+  script_mandatory_keys("IWSVA/version", "IWSVA/build");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

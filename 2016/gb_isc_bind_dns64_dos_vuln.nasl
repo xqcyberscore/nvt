@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dns64_dos_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_isc_bind_dns64_dos_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # ISC BIND DNS64 Remote Denial of Service Vulnerability - Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807204");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2012-5688");
   script_bugtraq_id(56817);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:39:11 +0530 (Thu, 28 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND DNS64 Remote Denial of Service Vulnerability - Jan16");
@@ -54,8 +54,7 @@ if(description)
   and 9.9.x before 9.9.2-P1.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.8.4-P1 or
-  9.9.2-P1 or later.
-  For updates refer to https://www.isc.org");
+  9.9.2-P1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

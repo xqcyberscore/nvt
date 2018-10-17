@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_file_disc_vuln.nasl 7977 2017-12-04 08:28:58Z asteins $
+# $Id: gb_roundcube_file_disc_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Roundcube Webmail File Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112134");
-  script_version("$Revision: 7977 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-22 17:17:17 +0100 (Wed, 22 Nov 2017)");
+  script_version("$Revision: 11935 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-22 17:17:17 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16651");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Roundcube Webmail File Disclosure Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("sw_roundcube_detect.nasl");
   script_mandatory_keys("roundcube/installed");
 
-  script_tag(name: "summary", value: "Roundcube Webmail is prone to a file disclosure vulnerability.");
+  script_tag(name:"summary", value:"Roundcube Webmail is prone to a file disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Roundcube Webmail allows unauthorized access to arbitrary files on the host's filesystem,
+  script_tag(name:"insight", value:"Roundcube Webmail allows unauthorized access to arbitrary files on the host's filesystem,
 including configuration files. The attacker must be able to authenticate at the target system with a valid username/password
 as the attack requires an active session.
 The issue is related to file-based attachment plugins and _task=settings&_action=upload-display&_from=timezone requests.");
 
-  script_tag(name: "affected", value: "Roundcube Webmail before 1.1.10, 1.2.x before 1.2.7, and 1.3.x before 1.3.3.");
+  script_tag(name:"affected", value:"Roundcube Webmail before 1.1.10, 1.2.x before 1.2.7, and 1.3.x before 1.3.3.");
 
-  script_tag(name: "solution", value: "Update to version, 1.1.10, 1.2.7, 1.3.3 or later.");
+  script_tag(name:"solution", value:"Update to version, 1.1.10, 1.2.7, 1.3.3 or later.");
 
-  script_xref(name: "URL", value: "https://roundcube.net/news/2017/11/08/security-updates-1.3.3-1.2.7-and-1.1.10");
+  script_xref(name:"URL", value:"https://roundcube.net/news/2017/11/08/security-updates-1.3.3-1.2.7-and-1.1.10");
 
   exit(0);
 }

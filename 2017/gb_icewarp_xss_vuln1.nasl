@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xss_vuln1.nasl 7085 2017-09-08 15:01:13Z cfischer $
+# $Id: gb_icewarp_xss_vuln1.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # IceWarp XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:icewarp:mail_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140345");
-  script_version("$Revision: 7085 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-01 15:42:08 +0700 (Fri, 01 Sep 2017)");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-01 15:42:08 +0700 (Fri, 01 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7855");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IceWarp XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_icewarp_web_detect.nasl");
   script_mandatory_keys("icewarp/installed");
 
-  script_tag(name: "summary", value: "IceWarp is prone to a cross-site scripting vulnerability");
+  script_tag(name:"summary", value:"IceWarp is prone to a cross-site scripting vulnerability");
 
-  script_tag(name: "insight", value: "In the webmail component in IceWarp Server, there was an XSS vulnerability
+  script_tag(name:"insight", value:"In the webmail component in IceWarp Server, there was an XSS vulnerability
 discovered in the 'language' parameter.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Update to version 12.0.2.0 or later.");
+  script_tag(name:"solution", value:"Update to version 12.0.2.0 or later.");
 
-  script_xref(name: "URL", value: "http://dl.icewarp.com/patchinfo/12.0.2.txt");
+  script_xref(name:"URL", value:"http://dl.icewarp.com/patchinfo/12.0.2.txt");
 
   exit(0);
 }

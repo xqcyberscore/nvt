@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_94281_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cloudbees_jenkins_94281_lin.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108063");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11919 $");
   script_cve_id("CVE-2016-9299");
   script_bugtraq_id(94281);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -51,26 +51,24 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with CloudBees Jenkins and is prone to
   a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT
-  and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an Jenkins allowing to transfer a serialized Java object to the Jenkins CLI,
   making Jenkins connect to an attacker-controlled LDAP server, which in turn can send a serialized payload leading
   to code execution, bypassing existing protection mechanisms.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of
-  the affected application. Failed exploits will result in denial-of-service conditions. 
-
-  Impact Level: System/Application");
+  the affected application. Failed exploits will result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS 2.19.2 and prior, Jenkins 2.31 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins to 2.32 or later / Jenkins LTS to 2.19.3 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

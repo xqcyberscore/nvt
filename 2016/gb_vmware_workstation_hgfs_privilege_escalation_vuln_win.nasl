@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_hgfs_privilege_escalation_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_vmware_workstation_hgfs_privilege_escalation_vuln_win.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # VMware Workstation 'HGFS' Feature Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809021");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-5330");
   script_bugtraq_id(92323);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 10:20:57 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation 'HGFS' Feature Privilege Escalation Vulnerability (Windows)");
@@ -55,7 +55,7 @@ if(description)
   12.1.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Workstation version
-  12.1.1 or later, For updates refer to http://www.vmware.com");
+  12.1.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

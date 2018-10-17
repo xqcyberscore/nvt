@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_intel_standard_manageability_priv_esc_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Intel Standard Manageability Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:intel:intel_standard_manageability";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810997");
-  script_version("$Revision: 11025 $");
+  script_version("$Revision: 11919 $");
   script_cve_id("CVE-2017-5689");
   script_bugtraq_id(98269);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 15:39:37 +0530 (Fri, 05 May 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intel Standard Manageability Privilege Escalation Vulnerability");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unprivileged attacker to gain control of the manageability features provided
-  by these products.
-
-  Impact Level: Application");
+  by these products.");
 
   script_tag(name:"affected", value:"Intel Standard Manageability firmware
   versions 6.x before 6.2.61.3535, 7.x before 7.1.91.3272, 8.x before 8.1.71.3608,
@@ -61,8 +59,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Intel Standard Manageability
   firmware versions 6.2.61.3535 or 7.1.91.3272 or 8.1.71.3608 or 9.1.41.3024 or
-  9.5.61.3012 or 10.0.55.3000 or 11.0.25.3001 or 11.6.27.3264 or later.
-  For updates refer to https://downloadcenter.intel.com/download/26754");
+  9.5.61.3012 or 10.0.55.3000 or 11.0.25.3001 or 11.6.27.3264 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,6 +72,7 @@ if(description)
   script_mandatory_keys("Intel/Standard/Manageability/version");
   script_require_ports("Services/www", 16992, 16993);
 
+  script_xref(name:"URL", value:"https://downloadcenter.intel.com/download/26754");
   exit(0);
 }
 

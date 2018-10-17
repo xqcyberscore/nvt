@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_remote_code_execution_vuln01.nasl 11485 2018-09-20 06:25:34Z cfischer $
+# $Id: gb_phpmailer_remote_code_execution_vuln01.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # PHPMailer < 5.2.20 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809843");
-  script_version("$Revision: 11485 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-10045");
   script_bugtraq_id(95130);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-29 11:17:41 +0530 (Thu, 29 Dec 2016)");
   script_name("PHPMailer < 5.2.20 Remote Code Execution Vulnerability");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -64,8 +64,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHPMailer versions prior to 5.2.20");
 
-  script_tag(name:"solution", value:"Upgrade to PHPMailer 5.2.20 or later.
-  For updates refer to https://github.com/PHPMailer/PHPMailer");
+  script_tag(name:"solution", value:"Upgrade to PHPMailer 5.2.20 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

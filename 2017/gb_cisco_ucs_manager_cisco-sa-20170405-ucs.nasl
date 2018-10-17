@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_manager_cisco-sa-20170405-ucs.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_cisco_ucs_manager_cisco-sa-20170405-ucs.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
-# Cisco UCS Manager Debug Plug-in Privilege Escalation Vulnerability 
+# Cisco UCS Manager Debug Plug-in Privilege Escalation Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:unified_computing_system_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106734");
- script_cve_id("CVE-2017-6598");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5975 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106734");
+  script_cve_id("CVE-2017-6598");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11935 $");
 
- script_name("Cisco UCS Manager Debug Plug-in Privilege Escalation Vulnerability");
+  script_name("Cisco UCS Manager Debug Plug-in Privilege Escalation Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-ucs");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-ucs");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the debug plug-in functionality of the Cisco Unified
+  script_tag(name:"summary", value:"A vulnerability in the debug plug-in functionality of the Cisco Unified
 Computing System (UCS) Manager could allow an authenticated, local attacker to execute arbitrary commands.");
 
- script_tag(name: "insight", value: "The vulnerability is due to inadequate integrity checks for the debug
+  script_tag(name:"insight", value:"The vulnerability is due to inadequate integrity checks for the debug
 plug-in. An attacker could exploit this vulnerability by crafting a debug plug-in and loading it using elevated
 privileges.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to run malicious code that would allow
+  script_tag(name:"impact", value:"An exploit could allow the attacker to run malicious code that would allow
 for the execution of arbitrary commands as root.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-10 10:27:18 +0200 (Mon, 10 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ucs_manager_detect.nasl");
- script_mandatory_keys("cisco_ucs_manager/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-10 10:27:18 +0200 (Mon, 10 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ucs_manager_detect.nasl");
+  script_mandatory_keys("cisco_ucs_manager/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

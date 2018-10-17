@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_feb16_win.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_adobe_air_mult_vuln_feb16_win.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Adobe Air Multiple Vulnerabilities Feb16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806684");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-0964", "CVE-2016-0965", "CVE-2016-0966", "CVE-2016-0967",
                 "CVE-2016-0968", "CVE-2016-0969", "CVE-2016-0970", "CVE-2016-0971",
                 "CVE-2016-0972", "CVE-2016-0973", "CVE-2016-0974", "CVE-2016-0975",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2016-0984", "CVE-2016-0985");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 17:36:12 +0530 (Fri, 12 Feb 2016)");
   script_name("Adobe Air Multiple Vulnerabilities Feb16 (Windows)");
 
@@ -64,7 +64,7 @@ if(description)
   Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Air version 20.0.0.260 or
-  later. For updates refer to http://get.adobe.com/air");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +77,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("Adobe/Air/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/air");
   exit(0);
 }
 

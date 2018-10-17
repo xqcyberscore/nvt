@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_info_disc_vuln.nasl 6041 2017-04-27 14:49:50Z ckuerste $
+# $Id: gb_atlassian_confluence_info_disc_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Atlassian Confluence Information Disclosure Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106791");
-  script_version("$Revision: 6041 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-27 16:49:50 +0200 (Thu, 27 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-27 09:11:45 +0200 (Thu, 27 Apr 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11923 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-27 09:11:45 +0200 (Thu, 27 Apr 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-7415");
   script_bugtraq_id(97961);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Confluence Information Disclosure Vulnerability");
 
@@ -52,20 +52,20 @@ if (description)
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_mandatory_keys("atlassian_confluence/installed");
 
-  script_tag(name: "summary", value: "Atlassian Confluence is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Atlassian Confluence is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Confluence drafts diff rest resource made the current content of all
+  script_tag(name:"insight", value:"The Confluence drafts diff rest resource made the current content of all
 blogs and pages in Confluence available without authentication by providing a page id or draft id. Attackers who
 can access the Confluence web interface of a vulnerable version can use this vulnerability to obtain the content
 of all blogs and pages inside Confluence provided that they first enumerate page or draft ids.");
 
-  script_tag(name: "affected", value: "Atlassian Confluence 6.0.x.");
+  script_tag(name:"affected", value:"Atlassian Confluence 6.0.x.");
 
-  script_tag(name: "solution", value: "Update to version 6.0.7 or later versions.");
+  script_tag(name:"solution", value:"Update to version 6.0.7 or later versions.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/CONFSERVER-52222");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/CONFSERVER-52222");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_kb4025866_n_kb4025867.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_lync_attendee_kb4025866_n_kb4025867.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (KB4025866 and KB4025867)
 #
@@ -27,48 +27,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811327");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-8676", "CVE-2017-8695", "CVE-2017-8696");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 15:57:23 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (KB4025866 and KB4025867)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   updates according to Microsoft KB4025866 and KB4025867.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to the windows font
   library which improperly handles specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Lync Attendee 2010");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4025867
-  https://support.microsoft.com/en-us/help/4025866");
+  listed hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4025867");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4025866");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4025867");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4025866");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_ms_lync_detect_win.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Lync/Attendee/Ver", "MS/Lync/Attendee/path");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4025867");
   exit(0);
 }
 
@@ -77,17 +73,11 @@ include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
 
-## Variables Initialization
-lyncPath = "";
-dllVer = "";
-
 ## For Microsoft Lync 2010 Attendee (admin level install)
 ## For Microsoft Lync 2010 Attendee (user level install)
-## Get Installed Path
 lyncPath = get_kb_item("MS/Lync/Attendee/path");
 if(lyncPath)
 {
-  ## Get Version from Rtmpltfm.dll
   dllVer = fetch_file_version(sysPath:lyncPath, file_name:"Rtmpltfm.dll");
   if(dllVer)
   {

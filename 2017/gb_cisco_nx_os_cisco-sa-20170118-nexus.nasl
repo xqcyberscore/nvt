@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170118-nexus.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_nx_os_cisco-sa-20170118-nexus.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Cisco Nexus 5000, 6000, and 7000 Series Switches Software IS-IS Packet Processing Denial of Service Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106528");
- script_cve_id("CVE-2017-3804");
- script_tag(name:"cvss_base", value:"5.7");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 6292 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106528");
+  script_cve_id("CVE-2017-3804");
+  script_tag(name:"cvss_base", value:"5.7");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11923 $");
 
- script_name("Cisco Nexus 5000, 6000, and 7000 Series Switches Software IS-IS Packet Processing Denial of Service Vulnerability");
+  script_name("Cisco Nexus 5000, 6000, and 7000 Series Switches Software IS-IS Packet Processing Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-nexus");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-nexus");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in Intermediate System-to-Intermediate System (IS-IS)
+  script_tag(name:"summary", value:"A vulnerability in Intermediate System-to-Intermediate System (IS-IS)
 protocol packet processing of Cisco Nexus 5000, 6000, and 7000 Series Switches software could allow an
 unauthenticated, adjacent attacker to cause a reload of the affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper processing of crafted IS-IS protocol
+  script_tag(name:"insight", value:"The vulnerability is due to improper processing of crafted IS-IS protocol
 packets. An attacker could exploit this vulnerability by sending a crafted IS-IS protocol packet over an
 established adjacency.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a reload of the affected
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a reload of the affected
 device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
- script_tag(name: "creation_date", value: "2017-01-19 11:24:12 +0700 (Thu, 19 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-19 11:24:12 +0700 (Thu, 19 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

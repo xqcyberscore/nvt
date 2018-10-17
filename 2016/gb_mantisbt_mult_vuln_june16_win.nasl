@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807599");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11916 $");
   script_cve_id("CVE-2014-9759");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:35 +0530 (Fri, 03 Jun 2016)");
   script_name("MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)");
 
@@ -51,15 +51,12 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to obtain sensitive master salt configuration information via a SOAP API request.");
 
-  script_tag(name:"affected", value:"MantisBT versions 1.3.x before 1.3.0
+  script_tag(name:"affected", value:"MantisBT versions  1.3.x before 1.3.0-rc.2
   on Windows");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information regarding
-  this issue will be updated once solution details are available.
+  script_tag(name:"solution", value:"Upgrade to version 1.3.0-rc.2 or later.");
 
-  For updates refer to http://www.mantisbt.org/download.php");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/01/02/1");
   script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=20277");
@@ -86,14 +83,14 @@ if(!manVer = get_app_version(cpe:CPE, port:manPort)){
   exit(0);
 }
 
-## >= 1.3.0-beta.1
-##Fixed in versions:1.3.0 (not yet released), possibly 1.3.0-rc.2
 if(version_is_equal(version:manVer, test_version:"1.3.0-beta.1") ||
    version_is_equal(version:manVer, test_version:"1.3.0-beta.2") ||
    version_is_equal(version:manVer, test_version:"1.3.0-beta.3") ||
    version_is_equal(version:manVer, test_version:"1.3.0-rc.1"))
 {
-  report = report_fixed_ver(installed_version:manVer, fixed_version:"None available");
+  report = report_fixed_ver(installed_version:manVer, fixed_version:"1.3.0-rc.2");
   security_message(data:report, port:manPort);
   exit(0);
 }
+
+exit(99);

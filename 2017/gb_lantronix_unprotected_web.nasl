@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_unprotected_web.nasl 7933 2017-11-29 14:03:45Z cfischer $
+# $Id: gb_lantronix_unprotected_web.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Lantronix Devices Unprotected Web Access
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112133");
-  script_version("$Revision: 7933 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 15:03:45 +0100 (Wed, 29 Nov 2017) $");
+  script_version("$Revision: 11923 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 11:46:00 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ if(description)
 
 include("misc_func.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 if( ! port = get_kb_item( "lantronix_device/http/port" ) ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10775.nasl 6714 2017-07-13 09:15:20Z ckuersteiner $
+# $Id: gb_junos_jsa10775.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Junos Multiple OpenSSL Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106949");
-  script_version ("$Revision: 6714 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-13 11:15:20 +0200 (Thu, 13 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 15:09:50 +0700 (Thu, 13 Jul 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 15:09:50 +0700 (Thu, 13 Jul 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-3731", "CVE-2017-3732", "CVE-2016-7055");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Multiple OpenSSL Vulnerabilities");
 
@@ -48,17 +48,17 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to multiple vulnerabilities in OpenSSL");
+  script_tag(name:"summary", value:"Junos OS is prone to multiple vulnerabilities in OpenSSL");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "affected", value: "Junos OS 14.1, 14.1X53, 14.2, 15.1, 15.1X49, 15.1X53, 15.1X56, 16.1, 16.2,
+  script_tag(name:"affected", value:"Junos OS 14.1, 14.1X53, 14.2, 15.1, 15.1X49, 15.1X53, 15.1X56, 16.1, 16.2,
 17.1.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10775");
 

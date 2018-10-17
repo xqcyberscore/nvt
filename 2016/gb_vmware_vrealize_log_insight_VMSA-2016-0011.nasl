@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0011.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0011.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # VMSA-2016-0011: VMware vRealize Log Insight update addresses directory traversal vulnerability.
 #
@@ -33,12 +33,12 @@ if (description)
   script_cve_id("CVE-2016-5332");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_name("VMSA-2016-0011: VMware vRealize Log Insight update addresses directory traversal vulnerability");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0011.html");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Apply the missing patch(es).");
 
@@ -46,7 +46,7 @@ if (description)
 
   script_tag(name:"affected", value:"VMware vRealize Log Insight prior to 3.6.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-15 14:43:37 +0200 (Mon, 15 Aug 2016)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,7 +69,7 @@ if( version_is_less( version:version, test_version:"3.6.0" ) )
 {
   report = report_fixed_ver( installed_version:version, fixed_version:'3.6.0' );
   security_message( port:0, data:report );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

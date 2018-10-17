@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_clickjack_vuln_may16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_apache_activemq_clickjack_vuln_may16.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Apache ActiveMQ Clickjacking Vulnerability May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807971");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-0734");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-05 17:11:01 +0530 (Thu, 05 May 2016)");
   script_name("Apache ActiveMQ Clickjacking Vulnerability May16");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -60,11 +60,12 @@ if(description)
   script_tag(name:"affected", value:"Apache ActiveMQ Version 5.x before 5.13.2.");
 
   script_tag(name:"solution", value:"Upgrade to Apache ActiveMQ Version 5.13.2 or
-  later. For updates refer to http://activemq.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://activemq.apache.org");
   exit(0);
 }
 

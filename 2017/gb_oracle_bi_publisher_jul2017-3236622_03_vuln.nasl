@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_jul2017-3236622_03_vuln.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_oracle_bi_publisher_jul2017-3236622_03_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Oracle BI Publisher Multiple Unspecified Vulnerabilities-03 (jul2017-3236622)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811249");
-  script_version("$Revision: 6981 $");
+  script_version("$Revision: 11919 $");
   script_cve_id("CVE-2017-10156", "CVE-2017-10157");
   script_bugtraq_id(99682, 99694);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 17:29:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher Multiple Unspecified Vulnerabilities-03 (jul2017-3236622)");
@@ -41,29 +41,25 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Oracle BI Publisher
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to unspecified
   errors in 'BI Publisher Security' component of the application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to have an impact on
-  confidentiality and integrity.
+  confidentiality and integrity.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle BI Publisher versions 11.1.1.7.0,
+  script_tag(name:"affected", value:"Oracle BI Publisher versions 11.1.1.7.0,
   11.1.1.9.0, 12.2.1.1.0 and 12.2.1.2.0");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_tag(name:"solution", value:"Apply update from the link mentioned below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_oracle_bi_publisher_detect.nasl");
@@ -76,10 +72,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-obpPort = "";
-obpVer = "";
-
 if(!obpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -88,7 +80,6 @@ if(!obpVer = get_app_version(cpe:CPE, port:obpPort)){
   exit(0);
 }
 
-## Check for version 11.1.1.7.0, 11.1.1.9.0, 12.2.1.1.0, 12.2.1.2.0
 if((obpVer == "11.1.1.7.0") || (obpVer == "11.1.1.9.0") ||
    (obpVer == "12.2.1.1.0") || (obpVer == "12.2.1.2.0"))
 {

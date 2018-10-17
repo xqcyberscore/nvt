@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_nov30_win-02.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_phpmyadmin_mult_vuln_nov30_win-02.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # phpMyAdmin Multiple Vulnerabilities - 30-Nov-14 (Windows) (02)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112003");
-  script_version("$Revision: 7543 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 16:10:02 +0200 (Fri, 18 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");

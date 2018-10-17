@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4266.nasl 10801 2018-08-07 05:51:33Z cfischer $
+# $Id: deb_4266.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # Auto-generated from advisory DSA 4266-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704266");
-  script_version("$Revision: 10801 $");
+  script_version("$Revision: 11933 $");
   script_cve_id("CVE-2018-13405", "CVE-2018-5390");
   script_name("Debian Security Advisory DSA 4266-1 (linux - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 07:51:33 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 00:00:00 +0200 (Mon, 06 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

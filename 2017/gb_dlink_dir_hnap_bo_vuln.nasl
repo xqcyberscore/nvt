@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 11370 2018-09-13 11:32:51Z asteins $
+# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # D-Link DIR Routers HNAP Buffer Overflow Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106587");
-  script_version("$Revision: 11370 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
-  script_tag(name: "creation_date", value: "2017-02-14 13:49:17 +0700 (Tue, 14 Feb 2017)");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-14 13:49:17 +0700 (Tue, 14 Feb 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6563");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DIR Routers HNAP Buffer Overflow Vulnerability");
 
@@ -49,21 +49,21 @@ if (description)
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir", "dlink_hw_version");
 
-  script_tag(name: "summary", value: "Several D-Link DIR Routers are prone to a buffer overflow vulnerability in
+  script_tag(name:"summary", value:"Several D-Link DIR Routers are prone to a buffer overflow vulnerability in
 HNAP.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Processing malformed SOAP messages when performing the HNAP Login action
+  script_tag(name:"insight", value:"Processing malformed SOAP messages when performing the HNAP Login action
 causes a buffer overflow in the stack. The vulnerable XML fields within the SOAP body are: Action, Username,
 LoginPassword, and Captcha.");
 
-  script_tag(name: "affected", value: "D-Link DIR-885L, DIR-895L, DIR-890L, DIR-880L, DIR-868L, DIR-869, DIR-879,
+  script_tag(name:"affected", value:"D-Link DIR-885L, DIR-895L, DIR-890L, DIR-880L, DIR-868L, DIR-869, DIR-879,
 DIR-859, DIR-822, DIR-823, DIR-818L.");
 
-  script_tag(name: "solution", value: "Upgrade to the latest firmware.");
+  script_tag(name:"solution", value:"Upgrade to the latest firmware.");
 
-  script_xref(name: "URL", value: "http://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10066");
+  script_xref(name:"URL", value:"http://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10066");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_unspecified_vuln_dec16_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_google_chrome_mult_unspecified_vuln_dec16_macosx.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Google Chrome Multiple Unspecified Vulnerabilities Dec16 (Mac OS X)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810244");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-16 16:18:14 +0530 (Fri, 16 Dec 2016)");
   script_name("Google Chrome Multiple Unspecified Vulnerabilities Dec16 (Mac OS X)");
 
@@ -52,8 +52,7 @@ if(description)
   prior to 55.0.2883.95 on MAC OS X");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  55.0.2883.95 or later.
-  For updates refer to http://www.google.com/chrome");
+  55.0.2883.95 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -63,6 +62,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

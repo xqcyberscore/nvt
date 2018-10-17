@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_cisco-sa-20161026-pcp.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_pcp_cisco-sa-20161026-pcp.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Prime Collaboration Provisioning Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6451");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_name("Cisco Prime Collaboration Provisioning Cross-Site Scripting Vulnerability");
 
@@ -44,7 +44,7 @@ a malicious link or by intercepting the user request and injecting malicious cod
 attacker to execute arbitrary script code in the context of the affected site or allow the attacker to access
 sensitive browser-based information.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of some parameters
 passed to the web server.");
@@ -61,7 +61,7 @@ attack against the user of the web interface of the affected system.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-28 15:41:14 +0200 (Fri, 28 Oct 2016)");
 
   script_category(ACT_GATHER_INFO);
@@ -70,7 +70,7 @@ attack against the user of the web interface of the affected system.");
   script_dependencies("gb_cisco_pcp_version.nasl");
   script_mandatory_keys("cisco_pcp/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

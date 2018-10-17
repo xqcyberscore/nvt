@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_xss_vuln02_jan16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_ibm_websphere_xss_vuln02_jan16.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # IBM Websphere Apllication Cross Site Scripting Vulnerability -02 Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806841");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2013-0597");
   script_bugtraq_id(60724);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 13:18:52 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Cross Site Scripting Vulnerability -02 Jan16");
@@ -54,8 +54,7 @@ if(description)
   7.0 before 7.0.0.29, 8.0 before 8.0.0.7, and 8.5 before 8.5.5.0");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) version 7.0.0.29 or 8.0.0.7 or 8.5.5.0, or later
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  Server (WAS) version 7.0.0.29 or 8.0.0.7 or 8.5.5.0, or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

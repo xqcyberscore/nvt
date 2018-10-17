@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cohu_camera_mult_vuln.nasl 9727 2018-05-04 09:12:47Z cfischer $
+# $Id: gb_cohu_camera_mult_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Cohu 3960HD Multiple Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140533");
-  script_version("$Revision: 9727 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-24 10:59:47 +0700 (Fri, 24 Nov 2017)");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-24 10:59:47 +0700 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-8860", "CVE-2017-8861", "CVE-2017-8862", "CVE-2017-8863", "CVE-2017-8864");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Cohu 3960HD Multiple Vulnerability");
 
@@ -49,31 +49,29 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Cohu/banner");
 
-  script_tag(name: "summary", value: "Cohu 3960HD Series IP cameras are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Cohu 3960HD Series IP cameras are prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Cohu 3960HD Series IP cameras are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Cohu 3960HD Series IP cameras are prone to multiple vulnerabilities:
 
-- Information exposure through directory listing (CVE-2017-8860)
+  - Information exposure through directory listing (CVE-2017-8860)
 
-- Cleartext transmission of sensitive information
+  - Cleartext transmission of sensitive information
 
-- Missing authentication for critical function (CVE-2017-8861)
+  - Missing authentication for critical function (CVE-2017-8861)
 
-- Unrestricted upload of file with dangerous type (CVE-2017-8862)
+  - Unrestricted upload of file with dangerous type (CVE-2017-8862)
 
-- Information exposure through source code (CVE-2017-8863)
+  - Information exposure through source code (CVE-2017-8863)
 
-- Client side enforcement of server side security (CVE-2017-8864)");
+  - Client side enforcement of server side security (CVE-2017-8864)");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of
-  this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another one.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  Note: Cohu 3960HD Series IP cameras have reached end-of-life.");
-
-  script_xref(name: "URL", value: "https://bneg.io/2017/05/12/vulnerabilities-in-cohu-3960hd/");
+  script_xref(name:"URL", value:"https://bneg.io/2017/05/12/vulnerabilities-in-cohu-3960hd/");
 
   exit(0);
 }

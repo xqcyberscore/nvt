@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:bitdefender:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810940");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11919 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:27:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Bitdefender
   Internet Security and is prone to local code injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the product do not
   use the Protected Processes feature, and therefore an attacker can enter an
@@ -54,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to bypass a self-protection mechanism, inject arbitrary code, and take
-  full control of any Bitdefender process via a 'DoubleAgent' attack.
-
-  Impact Level: System/Application");
+  full control of any Bitdefender process via a 'DoubleAgent' attack.");
 
   script_tag(name:"affected", value:"Bitdefender Internet Security 12.0
   (and earlier).");
@@ -67,9 +64,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://cybellum.com/doubleagent-taking-full-control-antivirus");
-  script_xref(name : "URL" , value : "http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
-  script_xref(name : "URL" , value : "https://forum.bitdefender.com/index.php?/topic/75470-doubleagent/");
+  script_xref(name:"URL", value:"https://cybellum.com/doubleagent-taking-full-control-antivirus");
+  script_xref(name:"URL", value:"http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
+  script_xref(name:"URL", value:"https://forum.bitdefender.com/index.php?/topic/75470-doubleagent/");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -81,15 +78,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-bitVer = "";
-
-## Get version
 if(!bitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less_equal(version:bitVer, test_version:"12.0"))
 {
   report = report_fixed_ver(installed_version:bitVer, fixed_version:"Build: 21.0.24.62");

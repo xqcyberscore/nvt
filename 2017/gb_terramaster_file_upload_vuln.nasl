@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_file_upload_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_terramaster_file_upload_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # Terramaster NAS File Upload Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:noontec:terramaster";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106839");
-  script_version("$Revision: 11501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11916 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-31 10:41:50 +0700 (Wed, 31 May 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Terramaster NAS File Upload Vulnerability");
 
@@ -60,10 +60,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request to upload a php file and checks if
   phpinfo() could be executed.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th May, 2018. Information
-  regarding this issue will be updated once solution details are available.
-
-  To mitigate the issue, check the mitigation steps in the referenced link.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/");
 

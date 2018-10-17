@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg3xx_82103.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_sg3xx_82103.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Small Business SG300 Managed Switch Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-1299");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 11922 $");
 
   script_name("Cisco Small Business SG300 Managed Switch Denial of Service Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:" https://bst.cloudapps.cisco.com/bugsearch/bug/CSCuw87174");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service conditions.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to improper handling, processing, and termination of HTTPS connections. An attacker could exploit this vulnerability by sending crafted HTTPS requests to management-enabled interfaces of an affected system.");
   script_tag(name:"solution", value:"Update to version 1.4.5.2 or later. Please see the references for more information.");
   script_tag(name:"summary", value:"Cisco Small Business SG300 Managed Switch is prone to a remote denial-of-service vulnerability.");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-24 15:41:40 +0100 (Thu, 24 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -60,7 +60,7 @@ if (description)
   script_dependencies("gb_cisco_sg3xx_snmp_detect.nasl");
   script_mandatory_keys("cisco/300_series_managed_switch/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

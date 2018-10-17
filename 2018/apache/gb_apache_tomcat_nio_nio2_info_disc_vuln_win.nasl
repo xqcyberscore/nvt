@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_nio_nio2_info_disc_vuln_win.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_apache_tomcat_nio_nio2_info_disc_vuln_win.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # Apache Tomcat 'NIO/NIO2' Connectors Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813722");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 11933 $");
   script_cve_id("CVE-2018-8037");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 11:16:57 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'NIO/NIO2' Connectors Information Disclosure Vulnerability (Windows)");

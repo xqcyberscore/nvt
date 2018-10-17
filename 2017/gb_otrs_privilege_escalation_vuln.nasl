@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_privilege_escalation_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_otrs_privilege_escalation_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # OTRS Framework Privilege Escalation Vulnerability (OSA-2017-10)
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812273");
-  script_version("$Revision: 8493 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-17476");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 13:32:26 +0530 (Tue, 26 Dec 2017)");
   ## Application is vulnerable only if system has cookie support disabled
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OTRS Framework Privilege Escalation Vulnerability (OSA-2017-10)");
 
-  script_tag(name: "summary" , value:"The host is installed with OTRS Framework
+  script_tag(name:"summary", value:"The host is installed with OTRS Framework
   and is prone to privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as when an attacker sends a
+  script_tag(name:"insight", value:"The flaw exists as when an attacker sends a
   specially prepared email to an OTRS system while system has cookie support
-  disabled, a logged in agent clicking a link in this email will leak the session 
+  disabled, a logged in agent clicking a link in this email will leak the session
   information to external systems.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to hijack web sessions and consequently gain privileges via a 
-  crafted email.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to hijack web sessions and consequently gain privileges via a
+  crafted email.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Open Ticket Request System (OTRS) 4.0.x 
+  script_tag(name:"affected", value:"Open Ticket Request System (OTRS) 4.0.x
   before 4.0.28, 5.0.x before 5.0.26, and 6.0.x before 6.0.3");
 
-  script_tag(name: "solution" , value:"Upgrade to 6.0.3 or 4.0.28 or 5.0.26 
-  or later. For updates refer to https://www.otrs.com");
+  script_tag(name:"solution", value:"Upgrade to 6.0.3 or 4.0.28 or 5.0.26
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.otrs.com/security-advisory-2017-10-security-update-otrs-framework");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-10-security-update-otrs-framework");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_info_disc_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cybozu_office_info_disc_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cybozu Office Information Disclosure Vulnerability Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807278");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2015-8488");
   script_bugtraq_id(83285);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:46 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Office Information Disclosure Vulnerability Feb16");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Cybozu Office
   and is prone to Information Disclosure Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper
   validation of mail function.");
@@ -53,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Cybozu Office version 10.3.0");
   script_tag(name:"solution", value:"Upgrade to Cybozu Office version 10.4.0
-  or later.
-  For updates refer to http://products.cybozu.co.jp/office/");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +64,7 @@ if(description)
   script_dependencies("secpod_cybozu_products_detect.nasl");
   script_mandatory_keys("CybozuOffice/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://products.cybozu.co.jp/office/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
+# $Id: gb_wireshark_mult_dos_vuln03_june_macosx.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)
 #
@@ -29,43 +29,40 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810963");
-  script_version("$Revision: 9338 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-9616", "CVE-2017-9617");
   script_bugtraq_id(99087, 99085);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 16:34:23 +0530 (Tue, 27 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 June17 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-  - An error in 'epan/dissectors/file-mp4.c' script which fails to properly 
+  - An error in 'epan/dissectors/file-mp4.c' script which fails to properly
     handle certain types of packets.
 
-  - An error in in the 'dissect_daap_one_tag' function in 'epan/dissectors/packet-daap.c' 
+  - An error in in the 'dissect_daap_one_tag' function in 'epan/dissectors/packet-daap.c'
     script in the DAAP dissector.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote 
-  attackers to crash the affected application, resulting in denial-of-service 
-  conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to crash the affected application, resulting in denial-of-service
+  conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "solution" , value: "Update to version 2.4.6 or later.");
+  script_tag(name:"solution", value:"Update to version 2.4.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13777");
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13799");
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13777");
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13799");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");

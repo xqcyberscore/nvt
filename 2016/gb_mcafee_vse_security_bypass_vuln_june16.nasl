@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_security_bypass_vuln_june16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_mcafee_vse_security_bypass_vuln_june16.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # McAfee VirusScan Enterprise Security Bypass Vulnerability- June 16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808083");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-4534");
   script_tag(name:"cvss_base", value:"3.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-16 16:28:59 +0530 (Thu, 16 Jun 2016)");
   script_name("McAfee VirusScan Enterprise Security Bypass Vulnerability- June 16");
 
@@ -53,8 +53,7 @@ if(description)
   8.8.0 Patch 6/7 Hotfix 1123565.");
 
   script_tag(name:"solution", value:"Upgrade to McAfee VirusScan Enterprise
-  version 8.8.0 Patch 6/7 Hotfix 1123565 or later.
-  For updates refer to http://www.mcafee.com");
+  version 8.8.0 Patch 6/7 Hotfix 1123565 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mcafee_virusscan_enterprise_detect_win.nasl");
   script_mandatory_keys("McAfee/VirusScan/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mcafee.com");
   exit(0);
 }
 

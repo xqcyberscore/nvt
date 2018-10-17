@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # Riverbed SteelHead Arbitrary File Read Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:riverbed:steelhead";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106846");
-  script_version("$Revision: 11816 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 11916 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-06 08:53:41 +0700 (Tue, 06 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Riverbed SteelHead Arbitrary File Read Vulnerability");
 
@@ -50,14 +50,15 @@ if (description)
   script_mandatory_keys("riverbed/steelhead/detected");
 
   script_tag(name:"summary", value:"Riverbed SteelHead VCX is prone to an authenticated arbitrary file read
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_tag(name:"affected", value:"Riverbed Steelhead VCX 9.6.0a");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
-this issue will be updated once solution details are available..");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42101/");
 
@@ -76,7 +77,7 @@ if (!version = get_app_version(cpe: CPE, nofork: TRUE))
   exit(0);
 
 if (version == "9.6.0a") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "WillNotFix");
   security_message(port: 0, data: report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_xss_vuln.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_splunk_light_xss_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # Splunk Light Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106714");
-  script_version("$Revision: 6012 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-5607");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Light Multiple XSS Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_splunk_light_detect.nasl");
   script_mandatory_keys("SplunkLight/installed");
 
-  script_tag(name: "summary", value: "Splunk Light is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"Splunk Light is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Splunk Light is prone to multiple cross-site scripting vulnerabilities:
+  script_tag(name:"insight", value:"Splunk Light is prone to multiple cross-site scripting vulnerabilities:
 
-- Splunk Light is affected by a vulnerability that allows an attacker to inject and store arbitrary script.
+  - Splunk Light is affected by a vulnerability that allows an attacker to inject and store arbitrary script.
 However, the attacker has to be authenticated in Splunk web before exploiting this vulnerability.
 
-- Splunk Light is affected by a vulnerability that could allow a remote attacker to obtain logged-in username and
+  - Splunk Light is affected by a vulnerability that could allow a remote attacker to obtain logged-in username and
 Splunk version-related information via JavaScript.");
 
-  script_tag(name: "affected", value: "Splunk Light prior to version 6.5.2");
+  script_tag(name:"affected", value:"Splunk Light prior to version 6.5.2");
 
-  script_tag(name: "solution", value: "Update to version 6.5.2 or later.");
+  script_tag(name:"solution", value:"Update to version 6.5.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.splunk.com/view/SP-CAAAPZ3");
+  script_xref(name:"URL", value:"https://www.splunk.com/view/SP-CAAAPZ3");
 
   exit(0);
 }

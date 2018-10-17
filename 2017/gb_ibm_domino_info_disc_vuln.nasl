@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_info_disc_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_info_disc_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
-# IBM Domino TLS Server Diffie-Hellman Key Validation Vulnerability 
+# IBM Domino TLS Server Diffie-Hellman Key Validation Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,18 +30,18 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106873");
-  script_version("$Revision: 7575 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-15 11:51:23 +0700 (Thu, 15 Jun 2017)");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-15 11:51:23 +0700 (Thu, 15 Jun 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-6087");
   script_bugtraq_id(98794);
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IBM Domino TLS Server Diffie-Hellman Key Validation Vulnerability");
 
@@ -52,17 +52,17 @@ if (description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_mandatory_keys("Domino/Version");
 
-  script_tag(name: "summary", value: "A vulnerability in the IBM Domino TLS server's Diffie-Hellman parameter
+  script_tag(name:"summary", value:"A vulnerability in the IBM Domino TLS server's Diffie-Hellman parameter
 validation could potentially be exploited in a small subgroup attack which could result in a less secure
 connection. An attacker may be able to exploit this vulnerability to obtain user authentication credentials.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "IBM Domino 8.5.1, 8.5.2, 8.5.3, 9.0 and 9.0.1.");
+  script_tag(name:"affected", value:"IBM Domino 8.5.1, 8.5.2, 8.5.3, 9.0 and 9.0.1.");
 
-  script_tag(name: "solution", value: "Update to version 9.0.1 FP8.");
+  script_tag(name:"solution", value:"Update to version 9.0.1 FP8.");
 
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg22002808");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg22002808");
 
   exit(0);
 }

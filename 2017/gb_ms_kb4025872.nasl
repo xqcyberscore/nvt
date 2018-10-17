@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025872.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_ms_kb4025872.nasl 11935 2018-10-17 08:47:01Z mmartin $
 #
 # Windows PowerShell Remote Code Execution Vulnerability (KB4025872)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811457");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 11935 $");
   script_cve_id("CVE-2017-8565");
   script_bugtraq_id(99394);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 08:29:18 +0530 (Wed, 12 Jul 2017)");
   script_name("Windows PowerShell Remote Code Execution Vulnerability (KB4025872)");
   script_category(ACT_GATHER_INFO);
@@ -107,7 +107,7 @@ foreach filePath( keys( fileList ) ) {
 }
 
 if( foundMax ) {
-  if( version_is_less( version:maxVer, test_version:"6.2.9200.22198" ) ) {  
+  if( version_is_less( version:maxVer, test_version:"6.2.9200.22198" ) ) {
     report = report_fixed_ver( file_version:maxVer, file_checked:maxPath, vulnerable_range:"Less than 6.2.9200.22198" );
     security_message( port:0, data:report );
     exit( 0 );

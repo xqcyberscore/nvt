@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:experience_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807066");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-0956");
   script_bugtraq_id(83119);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -65,11 +65,12 @@ if(description)
   Adobe Experience Manager 5.6.1, 6.0.0, and 6.1.0");
 
   script_tag(name:"solution", value:"Upgrade to Apache Sling Servlets Post
-  2.3.8 or later. For updates refer to http://sling.apache.org");
+  2.3.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://sling.apache.org");
   exit(0);
 }
 

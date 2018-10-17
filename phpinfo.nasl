@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 11558 2018-09-23 08:25:04Z cfischer $
+# $Id: phpinfo.nasl 11931 2018-10-17 06:08:52Z cfischer $
 #
 # phpinfo() output accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 11558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-23 10:25:04 +0200 (Sun, 23 Sep 2018) $");
+  script_version("$Revision: 11931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 08:08:52 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,16 +40,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Delete them or restrict access to the listened files.");
+  script_tag(name:"solution", value:"Delete the listed files or restrict access to them.");
 
   script_tag(name:"summary", value:"Many PHP installation tutorials instruct the user to create
-  a file called phpinfo.php or similar containing the phpinfo() statement. Such a file is often times
-  left in webserver directory after completion.");
+  a file called phpinfo.php or similar containing the phpinfo() statement. Such a file is often
+  left back in the webserver directory.");
 
   script_tag(name:"impact", value:"Some of the information that can be gathered from this file includes:
 
-  The username of the user who installed php, if they are a SUDO user, the IP address of the host, the web server
-  version, the system version(unix / linux), and the root directory of the web server.");
+  The username of the user running the PHP process, if it is a sudo user, the IP address of the host, the web server
+  version, the system version (Unix, Linux, Windows, ...), and the root directory of the web server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"Workaround");

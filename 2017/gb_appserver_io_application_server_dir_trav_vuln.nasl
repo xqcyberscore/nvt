@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserver_io_application_server_dir_trav_vuln.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: gb_appserver_io_application_server_dir_trav_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # appserver.io Application Server Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:appserver:io";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811268");
-  script_version("$Revision: 6873 $");
+  script_version("$Revision: 11936 $");
   script_cve_id("CVE-2015-1847");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 11:04:18 +0530 (Wed, 02 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("appserver.io Application Server Directory Traversal Vulnerability");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with appserver.io
   application server and is prone to directory traversal vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to error in the bundled
   webserver's HTTP parsing library, URI as coming from a web client was not
@@ -51,15 +50,13 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to traversal movement through the file system of the host without
   the restriction of the configured document root. This allowed for access of
-  otherwise inaccessible files through specially crafted HTTP requests.
-
-  Impact Level: System/Application");
+  otherwise inaccessible files through specially crafted HTTP requests.");
 
   script_tag(name:"affected", value:"appserver.io Application Server before
   version 1.0.3");
 
   script_tag(name:"solution", value:"Upgrade to appserver.io version 1.0.3 or
-  later. For updates refer to http://appserver.io");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appPort = "";
-appVer = "";
-
-## get the port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:appVer, test_version:"1.0.3"))
 {
   report = report_fixed_ver(installed_version:appVer, fixed_version:"1.0.3");

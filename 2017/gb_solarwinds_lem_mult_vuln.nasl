@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_mult_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
+# $Id: gb_solarwinds_lem_mult_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # SolarWinds Log and Event Manager Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106747");
-  script_version("$Revision: 8371 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-12 16:22:13 +0200 (Wed, 12 Apr 2017)");
+  script_version("$Revision: 11919 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-12 16:22:13 +0200 (Wed, 12 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7646", "CVE-2017-7647", "CVE-2017-7722");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SolarWinds Log and Event Manager Multiple Vulnerabilities");
 
@@ -51,31 +51,31 @@ if (description)
   script_dependencies("gb_solarwinds_log_event_manager_version.nasl");
   script_mandatory_keys("solarwinds_lem/version");
 
-  script_tag(name: "summary", value: "SolarWinds LEM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SolarWinds LEM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SolarWinds LEM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SolarWinds LEM is prone to multiple vulnerabilities:
 
-- CMC command injection - allows an attacker to inject commands to escape the restricted shell (CVE-2017-7722).
+  - CMC command injection - allows an attacker to inject commands to escape the restricted shell (CVE-2017-7722).
 
-- Arbitrary command injection - allows an authenticated user to execute arbitrary commands from the CMC
+  - Arbitrary command injection - allows an authenticated user to execute arbitrary commands from the CMC
 restricted shell (CVE-2017-7647).
 
-- Access Control - allows an authenticated used to browse the LEM servers filesystem and read contents of
+  - Access Control - allows an authenticated used to browse the LEM servers filesystem and read contents of
 arbitrary files (CVE-2017-7646).
 
-- Postgres Database Service - allows hardcoded credentials access to the Postgres database service via IPv6.
+  - Postgres Database Service - allows hardcoded credentials access to the Postgres database service via IPv6.
 
-- Arbitrary File Read - allows an attacker to edit the SSH logon banner & read arbitrary files.
+  - Arbitrary File Read - allows an attacker to edit the SSH logon banner & read arbitrary files.
 
-- Privilege Escalation - allows an attacker to run certain commands as a privileged user.");
+  - Privilege Escalation - allows an attacker to run certain commands as a privileged user.");
 
-  script_tag(name: "affected", value: "SolarWinds Log and Event Manager version 6.3.1 an prior.");
+  script_tag(name:"affected", value:"SolarWinds Log and Event Manager version 6.3.1 an prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.3.1 Hotfix 4 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 6.3.1 Hotfix 4 or later.");
 
-  script_xref(name: "URL", value: "https://thwack.solarwinds.com/thread/111223");
+  script_xref(name:"URL", value:"https://thwack.solarwinds.com/thread/111223");
 
   exit(0);
 }

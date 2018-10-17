@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_interactive_installer_code_exec_vuln_lin.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_postgresql_interactive_installer_code_exec_vuln_lin.nasl 11933 2018-10-17 07:09:44Z asteins $
 #
 # PostgreSQL 'Interactive Installer' Arbitrary Code Execution Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814222");
-  script_version("$Revision: 11698 $");
+  script_version("$Revision: 11933 $");
   script_cve_id("CVE-2016-7048");
-  script_tag(name:"cvss_base", value:"7.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 11:44:36 +0530 (Fri, 28 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL 'Interactive Installer' Arbitrary Code Execution Vulnerability (Linux)");

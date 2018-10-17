@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol51518670.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_f5_big_ip_sol51518670.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # F5 BIG-IP - SOL51518670 - Linux kernel vulnerability CVE-2015-2922
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-2922");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_name("F5 BIG-IP - SOL51518670 - Linux kernel vulnerability CVE-2015-2922");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker on a local network can use this flaw to prevent systems on that network from sending or receiving network packets.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The ndisc_router_discovery function in net/ipv6/ndisc.c in the Neighbor Discovery (ND) protocol implementation in the IPv6 stack in the Linux kernel before 3.19.6 allows remote attackers to reconfigure a hop-limit setting via a small hop_limit value in a Router Advertisement (RA) message.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 12:37:31 +0100 (Wed, 23 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

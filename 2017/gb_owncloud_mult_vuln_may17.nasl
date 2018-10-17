@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_may17.nasl 6758 2017-07-19 09:21:22Z ckuersteiner $
+# $Id: gb_owncloud_mult_vuln_may17.nasl 11936 2018-10-17 09:05:37Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities May17
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106967");
-  script_version("$Revision: 6758 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-19 11:21:22 +0200 (Wed, 19 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-19 13:10:50 +0700 (Wed, 19 Jul 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11936 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-19 13:10:50 +0700 (Wed, 19 Jul 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-9339", "CVE-2017-9340");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ownCloud Multiple Vulnerabilities May17");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
 
-  script_tag(name: "summary", value: "ownCloud is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ownCloud is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ownCloud is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ownCloud is prone to multiple vulnerabilities:
 
-- Share tokens for public calendars disclosed. (CVE-2017-9339)
+  - Share tokens for public calendars disclosed. (CVE-2017-9339)
 
-- Normal user can somehow make admin to delete shared folders. (CVE-2017-9340)");
+  - Normal user can somehow make admin to delete shared folders. (CVE-2017-9340)");
 
-  script_tag(name: "solution", value: "Update to ownCloud Server 10.0.2 or later versions.");
+  script_tag(name:"solution", value:"Update to ownCloud Server 10.0.2 or later versions.");
 
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-005");
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-006");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-005");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-006");
 
   exit(0);
 }

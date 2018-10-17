@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160620-isr.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20160620-isr.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco IOS Software TCP Denial of Service Vulnerability
 #
@@ -33,43 +33,42 @@ if (description)
   script_cve_id("CVE-2015-6289");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_name("Cisco IOS Software TCP Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160620-isr");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the handling of remote TCP connections in Cisco IOS and Cisco IOS XE Software
-could allow an unauthenticated, remote attacker to cause a partial denial of service (DoS) condition
-due to low memory.
+  could allow an unauthenticated, remote attacker to cause a partial denial of service (DoS) condition
+  due to low memory.
 
-The vulnerability is due to the handling of out-of-order, or otherwise invalid, TCP packets on a
-remote connection to an affected device. An attacker could exploit this vulnerability by connecting
-to the device and then sending crafted TCP packets that are out of order or have invalid flags. An
-exploit could allow the attacker to cause the device to report low-memory warnings, which could in
-turn cause a partial DoS condition. This vulnerability was initially found for Secure Shell Host
-(SSH) remote connections, but it could also affect other remote connections to the device.
+  The vulnerability is due to the handling of out-of-order, or otherwise invalid, TCP packets on a
+  remote connection to an affected device. An attacker could exploit this vulnerability by connecting
+  to the device and then sending crafted TCP packets that are out of order or have invalid flags. An
+  exploit could allow the attacker to cause the device to report low-memory warnings, which could in
+  turn cause a partial DoS condition. This vulnerability was initially found for Secure Shell Host
+  (SSH) remote connections, but it could also affect other remote connections to the device.
 
-Cisco will release software updates that address this vulnerability. There are no workarounds that
-address this vulnerability.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160620-isr");
+  Cisco will release software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-20 12:56:24 +0200 (Thu, 20 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+
+  exit(0);
 }
 
 include("host_details.inc");

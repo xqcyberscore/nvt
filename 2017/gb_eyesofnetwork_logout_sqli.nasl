@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_logout_sqli.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_eyesofnetwork_logout_sqli.nasl 11916 2018-10-16 08:36:43Z asteins $
 #
 # Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108174");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 11916 $");
   script_cve_id("CVE-2017-1000060", "CVE-2017-14252", "CVE-2017-14247", "CVE-2017-14404",
                 "CVE-2017-14405", "CVE-2017-14402", "CVE-2017-14403", "CVE-2017-14401");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-07 09:31:19 +0200 (Wed, 07 Jun 2017)");
   script_name("Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -75,11 +75,11 @@ if(description)
   script_tag(name:"affected", value:"Eyes Of Network (EON) versions 5.1 and
   below are vulnerable.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 27th
-  September, 2017. Information regarding this issue will be updated once solution
-  details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
@@ -142,7 +142,7 @@ if( count >= 2 ) {
   exit( 0 );
 # Time-based SQLi is currently not that reliable so also report version-based
 } else if( version_is_less_equal( version:ver, test_version:"5.1" ) ) {
-  report = report_fixed_ver( installed_version:ver, fixed_version:"NoneAvailable" );
+  report = report_fixed_ver( installed_version:ver, fixed_version:"WillNotFix" );
   security_message( port:port, data:report );
   exit( 0 );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_kb3203399.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_ms_project_server_kb3203399.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Microsoft Project Server 2013 XSS Vulnerability (KB3203399)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810948");
-  script_version("$Revision: 11550 $");
+  script_version("$Revision: 11923 $");
   script_cve_id("CVE-2017-8551");
   script_bugtraq_id(98913);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-16 11:00:41 +0530 (Fri, 16 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server 2013 XSS Vulnerability (KB3203399)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3203399");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when SharePoint Server does
   not properly sanitize a specially crafted web request to an affected
@@ -57,9 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Project Server 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the given link,
-  https://support.microsoft.com/en-us/help/3203399");
+  listed hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203399");

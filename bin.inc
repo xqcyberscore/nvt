@@ -1,11 +1,6 @@
 #########################################################################
-# OpenVAS NASL Library
-#
-# bin.inc
-#
-# LSS-NVT-2010-006
-#
-# $Revision: 10863 $
+# OpenVAS Include File
+# $Id$
 #
 # Developed by LSS Security Team <http://security.lss.hr>
 #
@@ -23,6 +18,9 @@
 # You should have received a copy of the GNU General Public
 # License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
+#
+# $Revision$
+#
 #########################################################################
 
 #########################################################################
@@ -55,7 +53,7 @@
 #    5) A - string <-> strlen(string)B blob
 #    6) z - string <-> (strlen(string)+1)B blob (null terminated)
 #    7) X - hex string <-> varB blob
-#  Endianess operators for bin_unpack and bin_pack methods:
+#  Endianness operators for bin_unpack and bin_pack methods:
 #    1) < - little endian
 #    2) > - big endian
 #    3) ! - network endian (big endian)
@@ -65,14 +63,14 @@
 #    2) data - The term data means groups of information that represent the
 #      qualitative or quantitative attributes of a variable or set of variables.
 #      It differs from raw data or a blob because data is processed and
-#      intepreted.
+#      interpreted.
 #    1) blob - a binary representation of an object. An object could  be a
 #      simple data type such as an integer or a string. For example a two
 #      byte blob representing number 7 would be "0x0007". NASL blob is of
-#      string type. Blob is neither processed nor intepreted, it's raw data.
-#    2) endianess - often simply referred to as byte order. Two types of
-#      endianess are BIG and LITTLE endianess.
-#      Wikipedia  endianess: "Most versus least significant byte first,
+#      string type. Blob is neither processed nor interpreted, it's raw data.
+#    2) endianness - often simply referred to as byte order. Two types of
+#      endianness are BIG and LITTLE endianness.
+#      Wikipedia  endianness: "Most versus least significant byte first,
 #      called big-endian and little-endian respectively."
 #      (NOTE: endianness is actually spelled wrong all over that NVT.)
 #  TODO:
@@ -90,7 +88,7 @@
 #    dump_arr(arr: data, title: "Unpacked data");
 #########################################################################
 
-#endianess operator constants
+#endianness operator constants
 global_var OP_LITTLE_ENDIAN, OP_BIG_ENDIAN, OP_NATIVE_ENDIAN, OP_NETWORK_ENDIAN, OP_DEFAULT_ENDIAN;
 OP_LITTLE_ENDIAN = '<';
 OP_BIG_ENDIAN = '>';
@@ -112,23 +110,23 @@ OP_STRING_HEX = 'X'; #hex string -> raw string B blob
 
 #  @brief Parameters/objects are packed into a blob according to a format string.
 #  @param format Format string that describes how the following arguments will be packed.
-#    @default If not explicitly stated endianess is OP_DEFAULT_ENDIAN.
+#    @default If not explicitly stated endianness is OP_DEFAULT_ENDIAN.
 #  @param _FCT_ANON_ARGS Implicit array of arguments. For each write operator in 'format'
 #    a corresponding object in _FCT_ANON_ARGS array must exist.
 #  @return Returns a blob.
 function bin_pack(format){
   local_var args;
-  local_var format_len, endianess, iOp;
+  local_var format_len, endianness, iOp;
   local_var result, iArg;
 
   args = _FCT_ANON_ARGS;
   format_len = strlen(format);
   if(format[0] == OP_LITTLE_ENDIAN || format[0] == OP_BIG_ENDIAN || format[0] == OP_NATIVE_ENDIAN || format[0] == OP_NETWORK_ENDIAN){
-    endianess = format[0];
+    endianness = format[0];
     iOp = 1;
   }
   else{
-    endianess = OP_DEFAULT_ENDIAN;
+    endianness = OP_DEFAULT_ENDIAN;
     iOp = 0;
   }
   #Process format string
@@ -140,15 +138,15 @@ function bin_pack(format){
       iArg++;
     }
     else if(format[iOp] == OP_UINT_16){
-      result += pack_uint_16(data: args[iArg], endianess: endianess);
+      result += pack_uint_16(data: args[iArg], endianness: endianness);
       iArg++;
     }
     else if(format[iOp] == OP_UINT_32){
-      result += pack_uint_32(data: args[iArg], endianess: endianess);
+      result += pack_uint_32(data: args[iArg], endianness: endianness);
       iArg++;
     }
     else if(format[iOp] == OP_UINT_64){
-      result += pack_uint_64(data: args[iArg], endianess: endianess);
+      result += pack_uint_64(data: args[iArg], endianness: endianness);
       iArg++;
     }
     else if(format[iOp] == OP_PAD_BYTE){
@@ -167,7 +165,7 @@ function bin_pack(format){
       iArg++;
     }
     else if(format[iOp] == OP_LITTLE_ENDIAN || format[iOp] == OP_BIG_ENDIAN || format[iOp] == OP_NATIVE_ENDIAN || format[iOp] == OP_NETWORK_ENDIAN){
-      endianess = format[iOp];
+      endianness = format[iOp];
       continue;
     }
   }
@@ -176,7 +174,7 @@ function bin_pack(format){
 
 #  @brief Blob is unpacked according to the unpacking format.
 #  @param format Format string that describes how the blob will be unpacked.
-#    @default If not explicitly stated endianess is OP_DEFAULT_ENDIAN.
+#    @default If not explicitly stated endianness is OP_DEFAULT_ENDIAN.
 #  @param blob A blob which is parsed and unpacked according to the 'format'.
 #  @param pos  Position within 'blob' from where the parsing starts.
 #    @default 0
@@ -189,7 +187,7 @@ function bin_pack(format){
 #    @note When naming the return struct I suggest 'unpack_struct'.
 function bin_unpack(format, blob, pos){
   local_var lens, pos_old;
-  local_var format_len, endianess, iOp;
+  local_var format_len, endianness, iOp;
   local_var result, iLen, iField, unpack_struct, data;
   if(isnull(pos))
     pos = 0;
@@ -197,11 +195,11 @@ function bin_unpack(format, blob, pos){
   pos_old = pos;
   format_len = strlen(format);
   if(format[0] == OP_LITTLE_ENDIAN || format[0] == OP_BIG_ENDIAN || format[0] == OP_NATIVE_ENDIAN || format[0] == OP_NETWORK_ENDIAN){
-    endianess = format[0];
+    endianness = format[0];
     iOp = 1;
   }
   else{
-    endianess = OP_DEFAULT_ENDIAN;
+    endianness = OP_DEFAULT_ENDIAN;
     iOp = 0;
   }
   #Process format string
@@ -215,19 +213,19 @@ function bin_unpack(format, blob, pos){
       iField++;
     }
     else if(format[iOp] == OP_UINT_16){
-      unpack_struct = unpack_uint_16(blob: blob, pos: pos, endianess: endianess);
+      unpack_struct = unpack_uint_16(blob: blob, pos: pos, endianness: endianness);
       data[iField] = unpack_struct['data'];
       pos += strlen(unpack_struct['blob']);
       iField++;
     }
     else if(format[iOp] == OP_UINT_32){
-      unpack_struct = unpack_uint_32(blob: blob, pos: pos, endianess: endianess);
+      unpack_struct = unpack_uint_32(blob: blob, pos: pos, endianness: endianness);
       data[iField] = unpack_struct['data'];
       pos += strlen(unpack_struct['blob']);
       iField++;
     }
     else if(format[iOp] == OP_UINT_64){
-      unpack_struct = unpack_uint_64(blob: blob, pos: pos, endianess: endianess);
+      unpack_struct = unpack_uint_64(blob: blob, pos: pos, endianness: endianness);
       data[iField] = unpack_struct['data'];
       pos += strlen(unpack_struct['blob']);
       iField++;
@@ -256,7 +254,7 @@ function bin_unpack(format, blob, pos){
       iLen++;
     }
     else if(format[iOp] == OP_LITTLE_ENDIAN || format[iOp] == OP_BIG_ENDIAN || format[iOp] == OP_NATIVE_ENDIAN || format[iOp] == OP_NETWORK_ENDIAN){
-      endianess = format[iOp];
+      endianness = format[iOp];
       continue;
     }
   }
@@ -269,7 +267,7 @@ function bin_unpack(format, blob, pos){
 #  @rationale As many network protocols define some kind of alignment when considering
 #    protocol packet fields and corresponding values, this method comes
 #    as a very useful function. For example dce/rpc or ms-rpc RPC protocol for defining
-#    data relies on NDR (Network Data Representation) which alignes all integer data types
+#    data relies on NDR (Network Data Representation) which aligns all integer data types
 #    to a 4 byte boundary.
 #  @param blob A blob that needs to be aligned to a 'boundary' byte boundary
 #    and a 'al' alignment.
@@ -326,9 +324,9 @@ function dump_arr(arr, title){
 ###########################
 ######### INIT ############
 ###########################
-#  @brief Initalize native endianess.
+#  @brief Initialize native endianness.
 global_var NATIVE_BYTE_ORDER;
-#Check endianess in run-time -- NASL developers, please give us get_byte_order() :D
+#Check endianness in run-time -- NASL developers, please give us get_byte_order() :D
 NATIVE_BYTE_ORDER = OP_BIG_ENDIAN;#TODO: get_byte_order()
 
 #############################
@@ -357,23 +355,23 @@ function unpack_uint_8(blob, pos){
 
 #  @brief Pack an unsigned short into a 2B blob.
 #  @param data  Unsigned short to pack.
-#  @param endianess Byte order for packing.
+#  @param endianness Byte order for packing.
 #  @return Returns a 2B blob representing a unsigned short object.
-function pack_uint_16(data, endianess){
+function pack_uint_16(data, endianness){
   local_var uint_16, uint_16_lo, uint_16_hi;
   local_var result;
   uint_16 = data % (256*256); #modulo normalization - if data is bigger than short
   uint_16_lo = uint_16 % 256;
   uint_16_hi = uint_16 / 256;
 
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
 
-  if(endianess == OP_LITTLE_ENDIAN){
+  if(endianness == OP_LITTLE_ENDIAN){
     result = raw_string(uint_16_lo, uint_16_hi);
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
     result = raw_string(uint_16_hi, uint_16_lo);
   }
   return result;
@@ -382,21 +380,21 @@ function pack_uint_16(data, endianess){
 #  @brief Unpack a 2B blob into an unsigned short object.
 #  @param blob  Blob to unpack.
 #  @param pos Position within 'blob' from where the parsing starts.
-#  @param endianess Byte order for unpacking.
+#  @param endianness Byte order for unpacking.
 #  @return Returns an 'unpack_struct':
 #    unpack_struct['data'] = unsigned short object
 #    unpack_struct['blob'] = a corresponding part of 'blob'
-function unpack_uint_16(blob, pos, endianess){
+function unpack_uint_16(blob, pos, endianness){
   local_var result;
   if(isnull(pos))
     pos = 0;
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
-  if(endianess == OP_LITTLE_ENDIAN){
+  if(endianness == OP_LITTLE_ENDIAN){
     result['data'] = ord(blob[pos]) + ord(blob[pos+1])*256;
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
     result['data'] = ord(blob[pos])*256 + ord(blob[pos+1]);
   }
   result['blob'] = substr(blob, pos, pos + 1);
@@ -406,9 +404,9 @@ function unpack_uint_16(blob, pos, endianess){
 #  @brief Pack an unsigned long into a 4B blob.
 #  @param data  Unsigned long to pack.
 #  @param pos Position within 'data' from where the parsing starts.
-#  @param endianess Byte order for packing.
+#  @param endianness Byte order for packing.
 #  @return Returns a 4B blob representing a unsigned long object.
-function pack_uint_32(data, endianess){
+function pack_uint_32(data, endianness){
   local_var uint_32, uint_32_lo, uint_32_hi, uint_32_lo_lo, uint_32_lo_hi, uint_32_hi_lo, uint_32_hi_hi;
   local_var result;
   uint_32 = data;
@@ -419,14 +417,14 @@ function pack_uint_32(data, endianess){
   uint_32_hi_lo = uint_32_hi % 256;
   uint_32_hi_hi = uint_32_hi / 256;
 
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
 
-  if(endianess == OP_LITTLE_ENDIAN){
+  if(endianness == OP_LITTLE_ENDIAN){
     result = raw_string(uint_32_lo_lo, uint_32_lo_hi, uint_32_hi_lo, uint_32_hi_hi);
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
     result = raw_string(uint_32_hi_hi, uint_32_hi_lo, uint_32_lo_hi, uint_32_lo_lo);
   }
   return result;
@@ -436,21 +434,21 @@ function pack_uint_32(data, endianess){
 #  @brief Unpack a 4B blob into an unsigned long object.
 #  @param blob  Blob to unpack.
 #  @param pos Position within 'blob' from where the parsing starts.
-#  @param endianess Byte order for unpacking.
+#  @param endianness Byte order for unpacking.
 #  @return Returns an 'unpack_struct':
 #    unpack_struct['data'] = unsigned long object
 #    unpack_struct['blob'] = a corresponding part of 'blob'
-function unpack_uint_32(blob, pos, endianess){
+function unpack_uint_32(blob, pos, endianness){
   local_var result;
   if(isnull(pos))
     pos = 0;
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
-  if(endianess == OP_LITTLE_ENDIAN){
+  if(endianness == OP_LITTLE_ENDIAN){
     result['data'] = ord(blob[pos]) + ord(blob[pos+1])*256+ ord(blob[pos+2])*256*256 + ord(blob[pos+3])*256*256*256;
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
     result['data'] = ord(blob[pos+3]) + ord(blob[pos+2])*256+ ord(blob[pos+1])*256*256 + ord(blob[pos])*256*256*256;
   }
   result['blob'] = substr(blob, pos, pos + 3);
@@ -459,19 +457,19 @@ function unpack_uint_32(blob, pos, endianess){
 
 #  @brief Pack an unsigned long long into a 8B blob.
 #  @param data  Unsigned long long to pack.
-#  @param endianess Byte order for packing.
+#  @param endianness Byte order for packing.
 #  @return Returns a 8B blob representing a unsigned long long object.
-function pack_uint_64(data, endianess){
+function pack_uint_64(data, endianness){
   local_var result;
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
 
-  if(endianess == OP_LITTLE_ENDIAN){
-    result = pack_uint_32(data: data, endianess: endianess) + raw_string(0x00, 0x00, 0x00, 0x00);
+  if(endianness == OP_LITTLE_ENDIAN){
+    result = pack_uint_32(data: data, endianness: endianness) + raw_string(0x00, 0x00, 0x00, 0x00);
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
-    result = raw_string(0x00, 0x00, 0x00, 0x00) + pack_uint_32(data: data, endianess: endianess);
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
+    result = raw_string(0x00, 0x00, 0x00, 0x00) + pack_uint_32(data: data, endianness: endianness);
   }
   return result;
 }
@@ -480,21 +478,21 @@ function pack_uint_64(data, endianess){
 #  @brief Unpack a 8B blob into an unsigned long long object.
 #  @param blob  Blob to unpack.
 #  @param pos Position within 'blob' from where the parsing starts.
-#  @param endianess Byte order for unpacking.
+#  @param endianness Byte order for unpacking.
 #  @return Returns an 'unpack_struct':
 #    unpack_struct['data'] = unsigned long long object
 #    unpack_struct['blob'] = a corresponding part of 'blob'
-function unpack_uint_64(blob, pos, endianess){
+function unpack_uint_64(blob, pos, endianness){
   local_var unpack_struct, result;
-  if(endianess == OP_NATIVE_ENDIAN){
-    endianess = NATIVE_BYTE_ORDER; #retrieved from INIT
+  if(endianness == OP_NATIVE_ENDIAN){
+    endianness = NATIVE_BYTE_ORDER; #retrieved from INIT
   }
-  if(endianess == OP_LITTLE_ENDIAN){
-    unpack_struct = unpack_uint_32(blob: blob, endianess: endianess);
+  if(endianness == OP_LITTLE_ENDIAN){
+    unpack_struct = unpack_uint_32(blob: blob, endianness: endianness);
     result['data'] = unpack_struct['data'];
   }
-  else if(endianess == OP_BIG_ENDIAN || endianess == OP_NETWORK_ENDIAN){
-    unpack_struct = unpack_uint_32(blob: blob, pos: pos + 4, endianess: endianess);
+  else if(endianness == OP_BIG_ENDIAN || endianness == OP_NETWORK_ENDIAN){
+    unpack_struct = unpack_uint_32(blob: blob, pos: pos + 4, endianness: endianness);
     result['data'] = unpack_struct['data'];
   }
   result['blob'] = substr(blob, pos, pos + 7);
@@ -530,7 +528,6 @@ function pack_string(data){
 #  @param pos Position within 'blob' from where the parsing starts.
 #  @param len String length.
 #    @default Blob length minus 'pos'.
-#  @param endianess Byte order for unpacking.
 #  @return Returns an 'unpack_struct':
 #    unpack_struct['data'] = string object
 #    unpack_struct['blob'] = a corresponding part of 'blob'

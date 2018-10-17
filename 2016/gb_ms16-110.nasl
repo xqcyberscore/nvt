@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-110.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-110.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Microsoft Windows Multiple Vulnerabilities (3178467)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809041");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11922 $");
   script_cve_id("CVE-2016-3346", "CVE-2016-3352", "CVE-2016-3368", "CVE-2016-3369");
   script_bugtraq_id(92846, 92852, 92847, 92850);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:01:49 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Multiple Vulnerabilities (3178467)");
 
@@ -66,9 +66,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-110");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +81,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-110");
   exit(0);
 }
 
@@ -102,9 +101,9 @@ if(!sysPath ){
   exit(0);
 }
 
-lsVer = fetch_file_version(sysPath, file_name:"System32\Lsasrv.dll");
-ntVer = fetch_file_version(sysPath, file_name:"System32\Ntdsai.dll");
-EdgeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
+lsVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Lsasrv.dll");
+ntVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Ntdsai.dll");
+EdgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
 if(!lsVer && !ntVer && !EdgeVer){
   exit(0);
 }

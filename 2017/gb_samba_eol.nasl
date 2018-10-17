@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_eol.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_eol.nasl 11923 2018-10-16 10:38:56Z mmartin $
 #
 # Samba End Of Life Detection
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140159");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11923 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
   script_name("Samba End Of Life Detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"solution", value:"Update the Samba version on the remote host to a still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

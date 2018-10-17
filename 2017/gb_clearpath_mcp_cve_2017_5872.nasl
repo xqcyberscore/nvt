@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 5644 2017-03-21 09:07:05Z teissa $
+# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 11919 2018-10-16 09:49:19Z mmartin $
 #
 # Unisys ClearPath MCP Denial of Service Vulnerability
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:unisys:clearpath_mcp";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140189");
- script_bugtraq_id(96782);
- script_cve_id("CVE-2017-5872");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5644 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140189");
+  script_bugtraq_id(96782);
+  script_cve_id("CVE-2017-5872");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11919 $");
 
- script_name("Unisys ClearPath MCP Denial of Service Vulnerability");
+  script_name("Unisys ClearPath MCP Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/96782");
- script_xref(name:"URL", value:"http://www.unisys.com");
- script_xref(name:"URL", value:"https://public.support.unisys.com/common/public/vulnerability/NVD_Detail_Rpt.aspx?ID=42");
- script_tag(name: "impact" , value:"Attackers can exploit this issue to cause a denial-of-service condition.");
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"Unisys ClearPath MCP is prone to a denial-of-service vulnerability.");
- script_tag(name: "affected" , value:"ClearPath MCP system running 57.1 (before 57.152) or 58.1 (before 58.142) Networking and at least one service offering secured connections via SSL/TLS.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/96782");
+  script_xref(name:"URL", value:"http://www.unisys.com");
+  script_xref(name:"URL", value:"https://public.support.unisys.com/common/public/vulnerability/NVD_Detail_Rpt.aspx?ID=42");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to cause a denial-of-service condition.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Unisys ClearPath MCP is prone to a denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"ClearPath MCP system running 57.1 (before 57.152) or 58.1 (before 58.142) Networking and at least one service offering secured connections via SSL/TLS.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner_unreliable"); # and at least one service offering secured connections via SSL/TLS.
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # and at least one service offering secured connections via SSL/TLS.
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"creation_date", value:"2017-03-14 18:08:09 +0100 (Tue, 14 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_clearpath_mcp_ftp_detect.nasl");
- script_mandatory_keys("unisys/clearpath_mcp/version");
- script_require_ports("Services/ftp", 21);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-14 18:08:09 +0100 (Tue, 14 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_clearpath_mcp_ftp_detect.nasl");
+  script_mandatory_keys("unisys/clearpath_mcp/version");
+  script_require_ports("Services/ftp", 21);
 
- exit(0);
+  exit(0);
 }
 
 

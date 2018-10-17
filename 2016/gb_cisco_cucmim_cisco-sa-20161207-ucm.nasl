@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20161207-ucm.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_cucmim_cisco-sa-20161207-ucm.nasl 11922 2018-10-16 10:24:25Z asteins $
 #
 # Cisco Unified Communications Manager IM and Presence Service Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106453");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 15:34:12 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11922 $");
 
   script_cve_id("CVE-2016-6464");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"impact", value:"An exploit could allow the attacker to view web pages that should have been
 restricted.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input validation performed on
 the HTTP packet header. An attacker could exploit this vulnerability by sending a crafted packet to the targeted
@@ -69,7 +69,7 @@ information on web pages that should be restricted.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-ucm");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
