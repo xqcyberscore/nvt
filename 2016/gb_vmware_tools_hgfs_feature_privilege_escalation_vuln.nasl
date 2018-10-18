@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_hgfs_feature_privilege_escalation_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_vmware_tools_hgfs_feature_privilege_escalation_vuln.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # VMware Tools 'HGFS Feature' Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:tools";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809031");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-5330");
   script_bugtraq_id(92323);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 10:20:57 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Tools 'HGFS Feature' Privilege Escalation Vulnerability");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"VMware Tools 10.0.5.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Tools 10.0.6
-  or later, For updates refer to http://www.vmware.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

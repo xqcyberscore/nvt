@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 11937 2018-10-17 09:25:36Z cfischer $
 #
 # Remote code execution in GitHub Enterprise Management Console
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:github:github_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140196");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 11937 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:25:36 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:11:03 +0100 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_github_enterprise_web_detect.nasl");
   script_require_ports("Services/www", 8443, 8080);
-  script_mandatory_keys("github/enterprise/webmanagement/detected");
+  script_mandatory_keys("github/enterprise/management_console/detected");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/141653/GitHub-Enterprise-2.8.x-Remote-Code-Execution.html");
   script_xref(name:"URL", value:"https://enterprise.github.com/releases/2.8.7/notes");
@@ -100,8 +100,9 @@ function build_cookie( dump )
 }
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
+if( ! dir = get_app_location( port:port, cpe:CPE ) ) exit( 0 );
 
-url = '/setup/unlock';
+url = dir + '/unlock'; # nb: gb_github_enterprise_web_detect.nasl is registering the dir as "/setup".
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 

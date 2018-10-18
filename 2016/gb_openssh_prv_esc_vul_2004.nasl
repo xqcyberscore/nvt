@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_prv_esc_vul_2004.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_openssh_prv_esc_vul_2004.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # OpenBSD OpenSSH 3.9 Port Bounce Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107069");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2004-1653");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenBSD OpenSSH 3.9 Port Bounce Vulnerability");
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH 3.9 and previous versions");
 
-  script_tag(name:"solution", value:"Upgrade to the latest version of OpenSSH.
-  For updates refer to https://www.openssh.com/openbsd.html");
+  script_tag(name:"solution", value:"Upgrade to the latest version of OpenSSH.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
@@ -63,6 +62,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.openssh.com/");
 
+  script_xref(name:"URL", value:"https://www.openssh.com/openbsd.html");
   exit(0);
 }
 

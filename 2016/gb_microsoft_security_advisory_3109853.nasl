@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3109853.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_microsoft_security_advisory_3109853.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft TLS Session Resumption Interoperability Improvement Advisory (3109853)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806662");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11938 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 11:12:27 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft TLS Session Resumption Interoperability Improvement Advisory (3109853)");
@@ -88,8 +88,8 @@ if(!sysPath){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\schannel.dll");
-dllVer1 = fetch_file_version(sysPath, file_name:"SysWOW64\schannel.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\schannel.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"SysWOW64\schannel.dll");
 if(dllVer1){
   schpPath64 = sysPath + "\SysWOW64\schannel.dll";
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_resolver_cache_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_isc_bind_resolver_cache_vuln.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # ISC BIND Resolver Cache Vulnerability - Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807217");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2012-1033");
   script_bugtraq_id(51898);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:39:11 +0530 (Thu, 28 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Resolver Cache Vulnerability - Jan16");
@@ -56,8 +56,7 @@ if(description)
 
   script_tag(name:"solution", value:"As a workaround it is recommended
   to clear the cache, which will remove cached bad records but is not an
-  effective or practical preventative approach.
-  For updates refer to https://www.isc.org");
+  effective or practical preventative approach.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-034.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-034.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3143145)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807308");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-0093", "CVE-2016-0094", "CVE-2016-0095", "CVE-2016-0096");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:19:37 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3143145)");
 
@@ -63,10 +63,7 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/en-us/library/security/MS16-034");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -97,7 +94,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_fortigate_FG-IR-16-023.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105875");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-6909");
 
   script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability");
@@ -58,7 +58,7 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 11:05:04 +0200 (Thu, 18 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -66,7 +66,7 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
   script_dependencies("gb_fortigate_version.nasl");
   script_mandatory_keys("fortigate/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

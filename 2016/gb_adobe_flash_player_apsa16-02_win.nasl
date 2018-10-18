@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsa16-02_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_adobe_flash_player_apsa16-02_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Adobe Flash Player Security Updates( apsa16-02 )-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807698");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
 		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
 		"CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
@@ -40,7 +40,7 @@ if(description)
         "CVE-2016-4161", "CVE-2016-4162", "CVE-2016-4163");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 15:58:15 +0530 (Thu, 12 May 2016)");
   script_name("Adobe Flash Player Security Updates( apsa16-02 )-Windows");
 
@@ -71,8 +71,7 @@ if(description)
   18.0.0.352 and 20.x before 21.0.0.242 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  18.0.0.352, or 21.0.0.242, or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  18.0.0.352, or 21.0.0.242, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -86,6 +85,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

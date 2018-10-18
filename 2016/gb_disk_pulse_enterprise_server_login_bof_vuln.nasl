@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_pulse_enterprise_server_login_bof_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_disk_pulse_enterprise_server_login_bof_vuln.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Disk Pulse Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:diskpulse:diskpulse_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809484");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 15:54:40 +0530 (Fri, 02 Dec 2016)");
   script_name("Disk Pulse Enterprise Server Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running Disk Pulse Enterprise
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long

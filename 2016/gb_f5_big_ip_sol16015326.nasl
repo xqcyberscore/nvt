@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16015326.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_f5_big_ip_sol16015326.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-4397");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 18:30:55 +0100 (Thu, 11 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

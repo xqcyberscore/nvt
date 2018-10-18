@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms16-120.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_lync_attendee_ms16-120.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft Lync Attendee Multiple Vulnerabilities (3192884)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809445");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-3209", "CVE-2016-3262", "CVE-2016-3263", "CVE-2016-3396",
                 "CVE-2016-7182");
   script_bugtraq_id(93385, 93390, 93394, 93380, 93395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 12:47:25 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Lync Attendee Multiple Vulnerabilities (3192884)");
 
@@ -57,9 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Lync Attendee 2010");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-120");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

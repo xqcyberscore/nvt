@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-005.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-005.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (3124584)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807028");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-0009", "CVE-2016-0008");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 09:01:03 +0530 (Wed, 13 Jan 2016)");
   script_name("Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (3124584)");
 
@@ -71,10 +71,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/library/security/MS16-005");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -107,9 +104,9 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
-sysVer = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
-dllVer3 = fetch_file_version(sysPath, file_name:"SysWOW64\Gdi32.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Gdi32.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"SysWOW64\Gdi32.dll");
 if(dllVer3){
   GdiPath64 = sysPath + "\SysWOW64\Gdi32.dll";
 }

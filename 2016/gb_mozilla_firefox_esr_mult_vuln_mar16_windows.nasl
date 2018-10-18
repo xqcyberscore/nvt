@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_windows.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_windows.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807522");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960",
                 "CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1961", "CVE-2016-1962",
                 "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1969",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-14 18:44:58 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Windows)");
 
@@ -84,7 +84,7 @@ if(description)
   before 38.7 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  38.7 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  38.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -97,6 +97,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

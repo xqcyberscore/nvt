@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_16-2016-06_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_google_chrome_stable-channel-update_16-2016-06_macosx.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_16-2016-06)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808234");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-1704");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 13:31:03 +0530 (Tue, 21 Jun 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_16-2016-06)-MAC OS X");
 
@@ -53,8 +53,7 @@ if(description)
   prior to 51.0.2704.103 on MAC OS X");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  51.0.2704.103 or later.
-  For updates refer to http://www.google.com/chrome");
+  51.0.2704.103 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

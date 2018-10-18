@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 17 Oct 2018 11:19:40 +0200
+# Automatically created on:  Thu, 18 Oct 2018 11:56:55 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38880,6 +38880,8 @@
 2018/centos/gb_fedora_2018_ccb2cc96be_mingw-LibRaw_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_d3b44e5574_mingw-LibRaw_fc28.nasl: GPLv2+
 2018/centreon/gb_centreon_mult_vuln_jun18.nasl: GPLv2+
+2018/clamav/gb_clamav_antivirus_unmew11_dos_vuln_lin.nasl: GPLv2+
+2018/clamav/gb_clamav_antivirus_unmew11_dos_vuln_win.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_lin.nasl: GPLv2+
 2018/clamav/gb_clamav_message_add_argument_mult_vuln_win.nasl: GPLv2+
 2018/clamav/gb_clamav_mult_vuln_july18_lin.nasl: GPLv2+
@@ -39156,6 +39158,7 @@
 2018/debian/deb_4318.nasl: GPLv2+
 2018/debian/deb_4319.nasl: GPLv2+
 2018/debian/deb_4320.nasl: GPLv2+
+2018/debian/deb_4321.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39866,6 +39869,8 @@
 2018/elasticsearch/gb_elasticsearch_logstash_CVE-2018-3817_info_discl.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_logstash_freak_attack_win.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_snapshot_api_info_disc_vuln_lin.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_snapshot_api_info_disc_vuln_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_wan_access.nasl: GPLv2+
 2018/electroindustries/gb_electro_indu_gaugetech_nexus_prdct_info_disc_vuln.nasl: GPLv2+
 2018/enalean/gb_tuleap_sql_injection.nasl: GPLv2+
@@ -41075,6 +41080,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-10_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-10_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-10_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl: GPLv2+
@@ -42033,6 +42041,9 @@
 2018/openxchange/gb_open_xchange_appsuite_path_trav_vuln_june18.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_xss_vuln_june18.nasl: GPLv2+
 2018/oracle/gb_oracle_bi_publisher_mult_priv_escalation_vuln.nasl: GPLv2+
+2018/oracle/gb_oracle_database_server_java_vm_component_unspecified_vuln.nasl: GPLv2+
+2018/oracle/gb_oracle_database_server_oracle_text_component_unspecified_vuln.nasl: GPLv2+
+2018/oracle/gb_oracle_database_server_rapid_home_prov_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_application_express_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_content_mgmt_component_unspecified_vuln01.nasl: GPLv2+
 2018/oracle/gb_oracle_db_core_rdbms_com_mult_unspecified_vuln.nasl: GPLv2+
@@ -42089,6 +42100,18 @@
 2018/oracle/gb_oracle_java_jul2018-4258247_05_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_java_jul2018-4258247_05_win.nasl: GPLv2+
 2018/oracle/gb_oracle_java_jul2018-4258247_06_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_01_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_01_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_02_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_02_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_03_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_03_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_04_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_04_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_05_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_05_win.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_06_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_java_oct2018-4428296_06_win.nasl: GPLv2+
 2018/oracle/gb_oracle_jrockit_dos_vuln_jul2018_4258247_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_jrockit_dos_vuln_jul2018_4258247_win.nasl: GPLv2+
 2018/oracle/gb_oracle_mysql_apr2018-3678067_01_lin.nasl: GPLv2+
@@ -42121,6 +42144,14 @@
 2018/oracle/gb_oracle_mysql_jul2018-4258247_05_win.nasl: GPLv2+
 2018/oracle/gb_oracle_mysql_jul2018-4258247_06_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_mysql_jul2018-4258247_06_win.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_01_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_01_win.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_02_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_02_win.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_03_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_03_win.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_04_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_mysql_oct2018-4428296_04_win.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_apr2018-3678067_01_win.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_apr2018-3678067_02_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_apr2018-3678067_03_macosx.nasl: GPLv2+
@@ -42130,6 +42161,9 @@
 2018/oracle/gb_oracle_virtualbox_jul2018-4258247_lin.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_jul2018-4258247_macosx.nasl: GPLv2+
 2018/oracle/gb_oracle_virtualbox_jul2018-4258247_win.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_oct2018-4428296_01_win.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_oct2018-4428296_02_lin.nasl: GPLv2+
+2018/oracle/gb_oracle_virtualbox_oct2018-4428296_03_macosx.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_01.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl: GPLv2+
 2018/otrs/gb_otrs_default_credentials.nasl: GPLv2+
@@ -60351,6 +60385,7 @@ gsf/2018/ibm/gb_ibm_websphere_app_server_spoofing_vuln_ibm10716523.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_spoofing_vuln_swg22012341.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22013601.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22016821.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729521.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729563.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729571.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_lin.nasl: GPLv2+
@@ -60910,12 +60945,14 @@ gsf/2018/vmware/gb_vmware_esxi_l1_ter_fault_side_channel_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_vuln_VMSA-2018-0016.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_rpc_handler_dos_vuln.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_esxi_svga_heap_bof_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_3D_accel_dos_vuln_vmsa-2018-0025_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_code_exec_vuln_VMSA-2018-0022_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_guest_access_control_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_l1_ter_fault_side_channel_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_mult_vuln_VMSA-2018-0013_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_nat_service_mult_code_exec_vuln_macosx.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_fusion_svga_heap_bof_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_vnc_dos_vuln_VMSA-2018-0008.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_horizon_client_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_v4pa_desktop_agent_priv_esca_vuln_win.nasl: GPLv2+
@@ -60935,6 +60972,8 @@ gsf/2018/vmware/gb_vmware_workstation_l1_ter_fault_side_channel_vuln_win.nasl: G
 gsf/2018/vmware/gb_vmware_workstation_mult_vuln_VMSA-2018-0016_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_nat_service_mult_code_exec_vuln_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_nat_service_mult_code_exec_vuln_win.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_svga_heap_bof_vuln_lin.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_svga_heap_bof_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_virtua_printing_out_of_bounds_read_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_win.nasl: GPLv2+

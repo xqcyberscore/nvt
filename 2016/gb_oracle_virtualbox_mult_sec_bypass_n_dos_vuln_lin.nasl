@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_sec_bypass_n_dos_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_oracle_virtualbox_mult_sec_bypass_n_dos_vuln_lin.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Oracle Virtualbox Multiple Security Bypass And DoS Vulnerabilities (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809076");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-5501", "CVE-2016-6304", "CVE-2016-5610", "CVE-2016-5538",
                 "CVE-2016-5613", "CVE-2016-5611", "CVE-2016-5608");
   script_bugtraq_id(93687, 93150, 93711, 93697, 93728, 93744, 93718);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:40:28 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle Virtualbox Multiple Security Bypass And DoS Vulnerabilities (Linux)");
 
@@ -56,8 +56,7 @@ if(description)
   prior to 5.1.8 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  5.0.28 or 5.1.8 or later on Linux.
-  For updates refer to https://www.virtualbox.org");
+  5.0.28 or 5.1.8 or later on Linux.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa2.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa2.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Cisco Email Security Appliance MIME Header Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6372");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("Cisco Email Security Appliance MIME Header Bypass Vulnerability");
 
@@ -43,33 +43,30 @@ if (description)
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the email message and content filtering for malformed Multipurpose Internet Mail
-Extensions (MIME) headers of Cisco AsyncOS Software for Cisco Email Security Appliances (ESA) and
-Web Security Appliances (WSA) could allow an unauthenticated, remote attacker to bypass the
-filtering functionality of the targeted device. Emails that should have been quarantined could
-instead be processed.
+  Extensions (MIME) headers of Cisco AsyncOS Software for Cisco Email Security Appliances (ESA) and
+  Web Security Appliances (WSA) could allow an unauthenticated, remote attacker to bypass the
+  filtering functionality of the targeted device. Emails that should have been quarantined could
+  instead be processed.
 
-The vulnerability is due to improper error handling when malformed MIME headers are present in the
-email attachment. An attacker could exploit this vulnerability by sending an email with a crafted
-attachment encoded with MIME. A successful exploit could allow the attacker to bypass the configured
-email message and content filtering.
+  The vulnerability is due to improper error handling when malformed MIME headers are present in the
+  email attachment. An attacker could exploit this vulnerability by sending an email with a crafted
+  attachment encoded with MIME. A successful exploit could allow the attacker to bypass the configured
+  email message and content filtering.
 
-Cisco has released software updates that address this vulnerability. Workarounds that address this
-vulnerability are not available.
-
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa2");
+  Cisco has released software updates that address this vulnerability. Workarounds that address this
+  vulnerability are not available.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 14:50:12 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

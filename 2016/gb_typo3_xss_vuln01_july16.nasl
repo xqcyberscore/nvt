@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_xss_vuln01_july16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_typo3_xss_vuln01_july16.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808273");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16");
 
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"affected", value:"TYPO3 versions 7.6.0 to 7.6.9 and 8.0.0 to 8.2.0");
 
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 7.6.10 or 8.2.1
-  or later.
-  For updates refer to https://typo3.org/typo3-cms");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

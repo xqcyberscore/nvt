@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_usr_enum.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_ntopng_usr_enum.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # ntopng Username Enumeration Vulnerability
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107111");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_name("ntopng Username Enumeration Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with ntopng and is prone to username enumeration vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of a detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to enumerate usernames.");
 
   script_tag(name:"affected", value:"ntopng 2.5.160805");
 
-  script_tag(name:"solution", value:"See vendor for updates, refer to http://www.ntop.org/");
+  script_tag(name:"solution", value:"See vendor");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,6 +59,7 @@ if(description)
   script_mandatory_keys("ntopng/installed");
   script_require_ports("Services/www", 3000);
 
+  script_xref(name:"URL", value:"http://www.ntop.org/");
   exit(0);
 }
 

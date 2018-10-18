@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807331");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-0788", "CVE-2016-0789", "CVE-2016-0790", "CVE-2016-0791",
                 "CVE-2016-0792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 15:08:55 +0530 (Fri, 20 May 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Windows)");
 
@@ -74,7 +74,7 @@ if(description)
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.642.2 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.642.2 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -89,6 +89,7 @@ if(description)
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("jenkins/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

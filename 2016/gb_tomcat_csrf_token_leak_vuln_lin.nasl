@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807410");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2015-5351");
   script_bugtraq_id(83330);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 14:34:55 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat CSRF Token Leak Vulnerability - Feb16 (Linux)");
 
@@ -54,8 +54,7 @@ if(description)
   8.0.0.RC1 before 8.0.32, and 9.0.0.M1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.0.68, or 8.0.32 or
-  9.0.0.M3 or later.
-  For updates refer to http://tomcat.apache.org");
+  9.0.0.M3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

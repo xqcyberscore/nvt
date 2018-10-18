@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_winstone_xss_vuln_aug16_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cloudbees_jenkins_winstone_xss_vuln_aug16_lin.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Jenkins Winstone Servlet Cross Site Scripting Vulnerability August16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808277");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2011-4344");
   script_bugtraq_id(52384);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:09 +0530 (Thu, 04 Aug 2016)");
   script_name("Jenkins Winstone Servlet Cross Site Scripting Vulnerability August16 (Linux)");
 
@@ -54,7 +54,7 @@ if(description)
   on Linux");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.409.3 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

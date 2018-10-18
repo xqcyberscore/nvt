@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 11663 2018-09-28 06:18:46Z cfischer $
+# $Id: nmap.nasl 11943 2018-10-17 14:46:48Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -52,8 +52,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11943 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -341,7 +341,7 @@ if( ! res ) {
     if( ! isnull( timing ) ) {
       _timing   = "-T" + timing;
       argv[i++] = _timing;
-      # For passing it to gb_nmap_os_detection and find_service_nmap.nasl
+      # For passing it to gb_nmap_os_detection, find_service_nmap.nasl and nmap_mac.nasl
       replace_kb_item( name:"Tools/nmap/timing_policy", value:_timing );
     }
   }

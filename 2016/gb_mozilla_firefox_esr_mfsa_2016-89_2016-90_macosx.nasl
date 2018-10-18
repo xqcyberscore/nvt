@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-89_2016-90_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-89_2016-90_macosx.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Mozilla Firefox ESR Security Updates (mfsa_2016-89_2016-90)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809807");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-5296", "CVE-2016-5297", "CVE-2016-9064", "CVE-2016-9066",
                 "CVE-2016-5291", "CVE-2016-9074", "CVE-2016-5290");
   script_bugtraq_id(94336, 94337, 94342, 94339);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 13:11:16 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox ESR Security Updates (mfsa_2016-89_2016-90)-MAC OS X");
 
@@ -67,7 +67,7 @@ if(description)
   45.5 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 45.5
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,6 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

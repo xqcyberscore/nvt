@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: find_service_nmap.nasl 11943 2018-10-17 14:46:48Z cfischer $
 #
 # Service Detection with nmap
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11943 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -95,10 +95,18 @@ i = 0;
 ip = get_host_ip();
 argv[i++] = "nmap";
 
+if( TARGET_IS_IPV6() )
+  argv[i++] = "-6";
+
 # Apply the chosen nmap timing policy from nmap.nasl here as well
 timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
-if( timing_policy ) {
+if( timing_policy =~ '^-T[0-5]$' )
   argv[i++] = timing_policy;
+
+source_iface = get_preference( "source_iface" );
+if( source_iface =~ '^[0-9a-zA-Z:_]+$' ) {
+  argv[i++] = "-e";
+  argv[i++] = source_iface;
 }
 
 argv[i++] = "-sV";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wbxml_dissector_dos_vuln_aug16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_wireshark_wbxml_dissector_dos_vuln_aug16_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Wireshark WBXML Dissector Denial of Service Vulnerability August16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809103");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-5359");
   script_bugtraq_id(91140);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 09:53:38 +0530 (Fri, 12 Aug 2016)");
   script_name("Wireshark WBXML Dissector Denial of Service Vulnerability August16 (Windows)");
 
@@ -53,7 +53,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.12 or
-  later. For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

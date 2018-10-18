@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-049.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-049.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807314");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-0150");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 09:22:17 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)");
 
@@ -52,10 +52,7 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/en-us/library/security/MS16-049");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -86,7 +83,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Asycfilt.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Asycfilt.dll");
 if(!sysVer){
   exit(0);
 }

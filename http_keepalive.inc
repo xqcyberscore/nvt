@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 11896 2018-10-13 14:47:25Z cfischer $
+# $Id: http_keepalive.inc 11951 2018-10-18 07:24:25Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11896 $
+# $Revision: 11951 $
 #
 ###############################################################################
 
@@ -41,13 +41,22 @@ __ka_last_request = "";
 global_var _http_ka_debug;
 _http_ka_debug = FALSE;
 
-# Based on the last headers we received, we determine if we need
-# to close our socket and re-open it or not
+# @brief Determined on the passed header if the keep-alive socket of the
+#        connection needs to be close and re-opened.
+#
+# @param headers The headers to evaluate.
+#
+# @return NULL
+#
 function http_keepalive_check_connection( headers ) {
 
+  local_var headers;
   local_var tmp;
 
-  if( ! headers ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#headers#-#http_keepalive_check_connection" );
+  if( ! headers ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#headers#-#http_keepalive_check_connection" );
+    return NULL;
+  }
 
   tmp = egrep( pattern:"^Connection: Close", string:headers, icase:TRUE );
   if( tmp ) {
@@ -56,22 +65,36 @@ function http_keepalive_check_connection( headers ) {
     }
     __ka_socket = http_open_socket( __ka_port );
   }
+  return NULL;
 }
 
+# @brief Opens a new socket to the specified port and sets it
+#        internallly as the port/socket to be used for keep-alive connections.
+#
+# @param port The port to open a connection to.
+#
+# @return NULL
+#
 function enable_keepalive( port ) {
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#enable_keepalive" );
+  local_var port;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#enable_keepalive" );
+    return NULL;
+  }
 
   __ka_enabled = 1;
   __ka_port    = port;
   __ka_socket  = http_open_socket( port );
+  return NULL;
 }
 
-# @brief Determine if the remote web server is keep-alive-enabled or not.
+# @brief Determine if the remote web server is keep-alive enabled or not.
 #
-# @param port the HTTP port of the target
+# @param port The HTTP port of the target.
 #
-# @return 1 if keep alive is enabled, 0 otherwise and -2 if no port was passed or no socket could be opened to the target host
+# @return 1 if keep alive is enabled, 0 otherwise and -2 if no port was passed or no socket could be opened to the target host.
 #
 function http_keepalive_enabled( port ) {
 
@@ -79,7 +102,8 @@ function http_keepalive_enabled( port ) {
   # from within the same include.
   if(!defined_func("http_host_name")) include("http_func.inc");
 
-  local_var port, host, req, soc, r, kb, useragent;
+  local_var port;
+  local_var kb, useragent, host, req, soc, r;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_enabled" );
@@ -109,14 +133,16 @@ function http_keepalive_enabled( port ) {
                 'User-Agent: ', useragent, '\r\n\r\n' );
 
   soc = http_open_socket( port );
-  if( ! soc ) return -2;
+  if( ! soc )
+    return -2;
+
   send( socket:soc, data:req );
   r = http_recv( socket:soc );
 
   # Apache
   if( egrep( pattern:"^Keep-Alive:.*", string:r, icase:TRUE ) ) {
     http_close_socket( soc );
-    set_kb_item( name:strcat( 'www/', port, '/keepalive' ), value:"yes" );
+    set_kb_item( name:strcat( "www/", port, "/keepalive" ), value:"yes" );
     enable_keepalive( port:port );
     return( 1 );
   } else {
@@ -134,15 +160,22 @@ function http_keepalive_enabled( port ) {
   return( 0 );
 }
 
+# @brief This function is akin to @ref http_recv_body except that if the last request
+#        was a HEAD, we bail out (whereas @ref http_recv will timeout).
 #
-# This function is akin to http_recv_body() except that if the last request
-# was a HEAD, we bail out (whereas http_recv() will timeout).
+# @param headers A previously received header used for evaluation within this function.
+# @param bodyonly If set to TRUE only the HTTP body is returned. TBD: The function is called "recv_body" some this parameter doesn't make that much sense in this context...
+#
+# @return The received data as a string.
 #
 function http_keepalive_recv_body( headers, bodyonly ) {
 
-  local_var body, length, tmp, chunked, killme, gzip;
+  local_var headers, bodyonly;
+  local_var killme, length, tmp, gzip, body;
+  # nb: _http_ka_debug, __ka_port, __ka_last_request and __ka_socket are global vars
 
-  if( ! headers ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#headers#-#http_keepalive_recv_body" );
+  if( ! headers )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#headers#-#http_keepalive_recv_body" );
 
   killme = 0;
   length = -1;
@@ -159,10 +192,12 @@ function http_keepalive_recv_body( headers, bodyonly ) {
 
   if( "content-length: " >< tolower( headers ) ) {
     tmp = egrep( string:headers, pattern:"^Content-Length: *[0-9]+", icase:TRUE );
-    if( tmp ) length = int( ereg_replace( string:tmp, pattern:"^Content-Length: *([0-9]*) *", replace:"\1", icase:TRUE ) );
+    if( tmp )
+      length = int( ereg_replace( string:tmp, pattern:"^Content-Length: *([0-9]*) *", replace:"\1", icase:TRUE ) );
   }
 
-  if( "content-encoding: gzip" >< tolower( headers ) ) gzip = TRUE;
+  if( "content-encoding: gzip" >< tolower( headers ) )
+    gzip = TRUE;
 
   if( ( length < 0 ) && ( egrep( pattern:"transfer-encoding: chunked", string:headers, icase:TRUE ) ) ) {
     while( 1 ) {
@@ -178,7 +213,8 @@ function http_keepalive_recv_body( headers, bodyonly ) {
       body = strcat( body, recv( socket:__ka_socket, length:length, min:length ) );
       # "\r\n"
       recv( socket:__ka_socket, length:2, min:2 );
-      if( strlen( body ) > 1048576 ) killme = 1;
+      if( strlen( body ) > 1048576 )
+        killme = 1;
 
       if( length == 0 || killme ) {
         http_keepalive_check_connection( headers:headers );
@@ -223,71 +259,85 @@ function http_keepalive_recv_body( headers, bodyonly ) {
   if( gzip )
     body = http_gunzip( buf:body, onlybody:TRUE );
 
-  if( bodyonly ) {
+  if( bodyonly )
     return( body );
-  } else {
+  else
     return( strcat( headers, '\r\n', body ) );
-  }
 }
 
-# We close our socket on exit.
+# @brief Closes the opened keep-alive socket on exit.
+#
+# @return NULL
+#
 function on_exit() {
   if( __ka_socket ) {
     http_close_socket( __ka_socket );
     __ka_socket = 0;
   }
+  return NULL;
 }
 
 if( 0 ) on_exit(); #TBD: What's the purpose of this?
 
+# @brief This is our "public" Keep-Alive function. It sends <data> to the remote
+#        host on port <port>, and returns the result, or NULL if no connection
+#        could be established.
 #
-# This is our "public" Keep-Alive function. It sends <data> to the remote
-# host on port <port>, and returns the result, or NULL if no connection
-# could be established.
+# @param port                   The port of the remote server to connect to.
+# @param data                   The data to sent to the remote server.
+# @param bodyonly               If set to TRUE only the HTTP body will be returned.
+# @param fetch404               If set to TRUE the function will also return the body of HTTP 404 error pages.
+# @param content_type_body_only Allows to fetch pages with e.g. only Content-Type: text/html by passing a regex like "^Content-Type: text/(xml|html)"
+# @param headersonly            If set to TRUE only the HTTP header will be returned.
+#
+# @return A string containing the received data or NULL if no connection could be esablished or no port or data parameter was passed.
 #
 function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_body_only, headersonly ) {
 
-  local_var headersonly;
-  local_var id, n, ret, headers;
-  local_var soc, r, body, lendata;
+  local_var port, data, bodyonly, fetch404, content_type_body_only, headersonly;
+  local_var soc, headers, body, id, n, lendata;
+  # nb: _http_ka_debug, __ka_enabled and __ka_socket are global vars
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_send_recv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_send_recv" );
     return NULL;
   }
 
   if( ! data ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_keepalive_send_recv" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_keepalive_send_recv" );
     return NULL;
   }
 
   # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n" (length: 16).
   # But for some specific cases we're just checking for some less data.
-  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" ) {
+  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
-  }
 
   # http_get() won't add a Host: header if only HTTP/1.0 support was detected
-  if( "Host:" >!< data && "HTTP/1.0" >!< data ) {
+  if( "Host:" >!< data && "HTTP/1.0" >!< data )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): No 'Host:' header passed in data variable. This might lead to issues if SNI is enabled on the remote host." );
-  }
 
-  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" ) {
+  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" )
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
-  }
 
   if( _http_ka_debug ) display( "DEBUG: http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );
 
-  if( __ka_enabled == -1 ) __ka_enabled = http_keepalive_enabled( port:port );
-  if( __ka_enabled == -2 ) return NULL;
+  if( __ka_enabled == -1 )
+    __ka_enabled = http_keepalive_enabled( port:port );
+
+  if( __ka_enabled == -2 )
+    return NULL;
 
   if( __ka_enabled == 0 ) {
     soc = http_open_socket( port );
-    if( ! soc ) return NULL;
+    if( ! soc )
+      return NULL;
+
     if( send( socket:soc, data:data ) <= 0 ) {
       http_close_socket( soc );
       return NULL;
     }
+
     headers = http_recv_headers2( socket:soc );
     # If the headers are not HTTP compliant, just return right away
     if( headers && ! ereg( pattern:"^HTTP/.* [0-9]+", string:headers ) ) {
@@ -295,8 +345,6 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
       return headers;
     }
 
-    # Allows to fetch pages with e.g. only Content-Type: text/html by passing
-    # a regex like "^Content-Type: text/(xml|html)"
     if( content_type_body_only ) {
       if( "content-type: " >< tolower( headers ) ) {
         if( ! egrep( pattern:content_type_body_only, string:headers, icase:TRUE ) ) {
@@ -314,22 +362,21 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     if( "content-encoding: gzip" >< tolower( headers ) )
       body = http_gunzip( buf:body, onlybody:TRUE );
 
-    if( headersonly ) {
+    if( headersonly )
       return( headers );
-    }
 
-    if( bodyonly ) {
+    if( bodyonly )
       return( body );
-    } else {
+    else
       return( strcat( headers, '\r\n', body ) );
-    }
   }
 
   if( ( port != __ka_port ) || ( ! __ka_socket ) ) {
     if( __ka_socket ) http_close_socket( __ka_socket );
     __ka_port = port;
     __ka_socket = http_open_socket( port );
-    if( ! __ka_socket ) return NULL;
+    if( ! __ka_socket )
+      return NULL;
   }
 
   id = stridx( data, '\r\n\r\n' );
@@ -344,6 +391,7 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   lendata = strlen( data );
   if( n >= lendata )
     headers = http_recv_headers2( socket:__ka_socket );
+
   if( ! headers ) {
     http_close_socket( __ka_socket );
     __ka_socket = http_open_socket( __ka_port );
@@ -356,9 +404,8 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     headers = http_recv_headers2( socket:__ka_socket );
   }
 
-  if( headersonly ) {
+  if( headersonly )
     return( headers );
-  }
 
   # Allows to fetch pages with e.g. only Content-Type: text/html by passing
   # a regex like "^Content-Type: text/(xml|html)"
@@ -370,32 +417,48 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   return http_keepalive_recv_body( headers:headers, bodyonly:bodyonly );
 }
 
+# @brief Requests a specified URL and checks the response if it contains a pattern for windows related files
+#        (autoexec.bat, win.ini and boot.ini). In contrast to @ref check_win_dir_trav this function is requesting
+#        the data over an keep-alive enabled connection.
 #
-# Same as check_win_dir_trav(), but with KA support
+# @param port The port of the remote server to check.
+# @param url  The URL to check.
+#
+# @return TRUE if the remote web server has responded with the expected pattern, FALSE otherwise and
+#         NULL in the case where no connection to the target could be established or not all
+#         required parameters where passed.
 #
 function check_win_dir_trav_ka( port, url ) {
 
-  local_var soc, req, cod, buf;
+  local_var port, url;
+  local_var req, buf;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#check_win_dir_trav_ka" );
-  if( ! url ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#check_win_dir_trav_ka" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#check_win_dir_trav_ka" );
+    return NULL;
+  }
+
+  if( ! url ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#check_win_dir_trav_ka" );
+    return NULL;
+  }
 
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req );
 
-  if( "; for 16-bit app support" >< buf || "[boot loader]" >< buf ) {
-    return( 1 );
-  }
-  return( 0 );
+  if( "; for 16-bit app support" >< buf || "[boot loader]" >< buf )
+    return TRUE;
+  else
+    return FALSE;
 }
 
 # @brief Creates a HTTP GET request with enabled Keep-Alive Connection for a
 #        specified item (e.g. a script), sends the request to the target and checks
 #        if the requested item is available.
 #
-# @param port the HTTP port of the target
-# @param item the item to request
-# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+# @param port The HTTP port of the target.
+# @param item The item to request.
+# @param host The hostname (e.g. from http_host_name with the dont_add_port:TRUE
 #             parameter or get_host_name) of the remote server. If no host parameter
 #             is passed http_host_name will be called automatically and a debug
 #             message is logged into the KB (currently commented out).
@@ -406,7 +469,8 @@ function check_win_dir_trav_ka( port, url ) {
 #
 function is_cgi_installed_ka( port, item, host ) {
 
-  local_var port, item, host, req, res, no404, dir, slash, dirs;
+  local_var port, item, host;
+  local_var dirs, slash, no404, dir, req, res;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
 
   if( ! item ) {
@@ -440,7 +504,8 @@ function is_cgi_installed_ka( port, item, host ) {
   }
 
   no404 = get_http_no404_string( port:port, host:host );
-  if( strlen( no404 ) >= 1 ) return NULL;
+  if( strlen( no404 ) >= 1 )
+    return NULL;
 
   foreach dir( dirs ) {
 
@@ -449,11 +514,13 @@ function is_cgi_installed_ka( port, item, host ) {
     # some server return a 404 for / but sometimes not for all subdirs. so check again...
     req = http_get( item:dir + slash + item + '_' + rand(), port:port );
     res = http_keepalive_send_recv( port:port, data:req );
-    if( res !~ "^HTTP/1\.[01] 404" ) continue;
+    if( res !~ "^HTTP/1\.[01] 404" )
+      continue;
 
     req = http_get( item:dir + slash + item, port:port );
     res = http_keepalive_send_recv( port:port, data:req );
-    if( isnull( res ) ) continue;
+    if( isnull( res ) )
+      continue;
 
     if( res =~ "^HTTP/1\.[01] +200 +" && "Proxy-Agent: IWSS" >!< r ) {
       if( no404 && tolower( no404 ) >< tolower( res ) ) {
@@ -470,16 +537,17 @@ function is_cgi_installed_ka( port, item, host ) {
 #        specified item (e.g. a script), sends the request to the target and
 #        returns the response. It will also follow up to 32 times a received redirect.
 #
-# @param port          the HTTP port of the target
-# @param url           the URL to request
-# @param max_redirects the count of redirects to follow, defaults to 32 if not passed
+# @param port          The HTTP port of the target.
+# @param url           The URL to request.
+# @param max_redirects The count of redirects to follow, defaults to 32 if not passed.
 #
-# @return the response to the HTTP GET request or NULL if no response was received or the
+# @return The response to the HTTP GET request or NULL if no response was received or the
 #         max count of redirects was reached.
 #
 function get_http_page( port, url, max_redirects ) {
 
-  local_var port, url, max_redirects, count, seen_loc, i, req, res, redirect, location;
+  local_var port, url, max_redirects;
+  local_var count, seen_loc, i, req, res, redirect, location;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
 
   if( ! port ) {
@@ -512,13 +580,18 @@ function get_http_page( port, url, max_redirects ) {
     seen_loc[url] = TRUE;
     req = http_get( port:port, item:url );
     res = http_keepalive_send_recv( port:port, data:req );
-    if( isnull( res ) ) return NULL;
+    if( ! res )
+      return NULL;
 
     if( res =~ "^HTTP/1\.[01] +30[0-9] .*" ) {
       redirect = eregmatch( pattern:'\r\nLocation: *([^ \t\r\n]+)[ \t]*[\r\n]+', string:res, icase:TRUE );
-      if( isnull( redirect ) ) return NULL; # Big problem
+      if( isnull( redirect ) )
+        return NULL; # Big problem
+
       location = redirect[1];
-      if( seen_loc[location] ) return NULL;
+      if( seen_loc[location] )
+        return NULL;
+
       seen_loc[location] = TRUE;
     } else if( res =~ "^HTTP/1\.[01] +200 " ) {
       res = strstr( res, '\r\n\r\n' );
@@ -538,21 +611,23 @@ function get_http_page( port, url, max_redirects ) {
 #        If an URL was requested which was requested previously the cached
 #        response will be returned instead of doing a new request.
 #
-# @note  The global_var __ka_last_request can be used to access the "req"
-#        crafted by this function.
-#
-# @param port the HTTP port of the target
-# @param item the URL/item to request
-# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+# @param port The HTTP port of the target.
+# @param item The URL/item to request.
+# @param host The hostname (e.g. from http_host_name with the dont_add_port:TRUE
 #             parameter or get_host_name) of the remote server. If no host parameter
 #             is passed http_host_name will be called automatically and a debug
 #             message is logged into the KB (currently commented out).
 #
-# @return the response to the HTTP GET request or NULL if no response was received
+# @return The response to the HTTP GET request or NULL if no response was received.
+#
+# @note  The global_var __ka_last_request can be used to access the "req"
+#        crafted by this function.
 #
 function http_get_cache( port, item, host ) {
 
-  local_var port, item, host, req, res;
+  local_var port, item, host;
+  local_var res, req;
+  # nb: __ka_last_request is a global var
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
@@ -577,11 +652,13 @@ function http_get_cache( port, item, host ) {
   }
 
   res = get_kb_item( "Cache/" + host + "/" + port + "/URL_" + item );
-  if( res ) return res;
+  if( res )
+    return res;
 
   req = http_get( port:port, item:item );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-  if( isnull( res  ) || res == "" || ! res ) return NULL;
+  if( isnull( res  ) || res == "" || ! res )
+    return NULL;
 
   __ka_last_request = req;
 
@@ -606,24 +683,35 @@ function http_get_cache( port, item, host ) {
 #        if one or more specific patterns are included in the response. If the pattern
 #        was found a security_message() is reported and the script exit afterwards.
 #
-# @param default_port  the default HTTP port to assume if no open ports was found on the target host
-# @param extra_dirs    additional directories to check which are added to the found directories of @ref cgi_dirs. If empty only @ref cgi_dirs is used.
-# @param unique_dir    the directory which should be checked, if this parameter is passed extra_dirs will be ignored.
-# @param check_request the request / item to sent in the HTTP GET request
-# @param extra_check   a pattern to check additionally to the check_result in form of a regex
-# @param check_result  the expected result to the response in form of a regex where a security_message() is reported
-# @param command       the command which was used in the check_request parameter
-# @param port          the HTTP port to check
+# @param default_port  The default HTTP port to assume if no open ports was found on the target host.
+# @param extra_dirs    Additional directories to check which are added to the found directories of @ref cgi_dirs. If empty only @ref cgi_dirs is used.
+# @param unique_dir    The directory which should be checked, if this parameter is passed extra_dirs will be ignored.
+# @param check_request The request / item to sent in the HTTP GET request.
+# @param extra_check   A pattern to check additionally to the check_result in form of a regex.
+# @param check_result  The expected result to the response in form of a regex where a security_message() is reported.
+# @param command       The command which was used in the check_request parameter.
+# @param port          The HTTP port to check.
+#
+# @return NULL
 #
 function http_check_remote_code( default_port, extra_dirs, unique_dir, check_request, extra_check, check_result, command, port ) {
 
   local_var default_port, extra_dirs, unique_dir, check_request, extra_check, check_result, command, port;
-  local_var list, req, txt_result, txt_desc, extra, dir, buf;
+  local_var list, dir, req, buf, txt_result, extra, txt_desc;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
 
-  if( ! check_request ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_request#-#http_check_remote_code" );
-  if( ! check_result )  set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_result#-#http_check_remote_code" );
-  if( ! command )       set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#command#-#http_check_remote_code" );
+  if( ! check_request ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_request#-#http_check_remote_code" );
+    return NULL;
+  }
+
+  if( ! check_result ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#check_result#-#http_check_remote_code" );
+    return NULL;
+  }
+
+  if( ! command )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#command#-#http_check_remote_code" );
 
   if( http_cgi_disabled ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
@@ -639,7 +727,8 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
       port = get_http_port( default:80 );
     }
   } else {
-    if( ! get_port_state( port ) ) exit( 0 );
+    if( ! get_port_state( port ) )
+      exit( 0 );
   }
 
   if( unique_dir ) {
@@ -659,7 +748,8 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
     req = string( dir, check_request );
     req = http_get( item:req, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
-    if( isnull( buf ) ) exit( 0 ); #TBD: Really exit?
+    if( ! buf )
+      exit( 0 ); #TBD: Really exit?
 
     txt_result = egrep( pattern:check_result, string:buf );
     if( extra_check ) {
@@ -679,28 +769,51 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
   }
 }
 
-# nb: The global_var __ka_last_request can be used to access the "req" crafted by this NVT
+# @brief Checks a specific URL on the remote server if the response is matching / not matching the specified data.
+#
+# @param port          The HTTP port of the target.
+# @param url           The URL/item to request.
+# @param pattern       A regex pattern which needs to be included in the response of the target for the function to return TRUE.
+# @param check_header  If set to TRUE the function is checking if it has received a HTTP 200 status code additionally to the regex pattern.
+# @param debug         If set to TRUE the received data is displayed on the command line or in the scanners logfile.
+# @param extra_check   A string or list containing extra pattern which needs to be included in the response. If multiple items are passed via
+#                      a list all of these needs to be included in the response for the function to return TRUE.
+# @param hostname      The hostname to connect to if called on command-line / via openvas-nasl
+# @param cookie        The cookie to send within the request.
+#
+# @param check_nomatch A string or list containing extra pattern which shouldn't be included in the response. If multiple items are passed via
+#                      a list all of these shouldn't be included in the response for the function to return TRUE.
+#
+# @param icase         If set to TRUE (default if not passed) the pattern, extra_check and check_nomatch are evaluated case insensitive, otherwise if FALSE is passed.
+# @param usecache      If set to TRUE the response will be cached within the internal Redis KB.
+#
+# @return TRUE If the requested data is matching / not matching the specified pattern, FALSE if not or no data was received and NULL if no url, port or pattern parameter was passed.
+#
+# @note The global_var __ka_last_request can be used to access the "req" crafted by this VT.
+#
 function http_vuln_check( port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch, icase, usecache ) {
 
-  local_var port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch;
-  local_var icase, usecache, req, buf, ec, nm;
+  local_var port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch, icase, usecache;
+  local_var buf, req, ec, nm;
+  # nb: __ka_last_request is a global var
 
   if( ! url ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_vuln_check" );
-    return FALSE;
+    return NULL;
   }
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_vuln_check" );
-    return FALSE;
+    return NULL;
   }
 
   if( isnull( pattern ) || pattern == "" ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#http_vuln_check" );
-    return FALSE;
+    return NULL;
   }
 
-  if( isnull( icase ) ) icase = TRUE;
+  if( isnull( icase ) )
+    icase = TRUE;
 
   if( usecache ) {
     buf = http_get_cache( item:url, port:port );
@@ -725,7 +838,8 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     __ka_last_request = req;
   }
 
-  if( isnull( buf  ) || buf == "" || ! buf ) return FALSE;
+  if( isnull( buf  ) || buf == "" || ! buf )
+    return FALSE;
 
   if( debug ) {
     display( "\nContent:\n", buf, "\n" );
@@ -763,34 +877,35 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     }
   }
 
-  if( egrep( pattern:pattern, string:buf, icase:icase ) ) {
+  if( egrep( pattern:pattern, string:buf, icase:icase ) )
     return buf;
-  }
-  return FALSE;
+  else
+    return FALSE;
 }
 
 # @brief Creates a HTTP GET request for the specified URL, sends
 #        the request to the target and receives the response.
 #
-# @param port     the HTTP port of the target
-# @param url      the URL to request
-# @param bodyonly if TRUE only the body of the response is returned (not compatible with the nocache parameter set to FALSE)
-# @param nocache  if TRUE the response is not saved into the knowledge base
+# @param port     The HTTP port of the target.
+# @param url      The URL to request.
+# @param bodyonly If TRUE only the body of the response is returned (not compatible with the nocache parameter set to FALSE).
+# @param nocache  If TRUE the response is not saved into the knowledge base.
 #
-# @return the response to the HTTP GET request or NULL if no response was received
+# @return The response to the HTTP GET request or NULL if no response was received.
 #
 function http_ka_recv_buf( port, url, bodyonly, nocache ) {
 
-  local_var port, url, bodyonly, nocache, req, res;
+  local_var port, url, bodyonly, nocache;
+  local_var res, req;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_ka_recv_buf" );
-    return;
+    return NULL;
   }
 
   if( ! url ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_ka_recv_buf" );
-    return;
+    return NULL;
   }
 
   if( ! nocache ) {

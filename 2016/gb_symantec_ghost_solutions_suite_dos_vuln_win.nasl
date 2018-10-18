@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:symantec:ghost_solutions_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808573");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2015-5689");
   script_bugtraq_id(76498);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-11 15:36:44 +0530 (Mon, 11 Jul 2016)");
   script_name("Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)");
 
@@ -57,8 +57,7 @@ if(description)
   3.0 HF2 (12.0.0.8010)");
 
   script_tag(name:"solution", value:"Update to Symantec Ghost Solutions Suite (GSS)
-  3.0 HF2 (12.0.0.8010) or later. For updates refer to
-  https://symantec.flexnetoperations.com/control/");
+  3.0 HF2 (12.0.0.8010) or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -70,6 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_ghost_solutions_suite_detect_win.nasl");
   script_mandatory_keys("Symantec/Ghost/Solution/Suite/Installed");
+  script_xref(name:"URL", value:"https://symantec.flexnetoperations.com/control/");
   exit(0);
 }
 

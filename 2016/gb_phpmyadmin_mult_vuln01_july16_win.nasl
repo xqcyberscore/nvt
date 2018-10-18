@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln01_july16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_phpmyadmin_mult_vuln01_july16_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # phpMyAdmin Multiple Vulnerabilities -01 July16 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808241");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-5739", "CVE-2016-5733", "CVE-2016-5734", "CVE-2016-5731",
                 "CVE-2016-5732", "CVE-2016-5730", "CVE-2016-5706", "CVE-2016-5704",
                 "CVE-2016-5705", "CVE-2016-5703", "CVE-2016-5702");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:45:45 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("phpMyAdmin Multiple Vulnerabilities -01 July16 (Windows)");
@@ -71,8 +71,7 @@ if(description)
   4.4.x before 4.4.15.7, and 4.6.x before 4.6.3 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.0.10.16 or
-  4.4.15.7 or 4.6.3 or later.
-  For updates refer to https://www.phpmyadmin.net");
+  4.4.15.7 or 4.6.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

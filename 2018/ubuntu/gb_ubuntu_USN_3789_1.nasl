@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3789_1.nasl 11877 2018-10-12 12:31:50Z santu $
+# $Id: gb_ubuntu_USN_3789_1.nasl 11946 2018-10-18 05:43:49Z cfischer $
 #
 # Ubuntu Update for clamav USN-3789-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843658");
-  script_version("$Revision: 11877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:31:50 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 11946 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 07:43:49 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-12 06:35:01 +0200 (Fri, 12 Oct 2018)");
   script_cve_id("CVE-2018-15378");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,14 +52,14 @@ ClamAV to crash, resulting in a denial of service.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

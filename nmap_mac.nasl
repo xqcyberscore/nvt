@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_mac.nasl 10574 2018-07-23 11:55:34Z cfischer $
+# $Id: nmap_mac.nasl 11943 2018-10-17 14:46:48Z cfischer $
 #
 # Nmap MAC Scan.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103585");
-  script_version("$Revision: 10574 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 13:55:34 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11943 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 15:52:11 +0100 (Thu, 11 Oct 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -48,27 +48,37 @@ if(description)
 
 include("host_details.inc");
 
-if(!islocalnet())exit(0);
+if( ! islocalnet() ) exit( 0 );
 
 argv[x++] = 'nmap';
 argv[x++] = '-sP';
 
 ip = get_host_ip();
 
-if(TARGET_IS_IPV6()) {
+if( TARGET_IS_IPV6() )
   argv[x++] = "-6";
+
+# Apply the chosen nmap timing policy from nmap.nasl here as well
+timing_policy = get_kb_item( "Tools/nmap/timing_policy" );
+if( timing_policy =~ '^-T[0-5]$' )
+  argv[x++] = timing_policy;
+
+source_iface = get_preference( "source_iface" );
+if( source_iface =~ '^[0-9a-zA-Z:_]+$' ) {
+  argv[x++] = "-e";
+  argv[x++] = source_iface;
 }
 
 argv[x++] = ip;
 
-res = pread(cmd: "nmap", argv: argv);
-if(isnull(res) || 'MAC' >!< res)exit(0);
+res = pread( cmd:"nmap", argv:argv );
+if( isnull( res ) || 'MAC' >!< res ) exit( 0 );
 
-mac = eregmatch(pattern:"MAC Address: ([0-9a-fA-F:]{17})", string:res);
+mac = eregmatch( pattern:"MAC Address: ([0-9a-fA-F:]{17})", string:res );
 
-if(!isnull(mac[1])) {
-  register_host_detail(name:"MAC", value:mac[1], desc:"Nmap MAC Scan");
+if( ! isnull( mac[1] ) ) {
+  register_host_detail( name:"MAC", value:mac[1], desc:"Nmap MAC Scan" );
   replace_kb_item( name:"Host/mac_address", value:mac[1] );
 }
 
-exit(0);
+exit( 0 );

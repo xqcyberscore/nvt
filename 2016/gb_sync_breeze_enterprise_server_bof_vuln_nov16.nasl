@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sync_breeze_enterprise_server_bof_vuln_nov16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_sync_breeze_enterprise_server_bof_vuln_nov16.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Sync Breeze Enterprise Server Buffer Overflow Vulnerability - Nov16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:sync:sync_breeze_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809481");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 12:58:33 +0530 (Tue, 29 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sync Breeze Enterprise Server Buffer Overflow Vulnerability - Nov16");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running Sync Breeze Enterprise
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long

@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test include file
-# $Id: revisions-lib.inc 3519 2016-06-14 17:26:37Z cfi $
+# OpenVAS Include File
+# $Id: revisions-lib.inc 11954 2018-10-18 08:20:12Z cfischer $
 #
 # Revision string comparison helper function
 #
@@ -12,49 +12,63 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License Version 2
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
-# $Revision: 3519 $
+# $Revision: 11954 $
 #
 ###############################################################################
 
-# Include that can be used to compare two software package version
-# strings.  Version string comparison operates on a slightly
-# different set or ordering rules:  Instead of comparing character
-# by character exclusively throughout the whole string, we instead
-# compare character by character until we run into a numeric, at
-# which point we extract the entire numeric, and do a numeric
-# comparison.  That allows things like  v10.1 to be greather than
-# v9, whereas any other string comparison would result in v9
-# being larger, because '9' is larger than '1'. Typical strcmp
-# return values (0=; -1<; 1>;)
-
+# @brief Checks if a passed char is a numerical / digit one.
+#
+# @brief a The char to check.
+#
+# @return TRUE if the passed char is a numerical / digit one, FALSE otherwise.
+#
 function isdigit( a ) {
-  if( ord( a ) >= ord( '0' ) && ord( a ) <= ord( '9' ) ) {
-    return( 1 );
-  }
-  return( 0 );
+
+  local_var a;
+
+  if( ord( a ) >= ord( '0' ) && ord( a ) <= ord( '9' ) )
+    return TRUE;
+  else
+    return FALSE;
 }
 
+# @brief Function that can be used to compare two software package version
+#        strings. Version string comparison operates on a slightly different
+#        set or ordering rules: Instead of comparing character by character
+#        exclusively throughout the whole string, we instead compare character
+#        by character until we run into a numeric, at which point we extract
+#        the entire numeric, and do a numeric comparison. That allows things
+#        like v10.1 to be greater than v9, whereas any other string comparison
+#        would result in v9 being larger, because '9' is larger than '1'.
+#        Typical strcmp return values (0=; -1<; 1>;)
+#
+# @param a The base version to compare.
+# @param b The version to compare against.
+#
+# @return 0 If the versions passed via the a and b parameter are the same, -1 if b > a and 1 if b < a.
+#
 function revcomp( a, b ) {
 
-  local_var done, rc, work_a, work_b, lena, lenb;
-  local_var i, subm_a, subm_b, sub_a, sub_b;
+  local_var a, b;
+  local_var done, work_a, work_b, rc, lena, lenb, i, subm_a, subm_b, sub_a, sub_b;
 
-  if( ! a ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#a#-#revcomp" );
-  if( ! b ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#b#-#revcomp" );
+  if( ! a )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#a#-#revcomp" );
+  if( ! b )
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#b#-#revcomp" );
 
-  if( a == b ) {
+  if( a == b )
     return( 0 );
-  }
 
   done = 0;
   work_a = a;
@@ -85,8 +99,8 @@ function revcomp( a, b ) {
 
         subm_a = eregmatch( pattern:"([0-9]+)", string:substr( work_a, i ) );
         subm_b = eregmatch( pattern:"([0-9]+)", string:substr( work_b, i ) );
-        sub_a = subm_a[1];
-        sub_b = subm_b[1];
+        sub_a  = subm_a[1];
+        sub_b  = subm_b[1];
         work_a = substr( work_a, i + strlen( sub_a ) );
         work_b = substr( work_b, i + strlen( sub_b ) );
 
@@ -101,7 +115,7 @@ function revcomp( a, b ) {
           break;
         }
         if( int( sub_a ) == int( sub_b ) ) {
-          # If we have an emptry string here, we're done.
+          # If we have an empty string here, we're done.
           if( strlen( work_a ) == 0 || strlen( work_b ) == 0 ) {
             if( strlen( work_a ) == 0 ) {
               if( strlen( work_b ) == 0 ) {
@@ -142,7 +156,7 @@ function revcomp( a, b ) {
         rc = 1;
         break;
       }
-      if( i == lena-1 && lenb > lena ) {
+      if( i == lena - 1 && lenb > lena ) {
         done = 1;
         rc = -1;
         break;

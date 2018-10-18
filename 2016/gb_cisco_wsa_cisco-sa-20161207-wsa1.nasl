@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa1.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa1.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Cisco Web Security Appliance Drop Decrypt Policy Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-9212");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("Cisco Web Security Appliance Drop Decrypt Policy Bypass Vulnerability");
 
@@ -57,14 +57,14 @@ should be blocked.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

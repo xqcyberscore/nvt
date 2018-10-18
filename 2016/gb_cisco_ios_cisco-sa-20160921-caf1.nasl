@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160921-caf1.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20160921-caf1.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Cisco IOS Software Cisco Application-Hosting Framework HTTP Header Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6412");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("Cisco IOS Software Cisco Application-Hosting Framework HTTP Header Injection Vulnerability");
 
@@ -57,14 +57,14 @@ controlled by the attacker.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

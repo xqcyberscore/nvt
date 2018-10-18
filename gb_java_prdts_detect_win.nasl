@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_java_prdts_detect_win.nasl 11941 2018-10-17 12:58:16Z santu $
 #
 # Sun/Oracle Java Products Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800383");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11941 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun/Oracle Java Products Version Detection (Windows)");
@@ -78,7 +78,7 @@ foreach jreKey(adkeylist){
     keys = registry_enum_keys(key:jreKey);
     foreach item(keys){
 
-      if("JRE" >< jreKey && item =~ "^(9|10)"){
+      if("JRE" >< jreKey && item =~ "^(9|10|11)"){
         pattern = "([0-9.]+)";
         flagjre9plus = TRUE;
       }else{
@@ -187,7 +187,7 @@ foreach jdkKey(adkeylist){
     keys = registry_enum_keys(key:jdkKey);
     foreach item(keys){
 
-      if("JDK" >< jdkKey && item =~ "^(9|10)"){
+      if("JDK" >< jdkKey && item =~ "^(9|10|11)"){
         pattern = "([0-9.]+)";
         flagjdk9plus = TRUE;
       }else{

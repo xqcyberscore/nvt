@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dir_traversal_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_php_dir_traversal_vuln_win.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # PHP Directory Traversal Vulnerability - Jul16 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808616");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2014-9767", "CVE-2015-6834", "CVE-2015-6835", "CVE-2015-6837",
                 "CVE-2015-6838");
   script_bugtraq_id(76652, 76649, 76733, 76734, 76738);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Directory Traversal Vulnerability - Jul16 (Windows)");
 
@@ -64,7 +64,7 @@ if(description)
   5.5.29, and 5.6.x before 5.6.13 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.4.45, or 5.5.29,
-  or 5.6.13, or later. For updates refer to http://www.php.net");
+  or 5.6.13, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

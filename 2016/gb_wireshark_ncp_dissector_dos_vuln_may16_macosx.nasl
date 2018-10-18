@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ncp_dissector_dos_vuln_may16_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_wireshark_ncp_dissector_dos_vuln_may16_macosx.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Wireshark NCP dissector Denial of Service Vulnerability May16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807580");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
   script_cve_id("CVE-2016-4085");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 11:52:58 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark NCP dissector Denial of Service Vulnerability May16 (Mac OS X)");
 
@@ -54,8 +54,7 @@ if(description)
   on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.11 or
-  later.
-  For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

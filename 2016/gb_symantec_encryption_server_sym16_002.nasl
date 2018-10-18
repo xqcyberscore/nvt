@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_sym16_002.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_symantec_encryption_server_sym16_002.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Symantec Encryption Management Server Multiple Security Issues
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-8151", "CVE-2015-8150", "CVE-2015-8149", "CVE-2015-8148");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("Symantec Encryption Management Server Server Multiple Security Issues");
 
@@ -58,7 +58,7 @@ By successfully manipulating an LDAP request, it was possible for a user able to
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -66,7 +66,7 @@ By successfully manipulating an LDAP request, it was possible for a user able to
   script_dependencies("gb_symantec_encryption_server_version.nasl");
   script_mandatory_keys("symantec_encryption_server/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

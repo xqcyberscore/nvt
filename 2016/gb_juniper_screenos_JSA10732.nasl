@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10732.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_juniper_screenos_JSA10732.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # Multiple Security issues with ScreenOS (JSA10732/JSA10733)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-3195", "CVE-2016-1268");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("Multiple Security issues with ScreenOS (JSA10732/JSA10733)");
 
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-15 14:21:00 +0200 (Fri, 15 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -60,7 +60,7 @@ if (description)
   script_dependencies("gb_screenos_version.nasl");
   script_mandatory_keys("ScreenOS/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

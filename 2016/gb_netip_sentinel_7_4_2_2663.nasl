@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netip_sentinel_7_4_2_2663.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_netip_sentinel_7_4_2_2663.nasl 11938 2018-10-17 10:08:39Z asteins $
 #
 # NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1605");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11938 $");
 
   script_name("NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-03 12:16:39 +0200 (Wed, 03 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_netiq_sentinel_detect.nasl");
   script_mandatory_keys("netiq_sentinel/version", "netiq_sentinel/rev");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

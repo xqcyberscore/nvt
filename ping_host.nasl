@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 11925 2018-10-16 11:06:57Z cfischer $
+# $Id: ping_host.nasl 11943 2018-10-17 14:46:48Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 11925 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 13:06:57 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 11943 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-17 16:46:48 +0200 (Wed, 17 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -236,8 +236,13 @@ if( "yes" >< use_nmap ) {
 
   pattern = "Host.*(is|appears to be) up";
 
-  if( TARGET_IS_IPV6() ) {
+  if( TARGET_IS_IPV6() )
     argv[x++] = "-6";
+
+  source_iface = get_preference( "source_iface" );
+  if( source_iface =~ '^[0-9a-zA-Z:_]+$' ) {
+    argv[x++] = "-e";
+    argv[x++] = source_iface;
   }
 
   if( "yes" >< sp_only ) {
