@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Pidgin Multiple Vulnerabilities Nov 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804890");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3697",
                 "CVE-2014-3698");
   script_bugtraq_id(70701, 70702, 70705, 70704, 70703);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 18:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Pidgin Multiple Vulnerabilities Nov 2014 (Windows)");
 
@@ -62,8 +62,7 @@ if(description)
 
   script_tag(name:"affected", value:"Pidgin before version 2.10.10 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.10 or later.
-  For updates refer http://www.pidgin.im/");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -79,6 +78,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_pidgin_detect_win.nasl");
   script_mandatory_keys("Pidgin/Win/Ver");
+  script_xref(name:"URL", value:"http://www.pidgin.im/");
   exit(0);
 }
 

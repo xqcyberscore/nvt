@@ -24,7 +24,34 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple security vulnerabilities has been discovered and corrected
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00029.php");
+  script_oid("1.3.6.1.4.1.25623.1.0.831494");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-18 09:47:30 +0530 (Fri, 18 Nov 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2011:175");
+  script_cve_id("CVE-2009-0799", "CVE-2009-0800", "CVE-2009-1179", "CVE-2009-1180",
+                "CVE-2009-1181", "CVE-2009-1182", "CVE-2009-1183", "CVE-2009-1187",
+                "CVE-2009-1188", "CVE-2009-3603", "CVE-2009-3604", "CVE-2009-0791",
+                "CVE-2009-3605", "CVE-2009-3606", "CVE-2009-3607", "CVE-2009-3608",
+                "CVE-2009-3609", "CVE-2009-3938");
+  script_name("Mandriva Update for poppler MDVSA-2011:175 (poppler)");
+
+  script_tag(name:"summary", value:"Check for the Version of poppler");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_mes5");
+  script_tag(name:"affected", value:"poppler on Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"Multiple security vulnerabilities has been discovered and corrected
   in poppler:
 
   An out-of-bounds reading flaw in the JBIG2 decoder allows remote
@@ -77,54 +104,19 @@ tag_insight = "Multiple security vulnerabilities has been discovered and correct
   ArthurOutputDev.cc, (3) CairoOutputDev.cc, (4) GfxState.cc, (5)
   JBIG2Stream.cc, (6) PSO ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "poppler on Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-11/msg00029.php");
-  script_oid("1.3.6.1.4.1.25623.1.0.831494");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-18 09:47:30 +0530 (Fri, 18 Nov 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2011:175");
-  script_cve_id("CVE-2009-0799", "CVE-2009-0800", "CVE-2009-1179", "CVE-2009-1180",
-                "CVE-2009-1181", "CVE-2009-1182", "CVE-2009-1183", "CVE-2009-1187",
-                "CVE-2009-1188", "CVE-2009-3603", "CVE-2009-3604", "CVE-2009-0791",
-                "CVE-2009-3605", "CVE-2009-3606", "CVE-2009-3607", "CVE-2009-3608",
-                "CVE-2009-3609", "CVE-2009-3938");
-  script_name("Mandriva Update for poppler MDVSA-2011:175 (poppler)");
-
-  script_tag(name:"summary", value:"Check for the Version of poppler");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -231,6 +223,6 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

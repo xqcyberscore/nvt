@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K54308010.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
+# $Id: gb_f5_big_ip_K54308010.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # F5 BIG-IP - PHP vulnerability CVE-2016-7124
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140178");
- script_cve_id("CVE-2016-7124","CVE-2016-9244");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6826 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140178");
+  script_cve_id("CVE-2016-7124", "CVE-2016-9244");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11982 $");
 
- script_name("F5 BIG-IP - PHP vulnerability CVE-2016-7124");
+  script_name("F5 BIG-IP - PHP vulnerability CVE-2016-7124");
 
- script_xref(name:"URL", value:"https://support.f5.com/csp/article/K54308010");
+  script_xref(name:"URL", value:"https://support.f5.com/csp/article/K54308010");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"ext/standard/var_unserializer.c in PHP before 5.6.25 and 7.x before 7.0.10 mishandles certain invalid objects, which allows remote attackers to cause a denial of service or possibly have unspecified other impact via crafted serialized data that leads to a (1) __destruct call or (2) magic method call.");
- script_tag(name: "impact", value:"A remote attacker may be able to cause a denial of service (DoS) or other unspecified impact by way of");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"ext/standard/var_unserializer.c in PHP before 5.6.25 and 7.x before 7.0.10 mishandles certain invalid objects, which allows remote attackers to cause a denial of service or possibly have unspecified other impact via crafted serialized data that leads to a (1) __destruct call or (2) magic method call.");
+  script_tag(name:"impact", value:"A remote attacker may be able to cause a denial of service (DoS) or other unspecified impact by way of");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
- script_tag(name:"creation_date", value:"2017-03-07 10:25:29 +0100 (Tue, 07 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-07 10:25:29 +0100 (Tue, 07 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

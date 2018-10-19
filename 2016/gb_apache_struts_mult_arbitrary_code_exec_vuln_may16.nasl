@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_mult_arbitrary_code_exec_vuln_may16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_apache_struts_mult_arbitrary_code_exec_vuln_may16.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apache Struts Multiple Arbitrary Code Execution Vulnerabilities May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807972");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-3081", "CVE-2016-3087");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:32:08 +0530 (Fri, 06 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Multiple Arbitrary Code Execution Vulnerabilities May16");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
 
   - An error occurs in prefix method when Dynamic Method Invocation is enabled.
 
@@ -57,8 +57,7 @@ if(description)
   except 2.3.20.3 and 2.3.24.3");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.20.3
-  or 2.3.24.3 or 2.3.28.1 or later. For updates refer to
-  http://struts.apache.org");
+  or 2.3.24.3 or 2.3.28.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

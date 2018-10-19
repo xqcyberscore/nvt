@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0035.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_panos_pan_sa-2016_0035.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Palo Alto PAN-OS Buffer Overflow in the Management Web Interface (PAN-SA-2016-0035)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-9150");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Palo Alto PAN-OS Buffer Overflow in the Management Web Interface (PAN-SA-2016-0035)");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"summary", value:"Palo Alto Networks web management server improperly handles a buffer overflow. This can result in a possible remote code execution (RCE).");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
 
   script_tag(name:"affected", value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 11:16:24 +0100 (Mon, 21 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -57,7 +57,7 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

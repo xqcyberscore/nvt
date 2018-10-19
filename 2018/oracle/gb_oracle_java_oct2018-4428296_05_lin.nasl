@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_oct2018-4428296_05_lin.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_oracle_java_oct2018-4428296_05_lin.nasl 11968 2018-10-18 14:31:48Z cfischer $
 #
 # Oracle Java SE Security Updates-05 (oct2018-4428296) Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814407");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 11968 $");
   script_cve_id("CVE-2018-3150", "CVE-2018-3157");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:31:48 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 13:00:29 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Java SE Security Updates-05 (oct2018-4428296) Linux");
 
@@ -62,15 +62,14 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_lin.nasl");
-  script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
+  script_mandatory_keys("Oracle/Java/JDK/Linux/detected");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 jreVer = infos['version'];
 path = infos['location'];
 

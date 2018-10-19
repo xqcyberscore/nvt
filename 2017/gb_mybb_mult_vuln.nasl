@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln.nasl 9421 2018-04-10 10:20:06Z asteins $
+# $Id: gb_mybb_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MyBB Multiple Vulnerabilities
 #
@@ -30,16 +30,16 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107255");
-  script_version("$Revision: 9421 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-16781");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-13 09:06:56 +0700 (Mon, 13 Nov 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-13 09:06:56 +0700 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MyBB Multiple Vulnerabilities");
 
@@ -50,34 +50,34 @@ if (description)
   script_dependencies("sw_mybb_detect.nasl");
   script_mandatory_keys("MyBB/installed");
 
-  script_tag(name: "summary", value: "MyBB is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"MyBB is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "MyBB is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"MyBB is prone to multiple vulnerabilities:
 
 
-    - Installer RCE on configuration file write
-    
-    - Language file headers RCE.
+  - Installer RCE on configuration file write
 
-    - Installer XSS.
+  - Language file headers RCE.
 
-    - Mod CP Edit Profile XSS.
+  - Installer XSS.
 
-    - Insufficient moderator permission check in delayed moderation tools.
+  - Mod CP Edit Profile XSS.
 
-    - Announcements HTML filter bypass
+  - Insufficient moderator permission check in delayed moderation tools.
 
-    - Language Pack Properties XSS.");
+  - Announcements HTML filter bypass
 
-  script_tag(name: "impact", value: "The remote attacker might be able to execute arbitrary code, conduct xss attacks or bypass HTML filters.");
+  - Language Pack Properties XSS.");
 
-  script_tag(name: "affected", value: "myBB 1.8.12 and prior.");
+  script_tag(name:"impact", value:"The remote attacker might be able to execute arbitrary code, conduct xss attacks or bypass HTML filters.");
 
-  script_tag(name: "solution", value: "Update to myBB 1.8.13.");
+  script_tag(name:"affected", value:"myBB 1.8.12 and prior.");
 
-  script_xref(name: "URL", value: "https://blog.mybb.com/2017/11/07/mybb-1-8-13-released-security-maintenance-release/");
+  script_tag(name:"solution", value:"Update to myBB 1.8.13.");
+
+  script_xref(name:"URL", value:"https://blog.mybb.com/2017/11/07/mybb-1-8-13-released-security-maintenance-release/");
 
   exit(0);
 }

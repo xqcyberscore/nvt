@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_asn_query.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_asn_query.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap ASN Query NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801649");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11966 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-12-07 14:25:15 +0100 (Tue, 07 Dec 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"summary", value:"This script attempts to map IP addresses to autonomous system (AS)numbers.
 
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) asn-query.nse.");
+  This is a wrapper on the Nmap Security Scanner's asn-query.nse.");
 
   exit(0);
 }
@@ -63,7 +63,21 @@ if( pref = script_get_preference("dns :")){
   argv = make_list(argv, "--script-args=dns="+pref);
 }
 
-res = pread(cmd: "nmap", argv: argv);
+if(TARGET_IS_IPV6())
+  argv = make_list(argv, "-6");
+
+timing_policy = get_kb_item("Tools/nmap/timing_policy");
+if(timing_policy =~ '^-T[0-5]$')
+  argv = make_list(argv, timing_policy);
+
+source_iface = get_preference("source_iface");
+if(source_iface =~ '^[0-9a-zA-Z:_]+$') {
+  argv = make_list(argv, "-e");
+  argv = make_list(argv, source_iface);
+}
+
+res = pread(cmd:"nmap", argv:argv);
+
 if(res)
 {
   foreach line (split(res))

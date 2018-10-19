@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_security_scan_plus_arbitrary_cmd_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_mcafee_security_scan_plus_arbitrary_cmd_exec_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # McAfee Security Scan Plus Arbitrary Command Execution Vulnerability (Windows)
 #
@@ -29,38 +29,34 @@ CPE = "cpe:/a:intel:mcafee_security_scan_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810825");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-8026");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 11:47:02 +0530 (Wed, 22 Mar 2017)");
   script_name("McAfee Security Scan Plus Arbitrary Command Execution Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with McAfee Security
+  script_tag(name:"summary", value:"This host is installed with McAfee Security
   Scan Plus and is prone to arbitrary command execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an unspecified
+  script_tag(name:"insight", value:"The flaw exists due to an unspecified
   vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  authenticated users to gain elevated privileges via unspecified vectors.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  authenticated users to gain elevated privileges via unspecified vectors.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"McAfee Security Scan Plus version prior
+  script_tag(name:"affected", value:"McAfee Security Scan Plus version prior
   to 3.11.474.2");
 
-  script_tag(name: "solution" , value:"Upgrade to McAfee Security scan plus
-  3.11.474.2. For updates refer to
-  https://service.mcafee.com/webcenter/portal/cp/home/articleview?articleId=TS102614");
+  script_tag(name:"solution", value:"Upgrade to McAfee Security scan plus
+  3.11.474.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://service.mcafee.com/webcenter/portal/cp/home/articleview?articleId=TS102614");
+  script_xref(name:"URL", value:"https://service.mcafee.com/webcenter/portal/cp/home/articleview?articleId=TS102614");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
@@ -72,16 +68,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-msspVer  = "";
-report = "";
-
-##Fetch version
 if(!msspVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-##Check for vulnerable versions
 if(version_is_less(version:msspVer, test_version:"3.11.474.2"))
 {
   report = report_fixed_ver(installed_version:msspVer, fixed_version:"3.11.474.2");

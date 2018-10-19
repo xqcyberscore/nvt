@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_sql_inj_vuln.nasl 10048 2018-06-01 07:55:56Z ckuersteiner $
+# $Id: gb_dell_kace_k1000_sma_sql_inj_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Dell KACE Systems Management Appliance SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:quest:kace_systems_management_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140288");
-  script_version("$Revision: 10048 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-01 09:55:56 +0200 (Fri, 01 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-09 12:28:27 +0700 (Wed, 09 Aug 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-09 12:28:27 +0700 (Wed, 09 Aug 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-12567");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Dell KACE Systems Management Appliance SQL Injection Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("gb_quest_kace_sma_detect.nasl");
   script_mandatory_keys("quest_kace_sma/detected", "quest_kace_sma/model");
 
-  script_tag(name: "summary", value: "An SQL injection exists in Dell/Quest KACE Asset Management Appliance.");
+  script_tag(name:"summary", value:"An SQL injection exists in Dell/Quest KACE Asset Management Appliance.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "KACE Asset Management Appliance version 6.4.120822 until 7.2.101.");
+  script_tag(name:"affected", value:"KACE Asset Management Appliance version 6.4.120822 until 7.2.101.");
 
-  script_tag(name: "solution", value: "Update to the latest version.");
+  script_tag(name:"solution", value:"Update to the latest version.");
 
-  script_xref(name: "URL", value: "https://support.quest.com/kace-systems-management-appliance/kb/231874");
+  script_xref(name:"URL", value:"https://support.quest.com/kace-systems-management-appliance/kb/231874");
 
   exit(0);
 }

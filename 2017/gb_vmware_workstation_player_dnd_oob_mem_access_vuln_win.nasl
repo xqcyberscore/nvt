@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_dnd_oob_mem_access_vuln_win.nasl 5183 2017-02-03 08:14:57Z antu123 $
+# $Id: gb_vmware_workstation_player_dnd_oob_mem_access_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # VMware Workstation Player 'DnD' Out-of-Bounds Access Vulnerability (Windows)
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810533");
-  script_version("$Revision: 5183 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-7461");
   script_bugtraq_id(94280);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 09:14:57 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:15 +0530 (Fri, 03 Feb 2017)");
   script_name("VMware Workstation Player 'DnD' Out-of-Bounds Access Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Workstation
+  script_tag(name:"summary", value:"The host is installed with VMware Workstation
   Player and is prone to an out-of-bounds memory access vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an out-of-bounds memory 
+  script_tag(name:"insight", value:"The flaw is due to an out-of-bounds memory
   access error in drag-and-drop (DnD) function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to execute arbitrary code in the context of the user running the 
-  affected application. Failed exploit attempts will likely result in 
-  denial-of-service conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to execute arbitrary code in the context of the user running the
+  affected application. Failed exploit attempts will likely result in
+  denial-of-service conditions.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"VMware Workstation Player 12.x before
+  script_tag(name:"affected", value:"VMware Workstation Player 12.x before
   12.5.2 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Workstation Player version
-  12.5.2 or later, For updates refer to http://www.vmware.com");
+  script_tag(name:"solution", value:"Upgrade to Workstation Player version
+  12.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0019.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0019.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -75,16 +72,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
-if(vmwareVer =~ "^(12)")
+if(vmwareVer =~ "^12")
 {
   if(version_is_less(version:vmwareVer, test_version:"12.5.2"))
   {

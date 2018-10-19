@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jackrabbit_csrf_vuln_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_apache_jackrabbit_csrf_vuln_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Windows)
 #
@@ -31,10 +31,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.807897");
   script_cve_id("CVE-2016-6801");
   script_bugtraq_id(92966);
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 15:13:16 +0530 (Thu, 06 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Windows)");
@@ -57,8 +57,7 @@ if (description)
   and 2.13.x before 2.13.3 on windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Jackrabbit 2.4.6 or
-  2.6.6 or 2.8.3 or 2.10.4 or 2.12.4 or 2.13.3 or later. For updates refer to
-  http://jackrabbit.apache.org");
+  2.6.6 or 2.8.3 or 2.10.4 or 2.12.4 or 2.13.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_apache_jackrabbit_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/jackrabbit/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://jackrabbit.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_montgomery_multiplication_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_openssl_montgomery_multiplication_dos_vuln_lin.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810544");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2016-7055");
   script_bugtraq_id(94242);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 18:50:03 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Linux)");
@@ -42,30 +42,27 @@ if(description)
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to a carry propagating 
-  bug in the Broadwell-specific Montgomery multiplication procedure that 
+  script_tag(name:"insight", value:"The flaw is due to a carry propagating
+  bug in the Broadwell-specific Montgomery multiplication procedure that
   handles input lengths divisible by, but longer than 256 bits.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to cause transient authentication, key negotiation failures or 
-  reproducible erroneous outcome of public-key operations with specially 
-  crafted input and denial of service condition.
+  attacker to cause transient authentication, key negotiation failures or
+  reproducible erroneous outcome of public-key operations with specially
+  crafted input and denial of service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"OpenSSL 1.1.0 before 1.1.0c and 
+  script_tag(name:"affected", value:"OpenSSL 1.1.0 before 1.1.0c and
   1.0.2 before 1.0.2k on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0c or 
-  1.0.2k or later. For updates refer to https://www.openssl.org");
+  script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0c or
+  1.0.2k or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20170126.txt");
-  script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20161110.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20170126.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20161110.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -79,22 +76,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sslVer = "";
-fix = "";
-sslPort = 0;
-
-## Get Port
 if(!sslPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE, port:sslPort)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(sslVer =~ "^(1\.1\.0)"){
   fix = "1.1.0c";
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jan15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_jan15_macosx.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 Jan15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805243");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-0301", "CVE-2015-0302", "CVE-2015-0303", "CVE-2015-0304",
                 "CVE-2015-0305", "CVE-2015-0306", "CVE-2015-0307", "CVE-2015-0308",
                 "CVE-2015-0309");
   script_bugtraq_id(72034, 72035, 72031, 72032, 72033, 72036, 72037, 72039, 72038);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-16 12:38:51 +0530 (Fri, 16 Jan 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 Jan15 (Mac OS X)");
 
@@ -70,8 +70,7 @@ if(description)
   13.0.0.260 and 14.x through 16.x before 16.0.0.257 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  13.0.0.260 or 16.0.0.257 or later. For updates refer
-  http://get.adobe.com/flashplayer");
+  13.0.0.260 or 16.0.0.257 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -83,6 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

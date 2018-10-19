@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_rce_vuln_apr16_win.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_apple_quicktime_mult_rce_vuln_apr16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple QuickTime Multiple Remote Code Execution Vulnerabilities Apr16 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807545");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11969 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 12:07:38 +0530 (Mon, 18 Apr 2016)");
   script_name("Apple QuickTime Multiple Remote Code Execution Vulnerabilities Apr16 (Windows)");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A heap buffer overflow vulnerability in the 'moov atom'.
 

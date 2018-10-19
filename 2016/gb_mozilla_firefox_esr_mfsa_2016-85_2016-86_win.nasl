@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-85_2016-86_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-85_2016-86_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-85_2016-86 )-Windows
 #
@@ -29,46 +29,56 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809326");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5270", "CVE-2016-5272", "CVE-2016-5276", "CVE-2016-5274",
                 "CVE-2016-5277", "CVE-2016-5278", "CVE-2016-5280", "CVE-2016-5281",
                 "CVE-2016-5284", "CVE-2016-5250", "CVE-2016-5261", "CVE-2016-5257");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-23 10:25:49 +0530 (Fri, 23 Sep 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-85_2016-86 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox Esr and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Heap-buffer-overflow in nsCaseTransformTextRunFactory::TransformString.
+
   - Bad cast in nsImageGeometryMixin.
+
   - Heap-use-after-free in mozilla::a11y::DocAccessible::ProcessInvalidationList.
+
   - Use-after-free in nsFrameManager::CaptureFrameState.
+
   - Heap-use-after-free in nsRefreshDriver::Tick.
+
   - Heap-buffer-overflow in nsBMPEncoder::AddImageFrame.
+
   - Use-after-free in mozilla::nsTextNodeDirectionalityMap::RemoveElementFromMap.
+
   - Use-after-free in DOMSVGLength.
+
   - Add-on update site certificate pin expiration.
+
   - Resource Timing API is storing resources sent by the previous page.
+
   - Integer overflow and memory corruption in WebSocketChannel
+
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities allow remote attackers to cause a denial of service, to execute
-  arbitrary code, to obtain sensitive full-pathname information.
+  arbitrary code, to obtain sensitive full-pathname information.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version before
+  script_tag(name:"affected", value:"Mozilla Firefox Esr version before
   45.4 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 45.4
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox Esr version 45.4
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,6 +91,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

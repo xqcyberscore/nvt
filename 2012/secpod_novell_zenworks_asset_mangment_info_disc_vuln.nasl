@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Novell ZENWorks Asset Management Information Disclosure Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902928");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11973 $");
   script_cve_id("CVE-2012-4933");
   script_bugtraq_id(55933);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 12:25:31 +0530 (Fri, 26 Oct 2012)");
   script_name("Novell ZENWorks Asset Management Information Disclosure Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50967/");
@@ -54,15 +54,14 @@ if(description)
   within the rtrlet component contains hard coded credentials and can be
   exploited to gain access to the configuration file and download arbitrary
   files by specifying an absolute path.");
-  script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version,
-
-  For patch refer to http://download.novell.com/Download?buildid=yse-osBjxeo~");
+  script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version.");
   script_tag(name:"summary", value:"This host is running Novell ZENWorks Asset Management and is
   prone to information disclosure vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   script_xref(name:"URL", value:"http://www.novell.com/products/zenworks/assetmanagement");
+  script_xref(name:"URL", value:"http://download.novell.com/Download?buildid=yse-osBjxeo~");
   exit(0);
 }
 

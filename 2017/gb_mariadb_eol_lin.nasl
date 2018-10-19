@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_eol_lin.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_mariadb_eol_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # MariaDB End Of Life Detection (Linux)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108186");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 11977 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-26 07:48:20 +0200 (Mon, 26 Jun 2017)");
   script_name("MariaDB End Of Life Detection (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -45,20 +45,12 @@ if(description)
 
   script_xref(name:"URL", value:"https://mariadb.org/about/maintenance-policy/");
 
-  tag_summary = "The MariaDB version on the remote host has reached the end of life and should
-  not be used anymore.";
-
-  tag_impact = "An end of life version of MariaDB is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-  might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the MariaDB version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detect NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The MariaDB version on the remote host has reached the end of life and should
+  not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of MariaDB is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the MariaDB version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

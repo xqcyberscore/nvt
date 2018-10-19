@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_banner_grabber.nasl 10577 2018-07-23 12:26:05Z cfischer $
+# $Id: gb_nmap_banner_grabber.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap Banner Grabber NSE script.
 #
@@ -26,12 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801253");
-  script_version("$Revision: 10577 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 14:26:05 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11966 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 12:08:05 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +44,7 @@ if(description)
   script_tag(name:"summary", value:"This script attempts to connect to the target port and returns
   the banner of the remote service.
 
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) banner.nse");
+  This is a wrapper on the Nmap Security Scanner's banner.nse");
 
   script_tag(name:"qod_type", value:"remote_analysis");
 
@@ -62,7 +61,23 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
 
 port = get_all_tcp_ports();
 
-res = pread(cmd: "nmap", argv: make_list("nmap", "--script=banner", "-p", port, get_host_ip()));
+argv = make_list("nmap", "--script=banner", "-p", port, get_host_ip());
+
+if(TARGET_IS_IPV6())
+  argv = make_list(argv, "-6");
+
+timing_policy = get_kb_item("Tools/nmap/timing_policy");
+if(timing_policy =~ '^-T[0-5]$')
+  argv = make_list(argv, timing_policy);
+
+source_iface = get_preference("source_iface");
+if(source_iface =~ '^[0-9a-zA-Z:_]+$') {
+  argv = make_list(argv, "-e");
+  argv = make_list(argv, source_iface);
+}
+
+res = pread(cmd:"nmap", argv:argv);
+
 if(res)
 {
   foreach line (split(res))

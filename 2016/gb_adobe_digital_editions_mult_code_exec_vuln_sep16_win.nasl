@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_code_exec_vuln_sep16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_adobe_digital_editions_mult_code_exec_vuln_sep16_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Adobe Digital Editions Multiple Code Execution Vulnerabilities Sep16 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809246");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-4256", "CVE-2016-4257", "CVE-2016-4258", "CVE-2016-4259",
                 "CVE-2016-4260", "CVE-2016-4261", "CVE-2016-4262", "CVE-2016-4263",
                 "CVE-2016-6980");
   script_bugtraq_id(92928, 93179);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 11:46:17 +0530 (Thu, 15 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Multiple Code Execution Vulnerabilities Sep16 (Windows)");
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Digital Edition 4.x before 4.5.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version 4.5.2
-  or later.
-  For updates refer to http://www.adobe.com/");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");
   script_mandatory_keys("AdobeDigitalEdition/Win/Ver");
+  script_xref(name:"URL", value:"http://www.adobe.com/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol59298921.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_f5_big_ip_sol59298921.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # F5 BIG-IP - SOL59298921 - OpenSSL vulnerability CVE-2016-2181
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-2181");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("F5 BIG-IP - SOL59298921 - OpenSSL vulnerability CVE-2016-2181");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K59298921");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -52,7 +52,7 @@ rec_layer_d1.c and ssl3_record.c.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-31 11:44:56 +0100 (Mon, 31 Oct 2016)");
 
   script_category(ACT_GATHER_INFO);
@@ -62,7 +62,7 @@ rec_layer_d1.c and ssl3_record.c.");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

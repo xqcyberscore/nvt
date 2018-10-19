@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_may14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln01_may14_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 May14 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804606");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-0521", "CVE-2014-0522", "CVE-2014-0523", "CVE-2014-0524",
                 "CVE-2014-0525", "CVE-2014-0526", "CVE-2014-0527", "CVE-2014-0528",
                 "CVE-2014-0529");
   script_bugtraq_id(67363, 67360, 67368, 67369, 67365, 67370, 67367, 67366, 67362);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 10:46:12 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 May14 (Windows)");
 
@@ -64,8 +64,7 @@ disclose potentially sensitive information, bypass certain security
 restrictions, execute arbitrary code and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader X before version 10.1.10 and XI before version 11.0.07 on
 Windows.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader X version 10.1.10 or XI version 11.0.07 or later.
-For updates refer http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader X version 10.1.10 or XI version 11.0.07 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +76,7 @@ For updates refer http://get.adobe.com/reader");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

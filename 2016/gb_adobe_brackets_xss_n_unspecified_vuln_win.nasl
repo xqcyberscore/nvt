@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:brackets";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808177");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4164", "CVE-2016-4165");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 11:10:27 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A JavaScript injection vulnerability.
 
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Brackets prior to 1.7 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Brackets version 1.7
-  or later. For updates refer http://brackets.io");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_brackets_detect_win.nasl");
   script_mandatory_keys("AdobeBrackets/Win/Ver");
+  script_xref(name:"URL", value:"http://brackets.io");
   exit(0);
 }
 

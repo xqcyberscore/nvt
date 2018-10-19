@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0012.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2017_0012.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Palo Alto PAN-OS OpenSSL Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106828");
-  script_version("$Revision: 8721 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-05-23 15:33:39 +0700 (Tue, 23 May 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-23 15:33:39 +0700 (Tue, 23 May 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-3731");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Palo Alto PAN-OS OpenSSL Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
-  script_tag(name: "summary", value: "The OpenSSL library has been found to contain a vulnerability.");
+  script_tag(name:"summary", value:"The OpenSSL library has been found to contain a vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Palo Alto Networks software makes use of the vulnerable library and may be
+  script_tag(name:"insight", value:"Palo Alto Networks software makes use of the vulnerable library and may be
 affected.");
 
-  script_tag(name: "affected", value: "PAN-OS 6.1, PAN-OS 7.0.14 and earlier, PAN-OS 7.1 and PAN-OS 8.0.");
+  script_tag(name:"affected", value:"PAN-OS 6.1, PAN-OS 7.0.14 and earlier, PAN-OS 7.1 and PAN-OS 8.0.");
 
-  script_tag(name: "solution", value: "Update to PAN-OS 7.0.15, PAN-OS 7.1.10, PAN-OS 8.0.2 or later.");
+  script_tag(name:"solution", value:"Update to PAN-OS 7.0.15, PAN-OS 7.1.10, PAN-OS 8.0.2 or later.");
 
-  script_xref(name: "URL", value: "https://securityadvisories.paloaltonetworks.com/Home/Detail/82");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/82");
 
   exit(0);
 }

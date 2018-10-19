@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_mult_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_mcafee_email_gateway_mult_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # McAfee Email Gateway Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:mcafee:email_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807868");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2013-7103", "CVE-2013-7104", "CVE-2013-7092");
   script_bugtraq_id(64150);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 11:01:01 +0530 (Thu, 14 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("McAfee Email Gateway Multiple Vulnerabilities");
@@ -45,7 +45,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Insufficient validation of input via shell metacharacters in the value
     attribute in a 'TestFile XML', 'hostname', 'Command' and 'Script

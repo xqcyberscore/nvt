@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Apache Tomcat Connector Authentication Bypass Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:mod_jk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805612");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-8111");
   script_bugtraq_id(74265);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-11 12:56:25 +0530 (Mon, 11 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Connector Authentication Bypass Vulnerability May15");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Tomcat Connectors (mod_jk)
   before 1.2.41.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.2.41 or later,
-  For updates refer http://www.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.2.41 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_apache_mod_jk_detect.nasl");
   script_mandatory_keys("apache_modjk/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_videowhisper_live_streaming_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wordpress_videowhisper_live_streaming_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # WordPress VideoWhisper Live Streaming Integration Plugin XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804804");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-4569");
   script_bugtraq_id(68321);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-11 11:00:09 +0530 (Mon, 11 Aug 2014)");
   script_name("WordPress VideoWhisper Live Streaming Integration Plugin XSS Vulnerability");
 
@@ -50,8 +50,7 @@ code in a user's browser session within the trust relationship between their
 browser and the server.");
   script_tag(name:"affected", value:"WordPress VideoWhisper Live Streaming Integration Plugin version 4.27.2 and
 prior.");
-  script_tag(name:"solution", value:"Upgrade to version 4.27.3 or later. For updates refer
-http://wordpress.org/plugins/videowhisper-live-streaming-integration");
+  script_tag(name:"solution", value:"Upgrade to version 4.27.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/94207");
@@ -63,6 +62,7 @@ http://wordpress.org/plugins/videowhisper-live-streaming-integration");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/videowhisper-live-streaming-integration");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_rce_vuln.nasl 8319 2018-01-08 09:51:03Z asteins $
+# $Id: gb_pfsense_rce_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112135");
-  script_version("$Revision: 8319 $");
+  script_version("$Revision: 11977 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:51:03 +0100 (Mon, 08 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 08:35:21 +0100 (Thu, 23 Nov 2017)");
   script_name("pfSense Remote Code Execution & Cross-Site Request Forgery Vulnerability");
 
@@ -46,18 +46,17 @@ if (description)
   script_tag(name:"summary", value:"This host is running pfSense and is prone
 to a remote code execution and cross-site request forgery (csrf) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value: "The pfSense WebGUI is vulnerable to clickjacking.
+  script_tag(name:"insight", value:"The pfSense WebGUI is vulnerable to clickjacking.
 By tricking an authenticated admin into interacting with a specially crafted webpage it is possible for an attacker
 to execute arbitrary code in the WebGUI.");
 
   script_tag(name:"impact", value:"Since the WebGUI runs as the root user, this will result in a full compromise of the pfSense instance.");
 
-  script_tag(name:"affected" , value:"pfSense before version 2.4.2");
+  script_tag(name:"affected", value:"pfSense before version 2.4.2");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.4.2 or later. For updates refer to https://www.pfsense.org");
+  script_tag(name:"solution", value:"Upgrade to version 2.4.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ to execute arbitrary code in the WebGUI.");
   script_dependencies("gb_pfsense_detect.nasl");
   script_mandatory_keys("pfsense/installed");
 
+  script_xref(name:"URL", value:"https://www.pfsense.org");
   exit(0);
 }
 

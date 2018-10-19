@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_spring_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_struts_spring_dos_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Apache Struts Spring AOP DoS Vulnerability (Linux)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106956");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-9787");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Struts Spring AOP DoS Vulnerability (Linux)");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "When using a Spring AOP functionality to secure Struts actions it is
+  script_tag(name:"summary", value:"When using a Spring AOP functionality to secure Struts actions it is
 possible to perform a DoS attack when user was properly authenticated");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Struts 2.3.7 - Struts 2.3.32, Struts 2.5 - Struts 2.5.10.1");
+  script_tag(name:"affected", value:"Struts 2.3.7 - Struts 2.3.32, Struts 2.5 - Struts 2.5.10.1");
 
-  script_tag(name: "solution", value: "Upgrade to Struts 2.3.33, 2.5.12 or later.");
+  script_tag(name:"solution", value:"Upgrade to Struts 2.3.33, 2.5.12 or later.");
 
-  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-049.html");
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-049.html");
 
   exit(0);
 }

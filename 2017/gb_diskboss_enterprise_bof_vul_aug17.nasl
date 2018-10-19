@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_diskboss_enterprise_bof_vul_aug17.nasl 9190 2018-03-23 12:43:21Z jschulte $
+# $Id: gb_diskboss_enterprise_bof_vul_aug17.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # DiskBoss Enterprise Server 8.3.12 Buffer Overflow Vulnerability (Windows)
 #
@@ -29,30 +29,28 @@ CPE = "cpe:/a:dboss:diskboss_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107185");
-  script_version("$Revision: 9190 $");
+  script_version("$Revision: 11959 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 13:43:21 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 16:11:25 +0530 (Fri, 06 Oct 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("DiskBoss Enterprise Server 8.3.12 Buffer Overflow Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with DiskBoss Enterprise
+  script_tag(name:"summary", value:"The host is installed with DiskBoss Enterprise
   and is prone to a buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"The script checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
-  attackers to elevate privileges from any account type and execute code.
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
+  attackers to elevate privileges from any account type and execute code.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"DiskBoss Enterprise v8.3.12");
 
-  script_tag(name: "affected" , value:"DiskBoss Enterprise v8.3.12");
-
-  script_tag(name: "solution" , value:"Update to version 9.0 or above.");
+  script_tag(name:"solution", value:"Update to version 9.0 or above.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/143941/DiskBoss-Enterprise-8.3.12-Buffer-Overflow.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/143941/DiskBoss-Enterprise-8.3.12-Buffer-Overflow.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Denial of Service");

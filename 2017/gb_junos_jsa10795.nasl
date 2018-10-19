@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10795.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_junos_jsa10795.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Junos MPLS DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140290");
-  script_version ("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-10 11:17:39 +0700 (Thu, 10 Aug 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-10 11:17:39 +0700 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2347");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos MPLS DoS Vulnerability");
 
@@ -48,22 +48,22 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a denial of service vulnerability in rpd when receiving
+  script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability in rpd when receiving
 a malformed MPLS ping packet.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "A denial of service vulnerability in rpd daemon of Juniper Networks Junos
+  script_tag(name:"insight", value:"A denial of service vulnerability in rpd daemon of Juniper Networks Junos
 OS allows a malformed MPLS ping packet to crash the rpd daemon. Repeated crashes of the rpd daemon can result in
 an extended denial of service condition for the device.");
 
-  script_tag(name: "affected", value: "Junos OS 12.3X48, 13.3, 14.1, 14.1X53, 14.2, 15.1, 15.1X49, 15.1X53,
+  script_tag(name:"affected", value:"Junos OS 12.3X48, 13.3, 14.1, 14.1X53, 14.2, 15.1, 15.1X49, 15.1X53,
 16.1.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10795");
 

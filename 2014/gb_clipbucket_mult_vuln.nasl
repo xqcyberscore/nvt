@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_clipbucket_mult_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # ClipBucket Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804543");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2012-6642", "CVE-2012-6643", "CVE-2012-6644");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:23:11 +0530 (Fri, 18 Apr 2014)");
   script_name("ClipBucket Multiple Vulnerabilities");
 
@@ -48,8 +48,7 @@ if(description)
   script code and manipulate SQL queries in the backend database allowing
   for the manipulation or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"ClipBucket version 2.6, Other versions may also be affected.");
-  script_tag(name:"solution", value:"Apply the patch from the below link,
-  For patch refer to http://sourceforge.net/projects/clipbucket/files/ClipBucket%20v2");
+  script_tag(name:"solution", value:"Apply the patch from the referenced link.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47474");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108489");
@@ -61,6 +60,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/clipbucket/files/ClipBucket%20v2");
   exit(0);
 }
 

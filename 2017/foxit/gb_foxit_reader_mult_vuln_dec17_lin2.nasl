@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_dec17_lin2.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_vuln_dec17_lin2.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Multiple vulnerabilities in Foxit Reader 8.3.2 (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113075");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 11:48:49 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/de/pdf-reader/version-history.php");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:foxitsoftware:reader";

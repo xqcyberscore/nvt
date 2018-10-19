@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savce_installed.nasl 11029 2018-08-17 09:30:04Z cfischer $
+# $Id: savce_installed.nasl 11964 2018-10-18 12:44:10Z cfischer $
 #
 # Symantec Anti Virus Corporate Edition Check
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80040");
-  script_version("$Revision: 11029 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:30:04 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11964 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 14:44:10 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Symantec Anti Virus Corporate Edition Check");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
@@ -327,7 +327,7 @@ if (warning)
   report += "As a result, the remote host might be infected by viruses received by
 email or other means.";
 
-  security_message(port:0, data:report);
+  log_message(port:0, data:report);
 }
 else
 {

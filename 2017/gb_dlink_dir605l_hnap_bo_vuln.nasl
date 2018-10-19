@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir605l_hnap_bo_vuln.nasl 7981 2017-12-04 12:08:09Z asteins $
+# $Id: gb_dlink_dir605l_hnap_bo_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # D-Link DIR-605L HNAP Buffer Overflow Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112145");
-  script_version("$Revision: 7981 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-04 13:08:09 +0100 (Mon, 04 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-04 13:02:20 +0100 (Mon, 04 Dec 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11959 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-04 13:02:20 +0100 (Mon, 04 Dec 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-17065");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DIR-605L HNAP Buffer Overflow Vulnerability");
 
@@ -49,20 +49,20 @@ if (description)
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir", "dlink_hw_version");
 
-  script_tag(name: "summary", value: "On D-Link DIR-605L devices, firmware before 2.11betaB01_hbrf it is possible to cause the router to crash and reboot when
+  script_tag(name:"summary", value:"On D-Link DIR-605L devices, firmware before 2.11betaB01_hbrf it is possible to cause the router to crash and reboot when
       sending large buffers in the HTTP Basic Authentication password field.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "If a large enough buffer was sent, the next request to the web server would cause the reboot.");
+  script_tag(name:"insight", value:"If a large enough buffer was sent, the next request to the web server would cause the reboot.");
 
-  script_tag(name: "impact", value: "This issue could cause a possible condition - once crashed - to open other attack vectors for further exploitation");
+  script_tag(name:"impact", value:"This issue could cause a possible condition - once crashed - to open other attack vectors for further exploitation");
 
-  script_tag(name: "affected", value: "D-Link DIR-605L Rev. B routers with firmware prior to 2.11betaB06_hbrf.");
+  script_tag(name:"affected", value:"D-Link DIR-605L Rev. B routers with firmware prior to 2.11betaB06_hbrf.");
 
-  script_tag(name: "solution", value: "Upgrade to version 2.11betaB06_hbrf or later.");
+  script_tag(name:"solution", value:"Upgrade to version 2.11betaB06_hbrf or later.");
 
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-605L/REVB/DIR-605L_REVB_FIRMWARE_PATCH_NOTES_2.11betaB06_HBRF_EN.pdf");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-605L/REVB/DIR-605L_REVB_FIRMWARE_PATCH_NOTES_2.11betaB06_HBRF_EN.pdf");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_oct2017-3236626_01_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_oct2017-3236626_01_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Oracle Java SE Security Updates (oct2017-3236626) 01 - Windows
 #
@@ -29,38 +29,35 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812036");
-  script_version("$Revision: 10144 $");
-  script_cve_id("CVE-2017-10309" );
+  script_version("$Revision: 11982 $");
+  script_cve_id("CVE-2017-10309");
   script_bugtraq_id(101328);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 13:01:47 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Java SE Security Updates (oct2017-3236626) 01 - Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a flaw in the Deployment
+  script_tag(name:"insight", value:"The flaw exists due to a flaw in the Deployment
   component of the application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow attackers to partially access data, partially modify data, and partially
-  deny services.
+  deny services.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE version 1.8.0.144 and earlier,
+  script_tag(name:"affected", value:"Oracle Java SE version 1.8.0.144 and earlier,
   9.0 on Windows");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809390");
-  script_version("$Revision: 10743 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_bugtraq_id(93810);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:08:42 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Crash in nsTArray_base&lt;T&gt;::SwapArrayElements.
+
   - Web content can read cache entries");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause denial of service, and web
   content could access information in the HTTP cache which can reveal some
-  visited URLs and the contents of those pages.
+  visited URLs and the contents of those pages.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   49.0.2 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 49.0.2
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 49.0.2
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 
@@ -87,3 +88,5 @@ if(version_is_less(version:ffVer, test_version:"49.0.2"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

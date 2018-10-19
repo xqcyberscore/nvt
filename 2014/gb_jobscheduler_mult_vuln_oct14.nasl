@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # JobScheduler Multiple Vulnerabilities - Oct14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804773");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-5391", "CVE-2014-5392", "CVE-2014-5393");
   script_bugtraq_id(69660, 69664, 69661);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-09 10:33:16 +0530 (Thu, 09 Oct 2014)");
 
   script_name("JobScheduler Multiple Vulnerabilities - Oct14");
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"JobScheduler version before 1.6.4246 and
   7.x before 1.7.4241.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.6.4246 or 1.7.4241 or later,
-  For updates refer http://www.sos-berlin.com/modules/cjaycontent/index.php?id=osource_scheduler_introduction_en.htm");
+  script_tag(name:"solution", value:"Upgrade to version 1.6.4246 or 1.7.4241 or later.");
 
   script_xref(name:"URL", value:"http://www.sos-berlin.com/modules/news/article.php?storyid=73");
   script_xref(name:"URL", value:"http://www.sos-berlin.com/modules/news/article.php?storyid=74");
@@ -75,6 +74,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.sos-berlin.com/modules/cjaycontent/index.php?id=osource_scheduler_introduction_en.htm");
   exit(0);
 }
 

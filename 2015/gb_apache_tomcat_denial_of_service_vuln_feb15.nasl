@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Apache Tomcat Denial Of Service Vulnerability - Mar15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805474");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-0227");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 17:41:16 +0530 (Fri, 06 Mar 2015)");
   script_name("Apache Tomcat Denial Of Service Vulnerability - Mar15");
 
@@ -54,7 +54,7 @@ if(description)
   7.0.55, and 8.x before 8.0.9");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.42 or 7.0.55 or
-  8.0.9 or later. For updates refer http://tomcat.apache.org");
+  8.0.9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

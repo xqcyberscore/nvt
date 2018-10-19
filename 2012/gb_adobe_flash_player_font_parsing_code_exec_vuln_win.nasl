@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_win.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Adobe Flash Player Font Parsing Code Execution Vulnerability - (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802940");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11973 $");
   script_cve_id("CVE-2012-1535");
   script_bugtraq_id(55009);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 13:00:42 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Flash Player Font Parsing Code Execution Vulnerability - (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50285/");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version prior to 11.3.300.271 on Windows");
   script_tag(name:"insight", value:"An unspecified error occurs when handling SWF content in a word document.
   This may allow a context-dependent attacker to execute arbitrary code.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.3.300.271 or later,
-  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.3.300.271 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   unspecified code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

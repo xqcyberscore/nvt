@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_security_bypass_vuln_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_security_bypass_vuln_win.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # PHP 'URL checks' Security Bypass Vulnerability Jul17 (Windows)
 #
@@ -29,32 +29,29 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811488");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11959 $");
   script_cve_id("CVE-2016-10397");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 16:38:21 +0530 (Thu, 13 Jul 2017)");
   script_name("PHP 'URL checks' Security Bypass Vulnerability Jul17 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to incorrect handling of
   various URI components in the URL parser.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  an attacker to bypass hostname-specific URL checks.
-
-  Impact Level: Application");
+  an attacker to bypass hostname-specific URL checks.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.28, 7.x before 7.0.13");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.28, 7.0.13,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");

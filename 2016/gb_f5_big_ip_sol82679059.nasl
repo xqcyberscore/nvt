@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol82679059.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_f5_big_ip_sol82679059.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # F5 BIG-IP - SOL82679059 - BIG-IP APM SSO vulnerability CVE-2016-3686
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-3686");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
 
   script_name("F5 BIG-IP - SOL82679059 - BIG-IP APM SSO vulnerability CVE-2016-3686");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"There is a theoretical risk that a user could obtain unauthorized access to the system, causing a security breach.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Cleartext SessionID is visible in URL query parameters under some conditions.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 11:30:39 +0200 (Mon, 18 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

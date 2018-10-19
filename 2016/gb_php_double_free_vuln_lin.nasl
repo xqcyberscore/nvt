@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_double_free_vuln_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_php_double_free_vuln_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # PHP Double Free Vulnerability - Jul16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808190");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2015-8880");
   script_bugtraq_id(90816);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Double Free Vulnerability  - Jul16 (Linux)");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions 7.x before 7.0.1");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.1,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

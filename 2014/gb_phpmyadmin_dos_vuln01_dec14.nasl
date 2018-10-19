@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_dos_vuln01_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_phpmyadmin_dos_vuln01_dec14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # phpMyAdmin Denial-of-Service Vulnerability -01 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805307");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9218");
   script_bugtraq_id(71434);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:10:42 +0530 (Fri, 26 Dec 2014)");
   script_name("phpMyAdmin Denial-of-Service Vulnerability -01 Dec14");
 
@@ -54,7 +54,7 @@ if(description)
   4.1.x prior to 4.1.14.8 and 4.2.x prior to 4.2.13.1");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.0.10.7 or 4.1.14.8
-  or 4.2.13.1 or later. For updates refer http://www.phpmyadmin.net");
+  or 4.2.13.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

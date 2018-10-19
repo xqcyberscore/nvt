@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_march16_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_march16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities March16 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807447");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2528", "CVE-2016-2527", "CVE-2016-2526", "CVE-2016-2524",
                 "CVE-2016-2525", "CVE-2016-2522", "CVE-2016-4415", "CVE-2016-4416",
                 "CVE-2016-4419", "CVE-2016-4420");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 13:22:15 +0530 (Thu, 03 Mar 2016)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities March16 (Mac OS X)");
 
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - The 'dissect_nhdr_extopt' function in 'epan/dissectors/packet-lbmc.c' script
     in the LBMC dissector does not validate length values.
@@ -84,8 +84,7 @@ if(description)
   on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.0.2 or
-  later.
-  For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

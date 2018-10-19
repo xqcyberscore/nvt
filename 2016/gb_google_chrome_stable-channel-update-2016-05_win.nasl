@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-2016-05_win.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-2016-05_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-2016-05)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807589");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1667", "CVE-2016-1668", "CVE-2016-1669", "CVE-2016-1670");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:47:13 +0530 (Tue, 17 May 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-2016-05)-Windows");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exist due to
 
   - Same origin bypass in DOM.
 

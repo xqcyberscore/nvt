@@ -24,54 +24,48 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_affected = "mozilla-thunderbird on Mandriva Linux 2011.0";
-tag_insight = "Use-after-free vulnerability in Mozilla Firefox 10.x before 10.0.1,
-  Thunderbird 10.x before 10.0.1, and SeaMonkey 2.7 allows remote
-  attackers to cause a denial of service (application crash) or
-  possibly execute arbitrary code via vectors that trigger failure of
-  an nsXBLDocumentInfo::ReadPrototypeBindings function call, related
-  to the cycle collector&#039;s access to a hash table containing a stale
-  XBL binding (CVE-2012-0452).";
-tag_solution = "Please Install the Updated Packages.";
 
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:018");
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:018");
   script_oid("1.3.6.1.4.1.25623.1.0.831565");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:49:31 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-0452");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:018");
+  script_xref(name:"MDVSA", value:"2012:018");
   script_name("Mandriva Update for mozilla-thunderbird MDVSA-2012:018 (mozilla-thunderbird)");
 
-  script_tag(name: "summary" , value: "Check for the Version of mozilla-thunderbird");
+  script_tag(name:"summary", value:"Check for the Version of mozilla-thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2011\.0");
+  script_tag(name:"affected", value:"mozilla-thunderbird on Mandriva Linux 2011.0");
+  script_tag(name:"insight", value:"Use-after-free vulnerability in Mozilla Firefox 10.x before 10.0.1,
+  Thunderbird 10.x before 10.0.1, and SeaMonkey 2.7 allows remote
+  attackers to cause a denial of service (application crash) or
+  possibly execute arbitrary code via vectors that trigger failure of
+  an nsXBLDocumentInfo::ReadPrototypeBindings function call, related
+  to the cycle collector&#039;s access to a hash table containing a stale
+  XBL binding (CVE-2012-0452).");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -532,6 +526,6 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1627_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1627_1.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Ubuntu Update for apache2 USN-1627-1
 #
@@ -26,14 +26,12 @@
 
 include("revisions-lib.inc");
 
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1627-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841209");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11973 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 09:34:28 +0530 (Fri, 09 Nov 2012)");
   script_cve_id("CVE-2012-2687", "CVE-2012-4929");
   script_tag(name:"cvss_base", value:"2.6");
@@ -66,11 +64,10 @@ if(description)
   client with newer web browsers, this update also disables SSL data
   compression on the server. A new SSLCompression directive for Apache has
   been backported that may be used to re-enable SSL data compression in
-  certain environments. For more information, please refer to:
-  http://httpd.apache.org/docs/2.4/mod/mod_ssl.html
-  (CVE-2012-4929)");
+  certain environments. (CVE-2012-4929)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://httpd.apache.org/docs/2.4/mod/mod_ssl.html");
   exit(0);
 }
 

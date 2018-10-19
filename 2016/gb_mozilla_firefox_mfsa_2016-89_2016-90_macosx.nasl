@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809804");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5296", "CVE-2016-5292", "CVE-2016-5297", "CVE-2016-9064",
                 "CVE-2016-9066", "CVE-2016-9067", "CVE-2016-5290", "CVE-2016-9068",
                 "CVE-2016-9072", "CVE-2016-9075", "CVE-2016-9077", "CVE-2016-5291",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(94336, 94337, 94342, 94339);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 12:25:23 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-MAC OS X");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Heap-buffer-overflow WRITE in rasterize_edges_1.
 

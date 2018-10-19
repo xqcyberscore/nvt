@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln01_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_symantec_web_gateway_mult_vuln01_dec14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Symantec Web Gateway Multiple Vulnerabilities -01 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805227");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2013-5017", "CVE-2014-1650");
   script_bugtraq_id(67752, 67753);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 11:50:52 +0530 (Tue, 23 Dec 2014)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities -01 Dec14");
 
@@ -60,7 +60,7 @@ if(description)
   5.2.1");
 
   script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version
-  5.2.1 or later. For updates refer http://www.symantec.com/web-gateway/");
+  5.2.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030443");
@@ -71,6 +71,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_symantec_web_gateway_detect.nasl");
   script_mandatory_keys("symantec_web_gateway/installed");
+  script_xref(name:"URL", value:"http://www.symantec.com/web-gateway/");
   exit(0);
 }
 

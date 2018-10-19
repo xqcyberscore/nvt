@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_multiple_vuln01_win.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_openafs_multiple_vuln01_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # OpenAFS Multiple Vulnerabilities-01 (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808076");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-6587", "CVE-2015-3282", "CVE-2015-3283");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:01:35 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Vulnerabilities-01 (Windows)");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaw exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - An invalid validation of the regular expression in vlserver that allows
     pattern matching on volume names.

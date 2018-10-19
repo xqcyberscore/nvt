@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_spicy_blogroll_file_incl_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wp_spicy_blogroll_file_incl_vuln.nasl 11960 2018-10-18 10:48:11Z jschulte $
 #
 # Wordpress Spicy Blogroll Plugin File Inclusion Vulnerability
 #
@@ -29,27 +29,27 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803843");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11960 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-26 16:57:57 +0530 (Fri, 26 Jul 2013)");
   script_name("Wordpress Spicy Blogroll Plugin File Inclusion Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Wordpress Spicy Blogroll Plugin and prone to file
-inclusion vulnerability.");
+  inclusion vulnerability.");
   script_tag(name:"vuldetect", value:"Send a scrambled file name via HTTP GET request and check whether it is able
-to read the system file or not.");
+  to read the system file or not.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"Input passed via 'var2' and 'var4' parameters to
-'/spicy-blogroll/spicy-blogroll-ajax.php' script is not properly sanitised
-before being used in the code.");
+  '/spicy-blogroll/spicy-blogroll-ajax.php' script is not properly sanitised
+  before being used in the code.");
   script_tag(name:"affected", value:"Wordpress Spicy Blogroll Plugin version 1.0.0 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass certain security
-restrictions and gain access to file system and other configuration files.");
+  restrictions and gain access to file system and other configuration files.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://1337day.com/exploits/20994");

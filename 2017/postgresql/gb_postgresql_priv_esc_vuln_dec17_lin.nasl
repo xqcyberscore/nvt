@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_dec17_lin.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_postgresql_priv_esc_vuln_dec17_lin.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # PostgreSQL Privilege Escalation Vulnerability-Dec17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812314");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-12172");
   script_bugtraq_id(101949);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 16:58:49 +0530 (Mon, 04 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Privilege Escalation Vulnerability-Dec17 (Linux)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running PostgreSQL and is
   prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as PostgreSQL runs under a
   non-root operating system account, and database superusers have effective ability
@@ -56,29 +55,27 @@ if(description)
   privileges when root starts the server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local user
-  to modify files on the target system.
-
-  Impact Level: Application");
+  to modify files on the target system.");
 
   script_tag(name:"affected", value:"PostgreSQL version 9.2.x before 9.2.24, 9.3.x
   before 9.3.20, 9.4.x before 9.4.15, 9.5.x before 9.5.10, 9.6.x before 9.6.6 and
   10.x before 10.1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PostgreSQL version 10.1 or 9.6.6
-  or 9.5.10 or 9.4.15 or 9.3.20 or 9.2.24 or later. For updates refer to
-  http://www.postgresql.org/download");
+  or 9.5.10 or 9.4.15 or 9.3.20 or 9.2.24 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.postgresql.org/about/news/1801");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/support/security");
+  script_xref(name:"URL", value:"https://www.postgresql.org/about/news/1801");
+  script_xref(name:"URL", value:"https://www.postgresql.org/support/security");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
-  script_dependencies("postgresql_detect.nasl","os_detection.nasl");
-  script_mandatory_keys("PostgreSQL/installed","Host/runs_unixoide");
+  script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_unixoide");
   script_require_ports("Services/postgresql", 5432);
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 
@@ -90,7 +87,6 @@ pgsqlVer = "";
 fix = "";
 pgsqlPath = "";
 
-## Get the default port
 pgsqlPort = get_app_port(cpe:CPE);
 if(!pgsqlPort){
   exit(0);

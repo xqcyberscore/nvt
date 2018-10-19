@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln02_may16_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln02_may16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities -02 May16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807579");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4006", "CVE-2016-4078", "CVE-2016-4079", "CVE-2016-4080",
                 "CVE-2016-4081", "CVE-2016-4082");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 11:52:01 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities -02 May16 (Mac OS X)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - 'epan/proto.c' script does not limit the protocol-tree depth.
 

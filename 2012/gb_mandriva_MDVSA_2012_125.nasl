@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities was found and corrected in Wireshark:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:125");
+  script_oid("1.3.6.1.4.1.25623.1.0.831713");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-09 10:25:21 +0530 (Thu, 09 Aug 2012)");
+  script_cve_id("CVE-2012-4048", "CVE-2012-4049");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"MDVSA", value:"2012:125");
+  script_name("Mandriva Update for wireshark MDVSA-2012:125 (wireshark)");
+
+  script_tag(name:"summary", value:"Check for the Version of wireshark");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2)");
+  script_tag(name:"affected", value:"wireshark on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities was found and corrected in Wireshark:
 
   It may be possible to make Wireshark crash by injecting a malformed
   packet onto the wire or by convincing someone to read a malformed
@@ -35,50 +60,18 @@ tag_insight = "Multiple vulnerabilities was found and corrected in Wireshark:
   to read a malformed packet trace file (CVE-2012-4049).
 
   This advisory provides the latest versiona of Wireshark (1.4.14,
-  1.6.8) which is not vulnerable to these issues.";
-
-tag_affected = "wireshark on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:125");
-  script_oid("1.3.6.1.4.1.25623.1.0.831713");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-09 10:25:21 +0530 (Thu, 09 Aug 2012)");
-  script_cve_id("CVE-2012-4048", "CVE-2012-4049");
-  script_tag(name:"cvss_base", value:"3.3");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "MDVSA", value: "2012:125");
-  script_name("Mandriva Update for wireshark MDVSA-2012:125 (wireshark)");
-
-  script_tag(name: "summary" , value: "Check for the Version of wireshark");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  1.6.8) which is not vulnerable to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -137,7 +130,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -199,6 +192,6 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

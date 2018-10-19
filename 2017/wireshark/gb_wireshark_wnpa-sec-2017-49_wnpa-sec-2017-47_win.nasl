@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2017-49_wnpa-sec-2017-47_win.nasl 8136 2017-12-15 10:59:51Z santu $
+# $Id: gb_wireshark_wnpa-sec-2017-49_wnpa-sec-2017-47_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Wireshark Security Updates (wnpa-sec-2017-49_wnpa-sec-2017-47)-Windows
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,41 +29,38 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812259");
-  script_version("$Revision: 8136 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-17083", "CVE-2017-17084", "CVE-2017-17085");
   script_bugtraq_id(102029, 102030, 102071);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 11:59:51 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-15 11:37:23 +0530 (Fri, 15 Dec 2017)");
   script_name("Wireshark Security Updates (wnpa-sec-2017-49_wnpa-sec-2017-47)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple errors
-  in 'NetBIOS', 'IWARP_MPA' and 'CIP Safety' dissectors, which fails to properly 
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple errors
+  in 'NetBIOS', 'IWARP_MPA' and 'CIP Safety' dissectors, which fails to properly
   handle certain types of packets.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
-  vulnerabilities will allow remote attackers to crash the affected application, 
-  denying service to legitimate users.
+  script_tag(name:"impact", value:"Successful exploitation of these
+  vulnerabilities will allow remote attackers to crash the affected application,
+  denying service to legitimate users.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.4.0 to 2.4.2, 2.2.0 
+  script_tag(name:"affected", value:"Wireshark version 2.4.0 to 2.4.2, 2.2.0
   to 2.2.10 on Windows.");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.4.3 or
-  2.2.11 or later. For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.3 or
+  2.2.11 or later.");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-47.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-48.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-49.html");
- 
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-47.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-48.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-49.html");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 

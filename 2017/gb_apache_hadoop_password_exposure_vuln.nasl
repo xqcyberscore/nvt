@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_password_exposure_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
+# $Id: gb_apache_hadoop_password_exposure_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Apache Hadoop Password Exposure Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112036");
-  script_version("$Revision: 7125 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-3086");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 20:31:53 +0530 (Tue, 27 Jun 2017)");
   script_name("Apache Hadoop Password Exposure Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Hadoop
   and is prone to a password exposure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The YARN NodeManager in Apache Hadoop can leak the password for credential store provider used by the NodeManager to YARN Applications.");
 
@@ -53,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"All versions of Hadoop 2.6.x before 2.6.5 and 2.7.x before 2.7.3.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Hadoop version 2.6.5 or 2.7.3 or
-  later or set the permission of the jceks file appropriately to restrict access from unauthorized users.
-  For updates refer to http://www.hadoop.apache.org");
+  later or set the permission of the jceks file appropriately to restrict access from unauthorized users.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +64,7 @@ if(description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
   script_require_ports("Services/www", 50070);
+  script_xref(name:"URL", value:"http://www.hadoop.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_CVE_2016_5092.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_fortiweb_CVE_2016_5092.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # FortiWeb path traversal vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-5092", "CVE-2016-4066");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
 
   script_name("FortiWeb path traversal vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"Information disclosure");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiWeb 5.5.3 or higher.");
 
   script_tag(name:"summary", value:"A path traversal vulnerability allows an administrator account with read and write privileges to read arbitrary files using the autolearn feature.");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 19:08:43 +0200 (Tue, 05 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_fortiweb_version.nasl");
   script_mandatory_keys("fortiweb/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

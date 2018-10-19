@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_sep15_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mediawiki_mult_vuln_sep15_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities - Sep15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108092");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2015-6727", "CVE-2015-6728", "CVE-2015-6729", "CVE-2015-6730", "CVE-2013-7444");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 10:45:17 +0100 (Thu, 09 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Sep15 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with MediaWiki
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to:
 
@@ -61,19 +60,18 @@ if(description)
   - Cross-site scripting (XSS) vulnerability in thumb.php via the f parameter, which is not properly handled in an error page, related to 'ForeignAPI images.'");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct XSS attacks, gain access to sensitive information and
-  have other some unspecified impact.
-
-  Impact Level: Application");
+  have other some unspecified impact.");
 
   script_tag(name:"affected", value:"MediaWiki before 1.23.10, 1.24.x before 1.24.3,
   and 1.25.x before 1.25.2");
 
   script_tag(name:"solution", value:"Upgrade to version 1.23.10 or 1.24.3
-  or 1.25.2 or later. For updates refer http://www.mediawiki.org");
+  or 1.25.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mediawiki.org");
   exit(0);
 }
 

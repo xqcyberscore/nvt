@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_code_exec_n_dos_vuln_apr17_win.nasl 11559 2018-09-24 06:10:19Z cfischer $
+# $Id: gb_vmware_player_code_exec_n_dos_vuln_apr17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # VMware Player Code Execution And DoS Vulnerabilities Apr17 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810681");
-  script_version("$Revision: 11559 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2015-2340", "CVE-2015-2339", "CVE-2015-2338", "CVE-2015-2337",
                 "CVE-2015-2336", "CVE-2012-0897");
   script_bugtraq_id(75092, 75095, 51426);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:10:19 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 18:06:57 +0530 (Fri, 07 Apr 2017)");
   script_name("VMware Player Code Execution And DoS Vulnerabilities Apr17 (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   before 7.1.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Player version 6.0.6
-  or 7.1.1 or later. For updates refer to http://www.vmware.com");
+  or 7.1.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

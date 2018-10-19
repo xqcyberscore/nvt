@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_nov16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_apple_safari_mult_vuln_nov16.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities November16 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810207");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1849", "CVE-2016-1858", "CVE-2016-1854", "CVE-2016-1855",
                 "CVE-2016-1856", "CVE-2016-1857", "CVE-2016-1859");
   script_bugtraq_id(90690, 90689);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:05:47 +0530 (Tue, 22 Nov 2016)");
   script_name("Apple Safari Multiple Vulnerabilities November16 (Mac OS X)");
 
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - The 'Clear History and Website Data' feature mishandles the deletion of
     browsing history.

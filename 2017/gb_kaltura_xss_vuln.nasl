@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaltura_xss_vuln.nasl 5474 2017-03-03 08:32:02Z ckuerste $
+# $Id: gb_kaltura_xss_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Kaltura Server Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:kaltura:kaltura";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106629");
-  script_version("$Revision: 5474 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-03 09:32:02 +0100 (Fri, 03 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-03 13:38:08 +0700 (Fri, 03 Mar 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-03 13:38:08 +0700 (Fri, 03 Mar 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-6391", "CVE-2017-6392");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Kaltura Server Multiple XSS Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_kaltura_community_edition_detect.nasl");
   script_mandatory_keys("kaltura/installed");
 
-  script_tag(name: "summary", value: "Kaltura Server is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"Kaltura Server is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Kaltura Server is prone to multiple XSS vulnerabilities:
+  script_tag(name:"insight", value:"Kaltura Server is prone to multiple XSS vulnerabilities:
 
-- XSS vulnerability in SimpleJWPlayer.php, AkamaiBroadcaster.php, bigRedButton.php and bigRedButtonPtsPoc.php
+  - XSS vulnerability in SimpleJWPlayer.php, AkamaiBroadcaster.php, bigRedButton.php and bigRedButtonPtsPoc.php
 (CVE-2017-6391)
 
-- XSS vulnerability in XmlJWPlayer.php (CVE-2017-6392)");
+  - XSS vulnerability in XmlJWPlayer.php (CVE-2017-6392)");
 
-  script_tag(name: "affected", value: "Kaltura Server 12.11.0 and prior.");
+  script_tag(name:"affected", value:"Kaltura Server 12.11.0 and prior.");
 
-  script_tag(name: "solution", value: "Apply the provided patch.");
+  script_tag(name:"solution", value:"Apply the provided patch.");
 
-  script_xref(name: "URL", value: "https://github.com/kaltura/server/issues/5300");
-  script_xref(name: "URL", value: "https://github.com/kaltura/server/issues/5303");
+  script_xref(name:"URL", value:"https://github.com/kaltura/server/issues/5300");
+  script_xref(name:"URL", value:"https://github.com/kaltura/server/issues/5303");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_jan16_macosx.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln01_jan16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-01 January16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806944");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-8742", "CVE-2015-8741", "CVE-2015-8739", "CVE-2015-8740",
                 "CVE-2015-8738", "CVE-2015-8736", "CVE-2015-8735", "CVE-2015-8734");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 January16 (Mac OS X)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to
 
   - 'dissect_CPMSetBindings' function in 'epan/dissectors/packet-mswsp.c'
   script  in the MS-WSP dissector does not validate the column size.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_multiple_vuln_jan17.nasl 5025 2017-01-18 08:02:07Z antu123 $
+# $Id: gb_ntp_multiple_vuln_jan17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # NTP Multiple Vulnerabilities - Jan 2017
 #
@@ -29,77 +29,64 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809779");
-  script_version("$Revision: 5025 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2014-9296", "CVE-2014-9295");
   script_bugtraq_id(71758, 71761);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 09:02:07 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 17:05:06 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Vulnerabilities - Jan 2017");
 
-  script_tag(name: "summary" , value:"The host is running NTP and is prone to
+  script_tag(name:"summary", value:"The host is running NTP and is prone to
   multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exists due to
+
   - An error in the 'receive' function in ntp_proto.c script within application
     which continues to execute even after detecting a certain authentication error.
+
   - Multiple erros in ntpd functions 'crypto_recv' (when using autokey
     authentication), 'ctl_putdata', and 'configure'. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code and other unspecified effect on the affected
-  system.
-
-  Impact Level: System/Application");
+  system.");
 
   script_tag(name:"affected", value:"NTP versions before 4.2.8");
 
-  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8 or later.
-  For updates refer to http://www.ntp.org");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/852879");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2668");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2667");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2669");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2670");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/852879");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2668");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2667");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2669");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2670");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
+  script_xref(name:"URL", value:"http://www.ntp.org");
   exit(0);
 }
-
-##
-## Code Starts Here
-##
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-ntpVer = 0;
-report = "";
-ntpPort = "";
-
-# Get Port
 if(!ntpPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get Version
 if(!ntpVer = get_app_version(cpe:CPE, port:ntpPort)){
   exit(0);
 }
 
-## Check for less than 4.2.8
 if(version_is_less(version:ntpVer, test_version:"4.2.8"))
 {
   report = report_fixed_ver(installed_version:ntpVer, fixed_version:"4.2.8");

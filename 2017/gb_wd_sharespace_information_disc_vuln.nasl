@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_sharespace_information_disc_vuln.nasl 8568 2018-01-29 15:17:18Z cfischer $
+# $Id: gb_wd_sharespace_information_disc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Western Digital ShareSpace WEB GUI Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:western_digital:sharespace";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812364");
-  script_version("$Revision: 8568 $");
+  script_version("$Revision: 11977 $");
   script_bugtraq_id(54068);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-29 16:17:18 +0100 (Mon, 29 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 20:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("Western Digital ShareSpace WEB GUI Information Disclosure Vulnerability");
 
@@ -50,23 +50,20 @@ if(description)
   attacker to gain access to potentially sensitive information. By directly
   accessing the config.xml file without authentication it is possible to obtain
   system's configuration data, which includes network settings, shared folder
-  names, SMB users and hashed passwords, administrator's credentials, etc.
-
-  Impact Level: System/Application");
+  names, SMB users and hashed passwords, administrator's credentials, etc.");
 
   script_tag(name:"affected", value:"WD ShareSpace versions through 2.3.02
   (D and E series).");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at
-  least one year since disclosure of this vulnerability. Likely none will be provided
-  anymore. General solution options are to upgrade to a newer release, disable
-  respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Jun/309");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Jun/309");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

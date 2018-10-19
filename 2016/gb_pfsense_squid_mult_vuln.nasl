@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_squid_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_pfsense_squid_mult_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # pfSense Squid Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:pfsense:pfsense";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808587");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-19 12:17:57 +0530 (Tue, 19 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("pfSense Squid Multiple Vulnerabilities");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Squid Version 0.4.16_2 running on pfSense
   Version 2.3.1-RELEASE-p1");
 
-  script_tag(name:"solution", value:"Upgrade to Squid Version 0.4.18 or later,
-  For updates refer to http://www.squid-cache.org/");
+  script_tag(name:"solution", value:"Upgrade to Squid Version 0.4.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_pfsense_detect.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("pfsense/http/installed");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/");
   exit(0);
 }
 

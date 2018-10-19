@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_rpc_dos_vuln_lin.nasl 5941 2017-04-12 12:01:06Z antu123 $
+# $Id: gb_vmware_player_rpc_dos_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # VMware Player 'RPC Command' Denial of Service Vulnerability (Linux)
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810680");
-  script_version("$Revision: 5941 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2015-2341");
   script_bugtraq_id(75094);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:46:25 +0530 (Fri, 07 Apr 2017)");
   script_name("VMware Player 'RPC Command' Denial of Service Vulnerability (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Player
+  script_tag(name:"summary", value:"The host is installed with VMware Player
   and is prone to denial-of-service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an input validation
+  script_tag(name:"insight", value:"The flaw is due to an input validation
   issue on an RPC command.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to conduct a denial of service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to conduct a denial of service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VMware Player 6.x before 6.0.6
+  script_tag(name:"affected", value:"VMware Player 6.x before 6.0.6
   on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to VMware Player version
-  6.0.6 or later. For updates refer to http://www.vmware.com");
+  script_tag(name:"solution", value:"Upgrade to VMware Player version
+  6.0.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0004.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0004.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -75,16 +72,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-report = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(vmwareVer =~ "^6\.")
 {
   if(version_is_less(version:vmwareVer, test_version:"6.0.6"))

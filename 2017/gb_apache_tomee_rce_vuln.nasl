@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomee";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810965");
-  script_version("$Revision: 6588 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2016-0779");
   script_bugtraq_id(84422);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 10:21:40 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 17:04:45 +0530 (Wed, 28 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache TomEE Remote Code Execution Vulnerability");
@@ -42,25 +42,22 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache TomEE
   and is prone to code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unspecified error in
   EjbObjectInputStream class related to EJBd protocol.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
-  attackers to execute arbitrary code via a crafted serialized object.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code via a crafted serialized object.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Apache TomEE before 1.7.4 and 7.x 
+  script_tag(name:"affected", value:"Apache TomEE before 1.7.4 and 7.x
   before 7.0.0-M3.
-  Note:This issue only affects you if you rely on EJBd protocol 
-  (proprietary remote EJB protocol). This one one is not activated by 
+  Note:This issue only affects you if you rely on EJBd protocol
+  (proprietary remote EJB protocol). This one one is not activated by
   default on the 7.x series but it was on the 1.x ones.");
 
   script_tag(name:"solution", value:"Upgrade to version 1.7.4 or 7.0.0-M3
-  or later. For updates refer to http://tomee.apache.org/");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +69,7 @@ if(description)
   script_dependencies("gb_apache_tomee_server_detect.nasl");
   script_mandatory_keys("Apache/TomEE/Server/ver");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://tomee.apache.org/");
   exit(0);
 }
 
@@ -80,22 +78,14 @@ include("host_details.inc");
 include("version_func.inc");
 include("revisions-lib.inc");
 
-## Variable Initialization
-tomPort = "";
-appVer = "";
-fix = "";
-
-## get the port
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:appVer, test_version:"1.7.4")){
     fix = "1.7.4";
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # XAMPP WebDAV PHP Upload Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802293");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11973 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:12:12 +0530 (Tue, 17 Jan 2012)");
   script_name("XAMPP WebDAV PHP Upload Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72397");
@@ -56,13 +56,13 @@ since the disclosure of this vulnerability. Likely none will be provided anymore
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.
 
-A Workaround is to delete or change the default webdav password file. For
-details refer, http://serverpress.com/topic/xammp-webdav-security-patch/");
+A Workaround is to delete or change the default webdav password file.");
   script_tag(name:"summary", value:"This host is running XAMPP and prone to PHP upload
 vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
+  script_xref(name:"URL", value:"http://serverpress.com/topic/xammp-webdav-security-patch/");
   exit(0);
 }
 

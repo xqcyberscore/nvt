@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer-ms16-088.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_ms_word_viewer-ms16-088.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Word Viewer Multiple RCE Vulnerabilities (3170008)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807860");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-3280", "CVE-2016-3283", "CVE-2016-3282");
   script_bugtraq_id(91582, 91592, 91589);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 11:10:10 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Multiple RCE Vulnerabilities (3170008)");
@@ -40,34 +40,30 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-088.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as Office software fails
+  script_tag(name:"insight", value:"Multiple flaws exist as Office software fails
   to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  attackers to run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Word Viewer 2007");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/MS16-088");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115395");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115393");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-088");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115395");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115393");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-088");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/WordView/Version");
   exit(0);
 }
@@ -77,9 +73,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initailization
-wordviewVer = "";
-
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 wordviewPath = get_kb_item("SMB/Office/WordView/Install/Path");
 if(!wordviewPath){
@@ -88,7 +81,6 @@ if(!wordviewPath){
 
 if(wordviewVer)
 {
-  ## Check for Wordview.exe 11.0 < 11.0.8431
   ##https://support.microsoft.com/en-us/kb/3115393
   if(version_in_range(version:wordviewVer, test_version:"11.0", test_version2:"11.0.8430"))
   {
@@ -99,21 +91,17 @@ if(wordviewVer)
   }
 }
 
-##Check for 'MSO.DLL' file for KB = ##https://support.microsoft.com/en-us/kb/3115395
 ##If wordview installed
 if(wordviewVer)
 {
-  ## Get Office File Path
   InsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
             item:"CommonFilesDir");
   if(InsPath)
   {
-    ## Get Version from Mso.dll
     offPath = InsPath + "\Microsoft Shared\" + "Office11";
     exeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
-    if(exeVer && exeVer =~ "^(11)")
+    if(exeVer && exeVer =~ "^11")
     {
-      ## Get Version from mso.dll file version
       ##https://support.microsoft.com/en-us/kb/3115395
       if(version_in_range(version:exeVer, test_version:"11.0", test_version2:"11.0.8429"))
       {

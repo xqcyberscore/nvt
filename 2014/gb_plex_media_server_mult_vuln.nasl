@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plex_media_server_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_plex_media_server_mult_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Plex Media Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:plex:plex_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805226");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9181", "CVE-2014-9304");
   script_bugtraq_id(65881);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 17:44:41 +0530 (Mon, 22 Dec 2014)");
   script_name("Plex Media Server Multiple Vulnerabilities");
 
@@ -59,7 +59,7 @@ if(description)
   0.9.9.2.374-aa23a69 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to Plex Media Server version
-  0.9.9.3 or later. For updates refer http://www.plex.tv");
+  0.9.9.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +71,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_plex_media_server_remote_detect.nasl");
   script_mandatory_keys("plex_media_server/installed");
+  script_xref(name:"URL", value:"http://www.plex.tv");
   exit(0);
 }
 

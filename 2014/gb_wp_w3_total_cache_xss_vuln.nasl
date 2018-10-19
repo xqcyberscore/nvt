@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_w3_total_cache_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wp_w3_total_cache_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Wordpress W3 Total Cache Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805117");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-8724");
   script_bugtraq_id(71665);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 19:03:57 +0530 (Tue, 23 Dec 2014)");
   script_name("Wordpress W3 Total Cache Cross Site Scripting Vulnerability");
 
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress W3 Total Cache version
   before 0.9.4.1");
 
-  script_tag(name:"solution", value:"Upgrade to version 0.9.4.1 or higher,
-  For updates refer https://wordpress.org/plugins/w3-total-cache");
+  script_tag(name:"solution", value:"Upgrade to version 0.9.4.1 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/w3-total-cache");
   exit(0);
 }
 

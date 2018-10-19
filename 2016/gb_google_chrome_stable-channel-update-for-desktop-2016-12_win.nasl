@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-12_win.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-12_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-12)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810228");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-9651", "CVE-2016-5208", "CVE-2016-5207", "CVE-2016-5206",
                 "CVE-2016-5205", "CVE-2016-5204", "CVE-2016-5209", "CVE-2016-5203",
                 "CVE-2016-5210", "CVE-2016-5212", "CVE-2016-5211", "CVE-2016-5213",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2016-5225", "CVE-2016-5224", "CVE-2016-9652");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 12:51:42 +0530 (Mon, 05 Dec 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-12)-Windows");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - A private property access error in V8.
 
@@ -91,8 +91,7 @@ if(description)
 
   script_tag(name:"affected", value:"Google Chrome version prior to 55.0.2883.75 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to Google Chrome version 55.0.2883.75 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 55.0.2883.75 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -102,6 +101,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

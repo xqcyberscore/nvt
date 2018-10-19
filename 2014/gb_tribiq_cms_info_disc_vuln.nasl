@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tribiq_cms_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_tribiq_cms_info_disc_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Tribiq CMS Direct Request Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805232");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2011-2727");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-31 15:18:53 +0530 (Wed, 31 Dec 2014)");
   script_name("Tribiq CMS Direct Request Information Disclosure Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   prior.");
 
   script_tag(name:"solution", value:"Upgrade to Tribiq CMS version 5.2.7c or
-  later. For updates refer http://sourceforge.net/projects/tribiq");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,6 +64,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/tribiq");
   exit(0);
 }
 

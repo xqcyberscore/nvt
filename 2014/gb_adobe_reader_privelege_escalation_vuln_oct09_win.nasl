@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_privelege_escalation_vuln_oct09_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804368");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2009-2564");
   script_bugtraq_id(35740);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 16:15:57 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader 'Download Manager' Privilege Escalation Vulnerability (Windows)");
 
@@ -47,8 +47,7 @@ directory within Corel getPlus Download Manager.");
 the system.");
   script_tag(name:"affected", value:"Adobe Reader 7.x before 7.1.4, 8.x before 8.1.7 and 9.x before 9.2 on
 Windows.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader 7.1.4 or 8.1.7 or 9.2 or later. For updates refer
-http://www.adobe.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader 7.1.4 or 8.1.7 or 9.2 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,6 +61,7 @@ http://www.adobe.com/downloads");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads");
   exit(0);
 }
 

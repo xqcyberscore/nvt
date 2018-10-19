@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln_may15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ibm_websphere_mq_dos_vuln_may15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # IBM WebSphere MQ Denial of Service Vulnerability - May 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805577");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-0189");
   script_bugtraq_id(74706);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-29 12:42:21 +0530 (Fri, 29 May 2015)");
   script_name("IBM WebSphere MQ Denial of Service Vulnerability - May 2015");
 
@@ -53,8 +53,7 @@ if(description)
   and 8.0 before 8.0.0.2");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere MQ version 7.5.0.5
-  or 8.0.0.2 or later. For updates refer
-  http://www-03.ibm.com/software/products/en/ibm-mq");
+  or 8.0.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");
   script_mandatory_keys("IBM/Websphere/MQ/Win/Ver");
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/ibm-mq");
   exit(0);
 }
 

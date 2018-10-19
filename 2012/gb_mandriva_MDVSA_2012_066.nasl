@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Security issues were identified and fixed in mozilla firefox and
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:066");
+  script_oid("1.3.6.1.4.1.25623.1.0.831630");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:56:13 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-0468", "CVE-2012-0467", "CVE-2012-0469", "CVE-2012-0470", "CVE-2012-0471", "CVE-2012-0472", "CVE-2012-0473", "CVE-2012-0474", "CVE-2012-0477", "CVE-2012-0478", "CVE-2011-3062", "CVE-2012-0479");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2012:066");
+  script_name("Mandriva Update for mozilla MDVSA-2012:066 (mozilla)");
+
+  script_tag(name:"summary", value:"Check for the Version of mozilla");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|2010\.1)");
+  script_tag(name:"affected", value:"mozilla on Mandriva Linux 2011.0,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla firefox and
   thunderbird:
 
   Mozilla developers identified and fixed several memory safety
@@ -33,90 +58,58 @@ tag_insight = "Security issues were identified and fixed in mozilla firefox and
   under certain circumstances, and we presume that with enough effort
   at least some of these could be exploited to run arbitrary code
   (CVE-2012-0468, CVE-2012-0467).
-  
+
   Using the Address Sanitizer tool, security researcher Aki Helin from
   OUSPG found that IDBKeyRange of indexedDB remains in the XPConnect
   hashtable instead of being unlinked before being destroyed. When
   it is destroyed, this causes a use-after-free, which is potentially
   exploitable (CVE-2012-0469).
-  
+
   Using the Address Sanitizer tool, security researcher Atte Kettunen
   from OUSPG found a heap corruption in gfxImageSurface which allows for
   invalid frees and possible remote code execution. This happens due
   to float error, resulting from graphics values being passed through
   different number systems (CVE-2012-0470).
-  
+
   Anne van Kesteren of Opera Software found a multi-octet encoding
   issue where certain octets will destroy the following octets in the
   processing of some multibyte character sets. This can leave users
   vulnerable to cross-site scripting (XSS) attacks on maliciously
   crafted web pages (CVE-2012-0471).
-  
+
   Security research firm iDefense reported that researcher wushi of
   team509 discovered a memory corruption on Windows Vista and Windows
   7 systems with hardware acceleration disabled or using incompatible
   video drivers. This is created by using cairo-dwrite to attempt to
   render fonts on an unsupported code path. This corruption causes a
   potentially exploitable crash on affected systems (CVE-2012-0472).
-  
+
   Mozilla community member Matias Juntunen discovered an error in
   WebGLBuffer where FindMaxElementInSubArray receives wrong template
   arguments from FindMaxUshortElement. This bug causes maximum index
   to be computed incorrectly within WebGL.drawElements, allowing the
   reading of illegal video memory (CVE-2012-0473).
-  
+
   Security researchers Jordi Chancel and Eddy Bordi reported that they
   could short-circuit page loads to show the address of a different
   site than what is loaded in the window in the addressbar. Security
   researcher Chris McGowen independently reported the same flaw, and
   further demonstrated that this could lead to loading scripts from
   the attacker&#039;s site, leaving users vulnerable to cross-site scripting
-  (XSS) attacks (CVE-2012-0474 ... 
+  (XSS) attacks (CVE-2012-0474 ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "mozilla on Mandriva Linux 2011.0,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:066");
-  script_oid("1.3.6.1.4.1.25623.1.0.831630");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:56:13 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-0468", "CVE-2012-0467", "CVE-2012-0469", "CVE-2012-0470", "CVE-2012-0471", "CVE-2012-0472", "CVE-2012-0473", "CVE-2012-0474", "CVE-2012-0477", "CVE-2012-0478", "CVE-2011-3062", "CVE-2012-0479");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2012:066");
-  script_name("Mandriva Update for mozilla MDVSA-2012:066 (mozilla)");
-
-  script_tag(name: "summary" , value: "Check for the Version of mozilla");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -1183,7 +1176,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -2169,6 +2162,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

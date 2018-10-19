@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-107_macosx.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_ms_office_ms16-107_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-3185852(Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807367");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-0141", "CVE-2016-3357");
   script_bugtraq_id(92903, 92786);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 14:45:19 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-3185852(Mac OS X)");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as office software
+  script_tag(name:"insight", value:"Multiple flaws exist as office software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

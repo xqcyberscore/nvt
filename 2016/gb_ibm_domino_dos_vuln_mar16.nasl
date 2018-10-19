@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # IBM Domino Denial of Service Vulnerability - Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807619");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2014-0822");
   script_bugtraq_id(65427);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 19:13:44 +0530 (Mon, 21 Mar 2016)");
   script_name("IBM Domino Denial of Service Vulnerability - Mar16");
 
@@ -53,8 +53,7 @@ if(description)
   9.0.x before 9.0.1 FP1");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.3 FP6 IF1,
-  or 9.0.1 FP1, or later. For more information
-  refer to http://www-01.ibm.com/support/docview.wss?uid=swg21663023");
+  or 9.0.1 FP1, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

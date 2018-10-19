@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_open_re_vul.nasl 9513 2018-04-17 14:26:07Z asteins $
+# $Id: gb_django_open_re_vul.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Django Open Redirection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:django_project:django";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107142");
-  script_version("$Revision: 9513 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:26:07 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 16:31:00 +0200 (Fri, 07 Apr 2017)");
   script_cve_id("CVE-2017-7234");
   script_bugtraq_id(97401);
@@ -40,18 +40,18 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Django Open Redirection Vulnerability");
-  script_tag(name: "summary", value: "Django is prone to an open-redirection vulnerability because it fails to properly sanitize user-supplied input.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Django is prone to an open-redirection vulnerability because it fails to properly sanitize user-supplied input.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "impact" , value: "An attacker can leverage this issue by constructing a crafted URI and enticing a user to follow it.
+  script_tag(name:"impact", value:"An attacker can leverage this issue by constructing a crafted URI and enticing a user to follow it.
   When an unsuspecting victim follows the link, they may be redirected to an attacker-controlled site. This may aid in phishing attacks. Other attacks are also possible.");
 
-  script_tag(name: "affected", value: "Versions prior to Django 1.10.7, 1.9.13, and 1.8.18 are vulnerable");
+  script_tag(name:"affected", value:"Versions prior to Django 1.10.7, 1.9.13, and 1.8.18 are vulnerable");
 
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
 
-  script_xref(name: "URL", value: "http://www.debian.org/security/2017/dsa-3835");
-  script_xref(name: "URL", value: "https://www.djangoproject.com/weblog/2017/apr/04/security-releases/");
+  script_xref(name:"URL", value:"http://www.debian.org/security/2017/dsa-3835");
+  script_xref(name:"URL", value:"https://www.djangoproject.com/weblog/2017/apr/04/security-releases/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

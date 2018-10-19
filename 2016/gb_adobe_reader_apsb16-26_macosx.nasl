@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-26_macosx.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_adobe_reader_apsb16-26_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Reader Security Updates(apsb16-26)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808582");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4191", "CVE-2016-4192", "CVE-2016-4193", "CVE-2016-4194",
                 "CVE-2016-4195", "CVE-2016-4196", "CVE-2016-4197", "CVE-2016-4198",
                 "CVE-2016-4199", "CVE-2016-4200", "CVE-2016-4201", "CVE-2016-4202",
@@ -43,7 +43,7 @@ if(description)
   script_bugtraq_id(91716, 91712, 91714, 93016, 93014);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:02:40 +0530 (Thu, 14 Jul 2016)");
   script_name("Adobe Reader Security Updates(apsb16-26)-MAC OS X");
 
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - An integer overflow vulnerability.
 
@@ -69,8 +69,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.17 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
-  11.0.17 or later.
-  For updates refer to http://www.adobe.com/in/products/acrobat.html");
+  11.0.17 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Reader/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

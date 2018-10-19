@@ -24,46 +24,18 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerability was discovered and corrected in subversion:
-
-  The mod_dav_svn module for the Apache HTTP Server, as distributed in
-  Apache Subversion before 1.6.16, allows remote attackers to cause a
-  denial of service (NULL pointer dereference and daemon crash) via a
-  request that contains a lock token (CVE-2011-0715).
-  
-  Additionally for Corporate Server 4 and Enterprise Server 5 subversion
-  have been upgraded to the 1.6.16 version due to of numerous upstream
-  fixes and new features, the serf packages has also been upgraded to
-  the now required 0.3.0 version.
-  
-  Packages for 2009.0 are provided as of the Extended Maintenance
-  Program. Please visit this link to learn more:
-  http://store.mandriva.com/product_info.php?cPath=149&amp;amp;products_id=490
-  
-  The updated packages have been upgraded to the 1.6.16 version which
-  is not vulnerable to this issue.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "subversion on Mandriva Linux 2009.0,
-  Mandriva Linux 2009.0/X86_64,
-  Mandriva Linux 2010.0,
-  Mandriva Linux 2010.0/X86_64,
-  Mandriva Linux 2010.1,
-  Mandriva Linux 2010.1/X86_64,
-  Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-04/msg00009.php");
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-04/msg00009.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831366");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11981 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:47:44 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 15:05:25 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_xref(name: "MDVSA", value: "2011:067");
+  script_xref(name:"MDVSA", value:"2011:067");
   script_cve_id("CVE-2011-0715");
   script_name("Mandriva Update for subversion MDVSA-2011:067 (subversion)");
 
@@ -72,25 +44,43 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(mes5|2010\.1|2010\.0|2009\.0)");
+  script_tag(name:"affected", value:"subversion on Mandriva Linux 2009.0,
+  Mandriva Linux 2009.0/X86_64,
+  Mandriva Linux 2010.0,
+  Mandriva Linux 2010.0/X86_64,
+  Mandriva Linux 2010.1,
+  Mandriva Linux 2010.1/X86_64,
+  Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"A vulnerability was discovered and corrected in subversion:
+
+  The mod_dav_svn module for the Apache HTTP Server, as distributed in
+  Apache Subversion before 1.6.16, allows remote attackers to cause a
+  denial of service (NULL pointer dereference and daemon crash) via a
+  request that contains a lock token (CVE-2011-0715).
+
+  Additionally for Corporate Server 4 and Enterprise Server 5 subversion
+  have been upgraded to the 1.6.16 version due to of numerous upstream
+  fixes and new features, the serf packages has also been upgraded to
+  the now required 0.3.0 version.
+
+  Packages for 2009.0 are provided as of the Extended Maintenance
+  Program. The updated packages have been upgraded to the 1.6.16 version which
+  is not vulnerable to this issue.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://store.mandriva.com/product_info.php?cPath=149&amp;amp;products_id=490");
   exit(0);
 }
-
 
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -215,7 +205,7 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -337,7 +327,7 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -459,7 +449,7 @@ if(release == "MNDK_2010.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -587,6 +577,6 @@ if(release == "MNDK_2009.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_june_macosx.nasl 6285 2017-06-06 12:23:34Z santu $
+# $Id: gb_wireshark_mult_dos_vuln01_june_macosx.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-01 June17 (Mac OS X)
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811071");
-  script_version("$Revision: 6285 $");
+  script_version("$Revision: 11959 $");
   script_cve_id("CVE-2017-9352", "CVE-2017-9351", "CVE-2017-9346", "CVE-2017-9345",
                 "CVE-2017-9349", "CVE-2017-9350", "CVE-2017-9344", "CVE-2017-9343",
                 "CVE-2017-9354");
   script_bugtraq_id(98804, 98808, 98799, 98798, 98803, 98806, 98796, 98797, 98802);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 14:23:34 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 16:51:51 +0530 (Fri, 02 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 June17 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An error in the epan/dissectors/packet-rgmp.c script within the RGMP
     dissector which could crash.
@@ -62,7 +61,7 @@ if(description)
 
   - An error in the epan/dissectors/packet-dcm.c script within the DICOM dissector
     which could go into an infinite loop.
- 
+
   - An error in the epan/dissectors/packet-slsk.c script within the SoulSeek
     dissector which could go into an infinite loop.
 
@@ -75,31 +74,28 @@ if(description)
   - An error in epan/dissectors/packet-bootp.c script within the DHCP dissector
     which could read past the end of a buffer.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attacker
-  to crash wireshark or consume excessive CPU resources.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to crash wireshark or consume excessive CPU resources.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.2.0 through 2.2.6
+  script_tag(name:"affected", value:"Wireshark version 2.2.0 through 2.2.6
   and 2.0.0 through 2.0.12 on Mac OS X");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.2.7 or
-  2.0.13 or later. For updates refer to
-  https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.7 or
+  2.0.13 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-32.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-30.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-29.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-28.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-27.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-25.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-26.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-22.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-24.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-32.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-30.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-29.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-28.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-27.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-25.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-26.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-22.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-24.html");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -113,17 +109,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-fix = "";
-report = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version
 if(wirversion =~ "^(2\.2)" && version_is_less(version:wirversion, test_version:"2.2.7")){
   fix = "2.2.7";
 }

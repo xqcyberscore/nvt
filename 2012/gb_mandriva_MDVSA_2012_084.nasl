@@ -24,7 +24,33 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in ncpfs:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:084");
+  script_oid("1.3.6.1.4.1.25623.1.0.831606");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:53:01 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2011-1089", "CVE-2011-1679", "CVE-2011-1680");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"MDVSA", value:"2012:084");
+  script_name("Mandriva Update for ncpfs MDVSA-2012:084 (ncpfs)");
+
+  script_tag(name:"summary", value:"Check for the Version of ncpfs");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2|2010\.1)");
+  script_tag(name:"affected", value:"ncpfs on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in ncpfs:
 
   ncpfs 2.2.6 and earlier attempts to use (1) ncpmount to append to
   the /etc/mtab file and (2) ncpumount to append to the /etc/mtab.tmp
@@ -37,51 +63,18 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in ncp
   lock file after a failed attempt to add a mount entry, which has
   unspecified impact and local attack vectors (CVE-2011-1680).
 
-  The updated packages have been patched to correct this issue.";
-
-tag_affected = "ncpfs on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:084");
-  script_oid("1.3.6.1.4.1.25623.1.0.831606");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:53:01 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2011-1089", "CVE-2011-1679", "CVE-2011-1680");
-  script_tag(name:"cvss_base", value:"4.4");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:084");
-  script_name("Mandriva Update for ncpfs MDVSA-2012:084 (ncpfs)");
-
-  script_tag(name: "summary" , value: "Check for the Version of ncpfs");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  The updated packages have been patched to correct this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -122,7 +115,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -166,7 +159,7 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -210,6 +203,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

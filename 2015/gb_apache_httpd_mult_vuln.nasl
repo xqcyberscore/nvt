@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apache_httpd_mult_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Apache HTTP Server Multiple Vulnerabilities May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805638");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-3523", "CVE-2014-0118", "CVE-2014-0226", "CVE-2014-0231");
   script_bugtraq_id(73040);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua/mod_deflate/mod_status/mod_cgid is enabled
   script_name("Apache HTTP Server Multiple Vulnerabilities May15");
@@ -66,7 +66,7 @@ if(description)
   script_tag(name:"affected", value:"Apache HTTP Server version before 2.4.10.");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.10 or
-  later, For updates refer http://www.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -79,6 +79,7 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl");
   script_mandatory_keys("apache/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.apache.org");
   exit(0);
 }
 

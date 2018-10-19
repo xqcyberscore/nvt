@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160119-wsa.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20160119-wsa.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco Web Security Appliance Security Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2016-1296");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Cisco Web Security Appliance Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160119-wsa");
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by crafting an improper HTTP method. A successful exploit could allow the attacker to circumvent WSA functionality that prevents proxied network traffic.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to improper handling of malformed HTTP methods.");
   script_tag(name:"solution", value:"Cisco released software updates that address this vulnerability.");
   script_tag(name:"summary", value:"A vulnerability in the proxy engine of the Cisco Web Security Appliance (WSA) could allow an unauthenticated, remote attacker to bypass security restrictions.");
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 12:21:34 +0100 (Wed, 20 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -58,7 +58,7 @@ if (description)
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

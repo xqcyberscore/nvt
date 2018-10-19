@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weblate_info_disc_vuln.nasl 5597 2017-03-17 09:27:53Z ckuerste $
+# $Id: gb_weblate_info_disc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Weblate Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:weblate:weblate";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106668");
-  script_version("$Revision: 5597 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-17 10:27:53 +0100 (Fri, 17 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-17 13:15:28 +0700 (Fri, 17 Mar 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-17 13:15:28 +0700 (Fri, 17 Mar 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-5537");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Weblate Information Disclosure Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_weblate_detect.nasl");
   script_mandatory_keys("weblate/installed");
 
-  script_tag(name: "summary", value: "Weblate is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Weblate is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The password reset form in Weblate provides different error messages
+  script_tag(name:"insight", value:"The password reset form in Weblate provides different error messages
 depending on whether the email address is associated with an account, which allows remote attackers to enumerate
 user accounts via a series of requests.");
 
-  script_tag(name: "affected", value: "Weblate 2.10 and prior");
+  script_tag(name:"affected", value:"Weblate 2.10 and prior");
 
-  script_tag(name: "solution", value: "Update to Weblate 2.10.1 or later.");
+  script_tag(name:"solution", value:"Update to Weblate 2.10.1 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/WeblateOrg/weblate/issues/1317");
+  script_xref(name:"URL", value:"https://github.com/WeblateOrg/weblate/issues/1317");
 
   exit(0);
 }

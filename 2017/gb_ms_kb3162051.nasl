@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3162051.nasl 6406 2017-06-22 10:42:26Z teissa $
+# $Id: gb_ms_kb3162051.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerability (KB3162051)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811089");
-  script_version("$Revision: 6406 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:13:26 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (KB3162051)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3162051");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in
   the Microsoft Office software when the Office software fails to properly
@@ -49,20 +48,16 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file and perform actions in the security context of
   the current user. The file could then, for example, take actions on behalf of
-  the logged-on user with the same permissions as the current user.
-
-  Impact Level: System/Application");
+  the logged-on user with the same permissions as the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3162051");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3162051");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3162051");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -82,13 +77,11 @@ dllVer = "";
 offPath = "";
 offVer = "";
 
-# Check for Microsoft Office 2013
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer || !(offVer =~ "^15\.")){
   exit(0);
 }
 
-##Get File Directory Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"ProgramFilesDir");
 if(!path){
@@ -98,13 +91,11 @@ if(!path){
 ## Path for Office.dll
 offPath = path + "\Microsoft Office\OFFICE15\DCF";
 
-##Fetch file version
 dllVer = fetch_file_version(sysPath:offPath, file_name:"Office.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Check for vulnerable version
 if(dllVer=~ "^15\.0" && version_is_less(version:dllVer, test_version:"15.0.4937.1000"))
 {
   report = 'File checked:     ' + offPath + "\Office.dll" + '\n' +

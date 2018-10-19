@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808618");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-3092");
   script_bugtraq_id(91453);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 19:19:54 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'MultipartStream' Class Denial of Service Vulnerability (Linux)");
@@ -55,8 +55,7 @@ if(description)
   8.5.x before 8.5.3, and 9.0.0.M1 before 9.0.0.M7 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to version 7.0.70, or 8.0.36,
-  or 8.5.3, or 9.0.0.M7, or later.
-  For updates refer to http://tomcat.apache.org");
+  or 8.5.3, or 9.0.0.M7, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

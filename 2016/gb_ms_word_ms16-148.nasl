@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms16-148.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms_word_ms16-148.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Word Multiple Information Disclosure Vulnerabilities (3204068)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809751");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-7268", "CVE-2016-7291", "CVE-2016-7290");
   script_bugtraq_id(94672, 94671, 94670);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 10:26:19 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Information Disclosure Vulnerabilities (3204068)");
@@ -39,30 +39,24 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-148");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists when user opens a
+  script_tag(name:"insight", value:"Multiple flaws exist when user opens a
   specially crafted Microsoft Office file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to gain access to potentially sensitive information.
+  attacker to gain access to potentially sensitive information.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Word 2007 and
+  script_tag(name:"affected", value:"Microsoft Word 2007 and
   Microsoft Word 2010 Service Pack 2.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/ms16-148");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3128034");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3128025");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms16-148");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3128034");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3128025");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms16-148");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -74,10 +68,6 @@ if(description)
 
 include("version_func.inc");
 
-## variable Initialization
-exeVer = "";
-exePath = "";
-
 ## Word 2007, 2010
 exeVer = get_kb_item("SMB/Office/Word/Version");
 exePath = get_kb_item("SMB/Office/Word/Install/Path");
@@ -88,10 +78,10 @@ if(!exePath){
 
 if(exeVer && exeVer =~ "^(12|14).*")
 {
-  if(exeVer =~ "^(12)"){
+  if(exeVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6762.4999";
   }
-  else if(exeVer =~ "^(14)"){
+  else if(exeVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7177.4999";
   }
 

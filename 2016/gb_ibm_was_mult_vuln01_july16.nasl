@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln01_july16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ibm_was_mult_vuln01_july16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # IBM Websphere Application Server Multiple Vulnerabilities-01 July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808188");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-2923", "CVE-2016-2945", "CVE-2016-0389");
   script_bugtraq_id(91517, 91518, 91515);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 10:51:17 +0530 (Tue, 12 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Multiple Vulnerabilities-01 July16");
@@ -61,8 +61,7 @@ if(description)
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   8.5 through 8.5.5.9 Liberty before Liberty Fix Pack 16.0.0.2");
 
-  script_tag(name:"solution", value:"Apply Liberty Fix Pack 16.0.0.2 or later.
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  script_tag(name:"solution", value:"Apply Liberty Fix Pack 16.0.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/liberty/profile/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_zcs_870.nasl 5165 2017-02-02 10:10:56Z cfi $
+# $Id: gb_zimbra_zcs_870.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
-# Zimbra Collaboration < 8.7.0 Multiple Vulnerabilities 
+# Zimbra Collaboration < 8.7.0 Multiple Vulnerabilities
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,13 +29,13 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108067");
-  script_version("$Revision: 5165 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-3999", "CVE-2016-3401", "CVE-2016-3402", "CVE-2016-3404", "CVE-2016-3407",
                 "CVE-2016-3408", "CVE-2016-3409", "CVE-2016-3410", "CVE-2016-3411", "CVE-2016-3412",
-                "CVE-2016-3413", "CVE-2016-3415", "CVE-2016-5721", "CVE-2015-4852" );
+                "CVE-2016-3413", "CVE-2016-3415", "CVE-2016-5721", "CVE-2015-4852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 11:10:56 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-01 15:00:00 +0100 (Wed, 01 Feb 2017)");
   script_name("Zimbra Collaboration < 8.7.0 Multiple Vulnerabilities ");
   script_category(ACT_GATHER_INFO);

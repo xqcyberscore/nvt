@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 9494 2018-04-16 09:16:25Z asteins $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # ImageMagick coders/rle.c Denial of Service Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107206");
-  script_version("$Revision: 9494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 11:16:25 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 19:30:51 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-9144");
   script_bugtraq_id(98603);
@@ -41,17 +41,17 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick coders/rle.c Denial of Service Vulnerability (Windows)");
 
-  script_tag(name: "summary", value: "ImageMagick is prone to a denial-of-service vulnerability");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
-  
-  script_tag(name: "impact" , value: "An attacker can exploit this issue to crash the affected application, resulting in denial-of-service conditions.");
+  script_tag(name:"summary", value:"ImageMagick is prone to a denial-of-service vulnerability");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "ImageMagick versions prior to 6.9.8-5 and 7.0.x prior to 7.0.5-6.");
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to crash the affected application, resulting in denial-of-service conditions.");
 
-  script_xref(name: "URL" , value: "https://github.com/ImageMagick/ImageMagick/blob/master/ChangeLog");
-  script_xref(name: "URL" , value: "https://github.com/ImageMagick/ImageMagick/blob/ImageMagick-6/ChangeLog");
-  script_xref(name: "URL" , value: "https://github.com/ImageMagick/ImageMagick/commit/7fdf9ea808caa3c81a0eb42656e5fafc59084198");
+  script_tag(name:"affected", value:"ImageMagick versions prior to 6.9.8-5 and 7.0.x prior to 7.0.5-6.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/blob/master/ChangeLog");
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/blob/ImageMagick-6/ChangeLog");
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/commit/7fdf9ea808caa3c81a0eb42656e5fafc59084198");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

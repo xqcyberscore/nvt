@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10790.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_junos_jsa10790.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Junos SRX Series: MACsec Failure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106944");
-  script_version ("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 12:08:53 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 12:08:53 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2017-2342");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos SRX Series: MACsec Failure Vulnerability");
 
@@ -48,21 +48,21 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS on SRX300 series are prone to a MACsec failure to report errors.");
+  script_tag(name:"summary", value:"Junos OS on SRX300 series are prone to a MACsec failure to report errors.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "MACsec feature does not report errors when a secure link can not be
+  script_tag(name:"insight", value:"MACsec feature does not report errors when a secure link can not be
 established. It falls back to an unencrypted link. This can happen when MACsec is configured on ports that are
 not capable of MACsec or when a secure link can not be established. This can mislead customers into believing
 that a link is secure.");
 
-  script_tag(name: "affected", value: "Junos OS 15.1X49 on SRX300 Series.");
+  script_tag(name:"affected", value:"Junos OS 15.1X49 on SRX300 Series.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10790");
 

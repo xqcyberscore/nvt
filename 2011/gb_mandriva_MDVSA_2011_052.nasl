@@ -24,74 +24,18 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been identified and fixed in php:
-
-  The _zip_name_locate function in zip_name_locate.c in the Zip extension
-  in PHP before 5.3.6 does not properly handle a ZIPARCHIVE::FL_UNCHANGED
-  argument, which might allow context-dependent attackers to cause
-  a denial of service (application crash) via an empty ZIP archive
-  that is processed with a (1) locateName or (2) statName operation
-  (CVE-2011-0421).
-  
-  exif.c in the Exif extension in PHP before 5.3.6 on 64-bit platforms
-  performs an incorrect cast, which allows remote attackers to cause a
-  denial of service (application crash) via an image with a crafted Image
-  File Directory (IFD) that triggers a buffer over-read (CVE-2011-0708).
-  
-  Integer overflow in ext/shmop/shmop.c in PHP before 5.3.6 allows
-  context-dependent attackers to cause a denial of service (crash)
-  and possibly read sensitive memory via a large third argument to the
-  shmop_read function (CVE-2011-1092).
-  
-  Multiple format string vulnerabilities in phar_object.c in the phar
-  extension in PHP 5.3.5 and earlier allow context-dependent attackers
-  to obtain sensitive information from process memory, cause a denial of
-  service (memory corruption), or possibly execute arbitrary code via
-  format string specifiers in an argument to a class method, leading
-  to an incorrect zend_throw_exception_ex call (CVE-2011-1153).
-  
-  Buffer overflow in the strval function in PHP before 5.3.6, when
-  the precision configuration option has a large value, might allow
-  context-dependent attackers to cause a denial of service (application
-  crash) via a small numerical value in the argument (CVE-2011-1464).
-  
-  Integer overflow in the SdnToJulian function in the Calendar extension
-  in PHP before 5.3.6 allows context-dependent attackers to cause a
-  denial of service (application crash) via a large integer in the
-  first argument to the cal_from_jd function (CVE-2011-1466).
-  
-  Unspecified vulnerability in the NumberFormatter::setSymbol (aka
-  numfmt_set_symbol) function in the Intl extension in PHP before 5.3.6
-  allows context-dependent attackers to cause a denial of service
-  (application crash) via an invalid argument, a related issue to
-  CVE-2010-4409 (CVE-2011-1467).
-  
-  Unspecified vulnerability in the Streams component in PHP before
-  5.3.6 allows context-dependent attackers to cause a denial of service
-  (application crash) by accessing an ftp:// URL during use of an HTTP
-  proxy with the FTP wrapper (CVE-2011-1469).
-  
-  The Zip exten ... 
-
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "php on Mandriva Linux 2009.0,
-  Mandriva Linux 2009.0/X86_64,
-  Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-03/msg00011.php");
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00011.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831352");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:26:27 +0100 (Fri, 25 Mar 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2011:052");
+  script_xref(name:"MDVSA", value:"2011:052");
   script_cve_id("CVE-2011-0421", "CVE-2011-0708", "CVE-2011-1092", "CVE-2011-1153", "CVE-2011-1464", "CVE-2011-1466", "CVE-2010-4409", "CVE-2011-1467", "CVE-2011-1469", "CVE-2011-1470", "CVE-2011-1471");
   script_name("Mandriva Update for php MDVSA-2011:052 (php)");
 
@@ -100,25 +44,73 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(mes5|2009\.0)");
+  script_tag(name:"affected", value:"php on Mandriva Linux 2009.0,
+  Mandriva Linux 2009.0/X86_64,
+  Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been identified and fixed in php:
+
+  The _zip_name_locate function in zip_name_locate.c in the Zip extension
+  in PHP before 5.3.6 does not properly handle a ZIPARCHIVE::FL_UNCHANGED
+  argument, which might allow context-dependent attackers to cause
+  a denial of service (application crash) via an empty ZIP archive
+  that is processed with a (1) locateName or (2) statName operation
+  (CVE-2011-0421).
+
+  exif.c in the Exif extension in PHP before 5.3.6 on 64-bit platforms
+  performs an incorrect cast, which allows remote attackers to cause a
+  denial of service (application crash) via an image with a crafted Image
+  File Directory (IFD) that triggers a buffer over-read (CVE-2011-0708).
+
+  Integer overflow in ext/shmop/shmop.c in PHP before 5.3.6 allows
+  context-dependent attackers to cause a denial of service (crash)
+  and possibly read sensitive memory via a large third argument to the
+  shmop_read function (CVE-2011-1092).
+
+  Multiple format string vulnerabilities in phar_object.c in the phar
+  extension in PHP 5.3.5 and earlier allow context-dependent attackers
+  to obtain sensitive information from process memory, cause a denial of
+  service (memory corruption), or possibly execute arbitrary code via
+  format string specifiers in an argument to a class method, leading
+  to an incorrect zend_throw_exception_ex call (CVE-2011-1153).
+
+  Buffer overflow in the strval function in PHP before 5.3.6, when
+  the precision configuration option has a large value, might allow
+  context-dependent attackers to cause a denial of service (application
+  crash) via a small numerical value in the argument (CVE-2011-1464).
+
+  Integer overflow in the SdnToJulian function in the Calendar extension
+  in PHP before 5.3.6 allows context-dependent attackers to cause a
+  denial of service (application crash) via a large integer in the
+  first argument to the cal_from_jd function (CVE-2011-1466).
+
+  Unspecified vulnerability in the NumberFormatter::setSymbol (aka
+  numfmt_set_symbol) function in the Intl extension in PHP before 5.3.6
+  allows context-dependent attackers to cause a denial of service
+  (application crash) via an invalid argument, a related issue to
+  CVE-2010-4409 (CVE-2011-1467).
+
+  Unspecified vulnerability in the Streams component in PHP before
+  5.3.6 allows context-dependent attackers to cause a denial of service
+  (application crash) by accessing an ftp:// URL during use of an HTTP
+  proxy with the FTP wrapper (CVE-2011-1469).
+
+  The Zip exten ...
+
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -549,7 +541,7 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -971,6 +963,6 @@ if(release == "MNDK_2009.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

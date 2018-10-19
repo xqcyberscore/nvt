@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20170201-esa1.nasl 5160 2017-02-02 05:57:12Z ckuerste $
+# $Id: gb_cisco_esa_cisco-sa-20170201-esa1.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco Email Security Appliance Malformed MIME Header Filtering Bypass Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106555");
- script_cve_id("CVE-2017-3818");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5160 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106555");
+  script_cve_id("CVE-2017-3818");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11982 $");
 
- script_name("Cisco Email Security Appliance Malformed MIME Header Filtering Bypass Vulnerability");
+  script_name("Cisco Email Security Appliance Malformed MIME Header Filtering Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-esa1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-esa1");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the Multipurpose Internet Mail Extensions (MIME) scanner
+  script_tag(name:"summary", value:"A vulnerability in the Multipurpose Internet Mail Extensions (MIME) scanner
 of Cisco AsyncOS Software for Cisco Email Security Appliances (ESA) could allow an unauthenticated, remote
 attacker to bypass configured user filters on the device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper error handling of a malformed MIME
+  script_tag(name:"insight", value:"The vulnerability is due to improper error handling of a malformed MIME
 header in an email attachment. An attacker could exploit this vulnerability by sending an email with a crafted
 MIME attachment.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass configured user
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass configured user
 filters to drop the email. The malformed MIME headers may not be RFC compliant. However, some mail clients could
 still allow users to access the attachment, which may not have been properly filtered by the device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-02 06:57:12 +0100 (Thu, 02 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-02-02 12:14:35 +0700 (Thu, 02 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-02 12:14:35 +0700 (Thu, 02 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

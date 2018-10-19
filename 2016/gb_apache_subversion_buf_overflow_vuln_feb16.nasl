@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_buf_overflow_vuln_feb16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_apache_subversion_buf_overflow_vuln_feb16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache Subversion Buffer Overflow Vulnerability -01 Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806851");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2015-5259");
   script_bugtraq_id(82300);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 17:06:21 +0530 (Thu, 04 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Buffer Overflow Vulnerability -01 Feb16");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Subversion 1.9.x before 1.9.3.");
 
   script_tag(name:"solution", value:"Upgrade to version 1.9.3 or
-  later, For updates refer to https://subversion.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

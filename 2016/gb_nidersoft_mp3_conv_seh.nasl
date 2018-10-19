@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidersoft_mp3_conv_seh.nasl 11300 2018-09-10 10:52:15Z mmartin $
+# $Id: gb_nidersoft_mp3_conv_seh.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)
 #
@@ -29,17 +29,16 @@ CPE = "cpe:/a:Nidesoft:mp3_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107108");
-  script_version("$Revision: 11300 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
 
   script_name("Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Nidesoft MP3 Converter and is prone to SEH Local Buffer Overflow.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help  of detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary
   code on the system .");
   script_tag(name:"affected", value:"Nidesoft MP3 Converter 2.6.18 on Windows.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:email_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805290");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-1619");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 11:56:43 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability");
 
@@ -56,8 +56,7 @@ if(description)
   7.5.x before 7.5.6, 7.0.x through 7.0.5, 5.6 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to McAfee Email Gateway 7.6.3.2
-  or 7.5.6 or 7.0.5h1021346 or 5.6h1021351 or later. For updates refer
-  http://www.mcafee.com/us");
+  or 7.5.6 or 7.0.5h1021346 or 5.6h1021351 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_mcafee_email_gateway_version.nasl");
   script_mandatory_keys("mcafee_email_gateway/product_version", "mcafee_email_gateway/patches");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us");
   exit(0);
 }
 

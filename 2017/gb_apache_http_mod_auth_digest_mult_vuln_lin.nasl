@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_mod_auth_digest_mult_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_http_mod_auth_digest_mult_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811237");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-9788");
   script_bugtraq_id(99569);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-17 17:33:56 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_auth_digest' Multiple Vulnerabilities (Linux)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache HTTP Server
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in Apache
   'mod_auth_digest' which does not properly initialize memory used to process
@@ -51,21 +50,19 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause the target service to crash. A remote user can obtain
-  potentially sensitive information as well on the target system.
-
-  Impact Level: Application");
+  potentially sensitive information as well on the target system.");
 
   script_tag(name:"affected", value:"Apache HTTP Server 2.2.x before 2.2.34 and
   2.4.x before 2.4.27 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.2.34 or 2.4.27
-  or later. For updates refer to https://httpd.apache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "www.securitytracker.com/id/1038906");
-  script_xref(name : "URL" , value : "httpd.apache.org/security/vulnerabilities_22.html");
-  script_xref(name : "URL" , value : "httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"www.securitytracker.com/id/1038906");
+  script_xref(name:"URL", value:"httpd.apache.org/security/vulnerabilities_22.html");
+  script_xref(name:"URL", value:"httpd.apache.org/security/vulnerabilities_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -73,6 +70,7 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://httpd.apache.org");
   exit(0);
 }
 
@@ -80,30 +78,22 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-httpd_port = 0;
-httpd_ver = "";
-
-## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
   exit(0);
 }
 
 if(httpd_ver =~ "^2\.4")
 {
-  ## Checking for Vulnerable version
   if(version_is_less(version:httpd_ver, test_version:"2.4.27")){
     fix = "2.4.27";
   }
 }
 else if(httpd_ver =~ "^2\.2")
 {
-  ## Checking for Vulnerable version
   if(version_is_less(version:httpd_ver, test_version:"2.2.34")){
     fix = "2.2.34";
   }

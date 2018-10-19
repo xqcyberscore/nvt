@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # VPet Engine SQL Injection and Backdoor Account Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:vpet:vpet_engine";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808174");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("VPet Engine SQL Injection and Backdoor Account Vulnerabilities");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it is able to execute sql query or not.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exist due to
 
   - An improper validation of user supplied input to 'game' parameter.
 

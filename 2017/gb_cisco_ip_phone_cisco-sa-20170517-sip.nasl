@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20170517-sip.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_cisco_ip_phone_cisco-sa-20170517-sip.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco IP Phone 8851 Session Initiation Protocol Denial of Service Vulnerability
 #
@@ -28,42 +28,42 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106814");
-  script_version("$Revision: 7571 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-18 10:24:33 +0700 (Thu, 18 May 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-18 10:24:33 +0700 (Thu, 18 May 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-6630");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco IP Phone 8851 Session Initiation Protocol Denial of Service Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
   script_dependencies("gb_cisco_ip_phone_detect.nasl");
   script_mandatory_keys("cisco/ip_phone/model");
 
-  script_tag(name: "summary", value: "A vulnerability in the Session Initiation Protocol (SIP) implementation of
+  script_tag(name:"summary", value:"A vulnerability in the Session Initiation Protocol (SIP) implementation of
 Cisco IP Phone 8851 could allow an unauthenticated, remote attacker to cause a denial of service (DoS)
 condition.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to an abnormal SIP message. An attacker could
+  script_tag(name:"insight", value:"The vulnerability is due to an abnormal SIP message. An attacker could
 exploit this vulnerability by manipulating the CANCEL packet.");
 
-  script_tag(name: "impact", value: "An exploit could allow the attacker to cause a disruption of service to the
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a disruption of service to the
 phone.");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-sip");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-sip");
 
   exit(0);
 }

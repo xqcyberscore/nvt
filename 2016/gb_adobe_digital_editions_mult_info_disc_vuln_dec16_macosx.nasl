@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_dec16_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_dec16_macosx.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Adobe Digital Editions Multiple Vulnerabilities Dec16 (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809835");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-7888", "CVE-2016-7889");
   script_bugtraq_id(94879, 94880);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 11:17:23 +0530 (Thu, 15 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Multiple Vulnerabilities Dec16 (MAC OS X)");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Digital Edition prior to 4.5.3");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version
-  4.5.3 or later. For updates refer to http://www.adobe.com/");
+  4.5.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/Digital-Editions/apsb16-45.html");
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_macosx.nasl");
   script_mandatory_keys("AdobeDigitalEdition/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com/");
   exit(0);
 }
 

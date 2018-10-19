@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170405-iosxe.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170405-iosxe.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco IOS XE Software Startup Script Local Command Execution Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106723");
- script_cve_id("CVE-2017-6606");
- script_tag(name:"cvss_base", value:"6.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5975 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106723");
+  script_cve_id("CVE-2017-6606");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11982 $");
 
- script_name("Cisco IOS XE Software Startup Script Local Command Execution Vulnerability");
+  script_name("Cisco IOS XE Software Startup Script Local Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-iosxe");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-iosxe");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in a startup script of Cisco IOS XE Software could allow an
+  script_tag(name:"summary", value:"A vulnerability in a startup script of Cisco IOS XE Software could allow an
 unauthenticated attacker with physical access to the targeted system to execute arbitrary commands on the
 underlying operating system with the privileges of the root user.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient validation of ROMMON variables
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of ROMMON variables
 values. An attacker could exploit this vulnerability by manipulating the content of some ROMMON variables, which
 will allow an external script containing the command to execute at boot time. A reload of the affected system is
 needed to exploit the vulnerability. An attacker would need console access to exploit this vulnerability.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-07 10:44:47 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 10:44:47 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

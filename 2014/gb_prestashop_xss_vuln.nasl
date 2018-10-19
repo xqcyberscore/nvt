@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_prestashop_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Prestashop Reflected Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805445");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2015-1175");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Prestashop Reflected Cross Site Scripting Vulnerability");
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Prestashop version 1.6.0.9 and earlier.");
 
-  script_tag(name:"solution", value:"Upgrade to 1.6.0.11 or later.
-  For updates refer https://www.prestashop.com");
+  script_tag(name:"solution", value:"Upgrade to 1.6.0.11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"https://www.prestashop.com");
   exit(0);
 }
 

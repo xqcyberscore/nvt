@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170802-fpw.nasl 6837 2017-08-03 04:09:02Z ckuersteiner $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170802-fpw.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco Firepower Management Secure Sockets Layer Policy Bypass Vulnerability
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140272");
- script_cve_id("CVE-2017-6766");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6837 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140272");
+  script_cve_id("CVE-2017-6766");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco Firepower Management Secure Sockets Layer Policy Bypass Vulnerability");
+  script_name("Cisco Firepower Management Secure Sockets Layer Policy Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170802-fpw");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170802-fpw");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the Secure Sockets Layer (SSL) Decryption and Inspection
+  script_tag(name:"summary", value:"A vulnerability in the Secure Sockets Layer (SSL) Decryption and Inspection
 feature of Cisco Firepower System Software could allow an unauthenticated, remote attacker to bypass the SSL
 policy for decrypting and inspecting traffic on an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to unexpected interaction with Known Key and Decrypt
+  script_tag(name:"insight", value:"The vulnerability is due to unexpected interaction with Known Key and Decrypt
 and Resign configuration settings of SSL policies when the affected software receives unexpected SSL packet
 headers. An attacker could exploit this vulnerability by sending a crafted SSL packet through an affected device
 in a valid SSL session.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass the SSL decryption and
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass the SSL decryption and
 inspection policy for the affected system, which could allow traffic to flow through the system without being
 inspected.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-03 06:09:02 +0200 (Thu, 03 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-08-03 10:19:50 +0700 (Thu, 03 Aug 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-03 10:19:50 +0700 (Thu, 03 Aug 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

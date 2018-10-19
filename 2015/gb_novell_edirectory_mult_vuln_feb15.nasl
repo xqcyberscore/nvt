@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805269");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-5212", "CVE-2014-5213");
   script_bugtraq_id(71741, 71748);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 12:01:38 +0530 (Fri, 06 Feb 2015)");
   script_name("Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -56,7 +56,7 @@ if(description)
   Patch 4");
 
   script_tag(name:"solution", value:"Upgrade to Novell eDirectory version 8.8 SP8
-  Patch 4 or later. For updates refer https://www.netiq.com");
+  Patch 4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -69,6 +69,7 @@ if(description)
   script_dependencies("novell_edirectory_detect.nasl");
   script_mandatory_keys("eDirectory/installed");
   script_require_ports("Services/ldap", 389, 636);
+  script_xref(name:"URL", value:"https://www.netiq.com");
   exit(0);
 }
 
@@ -84,17 +85,17 @@ if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
   sp = "0";
 
-invers = major;
+instvers = major;
 
 if( sp > 0 )
-  invers += ' SP' + sp;
+  instvers += ' SP' + sp;
 
 revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 revision = str_replace( string:revision, find:".", replace:"" );
 
 if( major <= "8.8" && sp <= "8" && revision <= "2080404" )
 {
-  report = 'Installed version: ' + invers + '\n' +
+  report = 'Installed version: ' + instvers + '\n' +
            'Fixed version:     8.8 SP8 Patch4\n';
   security_message(data:report, port:port);
   exit(0);

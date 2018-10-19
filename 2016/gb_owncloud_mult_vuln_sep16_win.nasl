@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_sep16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_owncloud_mult_vuln_sep16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # ownCloud Multiple Vulnerabilities Sep16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809292");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-4718", "CVE-2015-4717");
   script_bugtraq_id(76162, 76161);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-23 15:12:02 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Multiple Vulnerabilities Sep16 (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to
 
   - The external SMB storage of ownCloud was not properly neutralizing all
     special elements.
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"ownCloud Server before 6.0.8, 7.0.x
   before 7.0.6, and 8.0.x before 8.0.4 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade ownCloud server 6.0.8, 7.0.6, 8.0.4 or later.
-  For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade ownCloud server 6.0.8, 7.0.6, 8.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

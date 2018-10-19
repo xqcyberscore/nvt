@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in gimp:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:142");
+  script_oid("1.3.6.1.4.1.25623.1.0.831726");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-24 09:57:21 +0530 (Fri, 24 Aug 2012)");
+  script_cve_id("CVE-2012-3403", "CVE-2012-3481");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"MDVSA", value:"2012:142");
+  script_name("Mandriva Update for gimp MDVSA-2012:142 (gimp)");
+
+  script_tag(name:"summary", value:"Check for the Version of gimp");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2)");
+  script_tag(name:"affected", value:"gimp on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in gimp:
 
   A heap-based buffer overflow flaw, leading to invalid free, was
   found in the way KISS CEL file format plug-in of Gimp, the GNU Image
@@ -48,50 +73,18 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in gim
   was upgraded to the 0.0.22 version and rebuilt for ffmpeg 0.5.9,
   the enscript packages was added because of a build dependency, the
   gutenprint and mtink packages was rebuilt against the gimp 2.6.12
-  libraries.";
-
-tag_affected = "gimp on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:142");
-  script_oid("1.3.6.1.4.1.25623.1.0.831726");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-24 09:57:21 +0530 (Fri, 24 Aug 2012)");
-  script_cve_id("CVE-2012-3403", "CVE-2012-3481");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:142");
-  script_name("Mandriva Update for gimp MDVSA-2012:142 (gimp)");
-
-  script_tag(name: "summary" , value: "Check for the Version of gimp");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  libraries.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -132,7 +125,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -308,6 +301,6 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

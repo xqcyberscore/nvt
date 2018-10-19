@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808295");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5141", "CVE-2016-5142", "CVE-2016-5139", "CVE-2016-5140",
                 "CVE-2016-5145", "CVE-2016-5143", "CVE-2016-5144", "CVE-2016-5146");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 15:10:25 +0530 (Thu, 04 Aug 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Linux");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - An address bar spoofing vulnerability.
 
@@ -66,8 +66,7 @@ if(description)
   52.0.2743.116 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  52.0.2743.116 or later.
-  For updates refer to http://www.google.com/chrome");
+  52.0.2743.116 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,6 +79,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

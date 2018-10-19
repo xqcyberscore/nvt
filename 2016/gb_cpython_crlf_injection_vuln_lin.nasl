@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpython_crlf_injection_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cpython_crlf_injection_vuln_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cpython CRLF Injection Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809219");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-5699");
   script_bugtraq_id(91226);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 15:12:59 +0530 (Mon, 12 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cpython CRLF Injection Vulnerability (Linux)");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Cpython before 2.7.10 and
   3.x before 3.4.4 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to Cpython version 2.7.10, 3.4.4, or later.
-  For updates refer to https://hg.python.org/cpython");
+  script_tag(name:"solution", value:"Upgrade to Cpython version 2.7.10, 3.4.4, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

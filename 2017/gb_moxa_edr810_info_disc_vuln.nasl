@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr810_info_disc_vuln.nasl 5443 2017-02-28 09:48:09Z ckuerste $
+# $Id: gb_moxa_edr810_info_disc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Moxa EDR-810 Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:moxa:edr-810";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106623");
-  script_version("$Revision: 5443 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-28 10:48:09 +0100 (Tue, 28 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-28 14:46:57 +0700 (Tue, 28 Feb 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-28 14:46:57 +0700 (Tue, 28 Feb 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-8346");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Moxa EDR-810 Information Disclosure Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_moxa_edr_devices_web_detect.nasl");
   script_mandatory_keys("moxa_edr/detected");
 
-  script_tag(name: "summary", value: "Moxa EDR-810 devices are prone to a information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Moxa EDR-810 devices are prone to a information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Tries to access several config and log files.");
+  script_tag(name:"vuldetect", value:"Tries to access several config and log files.");
 
-  script_tag(name: "insight", value: "By accessing a specific URL on the web server, a malicious user is able to
+  script_tag(name:"insight", value:"By accessing a specific URL on the web server, a malicious user is able to
 access configuration and log files. These files are just available if a user or admin exported the files first.");
 
-  script_tag(name: "impact", value: "A unauthenticated attacker may gain sensitive information about the device.");
+  script_tag(name:"impact", value:"A unauthenticated attacker may gain sensitive information about the device.");
 
-  script_tag(name: "affected", value: "Moxa EDR-810 using firmware versions prior to V3.13");
+  script_tag(name:"affected", value:"Moxa EDR-810 using firmware versions prior to V3.13");
 
-  script_tag(name: "solution", value: "Update the firmware to V3.13 or later.");
+  script_tag(name:"solution", value:"Update the firmware to V3.13 or later.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-294-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-294-01");
 
   exit(0);
 }

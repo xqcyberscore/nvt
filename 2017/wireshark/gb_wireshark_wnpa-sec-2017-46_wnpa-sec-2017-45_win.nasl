@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_win.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_wireshark_wnpa-sec-2017-46_wnpa-sec-2017-45_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Wireshark Security Updates (wnpa-sec-2017-46_wnpa-sec-2017-45)-Windows
 #
@@ -29,45 +29,42 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811944");
-  script_version("$Revision: 7604 $");
-  script_cve_id("CVE-2017-15189", "CVE-2017-15190" );
+  script_version("$Revision: 11982 $");
+  script_cve_id("CVE-2017-15189", "CVE-2017-15190");
   script_bugtraq_id(101228, 101229);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 13:42:39 +0530 (Thu, 12 Oct 2017)");
   script_name("Wireshark Security Updates (wnpa-sec-2017-46_wnpa-sec-2017-45)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - The DOCSIS dissector could go into an infinite loop.
 
   - The RTSP dissector could crash.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to make Wireshark consume excessive
   CPU resources by injecting a malformed packet onto the wire or by convincing
   someone to read a malformed packet trace file. It may be possible to make
   Wireshark crash by injecting a malformed packet onto the wire or by convincing
-  someone to read a malformed packet trace file.
+  someone to read a malformed packet trace file.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.4.0 to 2.4.1
+  script_tag(name:"affected", value:"Wireshark version 2.4.0 to 2.4.1
   on Windows.");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.4.2 or
-  later. For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.2 or
+  later.");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-46");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-45");
- 
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-46");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-45");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
@@ -83,10 +80,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }

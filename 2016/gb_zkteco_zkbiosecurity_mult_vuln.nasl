@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 11503 2018-09-20 12:26:46Z cfischer $
+# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # ZKTeco ZKBioSecurity Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zkteco:zkbiosecurity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809335");
-  script_version("$Revision: 11503 $");
+  script_version("$Revision: 11969 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:26:46 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:18:22 +0530 (Thu, 06 Oct 2016)");
   script_name("ZKTeco ZKBioSecurity Multiple Vulnerabilities");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send the crafted http GET request
   and check whether it is able to read the password file or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to
 
   - A use of hard-coded credentials.
 

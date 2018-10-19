@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_mar16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_openssl_mult_vuln02_mar16_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # OpenSSL Multiple Vulnerabilities -02 Mar16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807500");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-0703", "CVE-2016-0704");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 12:23:09 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -02 Mar16 (Linux)");
@@ -58,8 +58,7 @@ if(description)
   before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.2a or 1.0.1m or
-  1.0.0r or 0.9.8zf or later.
-  For updates refer to https://www.openssl.org");
+  1.0.0r or 0.9.8zf or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

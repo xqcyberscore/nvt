@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_unspecified_mult_xss_vuln_jul17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_webmin_unspecified_mult_xss_vuln_jul17_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Webmin Multiple Unspecified XSS Vulnerabilities July17 (Linux)
 #
@@ -29,34 +29,30 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811504");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-2106");
   script_bugtraq_id(96227);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 15:47:13 +0530 (Tue, 11 Jul 2017)");
   script_name("Webmin Multiple Unspecified XSS Vulnerabilities July17 (Linux)");
 
-  script_tag(name:"summary", value:"This host is running Webmin and is prone 
+  script_tag(name:"summary", value:"This host is running Webmin and is prone
   to multiple unspecified cross site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exist due to issues in 
-  outputting error messages into a HTML page and the function to edit the 
+  script_tag(name:"insight", value:"Multiple flaws exist due to issues in
+  outputting error messages into a HTML page and the function to edit the
   database.");
 
   script_tag(name:"impact", value:"Successful exploitation will lead an attacker
-  to inject arbitrary web script or HTML.
-
-  Impact Level: Application");
+  to inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"Webmin versions before 1.830");
 
-  script_tag(name:"solution", value:"Upgrade to Webmin version 1.830 or later.
-  For updates refer to http://www.webmin.com");
+  script_tag(name:"solution", value:"Upgrade to Webmin version 1.830 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,17 +72,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-wmport = "";
-wmver = "";
-report = "";
-
-## Get Port
 if(!wmport = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!wmver = get_app_version(cpe:CPE, port:wmport)){
  exit(0);
 }

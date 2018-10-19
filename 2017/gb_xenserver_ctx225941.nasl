@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx225941.nasl 7045 2017-09-01 12:49:31Z asteins $
+# $Id: gb_xenserver_ctx225941.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX225941)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140303");
-  script_version("$Revision: 7045 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-01 14:49:31 +0200 (Fri, 01 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-16 09:04:44 +0700 (Wed, 16 Aug 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-16 09:04:44 +0700 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-12134", "CVE-2017-12135", "CVE-2017-12136", "CVE-2017-12137", "CVE-2017-12855");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX225941)");
 
@@ -49,27 +49,27 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Citrix Xenserver Local Security Checks");
   script_dependencies("gb_xenserver_version.nasl");
-  script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
-  script_tag(name: "summary", value: "A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM to compromise the host:
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM to compromise the host:
 
-- CVE-2017-12134: (High) linux: Fix Xen block IO merge-ability calculation.
+  - CVE-2017-12134: (High) linux: Fix Xen block IO merge-ability calculation.
 
-- CVE-2017-12135: (Medium) multiple problems with transitive grants.
+  - CVE-2017-12135: (Medium) multiple problems with transitive grants.
 
-- CVE-2017-12136: (High) grant_table: Race conditions with maptrack free list handling.
+  - CVE-2017-12136: (High) grant_table: Race conditions with maptrack free list handling.
 
-- CVE-2017-12137: (High) x86: PV privilege escalation via map_grant_ref.
+  - CVE-2017-12137: (High) x86: PV privilege escalation via map_grant_ref.
 
-- CVE-2017-12855: (Low) grant_table: possibly premature clearing of GTF_writing / GTF_reading.");
+  - CVE-2017-12855: (Low) grant_table: possibly premature clearing of GTF_writing / GTF_reading.");
 
-  script_tag(name: "vuldetect", value: "Check the installed hotfixes.");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes.");
 
-  script_tag(name: "affected", value: "XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0, 6.0.2.");
+  script_tag(name:"affected", value:"XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0, 6.0.2.");
 
-  script_tag(name: "solution", value: "Apply the hotfix referenced in the advisory.");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
-  script_xref(name: "URL", value: "https://support.citrix.com/article/CTX225941");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX225941");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol31510510.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_f5_big_ip_sol31510510.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # F5 BIG-IP - SOL31510510 - OpenSSH vulnerability CVE-2016-6515
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6515");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("F5 BIG-IP - SOL31510510 - OpenSSH vulnerability CVE-2016-6515");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/31/sol31510510.html");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"The auth_password function in auth-passwd.c in sshd in OpenSSH before 7.3 does not limit password lengths for password authentication, which allows remote attackers to cause a denial of service (crypt CPU consumption) via a long string.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-24 15:29:10 +0200 (Mon, 24 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -55,7 +55,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_favicon.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_http_favicon.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap HTTP Favicon NSE script
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801619");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11966 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-10-29 15:30:03 +0200 (Fri, 29 Oct 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This script attempts to get the favicon from a web page and matches
   it against a database of the icons of known web applications.
 
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) http-favicon.nse.");
+  This is a wrapper on the Nmap Security Scanner's http-favicon.nse.");
 
   exit(0);
 }
@@ -91,16 +91,28 @@ if( pref = script_get_preference("pipeline :")){
   args[i++] = "pipeline="+pref;
 }
 
-if (i>0)
-{
-  scriptArgs= "--script-args=";
+if(i > 0) {
+  scriptArgs = "--script-args=";
   foreach arg(args) {
     scriptArgs += arg + ",";
   }
-  argv = make_list(argv,scriptArgs);
+  argv = make_list(argv, scriptArgs);
 }
 
-res = pread(cmd: "nmap", argv: argv);
+if(TARGET_IS_IPV6())
+  argv = make_list(argv, "-6");
+
+timing_policy = get_kb_item("Tools/nmap/timing_policy");
+if(timing_policy =~ '^-T[0-5]$')
+  argv = make_list(argv, timing_policy);
+
+source_iface = get_preference("source_iface");
+if(source_iface =~ '^[0-9a-zA-Z:_]+$') {
+  argv = make_list(argv, "-e");
+  argv = make_list(argv, source_iface);
+}
+
+res = pread(cmd:"nmap", argv:argv);
 
 if(res)
 {

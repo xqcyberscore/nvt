@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_06_lin.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_mysql_oct2016-2881722_06_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 06 - Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809381");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5609", "CVE-2016-5627", "CVE-2016-5630", "CVE-2016-8284");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:51:27 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 06 - Linux");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to multiple
+  script_tag(name:"insight", value:"Multiple flaws exist due to multiple
   unspecified errors within 'Server: DML', 'Server: Replication' and
   'Server: InnoDB' components.");
 

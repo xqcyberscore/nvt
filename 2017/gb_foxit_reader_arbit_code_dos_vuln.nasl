@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_arbit_code_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112056");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-14694", "CVE-2017-15770", "CVE-2017-15771");
   script_bugtraq_id(101009, 101540, 101549);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 11:18:43 +0530 (Thu, 26 Oct 2017)");
   script_name("Foxit Reader Arbitrary Code Execution and Denial of Service Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with Foxit Reader
   and is prone to a code execution and denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Foxit Reader allows attackers to execute arbitrary code or
       cause a denial of service via a crafted .pdf file, related to 'Data from Faulting Address controls Code Flow starting at
@@ -50,13 +49,10 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attackers to execute arbitrary code or crash the application via a buffer
-  overflow.
-
-  Impact Level: Application");
+  overflow.");
 
   script_tag(name:"affected", value:"Foxit Reader version 8.3.2.25013 and earlier on Windows");
-  script_tag(name:"solution", value:"Update to Foxit Reader 9.0 or later.
-  For updates refer to http://www.foxitsoftware.com");
+  script_tag(name:"solution", value:"Update to Foxit Reader 9.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -68,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

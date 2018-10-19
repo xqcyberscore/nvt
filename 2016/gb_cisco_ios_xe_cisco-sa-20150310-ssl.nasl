@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150310-ssl.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150310-ssl.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Multiple Vulnerabilities in OpenSSL (January 2015) Affecting Cisco Products
 #
@@ -33,44 +33,52 @@ if (description)
   script_cve_id("CVE-2014-3571", "CVE-2015-0206", "CVE-2014-3569", "CVE-2014-3572", "CVE-2015-0204", "CVE-2015-0205", "CVE-2014-8275", "CVE-2014-3570");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Multiple Vulnerabilities in OpenSSL (January 2015) Affecting Cisco Products");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
-  script_tag(name:"summary", value:"Multiple Cisco products incorporate a version of the OpenSSL package affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service condition or perform a man-in-the-middle attack. On January 8, 2015, the OpenSSL Project released a security advisory detailing eight distinct vulnerabilities. The vulnerabilities are referenced in this document as follows:
+  script_tag(name:"summary", value:"Multiple Cisco products incorporate a version of the OpenSSL package
+  affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to cause
+  a denial of service condition or perform a man-in-the-middle attack. On January 8, 2015, the OpenSSL Project
+  released a security advisory detailing eight distinct vulnerabilities. The vulnerabilities are referenced in this document as follows:
 
-    CVE-2014-3571: OpenSSL DTLS Message Processing Denial of Service Vulnerability
-    CVE-2015-0206: OpenSSL dtls1_buffer_record Function DTLS Message Processing Denial of Service Vulnerability
-    CVE-2014-3569: OpenSSL no-ssl3 Option NULL Pointer Dereference Vulnerability
-    CVE-2014-3572: OpenSSL Elliptic Curve Cryptographic Downgrade Vulnerability
-    CVE-2015-0204: OpenSSL RSA Temporary Key Cryptographic Downgrade Vulnerability
-    CVE-2015-0205: OpenSSL Diffie-Hellman Certificate Validation Authentication Bypass Vulnerability
-    CVE-2014-8275: OpenSSL Certificate Fingerprint Validation Vulnerability
-    CVE-2014-3570: OpenSSL BN_sql Function Incorrect Mathematical Results Issue
+  - CVE-2014-3571: OpenSSL DTLS Message Processing Denial of Service Vulnerability
 
-Cisco will release software updates that address these vulnerabilities.
+  - CVE-2015-0206: OpenSSL dtls1_buffer_record Function DTLS Message Processing Denial of Service Vulnerability
 
-Workarounds that mitigate these vulnerabilities may be available.
+  - CVE-2014-3569: OpenSSL no-ssl3 Option NULL Pointer Dereference Vulnerability
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl");
+  - CVE-2014-3572: OpenSSL Elliptic Curve Cryptographic Downgrade Vulnerability
+
+  - CVE-2015-0204: OpenSSL RSA Temporary Key Cryptographic Downgrade Vulnerability
+
+  - CVE-2015-0205: OpenSSL Diffie-Hellman Certificate Validation Authentication Bypass Vulnerability
+
+  - CVE-2014-8275: OpenSSL Certificate Fingerprint Validation Vulnerability
+
+  - CVE-2014-3570: OpenSSL BN_sql Function Incorrect Mathematical Results Issue
+
+  Cisco will release software updates that address these vulnerabilities.
+
+  Workarounds that mitigate these vulnerabilities may be available.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 10:55:20 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ios_xe_version.nasl");
   script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

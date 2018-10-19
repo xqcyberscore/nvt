@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3141537.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_ms_kb3141537.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Microsoft Publisher 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3141537)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811756");
-  script_version("$Revision: 11550 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-8725");
   script_bugtraq_id(100758);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:48:30 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Publisher 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3141537)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3141537");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Office software when it fails to properly handle objects in memory.");
@@ -52,10 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Publisher 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://support.microsoft.com/en-us/help/3141537");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

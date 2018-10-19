@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-079_exchange_server.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_ms16-079_exchange_server.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3160339)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807839");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-6015", "CVE-2015-6014", "CVE-2015-6013");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 10:23:05 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3160339)");
@@ -43,30 +43,30 @@ if(description)
   script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to errors in Oracle
+  script_tag(name:"insight", value:"Multiple flaws exist due to errors in Oracle
   Outside In libraries.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to sensitive information and also get elevated privileges
   on the affected system.");
 
-  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3,
 
-  Microsoft Exchange Server 2010 Service Pack 3
+  Microsoft Exchange Server 2010 Service Pack 3,
 
-  Microsoft Exchange Server 2013 Service Pack 1
+  Microsoft Exchange Server 2013 Service Pack 1,
 
-  Microsoft Exchange Server 2013 Cumulative Update 11
+  Microsoft Exchange Server 2013 Cumulative Update 11,
 
-  Microsoft Exchange Server 2013 Cumulative Update 12
+  Microsoft Exchange Server 2013 Cumulative Update 12,
 
-  Microsoft Exchange Server 2016
+  Microsoft Exchange Server 2016,
 
   Microsoft Exchange Server 2016 Cumulative Update 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS16-079");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

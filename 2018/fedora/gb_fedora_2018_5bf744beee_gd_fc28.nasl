@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_5bf744beee_gd_fc28.nasl 11289 2018-09-07 12:25:14Z santu $
+# $Id: gb_fedora_2018_5bf744beee_gd_fc28.nasl 11972 2018-10-19 05:34:20Z cfischer $
 #
 # Fedora Update for gd FEDORA-2018-5bf744beee
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875035");
-  script_version("$Revision: 11289 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 14:25:14 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11972 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 07:31:03 +0200 (Thu, 06 Sep 2018)");
   script_cve_id("CVE-2018-1000222");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gd FEDORA-2018-5bf744beee");
   script_tag(name:"summary", value:"Check the version of gd");

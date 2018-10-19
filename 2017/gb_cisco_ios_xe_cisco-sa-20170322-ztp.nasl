@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170322-ztp.nasl 5702 2017-03-23 16:14:16Z cfi $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170322-ztp.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco IOS XE Software for Cisco ASR 920 Series Routers Zero Touch Provisioning Denial of Service Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106690");
- script_cve_id("CVE-2017-3859");
- script_tag(name: "cvss_base", value: "7.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5702 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106690");
+  script_cve_id("CVE-2017-3859");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco IOS XE Software for Cisco ASR 920 Series Routers Zero Touch Provisioning Denial of Service Vulnerability");
+  script_name("Cisco IOS XE Software for Cisco ASR 920 Series Routers Zero Touch Provisioning Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-ztp");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-ztp");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the DHCP code for the Zero Touch Provisioning feature of
+  script_tag(name:"summary", value:"A vulnerability in the DHCP code for the Zero Touch Provisioning feature of
 Cisco ASR 920 Series Aggregation Services Routers could allow an unauthenticated, remote attacker to cause an
 affected device to reload.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a format string vulnerability when processing a
+  script_tag(name:"insight", value:"The vulnerability is due to a format string vulnerability when processing a
 crafted DHCP packet for Zero Touch Provisioning. An attacker could exploit this vulnerability by sending a
 specially crafted DHCP packet to an affected device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the device to reload, resulting
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the device to reload, resulting
 in a denial of service (DoS) condition.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-23 17:14:16 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-23 10:27:04 +0700 (Thu, 23 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version", "cisco_ios_xe/model");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-23 10:27:04 +0700 (Thu, 23 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version", "cisco_ios_xe/model");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

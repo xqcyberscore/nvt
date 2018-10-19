@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_adminIWSS85_admin_login.nasl 5921 2017-04-10 16:17:55Z mime $
+# $Id: gb_default_adminIWSS85_admin_login.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Default password `adminIWSS85` for admin account
 #
@@ -27,28 +27,28 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140241");
- script_version("$Revision: 5921 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Default password `adminIWSS85` for admin account");
- script_tag(name:"last_modification", value:"$Date: 2017-04-10 18:17:55 +0200 (Mon, 10 Apr 2017) $");
- script_tag(name:"creation_date", value:"2017-04-10 15:23:54 +0200 (Mon, 10 Apr 2017)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_require_ports("Services/ssh", 22);
+  script_oid("1.3.6.1.4.1.25623.1.0.140241");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Default password `adminIWSS85` for admin account");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-10 15:23:54 +0200 (Mon, 10 Apr 2017)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_require_ports("Services/ssh", 22);
 
- script_tag(name: "summary" , value: 'The remote device is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:'The remote device is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login as admin with password `adminIWSS85`.');
- script_tag(name: "solution" , value: 'Change the password');
- script_tag(name:"solution_type", value:"Workaround");
- script_dependencies("ssh_detect.nasl");
- script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  script_tag(name:"vuldetect", value:'Try to login as admin with password `adminIWSS85`.');
+  script_tag(name:"solution", value:'Change the password');
+  script_tag(name:"solution_type", value:"Workaround");
+  script_dependencies("ssh_detect.nasl");
+  script_tag(name:"qod_type", value:"exploit");
+  exit(0);
 }
 
 include("ssh_func.inc");

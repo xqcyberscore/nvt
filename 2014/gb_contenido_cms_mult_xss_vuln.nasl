@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805231");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9433");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:09:14 +0530 (Fri, 26 Dec 2014)");
   script_name("Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -63,11 +63,12 @@ if(description)
   script_tag(name:"affected", value:"Contenido CMS versions 4.9.x through 4.9.5");
 
   script_tag(name:"solution", value:"Upgrade to Contenido CMS version 4.9.6 or
-  later. For updates refer http://www.contenido.org/");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.contenido.org/");
   exit(0);
 }
 

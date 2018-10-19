@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx219378.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx219378.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX219378)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.1140113");
- script_cve_id("CVE-2016-9932","CVE-2016-10024","CVE-2016-10025");
- script_tag(name:"cvss_base", value:"4.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5595 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.1140113");
+  script_cve_id("CVE-2016-9932", "CVE-2016-10024", "CVE-2016-10025");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11982 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX219378)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX219378)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX219378");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX219378");
 
- script_tag(name: "vuldetect", value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"Security vulnerabilities have been identified in Citrix XenServer that may allow malicious code running within a guest VM to read a small part of hypervisor memory and allow privileged-mode code running within a guest VM to hang or crash the host.
+  script_tag(name:"summary", value:"Security vulnerabilities have been identified in Citrix XenServer that may allow malicious code running within a guest VM to read a small part of hypervisor memory and allow privileged-mode code running within a guest VM to hang or crash the host.
 
 The following vulnerabilities have been addressed:
 
@@ -50,20 +50,20 @@ CVE-2016-9932 (Low): x86 CMPXCHG8B emulation fails to ignore operand size overri
 CVE-2016-10024 (Medium): x86 PV guests may be able to mask interrupts
 CVE-2016-10025 (Low): missing NULL pointer check in VMFUNC emulation");
 
- script_tag(name: "affected" , value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
+  script_tag(name:"affected", value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2017-01-03 10:14:13 +0100 (Tue, 03 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-03 10:14:13 +0100 (Tue, 03 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

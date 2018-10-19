@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Ecava IntegraXor Account Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804299");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-0786");
   script_bugtraq_id(66554);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-19 17:47:38 +0530 (Mon, 19 May 2014)");
   script_name("Ecava IntegraXor Account Information Disclosure Vulnerability");
 
@@ -53,8 +53,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain knowledge of potentially
   sensitive information.");
   script_tag(name:"affected", value:"Ecava IntegraXor before version 4.1.4393");
-  script_tag(name:"solution", value:"Upgrade to Ecava IntegraXor version 4.1.4393 or later. For updates refer
-  http://www.integraxor.com/index.html");
+  script_tag(name:"solution", value:"Upgrade to Ecava IntegraXor version 4.1.4393 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57544");
   script_xref(name:"URL", value:"http://ics-cert.us-cert.gov/advisories/ICSA-14-091-01");
@@ -63,6 +62,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.integraxor.com/index.html");
   exit(0);
 }
 

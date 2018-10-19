@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2017-3236626_02_win.nasl 7597 2017-10-27 12:23:39Z asteins $
+# $Id: gb_mysql_oct2017-3236626_02_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Oracle Mysql Security Updates (oct2017-3236626) 02 - Windows
 #
@@ -29,38 +29,34 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811986");
-  script_version("$Revision: 7597 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-10378");
   script_bugtraq_id(101375);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 14:23:39 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 12:55:25 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Mysql Security Updates (oct2017-3236626) 02 - Windows");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in
   'Server: Optimizer'");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  will allow remote attackers to compromise availability of the system.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow remote attackers to compromise availability of the system.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL version 5.5.57 and earlier,
+  script_tag(name:"affected", value:"Oracle MySQL version 5.5.57 and earlier,
   5.6.37 and earlier, 5.7.11 and earlier on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Databases");
@@ -73,11 +69,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE))
 {
   CPE = "cpe:/a:mysql:mysql";
@@ -86,7 +77,6 @@ if(!sqlPort = get_app_port(cpe:CPE))
   }
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_phar_parse_dos_vuln_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_phar_parse_dos_vuln_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # PHP 'phar_parse_pharfile' Function Denial of Service Vulnerability - (Windows)
 #
@@ -29,33 +29,30 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811483");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-11147");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 19:48:21 +0530 (Tue, 11 Jul 2017)");
   script_name("PHP 'phar_parse_pharfile' Function Denial of Service Vulnerability - (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a buffer over-read error
   in the 'phar_parse_pharfile' function in ext/phar/phar.c script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to supply malicious archive files to crash the PHP interpreter or
-  potentially disclose information.
-
-  Impact Level: Application");
+  potentially disclose information.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.30, 7.x before 7.0.15");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.30 or 7.0.15,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");

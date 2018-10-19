@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # IBM Global Console Manager switches Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804775");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-3080", "CVE-2014-3081", "CVE-2014-3085");
   script_bugtraq_id(68777, 68779, 68939);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-13 16:48:44 +0530 (Mon, 13 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"IBM GCM16 and GCM32 Global Console Manager
   switches with firmware before 1.20.20.23447");
 
-  script_tag(name:"solution", value:"Update to firmware version 1.20.20.23447 or newer,
-  For updates refer http://www.ibm.com");
+  script_tag(name:"solution", value:"Update to firmware version 1.20.20.23447 or newer.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34132");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jul/113");

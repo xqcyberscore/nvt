@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comments_stored_xss_vuln.nasl 11406 2018-09-15 10:29:52Z cfischer $
+# $Id: gb_wordpress_comments_stored_xss_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Wordpress Comments Stored Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805176");
-  script_version("$Revision: 11406 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-3440");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 12:29:52 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 18:50:27 +0530 (Mon, 04 May 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Comments Stored Cross Site Scripting Vulnerability");
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress version 4.2 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.2.1 or higher,
-  For updates refer https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to version 4.2.1 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

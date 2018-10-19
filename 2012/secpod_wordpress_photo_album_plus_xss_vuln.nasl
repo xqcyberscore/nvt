@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902698");
-  script_version("$Revision: 11431 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 11973 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-31 14:00:10 +0530 (Mon, 31 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,10 +53,11 @@ context of an affected site when the malicious data is being viewed.");
 (when page_id is set to the Search Photos page) is not properly
 sanitised before it is returned to the user.");
   script_tag(name:"solution", value:"Upgrade to WordPress WP Photo Album Plus Plugin version 4.8.12
-or later. For updates refer http://wordpress.org/plugins/wp-photo-album-plus/");
+or later.");
   script_tag(name:"summary", value:"This host is installed with WordPress WP Photo Album Plus Plugin
 and is prone to cross site scripting vulnerability.");
 
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/wp-photo-album-plus/");
   exit(0);
 }
 

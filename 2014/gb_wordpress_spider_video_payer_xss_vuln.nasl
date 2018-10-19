@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wordpress_spider_video_payer_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # WordPress Web Dorado Spider Video Player XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804788");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-8584");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-07 16:00:58 +0530 (Fri, 07 Nov 2014)");
   script_name("WordPress Web Dorado Spider Video Player XSS Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"WordPress Web Dorado Spider Video Player
   version before 1.5.2");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.5.2 or later.
-  For updates refer https://wordpress.org/plugins/player");
+  script_tag(name:"solution", value:"Upgrade to version 1.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -24,13 +24,35 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "This is an upgrade bundle of packages incorporating various fixes
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00007.php");
+  script_oid("1.3.6.1.4.1.25623.1.0.831347");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-15 14:58:18 +0100 (Tue, 15 Mar 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVA", value:"2011:009");
+  script_name("Mandriva Update for mes52 MDVA-2011:009 (mes52)");
+
+  script_tag(name:"summary", value:"Check for the Version of mes52");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_mes5");
+  script_tag(name:"affected", value:"mes52 on Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"This is an upgrade bundle of packages incorporating various fixes
   for the upcoming Mandriva Enterprise Server 5.2 release:
 
   mandriva-release-2009.0-14.4mdvmes5.2:
   * mandriva release should be update to 5.2 release, with new major
   features.
-  
+
   grub-0.97-30.1mdvmes5.2:
   * Change CFLAGS to disable stack protector (since gfxboot is tweaking
   stack and can crash it with protector enabled). Use -Os, used by
@@ -39,14 +61,14 @@ tag_insight = "This is an upgrade bundle of packages incorporating various fixes
   * Patches 23 / 24: allow to specify multiple initrd on a single boot
   * add fedora patch to support virtio partitions, fix #52397
   * add patches from ubuntu:
-  o add support for uuid xxx instead of root (hdX,Y)
+  o add support for uuid xxx instead of root (hdX, Y)
   o add support GPT (from Marco Gerards)
   o add patch varargs (since some changes are used by uuid patch)
-  
+
   xz-5.0.0-0.1mdvmes5.2:
   * We need to have xz support on mes5.2 to be able to handle new
   packages from cooker or next product 2011.0
-  
+
   ka-deploy-0.94.4-0.1mdvmes5.2:
   * add missing script udev_creation.sh
   * fix anoying bug to umount $CHROOT/dev
@@ -56,7 +78,7 @@ tag_insight = "This is an upgrade bundle of packages incorporating various fixes
   * update ka script to support UUID, remove old mke2fs static binairie
   * don't use patch on 32b and 64b release (break the ka-d-client)
   * do not build with -m32, doesn&amp;#039;t exist on arm and mips
-  
+
   cpuset-1.5.5-0.1mdvmes5.2:
   * Fix for Issue#3: cset fails to create cpu sets if some cpus are
   offline
@@ -73,49 +95,19 @@ tag_insight = "This is an upgrade bundle of packages incorporating various fixes
   * Removed output noise from popened taskset command
   * Added example init.d cset script in documentation directory
   * Fix bug #26: Cpuset does not function on machines with greater than
-  16 CPUs";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "mes52 on Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-03/msg00007.php");
-  script_oid("1.3.6.1.4.1.25623.1.0.831347");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-03-15 14:58:18 +0100 (Tue, 15 Mar 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVA", value: "2011:009");
-  script_name("Mandriva Update for mes52 MDVA-2011:009 (mes52)");
-
-  script_tag(name:"summary", value:"Check for the Version of mes52");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  16 CPUs");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -204,6 +196,6 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

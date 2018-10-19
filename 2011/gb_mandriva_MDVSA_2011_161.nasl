@@ -24,34 +24,18 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerability was discovered and corrected in postgresql:
-
-  contrib/pg_crypto&amp;#039;s blowfish encryption code could give wrong results
-  on platforms where char is signed (which is most), leading to encrypted
-  passwords being weaker than they should be (CVE-2011-2483).
-  
-  Additionally corrected ossp-uuid packages as well as corrected support
-  in postgresql 9.0.x are being provided for Mandriva Linux 2011.
-  
-  This update provides a solution to this vulnerability.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "postgresql on Mandriva Linux 2010.1,
-  Mandriva Linux 2010.1/X86_64,
-  Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-10/msg00043.php");
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-10/msg00043.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831478");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-31 13:45:00 +0100 (Mon, 31 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_xref(name: "MDVSA", value: "2011:161");
+  script_xref(name:"MDVSA", value:"2011:161");
   script_cve_id("CVE-2011-2483");
   script_name("Mandriva Update for postgresql MDVSA-2011:161 (postgresql)");
 
@@ -60,25 +44,33 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(mes5|2010\.1)");
+  script_tag(name:"affected", value:"postgresql on Mandriva Linux 2010.1,
+  Mandriva Linux 2010.1/X86_64,
+  Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"A vulnerability was discovered and corrected in postgresql:
+
+  contrib/pg_crypto&amp;#039;s blowfish encryption code could give wrong results
+  on platforms where char is signed (which is most), leading to encrypted
+  passwords being weaker than they should be (CVE-2011-2483).
+
+  Additionally corrected ossp-uuid packages as well as corrected support
+  in postgresql 9.0.x are being provided for Mandriva Linux 2011.
+
+  This update provides a solution to this vulnerability.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -167,7 +159,7 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -259,6 +251,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

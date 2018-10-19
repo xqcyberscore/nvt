@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_mult_info_disc_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_apple_macosx_server_mult_info_disc_vuln.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple OS X Server Information Disclosure And Security Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810233");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2014-3566", "CVE-2015-1150", "CVE-2015-1151");
   script_bugtraq_id(70574, 74356, 74355);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 14:52:33 +0530 (Mon, 05 Dec 2016)");
   script_name("Apple OS X Server Information Disclosure And Security Bypass Vulnerabilities");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - The SSL protocol 3.0 uses nondeterministic CBC padding.
 

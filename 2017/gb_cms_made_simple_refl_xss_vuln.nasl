@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 7912 2017-11-27 06:00:54Z teissa $
+# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # CMS Made Simple 2.2.2 Reflected XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112120");
-  script_version("$Revision: 7912 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-27 07:00:54 +0100 (Mon, 27 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-13 14:05:33 +0100 (Mon, 13 Nov 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-13 14:05:33 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16784");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("CMS Made Simple 2.2.2 Reflected XSS Vulnerability");
 
@@ -51,18 +51,19 @@ if (description)
   script_dependencies("cms_made_simple_detect.nasl");
   script_mandatory_keys("cmsmadesimple/installed");
 
-  script_tag(name: "summary", value: "CMS Made Simple is prone to a reflected cross-site scripting (XSS) vulnerability.");
+  script_tag(name:"summary", value:"CMS Made Simple is prone to a reflected cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "There is reflected XSS via the cntnt01detailtemplate parameter.");
+  script_tag(name:"insight", value:"There is reflected XSS via the cntnt01detailtemplate parameter.");
 
-  script_tag(name: "affected", value: "CMS Made Simple version 2.2.2.");
+  script_tag(name:"affected", value:"CMS Made Simple version 2.2.2.");
 
-  script_tag(name: "solution", value: "Upgrade to version 2.2.3 or later. For updates refer to: https://www.cmsmadesimple.org/");
+  script_tag(name:"solution", value:"Upgrade to version 2.2.3 or later.");
 
-  script_xref(name: "URL", value: "https://www.netsparker.com/web-applications-advisories/ns-17-031-reflected-xss-vulnerability-in-cms-made-simple/");
+  script_xref(name:"URL", value:"https://www.netsparker.com/web-applications-advisories/ns-17-031-reflected-xss-vulnerability-in-cms-made-simple/");
 
+  script_xref(name:"URL", value:"https://www.cmsmadesimple.org/");
   exit(0);
 }
 

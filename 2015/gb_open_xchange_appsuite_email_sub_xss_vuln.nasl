@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_email_sub_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_open_xchange_appsuite_email_sub_xss_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Open-Xchange AppSuite Email Subject Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806082");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-2077");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 09:25:09 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange AppSuite Email Subject Cross Site Scripting Vulnerability");
@@ -54,7 +54,7 @@ if(description)
   before 7.4.1-rev10, 7.4.2 before 7.4.2-rev8");
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
-  version 7.4.2-rev8 or 7.4.1-rev10 or later. For updates refer http://openx.com");
+  version 7.4.2-rev8 or 7.4.1-rev10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_dependencies("gb_ox_app_suite_detect.nasl");
   script_mandatory_keys("open_xchange_appsuite/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://openx.com");
   exit(0);
 }
 

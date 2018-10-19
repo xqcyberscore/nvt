@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quickheal_dos_May_17.nasl 9380 2018-04-06 11:04:51Z asteins $
+# $Id: gb_quickheal_dos_May_17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # QuickHeal CVE-2015-8285 Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107160");
-  script_version("$Revision: 9380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-02 10:28:58 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2015-8285");
   script_bugtraq_id(97996);
@@ -40,14 +40,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_name("QuickHeal CVE-2015-8285 Denial of Service Vulnerability");
-  script_tag(name: "summary", value: "QuickHeal is prone to a denial-of-service vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The vulnerability exists in the driver webssx.sys.");
-  script_tag(name: "impact" , value: "An attacker can exploit this issue to cause denial-of-service condition.");
-  script_tag(name: "affected", value: "QuickHeal 16.00 is vulnerable");
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"QuickHeal is prone to a denial-of-service vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The vulnerability exists in the driver webssx.sys.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service condition.");
+  script_tag(name:"affected", value:"QuickHeal 16.00 is vulnerable");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97996");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97996");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

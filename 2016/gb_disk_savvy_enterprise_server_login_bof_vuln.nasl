@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Disk Savvy Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:disksavvy:disksavvy_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809486");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2017-6187");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 17:06:55 +0530 (Fri, 02 Dec 2016)");
   script_name("Disk Savvy Enterprise Server Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running Disk Savvy Enterprise
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long

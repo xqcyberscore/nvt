@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_appli_control_mult_vuln_jan16.nasl 11545 2018-09-21 20:43:34Z cfischer $
+# $Id: gb_mcafee_appli_control_mult_vuln_jan16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:application_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806980");
-  script_version("$Revision: 11545 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-1715");
   script_bugtraq_id(80167);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 15:17:03 +0530 (Wed, 20 Jan 2016)");
   script_name("McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to McAfee Application Control
   versions 6.1.0 build 706 or later, or 6.1.1 build 404 or later, or 6.1.2 build
-  449 or later, or 6.1.3 build 441 or later, or 6.2.0 build 505 or later.
-  For updates refer to http://www.mcafee.com/in/products/application-control.aspx");
+  449 or later, or 6.1.3 build 441 or later, or 6.2.0 build 505 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("gb_mcafee_application_control_detect.nasl");
   script_mandatory_keys("McAfee/Application/Control/Win/Installed");
 
+  script_xref(name:"URL", value:"http://www.mcafee.com/in/products/application-control.aspx");
   exit(0);
 }
 

@@ -24,7 +24,37 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Security issues were identified and fixed in mozilla thunderbird:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:147");
+  script_oid("1.3.6.1.4.1.25623.1.0.831729");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-30 10:53:02 +0530 (Thu, 30 Aug 2012)");
+  script_cve_id("CVE-2012-1971", "CVE-2012-1970", "CVE-2012-1972", "CVE-2012-1973",
+                "CVE-2012-1974", "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956",
+                "CVE-2012-3957", "CVE-2012-3958", "CVE-2012-3959", "CVE-2012-3960",
+                "CVE-2012-3961", "CVE-2012-3962", "CVE-2012-3963", "CVE-2012-3964",
+                "CVE-2012-1956", "CVE-2012-3966", "CVE-2012-3968", "CVE-2012-3967",
+                "CVE-2012-3969", "CVE-2012-3970", "CVE-2012-3971", "CVE-2012-3972",
+                "CVE-2012-3974", "CVE-2012-3975", "CVE-2012-3978", "CVE-2012-3980");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2012:147");
+  script_name("Mandriva Update for mozilla-thunderbird MDVSA-2012:147 (mozilla-thunderbird)");
+
+  script_tag(name:"summary", value:"Check for the Version of mozilla-thunderbird");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2011\.0");
+  script_tag(name:"affected", value:"mozilla-thunderbird on Mandriva Linux 2011.0");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla thunderbird:
 
   Mozilla developers identified and fixed several memory safety
   bugs in the browser engine used in Firefox and other Mozilla-based
@@ -57,55 +87,18 @@ tag_insight = "Security issues were identified and fixed in mozilla thunderbird:
   attacker to write random memory and cause a crash. This crash may be
   potentially exploitable (CVE-2012-3966).
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "mozilla-thunderbird on Mandriva Linux 2011.0";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:147");
-  script_oid("1.3.6.1.4.1.25623.1.0.831729");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-30 10:53:02 +0530 (Thu, 30 Aug 2012)");
-  script_cve_id("CVE-2012-1971", "CVE-2012-1970", "CVE-2012-1972", "CVE-2012-1973",
-                "CVE-2012-1974", "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956",
-                "CVE-2012-3957", "CVE-2012-3958", "CVE-2012-3959", "CVE-2012-3960",
-                "CVE-2012-3961", "CVE-2012-3962", "CVE-2012-3963", "CVE-2012-3964",
-                "CVE-2012-1956", "CVE-2012-3966", "CVE-2012-3968", "CVE-2012-3967",
-                "CVE-2012-3969", "CVE-2012-3970", "CVE-2012-3971", "CVE-2012-3972",
-                "CVE-2012-3974", "CVE-2012-3975", "CVE-2012-3978", "CVE-2012-3980");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2012:147");
-  script_name("Mandriva Update for mozilla-thunderbird MDVSA-2012:147 (mozilla-thunderbird)");
-
-  script_tag(name: "summary" , value: "Check for the Version of mozilla-thunderbird");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -566,6 +559,6 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

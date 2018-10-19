@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806016");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-2668", "CVE-2015-2222", "CVE-2015-2221", "CVE-2015-2170");
   script_bugtraq_id(74472, 74443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-17 12:16:12 +0530 (Mon, 17 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)");
@@ -63,8 +63,7 @@ if(description)
 
   script_tag(name:"affected", value:"ClamAV versions before 0.98.7 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to ClamAV version 0.98.7 or later.
-  For updates refer http://www.clamav.net");
+  script_tag(name:"solution", value:"Upgrade to ClamAV version 0.98.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ if(description)
   script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ClamAV/remote/Ver", "Host/runs_windows");
   script_require_ports(3310);
+  script_xref(name:"URL", value:"http://www.clamav.net");
   exit(0);
 }
 

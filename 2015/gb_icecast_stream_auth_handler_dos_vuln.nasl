@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Icecast 'stream_auth' handler Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805177");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-3026");
   script_bugtraq_id(73965);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-07 12:58:34 +0530 (Thu, 07 May 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Icecast 'stream_auth' handler Denial of Service Vulnerability");
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Icecast version before 2.4.2");
 
-  script_tag(name:"solution", value:"Update to version 2.4.2 or later,
-  For updates refer http://xiph.org");
+  script_tag(name:"solution", value:"Update to version 2.4.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://xiph.org");
   exit(0);
 }
 

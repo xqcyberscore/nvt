@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
+# $Id: gb_foreman_info_disc_vuln_17_aprl.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Foreman CVE-2017-2672 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107147");
-  script_version("$Revision: 11610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11959 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 07:35:49 +0200 (Tue, 11 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -43,8 +43,7 @@ if(description)
 
   script_tag(name:"summary", value:"Foreman is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"When images for compute resources (e.g. an OpenStack image) are
 added/registered in Foreman, the password used to log in is recorded in plain text in the audit log. This may

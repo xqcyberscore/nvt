@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple out-of heap-based buffer read flaws and invalid pointer
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:035");
+  script_oid("1.3.6.1.4.1.25623.1.0.831589");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:51:06 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-1571");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_xref(name:"MDVSA", value:"2012:035");
+  script_name("Mandriva Update for file MDVSA-2012:035 (file)");
+
+  script_tag(name:"summary", value:"Check for the Version of file");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|2010\.1)");
+  script_tag(name:"affected", value:"file on Mandriva Linux 2011.0,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple out-of heap-based buffer read flaws and invalid pointer
   dereference flaws were found in the way file, utility for determining
   of file types processed header section for certain Composite Document
   Format (CDF) files. A remote attacker could provide a specially-crafted
@@ -33,50 +58,18 @@ tag_insight = "Multiple out-of heap-based buffer read flaws and invalid pointer
 
   The updated packages for Mandriva Linux 2011 have been upgraded to
   the 5.11 version and the packages for Mandriva Linux 2010.2 has been
-  patched to correct these issues.";
-
-tag_affected = "file on Mandriva Linux 2011.0,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:035");
-  script_oid("1.3.6.1.4.1.25623.1.0.831589");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:51:06 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-1571");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_xref(name: "MDVSA", value: "2012:035");
-  script_name("Mandriva Update for file MDVSA-2012:035 (file)");
-
-  script_tag(name: "summary" , value: "Check for the Version of file");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  patched to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -129,7 +122,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -185,6 +178,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

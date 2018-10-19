@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_isc_bind_tsig_auth_vuln_remote.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ISC BIND Security Bypass Vulnerability (Remote)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106953");
-  script_version("$Revision: 9978 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-17 09:23:57 +0700 (Mon, 17 Jul 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:C/A:N");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-17 09:23:57 +0700 (Mon, 17 Jul 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
 
   script_cve_id("CVE-2017-3143");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ISC BIND Security Bypass Vulnerability (Remote)");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
 
-  script_tag(name: "summary", value: "A flaw was found in the way BIND handled TSIG authentication for dynamic
+  script_tag(name:"summary", value:"A flaw was found in the way BIND handled TSIG authentication for dynamic
 updates. A remote attacker able to communicate with an authoritative BIND server could use this flaw to
 manipulate the contents of a zone, by forging a valid TSIG or SIG(0) signature for a dynamic update request.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted update request for the TSIG key 'local-ddns' and checks
+  script_tag(name:"vuldetect", value:"Sends a crafted update request for the TSIG key 'local-ddns' and checks
 if the response returns a signed MAC.");
 
-  script_tag(name: "affected", value: "ISC BIND versions 9.4.0-9.8.8, 9.9.0-9.9.10-P1, 9.10.0-9.10.5-P1,
+  script_tag(name:"affected", value:"ISC BIND versions 9.4.0-9.8.8, 9.9.0-9.9.10-P1, 9.10.0-9.10.5-P1,
 9.11.0-9.11.1-P1, 9.9.3-S1-9.9.10-S2 and 9.10.5-S1-9.10.5-S2");
 
-  script_tag(name: "solution", value: "Update to version 9.9.10-P2, 9.10.5-P2, 9.11.1-P2, 9.9.10-S3, 9.10.5-S3
+  script_tag(name:"solution", value:"Update to version 9.9.10-P2, 9.10.5-P2, 9.11.1-P2, 9.9.10-S3, 9.10.5-S3
 or later.");
 
-  script_xref(name: "URL", value: "https://kb.isc.org/article/AA-01503/0");
-  script_xref(name: "URL", value: "http://www.synacktiv.ninja/ressources/CVE-2017-3143_BIND9_TSIG_dynamic_updates_vulnerability_Synacktiv.pdf");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01503/0");
+  script_xref(name:"URL", value:"http://www.synacktiv.ninja/ressources/CVE-2017-3143_BIND9_TSIG_dynamic_updates_vulnerability_Synacktiv.pdf");
 
   exit(0);
 }

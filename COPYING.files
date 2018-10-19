@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 18 Oct 2018 11:56:55 +0200
+# Automatically created on:  Fri, 19 Oct 2018 11:09:41 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -60464,6 +60464,8 @@ gsf/2018/juniper/gb_junos_jsa10883.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10884.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10885.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10886.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10887.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10899.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10880.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10881.nasl: GPLv2+

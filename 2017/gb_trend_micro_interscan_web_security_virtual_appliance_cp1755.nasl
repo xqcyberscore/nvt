@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1755.nasl 7338 2017-10-04 08:49:04Z santu $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1755.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Trend Micro InternScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -30,16 +30,16 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106841");
-  script_version("$Revision: 7338 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-11396");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-01 15:02:52 +0700 (Thu, 01 Jun 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-01 15:02:52 +0700 (Thu, 01 Jun 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Trend Micro InternScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities");
 
@@ -48,19 +48,19 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
-  script_mandatory_keys("IWSVA/version","IWSVA/build");
+  script_mandatory_keys("IWSVA/version", "IWSVA/build");
 
-  script_tag(name: "summary", value: "Trend Micro has released a new hot fix for Trend Micro InterScan Web
+  script_tag(name:"summary", value:"Trend Micro has released a new hot fix for Trend Micro InterScan Web
 Security Virtual Appliance (IWSVA) 6.5. This build resolves multiple vulnerabilities related to potential remote
 code execution.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Version 6.5");
+  script_tag(name:"affected", value:"Version 6.5");
 
-  script_tag(name: "solution", value: "Update to version 6.5 CP 1755 or newer.");
+  script_tag(name:"solution", value:"Update to version 6.5 CP 1755 or newer.");
 
-  script_xref(name: "URL", value: "https://success.trendmicro.com/solution/1117412");
+  script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1117412");
 
   exit(0);
 }

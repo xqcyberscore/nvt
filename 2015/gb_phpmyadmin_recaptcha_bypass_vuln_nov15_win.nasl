@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806548");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
   and 4.4.x before 4.4.14.1 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.3.13.2 or 4.4.14.1
-  or later. For updates refer http://www.phpmyadmin.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
   script_mandatory_keys("phpMyAdmin/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net");
   exit(0);
 }
 

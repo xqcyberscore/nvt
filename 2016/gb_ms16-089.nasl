@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-089.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-089.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3170050)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807347");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-3256");
   script_bugtraq_id(91590);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:34:49 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3170050)");
@@ -52,9 +52,7 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/en-us/library/security/MS16-089");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +66,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-089");
   exit(0);
 }
 
@@ -86,7 +85,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
 if(!sysVer){
   exit(0);
 }

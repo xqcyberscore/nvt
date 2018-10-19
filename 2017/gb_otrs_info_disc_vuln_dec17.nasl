@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_info_disc_vuln_dec17.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_otrs_info_disc_vuln_dec17.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # OTRS Remote Code Execution Vulnerability - Dec '17
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112153");
-  script_version("$Revision: 8291 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-12-11 11:51:38 +0100 (Mon, 11 Dec 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-11 11:51:38 +0100 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-16854");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS Remote Code Execution Vulnerability - Dec '17");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker who is logged into OTRS as a customer can use the ticket search form
+  script_tag(name:"insight", value:"An attacker who is logged into OTRS as a customer can use the ticket search form
 to disclose internal article information of their customer tickets.");
 
-  script_tag(name: "affected", value: "OTRS 6.0.x up to and including 6.0.1, OTRS 5.0.x up to and including 5.0.24,
+  script_tag(name:"affected", value:"OTRS 6.0.x up to and including 6.0.1, OTRS 5.0.x up to and including 5.0.24,
 OTRS 4.0.x up to and including 4.0.26 and OTRS 3.3.x up to and including 3.3.20.");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 6.0.2, OTRS 5.0.25, OTRS 4.0.27 or later.
+  script_tag(name:"solution", value:"Upgrade to OTRS 6.0.2, OTRS 5.0.25, OTRS 4.0.27 or later.
 No fix is being provided for OTRS 3.3.x since it has reached the end of its lifecycle. Please consider upgrading to a newer version of OTRS.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-08-security-update-otrs-framework/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-08-security-update-otrs-framework/");
 
   exit(0);
 }

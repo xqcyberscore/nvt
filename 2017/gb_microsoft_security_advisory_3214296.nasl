@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3214296.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_microsoft_security_advisory_3214296.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810269");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 11962 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-12 18:49:43 +0530 (Thu, 12 Jan 2017)");
   script_name("Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -45,9 +45,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory (3214296).");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of
-  'Microsoft.IdentityModel.Tokens.dll' file and check the version is
-  vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to tokens signed with
   symmetric keys could be vulnerable to tampering. If a token signed with a

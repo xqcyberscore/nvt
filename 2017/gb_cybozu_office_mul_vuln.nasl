@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mul_vuln.nasl 9523 2018-04-18 21:57:48Z asteins $
+# $Id: gb_cybozu_office_mul_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Cybozu Office Multiple Security Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107149");
-  script_version("$Revision: 9523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 11959 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 14:53:28 +0200 (Wed, 19 Apr 2017)");
   script_cve_id("CVE-2017-2114", "CVE-2017-2115", "CVE-2017-2116", "CVE-2016-4449");
 
@@ -39,21 +39,20 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Office Multiple Security Vulnerabilities");
-  script_tag(name: "summary", value: "Cybozu Office is prone to multiple security vulnerabilities.");
+  script_tag(name:"summary", value:"Cybozu Office is prone to multiple security vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
-  check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "impact" , value:"An attacker can exploit these issues to execute arbitrary script
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site, steal cookie-based
   authentication credentials, access or modify data, bypass security restrictions and perform unauthorized
   actions in the context of the affected application.");
 
-  script_tag(name: "affected", value: "Cybozu Office 10.0.0 through 10.5.0 are vulnerable");
+  script_tag(name:"affected", value:"Cybozu Office 10.0.0 through 10.5.0 are vulnerable");
 
-  script_tag(name: "solution", value: "Update to version 10.6.0.");
+  script_tag(name:"solution", value:"Update to version 10.6.0.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97717");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97717");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

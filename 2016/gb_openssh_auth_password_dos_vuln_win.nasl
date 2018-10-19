@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_auth_password_dos_vuln_win.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_openssh_auth_password_dos_vuln_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809121");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-6515", "CVE-2016-6210");
   script_bugtraq_id(92212);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 10:29:27 +0530 (Thu, 18 Aug 2016)");
   script_name("OpenSSH Denial of Service And User Enumeration Vulnerabilities (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - The auth_password function in 'auth-passwd.c' script does not limit password
     lengths for password authentication.
@@ -59,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.3 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.3 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln01_jun14_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_phpmyadmin_mult_xss_vuln01_jun14_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # phpMyAdmin Multiple XSS Vulnerabilities June14 (Linux)
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112009");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-21 10:07:21 +0200 (Mon, 21 Aug 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-21 10:07:21 +0200 (Mon, 21 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2014-4348");
   script_bugtraq_id(68201);
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("phpMyAdmin Multiple XSS Vulnerabilities June14 (Linux)");
 
@@ -52,18 +52,18 @@ if (description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
   script_mandatory_keys("phpMyAdmin/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "phpMyAdmin is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"phpMyAdmin is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the banner.");
+  script_tag(name:"vuldetect", value:"Checks the banner.");
 
-  script_tag(name: "insight", value: "Multiple XSS vulnerabilities allow remote authenticated users to inject arbitrary web script or HTML via a crafted
+  script_tag(name:"insight", value:"Multiple XSS vulnerabilities allow remote authenticated users to inject arbitrary web script or HTML via a crafted
       (1) database name or (2) table name that is improperly handled after presence in (a) the favorite list or (b) recent tables.");
 
-  script_tag(name: "affected", value: "phpMyAdmin versions 4.2.x prior to 4.2.4.");
+  script_tag(name:"affected", value:"phpMyAdmin versions 4.2.x prior to 4.2.4.");
 
-  script_tag(name: "solution", value: "Update to version 4.2.4.");
+  script_tag(name:"solution", value:"Update to version 4.2.4.");
 
-  script_xref(name: "URL", value: "https://www.phpmyadmin.net/security/PMASA-2014-2/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2014-2/");
 
   exit(0);
 }

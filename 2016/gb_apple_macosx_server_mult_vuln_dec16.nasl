@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_mult_vuln_dec16.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_apple_macosx_server_mult_vuln_dec16.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple OS X Server Multiple Vulnerabilities Dec16
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810232");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2013-3919", "CVE-2013-4854", "CVE-2014-0591", "CVE-2014-4424",
                 "CVE-2014-4406", "CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062",
                 "CVE-2014-0063", "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(90690, 90689);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 14:52:33 +0530 (Mon, 05 Dec 2016)");
   script_name("Apple OS X Server Multiple Vulnerabilities Dec16");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - An integer overflow issue existed in LibYAML's handling of YAML tags.
 

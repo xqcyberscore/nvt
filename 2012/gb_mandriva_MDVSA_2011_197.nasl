@@ -24,7 +24,30 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in php:
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-12/msg00030.php");
+  script_oid("1.3.6.1.4.1.25623.1.0.831518");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-02 13:29:22 +0530 (Mon, 02 Jan 2012)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_xref(name:"MDVSA", value:"2011:197");
+  script_cve_id("CVE-2011-0708", "CVE-2011-4566", "CVE-2011-4885");
+  script_name("Mandriva Update for php MDVSA-2011:197 (php)");
+
+  script_tag(name:"summary", value:"Check for the Version of php");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2010\.1");
+  script_tag(name:"affected", value:"php on Mandriva Linux 2010.1,
+  Mandriva Linux 2010.1/X86_64");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in php:
 
   Integer overflow in the exif_process_IFD_TAG function in exif.c
   in the exif extension in PHP 5.4.0beta2 on 32-bit platforms allows
@@ -38,50 +61,19 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in php
   allows remote attackers to cause a denial of service (CPU consumption)
   by sending many crafted parameters (CVE-2011-4885).
 
-  The updated packages have been patched to correct this issue.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "php on Mandriva Linux 2010.1,
-  Mandriva Linux 2010.1/X86_64";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-12/msg00030.php");
-  script_oid("1.3.6.1.4.1.25623.1.0.831518");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-01-02 13:29:22 +0530 (Mon, 02 Jan 2012)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_xref(name: "MDVSA", value: "2011:197");
-  script_cve_id("CVE-2011-0708", "CVE-2011-4566", "CVE-2011-4885");
-  script_name("Mandriva Update for php MDVSA-2011:197 (php)");
-
-  script_tag(name: "summary" , value: "Check for the Version of php");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  The updated packages have been patched to correct this issue.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2010.1")
 {
@@ -512,6 +504,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

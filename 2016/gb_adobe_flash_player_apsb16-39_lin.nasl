@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-39_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_adobe_flash_player_apsb16-39_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Flash Player Security Updates( apsb16-39 )-Linux
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810312");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-7867", "CVE-2016-7868", "CVE-2016-7869", "CVE-2016-7870",
                 "CVE-2016-7871", "CVE-2016-7872", "CVE-2016-7873", "CVE-2016-7874",
                 "CVE-2016-7875", "CVE-2016-7876", "CVE-2016-7877", "CVE-2016-7878",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2016-7892");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 09:54:36 +0530 (Wed, 14 Dec 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-39 )-Linux");
 
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - An use-after-free vulnerabilities.
 
@@ -62,8 +62,7 @@ if(description)
   24.0.0.186 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  24.0.0.186 or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  24.0.0.186 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -75,6 +74,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

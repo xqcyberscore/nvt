@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_macosx.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Adobe Reader Out-of-bounds Vulnerability Feb15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805439");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:45:52 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Reader Out-of-bounds Vulnerability Feb15 (Mac OS X)");
 
@@ -53,8 +53,7 @@ if(description)
   Adobe Reader 11.x through 11.0.10 on on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader 10.1.14 or
-  11.0.11 or later. For updates refer,
-  http://www.adobe.com/in/products/acrobat.html");
+  11.0.11 or later.");
 
   script_tag(name:"qod_type", value:"executable_version");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Reader/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

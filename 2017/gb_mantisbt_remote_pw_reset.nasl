@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_remote_pw_reset.nasl 6029 2017-04-26 07:02:41Z teissa $
+# $Id: gb_mantisbt_remote_pw_reset.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MantisBT Pre-Auth Remote Password Reset Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108140");
-  script_version("$Revision: 6029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 08:00:00 +0200 (Tue, 18 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -57,12 +57,13 @@ if(description)
 
   script_tag(name:"affected", value:"MantisBT versions 1.3.x before 1.3.10 and 2.3.0.");
 
-  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.3.10, 2.3.1 
-  or later. For updates refer to https://mantisbt.org.");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.3.10, 2.3.1
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"https://mantisbt.org.");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mrbs_xss_vuln.nasl 9421 2018-04-10 10:20:06Z asteins $
+# $Id: gb_mrbs_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Meeting Room Booking System Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:john_beranek:meeting_room_booking_system";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107264");
-  script_version("$Revision: 9421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 07:28:01 +0200 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,29 +44,18 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.cert-bund.de/advisoryshort/CB-K17-1995");
 
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code in the browser
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code in the browser
   of an unsuspecting user in the context of the affected site. This may let the
-  attacker steal cookie-based authentication credentials and launch other attacks.
-
-  Impact Level: Application.";
-
-  tag_affected = "Meeting Room Booking System prior to 1.7.0";
-
-  tag_solution = "Upgrade to Meeting Room Booking System 1.7.0 or later.
-
-  For updates refer to http://mrbs.sourceforge.net/download.php";
-
-  tag_summary = "This host is installed with Meeting Room Booking System and is
-  prone to multiple vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attacker steal cookie-based authentication credentials and launch other attacks.");
+  script_tag(name:"affected", value:"Meeting Room Booking System prior to 1.7.0");
+  script_tag(name:"solution", value:"Upgrade to Meeting Room Booking System 1.7.0 or later.");
+  script_tag(name:"summary", value:"This host is installed with Meeting Room Booking System and is
+  prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://mrbs.sourceforge.net/download.php");
   exit(0);
 }
 

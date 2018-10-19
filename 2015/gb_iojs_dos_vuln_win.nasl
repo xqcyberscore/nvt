@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iojs_dos_vuln_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_iojs_dos_vuln_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:iojs:io.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805944");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-5380");
   script_bugtraq_id(75556);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-04 18:22:15 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"io.js before 1.8.3 and 2.x before 2.3.3");
 
   script_tag(name:"solution", value:"Upgrade to io.js version 1.8.3 or 2.3.3 or
-  later. For updates refer https://iojs.org/en/index.html");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_iojs_detect_win.nasl");
   script_mandatory_keys("iojs/Win/Installed");
+  script_xref(name:"URL", value:"https://iojs.org/en/index.html");
   exit(0);
 }
 

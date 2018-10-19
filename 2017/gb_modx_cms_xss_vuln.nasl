@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_modx_cms_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MODX Revolution CMS XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140286");
-  script_version("$Revision: 10128 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-08 15:39:24 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 15:39:24 +0700 (Tue, 08 Aug 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-11744");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("MODX Revolution CMS XSS Vulnerability");
 
@@ -52,20 +52,20 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
-  script_tag(name: "summary", value: "MODX Revolution CMS is prone to a cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"MODX Revolution CMS is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "In MODX Revolution, the 'key' and 'name' parameters in the System Settings
+  script_tag(name:"insight", value:"In MODX Revolution, the 'key' and 'name' parameters in the System Settings
 module are vulnerable to XSS. A malicious payload sent to connectors/index.php will be triggered by every user,
 when they visit this module.");
 
-  script_tag(name: "affected", value: "MODX Revolution version 2.6.1 and prior.");
+  script_tag(name:"affected", value:"MODX Revolution version 2.6.1 and prior.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/issues/13564");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/13564");
 
   exit(0);
 }

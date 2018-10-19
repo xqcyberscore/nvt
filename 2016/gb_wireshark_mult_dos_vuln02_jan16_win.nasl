@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln02_jan16_win.nasl 5021 2017-01-17 17:21:26Z cfi $
+# $Id: gb_wireshark_mult_dos_vuln02_jan16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-02 January16 (Windows)
 #
@@ -29,46 +29,43 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806945");
-  script_version("$Revision: 5021 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-8733", "CVE-2015-8732", "CVE-2015-8731", "CVE-2015-8730",
                 "CVE-2015-8729", "CVE-2015-8728", "CVE-2015-8727", "CVE-2015-8726",
                 "CVE-2015-8725", "CVE-2015-8724", "CVE-2015-8723", "CVE-2015-8722",
                 "CVE-2015-8721", "CVE-2015-8720", "CVE-2015-8718", "CVE-2015-8711");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-17 18:21:26 +0100 (Tue, 17 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-02 January16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to
   multiple errors in Wireshark. For details refer the links mentioned in the
   reference links.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to conduct denial of service attack.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value: "Wireshark version 1.12.x before 1.12.9
+  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.9
   and 2.0.x before 2.0.1 on Windows");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 1.12.9 or
-  2.0.1 or later, For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.9 or
+  2.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2015-45.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2015-41.html");
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11792");
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11548");
+  script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2015-45.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2015-41.html");
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11792");
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11548");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -81,22 +78,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.12.x before 1.12.9
 if(version_in_range(version:wirversion, test_version:"1.12.0", test_version2:"1.12.8"))
 {
   fix = "1.12.9";
   VULN = TRUE ;
 }
 
-## Check the vulnerable version is 2.0.x before 2.0.1
 else if(version_is_equal(version:wirversion, test_version:"2.0.0"))
 {
   fix = "2.0.1";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_symlink_race_info_discl_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Samba Server Symlink Race Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810729");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-2619");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-04 11:09:27 +0530 (Tue, 04 Apr 2017)");
   script_name("Samba Server Symlink Race Information Disclosure Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -58,9 +58,7 @@ if(description)
   definition.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow clients
-  to access non-exported parts of the file system via symlinks.
-
-  Impact Level: Application");
+  to access non-exported parts of the file system via symlinks.");
 
   script_tag(name:"affected", value:"Samba Server versions 4.6.x before 4.6.1,
 
@@ -68,8 +66,7 @@ if(description)
 
   Samba Server versions 4.5.x before 4.5.7.");
 
-  script_tag(name:"solution", value:"Upgrade to Samba 4.6.1 or 4.4.12 or 4.5.7 or later,
-  For updates refer to https://www.samba.org");
+  script_tag(name:"solution", value:"Upgrade to Samba 4.6.1 or 4.4.12 or 4.5.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

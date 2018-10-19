@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_ba_suite_info_disc_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_pentaho_ba_suite_info_disc_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Pentaho Business Analytics (BA) Suite Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:pentaho:business_analytics";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808208");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2015-6940");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-24 10:37:42 +0530 (Tue, 24 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pentaho Business Analytics Suite Information Disclosure Vulnerability");
@@ -60,9 +60,7 @@ if(description)
   5.1.x GA BA Suite
   5.2.x GA BA Suite.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://support.pentaho.com/hc/en-us/articles/205782329-Security-Vulnerability-Announcement-Feb-2015
-  For updates refer to http://www.pentaho.com");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133601");
@@ -74,6 +72,8 @@ if(description)
   script_dependencies("gb_pentaho_ga_ba_suite_remote_detect.nasl");
   script_mandatory_keys("Pentaho/BA/Suite/Installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://support.pentaho.com/hc/en-us/articles/205782329-Security-Vulnerability-Announcement-Feb-2015");
+  script_xref(name:"URL", value:"http://www.pentaho.com");
   exit(0);
 }
 

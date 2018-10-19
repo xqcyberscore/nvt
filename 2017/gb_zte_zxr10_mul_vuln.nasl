@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxr10_mul_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_zte_zxr10_mul_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ZTE ZXR10 Router Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107254");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11982 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -36,7 +36,7 @@ if(description)
 
   script_name("ZTE ZXR10 Router Multiple Vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 10:23:00 +0200 (Thu, 09 Nov 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -51,11 +51,12 @@ if(description)
   access to sensitive information or modify system configuration.");
 
   script_tag(name:"vuldetect", value:"Connect to the telnet service and try to login with default credentials.");
-  script_tag(name:"solution", value:"Update to version 3.00.40. For more details, refer to http://support.zte.com.cn/support/news/LoopholeInfoDetail.aspx?newsId=1008262");
+  script_tag(name:"solution", value:"Update to version 3.00.40. For more details.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://support.zte.com.cn/support/news/LoopholeInfoDetail.aspx?newsId=1008262");
   exit(0);
 }
 

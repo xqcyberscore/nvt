@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_apsb16-15_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_adobe_air_apsb16-15_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Air Security Updates( apsb16-15 )-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808102");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
 		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
 	        "CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
@@ -39,7 +39,7 @@ if(description)
 		"CVE-2016-4117");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-13 10:48:15 +0530 (Fri, 13 May 2016)");
   script_name("Adobe Air Security Updates( apsb16-15 )-MAC OS X");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Multiple type confusion vulnerabilities.
 
@@ -69,8 +69,7 @@ if(description)
   21.0.0.215 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Air version
-  21.0.0.215 or later.
-  For updates refer to http://get.adobe.com/air");
+  21.0.0.215 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Air/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/air");
   exit(0);
 }
 

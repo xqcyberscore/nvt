@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 7338 2017-10-04 08:49:04Z santu $
+# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # vBulletin 'Private Messages' Authentication Bypass Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811796");
-  script_version("$Revision: 7338 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2015-3419");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:11 +0530 (Wed, 04 Oct 2017)");
   script_name("vBulletin 'Private Messages' Authentication Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with vBulletin and is prone
   to an authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an input validation
   failure");
@@ -52,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"vBulletin versions 5.x through 5.1.6");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://members.vbulletin.com/patches.php.");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ## Not possible to detect the patched versions
@@ -64,6 +62,7 @@ if(description)
   script_dependencies("vbulletin_detect.nasl");
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://members.vbulletin.com/patches.php.");
   exit(0);
 }
 

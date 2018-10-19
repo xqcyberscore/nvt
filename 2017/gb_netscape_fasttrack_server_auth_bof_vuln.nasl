@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_netscape_fasttrack_server_auth_bof_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Netscape FastTrack Server Authentication Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:netscape:fasttrack_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811546");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-1999-0853");
   script_bugtraq_id(847);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:05:05 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Authentication Buffer Overflow Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   condition when a long username or password (over 508 characters) are provided.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain root privileges under UNIX and SYSTEM privileges under NT.
-
-  Impact Level: System/Application");
+  attackers to gain root privileges under UNIX and SYSTEM privileges under NT.");
 
   script_tag(name:"affected", value:"Netscape FastTrack Server 3.01");
 

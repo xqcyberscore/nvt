@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805548");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-0134");
   script_bugtraq_id(73912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-08 15:03:56 +0530 (Fri, 08 May 2015)");
   script_name("IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability");
 
@@ -55,8 +55,7 @@ if(description)
   before FP4 IF3, 8.5.3 before FP6 IF6, 9.0 before IF7, and 9.0.1 before FP2 IF3.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.1 FP5 IF3 or 8.5.2
-  FP4 IF3 or 8.5.3 FP6 IF6 or 9.0 IF7 or 9.0.1 FP2 IF3 or later. For more
-  information refer to, http://www-01.ibm.com/support/docview.wss?uid=swg21700029");
+  FP4 IF3 or 8.5.3 FP6 IF6 or 9.0 IF7 or 9.0.1 FP2 IF3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx220771.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_xenserver_ctx220771.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX220771)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140173");
- script_cve_id("CVE-2017-2615","CVE-2017-2620");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 11317 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140173");
+  script_cve_id("CVE-2017-2615", "CVE-2017-2620");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11977 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX220771)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX220771)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX220771");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX220771");
 
- script_tag(name: "vuldetect", value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"Two security issues have been identified within Citrix XenServer. These issues could, if exploited, allow the administrator of an HVM guest VM to compromise the host.
+  script_tag(name:"summary", value:"Two security issues have been identified within Citrix XenServer. These issues could, if exploited, allow the administrator of an HVM guest VM to compromise the host.
 
 The following vulnerabilities have been addressed:
 
@@ -52,23 +52,23 @@ CVE-2017-2620 (High): QEMU: cirrus_bitblt_cputovideo does not check if memory re
 Customers using only PV guest VMs are not affected by this vulnerability.
 Customers using only VMs that use the std-vga graphics emulation are not affected by this vulnerability.");
 
- script_tag(name: "affected" , value:"XenServer 7.0
+  script_tag(name:"affected", value:"XenServer 7.0
 XenServer 6.5
 XenServer 6.2.0
 XenServer 6.0.2");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
- script_tag(name:"creation_date", value:"2017-02-22 14:10:53 +0100 (Wed, 22 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-22 14:10:53 +0100 (Wed, 22 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

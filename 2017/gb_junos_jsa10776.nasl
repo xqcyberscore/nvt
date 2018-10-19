@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10776.nasl 5951 2017-04-13 12:17:37Z ckuerste $
+# $Id: gb_junos_jsa10776.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Junos Multiple NTP Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106754");
-  script_version ("$Revision: 5951 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-13 14:17:37 +0200 (Thu, 13 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
-  script_tag(name: "cvss_base", value: "7.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-9311", "CVE-2016-9310", "CVE-2015-7973", "CVE-2015-7979", "CVE-2016-7431",
 "CVE-2015-8158", "CVE-2016-7429", "CVE-2016-7427");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Multiple NTP Vulnerabilities");
 
@@ -49,19 +49,19 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to multiple vulnerabilities in NTP.");
+  script_tag(name:"summary", value:"Junos OS is prone to multiple vulnerabilities in NTP.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "NTP.org and FreeBSD have published security advisories for vulnerabilities
+  script_tag(name:"insight", value:"NTP.org and FreeBSD have published security advisories for vulnerabilities
 resolved in ntpd which impact Junos OS.");
 
-  script_tag(name: "affected", value: "Junos OS 12.3X48, 14.1, 14.2, 15.1, 16.1 and 16.2");
+  script_tag(name:"affected", value:"Junos OS 12.3X48, 14.1, 14.2, 15.1, 16.1 and 16.2");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10776");
 
@@ -98,7 +98,7 @@ if (version =~ "^14") {
   }
 }
 
-if (version =~ "^15") {  
+if (version =~ "^15") {
   if ((revcomp(a: version, b: "15.1F7") < 0) &&
       (revcomp(a: version, b: "15.1F") >= 0)) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.1F7");

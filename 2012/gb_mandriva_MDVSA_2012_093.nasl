@@ -24,7 +24,33 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been identified and fixed in php:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:093");
+  script_oid("1.3.6.1.4.1.25623.1.0.831576");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:50:26 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-2143", "CVE-2012-2386");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"MDVSA", value:"2012:093");
+  script_name("Mandriva Update for php MDVSA-2012:093 (php)");
+
+  script_tag(name:"summary", value:"Check for the Version of php");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2|2010\.1)");
+  script_tag(name:"affected", value:"php on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been identified and fixed in php:
 
   There is a programming error in the DES implementation used in crypt()
   in ext/standard/crypt_freesec.c when handling input which contains
@@ -41,51 +67,18 @@ tag_insight = "Multiple vulnerabilities has been identified and fixed in php:
   the privileges of the user running the application (CVE-2012-2386).
 
   The updated php packages have been upgraded to the 5.3.14 version
-  which is not vulnerable to these issues.";
-
-tag_affected = "php on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:093");
-  script_oid("1.3.6.1.4.1.25623.1.0.831576");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:50:26 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-2143", "CVE-2012-2386");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:093");
-  script_name("Mandriva Update for php MDVSA-2012:093 (php)");
-
-  script_tag(name: "summary" , value: "Check for the Version of php");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  which is not vulnerable to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -528,7 +521,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -974,7 +967,7 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1420,6 +1413,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

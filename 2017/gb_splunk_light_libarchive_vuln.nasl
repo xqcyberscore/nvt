@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_libarchive_vuln.nasl 5202 2017-02-06 05:05:08Z ckuerste $
+# $Id: gb_splunk_light_libarchive_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Splunk Light libarchive Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106568");
-  script_version("$Revision: 5202 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-06 06:05:08 +0100 (Mon, 06 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-06 11:21:45 +0700 (Mon, 06 Feb 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-06 11:21:45 +0700 (Mon, 06 Feb 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Light libarchive Vulnerabilities");
 
@@ -49,18 +49,18 @@ if (description)
   script_dependencies("gb_splunk_light_detect.nasl");
   script_mandatory_keys("SplunkLight/installed");
 
-  script_tag(name: "summary", value: "Splunk Light is prone to multiple vulnerabilities in libarchive.");
+  script_tag(name:"summary", value:"Splunk Light is prone to multiple vulnerabilities in libarchive.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Multiple Vulnerabilities in libarchive addressed by version upgrade to
+  script_tag(name:"insight", value:"Multiple Vulnerabilities in libarchive addressed by version upgrade to
 v3.2.2.");
 
-  script_tag(name: "affected", value: "Splunk Light prior to version 6.5.1");
+  script_tag(name:"affected", value:"Splunk Light prior to version 6.5.1");
 
-  script_tag(name: "solution", value: "Update to version 6.5.1 or later.");
+  script_tag(name:"solution", value:"Update to version 6.5.1 or later.");
 
-  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAPW8");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAPW8");
 
   exit(0);
 }

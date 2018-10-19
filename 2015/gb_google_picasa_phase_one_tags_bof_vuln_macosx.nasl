@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_phase_one_tags_bof_vuln_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_google_picasa_phase_one_tags_bof_vuln_macosx.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Google Picasa 'Phase One Tags' Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:picasa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806631");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-8096");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 13:21:26 +0530 (Thu, 26 Nov 2015)");
   script_name("Google Picasa 'Phase One Tags' Buffer Overflow Vulnerability (Mac OS X)");
 
@@ -51,7 +51,7 @@ if(description)
   and Build 248 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Google Picasa version 3.9.141
-  build 259 or later. For updates refer http://picasa.google.com");
+  build 259 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_google_picasa_detect_macosx.nasl");
   script_mandatory_keys("picVer/MacOSX/Version");
+  script_xref(name:"URL", value:"http://picasa.google.com");
   exit(0);
 }
 

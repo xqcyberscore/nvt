@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spysweeper_corp_installed.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: spysweeper_corp_installed.nasl 11964 2018-10-18 12:44:10Z cfischer $
 #
 # Webroot SpySweeper Enterprise Check
 #
@@ -29,28 +29,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80046");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11964 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 14:44:10 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Webroot SpySweeper Enterprise Check");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
   script_family("Product detection");
   script_dependencies("smb_enum_services.nasl", "smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-
-  script_tag(name:"solution", value:"Make sure Spy Sweeper Enterprise is installed,
-  running and using the latest VDEFS.");
+  script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"summary", value:"This plugin checks that the remote host has
   Webroot Spy Sweeper Enterprise installed and properly running, and makes sure
   that the latest Vdefs are loaded.");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
@@ -274,7 +270,7 @@ if (warning)
   report += "As a result, the remote host might be infected by spyware
 received by browsing or other means.";
 
-  security_message(port:0, data:report);
+  log_message(port:0, data:report);
 }
 else
 {

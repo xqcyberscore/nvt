@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032241.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_ms_kb4032241.nasl 11972 2018-10-19 05:34:20Z cfischer $
 #
 # Microsoft Excel 2013 Multiple Vulnerabilities (KB4032241)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813914");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 11972 $");
   script_cve_id("CVE-2018-8382", "CVE-2018-8375", "CVE-2018-8379");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 12:15:59 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Excel 2013 Multiple Vulnerabilities (KB4032241)");
 

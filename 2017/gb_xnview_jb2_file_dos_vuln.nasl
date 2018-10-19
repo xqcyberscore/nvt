@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jb2_file_dos_vuln.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
+# $Id: gb_xnview_jb2_file_dos_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # XnView 'jb2 file' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811952");
-  script_version("$Revision: 11813 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-14580");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:35:33 +0530 (Thu, 26 Oct 2017)");
 
   script_name("XnView 'jb2 file' DoS Vulnerability");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with XnView and is
   prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper handling
   of crafted '.jb2' file.");

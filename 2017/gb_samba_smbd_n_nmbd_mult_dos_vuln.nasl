@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_smbd_n_nmbd_mult_dos_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811219");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11959 $");
   script_cve_id("CVE-2014-0244", "CVE-2014-3493");
   script_bugtraq_id(68148, 68150);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-22 12:27:14 +0530 (Thu, 22 Jun 2017)");
   script_name("Samba 'smbd and nmbd' Multiple Denial-of-Service Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -62,19 +62,18 @@ if(description)
     non-unicode request.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will allow
-  remote attackers to cause a denial-of-service condition.
-
-  Impact Level: Application");
+  remote attackers to cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Samba Server versions 3.6.x before 3.6.24,
   4.0.x before 4.0.19, and 4.1.x before 4.1.9.");
 
   script_tag(name:"solution", value:"Upgrade to Samba 3.6.24 or 4.0.19 or 4.1.9
-  or later. For updates refer to https://www.samba.org ");
+  or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"https://www.samba.org");
   exit(0);
 }
 

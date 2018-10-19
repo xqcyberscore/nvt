@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-129.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ms16-129.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Edge Multiple Vulnerabities (3199057)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809091");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-7195", "CVE-2016-7196", "CVE-2016-7198", "CVE-2016-7199",
                 "CVE-2016-7200", "CVE-2016-7201", "CVE-2016-7202", "CVE-2016-7203",
                 "CVE-2016-7204", "CVE-2016-7208", "CVE-2016-7209", "CVE-2016-7227",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(92828, 92834, 92789, 92830, 92829, 92832, 92807, 92793);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:52:24 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Edge Multiple Vulnerabities (3199057)");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - The Microsoft Edge improperly handles objects in memory.
 
@@ -64,9 +64,7 @@ if(description)
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-129");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,6 +79,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-129");
   exit(0);
 }
 

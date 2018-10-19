@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Oracle Virtualbox Unspecified Vulnerability Jan16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806987");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-0602");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:01:00 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability Jan16 (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  5.0.14 or later on Windows. For updates refer to https://www.virtualbox.org");
+  5.0.14 or later on Windows.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

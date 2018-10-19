@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_adrotate_track_pram_sqli_vul.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_adrotate_track_pram_sqli_vul.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # WordPress AdRotate Plugin 'clicktracker.php' SQL Injection Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804511");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-1854");
   script_bugtraq_id(65709);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-11 11:17:52 +0530 (Tue, 11 Mar 2014)");
   script_name("WordPress AdRotate Plugin 'clicktracker.php' SQL Injection Vulnerability");
 
@@ -50,7 +50,7 @@ of arbitrary data.");
   script_tag(name:"affected", value:"Wordpress AdRotate Pro plugin version 3.9 through 3.9.5 and AdRotate Free
 plugin version 3.9 through 3.9.4");
   script_tag(name:"solution", value:"Upgrade AdRotate Pro to version 3.9.6 or higher and AdRotate Free to version
-3.9.5 or higher, For Updates refer to http://www.adrotateplugin.com");
+3.9.5 or higher.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57079");
@@ -64,6 +64,7 @@ plugin version 3.9 through 3.9.4");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.adrotateplugin.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_code_inject_priv_esc_vuln.nasl 7226 2017-09-22 06:16:25Z asteins $
+# $Id: gb_otrs_code_inject_priv_esc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # OTRS Code Injection / Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112052");
-  script_version("$Revision: 7226 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 08:16:25 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 08:26:38 +0200 (Fri, 22 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker who is logged into OTRS as an agent with write permissions for statistics can inject arbitrary code into the system.
+  script_tag(name:"insight", value:"An attacker who is logged into OTRS as an agent with write permissions for statistics can inject arbitrary code into the system.
       This can lead to serious problems like privilege escalation, data loss, and denial of service.");
 
-  script_tag(name: "affected", value: "OTRS 3.3.x before 3.3.18, 4.x before 4.0.25, and 5.x before 5.0.23");
+  script_tag(name:"affected", value:"OTRS 3.3.x before 3.3.18, 4.x before 4.0.25, and 5.x before 5.0.23");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 3.3.18, 4.0.25, 5.0.23 or later.");
+  script_tag(name:"solution", value:"Upgrade to OTRS 3.3.18, 4.0.25, 5.0.23 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-04-security-update-otrs-versions/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-04-security-update-otrs-versions/");
 
   exit(0);
 }

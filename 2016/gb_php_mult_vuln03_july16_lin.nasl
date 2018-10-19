@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln03_july16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_php_mult_vuln03_july16_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # PHP Multiple Vulnerabilities - 03 - Jul16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808603");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-4537", "CVE-2016-4538", "CVE-2016-4539", "CVE-2016-4540",
                 "CVE-2016-4541", "CVE-2016-4542", "CVE-2016-4543", "CVE-2016-4544");
   script_bugtraq_id(89844, 90172, 90173, 90174);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 03 - Jul16 (Linux)");
 
@@ -76,7 +76,7 @@ if(description)
   5.6.21, and 7.x before 7.0.6 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.35,
-  or 5.6.21, or 7.0.6, or later. For updates refer to http://www.php.net");
+  or 5.6.21, or 7.0.6, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

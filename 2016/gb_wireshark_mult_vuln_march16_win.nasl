@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_march16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_wireshark_mult_vuln_march16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807448");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2532", "CVE-2016-2531", "CVE-2016-2523", "CVE-2016-2521",
                 "CVE-2016-4421", "CVE-2016-4418", "CVE-2016-4417");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 10:39:01 +0530 (Thu, 03 Mar 2016)");
   script_name("Wireshark Multiple Vulnerabilities March16 (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - The 'dissect_llrp_parameters' function in 'epan/dissectors/packet-llrp.c' script
     in the LLRP dissector does not limit the recursion depth.
@@ -69,8 +69,7 @@ if(description)
   and 2.0.x before 2.0.2 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.10 or
-  2.0.2 or later.
-  For updates refer to https://www.wireshark.org");
+  2.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

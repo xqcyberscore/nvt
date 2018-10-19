@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -29,16 +29,15 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804199");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
-
 
   script_tag(name:"summary", value:"This host is installed with Symantec Endpoint Protection is prone to
 multiple vulnerabilities.");
@@ -57,11 +56,8 @@ before 12.1.2 RU2 and Endpoint Protection Small Business Edition 12.x before
 12.1.2 RU2");
   script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection (SEP) version 11.0.7.4 or 12.1.2 RU2
 or Endpoint Protection Small Business Edition 12.x before version 12.1.2RU2.
-For Updates refer http://www.symantec.com/en/in/endpoint-protection.
 
-*****
-NOTE: Ignore this warning if above mentioned patch is installed.
-*****");
+  NOTE: Ignore this warning if above mentioned patch is installed.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56354/");
@@ -71,6 +67,7 @@ NOTE: Ignore this warning if above mentioned patch is installed.
   script_family("General");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
+  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection");
   exit(0);
 }
 

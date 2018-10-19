@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_HT207804.nasl 6144 2017-05-17 12:26:22Z antu123 $
+# $Id: gb_apple_safari_mult_vuln_HT207804.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
-# Apple Safari Multiple Vulnerabilities-HT207804  
+# Apple Safari Multiple Vulnerabilities-HT207804
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810988");
-  script_version("$Revision: 6144 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-2495", "CVE-2017-2500", "CVE-2017-2511", "CVE-2017-2496",
                 "CVE-2017-2505", "CVE-2017-2506", "CVE-2017-2514", "CVE-2017-2515",
                 "CVE-2017-2521", "CVE-2017-2525", "CVE-2017-2526", "CVE-2017-2530",
@@ -39,17 +39,16 @@ if(description)
                 "CVE-2017-2549", "CVE-2017-2499");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 14:26:22 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 12:56:34 +0530 (Tue, 16 May 2017)");
   script_name("Apple Safari Multiple Vulnerabilities-HT207804");
 
-  script_tag(name: "summary" , value:"This host is installed with Apple Safari
+  script_tag(name:"summary", value:"This host is installed with Apple Safari
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An inconsistent user interface issue.
 
@@ -67,43 +66,34 @@ if(description)
 
   - A logic issue existed in frame loading.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to conduct cross site scripting and spoofing attacks and can also 
-  lead to arbitrary code execution and application denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to conduct cross site scripting and spoofing attacks and can also
+  lead to arbitrary code execution and application denial of service.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apple Safari versions before 10.1.1");
 
-  script_tag(name: "affected" , value:"Apple Safari versions before 10.1.1");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple Safari 10.1.1 or later.
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari 10.1.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT207804");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT207804");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 
-
-# Code starts from here
 
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
-
-## Get Apple Safari version
 if(!safVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for Apple Safari Versions less than 10.1.1
 if(version_is_less(version:safVer, test_version:"10.1.1"))
 {
   report = report_fixed_ver(installed_version:safVer, fixed_version:"10.1.1");

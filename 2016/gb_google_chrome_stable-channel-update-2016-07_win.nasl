@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-2016-07_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-2016-07_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-2016-07)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808263");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1706", "CVE-2016-1707", "CVE-2016-1708", "CVE-2016-1709",
                 "CVE-2016-1710", "CVE-2016-1711", "CVE-2016-5127", "CVE-2016-5128",
                 "CVE-2016-5129", "CVE-2016-5130", "CVE-2016-5131", "CVE-2016-5132",
@@ -37,57 +37,71 @@ if(description)
                 "CVE-2016-5137", "CVE-2016-1705");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-22 13:12:56 +0530 (Fri, 22 Jul 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-2016-07)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exist due to
+
   - Sandbox escape in PPAPI
+
   - URL spoofing on iOS
+
   - Use-after-free in Extensions
+
   - Heap-buffer-overflow in sfntly
+
   - Same-origin bypass in Blink
+
   - Use-after-free in Blink
+
   - Same-origin bypass in V8
+
   - Memory corruption in V8
+
   - URL spoofing
+
   - Use-after-free in libxml
+
   - Limited same-origin bypass in Service Workers
+
   - Origin confusion in proxy authentication
+
   - URL leakage via PAC script
+
   - Content-Security-Policy bypass
+
   - Use after free in extensions
+
   - History sniffing with HSTS and CSP");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerabilities
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerabilities
   will allow remote attackers to bypass security, to cause denial of service and
-  some unspecified impacts.
+  some unspecified impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 52.0.2743.82 on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
-  52.0.2743.82 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
+  52.0.2743.82 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/07/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/07/stable-channel-update.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

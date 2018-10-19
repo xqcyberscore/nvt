@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_sql_0_90_4.nasl 9505 2018-04-17 09:16:54Z asteins $
+# $Id: gb_glpi_sql_0_90_4.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # GLPI 0.90.4 SQL Injection Vulnerability
 #
@@ -30,23 +30,23 @@ CPE ='cpe:/a:glpi-project:glpi';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107227");
-  script_version("$Revision: 9505 $");
-  script_tag(name: "cvss_base", value: "6.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-17 11:16:54 +0200 (Tue, 17 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-06-28 14:43:29 +0200 (Wed, 28 Jun 2017)");
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-28 14:43:29 +0200 (Wed, 28 Jun 2017)");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_name("GLPI 0.90.4 SQL Injection Vulnerability");
 
-  script_tag(name: "summary", value: "GLPI is prone to SQL Injection");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
-  script_tag(name: "affected", value: "GLPI 0.90.4 ");
-  script_tag(name: "insight", value: "The attack is due to the variable dbenc which when configured by the admin to big5, it allows SQL injection in almost all the forms of the application.");
-  script_tag(name: "impact", value: "Successful exploitation will allow an authenticated remote attacker to execute arbitrary
+  script_tag(name:"summary", value:"GLPI is prone to SQL Injection");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"GLPI 0.90.4 ");
+  script_tag(name:"insight", value:"The attack is due to the variable dbenc which when configured by the admin to big5, it allows SQL injection in almost all the forms of the application.");
+  script_tag(name:"impact", value:"Successful exploitation will allow an authenticated remote attacker to execute arbitrary
   SQL commands by using the [ELIDED] character when the database is configured to use asian encoding (BIG 5).");
-  script_tag(name: "solution", value: "Update GLPI to version 9.1 or later. For updates head to: https://github.com/glpi-project/glpi/releases");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Update GLPI to version 9.1 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_family("Web application abuses");
   script_category(ACT_GATHER_INFO);
@@ -55,8 +55,9 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("glpi/installed");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42262/?rss");
-  script_xref(name: "URL", value: "https://vuldb.com/de/?id.102723");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42262/?rss");
+  script_xref(name:"URL", value:"https://vuldb.com/de/?id.102723");
+  script_xref(name:"URL", value:"https://github.com/glpi-project/glpi/releases");
 
   exit(0);
 }

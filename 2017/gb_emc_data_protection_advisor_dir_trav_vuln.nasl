@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 5606 2017-03-17 17:09:01Z cfi $
+# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # EMC Data Protection Advisor Directory Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:emc:data_protection_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106549");
-  script_version("$Revision: 5606 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-8211");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Data Protection Advisor Directory Traversal Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_emc_data_protection_advisor_detect.nasl");
   script_mandatory_keys("emc_data_protection_advisor/installed");
 
-  script_tag(name: "summary", value: "EMC Data Protection Advisor is prone to a directory traversal
+  script_tag(name:"summary", value:"EMC Data Protection Advisor is prone to a directory traversal
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Data Protection Advisor is affected by a path traversal vulnerability.
+  script_tag(name:"insight", value:"EMC Data Protection Advisor is affected by a path traversal vulnerability.
 Attackers may potentially exploit this vulnerability to access unauthorized information by supplying specially
 crafted strings in input parameters of the application.");
 
-  script_tag(name: "affected", value: "EMC Data Protection Advisor 6.1.x, 6.2, 6.2.1, 6.2.2 and 6.2.3 befor
+  script_tag(name:"affected", value:"EMC Data Protection Advisor 6.1.x, 6.2, 6.2.1, 6.2.2 and 6.2.3 before
 patch 446.");
 
-  script_tag(name: "solution", value: "Update to 6.2.3 patch 446 or later versions.");
+  script_tag(name:"solution", value:"Update to 6.2.3 patch 446 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2017/Jan/87");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/Jan/87");
 
   exit(0);
 }

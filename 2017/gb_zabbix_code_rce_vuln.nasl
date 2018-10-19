@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_code_rce_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
+# $Id: gb_zabbix_code_rce_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106835");
-  script_version("$Revision: 7651 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-29 11:13:22 +0700 (Mon, 29 May 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-29 11:13:22 +0700 (Mon, 29 May 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2824");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("zabbix_web_detect.nasl");
   script_mandatory_keys("Zabbix/installed");
 
-  script_tag(name: "summary", value: "An exploitable code execution vulnerability exists in the trapper command
+  script_tag(name:"summary", value:"An exploitable code execution vulnerability exists in the trapper command
 functionality of Zabbix Server. A specially crafted set of packets can cause a command injection resulting in
 remote code execution. An attacker can make requests from an active Zabbix Proxy to trigger this vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Zabbix version 2.4.x");
+  script_tag(name:"affected", value:"Zabbix version 2.4.x");
 
-  script_tag(name: "solution", value: "By removing the three default script entries inside of the Zabbix Server's
+  script_tag(name:"solution", value:"By removing the three default script entries inside of the Zabbix Server's
 'Zabbix' database, an attacker would be unable to actually execute code, even if they can insert hosts with
 spoofed addresses into the database. This should not affect an organizations current operations, unless the
 scripts are actually used.");
 
-  script_xref(name: "URL", value: "https://talosintelligence.com/vulnerability_reports/TALOS-2017-0325");
+  script_xref(name:"URL", value:"https://talosintelligence.com/vulnerability_reports/TALOS-2017-0325");
 
   exit(0);
 }

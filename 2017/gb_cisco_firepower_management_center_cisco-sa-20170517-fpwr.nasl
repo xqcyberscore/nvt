@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170517-fpwr.nasl 6249 2017-05-30 13:27:41Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170517-fpwr.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Cisco FirePOWER System Software SSL Logging Denial of Service Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106810");
- script_cve_id("CVE-2017-6632");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 6249 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106810");
+  script_cve_id("CVE-2017-6632");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11959 $");
 
- script_name("Cisco FirePOWER System Software SSL Logging Denial of Service Vulnerability");
+  script_name("Cisco FirePOWER System Software SSL Logging Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-fpwr");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-fpwr");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the logging configuration of Secure Sockets Layer (SSL)
+  script_tag(name:"summary", value:"A vulnerability in the logging configuration of Secure Sockets Layer (SSL)
 policies for Cisco FirePOWER System Software could allow an unauthenticated, remote attacker to cause a denial
 of service (DoS) condition due to high consumption of system resources.");
 
- script_tag(name: "insight", value: "The vulnerability is due to the logging of certain TCP packets by the
+  script_tag(name:"insight", value:"The vulnerability is due to the logging of certain TCP packets by the
 affected software. An attacker could exploit this vulnerability by sending a flood of crafted TCP packets to an
 affected device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to cause a DoS condition. The
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to cause a DoS condition. The
 success of an exploit is dependent on how an administrator has configured logging for SSL policies for a device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
- script_tag(name: "creation_date", value: "2017-05-18 09:11:02 +0700 (Thu, 18 May 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-18 09:11:02 +0700 (Thu, 18 May 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

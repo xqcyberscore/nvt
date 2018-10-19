@@ -24,7 +24,31 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A security issue was identified and fixed in ghostscript:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:151-1");
+  script_oid("1.3.6.1.4.1.25623.1.0.831744");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-09 10:02:01 +0530 (Tue, 09 Oct 2012)");
+  script_cve_id("CVE-2012-4405");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"MDVSA", value:"2012:151-1");
+  script_name("Mandriva Update for ghostscript MDVSA-2012:151-1 (ghostscript)");
+
+  script_tag(name:"summary", value:"Check for the Version of ghostscript");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2011\.0");
+  script_tag(name:"affected", value:"ghostscript on Mandriva Linux 2011.0");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"A security issue was identified and fixed in ghostscript:
 
   An integer overflow flaw, leading to a heap-based buffer overflow, was
   found in Ghostscript&#039;s International Color Consortium Format library
@@ -37,49 +61,18 @@ tag_insight = "A security issue was identified and fixed in ghostscript:
 
   Update:
 
-  Packages for Mandriva Linux 2011 is being provided.";
-
-tag_affected = "ghostscript on Mandriva Linux 2011.0";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:151-1");
-  script_oid("1.3.6.1.4.1.25623.1.0.831744");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-10-09 10:02:01 +0530 (Tue, 09 Oct 2012)");
-  script_cve_id("CVE-2012-4405");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:151-1");
-  script_name("Mandriva Update for ghostscript MDVSA-2012:151-1 (ghostscript)");
-
-  script_tag(name: "summary" , value: "Check for the Version of ghostscript");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Packages for Mandriva Linux 2011 is being provided.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -168,6 +161,6 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nsd_dos_vuln.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_nsd_dos_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # NSD (Name Server Daemon) AXFR Response Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nlnetlabs:nsd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106121");
-  script_version("$Revision: 5441 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+  script_version("$Revision: 11961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 10:27:46 +0700 (Fri, 08 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -61,11 +61,12 @@ if(description)
 
   script_tag(name:"affected", value:"Version <= 4.1.10");
 
-  script_tag(name:"solution", value:"Update to version 4.1.11. For updates, refer to https://www.nlnetlabs.nl/projects/nsd/");
+  script_tag(name:"solution", value:"Update to version 4.1.11.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://www.nlnetlabs.nl/projects/nsd/");
   exit(0);
 }
 

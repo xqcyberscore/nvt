@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20150612-openssl.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_nx_os_cisco-sa-20150612-openssl.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Multiple Vulnerabilities in OpenSSL (June 2015) Affecting Cisco Products
 #
@@ -33,34 +33,31 @@ if (description)
   script_cve_id("CVE-2015-1791", "CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1792", "CVE-2014-8176");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Cisco NX-OS: Multiple Vulnerabilities in OpenSSL (June 2015) Affecting Cisco Products");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150612-openssl");
 
-
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"On June 11, 2015, the OpenSSL Project released a security advisory detailing six distinct
-vulnerabilities, and another fix that provides hardening protections against exploits as described
-in the Logjam research.
+  vulnerabilities, and another fix that provides hardening protections against exploits as described
+  in the Logjam research.
 
-Multiple Cisco products incorporate a version of the OpenSSL package affected by one or more
-vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service
-(DoS) condition or corrupt portions of OpenSSL process memory.
+  Multiple Cisco products incorporate a version of the OpenSSL package affected by one or more
+  vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service
+  (DoS) condition or corrupt portions of OpenSSL process memory.
 
-Cisco will release software updates that address these vulnerabilities.
+  Cisco will release software updates that address these vulnerabilities.
 
-Workarounds that mitigate these vulnerabilities may be available.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150612-openssl");
+  Workarounds that mitigate these vulnerabilities may be available.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 15:26:53 +0200 (Thu, 12 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -68,7 +65,7 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
   script_dependencies("gb_cisco_nx_os_version.nasl");
   script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

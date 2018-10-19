@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_upnp_info.nasl 10595 2018-07-24 13:51:36Z cfischer $
+# $Id: gb_nmap_upnp_info.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap UPnP Info NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801699");
-  script_version("$Revision: 10595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:51:36 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 11966 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:49:23 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This script attempts to extract system information from the UPnP
   service.
 
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) upnp-info.nse.");
+  This is a wrapper on the Nmap Security Scanner's upnp-info.nse.");
 
   exit(0);
 }
@@ -94,16 +94,28 @@ if(!get_udp_port_state(port)) exit(0);
 
 argv = make_list("nmap", "-sU", "--script=upnp-info.nse", "-p", port, get_host_ip());
 
-if(i > 0)
-{
-  scriptArgs= "--script-args=";
+if(i > 0) {
+  scriptArgs = "--script-args=";
   foreach arg(args) {
     scriptArgs += arg + ",";
   }
-  argv = make_list(argv,scriptArgs);
+  argv = make_list(argv, scriptArgs);
 }
 
-res = pread(cmd: "nmap", argv: argv);
+if(TARGET_IS_IPV6())
+  argv = make_list(argv, "-6");
+
+timing_policy = get_kb_item("Tools/nmap/timing_policy");
+if(timing_policy =~ '^-T[0-5]$')
+  argv = make_list(argv, timing_policy);
+
+source_iface = get_preference("source_iface");
+if(source_iface =~ '^[0-9a-zA-Z:_]+$') {
+  argv = make_list(argv, "-e");
+  argv = make_list(argv, source_iface);
+}
+
+res = pread(cmd:"nmap", argv:argv);
 if(res)
 {
   foreach line (split(res))

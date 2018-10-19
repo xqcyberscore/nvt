@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_weak_policy_vuln_win.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_mantisbt_weak_policy_vuln_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MantisBT Weak Content Security Policy Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106615");
-  script_version("$Revision: 7571 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-20 13:33:44 +0700 (Mon, 20 Feb 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-20 13:33:44 +0700 (Mon, 20 Feb 2017)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-7111");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MantisBT Weak Content Security Policy Vulnerability (Windows)");
 
@@ -49,20 +49,20 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed","Host/runs_windows");
+  script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "MantisBT is prone to a weak Content Security Policy vulnerability.");
+  script_tag(name:"summary", value:"MantisBT is prone to a weak Content Security Policy vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "MantisBT uses a weak Content Security Policy when using the Gravatar plugin,
+  script_tag(name:"insight", value:"MantisBT uses a weak Content Security Policy when using the Gravatar plugin,
 which allows remote attackers to conduct cross-site scripting (XSS) attacks via unspecified vectors.");
 
-  script_tag(name: "affected", value: "MantisBT version 2.x. and prior to version 1.3.1");
+  script_tag(name:"affected", value:"MantisBT version 2.x. and prior to version 1.3.1");
 
-  script_tag(name: "solution", value: "Update to MantisBT 2.0.0-beta.2, 1.3.1 or later.");
+  script_tag(name:"solution", value:"Update to MantisBT 2.0.0-beta.2, 1.3.1 or later.");
 
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=21263");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=21263");
 
   exit(0);
 }

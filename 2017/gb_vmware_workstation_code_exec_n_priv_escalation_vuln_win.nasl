@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_code_exec_n_priv_escalation_vuln_win.nasl 5232 2017-02-08 11:56:44Z antu123 $
+# $Id: gb_vmware_workstation_code_exec_n_priv_escalation_vuln_win.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # VMware Workstation Code Execution And Privilege Escalation Vulnerabilities(Windows)
 #
@@ -28,43 +28,43 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809796");
-  script_version("$Revision: 5232 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2012-3569", "CVE-2012-5458", "CVE-2012-5459");
   script_bugtraq_id(56470, 56469, 56468);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:56:44 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-07 17:19:44 +0530 (Tue, 07 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Code Execution And Privilege Escalation Vulnerabilities(Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Workstation
-  and is prone to code execution and privelege escalation vulnerabilities.");
+  script_tag(name:"summary", value:"The host is installed with VMware Workstation
+  and is prone to code execution and privilege escalation vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Insecure process threads permissions.
+
   - Format string error in VMware OVF Tool.
+
   - Untrusted search path error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code or cause denial-of-service conditions and also gain
-  elevated privileges on the target host.
+  elevated privileges on the target host.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"VMware Workstation version 8.x before
+  script_tag(name:"affected", value:"VMware Workstation version 8.x before
   8.0.5 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to VMware Workstation version
-  8.0.5 or later, For updates refer to http://www.vmware.com");
+  script_tag(name:"solution", value:"Upgrade to VMware Workstation version
+  8.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/120101");
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2012-0015.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/120101");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0015.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -76,16 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-report = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(vmwareVer =~ "^8\.")
 {
   if(version_is_less(version:vmwareVer, test_version:"8.0.5"))

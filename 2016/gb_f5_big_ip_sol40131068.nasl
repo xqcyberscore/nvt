@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol40131068.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_f5_big_ip_sol40131068.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-4402");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"A remote attacker may exploit this flaw by way of a specially crafted OpenPGP message to cause a denial-of-service (DoS).");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The compressed packet parser in GnuPG 1.4.x before 1.4.15 and 2.0.x before 2.0.22 allows remote attackers to cause a denial of service (infinite recursion) via a crafted OpenPGP message.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-23 10:41:29 +0100 (Tue, 23 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

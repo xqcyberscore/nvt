@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812184");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2016-0594");
   script_bugtraq_id(81108);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:22:44 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Unspecified Vulnerability-01 Feb16 (Linux)");
@@ -41,32 +41,29 @@ if(description)
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Unspecified errors exists in the MySQL Server
   component via unknown vectors related to Server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows an
   authenticated remote attacker to affect confidentiality, integrity, and
-  availability via unknown vectors.
-
-  Impact Level: Application");
+  availability via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.6.21 and earlier
   on windows");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
   exit(0);
 }
 

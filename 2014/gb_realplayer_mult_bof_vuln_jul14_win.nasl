@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804678");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-3113");
   script_bugtraq_id(68442);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-14 16:18:41 +0530 (Mon, 14 Jul 2014)");
   script_name("RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)");
 
@@ -48,8 +48,7 @@ incorrect media sample sizes.");
 overflow, resulting in a denial of service or potentially allowing the
 execution of arbitrary code.");
   script_tag(name:"affected", value:"RealNetworks RealPlayer before version 17.0.10.8 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to RealNetworks RealPlayer version 17.0.10.8 or later.
-For updates refer http://www.real.com");
+  script_tag(name:"solution", value:"Upgrade to RealNetworks RealPlayer version 17.0.10.8 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,6 +62,7 @@ For updates refer http://www.real.com");
   script_family("Buffer overflow");
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_mandatory_keys("RealPlayer/Win/Ver");
+  script_xref(name:"URL", value:"http://www.real.com");
   exit(0);
 }
 

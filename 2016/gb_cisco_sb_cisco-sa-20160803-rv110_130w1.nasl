@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160803-rv110_130w1.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_sb_cisco-sa-20160803-rv110_130w1.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers Command Shell Injection Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-6396");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Cisco RV110W, RV130W, and RV215W Routers Command Shell Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-rv110_130w1");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"This vulnerability is fixed in the following firmware versions.
 
@@ -52,7 +52,7 @@ RV215W Wireless-N VPN Router, Release 1.3.0.8");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-05 15:23:41 +0200 (Fri, 05 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -60,7 +60,7 @@ RV215W Wireless-N VPN Router, Release 1.3.0.8");
   script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
   script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

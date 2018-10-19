@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 11960 2018-10-18 10:48:11Z jschulte $
 #
 # PineApp Mail-SeCure Absolute Path Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802066");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11960 $");
   script_bugtraq_id(63827);
   script_cve_id("CVE-2013-6827");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 12:01:21 +0530 (Wed, 04 Dec 2013)");
   script_name("PineApp Mail-SeCure Absolute Path Traversal Vulnerability");
 
@@ -40,7 +40,10 @@ if(description)
   path traversal vulnerability.");
   script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check is it possible to read
   the system file or not.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"The flaw is due to the '/admin/viewmsg.php' script not properly sanitizing
   user supplied input.");
   script_tag(name:"affected", value:"PineApp Mail-SeCure 5099SK version 3.70, Other versions may also be
@@ -55,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_exclude_keys("Settings/disable_cgi_scanning", "PineApp/missing");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 7443);
   exit(0);
 }
@@ -73,13 +76,23 @@ if("PineApp" >!< res) {
   exit(0);
 }
 
-req = http_get(item:"/admin/viewmsg.php?msg=/etc/passwd", port:port);
-res = http_keepalive_send_recv(port:port, data:req);
+files = traversal_files();
 
-if(res && res =~ "root:.*:0:[01]:")
-{
-  security_message(port:port);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = "/admin/viewmsg.php?msg=/" + file;
+
+  req = http_get(item:url, port:port);
+  res = http_keepalive_send_recv(port:port, data:req);
+
+  if(res && egrep(string:res, pattern:pattern))
+  {
+    report = report_vuln_url(url:url);
+    security_message(data:report, port:port);
+    exit(0);
+  }
 }
 
 exit(99);

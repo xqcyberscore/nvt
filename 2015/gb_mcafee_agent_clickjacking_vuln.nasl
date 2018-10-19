@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_clickjacking_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mcafee_agent_clickjacking_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # McAfee Agent (MA) Log Viewing Feature Unspecified Clickjacking Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805294");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-2053");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 15:30:43 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Agent (MA) Log Viewing Feature Unspecified Clickjacking Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   Patch 3 and version 5.0.0");
 
   script_tag(name:"solution", value:"Upgrade to McAfee Agent (MA) 4.8.0 Patch 3
-  or 5.0.1 or later. For updates refer http://www.mcafee.com/us/");
+  or 5.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mcafee_agent_detect.nasl");
   script_mandatory_keys("McAfee/Agent/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/");
   exit(0);
 }
 

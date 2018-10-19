@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_auth_server_label_decompression_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_powerdns_auth_server_label_decompression_dos_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # PowerDNS Authoritative (Auth) Server Denial of Service Vulnerability (Windows)
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:powerdns:authoritative_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809857");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2015-1868", "CVE-2015-5470");
   script_bugtraq_id(74306);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 15:18:12 +0530 (Wed, 04 Jan 2017)");
   script_name("PowerDNS Authoritative (Auth) Server Denial of Service Vulnerability (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is running PowerDNS Authoritative (Auth)
   Server and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an error in the 
+  script_tag(name:"insight", value:"The flaw exists due to an error in the
   handling of DNS packets by label decompression functionality.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause the target service to crash or consume excessive CPU resource.
-
-  Impact Level: Application");
+  attackers to cause the target service to crash or consume excessive CPU resource.");
 
   script_tag(name:"affected", value:"PowerDNS Authoritative (Auth) Server 3.2.x,
   3.3.x before 3.3.3, and 3.4.x before 3.4.5 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to PowerDNS Authoritative (Auth) Server 
-  3.3.3, or 3.4.5 or later, For updates refer to https://doc.powerdns.com/md");
+  script_tag(name:"solution", value:"Upgrade to PowerDNS Authoritative (Auth) Server
+  3.3.3, or 3.4.5 or later.");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1032220");
   script_xref(name:"URL", value:"https://doc.powerdns.com/md/security/powerdns-advisory-2015-01");
@@ -74,12 +71,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Get Port
 if(!dnsPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get Version
 if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort)){
   exit(0);
 }
@@ -87,7 +82,6 @@ if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort)){
 version = infos["version"];
 proto = infos["proto"];
 
-## Check for vulnerable version
 if(version_in_range(version:version, test_version:"3.2.0", test_version2:"3.3.2"))
 {
   fix = "3.3.3";

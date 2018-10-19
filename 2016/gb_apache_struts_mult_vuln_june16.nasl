@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808021");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4003", "CVE-2016-2162", "CVE-2016-3093");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 11:03:24 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts Multiple Vulnerabilities June16");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
 
   - The Apache Struts frameworks when forced, performs double evaluation of
     attributes' values assigned to certain tags so it is possible to pass in
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Struts Version 2.x through 2.3.24.1");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.28 or
-  later. For updates refer to http://struts.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

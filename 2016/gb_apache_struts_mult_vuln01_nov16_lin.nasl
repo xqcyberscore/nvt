@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809478");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1181", "CVE-2016-1182", "CVE-2015-0899");
   script_bugtraq_id(91068, 91067, 74423);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 14:46:45 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Multiple Vulnerabilities-01 Nov16 (Linux)");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - An 'actionServlet.java' script mishandles multithreaded access to an
     ActionForm instance.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackberry_enterprise_server_mult_vuln.nasl 5012 2017-01-16 09:54:11Z ckuerste $
+# $Id: gb_blackberry_enterprise_server_mult_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # BlackBerry Enterprise Server Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:blackberry:enterprise_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106519");
-  script_version("$Revision: 5012 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-16 10:54:11 +0100 (Mon, 16 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
-  script_tag(name:"cvss_base", value: "6.4");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2016-3128", "CVE-2016-3130");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("BlackBerry Enterprise Server Multiple Vulnerabilities");
 
@@ -51,27 +51,27 @@ if (description)
   script_dependencies("gb_blackberry_enterprise_server_detect.nasl");
   script_mandatory_keys("blackberry_bes/installed");
 
-  script_tag(name: "summary", value: "BlackBerry Enterprise Server 12 is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"BlackBerry Enterprise Server 12 is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "BlackBerry Enterprise Server 12 is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"BlackBerry Enterprise Server 12 is prone to multiple vulnerabilities:
 
-- A spoofing vulnerability in the Core of BlackBerry Enterprise Server (BES) 12 allows remote attackers to enroll
+  - A spoofing vulnerability in the Core of BlackBerry Enterprise Server (BES) 12 allows remote attackers to enroll
 an illegitimate device to the BES, gain access to device parameters for the BES, or send false information to the
 BES by gaining access to specific information about a device that was legitimately enrolled on the BES.
 (CVE-2016-3128)
 
-- An information disclosure vulnerability in the Core and Management Console in BlackBerry Enterprise Server (BES)
+  - An information disclosure vulnerability in the Core and Management Console in BlackBerry Enterprise Server (BES)
 12 allows remote attackers to obtain local or domain credentials of an administrator or user account by sniffing
 traffic between the two elements during a login attempt.");
 
-  script_tag(name: "affected", value: "BlackBerry Enterprise Server 12 version 12.5.2 and prior.");
+  script_tag(name:"affected", value:"BlackBerry Enterprise Server 12 version 12.5.2 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 12.6 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 12.6 or later");
 
-  script_xref(name: "URL", value: "http://support.blackberry.com/kb/articleDetail?articleNumber=000038913");
-  script_xref(name: "URL", value: "http://support.blackberry.com/kb/articleDetail?articleNumber=000038914");
+  script_xref(name:"URL", value:"http://support.blackberry.com/kb/articleDetail?articleNumber=000038913");
+  script_xref(name:"URL", value:"http://support.blackberry.com/kb/articleDetail?articleNumber=000038914");
 
   exit(0);
 }

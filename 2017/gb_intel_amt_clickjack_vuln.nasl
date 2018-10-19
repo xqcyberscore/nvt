@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_clickjack_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_intel_amt_clickjack_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Intel Active Management Technology Clickjacking Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106877");
-  script_version("$Revision: 7571 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-16 13:48:56 +0700 (Fri, 16 Jun 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-16 13:48:56 +0700 (Fri, 16 Jun 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-5697");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Intel Active Management Technology Clickjacking Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_intel_amt_webui_detect.nasl");
   script_mandatory_keys("intel_amt/installed");
 
-  script_tag(name: "summary", value: "Insufficient clickjacking protection in the Web User Interface of Intel AMT
+  script_tag(name:"summary", value:"Insufficient clickjacking protection in the Web User Interface of Intel AMT
 firmware potentially allows a remote attacker to hijack users web clicks via attacker's crafted web page.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Intel AMT firmware versions before 9.1.40.1000, 9.5.60.1952, 10.0.50.1004,
+  script_tag(name:"affected", value:"Intel AMT firmware versions before 9.1.40.1000, 9.5.60.1952, 10.0.50.1004,
 11.0.0.1205, and 11.6.25.1129.");
 
-  script_tag(name: "solution", value: "Update firmware to version 9.1.40.1000, 9.5.60.1952, 10.0.50.1004,
+  script_tag(name:"solution", value:"Update firmware to version 9.1.40.1000, 9.5.60.1952, 10.0.50.1004,
 11.0.0.1205, 11.6.25.1129 or later.");
 
-  script_xref(name: "URL", value: "https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00081&languageid=en-fr");
+  script_xref(name:"URL", value:"https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00081&languageid=en-fr");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_devices_multiple_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_linksys_devices_multiple_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Linksys Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812040");
-  script_version("$Revision: 11025 $");
+  script_version("$Revision: 11977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 11:57:11 +0530 (Thu, 19 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Linksys Devices Multiple Vulnerabilities");
@@ -61,9 +61,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct a denial-of-service, HTTP header injection, open redirect,
-  information disclosure, CSRF and XSS attacks on the affected device.
-
-  Impact Level: System/Application");
+  information disclosure, CSRF and XSS attacks on the affected device.");
 
   script_tag(name:"affected", value:"Linksys E2500 firmware version 3.0.02 (build 2)
 

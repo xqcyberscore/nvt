@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscmax_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_oscmax_multiple_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # osCMax e-commerce/shopping-cart Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oscmax:oscmax";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805566");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2012-1665", "CVE-2012-1664");
   script_bugtraq_id(52886);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 13:56:19 +0530 (Wed, 27 May 2015)");
   script_name("osCMax e-commerce/shopping-cart Multiple Vulnerabilities");
 
@@ -73,8 +73,7 @@ if(description)
 
   script_tag(name:"affected", value:"osCMax before version 2.5.1");
 
-  script_tag(name:"solution", value:"Upgrade to osCMax version 2.5.1 or later.
-  For updates refer http://www.oscmax.com");
+  script_tag(name:"solution", value:"Upgrade to osCMax version 2.5.1 or later.");
 
   script_tag(name:"qod_type", value:"exploit");
 
@@ -90,6 +89,7 @@ if(description)
   script_mandatory_keys("oscmax/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://www.oscmax.com");
   exit(0);
 }
 

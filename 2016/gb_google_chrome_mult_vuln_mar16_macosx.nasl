@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_mar16_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_google_chrome_mult_vuln_mar16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Mar16 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807459");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2845", "CVE-2016-2844", "CVE-2016-2843", "CVE-2016-1642",
                 "CVE-2016-1641", "CVE-2016-1640", "CVE-2016-1639", "CVE-2016-1637",
                 "CVE-2016-1638", "CVE-2016-1636", "CVE-2016-1635", "CVE-2016-1634",
                 "CVE-2016-1633", "CVE-2016-1632", "CVE-2016-1631", "CVE-2016-1630");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-08 12:09:08 +0530 (Tue, 08 Mar 2016)");
   script_name("Google Chrome Multiple Vulnerabilities Mar16 (Mac OS X)");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
 
   - The Content Security Policy (CSP) implementation in Blink does not ignore
     a URL's path component in the case of a ServiceWorker fetch.
@@ -88,7 +88,7 @@ if(description)
   49.0.2623.75 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  49.0.2623.75 or later, For updates refer to http://www.google.com/chrome");
+  49.0.2623.75 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -101,6 +101,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

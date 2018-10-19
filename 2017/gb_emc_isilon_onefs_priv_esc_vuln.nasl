@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 5823 2017-03-31 13:57:56Z mime $
+# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # EMC Isilon OneFS Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106554");
-  script_version("$Revision: 5823 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-02 11:01:49 +0700 (Thu, 02 Feb 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-02 11:01:49 +0700 (Thu, 02 Feb 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-9871");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Isilon OneFS Privilege Escalation Vulnerability");
 
@@ -48,22 +48,22 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Privilege escalation");
-  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl","gb_emc_isilon_onefs_ntp_detect.nasl");
+  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl", "gb_emc_isilon_onefs_ntp_detect.nasl");
   script_mandatory_keys("emc_isilon_onefs/detected");
 
-  script_tag(name: "summary", value: "EMC Isilon OneFS is affected by a privilege escalation vulnerability that
+  script_tag(name:"summary", value:"EMC Isilon OneFS is affected by a privilege escalation vulnerability that
 could potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A malicious user who has both ISI_PRIV_LOGIN_PAPI and ISI_PRIV_SYS_SUPPORT
+  script_tag(name:"insight", value:"A malicious user who has both ISI_PRIV_LOGIN_PAPI and ISI_PRIV_SYS_SUPPORT
 privileges could potentially exploit this vulnerability to gain root-level privileges.");
 
-  script_tag(name: "affected", value: "EMC Isilon OneFS 7.1.0.x, 7.1.1.0 - 7.1.1.10, 7.2.0.x, 7.2.1.0 - 7.2.1.3");
+  script_tag(name:"affected", value:"EMC Isilon OneFS 7.1.0.x, 7.1.1.0 - 7.1.1.10, 7.2.0.x, 7.2.1.0 - 7.2.1.3");
 
-  script_tag(name: "solution", value: "Update 7.1.1.11, 7.2.1.4 or later versions.");
+  script_tag(name:"solution", value:"Update 7.1.1.11, 7.2.1.4 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2017/Jan/87");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/Jan/87");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 11663 2018-09-28 06:18:46Z cfischer $
+# $Id: ldapsearch.nasl 11956 2018-10-18 10:10:19Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,15 +24,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 11663 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11956 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:10:19 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("LDAPsearch");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2006 Tarik El-Yassem/ITsec Security Services");
-  script_family("Remote file access");
+  script_family("General");
   script_dependencies("toolcheck.nasl", "ldap_detect.nasl", "ldap_null_base.nasl", "ldap_null_bind.nasl");
   script_require_ports("Services/ldap", 389, 636);
   script_mandatory_keys("ldap/detected", "Tools/Present/ldapsearch");
@@ -50,7 +50,7 @@ if(description)
 include("ldap.inc");
 
 if( ! find_in_path( "ldapsearch" ) ) {
-  log_message(port:0, data: 'Command "ldapsearch" not available to scan server (not in search path).\nTherefore this test was not executed.');
+  log_message(port:0, data:'Command "ldapsearch" not available to scan server (not in search path).\nTherefore this test was not executed.');
   exit( 0 );
 }
 

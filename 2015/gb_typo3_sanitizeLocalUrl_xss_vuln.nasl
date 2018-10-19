@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_sanitizeLocalUrl_xss_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_typo3_sanitizeLocalUrl_xss_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # TYPO3 'sanitizeLocalUrl' function Cross-Site Scripting Vulnerability (SA-2015-009)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805981");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-5956");
   script_bugtraq_id(76692);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-08 10:03:49 +0530 (Thu, 08 Oct 2015)");
   script_name("TYPO3 'sanitizeLocalUrl' function Cross-Site Scripting Vulnerability (SA-2015-009)");
 
@@ -54,7 +54,7 @@ if(description)
   and 7.0.x prior to 7.4.0");
 
   script_tag(name:"solution", value:"Update to TYPO3 version 6.2.15 or 7.4.0
-  or later. For updates refer https://typo3.org/typo3-cms");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

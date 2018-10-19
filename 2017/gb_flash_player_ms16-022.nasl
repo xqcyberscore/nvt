@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_ms16-022.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_flash_player_ms16-022.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (3135782)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810658");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-0964", "CVE-2016-0965", "CVE-2016-0966", "CVE-2016-0967",
                 "CVE-2016-0968", "CVE-2016-0969", "CVE-2016-0970", "CVE-2016-0971",
                 "CVE-2016-0972", "CVE-2016-0973", "CVE-2016-0974", "CVE-2016-0975",
@@ -38,17 +38,16 @@ if(description)
                 "CVE-2016-0984", "CVE-2016-0985");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-18 15:10:30 +0530 (Sat, 18 Mar 2017)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (3135782)");
 
-  script_tag(name: "summary" , value:"This host is missing a critical security
+  script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-022");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Multiple memory corruption vulnerabilities.
 
@@ -58,12 +57,10 @@ if(description)
 
   - A type confusion vulnerability.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will potentially
-  allow an attacker to execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will potentially
+  allow an attacker to execute arbitrary code.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Microsoft Windows 8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64
 
   Microsoft Windows Server 2012/2012R2
 
@@ -72,21 +69,20 @@ if(description)
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/ms16-022");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-022");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb16-04.html");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-022");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb16-04.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_flash_player_within_ie_edge_detect.nasl");
-  script_mandatory_keys("AdobeFlash/IE_or_EDGE/Installed"); 
+  script_mandatory_keys("AdobeFlash/IE_or_EDGE/Installed");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms16-022");
   exit(0);
 }
 
@@ -94,7 +90,6 @@ include("host_details.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1) <= 0){
   exit(0);
@@ -120,7 +115,6 @@ if(flashPath){
   flashPath = "Could not find the install location";
 }
 
-## Check for Flashplayerapp.exe version
 if(version_is_less(version:flashVer, test_version:"20.0.0.306"))
 {
   report = 'File checked:     ' + flashPath + '\n' +

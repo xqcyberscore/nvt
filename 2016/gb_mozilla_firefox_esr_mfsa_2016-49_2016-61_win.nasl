@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-49_2016-61_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-49_2016-61_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-49_2016-61 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808157");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2831", "CVE-2016-2828", "CVE-2016-2826", "CVE-2016-2824",
                 "CVE-2016-2822", "CVE-2016-2821", "CVE-2016-2819", "CVE-2016-2818");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 11:15:18 +0530 (Wed, 08 Jun 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-49_2016-61 )-Windows");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - An improper handling of paired fullscreen and pointerlock requests in
     combination with closing windows.

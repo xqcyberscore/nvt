@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_jan16_win.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln03_jan16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 January16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806947");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-8716", "CVE-2015-8715", "CVE-2015-8714", "CVE-2015-8713",
                 "CVE-2015-8719", "CVE-2015-8717", "CVE-2015-8712");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 January16 (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to
 
   - 'init_t38_info_conv' function in 'epan/dissectors/packet-t38.c'
   script in the T.38 dissector does not ensure that a conversation exists.
@@ -73,7 +73,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.9 or
-  later, ");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability
 #
@@ -33,12 +33,12 @@ if (description)
   script_cve_id("CVE-2016-7462");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_name("VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0020.html");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to 6.4.0 or later");
 
@@ -47,7 +47,7 @@ if (description)
 
   script_tag(name:"affected", value:"vRealize Operations 6.x < 6.4.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 15:53:11 +0100 (Wed, 16 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,7 +75,7 @@ if( fix )
 {
   report = report_fixed_ver( installed_version:version, fixed_version:fix );
   security_message( port:port, data:report );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

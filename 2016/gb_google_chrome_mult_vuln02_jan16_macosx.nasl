@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jan16_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_google_chrome_mult_vuln02_jan16_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 Jan16 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806667");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1612", "CVE-2016-1613", "CVE-2016-1614", "CVE-2016-1615",
                 "CVE-2016-1616", "CVE-2016-1617", "CVE-2016-1618", "CVE-2016-1619",
                 "CVE-2016-1620", "CVE-2016-2051", "CVE-2016-2052");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 14:58:05 +0530 (Fri, 22 Jan 2016)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Jan16 (Mac OS X)");
 
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Bad cast in V8.
 
@@ -75,7 +75,7 @@ if(description)
   on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  48.0.2564.82 or later, For updates refer to http://www.google.com/chrome");
+  48.0.2564.82 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -88,6 +88,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

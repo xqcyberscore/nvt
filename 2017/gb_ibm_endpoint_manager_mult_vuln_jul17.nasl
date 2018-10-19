@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_mult_vuln_jul17.nasl 6812 2017-07-31 06:15:43Z cfischer $
+# $Id: gb_ibm_endpoint_manager_mult_vuln_jul17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # IBM Tivoli Entpoint Manager Multiple Vulnerabilities July17
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106979");
-  script_version("$Revision: 6812 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-31 08:15:43 +0200 (Mon, 31 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-21 15:30:52 +0700 (Fri, 21 Jul 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-21 15:30:52 +0700 (Fri, 21 Jul 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-9840", "CVE-2016-9841", "CVE-2016-9842", "CVE-2016-9843", "CVE-2017-1203",
 "CVE-2017-1218", "CVE-2017-1219", "CVE-2017-1223", "CVE-2017-1224");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IBM Tivoli Entpoint Manager Multiple Vulnerabilities July17");
 
@@ -52,30 +52,30 @@ if (description)
   script_dependencies("gb_ibm_endpoint_manager_web_detect.nasl");
   script_mandatory_keys("ibm_endpoint_manager/installed");
 
-  script_tag(name: "summary", value: "IBM Tivoli Endpoint Manager is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"IBM Tivoli Endpoint Manager is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "IBM Tivoli Endpoint Manager is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"IBM Tivoli Endpoint Manager is prone to multiple vulnerabilities:
 
-- Multiple denial of service vulnerabilities in zlib. (CVE-2016-9840, CVE-2016-9841, CVE-2016-9842, CVE-2016-9842)
+  - Multiple denial of service vulnerabilities in zlib. (CVE-2016-9840, CVE-2016-9841, CVE-2016-9842, CVE-2016-9842)
 
-- WebUI Component is vulnerable to cross-site scripting. (CVE-2017-1203)
+  - WebUI Component is vulnerable to cross-site scripting. (CVE-2017-1203)
 
-- WebUI Component is vulnerable to cross-site request forgery (CVE-2017-1218)
+  - WebUI Component is vulnerable to cross-site request forgery (CVE-2017-1218)
 
-- XML External Entity Injection (XXE) error when processing XML data (CVE-2017-1219)
+  - XML External Entity Injection (XXE) error when processing XML data (CVE-2017-1219)
 
-- Open redirect vulnerability (CVE-2017-1223)
+  - Open redirect vulnerability (CVE-2017-1223)
 
-- WebUI Component uses weaker than expected cryptographic algorithms (CVE-2017-1224)");
+  - WebUI Component uses weaker than expected cryptographic algorithms (CVE-2017-1224)");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "IBM Tivoli Endpoint Manager versions 9.1, 9.2 and 9.5.");
+  script_tag(name:"affected", value:"IBM Tivoli Endpoint Manager versions 9.1, 9.2 and 9.5.");
 
-  script_tag(name: "solution", value: "Follow the instructions in the referenced advisories.");
+  script_tag(name:"solution", value:"Follow the instructions in the referenced advisories.");
 
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg22006014");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg22005246");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg22006014");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg22005246");
 
   exit(0);
 }

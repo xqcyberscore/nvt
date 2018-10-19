@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-33_win.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_adobe_reader_apsb16-33_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Reader Security Updates(apsb16-33)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809446");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1089", "CVE-2016-1091", "CVE-2016-6939", "CVE-2016-6940",
                 "CVE-2016-6941", "CVE-2016-6942", "CVE-2016-6943", "CVE-2016-6944",
                 "CVE-2016-6945", "CVE-2016-6946", "CVE-2016-6947", "CVE-2016-6948",
@@ -51,7 +51,7 @@ if(description)
                 "CVE-2016-7853", "CVE-2016-7852");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 12:55:40 +0530 (Thu, 13 Oct 2016)");
   script_name("Adobe Reader Security Updates(apsb16-33)-Windows");
 
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - An use-after-free vulnerabilities.
 
@@ -77,8 +77,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.18 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
-  11.0.18 or later.
-  For updates refer to http://www.adobe.com/in/products/acrobat.html");
+  11.0.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,6 +90,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

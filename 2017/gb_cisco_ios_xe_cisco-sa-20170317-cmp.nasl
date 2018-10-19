@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 7206 2017-09-21 03:12:53Z ckuersteiner $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability
 #
@@ -29,50 +29,50 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106671");
- script_cve_id("CVE-2017-3881");
- script_tag(name: "cvss_base", value: "10.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 7206 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106671");
+  script_cve_id("CVE-2017-3881");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11962 $");
 
- script_name("Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability");
+  script_name("Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170317-cmp");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170317-cmp");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Cisco Cluster Management Protocol (CMP) processing
+  script_tag(name:"summary", value:"A vulnerability in the Cisco Cluster Management Protocol (CMP) processing
 code in Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause a reload of an
 affected device or remotely execute code with elevated privileges.");
 
- script_tag(name: "insight", value: "The Cluster Management Protocol utilizes Telnet internally as a signaling
+  script_tag(name:"insight", value:"The Cluster Management Protocol utilizes Telnet internally as a signaling
 and command protocol between cluster members. The vulnerability is due to the combination of two factors:
 
-- The failure to restrict the use of CMP-specific Telnet options only to internal, local communications between
+  - The failure to restrict the use of CMP-specific Telnet options only to internal, local communications between
 cluster members and instead accept and process such options over any Telnet connection to an affected device, and
 
-- The incorrect processing of malformed CMP-specific Telnet options.
+  - The incorrect processing of malformed CMP-specific Telnet options.
 
 An attacker could exploit this vulnerability by sending malformed CMP-specific Telnet options while establishing
 a Telnet session with an affected Cisco device configured to accept Telnet connections.");
 
- script_tag(name: "impact", value: "An exploit could allow an attacker to execute arbitrary code and obtain full
+  script_tag(name:"impact", value:"An exploit could allow an attacker to execute arbitrary code and obtain full
 control of the device or cause a reload of the affected device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-09-21 05:12:53 +0200 (Thu, 21 Sep 2017) $");
- script_tag(name: "creation_date", value: "2017-03-20 11:02:32 +0700 (Mon, 20 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-20 11:02:32 +0700 (Mon, 20 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

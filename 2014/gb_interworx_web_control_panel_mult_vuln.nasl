@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # InterWorx Web Control Panel Information Disclosure and XSS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804779");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-2035");
   script_bugtraq_id(65734);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 18:28:59 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"InterWorx version 5.0.12 build 569,
   Other versions may also be affected.");
 
-  script_tag(name:"solution", value:"Update to version 5.0.13 build 574 or later,
-  For updates refer http://www.interworx.com");
+  script_tag(name:"solution", value:"Update to version 5.0.13 build 574 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57063");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/91443");
@@ -72,6 +71,7 @@ if(description)
   script_require_ports("Services/www", 2443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.interworx.com");
   exit(0);
 }
 

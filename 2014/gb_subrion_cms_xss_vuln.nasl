@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_subrion_cms_xss_vuln.nasl 11542 2018-09-21 20:22:36Z cfischer $
+# $Id: gb_subrion_cms_xss_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805400");
-  script_version("$Revision: 11542 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9120");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
 
   script_name("Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   below.");
 
   script_tag(name:"solution", value:"Upgrade to Subrion CMS version 3.2.3 or
-  later. For updates refer http://www.subrion.org/");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -69,6 +69,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.subrion.org/");
   exit(0);
 }
 

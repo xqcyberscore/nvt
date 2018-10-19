@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_non_strictmode_mult_vuln_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wordpress_non_strictmode_mult_vuln_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805987");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-3438");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-12 14:03:09 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Windows)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress versions before 4.1.2 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.1.2 or higher,
-  For updates refer https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to version 4.1.2 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

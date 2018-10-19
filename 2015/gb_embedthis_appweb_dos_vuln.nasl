@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_embedthis_appweb_dos_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_embedthis_appweb_dos_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Embedthis Appweb Web Server Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805157");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-9708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-01 17:00:37 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Embedthis Appweb Web Server Remote Denial of Service Vulnerability");
@@ -54,7 +54,7 @@ if(description)
   and 5.x before 5.2.1");
 
   script_tag(name:"solution", value:"Update to version 4.6.6 or 5.2.1 or
-  later, For updates refer http://appwebserver.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://appwebserver.org");
   exit(0);
 }
 

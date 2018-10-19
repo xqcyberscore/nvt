@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_tc_ce_sip_dos_vuln.nasl 6396 2017-06-21 15:28:58Z teissa $
+# $Id: gb_cisco_telepresence_tc_ce_sip_dos_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Cisco TelePresence CE and TC Software 'SIP' DoS Vulnerability (cisco-sa-20170607-tele)
 #
@@ -30,30 +30,27 @@ CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811084");
-  script_version("$Revision: 6396 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2017-6648");
   script_bugtraq_id(98934);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-08 17:37:26 +0530 (Thu, 08 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco TelePresence CE and TC Software 'SIP' DoS Vulnerability (cisco-sa-20170607-tele)");
 
-  script_tag(name: "summary" , value:"The host is running Cisco TelePresence
+  script_tag(name:"summary", value:"The host is running Cisco TelePresence
   Endpoint and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a lack of flow-control
+  script_tag(name:"insight", value:"The flaw is due to a lack of flow-control
   mechanisms within the software.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated, remote attacker to cause a TelePresence endpoint to reload
-  unexpectedly, resulting in a denial of service (DoS) condition.
-
-  Impact Level: System/Application");
+  unexpectedly, resulting in a denial of service (DoS) condition.");
 
   script_tag(name:"affected", value:"Cisco TC and CE platforms when running
   software versions prior to TC 7.3.8 and CE 8.3.0. This vulnerability affects
@@ -67,16 +64,15 @@ if (description)
   TelePresence Profile Series.");
 
   script_tag(name:"solution", value:"Upgrade to Cisco TelePresence TC 7.3.8 or
-  Cisco TelePresence CE 8.3.0 or later. For updates refer to
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-tele");
+  Cisco TelePresence CE 8.3.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value: "https://bst.cloudapps.cisco.com/bugsearch/bug/CSCux94002");
-  script_xref(name : "URL" , value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-tele");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCux94002");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-tele");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
-  script_dependencies("gb_cisco_telepresence_detect_snmp.nasl","gb_cisco_telepresence_detect_ftp.nasl");
+  script_dependencies("gb_cisco_telepresence_detect_snmp.nasl", "gb_cisco_telepresence_detect_ftp.nasl");
   script_mandatory_keys("cisco/telepresence/version");
   exit(0);
 }
@@ -85,32 +81,22 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-##Variable Initialization
-version = "";
-ciscoVer = "";
-verscat = "";
-vers = "";
-cisport = "";
-
-## Get port
 if(!cisport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!version =  get_app_version(cpe:CPE, port:cisport)){
   exit(0);
 }
 
-## Get model
 if(!typ = get_kb_item("cisco/telepresence/typ" )) exit( 0 );
 
 ## TelePresence MX Series
 ## http://www.red-thread.com/products/telepresence-mx-series/
 ## typ !~ 'MX(2|3|7|8)00$' && typ !~ 'G2$' &&  typ !~ ' (42|52)/55$' && typ !~ ' (42|52)/55( Dual$)'
-## TelePresence SX Quick Set Series and TelePresence SX Series      
+## TelePresence SX Quick Set Series and TelePresence SX Series
 ## https://blogs.cisco.com/ciscoit/b-c-07232014-cisco-sx-series-adding-tp-to-every-screen
-## typ !~ 'SX(1|2|8)0$' && typ !~ 'SpeakerTrack$' 
+## typ !~ 'SX(1|2|8)0$' && typ !~ 'SpeakerTrack$'
 ## TelePresence DX Series
 ## http://cdn2.hubspot.net/hub/160452/file-1411244501-pdf/docs/cisco_dx_series.pdf
 ## typ !~ 'DX(65|7|8)0$'
@@ -121,7 +107,6 @@ if(!typ = get_kb_item("cisco/telepresence/typ" )) exit( 0 );
 ## TelePresence Integrator C Series
 ## typ !~ "C(9|6|4|2)0"
 ## Not covering TelePresence Profile Series
-## Check affected model
 if(typ !~ 'MX(2|3|7|8)00$' && typ !~ 'G2$' &&  typ !~ ' (42|52)/55$' && typ !~ ' (42|52)/55( Dual$)' &&
    typ !~ 'SX(1|2|8)0$' && typ !~ 'SpeakerTrack$' &&
    typ !~ 'DX(65|7|8)0$' &&

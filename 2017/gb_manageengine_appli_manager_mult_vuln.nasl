@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_mult_vuln.nasl 6919 2017-08-14 09:55:24Z ckuersteiner $
+# $Id: gb_manageengine_appli_manager_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ManageEngine Applications Manager Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140296");
-  script_version("$Revision: 6919 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-14 11:55:24 +0200 (Mon, 14 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-14 15:43:15 +0700 (Mon, 14 Aug 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-14 15:43:15 +0700 (Mon, 14 Aug 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-9488", "CVE-2016-9489", "CVE-2016-9490", "CVE-2016-9491", "CVE-2016-9498");
   script_bugtraq_id(97394);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ManageEngine Applications Manager Multiple Vulnerabilities");
 
@@ -52,27 +52,27 @@ if (description)
   script_dependencies("gb_manage_engine_appli_manager_detect.nasl");
   script_mandatory_keys("ManageEngine/Applications/Manager/Installed");
 
-  script_tag(name: "summary", value: "ManageEngine Applications Manager is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ManageEngine Applications Manager is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "ManageEngine Applications Manager is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ManageEngine Applications Manager is prone to multiple vulnerabilities:
 
-- Java RMI Remote Code Execution (CVE-2016-9498)
+  - Java RMI Remote Code Execution (CVE-2016-9498)
 
-- SQL Injection (CVE-2016-9488)
+  - SQL Injection (CVE-2016-9488)
 
-- Authorization Bypass / Privilege Escalation (CVE-2016-9489)
+  - Authorization Bypass / Privilege Escalation (CVE-2016-9489)
 
-- Reflected Cross-Site Scripting (CVE-2016-9490)
+  - Reflected Cross-Site Scripting (CVE-2016-9490)
 
-- XML eXternal Entity (CVE-2016-9491)");
+  - XML eXternal Entity (CVE-2016-9491)");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "ManageEngine Applications Manager 12 and 13.");
+  script_tag(name:"affected", value:"ManageEngine Applications Manager 12 and 13.");
 
-  script_tag(name: "solution", value: "Update to version 13200 or later.");
+  script_tag(name:"solution", value:"Update to version 13200 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Apr/9");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Apr/9");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vul03_jan15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_vlc_media_player_mult_vul03_jan15_lin.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # VLC Media Player Multiple Vulnerabilities-03 Jan15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805314");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2010-1445", "CVE-2010-1444", "CVE-2010-1443", "CVE-2010-1442",
                 "CVE-2010-1441");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:37:43 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Vulnerabilities-03 Jan15 (Linux)");
 
@@ -63,7 +63,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to VideoLAN VLC media player
-  version 1.0.6 or later. For updates refer http://www.videolan.org/");
+  version 1.0.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version_unreliable");

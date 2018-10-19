@@ -24,7 +24,31 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in ISC DHCP:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:115");
+  script_oid("1.3.6.1.4.1.25623.1.0.831703");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-07-30 11:22:50 +0530 (Mon, 30 Jul 2012)");
+  script_cve_id("CVE-2012-3570", "CVE-2012-3571", "CVE-2012-3954");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"MDVSA", value:"2012:115");
+  script_name("Mandriva Update for dhcp MDVSA-2012:115 (dhcp)");
+
+  script_tag(name:"summary", value:"Check for the Version of dhcp");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2011\.0");
+  script_tag(name:"affected", value:"dhcp on Mandriva Linux 2011.0");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in ISC DHCP:
 
   An unexpected client identifier parameter can cause the ISC DHCP
   daemon to segmentation fault when running in DHCPv6 mode, resulting
@@ -40,49 +64,18 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in ISC
   been demonstrated.) (CVE-2012-3954).
 
   The updated packages have been upgraded to the latest version
-  (4.2.4-P1) which is not affected by these issues.";
-
-tag_affected = "dhcp on Mandriva Linux 2011.0";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:115");
-  script_oid("1.3.6.1.4.1.25623.1.0.831703");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-07-30 11:22:50 +0530 (Mon, 30 Jul 2012)");
-  script_cve_id("CVE-2012-3570", "CVE-2012-3571", "CVE-2012-3954");
-  script_tag(name:"cvss_base", value:"6.1");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "MDVSA", value: "2012:115");
-  script_name("Mandriva Update for dhcp MDVSA-2012:115 (dhcp)");
-
-  script_tag(name: "summary" , value: "Check for the Version of dhcp");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  (4.2.4-P1) which is not affected by these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -123,6 +116,6 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

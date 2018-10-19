@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tera-charts_dir_trav_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_wordpress_tera-charts_dir_trav_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Wordpress Tera Charts Multiple Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805123");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-4940");
   script_bugtraq_id(68662);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 12:03:15 +0530 (Tue, 13 Jan 2015)");
   script_name("Wordpress Tera Charts Multiple Directory Traversal Vulnerability");
 
@@ -53,8 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress Tera Charts plugin version 0.1");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.0 or higher,
-  For updates refer https://wordpress.org/plugins/tera-charts");
+  script_tag(name:"solution", value:"Upgrade to version 1.0 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/tera-charts");
   exit(0);
 }
 

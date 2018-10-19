@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_utm_reflected_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_sophos_utm_reflected_xss_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Sophos UTM 'lang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sophos:utm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807074");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-2046");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-18 10:58:19 +0530 (Thu, 18 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Sophos UTM 'lang' Parameter Cross Site Scripting Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Sophos UTM version 9.350-12 with pattern
   version 92405 (potentially lower)");
 
-  script_tag(name:"solution", value:"Upgrade to Sophos UTM 9.353 or later,
-  For updates refer to https://www.sophos.com");
+  script_tag(name:"solution", value:"Upgrade to Sophos UTM 9.353 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_sophos_utm_remote_detect.nasl");
   script_mandatory_keys("Sophos/UTM/Installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://www.sophos.com");
   exit(0);
 }
 

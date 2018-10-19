@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10781.nasl 6101 2017-05-11 08:27:07Z teissa $
+# $Id: gb_junos_jsa10781.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Junos EX Series DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106755");
-  script_version ("$Revision: 6101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-11 10:27:07 +0200 (Thu, 11 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-2315");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos EX Series DoS Vulnerability");
 
@@ -48,24 +48,24 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS on EX series is prone to a denial of service vulnerability in
+  script_tag(name:"summary", value:"Junos OS on EX series is prone to a denial of service vulnerability in
 IPv6 processing.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "A vulnerability in IPv6 processing has been discovered that may allow a
+  script_tag(name:"insight", value:"A vulnerability in IPv6 processing has been discovered that may allow a
 specially crafted IPv6 Neighbor Discovery (ND) packet destined to an EX Series Ethernet Switches to cause a slow
 memory leak. A malicious network-based packet flood of these crafted IPv6 NDP packets may eventually lead to
 resource exhaustion and a denial of service.");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 12.3, 13.3, 14.1, 14.2, 15.1, 16.1 and 16.2");
+  script_tag(name:"affected", value:"Junos OS 12.3, 13.3, 14.1, 14.2, 15.1, 16.1 and 16.2");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10781");
 
@@ -127,7 +127,7 @@ if (version =~ "^14") {
   }
 }
 
-if (version =~ "^15") {  
+if (version =~ "^15") {
   if (revcomp(a: version, b: "15.1R5") < 0) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.1R5");
     security_message(port: 0, data: report);

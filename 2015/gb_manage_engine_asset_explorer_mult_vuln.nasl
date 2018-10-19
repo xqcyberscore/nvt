@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Manage Engine Asset Explorer Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805190");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11975 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 15:15:40 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Vulnerabilities");
@@ -55,7 +55,7 @@ if(description)
   before 6.1.0 Build: 6112.");
 
   script_tag(name:"solution", value:"Update to version 6.1.0 Build 6112 or
-  later, For updates refer https://www.manageengine.com/products/asset-explorer");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

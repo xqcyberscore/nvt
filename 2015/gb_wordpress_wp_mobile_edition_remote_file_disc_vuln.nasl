@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_mobile_edition_remote_file_disc_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_wordpress_wp_mobile_edition_remote_file_disc_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Wordpress WP Mobile Edition Plugin Remote File Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805531");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 18:42:20 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress WP Mobile Edition Plugin Remote File Disclosure Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   version 2.2.7");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress WP Mobile Edition Plugin
-  version 2.3 or later.
-  For upgrades refer to https://wordpress.org/plugins/wp-mobile-edition");
+  version 2.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

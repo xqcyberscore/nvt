@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_rce_vuln_jul17.nasl 6730 2017-07-14 13:26:15Z santu $
+# $Id: gb_ms_security_essentials_rce_vuln_jul17.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft Security Essentials Remote Code Execution Vulnerability Jul17
 #
@@ -27,32 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811492");
-  script_version("$Revision: 6730 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2017-8558");
   script_bugtraq_id(99262);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 15:26:15 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 14:07:22 +0530 (Fri, 14 Jul 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Security Essentials Remote Code Execution Vulnerability Jul17");
 
-  script_tag(name: "summary" , value:"This host is installed with Security
+  script_tag(name:"summary", value:"This host is installed with Security
   Essentials and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as the Microsoft Malware
+  script_tag(name:"insight", value:"The flaw exists as the Microsoft Malware
   Protection Engine does not properly scan a specially crafted file leading to
   memory corruption.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code in the security context of the LocalSystem account and
   take control of the system. An attacker could then install programs; view, change,
-  or delete data; or create new accounts with full user rights.
-
-  Impact Level: System");
+  or delete data; or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Security Essentials");
 
@@ -61,12 +58,13 @@ if(description)
   update within 48 hours of release.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/2510781");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-8558");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/2510781");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-8558");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -77,25 +75,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-def_version = "";
-key = "";
-report = "";
-
-## Windows Essential Key exists
 key = "SOFTWARE\Microsoft\Microsoft Antimalware";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Get Security Essentials engine version
 def_version = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft Antimalware\Signature Updates",
                               item:"EngineVersion");
 if(!def_version){
   exit(0);
 }
 
-##Check for vuln version
 ##First version of the Microsoft Malware Protection Engine with this vulnerability addressed
 if(version_is_less(version:def_version, test_version:"1.1.13903.0"))
 {

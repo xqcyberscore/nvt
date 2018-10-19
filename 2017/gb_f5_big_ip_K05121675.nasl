@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K05121675.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
+# $Id: gb_f5_big_ip_K05121675.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # F5 BIG-IP - F5 TLS vulnerability CVE-2016-9244
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140155");
- script_cve_id("CVE-2016-9244");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6826 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140155");
+  script_cve_id("CVE-2016-9244");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11962 $");
 
- script_name("F5 BIG-IP - F5 TLS vulnerability CVE-2016-9244");
+  script_name("F5 BIG-IP - F5 TLS vulnerability CVE-2016-9244");
 
- script_xref(name:"URL", value:"https://support.f5.com/csp/article/K05121675");
+  script_xref(name:"URL", value:"https://support.f5.com/csp/article/K05121675");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"A BIG-IP SSL virtual server with the non-default Session Tickets option enabled may leak up to 31 bytes of uninitialized memory. ");
- script_tag(name: "impact", value:"A BIG-IP virtual server configured with a Client SSL profile that has the non-default Session Tickets option enabled may leak up to 31 bytes of uninitialized memory. A remote attacker may exploit this vulnerability to obtain Secure Sockets Layer (SSL) session IDs from other sessions. It is possible that other data from uninitialized memory may be returned as well.");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A BIG-IP SSL virtual server with the non-default Session Tickets option enabled may leak up to 31 bytes of uninitialized memory. ");
+  script_tag(name:"impact", value:"A BIG-IP virtual server configured with a Client SSL profile that has the non-default Session Tickets option enabled may leak up to 31 bytes of uninitialized memory. A remote attacker may exploit this vulnerability to obtain Secure Sockets Layer (SSL) session IDs from other sessions. It is possible that other data from uninitialized memory may be returned as well.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
- script_tag(name:"creation_date", value:"2017-02-09 09:58:08 +0100 (Thu, 09 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-09 09:58:08 +0100 (Thu, 09 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

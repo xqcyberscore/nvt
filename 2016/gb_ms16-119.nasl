@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-119.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-119.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Edge Multiple Vulnerabilities (3192890)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809439");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-3267", "CVE-2016-3331", "CVE-2016-3382", "CVE-2016-3386",
                 "CVE-2016-3387", "CVE-2016-3388", "CVE-2016-3389", "CVE-2016-3390",
                 "CVE-2016-3391", "CVE-2016-3392", "CVE-2016-7189", "CVE-2016-7190",
@@ -36,7 +36,7 @@ if(description)
                     93427, 93399);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:03:50 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Vulnerabilities (3192890)");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A remote code execution exist in the way that the Chakra JavaScript engine
     renders when handling objects in memory.
@@ -75,8 +75,7 @@ if(description)
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS16-119");
+  hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -108,7 +107,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgedllVer = fetch_file_version(sysPath, file_name:"system32\edgehtml.dll");
+edgedllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\edgehtml.dll");
 if(!edgedllVer){
   exit(0);
 }

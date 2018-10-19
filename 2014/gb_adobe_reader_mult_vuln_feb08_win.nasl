@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_feb08_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln_feb08_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities Feb08 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804372");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2008-0667", "CVE-2007-5666", "CVE-2007-5659", "CVE-2007-5663",
                 "CVE-2008-0726", "CVE-2008-0655", "CVE-2008-2042");
   script_bugtraq_id(27641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 19:15:57 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Feb08 (Windows)");
 
@@ -60,8 +60,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a denial of service
 and execution of arbitrary code or compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 8.1.1 and earlier on Windows.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 8.1.2 or later. For updates refer,
-http://www.adobe.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 8.1.2 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ http://www.adobe.com/downloads");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads");
   exit(0);
 }
 

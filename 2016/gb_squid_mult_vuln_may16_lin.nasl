@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_mult_vuln_may16_lin.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_squid_mult_vuln_may16_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Squid Multiple Vulnerabilities - May16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807963");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4051", "CVE-2016-4052", "CVE-2016-4053", "CVE-2016-4054");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-04 17:46:18 +0530 (Wed, 04 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Multiple Vulnerabilities - May16 (Linux)");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A buffer overflow in the cachemgr.cgi tool.
 
@@ -58,7 +58,7 @@ if(description)
   before 4.0.9 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Squid version 3.5.17 or 4.0.9
-  or later, For updates refer to http://www.squid-cache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

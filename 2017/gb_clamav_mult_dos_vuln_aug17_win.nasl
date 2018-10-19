@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 7590 2017-10-27 08:19:44Z asteins $
+# $Id: gb_clamav_mult_dos_vuln_aug17_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811575");
-  script_version("$Revision: 7590 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-6418", "CVE-2017-6419", "CVE-2017-6420", "CVE-2017-11423");
   script_bugtraq_id(100154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 10:19:44 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 14:13:11 +0530 (Tue, 08 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities Aug17 (Windows)");
@@ -42,41 +42,39 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with ClamAV and is
   prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
-  - An improper calidation for CHM file in 'mspack/lzxd.c' script in 
+  - An improper calidation for CHM file in 'mspack/lzxd.c' script in
     libmspack 0.5alpha.
 
-  - An improper calidation for CAB file in cabd_read_string function in 
+  - An improper calidation for CAB file in cabd_read_string function in
     'mspack/cabd.c' script in libmspack 0.5alpha.
 
   - An improper validation for e-mail message in 'libclamav/message.c'
     script.
 
-  - An improper validation for PE file in wwunpack function in 
-    'libclamav/wwunpack.c' script."); 
+  - An improper validation for PE file in wwunpack function in
+    'libclamav/wwunpack.c' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to cause a denial of service or possibly have unspecified other 
-  impact.
-
-  Impact Level: Application");
+  attacker to cause a denial of service or possibly have unspecified other
+  impact.");
 
   script_tag(name:"affected", value:"ClamAV version 0.99.2 on Windows");
 
-  script_tag(name:"solution", value:"Update to version 0.99.3-beta1. For further information head to https://github.com/vrtadmin/clamav-devel");
+  script_tag(name:"solution", value:"Update to version 0.99.3-beta1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://github.com/vrtadmin/clamav-devel/commit/a83773682e856ad6529ba6db8d1792e6d515d7f1");
+  script_xref(name:"URL", value:"https://github.com/vrtadmin/clamav-devel/commit/a83773682e856ad6529ba6db8d1792e6d515d7f1");
+  script_xref(name:"URL", value:"https://github.com/vrtadmin/clamav-devel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ClamAV/remote/Ver","Host/runs_windows");
+  script_mandatory_keys("ClamAV/remote/Ver", "Host/runs_windows");
   script_require_ports(3310);
   exit(0);
 }
@@ -84,21 +82,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-clamPort = "";
-clamVer = "";
-
-## Get HTTP Port
 if(!clamPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!clamVer = get_app_version(cpe:CPE, port:clamPort)){
   exit(0);
 }
 
-##Check for vulnerable version
 if(clamVer == "0.99.2")
 {
   report = report_fixed_ver(installed_version:clamVer, fixed_version:"0.99.3-beta1");

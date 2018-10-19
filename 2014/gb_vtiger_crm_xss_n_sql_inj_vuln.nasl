@@ -23,27 +23,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:vtiger:vtiger_crm";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804055");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2013-5091");
   script_bugtraq_id(62487);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 11:00:19 +0530 (Fri, 03 Jan 2014)");
   script_name("vTiger CRM Cross Site Scripting and SQL Injection Vulnerabilities");
-
 
   script_tag(name:"summary", value:"This host is installed with vTiger CRM and is prone to xss and sql injection
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Apply the patch from the below link or upgrade to version 6.0 or later,
-For patch refer to http://sourceforge.net/projects/vtigercrm/files/vtiger%20CRM%205.4.0/Core%20Product  NOTE: Ignore this warning, if above mentioned patch is manually applied.
-*****");
+  script_tag(name:"solution", value:"Apply the patch from the below link or upgrade to version 6.0 or later.
+
+  NOTE: Ignore this warning, if above mentioned patch is manually applied.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is due to the /index.php script not properly sanitizing user-supplied
 input to the 'onlyforuser' parameter and savetemplate.php, deletetask.php,
@@ -66,9 +66,8 @@ allowing for the manipulation or disclosure of arbitrary data.");
   script_dependencies("gb_vtiger_crm_detect.nasl");
   script_mandatory_keys("vtiger/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.vtiger.com
-
-*****");
+  script_xref(name:"URL", value:"http://www.vtiger.com");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/vtigercrm/files/vtiger%20CRM%205.4.0/Core%20Product");
   exit(0);
 }
 

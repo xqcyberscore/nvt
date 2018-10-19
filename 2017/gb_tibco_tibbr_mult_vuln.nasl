@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tibco_tibbr_mult_vuln.nasl 8120 2017-12-14 09:49:17Z ckuersteiner $
+# $Id: gb_tibco_tibbr_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # TIBCO tibbr Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:tibco:tibbr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140605");
-  script_version("$Revision: 8120 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 10:49:17 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-14 14:49:06 +0700 (Thu, 14 Dec 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-14 14:49:06 +0700 (Thu, 14 Dec 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-5530", "CVE-2017-5534");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("TIBCO tibbr Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_tibco_tibbr_detect.nasl");
   script_mandatory_keys("tibbr/installed");
 
-  script_tag(name: "summary", value: "TIBCO tibbr is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"TIBCO tibbr is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "TIBCO tibbr is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"TIBCO tibbr is prone to multiple vulnerabilities:
 
-- SAML protocol handling errors (CVE-2017-5530)
+  - SAML protocol handling errors (CVE-2017-5530)
 
-- Improper sandboxing of a third-party component (CVE-2017-5534)");
+  - Improper sandboxing of a third-party component (CVE-2017-5534)");
 
-  script_tag(name: "affected", value: "tibbr version 5.2.1 and prior, 6.0.x and 7.0.0");
+  script_tag(name:"affected", value:"tibbr version 5.2.1 and prior, 6.0.x and 7.0.0");
 
-  script_tag(name: "solution", value: "Update to 5.2.2, 6.0.2, 7.0.1 or later.");
+  script_tag(name:"solution", value:"Update to 5.2.2, 6.0.2, 7.0.1 or later.");
 
-  script_xref(name: "URL", value: "https://www.tibco.com/support/advisories/2017/12/tibco-security-advisory-december-12-2017-tibbr-2017-5530");
-  script_xref(name: "URL", value: "https://www.tibco.com/support/advisories/2017/12/tibco-security-advisory-december-12-2017-tibbr-2017-5534");
+  script_xref(name:"URL", value:"https://www.tibco.com/support/advisories/2017/12/tibco-security-advisory-december-12-2017-tibbr-2017-5530");
+  script_xref(name:"URL", value:"https://www.tibco.com/support/advisories/2017/12/tibco-security-advisory-december-12-2017-tibbr-2017-5534");
 
   exit(0);
 }

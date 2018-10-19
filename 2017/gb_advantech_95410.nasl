@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_95410.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_advantech_95410.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities
 #
@@ -29,41 +29,41 @@ CPE = 'cpe:/a:advantech:advantech_webaccess';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140138");
- script_bugtraq_id(95410);
- script_cve_id("CVE-2017-5154","CVE-2017-5152");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9436 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140138");
+  script_bugtraq_id(95410);
+  script_cve_id("CVE-2017-5154", "CVE-2017-5152");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11982 $");
 
- script_name("Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities");
+  script_name("Advantech WebAccess 'updateTemplate.aspx' SQL Injection and Authentication Bypass Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95410");
- script_xref(name:"URL", value:"http://webaccess.advantech.com");
- script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-17-043/ ");
- script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-012-01 ");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95410");
+  script_xref(name:"URL", value:"http://webaccess.advantech.com");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-17-043/ ");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-012-01 ");
 
- script_tag(name: "impact" , value:"An attacker can exploit these issues to bypass certain security restrictions, perform unauthorized actions, modify the logic of SQL queries, compromise the software, retrieve information, or modify
+  script_tag(name:"impact", value:"An attacker can exploit these issues to bypass certain security restrictions, perform unauthorized actions, modify the logic of SQL queries, compromise the software, retrieve information, or modify
 data, other consequences are possible as well.");
 
- script_tag(name: "vuldetect" , value:"Try to bypass authentication by sending two special crafted requests.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"Advantech WebAccess is prone to an SQL-injection vulnerability and an authentication-bypass vulnerability.");
- script_tag(name: "affected" , value:"WebAccess 8.1 is vulnerable, other versions may also be affected.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"vuldetect", value:"Try to bypass authentication by sending two special crafted requests.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Advantech WebAccess is prone to an SQL-injection vulnerability and an authentication-bypass vulnerability.");
+  script_tag(name:"affected", value:"WebAccess 8.1 is vulnerable, other versions may also be affected.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2017-01-31 16:34:49 +0100 (Tue, 31 Jan 2017)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_advantech_webaccess_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Advantech/WebAccess/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-31 16:34:49 +0100 (Tue, 31 Jan 2017)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_advantech_webaccess_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Advantech/WebAccess/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -24,55 +24,18 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in
-  squirrelmail:
-
-  functions/page_header.php in SquirrelMail 1.4.21 and earlier does not
-  prevent page rendering inside a frame in a third-party HTML document,
-  which makes it easier for remote attackers to conduct clickjacking
-  attacks via a crafted web site (CVE-2010-4554).
-  
-  Multiple cross-site scripting (XSS) vulnerabilities in SquirrelMail
-  1.4.21 and earlier allow remote attackers to inject arbitrary
-  web script or HTML via vectors involving (1) drop-down selection
-  lists, (2) the &amp;gt; (greater than) character in the SquirrelSpell
-  spellchecking plugin, and (3) errors associated with the Index Order
-  (aka options_order) page (CVE-2010-4555).
-  
-  Cross-site scripting (XSS) vulnerability in functions/mime.php in
-  SquirrelMail before 1.4.22 allows remote attackers to inject arbitrary
-  web script or HTML via a crafted STYLE element in an e-mail message
-  (CVE-2011-2023).
-  
-  CRLF injection vulnerability in SquirrelMail 1.4.21 and earlier
-  allows remote attackers to modify or add preference values via a \n
-  (newline) character, a different vulnerability than CVE-2010-4555
-  (CVE-2011-2752).
-  
-  Multiple cross-site request forgery (CSRF) vulnerabilities in
-  SquirrelMail 1.4.21 and earlier allow remote attackers to hijack the
-  authentication of unspecified victims via vectors involving (1) the
-  empty trash implementation and (2) the Index Order (aka options_order)
-  page, a different issue than CVE-2010-4555 (CVE-2011-2753).
-  
-  The updated packages have been upgraded to the 1.4.22 version which
-  is not vulnerable to these issues.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "squirrelmail on Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-08/msg00005.php");
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00005.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831438");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2011:123");
+  script_xref(name:"MDVSA", value:"2011:123");
   script_cve_id("CVE-2010-4554", "CVE-2010-4555", "CVE-2011-2023", "CVE-2011-2752", "CVE-2011-2753");
   script_name("Mandriva Update for squirrelmail MDVSA-2011:123 (squirrelmail)");
 
@@ -81,25 +44,54 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_mes5");
+  script_tag(name:"affected", value:"squirrelmail on Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in
+  squirrelmail:
+
+  functions/page_header.php in SquirrelMail 1.4.21 and earlier does not
+  prevent page rendering inside a frame in a third-party HTML document,
+  which makes it easier for remote attackers to conduct clickjacking
+  attacks via a crafted web site (CVE-2010-4554).
+
+  Multiple cross-site scripting (XSS) vulnerabilities in SquirrelMail
+  1.4.21 and earlier allow remote attackers to inject arbitrary
+  web script or HTML via vectors involving (1) drop-down selection
+  lists, (2) the &amp;gt; (greater than) character in the SquirrelSpell
+  spellchecking plugin, and (3) errors associated with the Index Order
+  (aka options_order) page (CVE-2010-4555).
+
+  Cross-site scripting (XSS) vulnerability in functions/mime.php in
+  SquirrelMail before 1.4.22 allows remote attackers to inject arbitrary
+  web script or HTML via a crafted STYLE element in an e-mail message
+  (CVE-2011-2023).
+
+  CRLF injection vulnerability in SquirrelMail 1.4.21 and earlier
+  allows remote attackers to modify or add preference values via a \n
+  (newline) character, a different vulnerability than CVE-2010-4555
+  (CVE-2011-2752).
+
+  Multiple cross-site request forgery (CSRF) vulnerabilities in
+  SquirrelMail 1.4.21 and earlier allow remote attackers to hijack the
+  authentication of unspecified victims via vectors involving (1) the
+  empty trash implementation and (2) the Index Order (aka options_order)
+  page, a different issue than CVE-2010-4555 (CVE-2011-2753).
+
+  The updated packages have been upgraded to the 1.4.22 version which
+  is not vulnerable to these issues.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -428,6 +420,6 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

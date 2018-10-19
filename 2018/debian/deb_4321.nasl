@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4321.nasl 11944 2018-10-18 05:37:15Z cfischer $
+# $Id: deb_4321.nasl 11972 2018-10-19 05:34:20Z cfischer $
 #
 # Auto-generated from advisory DSA 4321-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,7 +31,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704321");
-  script_version("$Revision: 11944 $");
+  script_version("$Revision: 11972 $");
   script_cve_id("CVE-2017-10794", "CVE-2017-10799", "CVE-2017-10800", "CVE-2017-11102", "CVE-2017-11139",
                 "CVE-2017-11140", "CVE-2017-11403", "CVE-2017-11636", "CVE-2017-11637", "CVE-2017-11638",
                 "CVE-2017-11641", "CVE-2017-11642", "CVE-2017-11643", "CVE-2017-11722", "CVE-2017-12935",
@@ -45,10 +45,10 @@ if(description)
                 "CVE-2017-18229", "CVE-2017-18230", "CVE-2017-18231", "CVE-2018-5685", "CVE-2018-6799",
                 "CVE-2018-9018");
   script_name("Debian Security Advisory DSA 4321-1 (graphicsmagick - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 07:37:15 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-16 00:00:00 +0200 (Tue, 16 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

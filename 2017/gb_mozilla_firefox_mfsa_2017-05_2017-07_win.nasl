@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-05_2017-07_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-05_2017-07_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-05_2017-07)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809808");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-5400", "CVE-2017-5401", "CVE-2017-5402", "CVE-2017-5403",
 		"CVE-2017-5404", "CVE-2017-5406", "CVE-2017-5407", "CVE-2017-5410",
 		"CVE-2017-5411", "CVE-2017-5409", "CVE-2017-5408", "CVE-2017-5412",
@@ -39,16 +39,16 @@ if(description)
 		"CVE-2017-5421", "CVE-2017-5422", "CVE-2017-5399", "CVE-2017-5398");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-08 11:13:40 +0530 (Wed, 08 Mar 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-05_2017-07)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with  Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with  Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - asm.js JIT-spray bypass of ASLR and DEP.
 
@@ -102,16 +102,13 @@ if(description)
 
   - DOS attack by using view-source: protocol repeatedly in one hyperlink.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code, to delete arbitrary files by leveraging certain local
-  file execution, to obtain sensitive information, and to cause a denial of service.
+  file execution, to obtain sensitive information, and to cause a denial of service.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 52.0 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 52.0 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox 52.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox 52.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -122,6 +119,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

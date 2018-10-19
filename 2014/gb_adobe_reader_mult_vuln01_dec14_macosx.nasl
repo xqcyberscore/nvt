@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_dec14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln01_dec14_macosx.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities-01 Dec14 (MAC OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805301");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9150", "CVE-2014-9165", "CVE-2014-8445", "CVE-2014-8446",
                 "CVE-2014-8447", "CVE-2014-8448", "CVE-2014-8449", "CVE-2014-8451",
                 "CVE-2014-8452", "CVE-2014-8453", "CVE-2014-8454", "CVE-2014-8455",
@@ -40,7 +40,7 @@ if(description)
                     71580, 71579);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-11 17:14:05 +0530 (Thu, 11 Dec 2014)");
 
   script_name("Adobe Reader Multiple Vulnerabilities-01 Dec14 (MAC OS X)");
@@ -73,8 +73,7 @@ if(description)
   Adobe Reader 11.x before 11.0.10 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 10.1.13 or
-  11.0.10 or later. For updates refer,
-  http://www.adobe.com/in/products/reader.html");
+  11.0.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -86,6 +85,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Reader/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/reader.html");
   exit(0);
 }
 

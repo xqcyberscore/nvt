@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20151112-ios1.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20151112-ios1.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco IOS Software Virtual PPP Interfaces Security Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-6365");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Cisco IOS Software Virtual PPP Interfaces Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151112-ios1");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in Cisco devices that are running Cisco IOS Software Release 15.2(04)M or Cisco IOS Software Release 15.4(03)M and are configured to use access control lists (ACLs) could allow a user who is connected to an authenticated PPP session to bypass ACLs that are configured on virtual PPP interfaces, if the ACL on the physical interface permits the traffic to pass.
@@ -52,14 +52,14 @@ Cisco has released software updates that address this vulnerability. Workarounds
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:31:06 +0200 (Tue, 03 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

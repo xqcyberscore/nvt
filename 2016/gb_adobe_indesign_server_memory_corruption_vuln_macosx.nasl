@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_server_memory_corruption_vuln_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_adobe_indesign_server_memory_corruption_vuln_macosx.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Adobe InDesign Server Memory Corruption Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810243");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-7886");
   script_bugtraq_id(94868);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 12:59:49 +0530 (Thu, 15 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Server Memory Corruption Vulnerability (Mac OS X)");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe InDesign Server 11.0.0 and earlier
   versions on macosx.");
 
-  script_tag(name:"solution", value:"Upgrade to version 12.0.0 or later.
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to version 12.0.0 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/indesign/apsb16-43.html");
   script_category(ACT_GATHER_INFO);
@@ -63,6 +62,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_indesign_server_detect_macosx.nasl");
   script_mandatory_keys("InDesign/Server/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

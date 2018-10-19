@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:huawei:vp_9660_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806637");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-8227");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 12:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as the server of the
-  Huawei VP9660 does not validate the input when using build-in web server.");
+  Huawei VP9660 does not validate the input when using built-in web server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to log in to the device as an business administrator, graft a message
@@ -54,7 +54,7 @@ if(description)
   versions V200R001C01, V200R001C02 and V200R001C30 are affected.");
 
   script_tag(name:"solution", value:"Upgrade to version V200R001C30SPC700 or
-  later. For updates refer, http://www1.huawei.com");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

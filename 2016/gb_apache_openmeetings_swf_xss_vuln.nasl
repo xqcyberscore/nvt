@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:openmeetings";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808658");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-3089", "CVE-2016-8736");
   script_bugtraq_id(92442, 94145);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:09:03 +0530 (Tue, 23 Aug 2016)");
   script_name("Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -70,9 +70,7 @@ if (description)
 
   script_tag(name:"affected", value:"Apache OpenMeetings prior to 3.1.2");
 
-  script_tag(name:"solution", value:"Upgrade to Apache OpenMeetings version 3.1.2.
-
-  For updates refer to http://openmeetings.apache.org/");
+  script_tag(name:"solution", value:"Upgrade to Apache OpenMeetings version 3.1.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

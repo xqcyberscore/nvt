@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_sep16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_apple_safari_mult_vuln_sep16.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities September16 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807889");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4618", "CVE-2016-4751", "CVE-2016-4728", "CVE-2016-4758",
                 "CVE-2016-4611", "CVE-2016-4729", "CVE-2016-4730", "CVE-2016-4731",
                 "CVE-2016-4734", "CVE-2016-4735", "CVE-2016-4737", "CVE-2016-4759",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(93053, 93057, 93067, 93066, 93065, 93064, 93062, 93058);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:58:27 +0530 (Wed, 28 Sep 2016)");
   script_name("Apple Safari Multiple Vulnerabilities September16 (Mac OS X)");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A state management issue in the handling of tab sessions.
 
@@ -72,7 +72,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari versions before 10");
 
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 10 or
-  later. For updates refer to http://www.apple.com/support.");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -85,6 +85,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

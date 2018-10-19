@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_win.nasl 9475 2018-04-13 10:10:45Z asteins $
+# $Id: gb_jenkins_20170426_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107157");
-  script_version("$Revision: 9475 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355", "CVE-2017-1000356");
   script_bugtraq_id(98056);
@@ -42,11 +42,11 @@ if(description)
 
   script_name("Jenkins Security Advisory Apr17 - Multiple Vulnerabilities (Windows)");
 
-  script_tag(name: "summary", value: "Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allow malicious users to perform several administrative actions by tricking a victim into opening a web page.");
+  script_tag(name:"summary", value:"Multiple Cross-Site Request Forgery vulnerabilities in Jenkins allow malicious users to perform several administrative actions by tricking a victim into opening a web page.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Multiple flaws are due to::
+  script_tag(name:"insight", value:"Multiple flaws are due to::
 
   - multiple Cross-Site Request Forgery vulnerabilities.
 
@@ -54,7 +54,7 @@ if(description)
 
   - XStream library which allow anyone able to provide XML to Jenkins for processing using XStream to crash the Java process.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to:
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to:
 
   - perform several administrative actions by tricking a victim into opening a web page.execute arbitrary code in the context of the affected application.
 
@@ -62,16 +62,16 @@ if(description)
 
   - impersonate any other Jenkins user on the same instance.
 
-   - crash the Java process. ");
+  - crash the Java process. ");
 
-  script_tag(name: "affected", value: "The following products are vulnerable:
+  script_tag(name:"affected", value:"The following products are vulnerable:
     Jenkins LTS 2.46.1 and prior, Jenkins 2.56 and prior.");
 
-  script_tag(name: "solution", value: "Jenkins main line users should update to 2.57,
+  script_tag(name:"solution", value:"Jenkins main line users should update to 2.57,
     Jenkins LTS users should update to 2.46.2");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/98056");
-  script_xref(name: "URL" , value: "https://jenkins.io/security/advisory/2017-04-26/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/98056");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-04-26/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

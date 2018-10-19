@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20161019-asa-idfw.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_asa_cisco-sa-20161019-asa-idfw.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco ASA Software Identity Firewall Feature Buffer Overflow Vulnerability
 #
@@ -34,38 +34,40 @@ if (description)
   script_cve_id("CVE-2016-6432");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
 
   script_name("Cisco ASA Software Identity Firewall Feature Buffer Overflow Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-asa-idfw");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
-  script_tag(name:"summary", value:"A vulnerability in the Identity Firewall feature of Cisco ASA Software could allow an unauthenticated, remote attacker to cause a reload of the affected system or to remotely execute code.
+  script_tag(name:"summary", value:"A vulnerability in the Identity Firewall feature of Cisco ASA Software
+  could allow an unauthenticated, remote attacker to cause a reload of the affected system or to remotely execute code.
 
-The vulnerability is due to a buffer overflow in the affected code area. An attacker could exploit this vulnerability by sending a crafted NetBIOS packet in response to a NetBIOS probe sent by the ASA software. An exploit could allow the attacker to execute arbitrary code and obtain full control of the system or cause a reload of the affected system.
+  The vulnerability is due to a buffer overflow in the affected code area. An attacker could exploit this vulnerability
+  by sending a crafted NetBIOS packet in response to a NetBIOS probe sent by the ASA software. An exploit could allow the
+  attacker to execute arbitrary code and obtain full control of the system or cause a reload of the affected system.
 
-Note: Only traffic directed to the affected system can be used to exploit this vulnerability. This vulnerability affects systems configured in routed and transparent firewall mode and in single or multiple context mode. This vulnerability can be triggered by IPv4 traffic.
+  Note: Only traffic directed to the affected system can be used to exploit this vulnerability. This vulnerability
+  affects systems configured in routed and transparent firewall mode and in single or multiple context mode.
+  This vulnerability can be triggered by IPv4 traffic.
 
-Cisco has released software updates that address this vulnerability. There is a workaround that addresses this vulnerability.
-
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-asa-idfw");
+  Cisco has released software updates that address this vulnerability. There is a workaround that addresses this vulnerability.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 06:59:17 +0200 (Fri, 21 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

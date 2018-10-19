@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170503-cme1.nasl 6097 2017-05-10 15:33:53Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20170503-cme1.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco CallManager Express Unauthorized Access Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106801");
- script_cve_id("CVE-2017-6624");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6097 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106801");
+  script_cve_id("CVE-2017-6624");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11982 $");
 
- script_name("Cisco CallManager Express Unauthorized Access Vulnerability");
+  script_name("Cisco CallManager Express Unauthorized Access Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170503-cme1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170503-cme1");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in Cisco IOS Software for Cisco CallManager Express (CME)
+  script_tag(name:"summary", value:"A vulnerability in Cisco IOS Software for Cisco CallManager Express (CME)
 could allow an unauthenticated, remote attacker to make unauthorized phone calls.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a configuration restriction in the toll-fraud
+  script_tag(name:"insight", value:"The vulnerability is due to a configuration restriction in the toll-fraud
 protections component of the affected software.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability to place unauthorized,
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability to place unauthorized,
 long-distance phone calls by using an affected system.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-10 17:33:53 +0200 (Wed, 10 May 2017) $");
- script_tag(name: "creation_date", value: "2017-05-10 21:22:13 +0700 (Wed, 10 May 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-10 21:22:13 +0700 (Wed, 10 May 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.5(3)M' );
 
 foreach af ( affected )

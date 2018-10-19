@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_oct14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_oct14_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Oct14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804943");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-1586", "CVE-2014-1585", "CVE-2014-1581", "CVE-2014-1578",
                 "CVE-2014-1577", "CVE-2014-1576", "CVE-2014-1574");
   script_bugtraq_id(70427, 70425, 70426, 70428, 70440, 70430, 70436);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:39:45 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Oct14 (Windows)");
@@ -74,7 +74,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
-  31.2 or later, For updates refer https://www.mozilla.org/en-US/thunderbird");
+  31.2 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -89,6 +89,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805440");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:42:27 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   Adobe Acrobat 11.x before 11.0.10 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 10.1.13
-  or 11.0.10 or later. For updates refer
-  http://www.adobe.com/in/products/acrobat.html");
+  or 11.0.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

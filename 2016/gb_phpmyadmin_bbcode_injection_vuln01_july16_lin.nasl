@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_lin.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # phpMyAdmin BBCode Injection Vulnerability -01 July16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808243");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-5701");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:45:45 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("phpMyAdmin BBCode Injection Vulnerability -01 July16 (Linux)");
@@ -53,8 +53,7 @@ if(description)
   4.4.15.x before 4.4.15.7, and 4.6.x before 4.6.3 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.0.10.16 or
-  4.4.15.7 or 4.6.3 or later.
-  For updates refer to https://www.phpmyadmin.net");
+  4.4.15.7 or 4.6.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

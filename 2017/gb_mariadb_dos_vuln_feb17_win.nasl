@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_feb17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mariadb_dos_vuln_feb17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # MariaDB Denial Of Service Vulnerability Feb17 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810605");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:35:00 +0530 (Thu, 16 Feb 2017)");
   script_name("MariaDB Denial Of Service Vulnerability Feb17 (Windows)");
 
   script_tag(name:"summary", value:"This host is running MariaDB and is
   prone to denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors exists as,
 
@@ -52,22 +51,20 @@ if(description)
     statement, 'mysql_prune_stmt_list' tries to detach all previously prepared
     statements.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  will allow attackers to cause crash of applications using that MySQL client.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow attackers to cause crash of applications using that MySQL client.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"MariaDB through 5.5.54, 10.0.x through
+  script_tag(name:"affected", value:"MariaDB through 5.5.54, 10.0.x through
   10.0.29, 10.1.x through 10.1.21, and 10.2.x through 10.2.3 on Windows");
 
-  script_tag(name:"solution", value:"Update to MariaDB 5.5.55, 10.2.5, 10.1.22, 10.0.30 or later. For details refer to https://mariadb.org");
+  script_tag(name:"solution", value:"Update to MariaDB 5.5.55, 10.2.5, 10.1.22, 10.0.30 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://mariadb.com/kb/en/mariadb/security/");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2017/02/11/11");
+  script_xref(name:"URL", value:"https://mariadb.com/kb/en/mariadb/security/");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2017/02/11/11");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -76,22 +73,17 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MariaDB/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mariadbPort = "";
-mariadbVer = "";
-
-## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mariadbVer = get_app_version(cpe:CPE, port:mariadbPort)){
   exit(0);
 }

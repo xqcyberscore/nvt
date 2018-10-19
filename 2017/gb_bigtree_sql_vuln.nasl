@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_sql_vuln.nasl 6856 2017-08-07 05:49:51Z cfischer $
+# $Id: gb_bigtree_sql_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # BigTree CMS SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140256");
-  script_version("$Revision: 6856 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-07 07:49:51 +0200 (Mon, 07 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-31 12:43:19 +0700 (Mon, 31 Jul 2017)");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-31 12:43:19 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-11736");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("BigTree CMS SQL Injection Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_bigtree_detect.nasl");
   script_mandatory_keys("BigTree/Installed");
 
-  script_tag(name: "summary", value: "BigTree CMS is prone to an SQL injection vulnerability.");
+  script_tag(name:"summary", value:"BigTree CMS is prone to an SQL injection vulnerability.");
 
-  script_tag(name: "insight", value: "SQL injection vulnerability in core\admin\auto-modules\forms\process.php in
+  script_tag(name:"insight", value:"SQL injection vulnerability in core\admin\auto-modules\forms\process.php in
 BigTree allows remote authenticated users to execute arbitrary SQL commands via the tags array parameter.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.2.19 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 4.2.19 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/bigtreecms/BigTree-CMS/issues/304");
+  script_xref(name:"URL", value:"https://github.com/bigtreecms/BigTree-CMS/issues/304");
 
   exit(0);
 }

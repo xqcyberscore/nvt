@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_multiple_vuln_jun16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_nagios_xi_multiple_vuln_jun16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Nagios XI Multiple Vulnerabilities - June16
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807835");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"deprecated", value:TRUE);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 16:38:53 +0530 (Wed, 08 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Nagios XI Multiple Vulnerabilities - June16");
@@ -67,8 +67,7 @@ if(description)
 
   script_tag(name:"affected", value:"Nagios XI version 5.2.7 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to Nagios XI version 5.2.8.
-  For updates refer to https://www.nagios.com/products/nagios-xi");
+  script_tag(name:"solution", value:"Upgrade to Nagios XI version 5.2.8.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +82,7 @@ if(description)
   script_dependencies("gb_nagios_XI_detect.nasl");
   script_mandatory_keys("nagiosxi/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.nagios.com/products/nagios-xi");
   exit(0);
 }
 

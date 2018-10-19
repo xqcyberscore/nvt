@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10784.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_junos_jsa10784.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Junos Buffer Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106750");
-  script_version ("$Revision: 5962 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-1886");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Buffer Overflow Vulnerability");
 
@@ -48,23 +48,23 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a buffer overflow vulnerability in the keyboard
+  script_tag(name:"summary", value:"Junos OS is prone to a buffer overflow vulnerability in the keyboard
 driver.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "Incorrect signedness comparison in the ioctl handler allows a malicious
+  script_tag(name:"insight", value:"Incorrect signedness comparison in the ioctl handler allows a malicious
 local user to overwrite a portion of the kernel memory. A local user may crash the kernel, read a portion of
 kernel memory and execute arbitrary code in kernel context.");
 
-  script_tag(name: "impact", value: "A local attacker may escalate privileges by executing arbitrary code.");
+  script_tag(name:"impact", value:"A local attacker may escalate privileges by executing arbitrary code.");
 
-  script_tag(name: "affected", value: "Junos OS 12.3X48, 14.1, 14.2, 15.1 and 16.1.");
+  script_tag(name:"affected", value:"Junos OS 12.3X48, 14.1, 14.2, 15.1 and 16.1.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10784");
 
@@ -107,7 +107,7 @@ if (version =~ "^14") {
   }
 }
 
-if (version =~ "^15") {  
+if (version =~ "^15") {
   if ((revcomp(a: version, b: "15.1F5-S5") < 0) &&
       (revcomp(a: version, b: "15.1F") >= 0)) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.1F5-S5");

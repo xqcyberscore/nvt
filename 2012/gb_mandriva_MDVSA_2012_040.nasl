@@ -24,7 +24,33 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerability has been found and corrected in GnuTLS:
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:040");
+  script_oid("1.3.6.1.4.1.25623.1.0.831635");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:57:55 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-1573");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"MDVSA", value:"2012:040");
+  script_name("Mandriva Update for gnutls MDVSA-2012:040 (gnutls)");
+
+  script_tag(name:"summary", value:"Check for the Version of gnutls");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2|2010\.1)");
+  script_tag(name:"affected", value:"gnutls on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"A vulnerability has been found and corrected in GnuTLS:
 
   gnutls_cipher.c in libgnutls in GnuTLS before 2.12.17 and 3.x before
   3.0.15 does not properly handle data encrypted with a block cipher,
@@ -37,51 +63,18 @@ tag_insight = "A vulnerability has been found and corrected in GnuTLS:
   The GnuTLS packages for Mandriva Linux 2011 has been upgraded to the
   2.12.8 version due to problems with the test suite while building
   it, additionally a new dependency was added on p11-kit for the PKCS
-  #11 support.";
-
-tag_affected = "gnutls on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:040");
-  script_oid("1.3.6.1.4.1.25623.1.0.831635");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:57:55 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-1573");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "MDVSA", value: "2012:040");
-  script_name("Mandriva Update for gnutls MDVSA-2012:040 (gnutls)");
-
-  script_tag(name: "summary" , value: "Check for the Version of gnutls");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  #11 support.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -164,7 +157,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -202,7 +195,7 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -240,6 +233,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

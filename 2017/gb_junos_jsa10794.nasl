@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10794.nasl 6832 2017-08-02 05:57:34Z cfischer $
+# $Id: gb_junos_jsa10794.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Junos MS-MPC or MS-MIC DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106940");
-  script_version ("$Revision: 6832 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-02 07:57:34 +0200 (Wed, 02 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 09:02:35 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 09:02:35 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2346");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos MS-MPC or MS-MIC DoS Vulnerability");
 
@@ -48,24 +48,24 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a denial of service vulnerability when parsing large
+  script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability when parsing large
 fragmented traffic through an ALG.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "An MS-MPC or MS-MIC Service PIC may crash when large fragmented packets are
+  script_tag(name:"insight", value:"An MS-MPC or MS-MIC Service PIC may crash when large fragmented packets are
 passed through an Application Layer Gateway (ALG). Repeated crashes of the Service PC can result in an extended
 denial of service condition. The issue can be seen only if NAT or stateful-firewall rules are configured with
 ALGs enabled.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 14.1X55, 14.2, 15.1 and 16.1.");
+  script_tag(name:"affected", value:"Junos OS 14.1X55, 14.2, 15.1 and 16.1.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10794");
 

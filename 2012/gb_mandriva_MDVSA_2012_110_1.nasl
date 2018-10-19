@@ -24,7 +24,35 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Security issues were identified and fixed in mozilla firefox and
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:110-1");
+  script_oid("1.3.6.1.4.1.25623.1.0.831708");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 11:18:18 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-1949", "CVE-2012-1948", "CVE-2012-1950", "CVE-2012-1951",
+                "CVE-2012-1954", "CVE-2012-1953", "CVE-2012-1952", "CVE-2012-1955",
+                "CVE-2012-1966", "CVE-2012-1957", "CVE-2012-1958", "CVE-2012-1959",
+                "CVE-2012-1960", "CVE-2012-1961", "CVE-2012-1962", "CVE-2012-1963",
+                "CVE-2012-1964", "CVE-2012-1965", "CVE-2012-1967");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2012:110-1");
+  script_name("Mandriva Update for mozilla MDVSA-2012:110-1 (mozilla)");
+
+  script_tag(name:"summary", value:"Check for the Version of mozilla");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2011\.0");
+  script_tag(name:"affected", value:"mozilla on Mandriva Linux 2011.0");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla firefox and
   thunderbird:
 
   Mozilla developers identified and fixed several memory safety
@@ -33,14 +61,14 @@ tag_insight = "Security issues were identified and fixed in mozilla firefox and
   under certain circumstances, and we presume that with enough effort
   at least some of these could be exploited to run arbitrary code
   (CVE-2012-1949, CVE-2012-1948).
-  
+
   Security researcher Mario Gomes andresearch firm Code Audit Labs
   reported a mechanism to short-circuit page loads through drag and drop
   to the addressbar by canceling the page load. This causes the address
   of the previously site entered to be displayed in the addressbar
   instead of the currently loaded page. This could lead to potential
   phishing attacks on users (CVE-2012-1950).
-  
+
   Google security researcher Abhishek Arya used the Address Sanitizer
   tool to uncover four issues: two use-after-free problems, one out of
   bounds read bug, and a bad cast. The first use-after-free problem is
@@ -55,7 +83,7 @@ tag_insight = "Security issues were identified and fixed in mozilla firefox and
   group frames. AppendFrames is not able to handle this mix. All four of
   these issues are potentially exploitable (CVE-2012-1951, CVE-2012-1954,
   CVE-2012-1953, CVE-2012-1952).
-  
+
   Security researcher Mariusz Mlynski reported an issue with spoofing
   of the location property. In this issue, calls to history.forward
   and history.back are used to navigate to a site while displaying the
@@ -63,61 +91,26 @@ tag_insight = "Security issues were identified and fixed in mozilla firefox and
   site. This can be used for phishing by allowing the user input form
   or other data on the newer, attacking, site while appearing to be on
   the older, displayed site (CVE-2012-1955).
-  
+
   Mozilla security researcher moz_bug_r_a4 reported a cross-site
   scripting (XSS) attack through the context menu using a data: URL. In
   this issue, context menu functionality (View Image, Show only this
   frame, and View background image) are disallowed in a javascript:
   URL but allowed in a data: URL, allowing for XSS. This can lead to
- ... 
+ ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "mozilla on Mandriva Linux 2011.0";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:110-1");
-  script_oid("1.3.6.1.4.1.25623.1.0.831708");
-  script_version("$Revision: 8671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 11:18:18 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-1949", "CVE-2012-1948", "CVE-2012-1950", "CVE-2012-1951",
-                "CVE-2012-1954", "CVE-2012-1953", "CVE-2012-1952", "CVE-2012-1955",
-                "CVE-2012-1966", "CVE-2012-1957", "CVE-2012-1958", "CVE-2012-1959",
-                "CVE-2012-1960", "CVE-2012-1961", "CVE-2012-1962", "CVE-2012-1963",
-                "CVE-2012-1964", "CVE-2012-1965", "CVE-2012-1967");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2012:110-1");
-  script_name("Mandriva Update for mozilla MDVSA-2012:110-1 (mozilla)");
-
-  script_tag(name: "summary" , value: "Check for the Version of mozilla");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -596,6 +589,6 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

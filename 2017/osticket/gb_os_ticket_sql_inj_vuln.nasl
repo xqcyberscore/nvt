@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_os_ticket_sql_inj_vuln.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_os_ticket_sql_inj_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # osTicket SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:osticket:osticket";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140374");
-  script_version("$Revision: 7260 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-18 16:34:35 +0700 (Mon, 18 Sep 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-18 16:34:35 +0700 (Mon, 18 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-14396");
 
-  script_tag(name: "qod_type", value: "remote_analysis"); # Blind SQL Injection
+  script_tag(name:"qod_type", value:"remote_analysis"); # Blind SQL Injection
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("osTicket SQL Injection Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("osticket_detect.nasl");
   script_mandatory_keys("osticket/installed");
 
-  script_tag(name: "summary", value: "osTicket is prone to an unauthenticated SQL injection vulnerability.");
+  script_tag(name:"summary", value:"osTicket is prone to an unauthenticated SQL injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "insight", value: "By constructing an array via use of square brackets at the end of a
+  script_tag(name:"insight", value:"By constructing an array via use of square brackets at the end of a
 parameter name it is possible to inject SQL commands.");
 
-  script_tag(name: "affected", value: "osTicket version 1.10 and prior.");
+  script_tag(name:"affected", value:"osTicket version 1.10 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 1.10.1 or later.");
+  script_tag(name:"solution", value:"Update to version 1.10.1 or later.");
 
-  script_xref(name: "URL", value: "http://osticket.com/blog/125");
-  script_xref(name: "URL", value: "https://pentest.blog/advisory-osticket-v1-10-unauthenticated-sql-injection/");
+  script_xref(name:"URL", value:"http://osticket.com/blog/125");
+  script_xref(name:"URL", value:"https://pentest.blog/advisory-osticket-v1-10-unauthenticated-sql-injection/");
 
   exit(0);
 }

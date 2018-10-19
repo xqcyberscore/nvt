@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_flash_player_obj_code_exec_vuln_win.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802772");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11973 $");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 13:53:41 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49096/");
@@ -51,8 +51,7 @@ if(description)
   and execute arbitrary code on the target system.");
   script_tag(name:"affected", value:"Adobe Flash Player version prior to 10.3.183.19 on Windows
   Adobe Flash Player version 11.x prior to 11.2.202.235 on Windows");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.19 or 11.2.202.235 or later,
-  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.19 or 11.2.202.235 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   object confusion remote code execution vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to an error related to object confusion.
@@ -60,6 +59,7 @@ if(description)
   NOTE: Further information is not available.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

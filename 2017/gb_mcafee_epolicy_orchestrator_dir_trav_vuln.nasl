@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # McAfee ePolicy Orchestrator Directory Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106824");
-  script_version("$Revision: 6302 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-23 11:00:56 +0700 (Tue, 23 May 2017)");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-23 11:00:56 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-3980");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("McAfee ePolicy Orchestrator Directory Traversal Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
   script_mandatory_keys("mcafee_ePO/installed");
 
-  script_tag(name: "summary", value: "McAfee ePolicy Orchestrator is prone to a directory traversal vulnerability
+  script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to a directory traversal vulnerability
 which allows remote authenticated users to execute a command of their choice via an authenticated ePO session.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "ePO versions 5.1.3,, 5.3.1, 5.3.2, 5.9.0 and prior.");
+  script_tag(name:"affected", value:"ePO versions 5.1.3, , 5.3.1, 5.3.2, 5.9.0 and prior.");
 
-  script_tag(name: "solution", value: "Apply the appropriate hotfix.");
+  script_tag(name:"solution", value:"Apply the appropriate hotfix.");
 
-  script_xref(name: "URL", value: "https://kc.mcafee.com/corporate/index?page=content&id=SB10196");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10196");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170524-fmc.nasl 6406 2017-06-22 10:42:26Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170524-fmc.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco Firepower System Software URL Filtering Bypass Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106830");
- script_cve_id("CVE-2017-6674");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6406 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106830");
+  script_cve_id("CVE-2017-6674");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11982 $");
 
- script_name("Cisco Firepower System Software URL Filtering Bypass Vulnerability");
+  script_name("Cisco Firepower System Software URL Filtering Bypass Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170524-fmc");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170524-fmc");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the feature-license management functionality of Cisco
+  script_tag(name:"summary", value:"A vulnerability in the feature-license management functionality of Cisco
 Firepower System Software could allow an unauthenticated, remote attacker to bypass URL filters that have been
 configured for an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability exists because the URL Filtering license for the affected
+  script_tag(name:"insight", value:"The vulnerability exists because the URL Filtering license for the affected
 software could be disabled unexpectedly, which could disable the URL filtering functionality of the affected
 software. An attacker could exploit this vulnerability by sending traffic, which should have matched a configured
 URL filter, through an affected device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass URL filters that were
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass URL filters that were
 configured for the affected device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
- script_tag(name: "creation_date", value: "2017-05-26 11:17:45 +0700 (Fri, 26 May 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-26 11:17:45 +0700 (Fri, 26 May 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -74,7 +74,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'6.0.1',
 		'6.1.0',
 		'6.2.0',

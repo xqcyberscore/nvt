@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804297");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-2301");
   script_bugtraq_id(67284);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-16 11:22:00 +0530 (Fri, 16 May 2014)");
   script_name("OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability");
 
@@ -45,8 +45,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
   information by enumerating the names of all objects stored in BSCW without prior authentication.");
   script_tag(name:"affected", value:"OrbiTeam BSCW before version 5.0.8");
-  script_tag(name:"solution", value:"Upgrade to OrbiTeam BSCW version 5.0.8 or later. For updates refer,
-  http://www.bscw.de/english/product.html");
+  script_tag(name:"solution", value:"Upgrade to OrbiTeam BSCW version 5.0.8 or later.");
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/May/37");
   script_xref(name:"URL", value:"https://xforce.iss.net/xforce/xfdb/93030");
@@ -60,6 +59,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.bscw.de/english/product.html");
   exit(0);
 }
 

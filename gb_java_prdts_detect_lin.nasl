@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_java_prdts_detect_lin.nasl 11968 2018-10-18 14:31:48Z cfischer $
 #
 # Multiple Java Products Version Detection (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_version("$Revision: 10979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11968 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:31:48 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,8 +116,8 @@ if( javapaths ) {
       }
     }
     # Sun/Oracle Java
-    else if( javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)" ) {
-
+    else if( javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)" || javaVer[1] =~ "([0-9.]+\+)")
+    {
       jvVer    = ereg_replace( pattern:"_|-", string:javaVer[1], replace:"." );
       javaVer1 = eregmatch( pattern:"([0-9]+\.[0-9]+\.[0-9]+)(\.([0-9]+))?", string:jvVer );
       if( javaVer1[1] && javaVer1[3] ) {
@@ -125,24 +125,62 @@ if( javapaths ) {
       } else if( javaVer1[1] ) {
         javaVer_or = javaVer1[1];
       }
+      else
+      {
+        jvVer = eregmatch( pattern:"([0-9.]+)", string:javaVer[1] );
+        jvVer = jvVer[1];
+        javaVer_or = jvVer;
+      }
 
-      if( version_is_less( version:jvVer, test_version:"1.4.2.38" )||
-          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" )||
-          version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
+      if(version_is_less( version:jvVer, test_version:"1.4.2.38" )||
+         version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" )||
+         version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) )
+      {
         java_name = "Sun Java";
-        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:jre:" );
-        if( isnull( cpe ) )
-          cpe = "cpe:/a:sun:jre";
-      } else {
+        if(("jdk" >< executableFile && "jre" >!< executableFile) || ("jdk"  ><  executableFile && "jre" >< executableFile))
+        {
+          cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:jdk:" );
+          if( isnull( cpe ) )
+            cpe = "cpe:/a:sun:jdk";
+          set_kb_item( name:"Sun/Java/JDK/Linux/detected", value:TRUE );
+          set_kb_item( name:"Sun/Java/JDK_or_JRE/Linux/detected", value:TRUE );
+        }
+        else
+        {
+          cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:jre:" );
+          if( isnull( cpe ) )
+            cpe = "cpe:/a:sun:jre";
+          set_kb_item( name:"Sun/Java/JRE/Linux/detected", value:TRUE );
+          set_kb_item( name:"Sun/Java/JDK_or_JRE/Linux/detected", value:TRUE );
+          set_kb_item( name:"Sun_or_Oracle/Java/JRE/Linux/detected", value:TRUE );
+        }
+      }
+      else
+      {
         java_name = "Oracle Java";
-        cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:jre:" );
-        if( isnull( cpe ) )
-          cpe = "cpe:/a:oracle:jre";
+        if(("jdk" >< executableFile && "jre" >!< executableFile) || ("jdk"  ><  executableFile && "jre" >< executableFile))
+        {
+          cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:jdk:" );
+          if( isnull( cpe ) )
+            cpe = "cpe:/a:oracle:jdk";
+          set_kb_item( name:"Oracle/Java/JDK/Linux/detected", value:TRUE );
+          set_kb_item( name:"Oracle/Java/JDK_or_JRE/Linux/detected", value:TRUE );
+        }
+        else
+        {
+          cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:oracle:jre:" );
+          if( isnull( cpe ) )
+            cpe = "cpe:/a:oracle:jre";
+          set_kb_item( name:"Oracle/Java/JRE/Linux/detected", value:TRUE );
+          set_kb_item( name:"Oracle/Java/JDK_or_JRE/Linux/detected", value:TRUE );
+          set_kb_item( name:"Sun_or_Oracle/Java/JRE/Linux/detected", value:TRUE );
+        }
       }
 
       set_kb_item( name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1] );
       set_kb_item( name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
-      register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer[0], cpename:cpe, insloc:executableFile );
+      set_kb_item( name:"Sun_or_Oracle/Java/JDK_or_JRE/Linux/detected", value:TRUE );
+      register_and_report_cpe( app:java_name, ver:javaVer[1], concluded:javaVer_or, cpename:cpe, insloc:executableFile );
     }
   }
 }

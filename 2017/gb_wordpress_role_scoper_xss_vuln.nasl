@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_role_scoper_xss_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
+# $Id: gb_wordpress_role_scoper_xss_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # WordPress Role Scoper Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112044");
-  script_version("$Revision: 7243 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-12 11:33:51 +0200 (Tue, 12 Sep 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-12 11:33:51 +0200 (Tue, 12 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-8353");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Role Scoper Plugin XSS Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress plugin Role Scoper is vulnerable to cross-site scripting (XSS) resulting in
+  script_tag(name:"summary", value:"WordPress plugin Role Scoper is vulnerable to cross-site scripting (XSS) resulting in
 attackers being able to inject arbitrary web script or HTML via the object_name parameter in a rs-object_role_edit page to wp-admin/admin.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Role Scoper plugin version 1.3.66 and prior.");
+  script_tag(name:"affected", value:"WordPress Role Scoper plugin version 1.3.66 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 1.3.67 or later.");
+  script_tag(name:"solution", value:"Update to version 1.3.67 or later.");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/134600/WordPress-Role-Scoper-1.3.66-Cross-Site-Scripting.html");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/role-scoper/#developers");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/134600/WordPress-Role-Scoper-1.3.66-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/role-scoper/#developers");
 
   exit(0);
 }

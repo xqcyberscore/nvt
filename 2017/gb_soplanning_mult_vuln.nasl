@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soplanning_mult_vuln.nasl 7109 2017-09-12 09:53:39Z asteins $
+# $Id: gb_soplanning_mult_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Simple Online Planning < 1.33 Multiple Vulnerabilities
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:soplanning:soplanning";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112035");
-  script_version("$Revision: 7109 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2014-8673", "CVE-2014-8674", "CVE-2014-8675", "CVE-2014-8676", "CVE-2014-8677");
   script_bugtraq_id(75726);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-12 11:53:39 +0200 (Tue, 12 Sep 2017) $");
-  script_tag(name:"creation_date", value: "2017-09-04 12:34:59 +0200 (Mon, 04 Sep 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-04 12:34:59 +0200 (Mon, 04 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Simple Online Planning < 1.33 Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Simple Online Planning and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"SOPlanning version 1.32 and earlier.");
 
-  script_tag(name:"solution", value:"Update to version 1.33 or later. For updates refer to http://www.soplanning.org/en/download/");
+  script_tag(name:"solution", value:"Update to version 1.33 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2015/Jul/44");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jul/44");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_soplanning_detect.nasl");
   script_mandatory_keys("SOPlanning/Installed");
   script_require_ports("Services/www", 80, 443);
+  script_xref(name:"URL", value:"http://www.soplanning.org/en/download/");
   exit(0);
 }
 

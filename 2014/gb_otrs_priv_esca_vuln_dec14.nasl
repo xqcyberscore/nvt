@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # OTRS Help Desk Privilege Escalation Vulnerability - Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805230");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-9324");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-24 12:30:49 +0530 (Wed, 24 Dec 2014)");
   script_name("OTRS Help Desk Privilege Escalation Vulnerability - Dec14");
 
@@ -54,7 +54,7 @@ if(description)
   3.2.17, 3.3.x before 3.3.11, and 4.0.x before 4.0.3");
 
   script_tag(name:"solution", value:"Upgrade to OTRS Help Desk version 3.2.17
-  or 3.3.11 or 4.0.3 or later. For updates refer http://www.otrs.com");
+  or 3.3.11 or 4.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com");
   exit(0);
 }
 

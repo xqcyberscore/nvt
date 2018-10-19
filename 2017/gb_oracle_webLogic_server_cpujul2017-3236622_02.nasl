@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Oracle WebLogic Server 'JNDI' And 'Web Container' Components Unspecified Vulnerabilities (cpujul2017-3236622)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811245");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-10137", "CVE-2017-10152");
   script_bugtraq_id(99634, 101351);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 13:53:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server 'JNDI' And 'Web Container' Components Unspecified Vulnerabilities (cpujul2017-3236622)");
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle WebLogic Server versions 10.3.6.0,
   and 12.1.3.0");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Update is available.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_dependencies("oracle_webLogic_server_detect.nasl");
   script_mandatory_keys("OracleWebLogicServer/installed");
   script_require_ports("Services/www", 7001);
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
   exit(0);
 }
 

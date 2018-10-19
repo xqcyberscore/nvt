@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_mult_vuln.nasl 7670 2017-11-06 16:01:23Z asteins $
+# $Id: gb_ntopng_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ntopng Multiple Vulnerabilities
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112105");
-  script_version("$Revision: 7670 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-7458", "CVE-2017-7459", "CVE-2017-7416");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 17:01:23 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-06 15:50:16 +0200 (Mon, 06 Nov 2017)");
   script_name("ntopng Multiple Vulnerabilities");
 
-  script_tag(name: "summary", value:"The host is installed with ntopng and is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"The host is installed with ntopng and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value:"Get the installed version with the help
-  of a detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple vulnerabilities exist within ntopng:
+  script_tag(name:"insight", value:"Multiple vulnerabilities exist within ntopng:
 
-      - The NetworkInterface::getHost function in NetworkInterface.cpp allows remote attackers to cause a denial of service
+  - The NetworkInterface::getHost function in NetworkInterface.cpp allows remote attackers to cause a denial of service
       (NULL pointer dereference and application crash) via an empty field that should have contained a hostname or IP address (CVE-2017-7458).
 
-      - HTTP Response Splitting (CVE-2017-7459).
+  - HTTP Response Splitting (CVE-2017-7459).
 
-      - Cross-site scripting (XSS) because GET and POST parameters are improperly validated (CVE-2017-7416).");
+  - Cross-site scripting (XSS) because GET and POST parameters are improperly validated (CVE-2017-7416).");
 
-  script_tag(name: "impact", value:"Successful exploitation will allow an attacker to cause a denial of service and/or inject arbitrary script code.");
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to cause a denial of service and/or inject arbitrary script code.");
 
-  script_tag(name: "affected", value:"ntopng prior to version 3.0");
+  script_tag(name:"affected", value:"ntopng prior to version 3.0");
 
-  script_tag(name: "solution", value:"Upgrade to ntopng 3.0 or later, for updates refer to http://www.ntop.org/");
+  script_tag(name:"solution", value:"Upgrade to ntopng 3.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://github.com/ntop/ntopng/blob/3.0/CHANGELOG.md");
+  script_xref(name:"URL", value:"https://github.com/ntop/ntopng/blob/3.0/CHANGELOG.md");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -69,6 +68,7 @@ if(description)
   script_mandatory_keys("ntopng/installed");
   script_require_ports("Services/www", 3000);
 
+  script_xref(name:"URL", value:"http://www.ntop.org/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:foxit_pdf_toolkit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810521");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-5364");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 15:52:27 +0530 (Wed, 25 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability");
@@ -41,23 +41,19 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with
   Foxit PDF Toolkit and is prone to memory corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a memory corruption
   vulnerability in Foxit PDF Toolkit while parsing PDF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   allow an attacker to cause denial of Service and remote code execution
-  when the victim opens the specially crafted PDF file.
-
-  Impact Level: System");
+  when the victim opens the specially crafted PDF file.");
 
   script_tag(name:"affected", value:"Foxit PDF Toolkit version 1.3");
 
   script_tag(name:"solution", value:"Upgrade to Foxit PDF Toolkit version
-  2.0 or later.
-  For updates refer to https://www.foxitsoftware.com");
+  2.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

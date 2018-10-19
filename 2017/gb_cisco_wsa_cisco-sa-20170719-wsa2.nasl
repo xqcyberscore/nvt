@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa2.nasl 6851 2017-08-04 07:31:24Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa2.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco Web Security Appliance Authenticated Command Injection and Privilege Escalation Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106972");
- script_cve_id("CVE-2017-6748");
- script_tag(name: "cvss_base", value: "7.2");
- script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 6851 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106972");
+  script_cve_id("CVE-2017-6748");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco Web Security Appliance Authenticated Command Injection and Privilege Escalation Vulnerability");
+  script_name("Cisco Web Security Appliance Authenticated Command Injection and Privilege Escalation Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-wsa2");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-wsa2");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the CLI parser of the Cisco Web Security Appliance (WSA)
+  script_tag(name:"summary", value:"A vulnerability in the CLI parser of the Cisco Web Security Appliance (WSA)
 could allow an authenticated, local attacker to perform command injection and elevate privileges to root. The
 attacker must authenticate with valid operator-level or administrator-level credentials.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient validation of user-supplied input in
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of user-supplied input in
 the CLI parser. An attacker could exploit this vulnerability by authenticating to the affected device and
 performing command injection over the CLI.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to escape from the CLI subshell and
+  script_tag(name:"impact", value:"An exploit could allow the attacker to escape from the CLI subshell and
 execute system-level commands on the underlying operating system as root.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-07-20 14:18:58 +0700 (Thu, 20 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-20 14:18:58 +0700 (Thu, 20 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

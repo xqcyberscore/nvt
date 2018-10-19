@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osticket_support_address_dos.nasl 10861 2018-08-09 13:04:38Z mmartin $
+# $Id: osticket_support_address_dos.nasl 11958 2018-10-18 10:23:02Z cfischer $
 #
 # osTicket Support Address DoS
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:osticket:osticket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13859");
-  script_version("$Revision: 10861 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 15:04:38 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:23:02 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("osTicket Support Address DoS");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("osticket_detect.nasl");
   script_mandatory_keys("osticket/installed");
 
-  script_xref(name:"URL", value:"http://www.osticket.com/forums/showthread.php?t=301");
+  script_xref(name:"URL", value:"https://web.archive.org/web/20060708122335/www.osticket.com/forums/showthread.php?t=301");
 
   script_tag(name:"solution", value:"Configure osTicket to receive mail using POP3.");
 
@@ -63,23 +63,22 @@ if(description)
   ***** retrieve mail.");
 
   script_tag(name:"solution_type", value:"Mitigation");
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
 if( ! port  = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit(0);
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
 vers = infos['version'];
 path = infos['location'];
 
 if( ereg( pattern:"^1\.(0|1|2|2\.[0-7])$", string:vers ) ) {
-  report = report_vuln_url( port:port, url:path );
-  log_message( port:port, data:report );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"Mitigation", install_url:path );
+  security_message( port:port, data:report );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_mult_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_clipbucket_mult_sql_inj_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # ClipBucket Multiple SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805388");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2012-5849");
   script_bugtraq_id(56854);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 14:14:28 +0530 (Thu, 21 May 2015)");
   script_name("ClipBucket Multiple SQL Injection Vulnerabilities");
 
@@ -68,8 +68,7 @@ if(description)
   script_tag(name: "affected", value:"ClipBucket version 2.6 Revision 738 and
   earlier.");
 
-  script_tag(name:"solution", value:"Apply the patch from the below link,
-  For patch refer to http://sourceforge.net/projects/clipbucket/files/Patches");
+  script_tag(name:"solution", value:"Apply the patch from the referenced link.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -85,6 +84,7 @@ if(description)
   script_mandatory_keys("clipbucket/Installed");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"http://clip-bucket.com");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/clipbucket/files/Patches");
   exit(0);
 }
 

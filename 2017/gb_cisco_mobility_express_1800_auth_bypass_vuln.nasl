@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_mobility_express_1800_auth_bypass_vuln.nasl 5777 2017-03-30 06:44:58Z antu123 $
+# $Id: gb_cisco_mobility_express_1800_auth_bypass_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco Mobility Express 1800 Series Authentication Bypass Vulnerability
 #
@@ -30,42 +30,38 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810675");
-  script_version("$Revision: 5777 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-3831");
   script_bugtraq_id(96909);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:44:58 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 15:33:08 +0530 (Wed, 22 Mar 2017)");
   script_name("Cisco Mobility Express 1800 Series Authentication Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Cisco Mobility Express
   1800 Series Access Point and is prone to authentication bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The vulnerability is due to an improper
+  script_tag(name:"insight", value:"The vulnerability is due to an improper
   implementation of authentication for accessing certain web pages using the GUI
   interface.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass authentication. The attacker could be granted full
-  administrator privileges.
+  administrator privileges.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Cisco Aironet Access Point Software versions
+  script_tag(name:"affected", value:"Cisco Aironet Access Point Software versions
   8.1(112.3), 8.1(112.4), 8.1(15.14) and 8.1(131.0)");
 
-  script_tag(name: "solution", value:"Upgrade to Cisco Aironet Access Point
-  Software version 8.2.130.0 or later. For updates refer to,
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-ap1800");
+  script_tag(name:"solution", value:"Upgrade to Cisco Aironet Access Point
+  Software version 8.2.130.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name: "URL" , value :"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCuy68219");
-  script_xref(name: "URL" , value :"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-ap1800");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCuy68219");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-ap1800");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");

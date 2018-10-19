@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_may16_win.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln01_may16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807575");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4084", "CVE-2016-4083", "CVE-2016-4077", "CVE-2016-4076");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 11:09:01 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - 'epan/dissectors/packet-ncp2222.inc' script in the NCP dissector does not
     properly initialize memory for search patterns.
@@ -63,8 +63,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.0.3 or
-  later.
-  For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -79,6 +78,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
+  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
 

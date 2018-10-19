@@ -24,7 +24,35 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple security issues were identified and fixed in OpenJDK
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:021");
+  script_oid("1.3.6.1.4.1.25623.1.0.831544");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-21 19:00:55 +0530 (Tue, 21 Feb 2012)");
+  script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
+                "CVE-2012-0498", "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501",
+                "CVE-2012-0502", "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2012:021");
+  script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2012:021 (java-1.6.0-openjdk)");
+
+  script_tag(name:"summary", value:"Check for the Version of java-1.6.0-openjdk");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2|2010\.1)");
+  script_tag(name:"affected", value:"java-1.6.0-openjdk on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2,
+  Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple security issues were identified and fixed in OpenJDK
   (icedtea6):
 
   Fix issues in java sound (CVE-2011-3563).
@@ -52,53 +80,18 @@ tag_insight = "Multiple security issues were identified and fixed in OpenJDK
   Issues with some method in corba (CVE-2012-0506).
 
   The updated packages provides icedtea6-1.10.6 which is not vulnerable
-  to these issues.";
-
-tag_affected = "java-1.6.0-openjdk on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2,
-  Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:021");
-  script_oid("1.3.6.1.4.1.25623.1.0.831544");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-21 19:00:55 +0530 (Tue, 21 Feb 2012)");
-  script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
-                "CVE-2012-0498", "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501",
-                "CVE-2012-0502", "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2012:021");
-  script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2012:021 (java-1.6.0-openjdk)");
-
-  script_tag(name: "summary" , value: "Check for the Version of java-1.6.0-openjdk");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -127,7 +120,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -159,7 +152,7 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -190,6 +183,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

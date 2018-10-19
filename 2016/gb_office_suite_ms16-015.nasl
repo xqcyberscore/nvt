@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms16-015.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_office_suite_ms16-015.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807302");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053", "CVE-2016-0054",
                 "CVE-2016-0055", "CVE-2016-0056");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:23:22 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists when,
+  script_tag(name:"insight", value:"Multiple flaws exist when,
 
   - The Office software improperly handles objects in memory while parsing
     specially crafted Office files.

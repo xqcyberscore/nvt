@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_header_inj_vuln.nasl 9577 2018-04-24 07:43:22Z asteins $
+# $Id: gb_concrete5_header_inj_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Concrete5 Header Injection and CSRF Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106762");
-  script_version("$Revision: 9577 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-24 09:43:22 +0200 (Tue, 24 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-19 09:03:26 +0200 (Wed, 19 Apr 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-19 09:03:26 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7725", "CVE-2017-8082");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Concrete5 Header Injection and CSRF Vulnerability");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("gb_concrete5_detect.nasl");
   script_mandatory_keys("concrete5/installed");
 
-  script_tag(name: "summary", value: "Concrete5 CMS is prone to a header injection and CSRF vulnerability.");
+  script_tag(name:"summary", value:"Concrete5 CMS is prone to a header injection and CSRF vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Multiple flaws exists because:
+  script_tag(name:"insight", value:"Multiple flaws exists because:
 
   - Concrete5 places incorrect trust in the HTTP Host header during caching, if
 the administrator did not define a 'canonical' URL on installation of Concrete5 using the 'Advanced Options'
@@ -65,14 +65,15 @@ vector.
 
   - Concrete5's Thumbnail Editor in the File Manager is vulnerable to CSRF, which allows remote attackers to disable the entire
 installation of Concrete5, by merely tricking an admin view a malicious page. This results in a site-wide denial of service
-meaning neither the admin OR any of the website users can acccess the site.");
+meaning neither the admin OR any of the website users can access the site.");
 
-  script_tag(name: "affected", value: "Concrete5 version 8.x.");
+  script_tag(name:"affected", value:"Concrete5 version 8.x.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "http://hyp3rlinx.altervista.org/advisories/CONCRETE5-v8.1.0-HOST-HEADER-INJECTION.txt");
+  script_xref(name:"URL", value:"http://hyp3rlinx.altervista.org/advisories/CONCRETE5-v8.1.0-HOST-HEADER-INJECTION.txt");
 
   exit(0);
 }

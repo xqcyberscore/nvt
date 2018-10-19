@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170315-wsa.nasl 5585 2017-03-16 06:43:05Z ckuerste $
+# $Id: gb_cisco_wsa_cisco-sa-20170315-wsa.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Cisco Web Security Appliance URL Filtering Bypass Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106663");
- script_cve_id("CVE-2017-3870");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5585 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106663");
+  script_cve_id("CVE-2017-3870");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11962 $");
 
- script_name("Cisco Web Security Appliance URL Filtering Bypass Vulnerability");
+  script_name("Cisco Web Security Appliance URL Filtering Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-wsa");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-wsa");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the URL filtering feature of Cisco AsyncOS Software for
+  script_tag(name:"summary", value:"A vulnerability in the URL filtering feature of Cisco AsyncOS Software for
 Cisco Web Security Appliance (WSA) could allow an unauthenticated, remote attacker to bypass a configured URL
 filter rule.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incomplete validation of the HTTP request. An
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete validation of the HTTP request. An
 attacker could exploit this vulnerability by sending a crafted HTTP request through the targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to bypass a configured URL filter.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to bypass a configured URL filter.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-16 07:43:05 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-16 12:35:31 +0700 (Thu, 16 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-16 12:35:31 +0700 (Thu, 16 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

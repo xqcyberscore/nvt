@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_98673_98671.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_roundcube_98673_98671.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Roundcube Webmail CVE-2015-5381 - CVE-2015-5383 Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108170");
-  script_version("$Revision: 6302 $");
+  script_version("$Revision: 11977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-30 15:00:00 +0200 (Tue, 30 May 2017)");
   script_cve_id("CVE-2015-5381", "CVE-2015-5382", "CVE-2015-5383");
   script_bugtraq_id(98671, 98673);
@@ -63,9 +63,7 @@ if(description)
   affected site. This may allow the attacker to steal cookie-based authentication credentials
   and to launch other attacks.
 
-  - gain access to sensitive information. Information obtained may lead to further attacks.
-
-  Impact Level: Application");
+  - gain access to sensitive information. Information obtained may lead to further attacks.");
 
   script_tag(name:"affected", value:"Roundcube Webmail versions prior to 1.0.6 and 1.1.x
   versions prior to 1.1.2.");

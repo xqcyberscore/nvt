@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_info_disc_vuln_win.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ibm_tsm_client_info_disc_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # IBM TSM Client 'password' Information Disclosure Vulnerability - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811221");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-8939");
   script_bugtraq_id(98783);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-23 11:09:21 +0530 (Fri, 23 Jun 2017)");
   script_name("IBM TSM Client 'password' Information Disclosure Vulnerability - Windows");
 
@@ -58,8 +58,7 @@ if(description)
 
   - ---");
 
-  script_tag(name:"solution", value:"Workarounds and Mitigations are available.
-  For details refer to http://www.ibm.com/support/docview.wss?uid=swg22003738");
+  script_tag(name:"solution", value:"Workarounds and Mitigations are available.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 

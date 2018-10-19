@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arista_eos_dos_vuln.nasl 4953 2017-01-05 10:16:01Z ckuerste $
+# $Id: gb_arista_eos_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Arista EOS DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/o:arista:eos";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106495");
-  script_version("$Revision: 4953 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-05 11:16:01 +0100 (Thu, 05 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-05 11:09:21 +0700 (Thu, 05 Jan 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-05 11:09:21 +0700 (Thu, 05 Jan 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-6894");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Arista EOS DoS Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_arista_eos_snmp_detect.nasl");
   script_mandatory_keys("arista/eos/detected", "arista/eos/model");
 
-  script_tag(name: "summary", value: "Arista EOS on DCS-7050 series is prone to a denial of service
+  script_tag(name:"summary", value:"Arista EOS on DCS-7050 series is prone to a denial of service
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "By sending crafted packets to the control plane it is possible to cause
+  script_tag(name:"insight", value:"By sending crafted packets to the control plane it is possible to cause
 a denial of service condition (device reboot).");
 
-  script_tag(name: "affected", value: "Arista EOS 4.15.2F and later.");
+  script_tag(name:"affected", value:"Arista EOS 4.15.2F and later.");
 
-  script_tag(name: "solution", value: "Upgrade to EOS version 4.15.8M, 4.16.7M, 4.17.0F or later.");
+  script_tag(name:"solution", value:"Upgrade to EOS version 4.15.8M, 4.16.7M, 4.17.0F or later.");
 
-  script_xref(name: "URL", value: "https://www.arista.com/en/support/advisories-notices/security-advisories/1752-security-advisory-25");
+  script_xref(name:"URL", value:"https://www.arista.com/en/support/advisories-notices/security-advisories/1752-security-advisory-25");
 
   exit(0);
 }

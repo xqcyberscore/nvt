@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_path_trav_vuln.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_emc_isilon_onefs_path_trav_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # EMC Isilon OneFS Path Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106701");
-  script_version("$Revision: 5962 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-30 11:44:57 +0700 (Thu, 30 Mar 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-30 11:44:57 +0700 (Thu, 30 Mar 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-4980");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Isilon OneFS Path Traversal Vulnerability");
 
@@ -48,23 +48,23 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Privilege escalation");
-  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl","gb_emc_isilon_onefs_ntp_detect.nasl");
+  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl", "gb_emc_isilon_onefs_ntp_detect.nasl");
   script_mandatory_keys("emc_isilon_onefs/detected");
 
-  script_tag(name: "summary", value: "EMC Isilon OneFS is affected by a path traversal vulnerability that may
+  script_tag(name:"summary", value:"EMC Isilon OneFS is affected by a path traversal vulnerability that may
 potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Isilon OneFS is affected by a path traversal vulnerability. Attackers
+  script_tag(name:"insight", value:"EMC Isilon OneFS is affected by a path traversal vulnerability. Attackers
 could potentially exploit this vulnerability to access unauthorized information by supplying specially crafted
 strings in input parameters of the application.");
 
-  script_tag(name: "affected", value: "EMC Isilon OneFS 7.1.0 - 7.1.1.10, 7.2.0 - 7.2.1.3, 8.0.0 - 8.0.0.1.");
+  script_tag(name:"affected", value:"EMC Isilon OneFS 7.1.0 - 7.1.1.10, 7.2.0 - 7.2.1.3, 8.0.0 - 8.0.0.1.");
 
-  script_tag(name: "solution", value: "Update 7.1.1.11, 7.2.1.4, 8.0.0.2 or later versions.");
+  script_tag(name:"solution", value:"Update 7.1.1.11, 7.2.1.4, 8.0.0.2 or later versions.");
 
-  script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/540338/30/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/540338/30/0/threaded");
 
   exit(0);
 }

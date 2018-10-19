@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:alienvault:open_source_security_information_management";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804293");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_bugtraq_id(67180);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 11:31:19 +0530 (Mon, 12 May 2014)");
   script_name("AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities");
 
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or manipulate
   SQL queries in the back-end database, allowing for execution of arbitrary code.");
   script_tag(name:"affected", value:"AlienVault Open Source Security Information Management (OSSIM) 4.3.1 and prior.");
-  script_tag(name:"solution", value:"Upgrade to OSSIM 4.3.2 or later,
-  For updates refer http://www.alienvault.com/open-threat-exchange/projects");
+  script_tag(name:"solution", value:"Upgrade to OSSIM 4.3.2 or later.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33141");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33006");
@@ -63,9 +62,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.alienvault.com/open-threat-exchange/projects");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");

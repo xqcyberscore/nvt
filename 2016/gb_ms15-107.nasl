@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-107.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ms15-107.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Edge Multiple Information Disclosure Vulnerabilities (3096448)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807024");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-6057", "CVE-2015-6058");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-06 15:54:16 +0530 (Wed, 06 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Edge Multiple Information Disclosure Vulnerabilities (3096448)");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Microsoft Edge improperly discloses the contents of its memory.
 
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Edge on Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS15-107");
+  hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,7 +90,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\edgehtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\edgehtml.dll");
 if(!dllVer){
   exit(0);
 }

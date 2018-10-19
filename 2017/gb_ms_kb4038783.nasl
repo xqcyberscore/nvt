@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4038783.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_ms_kb4038783.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4038783)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811759");
-  script_version("$Revision: 7585 $");
-  script_cve_id("CVE-2017-0161", "CVE-2017-11766", "CVE-2017-8720", "CVE-2017-8723", 
-                "CVE-2017-8728", "CVE-2017-8628", "CVE-2017-8643", "CVE-2017-8733", 
-                "CVE-2017-8734", "CVE-2017-8735", "CVE-2017-8736", "CVE-2017-8660", 
-                "CVE-2017-8675", "CVE-2017-8676", "CVE-2017-8737", "CVE-2017-8738", 
-                "CVE-2017-8741", "CVE-2017-8677", "CVE-2017-8678", "CVE-2017-8747", 
-                "CVE-2017-8748", "CVE-2017-8679", "CVE-2017-8749", "CVE-2017-8750", 
-                "CVE-2017-8752", "CVE-2017-8753", "CVE-2017-8754", "CVE-2017-8681", 
-                "CVE-2017-8682", "CVE-2017-8683", "CVE-2017-8755", "CVE-2017-8756", 
-                "CVE-2017-8757", "CVE-2017-8759", "CVE-2017-8687", "CVE-2017-8688", 
-                "CVE-2017-8692", "CVE-2017-8699", "CVE-2017-8702", "CVE-2017-8706", 
-                "CVE-2017-8707", "CVE-2017-8708", "CVE-2017-8709", "CVE-2017-8713", 
+  script_version("$Revision: 11962 $");
+  script_cve_id("CVE-2017-0161", "CVE-2017-11766", "CVE-2017-8720", "CVE-2017-8723",
+                "CVE-2017-8728", "CVE-2017-8628", "CVE-2017-8643", "CVE-2017-8733",
+                "CVE-2017-8734", "CVE-2017-8735", "CVE-2017-8736", "CVE-2017-8660",
+                "CVE-2017-8675", "CVE-2017-8676", "CVE-2017-8737", "CVE-2017-8738",
+                "CVE-2017-8741", "CVE-2017-8677", "CVE-2017-8678", "CVE-2017-8747",
+                "CVE-2017-8748", "CVE-2017-8679", "CVE-2017-8749", "CVE-2017-8750",
+                "CVE-2017-8752", "CVE-2017-8753", "CVE-2017-8754", "CVE-2017-8681",
+                "CVE-2017-8682", "CVE-2017-8683", "CVE-2017-8755", "CVE-2017-8756",
+                "CVE-2017-8757", "CVE-2017-8759", "CVE-2017-8687", "CVE-2017-8688",
+                "CVE-2017-8692", "CVE-2017-8699", "CVE-2017-8702", "CVE-2017-8706",
+                "CVE-2017-8707", "CVE-2017-8708", "CVE-2017-8709", "CVE-2017-8713",
                 "CVE-2017-8719", "CVE-2017-8695");
   script_bugtraq_id(100728, 100729, 100768, 100739, 100744, 100747, 100737, 100738,
                     100740, 100743, 100757, 100752, 100755, 100749, 100759, 100764,
@@ -48,61 +48,87 @@ if(description)
                     100791, 100792, 100796, 100773);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 15:18:56 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4038783)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4038783");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
-  - When Windows Hyper-V on a host operating system fails to properly validate 
-    input from an authenticated user on a guest operating system. 
-  - An error in Windows Error Reporting (WER) when WER handles and executes files. 
-  - When the Windows kernel fails to properly initialize a memory address, 
-    allowing an attacker to retrieve information that could lead to a Kernel Address 
-    Space Layout Randomization (KASLR) bypass. 
-  - When the Windows kernel improperly handles objects in memory. 
-  - When Microsoft Edge improperly handles clipboard events. 
-  - An error in Microsoft's implementation of the Bluetooth stack. 
-  - An error in the way that Microsoft browser JavaScript engines render content when 
-    handling objects in memory. 
-  - When Microsoft Edge improperly accesses objects in memory. 
-  - An error due to the way Windows Uniscribe handles objects in memory. 
-  - When the Microsoft Windows Graphics Component improperly handles objects in 
-    memory. 
-  - When Microsoft browsers improperly access objects in memory. 
+
+  - When Windows Hyper-V on a host operating system fails to properly validate
+    input from an authenticated user on a guest operating system.
+
+  - An error in Windows Error Reporting (WER) when WER handles and executes files.
+
+  - When the Windows kernel fails to properly initialize a memory address,
+    allowing an attacker to retrieve information that could lead to a Kernel Address
+    Space Layout Randomization (KASLR) bypass.
+
+  - When the Windows kernel improperly handles objects in memory.
+
+  - When Microsoft Edge improperly handles clipboard events.
+
+  - An error in Microsoft's implementation of the Bluetooth stack.
+
+  - An error in the way that Microsoft browser JavaScript engines render content when
+    handling objects in memory.
+
+  - When Microsoft Edge improperly accesses objects in memory.
+
+  - An error due to the way Windows Uniscribe handles objects in memory.
+
+  - When the Microsoft Windows Graphics Component improperly handles objects in
+    memory.
+
+  - When Microsoft browsers improperly access objects in memory.
+
   - An error in the way that the scripting engine handles objects in memory in
-    Microsoft Edge. 
-  - A security feature bypass exists in Microsoft Edge when the Edge Content 
-    Security Policy (CSP) fails to properly validate certain specially crafted 
-    documents. 
-  - An error in the way Microsoft Edge handles objects in memory. 
-  - When Internet Explorer improperly handles specific HTML content. 
-  - When Microsoft Windows PDF Library improperly handles objects in memory. 
+    Microsoft Edge.
+
+  - A security feature bypass exists in Microsoft Edge when the Edge Content
+    Security Policy (CSP) fails to properly validate certain specially crafted
+    documents.
+
+  - An error in the way Microsoft Edge handles objects in memory.
+
+  - When Internet Explorer improperly handles specific HTML content.
+
+  - When Microsoft Windows PDF Library improperly handles objects in memory.
+
   - An error in Microsoft browsers due to improper parent domain verification in
-    certain functionality. 
-  - When Microsoft Edge does not properly parse HTTP content. 
+    certain functionality.
+
+  - When Microsoft Edge does not properly parse HTTP content.
+
   - An error in the way that the Windows Graphics Device Interface (GDI) handles
     objects in memory, allowing an attacker to retrieve information from a targeted
-    system. 
+    system.
+
   - When the Windows GDI+ component improperly discloses kernel memory addresses.
+
   - An error in Windows when the Windows kernel-mode driver fails to properly handle
-    objects in memory. 
+    objects in memory.
+
   - An error in the way that the Windows Graphics Device Interface+ (GDI+) handles
     objects in memory, allowing an attacker to retrieve information from a targeted
-    system. 
+    system.
+
   - An error when Windows Shell does not properly validate file copy destinations.
+
   - When Windows Uniscribe improperly discloses the contents of its memory.
+
   - An error in Windows kernel that could allow an attacker to retrieve information
     that could lead to a Kernel Address Space Layout Randomization (KASLR) bypass.
+
   - When Internet Explorer improperly accesses objects in memory.
+
   - When the Windows font library improperly handles specially crafted embedded
     fonts.
+
   - An error in Windows when the Win32k component fails to properly handle objects in
     memory.");
 
@@ -111,24 +137,21 @@ if(description)
   attack and force a user's computer to unknowingly route traffic through the
   attacker's computer, embed an ActiveX control, execute arbitrary code, take control
   of the affected system, gain the same user rights as the current user, conduct
-  phishing attack and conduct redirect attacks. 
-
-  Impact Level: System");
+  phishing attack and conduct redirect attacks.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4038783");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4038783");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4038783");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -139,28 +162,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-edgeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'edgehtml.dll'
-edgeVer = fetch_file_version(sysPath, file_name:"edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
 
-## Windows 10
 if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.1105"))
 {
   report = 'File checked:     ' + sysPath + "\Edgehtml.dll" + '\n' +

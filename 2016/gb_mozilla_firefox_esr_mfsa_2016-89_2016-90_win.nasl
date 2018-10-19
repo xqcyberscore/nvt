@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-89_2016-90_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-89_2016-90_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox ESR Security Updates (mfsa_2016-89_2016-90)-Windows
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809806");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-5296", "CVE-2016-5293", "CVE-2016-5294", "CVE-2016-5297",
 		"CVE-2016-9064", "CVE-2016-9066", "CVE-2016-5291", "CVE-2016-9074",
 		"CVE-2016-5290");
   script_bugtraq_id(94336, 94337, 94342, 94339);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 13:10:33 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox ESR Security Updates (mfsa_2016-89_2016-90)-Windows");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Heap-buffer-overflow WRITE in rasterize_edges_1.
 
@@ -73,7 +73,7 @@ if(description)
   45.5 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 45.5
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -86,6 +86,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

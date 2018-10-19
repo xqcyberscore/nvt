@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_kb3203393.nasl 6343 2017-06-15 09:48:13Z santu $
+# $Id: gb_ms_word_kb3203393.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Microsoft Office Word Multiple Remote Code Execution Vulnerabilities (3203393)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810912");
-  script_version("$Revision: 6343 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-0292", "CVE-2017-8509");
   script_bugtraq_id(98836, 98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 11:48:13 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 10:12:53 +0530 (Wed, 14 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Remote Code Execution Vulnerabilities (3203393)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3203393.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -51,20 +50,16 @@ if(description)
   - An error when Windows and Microsoft Word fails to properly parse PDF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary code in the context of the current user and perform other 
-  actions in the security context of the current user.
-
-  Impact Level: System/Application");
+  to execute arbitrary code in the context of the current user and perform other
+  actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Word 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://support.microsoft.com/en-us/help/3203393");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203393");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203393");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -76,17 +71,11 @@ if(description)
 
 include("version_func.inc");
 
-## variable Initialization
-exeVer = "";
-exePath = "";
-
-## Get Word 2013 version
 exeVer = get_kb_item("SMB/Office/Word/Version");
 if(!exeVer){
   exit(0);
 }
 
-## Get Installation path
 exePath = get_kb_item("SMB/Office/Word/Install/Path");
 if(!exePath){
   exePath = "Unable to fetch the install path";

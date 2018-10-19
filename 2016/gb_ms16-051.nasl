@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-051.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_ms16-051.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3155533)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807819");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-0187", "CVE-2016-0188", "CVE-2016-0189", "CVE-2016-0192",
                 "CVE-2016-0194");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:25:55 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3155533)");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Multiple memory corruption errors.
 
@@ -63,7 +63,7 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS16-051");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

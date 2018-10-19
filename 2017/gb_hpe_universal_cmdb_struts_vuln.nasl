@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_struts_vuln.nasl 5919 2017-04-10 15:17:44Z ckuerste $
+# $Id: gb_hpe_universal_cmdb_struts_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
-# HPE Universal CMDB Remote Code Execution Vulnerability 
+# HPE Universal CMDB Remote Code Execution Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:hp:universal_cmbd_foundation';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106736");
-  script_version("$Revision: 5919 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-10 17:17:44 +0200 (Mon, 10 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-10 12:58:34 +0200 (Mon, 10 Apr 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-10 12:58:34 +0200 (Mon, 10 Apr 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-5638");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HPE Universal CMDB Remote Code Execution Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_hpe_universal_cmdb_detect.nasl");
   script_mandatory_keys("HP/UCMDB/Installed");
 
-  script_tag(name: "summary", value: "HPE Universal CMDB is prone to a remote code execution vulnerability in
+  script_tag(name:"summary", value:"HPE Universal CMDB is prone to a remote code execution vulnerability in
 Apache Struts.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A potential security vulnerability in Jakarta Multipart parser in Apache
+  script_tag(name:"insight", value:"A potential security vulnerability in Jakarta Multipart parser in Apache
 Struts has been addressed in HPE Universal CMDB. This vulnerability could be remotely exploited to allow code
 execution via mishandled file upload.");
 
-  script_tag(name: "affected", value: "HP Universal CMDB Foundation Software v10.22 CUP5");
+  script_tag(name:"affected", value:"HP Universal CMDB Foundation Software v10.22 CUP5");
 
-  script_tag(name: "solution", value: "HPE has made mitigation information available to resolve the vulnerability
+  script_tag(name:"solution", value:"HPE has made mitigation information available to resolve the vulnerability
 for the impacted versions of HPE Universal CMDB.");
 
-  script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbgn03733en_us");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbgn03733en_us");
 
   exit(0);
 }

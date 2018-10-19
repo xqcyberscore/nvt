@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rmi_service_java_deserialization.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_rmi_service_java_deserialization.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # RMI Java Deserialization Remote Code Execution Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105765");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-3642", "CVE-2016-1487");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 20:26:27 +0200 (Wed, 15 Jun 2016)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -53,7 +53,7 @@ if (description)
   script_dependencies("gb_rmi_registry_detect.nasl");
   script_require_ports("Services/rmi_registry");
 
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");

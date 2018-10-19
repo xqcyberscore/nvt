@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
+# $Id: gb_linksys_e1500_2500_mul_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Linksys E1500/E2500 Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:linksys:devices";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107202");
-  script_version("$Revision: 9475 $");
+  script_version("$Revision: 11982 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 11:57:11 +0530 (Thu, 02 Nov 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -43,8 +43,7 @@ vulnerabilities.
 
   This vulnerability was known to be exploited by the IoT Botnet 'Reaper' in 2017.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is caused by missing input validation in the ping_size
 parameter and can be exploited to inject and execute arbitrary shell commands.");
@@ -60,9 +59,9 @@ Linksys E2500 v1.0.03, probably all versions up to 2.0.00.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.s3cur1ty.de/m1adv2013-004");
-  script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
-  script_xref(name: "URL", value: "https://community.linksys.com/t5/Wireless-Routers/Re-Reaper-Botnet-Vulnerability/td-p/1224368");
+  script_xref(name:"URL", value:"http://www.s3cur1ty.de/m1adv2013-004");
+  script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+  script_xref(name:"URL", value:"https://community.linksys.com/t5/Wireless-Routers/Re-Reaper-Botnet-Vulnerability/td-p/1224368");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_macosx.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_macosx.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 )-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807681");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2808", "CVE-2016-2814", "CVE-2016-2805", "CVE-2016-2807");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 13:12:33 +0530 (Mon, 02 May 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 )-MAC OS X");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Multiple unspecified vulnerabilities in the browser engine.
 

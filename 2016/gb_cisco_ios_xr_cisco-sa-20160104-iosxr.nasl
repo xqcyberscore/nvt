@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160104-iosxr.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160104-iosxr.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Cisco IOS XR Software OSPF Link State Advertisement PCE Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6432");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"qod_type", value:"package");
 
   script_name("Cisco IOS XR Software OSPF Link State Advertisement PCE Vulnerability");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in Open Shortest Path First (OSPF) Link State Advertisement (LSA) handling by Cisco IOS XR Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
   script_tag(name:"affected", value:"Cisco IOS XR Software Releases 4.1.1, 4.2.0, 4.2.3, 4.3.0, 4.3.2, 5.0.0, 5.1.0, 5.2.0, 5.2.2, 5.2.4, 5.3.0, and 5.3.2 are vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-26 15:02:08 +0100 (Tue, 26 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_cisco_ios_xr_version.nasl");
   script_mandatory_keys("cisco/ios_xr/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

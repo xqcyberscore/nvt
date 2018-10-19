@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms16-004.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_ms_excel_ms16-004.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3124585)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806192");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-0012", "CVE-2016-0035");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 12:23:27 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3124585)");
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists when,
+  script_tag(name:"insight", value:"Multiple flaws exist when,
 
   - Microsoft Excel improperly handles the loading of dynamic link library
     (DLL) files.
@@ -64,8 +64,7 @@ if(description)
   Microsoft Excel 2016 Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/security/bulletin/ms16-004");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114540");
@@ -77,6 +76,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Excel/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms16-004");
   exit(0);
 }
 

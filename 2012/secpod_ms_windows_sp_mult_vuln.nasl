@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_windows_sp_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms_windows_sp_mult_vuln.nasl 11973 2018-10-19 05:51:32Z cfischer $
 #
 # Microsoft Windows Service Pack Missing Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902909");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11973 $");
   script_cve_id("CVE-1999-0662");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:51:32 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-27 12:06:13 +0530 (Tue, 27 Mar 2012)");
   script_name("Microsoft Windows Service Pack Missing Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -70,13 +70,12 @@ if(description)
 
   Microsoft Windows Server 2008 R2 SP0.");
 
-  script_tag(name:"solution", value:"Apply the latest Service Pack or Upgrade to a recent Windows version.
-
-  For Updates refer to http://www.microsoft.com");
+  script_tag(name:"solution", value:"Apply the latest Service Pack or Upgrade to a recent Windows version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name:"URL", value:"http://www.microsoft.com");
   exit(0);
 }
 

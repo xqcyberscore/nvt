@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_info_disc_vuln_may17.nasl 6223 2017-05-26 12:27:08Z antu123 $
+# $Id: gb_cisco_pcp_info_disc_vuln_may17.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Cisco Prime Collaboration Provisioning Information Disclosure Vulnerability - May17
 #
@@ -30,29 +30,26 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811049");
-  script_version("$Revision: 6223 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2017-6621");
   script_bugtraq_id(98522);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 14:27:08 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 10:41:56 +0530 (Tue, 23 May 2017)");
   script_name("Cisco Prime Collaboration Provisioning Information Disclosure Vulnerability - May17");
 
   script_tag(name:"summary", value:"This host is running cisco prime collaboration
   provisioning and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to insufficient protection
   of sensitive data when responding to an HTTP request on the web interface.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated, remote attacker to access sensitive data. The attacker could
-  use this information to conduct additional reconnaissance attacks.
-
-  Impact Level: System/Application");
+  use this information to conduct additional reconnaissance attacks.");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -82,7 +79,6 @@ if(!version = get_app_version(cpe:CPE)) exit(0);
 
 if(version =~ "^((9|10|11)\.)")
 {
-  ## Checking for vulnerable version
   if((version == "9.0.0")|| (version == "9.5.0")|| (version == "10.0.0")||
      (version == "10.5.0")||(version == "10.5.1")||(version == "10.6.0")||
      (version == "10.6.2")||(version == "11.0.0")||(version == "11.1.0")||

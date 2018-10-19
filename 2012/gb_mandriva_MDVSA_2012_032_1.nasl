@@ -24,7 +24,33 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Security issues were identified and fixed in mozilla firefox and
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:032-1");
+  script_oid("1.3.6.1.4.1.25623.1.0.831610");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 09:53:26 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-0454", "CVE-2012-0455", "CVE-2012-0457", "CVE-2012-0456",
+                "CVE-2012-0451", "CVE-2012-0458", "CVE-2012-0459", "CVE-2012-0460",
+                "CVE-2012-0461", "CVE-2012-0462", "CVE-2012-0464");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"MDVSA", value:"2012:032-1");
+  script_name("Mandriva Update for mozilla MDVSA-2012:032-1 (mozilla)");
+
+  script_tag(name:"summary", value:"Check for the Version of mozilla");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_2010\.1");
+  script_tag(name:"affected", value:"mozilla on Mandriva Linux 2010.1");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla firefox and
   thunderbird:
 
   Security researchers Blair Strang and Scott Bell of Security Assessment
@@ -47,51 +73,18 @@ tag_insight = "Security issues were identified and fixed in mozilla firefox and
   could potentially incorporate data from the user&#039;s memory, making it
   accessible to the page content (CVE-2012-0457, CVE-2012-0456).
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "mozilla on Mandriva Linux 2010.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:032-1");
-  script_oid("1.3.6.1.4.1.25623.1.0.831610");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 09:53:26 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-0454", "CVE-2012-0455", "CVE-2012-0457", "CVE-2012-0456",
-                "CVE-2012-0451", "CVE-2012-0458", "CVE-2012-0459", "CVE-2012-0460",
-                "CVE-2012-0461", "CVE-2012-0462", "CVE-2012-0464");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2012:032-1");
-  script_name("Mandriva Update for mozilla MDVSA-2012:032-1 (mozilla)");
-
-  script_tag(name: "summary" , value: "Check for the Version of mozilla");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, for more information please check the Reference URL");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2010.1")
 {
@@ -1152,6 +1145,6 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

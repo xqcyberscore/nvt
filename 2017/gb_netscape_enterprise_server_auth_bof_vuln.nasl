@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_enterprise_server_auth_bof_vuln.nasl 6813 2017-07-31 08:25:50Z santu $
+# $Id: gb_netscape_enterprise_server_auth_bof_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
-# Netscape Enterprise Server Authentication Buffer Overflow Vulnerability  
+# Netscape Enterprise Server Authentication Buffer Overflow Vulnerability
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,43 +29,40 @@ CPE = "cpe:/a:netscape:enterprise_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811545");
-  script_version("$Revision: 6813 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-1999-0853");
   script_bugtraq_id(847);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 10:25:50 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 15:05:05 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape Enterprise Server Authentication Buffer Overflow Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Netscape Enterprise Server
+  script_tag(name:"summary", value:"This host is installed with Netscape Enterprise Server
   and is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in the 
-  HTTP Basic Authentication procedure for the servers, which has a buffer overflow 
+  script_tag(name:"insight", value:"The flaw is due to an error in the
+  HTTP Basic Authentication procedure for the servers, which has a buffer overflow
   condition when a long username or password (over 508 characters) are provided.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to gain root privileges under UNIX and SYSTEM privileges under NT.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to gain root privileges under UNIX and SYSTEM privileges under NT.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Netscape Enterprise Server 3.5.1, 3.6,
+  script_tag(name:"affected", value:"Netscape Enterprise Server 3.5.1, 3.6,
   3.6 SP2");
 
-  script_tag(name: "solution" , value:"Upgrade to Netscape Enterprise Server
+  script_tag(name:"solution", value:"Upgrade to Netscape Enterprise Server
   3.6 SP3 or later.
-  Note:Netscape released service pack 3 for Enterprise Server 3.6 that fixes 
-  the vulnerability in the web server, the Administration Server remains 
+  Note:Netscape released service pack 3 for Enterprise Server 3.6 that fixes
+  the vulnerability in the web server, the Administration Server remains
   vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://cve.circl.lu/cve/CVE-1999-0853");
+  script_xref(name:"URL", value:"https://cve.circl.lu/cve/CVE-1999-0853");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -76,26 +73,17 @@ if(description)
 }
 
 
-# Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-# Variable Initialization
-netVer = "";
-netport = 0;
-
-## Get port
 if (!netport = get_app_port(cpe: CPE)){
   exit(0);
 }
 
-## Get version
 if(!netVer = get_app_version(cpe:CPE, port:netport)){
   exit(0);
 }
 
-## Check for vulnerable versions
 if(netVer == "3.5.1" ||
    netVer == "3.6" ||
    netVer == "3.6.SP2")

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln01_feb16.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Apple Mac OS X Multiple Vulnerabilities-01 February-2016
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806677");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-1716", "CVE-2016-1717", "CVE-2016-1718", "CVE-2016-1719",
                 "CVE-2016-1720", "CVE-2016-1721", "CVE-2016-1722", "CVE-2016-1729",
                 "CVE-2015-7995");
   script_bugtraq_id(81274, 81277, 77325);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-03 18:07:12 +0530 (Wed, 03 Feb 2016)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-01 February-2016");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name: "insight" , value:"Multiple flaws exist due to,
   - Multiple memory corruption errors in the parsing of disk images and IOHIDFamily
     API.
   - A type confusion error within libxslt.

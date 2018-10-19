@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln05_july16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_php_mult_vuln05_july16_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # PHP Multiple Vulnerabilities - 05 - Jul16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808633");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-6288", "CVE-2016-6289", "CVE-2016-6290", "CVE-2016-6291",
                 "CVE-2016-6292", "CVE-2016-6294", "CVE-2016-6295", "CVE-2016-6296",
                 "CVE-2016-6297");
@@ -37,7 +37,7 @@ if(description)
                     92099);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-29 11:54:44 +0530 (Fri, 29 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 05 - Jul16 (Windows)");
 
@@ -83,8 +83,7 @@ if(description)
   5.6.24, and 7.x before 7.0.9 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.38, or 5.6.24,
-  or 7.0.9, or later.
-  For updates refer to http://www.php.net");
+  or 7.0.9, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -99,6 +98,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

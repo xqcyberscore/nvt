@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kallithea_csrf_vuln.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: gb_kallithea_csrf_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Kallithea < 0.2 CSRF Vulnerability
 #
@@ -8,7 +8,7 @@
 # Adrian Steins <adrian.steins@greenbone.net>
 #
 # Copyright:
-# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,23 +29,22 @@ CPE = "cpe:/a:kallithea:kallithea";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112059");
-  script_version("$Revision: 7336 $");
+  script_version("$Revision: 11982 $");
   script_cve_id("CVE-2015-0276");
   script_bugtraq_id(74052);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-27 15:07:24 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Kallithea < 0.2 CSRF Vulnerability");
 
-  script_tag(name: "summary" , value:"A vulnerability has been found in Kallithea,
+  script_tag(name:"summary", value:"A vulnerability has been found in Kallithea,
       allowing attackers to gain unauthorised access to the account of a logged in user.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-    of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Pages that present forms to the user and accept user input don't provide synchronisation tokens to prevent cross-site request forgery.
+  script_tag(name:"insight", value:"Pages that present forms to the user and accept user input don't provide synchronisation tokens to prevent cross-site request forgery.
 
     It is possible to change an email address of a user by tricking them into clicking a link that initiates a malicious HTTP request.
 
@@ -60,13 +59,12 @@ if(description)
 
   script_tag(name:"affected", value:"Kallithea before version 0.2");
 
-  script_tag(name:"solution", value:"Upgrade to Kallithea version 0.2 or later.
-    For updates refer to https://kallithea-scm.org");
+  script_tag(name:"solution", value:"Upgrade to Kallithea version 0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.openwall.com/lists/oss-security/2015/04/10/8");
-  script_xref(name: "URL", value: "https://kallithea-scm.org/security/cve-2015-0276.html");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/04/10/8");
+  script_xref(name:"URL", value:"https://kallithea-scm.org/security/cve-2015-0276.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

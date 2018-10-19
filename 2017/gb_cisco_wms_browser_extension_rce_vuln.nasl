@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wms_browser_extension_rce_vuln.nasl 7122 2017-09-13 17:06:48Z cfischer $
+# $Id: gb_cisco_wms_browser_extension_rce_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability
 #
@@ -30,30 +30,27 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811240");
-  script_version("$Revision: 7122 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2017-6753");
   script_bugtraq_id(99614);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 19:06:48 +0200 (Wed, 13 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 12:06:48 +0530 (Tue, 18 Jul 2017)");
   script_name("Cisco WebEx Meetings Server Browser Extension Remote Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is running Cisco WebEx Meetings
+  script_tag(name:"summary", value:"This host is running Cisco WebEx Meetings
   Server and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to a design defect in
+  script_tag(name:"insight", value:"The flaw exists due to a design defect in
   the browser extension.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
-  attackers to execute arbitrary code with the privileges of the affected browser.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code with the privileges of the affected browser.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Cisco WebEx Meetings Server versions
+  script_tag(name:"affected", value:"Cisco WebEx Meetings Server versions
   1.1 Base, 1.5 Base, 1.5.1.6, 1.5.1.131, 2.0 Base, 2.0.1.107, 2.0 MR2 through
   2.0 MR9, 2.0 MR9 Patch 1 through 2.0 MR9 Patch 3, 2.5 Base, 2.5.99.2, 2.5 MR1,
   2.5.1.5, 2.5.1.29, 2.5 MR2, 2.5 MR2 Patch 1, 2.5 MR3 through 2.5 MR5, 2.5 MR5
@@ -62,43 +59,35 @@ if (description)
   2.6 MR3 Patch 2, 2.7 Base, 2.7.1, 2.7 MR1, 2.7 MR1 Patch 1, 2.7 MR2, 2.7 MR2
   Patch 1, 2.8 Base and 2.8 prior to 2.8 Patch 3");
 
-  script_tag(name: "solution" , value:"Upgrade to Cisco WebEx Meetings Server
-  version 2.6MR3 Patch 5, 2.7MR2 Patch 9 or 2.8 Patch 3 or later. For updates refer to
-  http://www.cisco.com");
+  script_tag(name:"solution", value:"Upgrade to Cisco WebEx Meetings Server
+  version 2.6MR3 Patch 5, 2.7MR2 Patch 9 or 2.8 Patch 3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170717-webex");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
 
+  script_xref(name:"URL", value:"http://www.cisco.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ciscoPort = "";
-vers = "";
-fix = "";
-
-## Get port
 if(!ciscoPort = get_app_port(cpe:CPE)){
   exit( 0 );
 }
 
-## Get version 
 if(!vers = get_app_version(cpe:CPE, port:ciscoPort)){
   exit( 0 );
 }
 
 
-## Check for vulnerable version
 ## 2.8 Patch 3 == 2.8.1.39
 if(vers =~ "^2\.8" && version_is_less(version:vers, test_version:"2.8.1.39")){
   fix = "2.8 Patch 3";

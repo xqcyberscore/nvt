@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805140");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-100006");
   script_bugtraq_id(65517);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-18 15:28:52 +0530 (Wed, 18 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability");
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"webtrees version before 1.5.2");
 
-  script_tag(name:"solution", value:"Update to version 1.5.2 or later,
-  For updates refer, http://www.webtrees.net/index.php/en");
+  script_tag(name:"solution", value:"Update to version 1.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.webtrees.net/index.php/en");
   exit(0);
 }
 

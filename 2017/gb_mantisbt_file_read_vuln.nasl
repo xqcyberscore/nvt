@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_file_read_vuln.nasl 6913 2017-08-14 05:35:04Z asteins $
+# $Id: gb_mantisbt_file_read_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # MantisBT Arbitrary File Read Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140285");
-  script_version("$Revision: 6913 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-14 07:35:04 +0200 (Mon, 14 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-08 15:08:03 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 15:08:03 +0700 (Tue, 08 Aug 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-12419");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("MantisBT Arbitrary File Read Vulnerability");
 
@@ -51,23 +51,22 @@ if (description)
   script_dependencies("mantis_detect.nasl");
   script_mandatory_keys("mantisbt/installed");
 
-  script_tag(name: "summary", value: "MantisBT is prone to an arbitrary file read vulnerability.");
+  script_tag(name:"summary", value:"MantisBT is prone to an arbitrary file read vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "If, after successful installation of MantisBT on MySQL/MariaDB, the
+  script_tag(name:"insight", value:"If, after successful installation of MantisBT on MySQL/MariaDB, the
 administrator does not remove the 'admin' directory (as recommended in the 'Post-installation and upgrade tasks'
 section of the MantisBT Admin Guide), and the MySQL client has a local_infile setting enabled (in php.ini
 mysqli.allow_local_infile, or the MySQL client config file, depending on the PHP setup), an attacker may take
 advantage of MySQL's 'connect file read' feature to remotely access files on the MantisBT server.");
 
-  script_tag(name: "affected", value: "MantisBT version 1.x and 2.x.");
+  script_tag(name:"affected", value:"MantisBT version 1.x and 2.x.");
 
-  script_tag(name: "solution", value: "Delete the 'admin' directory, disabling mysqli.allow_local_infile in
-php.ini as mentioned in
-https://mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install.postcommon");
+  script_tag(name:"solution", value:"Delete the 'admin' directory, disabling mysqli.allow_local_infile in php.ini.");
 
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=23173");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=23173");
+  script_xref(name:"URL", value:"https://mantisbt.org/docs/master/en-US/Admin_Guide/html-desktop/#admin.install.postcommon");
 
   exit(0);
 }

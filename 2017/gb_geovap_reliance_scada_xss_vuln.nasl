@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovap_reliance_scada_xss_vuln.nasl 8225 2017-12-22 06:03:44Z teissa $
+# $Id: gb_geovap_reliance_scada_xss_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Geovap Reliance SCADA XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:geovap:reliance-scada";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112150");
-  script_version("$Revision: 8225 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 07:03:44 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 08:23:03 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,14 +54,15 @@ if(description)
   script_mandatory_keys("geovap/reliance-scada/detected", "geovap/reliance-scada/version");
 
   script_tag(name:"summary", value:"This host is running Geovap Reliance SCADA and is prone to a cross-site scripting (XSS) vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability could allow an unauthenticated attacker
 to inject arbitrary JavaScript in a specially crafted URL request that may allow for read/write access.");
   script_tag(name:"affected", value:"Reliance SCADA Version 4.7.3 Update 2 and prior.");
-  script_tag(name:"solution", value:"Geovap has released Version 4.7.3 Update 3 of the software which can be found at: https://www.reliance-scada.com/en/download");
+  script_tag(name:"solution", value:"Geovap has released Version 4.7.3 Update 3");
 
   script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-334-02");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/102031");
+  script_xref(name:"URL", value:"https://www.reliance-scada.com/en/download");
 
   exit(0);
 }

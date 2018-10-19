@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl 7197 2017-09-20 08:09:47Z jschulte $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106990");
- script_cve_id("CVE-2017-6664");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 7197 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106990");
+  script_cve_id("CVE-2017-6664");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability");
+  script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
+   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "Administrators can mitigate this vulnerability by doing the following for autonomic nodes that were disconnected from the Autonomic Network domain:
+  script_tag(name:"solution", value:"Administrators can mitigate this vulnerability by doing the following for autonomic nodes that were disconnected from the Autonomic Network domain:
 
   - Ensure that the certificate and key information for the node is deleted properly
 
@@ -50,32 +50,32 @@ if (description)
 
 These actions will prevent the autonomic node from re-establishing connectivity to the Autonomic Network domain of an affected system.");
 
- script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
+  script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
 could allow an unauthenticated, remote, autonomic node to access the Autonomic Networking infrastructure of an
 affected system, after the certificate for the autonomic node has been revoked.");
 
- script_tag(name: "insight", value: "The vulnerability exists because the affected software does not transfer
+  script_tag(name:"insight", value:"The vulnerability exists because the affected software does not transfer
 certificate revocation lists (CRLs) across Autonomic Control Plane (ACP) channels. An attacker could exploit this
 vulnerability by connecting an autonomic node, which has a known and revoked certificate, to the autonomic domain
 of an affected system.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to insert a previously trusted
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to insert a previously trusted
 autonomic node into the autonomic domain of an affected system after the certificate for the node has been
 revoked.");
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
+ script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name: "last_modification", value: "$Date: 2017-09-20 10:09:47 +0200 (Wed, 20 Sep 2017) $");
- script_tag(name: "creation_date", value: "2017-07-28 08:55:11 +0700 (Fri, 28 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 08:55:11 +0700 (Fri, 28 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_03_17.nasl 8415 2018-01-14 16:55:37Z cfischer $
+# $Id: gb_novell_edirectory_mult_vuln_03_17.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Novell / NetIQ eDirectory Multiple Vulnerabilities - Mar17
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140224");
-  script_version("$Revision: 8415 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2016-9167", "CVE-2016-9168", "CVE-2017-5186");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-14 17:55:37 +0100 (Sun, 14 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 12:28:05 +0200 (Thu, 30 Mar 2017)");
   script_name("Novell eDirectory Multiple Vulnerabilities - Mar17");
   script_tag(name:"summary", value:"This host is installed with Novell / NetIQ eDirectory
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"- Security scan shows potential Clickjacking vulnerability (Bug 998565) (CVE-2016-9168)
 
@@ -55,7 +54,7 @@ if(description)
   script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7016794");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("novell_edirectory_detect.nasl");
   script_mandatory_keys("eDirectory/installed");

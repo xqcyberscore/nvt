@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_arbitrary_file_read_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_apache_ambari_arbitrary_file_read_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache Ambari Arbitrary File Read Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808649");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-0731");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:48:58 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Arbitrary File Read Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Ambari versions 1.7 to 2.2.0");
 
   script_tag(name:"solution", value:"Upgrade to Apache Ambari version 2.2.1
-  or later.
-  For updates refer to https://ambari.apache.org/");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_apache_ambari_detect.nasl");
   script_mandatory_keys("Apache/Ambari/Installed");
+  script_xref(name:"URL", value:"https://ambari.apache.org/");
   exit(0);
 }
 

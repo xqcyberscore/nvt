@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_realvnc_auth_bypass.nasl 10580 2018-07-23 13:56:07Z cfischer $
+# $Id: gb_nmap_realvnc_auth_bypass.nasl 11966 2018-10-18 13:56:21Z cfischer $
 #
 # Wrapper for Nmap RealVNC Authentication Bypass NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801697");
-  script_version("$Revision: 10580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:56:07 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11966 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:49:23 +0100 (Mon, 10 Jan 2011)");
   script_cve_id("CVE-2006-2369");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"summary", value:"This script attempts to check if a VNC server is vulnerable to
   the RealVNC authentication bypass (CVE-2006-2369).
 
-  This is a wrapper on the Nmap Security Scanner's (http://nmap.org) realvnc-auth-bypass.nse.");
+  This is a wrapper on the Nmap Security Scanner's realvnc-auth-bypass.nse.");
 
   exit(0);
 }
@@ -67,7 +67,23 @@ if(!get_port_state(port)){
   exit(0);
 }
 
-res = pread(cmd: "nmap", argv: make_list("nmap", "--script=realvnc-auth-bypass.nse", "-p", port, get_host_ip()));
+argv = make_list("nmap", "--script=realvnc-auth-bypass.nse", "-p", port, get_host_ip());
+
+if(TARGET_IS_IPV6())
+  argv = make_list(argv, "-6");
+
+timing_policy = get_kb_item("Tools/nmap/timing_policy");
+if(timing_policy =~ '^-T[0-5]$')
+  argv = make_list(argv, timing_policy);
+
+source_iface = get_preference("source_iface");
+if(source_iface =~ '^[0-9a-zA-Z:_]+$') {
+  argv = make_list(argv, "-e");
+  argv = make_list(argv, source_iface);
+}
+
+res = pread(cmd:"nmap", argv:argv);
+
 if(res)
 {
   foreach line (split(res))

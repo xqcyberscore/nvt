@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ruby_str_buf_cat_dos_vuln_win.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804888");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-3916");
   script_bugtraq_id(67705);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 11:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Ruby 'str_buf_cat' function Denial-of-Service Vulnerability (Windows)");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Ruby versions 1.9.3, 2.0.0 and 2.1.0 on
   Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Ruby 2.1.3 or later. For updates
-  refer http://www.ruby-lang.org");
+  script_tag(name:"solution", value:"Upgrade to Ruby 2.1.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -67,6 +66,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_ruby_detect_win.nasl");
   script_mandatory_keys("Ruby/Win/Installed");
+  script_xref(name:"URL", value:"http://www.ruby-lang.org");
   exit(0);
 }
 

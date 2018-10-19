@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-133.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms_office_ms16-133.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Office Suite Multiple Vulnerabilities (3199168)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809718");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-7232", "CVE-2016-7244", "CVE-2016-7245", "CVE-2016-7233",
                 "CVE-2016-7234", "CVE-2016-7235");
   script_bugtraq_id(94005, 94022, 94026, 94020, 94031, 94029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 11:41:38 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Multiple Vulnerabilities (3199168)");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
 
   - Office software fails to properly handle objects in memory.
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_protection_advisor_mult_vuln.nasl 6662 2017-07-11 09:49:16Z ckuersteiner $
+# $Id: gb_emc_data_protection_advisor_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # EMC Data Protection Advisor Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:emc:data_protection_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106939");
-  script_version("$Revision: 6662 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-11 11:49:16 +0200 (Tue, 11 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-11 15:10:44 +0700 (Tue, 11 Jul 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-11 15:10:44 +0700 (Tue, 11 Jul 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
 
   script_cve_id("CVE-2017-8002", "CVE-2017-8003");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Data Protection Advisor Multiple Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_emc_data_protection_advisor_detect.nasl");
   script_mandatory_keys("emc_data_protection_advisor/installed");
 
-  script_tag(name: "summary", value: "EMC Data Protection Advisor is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"EMC Data Protection Advisor is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Data Protection Advisor is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"EMC Data Protection Advisor is prone to multiple vulnerabilities:
 
-- Multiple Blind SQL Injection Vulnerabilities (CVE-2017-8002)
+  - Multiple Blind SQL Injection Vulnerabilities (CVE-2017-8002)
 
-- Path Traversal Vulnerability (CVE-2017-8003)");
+  - Path Traversal Vulnerability (CVE-2017-8003)");
 
-  script_tag(name: "affected", value: "EMC Data Protection Advisor prior to version 6.4");
+  script_tag(name:"affected", value:"EMC Data Protection Advisor prior to version 6.4");
 
-  script_tag(name: "solution", value: "Update to 6.4 or later versions.");
+  script_tag(name:"solution", value:"Update to 6.4 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Jul/12");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jul/12");
 
   exit(0);
 }

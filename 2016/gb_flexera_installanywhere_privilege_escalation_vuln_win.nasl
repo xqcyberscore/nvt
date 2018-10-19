@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Flexera InstallAnywhere Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:flexerasoftware:installanywhere";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809017");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-4560");
   script_bugtraq_id(90979);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Flexera InstallAnywhere Privilege Escalation Vulnerability (Windows)");
@@ -55,7 +55,7 @@ if(description)
   Windows.");
 
   script_tag(name:"solution", value:"Apply the hotfix from the link mentioned in
-  reference. For updates refer to http://www.flexerasoftware.com");
+  reference.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_flexera_installanywhere_detect_win.nasl");
   script_mandatory_keys("InstallAnywhere/Win/Ver");
+  script_xref(name:"URL", value:"http://www.flexerasoftware.com");
   exit(0);
 }
 

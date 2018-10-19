@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_rac_parameter_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_spip_rac_parameter_xss_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # SPIP 'rac' Parameter Cross-Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809745");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-9152");
   script_bugtraq_id(94658);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 18:16:57 +0530 (Thu, 08 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("SPIP 'rac' Parameter Cross-Site Scripting Vulnerability");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"affected", value:"SPIP version 3.1.3");
 
-  script_tag(name: "solution", value:"A solution was patched in Revision 23290. For updates refer to http://www.spip.net");
+  script_tag(name: "solution", value:"A solution was patched in Revision 23290.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://core.spip.net/projects/spip/repository/revisions/23290");
@@ -65,6 +65,7 @@ if (description)
   script_dependencies("gb_spip_detect.nasl");
   script_mandatory_keys("spip/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.spip.net");
   exit(0);
 }
 

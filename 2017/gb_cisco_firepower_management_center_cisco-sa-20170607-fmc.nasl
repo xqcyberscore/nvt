@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170607-fmc.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170607-fmc.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco Firepower Management Center Information Disclosure Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106856");
- script_cve_id("CVE-2017-6673");
- script_tag(name: "cvss_base", value: "4.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version("$Revision: 6292 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106856");
+  script_cve_id("CVE-2017-6673");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco Firepower Management Center Information Disclosure Vulnerability");
+  script_name("Cisco Firepower Management Center Information Disclosure Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-fmc");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-fmc");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "Update to version 6.2.0 or later.");
+  script_tag(name:"solution", value:"Update to version 6.2.0 or later.");
 
- script_tag(name: "summary", value: "A vulnerability in Cisco Firepower Management Center could allow an
+  script_tag(name:"summary", value:"A vulnerability in Cisco Firepower Management Center could allow an
 authenticated, remote attacker to obtain user information. An attacker could use this information to perform
 reconnaissance.");
 
- script_tag(name: "insight", value: "The vulnerability is due to verbose output in HTTP log files.");
+  script_tag(name:"insight", value:"The vulnerability is due to verbose output in HTTP log files.");
 
- script_tag(name: "impact", value: "An attacker could retrieve the log files from an affected system and use the
+  script_tag(name:"impact", value:"An attacker could retrieve the log files from an affected system and use the
 information to conduct further attacks.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
- script_tag(name: "creation_date", value: "2017-06-08 11:24:24 +0700 (Thu, 08 Jun 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-08 11:24:24 +0700 (Thu, 08 Jun 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

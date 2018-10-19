@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ckeditor_69161.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: sw_ckeditor_69161.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # CKEditor Preview Plugin Unspecified Cross Site Scripting Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:ckeditor:ckeditor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111095");
-  script_version("$Revision: 11523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-17 18:00:00 +0200 (Sun, 17 Apr 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,17 +50,17 @@ if(description)
 
   script_tag(name:"summary", value:"Preview plugin for CKEditor is prone to a unspecified cross-site scripting
   vulnerability because it fails to sufficiently sanitize user-supplied input.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code in the
   browser of an unsuspecting user in the context of the affected site. This can allow the attacker to steal
   cookie-based authentication credentials and launch other attacks.");
   script_tag(name:"affected", value:"Versions prior to CKEditor 4.4.3 are vulnerable.");
-  script_tag(name:"solution", value:"Update to CKEditor Version 4.4.3 or later
-  For updates refer to http://ckeditor.com/download");
+  script_tag(name:"solution", value:"Update to CKEditor Version 4.4.3 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); #Preview plugin might have been removed / not installed
 
+  script_xref(name:"URL", value:"http://ckeditor.com/download");
   exit(0);
 }
 

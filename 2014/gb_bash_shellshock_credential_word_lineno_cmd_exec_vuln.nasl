@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802084");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2014-7187");
   script_bugtraq_id(70154);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 14:11:51 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)");
@@ -53,8 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"GNU Bash through 4.3 bash43-026");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch. For
-  updates refer to refer to http://www.gnu.org/software/bash/");
+  script_tag(name:"solution", value:"Apply the appropriate patch.");
 
   script_xref(name:"URL", value:"https://shellshocker.net/");
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2014/09/26/2");
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_gnu_bash_detect_lin.nasl");
   script_mandatory_keys("bash/Linux/detected");
   script_exclude_keys("ssh/force/pty");
+  script_xref(name:"URL", value:"http://www.gnu.org/software/bash/");
   exit(0);
 }
 

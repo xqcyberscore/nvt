@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trane_trace_sc_info_disc_vuln.nasl 6864 2017-08-08 02:30:12Z ckuersteiner $
+# $Id: gb_trane_trace_sc_info_disc_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Trane Tracer SC Information Exposure Vulnerability (Remote)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:trane:tracer_sc';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140281");
-  script_version("$Revision: 6864 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-08 04:30:12 +0200 (Tue, 08 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-08 08:52:34 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 08:52:34 +0700 (Tue, 08 Aug 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-0870");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Trane Tracer SC Information Exposure Vulnerability (Remote)");
 
@@ -52,18 +52,18 @@ if (description)
   script_mandatory_keys("trane_tracer/detected");
   script_require_ports("Services/www", 80, 443);
 
-  script_tag(name: "summary", value: "Trane Tracer SC is prone to a information exposure vulnerability.");
+  script_tag(name:"summary", value:"Trane Tracer SC is prone to a information exposure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends two crafted HTTP GET requests and checks the responses.");
+  script_tag(name:"vuldetect", value:"Sends two crafted HTTP GET requests and checks the responses.");
 
-  script_tag(name: "insight", value: "The vulnerability allows an unauthorized party to obtain sensitive
+  script_tag(name:"insight", value:"The vulnerability allows an unauthorized party to obtain sensitive
 information from the contents of configuration files not protected by the web server.");
 
-  script_tag(name: "affected", value: "Trane Tracer SC version 4.2.1134 and prior.");
+  script_tag(name:"affected", value:"Trane Tracer SC version 4.2.1134 and prior.");
 
-  script_tag(name: "solution", value: "Contact the vendor for an update.");
+  script_tag(name:"solution", value:"Contact the vendor for an update.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-259-03");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-259-03");
 
   exit(0);
 }
@@ -88,7 +88,7 @@ if (!isnull(id[1])) {
     report = "It was possible to extract user information at " +
              report_vuln_url(port: port, url: url, url_only: TRUE) + ":\n\nResult:\n\n" + res;
 
-    security_message(port: port, data: report); 
+    security_message(port: port, data: report);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mura_cms_mult_vuln.nasl 6020 2017-04-25 07:09:08Z ckuerste $
+# $Id: gb_mura_cms_mult_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Mura CMS Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:blueriver:mura_cms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106788");
-  script_version("$Revision: 6020 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-25 09:09:08 +0200 (Tue, 25 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-25 08:10:42 +0200 (Tue, 25 Apr 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-25 08:10:42 +0200 (Tue, 25 Apr 2017)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Mura CMS Multiple Vulnerabilities");
 
@@ -49,24 +49,24 @@ if (description)
   script_dependencies("gb_mura_cms_detect.nasl");
   script_mandatory_keys("mura_cms/installed");
 
-  script_tag(name: "summary", value: "Mura CMS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Mura CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Mura CMS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Mura CMS is prone to multiple vulnerabilities:
 
-- Unauthenticated remote arbitrary code execution
+  - Unauthenticated remote arbitrary code execution
 
-- Unrestricted file upload");
+  - Unrestricted file upload");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "Mura CMS prior to version 7.0.6852.");
+  script_tag(name:"affected", value:"Mura CMS prior to version 7.0.6852.");
 
-  script_tag(name: "solution", value: "Update to version 7.0.6852 or later.");
+  script_tag(name:"solution", value:"Update to version 7.0.6852 or later.");
 
-  script_xref(name: "URL", value: "http://www.getmura.com/blog/critical-security-update-for-mura-cms-all-versions-prior-to-7-0-6852/");
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2955");
+  script_xref(name:"URL", value:"http://www.getmura.com/blog/critical-security-update-for-mura-cms-all-versions-prior-to-7-0-6852/");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2955");
 
 
   exit(0);

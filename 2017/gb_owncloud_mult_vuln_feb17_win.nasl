@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_feb17_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_owncloud_mult_vuln_feb17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities Feb17 (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106580");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-08 16:01:56 +0700 (Wed, 08 Feb 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-08 16:01:56 +0700 (Wed, 08 Feb 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-5865", "CVE-2017-5866", "CVE-2017-5867");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ownCloud Multiple Vulnerabilities Feb17 (Windows)");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "ownCloud is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ownCloud is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ownCloud is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ownCloud is prone to multiple vulnerabilities:
 
-- User enumeration with error messages
+  - User enumeration with error messages
 
-- Information disclosure in email field dialog at sharing
+  - Information disclosure in email field dialog at sharing
 
-- Flooding logfiles with a 1 Bit BMP File");
+  - Flooding logfiles with a 1 Bit BMP File");
 
-  script_tag(name: "solution", value: "Update to ownCloud Server 8.1.11, 8.2.9, 9.0.7, 9.1.3 or later versions.");
+  script_tag(name:"solution", value:"Update to ownCloud Server 8.1.11, 8.2.9, 9.0.7, 9.1.3 or later versions.");
 
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-001");
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-002");
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-003");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-001");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-002");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-003");
 
   exit(0);
 }

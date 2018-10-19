@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-017.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-017.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:rdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807064");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-0036");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 09:02:28 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)");
 
@@ -62,9 +62,7 @@ if(description)
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-017");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -99,7 +97,7 @@ if(!sysPath){
   exit(0);
 }
 
-RdpVer = fetch_file_version(sysPath, file_name:"\system32\Rdpcorets.dll");
+RdpVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\Rdpcorets.dll");
 if(!RdpVer){
   exit(0);
 }

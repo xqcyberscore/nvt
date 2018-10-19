@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_profinet_io_dissector_dos_vuln_win.nasl 7077 2017-09-07 13:41:54Z santu $
+# $Id: gb_wireshark_profinet_io_dissector_dos_vuln_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Wireshark 'Profinet I/O' Dissector DoS Vulnerability (Windows)
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811801");
-  script_version("$Revision: 7077 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-13766");
   script_bugtraq_id(100542);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 15:41:54 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-05 15:05:11 +0530 (Tue, 05 Sep 2017)");
   script_name("Wireshark 'Profinet I/O' Dissector DoS Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an out-of-bounds 
+  script_tag(name:"insight", value:"The flaw is due to an out-of-bounds
   write error in 'plugins/profinet/packet-dcerpc-pn-io.c' script.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow 
-  attackers to make Wireshark crash by injecting a malformed packet onto 
-  the wire or by convincing someone to read a malformed packet trace file.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to make Wireshark crash by injecting a malformed packet onto
+  the wire or by convincing someone to read a malformed packet trace file.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.4.0, 2.2.0 to 2.2.8 
+  script_tag(name:"affected", value:"Wireshark version 2.4.0, 2.2.0 to 2.2.8
   on Windows.");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.4.1 or 
-  2.2.9 or later. For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.4.1 or
+  2.2.9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-39.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-39.html");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -75,17 +72,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-report = "";
-fix = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version
 if(wirversion == "2.4.0"){
   fix = "2.4.1";
 }

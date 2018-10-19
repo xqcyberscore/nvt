@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_kaseya_vsa_mult_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Kaseya Virtual System Administrator Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:kaseya:virtual_system_administrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805927");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-2862", "CVE-2015-2863");
   script_bugtraq_id(75727, 75730);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-17 11:50:12 +0530 (Fri, 17 Jul 2015)");
   script_name("Kaseya Virtual System Administrator Multiple Vulnerabilities");
 
@@ -59,8 +59,7 @@ if (description)
   9.x before patch level 9.0.0.14 and 9.1.x before patch level 9.1.0.4");
 
   script_tag(name:"solution", value:"Upgrade Kaseya Virtual System Administrator
-  to patch level 7.0.0.29 or 8.0.0.18 or 9.0.0.14 or 9.1.0.4 or later. For updates
-  refer http://www.kaseya.com");
+  to patch level 7.0.0.29 or 8.0.0.18 or 9.0.0.14 or 9.1.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -79,6 +78,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("kaseya_vas/installed");
 
+  script_xref(name:"URL", value:"http://www.kaseya.com");
   exit(0);
 }
 

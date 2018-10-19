@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_eol_win.nasl 10836 2018-08-08 11:55:18Z cfischer $
+# $Id: gb_phpmyadmin_eol_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # phpMyAdmin End of Life Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113030");
-  script_version("$Revision: 10836 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:55:18 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:54:55 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,13 +55,13 @@ if( description )
 
   script_tag(name:"solution", value:"Update the phpMyAdmin version on the remote host to a still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/downloads/");
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/news/2011/7/12/phpmyadmin-211-end-of-life/");
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/news/2017/1/23/phpmyadmin-466-441510-and-401019-are-released/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";

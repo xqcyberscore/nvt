@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Wordpress StageShow Plugin Open Redirect Vulnerability
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805901");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
+  script_cve_id("CVE-2015-5461");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 13:33:29 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress StageShow Plugin Open Redirect Vulnerability");
@@ -56,8 +57,7 @@ if(description)
   and probably prior.");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress StageShow Plugin
-  version 5.0.9 or later. For updates refer
-  https://wordpress.org/plugins/stageshow");
+  version 5.0.9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jul/27");

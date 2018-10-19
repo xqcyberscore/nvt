@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn2200_rce_vuln.nasl 10629 2018-07-25 18:06:02Z cfischer $
+# $Id: gb_netgear_dgn2200_rce_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # NETGEAR DGN2200 CVE-2017-6334 Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/h:netgear:dgn2200";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107229");
-  script_version("$Revision: 10629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 20:06:02 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 17:33:05 +0200 (Wed, 28 Jun 2017)");
   script_cve_id("CVE-2017-6334");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code within the context of the affected application. Failed exploit attempts will result in a denial-of-service condition.");
   script_tag(name:"affected", value:"NETGEAR DGN2200 v1, v2, v3, v4");
-  script_tag(name:"solution", value:"Update the Firmware, for more details refer to https://kb.netgear.com/000037343/Security-Advisory-for-Remote-Command-Execution-and-CSRF-Vulnerabilities-on-DGN2200");
+  script_tag(name:"solution", value:"Update the Firmware, for more details");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/96463");
 
@@ -66,6 +66,7 @@ if(description)
   # This script was deprecated to avoid false positive, since the firmware version could not be obtained without authentication.
   script_tag(name:"deprecated", value:TRUE);
 
+  script_xref(name:"URL", value:"https://kb.netgear.com/000037343/Security-Advisory-for-Remote-Command-Execution-and-CSRF-Vulnerabilities-on-DGN2200");
   exit(0);
 }
 

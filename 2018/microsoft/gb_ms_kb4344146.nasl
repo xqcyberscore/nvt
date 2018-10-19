@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4344146.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_ms_kb4344146.nasl 11972 2018-10-19 05:34:20Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (KB4344146)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813760");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 11972 $");
   script_cve_id("CVE-2018-8360");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 09:31:10 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4344146)");
 

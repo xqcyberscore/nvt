@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_cisco-sa-20170719-pcpt.nasl 6832 2017-08-02 05:57:34Z cfischer $
+# $Id: gb_cisco_pcp_cisco-sa-20170719-pcpt.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco Prime Collaboration Provisioning Tool Web Portal Cross-Site Scripting Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106970");
- script_cve_id("CVE-2017-6755");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6832 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106970");
+  script_cve_id("CVE-2017-6755");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11977 $");
 
- script_name("Cisco Prime Collaboration Provisioning Tool Web Portal Cross-Site Scripting Vulnerability");
+  script_name("Cisco Prime Collaboration Provisioning Tool Web Portal Cross-Site Scripting Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-pcpt");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-pcpt");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "Update to version 12.1.0.692 or later.");
+  script_tag(name:"solution", value:"Update to version 12.1.0.692 or later.");
 
- script_tag(name: "summary", value: "A vulnerability in the web portal of the Cisco Prime Collaboration
+  script_tag(name:"summary", value:"A vulnerability in the web portal of the Cisco Prime Collaboration
 Provisioning (PCP) Tool could allow an unauthenticated, remote attacker to conduct a cross-site scripting (XSS)
 attack against a user of the web interface of an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of a user-supplied
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of a user-supplied
 value. An attacker could exploit this vulnerability by sending malicious JavaScript code to the PCP administrative
 UI.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to perform actions as a
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to perform actions as a
 higher-level administrator.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-02 07:57:34 +0200 (Wed, 02 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-07-20 14:05:32 +0700 (Thu, 20 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_pcp_version.nasl");
- script_mandatory_keys("cisco_pcp/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-20 14:05:32 +0700 (Thu, 20 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_pcp_version.nasl");
+  script_mandatory_keys("cisco_pcp/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

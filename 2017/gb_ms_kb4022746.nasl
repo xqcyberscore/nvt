@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022746.nasl 6782 2017-07-21 08:32:32Z cfischer $
+# $Id: gb_ms_kb4022746.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Kerberos SNAME Security Feature Bypass Vulnerability (KB4022746)
 #
@@ -27,46 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811510");
-  script_version("$Revision: 6782 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2017-8495");
   script_bugtraq_id(99424);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 10:32:32 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 09:16:51 +0530 (Wed, 12 Jul 2017)");
   script_name("Kerberos SNAME Security Feature Bypass Vulnerability (KB4022746)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4022746");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists when Microsoft Windows 
-  Kerberos fails to prevent tampering with the SNAME field during ticket 
+  script_tag(name:"insight", value:"The flaw exists when Microsoft Windows
+  Kerberos fails to prevent tampering with the SNAME field during ticket
   exchange.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  an attacker who successfully exploited this vulnerability could use it to 
-  bypass Extended Protection for Authentication. 
+  an attacker who successfully exploited this vulnerability could use it to
+  bypass Extended Protection for Authentication.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
+  script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4022746");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4022746");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4022746");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -77,28 +72,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'kerberos.dll'
-fileVer = fetch_file_version(sysPath, file_name:"kerberos.dll");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"kerberos.dll");
 if(!fileVer){
   exit(0);
 }
 
-## Check for kerberos.dll version
 if(version_is_less(version:fileVer, test_version:"6.0.6002.19810"))
 {
   Vulnerable_range = "Less than 6.0.6002.19810";

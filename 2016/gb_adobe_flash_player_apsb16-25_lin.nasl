@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-25_lin.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_adobe_flash_player_apsb16-25_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Adobe Flash Player Security Updates( apsb16-25 )-Linux
 #
@@ -29,66 +29,70 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808579");
-  script_version("$Revision: 5732 $");
-  script_cve_id("CVE-2016-4172", "CVE-2016-4173", "CVE-2016-4174", "CVE-2016-4175", 
-                "CVE-2016-4176", "CVE-2016-4177", "CVE-2016-4178", "CVE-2016-4179", 
-                "CVE-2016-4180", "CVE-2016-4181", "CVE-2016-4182", "CVE-2016-4183", 
-                "CVE-2016-4184", "CVE-2016-4185", "CVE-2016-4186", "CVE-2016-4187", 
-                "CVE-2016-4188", "CVE-2016-4189", "CVE-2016-4190", "CVE-2016-4217", 
-                "CVE-2016-4218", "CVE-2016-4219", "CVE-2016-4220", "CVE-2016-4221", 
-                "CVE-2016-4222", "CVE-2016-4223", "CVE-2016-4224", "CVE-2016-4225", 
-                "CVE-2016-4226", "CVE-2016-4227", "CVE-2016-4228", "CVE-2016-4229", 
-                "CVE-2016-4230", "CVE-2016-4231", "CVE-2016-4232", "CVE-2016-4233", 
-                "CVE-2016-4234", "CVE-2016-4235", "CVE-2016-4236", "CVE-2016-4237", 
-                "CVE-2016-4238", "CVE-2016-4239", "CVE-2016-4240", "CVE-2016-4241", 
-                "CVE-2016-4242", "CVE-2016-4243", "CVE-2016-4244", "CVE-2016-4245", 
+  script_version("$Revision: 11969 $");
+  script_cve_id("CVE-2016-4172", "CVE-2016-4173", "CVE-2016-4174", "CVE-2016-4175",
+                "CVE-2016-4176", "CVE-2016-4177", "CVE-2016-4178", "CVE-2016-4179",
+                "CVE-2016-4180", "CVE-2016-4181", "CVE-2016-4182", "CVE-2016-4183",
+                "CVE-2016-4184", "CVE-2016-4185", "CVE-2016-4186", "CVE-2016-4187",
+                "CVE-2016-4188", "CVE-2016-4189", "CVE-2016-4190", "CVE-2016-4217",
+                "CVE-2016-4218", "CVE-2016-4219", "CVE-2016-4220", "CVE-2016-4221",
+                "CVE-2016-4222", "CVE-2016-4223", "CVE-2016-4224", "CVE-2016-4225",
+                "CVE-2016-4226", "CVE-2016-4227", "CVE-2016-4228", "CVE-2016-4229",
+                "CVE-2016-4230", "CVE-2016-4231", "CVE-2016-4232", "CVE-2016-4233",
+                "CVE-2016-4234", "CVE-2016-4235", "CVE-2016-4236", "CVE-2016-4237",
+                "CVE-2016-4238", "CVE-2016-4239", "CVE-2016-4240", "CVE-2016-4241",
+                "CVE-2016-4242", "CVE-2016-4243", "CVE-2016-4244", "CVE-2016-4245",
                 "CVE-2016-4246", "CVE-2016-4247", "CVE-2016-4248", "CVE-2016-4249",
                 "CVE-2016-7020");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:56:08 +0530 (Wed, 13 Jul 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-25 )-Linux");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
+
   - A race condition vulnerability.
+
   - A type confusion vulnerabilities.
+
   - An use-after-free vulnerabilities.
+
   - A heap buffer overflow vulnerability.
+
   - A memory corruption vulnerabilities.
+
   - A stack corruption vulnerabilities.
+
   - A security bypass vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers lead to information disclosure,
-  and code execution.
+  and code execution.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player version before
+  script_tag(name:"affected", value:"Adobe Flash Player version before
   11.2.202.632 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  11.2.202.632 or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  11.2.202.632 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb16-25.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb16-25.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 
@@ -96,15 +100,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"11.2.202.632"))
 {
   report =  report_fixed_ver(installed_version:playerVer, fixed_version:"11.2.202.632");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_form_comp_file_disc_vuln_may16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_typo3_form_comp_file_disc_vuln_may16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # TYPO3 Form Component Arbitrary File Disclosure Vulnerability May16 (SA-2016-010)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807829");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11961 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 18:19:17 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Form Component Arbitrary File Disclosure Vulnerability May16 (SA-2016-010)");
 
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"TYPO3 versions 6.2.0 through 6.2.19");
 
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.20
-  or later. For updates refer to https://typo3.org/typo3-cms");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +64,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

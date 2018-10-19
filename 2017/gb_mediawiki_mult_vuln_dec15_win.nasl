@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_dec15_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mediawiki_mult_vuln_dec15_win.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities - Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108110");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11959 $");
   script_cve_id("CVE-2015-8622", "CVE-2015-8623", "CVE-2015-8624", "CVE-2015-8625",
                 "CVE-2015-8626", "CVE-2015-8627", "CVE-2015-8628");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Dec15 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -45,12 +45,12 @@ if(description)
   script_mandatory_keys("mediawiki/installed", "Host/runs_windows");
 
   script_xref(name:"URL", value:"https://lists.wikimedia.org/pipermail/mediawiki-announce/2015-December/000186.html");
+  script_xref(name:"URL", value:"http://www.mediawiki.org");
 
   script_tag(name:"summary", value:"This host is installed with MediaWiki
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to:
 
@@ -77,14 +77,12 @@ if(description)
   script or HTML via wikitext, as demonstrated by a wikilink to a page named javascript:alert('XSS!').");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct XSS attacks, gain access to sensitive information and
-  have other some unspecified impact.
-
-  Impact Level: Application");
+  have other some unspecified impact.");
 
   script_tag(name:"affected", value:"MediaWiki before 1.23.12, 1.24.x before 1.24.5, 1.25.x before 1.25.4, and 1.26.x before 1.26.1");
 
   script_tag(name:"solution", value:"Upgrade to version 1.23.12 or 1.24.5
-  or 1.25.4 or 1.26.1 or later. For updates refer http://www.mediawiki.org");
+  or 1.25.4 or 1.26.1 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_writeintolocaldisk_vuln_oct14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_xampp_writeintolocaldisk_vuln_oct14.nasl 11974 2018-10-19 06:22:46Z cfischer $
 #
 # XAMPP Local Write Access Vulnerability - Oct14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apachefriends:xampp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804774");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11974 $");
   script_cve_id("CVE-2013-2586");
   script_bugtraq_id(62665);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:22:46 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-10 11:43:07 +0530 (Fri, 10 Oct 2014)");
 
   script_name("XAMPP Local Write Access Vulnerability - Oct14");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"XAMPP version 1.8.1, Prior versions may
   also be affected.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.8.2 or later,
-  For updates refer http://sourceforge.net/projects/xampp");
+  script_tag(name:"solution", value:"Upgrade to version 1.8.2 or later.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/87499");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/28654");
@@ -70,6 +69,7 @@ if(description)
   script_dependencies("secpod_xampp_detect.nasl");
   script_mandatory_keys("xampp/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/xampp");
   exit(0);
 }
 

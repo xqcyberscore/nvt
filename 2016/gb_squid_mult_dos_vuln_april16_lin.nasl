@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_mult_dos_vuln_april16_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
+# $Id: gb_squid_mult_dos_vuln_april16_lin.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Squid Multiple Denial of Service Vulnerabilities April16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807794");
-  script_version("$Revision: 11888 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-3947", "CVE-2016-3948");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 18:23:23 +0530 (Mon, 18 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Multiple Denial of Service Vulnerabilities April16 (Linux)");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A buffer overrun in the 'Icmp6::Recv' function in 'icmp/Icmp6.cc' script
     in the 'pinger' process.

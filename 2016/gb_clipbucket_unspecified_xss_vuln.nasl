@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_unspecified_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_clipbucket_unspecified_xss_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # ClipBucket Unspecified Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809039");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-4848");
   script_bugtraq_id(92537);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-08 14:26:07 +0530 (Thu, 08 Sep 2016)");
   script_name("ClipBucket Unspecified Cross Site Scripting Vulnerability");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"ClipBucket version before 2.8.1 RC2");
 
   script_tag(name:"solution", value:"Upgrade to clipBucket version 2.8.1 RC2
-  or later. For updates refer to http://clipbucket.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("gb_clipbucket_detect.nasl");
   script_mandatory_keys("clipbucket/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://clipbucket.com");
   exit(0);
 }
 

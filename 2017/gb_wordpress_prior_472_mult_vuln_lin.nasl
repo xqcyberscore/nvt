@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_472_mult_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_wordpress_prior_472_mult_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # WordPress < 4.7.2 Multiple Security Vulnerabilities (Linux)
 #
@@ -31,11 +31,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108068");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11977 $");
   script_cve_id("CVE-2017-5610", "CVE-2017-5611", "CVE-2017-5612", "CVE-2017-1001000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 14:20:15 +0100 (Thu, 02 Feb 2017)");
   script_name("WordPress < 4.7.2 Multiple Security Vulnerabilities (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running WordPress and is prone to multiple security vulnerabilities
   because it fails to sanitize user-supplied input.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and
-  check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
@@ -70,14 +69,11 @@ if(description)
   - An unauthenticated privilege escalation vulnerability was discovered in a REST API endpoint.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attacker to e.g. obtain sensitive information or inject arbitrary web script or HTML. 
-
-  Impact Level: Application");
+  remote attacker to e.g. obtain sensitive information or inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"WordPress versions 4.7.1 and earlier.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress version 4.7.2.
-  For updates refer to https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.7.2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

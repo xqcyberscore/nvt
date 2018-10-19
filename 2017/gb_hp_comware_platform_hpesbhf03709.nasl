@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_hpesbhf03709.nasl 5403 2017-02-23 10:50:31Z ckuerste $
+# $Id: gb_hp_comware_platform_hpesbhf03709.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # HPE Network Products Remote Denial of Service (DoS), Disclosure of Sensitive Information Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = 'cpe:/a:hp:comware';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106619");
- script_version("$Revision: 5403 $");
- script_tag(name: "last_modification", value: "$Date: 2017-02-23 11:50:31 +0100 (Thu, 23 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-02-23 16:00:27 +0700 (Thu, 23 Feb 2017)");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.106619");
+  script_version("$Revision: 11959 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-23 16:00:27 +0700 (Thu, 23 Feb 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_cve_id("CVE-2015-1794", "CVE-2015-3193", "CVE-2015-3194", "CVE-2015-3195", "CVE-2015-3196");
+  script_cve_id("CVE-2015-1794", "CVE-2015-3193", "CVE-2015-3194", "CVE-2015-3195", "CVE-2015-3196");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("HPE Network Products Remote Denial of Service (DoS), Disclosure of Sensitive Information Vulnerability");
+  script_name("HPE Network Products Remote Denial of Service (DoS), Disclosure of Sensitive Information Vulnerability");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("General");
- script_dependencies("gb_hp_comware_platform_detect_snmp.nasl");
- script_mandatory_keys("hp/comware_device");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_hp_comware_platform_detect_snmp.nasl");
+  script_mandatory_keys("hp/comware_device");
 
- script_tag(name: "summary", value: "Potential security vulnerabilities with OpenSSL have been addressed for HPE
+  script_tag(name:"summary", value:"Potential security vulnerabilities with OpenSSL have been addressed for HPE
 Network products including Comware 5, Comware 7, IMC, and VCX.");
 
- script_tag(name: "vuldetect", value: "Check the release version.");
+  script_tag(name:"vuldetect", value:"Check the release version.");
 
- script_xref(name: "URL", value: 'https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05398322');
+  script_xref(name:"URL", value:'https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05398322');
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

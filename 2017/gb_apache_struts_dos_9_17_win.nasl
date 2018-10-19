@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_9_17_win.nasl 9532 2018-04-19 09:52:06Z asteins $
+# $Id: gb_apache_struts_dos_9_17_win.nasl 11959 2018-10-18 10:33:40Z mmartin $
 #
 # Apache Struts Multiple Denial-of-Service Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107240");
-  script_version("$Revision: 9532 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 11959 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 14:24:03 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-9793", "CVE-2017-9804");
   script_bugtraq_id(100611);
@@ -40,15 +40,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts Multiple Denial-of-Service Vulnerabilities (Windows)");
-  script_tag(name: "summary", value: "Apache Struts is prone to two denial-of-service vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
-  script_tag(name: "impact" , value: "An attacker can exploit this issue to cause a denial-of-service condition, denying service to legitimate users.");
-  script_tag(name: "affected", value: "Apache Struts 2.3.7 through 2.3.33, and 2.5 through  2.5.12 are vulnerable");
-  script_tag(name: "solution", value: "Updates are available. Apache Struts 2.3.x users should update to Apache Struts 2.3.34, Apache Struts 2.5.x users should update to Apache Struts 2.5.13.");
+  script_tag(name:"summary", value:"Apache Struts is prone to two denial-of-service vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause a denial-of-service condition, denying service to legitimate users.");
+  script_tag(name:"affected", value:"Apache Struts 2.3.7 through 2.3.33, and 2.5 through  2.5.12 are vulnerable");
+  script_tag(name:"solution", value:"Updates are available. Apache Struts 2.3.x users should update to Apache Struts 2.3.34, Apache Struts 2.5.x users should update to Apache Struts 2.5.13.");
 
-  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/100611");
-  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-050.html");
-  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-051.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/100611");
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-050.html");
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-051.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

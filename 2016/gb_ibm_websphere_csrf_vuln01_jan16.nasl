@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_csrf_vuln01_jan16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ibm_websphere_csrf_vuln01_jan16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # IBM Websphere Apllication Server CSRF Vulnerability-01 Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806843");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2013-0460");
   script_bugtraq_id(57510);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 18:21:58 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server CSRF Vulnerability-01 Jan16");
@@ -55,8 +55,7 @@ if(description)
   6.1 before 6.1.0.47 and 7.0 before 7.0.0.27");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) version 6.1.0.47, or 7.0.0.27, or later,
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  Server (WAS) version 6.1.0.47, or 7.0.0.27, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

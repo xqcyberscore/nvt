@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms16-097.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_lync_attendee_ms16-097.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (3177393)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807876");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-3301", "CVE-2016-3303", "CVE-2016-3304");
   script_bugtraq_id(92288, 92301, 92302);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 16:44:44 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Lync Attendee Multiple Remote Code Execution Vulnerabilities (3177393)");
 
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to the windows font
+  script_tag(name:"insight", value:"Multiple flaws exist due to the windows font
   library which improperly handles specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Lync Attendee 2010");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-097");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

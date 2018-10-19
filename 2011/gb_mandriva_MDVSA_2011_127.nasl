@@ -24,67 +24,18 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Security issues were identified and fixed in mozilla firefox and
-  thunderbird:
-
-  Mozilla developers and community members identified and fixed several
-  memory safety bugs in the browser engine used in Firefox 3.6 and
-  other Mozilla-based products. Some of these bugs showed evidence of
-  memory corruption under certain circumstances, and we presume that
-  with enough effort at least some of these could be exploited to run
-  arbitrary code (CVE-2011-2982).
-  
-  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
-  Initiative that a SVG text manipulation routine contained a dangling
-  pointer vulnerability (CVE-2011-0084).
-  
-  Mozilla security researcher moz_bug_r_a_4 reported a vulnerability in
-  event management code that would permit JavaScript to be run in the
-  wrong context, including that of a different website or potentially
-  in a chrome-privileged context (CVE-2011-2981).
-  
-  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
-  Initiative that appendChild did not correctly account for DOM objects
-  it operated upon and could be exploited to dereference an invalid
-  pointer (CVE-2011-2378).
-  
-  Mozilla security researcher moz_bug_r_a4 reported that web content
-  could receive chrome privileges if it registered for drop events and a
-  browser tab element was dropped into the content area (CVE-2011-2984).
-  
-  Security researcher Mitja Kolsek of Acros Security reported that
-  ThinkPadSensor::Startup could potentially be exploited to load a
-  malicious DLL into the running process (CVE-2011-2980).
-  
-  Security researcher shutdown reported that data from other domains
-  could be read when RegExp.input was set (CVE-2011-2983).
-  
-  Packages for 2009.0 are provided as of the Extended Maintenance
-  Program. Please visit this link to learn more:
-  http://store.mandriva.com/product_info.php?cPath=149&amp;amp;products_id=490
-  
-  Additionally, some packages which require so, have been rebuilt and
-  are being provided as updates.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_affected = "mozilla on Mandriva Linux 2009.0,
-  Mandriva Linux 2009.0/X86_64,
-  Mandriva Linux 2010.1,
-  Mandriva Linux 2010.1/X86_64,
-  Mandriva Enterprise Server 5,
-  Mandriva Enterprise Server 5/X86_64";
 
 
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2011-08/msg00009.php");
+  script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00009.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831444");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11981 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:47:44 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-19 15:17:22 +0200 (Fri, 19 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "MDVSA", value: "2011:127");
+  script_xref(name:"MDVSA", value:"2011:127");
   script_cve_id("CVE-2011-2982", "CVE-2011-0084", "CVE-2011-2981", "CVE-2011-2378", "CVE-2011-2984", "CVE-2011-2980", "CVE-2011-2983");
   script_name("Mandriva Update for mozilla MDVSA-2011:127 (mozilla)");
 
@@ -93,25 +44,64 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(mes5|2010\.1|2009\.0)");
+  script_tag(name:"affected", value:"mozilla on Mandriva Linux 2009.0,
+  Mandriva Linux 2009.0/X86_64,
+  Mandriva Linux 2010.1,
+  Mandriva Linux 2010.1/X86_64,
+  Mandriva Enterprise Server 5,
+  Mandriva Enterprise Server 5/X86_64");
+  script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla firefox and
+  thunderbird:
+
+  Mozilla developers and community members identified and fixed several
+  memory safety bugs in the browser engine used in Firefox 3.6 and
+  other Mozilla-based products. Some of these bugs showed evidence of
+  memory corruption under certain circumstances, and we presume that
+  with enough effort at least some of these could be exploited to run
+  arbitrary code (CVE-2011-2982).
+
+  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
+  Initiative that a SVG text manipulation routine contained a dangling
+  pointer vulnerability (CVE-2011-0084).
+
+  Mozilla security researcher moz_bug_r_a_4 reported a vulnerability in
+  event management code that would permit JavaScript to be run in the
+  wrong context, including that of a different website or potentially
+  in a chrome-privileged context (CVE-2011-2981).
+
+  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
+  Initiative that appendChild did not correctly account for DOM objects
+  it operated upon and could be exploited to dereference an invalid
+  pointer (CVE-2011-2378).
+
+  Mozilla security researcher moz_bug_r_a4 reported that web content
+  could receive chrome privileges if it registered for drop events and a
+  browser tab element was dropped into the content area (CVE-2011-2984).
+
+  Security researcher Mitja Kolsek of Acros Security reported that
+  ThinkPadSensor::Startup could potentially be exploited to load a
+  malicious DLL into the running process (CVE-2011-2980).
+
+  Security researcher shutdown reported that data from other domains
+  could be read when RegExp.input was set (CVE-2011-2983).
+
+  Packages for 2009.0 are provided as of the Extended Maintenance
+  Program. Additionally, some packages which require so, have been rebuilt and
+  are being provided as updates.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://store.mandriva.com/product_info.php?cPath=149&amp;amp;products_id=490");
   exit(0);
 }
-
 
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_mes5")
 {
@@ -572,7 +562,7 @@ if(release == "MNDK_mes5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1636,7 +1626,7 @@ if(release == "MNDK_2010.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -2718,6 +2708,6 @@ if(release == "MNDK_2009.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

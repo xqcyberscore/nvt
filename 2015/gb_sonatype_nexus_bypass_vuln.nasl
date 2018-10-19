@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_bypass_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_sonatype_nexus_bypass_vuln.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Sonatype Nexus OSS/Pro Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sonatype:nexus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805330");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2014-2034");
   script_bugtraq_id(65956);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 13:00:12 +0530 (Tue, 27 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Security Bypass Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Nexus OSS/Pro versions 2.4.0 through 2.7.1.");
 
   script_tag(name:"solution", value:"Upgrade to Nexus OSS/Pro version 2.7.2 or
-  later. For updates refer http://www.sonatype.org.");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_dependencies("gb_sonatype_nexus_detect.nasl");
   script_mandatory_keys("nexus/installed");
   script_require_ports("Services/www", 8081);
+  script_xref(name:"URL", value:"http://www.sonatype.org.");
   exit(0);
 }
 

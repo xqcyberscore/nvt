@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_mult_dos_vuln01_may16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_squid_mult_dos_vuln01_may16_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Squid Multiple Denial of Service Vulnerabilities-01 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808038");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-4555", "CVE-2016-4556");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 10:22:38 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Multiple Denial of Service Vulnerabilities-01 May16 (Windows)");
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to an incorrect
+  script_tag(name:"insight", value:"Multiple flaws exist due to an incorrect
   pointer handling and reference counting when processing ESI responses.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
@@ -53,7 +53,7 @@ if(description)
   before 4.0.10 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Squid version 3.5.18 or 4.0.10
-  or later, For updates refer to http://www.squid-cache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

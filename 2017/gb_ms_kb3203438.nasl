@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203438.nasl 6406 2017-06-22 10:42:26Z teissa $
+# $Id: gb_ms_kb3203438.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3203438)
 #
@@ -27,40 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811302");
-  script_version("$Revision: 6406 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 17:08:02 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3203438)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3203438");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to remote code execution
   vulnerability exist in Microsoft Office software when the Office software fails
   to properly handle objects in memory. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
-  perform actions in the security context of the current user. 
-
-  Impact Level: System/Application");
+  perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3203438");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203438");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203438");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -76,20 +71,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-wordcnvVer = "";
-path = "";
-sysVer = "";
-offpath = "";
-
-##Get Common Program File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-# Check for Office Compatibility Pack 2007
 if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
@@ -97,11 +84,9 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
   {
     offpath = path + "\Microsoft Office\Office12";
     {
-      ##Fetch 'wordcnv.dll' file version
       sysVer = fetch_file_version(sysPath:offpath, file_name:"wordcnv.dll");
       if(sysVer)
       {
-        ##Check for vulnerable Microsoft Office Compatibility Pack 2007 versions
         if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6770.4999"))
         {
           report = 'File checked:      ' + offpath + "\wordcnv.dll" + '\n' +

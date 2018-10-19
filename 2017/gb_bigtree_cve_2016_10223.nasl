@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_cve_2016_10223.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_bigtree_cve_2016_10223.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # Bigtree CMS Potential XSS Attack
 #
@@ -29,26 +29,25 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140164");
-  script_version("$Revision: 9436 $");
+  script_version("$Revision: 11962 $");
   script_cve_id("CVE-2016-10223");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-17 10:34:05 +0100 (Fri, 17 Feb 2017)");
   script_name("Bigtree CMS Potential XSS Attack");
 
-  script_tag(name: "summary" , value:"An issue was discovered in BigTree CMS before 4.2.15. The vulnerability exists due to insufficient filtration of user-supplied data in the `id` HTTP GET parameter passed to the `core/admin/adjax/dashboard/check-module-integrity.php` URL.");
+  script_tag(name:"summary", value:"An issue was discovered in BigTree CMS before 4.2.15. The vulnerability exists due to insufficient filtration of user-supplied data in the `id` HTTP GET parameter passed to the `core/admin/adjax/dashboard/check-module-integrity.php` URL.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to, - An improper validation of input to 'cleanFile' Function.");
+  script_tag(name:"insight", value:"Multiple flaws exist due to, - An improper validation of input to 'cleanFile' Function.");
 
-  script_tag(name: "impact" , value:"An attacker could execute arbitrary HTML and script code in a browser in the context of the vulnerable website.");
+  script_tag(name:"impact", value:"An attacker could execute arbitrary HTML and script code in a browser in the context of the vulnerable website.");
 
-  script_tag(name: "affected" , value:"BigTree before 4.2.15");
+  script_tag(name:"affected", value:"BigTree before 4.2.15");
 
-  script_tag(name: "solution" , value:"Upgrade to version 4.2.15 or later.
-  For updates refer to https://www.bigtreecms.org/");
+  script_tag(name:"solution", value:"Upgrade to version 4.2.15 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,6 +60,7 @@ if(description)
   script_mandatory_keys("BigTree/Installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://www.bigtreecms.org/");
   exit(0);
 }
 

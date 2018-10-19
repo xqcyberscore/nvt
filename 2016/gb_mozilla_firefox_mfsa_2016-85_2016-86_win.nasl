@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-85_2016-86_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-85_2016-86_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-85_2016-86 )-Windows
 #
@@ -29,53 +29,68 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809324");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2016-2827", "CVE-2016-5270", "CVE-2016-5271", "CVE-2016-5272",
                 "CVE-2016-5273", "CVE-2016-5276", "CVE-2016-5274", "CVE-2016-5277",
                 "CVE-2016-5275", "CVE-2016-5278", "CVE-2016-5279", "CVE-2016-5280",
                 "CVE-2016-5281", "CVE-2016-5282", "CVE-2016-5283", "CVE-2016-5284",
-                "CVE-2016-5256", "CVE-2016-5257" );
+                "CVE-2016-5256", "CVE-2016-5257");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-23 10:23:36 +0530 (Fri, 23 Sep 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-85_2016-86 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Out-of-bounds read in mozilla::net::IsValidReferrerPolicy.
+
   - Heap-buffer-overflow in nsCaseTransformTextRunFactory::TransformString.
+
   - Out-of-bounds read in PropertyProvider::GetSpacingInternal.
+
   - Bad cast in nsImageGeometryMixin.
+
   - Crash in mozilla::a11y::HyperTextAccessible::GetChildOffset.
+
   - Heap-use-after-free in mozilla::a11y::DocAccessible::ProcessInvalidationList.
+
   - Use-after-free in nsFrameManager::CaptureFrameState.
+
   - Heap-use-after-free in nsRefreshDriver::Tick.
+
   - Global-buffer-overflow in mozilla::gfx::FilterSupport::ComputeSourceNeededRegions.
+
   - Heap-buffer-overflow in nsBMPEncoder::AddImageFrame.
+
   - Full local path of files is available to web pages after drag and drop.
+
   - Use-after-free in mozilla::nsTextNodeDirectionalityMap::RemoveElementFromMap.
+
   - Use-after-free in DOMSVGLength.
+
   - Favicons can be loaded through non-whitelisted protocols.
+
   - 'iframe src' fragment timing attack can reveal cross-origin data.
+
   - Add-on update site certificate pin expiration.
+
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities remote attackers to cause a denial of service, to execute
-  arbitrary code, to obtain sensitive full-pathname information.
+  arbitrary code, to obtain sensitive full-pathname information.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   49 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 49
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 49
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -88,6 +103,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

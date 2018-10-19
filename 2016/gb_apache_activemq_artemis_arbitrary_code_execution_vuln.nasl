@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_artemis_arbitrary_code_execution_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_apache_activemq_artemis_arbitrary_code_execution_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache ActiveMQ Artemis Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq_artemis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809342");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-4978");
   script_bugtraq_id(93142);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 13:13:58 +0530 (Thu, 06 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache ActiveMQ Artemis Arbitrary Code Execution Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Apache ActiveMQ Artemis Version before 1.4.0");
 
   script_tag(name:"solution", value:"Upgrade to Apache ActiveMQ Artemis Version
-  1.4.0 or later. For updates refer to http://activemq.apache.org");
+  1.4.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("gb_apache_activemq_artemis_detect.nasl");
   script_require_ports("Services/www", 8161);
   script_mandatory_keys("ActiveMQ/Artemis/installed");
+  script_xref(name:"URL", value:"http://activemq.apache.org");
   exit(0);
 }
 

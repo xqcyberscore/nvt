@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_oct2018-4428296_03_win.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_oracle_java_oct2018-4428296_03_win.nasl 11968 2018-10-18 14:31:48Z cfischer $
 #
 # Oracle Java SE Security Updates-03 (oct2018-4428296) Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814099");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 11968 $");
   script_cve_id("CVE-2018-3149", "CVE-2018-13785", "CVE-2018-3136", "CVE-2018-3139",
                 "CVE-2018-3180");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:31:48 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 11:40:51 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Java SE Security Updates-03 (oct2018-4428296) Windows");
 
@@ -67,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -77,9 +76,7 @@ if(!infos = get_app_version_and_location(cpe:CPE))
   if(!infos = get_app_version_and_location(cpe:CPE))
   {
     CPE = "cpe:/a:oracle:jdk";
-    if(!infos = get_app_version_and_location(cpe:CPE)){
-      exit(0);
-    }
+    if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
   }
 }
 

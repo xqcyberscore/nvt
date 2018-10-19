@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 11969 2018-10-18 14:53:42Z asteins $
 #
 # OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808073");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11969 $");
   script_cve_id("CVE-2015-7763", "CVE-2015-7762");
   script_bugtraq_id(77407);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 13:06:35 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaw exist due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - 'rx/rx.c' in OpenAFS does not properly initialize padding at the end of an Rx
     acknowledgement (ACK) packet.
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"OpenAFS version prior to 1.4.16 and 1.5.75
   through 1.5.78 and 1.6.X prior to 1.6.15, 1.7.x prior to 1.7.33 on Windows.");
 
-  script_tag(name:"solution", value:"Update to OpenAFS version 1.7.33 or later.
-  For updates refer to https://www.openafs.org");
+  script_tag(name:"solution", value:"Update to OpenAFS version 1.7.33 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

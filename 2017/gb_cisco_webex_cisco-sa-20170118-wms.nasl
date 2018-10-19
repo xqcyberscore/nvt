@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_cisco-sa-20170118-wms.nasl 5153 2017-02-01 08:40:43Z teissa $
+# $Id: gb_cisco_webex_cisco-sa-20170118-wms.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # Cisco WebEx Meetings Server Cross-Site Request Forgery Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106529");
-  script_version("$Revision: 5153 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-01 09:40:43 +0100 (Wed, 01 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-19 11:43:50 +0700 (Thu, 19 Jan 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-19 11:43:50 +0700 (Thu, 19 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-3794");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco WebEx Meetings Server Cross-Site Request Forgery Vulnerability");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
 
-  script_tag(name: "summary", value: "A vulnerability in Cisco WebEx Meetings Server could allow an
+  script_tag(name:"summary", value:"A vulnerability in Cisco WebEx Meetings Server could allow an
 unauthenticated, remote attacker to conduct a cross-site request forgery (CSRF) attack against an administrative
 user.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to insufficient CSRF protections. An attacker
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient CSRF protections. An attacker
 could exploit this vulnerability by convincing the user of the affected system to follow a malicious link or
 visit an attacker-controlled website.");
 
-  script_tag(name: "impact", value: "A successful exploit could allow an attacker to submit arbitrary requests to
+  script_tag(name:"impact", value:"A successful exploit could allow an attacker to submit arbitrary requests to
 the affected device via the Administration pages with the privileges of the user.");
 
-  script_tag(name: "affected", value: "Cisco WebEx Meetings Server version 2.6");
+  script_tag(name:"affected", value:"Cisco WebEx Meetings Server version 2.6");
 
-  script_tag(name: "solution", value: "See the vendors advisory for solutions.");
+  script_tag(name:"solution", value:"See the vendors advisory for solutions.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-wms");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-wms");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_nov16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_foxit_reader_mult_vuln_nov16_win.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Foxit Reader Multiple Vulnerabilities Nov16 (windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809303");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2016-8878", "CVE-2016-8879", "CVE-2016-8877", "CVE-2016-8876",
                 "CVE-2016-8875");
   script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 13:36:41 +0530 (Thu, 03 Nov 2016)");
   script_name("Foxit Reader Multiple Vulnerabilities Nov16 (windows)");
 
@@ -63,7 +63,7 @@ if(description)
   script_tag(name:"affected", value:"Foxit Reader version prior to 8.1.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit Reader version
-  8.1 or later, For updates refer to http://www.foxitsoftware.com");
+  8.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -73,6 +73,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

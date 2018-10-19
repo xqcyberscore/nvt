@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esc_vuln.nasl 7898 2017-11-24 07:36:22Z asteins $
+# $Id: gb_otrs_priv_esc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # OTRS Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106863");
-  script_version("$Revision: 7898 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-24 08:36:22 +0100 (Fri, 24 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-12 10:56:38 +0700 (Mon, 12 Jun 2017)");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-12 10:56:38 +0700 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-9324");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS Privilege Escalation Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker with agent permission is capable by opening a specific URL in a
+  script_tag(name:"insight", value:"An attacker with agent permission is capable by opening a specific URL in a
 browser to gain administrative privileges / full access. Afterward, all system settings can be read and changed.");
 
-  script_tag(name: "affected", value: "OTRS 3.3.x up to and including 3.3.16, 4.0.x up to and including 4.0.23, 5.0.x up to and including 5.0.19.");
+  script_tag(name:"affected", value:"OTRS 3.3.x up to and including 3.3.16, 4.0.x up to and including 4.0.23, 5.0.x up to and including 5.0.19.");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 3.3.17, 4.0.24, 5.0.20 or later.");
+  script_tag(name:"solution", value:"Upgrade to OTRS 3.3.17, 4.0.24, 5.0.20 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-03-security-update-otrs-versions/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-03-security-update-otrs-versions/");
 
   exit(0);
 }

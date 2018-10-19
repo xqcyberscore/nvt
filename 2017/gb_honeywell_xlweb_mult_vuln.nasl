@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_mult_vuln.nasl 5383 2017-02-21 09:27:02Z teissa $
+# $Id: gb_honeywell_xlweb_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Honeywell XL Web Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:honeywell:excel_web_xl';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106561");
-  script_version("$Revision: 5383 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-21 10:27:02 +0100 (Tue, 21 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-03 09:38:09 +0700 (Fri, 03 Feb 2017)");
+  script_version("$Revision: 11982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-03 09:38:09 +0700 (Fri, 03 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5139", "CVE-2017-5140", "CVE-2017-5141", "CVE-2017-5142", "CVE-2017-5143");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Honeywell XL Web Multiple Vulnerabilities");
 
@@ -51,35 +51,35 @@ if (description)
   script_dependencies("gb_honeywell_xlweb_bacnet_detect.nasl");
   script_mandatory_keys("honeywell_xlweb/installed");
 
-  script_tag(name: "summary", value: "Honeywell XL Web is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Honeywell XL Web is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Honeywell XL Web is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Honeywell XL Web is prone to multiple vulnerabilities:
 
-- Any user is able to disclose a password by accessing a specific URL. (CVE-2017-5139)
+  - Any user is able to disclose a password by accessing a specific URL. (CVE-2017-5139)
 
-- Password is stored in clear text (CVE-2017-5140)
+  - Password is stored in clear text (CVE-2017-5140)
 
-- An attacker can establish a new user session, without invalidating any existing session identifier, which gives
+  - An attacker can establish a new user session, without invalidating any existing session identifier, which gives
 the opportunity to steal authenticated sessions. (CVE-2017-5141)
 
-- A user with low privileges is able to open and change the parameters by accessing a specific URL.
+  - A user with low privileges is able to open and change the parameters by accessing a specific URL.
 (CVE-2017-5142)
 
-- A user without authenticating can make a directory traversal attack by accessing a specific URL.
+  - A user without authenticating can make a directory traversal attack by accessing a specific URL.
 (CVE-2017-5143)");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may obtain a password and take complete control
+  script_tag(name:"impact", value:"An unauthenticated attacker may obtain a password and take complete control
 over the device.");
 
-  script_tag(name: "affected", value: "XL1000C500 XLWebExe-2-01-00 and prior and XLWeb 500 XLWebExe-1-02-08 and
+  script_tag(name:"affected", value:"XL1000C500 XLWebExe-2-01-00 and prior and XLWeb 500 XLWebExe-1-02-08 and
 prior.");
 
-  script_tag(name: "solution", value: "Users are encouraged to contact the local Honeywell HBS branch to have
+  script_tag(name:"solution", value:"Users are encouraged to contact the local Honeywell HBS branch to have
 their sites updated to the latest version.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-033-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-033-01");
 
   exit(0);
 }

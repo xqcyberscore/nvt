@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171108_win.nasl 8811 2018-02-14 12:41:44Z cfischer $
+# $Id: gb_jenkins_20171108_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
 #
 # Jenkins Multiple Vulnerabilities Nov 17 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112131");
-  script_version("$Revision: 8811 $");
+  script_version("$Revision: 11982 $");
 
   script_cve_id("CVE-2017-1000391", "CVE-2017-1000392");
 
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:05:00 +0100 (Tue, 07 Nov 2017)");
   script_name("Jenkins Multiple Vulnerabilities Nov 17 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Jenkins and is prone to
   multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT
-  and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -60,18 +59,17 @@ if(description)
   - a persisted XSS vulnerability in autocompletion suggestions");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to
-affect the integrity of the application.
-
-Impact Level: Application");
+affect the integrity of the application.");
 
   script_tag(name:"affected", value:"Jenkins LTS 2.73.2 and prior, Jenkins weekly up to and including 2.88.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.89 or later / Jenkins LTS to 2.73.3 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

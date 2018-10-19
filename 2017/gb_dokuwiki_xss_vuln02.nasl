@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln02.nasl 7257 2017-09-26 05:43:20Z asteins $
+# $Id: gb_dokuwiki_xss_vuln02.nasl 11962 2018-10-18 10:51:32Z mmartin $
 #
 # DokuWiki Stored XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112025");
-  script_version("$Revision: 7257 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 07:43:20 +0200 (Tue, 26 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-22 10:27:42 +0200 (Tue, 22 Aug 2017)");
+  script_version("$Revision: 11962 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-22 10:27:42 +0200 (Tue, 22 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12979", "CVE-2017-12980");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("DokuWiki Stored XSS Vulnerability");
 
@@ -51,17 +51,18 @@ if (description)
   script_dependencies("gb_dokuwiki_detect.nasl");
   script_mandatory_keys("dokuwiki/installed");
 
-  script_tag(name: "summary", value: "DokuWiki has stored XSS when rendering a malicious RSS or Atom feed or language name in a code element, in /inc/parser/xhtml.php. An attacker can create or edit a wiki with this element to trigger JavaScript execution.");
+  script_tag(name:"summary", value:"DokuWiki has stored XSS when rendering a malicious RSS or Atom feed or language name in a code element, in /inc/parser/xhtml.php. An attacker can create or edit a wiki with this element to trigger JavaScript execution.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "DokuWiki version 2017-02-19c and prior.");
+  script_tag(name:"affected", value:"DokuWiki version 2017-02-19c and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to pull request #2083 and/or #2086 respectively to fix the issues. For updates refer to https://github.com/splitbrain/dokuwiki.");
+  script_tag(name:"solution", value:"Upgrade to pull request #2083 and/or #2086 respectively to fix the issues.");
 
-  script_xref(name: "URL", value: "https://github.com/splitbrain/dokuwiki/issues/2080");
-  script_xref(name: "URL", value: "https://github.com/splitbrain/dokuwiki/issues/2081");
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2080");
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2081");
 
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki.");
   exit(0);
 }
 

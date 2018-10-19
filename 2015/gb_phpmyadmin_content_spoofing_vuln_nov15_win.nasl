@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_win.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # phpMyAdmin Content spoofing vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806549");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-7873");
   script_bugtraq_id(77299);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-27 12:26:46 +0530 (Fri, 27 Nov 2015)");
   script_name("phpMyAdmin Content spoofing vulnerability Nov15 (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   and 4.5.x before 4.5.1 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.4.15.1 or 4.5.1
-  or later. For updates refer http://www.phpmyadmin.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -66,6 +66,7 @@ if(description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
   script_mandatory_keys("phpMyAdmin/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net");
   exit(0);
 }
 

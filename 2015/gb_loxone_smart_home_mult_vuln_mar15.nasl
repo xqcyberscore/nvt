@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 11975 2018-10-19 06:54:12Z cfischer $
 #
 # Loxone Smart Home Multiple Vulnerabilities - Mar15
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:loxone:loxone';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805298");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11975 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-10 09:36:22 +0530 (Tue, 10 Mar 2015)");
   script_name("Loxone Smart Home Multiple Vulnerabilities - Mar15");
 
@@ -76,7 +76,7 @@ if(description)
   script_tag(name:"affected", value:"Loxone Smart Home version 5.49");
 
   script_tag(name:"solution", value:"Upgrade to Loxone Smart Home version 6.3
-  or later. For updates refer http://www.loxone.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -89,6 +89,7 @@ if(description)
   script_dependencies("gb_loxone_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("loxone/web/detected");
+  script_xref(name:"URL", value:"http://www.loxone.com");
   exit(0);
 }
 

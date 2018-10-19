@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_mult_xss_vuln_may16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_apache_wicket_mult_xss_vuln_may16.nasl 11961 2018-10-18 10:49:40Z asteins $
 #
 # Apache Wicket Multiple Cross-site scripting Vulnerabilities May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807585");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11961 $");
   script_cve_id("CVE-2015-5347", "CVE-2015-7520");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-16 10:44:34 +0530 (Mon, 16 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket Multiple Cross-site scripting Vulnerabilities May16");
@@ -59,7 +59,7 @@ if(description)
   6.x before 6.22.0, and 7.x before 7.2.0.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Wicket version 1.5.15 or
-  6.22.0 or 7.2.0 or later, For updates refer to http://wicket.apache.org");
+  6.22.0 or 7.2.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

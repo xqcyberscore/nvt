@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_xxe_vuln_lin.nasl 7713 2017-11-09 11:51:35Z jschulte $
+# $Id: gb_mediawiki_xxe_vuln_lin.nasl 11977 2018-10-19 07:28:56Z mmartin $
 #
 # MediaWiki XXE Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113046");
-  script_version("$Revision: 7713 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 12:51:35 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 11977 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 12:50:51 +0100 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if( description )
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/01/03/13");
   script_xref(name:"URL", value:"https://lists.wikimedia.org/pipermail/mediawiki-announce/2014-December/000173.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mediawiki:mediawiki";

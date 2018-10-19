@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805398");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11975 $");
   script_cve_id("CVE-2015-3902", "CVE-2015-3903");
   script_bugtraq_id(74660, 74657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 08:54:12 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-04 17:24:38 +0530 (Thu, 04 Jun 2015)");
   script_name("phpMyAdmin Multiple Vulnerabilities -01 June15");
 
@@ -60,7 +60,7 @@ if(description)
   4.2.x before 4.2.13.3, 4.3.x before 4.3.13.1, and 4.4.x before 4.4.6.1");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.0.10.10, or 4.2.13.3
-  or 4.3.13.1 or 4.4.6.1 or later. For updates refer http://www.phpmyadmin.net");
+  or 4.3.13.1 or 4.4.6.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

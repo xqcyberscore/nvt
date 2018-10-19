@@ -24,7 +24,32 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities has been discovered and corrected in
+
+
+
+if(description)
+{
+  script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:122");
+  script_oid("1.3.6.1.4.1.25623.1.0.831710");
+  script_version("$Revision: 11979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-03 11:19:16 +0530 (Fri, 03 Aug 2012)");
+  script_cve_id("CVE-2012-3422", "CVE-2012-3423");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"MDVSA", value:"2012:122");
+  script_name("Mandriva Update for icedtea-web MDVSA-2012:122 (icedtea-web)");
+
+  script_tag(name:"summary", value:"Check for the Version of icedtea-web");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Mandrake Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_(2011\.0|mes5\.2)");
+  script_tag(name:"affected", value:"icedtea-web on Mandriva Linux 2011.0,
+  Mandriva Enterprise Server 5.2");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in
   icedtea-web:
 
   An uninitialized pointer use flaw was found in IcedTea-Web web
@@ -32,7 +57,7 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in
   IcedTea-Web browser plugin pass invalid pointer to a web browser.
   Depending on the browser used, it may cause the browser to crash or
   possibly execute arbitrary code (CVE-2012-3422).
-  
+
   It was discovered that the IcedTea-Web web browser plugin incorrectly
   assumed that all strings provided by browser are NUL terminated,
   which is not guaranteed by the NPAPI (Netscape Plugin Application
@@ -40,52 +65,20 @@ tag_insight = "Multiple vulnerabilities has been discovered and corrected in
   terminate NPVariant NPStrings, this could lead to buffer over-read
   or over-write, resulting in possible information leak, crash, or code
   execution (CVE-2012-3423).
-  
+
   The updated packages have been upgraded to the 1.1.6 version which
-  is not affected by these issues.";
-
-tag_affected = "icedtea-web on Mandriva Linux 2011.0,
-  Mandriva Enterprise Server 5.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:122");
-  script_oid("1.3.6.1.4.1.25623.1.0.831710");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-08-03 11:19:16 +0530 (Fri, 03 Aug 2012)");
-  script_cve_id("CVE-2012-3422", "CVE-2012-3423");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "MDVSA", value: "2012:122");
-  script_name("Mandriva Update for icedtea-web MDVSA-2012:122 (icedtea-web)");
-
-  script_tag(name: "summary" , value: "Check for the Version of icedtea-web");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Mandrake Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  is not affected by these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "MNDK_2011.0")
 {
@@ -102,7 +95,7 @@ if(release == "MNDK_2011.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -122,6 +115,6 @@ if(release == "MNDK_mes5.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
