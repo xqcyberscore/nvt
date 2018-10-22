@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_goahead_webserver_mult_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_goahead_webserver_mult_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # GoAhead WebServer 'name' and 'address' Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902589");
-  script_version("$Revision: 7024 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(50729);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-23 12:12:12 +0530 (Wed, 23 Nov 2011)");
   script_name("GoAhead WebServer 'name' and 'address' Cross-Site Scripting Vulnerabilities");
 
@@ -44,18 +44,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"GoAhead Webserver version 2.5");
   script_tag(name:"insight", value:"Multiple flaws are due to improper validation of user-supplied
   input via the 'name' and 'address' parameters in goform/formTest, which allows
   attackers to execute arbitrary HTML and script code in a user's browser
   session in the context of an affected site.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running GoAhead Webserver and is prone to multiple
   cross site scripting vulnerabilities.");
 
@@ -72,19 +69,15 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Banner And Confirm Application
 banner = get_http_banner(port:port);
 if("Server: GoAhead-Webs" >!< banner) {
   exit(0);
 }
 
-## Construct Attack Request
 url = "/goform/formTest?name=<script>alert(document.cookie)</script>";
 
-## Try XSS attack and check the response to confirm vulnerability
 if(http_vuln_check(port:port, url:url, check_header: TRUE,
                    pattern:"Name: <script>alert\(document.cookie\)</script>")){
   report = report_vuln_url(port:port, url:url);

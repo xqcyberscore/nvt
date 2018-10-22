@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_50631.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: gb_proftpd_50631.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ProFTPD Prior To 1.3.3g Use-After-Free Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103331");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 10:15:56 +0100 (Tue, 15 Nov 2011)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -49,20 +49,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.proftpd.org");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-328/");
 
-  tag_summary = "ProFTPD is prone to a remote code-execution vulnerability.";
-
-  tag_impact = "Successful exploits will allow attackers to execute arbitrary code
+  script_tag(name:"summary", value:"ProFTPD is prone to a remote code-execution vulnerability.");
+  script_tag(name:"affected", value:"ProFTPD prior to 1.3.3g are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"impact", value:"Successful exploits will allow attackers to execute arbitrary code
   within the context of the application. Failed exploit attempts will
-  result in a denial-of-service condition.";
-
-  tag_affected = "ProFTPD prior to 1.3.3g are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  result in a denial-of-service condition.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -76,7 +68,6 @@ include("host_details.inc");
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for ProFTPD versions prior to 1.3.3g
 if( version_is_less( version:vers, test_version:"1.3.3g" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.3g" );
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_douran_46927.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_douran_46927.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Douran Portal 'download.aspx' Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103120");
-  script_version("$Revision: 5993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,22 +45,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46927");
   script_xref(name:"URL", value:"http://www.douran.com/HomePage.aspx?TabID=3901&Site=DouranPortal&Lang=en-US");
 
-  tag_summary = "Douran Portal is prone to a vulnerability that lets attackers download
+  script_tag(name:"summary", value:"Douran Portal is prone to a vulnerability that lets attackers download
   arbitrary files. This issue occurs because the application fails to
-  sufficiently sanitize user-supplied input.";
-
-  tag_impact = "Exploiting this issue will allow an attacker to view arbitrary files
+  sufficiently sanitize user-supplied input.");
+  script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to view arbitrary files
   within the context of the application. Information harvested may aid
-  in launching further attacks.";
-
-  tag_affected = "Douran Portal 3.9.7.8 is affected; other versions may also be
-  vulnerable.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  in launching further attacks.");
+  script_tag(name:"affected", value:"Douran Portal 3.9.7.8 is affected. Other versions may also be
+  vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

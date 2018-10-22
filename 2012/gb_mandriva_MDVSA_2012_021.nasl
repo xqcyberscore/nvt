@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:021");
   script_oid("1.3.6.1.4.1.25623.1.0.831544");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11986 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:54:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:55 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
                 "CVE-2012-0498", "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501",
@@ -62,7 +58,7 @@ if(description)
   Add property to limit number of request headers to the HTTP Server
   (CVE-2011-5035).
 
-  Incorect checking for graphics rendering object (CVE-2012-0497).
+  Incorrect checking for graphics rendering object (CVE-2012-0497).
 
   Multiple unspecified vulnerabilities allows remote attackers to affect
   confidentiality, integrity, and availability via unknown vectors
@@ -83,9 +79,11 @@ if(description)
   to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

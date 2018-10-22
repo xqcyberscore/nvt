@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213551.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_kb3213551.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB3213551)
 #
@@ -27,36 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811788");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-8744");
   script_bugtraq_id(100748);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:13 +0530 (Wed, 04 Oct 2017)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB3213551)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3213551");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Office software when it fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could use a specially crafted file
-  to perform actions in the security context of the current user.
-
-  Impact Level: System/Application");
+  to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office version 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3213551");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

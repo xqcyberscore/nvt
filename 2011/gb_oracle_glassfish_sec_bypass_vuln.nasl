@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: gb_oracle_glassfish_sec_bypass_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Java GlassFish Server Security Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801939");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1511");
   script_tag(name:"cvss_base", value:"6.4");
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to access sensitive data
   on the server without being authenticated, by making 'TRACE' requests against
-  the Administration Console.
-
-  Impact Level: System/Application");
+  the Administration Console.");
 
   script_tag(name:"affected", value:"Oracle GlassFish version 3.0.1 and
   Sun GlassFish Enterprise Server 2.1.1");
@@ -56,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in Administration Console, when handling
   HTTP requests using the 'TRACE' method. A remote unauthenticated attacker can
   get access to the content of restricted pages in the Administration Console.");
-  script_tag(name:"solution", value:"Apply the security updates or Upgrade to Oracle GlassFish 3.1
-  http://packetstormsecurity.org/files/view/101343/CORE-2010-1118.txt");
+  script_tag(name:"solution", value:"Apply the security updates or Upgrade to Oracle GlassFish 3.1.");
 
   script_tag(name:"summary", value:"The host is running Oracle GlassFish Server and is prone to
   security bypass vulnerability.");

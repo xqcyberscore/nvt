@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:139");
   script_oid("1.3.6.1.4.1.25623.1.0.831725");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:46:08 +0530 (Tue, 21 Aug 2012)");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_tag(name:"cvss_base", value:"4.9");
@@ -52,24 +48,24 @@ if(description)
   script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in
   postgresql:
 
-  Prevent access to external files/URLs via contrib/xml2&#039;s xslt_process()
+  Prevent access to external files/URLs via contrib/xml2's xslt_process()
   (Peter Eisentraut). libxslt offers the ability to read and write both
   files and URLs through stylesheet commands, thus allowing unprivileged
   database users to both read and write data with the privileges of the
-  database server. Disable that through proper use of libxslt&#039;s security
-  options (CVE-2012-3488). Also, remove xslt_process()&#039;s ability to
+  database server. Disable that through proper use of libxslt's security
+  options (CVE-2012-3488). Also, remove xslt_process()'s ability to
   fetch documents and stylesheets from external files/URLs. While this
   was a documented feature, it was long regarded as a bad idea. The
   fix for CVE-2012-3489 broke that capability, and rather than expend
-  effort on trying to fix it, we&#039;re just going to summarily remove it.
+  effort on trying to fix it, we're just going to summarily remove it.
 
   Prevent access to external files/URLs via XML entity references (Noah
   Misch, Tom Lane). xml_parse() would attempt to fetch external files or
   URLs as needed to resolve DTD and entity references in an XML value,
   thus allowing unprivileged database users to attempt to fetch data
   with the privileges of the database server. While the external data
-  wouldn&#039;t get returned directly to the user, portions of it could
-  be exposed in error messages if the data didn&#039;t parse as valid XML;
+  wouldn't get returned directly to the user, portions of it could
+  be exposed in error messages if the data didn't parse as valid XML;
   and in any case the mere ability to check existence of a file might
   be useful to an attacker (CVE-2012-3489).
 
@@ -77,9 +73,11 @@ if(description)
   vulnerable to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

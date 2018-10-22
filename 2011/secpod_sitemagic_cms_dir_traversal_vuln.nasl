@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 11192 2018-09-03 12:08:26Z cfischer $
+# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902452");
-  script_version("$Revision: 11192 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:08:26 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48399);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102498/sitemagic-traversal.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain
-  arbitrary local files in the context of the web server process.
-
-  Impact Level: Application");
+  arbitrary local files in the context of the web server process.");
 
   script_tag(name:"affected", value:"Sitemagic CMS version 2010.04.17");
 

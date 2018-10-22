@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_xss_vuln.nasl 7170 2017-09-18 10:35:33Z cfischer $
+# $Id: secpod_mediawiki_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MediaWiki Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902380");
-  script_version("$Revision: 7170 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1765");
   script_bugtraq_id(47722);
@@ -48,32 +48,20 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.wikimedia.org/show_bug.cgi?id=28534");
   script_xref(name:"URL", value:"http://lists.wikimedia.org/pipermail/mediawiki-announce/2011-May/000098.html");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application.";
-
-  tag_affected = "MediaWiki version before 1.16.5";
-
-  tag_insight = "The flaw is due to an error when handling the file extension such as
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
+  script code in a user's browser session in the context of an affected site.");
+  script_tag(name:"affected", value:"MediaWiki version before 1.16.5");
+  script_tag(name:"insight", value:"The flaw is due to an error when handling the file extension such as
   '.shtml' at the end of the query string, along with URI containing a
-  '%2E' sequence in place of the .(dot) character.";
-
-  tag_solution = "Upgrade to MediaWiki 1.16.5 or later.
-  For updates refer to http://www.mediawiki.org/wiki/MediaWiki";
-
-  tag_summary = "This host is running MediaWiki and is prone to cross site scripting
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  '%2E' sequence in place of the .(dot) character.");
+  script_tag(name:"solution", value:"Upgrade to MediaWiki 1.16.5 or later.");
+  script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/MediaWiki");
   exit(0);
 }
 

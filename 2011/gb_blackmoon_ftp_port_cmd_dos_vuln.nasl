@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Blackmoon FTP PORT Command Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800194");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2011-0507");
   script_bugtraq_id(45814);
@@ -53,8 +53,7 @@ if(description)
   exploited to crash the FTP service by sending multiple PORT commands with
   'big' parameter.");
 
-  script_tag(name:"solution", value:"Upgrade to Blackmoon FTP Version 3.1.7 Build 17356 or higher.
-  For updates refer to http://www.blackmoonftpserver.com/downloads.aspx");
+  script_tag(name:"solution", value:"Upgrade to Blackmoon FTP Version 3.1.7 Build 17356 or higher.");
 
   script_tag(name:"summary", value:"The host is running Blackmoon FTP Server and is prone to denial of service
   vulnerability.");
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.blackmoonftpserver.com/downloads.aspx");
   exit(0);
 }
 

@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vuln.nasl 8371 2018-01-11 09:58:13Z cfischer $
+# $Id: gb_unitrends_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
-# Unitrends Multiple Vulnerabilities 
+# Unitrends Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:unitrends:enterprise_backup';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140447");
-  script_version("$Revision: 8371 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:58:13 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-10-23 15:52:55 +0700 (Mon, 23 Oct 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-23 15:52:55 +0700 (Mon, 23 Oct 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-12477", "CVE-2017-12478", "CVE-2017-12479");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Unitrends Multiple Vulnerabilities");
 
@@ -51,26 +51,26 @@ if (description)
   script_dependencies("gb_unitrends_detect.nasl");
   script_mandatory_keys("unitrends/detected");
 
-  script_tag(name: "summary", value: "Unitrends UEB is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Unitrends UEB is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Unitrends UEB is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Unitrends UEB is prone to multiple vulnerabilities:
 
-- Unauthenticated root RCE (CVE-2017-12477, CVE-2017-12478)
+  - Unauthenticated root RCE (CVE-2017-12477, CVE-2017-12478)
 
-- Authenticated lowpriv RCE (CVE-2017-12479)");
+  - Authenticated lowpriv RCE (CVE-2017-12479)");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "Unitrends UEB prior to version 10.0.0");
+  script_tag(name:"affected", value:"Unitrends UEB prior to version 10.0.0");
 
-  script_tag(name: "solution", value: "Update to version 10.0.0 or later.");
+  script_tag(name:"solution", value:"Update to version 10.0.0 or later.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42957/");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42958/");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42959/");
-  script_xref(name: "URL", value: "https://support.unitrends.com/UnitrendsBackup/s/article/000005755");
-  script_xref(name: "URL", value: "https://support.unitrends.com/UnitrendsBackup/s/article/000005756");
-  script_xref(name: "URL", value: "https://support.unitrends.com/UnitrendsBackup/s/article/000005757");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42957/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42958/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42959/");
+  script_xref(name:"URL", value:"https://support.unitrends.com/UnitrendsBackup/s/article/000005755");
+  script_xref(name:"URL", value:"https://support.unitrends.com/UnitrendsBackup/s/article/000005756");
+  script_xref(name:"URL", value:"https://support.unitrends.com/UnitrendsBackup/s/article/000005757");
 
   exit(0);
 }

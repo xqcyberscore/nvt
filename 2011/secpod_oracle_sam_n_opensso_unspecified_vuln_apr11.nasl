@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Java Access Manager and OpenSSO Unspecified Vulnerability - April11
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902422");
-  script_version("$Revision: 10864 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-0844", "CVE-2011-0847");
   script_bugtraq_id(47490, 47481);
@@ -44,9 +44,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to affect confidentiality
-  and integrity via unknown vectors.
-
-  Impact Level: System/Application");
+  and integrity via unknown vectors.");
 
   script_tag(name:"affected", value:"Sun OpenSSO Enterprise version 8.0,
 
@@ -59,11 +57,10 @@ if(description)
   unspecified vulnerability.");
 
   script_tag(name:"solution", value:"Apply the security updates.
-  http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html
-
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
   *****");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # nb: The version check below is completely broken...

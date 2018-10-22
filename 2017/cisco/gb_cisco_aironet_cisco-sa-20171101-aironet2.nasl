@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet2.nasl 7614 2017-11-02 05:41:04Z ckuersteiner $
+# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet2.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Cisco Aironet Access Point Platforms Extensible Authentication Protocol Denial of Service Vulnerability
 #
@@ -29,47 +29,47 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140471");
- script_version("$Revision: 7614 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-02 06:41:04 +0100 (Thu, 02 Nov 2017) $");
- script_tag(name: "creation_date", value: "2017-11-02 09:34:01 +0700 (Thu, 02 Nov 2017)");
- script_tag(name: "cvss_base", value: "6.1");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.140471");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-02 09:34:01 +0700 (Thu, 02 Nov 2017)");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
 
- script_cve_id("CVE-2017-12274");
+  script_cve_id("CVE-2017-12274");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Cisco Aironet Access Point Platforms Extensible Authentication Protocol Denial of Service Vulnerability");
+  script_name("Cisco Aironet Access Point Platforms Extensible Authentication Protocol Denial of Service Vulnerability");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("CISCO");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("CISCO");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
 
- script_tag(name: "summary", value: "A vulnerability in Extensible Authentication Protocol (EAP) ingress frame
+  script_tag(name:"summary", value:"A vulnerability in Extensible Authentication Protocol (EAP) ingress frame
 processing for the Cisco Aironet 1560, 2800, and 3800 Series Access Points could allow an unauthenticated, Layer
 2 radio frequency (RF) adjacent attacker to cause the Access Point (AP) to reload, resulting in a denial of
 service (DoS) condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient validation of the EAP frame. An
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of the EAP frame. An
 attacker could exploit this vulnerability by sending a malformed EAP frame to the targeted device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to cause the AP to reload,
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to cause the AP to reload,
 resulting in a DoS condition while the AP is reloading. It may be necessary to manually power cycle the device in
 order for it to recover.");
 
- script_tag(name: "solution", value: "See the referenced advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced advisory for a solution.");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171101-aironet2");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171101-aironet2");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

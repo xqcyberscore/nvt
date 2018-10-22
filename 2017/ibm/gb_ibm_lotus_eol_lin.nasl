@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_eol_lin.nasl 7539 2017-10-24 08:52:47Z cfischer $
+# $Id: gb_ibm_lotus_eol_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # IBM Domino End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113024");
-  script_version("$Revision: 7539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 10:52:47 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 14:57:58 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,23 +48,15 @@ if( description )
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Domino/Installed", "Host/runs_unixoide");
 
-  tag_summary = "The IBM Domino version on the remote host has reached the end of life and should not be used anymore.";
-
-  tag_impact = "An end of life version of IBM Domino is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-    might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the IBM Domino version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detection NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The IBM Domino version on the remote host has reached the end of life and should not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of IBM Domino is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+    might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the IBM Domino version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://www-01.ibm.com/software/support/lifecycleapp/PLCSearch.wss?q=lotus+domino&ibm-search=Search");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ibm:lotus_domino";

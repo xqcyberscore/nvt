@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_mult_bof_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_lotus_notes_mult_bof_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Lotus Notes File Viewers Multiple BOF Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801945");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-1213", "CVE-2011-1214", "CVE-2011-1215", "CVE-2011-1216",
                 "CVE-2011-1217", "CVE-2011-1218", "CVE-2011-1512");
@@ -40,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg21500034");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH, ");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_ibm_lotus_notes_detect_win.nasl");
   script_mandatory_keys("IBM/LotusNotes/Win/Ver");
@@ -69,12 +69,12 @@ if(description)
 
   - An unspecified error within 'kvarcve.dll' when parsing Lotus Notes .zip
      file format.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Notes 8.5.2 FP3
-  For updates refer to http://www.ibm.com/software/lotus/products/notes/");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Notes 8.5.2 FP3");
   script_tag(name:"summary", value:"This host has IBM Lotus Notes installed and is prone to multiple
   buffer overflow vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.ibm.com/software/lotus/products/notes/");
   exit(0);
 }
 

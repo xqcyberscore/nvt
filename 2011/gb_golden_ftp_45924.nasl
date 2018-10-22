@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_golden_ftp_45924.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_golden_ftp_45924.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Golden FTP Server Malformed Message Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103037");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 13:02:23 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,8 +47,10 @@ if(description)
   script_tag(name:"summary", value:"Golden FTP Server is prone to a denial-of-service vulnerability.");
   script_tag(name:"impact", value:"Exploits will cause the application to crash, denying service to
   legitimate users.");
-  script_tag(name:"affected", value:"Golden FTP Server 4.70 is vulnerable; other versions may also
+  script_tag(name:"affected", value:"Golden FTP Server 4.70 is vulnerable. Other versions may also
   be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

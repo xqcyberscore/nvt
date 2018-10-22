@@ -23,9 +23,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-10/msg00022.php");
@@ -33,8 +30,8 @@ if(description)
   script_cve_id("CVE-2011-3378");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11981 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:47:44 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_xref(name:"MDVA", value:"2011:057");
   script_name("Mandriva Update for rpm MDVA-2011:057 (rpm)");
@@ -60,9 +57,11 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://store.mandriva.com/product_info.php?cPath=149&amp;amp;products_id=490");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

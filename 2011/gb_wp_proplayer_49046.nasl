@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_proplayer_49046.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_wp_proplayer_49046.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # WordPress ProPlayer Plugin  'playlist-controller.php' Parameter SQL Injection Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103196");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 14:25:35 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49046);
   script_tag(name:"cvss_base", value:"7.5");
@@ -57,8 +57,8 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-ProPlayer 4.7.7 is vulnerable; other versions may also be affected.");
- exit(0);
+ProPlayer 4.7.7 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

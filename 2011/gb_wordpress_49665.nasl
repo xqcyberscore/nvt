@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49665.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_wordpress_49665.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Count per Day Plugin 'month' Parameter SQL Injection Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103259");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-19 14:00:59 +0200 (Mon, 19 Sep 2011)");
   script_bugtraq_id(49665);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,7 @@ application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
 Count per Day versions 2.17 and prior are vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

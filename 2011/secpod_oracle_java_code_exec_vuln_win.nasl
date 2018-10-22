@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_code_exec_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: secpod_oracle_java_code_exec_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Java SE Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902349");
-  script_version("$Revision: 10144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-4467");
   script_bugtraq_id(46395);
@@ -42,22 +42,21 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : "Successful attacks will allow attackers to execute arbitrary code in the
-  context of the affected application with system privileges.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Oracle Java SE 6 Update 10 through 6 Update 23");
-  script_tag(name : "insight" , value : "The flaw is due to an error in 'Java Runtime Environment(JRE)', which
+  script_tag(name:"impact", value:"Successful attacks will allow attackers to execute arbitrary code in the
+  context of the affected application with system privileges.");
+  script_tag(name:"affected", value:"Oracle Java SE 6 Update 10 through 6 Update 23");
+  script_tag(name:"insight", value:"The flaw is due to an error in 'Java Runtime Environment(JRE)', which
   allows remote untrusted Java Web Start applications and untrusted Java
   applets to affect confidentiality, integrity, and availability via unknown
   vectors related to deployment.");
-  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE 6 Update 24 or later
-  For updates refer to http://java.com/en/download/index.jsp");
-  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to code
+  script_tag(name:"solution", value:"Upgrade to Oracle Java SE 6 Update 24 or later");
+  script_tag(name:"summary", value:"This host is installed with Sun Java SE and is prone to code
   execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0405");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0405");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2011-304611.html");
+  script_xref(name:"URL", value:"http://java.com/en/download/index.jsp");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsaro_messenger_server_mult_xss_n_csrf_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_netsaro_messenger_server_mult_xss_n_csrf_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # NetSaro Enterprise Messenger Multiple XSS and CSRF Vulnerabilities
 #
@@ -27,35 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801971");
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("NetSaro Enterprise Messenger Multiple XSS and CSRF Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.1337day.com/exploits/16809");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17766/");
+  script_xref(name:"URL", value:"http://www.1337day.com/exploits/16809");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17766/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 4990);
   script_family("General");
-  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
   arbitrary script code within the users browser session in the security context
   of the target site and the attacker could gain access to users cookies
-  (including authentication cookies).
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "NetSaro Enterprise Messenger Server version 2.0 and prior.");
-  script_tag(name : "insight" , value : "Multiple flaws are exists as the user supplied input received
+  (including authentication cookies).");
+  script_tag(name:"affected", value:"NetSaro Enterprise Messenger Server version 2.0 and prior.");
+  script_tag(name:"insight", value:"Multiple flaws are exists as the user supplied input received
   via various parameters is not properly sanitized. This can be exploited by
   submitting specially crafted input to the affected software.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running NetSaro Enterprise Messenger Server and is
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running NetSaro Enterprise Messenger Server and is
   prone to multiple cross-site scripting and cross-site request forgery
   vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -68,18 +65,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Check for the default port
 port = get_http_port(default:4990);
 
-## Send the request and receive response
 rcvRes = http_get_cache(item:"/", port:port);
 
 host = http_host_name(port:port);
 
-## Confirm the server
 if("<title>NetSaro Administration Console</title>" >< rcvRes)
 {
-  ## Construct the crafted request
   authVariables = "username=%22%3E%3C%2Fscript%3E%3Cscript%3Ealert%28document"+
                   ".cookie%29%3C%2Fscript%3E&password=&login=Log+In&postback="+
                   "postback";
@@ -91,7 +84,6 @@ if("<title>NetSaro Administration Console</title>" >< rcvRes)
                     authVariables);
   rcvRes1 = http_keepalive_send_recv(port:port, data:sndReq1);
 
-  ## Check for the response and confirm the exploit
   if(rcvRes1 =~ "HTTP/1\.. 200" && "></script><script>alert(document.cookie)</script>" >< rcvRes1){
     security_message(port:port);
     exit(0);

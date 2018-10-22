@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_dos_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Wireshark Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801742");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
@@ -50,12 +50,12 @@ if(description)
   Wireshark version 1.4.0 through 1.4.3");
   script_tag(name:"insight", value:"The flaw is due to uninitialized pointer during processing of a '.pcap'
   file in the pcap-ng format.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15 or 1.4.4 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15 or 1.4.4 or later.");
   script_tag(name:"summary", value:"The host is installed Wireshark and is prone to Denial of Service
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

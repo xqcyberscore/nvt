@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_amv_dos_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_vlc_media_player_amv_dos_vuln_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # VLC Media Player 'AMV' Denial of Service Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802118");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_cve_id("CVE-2011-1931");
   script_bugtraq_id(47602);
@@ -49,12 +49,12 @@ of service or possibly execute arbitrary code via a malformed AMV file.");
   script_tag(name:"insight", value:"The flaw is due to error while handling 'sp5xdec.c' in the
 Sunplus SP5X JPEG decoder in libavcodec, performs a write operation outside the
 bounds of an unspecified array.");
-  script_tag(name:"solution", value:"Upgrade to VLC media player version 1.1.10 or later,
-For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name:"solution", value:"Upgrade to VLC media player version 1.1.10 or later.");
   script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone to denial
 of service vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

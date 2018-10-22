@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-24_2017-25_macosx.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-24_2017-25_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-24_2017-25)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811350");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7831", "CVE-2017-7832",
 		"CVE-2017-7833", "CVE-2017-7834", "CVE-2017-7835", "CVE-2017-7836",
 		"CVE-2017-7837", "CVE-2017-7838", "CVE-2017-7839", "CVE-2017-7840",
@@ -37,16 +37,16 @@ if(description)
   script_bugtraq_id(101832);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 12:42:13 +0530 (Thu, 16 Nov 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-24_2017-25)-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - Use-after-free of PressShell while restyling layout.
 
@@ -76,17 +76,14 @@ if(description)
 
   - Memory safety bugs fixed in Firefox 57.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   to execute arbitrary code, bypass security restrictions, perform unauthorized
   actions, and obtain sensitive information. Failed exploit attempts will likely
-  result in denial-of-service conditions.
+  result in denial-of-service conditions.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 57.0 on MAC OS X.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 57.0 on MAC OS X.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 57.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 57.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -96,6 +93,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

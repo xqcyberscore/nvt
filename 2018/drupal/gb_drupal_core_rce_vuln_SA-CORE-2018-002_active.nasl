@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 10103 2018-06-06 14:22:29Z cfischer $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl 12012 2018-10-22 09:20:29Z asteins $
 #
-# Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)
+# Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) (Active Check)
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,13 +29,13 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108438");
-  script_version("$Revision: 10103 $");
+  script_version("$Revision: 12012 $");
   script_cve_id("CVE-2018-7600");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 16:22:29 +0200 (Wed, 06 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:20:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-14 13:29:22 +0200 (Sat, 14 Apr 2018)");
-  script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) - (Active Check)");
+  script_name("Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-002) (Active Check)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -62,9 +62,7 @@ if(description)
   compromised.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code and completely compromise the site.
-
-  Impact Level: Application");
+  attackers to execute arbitrary code and completely compromise the site.");
 
   script_tag(name:"affected", value:"Drupal core versions 6.x and earlier,
 

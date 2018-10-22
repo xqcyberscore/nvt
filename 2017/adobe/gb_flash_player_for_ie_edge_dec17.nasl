@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_dec17.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_flash_player_for_ie_edge_dec17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Flash Player Security Update (KB4053577)
 #
@@ -29,30 +29,27 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812256");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11305");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 13:08:10 +0530 (Wed, 13 Dec 2017)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Security Update (KB4053577)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4053577");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a logic error may
+  script_tag(name:"insight", value:"The flaw exists due to a logic error may
   cause the global settings preference file to be reset.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to conduct unintended reset of
-  global settings preference file.
+  global settings preference file.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Windows 10 Version 1511 for x32/x64 Edition,
+  script_tag(name:"affected", value:"Windows 10 Version 1511 for x32/x64 Edition,
 
   Windows 10 Version 1607 for x32/x64 Edition,
 
@@ -67,14 +64,12 @@ if(description)
   Windows Server 2012/2012 R2/2016");
 
   script_tag(name:"solution", value:"Run Windows update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/kb/4053577");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/4053577");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb17-42.html");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/4053577");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb17-42.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

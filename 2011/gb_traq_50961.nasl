@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_traq_50961.nasl 5751 2017-03-28 14:37:16Z cfi $
+# $Id: gb_traq_50961.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Traq 'authenticate()' Function Remote Code Execution Vulnerability
 #
@@ -27,42 +27,42 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103359");
- script_bugtraq_id(50961);
- script_version ("$Revision: 5751 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103359");
+  script_bugtraq_id(50961);
+  script_version("$Revision: 11997 $");
 
- script_name("Traq 'authenticate()' Function Remote Code Execution Vulnerability");
+  script_name("Traq 'authenticate()' Function Remote Code Execution Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50961");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/qatraq/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50961");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/qatraq/");
 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2011-12-08 08:05:08 +0100 (Thu, 08 Dec 2011)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : "Vendor updates are available. Please see the references for details.");
- script_tag(name : "summary" , value : "Traq is prone to a remote code-execution vulnerability.");
- script_tag(name : "impact" , value : "An attacker can exploit this issue to execute arbitrary code with
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-08 08:05:08 +0100 (Thu, 08 Dec 2011)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Traq is prone to a remote code-execution vulnerability.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code with
  admin privileges. Failed exploit attempts will result in a denial-of-
  service condition.");
- script_tag(name : "affected" , value : "Traq versions prior to 2.3.1 are vulnerable.");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"affected", value:"Traq versions prior to 2.3.1 are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
@@ -72,7 +72,7 @@ foreach dir( make_list_unique( "/traq", "/phptraq", "/bugtracker", cgi_dirs( por
   url = dir + "/index.php";
   buf = http_get_cache( item:url, port:port );
 
-  if("Powered by Traq" >!< buf)continue; 
+  if("Powered by Traq" >!< buf)continue;
 
   host = http_host_name( port:port );
   filename = string(dir,"/admincp/plugins.php?newhook");
@@ -102,7 +102,7 @@ foreach dir( make_list_unique( "/traq", "/phptraq", "/bugtracker", cgi_dirs( por
 
     security_message(port:port);
     exit(0);
-  }  
+  }
 }
 
 exit(99);

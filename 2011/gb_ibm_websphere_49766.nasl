@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_49766.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ibm_websphere_49766.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # IBM WebSphere Application Server Cross-Site Request Forgery Vulnerability
 #
@@ -24,45 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IBM WebSphere Application Server is prone to a cross-site request
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103277");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
+  script_bugtraq_id(49766);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+
+  script_name("IBM WebSphere Application Server Cross-Site Request Forgery Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49766");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg24030916");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg27022958#8001");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/software/websphere/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_websphere_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_tag(name:"solution", value:"Vendor fixes are available. Please see the references for more
+information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"IBM WebSphere Application Server is prone to a cross-site request
 forgery vulnerability.
 
 Exploiting this issue may allow a remote attacker to perform certain
 actions in the context of an authorized user and gain access to the
-affected application; other attacks are also possible.
+affected application. Other attacks are also possible.
 
 IBM WebSphere Application Server versions prior to 8.0.0.1 are
-vulnerable; other versions may also be affected.";
-
-tag_solution = "Vendor fixes are available. Please see the references for more
-information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103277");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
- script_bugtraq_id(49766);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-
- script_name("IBM WebSphere Application Server Cross-Site Request Forgery Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49766");
- script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24030916");
- script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27022958#8001");
- script_xref(name : "URL" , value : "http://www-01.ibm.com/software/websphere/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_websphere_detect.nasl");
- script_require_ports("Services/www", 80);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

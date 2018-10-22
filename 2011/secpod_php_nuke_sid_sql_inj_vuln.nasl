@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
+# $Id: secpod_php_nuke_sid_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP-Nuke 'sid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902612");
-  script_version("$Revision: 7276 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,17 +43,14 @@ if(description)
   script_mandatory_keys("php-nuke/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to add, modify or
-  delete data in the back end database.
-
-  Impact Level: Application");
+  delete data in the back end database.");
   script_tag(name:"affected", value:"PHP-Nuke versions 5.6, 6.0, 6.5 RC1, 6.5 RC2, 6.5 RC3, 6.5");
   script_tag(name:"insight", value:"The flaw is caused by input validation errors in the 'article.php'
   when processing user-supplied data in 'sid' parameter, which could be exploited
   by attackers to execute SQL code.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running PHP-Nuke and is prone to SQL injection
   vulnerability.");
 

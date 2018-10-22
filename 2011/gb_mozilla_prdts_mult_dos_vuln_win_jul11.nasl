@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_dos_vuln_win_jul11.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_mult_dos_vuln_win_jul11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Products Multiple Denial of Service Vulnerabilities July-11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802214");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2364", "CVE-2011-2365");
   script_bugtraq_id(48367, 48368);
@@ -36,8 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Mozilla Products Multiple Denial of Service Vulnerabilities July-11 (Windows)");
 
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-23.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-24.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-23.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-24.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -45,22 +45,20 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let remote attackers to execute arbitrary code
-  or cause a denial of service.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Thunderbird version before 3.1.11.
+  script_tag(name:"impact", value:"Successful exploitation will let remote attackers to execute arbitrary code
+  or cause a denial of service.");
+  script_tag(name:"affected", value:"Thunderbird version before 3.1.11.
   Mozilla Firefox versions 3.6.x before 3.6.18.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to unspecified errors in the browser engine,
+  script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in the browser engine,
   that allows remote attackers to cause a denial of service or possibly execute
   arbitrary code.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox or Thunderbird and is prone to
+  script_tag(name:"summary", value:"The host is installed with Mozilla Firefox or Thunderbird and is prone to
   multiple denial of service vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.6.18 or later
-  http://www.mozilla.com/en-US/firefox/all.html
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6.18 or later,
+  Upgrade to Thunderbird version 3.1.11 or later.");
 
-  Upgrade to Thunderbird version 3.1.11 or later
-  http://www.mozillamessaging.com/en-US/thunderbird/");
-
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -80,7 +78,6 @@ if(ffVer)
   }
 }
 
-## Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {

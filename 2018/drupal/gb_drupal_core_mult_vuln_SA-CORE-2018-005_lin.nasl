@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2018-005_lin.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2018-005_lin.nasl 12012 2018-10-22 09:20:29Z asteins $
 #
-# Drupal Core Multiple Security Vulnerabilities(SA-CORE-2018-005)-Linux
+# Drupal Core Multiple Security Vulnerabilities (SA-CORE-2018-005) (Linux)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,20 +29,19 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813739");
-  script_version("$Revision: 10758 $");
+  script_version("$Revision: 12012 $");
   script_cve_id("CVE-2018-14773");
-  script_tag(name:"cvss_base", value:"5.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:20:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-03 12:05:43 +0530 (Fri, 03 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Drupal Core Multiple Security Vulnerabilities(SA-CORE-2018-005)-Linux");
+  script_name("Drupal Core Multiple Security Vulnerabilities (SA-CORE-2018-005) (Linux)");
 
   script_tag(name:"summary", value:"This host is running Drupal and is prone
   to multiple security vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple errors
   in 3rd party libraries 'Symfony', 'zend-diactoros' and 'zend-feed' which are
@@ -52,14 +51,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security restrictions and emulate the headers to request
-  arbitrary content.
-
-  Impact Level: Application");
+  arbitrary content.");
 
   script_tag(name:"affected", value:"Drupal core versions 8.x before 8.5.6 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Drupal core version 8.5.6 or
-  later. For updates refer to Reference links.");
+  later. For updates refer to the referenced links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,17 +77,21 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!drupalPort = get_app_port(cpe:CPE)){
+if(!drupalPort = get_app_port(cpe:CPE)) {
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9.]+", exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9]+", exit_no_version:TRUE)) {
+  exit(0);
+}
+
 drupalVer = infos['version'];
 path = infos['location'];
 
-if(version_in_range(version:drupalVer, test_version:"8.0", test_version2:"8.5.5"))
-{
+if(version_in_range(version:drupalVer, test_version:"8.0", test_version2:"8.5.5")) {
   report = report_fixed_ver(installed_version:drupalVer, fixed_version:"8.5.6", install_path:path);
   security_message(data:report, port:drupalPort);
   exit(0);
 }
+
+exit(99);

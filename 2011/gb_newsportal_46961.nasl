@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_newsportal_46961.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_newsportal_46961.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # NewsPortal 'post.php' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103130");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-28 13:42:17 +0200 (Mon, 28 Mar 2011)");
   script_bugtraq_id(46961);
   script_tag(name:"cvss_base", value:"2.6");
@@ -49,8 +49,9 @@ if(description)
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site. This can allow the attacker
   to steal cookie-based authentication credentials and launch other attacks.");
-  script_tag(name:"affected", value:"NewsPortal 0.37 is vulnerable; other versions may also be affected.");
-
+  script_tag(name:"affected", value:"NewsPortal 0.37 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -58,7 +59,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

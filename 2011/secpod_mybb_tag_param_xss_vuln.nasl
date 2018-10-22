@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mybb_tag_param_xss_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_mybb_tag_param_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MyBB 'tags.php' Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902804");
-  script_version("$Revision: 7029 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(45388);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-27 15:15:15 +0530 (Tue, 27 Dec 2011)");
   script_name("MyBB 'tags.php' Cross Site Scripting Vulnerability");
 
@@ -44,27 +44,24 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("MyBB/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "MyBB versions 1.6.5 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of user-supplied input
+  session in the context of an affected site.");
+  script_tag(name:"affected", value:"MyBB versions 1.6.5 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
   via the 'tag' parameter in 'tags.php', which allows attackers to execute
   arbitrary HTML and script code in a user's browser session in the context
   of an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running MyBB and is prone to cross site scripting
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running MyBB and is prone to cross site scripting
   vulnerability.");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/45388");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64148");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108156/mybb165-xss.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/96658/mybbtag-xss.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45388");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64148");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108156/mybb165-xss.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/96658/mybbtag-xss.txt");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -76,17 +73,15 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-include("global_settings.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if (dir == "/") dir = "";
 
-## Construct attack request
 url = dir + '/tags.php?tag="><script>alert(document.cookie)</script>';
 
-## Try XSS and check the response to confirm vulnerability
 if(http_vuln_check(port:port, url:url, check_header: TRUE,
                    pattern:"><script>alert\(document.cookie\)</script>"))
 {

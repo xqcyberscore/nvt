@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_informix_dynamic_server_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_ibm_informix_dynamic_server_code_exec_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Informix Dynamic Server Oninit Remote Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902546");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-02 09:08:31 +0200 (Tue, 02 Aug 2011)");
   script_cve_id("CVE-2011-1033");
   script_bugtraq_id(46230);
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error in the oninit process bound to TCP
   port 9088 when processing the arguments to the USELASTCOMMITTED option in a
   SQL query.");
-  script_tag(name:"solution", value:"Upgrade to IBM Informix IDS version 11.50.xC8 or later,
-  For updates refer to http://www-01.ibm.com/software/data/informix/");
+  script_tag(name:"solution", value:"Upgrade to IBM Informix IDS version 11.50.xC8 or later.");
   script_tag(name:"summary", value:"This host is installed with IBM Informix Dynamic Server and is
   prone to remote code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/software/data/informix/");
   exit(0);
 }
 

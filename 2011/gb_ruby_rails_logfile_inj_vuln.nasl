@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_logfile_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_ruby_rails_logfile_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Ruby on Rails Logfile Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801765");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-3187");
   script_bugtraq_id(46423);
@@ -49,16 +49,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject arbitrary
   data into the affected HTTP header field, attackers may be able to launch cross-site request-forgery,
-  cross-site scripting, HTML-injection, and other attacks.
-
-  Impact Level: Application");
+  cross-site scripting, HTML-injection, and other attacks.");
   script_tag(name:"affected", value:"Ruby on Rails version 3.0.5");
   script_tag(name:"insight", value:"The flaw is due to input validation error for the
   'X-Forwarded-For' field in the header.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running Ruby on Rails and is prone to file
   injection vulnerability.");
 
@@ -74,7 +71,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check Ruby on Rails version
 if( version_is_equal( version:vers, test_version:"3.0.5" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"" );
   security_message( port:port, data:report );

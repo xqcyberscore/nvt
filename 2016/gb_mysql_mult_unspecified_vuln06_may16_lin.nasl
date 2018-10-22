@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807970");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2016-0649", "CVE-2016-0650", "CVE-2016-0644", "CVE-2016-0646",
                 "CVE-2016-0640", "CVE-2016-0641");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-05 10:37:59 +0530 (Thu, 05 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-06 May16 (Linux)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL Server 5.5.47 and earlier,
   5.6.28 and earlier, 5.7.10 and earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

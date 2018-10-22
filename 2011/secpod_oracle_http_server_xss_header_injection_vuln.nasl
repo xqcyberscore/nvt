@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_http_server_xss_header_injection_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle HTTP Server 'Expect' Header Cross-Site Scripting Vulnerability
 #
@@ -24,30 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in context of an affected site.
-  Impact Level: Application";
-tag_affected = "Oracle HTTP Server for Oracle Application Server 10g Release 2.";
-tag_insight = "The flaw is caused by improper validation of user-supplied input passed via
-  the 'Expect' header from an HTTP request, which allows attackers to execute
-  arbitrary HTML and script code on the web server.";
-tag_solution = "Upgrade to Oracle HTTP Server 11g or later,
-  For updates refer to http://www.oracle.com/technetwork/middleware/ias/downloads/index.html";
-tag_summary = "This host is running Oracle HTTP Server and is prone to cross site
-  scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902526");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Oracle HTTP Server 'Expect' Header Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17393/");
-  script_xref(name : "URL" , value : "http://www.securiteam.com/securityreviews/5KP0M1FJ5E.html");
-  script_xref(name : "URL" , value : "http://www.yaboukir.com/wp-content/bugtraq/XSS_Header_Injection_in_OHS_by_Yasser.pdf");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17393/");
+  script_xref(name:"URL", value:"http://www.securiteam.com/securityreviews/5KP0M1FJ5E.html");
+  script_xref(name:"URL", value:"http://www.yaboukir.com/wp-content/bugtraq/XSS_Header_Injection_in_OHS_by_Yasser.pdf");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -55,11 +43,17 @@ if(description)
   script_family("Web Servers");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
+  script code in a user's browser session in context of an affected site.");
+  script_tag(name:"affected", value:"Oracle HTTP Server for Oracle Application Server 10g Release 2.");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input passed via
+  the 'Expect' header from an HTTP request, which allows attackers to execute
+  arbitrary HTML and script code on the web server.");
+  script_tag(name:"solution", value:"Upgrade to Oracle HTTP Server 11g or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is running Oracle HTTP Server and is prone to cross site
+  scripting vulnerability.");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/middleware/ias/downloads/index.html");
   exit(0);
 }
 
@@ -68,28 +62,23 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 if(!port){
   exit(0);
 }
 
-## Confirm the application
 banner = get_http_banner(port: port);
 if("Server: Oracle-Application-Server" >!< banner ||
    "Oracle-HTTP-Server" >!< banner) {
   exit(0);
 }
 
-## Construct attack request
 req = string("GET /index.html HTTP/1.1\r\n",
              "Host: ",get_host_name(),"\r\n",
              "Expect: <script>alert('openvas-xss-test')</script>\r\n\r\n");
 
-## Try XSS Attack
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Check the response to confirm vulnerability
 if(res =~ "HTTP/1\.. 200" && "Expect: <script>alert('openvas-xss-test')</script>" >< res){
   security_message(port);
 }

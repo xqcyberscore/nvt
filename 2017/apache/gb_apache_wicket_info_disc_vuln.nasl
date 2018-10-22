@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_info_disc_vuln.nasl 7436 2017-10-16 05:44:20Z asteins $
+# $Id: gb_apache_wicket_info_disc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Wicket Information Disclosure Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112076");
-  script_version("$Revision: 7436 $");
+  script_version("$Revision: 11983 $");
 
   script_cve_id("CVE-2014-0043");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 07:44:20 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-10 15:13:12 +0200 (Tue, 10 Oct 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Apache Wicket
   and is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"By issuing requests to special URLs handled by Wicket it is possible to
       check for the existence of particular classes in the classpath and thus
@@ -56,12 +55,11 @@ if(description)
   script_tag(name:"affected", value:"Apache Wicket versions 1.5.x before 1.5.11 and 6.x before
   6.14.0.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Wicket 1.5.11 or 6.14.0.
-  For updates refer to http://wicket.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Wicket 1.5.11 or 6.14.0.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value : "https://lists.apache.org/thread.html/d95e962f2f059a09f5abf7086c3f4ed22d2ae2c21499d0de95d4435d@1392986987@%3Cannounce.wicket.apache.org%3E");
+  script_xref(name:"URL", value:"https://lists.apache.org/thread.html/d95e962f2f059a09f5abf7086c3f4ed22d2ae2c21499d0de95d4435d@1392986987@%3Cannounce.wicket.apache.org%3E");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
 
@@ -72,6 +70,7 @@ if(description)
   script_mandatory_keys("Apache/Wicket/Installed");
   script_require_ports("Services/www", 8080);
 
+  script_xref(name:"URL", value:"http://wicket.apache.org");
   exit(0);
 }
 

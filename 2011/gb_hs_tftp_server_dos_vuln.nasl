@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hs_tftp_server_dos_vuln.nasl 5477 2017-03-03 12:16:42Z cfi $
+# $Id: gb_hs_tftp_server_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Hillstone Software TFTP Write/Read Request Server Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802406");
-  script_version("$Revision: 5477 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4720");
   script_bugtraq_id(50886);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 13:16:42 +0100 (Fri, 03 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:58:57 +0530 (Mon, 05 Dec 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,30 +45,17 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/107468/hillstone-dos.txt");
   script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_Hillstone_Software_HS_TFTP_Server_DoS.txt");
 
-  tag_impact = "Successful exploitation will allow attacker to crash the server
-  process, resulting in a denial-of-service condition.
-
-  Impact Level: Application";
-
-  tag_affected = "Hillstone Software HS TFTP version 1.3.2";
-
-  tag_insight = "The flaw is caused by an error when processing TFTP write and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the server
+  process, resulting in a denial-of-service condition.");
+  script_tag(name:"affected", value:"Hillstone Software HS TFTP version 1.3.2");
+  script_tag(name:"insight", value:"The flaw is caused by an error when processing TFTP write and
   read requests, which can be exploited to crash the server via a specially
-  crafted request sent to UDP port 69.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running Hillstone Software TFTP Server and is
-  prone to denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  crafted request sent to UDP port 69.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Hillstone Software TFTP Server and is
+  prone to denial of service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -93,7 +80,6 @@ crash = raw_string(0x00,0x02) + string(crap(data: raw_string(0x90),
 send( socket:sock, data:crash );
 close( sock );
 
-## Check UDP port closed or not
 ## i.e Confirm exploit worked or not
 if( ! tftp_alive( port:port ) ) {
   security_message( port:port, proto:"udp" );

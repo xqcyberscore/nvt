@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tikiwiki_show_errors_stored_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: secpod_tikiwiki_show_errors_stored_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Tiki Wiki CMS Groupware 'show_errors' Parameter Stored Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902651");
-  script_version("$Revision: 7585 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4551");
   script_bugtraq_id(51128);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-21 15:59:55 +0530 (Wed, 21 Dec 2011)");
   script_name("Tiki Wiki CMS Groupware 'show_errors' Parameter Stored Cross-Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,30 +48,17 @@ if(description)
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/51128.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108036/INFOSERVE-ADV2011-07.txt");
 
-  tag_impact = "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application";
-
-  tag_affected = "Tiki Wiki CMS Groupware versions prior to 8.2 and 6.5 LTS.";
-
-  tag_insight = "The flaw is due to improper validation of user-supplied input to
+  context of an affected site.");
+  script_tag(name:"affected", value:"Tiki Wiki CMS Groupware versions prior to 8.2 and 6.5 LTS.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input to
   'show_errors' parameter in 'tiki-cookie-jar.php', 'tiki-login.php' and
   'tiki-remind_password.php' script, which allows attackers to conduct stored
-   xss by sending a crafted request with JavaScript.";
-
-  tag_solution = "Upgrade Tiki Wiki CMS Groupware to 8.2 or 6.5 LTS or later,
-  For updates refer to http://info.tiki.org/";
-
-  tag_summary = "The host is running Tiki Wiki CMS Groupware and is prone to stored cross site
-  scripting vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+   xss by sending a crafted request with JavaScript.");
+  script_tag(name:"solution", value:"Upgrade Tiki Wiki CMS Groupware to 8.2 or 6.5 LTS or later.");
+  script_tag(name:"summary", value:"The host is running Tiki Wiki CMS Groupware and is prone to stored cross site
+  scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

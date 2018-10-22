@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_sec_bypass_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_mult_sec_bypass_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # PHP Multiple Security Bypass Vulnerabilities
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801585");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2006-7243", "CVE-2010-4699", "CVE-2011-0754",
                 "CVE-2011-0753", "CVE-2011-0755");
@@ -52,9 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://svn.php.net/viewvc?view=revision&revision=305507");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to trigger an incomplete
-  output array, and possibly bypass spam detection or have unspecified other impact.
-
-  Impact Level: Application/Network");
+  output array, and possibly bypass spam detection or have unspecified other impact.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.3.4");
 
@@ -73,8 +71,7 @@ if(description)
 
   - Race condition in the 'PCNTL extension', when a user-defined signal handler exists.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.3.4 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.3.4 or later");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple security
   bypass vulnerability.");
@@ -82,6 +79,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

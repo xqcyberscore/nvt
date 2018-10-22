@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_docuform_mercury_webapp_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # docuFORM Mercury WebApp Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -24,37 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause Cross-Site
-Scripting by executing arbitrary codes with in the context of the affected
-application.
-
-Impact Level: Application.";
-
-tag_affected = "Mercury Web Application version 6.16a and 5.20";
-
-tag_insight = "Input passed to the 'this_url' and 'aa_sfunc' parameters in
-f_state.php,f_list.php, f_job.php and f_header.php, is not properly
-sanitised before being used in SQL queries.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running docuFORM Mercury WebApplication is prone
-to multiple cross-site scripting vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902414");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("docuFORM Mercury WebApp Multiple Cross-Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5010.php");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100625/ZSL-2011-5010.txt");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5010.php");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/100625/ZSL-2011-5010.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -62,11 +42,18 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause Cross-Site
+Scripting by executing arbitrary codes with in the context of the affected
+application.");
+  script_tag(name:"affected", value:"Mercury Web Application version 6.16a and 5.20");
+  script_tag(name:"insight", value:"Input passed to the 'this_url' and 'aa_sfunc' parameters in
+f_state.php, f_list.php, f_job.php and f_header.php, is not properly
+sanitised before being used in SQL queries.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running docuFORM Mercury WebApplication is prone
+to multiple cross-site scripting vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -84,13 +71,11 @@ if(!port){
 sndReq = http_get(item:"/Mercury/login.php", port:port);
 rcvRes = http_send_recv(port:port, data:sndReq);
 
-## Confirm the application
 if("<title>Mercury</title>" >< rcvRes)
 {
   filename = "/Mercury/f_state.php";
   host = get_host_name();
 
-  ## Construct the attack string
   authVariables = "aa_afunc=call&aa_sfunc=1%3Cscript%3Ealert%28%27XSS-ATTACK" +
                   "%27%29%3C%2Fscript%3E&aa_cfunc=OnAgentGetDeviceList&aa_sf" +
                   "unc_args%255B%255D=0";
@@ -102,7 +87,6 @@ if("<title>Mercury</title>" >< rcvRes)
   ## Send the constructed attack string
   rcvRes = http_send_recv(port:port, data:sndReq);
 
-  ## Confirm the exploit by response
   if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert('XSS-ATTACK')</script>" >< rcvRes){
     security_message(port);
   }

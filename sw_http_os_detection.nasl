@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11724 2018-10-02 10:01:35Z cfischer $
+# $Id: sw_http_os_detection.nasl 12015 2018-10-22 10:04:08Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:01:35 +0200 (Tue, 02 Oct 2018) $");
+  script_version("$Revision: 12015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:04:08 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl",
-                      "sw_apcu_info.nasl", "phpinfo.nasl"); # nb: Both are setting a possible existing banner used by check_php_banner()
+                      "sw_apcu_info.nasl", "gb_phpinfo_output_detect.nasl"); # nb: Both are setting a possible existing banner used by check_php_banner()
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -73,6 +73,11 @@ function check_http_banner( port, banner ) {
 
     # Runs on Windows, Linux and Mac OS X
     if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) return;
+
+    # Server: SentinelProtectionServer/7.3
+    # Server: SentinelKeysServer/1.3.2
+    # Seems to be running on Windows and NetWare systems.
+    if( "SentinelProtectionServer" >< banner || "SentinelKeysServer" >< banner ) return;
 
     # Server: EWS-NIC5/15.18
     # Server: EWS-NIC5/96.55
@@ -871,7 +876,7 @@ function check_php_banner( port, host ) {
 
   phpBanner = egrep( pattern:"^X-Powered-By: PHP/.*$", string:phpBanner, icase:TRUE );
   if( ! phpBanner ) {
-    # nb: Currently set by sw_apcu_info.nasl and phpinfo.nasl but could be extended by other PHP scripts providing such info
+    # nb: Currently set by sw_apcu_info.nasl and gb_phpinfo_output_detect.nasl but could be extended by other PHP scripts providing such info
     phpscriptsUrls = get_kb_list( "php/banner/from_scripts/" + host + "/" + port + "/urls" );
     if( phpscriptsUrls && is_array( phpscriptsUrls ) ) {
       foreach phpscriptsUrl( phpscriptsUrls ) {

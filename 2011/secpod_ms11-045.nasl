@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-045.nasl 11560 2018-09-24 06:18:38Z cfischer $
+# $Id: secpod_ms11-045.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2537146)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902378");
-  script_version("$Revision: 11560 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:18:38 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-15 15:55:00 +0200 (Wed, 15 Jun 2011)");
   script_cve_id("CVE-2011-1272", "CVE-2011-1273", "CVE-2011-1274", "CVE-2011-1275",
                 "CVE-2011-1276", "CVE-2011-1277", "CVE-2011-1278", "CVE-2011-1279");
@@ -64,9 +64,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are caused by memory corruption, heap and integer overflows, buffer
   overwrite, out of bounds array access when handling the crafted Excel files.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/MS11-045.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-045.");
   script_tag(name:"qod_type", value:"registry");

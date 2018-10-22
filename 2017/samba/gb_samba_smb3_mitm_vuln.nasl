@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smb3_mitm_vuln.nasl 11768 2018-10-05 14:07:38Z cfischer $
+# $Id: gb_samba_smb3_mitm_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Samba Server 'SMB3' MitM Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811906");
-  script_version("$Revision: 11768 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-12151");
   script_bugtraq_id(100917);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 13:19:22 +0530 (Fri, 22 Sep 2017)");
   script_name("Samba Server 'SMB3' MitM Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -55,14 +55,11 @@ if(description)
   for encryption and also the requirement for signing.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read and/or alter the content of the connection.
-
-  Impact Level: Application");
+  attacker to read and/or alter the content of the connection.");
 
   script_tag(name:"affected", value:"Samba versions 4.1.0 to 4.6.7");
 
-  script_tag(name:"solution", value:"Upgrade to Samba 4.6.8, 4.5.14 or 4.4.16
-  For updates refer to https://www.samba.org");
+  script_tag(name:"solution", value:"Upgrade to Samba 4.6.8, 4.5.14 or 4.4.16");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808115");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2014-4238", "CVE-2014-4240", "CVE-2014-4233",
                 "CVE-2014-2484", "CVE-2014-4214");
   script_bugtraq_id(68587, 68602, 68598, 68560, 68607);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:49 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-03 Jun16 (Linux)");
 
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.17 and
   earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/59521");
   script_xref(name:"URL", value:"http://www.computerworld.com/s/article/9249690/Oracle_to_release_115_security_patches");

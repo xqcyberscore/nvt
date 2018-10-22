@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_lua_script_code_exec_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Wireshark Lua Script File Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802249");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49528);
   script_cve_id("CVE-2011-3360");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an unspecified error related to Lua scripts, which
   allows local users to gain privileges via a Trojan horse Lua script in an
   unspecified directory.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.9, 1.6.2 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.9, 1.6.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to code
   execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

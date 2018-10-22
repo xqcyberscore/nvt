@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_mult_plugins_sql_inj_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_mult_plugins_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Multiple Plugins SQL Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902755");
-  script_version("$Revision: 10235 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(49382, 49381);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-17 14:31:04 +0530 (Thu, 17 Nov 2011)");
   script_name("WordPress Multiple Plugins SQL Injection Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -51,9 +51,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104608/wpcrawlratetracker-sql.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to conduct
-  SQL injection attacks.
-
-  Impact Level: Application");
+  SQL injection attacks.");
 
   script_tag(name:"affected", value:"WordPress Yolink Search version 1.1.4
 

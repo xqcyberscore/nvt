@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Lotus Domino Cross Site Scripting and Buffer Overflow Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902572");
-  script_version("$Revision: 7575 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_bugtraq_id(49701, 49705);
   script_cve_id("CVE-2011-3575", "CVE-2011-3576");
@@ -45,20 +45,18 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
   arbitrary code with system-level privileges or steal cookie-based authentication
-  credentials and launch other attacks.
-
-  Impact Level: System/Application");
+  credentials and launch other attacks.");
   script_tag(name:"affected", value:"IBM Lotus Domino Versions 8.5.2 and prior.");
   script_tag(name:"insight", value:"- Input passed via the 'PanelIcon' parameter in an
   fmpgPanelHeader ReadForm action to WebAdmin.nsf is not properly sanitised
   before being returned to the user. This can be exploited to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site.
+
   - Stack-based buffer overflow error in the NSFComputeEvaluateExt function
   in Nnotes.dll allows remote authenticated users to execute arbitrary code
   via a long 'tHPRAgentName' parameter in an fmHttpPostRequest OpenForm
   action to WebAdmin.nsf.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Domino Versions 8.5.2 FP2, 8.5.3 or later.
-  For updates refer to http://www-01.ibm.com/software/lotus/products/domino/");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Domino Versions 8.5.2 FP2, 8.5.3 or later.");
   script_tag(name:"summary", value:"The host is running IBM Lotus Domino Server and is prone to cross
   site scripting and buffer overflow vulnerabilities.");
 
@@ -69,6 +67,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www-01.ibm.com/software/lotus/products/domino/");
   exit(0);
 }
 
@@ -80,7 +79,6 @@ if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 
 vers = ereg_replace( pattern:"FP", string:vers, replace:".FP" );
 
-## Check for Vulnerable Lotus Domino Versions
 if( version_is_less( version:vers, test_version:"8.5.2.FP2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"8.5.2 FP2" );
   security_message( port:0, data:report );

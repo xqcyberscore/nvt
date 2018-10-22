@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_fisheye_crucible_rce_vuln.nasl 8247 2017-12-26 13:32:16Z cfischer $
+# $Id: gb_atlassian_fisheye_crucible_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Atlassian FishEye and Crucible RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:fisheye";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140588");
-  script_version("$Revision: 8247 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-07 11:26:13 +0700 (Thu, 07 Dec 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-07 11:26:13 +0700 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-14591");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian FishEye and Crucible RCE Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_atlassian_fisheye_crucible_detect.nasl");
   script_mandatory_keys("atlassian_fisheye_crucible/installed");
 
-  script_tag(name: "summary", value: "Atlassian FishEye and Crucible is prone to a remote command execution
+  script_tag(name:"summary", value:"Atlassian FishEye and Crucible is prone to a remote command execution
 vulnerability.");
 
-  script_tag(name: "insight", value: "Fisheye and Crucible does not check that the name of a file in a Mercurial
+  script_tag(name:"insight", value:"Fisheye and Crucible does not check that the name of a file in a Mercurial
 repository contained argument parameters. An attacker who has permission to add a repository or commit to a
 mercurial repository tracked by Fisheye or Crucible, can execute code of their choice on systems that run a
 vulnerable version of Fisheye or Crucible.");
 
-  script_tag(name: "affected", value: "Fisheye and Crucible version 4.5.0 and prior to 4.4.3.");
+  script_tag(name:"affected", value:"Fisheye and Crucible version 4.5.0 and prior to 4.4.3.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Update to version 4.4.3, 4.5.1 or later.");
+  script_tag(name:"solution", value:"Update to version 4.4.3, 4.5.1 or later.");
 
-  script_xref(name: "URL", value: "https://confluence.atlassian.com/crucible/fisheye-and-crucible-security-advisory-2017-11-29-939939750.html");
+  script_xref(name:"URL", value:"https://confluence.atlassian.com/crucible/fisheye-and-crucible-security-advisory-2017-11-29-939939750.html");
 
   exit(0);
 }

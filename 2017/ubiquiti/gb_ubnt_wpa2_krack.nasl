@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_wpa2_krack.nasl 7658 2017-11-06 05:53:53Z teissa $
+# $Id: gb_ubnt_wpa2_krack.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108257");
-  script_version("$Revision: 7658 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080",
                 "CVE-2017-13081", "CVE-2017-13082", "CVE-2017-13084", "CVE-2017-13086",
                 "CVE-2017-13087", "CVE-2017-13088");
   script_bugtraq_id(101274);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-06 06:53:53 +0100 (Mon, 06 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 10:31:0 +0200 (Thu, 19 Oct 2017)");
   script_name("Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,7 @@ if(description)
   user to intercept and manipulate data or disclose sensitive information.
   This may aid in further attacks.");
 
-  script_tag(name:"affected" , value:"UAP/USW products with firmware versions below 3.9.3.7537.");
+  script_tag(name:"affected", value:"UAP/USW products with firmware versions below 3.9.3.7537.");
 
   script_tag(name:"solution", value:"Upgrade the firmware to 3.9.3.7537 or later.");
 
@@ -77,7 +77,7 @@ if( ! sm || sm !~ "^(U7PG2|U7HD|BZ2|U2Sv2|U2IW|U7P|U2HSR|US24P250|US24PL2|USXG)"
 
 vers = eregmatch( pattern:"\.v([0-9]\.[0-9]\.[0-9]+\.[0-9]+)", string:fw );
 if( isnull( vers[1] ) ) exit( 0 );
-if( vers[1] !~ "^3\.9" ) exit( 99 ); # Note from vendor: This primarily affects devices that support STA mode. It's worth noting that 1st gen AC devices do not support STA mode, which is why we have only released a 3.9.x firmware. 
+if( vers[1] !~ "^3\.9" ) exit( 99 ); # Note from vendor: This primarily affects devices that support STA mode. It's worth noting that 1st gen AC devices do not support STA mode, which is why we have only released a 3.9.x firmware.
 
 if( version_is_less( version:vers[1], test_version:"3.9.3.7537" ) ) {
   report = report_fixed_ver( installed_version:vers[1], fixed_version:"3.9.3.7537" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_50710.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_nginx_50710.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability
 #
@@ -31,11 +31,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103344");
   script_bugtraq_id(50710);
   script_cve_id("CVE-2011-4315");
-  script_version ("$Revision: 7015 $");
+  script_version("$Revision: 11997 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("nginx DNS Resolver Remote Heap Buffer Overflow Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-21 11:12:32 +0100 (Mon, 21 Nov 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -52,10 +52,10 @@ if(description)
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
   information.");
   script_tag(name:"summary", value:"nginx is prone to a remote heap-based buffer-overflow vulnerability.");
-  script_tag(name:"impact", value: "Successfully exploiting this issue allows attackers to execute
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute
   arbitrary code in the context of the vulnerable application. Failed
   exploit attempts will result in a denial-of-service condition.");
-  script_tag(name:"affected" , value: "Versions prior to nginx 1.0.10 are vulnerable.");
+  script_tag(name:"affected", value:"Versions prior to nginx 1.0.10 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,7 +64,7 @@ if(description)
 }
 
 include("version_func.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

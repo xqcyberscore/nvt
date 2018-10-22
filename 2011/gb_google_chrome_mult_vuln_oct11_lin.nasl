@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_oct11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_oct11_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Google Chrome multiple vulnerabilities - October11 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802257");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-2876", "CVE-2011-2877", "CVE-2011-2878", "CVE-2011-2879",
                 "CVE-2011-2880", "CVE-2011-2881", "CVE-2011-3873");
@@ -66,12 +66,12 @@ if(description)
   - An error when handling v8 hidden objects can be exploited to corrupt memory.
 
   - An error in the shader translator can be exploited to corrupt memory.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.835.202 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.835.202 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smb1_memory_leak_vuln.nasl 11771 2018-10-08 05:52:02Z asteins $
+# $Id: gb_samba_smb1_memory_leak_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Samba Server 'SMB1' Memory Information Leak Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811905");
-  script_version("$Revision: 11771 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-12163");
   script_bugtraq_id(100925);
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 13:09:22 +0530 (Fri, 22 Sep 2017)");
   script_name("Samba Server 'SMB1' Memory Information Leak Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -56,15 +56,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a client with
   write access to a share can cause server memory contents to be written into a file
-  or printer.
-
-  Impact Level: Application");
+  or printer.");
 
   script_tag(name:"affected", value:"Samba versions before 4.4.16,
   4.5.0 before 4.5.14, and 4.6.0 before 4.6.8.");
 
-  script_tag(name:"solution", value:"Upgrade to Samba 4.6.8, 4.5.14 and 4.4.16 or later.
-  For updates refer to https://www.samba.org");
+  script_tag(name:"solution", value:"Upgrade to Samba 4.6.8, 4.5.14 and 4.4.16 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

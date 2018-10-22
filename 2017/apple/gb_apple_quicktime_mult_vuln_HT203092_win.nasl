@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_HT203092_win.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_quicktime_mult_vuln_HT203092_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apple QuickTime Multiple Vulnerabilities-HT203092 (Windows)
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812350");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-4351", "CVE-2014-4350", "CVE-2014-4979", "CVE-2014-1391");
   script_bugtraq_id(68852, 70643, 69908, 69907);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 17:26:49 +0530 (Thu, 14 Dec 2017)");
   script_name("Apple QuickTime Multiple Vulnerabilities-HT203092 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Apple QuickTime
+  script_tag(name:"summary", value:"This host is installed with Apple QuickTime
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A memory corruption issue existed in the handling of RLE encoded movie files.
 
@@ -53,29 +53,28 @@ if(description)
 
   - A buffer overflow existed in the handling of audio samples.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause unexpected application termination or run arbitrary code
-  on affected system.
+  on affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple QuickTime version before 7.7.6 on
+  script_tag(name:"affected", value:"Apple QuickTime version before 7.7.6 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple QuickTime version 7.7.6
-  or later. For updates refer to http://support.apple.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.7.6
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT203092");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT203092");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");
   script_mandatory_keys("QuickTime/Win/Ver");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads");
   exit(0);
 }
 

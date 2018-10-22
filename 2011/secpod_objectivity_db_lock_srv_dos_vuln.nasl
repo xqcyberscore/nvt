@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_objectivity_db_lock_srv_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_objectivity_db_lock_srv_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Objectivity/DB Lock Server Denial of Service Vulnerability
 #
@@ -24,37 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation may allow remote attackers to cause the
-application to crash by sending specific commands.
-
-Impact Level: Application";
-
-tag_affected = "Objectivity/DB Version R10";
-
-tag_insight = "The flaw is due to Lock Server component allowing to perform
-various administrative operations without authentication.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Objectivity/DB Lock Server and is prone
-to denial of service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900270");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Objectivity/DB Lock Server Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42901");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/45803");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64699");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15988/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42901");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45803");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64699");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15988/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_DENIAL);
@@ -62,20 +44,20 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("find_service.nasl");
   script_require_ports(6780);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
+application to crash by sending specific commands.");
+  script_tag(name:"affected", value:"Objectivity/DB Version R10");
+  script_tag(name:"insight", value:"The flaw is due to Lock Server component allowing to perform
+various administrative operations without authentication.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Objectivity/DB Lock Server and is prone
+to denial of service vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
-## Lock Server Server port
 oolsPort = 6780;
 if(!get_port_state(oolsPort)){
   exit(0);
@@ -91,7 +73,6 @@ ools_kill_data = raw_string(0x0d, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x77,
 ## Send Crafted packet several times
 for(i=0; i < 5; i++)
 {
-  ## Open TCP Socket
   soc = open_sock_tcp(oolsPort);
   if(!soc){
     exit(0);
@@ -104,7 +85,6 @@ for(i=0; i < 5; i++)
   close(soc);
   sleep(5);
 
-  ## Check, Still Lock Server service is running
   soc = open_sock_tcp(oolsPort);
   if(!soc)
   {

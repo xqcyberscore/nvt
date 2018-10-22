@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_mult_vuln.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: gb_pdns_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # PowerDNS Recursor Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140543");
-  script_version("$Revision: 8893 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-28 08:39:40 +0700 (Tue, 28 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-28 08:39:40 +0700 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15090", "CVE-2017-15092", "CVE-2017-15094");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("PowerDNS Recursor Multiple Vulnerabilities");
 
@@ -51,25 +51,25 @@ if(description)
   script_dependencies("pdns_version.nasl");
   script_mandatory_keys("powerdns/recursor/installed");
 
-  script_tag(name: "summary", value: "PowerDNS Recursor is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"PowerDNS Recursor is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "PowerDNS Recursor is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"PowerDNS Recursor is prone to multiple vulnerabilities:
 
-- Insufficient validation of DNSSEC signatures (CVE-2017-15090)
+  - Insufficient validation of DNSSEC signatures (CVE-2017-15090)
 
-- Cross-Site Scripting in the web interface (CVE-2017-15092)
+  - Cross-Site Scripting in the web interface (CVE-2017-15092)
 
-- Memory leak in DNSSEC parsing (CVE-2017-15094)");
+  - Memory leak in DNSSEC parsing (CVE-2017-15094)");
 
-  script_tag(name: "affected", value: "PowerDNS Recursor from 4.0.0 up to and including 4.0.6.");
+  script_tag(name:"affected", value:"PowerDNS Recursor from 4.0.0 up to and including 4.0.6.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.0.7 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 4.0.7 or later.");
 
-  script_xref(name: "URL", value: "https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-03.html");
-  script_xref(name: "URL", value: "https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-05.html");
-  script_xref(name: "URL", value: "https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-07.html");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-03.html");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-05.html");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-07.html");
 
   exit(0);
 }

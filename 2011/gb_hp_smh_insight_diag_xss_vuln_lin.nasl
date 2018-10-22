@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_insight_diag_xss_vuln_lin.nasl 11117 2018-08-26 13:17:27Z cfischer $
+# $Id: gb_hp_smh_insight_diag_xss_vuln_lin.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # HP SMH Insight Diagnostics Cross Site Scripting Vulnerability - Linux
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800191");
-  script_version("$Revision: 11117 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 15:17:27 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02652463");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject arbitrary HTML code
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"HP Insight Diagnostics Online Edition before 8.5.1.3712 on Linux.");
 
@@ -57,8 +55,7 @@ if(description)
   and script code in a user's browser session in the context of an
   affected site.");
 
-  script_tag(name:"solution", value:"Upgrade to 8.5.1.3712 or higher versions or refer vendor advisory for
-  update, http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02652463");
+  script_tag(name:"solution", value:"Upgrade to 8.5.1.3712 or higher versions or refer vendor advisory for update.");
 
   script_tag(name:"summary", value:"The host is running HP SMH with Insight Diagnostics and is prone
   to cross-site scripting vulnerability.");

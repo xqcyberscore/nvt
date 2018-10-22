@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_win.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities (Windows) - Nov 2011
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802508");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11987 $");
   script_cve_id("CVE-2011-2446", "CVE-2011-2447", "CVE-2011-2448", "CVE-2011-2449");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-10 12:17:59 +0530 (Thu, 10 Nov 2011)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities (Windows) - Nov 2011");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46667/");
@@ -50,12 +50,12 @@ if(description)
   - DIRAPI.dll and TextXtra.x32 when parsing Director file headers.
 
   - DIRAPI.dll when parsing rcsl chunks within Director files.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.3.633 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.3.633 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/otherversions/");
   exit(0);
 }
 

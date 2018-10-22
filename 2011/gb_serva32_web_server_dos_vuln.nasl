@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serva32_web_server_dos_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_serva32_web_server_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Serva32 Webserver Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802020");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_bugtraq_id(47760);
   script_tag(name:"cvss_base", value:"7.8");
@@ -47,41 +47,32 @@ if(description)
   script_mandatory_keys("Serva32/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
-  cause a denial of service or possibly execute arbitrary code.
-  Impact Level: Application");
+  cause a denial of service or possibly execute arbitrary code.");
   script_tag(name:"affected", value:"Serva32 1.2.00 RC1, Other versions may also be affected.");
   script_tag(name:"insight", value:"The flaw is caused the way Serva32 web server handles certain requests having
   huge length URI, which causes application to crash.");
-  script_tag(name:"solution", value:"Upgrade to Serva32 Version 1.2.1 or later.
-  For updates refer to http://www.vercot.com/~serva/");
+  script_tag(name:"solution", value:"Upgrade to Serva32 Version 1.2.1 or later.");
   script_tag(name:"summary", value:"This host is running Serva32 web server and is prone to denial of service
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.vercot.com/~serva/");
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get Host Name or IP
 host = http_host_name(port:port);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: Serva32" >!< banner) {
   exit(0);
 }
-## Confirm the server is alive and running
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 if("Server: Serva32" >!< res) {
@@ -94,10 +85,8 @@ req = string("GET ", craftedData, " HTTP/1.1\r\n", "Host: ", host, "\r\n\r\n");
 res = http_send_recv(port:port, data:req);
 res = http_send_recv(port:port, data:req);
 
-## Sleep for 2 sec
 sleep(2);
 
-## Check still server is alive or not, If not then
 ## server is died and it's vulnerable
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);

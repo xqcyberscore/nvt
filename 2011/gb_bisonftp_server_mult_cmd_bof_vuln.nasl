@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bisonftp_server_mult_cmd_bof_vuln.nasl 4704 2016-12-07 14:26:08Z cfi $
+# $Id: gb_bisonftp_server_mult_cmd_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # BisonFTP Multiple Commands Remote Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802033");
-  script_version("$Revision: 4704 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 15:26:08 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-1999-1510");
   script_bugtraq_id(271, 49109);
@@ -44,27 +44,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17649");
   script_xref(name:"URL", value:"http://marc.info/?l=ntbugtraq&m=92697301706956&w=2");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  on the system or cause the application to crash.
-
-  Impact Level: System/Application";
-
-  tag_affected = "BisonFTP Server prior to version 4.1";
-
-  tag_insight = "The flaws are due to an error while processing the 'USER', 'LIST',
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
+  on the system or cause the application to crash.");
+  script_tag(name:"affected", value:"BisonFTP Server prior to version 4.1");
+  script_tag(name:"insight", value:"The flaws are due to an error while processing the 'USER', 'LIST',
   'CWD' multiple commands, which can be exploited to cause a buffer overflow
-  by sending a command with specially-crafted an overly long parameter.";
-
-  tag_solution = "Upgrade to BisonFTP Server Version 4.1 or higher.";
-
-  tag_summary = "The host is running BisonFTP Server and is prone to multiple buffer
-  overflow vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  by sending a command with specially-crafted an overly long parameter.");
+  script_tag(name:"solution", value:"Upgrade to BisonFTP Server Version 4.1 or higher.");
+  script_tag(name:"summary", value:"The host is running BisonFTP Server and is prone to multiple buffer
+  overflow vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -74,30 +62,25 @@ if(description)
 
 include("ftp_func.inc");
 
-## Get the default FTP port
 ftpPort = get_kb_item("Services/ftp");
 if(!ftpPort){
   ftpPort = 21;
 }
 
-## Check FTP Port Status
 if(!get_port_state(ftpPort)){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(ftpPort);
 if(!soc) {
   exit(0);
 }
 
-## Confirm the application with FTP banner
 resp =  recv(socket:soc, length:1024);
 if("BisonWare BisonFTP server" >!< resp){
   exit(0);
 }
 
-## Construct and send Crafted Request
 attackReq = crap(data: "A", length: 5000);
 
 ## Send USER command with huge parameter
@@ -106,10 +89,8 @@ send(socket:soc, data:attack);
 send(socket:soc, data:attack);
 resp =  recv(socket:soc, length:1024);
 
-## Close FTP socket
 ftp_close(socket:soc);
 
-## Open TCP Socket
 soc1 = open_sock_tcp(ftpPort);
 if(!soc1) {
   security_message(port:ftpPort);
@@ -119,10 +100,8 @@ if(!soc1) {
 ## Receive data from server
 resp =  recv(socket:soc1, length:1024);
 
-## Close FTP socket
 ftp_close(socket:soc1);
 
-## Confirm FTP Server is still alive and responding
 if("BisonWare BisonFTP server" >!< resp){
   security_message(port:ftpPort);
   exit(0);

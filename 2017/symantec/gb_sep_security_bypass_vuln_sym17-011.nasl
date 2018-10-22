@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sep_security_bypass_vuln_sym17-011.nasl 7977 2017-12-04 08:28:58Z asteins $
+# $Id: gb_sep_security_bypass_vuln_sym17-011.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Symantec Endpoint Protection Security Bypass Vulnerability (SYM17-011)
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812070");
-  script_version("$Revision: 7977 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-6331");
   script_bugtraq_id(101502);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 09:28:58 +0100 (Mon, 04 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-08 16:56:13 +0530 (Wed, 08 Nov 2017)");
   script_name("Symantec Endpoint Protection Security Bypass Vulnerability (SYM17-011)");
 
-  script_tag(name: "summary" , value:"This host is installed with Symantec
+  script_tag(name:"summary", value:"This host is installed with Symantec
   Endpoint Protection and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to unspecified error
+  script_tag(name:"insight", value:"The flaw exists due to unspecified error
   within the application.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to bypass certain security restrictions and gain access to possibly sensitive
-  information.
+  information.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Symantec Endpoint Protection 12.1.X and prior
+  script_tag(name:"affected", value:"Symantec Endpoint Protection 12.1.X and prior
   to SEP 14 RU1.");
 
-  script_tag(name: "solution" , value:"Upgrade to Symantec Endpoint Protection
-  14 RU1 or later. For updates refer to, https://www.symantec.com");
+  script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection
+  14 RU1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20171106_00");
+  script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20171106_00");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -86,11 +83,10 @@ sepPath = infos['location'];
 
 ## Symantec Endpoint Protection 14.0.1 (14 RU1) is the next release after version 14 MP2
 ## 14 MP2 == 14.0.2415.0200 (https://symwisedownload.symantec.com//resources/sites/SYMWISE/content/live/DOCUMENTATION/10000/DOC10647/en_US/Release_Notes_SEP14.0.1_14.1.pdf?__gda__=1510269710_1109370072d2e4fd90dffcbaae4e2737)
-## Check for vulnerable version
 if(version_in_range(version:sepVer, test_version:"12.1", test_version2:"14.0.2415.0200"))
 {
   report = report_fixed_ver(installed_version:sepVer, vulnerable_range:"12.1 - 14.0.2415.0200", install_path:sepPath);
   security_message(data:report);
-  exit(0); 
+  exit(0);
 }
 exit(0);

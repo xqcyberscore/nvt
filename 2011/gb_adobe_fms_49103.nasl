@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_49103.nasl 4711 2016-12-08 10:12:18Z cfi $
+# $Id: gb_adobe_fms_49103.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Adobe Flash Media Server Memory Corruption Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:adobe:flash_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103192");
-  script_version("$Revision: 4711 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 11:12:18 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 15:25:18 +0200 (Wed, 10 Aug 2011)");
   script_bugtraq_id(49103);
   script_cve_id("CVE-2010-2132");
@@ -48,19 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.adobe.com/products/flashmediaserver/");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb11-20.html");
 
-  tag_summary = "Adobe Flash Media Server is prone to a remote denial-of-service
-  vulnerability.";
-
-  tag_impact = "Successful exploits will allow attackers to crash the affected
+  script_tag(name:"solution", value:"The vendor has released an advisory and updates. Please see the
+  references for details.");
+  script_tag(name:"impact", value:"Successful exploits will allow attackers to crash the affected
   application, denying service to legitimate users. Due to the nature of
-  this issue, arbitrary code execution may be possible; this has not been confirmed.";
-
-  tag_solution = "The vendor has released an advisory and updates. Please see the
-  references for details.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  this issue, arbitrary code execution may be possible. This has not been confirmed.");
+  script_tag(name:"summary", value:"Adobe Flash Media Server is prone to a remote denial-of-service
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

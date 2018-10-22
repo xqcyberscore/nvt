@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nam_cisco-sa-20171018-nam.nasl 7881 2017-11-23 09:44:51Z jschulte $
+# $Id: gb_cisco_nam_cisco-sa-20171018-nam.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Cisco Network Analysis Module Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113053");
-  script_version("$Revision: 7881 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 10:44:51 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 15:49:00 +0100 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171018-nam");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/o:cisco:network_analysis_module_firmware";

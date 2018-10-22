@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20171115-ipp.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_cisco_ip_phone_cisco-sa-20171115-ipp.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Cisco IP Phone 8800 Series Command Injection Vulnerability in Debug Shell
 #
@@ -28,40 +28,40 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140503");
-  script_version("$Revision: 8091 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-16 09:53:34 +0700 (Thu, 16 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-16 09:53:34 +0700 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-12305");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco IP Phone 8800 Series Command Injection Vulnerability in Debug Shell");
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
   script_dependencies("gb_cisco_ip_phone_detect.nasl");
   script_mandatory_keys("cisco/ip_phone/model");
 
-  script_tag(name: "summary", value: "A vulnerability in the debug interface of Cisco IP Phone 8800 series could
+  script_tag(name:"summary", value:"A vulnerability in the debug interface of Cisco IP Phone 8800 series could
 allow an authenticated, local attacker to execute arbitrary commands.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation.");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation.");
 
-  script_tag(name: "impact", value: "An attacker could exploit this vulnerability by authenticating to the device
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by authenticating to the device
 and submitting additional command input to the affected parameter in the debug shell.");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171115-ipp");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171115-ipp");
 
   exit(0);
 }

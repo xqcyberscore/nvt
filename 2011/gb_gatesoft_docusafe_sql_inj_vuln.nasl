@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gatesoft_docusafe_sql_inj_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_gatesoft_docusafe_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # GateSoft Docusafe 'ECO.asp' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801751");
-  script_version("$Revision: 5993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2010-4736");
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/96398/gatesafedocusafe-sql.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to allow an attacker
-  to obtain sensitive information.
-
-  Impact Level: Application");
+  to obtain sensitive information.");
 
   script_tag(name:"affected", value:"GateSoft Docusafe 4.2.2 and prior");
 
@@ -56,10 +54,9 @@ if(description)
   input via the 'ECO_ID' parameter in 'ECO.asp', which allows attacker to
   manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running GateSoft Docusafe and is prone to SQL
   injection vulnerability.");
@@ -84,7 +81,6 @@ foreach dir( make_list_unique( "/docusafe", "/DocuSafe", "/", cgi_dirs( port:por
 
   if( '<title>DocuSafe</title>' >< res ) {
 
-    ## Try SQL injection and check the response to confirm vulnerability
     url = dir + "/ECO.asp?ECO_ID=' or '1'='1";
 
     if( http_vuln_check( port:port, url:url, pattern:'Syntax error') ) {

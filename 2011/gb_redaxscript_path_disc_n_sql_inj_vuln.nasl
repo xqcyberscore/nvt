@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_path_disc_n_sql_inj_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_redaxscript_path_disc_n_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Redaxscript Path Disclosure and SQL Injection Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801733");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(46089);
   script_name("Redaxscript Path Disclosure and SQL Injection Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16096/");
-  script_xref(name : "URL" , value : "http://securityreason.com/exploitalert/9918");
-  script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/sql_injection_in_redaxscript.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16096/");
+  script_xref(name:"URL", value:"http://securityreason.com/exploitalert/9918");
+  script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/sql_injection_in_redaxscript.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -46,24 +46,24 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaws are due to
+  script_tag(name:"insight", value:"The flaws are due to
+
   - Error in the '/templates/default/index.php', which reveals the full path
   of the script.
+
   - Input passed to the 'id' and 'password' parameters in '/includes/password.php'
   is not properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to Redaxscript version 0.3.2a or later.
-  For updates refer to http://redaxscript.com/download");
-  script_tag(name : "summary" , value : "This host is running Redaxscript is prone to path disclosure and SQL
+  script_tag(name:"solution", value:"Upgrade to Redaxscript version 0.3.2a or later.");
+  script_tag(name:"summary", value:"This host is running Redaxscript is prone to path disclosure and SQL
   injection vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary queries to the database, compromise the application, access or modify
-  sensitive data, or exploit various vulnerabilities in the underlying SQL database.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "Redaxscript version 0.3.2");
+  sensitive data, or exploit various vulnerabilities in the underlying SQL database.");
+  script_tag(name:"affected", value:"Redaxscript version 0.3.2");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://redaxscript.com/download");
   exit(0);
 }
 
@@ -71,10 +71,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get the default port
 redPort = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:redPort)){
   exit(0);
 }
@@ -86,13 +84,11 @@ foreach dir (make_list_unique("/redaxscript", cgi_dirs(port:redPort)))
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:redPort);
 
-  ## Confirm application Redaxscript
   if(">Redaxscript" >< rcvRes)
   {
     sndReq = http_get(item:string(dir, "/templates/default/index.php"), port:redPort);
     rcvRes = http_keepalive_send_recv(port:redPort, data:sndReq);
 
-    ## Check the response to confirm vulnerability
     if(">Fatal error<" >< rcvRes && "Call to undefined function" >< rcvRes)
     {
       security_message(port:redPort);

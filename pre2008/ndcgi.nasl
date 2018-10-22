@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: ndcgi.nasl 10818 2018-08-07 14:03:55Z cfischer $
+# $Id: ndcgi.nasl 12007 2018-10-22 07:43:49Z cfischer $
 #
 # ndcgi.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11730");
-  script_version("$Revision: 10818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 12007 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,11 +38,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"http://marc.theaimsgroup.com/?l=bugtraq&m=100681274915525&w=2");
+  script_xref(name:"URL", value:"https://marc.info/?l=bugtraq&m=100681274915525&w=2");
 
   script_tag(name:"solution", value:"Remove it from /cgi-bin.");
 
@@ -68,11 +69,11 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   url = dir + "/ndcgi.exe";
 
   if( is_cgi_installed_ka( item:url, port:port ) ) {
-    if( no404 && is_cgi_installed_ka( item:dir + "/openvas" + rand() + ".exe", port:port ) ) exit( 0 );
+    if( no404 && is_cgi_installed_ka( item:dir + "/vt-test" + rand() + ".exe", port:port ) ) exit( 0 );
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );
   }
 }
 
-exit( 99 );
+exit( 0 );

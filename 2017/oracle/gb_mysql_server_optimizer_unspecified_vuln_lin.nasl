@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_optimizer_unspecified_vuln_lin.nasl 9986 2018-05-28 14:50:35Z cfischer $
+# $Id: gb_mysql_server_optimizer_unspecified_vuln_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # MySQL Server Optimizer Component Unspecified Vulnerability (Linux)
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812182");
-  script_version("$Revision: 9986 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2012-1696");
   script_bugtraq_id(53071);
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:50:35 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 15:07:53 +0530 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_name("MySQL Server Optimizer Component Unspecified Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48890");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixMSQL");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48890");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixMSQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Databases");
@@ -46,22 +46,19 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow remote
-  authenticated users to affect availability via unknown vectors.
+  script_tag(name:"impact", value:"Successful exploitation could allow remote
+  authenticated users to affect availability via unknown vectors.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"MySQL version 5.5.x before 5.5.20");
 
-  script_tag(name : "affected" , value : "MySQL version 5.5.x before 5.5.20");
-
-  script_tag(name : "insight" , value : "Unspecified error in MySQL Server component
+  script_tag(name:"insight", value:"Unspecified error in MySQL Server component
   related to Server Optimizer.");
 
-  script_tag(name : "solution" , value : "Apply the patch from the below link,
-  http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
-  script_tag(name : "summary" , value : "The host is running MySQL and is prone to unspecified
+  script_tag(name:"summary", value:"The host is running MySQL and is prone to unspecified
   vulnerability.");
   exit(0);
 }

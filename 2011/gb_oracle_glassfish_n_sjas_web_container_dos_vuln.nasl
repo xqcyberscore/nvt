@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_oracle_glassfish_n_sjas_web_container_dos_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Oracle GlassFish/System Application Server Web Container DOS Vulnerability
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801997");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-3559");
   script_bugtraq_id(50204);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Oracle GlassFish/System Application Server Web Container DOS Vulnerability");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/46524");
-  script_xref(name: "URL", value: "http://secunia.com/advisories/46523");
-  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/70816");
-  script_xref(name: "URL", value: "http://www.securitytracker.com/id?1026222");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46524");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46523");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70816");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1026222");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -51,19 +51,19 @@ if(description)
   script_dependencies("GlassFish_detect.nasl", "secpod_sun_java_app_serv_detect.nasl");
   script_require_ports("Services/www", 8080);
 
-  script_tag(name: "impact", value: "Successful exploitation could allow malicious attackers to cause a denial of
+  script_tag(name:"impact", value:"Successful exploitation could allow malicious attackers to cause a denial of
 service.");
 
-  script_tag(name: "affected", value: "Oracle GlassFish version 2.1.1, 3.0.1 and 3.1.1 and Oracle Java System
+  script_tag(name:"affected", value:"Oracle GlassFish version 2.1.1, 3.0.1 and 3.1.1 and Oracle Java System
 Application Server version 8.1 and 8.2");
 
-  script_tag(name: "insight", value: "The flaw is due to an unspecified error within the Web Container component,
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error within the Web Container component,
 which allows remote users to cause denial of service conditions.");
 
-  script_tag(name: "summary", value: "The host is running GlassFish/System Application Server and is prone to
+  script_tag(name:"summary", value:"The host is running GlassFish/System Application Server and is prone to
 denial of service vulnerability.");
 
-  script_tag(name: "solution", value: "Apply the security updates.");
+  script_tag(name:"solution", value:"Apply the security updates.");
 
   exit(0);
 }
@@ -93,7 +93,6 @@ if (port = get_app_port(cpe: CPE)) {
 
   version = ereg_replace(pattern:"_", replace:".", string:version);
 
-  # Check for Java Application Server version 8.1 and 8.2
   if(version_is_equal(version:version, test_version:"8.0.01") ||
      version_is_equal(version:version, test_version:"8.0.02")){
     security_message(port:port);

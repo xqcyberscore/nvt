@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail_49492.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_hastymail_49492.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Hastymail2 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,7 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Hastymail2 is prone to multiple cross-site scripting vulnerabilities
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103244");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-09-08 12:04:18 +0200 (Thu, 08 Sep 2011)");
+  script_bugtraq_id(49492);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+
+  script_name("Hastymail2 Multiple Cross Site Scripting Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49492");
+  script_xref(name:"URL", value:"http://www.hastymail.org/");
+  script_xref(name:"URL", value:"http://hastymail.svn.sourceforge.net/viewvc/hastymail/trunk/hastymail2/CHANGES?revision=1983");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_hastymail2_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Hastymail2 is prone to multiple cross-site scripting vulnerabilities
 because it fails to sufficiently sanitize user-supplied data.
 
 An attacker may leverage these issues to execute arbitrary script code
@@ -32,40 +57,12 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and to launch other attacks.
 
-Versions prior to Hastymail2 1.1 RC1 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103244");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-09-08 12:04:18 +0200 (Thu, 08 Sep 2011)");
- script_bugtraq_id(49492);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
- script_name("Hastymail2 Multiple Cross Site Scripting Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49492");
- script_xref(name : "URL" , value : "http://www.hastymail.org/");
- script_xref(name : "URL" , value : "http://hastymail.svn.sourceforge.net/viewvc/hastymail/trunk/hastymail2/CHANGES?revision=1983");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_hastymail2_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Versions prior to Hastymail2 1.1 RC1 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

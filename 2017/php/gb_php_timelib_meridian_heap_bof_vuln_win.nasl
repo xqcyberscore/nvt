@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_timelib_meridian_heap_bof_vuln_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_timelib_meridian_heap_bof_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Windows)
 #
@@ -29,35 +29,32 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812072");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-16642");
   script_bugtraq_id(101745);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 18:44:32 +0530 (Thu, 09 Nov 2017)");
   script_name("PHP 'timelib_meridian' Heap Based Buffer Overflow Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to heap buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in the date
   extension's 'timelib_meridian' handling of 'front of' and 'back of' directives.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   attacker to execute arbitrary code with elevated privileges within the context
-  of a privileged process.
-
-  Impact Level: System/Application");
+  of a privileged process.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.32, 7.x before 7.0.25,
   and 7.1.x before 7.1.11");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.32, 7.0.25, 7.1.11,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://php.net/ChangeLog-7.php");
@@ -71,6 +68,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

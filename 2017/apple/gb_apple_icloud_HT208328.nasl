@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_HT208328.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_apple_icloud_HT208328.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apple iCloud Security Updates HT208328)
 #
@@ -29,46 +29,43 @@ CPE = "cpe:/a:apple:icloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812258");
-  script_version("$Revision: 8291 $");
-  script_cve_id("CVE-2017-13864", "CVE-2017-7156", "CVE-2017-7157", "CVE-2017-13856", 
+  script_version("$Revision: 11983 $");
+  script_cve_id("CVE-2017-13864", "CVE-2017-7156", "CVE-2017-7157", "CVE-2017-13856",
                 "CVE-2017-13870", "CVE-2017-13866", "CVE-2017-7160");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 16:00:28 +0530 (Thu, 14 Dec 2017)");
   script_name("Apple iCloud Security Updates( HT208328 )");
 
   script_tag(name:"summary", value:"This host is installed with Apple iCloud
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - A privacy issue existed in the use of client certificates.
 
   - Multiple memory corruption issues.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
-  vulnerabilities will allow remote attacker to track a user and also 
-  arbitrary code execution.
+  script_tag(name:"impact", value:"Successful exploitation of these
+  vulnerabilities will allow remote attacker to track a user and also
+  arbitrary code execution.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Apple iCloud versions before 7.2");
 
-  script_tag(name: "affected" , value:"Apple iCloud versions before 7.2");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple iCloud 7.2 or later.
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name:"solution", value:"Upgrade to Apple iCloud 7.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208328");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208328");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_apple_icloud_detect_win.nasl");
   script_mandatory_keys("apple/icloud/Win/Ver");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

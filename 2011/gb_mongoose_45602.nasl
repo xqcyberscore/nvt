@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_45602.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_mongoose_45602.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Mongoose 'Content-Length' HTTP Header Remote Denial Of Service Vulnerability
 #
@@ -26,40 +26,41 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103004");
- script_version("$Revision: 7015 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
- script_bugtraq_id(45602);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_name("Mongoose 'Content-Length' HTTP Header Remote Denial Of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103004");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
+  script_bugtraq_id(45602);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("Mongoose 'Content-Length' HTTP Header Remote Denial Of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45602");
- script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/Mongoose.2.11.Denial.Of.Service/74");
- script_xref(name:"URL", value:"http://mongoose.googlecode.com/files/mongoose-2.11.exe");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45602");
+  script_xref(name:"URL", value:"http://www.johnleitch.net/Vulnerabilities/Mongoose.2.11.Denial.Of.Service/74");
+  script_xref(name:"URL", value:"http://mongoose.googlecode.com/files/mongoose-2.11.exe");
 
- script_category(ACT_DENIAL);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("http_version.nasl", "find_service.nasl");
- script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_category(ACT_DENIAL);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("http_version.nasl", "find_service.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Mongoose is prone to a remote denial-of-service vulnerability because
+  script_tag(name:"summary", value:"Mongoose is prone to a remote denial-of-service vulnerability because
  it fails to handle specially crafted input.");
- script_tag(name : "impact" , value : "Successfully exploiting this issue will allow an attacker to crash the
+  script_tag(name:"impact", value:"Successfully exploiting this issue will allow an attacker to crash the
  affected application, denying further service to legitimate users.");
- script_tag(name : "affected" , value : "Mongoose 2.11 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Mongoose 2.11 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"qod_type", value:"exploit");
-
- exit(0);
+  exit(0);
 }
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default:8080);
 
@@ -81,7 +82,7 @@ for(i=0; i<50; i++) {
   if(http_is_dead(port:port)) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 }
 
 exit(99);

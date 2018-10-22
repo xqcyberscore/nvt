@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_mult_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_manageengine_servicedesk_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140496");
-  script_version("$Revision: 9895 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-09 15:13:18 +0700 (Thu, 09 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-09 15:13:18 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-11511", "CVE-2017-11512");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("ManageEngine ServiceDesk Plus Multiple Vulnerabilities");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
 
-  script_tag(name: "summary", value: "ManageEngine ServiceDesk Plus is prone to multiple arbitrary file download
+  script_tag(name:"summary", value:"ManageEngine ServiceDesk Plus is prone to multiple arbitrary file download
 vulnerabilities.");
 
-  script_tag(name: "insight", value: "ServiceDesk provides an interface for unauthenticated remote users to
+  script_tag(name:"insight", value:"ServiceDesk provides an interface for unauthenticated remote users to
 download files and snapshots. Due to the lack of validation an attacker can use this to traverse directories and
 download arbitrary files.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://www.tenable.com/security/research/tra-2017-31");
+  script_xref(name:"URL", value:"https://www.tenable.com/security/research/tra-2017-31");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comment_rating_plugin_sql_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_comment_rating_plugin_sql_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Comment Rating 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802005");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/sql_injection_in_comment_rating_wordpress_plugin.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection attack
-  and gain sensitive information.
-
-  Impact Level: Application");
+  and gain sensitive information.");
 
   script_tag(name:"affected", value:"Wordpress Comment Rating plugin version 2.9.23");
 
@@ -57,8 +55,7 @@ if(description)
   'id' parameter to '/wp-content/plugins/comment-rating/ck-processkarma.php',
   which allows attackers to manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"Upgrade to Comment Rating Wordpress plugin version 2.9.24 or later
-  For updates refer to http://wordpress.org/extend/plugins/comment-rating/");
+  script_tag(name:"solution", value:"Upgrade to Comment Rating Wordpress plugin version 2.9.24 or later");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Comment Rating plugin and is prone to
   SQL injection vulnerability.");
@@ -66,6 +63,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/comment-rating/");
   exit(0);
 }
 

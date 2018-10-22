@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dos_vuln_sep17.nasl 7207 2017-09-21 05:30:08Z asteins $
+# $Id: gb_ibm_db2_dos_vuln_sep17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # IBM DB2 Denial of Service Vulnerability Sep17
 #
@@ -29,38 +29,33 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811695");
-  script_version("$Revision: 7207 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-1519");
   script_bugtraq_id(100688);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 07:30:08 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-14 13:42:29 +0530 (Thu, 14 Sep 2017)");
   script_name("IBM DB2 Denial of Service Vulnerability Sep17");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in
+  script_tag(name:"insight", value:"The flaw exists due to an error in
   implementation of DB2 connect server.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   remote user to cause disruption of service for DB2 Connect Server setup
-  with a particular configuration.
+  with a particular configuration.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-
-  IBM DB2 versions 10.5 before 10.5 FP8,
+  script_tag(name:"affected", value:"IBM DB2 versions 10.5 before 10.5 FP8,
 
   IBM DB2 versions 11.1.2.2 before 11.1.2.2 FP2");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from reference link");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg22007183");
+  script_tag(name:"solution", value:"Apply the appropriate fix from reference link");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22007183");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -75,11 +70,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-fix = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

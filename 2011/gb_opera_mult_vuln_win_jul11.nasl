@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_jul11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_opera_mult_vuln_win_jul11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802107");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_cve_id("CVE-2011-1337", "CVE-2011-2609", "CVE-2011-2610",
                 "CVE-2011-2611", "CVE-2011-2612", "CVE-2011-2613",
@@ -55,11 +55,11 @@ if(description)
   and cause a denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser Version prior 11.50");
   script_tag(name:"insight", value:"For information about the vulnerability refer to the references.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.50 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.50 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

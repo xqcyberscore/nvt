@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: websense_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: websense_detect.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # Websense reporting console detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18177");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,19 +36,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Service detection");
-  # nb: Don't add a dependency to http_version.nasl or gb_get_http_banner.nasl to avoid cyclic dependency to embedded_web_server_detect.nasl
+  # nb: Don't add a dependency to http_version.nasl, os_detection.nasl or gb_get_http_banner.nasl to avoid cyclic dependency to embedded_web_server_detect.nasl
   script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 8010);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"Filter incoming traffic to this port");
-  script_tag(name:"solution_type", value:"Mitigation");
-  script_tag(name:"summary", value:"The remote host appears to be running Websense, connections are allowed
-  to the web reporting console.
+  script_tag(name:"solution", value:"Filter incoming traffic to this port.");
 
-  Letting attackers know that you are using this software will help them
+  script_tag(name:"summary", value:"The remote host appears to be running Websense, connections are allowed
+  to the web reporting console.");
+
+  script_tag(name:"impact", value:"Letting attackers know that you are using this software will help them
   to focus their attack or will make them change their strategy.");
 
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -56,13 +57,16 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+
+if( host_runs("Windows") != "yes" ) exit( 0 );
 
 port = get_http_port( default:8010 );
 
 url = "/Websense/cgi-bin/WsCgiLogin.exe";
 req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
-if( rep == NULL ) exit( 0 );
+if( ! rep  ) exit( 0 );
 
 if( "<title>Websense Enterprise - Log On</title>" >< rep ) {
   security_message( port:port );

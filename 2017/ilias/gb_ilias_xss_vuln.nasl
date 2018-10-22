@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_xss_vuln.nasl 7739 2017-11-13 05:04:18Z teissa $
+# $Id: gb_ilias_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # ILIAS XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:ilias:ilias";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140444");
-  script_version("$Revision: 7739 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-20 12:39:08 +0700 (Fri, 20 Oct 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-20 12:39:08 +0700 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15538");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ILIAS XSS Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_ilias_detect.nasl");
   script_mandatory_keys("ilias/installed");
 
-  script_tag(name: "summary", value: "ILIAS eLearning is prone to a stored cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"ILIAS eLearning is prone to a stored cross-site scripting vulnerability.");
 
-  script_tag(name: "insight", value: "Stored XSS vulnerability in the Media Objects component of ILIAS allows an
+  script_tag(name:"insight", value:"Stored XSS vulnerability in the Media Objects component of ILIAS allows an
 authenticated user to inject JavaScript to gain administrator privileges, related to the setParameter function in
 Services/MediaObjects/classes/class.ilMediaItem.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "ILIAS version 5.2.x and prior to version 5.1.21");
+  script_tag(name:"affected", value:"ILIAS version 5.2.x and prior to version 5.1.21");
 
-  script_tag(name: "solution", value: "Update to version 5.1.21, 5.2.9 or later.");
+  script_tag(name:"solution", value:"Update to version 5.1.21, 5.2.9 or later.");
 
-  script_xref(name: "URL", value: "http://openwall.com/lists/oss-security/2017/10/17/3");
-  script_xref(name: "URL", value: "https://www.ilias.de/docu/goto_docu_pg_75377_35.html");
-  script_xref(name: "URL", value: "https://www.ilias.de/docu/goto_docu_pg_75378_1719.html");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2017/10/17/3");
+  script_xref(name:"URL", value:"https://www.ilias.de/docu/goto_docu_pg_75377_35.html");
+  script_xref(name:"URL", value:"https://www.ilias.de/docu/goto_docu_pg_75378_1719.html");
 
   exit(0);
 }

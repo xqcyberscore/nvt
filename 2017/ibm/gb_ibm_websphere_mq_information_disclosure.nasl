@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_information_disclosure.nasl 8065 2017-12-09 20:53:54Z teissa $
+# $Id: gb_ibm_websphere_mq_information_disclosure.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # IBM WebSphere MQ 9.0.1 And 9.0.2 Information Disclosure
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113067");
-  script_version("$Revision: 8065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-09 21:53:54 +0100 (Sat, 09 Dec 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 14:38:39 +0100 (Fri, 08 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if( description )
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22003853");
   script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/vulnerabilities/126245");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ibm:websphere_mq";

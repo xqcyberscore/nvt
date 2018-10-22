@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_bof_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: secpod_php_bof_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP 'socket_connect()' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902436");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1938");
   script_bugtraq_id(47950);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.bugsearch.net/en/11873/php-535-socketconnect-buffer-overflow-vulnerability-cve-2011-1938.html?ref=3");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
-  arbitrary code or to cause denial of service condition.
-
-  Impact Level: Application");
+  arbitrary code or to cause denial of service condition.");
 
   script_tag(name:"affected", value:"PHP Version 5.3.5 and prior on Windows.");
 
@@ -58,8 +56,7 @@ if(description)
   within socket module. It uses memcpy to copy path from addr to s_un without
   checking addr length in case when AF_UNIX socket is used.");
 
-  script_tag(name:"solution", value:"Upgrade to version 5.3.7 or later,
-  For updates refer to http://php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to version 5.3.7 or later.");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to stack buffer
   overflow vulnerability.");
@@ -67,6 +64,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://php.net/downloads.php");
   exit(0);
 }
 

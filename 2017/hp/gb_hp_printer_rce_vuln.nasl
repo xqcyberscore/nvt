@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_rce_vuln.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: gb_hp_printer_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # HP Printers RCE Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113056");
-  script_version("$Revision: 8941 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 10:11:12 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -133,7 +133,7 @@ if( description )
 
   - HP LaserJet Managed MFP E62565 (J8J73A) - Firmware before v 2405129_000041
 
-  - HP OfficeJet Enterprise Color Flow MFP X585 (B5L06A, B5L06V, ,B5L07A) - Firmware before v 2405129_000050
+  - HP OfficeJet Enterprise Color Flow MFP X585 (B5L06A, B5L06V, , B5L07A) - Firmware before v 2405129_000050
 
   - HP OfficeJet Enterprise Color MFP X585 (B5L04A, B5L04V, B5L05A, B5L05V) - Firmware before v 2405129_000050
 
@@ -167,7 +167,7 @@ if( description )
   script_xref(name:"URL", value:"https://foxglovesecurity.com/2017/11/20/a-sheep-in-wolfs-clothing-finding-rce-in-hps-printer-fleet/#arbcode");
   script_xref(name:"URL", value:"https://support.hp.com/nz-en/document/c05839270");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

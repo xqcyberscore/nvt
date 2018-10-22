@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011162.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_kb4011162.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011162)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811922");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11774", "CVE-2017-11776");
   script_bugtraq_id(101098, 101106);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:33:40 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011162)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011162");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -49,16 +48,12 @@ if(description)
   - Microsoft Office improperly handles objects in memory. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to obtain the email content of a user, also could execute arbitrary commands.
-
-  Impact Level: System/Application");
+  to obtain the email content of a user, also could execute arbitrary commands.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011162");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

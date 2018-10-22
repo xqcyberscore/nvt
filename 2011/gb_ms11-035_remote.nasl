@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms11-035_remote.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_ms11-035_remote.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Windows WINS Remote Code Execution Vulnerability (2524426)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802260");
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_cve_id("CVE-2011-1248");
   script_bugtraq_id(47730);
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("find_service.nasl","os_detection.nasl");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
   script_require_ports(42);
   script_mandatory_keys("Host/runs_windows");
 
@@ -48,31 +48,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-167/");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS11-035.mspx");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
-  code with elevated privileges or cause a denial-of-service condition.
-
-  Impact Level: System/Application";
-
-  tag_affected = "Microsoft Windows 2K3 Service Pack 2 and prior
-  Microsoft Windows Server 2008 Service Pack 2 and prior";
-
-  tag_insight = "The flaw is caused by a logic error in the Windows Internet Name Service
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
+  code with elevated privileges or cause a denial-of-service condition.");
+  script_tag(name:"affected", value:"Microsoft Windows 2K3 Service Pack 2 and prior
+  Microsoft Windows Server 2008 Service Pack 2 and prior");
+  script_tag(name:"insight", value:"The flaw is caused by a logic error in the Windows Internet Name Service
   (WINS) when handling a socket send exception, which could cause certain user
   supplied values to remain within a stack frame and to be reused in another
-  context, leading to arbitrary code execution with elevated privileges.";
-
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/MS11-035.mspx";
-
-  tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS11-035.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  context, leading to arbitrary code execution with elevated privileges.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS11-035.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -89,7 +76,6 @@ if(!get_port_state(port)){
  exit(0);
 }
 
-## Open The Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
@@ -116,7 +102,6 @@ if(!res) {
   exit(0);
 }
 
-## Confirm Proper WINS Response By Checking Sender Association Handle
 assoc_ctx =  getdword(blob:res, pos:8);
 if(assoc_ctx != 0x00000042){
   exit(0);
@@ -136,7 +121,6 @@ stop_assoc = mkdword(strlen(stop_assoc)) + stop_assoc;
 send(socket:soc, data:stop_assoc);
 close(soc);
 
-## Open The Socket
 soc1 = open_sock_tcp(port);
 if(!soc1){
   exit(0);

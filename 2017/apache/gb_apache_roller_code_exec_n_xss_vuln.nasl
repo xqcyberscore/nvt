@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_roller_code_exec_n_xss_vuln.nasl 7963 2017-12-01 07:19:17Z santu $
+# $Id: gb_apache_roller_code_exec_n_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Roller Cross Site Scripting And Code Execution Vulnerabilities
 #
@@ -29,52 +29,49 @@ CPE = "cpe:/a:apache:roller";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812226");
-  script_version("$Revision: 7963 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2013-4171", "CVE-2013-4212");
   script_bugtraq_id(63963, 63928);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:19:17 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 14:43:15 +0530 (Mon, 27 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Roller Cross Site Scripting And Code Execution Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Apache Roller
+  script_tag(name:"summary", value:"The host is installed with Apache Roller
   and is prone to code execution and cross site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
-  
-  - An input validation errors via some parameters in certain 'getText' methods 
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
+  - An input validation errors via some parameters in certain 'getText' methods
     in the 'ActionSupport' controller in Apache Roller.
 
-  - Multiple input validation errors of vectors related to the search results in 
+  - Multiple input validation errors of vectors related to the search results in
     the 'RSS' and 'Atom' feed templates.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to inject arbitrary web script or HTML and also to execute arbitrary
-  commands.
+  commands.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apache Roller before 5.0.2");
 
-  script_tag(name: "affected" , value:"Apache Roller before 5.0.2");
-
-  script_tag(name: "solution" , value:"Upgrade to Apache Roller 5.0.2 or later,
-  For updates refer to https://roller.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Roller 5.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/29859");
-  script_xref(name : "URL" , value : "http://rollerweblogger.org/project/entry/apache_roller_5_0_2");
-  script_xref(name : "URL" , value : "http://security.coverity.com/advisory/2013/Oct/remote-code-execution-in-apache-roller-via-ognl-injection.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/29859");
+  script_xref(name:"URL", value:"http://rollerweblogger.org/project/entry/apache_roller_5_0_2");
+  script_xref(name:"URL", value:"http://security.coverity.com/advisory/2013/Oct/remote-code-execution-in-apache-roller-via-ognl-injection.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_roller_detect.nasl");
   script_mandatory_keys("ApacheRoller/Installed");
+  script_xref(name:"URL", value:"https://roller.apache.org");
   exit(0);
 }
 

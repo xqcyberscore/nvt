@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_deployment_unspec_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_deployment_unspec_vuln_win.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)
 #
@@ -27,31 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802278");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11987 $");
   script_cve_id("CVE-2011-3516");
   script_bugtraq_id(50229);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 14:34:22 +0530 (Tue, 15 Nov 2011)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - October 2011 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46512");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46512");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to affect confidentiality,
-  integrity, and availability via unknown vectors.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle Java SE versions 6 Update 27 and earlier.");
-  script_tag(name : "insight" , value : "The flaw is due to unspecified error in the 'Deployment' sub-component.");
-  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE versions 6 Update 29 or later.
-  For updates refer to
-  http://www.oracle.com/technetwork/topics/security/javacpuoct2011-443431.html");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
+  integrity, and availability via unknown vectors.");
+  script_tag(name:"affected", value:"Oracle Java SE versions 6 Update 27 and earlier.");
+  script_tag(name:"insight", value:"The flaw is due to unspecified error in the 'Deployment' sub-component.");
+  script_tag(name:"solution", value:"Upgrade to Oracle Java SE versions 6 Update 29 or later.");
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to
   unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

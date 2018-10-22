@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_491_mul_vuln_lin.nasl 8192 2017-12-20 09:53:28Z teissa $
+# $Id: gb_wordpress_prior_491_mul_vuln_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress < 4.9.1 Multiple Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112146");
-  script_version("$Revision: 8192 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:53:28 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 14:36:33 +0100 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-17091", "CVE-2017-17092", "CVE-2017-17093", "CVE-2017-17094");
 
@@ -41,20 +41,20 @@ if(description)
 
   script_name("WordPress < 4.9.1 Multiple Vulnerabilities (Linux)");
   script_tag(name:"summary", value:"WordPress prior to 4.9.1 is prone to multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"WordPress before 4.9.1 is prone to the following security vulnerabilities:
 
-- wp-admin/user-new.php sets the newbloguser key to a string that can be directly derived from the user ID,
+  - wp-admin/user-new.php sets the newbloguser key to a string that can be directly derived from the user ID,
 which allows remote attackers to bypass intended access restrictions by entering this string. (CVE-2017-17091)
 
-- wp-includes/functions.php does not require the unfiltered_html capability for upload of .js files,
+  - wp-includes/functions.php does not require the unfiltered_html capability for upload of .js files,
 which might allow remote attackers to conduct XSS attacks via a crafted file. (CVE-2017-17092)
 
-- wp-includes/general-template.php does not properly restrict the lang attribute of an HTML element,
+  - wp-includes/general-template.php does not properly restrict the lang attribute of an HTML element,
 which might allow attackers to conduct XSS attacks via the language setting of a site. (CVE-2017-17093)
 
-- wp-includes/feed.php does not properly restrict enclosures in RSS and Atom fields,
+  - wp-includes/feed.php does not properly restrict enclosures in RSS and Atom fields,
 which might allow attackers to conduct XSS attacks via a crafted URL. (CVE-2017-17094)");
 
   script_tag(name:"impact", value:"An attacker may leverage these issues to bypass access restrictions or conduct XSS via specific vectors.");

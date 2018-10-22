@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finger_redirection_remote_dos_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: gb_finger_redirection_remote_dos_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Finger Redirection Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802231");
-  script_version("$Revision: 10317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-1999-0106");
   script_tag(name:"cvss_base", value:"2.1");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.iss.net/security_center/reference/vuln/finger-bomb.htm");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker to use this computer as a relay
-  to gather information on a third-party network or cause a denial of service.
-
-  Impact Level: Application");
+  to gather information on a third-party network or cause a denial of service.");
 
   script_tag(name:"affected", value:"GNU Finger.");
 

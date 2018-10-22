@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_priv_esc_vuln_dec17.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_ibm_db2_priv_esc_vuln_dec17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # IBM DB2 Privilege Escalation Vulnerability Dec17
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812265");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-0907");
   script_bugtraq_id(67617);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-15 15:44:32 +0530 (Fri, 15 Dec 2017)");
   script_name("IBM DB2 Privilege Escalation Vulnerability Dec17");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to multiple untrusted 
+  script_tag(name:"insight", value:"The flaw exists due to multiple untrusted
   search path vulnerabilities in unspecified (1) setuid and (2) setgid programs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local 
-  attackers to gain root privileges.
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  attackers to gain root privileges.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM DB2 9.5, 9.7 before FP9a, 9.8, 10.1 
+  script_tag(name:"affected", value:"IBM DB2 9.5, 9.7 before FP9a, 9.8, 10.1
   before FP3a, and 10.5 before FP3.");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from reference link");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21672100");
+  script_tag(name:"solution", value:"Apply the appropriate fix from reference link");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21672100");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4262.nasl 10780 2018-08-06 06:43:39Z cfischer $
+# $Id: deb_4262.nasl 12004 2018-10-22 05:34:04Z cfischer $
 #
 # Auto-generated from advisory DSA 4262-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704262");
-  script_version("$Revision: 10780 $");
+  script_version("$Revision: 12004 $");
   script_cve_id("CVE-2016-2403", "CVE-2017-1665", "CVE-2017-16653", "CVE-2017-16654", "CVE-2017-16790",
                 "CVE-2018-11385", "CVE-2018-11386", "CVE-2018-11406");
   script_name("Debian Security Advisory DSA 4262-1 (symfony - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 08:43:39 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-03 00:00:00 +0200 (Fri, 03 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

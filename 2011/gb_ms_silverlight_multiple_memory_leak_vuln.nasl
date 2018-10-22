@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_ms_silverlight_multiple_memory_leak_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Silverlight Multiple Memory Leak Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801935");
-  script_version("$Revision: 10957 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1844", "CVE-2011-1845");
   script_tag(name:"cvss_base", value:"7.8");
@@ -45,21 +45,22 @@ if(description)
   script_family("General");
   script_dependencies("gb_ms_silverlight_detect.nasl");
   script_mandatory_keys("Microsoft/Silverlight/Installed");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 4 before 4.0.60310.0");
   script_tag(name:"insight", value:"The flaws exist due to:
+
   - An error in handling of 'popup' control and a custom 'DependencyProperty'
     property.
+
   - An error in the 'DataGrid' control implementation, which allows remote
     attacker to consume memory via an application involving subscriptions to
     an INotifyDataErrorInfo.ErrorsChanged event or TextBlock or a TextBox
     element.");
-  script_tag(name:"solution", value:"Upgrade to Microsoft Silverlight 4.0.60310.0 or later,
-  For updates refer to http://www.microsoft.com/getsilverlight/Get-Started/Install/Default.aspx");
+  script_tag(name:"solution", value:"Upgrade to Microsoft Silverlight 4.0.60310.0 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Microsoft Silverlight and is prone to
   to multiple memory leak vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.microsoft.com/getsilverlight/Get-Started/Install/Default.aspx");
   exit(0);
 }
 

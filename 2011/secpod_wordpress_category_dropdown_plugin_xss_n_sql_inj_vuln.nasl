@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_category_dropdown_plugin_xss_n_sql_inj_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_category_dropdown_plugin_xss_n_sql_inj_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # WordPress Ajax Category Dropdown Plugin Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902505");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_bugtraq_id(47529);
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,10 +48,9 @@ if(description)
   script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/multiple_sql_injection_in_ajax_category_dropdown_wordpress_plugin.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to steal cookie
-  -based authentication credentials, compromise the application, access or modify
-  data, or exploit latent vulnerabilities in the underlying database.
 
-  Impact Level: Application");
+  - based authentication credentials, compromise the application, access or modify
+  data, or exploit latent vulnerabilities in the underlying database.");
 
   script_tag(name:"affected", value:"WordPress Ajax Category Dropdown Plugin version 0.1.5");
 

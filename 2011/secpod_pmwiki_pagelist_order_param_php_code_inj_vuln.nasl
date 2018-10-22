@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pmwiki_pagelist_order_param_php_code_inj_vuln.nasl 11508 2018-09-20 13:44:58Z cfischer $
+# $Id: secpod_pmwiki_pagelist_order_param_php_code_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PmWiki Pagelist 'order' Parameter PHP Code Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902592");
-  script_version("$Revision: 11508 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4453");
   script_bugtraq_id(50776);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:44:58 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-28 13:13:13 +0530 (Mon, 28 Nov 2011)");
   script_name("PmWiki Pagelist 'order' Parameter PHP Code Injection Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46968");
@@ -59,12 +59,12 @@ if(description)
   the 'order' argument of a pagelist directive within a PmWiki page, which
   allows attackers to execute arbitrary PHP code.");
 
-  script_tag(name:"solution", value:"Upgrade to PmWiki version 2.2.35 or later,
-  For updates refer to http://pmwiki.org/pub/pmwiki");
+  script_tag(name:"solution", value:"Upgrade to PmWiki version 2.2.35 or later.");
 
   script_tag(name:"summary", value:"The host is running PmWiki and is prone to PHP code injection
   vulnerability.");
 
+  script_xref(name:"URL", value:"http://pmwiki.org/pub/pmwiki");
   exit(0);
 }
 

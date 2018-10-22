@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_49143.nasl 7550 2017-10-24 12:17:52Z cfischer $
+# $Id: gb_tomcat_49143.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apache Commons Daemon 'jsvc' Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103202");
-  script_version("$Revision: 7550 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:17:52 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
   script_bugtraq_id(49143);
   script_cve_id("CVE-2011-2729");
@@ -53,15 +53,11 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/");
   script_xref(name:"URL", value:"http://commons.apache.org/daemon/jsvc.html");
 
-  tag_summary = "Apache Commons Daemon is prone to a remote information-disclosure
-  vulnerability that affects the 'jsvc' library.";
-
-  tag_impact = "Remote attackers can exploit this issue to gain access to files and
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to gain access to files and
   directories owned by the superuser, through applications using the
   affected library. This allows attackers to obtain sensitive
-  information that may aid in further attacks.";
-
-  tag_affected = "Versions prior to Commons Daemon 1.0.7 are vulnerable.
+  information that may aid in further attacks.");
+  script_tag(name:"affected", value:"Versions prior to Commons Daemon 1.0.7 are vulnerable.
 
   The following Apache Tomcat versions which use the affected library
   are vulnerable:
@@ -69,14 +65,10 @@ if(description)
   Tomcat 7.0.0 through 7.0.19, Tomcat 6.0.30 through 6.0.32, Tomcat 5.5.32
   through 5.5.33
 
-  Note: This issue affects applications running on Linux operating systems only.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Note: This issue affects applications running on Linux operating systems only.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Apache Commons Daemon is prone to a remote information-disclosure
+  vulnerability that affects the 'jsvc' library.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

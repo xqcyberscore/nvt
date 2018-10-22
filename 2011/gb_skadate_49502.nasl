@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skadate_49502.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_skadate_49502.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # SkaDate 'blogs.php' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103269");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49502);
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,6 +50,9 @@ if(description)
   the browser of an unsuspecting user in the context of the affected site. This may help the attacker steal
   cookie-based authentication credentials and launch other attacks.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"qod", value:"50"); # Prone to false positives
 
   exit(0);
@@ -57,14 +60,14 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/blog", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/blogs.php?tag=gamecat+<script>alert(/openvas-xss-test/)</script>"; 
+  url = dir + "/blogs.php?tag=gamecat+<script>alert(/openvas-xss-test/)</script>";
 
   if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE ) ) {
     report = report_vuln_url( port:port, url:url  );

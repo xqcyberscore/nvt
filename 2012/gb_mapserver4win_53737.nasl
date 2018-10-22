@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_mapserver4win_53737.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103602");
   script_bugtraq_id(53737);
   script_cve_id("CVE-2012-2950");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11998 $");
   script_name("Mapserver for Windows Local File Include Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://maptools.org/ms4w/index.phtml?page=home.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522908");
 
-  script_tag(name:"summary", value:"Mapserver for Windows(MS4W)is prone to an local file include vulnerability
+  script_tag(name:"summary", value:"Mapserver for Windows(MS4W) is prone to an local file include vulnerability
   because it fails to sufficiently sanitize user supplied input.");
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view files and execute

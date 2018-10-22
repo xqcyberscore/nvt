@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_outlook_dde_attacks_advisory_4053440.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_microsoft_outlook_dde_attacks_advisory_4053440.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Outlook 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812075");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-10 13:53:35 +0530 (Fri, 10 Nov 2017)");
   script_name("Microsoft Outlook 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)");
 
@@ -49,9 +49,7 @@ if(description)
   data becomes available.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to perform code execution on the targeted device.
-
-  Impact Level: System/Application");
+  attackers to perform code execution on the targeted device.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2016
   Microsoft Outlook 2013
@@ -59,8 +57,7 @@ if(description)
   Microsoft Outlook 2007");
 
   script_tag(name:"solution", value:"Disable the DDE feature via the registry
-  editor or user interface as given in advisory.
-  For details refer to https://technet.microsoft.com/library/security/4053440");
+  editor or user interface as given in advisory.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"registry");

@@ -23,15 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-06/msg00008.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831421");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:46:35 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,17 +51,17 @@ if(description)
   script_tag(name:"insight", value:"Security issues were identified and fixed in mozilla firefox and
   thunderbird:
 
-  Security researcher regenrecht reported via TippingPoint&amp;#039;s Zero Day
+  Security researcher regenrecht reported via TippingPoint's Zero Day
   Initiative two instances of code which modifies SVG element lists
   failed to account for changes made to the list by user-supplied
   callbacks before accessing list elements. If a user-supplied callback
   deleted such an object, the element-modifying code could wind up
   accessing deleted memory and potentially executing attacker-controlled
-  memory. regenrecht also reported via TippingPoint&amp;#039;s Zero Day Initiative
+  memory. regenrecht also reported via TippingPoint's Zero Day Initiative
   that a XUL document could force the nsXULCommandDispatcher to remove
   all command updaters from the queue, including the one currently
   in use. This could result in the execution of deleted memory which
-  an attacker could use to run arbitrary code on a victim&amp;#039;s computer
+  an attacker could use to run arbitrary code on a victim's computer
   (CVE-2011-0083, CVE-2011-0085, CVE-2011-2363).
 
   Mozilla security researcher David Chan reported that cookies set for
@@ -90,7 +87,7 @@ if(description)
   Security researcher Martin Barbella reported that under certain
   conditions, viewing a XUL document while JavaScript was disabled
   caused deleted memory to be accessed. This flaw could potentially
-  be used by an attacker to crash a victim&amp;#039;s browser and run arbitrary
+  be used by an attacker to crash a victim's browser and run arbitrary
   code on their computer (CVE-2011-2373).
 
   Security researcher Jordi Chancel reported a crash on
@@ -100,9 +97,11 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

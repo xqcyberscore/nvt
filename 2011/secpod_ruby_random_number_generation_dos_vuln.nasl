@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_random_number_generation_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_ruby_random_number_generation_dos_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Ruby Random Number Generation Local Denial Of Service Vulnerability
 #
@@ -26,33 +26,20 @@
 
 CPE = "cpe:/a:ruby-lang:ruby";
 
-tag_impact = "Successful exploits may allow local attackers to cause denial-of-service
-  conditions.
-  Impact Level: Application";
-tag_affected = "Ruby Versions prior to 1.8.7-p352";
-tag_insight = "The flaw exists because ruby does not reset the random seed upon forking,
-  which makes it easier for context-dependent attackers to predict the values
-  of random numbers by leveraging knowledge of the number sequence obtained in
-  a different child process.";
-tag_solution = "Upgrade to Ruby version 1.8.7-p352 or later
-  For updates refer to http://rubyforge.org/frs/?group_id=167";
-tag_summary = "This host is installed with Ruby and is prone to local denial of
-  service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902558");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2686");
   script_bugtraq_id(49015);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Ruby Random Number Generation Local Denial Of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/69032");
-  script_xref(name : "URL" , value : "http://redmine.ruby-lang.org/issues/show/4338");
-  script_xref(name : "URL" , value : "http://www.ruby-lang.org/en/news/2011/07/02/ruby-1-8-7-p352-released/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69032");
+  script_xref(name:"URL", value:"http://redmine.ruby-lang.org/issues/show/4338");
+  script_xref(name:"URL", value:"http://www.ruby-lang.org/en/news/2011/07/02/ruby-1-8-7-p352-released/");
 
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2011 SecPod");
@@ -60,11 +47,18 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_ruby_detect_win.nasl");
   script_mandatory_keys("Ruby/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploits may allow local attackers to cause denial-of-service
+  conditions.");
+  script_tag(name:"affected", value:"Ruby Versions prior to 1.8.7-p352");
+  script_tag(name:"insight", value:"The flaw exists because ruby does not reset the random seed upon forking,
+  which makes it easier for context-dependent attackers to predict the values
+  of random numbers by leveraging knowledge of the number sequence obtained in
+  a different child process.");
+  script_tag(name:"solution", value:"Upgrade to Ruby version 1.8.7-p352 or later");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Ruby and is prone to local denial of
+  service vulnerability.");
+  script_xref(name:"URL", value:"http://rubyforge.org/frs/?group_id=167");
   exit(0);
 }
 
@@ -75,7 +69,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for Ruby Versions prior to 1.8.7-p352
 if( version_in_range( version:vers, test_version:"1.8.7", test_version2:"1.8.7.p351" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.8.7-p352", install_path:path );
   security_message( port:0, data:report );

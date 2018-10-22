@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:151-1");
   script_oid("1.3.6.1.4.1.25623.1.0.831744");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-09 10:02:01 +0530 (Tue, 09 Oct 2012)");
   script_cve_id("CVE-2012-4405");
   script_tag(name:"cvss_base", value:"6.8");
@@ -51,7 +47,7 @@ if(description)
   script_tag(name:"insight", value:"A security issue was identified and fixed in ghostscript:
 
   An integer overflow flaw, leading to a heap-based buffer overflow, was
-  found in Ghostscript&#039;s International Color Consortium Format library
+  found in Ghostscript's International Color Consortium Format library
   (icclib). An attacker could create a specially-crafted PostScript or
   PDF file with embedded images that would cause Ghostscript to crash
   or, potentially, execute arbitrary code with the privileges of the
@@ -64,9 +60,11 @@ if(description)
   Packages for Mandriva Linux 2011 is being provided.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

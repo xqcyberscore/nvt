@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_php_files_info_disc_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_php_files_info_disc_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress '.php' Files Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902741");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3818");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/wordpress_2.9.2");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_tag(name:"affected", value:"WordPress version 2.9.2 and 3.0.4");
 

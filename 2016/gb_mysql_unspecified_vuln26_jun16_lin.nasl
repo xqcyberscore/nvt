@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln26_jun16_lin.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_mysql_unspecified_vuln26_jun16_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-26 Jun16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808138");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2014-6551", "CVE-2014-6530", "CVE-2014-6505", "CVE-2014-6495",
                 "CVE-2014-6484", "CVE-2014-6478", "CVE-2014-6463", "CVE-2014-4287",
                 "CVE-2014-4274");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:18 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-26 Jun16 (Linux)");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"MySQL Server version 5.5.38 and earlier
   and 5.6.19 and earlier on Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60599");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");

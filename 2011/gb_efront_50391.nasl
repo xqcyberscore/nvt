@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_50391.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_efront_50391.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # eFront 3.6.10 Multiple Security Vulnerabilities
 #
@@ -28,27 +28,27 @@ CPE = 'cpe:/a:efrontlearning:efront';
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103316");
- script_version("$Revision: 7024 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-10-31 13:36:15 +0100 (Mon, 31 Oct 2011)");
- script_bugtraq_id(50391);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("eFront 3.6.10 Multiple Security Vulnerabilities");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("secpod_efront_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103316");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-10-31 13:36:15 +0100 (Mon, 31 Oct 2011)");
+  script_bugtraq_id(50391);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("eFront 3.6.10 Multiple Security Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("secpod_efront_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
+  script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
  restrictions, insert arbitrary code, obtain sensitive information, execute arbitrary code,
  modify the logic of SQL queries, and upload arbitrary code. Other attacks may also be possible.");
- script_tag(name:"affected", value:"eFront 3.6.10 is vulnerable; prior versions may also be affected.");
- script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
- script_tag(name:"summary", value:"eFront is prone to multiple security vulnerabilities, including:
+  script_tag(name:"affected", value:"eFront 3.6.10 is vulnerable. Prior versions may also be affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"eFront is prone to multiple security vulnerabilities, including:
 
  1. A remote code injection vulnerability
  2. Multiple SQL injection vulnerabilities
@@ -56,14 +56,14 @@ if(description)
  4. A remote code execution vulnerability
  5. A file upload vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50391");
- script_xref(name:"URL", value:"http://bugs.efrontlearning.net/browse/EF-675");
- script_xref(name:"URL", value:"http://www.efrontlearning.net/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50391");
+  script_xref(name:"URL", value:"http://bugs.efrontlearning.net/browse/EF-675");
+  script_xref(name:"URL", value:"http://www.efrontlearning.net/");
 
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -97,12 +97,12 @@ if( res =~ "HTTP/1.. 200" ) {
 
   url2 = dir + "/content/editor_templates/" + template;
 
-  if( http_vuln_check( port:port, url:url2, pattern:"openvas-c-e-test" ) ) { 
+  if( http_vuln_check( port:port, url:url2, pattern:"openvas-c-e-test" ) ) {
     report = report_vuln_url( port:port, url:url );
     report += '\n\nPlease delete the following file manually: ' + report_vuln_url( port:port, url:url2, url_only:TRUE );
     security_message( port:port, data:report );
     exit( 0 );
-  }  
+  }
 }
 
 exit( 99 );

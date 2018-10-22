@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Manager RDS Service Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900291");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0514");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,13 +59,12 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with HP (OpenView Storage) Data Protector Manager and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector version A.06.20 or later,
-  For updates refer to,
-  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
+  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector version A.06.20 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
   exit(0);
 }
 

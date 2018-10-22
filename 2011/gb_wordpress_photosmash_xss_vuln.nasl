@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photosmash_xss_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_photosmash_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PhotoSmash Galleries WordPress Plugin 'action' Parameter XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801880");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_bugtraq_id(46782);
   script_tag(name:"cvss_base", value:"4.3");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/xss_in_photosmash_wordpress_plugin.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
-  the context of an application.
-
-  Impact Level: Application");
+  the context of an application.");
 
   script_tag(name:"affected", value:"WordPress PhotoSmash Galleries Plugin version 1.0.1");
 
@@ -56,8 +54,7 @@ if(description)
   the 'action' parameter to /wp-content/plugins/photosmash-galleries/index.php,
   that allows attackers to execute arbitrary HTML and script code on the web server.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress PhotoSmash Galleries Plugin version 1.0.5 or later,
-  For updates refer to http://wordpress.org/extend/plugins/photosmash-galleries/");
+  script_tag(name:"solution", value:"Upgrade to WordPress PhotoSmash Galleries Plugin version 1.0.5 or later.");
 
   script_tag(name:"summary", value:"This host is running WordPress PhotoSmash Galleries Plugin and is
   prone to cross site scripting vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/photosmash-galleries/");
   exit(0);
 }
 

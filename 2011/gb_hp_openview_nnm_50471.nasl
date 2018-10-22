@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_openview_nnm_50471.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: gb_hp_openview_nnm_50471.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # HP OpenView Network Node Manager Multiple Remote Code Execution Vulnerabilities
 #
@@ -31,12 +31,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103364");
   script_bugtraq_id(50471);
-  script_cve_id("CVE-2011-3166","CVE-2011-3167");
+  script_cve_id("CVE-2011-3166", "CVE-2011-3167");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5428 $");
+  script_version("$Revision: 12018 $");
   script_name("HP OpenView Network Node Manager Multiple Remote Code Execution Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 09:14:18 +0100 (Wed, 14 Dec 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -49,28 +49,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.openview.hp.com/products/nnm/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520349");
 
-  tag_summary = "HP OpenView Network Node Manager (NNM) is prone to multiple remote
-  code-execution vulnerabilities because it fails to sanitize user-supplied data.";
-
-  tag_impact = "An attacker can exploit these issues to execute arbitrary code with
+  script_tag(name:"summary", value:"HP OpenView Network Node Manager (NNM) is prone to multiple remote
+  code-execution vulnerabilities because it fails to sanitize user-supplied data.");
+  script_tag(name:"affected", value:"These issues affects NNM 7.51, v7.53 running on HP-UX, Linux, Solaris,
+  and Windows. Other versions and platforms may also be affected.");
+  script_tag(name:"solution", value:"Updates are available.Please contact the vendor for more information.");
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code with
   the privileges of the user running the affected application.
   Successful exploits will compromise the affected application and
-  possibly the underlying computer.";
-
-  tag_affected = "These issues affects NNM 7.51, v7.53 running on HP-UX, Linux, Solaris,
-  and Windows; other versions and platforms may also be affected.";
-
-  tag_solution = "Updates are available; please contact the vendor for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  possibly the underlying computer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

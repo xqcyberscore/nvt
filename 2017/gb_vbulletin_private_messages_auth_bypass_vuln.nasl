@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # vBulletin 'Private Messages' Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811796");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2015-3419");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:11 +0530 (Wed, 04 Oct 2017)");
   script_name("vBulletin 'Private Messages' Authentication Bypass Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"vBulletin versions 5.x through 5.1.6");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ## Not possible to detect the patched versions

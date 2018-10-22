@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_universal_post_mgr_plug_mult_xss.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_universal_post_mgr_plug_mult_xss.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # WordPress Universal Post Manager Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802018");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/multiple_xss_in_universal_post_manager_wordpress_plugin.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress Universal Post Manager Plugin Version 1.0.9");
 
@@ -61,8 +59,7 @@ if(description)
   ate/bookmarks_slider_h.php', which is not properly sanitized before being
   returned to the user.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.1.1 or later,
-  For updates refer to http://wordpress.org/extend/plugins/universal-post-manager");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Universal Post Manager
   Plugin and is prone to multiple cross-site scripting vulnerabilities.");
@@ -70,6 +67,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/universal-post-manager");
   exit(0);
 }
 

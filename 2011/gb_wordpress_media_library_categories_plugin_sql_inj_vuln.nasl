@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_media_library_categories_plugin_sql_inj_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_media_library_categories_plugin_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Media Library Categories Plugin 'termid' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802322");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_bugtraq_id(49062);
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103756/medialibrarycategories-sql.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection attack
-  and gain sensitive information.
-
-  Impact Level: Application");
+  and gain sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Media Library Categories plugin version 1.0.6 and prior.");
 
@@ -58,8 +56,7 @@ if(description)
   via the 'termid' parameter to '/wp-content/plugins/media-library-categories
   /sort.php', which allows attackers to manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress Media Library Categories plugin version 1.0.7 or later
-  For updates refer to http://wordpress.org/extend/plugins/media-library-categories/");
+  script_tag(name:"solution", value:"Upgrade to WordPress Media Library Categories plugin version 1.0.7 or later");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Media Library Categories
   plugin and is prone to sql injection vulnerability.");
@@ -67,6 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/media-library-categories/");
   exit(0);
 }
 

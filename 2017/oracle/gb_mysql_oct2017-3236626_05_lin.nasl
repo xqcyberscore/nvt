@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2017-3236626_05_lin.nasl 7597 2017-10-27 12:23:39Z asteins $
+# $Id: gb_mysql_oct2017-3236626_05_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Oracle Mysql Security Updates (oct2017-3236626) 05 - Linux
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811994");
-  script_version("$Revision: 7597 $");
-  script_cve_id("CVE-2017-10283", "CVE-2017-10294", "CVE-2017-10286", "CVE-2017-10155", 
+  script_version("$Revision: 11989 $");
+  script_cve_id("CVE-2017-10283", "CVE-2017-10294", "CVE-2017-10286", "CVE-2017-10155",
 		         "CVE-2017-10314", "CVE-2017-10276", "CVE-2017-10227");
   script_bugtraq_id(101420, 101444, 101397, 101402, 101314, 101441, 101337);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 14:23:39 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 12:58:45 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Mysql Security Updates (oct2017-3236626) 05 - Linux");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -59,21 +58,18 @@ if(description)
 
   - An error in 'Server: FTS' component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to compromise availability
-  integrity and confidentiality of the system.
+  integrity and confidentiality of the system.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL version 
+  script_tag(name:"affected", value:"Oracle MySQL version
   5.6.37 and earlier, 5.7.19 and earlier on Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Databases");
@@ -86,16 +82,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

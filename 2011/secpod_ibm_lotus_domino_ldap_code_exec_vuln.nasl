@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_ldap_code_exec_vuln.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: secpod_ibm_lotus_domino_ldap_code_exec_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Lotus Domino LDAP Bind Request Remote Code Execution Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902421");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-0917");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_name("IBM Lotus Domino LDAP Bind Request Remote Code Execution Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,30 +46,17 @@ if(description)
   script_xref(name:"URL", value:"http://zerodayinitiative.com/advisories/ZDI-11-047/");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21461514");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute
-  arbitrary code within the context of the affected application.
-
-  Impact Level: Application";
-
-  tag_affected = "IBM Lotus Domino versions 8.5.3 and prior.";
-
-  tag_insight = "The flaw is due to a boundary error within 'nLDAP.exe' when
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
+  arbitrary code within the context of the affected application.");
+  script_tag(name:"affected", value:"IBM Lotus Domino versions 8.5.3 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to a boundary error within 'nLDAP.exe' when
   processing a LDAP Bind request packet which can be exploited to cause a buffer
-  overflow via a specially crafted packet sent to port 389/TCP.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running IBM Lotus Domino LDAP and is prone to
-  remote code execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  overflow via a specially crafted packet sent to port 389/TCP.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running IBM Lotus Domino LDAP and is prone to
+  remote code execution vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");

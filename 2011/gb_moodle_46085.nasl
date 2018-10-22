@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_46085.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_moodle_46085.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Moodle 'PHPCOVERAGE_HOME' Cross Site Scripting Vulnerability
 #
@@ -24,7 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Moodle is prone to a cross-site scripting vulnerability because it
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103056");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
+  script_bugtraq_id(46085);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_name("Moodle 'PHPCOVERAGE_HOME' Cross Site Scripting Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46085");
+  script_xref(name:"URL", value:"http://www.moodle.org");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_moodle_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Moodle/Version");
+  script_tag(name:"summary", value:"Moodle is prone to a cross-site scripting vulnerability because it
 fails to properly sanitize user-supplied input.
 
 Exploiting this vulnerability may allow an attacker to perform cross-
@@ -32,47 +54,25 @@ site scripting attacks on unsuspecting users in the context of the
 affected website. As a result, the attacker may be able to steal cookie-
 based authentication credentials and to launch other attacks.
 
-Versions prior to Moodle 2.0.1 are vulnerable.";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103056");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
- script_bugtraq_id(46085);
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_name("Moodle 'PHPCOVERAGE_HOME' Cross Site Scripting Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46085");
- script_xref(name : "URL" , value : "http://www.moodle.org");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_moodle_cms_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Moodle/Version");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Versions prior to Moodle 2.0.1 are vulnerable.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"moodle"))exit(0);
 
-url = string(dir,"/lib/spikephpcoverage/src/phpcoverage.remote.top.inc.php?PHPCOVERAGE_HOME=<script>alert(document.cookie)</script>"); 
+url = string(dir,"/lib/spikephpcoverage/src/phpcoverage.remote.top.inc.php?PHPCOVERAGE_HOME=<script>alert(document.cookie)</script>");
 
 if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(document.cookie\)</script>", check_header:TRUE, extra_check:make_list("ERROR: Could not locate PHPCOVERAGE_HOME"))) {
-     
+
   security_message(port:port);
   exit(0);
 

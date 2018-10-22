@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_expand_parameter_xss_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_nagios_expand_parameter_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Nagios 'expand' Parameter Cross-Site Scripting Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801894");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-2179");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,13 +54,13 @@ site.");
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
 passed via the 'expand' parameter in cgi-bin/config.cgi, which allows attackers
 to execute arbitrary HTML and script code on the web server.");
-  script_tag(name:"solution", value:"Upgrade to Nagios version 3.3.1 or later,
-For updates refer to http://www.nagios.org/");
+  script_tag(name:"solution", value:"Upgrade to Nagios version 3.3.1 or later.");
   script_tag(name:"summary", value:"This host is running Nagios and is prone to cross site scripting
 vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.nagios.org/");
   exit(0);
 }
 

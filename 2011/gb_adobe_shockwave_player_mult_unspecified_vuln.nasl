@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_unspecified_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_unspecified_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Adobe Shockwave Player Multiple Unspecified Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802301");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-21 13:52:36 +0200 (Tue, 21 Jun 2011)");
   script_cve_id("CVE-2011-0317", "CVE-2011-0318", "CVE-2011-0319", "CVE-2011-0320",
                 "CVE-2011-0335", "CVE-2011-2108", "CVE-2011-2109", "CVE-2011-2111",
@@ -55,13 +55,13 @@ if(description)
   script_tag(name:"affected", value:"Adobe Shockwave Player version before 11.6.0.626 on Windows.");
   script_tag(name:"insight", value:"The flaws are due to unspecified vectors. For more details please refer
   reference section.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.6.0.626 or later.
-  For updates refer to http://get.adobe.com/shockwave");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.6.0.626 or later.");
   script_tag(name:"summary", value:"This host has Adobe Shockwave Player installed and is prone to
   multiple unspecified vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
   exit(0);
 }
 

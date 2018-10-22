@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_u3d_mem_crptn_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_adobe_reader_u3d_mem_crptn_vuln_lin.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Adobe Reader 'U3D' Component Memory Corruption Vulnerability - Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802544");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 12014 $");
   script_cve_id("CVE-2011-2462", "CVE-2011-4369");
   script_bugtraq_id(50922, 51092);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 12:52:04 +0530 (Fri, 09 Dec 2011)");
   script_name("Adobe Reader 'U3D' Component Memory Corruption Vulnerability - Linux");
 
@@ -46,8 +46,7 @@ vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application or cause a denial of service.");
   script_tag(name:"affected", value:"Adobe Reader versions 9.x through 9.4.6 on Linux");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.4.7 or later,
-For updates refer to http://www.adobe.com/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.4.7 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

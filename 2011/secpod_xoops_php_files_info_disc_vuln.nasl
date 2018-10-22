@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_php_files_info_disc_vuln.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: secpod_xoops_php_files_info_disc_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # XOOPS '.php' Files Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902742");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-3822");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,29 +46,16 @@ if(description)
   script_xref(name:"URL", value:"https://www.infosecisland.com/alertsview/16802-CVE-2011-3822-xoops.html");
   script_xref(name:"URL", value:"http://code.google.com/p/inspathx/source/browse/trunk/paths_vuln/xoops-2.5.0");
 
-  tag_impact = "Successful exploitation will allow attacker to gain sensitive
-  information.
-
-  Impact Level: Application";
-
-  tag_affected = "XOOPS version 2.5.0";
-
-  tag_insight = "The flaw is due to error in certain '.php' files. A direct
-  request to these files reveals the installation path in an error message.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running XOOPS and is prone to information
-  disclosure vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"The host is running XOOPS and is prone to information
+  disclosure vulnerability.");
+  script_tag(name:"insight", value:"The flaw is due to error in certain '.php' files. A direct
+  request to these files reveals the installation path in an error message.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain sensitive
+  information.");
+  script_tag(name:"affected", value:"XOOPS version 2.5.0");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

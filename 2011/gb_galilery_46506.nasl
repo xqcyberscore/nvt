@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_galilery_46506.nasl 4484 2016-11-12 14:03:28Z cfi $
+# $Id: gb_galilery_46506.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Galilery 'index.php' Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103094");
-  script_version("$Revision: 4484 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-12 15:03:28 +0100 (Sat, 12 Nov 2016) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 14:46:59 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -44,19 +44,16 @@ if(description)
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46506");
   script_xref(name:"URL", value:"http://sourceforge.net/projects/galilery/");
 
-  tag_summary = "Galilery is prone to a local file-include vulnerability because it
-  fails to properly sanitize user-supplied input.";
-
-  tag_impact = "An attacker can exploit this vulnerability to obtain potentially
+  script_tag(name:"summary", value:"Galilery is prone to a local file-include vulnerability because it
+  fails to properly sanitize user-supplied input.");
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to obtain potentially
   sensitive information and to execute arbitrary local scripts in the context of
   the webserver process. This may allow the attacker to compromise the application
-  and the computer; other attacks are also possible.";
+  and the computer. Other attacks are also possible.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  tag_affected = "Galilery 1.0 is vulnerable; other versions may also be affected.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Galilery 1.0 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

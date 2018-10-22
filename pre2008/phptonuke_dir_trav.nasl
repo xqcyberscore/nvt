@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phptonuke_dir_trav.nasl 11761 2018-10-05 10:25:32Z jschulte $
+# $Id: phptonuke_dir_trav.nasl 12007 2018-10-22 07:43:49Z cfischer $
 #
 # myPHPNuke phptonuke.php Directory Traversal
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11824");
-  script_version("$Revision: 11761 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12007 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,16 +52,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"http://marc.theaimsgroup.com/?l=bugtraq&m=103480589031537&w=2");
+  script_xref(name:"URL", value:"https://marc.info/?l=bugtraq&m=103480589031537&w=2");
 
   script_tag(name:"solution", value:"Upgrade to the latest version.");
-  script_tag(name:"summary", value:"The remote web server contains a PHP script that allows for reading of
-  arbitrary files.
 
-  Description :
-
-  The version of myPHPNuke installed on the remote host allows anyone to
-  read arbitrary files by passing the full filename to the 'filnavn'
+  script_tag(name:"summary", value:"The version of myPHPNuke installed on the remote host
+  allows anyone to read arbitrary files by passing the full filename to the 'filnavn'
   argument of the 'phptonuke.php' script.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -97,4 +93,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

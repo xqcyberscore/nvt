@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tine_50307.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_tine_50307.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Tine Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,7 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Tine is prone to multiple cross-site scripting vulnerabilities because
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103313");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
+  script_bugtraq_id(50307);
+  script_name("Tine Multiple Cross Site Scripting Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50307");
+  script_xref(name:"URL", value:"http://www.tine20.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520167");
+  script_xref(name:"URL", value:"https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_tine_2_0.html");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Tine is prone to multiple cross-site scripting vulnerabilities because
 the application fails to sufficiently sanitize user-supplied data.
 
 An attacker could exploit these vulnerabilities to execute arbitrary
@@ -32,40 +56,13 @@ script code in the context of the affected website. This may allow the
 attacker to steal cookie-based authentication credentials and launch
 other attacks.
 
-Tine 2.0 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103313");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
- script_bugtraq_id(50307);
- script_name("Tine Multiple Cross Site Scripting Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50307");
- script_xref(name : "URL" , value : "http://www.tine20.org/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520167");
- script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_tine_2_0.html");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Tine 2.0 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

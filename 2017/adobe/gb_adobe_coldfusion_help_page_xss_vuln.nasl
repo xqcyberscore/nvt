@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_help_page_xss_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_adobe_coldfusion_help_page_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe ColdFusion Help Page Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812286");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-5315");
   script_bugtraq_id(69791);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 11:29:42 +0530 (Fri, 29 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Help Page Cross Site Scripting Vulnerability");
@@ -42,21 +42,17 @@ if(description)
   script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an input validation
   error in Help page.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via unspecified vectors.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"ColdFusion 8.0.1 and earlier.");
 
-  script_tag(name:"solution", value:"Upgrade to ColdFusion 9 or later. 
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to ColdFusion 9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN84376800/index.html");
@@ -67,6 +63,7 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

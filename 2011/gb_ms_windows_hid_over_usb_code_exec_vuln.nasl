@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_hid_over_usb_code_exec_vuln.nasl 9518 2018-04-18 09:33:37Z cfischer $
+# $Id: gb_ms_windows_hid_over_usb_code_exec_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # MS Windows HID Functionality (Over USB) Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801581");
-  script_version("$Revision: 9518 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 11:33:37 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2011-0638");
   script_tag(name:"cvss_base", value:"6.9");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
@@ -46,12 +46,10 @@ if(description)
   script_xref(name:"URL", value:"http://www.blackhat.com/html/bh-dc-11/bh-dc-11-briefings.html#Stavrou");
 
   script_tag(name:"impact", value:"Successful exploitation will allows user-assisted attackers to
-  execute arbitrary programs via crafted USB data.
-
-  Impact Level: System/Application");
+  execute arbitrary programs via crafted USB data.");
 
   script_tag(name:"affected", value:"All Microsoft Windows systems with an enabled USB device driver
-  and no local protection mechnism against the automatic enabling of additional Human Interface
+  and no local protection mechanism against the automatic enabling of additional Human Interface
   Device (HID).");
 
   script_tag(name:"insight", value:"The flaw is due to error in USB device driver (hidserv.dll),
@@ -87,7 +85,6 @@ share   = ereg_replace( pattern:"([A-Z]):.*", replace:"\1$", string:dllPath );
 file    = ereg_replace( pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath );
 dllVer  = GetVer( file:file, share:share );
 
-## Check for the existence of file
 if( dllVer ) {
   security_message( port:0, data:"File checked for existence: " + dllPath );
 }

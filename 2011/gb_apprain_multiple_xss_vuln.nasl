@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apprain_multiple_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_apprain_multiple_xss_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # appRain CMF Multiple Cross-Site scripting Vulnerabilities.
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801954");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_bugtraq_id(48623);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("appRain CMF Multiple Cross-Site scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secpod.org/blog/?p=215");
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_AppRain_Multiple_XSS.txt");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=215");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SECPOD_AppRain_Multiple_XSS.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
@@ -44,24 +44,23 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "Multiple flaws are due to an input passed via,
+  script_tag(name:"insight", value:"Multiple flaws are due to an input passed via,
+
   - 'ss' parameter in 'search' action is not properly verified before it is
   returned to the user.
+
   - 'data[sconfig][site_title]' parameter in '/admin/config/general' action
   is not properly verified before it is returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running appRain CMF and is prone to cross site
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running appRain CMF and is prone to cross site
   scripting vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary HTML and script code in a user's browser session in the context of a
   vulnerable site. This may allow an attacker to steal cookie-based authentication
-  credentials and launch further attacks.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "appRain CMF version 0.1.5-Beta (Core Edition) and prior.
+  credentials and launch further attacks.");
+  script_tag(name:"affected", value:"appRain CMF version 0.1.5-Beta (Core Edition) and prior.
   appRain CMF version 0.1.3 (Quick Start Edition) and prior.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -73,15 +72,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 cmfPort = get_http_port(default:80);
 
-## Check host supports PHP
 if(!can_host_php(port:cmfPort)){
   exit(0);
 }
 
-## Get the host name
 host = http_host_name(port:cmfPort);
 
 foreach dir (make_list_unique("/appRain", "/apprain", "/", cgi_dirs(port:cmfPort)))
@@ -91,13 +87,11 @@ foreach dir (make_list_unique("/appRain", "/apprain", "/", cgi_dirs(port:cmfPort
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:cmfPort);
 
-  ## Confirm application
   if(">Lorem ipsum<" >< rcvRes && "Copy Right" >< rcvRes)
   {
     filename = string(dir + "/search");
     authVariables = "ss=</title><script>alert('OpenVAS-XSS-TEST')</script>";
 
-    ## Construct post request
     sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -107,7 +101,6 @@ foreach dir (make_list_unique("/appRain", "/apprain", "/", cgi_dirs(port:cmfPort
 
     rcvRes = http_keepalive_send_recv(port:cmfPort, data:sndReq);
 
-    ## Check the Response
     if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert('OpenVAS-XSS-TEST')<" >< rcvRes)
     {
       security_message(port:cmfPort);

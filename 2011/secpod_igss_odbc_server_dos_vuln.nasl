@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_igss_odbc_server_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_igss_odbc_server_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IGSS ODBC Server Multiple Uninitialized Pointer Denial of Service Vulnerability
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The flaw is caused by an uninitialized pointer free conditions,when
-  processing specially packets sent to port 20222/TCP, which could be exploited
-  by remote unauthenticated attackers to crash an affected daemon.
-
-  Note: IGSS uses a 3rd party ODBC driver kit from Dr. DeeBee";
-
-tag_impact = "Successful exploitation will allow remote attackers to cause a denial of
-  service.
-  Impact Level: Application";
-tag_affected = "IGSS 8 ODBC Server (Odbcixv8se.exe) Version 10299, Other versions may also
-  be affected.";
-tag_solution = "Upgrade IGSS 8 ODBC Server (Odbcixv8se.exe) version 11003 or later.
-  For updates refer to http://www.igss.com/";
-tag_summary = "The host is running IGSS ODBC Server and is prone to denial of service
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900276");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -57,29 +41,32 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("find_service.nasl");
   script_require_ports(20222);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/66261");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17033/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/99653/");
-  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-018-02.pdf");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
+  service.");
+  script_tag(name:"affected", value:"IGSS 8 ODBC Server (Odbcixv8se.exe) Version 10299, Other versions may also
+  be affected.");
+  script_tag(name:"solution", value:"Upgrade IGSS 8 ODBC Server (Odbcixv8se.exe) version 11003 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is running IGSS ODBC Server and is prone to denial of service
+  vulnerability.");
+  script_tag(name:"insight", value:"The flaw is caused by an uninitialized pointer free conditions, when
+  processing specially packets sent to port 20222/TCP, which could be exploited
+  by remote unauthenticated attackers to crash an affected daemon.
+
+  Note: IGSS uses a 3rd party ODBC driver kit from Dr. DeeBee");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/66261");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17033/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/99653/");
+  script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICSA-11-018-02.pdf");
+  script_xref(name:"URL", value:"http://www.igss.com/");
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
-## Check Port status
 igssODBCPort = 20222;
 if(!get_port_state(igssODBCPort)){
   exit(0);
 }
 
-## Open the socket
 soc = open_sock_tcp(igssODBCPort);
 if(!soc){
   exit(0);
@@ -104,7 +91,6 @@ req2 = raw_string( 0x00, 0x00, 0x00, 0xff,                    ## Length
 send(socket:soc, data:req1);
 res = recv(socket:soc, length:1300);
 
-## Confirm the application
 if("IGSS" >< res)
 {
   send(socket:soc, data:req2);
@@ -114,8 +100,6 @@ close(soc);
 
 sleep(5);
 
-## Open the socket and
-## Check server is dead or alive
 soc2 = open_sock_tcp(igssODBCPort);
 if(!soc2){
   security_message(igssODBCPort);

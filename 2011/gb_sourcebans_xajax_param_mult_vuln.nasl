@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sourcebans_xajax_param_mult_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_sourcebans_xajax_param_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # SourceBans 'xajax' Parameter Multiple Vulnerabilities
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802354");
-  script_version("$Revision: 7006 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(50948);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-08 12:15:24 +0530 (Thu, 08 Dec 2011)");
   script_name("SourceBans 'xajax' Parameter Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47080");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71669");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71670");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18215/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/107589/sourcebans-lfisql.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47080");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71669");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71670");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18215/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/107589/sourcebans-lfisql.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -48,21 +48,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to perform SQL
-  injection attack or directory traversal attacks and gain sensitive information.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "SourceBans versions 1.4.8 and prior.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to improper validation of input passed
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL
+  injection attack or directory traversal attacks and gain sensitive information.");
+  script_tag(name:"affected", value:"SourceBans versions 1.4.8 and prior.");
+  script_tag(name:"insight", value:"Multiple flaws are due to improper validation of input passed
   via the parameter 'xajax' to index.php script before being used in SQL queries.
   Which can be exploited to read and delete an arbitrary file.");
-  script_tag(name : "solution" , value : "Upgrade to version 1.4.9 or later,
-  For updates refer to http://www.sourcebans.net");
-  script_tag(name : "summary" , value : "The host is running SourceBan and is prone to multiple
+  script_tag(name:"solution", value:"Upgrade to version 1.4.9 or later.");
+  script_tag(name:"summary", value:"The host is running SourceBan and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.sourcebans.net");
   exit(0);
 }
 
@@ -70,30 +68,23 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Check for each possible path
 foreach dir (make_list_unique("/sourcebans", "/sb", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   res = http_get_cache(item: dir + "/index.php", port:port);
 
-  ## Confirm the application
   if(">SourceBans" >< res)
   {
-    ## Construct the SQL attack
     url = dir + "/index.php?xajax=RefreshServer&xajaxargs[]=1'";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header: TRUE,
                        pattern:"You have an error in your SQL syntax;",
                        extra_check:"SQL Query type:"))

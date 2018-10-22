@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_sftp_server_security_bypass_vuln_win.nasl 7801 2017-11-17 07:10:11Z asteins $
+# $Id: gb_openssh_sftp_server_security_bypass_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # OpenSSH 'sftp-server' Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812050");
-  script_version("$Revision: 7801 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-15906");
   script_bugtraq_id(101552);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 08:10:11 +0100 (Fri, 17 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-27 13:03:59 +0530 (Fri, 27 Oct 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSH 'sftp-server' Security Bypass Vulnerability (Windows)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with openssh and
   is prone to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists in the 'process_open' function
   in sftp-server.c script which does not properly prevent write operations in
@@ -51,19 +50,16 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows
   local users to bypass certain security restrictions and perform unauthorized
-  actions. This may lead to further attacks.
-
-  Impact Level: Application");
+  actions. This may lead to further attacks.");
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.6 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.6 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.openssh.com/txt/release-7.6");
-  script_xref(name : "URL" , value : "https://github.com/openbsd/src/commit/a6981567e8e");
+  script_xref(name:"URL", value:"https://www.openssh.com/txt/release-7.6");
+  script_xref(name:"URL", value:"https://github.com/openbsd/src/commit/a6981567e8e");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -71,6 +67,7 @@ if(description)
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpecommerce_plugin_xss_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_wpecommerce_plugin_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress WP e-Commerce Plugin 'cart_messages' Parameter Cross-site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802321");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-12 14:44:50 +0200 (Fri, 12 Aug 2011)");
   script_bugtraq_id(49009);
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
   HTML and script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-
-  Impact Level: Application");
+  context of an affected site when the malicious data is being viewed.");
 
   script_tag(name:"affected", value:"WordPress WP e-Commerce Plugin version 3.8.6 and prior.");
 

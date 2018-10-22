@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_lin.nasl 7640 2017-11-03 07:40:38Z asteins $
+# $Id: gb_wordpress_esc_sql_fun_vuln_nov17_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Linux)
 #
@@ -29,36 +29,32 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811888");
-  script_version("$Revision: 7640 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-16510");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 08:40:38 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 10:53:57 +0530 (Thu, 02 Nov 2017)");
   script_name("WordPress 'esc_sql' Function SQL Injection Vulnerability - Nov 2017 (Linux)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to an sql injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because '$wpdb->prepare'
   function can create unexpected and unsafe queries.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary commands.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary commands.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"WordPress versions 4.8.2 and earlier");
 
-  script_tag(name: "affected" , value:"WordPress versions 4.8.2 and earlier");
-
-  script_tag(name: "solution" , value:"Upgrade to WordPress version 4.8.3 or later.
-  For details refer to https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.8.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_xref(name : "URL" , value : "https://wordpress.org/news/2017/10/wordpress-4-8-3-security-release");
+  script_xref(name:"URL", value:"https://wordpress.org/news/2017/10/wordpress-4-8-3-security-release");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

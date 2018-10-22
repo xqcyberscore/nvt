@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Herberlin Bremsserver Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902587");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11987 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 12:12:12 +0530 (Fri, 18 Nov 2011)");
   script_name("Herberlin Bremsserver Directory Traversal Vulnerability");
 
@@ -46,16 +46,13 @@ if(description)
   script_mandatory_keys("Herberlin_Bremsserver/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
-  information that could aid in further attacks.
-
-  Impact Level: Application");
+  information that could aid in further attacks.");
   script_tag(name:"affected", value:"Herberlin Bremsserver Version 3.0");
   script_tag(name:"insight", value:"The flaw is due to improper validation of URI containing ../(dot dot)
   sequences, which allows attackers to read arbitrary files via directory traversal attacks.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Herberlin Bremsserver and is prone to directory
   traversal vulnerability.");
 
@@ -70,10 +67,8 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: Herberlin Bremsserver" >!< banner) {
   exit(0);
@@ -83,10 +78,8 @@ files = traversal_files();
 
 foreach file (keys(files))
 {
-  ## Construct Directory Traversal Attack
   url = string(crap(data:"/..", length:49), files[file]);
 
-  ## Try exploit and check the response to confirm vulnerability
   if(http_vuln_check(port:port, url:url, pattern:file)) {
     report = report_vuln_url(port:port, url:url);
     security_message(port:port, data:report);

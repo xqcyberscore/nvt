@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opensc_mult_bof_vuln_win.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: secpod_opensc_mult_bof_vuln_win.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # OpenSC Smart Card Serial Number Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901175");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4523");
   script_bugtraq_id(45435);
@@ -47,31 +47,27 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code in the context of the application. Failed attacks will cause denial
-  of service conditions.
-
-  Impact Level: Application");
+  of service conditions.");
   script_tag(name:"affected", value:"OpenSC version 0.11.13 and prior.");
   script_tag(name:"insight", value:"The flaws are due to boundary errors in the 'acos_get_serialnr()',
   'acos5_get_serialnr()', and 'starcos_get_serialnr()' functions when reading
   out the serial number of smart cards.");
   script_tag(name:"summary", value:"This host is installed with OpenSC and is prone to multiple buffer
   overflow vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to OpenSC 0.12.0 or later.
-  For updates refer to http://www.opensc-project.org/opensc");
+  script_tag(name:"solution", value:"Upgrade to OpenSC 0.12.0 or later.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.opensc-project.org/opensc");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get version from KB
 if(!oscVer = get_kb_item("OpenSC/Win/Ver")) exit(0);
 
-## Check for OpenSC version 0.11.13 and prior
 if(version_is_less_equal(version:oscVer, test_version:"0.11.13")) {
   report = report_fixed_ver(installed_version:oscVer, fixed_version:"0.12.0");
   security_message(data:report);

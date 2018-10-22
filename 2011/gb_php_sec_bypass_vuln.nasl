@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_sec_bypass_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_sec_bypass_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # PHP 'extract()' Function Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801731");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2011-0752");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,17 +47,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allows remote attackers to bypass intended
   access restrictions by modifying data structures that were not intended
-  to depend on external input.
-
-  Impact Level: Network");
+  to depend on external input.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.2.15");
 
   script_tag(name:"insight", value:"The flaw is due to error in 'extract()' function, it does not prevent
   use of the 'EXTR_OVERWRITE' parameter to overwrite the GLOBALS superglobal array.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.15 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.2.15 or later");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass
   vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

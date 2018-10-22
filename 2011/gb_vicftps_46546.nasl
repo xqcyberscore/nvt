@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicftps_46546.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_vicftps_46546.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # VicFTPS 'LIST' Command Remote Denial of Service Vulnerability
 #
@@ -24,41 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "VicFTPS is prone to a remote denial-of-service vulnerability because
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103091");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-25 13:54:37 +0100 (Fri, 25 Feb 2011)");
+  script_bugtraq_id(46546);
+  script_cve_id("CVE-2008-2031");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+
+  script_name("VicFTPS 'LIST' Command Remote Denial of Service Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46546");
+  script_xref(name:"URL", value:"http://vicftps.50webs.com/");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_DENIAL);
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "secpod_ftp_anonymous.nasl", "ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_tag(name:"summary", value:"VicFTPS is prone to a remote denial-of-service vulnerability because
 it fails to handle specially crafted input.
 
 Successfully exploiting this issue will allow an attacker to crash the
 affected application, denying further service to legitimate users.
-Arbitrary code execution may also be possible; this has not been
+Arbitrary code execution may also be possible. This has not been
 confirmed.
 
-VicFTPS 5.0 is vulnerable; other versions may also be affected.";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103091");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-02-25 13:54:37 +0100 (Fri, 25 Feb 2011)");
- script_bugtraq_id(46546);
- script_cve_id("CVE-2008-2031");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-
- script_name("VicFTPS 'LIST' Command Remote Denial of Service Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46546");
- script_xref(name : "URL" , value : "http://vicftps.50webs.com/");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_DENIAL);
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","secpod_ftp_anonymous.nasl","ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+VicFTPS 5.0 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  exit(0);
 }
 
 include("ftp_func.inc");
@@ -87,7 +87,7 @@ close(soc1);
 domain = get_kb_item("Settings/third_party_domain");
 if(isnull(domain)) {
  domain = this_host_name();;
-}    
+}
 
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
@@ -118,8 +118,8 @@ if(!soc) {
   exit(0);
 }  else {
   close(soc);
-}  
+}
 
-exit(0); 
+exit(0);
 
-     
+

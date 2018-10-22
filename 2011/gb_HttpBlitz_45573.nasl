@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_HttpBlitz_45573.nasl 4797 2016-12-17 14:04:59Z cfi $
+# $Id: gb_HttpBlitz_45573.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # HttpBlitz Server HTTP Request Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100949");
-  script_version("$Revision: 4797 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-17 15:04:59 +0100 (Sat, 17 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
   script_bugtraq_id(45573);
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,10 +49,9 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to cause the application to crash,
   denying service to legitimate users.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one
-  year since disclosure of this vulnerability. Likely none will be provided anymore. General
-  solution options are to upgrade to a newer release, disable respective features, remove
-  the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"WillNotFix");

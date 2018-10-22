@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_random_number_values_info_disc_vuln_01.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_ruby_random_number_values_info_disc_vuln_01.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Ruby Random Number Values Information Disclosure Vulnerability
 #
@@ -26,32 +26,19 @@
 
 CPE = "cpe:/a:ruby-lang:ruby";
 
-tag_impact = "Successful exploits may allow attackers to predict random number values.
-  Impact Level: Application";
-tag_affected = "Ruby versions before 1.8.7-p352 and 1.9.x before 1.9.2-p290";
-tag_insight = "The flaw exists because the SecureRandom.random_bytes function in
-  lib/securerandom.rb relies on PID values for initialization, which makes it
-  easier for context-dependent attackers to predict the result string by
-  leveraging knowledge of random strings obtained in an earlier process with
-  the same PID.";
-tag_solution = "Upgrade to Ruby version 1.8.7-p352, 1.9.2-p290 or later
-  For updates refer to http://rubyforge.org/frs/?group_id=167";
-tag_summary = "This host is installed with Ruby and is prone to information
-  disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902560");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_cve_id("CVE-2011-2705");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Ruby Random Number Values Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=722415");
-  script_xref(name : "URL" , value : "http://www.ruby-lang.org/en/news/2011/07/02/ruby-1-8-7-p352-released/");
-  script_xref(name : "URL" , value : "http://www.ruby-lang.org/en/news/2011/07/15/ruby-1-9-2-p290-is-released/");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=722415");
+  script_xref(name:"URL", value:"http://www.ruby-lang.org/en/news/2011/07/02/ruby-1-8-7-p352-released/");
+  script_xref(name:"URL", value:"http://www.ruby-lang.org/en/news/2011/07/15/ruby-1-9-2-p290-is-released/");
 
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2011 SecPod");
@@ -59,11 +46,18 @@ if(description)
   script_family("General");
   script_dependencies("secpod_ruby_detect_win.nasl");
   script_mandatory_keys("Ruby/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploits may allow attackers to predict random number values.");
+  script_tag(name:"affected", value:"Ruby versions before 1.8.7-p352 and 1.9.x before 1.9.2-p290");
+  script_tag(name:"insight", value:"The flaw exists because the SecureRandom.random_bytes function in
+  lib/securerandom.rb relies on PID values for initialization, which makes it
+  easier for context-dependent attackers to predict the result string by
+  leveraging knowledge of random strings obtained in an earlier process with
+  the same PID.");
+  script_tag(name:"solution", value:"Upgrade to Ruby version 1.8.7-p352, 1.9.2-p290 or later");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Ruby and is prone to information
+  disclosure vulnerability.");
+  script_xref(name:"URL", value:"http://rubyforge.org/frs/?group_id=167");
   exit(0);
 }
 
@@ -74,7 +68,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for Ruby versions before 1.8.7-p352 and 1.9.x before 1.9.2-p290
 if( version_in_range( version:vers, test_version:"1.8.7", test_version2:"1.8.7.p351" ) ||
     version_in_range( version:vers, test_version:"1.9", test_version2:"1.9.2.p289" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.8.7-p352 / 1.9.2-p290", install_path:path );

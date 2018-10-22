@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2013:005");
   script_oid("1.3.6.1.4.1.25623.1.0.831763");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:26:07 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2012-5195");
   script_tag(name:"cvss_base", value:"7.5");
@@ -59,9 +55,11 @@ if(description)
   via the & 'x' string repeat operator (CVE-2012-5195).
 
   The updated packages have been patched to correct this issue.");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

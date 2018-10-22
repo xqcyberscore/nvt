@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_me_mult_bof_n_priv_esc_vuln.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_intel_me_mult_bof_n_priv_esc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Intel Management Engine Privilege Escalation And Buffer Overflow Vulnerabilities
 #
@@ -29,47 +29,43 @@ CPE = 'cpe:/h:intel:management_engine';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812221");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-5705", "CVE-2017-5708");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 13:16:37 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Management Engine Privilege Escalation And Buffer Overflow Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with 
-  Intel Management Engine and is prone to privilege escalation and buffer 
+  script_tag(name:"summary", value:"This host is installed with
+  Intel Management Engine and is prone to privilege escalation and buffer
   overflow vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to multiple unspecified
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple unspecified
   buffer overflow and privilege escalation errors in kernel.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker 
-  with local access to the system to execute arbitrary code and allow 
-  unauthorized process to access privileged content via unspecified vector.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  with local access to the system to execute arbitrary code and allow
+  unauthorized process to access privileged content via unspecified vector.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Systems using Intel ME Firmware
+  script_tag(name:"affected", value:"Systems using Intel ME Firmware
   versions 11.0.x.x/11.5.x.x/11.6.x.x/11.7.x.x/11.10.x.x/11.20.x.x.");
 
-  script_tag(name: "solution" , value:"Upgrade Intel ME to appropriate 
-  firmware version as mentioned in the link below.
-  https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00086&languageid=en-fr 
-  For updates refer to https://downloadcenter.intel.com");
+  script_tag(name:"solution", value:"Upgrade Intel ME to appropriate
+  firmware version as mentioned in the link below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://thehackernews.com/2017/11/intel-chipset-flaws.html");
-  script_xref(name : "URL" , value : "https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00086&languageid=en-fr");
+  script_xref(name:"URL", value:"https://thehackernews.com/2017/11/intel-chipset-flaws.html");
+  script_xref(name:"URL", value:"https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00086&languageid=en-fr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_intel_management_engine_detect.nasl");
   script_mandatory_keys("intel_me/installed");
+  script_xref(name:"URL", value:"https://downloadcenter.intel.com");
   exit(0);
 }
 
@@ -93,4 +89,4 @@ if(imeVer =~ "^11\.(0|5|6|7|10|20)")
   security_message(port:imePort, data:report);
   exit(0);
 }
-exit(0);                       
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_auth_bypass_03_17.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_dahua_auth_bypass_03_17.nasl 11993 2018-10-19 15:20:00Z tpassfeld $
 #
 # Dahua Devices Authentication Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:dahua:nvr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140185");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 11993 $");
   script_cve_id("CVE-2017-6343", "CVE-2017-7253", "CVE-2017-7927", "CVE-2017-7925",
                "CVE-2017-6432", "CVE-2017-6341", "CVE-2017-6342");
   script_bugtraq_id(96449, 96454, 96456, 98312, 98312, 97263);
@@ -55,14 +55,14 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 17:20:00 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_dahua_devices_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("dahua/device");
+  script_mandatory_keys("dahua/device/detected");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Joomla Component 'com_jresearch' Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902386");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2010-1340");
   script_bugtraq_id(38917);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-id.com/web-applications/joomla-component-com_jresearch-local-file-inclusion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory
-  traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application.");
+  traversal attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"Joomla jresearch component Version 1.2.2, Other versions may also
   be affected.");

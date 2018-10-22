@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_tivoli_dir_server_code_exec_vuln.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: secpod_ibm_tivoli_dir_server_code_exec_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # IBM Tivoli Directory Server SASL Bind Request Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902507");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 11987 $");
   script_cve_id("CVE-2011-1206", "CVE-2011-1820");
   script_bugtraq_id(47121);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_name("IBM Tivoli Directory Server SASL Bind Request Remote Code Execution Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,39 +46,27 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/id?1025358");
   script_xref(name:"URL", value:"http://www.1337day.com/exploits/15889");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17188/");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg24029672");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg24029663");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg24029661");
+  script_xref(name:"URL", value:"https://www-304.ibm.com/support/docview.wss?uid=swg24029660");
 
-  tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code within the context of the affected application or retrieve potentially
-  sensitive information.
-
-  Impact Level: Application";
-
-  tag_affected = "IBM Tivoli Directory Server 5.2 before 5.2.0.5-TIV-ITDS-IF0010,
+  sensitive information.");
+  script_tag(name:"affected", value:"IBM Tivoli Directory Server 5.2 before 5.2.0.5-TIV-ITDS-IF0010,
   6.0 before 6.0.0.67 (6.0.0.8-TIV-ITDS-IF0009),
   6.1 before 6.1.0.40 (6.1.0.5-TIV-ITDS-IF0003),
   6.2 before 6.2.0.16 (6.2.0.3-TIV-ITDS-IF0002),
-  and 6.3 before 6.3.0.3";
-
-  tag_insight = "The flaw is caused by a stack overflow error in the 'ibmslapd.exe' component
+  and 6.3 before 6.3.0.3");
+  script_tag(name:"insight", value:"The flaw is caused by a stack overflow error in the 'ibmslapd.exe' component
   when allocating a buffer via the 'ber_get_int()' function within
   'libibmldap.dll' while handling LDAP CRAM-MD5 packets, which could be
   exploited by remote unauthenticated attackers to execute arbitrary code with
-  SYSTEM privileges.";
-
-  tag_solution = "Apply patches
-  https://www-304.ibm.com/support/docview.wss?uid=swg24029672
-  https://www-304.ibm.com/support/docview.wss?uid=swg24029663
-  https://www-304.ibm.com/support/docview.wss?uid=swg24029661
-  https://www-304.ibm.com/support/docview.wss?uid=swg24029660";
-
-  tag_summary = "The host is running IBM Tivoli Directory Server and is prone
-  to remote code execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  SYSTEM privileges.");
+  script_tag(name:"solution", value:"Apply Vendor patches.");
+  script_tag(name:"summary", value:"The host is running IBM Tivoli Directory Server and is prone
+  to remote code execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -112,7 +100,6 @@ attack = raw_string(0x30, 0x82, 0x01, 0x41, 0x02, 0x01, 0x02, 0x60,
                     0x37, 0x31, 0x34, 0x66, 0x34, 0x30, 0x66, 0x31,
                     0x63);
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(! soc){
   exit(0);
@@ -124,7 +111,6 @@ res = recv(socket:soc, length:128);
 send(socket:soc, data:attack);
 res = recv(socket:soc, length:128);
 
-## Check Port status
 if(! ldap_alive(port:port)){
   security_message(port);
 }

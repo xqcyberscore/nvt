@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_xss_vuln2.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_octopus_deploy_xss_vuln2.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Octopus Deploy XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:octopus:deploy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140519");
-  script_version("$Revision: 7992 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-21 14:00:04 +0700 (Tue, 21 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-21 14:00:04 +0700 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16810");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Octopus Deploy XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_octopus_deploy_detect.nasl");
   script_mandatory_keys("octopus_deploy/installed");
 
-  script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerability in the All Variables tab in Octopus
+  script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerability in the All Variables tab in Octopus
 Deploy allows remote attackers to inject arbitrary web script or HTML via the Variable Set Name parameter.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Octopus Deploy version 3.4.0 until 3.13.6.");
+  script_tag(name:"affected", value:"Octopus Deploy version 3.4.0 until 3.13.6.");
 
-  script_tag(name: "solution", value: "Update to version 3.13.7 or later.");
+  script_tag(name:"solution", value:"Update to version 3.13.7 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/OctopusDeploy/Issues/issues/3919");
+  script_xref(name:"URL", value:"https://github.com/OctopusDeploy/Issues/issues/3919");
 
   exit(0);
 }

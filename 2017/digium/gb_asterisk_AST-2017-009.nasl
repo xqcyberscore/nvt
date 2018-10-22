@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2017-009.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
+# $Id: gb_asterisk_AST-2017-009.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Asterisk pjproject Header DoS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140493");
-  script_version("$Revision: 7702 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-09 10:24:49 +0700 (Thu, 09 Nov 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-09 10:24:49 +0700 (Thu, 09 Nov 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk pjproject Header DoS Vulnerability");
 
@@ -49,23 +49,23 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a buffer overflow vulnerability which leads to a
+  script_tag(name:"summary", value:"Asterisk is prone to a buffer overflow vulnerability which leads to a
 denial of service.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "By carefully crafting invalid values in the Cseq and the Via header port,
+  script_tag(name:"insight", value:"By carefully crafting invalid values in the Cseq and the Via header port,
 pjproject's packet parsing code can create strings larger than the buffer allocated to hold them. This will
 usually cause Asterisk to crash immediately. The packets do not have to be authenticated.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may crash Asterisk leading to a
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may crash Asterisk leading to a
 denial of service condition.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.13.");
+  script_tag(name:"affected", value:"Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.13.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 13.18.1, 14.7.1, 15.1.1, 13.13-cert7 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 13.18.1, 14.7.1, 15.1.1, 13.13-cert7 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2017-009.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2017-009.html");
 
   exit(0);
 }

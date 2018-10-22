@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Malware Protection Engine on Security Essentials Multiple Remote Code Execution Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812239");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11937", "CVE-2017-11940");
   script_bugtraq_id(102070, 102104);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 11:55:19 +0530 (Fri, 08 Dec 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Malware Protection Engine on Security Essentials Multiple Remote Code Execution Vulnerabilities");
@@ -41,8 +41,7 @@ if(description)
   update according to Microsoft Security Updates released for Microsoft Malware
   Protection Engine dated 12/06/2017");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when the Microsoft
   Malware Protection Engine does not properly scan a specially crafted file,
@@ -56,9 +55,7 @@ if(description)
 
   - view, change, or delete data
 
-  - create new accounts with full user rights.
-
-  Impact Level: System");
+  - create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Security Essentials");
 

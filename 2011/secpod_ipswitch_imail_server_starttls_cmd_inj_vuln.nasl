@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ipswitch_imail_server_starttls_cmd_inj_vuln.nasl 7506 2017-10-19 11:45:46Z cfischer $
+# $Id: secpod_ipswitch_imail_server_starttls_cmd_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Ipswitch IMail Server STARTTLS Plaintext Command Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ipswitch:imail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901195");
-  script_version("$Revision: 7506 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 13:45:46 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-1430");
   script_bugtraq_id(46767);
@@ -46,34 +46,22 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/43676");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/060");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary
-  commands in the context of the user running the application.
-
-  Impact Level: Application";
-
-  tag_affected = "Ipswitch IMail versions 11.03 and Prior.";
-
-  tag_insight = "This flaw is caused by an error within the 'STARTTLS'
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
+  commands in the context of the user running the application.");
+  script_tag(name:"affected", value:"Ipswitch IMail versions 11.03 and Prior.");
+  script_tag(name:"insight", value:"This flaw is caused by an error within the 'STARTTLS'
   implementation where the switch from plaintext to TLS is implemented below the
   application's I/O buffering layer, which could allow attackers to inject
   commands during the  plaintext phase of the protocol via man-in-the-middle
-  attacks.";
-
-  tag_solution = "Upgrade to Ipswitch IMail version 11.5 or later.
-  For updates refer to http://www.imailserver.com/";
-
-  tag_summary = "The host is running Ipswitch IMail Server and is prone to
-  plaintext command injection vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attacks.");
+  script_tag(name:"solution", value:"Upgrade to Ipswitch IMail version 11.5 or later.");
+  script_tag(name:"summary", value:"The host is running Ipswitch IMail Server and is prone to
+  plaintext command injection vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.imailserver.com/");
   exit(0);
 }
 

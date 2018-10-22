@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-28_2017-29_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2017-28_2017-29_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Firefox Security Updates( mfsa_2017-28_2017-29 )-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812328");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-7845");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 11:04:56 +0530 (Fri, 08 Dec 2017)");
   script_name("Mozilla Firefox Security Updates( mfsa_2017-28_2017-29 )-Windows");
 
@@ -47,15 +47,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute code on the affected system or cause a
-  denial of service condition.
-
-  Impact Level: Application.");
+  denial of service condition.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before
   57.0.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 57.0.2
-  or later. For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

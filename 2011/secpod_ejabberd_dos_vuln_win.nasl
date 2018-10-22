@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ejabberd_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_ejabberd_dos_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ejabberd XML Parsing Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902527");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-1753");
   script_bugtraq_id(48072);
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error within the parsing of certain XML input,
   which can be exploited to cause a high CPU and memory consumption via a
   crafted XML document containing a large number of nested entity references.");
-  script_tag(name:"solution", value:"Upgrade to ejabberd version 2.1.7, 3.0.0-alpha-3 or later.
-  For updates refer to http://www.ejabberd.im/");
+  script_tag(name:"solution", value:"Upgrade to ejabberd version 2.1.7, 3.0.0-alpha-3 or later.");
   script_tag(name:"summary", value:"This host is installed with ejabberd and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"registry");

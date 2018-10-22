@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808622");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2016-3498", "CVE-2016-3511", "CVE-2016-3606");
   script_bugtraq_id(91990, 91956, 91912);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-02 July 2016 (Windows)");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 7 update 101 and prior,
   and 8 update 92 and prior on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

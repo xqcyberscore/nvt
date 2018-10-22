@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_extented_validation_info_disc_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_opera_extented_validation_info_disc_vuln_macosx.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Opera Extended Validation Information Disclosure Vulnerabilities (Mac OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802333");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-3388", "CVE-2011-3389");
   script_bugtraq_id(49388);
@@ -52,12 +52,12 @@ if(description)
   information dialog to contain security information based on the trusted site
   and loading an insecure site to appear secure via unspecified actions related
   to Extended Validation.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 11.51 or later
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 11.51 or later");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to information
   disclosure vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

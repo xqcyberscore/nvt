@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_userpro_auth_bypass.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_wordpress_userpro_auth_bypass.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress UserPro Plugin Authentication Bypass
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113055");
-  script_version("$Revision: 7992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 14:19:20 +0100 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43117/");
   script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/8950");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:wordpress:wordpress";

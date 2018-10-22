@@ -1,15 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sgdynamo_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: sgdynamo_xss.nasl 11996 2018-10-19 19:08:41Z cfischer $
 #
-# sgdynamo_xss
+# Sgdynamo 'sgdynamo.exe' Cross-site Scripting Vulnerability
 #
 # Authors:
 # Scott Shebby (12/2003)
-# changes by rd:
-# - Description
-# - Support for multiple HTTP directories
-# - HTTP Keepalive support
 #
 # Copyright:
 # Copyright (C) 2003 Scott Shebby
@@ -31,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11955");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11996 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 21:08:41 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4720);
   script_cve_id("CVE-2002-0375");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_name("sgdynamo_xss");
+  script_name("Sgdynamo 'sgdynamo.exe' Cross-site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Scott Shebby");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The remote host is running the CGI 'sgdynamo.exe'.
 
-  There is a bug in some versions of this CGI which makes it vulnerable to
-  a cross site scripting attack.");
+  There is a bug in some versions of this CGI which makes it vulnerable to a cross site scripting attack.");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
-
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
@@ -72,9 +68,9 @@ if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/sgdynamo.exe?HTNAME=<script>foo</script>";
+  url = dir + "/sgdynamo.exe?HTNAME=<script>xss-test</script>";
 
-  if( http_vuln_check( port:port, url:url, pattern:"<script>foo</script>", check_header:TRUE ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<script>xss-test</script>", check_header:TRUE ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

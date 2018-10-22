@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_grapheme_extract_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_grapheme_extract_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP 'grapheme_extract()' NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801860");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0420");
   script_bugtraq_id(46429);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://svn.php.net/viewvc/php/php-src/trunk/ext/intl/grapheme/grapheme_string.c?r1=306449&r2=306448&pathrev=306449");
 
   script_tag(name:"impact", value:"Successful exploitation could allows context-dependent attackers to cause a
-  denial of service.
-
-  Impact Level: Network");
+  denial of service.");
 
   script_tag(name:"affected", value:"PHP version 5.3.5");
 
@@ -60,12 +58,12 @@ if(description)
   context-dependent attackers to cause a denial of service via an invalid size
   argument.");
 
-  script_tag(name:"solution", value:"Apply the patch
-  http://svn.php.net/viewvc?view=revision&revision=306449
+  script_tag(name:"solution", value:"Apply the patch the referenced advisory.
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is already applied.
   *****");
+  script_xref(name:"URL", value:"http://svn.php.net/viewvc?view=revision&revision=306449");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to NULL pointer dereference
   denial of service vulnerability.");

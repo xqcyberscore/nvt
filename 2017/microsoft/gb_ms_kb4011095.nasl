@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011095.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_kb4011095.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Office 2016 Information Disclosure Vulnerability (KB4011095)
 #
@@ -27,36 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812248");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11934");
   script_bugtraq_id(102064);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 11:05:10 +0530 (Wed, 13 Dec 2017)");
   script_name("Microsoft Office 2016 Information Disclosure Vulnerability (KB4011095)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011095");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when Microsoft Office
   improperly discloses the contents of its memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain access to potentially sensitive information and use the information to
-  compromise the user's computer or data.
-
-  Impact Level: System/Application");
+  compromise the user's computer or data.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011095");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

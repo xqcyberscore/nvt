@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_server_mult_vuln_july06.nasl 4921 2017-01-02 16:16:25Z cfi $
+# $Id: gb_oracle_database_server_mult_vuln_july06.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Database Server Multiple Vulnerabilities - July 06
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802521");
-  script_version("$Revision: 4921 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2006-5332");
   script_bugtraq_id(19054);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:16:25 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:21:07 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server Multiple Vulnerabilities - July 06");
   script_category(ACT_GATHER_INFO);
@@ -49,29 +49,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA06-200A.html");
   script_xref(name:"URL", value:"http://lists.grok.org.uk/pipermail/full-disclosure/2006-July/047994.html");
 
-  tag_impact = "An unspecified impact and attack vectors.
-
-  Impact Level: Application";
-
-  tag_affected = "Oracle Database server version 10.1.0.5";
-
-  tag_insight = "Refer the references to know about the vulnerabilities.";
-
-  tag_solution = "Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujul2006-101315.html";
-
-  tag_summary = "This host is running Oracle database and is prone to multiple
-  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"An unspecified impact and attack vectors.");
+  script_tag(name:"affected", value:"Oracle Database server version 10.1.0.5");
+  script_tag(name:"insight", value:"Refer the references to know about the vulnerabilities.");
+  script_tag(name:"summary", value:"This host is running Oracle database and is prone to multiple
+  vulnerabilities.");
+  script_tag(name:"solution", value:"Apply patches");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2006-101315.html");
   exit(0);
 }
 

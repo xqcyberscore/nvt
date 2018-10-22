@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_2016_may17_macosx.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms_office_2016_may17_macosx.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Microsoft Office 2016 Memory Corruption Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811048");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2017-0254");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 15:20:17 +0530 (Fri, 19 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office 2016 Memory Corruption Vulnerability (Mac OS X)");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch ");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.office.com/en-us/article/Release-notes-for-Office-2016-for-Mac-ed2da564-6d53-4542-9954-7e3209681a41");

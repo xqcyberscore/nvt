@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_46155.nasl 7906 2017-11-24 12:59:24Z cfischer $
+# $Id: gb_openssh_46155.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # OpenSSH Legacy Certificate Signing Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103064");
-  script_version("$Revision: 7906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:59:24 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 12:50:03 +0100 (Mon, 07 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,23 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.openssh.com/txt/release-5.8");
   script_xref(name:"URL", value:"http://www.openssh.com");
 
-  tag_summary = "Checks whether OpenSSH is prone to an information-disclosure vulnerability.";
-
-  tag_impact = "Successful exploits will allow attackers to gain access to sensitive
-  information; this may lead to further attacks.";
-
-  tag_affected = "Versions 5.6 and 5.7 of OpenSSH are vulnerable.";
-
-  tag_vuldetect = "The SSH banner is analysed for presence of openssh and the version
-  information is then taken from that banner.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successful exploits will allow attackers to gain access to sensitive
+  information. This may lead to further attacks.");
+  script_tag(name:"affected", value:"Versions 5.6 and 5.7 of OpenSSH are vulnerable.");
+  script_tag(name:"vuldetect", value:"The SSH banner is analysed for presence of openssh and the version
+  information is then taken from that banner.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Checks whether OpenSSH is prone to an information-disclosure vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

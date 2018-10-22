@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802525");
-  script_version("$Revision: 7024 $");
+  script_version("$Revision: 12018 $");
   script_cve_id("CVE-2006-0435");
   script_bugtraq_id(16384);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:32:19 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -49,21 +49,20 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allows an attackers to send a specially-crafted HTTP
   request to bypass the PLSQLExclusion list and execute SQL commands on the
-  back-end database with DBA privileges.
-  Impact Level: Application");
+  back-end database with DBA privileges.");
   script_tag(name:"affected", value:"Oracle Database server versions 9.2.0.7 and 10.1.0.5
   Oracle Application server versions 1.0.2.2, 9.0.4.2, 10.1.2.0.2, 10.1.2.1 and
   10.1.3.0.0");
   script_tag(name:"insight", value:"The flaw is due to error in Oracle PL/SQL Gateway, which fails to
   properly validate user-supplied HTTP requests.");
-  script_tag(name:"solution" , value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpuapr2006-090826.html");
+  script_tag(name:"solution", value:"Apply patches");
   script_tag(name:"summary", value:"This host is running Oracle database or application server and
   is prone to SQL command execution vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2006-090826.html");
   exit(0);
 }
 
@@ -75,20 +74,17 @@ report = 'NOTE : Ignore this warning, if above mentioned patch is already applie
 
 ## Oracle Database Server ##
 
-## Get the port
 dbPorts = get_kb_list("Services/oracle_tnslsnr");
 if(!dbPorts) dbPorts = make_list(1521);
 
 foreach dbPort ( dbPorts ) {
 
-  ## Get version from KB
   dbVer = get_kb_item("oracle_tnslsnr/" + dbPort + "/version");
   if(dbVer != NULL)
   {
     dbVer = eregmatch(pattern:"Version ([0-9.]+)", string:dbVer);
     if(dbVer[1] != NULL)
     {
-      ## Check the affected versions
       if(version_in_range(version:dbVer[1], test_version:"9.2.0", test_version2:"9.2.0.6") ||
          version_in_range(version:dbVer[1], test_version:"10.1.0", test_version2:"10.1.0.4"))
       {
@@ -108,23 +104,18 @@ if(get_kb_item("Settings/disable_cgi_scanning")) exit(0);
 
 ## Oracle Application Server ##
 
-## Get the port
 appPort = get_http_port(default:7777);
 
-## Get the banner
 banner = get_http_banner(port:appPort);
 
-## Confirm the server
 if(banner && "Oracle-Application-Server" >< banner)
 {
-  ## Grep for version
   appVer = eregmatch(pattern:"Oracle-Application-Server-[0-9a-zA-Z]+?/([0-9.]+)",
                                              string:banner);
   if(appVer[1] == NULL){
     exit(0);
   }
 
-  ## Check the affected versions
   if(version_is_less(version:appVer[1], test_version:"1.0.2.1") ||
      version_in_range(version:appVer[1], test_version:"9.0", test_version2:"9.0.4.1") ||
      version_in_range(version:appVer[1], test_version:"10.1.2.0", test_version2:"10.1.3.0"))

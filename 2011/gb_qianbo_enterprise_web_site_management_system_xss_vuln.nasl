@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qianbo_enterprise_web_site_management_system_xss_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_qianbo_enterprise_web_site_management_system_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Qianbo Enterprise Web Site Management System Cross Site Scripting Vulnerability
 #
@@ -24,36 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could result in a compromise of the
-application, theft of cookie-based authentication credentials.
-
-Impact Level: Application";
-
-tag_affected = "Qianbo Enterprise Web Site Management System";
-
-tag_insight = "The flaw is due to failure in the 'en/Search.Asp?' script to
-properly sanitize user-supplied input in 'Range=Product&Keyword' variable.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Qianbo Enterprise Web Site Management System
-and is prone to cross site scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801925");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Qianbo Enterprise Web Site Management System Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://sec.jetlib.com/tag/qianbo");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100425/qianbo-xss.txt");
-  script_xref(name : "URL" , value : "http://www.rxtx.nl/qianbo-enterprise-web-site-management-system-cross-site-scripting-2/");
+  script_xref(name:"URL", value:"http://sec.jetlib.com/tag/qianbo");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/100425/qianbo-xss.txt");
+  script_xref(name:"URL", value:"http://www.rxtx.nl/qianbo-enterprise-web-site-management-system-cross-site-scripting-2/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -62,11 +44,16 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could result in a compromise of the
+application, theft of cookie-based authentication credentials.");
+  script_tag(name:"affected", value:"Qianbo Enterprise Web Site Management System");
+  script_tag(name:"insight", value:"The flaw is due to failure in the 'en/Search.Asp?' script to
+properly sanitize user-supplied input in 'Range=Product&Keyword' variable.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Qianbo Enterprise Web Site Management System
+and is prone to cross site scripting vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -89,7 +76,6 @@ foreach dir( make_list_unique( "/qianbo", "/enqianbo", "/", cgi_dirs( port:port 
     req = http_get(item:url, port:port);
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(res =~ "HTTP/1\.. 200" && '><script>alert("XSS-TEST")</script>' >< res) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );

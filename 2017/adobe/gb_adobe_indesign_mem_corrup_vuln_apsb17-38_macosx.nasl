@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_mem_corrup_vuln_apsb17-38_macosx.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_adobe_indesign_mem_corrup_vuln_apsb17-38_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe InDesign Memory Corruption Vulnerability - APSB17-38 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812094");
-  script_version("$Revision: 9527 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11302");
   script_bugtraq_id(101840);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 15:17:21 +0530 (Thu, 16 Nov 2017)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Memory Corruption Vulnerability - APSB17-38 (Mac OS X)");
@@ -42,23 +42,19 @@ if(description)
   script_tag(name:"summary", value:"This host is running Adobe InDesign and is
   prone to a memory corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unspecified memory
   corruption error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the user running the
-  affected applications.
-
-  Impact Level: Application");
+  affected applications.");
 
   script_tag(name:"affected", value:"Adobe InDesign 12.1.0 and earlier
   versions on Mac OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to version 13.0 or later.
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to version 13.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/indesign/apsb17-38.html");
@@ -68,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_indesign_server_detect_macosx.nasl");
   script_mandatory_keys("InDesign/Server/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

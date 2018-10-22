@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgimail.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: cgimail.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # CgiMail.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11721");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 11998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1623);
   script_tag(name:"cvss_base", value:"2.6");
@@ -38,22 +38,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The CGI 'CgiMail.exe' exists on this webserver.
-  Some versions of this file are vulnerable to remote exploit.
+  script_tag(name:"summary", value:"The CGI 'CgiMail.exe' exists on this webserver.
+  Some versions of this file are vulnerable to remote exploit.");
 
-  An attacker can use this flaw to gain access to confidential
-  data or further escalate their privileges.";
+  script_tag(name:"impact", value:"An attacker can use this flaw to gain access to confidential
+  data or further escalate their privileges.");
 
-  tag_solution = "Remove this file from your cgi-bin or scripts folder.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Remove this file from your cgi-bin or scripts folder.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
@@ -75,4 +74,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

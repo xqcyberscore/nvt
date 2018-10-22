@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Zingiri Web Shop Plugin Remote File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902729");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/105237/wpzingiri-rfi.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory
-  traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  traversal attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"WordPress Zingiri Web Shop Plugin Version 2.2.0");
 
@@ -56,8 +54,7 @@ if(description)
   init.inc.php, which allows attackers to read arbitrary files via a
   ../(dot dot) sequences.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress Zingiri Web Shop Plugin Version 2.2.1 or later.
-  For updates refer to http://wordpress.org/extend/plugins/zingiri-web-shop/download/");
+  script_tag(name:"solution", value:"Upgrade to WordPress Zingiri Web Shop Plugin Version 2.2.1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Zingiri Web Shop Plugin
   and is prone to remote file inclusion vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/zingiri-web-shop/download/");
   exit(0);
 }
 

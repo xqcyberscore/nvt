@@ -1,12 +1,14 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kiwi_cattools_dir_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
-# Description: Kiwi CatTools < 3.2.9 Directory Traversal
+# $Id: kiwi_cattools_dir_traversal.nasl 12007 2018-10-22 07:43:49Z cfischer $
+#
+# Kiwi CatTools < 3.2.9 Directory Traversal
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 #
 # Copyright:
-# Copyright (C) 2007 Ferdy Riphagen
+# Copyright (C) 2008 Ferdy Riphagen
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -20,62 +22,62 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-if (description) {
- script_oid("1.3.6.1.4.1.25623.1.0.200001");
- script_version("$Revision: 7577 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.200001");
+  script_version("$Revision: 12007 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2007-0888");
+  script_bugtraq_id(22490);
+  script_name("Kiwi CatTools < 3.2.9 Directory Traversal");
+  script_category(ACT_ATTACK);
+  script_family("Remote file access");
+  script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
+  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
 
- script_cve_id("CVE-2007-0888");
- script_bugtraq_id(22490);
+  script_xref(name:"URL", value:"http://www.kiwisyslog.com/kb/idx/5/178/article/");
+  script_xref(name:"URL", value:"https://marc.info/?l=bugtraq&m=117097429127488&w=2");
 
- script_name("Kiwi CatTools < 3.2.9 Directory Traversal");
+  script_tag(name:"solution", value:"Upgrade to Kiwi CatTools version 3.2.9 or later.");
 
- script_category(ACT_ATTACK);
- script_family("Remote file access");
- script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
+  script_tag(name:"summary", value:"The remote tftpd server is affected by a directory traversal vulnerability.");
 
- script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
- script_require_udp_ports("Services/udp/tftp", 69);
+  script_tag(name:"insight", value:"Kiwi CatTools is installed on the remote host. The version installed is vulnerable
+  to a directory traversal attack by using '[char]//..' sequences in the path.");
 
- script_tag(name : "solution" , value : "Upgrade to Kiwi CatTools version 3.2.9 or later.");
- script_tag(name : "summary" , value : "The remote tftpd server is affected by a directory traversal vulnerability.");
- script_tag(name : "insight" , value : "Kiwi CatTools is installed on the remote host. The version installed is vulnerable
- to a directory traversal attack by using '[char]//..' sequences in the path.");
- script_tag(name : "impact" , value : "A attacker may be able to read and write files outside the tftp root.");
+  script_tag(name:"impact", value:"A attacker may be able to read and write files outside the tftp root.");
 
- script_xref(name : "URL" , value : "http://www.kiwisyslog.com/kb/idx/5/178/article/");
- script_xref(name : "URL" , value : "http://marc.theaimsgroup.com/?l=bugtraq&m=117097429127488&w=2");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"solution_type", value:"VendorFix");
-
- script_tag(name:"qod_type", value:"remote_vul");
-
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
 include("tftp.inc");
 
 port = get_kb_item("Services/udp/tftp");
-if (!port) port = 69;
+if(!port) port = 69;
+if(!get_udp_port_state(port)) exit(0);
 
 files = traversal_files("windows");
 
 foreach file(keys(files)) {
 
   get = tftp_get(port:port, path:"z//..//..//..//..//..//" + files[file]);
-  if (isnull(get)) exit(0);
-  if (egrep(pattern:file, string:get, icase: TRUE)) {
-      report = string("Plugin output :\n\n",
- 	"The boot.ini file contains:\n", get); 
+  if(!get) exit(0);
+
+  if(egrep(pattern:file, string:get, icase:TRUE)) {
+      report = string("Plugin output :\n\n", "The boot.ini file contains:\n", get);
     security_message(port:port, data:report);
     exit(0);
   }
 }
 
-exit(99);
+exit(0);

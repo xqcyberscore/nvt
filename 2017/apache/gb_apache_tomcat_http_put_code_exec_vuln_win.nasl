@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 11506 2018-09-20 13:32:45Z cfischer $
+# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811845");
-  script_version("$Revision: 11506 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-12615");
   script_bugtraq_id(100901);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)");
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Tomcat versions 7.0.0 to 7.0.79 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to Tomcat version 7.0.81 or later.
-  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Tomcat version 7.0.81 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1039392");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_encry_comm_arbi_code_exec_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_hp_data_protector_encry_comm_arbi_code_exec_vuln.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # HP Data Protector Encrypted Communications Arbitrary Command Execution Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808540");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2016-2004");
   script_bugtraq_id(87053);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 13:00:46 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("HP Data Protector Encrypted Communications Arbitrary Command Execution Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"HPE Data Protector before 7.03_108,
   8.x before 8.15, and 9.x before 9.06.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

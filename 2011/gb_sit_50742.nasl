@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sit_50742.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_sit_50742.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Support Incident Tracker 'translate.php' Remote Code Execution Vulnerability
 #
@@ -25,48 +25,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Support Incident Tracker is prone to a remote code-execution
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103349");
+  script_bugtraq_id(50742);
+  script_version("$Revision: 12014 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Support Incident Tracker 'translate.php' Remote Code Execution Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50742");
+  script_xref(name:"URL", value:"http://sitracker.sourceforge.net");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520577");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-30 11:40:15 +0100 (Wed, 30 Nov 2011)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("support_incident_tracker_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Support Incident Tracker is prone to a remote code-execution
 vulnerability because the application fails to sufficiently sanitize
 user-supplied input.
 
 Exploiting this issue will allow attackers to execute arbitrary PHP
 code within the context of the affected application.
 
-Support Incident Tracker 3.45 to 3.65 is vulnerable; prior versions
-may also be affected.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103349");
- script_bugtraq_id(50742);
- script_version ("$Revision: 9351 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Support Incident Tracker 'translate.php' Remote Code Execution Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50742");
- script_xref(name : "URL" , value : "http://sitracker.sourceforge.net");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520577");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-11-30 11:40:15 +0100 (Wed, 30 Nov 2011)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("support_incident_tracker_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+Support Incident Tracker 3.45 to 3.65 is vulnerable. Prior versions
+may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

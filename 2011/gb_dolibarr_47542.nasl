@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_47542.nasl 6127 2017-05-15 12:07:00Z cfi $
+# $Id: gb_dolibarr_47542.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Dolibarr Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103144");
-  script_version("$Revision: 6127 $");
+  script_version("$Revision: 12018 $");
   script_bugtraq_id(47542);
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 14:07:00 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -47,11 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.dolibarr.org/downloads/cat_view/62-stables-versions");
   script_xref(name:"URL", value:"http://www.dolibarr.org/");
 
-  tag_summary = "Dolibarr is prone to a local file-include vulnerability and a cross-
-  site scripting vulnerability because it fails to properly sanitize user-
-  supplied input.";
-
-  tag_impact = "An attacker can exploit the local file-include vulnerability using
+  script_tag(name:"impact", value:"An attacker can exploit the local file-include vulnerability using
   directory-traversal strings to view and execute local files within
   the context of the affected application. Information harvested may
   aid in further attacks.
@@ -59,13 +55,14 @@ if(description)
   The attacker may leverage the cross-site scripting issues to execute
   arbitrary script code in the browser of an unsuspecting user in the
   context of the affected site. This may let the attacker steal cookie-
-  based authentication credentials and launch other attacks.";
+  based authentication credentials and launch other attacks.");
+  script_tag(name:"affected", value:"Dolibarr 3.0.0 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"summary", value:"Dolibarr is prone to a local file-include vulnerability and a cross-
+  site scripting vulnerability because it fails to properly sanitize user-
+  supplied input.");
 
-  tag_affected = "Dolibarr 3.0.0 is vulnerable; other versions may also be affected.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -81,7 +78,7 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-url = string( dir, "/document.php?lang=%22%3E%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C/script%3E" ); 
+url = string( dir, "/document.php?lang=%22%3E%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C/script%3E" );
 
 if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", check_header:TRUE ) ) {
   report = report_vuln_url( port:port, url:url );

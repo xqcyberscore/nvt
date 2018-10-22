@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_imap_do_open_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_imap_do_open_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP 'ext/imap/php_imap.c' Use After Free Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801583");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2010-4150");
   script_bugtraq_id(44980);
@@ -44,17 +44,14 @@ if(description)
   script_mandatory_keys("php/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to crash the affected
-  application, denying service to legitimate users.
-
-  Impact Level: Application/Network");
+  application, denying service to legitimate users.");
 
   script_tag(name:"affected", value:"PHP version 5.2 before 5.2.15 and 5.3 before 5.3.4");
 
   script_tag(name:"insight", value:"The flaw is due to an erron in 'imap_do_open' function in the IMAP
   extension 'ext/imap/php_imap.c'.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.2.15 or 5.3.4
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.2.15 or 5.3.4");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to denial of service
   vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

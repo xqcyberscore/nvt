@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bind_9_7_2_P2.nasl 4433 2016-11-07 15:21:16Z cfi $
+# $Id: gb_bind_9_7_2_P2.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # ISC BIND 9 < 9.7.2-P2 Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103031");
-  script_version("$Revision: 4433 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 16:21:16 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 14:24:22 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_bugtraq_id(45015,45385);
-  script_cve_id("CVE-2010-4172","CVE-2010-3762");
+  script_bugtraq_id(45015, 45385);
+  script_cve_id("CVE-2010-4172", "CVE-2010-3762");
   script_name("ISC BIND 9 < 9.7.2-P2 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -51,9 +51,9 @@ if(description)
   script_xref(name:"URL", value:"http://www.isc.org/products/BIND/");
   script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100124923");
 
-  tag_summary = "ISC BIND is prone to multiple vulnerabilities.";
-
-  tag_insight = "1. A remote denial-of-service vulnerability because
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"ISC BIND is prone to multiple vulnerabilities.");
+  script_tag(name:"insight", value:"1. A remote denial-of-service vulnerability because
   the software fails to handle certain bad signatures in a DNS query.
 
   An attacker can exploit this issue to cause the application to crash,
@@ -63,16 +63,8 @@ if(description)
 
   Successfully exploiting this issue allows remote attackers to bypass
   zone-and-view Access Control Lists (ACLs) to perform unintended
-  queries.";
-
-  tag_affected = "Versions prior to BIND 9.7.2-P2 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
+  queries.");
+  script_tag(name:"affected", value:"Versions prior to BIND 9.7.2-P2 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

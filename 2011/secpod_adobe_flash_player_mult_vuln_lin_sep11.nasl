@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_lin_sep11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_adobe_flash_player_mult_vuln_lin_sep11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities September-2011 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902739");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_cve_id("CVE-2011-2426", "CVE-2011-2427", "CVE-2011-2428",
                 "CVE-2011-2429", "CVE-2011-2430", "CVE-2011-2444");
@@ -62,13 +62,13 @@ if(description)
 
   - Cross-site scripting (XSS) vulnerability, allows remote attackers to
     inject arbitrary web script or HTML via a crafted URL.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.10 or later.
-  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.10 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

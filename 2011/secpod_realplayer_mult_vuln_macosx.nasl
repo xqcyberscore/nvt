@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_realplayer_mult_vuln_macosx.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Mac OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902623");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2948", "CVE-2011-2951");
   script_bugtraq_id(49175, 49173);
@@ -54,12 +54,12 @@ if(description)
 
   - A buffer overflow error which allows remote attackers to execute arbitrary
     code via a crafted raw_data_frame field in an AAC file.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 12.0.0.1701 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 12.0.0.1701 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

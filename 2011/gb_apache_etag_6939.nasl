@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_etag_6939.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: gb_apache_etag_6939.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apache Web Server ETag Header Information Disclosure Weakness
 #
@@ -26,39 +26,39 @@
 
 if (description)
 {
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/6939");
- script_xref(name : "URL" , value : "http://httpd.apache.org/docs/mod/core.html#fileetag");
- script_xref(name : "URL" , value : "http://www.openbsd.org/errata32.html");
- script_xref(name : "URL" , value : "http://support.novell.com/docs/Tids/Solutions/10090670.html");
- script_oid("1.3.6.1.4.1.25623.1.0.103122");
- script_version("$Revision: 6700 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2011-03-21 17:38:45 +0100 (Mon, 21 Mar 2011)");
- script_bugtraq_id(6939);
- script_cve_id("CVE-2003-1418");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/6939");
+  script_xref(name:"URL", value:"http://httpd.apache.org/docs/mod/core.html#fileetag");
+  script_xref(name:"URL", value:"http://www.openbsd.org/errata32.html");
+  script_xref(name:"URL", value:"http://support.novell.com/docs/Tids/Solutions/10090670.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.103122");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-21 17:38:45 +0100 (Mon, 21 Mar 2011)");
+  script_bugtraq_id(6939);
+  script_cve_id("CVE-2003-1418");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
- script_name("Apache Web Server ETag Header Information Disclosure Weakness");
+  script_name("Apache Web Server ETag Header Information Disclosure Weakness");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("apache/banner", "ETag/banner");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("apache/banner", "ETag/banner");
 
- script_tag(name : "summary" , value : "A weakness has been discovered in Apache web servers that are
+  script_tag(name:"summary", value:"A weakness has been discovered in Apache web servers that are
  configured to use the FileETag directive.");
- script_tag(name : "vuldetect" , value : "Due to the way in which
+  script_tag(name:"vuldetect", value:"Due to the way in which
  Apache generates ETag response headers, it may be possible for an
  attacker to obtain sensitive information regarding server files.
  Specifically, ETag header fields returned to a client contain the
  file's inode number.");
- script_tag(name : "impact" , value : "Exploitation of this issue may provide an attacker with information
+  script_tag(name:"impact", value:"Exploitation of this issue may provide an attacker with information
  that may be used to launch further attacks against a target network.");
- script_tag(name : "solution" , value : "OpenBSD has released a patch that addresses this issue. Inode numbers
+  script_tag(name:"solution", value:"OpenBSD has released a patch that addresses this issue. Inode numbers
  returned from the server are now encoded using a private hash to avoid
  the release of sensitive information.
 
@@ -66,12 +66,12 @@ if (description)
  workaround of disabling the directive in the configuration file for
  Apache releases on NetWare. Please see the attached Technical
  Information Document for further details.");
-
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);

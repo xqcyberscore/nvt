@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_authentication_bypass_vuln.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: gb_ssh_authentication_bypass_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # SSH SSH-1 Protocol Authentication Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801993");
-  script_version("$Revision: 10121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2001-1473");
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allows remote attackers to bypass security
   restrictions and to obtain a client's public host key during a connection
   attempt and use it to open and authenticate an SSH session to another
-  server with the same access.
-
-  Impact Level: Application");
+  server with the same access.");
 
   script_tag(name:"affected", value:"SSH Protocol Version SSH-1");
 
@@ -56,8 +54,7 @@ if(description)
   process when encryption is disabled, which allows client authentication to
   be forwarded by a malicious server to another server.");
 
-  script_tag(name:"solution", value:"Upgrade to SSH SSH-2,
-  For updates refer to http://www.openssh.com/");
+  script_tag(name:"solution", value:"Upgrade to SSH SSH-2.");
 
   script_tag(name:"summary", value:"The host is running SSH and is prone to authentication
   bypass vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.openssh.com/");
   exit(0);
 }
 

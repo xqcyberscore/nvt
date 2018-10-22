@@ -23,15 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-09/msg00002.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831448");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,14 +43,16 @@ if(description)
   script_mandatory_keys("ssh/login/mandriva_mandrake_linux", "ssh/login/release", re:"ssh/login/release=MNDK_mes5");
   script_tag(name:"affected", value:"mmc-core on Mandriva Enterprise Server 5,
   Mandriva Enterprise Server 5/X86_64");
-  script_tag(name:"insight", value:"Bugfix release of mmc-core 3.0.2. Details here:
-  http://mds.mandriva.org/wiki/ReleaseNotes");
+  script_tag(name:"insight", value:"Bugfix release of mmc-core 3.0.2. Please see the references for more details.");
+  script_xref(name:"URL", value:"http://mds.mandriva.org/wiki/ReleaseNotes");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

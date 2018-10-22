@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:022");
   script_oid("1.3.6.1.4.1.25623.1.0.803005");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:50:31 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2011-3026");
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,16 +54,18 @@ if(description)
   which may be potentially exploitable (CVE-2011-3026).
 
   The mozilla firefox and thunderbird packages has been upgraded to the
-  latest respective versions whish is not affecte dby this security flaw.
+  latest respective versions which is not affecte dby this security flaw.
 
   Additionally the rootcerts packages (root CA cerificates bundle)
   has been upgraded to the latest version as of 2012/02/18 and the NSS
   library has been rebuilt accordingly to pickup the changes.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

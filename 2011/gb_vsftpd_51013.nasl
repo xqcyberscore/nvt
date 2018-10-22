@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsftpd_51013.nasl 5026 2017-01-18 09:59:52Z cfi $
+# $Id: gb_vsftpd_51013.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # vsftpd '__tzfile_read()' Function Heap Based Buffer Overflow Vulnerability
 #
@@ -31,10 +31,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103362");
   script_bugtraq_id(51013);
-  script_version("$Revision: 5026 $");
+  script_version("$Revision: 12018 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 10:59:52 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-13 10:23:55 +0100 (Tue, 13 Dec 2011)");
   script_name("vsftpd '__tzfile_read()' Function Heap Based Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers may leverage this issue to execute arbitrary code in the
   context of the application. Failed attacks will cause denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"vsftpd 2.3.4 is affected; other versions may also be vulnerable.");
+  script_tag(name:"affected", value:"vsftpd 2.3.4 is affected. Other versions may also be vulnerable.");
 
   script_tag(name:"solution", value:"A fixed version 2.3.5 is available. Please see the references for more information.");
 

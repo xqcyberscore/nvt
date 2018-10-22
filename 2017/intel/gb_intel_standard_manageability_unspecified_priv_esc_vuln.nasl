@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl 9543 2018-04-20 01:56:24Z ckuersteiner $
+# $Id: gb_intel_standard_manageability_unspecified_priv_esc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Intel Standard Manageability Privilege Escalation Vulnerability
 #
@@ -29,58 +29,50 @@ CPE = 'cpe:/h:intel:intel_standard_manageability';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811810");
-  script_version("$Revision: 9543 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-5698");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:56:24 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 19:05:54 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Intel Standard Manageability Privilege Escalation Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Intel Standard
+  script_tag(name:"summary", value:"This host is installed with Intel Standard
   Manageability and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an unspecified error in
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error in
   an unspecified function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to conduct privilege escalation.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to conduct privilege escalation.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Intel Standard Manageability firmware 
+  script_tag(name:"affected", value:"Intel Standard Manageability firmware
   versions 11.0.25.3001 and 11.0.26.3000.");
 
-  script_tag(name: "solution" , value:"Upgrade to firmware version 11.6.x.1xxx 
-  or later. For updates refer to https://downloadcenter.intel.com");
+  script_tag(name:"solution", value:"Upgrade to firmware version 11.6.x.1xxx
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00082&languageid=en-fr");
+  script_xref(name:"URL", value:"https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00082&languageid=en-fr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_intel_standard_manageability_detect.nasl");
   script_mandatory_keys("Intel/Standard/Manageability/version");
+  script_xref(name:"URL", value:"https://downloadcenter.intel.com");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable initialization
-atmPort = 0;
-atmVer = "";
-
-## Get port
 if(!atmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!atmVer = get_app_version(cpe:CPE, port:atmPort)){
   exit(0);
 }

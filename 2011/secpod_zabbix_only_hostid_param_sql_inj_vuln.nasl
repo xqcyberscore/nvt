@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zabbix_only_hostid_param_sql_inj_vuln.nasl 7650 2017-11-03 13:34:50Z cfischer $
+# $Id: secpod_zabbix_only_hostid_param_sql_inj_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Zabbix 'only_hostid' Parameter SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902769");
-  script_version("$Revision: 7650 $");
+  script_version("$Revision: 12006 $");
   script_cve_id("CVE-2011-4674");
   script_bugtraq_id(50803);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:34:50 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-15 11:10:21 +0530 (Thu, 15 Dec 2011)");
   script_name("Zabbix 'only_hostid' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,32 +49,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18155/");
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-4385");
 
-  tag_impact = "Successful exploitation will allow attacker to perform SQL Injection attack
-  and gain sensitive information.
-
-  Impact Level: Application";
-
-  tag_affected = "Zabbix version 1.8.4 and prior";
-
-  tag_insight = "The flaw is due to improper validation of user-supplied input passed
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection attack
+  and gain sensitive information.");
+  script_tag(name:"affected", value:"Zabbix version 1.8.4 and prior");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input passed
   via the 'only_hostid' parameter to 'popup.php', which allows attackers to
-  manipulate SQL queries by injecting arbitrary SQL code.";
-
-  tag_solution = "Upgrade to Zabbix version 1.8.9 or later
-  For updates refer to http://www.zabbix.com/index.php";
-
-  tag_summary = "This host is running Zabbix and is prone to SQL injection
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  manipulate SQL queries by injecting arbitrary SQL code.");
+  script_tag(name:"solution", value:"Upgrade to Zabbix version 1.8.9 or later");
+  script_tag(name:"summary", value:"This host is running Zabbix and is prone to SQL injection
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.zabbix.com/index.php");
   exit(0);
 }
 
@@ -90,6 +78,6 @@ if( http_vuln_check( port:port, url:url, pattern:"You have an error in your SQL 
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

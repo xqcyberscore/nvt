@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mbedthis_webapp_http_trace_method_xss_vuln.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_mbedthis_webapp_http_trace_method_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mbedthis AppWeb HTTP TRACE Method Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802350");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2007-3008");
   script_bugtraq_id(24456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-02 14:47:36 +0530 (Fri, 02 Dec 2011)");
   script_name("Mbedthis AppWeb HTTP TRACE Method Cross-Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/25636");
@@ -57,8 +57,7 @@ if(description)
   'TRACE' method, which allows attackers to inject arbitrary HTML via
   crafted HTTP TRACE request.");
 
-  script_tag(name:"solution", value:"Disable TRACE method or upgrade to Mbedthis AppWeb 2.2.2 or later
-  For updates refer to http://appwebserver.org/index.html");
+  script_tag(name:"solution", value:"Disable TRACE method or upgrade to Mbedthis AppWeb 2.2.2 or later");
 
   script_tag(name:"summary", value:"The host is running Mbedthis AppWeb Server and is prone to cross
   site scripting vulnerability.");
@@ -66,6 +65,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://appwebserver.org/index.html");
   exit(0);
 }
 

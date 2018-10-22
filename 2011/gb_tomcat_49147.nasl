@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_49147.nasl 4341 2016-10-25 06:58:20Z cfi $
+# $Id: gb_tomcat_49147.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Apache Tomcat CVE-2011-2481 Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103199");
-  script_version("$Revision: 4341 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:58:20 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-16 15:29:48 +0200 (Tue, 16 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,20 +48,12 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/");
 
-  tag_summary = "Apache Tomcat is prone to a remote information-disclosure
-  vulnerability.";
-
-  tag_impact = "Remote attackers can exploit this issue to obtain sensitive
-  information.";
-
-  tag_affected = "Tomcat 7.0.0 through 7.0.16 is vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to obtain sensitive
+  information.");
+  script_tag(name:"affected", value:"Tomcat 7.0.0 through 7.0.16 is vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Apache Tomcat is prone to a remote information-disclosure
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

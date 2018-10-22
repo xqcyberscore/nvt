@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_krb58.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_krb58.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Auto generated from VID 0d57c1d9-03f4-11e0-bf50-001a926c7637
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68694");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -63,7 +63,7 @@ PAC checksum, or (3) a KrbFastArmoredReq checksum based on an RC4 key.");
 
   script_xref(name:"URL", value:"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2010-007.txt");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/0d57c1d9-03f4-11e0-bf50-001a926c7637.html");
- exit(0);
+  exit(0);
 }
 
 include("revisions-lib.inc");

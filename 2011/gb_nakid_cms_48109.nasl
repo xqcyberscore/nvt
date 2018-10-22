@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nakid_cms_48109.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_nakid_cms_48109.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Nakid CMS 'CKEditorFuncNum' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:jeffkilroy:nakid_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103176");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 12:59:38 +0200 (Tue, 07 Jun 2011)");
   script_bugtraq_id(48109);
   script_tag(name:"cvss_base", value:"2.6");
@@ -51,8 +51,9 @@ if(description)
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site. This may allow the attacker
   to steal cookie-based authentication credentials and to launch other attacks.");
-  script_tag(name:"affected", value:"Nakid CMS 1.0.2 is vulnerable; other versions may also be affected.");
-
+  script_tag(name:"affected", value:"Nakid CMS 1.0.2 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
@@ -61,7 +62,7 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 

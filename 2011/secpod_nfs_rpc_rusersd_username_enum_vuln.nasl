@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nfs_rpc_rusersd_username_enum_vuln.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: secpod_nfs_rpc_rusersd_username_enum_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Nfs-utils 'rusersd' User Enumeration Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902473");
-  script_version("$Revision: 4803 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 13:40:07 +0200 (Wed, 31 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0626");
+  #  script_cve_id("CVE-1999-0626");
   script_name("Nfs-utils 'rusersd' User Enumeration Vulnerability");
   script_copyright("Copyright (c) 2011 SecPod");
   script_category(ACT_ATTACK);
@@ -46,29 +46,16 @@ if(description)
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0626");
   script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?ctype=cve&id=CVE-1999-0626");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_impact = "Successful exploitation could allow attackers to extract the list
-  of users currently logged in.
-
-  Impact Level: System/Application";
-
-  tag_affected = "nfs-utils rpc version 1.2.3 prior.";
-
-  tag_insight = "The flaw is due to an error in remote rusers server which allows
-  to extract the list of users currently logged in the remote host.";
-
-  tag_summary = "The host is running RPC rusersd service and is prone to user name
-  enumeration vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to extract the list
+  of users currently logged in.");
+  script_tag(name:"affected", value:"nfs-utils rpc version 1.2.3 prior.");
+  script_tag(name:"insight", value:"The flaw is due to an error in remote rusers server which allows
+  to extract the list of users currently logged in the remote host.");
+  script_tag(name:"summary", value:"The host is running RPC rusersd service and is prone to user name
+  enumeration vulnerability.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -85,7 +72,6 @@ if(!port){
   exit(0);
 }
 
-## Open the socket
 soc = open_sock_udp(port);
 req = raw_string(0x25, 0xC8, 0x20, 0x4C, 0x00, 0x00,
                  0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
@@ -97,13 +83,11 @@ req = raw_string(0x25, 0xC8, 0x20, 0x4C, 0x00, 0x00,
 
 send(socket:soc, data:req);
 
-## Check for the response
 resp = recv(socket:soc, length:4096);
 close(soc);
 
 if(strlen(resp) > 28)
 {
-  ## Check for the number of users
   nenty = ord(resp[27]);
   if(nenty == 0){
     exit(0);
@@ -111,7 +95,6 @@ if(strlen(resp) > 28)
 
   start = 32;
 
-  ## get the name of each user
   for(i=0; i < nenty ; i = i + 1)
   {
     timtl = "";
@@ -153,7 +136,6 @@ if(strlen(resp) > 28)
 
     start = start + 28;
 
-    ## Check for the list of user
     if(strlen(usrFrom))
     {
       security_message(port:port, proto:"udp");

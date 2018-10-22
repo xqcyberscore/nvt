@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_weak_crypt_sec_bypass_vuln.nasl 7338 2017-10-04 08:49:04Z santu $
+# $Id: gb_apache_wicket_weak_crypt_sec_bypass_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Wicket 'CryptoMapper' Cross Site Request Forgery Vulnerability
 #
@@ -29,48 +29,45 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811841");
-  script_version("$Revision: 7338 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-7808");
   script_bugtraq_id(100946);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:12 +0530 (Wed, 04 Oct 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket 'CryptoMapper' Cross Site Request Forgery Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Apache Wicket
+  script_tag(name:"summary", value:"The host is installed with Apache Wicket
   and is prone to cross site request forgery vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to Wicket's default security 
+  script_tag(name:"insight", value:"The flaw is due to Wicket's default security
   settings of the usage of CryptoMapper to encrypt/obfuscate pages urls, which is not
   strong enough. It is possible to predict the encrypted version of an url based on
   the previous history.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to defeat a cryptographic protection mechanism and predict encrypted URLs by
-  leveraging use of CryptoMapper as the default encryption provider.
+  leveraging use of CryptoMapper as the default encryption provider.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Apache Wicket versions before 1.5.13, 6.x before 
+  script_tag(name:"affected", value:"Apache Wicket versions before 1.5.13, 6.x before
   6.19.0, and 7.x before 7.0.0-M5.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Wicket 1.5.13 or 6.19.0
-  or 7.0.0-M5 or later.
-  For updates refer to http://wicket.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Wicket 1.5.13 or 6.19.0
+  or 7.0.0-M5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.smrrd.de/cve-2014-7808-apache-wicket-csrf-2014.html");
+  script_xref(name:"URL", value:"https://www.smrrd.de/cve-2014-7808-apache-wicket-csrf-2014.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_apache_wicket_detect.nasl");
   script_mandatory_keys("Apache/Wicket/Installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://wicket.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_mozilla_firefox_cache_obj_enum_weakness_vuln_macosx.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (MAC OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802548");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4688");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 17:53:11 +0530 (Fri, 09 Dec 2011)");
   script_name("Mozilla Firefox Cache Objects History Enumeration Weakness Vulnerability (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47090");
@@ -60,7 +60,6 @@ objects history enumeration weakness vulnerability.");
 
 include("version_func.inc");
 
-## Firefox Check
 ffVer = get_kb_item("Mozilla/Firefox/MacOSX/Version");
 if(ffVer)
 {

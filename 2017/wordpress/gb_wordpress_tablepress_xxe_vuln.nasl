@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tablepress_xxe_vuln.nasl 7897 2017-11-24 07:09:48Z ckuersteiner $
+# $Id: gb_wordpress_tablepress_xxe_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress TablePress Plugin XXE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140537");
-  script_version("$Revision: 7897 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-24 08:09:48 +0100 (Fri, 24 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-24 14:11:21 +0700 (Fri, 24 Nov 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-24 14:11:21 +0700 (Fri, 24 Nov 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-10889");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress TablePress Plugin XXE Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress TablePress plugin is prone to a XML External Entity (XXE)
+  script_tag(name:"summary", value:"WordPress TablePress plugin is prone to a XML External Entity (XXE)
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress TablePress plugin version 1.8 and prior.");
+  script_tag(name:"affected", value:"WordPress TablePress plugin version 1.8 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 1.8.1 or later.");
+  script_tag(name:"solution", value:"Update to version 1.8.1 or later.");
 
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN05398317/index.html");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN05398317/index.html");
 
   exit(0);
 }

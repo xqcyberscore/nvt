@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_mozilla_firefox_mem_corrpt_n_int_underflow_vuln_macosx.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Mozilla Firefox Memory Corruption and Integer Underflow Vulnerabilities (MAC OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802181");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2011-2996", "CVE-2011-2998");
   script_bugtraq_id(49845, 49809);
@@ -52,8 +52,8 @@ if(description)
     when evaluating certain regular expressions.
 
   - An unspecified error can be exploited to corrupt memory.");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6.23 or later
-  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6.23 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox and is prone to memory
   corruption and integer underflow vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
@@ -64,7 +64,6 @@ if(description)
 
 include("version_func.inc");
 
-## Firefox Check
 ffVer = get_kb_item("Mozilla/Firefox/MacOSX/Version");
 if(ffVer)
 {

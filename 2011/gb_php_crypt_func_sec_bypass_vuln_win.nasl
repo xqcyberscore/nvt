@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_crypt_func_sec_bypass_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_crypt_func_sec_bypass_vuln_win.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # PHP 'crypt()' Function Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802329");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-3189");
   script_bugtraq_id(48259);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/archive/2011.php#id2011-08-22-1");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass authentication
-  via an arbitrary password.
-
-  Impact Level: Application");
+  via an arbitrary password.");
 
   script_tag(name:"affected", value:"PHP version 5.3.7 on Windows");
 
@@ -57,8 +55,7 @@ if(description)
   salt value instead of hash value when executed with MD5 hash, which allows
   attacker to bypass authentication via an arbitrary password.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.8 or later.
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.8 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass
   vulnerability.");
@@ -66,6 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6f3ceeb7cb_php-symfony3_fc27.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_fedora_2018_6f3ceeb7cb_php-symfony3_fc27.nasl 12004 2018-10-22 05:34:04Z cfischer $
 #
 # Fedora Update for php-symfony3 FEDORA-2018-6f3ceeb7cb
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874951");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12004 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:37:18 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-14773", "CVE-2018-14774", "CVE-2018-11407", "CVE-2018-11408",
                 "CVE-2018-11406", "CVE-2018-11385", "CVE-2018-11386");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-symfony3 FEDORA-2018-6f3ceeb7cb");
   script_tag(name:"summary", value:"Check the version of php-symfony3");

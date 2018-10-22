@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_sec_bypass_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ibm_db2_mult_sec_bypass_vuln.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # IBM DB2 Multiple Security Bypass Vulnerabilities (May-11)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801930");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1846", "CVE-2011-1847");
   script_bugtraq_id(47525);
@@ -55,8 +55,7 @@ if(description)
   - An error when revoking role memberships, which could result in a user
     continuing to have privileges to execute a non-DDL statement after role
     membership has been revoked from its group.");
-  script_tag(name:"solution", value:"Update DB2 to 9.5 Fix Pack 7, or 9.7 Fix Pack 4,
-  For updates refer to http://www.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+  script_tag(name:"solution", value:"Update DB2 to 9.5 Fix Pack 7, or 9.7 Fix Pack 4.");
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to multiple security bypass
   vulnerabilities.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44229");
@@ -66,6 +65,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
   exit(0);
 }
 

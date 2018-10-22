@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 8601 2018-01-31 12:07:42Z cfischer $
+# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MediaWiki 'profileinfo.php' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801877");
-  script_version("$Revision: 8601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-2788");
   script_bugtraq_id(42024);
@@ -45,9 +45,7 @@ if(description)
   script_mandatory_keys("mediawiki/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in context of an affected site.");
 
   script_tag(name:"affected", value:"MediaWiki versions before 1.15.5");
 
@@ -55,8 +53,7 @@ if(description)
   the 'filter' parameter to profileinfo.php, which allows attackers to execute
   arbitrary HTML and script code on the web server.");
 
-  script_tag(name:"solution", value:"Upgrade to MediaWiki versions 1.16.0 or 1.15.5.
-  For updates refer to http://www.mediawiki.org/wiki/Download");
+  script_tag(name:"solution", value:"Upgrade to MediaWiki versions 1.16.0 or 1.15.5.");
 
   script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
   vulnerability.");
@@ -69,6 +66,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/Download");
   exit(0);
 }
 

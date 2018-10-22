@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_xnview_code_exec_vuln_win.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # XnView File Search Path Executable File Injection Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802309");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-1338");
   script_bugtraq_id(48562);
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
   system with elevated privileges.");
   script_tag(name:"affected", value:"XnView versions prior to 1.98.1 on windows.");
-  script_tag(name:"solution", value:"Update to XnView version 1.98.1 or later.
-  For updates refer to http://www.xnview.com/");
+  script_tag(name:"solution", value:"Update to XnView version 1.98.1 or later.");
   script_tag(name:"summary", value:"This host has XnView installed and is prone to executable file
   injection vulnerability.
 
@@ -56,6 +55,7 @@ if(description)
   executables.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_simple_machines_forum_mult_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_simple_machines_forum_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Simple Machines Forum Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902446");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-1127", "CVE-2011-1128", "CVE-2011-1129",
                 "CVE-2011-1130", "CVE-2011-1131");
@@ -51,29 +51,31 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain access or cause a
   denial of service or to conduct SQL injection attacks, obtain sensitive
-  information.
-
-  Impact Level: Application.");
+  information.");
   script_tag(name:"affected", value:"Simple Machines Forum (SMF) before 1.1.13 and 2.x before 2.0 RC5");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in 'SSI.php', it does not properly restrict guest access.
+
   - An error in loadUserSettings function in 'Load.php', it does not properly
     handle invalid login attempts.
+
   - An error in EditNews function in 'ManageNews.php', which allow users to
     inject arbitrary web script or HTML via a save_items action.
+
   - An error in cleanRequest function in 'QueryString.php' and the
     constructPageIndex function 'in Subs.php'.
+
   - An error in PlushSearch2 function in 'Search.php', allow remote attackers
     to obtain sensitive information via a search.");
   script_tag(name:"summary", value:"The host is installed with Simple Machines Forum and is prone
   to multiple vulnerabilities.");
   script_tag(name:"solution", value:"Apply the patch or upgrade to version 1.1.13 or 2.0 RC5
-  http://download.simplemachines.org/
-  http://custom.simplemachines.org/mods/downloads/smf_patch_2.0-RC4_security.zip
-
   *****
   NOTE : Ignore this warning, if above mentioned fix is applied already.
   *****");
+  script_xref(name:"URL", value:"http://download.simplemachines.org/");
+  script_xref(name:"URL", value:"http://custom.simplemachines.org/mods/downloads/smf_patch_2.0-RC4_security.zip");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

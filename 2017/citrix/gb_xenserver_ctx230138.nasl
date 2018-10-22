@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx230138.nasl 7987 2017-12-05 03:05:03Z ckuersteiner $
+# $Id: gb_xenserver_ctx230138.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX230138)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140576");
-  script_version("$Revision: 7987 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 04:05:03 +0100 (Tue, 05 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-05 09:08:18 +0700 (Tue, 05 Dec 2017)");
-  script_tag(name: "cvss_base", value: "7.2");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-05 09:08:18 +0700 (Tue, 05 Dec 2017)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7980", "CVE-2017-15592", "CVE-2017-17044", "CVE-2017-17045");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX230138)");
 
@@ -49,24 +49,24 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Citrix Xenserver Local Security Checks");
   script_dependencies("gb_xenserver_version.nasl");
-  script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
-  script_tag(name: "summary", value: "A number of security vulnerabilities have been identified in Citrix
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix
 XenServer that may allow a malicious administrator of an HVM guest VM to compromise the host.
 
-- CVE-2017-7980: code execution via overflow in Cirrus Logic emulation
+  - CVE-2017-7980: code execution via overflow in Cirrus Logic emulation
 
-- CVE-2017-15592: Incorrect handling of self-linear shadow mappings with translated guests
+  - CVE-2017-15592: Incorrect handling of self-linear shadow mappings with translated guests
 
-- CVE-2017-17044: Infinite loop due to missing PoD error checking
+  - CVE-2017-17044: Infinite loop due to missing PoD error checking
 
-- CVE-2017-17045: Missing p2m error checking in PoD code");
+  - CVE-2017-17045: Missing p2m error checking in PoD code");
 
-  script_tag(name: "affected", value: "XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0 and 6.0.2.");
+  script_tag(name:"affected", value:"XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0 and 6.0.2.");
 
-  script_tag(name: "solution", value: "Apply the hotfix referenced in the advisory.");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
-  script_xref(name: "URL", value: "https://support.citrix.com/article/CTX230138");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX230138");
 
   exit(0);
 }

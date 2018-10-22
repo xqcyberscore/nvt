@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_im_manager_code_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_symantec_im_manager_code_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Symantec IM Manager 'eval()' Code Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901186");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2010-3719");
   script_bugtraq_id(45946);
@@ -51,8 +51,7 @@ if(description)
   processing a POST variable via an 'eval()' call, which could be exploited by
   attackers to inject and execute arbitrary ASP code by enticing a logged-in
   console user to visit a malicious link.");
-  script_tag(name:"solution", value:"Upgarade to Symantec IM Manager version 8.4.17 or later.
-  For updates refer to http://www.symantec.com/business/im-manager");
+  script_tag(name:"solution", value:"Upgarade to Symantec IM Manager version 8.4.17 or later.");
   script_tag(name:"summary", value:"This host is installed with Symantec IM Manager and is prone to
   code injection vulnerability.");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65040");
@@ -62,6 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/business/im-manager");
   exit(0);
 }
 

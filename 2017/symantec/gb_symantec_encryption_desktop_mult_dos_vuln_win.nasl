@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_desktop_mult_dos_vuln_win.nasl 7819 2017-11-20 05:26:56Z teissa $
+# $Id: gb_symantec_encryption_desktop_mult_dos_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Symantec Encryption Desktop Multiple DoS Vulnerabilities (Windows)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:symantec:encryption_desktop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812049");
-  script_version("$Revision: 7819 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-13682", "CVE-2017-13679");
   script_bugtraq_id(101497, 101090);
   script_tag(name:"cvss_base", value:"2.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 06:26:56 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:20:00 +0530 (Thu, 02 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Encryption Desktop Multiple DoS Vulnerabilities (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Symantec
+  script_tag(name:"summary", value:"The host is installed with Symantec
   Encryption Desktop and is prone to multiple denial-of-service vulnerabilities.");
-  
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to a kernel memory leak
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"Multiple flaws exists due to a kernel memory leak
   that can occur when a computer program incorrectly manages memory allocations
   in such a way that memory which is no longer needed is not released. In
   object-oriented programming, a memory leak may happen when an object is stored
@@ -54,19 +53,17 @@ if(description)
   users by temporarily or indefinitely disrupting services of a specific host within
   a network");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to cause denial-of-service conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to cause denial-of-service conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Symantec Encryption Desktop prior to
+  script_tag(name:"affected", value:"Symantec Encryption Desktop prior to
   version 10.4.1 MP2HF1");
 
-  script_tag(name: "solution" , value:"Upgrade to Symantec Encryption Desktop
-  version 10.4.1 MP2HF1 or later. For updates refer to https://www.symantec.com");
+  script_tag(name:"solution", value:"Upgrade to Symantec Encryption Desktop
+  version 10.4.1 MP2HF1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20171009_00#_Symantec_Encryption_Desktop");
+  script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20171009_00#_Symantec_Encryption_Desktop");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -85,7 +82,6 @@ if(!symanVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## 10.4.1MP2 == 10.4.1.759
 if(version_is_less_equal(version:symanVer, test_version:"10.4.1.759"))
 {

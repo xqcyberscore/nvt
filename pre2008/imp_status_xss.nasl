@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imp_status_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Horde IMP status.php3 XSS
+# $Id: imp_status_xss.nasl 12016 2018-10-22 12:50:10Z cfischer $
+#
+# Horde IMP status.php3 XSS
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -21,80 +23,55 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The remote host is running at least one instance of Horde IMP in which the
-status.php3 script is vulnerable to a cross site scripting attack since
-information passed to it is not properly sanitized.";
-
-tag_solution = "Upgrade to IMP version 2.2.8 or later.";
+CPE = "cpe:/a:horde:imp";
 
 #  Ref: Nuno Loureiro <nuno@eth.pt>
 
-if (description) {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.15616");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12016 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 14:50:10 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(4444);
   script_cve_id("CVE-2002-0181");
-  
   script_xref(name:"OSVDB", value:"5345");
-
-  name = "Horde IMP status.php3 XSS";
-  script_name(name);
-
-  summary = "Checks for status.php3 XSS flaw in Horde IMP";
- 
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_name("Horde IMP status.php3 XSS");
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("imp_detect.nasl");
+  script_mandatory_keys("horde/imp/detected");
 
+  script_tag(name:"solution", value:"Upgrade to Horde IMP version 2.2.8 or later.");
 
-  family = "Web application abuses";
-  script_family(family);
-  
-  script_dependencies("global_settings.nasl", "imp_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The remote host is running at least one instance of
+  Horde IMP in which the status.php3 script is vulnerable to a cross site scripting attack
+  since information passed to it is not properly sanitized.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_analysis");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-host = get_host_name();
-port = get_http_port(default:80);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-if (!get_port_state(port)) exit(0);
+if( dir == "/" ) dir = "";
+url = dir + "/status.php3?script=<script>vt-test</script>" ;
 
-# Check each installed instance, stopping if we find a vulnerability.
-installs = get_kb_list(string("www/", port, "/imp"));
-if (isnull(installs)) exit(0);
-foreach install (installs) {
-  matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-  if (!isnull(matches)) {
-    ver = matches[1];
-    dir = matches[2];
-    if (debug_level) display("debug: checking version ", ver, " under ", dir, ".\n");
-
-    url = string(
-      dir, 
-      # nb: if you change the URL, you probably need to change the 
-      #     pattern in the egrep() below.
-      "/status.php3?script=<script>foo</script>"
-    );
-    req = http_get(item:url, port:port);
-    res = http_keepalive_send_recv(port:port, data:req);
-    if (isnull(res)) exit(0);
-           
-    if (res =~ "HTTP/1\.. 200" && egrep(string:res, pattern:'<script>foo</script>')) {
-      security_message(port);
-      exit(0);
-    }
-  }
+if( http_vuln_check( port:port, url:url, pattern:'<script>vt-test</script>', check_header:TRUE ) ) {
+  report = report_vuln_url( url:url, port:port );
+  security_message( port:port, data:url );
 }
+
+exit( 0 );

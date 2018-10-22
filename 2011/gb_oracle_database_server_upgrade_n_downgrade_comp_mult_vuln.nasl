@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_server_upgrade_n_downgrade_comp_mult_vuln.nasl 4921 2017-01-02 16:16:25Z cfi $
+# $Id: gb_oracle_database_server_upgrade_n_downgrade_comp_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Database Server Upgrade and Downgrade Component Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802519");
-  script_version("$Revision: 4921 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2007-2113", "CVE-2007-2118");
   script_bugtraq_id(23532);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 17:16:25 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-01 17:11:26 +0530 (Thu, 01 Dec 2011)");
   script_name("Oracle Database Server Upgrade and Downgrade Component Multiple Vulnerabilities");
 
@@ -49,30 +49,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/466153/100/0/threaded");
   script_xref(name:"URL", value:"http://www.red-database-security.com/advisory/oracle_sql_injection_dbms_upgrade_internal.html");
 
-  tag_impact = "Successful exploitation allows remote authenticated users to execute
-  arbitrary SQL commands via unknown vectors.
-
-  Impact Level: Application";
-
-  tag_affected = "Oracle Database server versions 9.0.1.5, 9.2.0.7 and 10.1.0.5";
-
-  tag_insight = "The flaw is due to an errors in the Upgrade/Downgrade component.";
-
-  tag_solution = "Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpuapr2007-090632.html";
-
-  tag_summary = "This host is running Oracle database and is prone to multiple
-  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation allows remote authenticated users to execute
+  arbitrary SQL commands via unknown vectors.");
+  script_tag(name:"affected", value:"Oracle Database server versions 9.0.1.5, 9.2.0.7 and 10.1.0.5");
+  script_tag(name:"insight", value:"The flaw is due to an errors in the Upgrade/Downgrade component.");
+  script_tag(name:"summary", value:"This host is running Oracle database and is prone to multiple
+  vulnerabilities.");
+  script_tag(name:"solution", value:"Apply patches");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2007-090632.html");
   exit(0);
 }
 

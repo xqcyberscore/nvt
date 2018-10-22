@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mem_corr_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_opera_mem_corr_vuln_win.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Opera Browser 'SELECT' HTML Tag Remote Memory Corruption Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801788");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_cve_id("CVE-2011-1824");
   script_bugtraq_id(47764);
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in 'VEGAOpBitmap::AddLine' function, which
   fails to properly initialize memory during processing of the SIZE attribute of
   a SELECT element.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 10.61 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 10.61 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to memory
   corruption vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_help_page_xss_vuln_win.nasl 8263 2017-12-29 15:35:55Z santu $
+# $Id: gb_adobe_acrobat_help_page_xss_vuln_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Adobe Acrobat Help Page Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812287");
-  script_version("$Revision: 8263 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-5315");
   script_bugtraq_id(69791);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 16:35:55 +0100 (Fri, 29 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 11:29:42 +0530 (Fri, 29 Dec 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Help Page Cross Site Scripting Vulnerability (Windows)");
@@ -42,22 +42,18 @@ if(description)
   script_tag(name:"summary", value:"This host is running Adobe Acrobat and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an input validation
   error in Help page.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via unspecified vectors.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"Adobe Acrobat 9.5.2 and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to latest version of Adobe Acrobat
-  according to the information provided by the developer. 
-  For updates refer to http://www.adobe.com");
+  according to the information provided by the developer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN84376800/index.html");
@@ -67,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

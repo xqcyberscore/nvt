@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_feb11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_feb11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Google Chrome multiple vulnerabilities - February 11(Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801739");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_cve_id("CVE-2011-0777", "CVE-2011-0778", "CVE-2011-0779",
                 "CVE-2011-0780", "CVE-2011-0781", "CVE-2011-0783",
@@ -61,12 +61,12 @@ if(description)
   - Browser crash with bad volume setting
 
   - Race condition in audio handling");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 9.0.597.84 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 9.0.597.84 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

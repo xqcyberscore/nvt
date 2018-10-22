@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_vlc_media_player_mult_bof_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # VLC Media Player Real Demuxer File Handling Array Indexing Vulnerabilities (Windows)
 #
@@ -26,46 +26,38 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation will allow the attackers to crash an affected application
-  or compromise a vulnerable system by convincing a user to open a malicious media
-  file or to visit a specially crafted web page.
-  Impact Level: Application.";
-tag_affected = "VLC Media Player version 1.1.5 and prior.";
-
-tag_insight = "This issue is caused by an array indexing error in the 'Close()' and
-  'DemuxAudioMethod1()' [modules/demux/real.c] functions within the Real
-   demuxer when processing a Real Media file with a zero 'i_subpackets' value.";
-tag_solution = "Upgrade to VLC version 1.1.6 or apply patch from below link,
-  For updates refer to http://www.videolan.org/vlc/";
-tag_summary = "This host is installed with VLC media player and is prone to
-  array indexing vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801565");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-3907");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("VLC Media Player Real Demuxer File Handling Array Indexing Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1007.html");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3345");
-  script_xref(name : "URL" , value : "http://www.cs.brown.edu/people/drosenbe/research.html");
+  script_xref(name:"URL", value:"http://www.videolan.org/security/sa1007.html");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3345");
+  script_xref(name:"URL", value:"http://www.cs.brown.edu/people/drosenbe/research.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"This issue is caused by an array indexing error in the 'Close()' and
+  'DemuxAudioMethod1()' [modules/demux/real.c] functions within the Real
+   demuxer when processing a Real Media file with a zero 'i_subpackets' value.");
+  script_tag(name:"solution", value:"Upgrade to VLC version 1.1.6 or apply patch from below link.");
+  script_tag(name:"summary", value:"This host is installed with VLC media player and is prone to
+  array indexing vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to crash an affected application
+  or compromise a vulnerable system by convincing a user to open a malicious media
+  file or to visit a specially crafted web page.");
+  script_tag(name:"affected", value:"VLC Media Player version 1.1.5 and prior.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

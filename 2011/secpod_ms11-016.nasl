@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-016.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: secpod_ms11-016.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Microsoft Groove Remote Code Execution Vulnerability (2494047)
 #
@@ -27,36 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902351");
-  script_version("$Revision: 10022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 15:35:07 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2010-3146");
   script_bugtraq_id(42695);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft Groove Remote Code Execution Vulnerability (2494047)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41104/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2188");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS11-016.mspx");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41104/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2188");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS11-016.mspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "secpod_office_products_version_900032.nasl");
-  script_mandatory_keys("SMB/Office/Groove/Version");
+  script_mandatory_keys("SMB/Office/Groove/Version", "SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary
-  code by tricking a user into opening a file *.vcg from a network share.
-
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Microsoft Groove 2007 Service Pack 2 and prior");
-  script_tag(name : "insight" , value : "The application insecurely loading certain libraries (e.g. 'mso.dll') from
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
+  code by tricking a user into opening a file *.vcg from a network share.");
+  script_tag(name:"affected", value:"Microsoft Groove 2007 Service Pack 2 and prior");
+  script_tag(name:"insight", value:"The application insecurely loading certain libraries (e.g. 'mso.dll') from
   the current working directory.");
-  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/Bulletin/MS11-016.mspx");
-  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-016.");
 
   script_tag(name:"qod_type", value:"registry");
@@ -78,7 +74,7 @@ if(exeVer =~ "^12\..*")
 {
   if(version_in_range(version:exeVer, test_version:"12.0", test_version2:"12.0.6550.5003"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dotnetnuke_installwizard_xss_vuln.nasl 10772 2018-08-04 15:54:37Z cfischer $
+# $Id: secpod_dotnetnuke_installwizard_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # DotNetNuke 'InstallWizard.aspx' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902515");
-  script_version("$Revision: 10772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:54:37 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-4514");
   script_bugtraq_id(45180);
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   HTML and script code in a user's browser session in the context of an
-  affected site.
-
-  Impact Level: Application");
+  affected site.");
 
   script_tag(name:"affected", value:"DotNetNuke versions 5.05.01 and 5.06.00");
 
@@ -60,8 +58,7 @@ if(description)
   '__VIEWSTATE' parameter in Install/InstallWizard.aspx, which allows attackers to execute arbitrary HTML
   and script code in a user's browser session in the context of an affected site.");
 
-  script_tag(name:"solution", value:"Upgrade to DotNetNuke version 5.06.02 or later.
-  For updates refer to http://www.dotnetnuke.com");
+  script_tag(name:"solution", value:"Upgrade to DotNetNuke version 5.06.02 or later.");
 
   script_tag(name:"summary", value:"This host is running DotNetNuke and is prone to cross site
   scripting vulnerability.");
@@ -69,6 +66,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.dotnetnuke.com");
   exit(0);
 }
 

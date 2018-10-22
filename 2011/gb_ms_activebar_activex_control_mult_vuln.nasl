@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_activebar_activex_control_mult_vuln.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: gb_ms_activebar_activex_control_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2562937)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801966");
-  script_version("$Revision: 11706 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,10 +63,7 @@ if(description)
   script_tag(name:"summary", value:"This script will list all the vulnerable activex controls installed
   on the remote windows machine with references and cause.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://support.microsoft.com/kb/2562937
-
-  Workaround:
+  script_tag(name:"solution", value:"Apply the patch  Workaround:
   Set the killbit for the following CLSIDs,
 
   {B4CB50E4-0309-4906-86EA-10B6641C8392},
@@ -78,6 +75,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2562937");
   exit(0);
 }
 
@@ -89,7 +87,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-# Hotfix check
 if(hotfix_missing(name:"2562937") == 0){
   exit(0);
 }

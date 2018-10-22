@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2013:001");
   script_oid("1.3.6.1.4.1.25623.1.0.831761");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:54:28 +0530 (Fri, 04 Jan 2013)");
   script_cve_id("CVE-2012-6085");
   script_tag(name:"cvss_base", value:"5.8");
@@ -52,16 +48,18 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"A vulnerability has been found and corrected in gnupg:
 
-  Versions of GnuPG &lt;= 1.4.12 are vulnerable to memory access violations
+  Versions of GnuPG <= 1.4.12 are vulnerable to memory access violations
   and public keyring database corruption when importing public keys
   that have been manipulated. An OpenPGP key can be fuzzed in such a
   way that gpg segfaults (or has other memory access violations) when
   importing the key (CVE-2012-6085).
 
   The updated packages have been patched to correct this issue.");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_php_speedy_plugin_title_param_xss.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_php_speedy_plugin_title_param_xss.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress PHP Speedy Plugin 'title' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802009");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-16 15:16:52 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/43652/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"Wordpress PHP Speedy plugin version 0.5.2 and prior.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_48554.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: gb_webid_48554.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -23,60 +23,54 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+CPE = "cpe:/a:webidsupport:webid";
 
-tag_solution = "Updates are available. Please see the references for more information.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103186");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-07-06 13:49:20 +0200 (Wed, 06 Jul 2011)");
+  script_bugtraq_id(48554);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities");
 
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48554");
+  script_xref(name:"URL", value:"http://www.webidsupport.com/forums/showthread.php?3892");
+  script_xref(name:"URL", value:"http://www.webidsupport.com");
 
-*** You should remove the line 'array('from' => 'USD', 'to' => '^@'));print('openvas-c-i-test'//', 'rate' => '')' from includes/currencies.php ***";
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_webid_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("webid/installed");
 
-tag_summary = "WeBid is prone to multiple vulnerabilities that attackers can leverage
+  script_tag(name:"summary", value:"WeBid is prone to multiple vulnerabilities that attackers can leverage
 to execute arbitrary PHP code because the application fails to
 adequately sanitize user-supplied input.
 
 Successful attacks can compromise the affected application and
 possibly the underlying computer.
 
-WeBid 1.0.2 is vulnerable; other versions may also be affected.";
+WeBid 1.0.2 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.
 
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103186";
-CPE = "cpe:/a:webidsupport:webid";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_version("$Revision: 7029 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-07-06 13:49:20 +0200 (Wed, 06 Jul 2011)");
- script_bugtraq_id(48554);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("WeBid 'converter.php' Multiple Remote PHP Code Injection Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/48554");
- script_xref(name : "URL" , value : "http://www.webidsupport.com/forums/showthread.php?3892");
- script_xref(name : "URL" , value : "http://www.webidsupport.com");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_webid_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("webid/installed");
-
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- exit(0);
+*** You should remove the line 'array('from' => 'USD', 'to' => '^@'));print('openvas-c-i-test'//', 'rate' => '')' from includes/currencies.php ***");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = string(dir,"/converter.php");
 
@@ -102,6 +96,6 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if("openvas-c-i-test" >< buf) {
   security_message(port:port);
   exit(0);
-}  
+}
 
 exit(0);

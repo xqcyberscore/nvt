@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_access_bypass_vuln.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_apache_traffic_server_access_bypass_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Traffic Server (ATS) Access Bypass Vulnerability
 #
@@ -30,41 +30,39 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812230");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2015-3249");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-29 16:54:52 +0530 (Wed, 29 Nov 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-29 16:54:52 +0530 (Wed, 29 Nov 2017)");
   script_name("Apache Traffic Server (ATS) Access Bypass Vulnerability");
 
-  script_tag(name: "summary", value: "This host is installed with Apache Traffic
+  script_tag(name:"summary", value:"This host is installed with Apache Traffic
   Server and is prone to access bypass vulnerability.");
- 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight", value: "The flaw exists due to a failure to
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"The flaw exists due to a failure to
   properly tunnel remap requests using CONNECT.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass access restrictions.
-
-  Impact Level: Application");
+  attackers to bypass access restrictions.");
 
   script_tag(name:"affected", value:"Apache Traffic Server 5.1.x before 5.1.1");
 
   script_tag(name:"solution", value:"Upgrade to Apache Wicket version 5.1.1
-  or later. For updates refer to http://trafficserver.apache.org/");
+  or later.");
 
-  script_tag(name: "qod_type", value: "remote_banner");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_traffic_detect.nasl");
   script_mandatory_keys("apache_trafficserver/installed");
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/TS-2677");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/TS-2677");
+  script_xref(name:"URL", value:"http://trafficserver.apache.org/");
   exit(0);
 }
 

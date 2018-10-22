@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_admin_bot_50562.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_admin_bot_50562.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Admin Bot 'news.php' SQL Injection Vulnerability
 #
@@ -28,7 +28,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103337");
   script_bugtraq_id(50562);
-  script_version("$Revision: 11449 $");
+  script_version("$Revision: 11987 $");
 
   script_name("Admin Bot 'news.php' SQL Injection Vulnerability");
 
@@ -38,7 +38,7 @@ if(description)
 
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 11:40:43 +0100 (Tue, 08 Nov 2011)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -56,7 +56,7 @@ an SQL query.
 Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database implementation.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

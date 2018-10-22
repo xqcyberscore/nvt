@@ -23,15 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00007.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831347");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11986 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:54:21 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-15 14:58:18 +0100 (Tue, 15 Mar 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -71,7 +68,7 @@ if(description)
 
   ka-deploy-0.94.4-0.1mdvmes5.2:
   * add missing script udev_creation.sh
-  * fix anoying bug to umount $CHROOT/dev
+  * fix annoying bug to umount $CHROOT/dev
   * fix a lot of bugs in fstab, grub preparation, remove udev persistent
   rules on client node
   * remove all old scripts, cleaning the spec file
@@ -99,9 +96,11 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

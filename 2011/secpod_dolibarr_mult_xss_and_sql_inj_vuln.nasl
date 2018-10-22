@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dolibarr_mult_xss_and_sql_inj_vuln.nasl 6127 2017-05-15 12:07:00Z cfi $
+# $Id: secpod_dolibarr_mult_xss_and_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Dolibarr Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902644");
-  script_version("$Revision: 6127 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4814", "CVE-2011-4802");
   script_bugtraq_id(50777);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 14:07:00 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-15 14:02:22 +0530 (Thu, 15 Dec 2011)");
   script_name("Dolibarr Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,38 +48,26 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520619");
   script_xref(name:"URL", value:"https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_dolibarr.html");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of a vulnerable site
-  and to cause SQL Injection attack to gain sensitive information.
-
-  Impact Level: Application";
-
-  tag_affected = "Dolibarr version 3.1.0RC and prior";
-
-  tag_insight = "The flaws are due to improper validation of user-supplied input
+  and to cause SQL Injection attack to gain sensitive information.");
+  script_tag(name:"affected", value:"Dolibarr version 3.1.0RC and prior");
+  script_tag(name:"insight", value:"The flaws are due to improper validation of user-supplied input
 
   - Passed via PATH_INFO to multiple scripts allows attackers to inject
     arbitrary HTML code.
 
   - Passed via the 'sortfield', 'sortorder', 'sall', 'id' and 'rowid'
     parameters to multiple scripts, which allows attackers to manipulate SQL
-    queries by injecting arbitrary SQL code.";
-
-  tag_solution = "Upgrade to Dolibarr version 3.1RC3 or later
-  For updates refer to http://www.dolibarr.org/";
-
-  tag_summary = "This host is running Dolibarr and is prone to multiple cross site scripting
-  and SQL injection vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+    queries by injecting arbitrary SQL code.");
+  script_tag(name:"solution", value:"Upgrade to Dolibarr version 3.1RC3 or later");
+  script_tag(name:"summary", value:"This host is running Dolibarr and is prone to multiple cross site scripting
+  and SQL injection vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.dolibarr.org/");
   exit(0);
 }
 

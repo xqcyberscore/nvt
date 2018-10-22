@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_xmpp_and_silc_protocol_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_pidgin_xmpp_and_silc_protocol_dos_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Pidgin XMPP And SILC Protocols Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902650");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4602", "CVE-2011-4603", "CVE-2011-4601");
   script_bugtraq_id(51070, 51074);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-21 11:02:55 +0530 (Wed, 21 Dec 2011)");
   script_name("Pidgin XMPP And SILC Protocols Denial of Service Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://pidgin.im/news/security/?id=57");
@@ -60,12 +60,12 @@ if(description)
   - An error in the family_feedbag.c in the oscar protocol plugin, which fails
     to validate that a piece of text was UTF-8 when receiving various incoming
     messages.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.1 or later,
-  For updates refer to http://pidgin.im/download/windows/");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.1 or later.");
   script_tag(name:"summary", value:"This host is installed with Pidgin and is prone to denial of
   service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://pidgin.im/download/windows/");
   exit(0);
 }
 

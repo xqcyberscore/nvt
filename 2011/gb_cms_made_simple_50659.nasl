@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_50659.nasl 10122 2018-06-07 13:09:58Z cfischer $
+# $Id: gb_cms_made_simple_50659.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # CMS Made Simple Remote Database Corruption Vulnerability
 #
@@ -30,11 +30,11 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103332");
   script_bugtraq_id(50659);
-  script_version("$Revision: 10122 $");
+  script_version("$Revision: 12018 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("CMS Made Simple Remote Database Corruption Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 11:29:14 +0100 (Tue, 15 Nov 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"affected", value:"Versions prior to CMS Made Simple 1.9.4.3 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

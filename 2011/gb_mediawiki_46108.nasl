@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_46108.nasl 6284 2017-06-06 11:43:39Z cfischer $
+# $Id: gb_mediawiki_46108.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MediaWiki CSS Comments Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103058");
-  script_version("$Revision: 6284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-03 13:07:13 +0100 (Thu, 03 Feb 2011)");
   script_bugtraq_id(46108);
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,22 +49,14 @@ if(description)
   script_xref(name:"URL", value:"http://wikipedia.sourceforge.net/");
   script_xref(name:"URL", value:"https://bugzilla.wikimedia.org/show_bug.cgi?id=27093");
 
-  tag_summary = "MediaWiki is prone to a cross-site scripting vulnerability because it
-  fails to properly sanitize user-supplied input.";
-
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected
   site. This may let the attacker steal cookie-based authentication
-  credentials and launch other attacks.";
-
-  tag_affected = "Versions prior to MediaWiki 1.16.2 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  credentials and launch other attacks.");
+  script_tag(name:"affected", value:"Versions prior to MediaWiki 1.16.2 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"MediaWiki is prone to a cross-site scripting vulnerability because it
+  fails to properly sanitize user-supplied input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

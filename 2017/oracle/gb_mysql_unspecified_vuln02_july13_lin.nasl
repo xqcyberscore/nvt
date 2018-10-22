@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_july13_lin.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_mysql_unspecified_vuln02_july13_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # MySQL Unspecified vulnerabilities-02 July-2013 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812185");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2013-3812", "CVE-2013-3809", "CVE-2013-3793");
   script_bugtraq_id(61249, 61272, 61264);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:34:35 +0530 (Wed, 22 Nov 2017)");
   script_name("MySQL Unspecified vulnerabilities-02 July-2013 (Linux)");
 
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"insight", value:"Unspecified errors in the MySQL Server
   component via unknown vectors related to Server Replication, Audit Log and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-072.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_ms10-072.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft SharePoint SafeHTML Information Disclosure Vulnerabilities (2412048)
 #
@@ -8,7 +8,7 @@
 # Rachana Shetty <srachana@secpod.com>
 #
 # Copyright:
-# Copyright (c) 2011 SecPod, http://www.secpod.com
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,44 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to gain sensitie
-  information via a specially crafted script using SafeHTML.
-  Impact Level: Application";
-tag_affected = "Microsoft Office SharePoint Server 2007 Service Pack 2
-  Microsoft Windows SharePoint Services 3.0 Service Pack 2";
-tag_insight = "Multiple flaws are due to the way SafeHTML function sanitizes HTML content.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS10-072";
-tag_summary = "This host is missing an important security update according to
-  Microsoft Bulletin MS10-072.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902626");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_cve_id("CVE-2010-3243", "CVE-2010-3324");
   script_bugtraq_id(42467, 43703);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Microsoft SharePoint SafeHTML Information Disclosure Vulnerabilities (2412048)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2412048");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS10-072");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2412048");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS10-072");
 
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2010 SecPod");
+  script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitie
+  information via a specially crafted script using SafeHTML.");
+  script_tag(name:"affected", value:"Microsoft Office SharePoint Server 2007 Service Pack 2
+  Microsoft Windows SharePoint Services 3.0 Service Pack 2");
+  script_tag(name:"insight", value:"Multiple flaws are due to the way SafeHTML function sanitizes HTML content.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+  Microsoft Bulletin MS10-072.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -98,10 +90,9 @@ if(hotfix_missing(name:"2345304") == 1)
                                    file_name:"Microsoft.office.server.dll");
           if(vers)
           {
-            ## Check for Microsoft.sharepoint.publishing.dl version < 12.0.6539.5000
             if(version_is_less(version:vers, test_version:"12.0.6539.5000"))
             {
-              security_message(0);
+              security_message( port: 0, data: "The target host was found to be vulnerable" );
               exit(0);
             }
           }
@@ -111,7 +102,6 @@ if(hotfix_missing(name:"2345304") == 1)
   }
 }
 
-## Hotfix check
 if(hotfix_missing(name:"2345212") == 0){
   exit(0);
 }
@@ -140,10 +130,9 @@ foreach item (registry_enum_keys(key:key))
       exit(0);
     }
 
-    ## Check for onetutil.dll version < 12.0.6545.5002 for Sharepoint services 3.0
     if(version_is_less(version:dllVer, test_version:"12.0.6545.5002"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_rss_feed_reader_plugin_xss_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_rss_feed_reader_plugin_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress RSS Feed Reader Plugin 'rss_url' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800196");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(45997);
   script_cve_id("CVE-2011-0740");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://pleer.co.uk/wordpress/plugins/rss-feed-reader");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"RSS Feed Reader WordPress Plugin 0.1");
 

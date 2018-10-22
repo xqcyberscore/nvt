@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_home_ftp_server_dir_trav_vun.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_home_ftp_server_dir_trav_vun.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Home FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -24,30 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to read arbitrary files
-on the affected application.
-
-Impact Level: Application";
-tag_affected = "Home FTP Server version 1.12";
-tag_insight = "The flaw is due to an error while handling certain requests which can
-  be exploited to download arbitrary files from the host system.";
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-tag_summary = "The host is running Home FTP Server and is prone to directory traversal
-vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801599");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_name("Home FTP Server Multiple Directory Traversal Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16259/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16259/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -55,11 +41,16 @@ if(description)
   script_family("FTP");
   script_dependencies("secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files
+on the affected application.");
+  script_tag(name:"affected", value:"Home FTP Server version 1.12");
+  script_tag(name:"insight", value:"The flaw is due to an error while handling certain requests which can
+  be exploited to download arbitrary files from the host system.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running Home FTP Server and is prone to directory traversal
+vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -68,18 +59,15 @@ if(description)
 include("ftp_func.inc");
 include("version_func.inc");
 
-## Get the default port of FTP
 ftpPort = get_kb_item("Services/ftp");
 if(!ftpPort){
   ftpPort = 21;
 }
 
-## check port status
 if(!get_port_state(ftpPort)){
   exit(0);
 }
 
-# Get the FTP banner
 banner = get_ftp_banner(port:ftpPort);
 if("Home Ftp Server" >!< banner){
   exit(0);
@@ -93,7 +81,6 @@ if(!soc1){
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
 
-## Try for anomymous user and passwrd
 if(!user){
   user = "anonymous";
 }
@@ -113,7 +100,6 @@ if(login_details)
 
   result = ftp_send_cmd(socket: soc1, cmd:"PASV");
 
-  ## Check each exploit
   foreach exp (exploits)
   {
     result = ftp_send_cmd(socket: soc1, cmd:exp);

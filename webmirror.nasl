@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 11519 2018-09-21 12:40:00Z cfischer $
+# $Id: webmirror.nasl 11992 2018-10-19 13:42:04Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 11519 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:40:00 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11992 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 15:42:04 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -872,7 +872,7 @@ function pre_parse( src_page, data, port, host ) {
   local_var src_page, data, port, host;
   local_var js_data, js_src, data2, php_path, fp_save;
 
-  # TODO: Maybe merge with the js_src below and make a generic regex which is matching any of the following variants (* is no regex but just a placeholder for a arbitrary code within those tags)
+  # TODO: Maybe merge with the js_src below and make a generic regex which is matching any of the following variants (nb: * is no regex but just a placeholder for a arbitrary code within those tags)
   # <script type=*>*</script>
   # <script type=* src=*></script>
   # <script src=* type=*></script>
@@ -924,6 +924,8 @@ function pre_parse( src_page, data, port, host ) {
   }
 
   if( "<title>phpinfo()</title>" >< data ) {
+    set_kb_item( name:"php/phpinfo/detected", value:TRUE );
+    set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected", value:TRUE );
     set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/plain", value:src_page );
     set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/reporting", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 9780 2018-05-09 12:51:34Z cfischer $
+# $Id: gb_wordpress_mult_themes_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Multiple Themes 's' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802250");
-  script_version("$Revision: 9780 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 14:51:34 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_bugtraq_id(49865, 49872, 49868, 49867, 49869, 49875, 49873, 49880);
   script_cve_id("CVE-2011-3850", "CVE-2011-3852", "CVE-2011-3854", "CVE-2011-3855",
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to
   insert arbitrary HTML and script code, which will be executed in a user's browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"Atahualpa theme before 3.6.8
 
@@ -83,9 +81,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to improper validation of user-supplied
   input to the 's' Parameter in multiple themes.");
 
-  script_tag(name:"solution", value:"Upgrade to latest version of the themes.
-
-  For updates refer to http://wordpress.org/extend/themes/");
+  script_tag(name:"solution", value:"Upgrade to latest version of the themes.");
 
   script_tag(name:"summary", value:"This host is running at least one Theme of WordPress which
   is prone to a cross site scripting vulnerability.");
@@ -93,6 +89,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/themes/");
   exit(0);
 }
 

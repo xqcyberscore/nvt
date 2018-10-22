@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_dos_n_info_disc_vuln_macosx.nasl 7963 2017-12-01 07:19:17Z santu $
+# $Id: gb_apache_openoffice_mult_dos_n_info_disc_vuln_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache OpenOffice Multiple DoS And Information Disclosure Vulnerabilities (MAC OS X)
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812227");
-  script_version("$Revision: 7963 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-9806", "CVE-2017-3157", "CVE-2017-12608", "CVE-2017-12607");
   script_bugtraq_id(101585, 96402);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 08:19:17 +0100 (Fri, 01 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 19:44:19 +0530 (Mon, 27 Nov 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apache OpenOffice Multiple DoS And Information Disclosure Vulnerabilities (MAC OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with Apache OpenOffice
+  script_tag(name:"summary", value:"The host is installed with Apache OpenOffice
   and is prone to multiple denial of service and information disclosure
   vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
-  
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in the WW8Fonts Constructor in the OpenOffice Writer DOC file parser.
 
   - An error in rendering embedded objects.
@@ -56,24 +55,21 @@ if(description)
 
   - An error in the OpenOffice's PPT file parser in PPTStyleSheet.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to cause denial of service (memory corruption and application crash)
   potentially resulting in arbitrary code execution and to retrieve sensitive
-  information.
+  information.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apache OpenOffice before 4.1.4 on Mac OS X.");
 
-  script_tag(name: "affected" , value:"Apache OpenOffice before 4.1.4 on Mac OS X.");
-
-  script_tag(name: "solution" , value:"Upgrade to Apache OpenOffice 4.1.4 or later.
-  For updates refer to http://www.openoffice.org");
+  script_tag(name:"solution", value:"Upgrade to Apache OpenOffice 4.1.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2017-9806.html");
-  script_xref(name : "URL" , value : "https://www.openoffice.org/security/cves/CVE-2017-3157.html");
-  script_xref(name : "URL" , value : "https://www.openoffice.org/security/cves/CVE-2017-12608.html");
-  script_xref(name : "URL" , value : "https://www.openoffice.org/security/cves/CVE-2017-12607.html");
+  script_xref(name:"URL", value:"http://www.openoffice.org/security/cves/CVE-2017-9806.html");
+  script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2017-3157.html");
+  script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2017-12608.html");
+  script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2017-12607.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

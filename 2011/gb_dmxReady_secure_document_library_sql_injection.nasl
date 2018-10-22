@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dmxReady_secure_document_library_sql_injection.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_dmxReady_secure_document_library_sql_injection.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # DmxReady Secure Document Library SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801952");
-  script_version("$Revision: 5993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,9 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102842/dmxreadysdl12-sql.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL
-  Injection attack and gain sensitive information.
-
-  Impact Level: Application");
+  Injection attack and gain sensitive information.");
 
   script_tag(name:"affected", value:"DmxReady Secure Document Library version 1.2");
 
@@ -53,10 +51,9 @@ if(description)
   via the 'ItemID' parameter in 'update.asp' that allows attacker to manipulate SQL
   queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running DmxReady Secure Document Library and is prone
   to SQL injection vulnerability.");

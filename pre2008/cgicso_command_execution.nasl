@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgicso_command_execution.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: cgicso_command_execution.nasl 12008 2018-10-22 08:12:11Z cfischer $
 #
 # CGIEmail's CGICso (Send CSO via CGI) Command Execution Vulnerability
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10779");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 12008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:12:11 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1652");
   script_bugtraq_id(6141);
@@ -42,22 +42,26 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2001 SecurITeam");
-  script_dependencies("find_service.nasl", "no404.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"The server can be compromised by executing commands as the web server's
   running user (usually 'nobody').");
+
   script_tag(name:"solution", value:"Modify cgicso.h to contain a strict setting of your finger host.
 
   Example:
+
   Define the following in cgicso.h:
+
   #define CGI_CSO_HARDCODE
+
   #define CGI_CSO_FINGERHOST 'localhost'");
+
   script_tag(name:"summary", value:"The remote host seems to be vulnerable to a security problem in
-  CGIEmail (cgicso).  The vulnerability is caused by inadequate processing
-  of queries by CGIEmail's cgicso and results in a command execution
-  vulnerability.");
+  CGIEmail (cgicso).  The vulnerability is caused by inadequate processing of queries by CGIEmail's
+  cgicso and results in a command execution vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"Workaround");
@@ -79,10 +83,10 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   buf = http_keepalive_send_recv( port:port, data:req );
 
   if( "400 Required field missing: fingerhost" >< buf ) {
-    report = report_vuln_url( port:port, data:report );
+    report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );
   }
 }
 
-exit( 99 );
+exit( 0 );

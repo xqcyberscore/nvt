@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webfilebrowser_file_download_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_webfilebrowser_file_download_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Web File Browser 'act' Parameter File Download Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802341");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4831");
   script_bugtraq_id(50508);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 17:09:26 +0530 (Tue, 08 Nov 2011)");
   script_name("Web File Browser 'act' Parameter File Download Vulnerability");
   script_category(ACT_ATTACK);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50508/exploit");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to download and
-  read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"Web File Browser versions 0.4b14 and prior");
 

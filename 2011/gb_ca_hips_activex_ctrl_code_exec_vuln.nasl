@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_hips_activex_ctrl_code_exec_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_ca_hips_activex_ctrl_code_exec_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # CA Host-Based Intrusion Prevention System 'XMLSecDB' ActiveX Control Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801858");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-1036");
   script_bugtraq_id(46539);
@@ -40,6 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65632");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-093");
   script_xref(name:"URL", value:"https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={53A608DF-BFDB-4AB3-A98F-E4BB6BC7A2F4}");
+  script_xref(name:"URL", value:"https://support.ca.com/irj/portal/anonymous/SolutionResults?aparNo=RO26950&actionID=4");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -61,15 +62,12 @@ visiting a web page which calls the 'SetXml()' and 'Save()' methods.");
 System(HIPS) and is prone to a remote code-execution vulnerability.");
   script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, refer below link
 for patch information.
-https://support.ca.com/irj/portal/anonymous/SolutionResults?aparNo=RO26950&actionID=4
 
 *****
 NOTE : Ignore this warning, if above mentioned patch is already applied.
 *****
 
-CA Internet Security Suite (ISS):
-For updates refer to
-https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={53A608DF-BFDB-4AB3-A98F-E4BB6BC7A2F4}");
+CA Internet Security Suite (ISS):");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

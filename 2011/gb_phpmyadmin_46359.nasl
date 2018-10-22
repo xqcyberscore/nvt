@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_46359.nasl 8926 2018-02-22 14:56:01Z cfischer $
+# $Id: gb_phpmyadmin_46359.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # phpMyAdmin Bookmark Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103076");
-  script_version("$Revision: 8926 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 15:56:01 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 13:44:44 +0100 (Tue, 15 Feb 2011)");
   script_bugtraq_id(46359);
   script_tag(name:"cvss_base", value:"6.5");
@@ -48,20 +48,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/");
   script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2011-2.php");
 
-  tag_summary = "phpMyAdmin is prone to a security-bypass vulnerability that affects
-  bookmarks.";
-
-  tag_impact = "Successfully exploiting this issue allows a remote attacker to bypass
-  certain security restrictions and perform unauthorized actions.";
-
-  tag_affected = "Versions prior to phpMyAdmin 3.3.9.2 and 2.11.11.3 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows a remote attacker to bypass
+  certain security restrictions and perform unauthorized actions.");
+  script_tag(name:"affected", value:"Versions prior to phpMyAdmin 3.3.9.2 and 2.11.11.3 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"phpMyAdmin is prone to a security-bypass vulnerability that affects
+  bookmarks.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -84,8 +76,8 @@ if( vers =~ "^3\." ) {
   if( version_is_less( version:vers, test_version:"2.11.11.3" ) ) {
     VULN = TRUE;
     fix = "2.11.11.3";
-  }  
-}  
+  }
+}
 
 if( VULN ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:fix );

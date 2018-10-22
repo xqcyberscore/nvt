@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_ibm_lotus_sametime_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Lotus Sametime Server 'stcenter.nsf' Cross Site Scripting Vulnerability
 #
@@ -29,16 +29,17 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801901");
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-1106");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("IBM Lotus Sametime Multiple Cross-Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43430/");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65555");
-  script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/46481.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43430/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65555");
+  script_xref(name:"URL", value:"http://downloads.securityfocus.com/vulnerabilities/exploits/46481.txt");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=899&uid=swg21496276");
 
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -47,17 +48,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("dominowww/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute
-  arbitrary HTML and script code in a user's browser session in context of an affected site.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "IBM Lotus Sametime version 8.0 and 8.0.1");
-  script_tag(name : "insight" , value : "Input passed to the 'authReasonCode' parameter in 'stcenter.nsf'
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute
+  arbitrary HTML and script code in a user's browser session in context of an affected site.");
+  script_tag(name:"affected", value:"IBM Lotus Sametime version 8.0 and 8.0.1");
+  script_tag(name:"insight", value:"Input passed to the 'authReasonCode' parameter in 'stcenter.nsf'
   when 'OpenDatabase' is set, is not properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Vendor has relased a patch to fix this issue, please refer
-  below link for patch information.
-  http://www-01.ibm.com/support/docview.wss?rs=899&uid=swg21496276");
-  script_tag(name : "summary" , value : "The host is running IBM Lotus Sametime Server and is prone to
+  script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, please refer
+  below link for patch information.");
+  script_tag(name:"summary", value:"The host is running IBM Lotus Sametime Server and is prone to
   cross site scripting vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -73,11 +71,9 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 
-## Construct the attack string
 url = "/stcenter.nsf?OpenDatabase&authReasonCode=" +
       "'><script>alert('XSS-TEST');</script>'";
 
-## Confirm the exploit
 if( http_vuln_check(port:port, url:url, check_header:TRUE,
     pattern:"<script>alert\('XSS-TEST'\)</script>" ) ) {
   report = report_vuln_url( port:port, url:url );

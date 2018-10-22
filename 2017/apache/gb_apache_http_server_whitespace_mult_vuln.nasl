@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_whitespace_mult_vuln.nasl 7497 2017-10-19 07:06:06Z santu $
+# $Id: gb_apache_http_server_whitespace_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache HTTP Server 'Whitespace Defects' Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812033");
-  script_version("$Revision: 7497 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2016-8743");
   script_bugtraq_id(95077);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 09:06:06 +0200 (Thu, 19 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 18:12:40 +0530 (Mon, 16 Oct 2017)");
   ##qod is remote_banner_unreliable as Apache is vulnerable only
   ##when httpd is participating in any chain of proxies or interacting with back-end
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache HTTP Server
   and is prone multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists as application accepted a
   broad pattern of unusual whitespace patterns from the user-agent, including
@@ -60,19 +59,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct request smuggling, response splitting and cache pollution
-  attacks.
-
-  Impact Level: Application");
+  attacks.");
 
   script_tag(name:"affected", value:"Apache HTTP Server 2.2.x before 2.2.32 and
   2.3.x through 2.4.24 prior to 2.4.25");
 
   script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.2.32 or 2.4.25
-  or later. For updates refer to https://httpd.apache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://httpd.apache.org/security/vulnerabilities_22.html");
-  script_xref(name : "URL" , value : "https://httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"https://httpd.apache.org/security/vulnerabilities_22.html");
+  script_xref(name:"URL", value:"https://httpd.apache.org/security/vulnerabilities_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -87,16 +84,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-httpd_port = 0;
-httpd_ver = "";
-
-## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
   exit(0);
 }
@@ -104,14 +95,12 @@ if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
 
 if(httpd_ver =~ "^2\.(3|4)")
 {
-  ## Checking for Vulnerable version
   if(version_is_less(version:httpd_ver, test_version:"2.4.25")){
     fix = "2.4.25";
   }
 }
 else if(httpd_ver =~ "^2\.2")
 {
-  ## Checking for Vulnerable version
   if(version_is_less(version:httpd_ver, test_version:"2.2.32")){
     fix = "2.2.32";
   }

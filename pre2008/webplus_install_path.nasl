@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: webplus_install_path.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: webplus_install_path.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # Talentsoft Web+ reveals install path
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12074");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 11998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
@@ -36,15 +36,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Kyger");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.talentsoft.com/Issues/IssueDetail.wml?ID=WP197");
 
   script_tag(name:"solution", value:"Apply the vendor-supplied patch.");
+
   script_tag(name:"summary", value:"The remote host appears to be running Web+ Application Server which
   is affected by an information disclosure flaw.");
+
   script_tag(name:"insight", value:"The version of Web+ installed on the remote host reveals the physical
   path of the application when it receives a script file error.");
 
@@ -62,7 +65,7 @@ port = get_http_port( default:80 );
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/webplus.exe?script=" + SCRIPT_NAME;
+  url = dir + "/webplus.exe?script=vt_test";
 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
@@ -75,4 +78,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

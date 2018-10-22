@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_indusoft_prdts_mult_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_indusoft_prdts_mult_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # InduSoft Products Multiple Buffer overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902376");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-0340");
   script_bugtraq_id(47596);
@@ -38,37 +38,25 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43116");
   script_xref(name:"URL", value:"http://www.indusoft.com/hotfixes/hotfixes.php");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/1116");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code.
-
-  Impact Level: Application.";
-
-  tag_affected = "InduSoft Thin Client version 7.0
-  InduSoft Web Studio version before 7.0 SP1";
-
-  tag_insight = "The flaw exists due to a buffer overflow error in the ISSymbol ActiveX
+  script_tag(name:"insight", value:"The flaw exists due to a buffer overflow error in the ISSymbol ActiveX
   control (ISSymbol.ocx) when processing an overly long 'InternationalOrder',
   'InternationalSeparator', 'bstrFileName' or 'LogFileName' property, which
   could be exploited by attackers to execute arbitrary code by tricking a user
-  into visiting a specially crafted web page.";
-
-  tag_solution = "Install the hotfix from below link
-  http://www.indusoft.com/hotfixes/hotfixes.php";
-
-  tag_summary = "This host is installed with Indusoft products and is prone
-  to buffer overflow vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  into visiting a specially crafted web page.");
+  script_tag(name:"solution", value:"Install the hotfix");
+  script_tag(name:"summary", value:"This host is installed with Indusoft products and is prone
+  to buffer overflow vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.");
+  script_tag(name:"affected", value:"InduSoft Thin Client version 7.0
+  InduSoft Web Studio version before 7.0 SP1");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -92,40 +80,36 @@ if(!registry_key_exists(key:key)) {
 
 foreach item (registry_enum_keys(key:key))
 {
-  ## Check for InduSoft Thin Client DisplayName
   indName = registry_get_sz(key:key + item, item:"DisplayName");
   {
     indPath = registry_get_sz(key:key + item, item:"InstallLocation");
     if(indPath)
     {
-      ## Check for ISSymbol.ocx version
       ocxVer = fetch_file_version(sysPath:indPath, file_name:"ISSymbol.ocx");
       if(ocxVer)
       {
         if(version_is_equal(version:ocxVer, test_version:"301.1009.2904.0") ||
            version_is_equal(version:ocxVer, test_version:"61.6.0.0"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
     }
   }
 
-  ## Check for InduSoft Web Studio DisplayName
   indName = registry_get_sz(key:key + item, item:"DisplayName");
   if("InduSoft Web Studio" >< indName)
   {
     indPath = registry_get_sz(key:key + item, item:"InstallLocation");
     if(indPath)
     {
-      ## Check for ISSymbol.ocx version
       ocxVer = fetch_file_version(sysPath:indPath, file_name:"bin\ISSymbol.ocx");
       if(ocxVer)
       {
         if(version_is_equal(version:ocxVer, test_version:"301.1009.2904.0") ||
            version_is_equal(version:ocxVer, test_version:"61.6.0.0")){
-            security_message(0);
+            security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
     }

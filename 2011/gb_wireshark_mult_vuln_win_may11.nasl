@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_win_may11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_mult_vuln_win_may11.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Wireshark Denial of Service and Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801786");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1591", "CVE-2011-1592");
   script_bugtraq_id(47392);
@@ -57,13 +57,13 @@ if(description)
 
   - an error in the 'NFS' dissector when processing malformed data, which could
     be exploited to crash an affected application.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or later.");
   script_tag(name:"summary", value:"The host is installed with Wireshark and is prone to Denial of
   Service and buffer overflow vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170313.nasl 10122 2018-06-07 13:09:58Z cfischer $
+# $Id: gb_qnap_qts_20170313.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140219");
-  script_cve_id("CVE-2017-6361","CVE-2017-6360","CVE-2017-6359");
+  script_cve_id("CVE-2017-6361", "CVE-2017-6360", "CVE-2017-6359");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-24 12:56:10 +0100 (Fri, 24 Mar 2017)");
-  script_version("$Revision: 10122 $");
+  script_version("$Revision: 11983 $");
   script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"QNAP QTS is prone to multiple arbitrary command-execution vulnerabilities.");
 
-  script_tag(name: "affected" ,value:"QNAP QTS <  4.2.4 Build 20170313, all models.");
+  script_tag(name:"affected", value:"QNAP QTS <  4.2.4 Build 20170313, all models.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

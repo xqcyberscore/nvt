@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx227185.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_xenserver_ctx227185.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX227185)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:citrix:xenserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140371");
-  script_version("$Revision: 7260 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-15 10:57:19 +0700 (Fri, 15 Sep 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-15 10:57:19 +0700 (Fri, 15 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-14316", "CVE-2017-14318", "CVE-2017-14319");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX227185)");
 
@@ -49,22 +49,22 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Citrix Xenserver Local Security Checks");
   script_dependencies("gb_xenserver_version.nasl");
-  script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
-  script_tag(name: "summary", value: "A number of security vulnerabilities have been identified in Citrix
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix
 XenServer that may allow a malicious administrator of a guest VM to compromise the host:
 
-- CVE-2017-14316: (High) Missing NUMA node parameter verification.
+  - CVE-2017-14316: (High) Missing NUMA node parameter verification.
 
-- CVE-2017-14318: (Medium) Missing check for grant table.
+  - CVE-2017-14318: (Medium) Missing check for grant table.
 
-- CVE-2017-14319: (High) insufficient grant unmapping checks for x86 PV guests.");
+  - CVE-2017-14319: (High) insufficient grant unmapping checks for x86 PV guests.");
 
-  script_tag(name: "affected", value: "XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0, 6.0.2.");
+  script_tag(name:"affected", value:"XenServer versions 7.2, 7.1, 7.0, 6.5, 6.2.0, 6.0.2.");
 
-  script_tag(name: "solution", value: "Apply the hotfix referenced in the advisory.");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
-  script_xref(name: "URL", value: "https://support.citrix.com/article/CTX227185");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX227185");
 
   exit(0);
 }

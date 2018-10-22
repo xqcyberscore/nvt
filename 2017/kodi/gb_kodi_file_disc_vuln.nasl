@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_file_disc_vuln.nasl 9490 2018-04-16 07:16:29Z cfischer $
+# $Id: gb_kodi_file_disc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Kodi Local File Inclusion Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:kodi:kodi";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106586");
-  script_version("$Revision: 9490 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-16 09:16:29 +0200 (Mon, 16 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-5982");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Kodi Local File Inclusion Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_kodi_web_server_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Kodi/WebServer/installed");
 
-  script_tag(name: "summary", value: "Kodi is prone to an arbitrary file disclosure vulnerability.");
+  script_tag(name:"summary", value:"Kodi is prone to an arbitrary file disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Tries to read a system file.");
+  script_tag(name:"vuldetect", value:"Tries to read a system file.");
 
-  script_tag(name: "insight", value: "The web interface loads a thumbnail of an image, video or add-on when
+  script_tag(name:"insight", value:"The web interface loads a thumbnail of an image, video or add-on when
 selecting a category in the left menu. Insufficient validation of user input is performed on this URL resulting
 in a local file inclusion vulnerability.");
 
-  script_tag(name: "impact", value: "A unauthenticated attacker may read arbitrary files from the file system.");
+  script_tag(name:"impact", value:"A unauthenticated attacker may read arbitrary files from the file system.");
 
-  script_tag(name: "solution", value: "Update to Kodi version 17.2 or later. For details please see the references.");
+  script_tag(name:"solution", value:"Update to Kodi version 17.2 or later. For details please see the references.");
 
-  script_xref(name: "URL", value: "https://kodi.tv/article/kodi-v172-minor-bug-fix-and-security-release");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/41312/");
+  script_xref(name:"URL", value:"https://kodi.tv/article/kodi-v172-minor-bug-fix-and-security-release");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41312/");
 
   exit(0);
 }

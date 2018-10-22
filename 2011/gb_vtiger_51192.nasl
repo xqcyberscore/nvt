@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_51192.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_vtiger_51192.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # vtiger CRM 'graph.php ' Script Authentication Bypass Vulnerability
 #
@@ -24,62 +24,57 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+CPE = "cpe:/a:vtiger:vtiger_crm";
 
-tag_summary = "vtiger CRM is prone to an authentication-bypass vulnerability.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103374");
+  script_bugtraq_id(51192);
+  script_version("$Revision: 12018 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
+  script_name("vtiger CRM 'graph.php ' Script Authentication Bypass Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51192");
+  script_xref(name:"URL", value:"http://www.vtiger.com/");
+  script_xref(name:"URL", value:"http://francoisharvey.ca/2011/12/advisory-meds-2011-01-vtigercrm-anonymous-access-to-setting-module/");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-29 10:36:49 +0100 (Thu, 29 Dec 2011)");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_vtiger_crm_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for details.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"vtiger CRM is prone to an authentication-bypass vulnerability.
 
 An attacker can exploit this issue to bypass the authentication
 process, download the database backup and modify configurations
 settings.
 
-vtiger CRM 5.2.1 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for details.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103374";
-CPE = "cpe:/a:vtiger:vtiger_crm";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(51192);
- script_version ("$Revision: 7006 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
- script_name("vtiger CRM 'graph.php ' Script Authentication Bypass Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51192");
- script_xref(name : "URL" , value : "http://www.vtiger.com/");
- script_xref(name : "URL" , value : "http://francoisharvey.ca/2011/12/advisory-meds-2011-01-vtigercrm-anonymous-access-to-setting-module/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
- script_tag(name:"creation_date", value:"2011-12-29 10:36:49 +0100 (Thu, 29 Dec 2011)");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_vtiger_crm_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+vtiger CRM 5.2.1 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+
+if(!port = get_app_port(cpe:CPE))exit(0);
 if(!get_port_state(port))exit(0);
 
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-url = string(dir, "/graph.php?module=Settings&action=OrganizationConfig&parenttab=Settings"); 
+url = string(dir, "/graph.php?module=Settings&action=OrganizationConfig&parenttab=Settings");
 
 if(http_vuln_check(port:port, url:url,pattern:"Company Details",extra_check:make_list("EditCompanyDetails","Company Name"))) {
-     
+
   security_message(port:port);
   exit(0);
 

@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:092");
   script_oid("1.3.6.1.4.1.25623.1.0.831605");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:52:59 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-2143", "CVE-2012-2655");
   script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +49,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple vulnerabilities has been discovered and corrected in
   postgresql:
 
-  Fix incorrect password transformation in contrib/pgcrypto&#039;s DES
+  Fix incorrect password transformation in contrib/pgcrypto's DES
   crypt() function (Solar Designer). If a password string contained the
   byte value 0x80, the remainder of the password was ignored, causing
   the password to be much weaker than it appeared. With this fix, the
@@ -61,7 +57,7 @@ if(description)
   password values that are affected by this bug will thus no longer
   match, so the stored values may need to be updated (CVE-2012-2143).
 
-  Ignore SECURITY DEFINER and SET attributes for a procedural language&#039;s
+  Ignore SECURITY DEFINER and SET attributes for a procedural language's
   call handler (Tom Lane). Applying such attributes to a call handler
   could crash the server (CVE-2012-2655).
 
@@ -69,9 +65,11 @@ if(description)
   vulnerable to these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

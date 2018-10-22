@@ -1,6 +1,8 @@
+###################################################################
 # OpenVAS Vulnerability Test
-# $Id: yawcam_dir_traversal.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Yawcam Directory Traversal
+# $Id: yawcam_dir_traversal.nasl 12007 2018-10-22 07:43:49Z cfischer $
+#
+# Yawcam Directory Traversal
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -20,67 +22,67 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server itself is prone to directory traversal attacks. 
-
-Description :
-
-The remote host is running Yawcam, yet another web cam software. 
-
-The installed version of Yawcam is vulnerable to a directory traversal
-flaw.  By exploiting this issue, an attacker may be able to gain
-access to material outside of the web root.";
-
-tag_solution = "Upgrade to Yawcam 0.2.6 or later.";
+###################################################################
 
 #  Ref: Donato Ferrante <fdonato at autistici.org>
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.18176");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2005-1230");
- script_bugtraq_id(13295);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.18176");
+  script_version("$Revision: 12007 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2005-1230");
+  script_bugtraq_id(13295);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Yawcam Directory Traversal");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2005 David Maciejak");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8081);
+  script_mandatory_keys("Host/runs_windows");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("Yawcam Directory Traversal");
- script_category(ACT_GATHER_INFO);
+  script_xref(name:"URL", value:"https://marc.info/?l=bugtraq&m=111410564915961&w=2");
+
+  script_tag(name:"solution", value:"Upgrade to Yawcam 0.2.6 or later.");
+
+  script_tag(name:"summary", value:"The installed version of Yawcam is vulnerable to a directory traversal flaw.");
+
+  script_tag(name:"impact", value:"By exploiting this issue, an attacker may be able to gain
+  access to material outside of the web root.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2005 David Maciejak");
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www", 8081);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://marc.theaimsgroup.com/?l=bugtraq&m=111410564915961&w=2");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-port = get_http_port(default:8081);
-if (! get_port_state(port) ) exit(0);
+port = get_http_port( default:8081 );
 
-data = "/local.html";
-data = http_get(item:data, port:port);
-buf = http_keepalive_send_recv(port:port, data:data, bodyonly:TRUE);
-if( buf == NULL ) exit(0);
+buf = http_get_cache( item:"/local.html", port:port );
+if( ! buf ) exit( 0 );
+if( "<title>Yawcam</title>" >!< buf ) exit( 0 );
 
-if ("<title>Yawcam</title>" >< buf)
-{
-  req = string("GET ..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\boot.ini HTTP/1.0\r\n");
-  soc = http_open_socket(port);
-  if ( ! soc ) exit(0);
-  send(socket:soc, data:req);
-  res = http_recv_headers2(socket:soc);
-  close (soc);
-  if ("[boot loader]" >< res)
-  {
-	security_message(port);	
+files = traversal_files( "Windows" );
+
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
+  file = str_replace( string:file, find:"/", replace:"\\" );
+  url = "..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\" + file;
+
+  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
+
+exit( 0 );

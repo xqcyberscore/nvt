@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln03_july13_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_mysql_unspecified_vuln03_july13_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # MySQL Unspecified vulnerabilities-03 July-2013 (Linux)
 #
@@ -29,36 +29,32 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812187");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2013-3801", "CVE-2013-3805", "CVE-2013-3794");
   script_bugtraq_id(61269, 61256, 61222);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:41:37 +0530 (Wed, 22 Nov 2017)");
   script_name("MySQL Unspecified vulnerabilities-03 July-2013 (Linux)");
 
-  script_tag(name : "summary" , value : "This host is running MySQL and is prone
+  script_tag(name:"summary", value:"This host is running MySQL and is prone
   to multiple unspecified vulnerabilities.");
 
-  script_tag(name : "vuldetect" , value : "Get the installed version of MySQL
-  with the help of detect NVT and check it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name : "solution" , value : "Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
-  script_tag(name : "insight" , value : "Unspecified errors in the MySQL Server
+  script_tag(name:"insight", value:"Unspecified errors in the MySQL Server
   component via unknown vectors related to Prepared Statements, Server Options
   and Server Partition.");
 
-  script_tag(name : "affected" , value : "Oracle MySQL 5.5.30 and earlier and 5.6.10 on Linux");
+  script_tag(name:"affected", value:"Oracle MySQL 5.5.30 and earlier and 5.6.10 on Linux");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote
-  authenticated users to affect availability via unknown vectors.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  authenticated users to affect availability via unknown vectors.");
 
-  Impact Level: Application");
-
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Databases");
@@ -66,7 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
   exit(0);
 }
 

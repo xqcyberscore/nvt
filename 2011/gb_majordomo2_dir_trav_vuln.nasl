@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_majordomo2_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_majordomo2_dir_trav_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Majordomo2 Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801838");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46127);
   script_cve_id("CVE-2011-0049", "CVE-2011-0063");
@@ -47,21 +47,19 @@ if(description)
   script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=628064");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
-  that could aid in further attacks.
-
-  Impact Level: Application");
+  that could aid in further attacks.");
   script_tag(name:"affected", value:"Majordomo2 Build 20110203 and prior");
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
   'help' parameter in 'mj_wwwusr', which allows attacker to read arbitrary
   files via directory traversal attacks.");
-  script_tag(name:"solution", value:"Upgrade to Majordomo2 Build 20110204 or later.
-  For updates refer to http://www.mj2.org/");
+  script_tag(name:"solution", value:"Upgrade to Majordomo2 Build 20110204 or later.");
   script_tag(name:"summary", value:"The host is running Majordomo2 and is prone to directory traversal
   vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mj2.org/");
   exit(0);
 }
 
@@ -80,12 +78,10 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:dir + "/mj_wwwusr", port:port );
   res = http_keepalive_send_recv( port:port,data:req );
 
-  ## Confirm the application
   if( '>Majordomo' >< res ) {
 
     foreach file( keys( files ) ) {
 
-      ## Try attack and check the response to confirm vulnerability
       url = dir + "/mj_wwwusr?passw=&list=GLOBAL&user=&func=help&extra=/../../" +
                   "../../../../../../" + files[file];
 

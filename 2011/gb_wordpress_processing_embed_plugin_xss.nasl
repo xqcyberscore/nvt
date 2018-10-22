@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_processing_embed_plugin_xss.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_processing_embed_plugin_xss.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Processing Embed Plugin 'pluginurl' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801908");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2010-4747");
   script_bugtraq_id(45266);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/63761");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress Processing Embed version 0.5");
 

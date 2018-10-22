@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_mult_vuln.nasl 8107 2017-12-14 04:53:47Z ckuersteiner $
+# $Id: gb_atlassian_bamboo_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Atlassian Bamboo Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140603");
-  script_version("$Revision: 8107 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 05:53:47 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-14 12:10:23 +0700 (Thu, 14 Dec 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-14 12:10:23 +0700 (Thu, 14 Dec 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-14589", "CVE-2017-14590");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Bamboo Multiple Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_atlassian_bamboo_detect.nasl");
   script_mandatory_keys("AtlassianBamboo/Installed");
 
-  script_tag(name: "summary", value: "Atlassian Bamboo is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Atlassian Bamboo is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Atlassian Bamboo is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Atlassian Bamboo is prone to multiple vulnerabilities:
 
-- Remote code execution through OGNL double evaluation (CVE-2017-14589)
+  - Remote code execution through OGNL double evaluation (CVE-2017-14589)
 
-- Argument injection through Mercurial repository handling (CVE-2017-14590)");
+  - Argument injection through Mercurial repository handling (CVE-2017-14590)");
 
-  script_tag(name: "affected", value: "Atlassiona Bamboo versions prior to 6.1.6 and 6.2.x.");
+  script_tag(name:"affected", value:"Atlassiona Bamboo versions prior to 6.1.6 and 6.2.x.");
 
-  script_tag(name: "solution", value: "Update to 6.1.6, 6.2.5 or later.");
+  script_tag(name:"solution", value:"Update to 6.1.6, 6.2.5 or later.");
 
-  script_xref(name: "URL", value: "https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-12-13-939939816.html");
+  script_xref(name:"URL", value:"https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-12-13-939939816.html");
 
   exit(0);
 }

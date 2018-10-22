@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar11.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March 2011
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801867");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_bugtraq_id(46808, 46811, 46814, 46816);
   script_cve_id("CVE-2011-0160", "CVE-2011-0161", "CVE-2011-0163",
@@ -72,13 +72,13 @@ if(description)
   - Input passed to the 'window.console._inspectorCommandLineAPI' property
     while browsing using the Web Inspector is not properly sanitised before
     being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0.4 or later,
-  For updates refer to http://www.apple.com/support/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0.4 or later.");
   script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_gpu_mult_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_gpu_mult_code_exec_vuln_win.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Google Chrome 'GPU process' Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801776");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-1300", "CVE-2011-1301", "CVE-2011-1302");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,12 +51,12 @@ if(description)
   - Use-after-free in the vulnerability GPU process.
 
   - Heap-based buffer overflow in the GPU process.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 10.0.648.205 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 10.0.648.205 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

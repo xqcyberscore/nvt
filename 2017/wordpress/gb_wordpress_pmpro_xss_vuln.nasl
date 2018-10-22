@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_pmpro_xss_vuln.nasl 7581 2017-10-26 11:28:22Z asteins $
+# $Id: gb_wordpress_pmpro_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress Paid Memberships Pro Plugin Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112096");
-  script_version("$Revision: 7581 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 13:28:22 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-26 13:43:51 +0200 (Thu, 26 Oct 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-26 13:43:51 +0200 (Thu, 26 Oct 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-5532");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Paid Memberships Pro Plugin Multiple XSS Vulnerabilities");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Multiple cross-site scripting (XSS) vulnerabilities in the Paid Memberships Pro (PMPro) plugin for WordPress
+  script_tag(name:"summary", value:"Multiple cross-site scripting (XSS) vulnerabilities in the Paid Memberships Pro (PMPro) plugin for WordPress
       allow remote attackers to inject arbitrary web script or HTML via the (1) s parameter to membershiplevels.php, (2) memberslist.php,
       or (3) orders.php in adminpages/ or the (4) edit parameter to adminpages/membershiplevels.php.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Paid Memberships Pro plugin before 1.8.4.3.");
+  script_tag(name:"affected", value:"WordPress Paid Memberships Pro plugin before 1.8.4.3.");
 
-  script_tag(name: "solution", value: "Update to version 1.8.4.3 or later.");
+  script_tag(name:"solution", value:"Update to version 1.8.4.3 or later.");
 
-  script_xref(name: "URL", value: "http://www.paidmembershipspro.com/2015/07/pmpro-updates-1-8-4-3-and-1-8-4-4/");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/paid-memberships-pro/#developers");
+  script_xref(name:"URL", value:"http://www.paidmembershipspro.com/2015/07/pmpro-updates-1-8-4-3-and-1-8-4-4/");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/paid-memberships-pro/#developers");
 
   exit(0);
 }

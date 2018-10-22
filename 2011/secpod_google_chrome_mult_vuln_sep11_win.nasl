@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_sep11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_sep11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - Sep11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902627");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_cve_id("CVE-2011-2834", "CVE-2011-2835", "CVE-2011-2836", "CVE-2011-2838",
                 "CVE-2011-2839", "CVE-2011-2840", "CVE-2011-2841", "CVE-2011-2843",
@@ -55,12 +55,12 @@ if(description)
   restrictions, or cause a denial-of-service condition.");
   script_tag(name:"affected", value:"Google Chrome version prior to 14.0.835.163 on Windows.");
   script_tag(name:"insight", value:"For more information on the vulnerabilities refer to the links below.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.835.163 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.835.163 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

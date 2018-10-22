@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_info_disc_vuln.nasl 7335 2017-10-02 11:53:53Z teissa $
+# $Id: gb_joomla_info_disc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Joomla! < 3.8.0 Information Disclosure Vulnerability
 #
@@ -29,39 +29,35 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112050");
-  script_version("$Revision: 7335 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-14595");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 08:36:22 +0200 (Thu, 21 Sep 2017)");
   script_name("Joomla! < 3.8.0 Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone
   to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Joomla is prone to the following information disclosure vulnerability:
 
   - A logic bug in a SQL query could lead to the disclosure of article intro texts when these articles are in the archived state.");
 
   script_tag(name:"impact", value:"Successfully exploiting these issues will allow
-  remote attackers to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  remote attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Joomla! versions 3.7.0 through 3.7.5");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.0 or later.
-  For updates refer to https://www.joomla.org");
+  script_tag(name:"solution", value:"Upgrade to Joomla version 3.8.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://developer.joomla.org/security-centre/710-20170901-core-information-disclosure");
+  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/710-20170901-core-information-disclosure");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -69,6 +65,7 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smartftp_client_filenames_unspecified_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_smartftp_client_filenames_unspecified_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # SmartFTP Filename Processing Unspecified Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801992");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_cve_id("CVE-2010-4871");
   script_tag(name:"cvss_base", value:"10.0");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("SmartFTP/Client/Ver");
   script_tag(name:"insight", value:"An unspecified flaw exists in SmartFTP when processing filenames, has an
   unknown impact and attack vector.");
-  script_tag(name:"solution", value:"Update SmartFTP Client to version 4.0 Build 1142 or later.
-  For updates refer to http://www.smartftp.com/download/");
+  script_tag(name:"solution", value:"Update SmartFTP Client to version 4.0 Build 1142 or later.");
   script_tag(name:"summary", value:"This host is installed with SmartFTP Client and is prone to
   unspecified vulnerability.");
   script_tag(name:"impact", value:"Has an unknown impact and attack vector.");
@@ -55,6 +54,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.smartftp.com/download/");
   exit(0);
 
 }

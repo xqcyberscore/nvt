@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bind_multiple_vuln_01_11.nasl 4433 2016-11-07 15:21:16Z cfi $
+# $Id: gb_bind_multiple_vuln_01_11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ISC BIND 9 'RRSIG' Record Type Negative Cache Remote Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103030");
-  script_version("$Revision: 4433 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 16:21:16 +0100 (Mon, 07 Nov 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 14:24:22 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_bugtraq_id(45133,45137);
-  script_cve_id("CVE-2010-3613","CVE-2010-3614");
+  script_bugtraq_id(45133, 45137);
+  script_cve_id("CVE-2010-3613", "CVE-2010-3614");
   script_name("ISC BIND 9 'RRSIG' Record Type Negative Cache Remote Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -50,24 +50,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.isc.org/products/BIND/");
   script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100124923");
 
-  tag_summary = "ISC BIND is prone to multiple Vulnerabilities.";
-
-  tag_insight = "1. A remote denial-of-service vulnerability.
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"ISC BIND is prone to multiple Vulnerabilities.");
+  script_tag(name:"insight", value:"1. A remote denial-of-service vulnerability.
   An attacker can exploit this issue to cause the affected service to
   crash, denying service to legitimate users.
 
   2. A security vulnerability that affects the integrity security property
-  of the application.";
-
-  tag_affected = "BIND versions 9.6.2 to 9.6.2-P2, 9.6-ESV to 9.6-ESV-R2 and 9.7.0 to
-  9.7.2-P2 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
+  of the application.");
+  script_tag(name:"affected", value:"BIND versions 9.6.2 to 9.6.2-P2, 9.6-ESV to 9.6-ESV-R2 and 9.7.0 to
+  9.7.2-P2 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

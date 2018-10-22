@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 19 Oct 2018 11:09:41 +0200
+# Automatically created on:  Mon, 22 Oct 2018 16:17:05 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38633,6 +38633,7 @@
 2018/apache/gb_apache_tika_server_xee_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_xxe_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_zip_slip_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tomcat_30633.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_hostname_security_bypass_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_hostname_security_bypass_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl: GPLv2+
@@ -39159,6 +39160,8 @@
 2018/debian/deb_4319.nasl: GPLv2+
 2018/debian/deb_4320.nasl: GPLv2+
 2018/debian/deb_4321.nasl: GPLv2+
+2018/debian/deb_4322.nasl: GPLv2+
+2018/debian/deb_4323.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39605,6 +39608,10 @@
 2018/debian/deb_dla_1545.nasl: GPLv2+
 2018/debian/deb_dla_1546.nasl: GPLv2+
 2018/debian/deb_dla_1547.nasl: GPLv2+
+2018/debian/deb_dla_1548.nasl: GPLv2+
+2018/debian/deb_dla_1549.nasl: GPLv2+
+2018/debian/deb_dla_1550.nasl: GPLv2+
+2018/debian/deb_dla_1551.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39826,6 +39833,8 @@
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-001_win.nasl: GPLv2+
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-005_lin.nasl: GPLv2+
 2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-005_win.nasl: GPLv2+
+2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-006_lin.nasl: GPLv2+
+2018/drupal/gb_drupal_core_mult_vuln_SA-CORE-2018-006_win.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-002_active.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-002_lin.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-002_win.nasl: GPLv2+
@@ -41231,6 +41240,7 @@
 2018/mantisbt/gb_mantisbt_view_n_edit_filters_mult_xss_vuln_win.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_lin.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_win.nasl: GPLv2+
+2018/matomo/gb_matomo_exporttitle_xss_vuln.nasl: GPLv2+
 2018/mautic/gb_mautic_inf_disc_vuln.nasl: GPLv2+
 2018/mcafee/gb_mcafee_true_key_dll_loading_privilege_elevation_vuln_win.nasl: GPLv2+
 2018/mcafee/gb_mcafee_virusscan_ent_mctray_previlege_escalation_vuln.nasl: GPLv2+
@@ -44092,6 +44102,7 @@ gb_php_detect.nasl: GPLv2+
 gb_php_filemanager_detect.nasl: GPLv2+
 gb_PHPFinance_detect.nasl: GPLv2+
 gb_phpgenealogie_detect.nasl: GPLv2+
+gb_phpinfo_output_detect.nasl: GPLv2
 gb_phpip_detect.nasl: GPLv2+
 gb_phplist_detect.nasl: GPLv2+
 gb_phpliteadmin_detect.nasl: GPLv2+
@@ -62143,7 +62154,6 @@ photopost_detect.nasl: GPLv2+
 phpbb_detect.nasl: GPLv2+
 phpBugTracker_detect.nasl: GPLv2+
 phpgroupware_detect.nasl: GPLv2+
-phpinfo.nasl: GPLv2
 phpldapadmin_detect.nasl: GPLv2+
 phplive_detect.nasl: GPLv2+
 phpmyfaq_detect.nasl: GPLv2+
@@ -63524,6 +63534,7 @@ pre2008/phpgroupware_remote_file_include.nasl: GPLv2
 pre2008/phpgroupware_server_side_exec_vuln.nasl: GPLv2
 pre2008/phpgroupware_sql_injection.nasl: GPLv2
 pre2008/phpgroupware_xss.nasl: GPLv2
+pre2008/phpinfo.nasl: GPLv2
 pre2008/phpix.nasl: GPLv2
 pre2008/php_mail_func_header_spoof.nasl: GPLv2
 pre2008/phpMyAdmin_remote_cmd.nasl: GPLv2

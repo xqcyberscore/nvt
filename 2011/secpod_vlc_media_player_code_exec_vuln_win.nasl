@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_code_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_vlc_media_player_code_exec_vuln_win.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # VLC Media Player '.mkv' Code Execution Vulnerability (Windows)
 #
@@ -26,23 +26,11 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted MKV file.
-  Impact Level: Application";
-tag_affected = "VLC media player version 1.1.6.1 and prior on Windows";
-tag_insight = "The flaw is due to an input validation error within the 'MKV_IS_ID'
-  macro in 'modules/demux/mkv/mkv.hpp' of the MKV demuxer, when parsing the
-  MKV file.";
-tag_solution = "Upgrade to the VLC media player version 1.1.7 or later,
-  For updates refer to http://download.videolan.org/pub/videolan/vlc/";
-tag_summary = "The host is installed with VLC Media Player and is prone to
-  arbitrary code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902340");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0531");
   script_bugtraq_id(46060);
@@ -56,15 +44,20 @@ if(description)
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
+  tricking a user into opening a specially crafted MKV file.");
+  script_tag(name:"affected", value:"VLC media player version 1.1.6.1 and prior on Windows");
+  script_tag(name:"insight", value:"The flaw is due to an input validation error within the 'MKV_IS_ID'
+  macro in 'modules/demux/mkv/mkv.hpp' of the MKV demuxer, when parsing the
+  MKV file.");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.7 or later.");
+  script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone to
+  arbitrary code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65045");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1025018");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65045");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1025018");
+  script_xref(name:"URL", value:"http://download.videolan.org/pub/videolan/vlc/");
   exit(0);
 }
 
@@ -75,7 +68,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for VLC Media Player Version less than 1.1.7
 if( version_is_less( version:vers, test_version:"1.1.7" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.7", install_path:path );
   security_message( port:0, data:report );

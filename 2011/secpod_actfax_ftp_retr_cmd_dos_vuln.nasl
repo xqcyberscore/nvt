@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_actfax_ftp_retr_cmd_dos_vuln.nasl 4704 2016-12-07 14:26:08Z cfi $
+# $Id: secpod_actfax_ftp_retr_cmd_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ActFax FTP Server Post Auth 'RETR' Command Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900271");
-  script_version("$Revision: 4704 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 15:26:08 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -42,31 +42,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16177/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/98540/actfax-overflow.txt");
 
-  tag_impact = "Successful exploitation will allow the remote attackers to cause
-  a denial of service.
-
-  Impact Level: Application";
-
-  tag_affected = "ActiveFax Version 4.25 (Build 0221), Other versions may also
-  be affected.";
-
-  tag_insight = "The flaw is due to an error while parsing RETR command, which
+  script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause
+  a denial of service.");
+  script_tag(name:"affected", value:"ActiveFax Version 4.25 (Build 0221), Other versions may also
+  be affected.");
+  script_tag(name:"insight", value:"The flaw is due to an error while parsing RETR command, which
   can be exploited to crash the FTP service by sending big parameter to 'RETR'
-  command.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running ActFax FTP Server and is prone to denial of
-  service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  command.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running ActFax FTP Server and is prone to denial of
+  service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -81,24 +68,20 @@ if(!actFaxPort){
   actFaxPort = 21;
 }
 
-## Check Port status
 if(!get_port_state(actFaxPort)){
   exit(0);
 }
 
-## Confirm the Application
 banner = get_ftp_banner(port:actFaxPort);
 if("220 ActiveFax" >!< banner){
   exit(0);
 }
 
-## Get Username from KB, If not given use default Username
 user = get_kb_item("ftp/login");
 if(!user){
   user = "unknown";
 }
 
-## Get Password from KB, If not given use default Password
 pass = get_kb_item("ftp/password");
 if(!pass){
   pass = "";
@@ -108,7 +91,6 @@ flag = 0;
 
 for(i=0; i<3 ; i++)
 {
-  ## Open the socket
   soc1 = open_sock_tcp(actFaxPort);
 
   ## Exit if it's not able to open socket first time
@@ -116,7 +98,6 @@ for(i=0; i<3 ; i++)
     exit(0);
   }
 
-  ## Check Login is successful or not
   ftplogin = ftp_log_in(socket:soc1, user:user, pass:pass);
 
   ## Exit if it's not able to login first time
@@ -137,7 +118,6 @@ for(i=0; i<3 ; i++)
   ## Send specially crafted RETR command
   send(socket:soc1, data:string("RETR ", crap(length: 772, data:"A"), '\r\n'));
 
-  ## Close FTP Socket
   ftp_close(socket:soc1);
 }
 
@@ -159,5 +139,4 @@ if("220 ActiveFax" >!< resp)
   exit(0);
 }
 
-## Close FTP Socket
 ftp_close(socket:soc2);

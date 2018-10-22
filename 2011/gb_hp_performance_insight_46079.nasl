@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_performance_insight_46079.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_hp_performance_insight_46079.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # HP OpenView Performance Insight Server 'doPost()' Remote Arbitrary Code Execution Vulnerability
 #
@@ -24,41 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "HP OpenView Performance Insight Server is prone to a remote
+if (description)
+{
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46079");
+  script_xref(name:"URL", value:"http://www.hp.com/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-034/");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02695453");
+  script_oid("1.3.6.1.4.1.25623.1.0.103060");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-03 16:40:04 +0100 (Thu, 03 Feb 2011)");
+  script_bugtraq_id(46079);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2011-0276");
+
+  script_name("HP OpenView Performance Insight Server 'doPost()' Remote Arbitrary Code Execution Vulnerability");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_hp_performance_insight_detect.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"HP OpenView Performance Insight Server is prone to a remote
 code-execution vulnerability.
 
 An attacker can exploit this issue to execute arbitrary code with
 SYSTEM-level privileges. Successful exploits will completely compromise
-affected computers.";
-
-tag_solution = "Updates are available. Please see the references for details.";
-
-if (description)
-{
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46079");
- script_xref(name : "URL" , value : "http://www.hp.com/");
- script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-034/");
- script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02695453");
- script_oid("1.3.6.1.4.1.25623.1.0.103060");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-02-03 16:40:04 +0100 (Thu, 03 Feb 2011)");
- script_bugtraq_id(46079);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2011-0276");
-
- script_name("HP OpenView Performance Insight Server 'doPost()' Remote Arbitrary Code Execution Vulnerability");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_hp_performance_insight_detect.nasl");
- script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+affected computers.");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -91,6 +88,6 @@ if("Log off hch908v" >< resp && "Administration</a>" >< resp) {
   msg = string("The Scanner was able to access the URL '",url, "'\nusing username 'hch908v' and password 'z6t0j$+i'.\n");
   security_message(port:port,data:msg);
   exit(0);
-}  
+}
 
 exit(0);

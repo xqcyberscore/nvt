@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_dir_trav.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: gb_http_default_dir_trav.nasl 12019 2018-10-22 14:05:34Z cfischer $
 #
 # Generic HTTP Directory Traversal Check
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113002");
-  script_version("$Revision: 10736 $");
+  script_version("$Revision: 12019 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date: 2017-12-13 21:42:54 +0700 (Wed, 13 Dec 2017)$");
@@ -74,18 +74,19 @@ if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
   exit( 0 );
 
 traversal = make_list( "/",
-                      crap( data: "../", length: 3*6 ),
-                      crap( data: ".../", length: 4*6 ),
-                      crap( data: "%2e%2e%2f", length: 9*6 ),
-                      crap( data: "%2e%2e/", length: 6*6 ),
-                      crap( data: "..%2f", length: 5*6 ),
-                      crap( data: "..\", length: 3*6 ),
-                      crap( data: "...\", length: 4*6 ),
-                      crap( data: "%2e%2e%5c", length: 9*6 ),
-                      crap( data: "%2e%2e\", length: 7*6 ),
-                      crap( data: "..%5c", length: 5*6 ),
-                      crap( data: "..%255c", length: 7*6 ),
-                      crap( data: "%252e%252e%255c", length: 15*6 ) );
+                      crap( data:"../", length:3*6 ),
+                      crap( data:".../", length:4*6 ),
+                      crap( data:"%2e%2e%2f", length:9*6 ),
+                      crap( data:"%2e%2e/", length:6*6 ),
+                      crap( data:"..%2f", length:5*6 ),
+                      crap( data:"..\", length:3*6 ),
+                      crap( data:"...\", length:4*6 ),
+                      crap( data:"%2e%2e%5c", length:9*6 ),
+                      crap( data:"%2e%2e\", length:7*6 ),
+                      crap( data:"..%5c", length:5*6 ),
+                      crap( data:"..%255c", length:7*6 ),
+                      crap( data:"%c0%ae%c0%ae/", length:13*6 ), # nb: JVM UTF-8 bug for various products, see e.g. 2011/gb_trend_micro_data_loss_prevention_48225.nasl or 2018/apache/gb_apache_tomcat_30633.nasl
+                      crap( data:"%252e%252e%255c", length:15*6 ) );
 
 files = traversal_files();
 
@@ -94,10 +95,10 @@ host = http_host_name( dont_add_port:TRUE );
 cgis = get_http_kb_cgis( port:port, host:host );
 if( ! cgis ) exit( 0 );
 
-foreach cgi ( cgis ) {
+foreach cgi( cgis ) {
   cgiArray = split( cgi, sep:" ", keep:FALSE );
-  foreach trav ( traversal ) {
-    foreach file ( keys( files ) ) {
+  foreach trav( traversal ) {
+    foreach file( keys( files ) ) {
       url = trav + files[file];
       urls = create_exploit_req( cgiArray:cgiArray, ex:url );
       foreach url( urls ) {
@@ -111,4 +112,4 @@ foreach cgi ( cgis ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_outlook_dos_vuln_macosx.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_office_outlook_dos_vuln_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft Office Outlook Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811832");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-2730");
   script_bugtraq_id(78020);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 15:38:09 +0530 (Tue, 19 Sep 2017)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Microsoft Office Outlook Denial of Service Vulnerability (Mac OS X)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
   attackers to cause a denial of service (memory consumption and persistent
-  application hang) via a crafted XML document.
-
-  Impact Level: Application");
+  application hang) via a crafted XML document.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2011 on Mac OS X");
 

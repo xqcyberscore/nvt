@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_privilege_escalation_vuln.nasl 10258 2018-06-19 14:17:42Z cfischer $
+# $Id: gb_ibm_db2_multiple_privilege_escalation_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # IBM DB2 Multiple Privilege Escalation Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811693");
-  script_version("$Revision: 10258 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-1520", "CVE-2017-1451", "CVE-2017-1452", "CVE-2017-1439",
                 "CVE-2017-1438");
   script_bugtraq_id(100684, 100690, 100698, 100685);
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to multiple privilege escalation vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -53,13 +52,9 @@ if(description)
   - Multiple errors in validating privileges of local users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to obtain root access and a user without proper authority can activate database.
+  to obtain root access and a user without proper authority can activate database.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-
-  IBM DB2 versions 9.7 before 9.7 FP11,
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 before 9.7 FP11,
 
   IBM DB2 versions 10.1 before 10.1 FP6,
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170729.nasl 8119 2017-12-14 09:19:28Z teissa $
+# $Id: gb_qnap_qts_20170729.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP QTS Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140260");
-  script_version("$Revision: 8119 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 10:19:28 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-01 10:17:13 +0700 (Tue, 01 Aug 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-01 10:17:13 +0700 (Tue, 01 Aug 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-7876", "CVE-2017-11103", "CVE-2017-1000364");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("QNAP QTS Multiple Vulnerabilities");
 
@@ -49,35 +49,35 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_qnap_nas_detect.nasl");
-  script_mandatory_keys("qnap/qts","qnap/version","qnap/build");
+  script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build");
 
-  script_tag(name: "summary", value: "QNAP QTS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"QNAP QTS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "QNAP QTS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"QNAP QTS is prone to multiple vulnerabilities:
 
-- Multiple vulnerabilities regarding OpenVPN.
+  - Multiple vulnerabilities regarding OpenVPN.
 
-- Multiple OS command injection vulnerabilities. (CVE-2017-7876)
+  - Multiple OS command injection vulnerabilities. (CVE-2017-7876)
 
-- Vulnerability in ActiveX controls that could allow for arbitrary code execution on the web client.
+  - Vulnerability in ActiveX controls that could allow for arbitrary code execution on the web client.
 
-- XSS vulnerability in Storage Manager and Backup Station.
+  - XSS vulnerability in Storage Manager and Backup Station.
 
-- 'Orpheus' Lyre' vulnerability in Samba that could be exploited to bypass authentication mechanisms.
+  - 'Orpheus' Lyre' vulnerability in Samba that could be exploited to bypass authentication mechanisms.
 (CVE-2017-11103)
 
-- Vulnerability in the Linux kernel that could be exploited to circumvent the stack guard page.
+  - Vulnerability in the Linux kernel that could be exploited to circumvent the stack guard page.
 (CVE-2017-1000364)");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "QNAP QTS before QTS 4.2.6 build 20170729 and before QTS 4.3.3.0262 build
+  script_tag(name:"affected", value:"QNAP QTS before QTS 4.2.6 build 20170729 and before QTS 4.3.3.0262 build
 20170727");
 
-  script_tag(name: "solution", value: "Update to QTS 4.2.6 build 20170729, QTS 4.3.3.0262 build 20170727 or
+  script_tag(name:"solution", value:"Update to QTS 4.2.6 build 20170729, QTS 4.3.3.0262 build 20170727 or
 later.");
 
-  script_xref(name: "URL", value: "https://www.qnap.com/en-us/releasenotes/");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-us/releasenotes/");
 
   exit(0);
 }

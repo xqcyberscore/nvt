@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_xss_n_csrf_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_symantec_endpoint_protection_xss_n_csrf_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Symantec Endpoint Protection Manager XSS and CSRF Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802242");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-0550", "CVE-2011-0551");
   script_bugtraq_id(48231, 49101);
@@ -57,7 +57,7 @@ if(description)
   - The portal application allows users to perform certain actions via HTTP
     requests without performing any validity checks to verify the requests.");
   script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection (SEP) version 11.0.7000 RU7 or
-  later, For updates refer to http://www.symantec.com/business/endpoint-protection");
+  later.");
   script_tag(name:"summary", value:"This host is installed with Symantec Endpoint Protection Manager
   and is prone to cross site scripting and cross site request forgery
   vulnerabilities.");
@@ -68,6 +68,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/business/endpoint-protection");
   exit(0);
 }
 

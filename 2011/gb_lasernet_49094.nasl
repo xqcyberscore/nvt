@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lasernet_49094.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_lasernet_49094.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Lasernet CMS 'id' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103195");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 14:25:35 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49094);
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,8 +55,8 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-Lasernet CMS 1.5 is affected; other versions may also be vulnerable.");
- exit(0);
+Lasernet CMS 1.5 is affected. Other versions may also be vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");

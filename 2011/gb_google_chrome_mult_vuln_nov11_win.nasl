@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_nov11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - November11 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802345");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-3892", "CVE-2011-3893", "CVE-2011-3894", "CVE-2011-3895",
                 "CVE-2011-3896", "CVE-2011-3897", "CVE-2011-3898");
   script_bugtraq_id(50642);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-14 11:11:11 +0530 (Mon, 14 Nov 2011)");
   script_name("Google Chrome Multiple Vulnerabilities - November11 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026313");
@@ -65,12 +65,12 @@ if(description)
   - A use-after-free error exists related to editing.
 
   - Fails to ask permission to run applets in Java Runtime Environment (JRE) 7.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 15.0.874.120 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 15.0.874.120 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

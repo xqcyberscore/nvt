@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_unquoted_search_path_n_code_exec_vuln.nasl 8149 2017-12-15 14:58:09Z cfischer $
+# $Id: gb_apache_openoffice_unquoted_search_path_n_code_exec_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache OpenOffice 'Unquoted Search Path' And Remote Code Execution Vulnerabilities
 #
@@ -29,52 +29,49 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812223");
-  script_version("$Revision: 8149 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2016-6803", "CVE-2016-6804");
   script_bugtraq_id(94418, 93774);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 15:58:09 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:10:57 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice 'Unquoted Search Path' And Remote Code Execution Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Apache
+  script_tag(name:"summary", value:"The host is installed with Apache
   OpenOffice and is prone to an unquoted windows search path and remote code
   execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
-  
-  - Apache OpenOffice installer for Windows contained a defective operation that 
-    could trigger execution of unwanted software installed by a Trojan Horse 
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
+  - Apache OpenOffice installer for Windows contained a defective operation that
+    could trigger execution of unwanted software installed by a Trojan Horse
     application.
 
   - A defective operation in Apache OpenOffice installer.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
-  remote attacker to trigger execution of unwanted software installed by 
-  a Trojan Horse application and allows execution of arbitrary code with 
-  elevated privileges.
+  script_tag(name:"impact", value:"Successful exploitation will allow a
+  remote attacker to trigger execution of unwanted software installed by
+  a Trojan Horse application and allows execution of arbitrary code with
+  elevated privileges.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apache OpenOffice before 4.1.3 on Windows.");
 
-  script_tag(name: "affected" , value:"Apache OpenOffice before 4.1.3 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Apache OpenOffice 4.1.3 or later,
-  For updates refer to http://www.openoffice.org");
+  script_tag(name:"solution", value:"Upgrade to Apache OpenOffice 4.1.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.securitytracker.com/id/1037015");
-  script_xref(name : "URL" , value : "https://www.openoffice.org/security/cves/CVE-2016-6803.html");
-  script_xref(name : "URL" , value : "https://www.openoffice.org/security/cves/CVE-2016-6804.html");
+  script_xref(name:"URL", value:"https://www.securitytracker.com/id/1037015");
+  script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2016-6803.html");
+  script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2016-6804.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("secpod_openoffice_detect_win.nasl");
   script_mandatory_keys("OpenOffice/Win/Ver");
+  script_xref(name:"URL", value:"http://www.openoffice.org");
   exit(0);
 }
 

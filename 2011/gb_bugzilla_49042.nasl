@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_49042.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
+# $Id: gb_bugzilla_49042.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Bugzilla Multiple Security Vulnerabilities
 #
@@ -28,33 +28,33 @@ CPE = "cpe:/a:mozilla:bugzilla";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103215");
- script_version("$Revision: 8527 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
- script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
- script_bugtraq_id(49042);
- script_cve_id("CVE-2011-2379","CVE-2011-2380","CVE-2011-2381","CVE-2011-2976","CVE-2011-2977","CVE-2011-2978",
+  script_oid("1.3.6.1.4.1.25623.1.0.103215");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
+  script_bugtraq_id(49042);
+  script_cve_id("CVE-2011-2379", "CVE-2011-2380", "CVE-2011-2381", "CVE-2011-2976", "CVE-2011-2977", "CVE-2011-2978",
                "CVE-2011-2979");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
- script_name("Bugzilla Multiple Security Vulnerabilities");
+  script_name("Bugzilla Multiple Security Vulnerabilities");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/49042");
- script_xref(name: "URL", value: "http://www.bugzilla.org");
- script_xref(name: "URL", value: "http://www.bugzilla.org/security/3.4.11/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49042");
+  script_xref(name:"URL", value:"http://www.bugzilla.org");
+  script_xref(name:"URL", value:"http://www.bugzilla.org/security/3.4.11/");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("bugzilla_detect.nasl");
- script_mandatory_keys("bugzilla/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("bugzilla_detect.nasl");
+  script_mandatory_keys("bugzilla/installed");
 
- script_tag(name: "solution", value: "Vendor updates are available. Please see the references for more
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
 information.");
-
- script_tag(name: "summary", value: "Bugzilla is prone to the following vulnerabilities:
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Bugzilla is prone to the following vulnerabilities:
 
 1. A security-bypass vulnerability.
 
@@ -68,7 +68,7 @@ Successfully exploiting these issues may allow an attacker to bypass certain sec
 sensitive information, execute arbitrary script code in the browser of an unsuspecting user, steal cookie-based
 authentication credentials, and perform actions in the vulnerable application in the context of the victim.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

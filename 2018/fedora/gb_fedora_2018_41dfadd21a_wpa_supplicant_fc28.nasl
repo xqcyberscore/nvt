@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_41dfadd21a_wpa_supplicant_fc28.nasl 11110 2018-08-25 05:03:07Z santu $
+# $Id: gb_fedora_2018_41dfadd21a_wpa_supplicant_fc28.nasl 12004 2018-10-22 05:34:04Z cfischer $
 #
 # Fedora Update for wpa_supplicant FEDORA-2018-41dfadd21a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874970");
-  script_version("$Revision: 11110 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-25 07:03:07 +0200 (Sat, 25 Aug 2018) $");
+  script_version("$Revision: 12004 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-19 06:51:14 +0200 (Sun, 19 Aug 2018)");
   script_cve_id("CVE-2018-14526");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wpa_supplicant FEDORA-2018-41dfadd21a");
   script_tag(name:"summary", value:"Check the version of wpa_supplicant");

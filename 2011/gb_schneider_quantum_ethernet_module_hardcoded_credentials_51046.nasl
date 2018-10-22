@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_51046.nasl 9575 2018-04-24 07:02:43Z asteins $
+# $Id: gb_schneider_quantum_ethernet_module_hardcoded_credentials_51046.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103363");
   script_bugtraq_id(51046);
   script_cve_id("CVE-2011-4859", "CVE-2011-4860", "CVE-2011-4861");
-  script_version("$Revision: 9575 $");
+  script_version("$Revision: 11997 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Schneider Electric Quantum Ethernet Module Hardcoded Credentials Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 09:02:43 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 10:13:05 +0100 (Wed, 14 Dec 2011)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -117,7 +117,7 @@ foreach credential (keys(credentials)) {
     security_message(port:port,data:report);
     close(soc);
     exit(0);
-  }  
+  }
   close(soc);
 }
 

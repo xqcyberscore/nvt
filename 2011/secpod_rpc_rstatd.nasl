@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rpc_rstatd.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: secpod_rpc_rstatd.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Check for RPC rstatd Service
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901206");
-  script_version("$Revision: 10121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0624");
+  #  script_cve_id("CVE-1999-0624");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Check for RPC rstatd Service");
@@ -93,7 +93,6 @@ if( ! port ) {
 ## Exit if it's not listening
 if( ! port ) exit( 0 );
 
-## Open UDP socket if it's UDP, else open TCP socket
 if( proto == "udp" ) {
   if( ! get_udp_port_state( port ) ) exit( 0 );
   soc = open_sock_udp( port );
@@ -108,7 +107,6 @@ data = NULL;
 rpc_paket = construct_rpc_packet( program:RPC_PROG, prog_ver:3,
                                   procedure:1, data:data, udp:proto );
 
-## Send and Receive response
 send( socket:soc, data:rpc_paket );
 resp = recv( socket:soc, length:4096 );
 

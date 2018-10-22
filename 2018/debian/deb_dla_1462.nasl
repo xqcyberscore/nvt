@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1462.nasl 10907 2018-08-10 14:55:29Z emoss $
+# $Id: deb_dla_1462.nasl 12004 2018-10-22 05:34:04Z cfischer $
 #
 # Auto-generated from advisory DLA 1462-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891462");
-  script_version("$Revision: 10907 $");
+  script_version("$Revision: 12004 $");
   script_cve_id("CVE-2018-14526");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1462-1] wpa security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:55:29 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 00:00:00 +0200 (Fri, 10 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

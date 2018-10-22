@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_win_01_aug11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_realplayer_mult_vuln_win_01_aug11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Aug11
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902621");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2945", "CVE-2011-2947", "CVE-2011-2950", "CVE-2011-2951",
                 "CVE-2011-2954");
@@ -61,13 +61,13 @@ if(description)
 
   - An use-after-free error in the AutoUpdate feature which allows remote
     attackers to execute arbitrary code via unspecified vectors.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 14.0.6 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 14.0.6 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

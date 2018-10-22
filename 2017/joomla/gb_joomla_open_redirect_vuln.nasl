@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_open_redirect_vuln.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_joomla_open_redirect_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Joomla! Open Redirect Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112051");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2015-5608");
   script_bugtraq_id(76496);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 10:36:22 +0200 (Thu, 21 Sep 2017)");
   script_name("Joomla! Open Redirect Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone
   to an open redirect vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Joomla is prone to the following open redirect vulnerability:
 
@@ -50,14 +49,13 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla! versions 3.0.0 through 3.4.1");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla version 3.4.2 or later.
-  For updates refer to https://www.joomla.org");
+  script_tag(name:"solution", value:"Upgrade to Joomla version 3.4.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL", value: "https://developer.joomla.org/security-centre/617-20150601-core-open-redirect.html");
+  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/617-20150601-core-open-redirect.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -65,6 +63,7 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

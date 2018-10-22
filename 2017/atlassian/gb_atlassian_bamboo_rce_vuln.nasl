@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_rce_vuln.nasl 8107 2017-12-14 04:53:47Z ckuersteiner $
+# $Id: gb_atlassian_bamboo_rce_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Atlassian Bamboo Remote Command Execution Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140602");
-  script_version("$Revision: 8107 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 05:53:47 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-14 11:59:48 +0700 (Thu, 14 Dec 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-14 11:59:48 +0700 (Thu, 14 Dec 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-9514");
   script_bugtraq_id(101269);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Bamboo Remote Command Execution Vulnerability");
 
@@ -52,19 +52,19 @@ if (description)
   script_dependencies("gb_atlassian_bamboo_detect.nasl");
   script_mandatory_keys("AtlassianBamboo/Installed");
 
-  script_tag(name: "summary", value: "Atlassian Bamboo is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Atlassian Bamboo is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Bamboo has a REST endpoint that parsed a YAML file and did not sufficiently
+  script_tag(name:"insight", value:"Bamboo has a REST endpoint that parsed a YAML file and did not sufficiently
 restrict which classes could be loaded. An attacker who can log in to Bamboo as a user is able to exploit this
 vulnerability to execute Java code of their choice on systems that have a vulnerable version of Bamboo.");
 
-  script_tag(name: "affected", value: "Atlassiona Bamboo version 6.0.x, 6.1.x and 6.2.0.");
+  script_tag(name:"affected", value:"Atlassiona Bamboo version 6.0.x, 6.1.x and 6.2.0.");
 
-  script_tag(name: "solution", value: "Update to 6.0.5, 6.1.4, 6.2.1 or later.");
+  script_tag(name:"solution", value:"Update to 6.0.5, 6.1.4, 6.2.1 or later.");
 
-  script_xref(name: "URL", value: "https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-10-11-938843921.html");
+  script_xref(name:"URL", value:"https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-10-11-938843921.html");
 
   exit(0);
 }

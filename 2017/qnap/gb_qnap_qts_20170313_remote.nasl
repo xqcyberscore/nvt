@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170313_remote.nasl 8119 2017-12-14 09:19:28Z teissa $
+# $Id: gb_qnap_qts_20170313_remote.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities (Remote)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140297");
-  script_version("$Revision: 8119 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 10:19:28 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-15 08:57:34 +0700 (Tue, 15 Aug 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-15 08:57:34 +0700 (Tue, 15 Aug 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-6359", "CVE-2017-6360", "CVE-2017-6361");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities (Remote)");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_qnap_nas_detect.nasl");
   script_mandatory_keys("qnap/qts");
 
-  script_tag(name: "summary", value: "QNAP QTS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"QNAP QTS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "QNAP QTS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"QNAP QTS is prone to multiple vulnerabilities:
 
-- Command Injection in utilRequest.cgi cancel_trash_recovery 'pid'. (CVE-2017-6359)
+  - Command Injection in utilRequest.cgi cancel_trash_recovery 'pid'. (CVE-2017-6359)
 
-- Command Injection in userConfig.cgi cloudPersonalSmtp 'hash'. (CVE-2017-6360)
+  - Command Injection in userConfig.cgi cloudPersonalSmtp 'hash'. (CVE-2017-6360)
 
-- Command Injection in authLogin.cgi 'reboot_notice_msg' (CVE-2017-6361)");
+  - Command Injection in authLogin.cgi 'reboot_notice_msg' (CVE-2017-6361)");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "affected", value: "QNAP QTS prior to 4.2.4 Build 20170313.");
+  script_tag(name:"affected", value:"QNAP QTS prior to 4.2.4 Build 20170313.");
 
-  script_tag(name: "solution", value: "Update to QNAP QTS  4.2.4 Build 20170313 or newer.");
+  script_tag(name:"solution", value:"Update to QNAP QTS  4.2.4 Build 20170313 or newer.");
 
-  script_xref(name: "URL", value: "https://www.qnap.com/en-us/releasenotes/");
-  script_xref(name: "URL", value: "https://sintonen.fi/advisories/qnap-qts-multiple-rce-vulnerabilities.txt");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-us/releasenotes/");
+  script_xref(name:"URL", value:"https://sintonen.fi/advisories/qnap-qts-multiple-rce-vulnerabilities.txt");
 
   exit(0);
 }

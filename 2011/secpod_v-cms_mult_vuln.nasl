@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_v-cms_mult_vuln.nasl 8651 2018-02-03 13:39:33Z cfischer $
+# $Id: secpod_v-cms_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # V-CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902498");
-  script_version("$Revision: 8651 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4826", "CVE-2011-4827", "CVE-2011-4828");
   script_bugtraq_id(50706);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 14:39:33 +0100 (Sat, 03 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-23 12:08:49 +0530 (Fri, 23 Dec 2011)");
   script_name("V-CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in the context of a vulnerable
-  site and to cause SQL Injection attack to gain sensitive information.
-
-  Impact Level: Application");
+  site and to cause SQL Injection attack to gain sensitive information.");
 
   script_tag(name:"affected", value:"V-CMS version 1.0 and prior.");
 

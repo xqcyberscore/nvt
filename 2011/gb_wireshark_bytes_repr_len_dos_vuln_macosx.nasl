@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bytes_repr_len_dos_vuln_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_bytes_repr_len_dos_vuln_macosx.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Wireshark 'bytes_repr_len' Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802877");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 12014 $");
   script_cve_id("CVE-2011-1956");
   script_bugtraq_id(48389);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:43:58 +0200 (Mon, 13 Jun 2011)");
   script_name("Wireshark 'bytes_repr_len' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44449/");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.4.5");
   script_tag(name:"insight", value:"The flaw is caused by an error in the 'bytes_repr_len' function, which allows
   remote attackers to cause a denial of service via arbitrary TCP traffic.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.7 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.7 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

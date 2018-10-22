@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xdataface_dataface_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_xdataface_dataface_lfi_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Xataface Dataface '-action' Local File Inclusion Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801950");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(48126);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_name("Xataface Dataface '-action' Local File Inclusion Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17367/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102056/dataface-lfi.txt");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17367/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102056/dataface-lfi.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
@@ -44,19 +44,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to obtain potentially
-  sensitive information and to execute arbitrary local scripts in the context of the web server process.
-
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Xataface Dataface version 1.3rc3 and prior.");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
-  via the '-action' parameter to 'index.php',  which allows attackers to read arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain potentially
+  sensitive information and to execute arbitrary local scripts in the context of the web server process.");
+  script_tag(name:"affected", value:"Xataface Dataface version 1.3rc3 and prior.");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
+  via the '-action' parameter to 'index.php', which allows attackers to read arbitrary
   files via a ../(dot dot) sequences.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Xataface Dataface and is prone to local file
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Xataface Dataface and is prone to local file
   inclusion vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,35 +66,28 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check the php support
 if (!can_host_php(port:port)){
   exit(0);
 }
 
-## check for each possible path
 foreach dir (make_list_unique("/Xdataface", "/dataface", "/", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item: dir + "/dataface_info.php", port:port);
   res = http_keepalive_send_recv(port:port,data:req);
 
-  ## Confirm the application
   if('>INSTALLED CORRECTLY </' >< res && 'Xataface Web Application Framework<' >< res)
   {
     files = traversal_files();
 
     foreach file (keys(files))
     {
-      ## Construct exploit string
       url = string(dir, "/index.php?-action=../../../../../../../",
                        files[file],'%00');
-      ## Confirm exploit worked properly or not
       if(http_vuln_check(port:port, url:url, pattern:file))
       {
         security_message(port:port);

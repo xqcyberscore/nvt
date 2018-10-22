@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_46084.nasl 7406 2017-10-12 06:15:28Z cfischer $
+# $Id: gb_postgresql_46084.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PostgreSQL 'intarray' Module 'gettoken()' Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103054");
-  script_version("$Revision: 7406 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:15:28 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
   script_bugtraq_id(46084);
   script_tag(name:"cvss_base", value:"6.5");
@@ -48,22 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.postgresql.org/");
   script_xref(name:"URL", value:"http://www.postgresql.org/about/news.1289");
 
-  tag_summary = "PostgreSQL is prone to a buffer-overflow vulnerability because
+  script_tag(name:"summary", value:"PostgreSQL is prone to a buffer-overflow vulnerability because
   the application fails to perform adequate boundary checks on
-  user-supplied data. The issue affects the 'intarray' module.";
-
-  tag_impact = "An authenticated attacker can leverage this issue to execute arbitrary
+  user-supplied data. The issue affects the 'intarray' module.");
+  script_tag(name:"impact", value:"An authenticated attacker can leverage this issue to execute arbitrary
   code within the context of the vulnerable application. Failed exploit
-  attempts will result in a denial-of-service condition.";
-
-  tag_affected = "The issue affect versions prior to 8.2.20, 8.3.14, 8.4.7, and 9.0.3.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  attempts will result in a denial-of-service condition.");
+  script_tag(name:"affected", value:"The issue affect versions prior to 8.2.20, 8.3.14, 8.4.7, and 9.0.3.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

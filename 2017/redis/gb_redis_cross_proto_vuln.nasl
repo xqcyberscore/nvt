@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_cross_proto_vuln.nasl 9994 2018-05-29 06:22:58Z cfischer $
+# $Id: gb_redis_cross_proto_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Redis Cross Protocol Scripting Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:redis:redis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140459");
-  script_version("$Revision: 9994 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-29 08:22:58 +0200 (Tue, 29 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-10-30 16:16:15 +0700 (Mon, 30 Oct 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-30 16:16:15 +0700 (Mon, 30 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-10517");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Redis Cross Protocol Scripting Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_redis_detect.nasl");
   script_mandatory_keys("redis/installed");
 
-  script_tag(name: "summary", value: "networking.c in Redis allows 'Cross Protocol Scripting' because it lacks a
+  script_tag(name:"summary", value:"networking.c in Redis allows 'Cross Protocol Scripting' because it lacks a
 check for POST and Host: strings, which are not valid in the Redis protocol (but commonly occur when an attack
 triggers an HTTP request to the Redis TCP port).");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "Redis 3.2.6 and prior.");
+  script_tag(name:"affected", value:"Redis 3.2.6 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 3.2.7 or later.");
+  script_tag(name:"solution", value:"Update to version 3.2.7 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/antirez/redis/commit/874804da0c014a7d704b3d285aa500098a931f50");
+  script_xref(name:"URL", value:"https://github.com/antirez/redis/commit/874804da0c014a7d704b3d285aa500098a931f50");
 
   exit(0);
 }

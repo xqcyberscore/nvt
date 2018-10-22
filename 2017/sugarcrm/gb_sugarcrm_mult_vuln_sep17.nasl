@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_mult_vuln_sep17.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_sugarcrm_mult_vuln_sep17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # SugarCRM Multiple Vulnerabilities (September 2017)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140402");
-  script_version("$Revision: 8596 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-26 13:58:02 +0700 (Tue, 26 Sep 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-26 13:58:02 +0700 (Tue, 26 Sep 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-14508", "CVE-2017-14509", "CVE-2017-14510");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SugarCRM Multiple Vulnerabilities (September 2017)");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_sugarcrm_detect.nasl");
   script_mandatory_keys("sugarcrm/installed");
 
-  script_tag(name: "summary", value: "SugarCRM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SugarCRM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "SugarCRM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SugarCRM is prone to multiple vulnerabilities:
 
-- Authenticated users may cause arbitrary SQL to be executed. (CVE-2017-14508)
+  - Authenticated users may cause arbitrary SQL to be executed. (CVE-2017-14508)
 
-- Authenticated users may access system files. (CVE-2017-14509)
+  - Authenticated users may access system files. (CVE-2017-14509)
 
-- Unauthenticated users may cause arbitrary code to be executed. (CVE-2017-14510)");
+  - Unauthenticated users may cause arbitrary code to be executed. (CVE-2017-14510)");
 
-  script_tag(name: "affected", value: "SugarCRM version 7.7, 7.8 and 7.9.");
+  script_tag(name:"affected", value:"SugarCRM version 7.7, 7.8 and 7.9.");
 
-  script_tag(name: "solution", value: "Update to version 7.7.2.3, 7.8.2.2, 7.9.2.0 or later.");
+  script_tag(name:"solution", value:"Update to version 7.7.2.3, 7.8.2.2, 7.9.2.0 or later.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_xref(name: "URL", value: "https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-006/");
-  script_xref(name: "URL", value: "https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-007/");
-  script_xref(name: "URL", value: "https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-008/");
+  script_xref(name:"URL", value:"https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-006/");
+  script_xref(name:"URL", value:"https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-007/");
+  script_xref(name:"URL", value:"https://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-008/");
 
   exit(0);
 }

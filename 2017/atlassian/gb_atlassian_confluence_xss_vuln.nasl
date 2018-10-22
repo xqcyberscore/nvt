@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_xss_vuln.nasl 8241 2017-12-22 13:40:20Z cfischer $
+# $Id: gb_atlassian_confluence_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Atlassian Confluence XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140587");
-  script_version("$Revision: 8241 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-22 14:40:20 +0100 (Fri, 22 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-07 11:09:51 +0700 (Thu, 07 Dec 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-07 11:09:51 +0700 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-16856");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Confluence XSS Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_mandatory_keys("atlassian_confluence/installed");
 
-  script_tag(name: "summary", value: "Atlassian Confluence is prone to a cross-site scripting vulnerability
+  script_tag(name:"summary", value:"Atlassian Confluence is prone to a cross-site scripting vulnerability
 through various RSS properties in the RSS macro.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The RSS Feed macro in Atlassian Confluence allows remote attackers to inject
+  script_tag(name:"insight", value:"The RSS Feed macro in Atlassian Confluence allows remote attackers to inject
 arbitrary HTML or JavaScript via cross site scripting (XSS) vulnerabilities in various rss properties which were
 used as links without restriction on their scheme.");
 
-  script_tag(name: "affected", value: "Atlassian Confluence prior to version 6.5.2.");
+  script_tag(name:"affected", value:"Atlassian Confluence prior to version 6.5.2.");
 
-  script_tag(name: "solution", value: "Update to 6.5.2 or later versions.");
+  script_tag(name:"solution", value:"Update to 6.5.2 or later versions.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/CONFSERVER-54395");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/CONFSERVER-54395");
 
   exit(0);
 }

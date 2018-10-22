@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-052.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ms08-052.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft GDI Plus Remote Code Execution Vulnerabilities (954593)
 #
@@ -24,10 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to crash an affected application
-  or execute arbitrary code.
-  Impact Level: Application";
-tag_affected = "Microsoft SQL Server 2005 SP 2/3
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.801725");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-18 10:00:48 +0100 (Tue, 18 Jan 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2007-5348", "CVE-2008-3012", "CVE-2008-3013",
+                "CVE-2008-3014", "CVE-2008-3015");
+  script_bugtraq_id(31018, 31019, 31020, 31021, 31022);
+  script_name("Microsoft Products GDI Plus Remote Code Execution Vulnerabilities (954593)");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32154");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-052.mspx");
+
+  script_tag(name:"qod_type", value:"executable_version");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_ms_visual_prdts_detect.nasl",
+                      "secpod_office_products_version_900032.nasl",
+                      "smb_reg_service_pack.nasl", "gb_ms_ie_detect.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash an affected application
+  or execute arbitrary code.");
+  script_tag(name:"affected", value:"Microsoft SQL Server 2005 SP 2/3
   Microsoft Office Excel Viewer 2007
   Microsoft Office XP/2003 SP 3 and prior
   Microsoft Office Visio 2002 SP 2 and prior
@@ -42,47 +66,16 @@ tag_affected = "Microsoft SQL Server 2005 SP 2/3
   Microsoft Windows 2000 SP4 with Internet Explorer 6 SP 1
   Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats SP 1/2
   Microsoft Office PowerPoint Viewer 2003
-  Microsoft Office PowerPoint Viewer 2007 Service Pack 1";
-tag_insight = "The issues are caused by memory corruptions, integer, heap and buffer
+  Microsoft Office PowerPoint Viewer 2007 Service Pack 1");
+  script_tag(name:"insight", value:"The issues are caused by memory corruptions, integer, heap and buffer
   overflows, and input validation errors in GDI+ when rendering malformed WMF,
   PNG, TIFF and BMP images, or when processing Office Art Property Tables in
-  Office documents.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-052.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-052.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.801725");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-01-18 10:00:48 +0100 (Tue, 18 Jan 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2007-5348", "CVE-2008-3012", "CVE-2008-3013",
-                "CVE-2008-3014", "CVE-2008-3015");
-  script_bugtraq_id(31018, 31019, 31020, 31021, 31022);
-  script_name("Microsoft Products GDI Plus Remote Code Execution Vulnerabilities (954593)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32154");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-052.mspx");
-
-  script_tag(name:"qod_type", value:"executable_version");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_ms_visual_prdts_detect.nasl",
-                      "secpod_office_products_version_900032.nasl",
-                      "secpod_reg_enum.nasl", "gb_ms_ie_detect.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  Office documents.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS08-052.");
   exit(0);
 }
 
@@ -110,7 +103,6 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win2008:3) <= 0){
 
 
 # Visio 2002
-# Check for existence of Visio
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -129,10 +121,9 @@ foreach item (registry_enum_keys(key:key))
       dllVer = FileVer(file:"\Mso.dll", path:offPath);
       if(dllVer)
       {
-        # Grep for Mso.dll version 10.0 < 10.0.6844.0
         if(version_in_range(version:dllVer, test_version:"10.0", test_version2:"10.0.6843.9"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -151,10 +142,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^10\..*")
     dllVer = FileVer(file:"\Mso.dll", path:offPath);
     if(dllVer)
     {
-      # Grep for Mso.dll version 10.0 < 10.0.6845.0
       if(version_in_range(version:dllVer, test_version:"10.0", test_version2:"10.0.6844.9"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -171,10 +161,9 @@ if(offPath)
   dllVer = FileVer(file:"\Gdiplus.dll", path:offPath);
   if(dllVer)
   {
-    # Grep for Gdiplus.dll version 11.0 < 11.0.8230.0
     if(version_in_range(version:dllVer, test_version:"11.0", test_version2:"11.0.8229.9"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -198,10 +187,9 @@ if(((get_kb_item("MS/Office/Ver") =~ "^12\..*") ||
     dllVer = FileVer(file:"\Ogl.dll", path:offPath);
     if(dllVer)
     {
-      # Grep for Ogl.dll version 12.0 < 12.0.6509.5000
       if(version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6509.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -217,12 +205,11 @@ if(egrep(pattern:"^7\..*", string:get_kb_item("Microsoft/VisualStudio.Net/Ver"))
   {
     vsPath = vsPath + "\Microsoft Shared\Office10";
     vsVer = FileVer(file:"\MSO.DLL", path:vsPath);
-    # Check for MSO.dll version 10.0 < 10.0.6844.0
     if(vsVer)
     {
       if(version_in_range(version:vsVer, test_version:"10.0", test_version2:"10.0.6843.9"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -238,19 +225,17 @@ if(egrep(pattern:"^9\..*", string:get_kb_item("Microsoft/VisualStudio/Ver")))
   {
     vsPath = vsPath + "\Bootstrapper\Packages\ReportViewer";
     rvVer = FileVer(file:"\ReportViewer.exe", path:vsPath);
-    # Check for ReportViewer.exe 9.0 < 9.0.21022.143
     if(rvVer)
     {
       if(version_in_range(version:rvVer, test_version:"9.0", test_version2:"9.0.21022.142"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
   }
 }
 
-# Windows 2K with IE 6 SP1
 if(hotfix_check_sp(win2k:5) > 0)
 {
   ieVer = get_kb_item("MS/IE/EXE/Ver");
@@ -264,10 +249,9 @@ if(hotfix_check_sp(win2k:5) > 0)
       dllVer = FileVer(file:"\vgx.dll", path:dllPath);
       if(dllVer)
       {
-        # Grep for vgx.dll version < 6.0.2800.1612
         if(version_is_less(version:dllVer, test_version:"6.0.2800.1612"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -283,12 +267,11 @@ if(registry_key_exists(key:key))
   {
     sqlpath = registry_get_sz(key:key + item + "\Setup", item:"SQLBinRoot");
     sqlVer = FileVer (file:"\sqlservr.exe", path:sqlpath);
-    # Check for SQL Server 2005 version 2005.90.3000 < 2005.90.3073.0
     if(sqlVer)
     {
       if(version_in_range(version:sqlVer, test_version:"2005.90.3000", test_version2:"2005.90.3072.9"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

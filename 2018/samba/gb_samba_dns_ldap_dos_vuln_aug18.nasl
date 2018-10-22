@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_dns_ldap_dos_vuln_aug18.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_samba_dns_ldap_dos_vuln_aug18.nasl 11994 2018-10-19 16:13:16Z cfischer $
 #
 # Samba 'DNS and LDAP' Denial of Service Vulnerability - Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813785");
-  script_version("$Revision: 11042 $");
+  script_version("$Revision: 11994 $");
   script_cve_id("CVE-2018-1140");
-  script_tag(name:"cvss_base", value:"7.9");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 14:46:20 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba 'DNS and LDAP' Denial of Service Vulnerability - Aug18");
 

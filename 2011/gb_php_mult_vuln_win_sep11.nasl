@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_win_sep11.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_mult_vuln_win_sep11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP Multiple Vulnerabilities - Sep11 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802330");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-2483", "CVE-2011-1657", "CVE-2011-3182", "CVE-2011-3267",
                 "CVE-2011-3268");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/archive/2011.php#id2011-08-18-1");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code,
-  obtain sensitive information or cause a denial of service.
-
-  Impact Level: Application");
+  obtain sensitive information or cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.3.7 on Windows");
 
@@ -68,14 +66,14 @@ if(description)
 
   - Improper implementation of the error_log function.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.7 or later.
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.3.7 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

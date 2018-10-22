@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vssetcookie.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: vssetcookie.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # VsSetCookie.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11731");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 11998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3784);
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,23 +38,22 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The file VsSetCookie.exe exists on this webserver.
-  Some versions of this file are vulnerable to remote exploit.";
-
-  tag_solution = "Remove it from /cgi-bin.
+  script_tag(name:"solution", value:"Remove it from /cgi-bin.
   To manually test the server, you can try:
-  http://<serverip>/cgi-bin/VsSetCookie.exe?vsuser=<user_name>
+  <serverip>/cgi-bin/VsSetCookie.exe?vsuser=<user_name>
 
-  With a correctly guessed User Name, you will gain full access to the CGI.";
+  With a correctly guessed User Name, you will gain full access to the CGI.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The file VsSetCookie.exe exists on this webserver.
+  Some versions of this file are vulnerable to remote exploit.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
@@ -76,4 +75,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsftpd_46617.nasl 5026 2017-01-18 09:59:52Z cfi $
+# $Id: gb_vsftpd_46617.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # vsftpd FTP Server 'ls.c' Remote Denial of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:beasts:vsftpd';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103101");
-  script_version("$Revision: 5026 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(46617);
   script_cve_id("CVE-2011-0762");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 10:59:52 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-03 13:33:12 +0100 (Thu, 03 Mar 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"summary", value:"The 'vsftpd' FTP server is prone to a remote denial-of-service
   vulnerability.");
- 
+
   script_tag(name:"impact", value:"Successfully exploiting this issue allows remote attackers to crash
   the affected application, denying service to legitimate users.");
 

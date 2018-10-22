@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_multiple_xss.nasl 6005 2017-04-21 13:14:30Z cfi $
+# $Id: gb_kodak_insite_multiple_xss.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Kodak InSite Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801909");
-  script_version("$Revision: 6005 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1427");
   script_bugtraq_id(46762);
@@ -47,33 +47,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/516880");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/516880/100/0/threaded");
 
-  tag_impact = "Successful exploitation will allow attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   script code in the browser of an unsuspecting user in the context of the
   affected site. This may allow the attacker to steal cookie-based authentication
-  credentials and to launch other attacks.
-
-  Impact Level: Application";
-
-  tag_affected = "Kodak InSite version 6.0.x and prior.";
-
-  tag_insight = "Multiple flaws are due to input validation error in 'Language'
+  credentials and to launch other attacks.");
+  script_tag(name:"affected", value:"Kodak InSite version 6.0.x and prior.");
+  script_tag(name:"insight", value:"Multiple flaws are due to input validation error in 'Language'
   parameter to Pages/login.aspx, 'HeaderWarning' parameter to Troubleshooting
   /DiagnosticReport.asp and 'User-Agent' header to troubleshooting/speedtest.asp,
-  which allows remote attackers to inject arbitrary web script or HTML.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running Kodak InSite and is prone to multiple
-  cross-site scripting vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  which allows remote attackers to inject arbitrary web script or HTML.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Kodak InSite and is prone to multiple
+  cross-site scripting vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -91,10 +78,9 @@ if( ! can_host_asp( port:port ) ) exit( 0 );
 sndReq = http_get(item:string("/Site/Pages/login.aspx"), port:port);
 rcvRes = http_keepalive_send_recv(port:port,data:sndReq);
 
-## Confirm the Application
 if("InSite" >< rcvRes && "PoweredByKodak" >< rcvRes) {
 
-  url = "/Pages/login.aspx?SessionTimeout=False&Language=de%26rflp=True','" + 
+  url = "/Pages/login.aspx?SessionTimeout=False&Language=de%26rflp=True','" +
         "00000000-0000-0000-0000-000000000000');alert('XSS!-TEST'); return fal" +
         "se; a('";
 

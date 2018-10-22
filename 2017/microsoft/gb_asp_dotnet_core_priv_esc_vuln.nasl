@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Microsoft ASP.NET Core Elevation Of Privilege Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812098");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-11879");
   script_bugtraq_id(101713);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Elevation Of Privilege Vulnerability");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory (CVE-2017-11879).");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of ASP.NET Core
-  and check for affected packages.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an open redirect
   vulnerability in ASP.NET Core.");

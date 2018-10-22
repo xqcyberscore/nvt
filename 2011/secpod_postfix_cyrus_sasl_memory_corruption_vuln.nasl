@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Postfix SMTP Server Cyrus SASL Support Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:postfix:postfix';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902517");
-  script_version("$Revision: 5933 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1720");
   script_bugtraq_id(47778);
@@ -51,16 +51,14 @@ if(description)
   script_mandatory_keys("SMTP/postfix");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service or possibly execute arbitrary code.
-  Impact Level: Application");
+  service or possibly execute arbitrary code.");
   script_tag(name:"affected", value:"Postfix versions before 2.5.13, 2.6.x before 2.6.10, 2.7.x before 2.7.4,
   and 2.8.x before 2.8.3");
-  script_tag(name:"insight" , value:"The flaw is caused by a memory corruption error in the Cyrus SASL library
+  script_tag(name:"insight", value:"The flaw is caused by a memory corruption error in the Cyrus SASL library
   when used with 'CRAM-MD5' or 'DIGEST-MD5' authentication mechanisms, which
   could allow remote attackers to crash an affected server or execute arbitrary
   code.");
-  script_tag(name:"solution", value:"Upgrade to Postfix version 2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later
-  For updates refer to http://www.postfix.org/");
+  script_tag(name:"solution", value:"Upgrade to Postfix version 2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
   script_tag(name:"summary", value:"This host is running Postfix SMTP server and is prone to memory
   corruption vulnerability.");
 
@@ -75,14 +73,9 @@ include("smtp_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-soc = 0;
-version = "";
-
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for vulnerable versions
 if(version_is_less(version:vers, test_version:"2.5.13") ||
    version_in_range(version:vers, test_version:"2.6", test_version2:"2.6.9")||
    version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.3")||
@@ -103,7 +96,6 @@ if(version_is_less(version:vers, test_version:"2.5.13") ||
 
   smtp_close(socket:soc);
 
-  ## Check for vulnerable authentication methods.
   if("DIGEST-MD5" >< resp || "CRAM-MD5" >< resp) {
     report = report_fixed_ver(installed_version:vers, fixed_version: "2.5.13, 2.6.10, 2.7.4, or 2.8.3 or later");
     security_message(port:port, data:report);

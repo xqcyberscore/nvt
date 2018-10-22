@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syndeocms_47018.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_syndeocms_47018.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # SyndeoCMS Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -24,7 +24,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "SyndeoCMS is prone to multiple cross-site scripting vulnerabilities
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103127");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-25 13:20:06 +0100 (Fri, 25 Mar 2011)");
+  script_bugtraq_id(47018);
+
+  script_name("SyndeoCMS Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/47018");
+  script_xref(name:"URL", value:"http://www.syndeocms.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/517160");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/517172");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/517162");
+
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("gb_SyndeoCMS_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"SyndeoCMS is prone to multiple cross-site scripting vulnerabilities
 and an SQL-injection vulnerability because it fails to sufficiently
 sanitize user-supplied data.
 
@@ -33,52 +59,26 @@ based authentication credentials, compromise the application,
 access or modify data, or exploit latent vulnerabilities in the
 underlying database.
 
-SyndeoCMS 2.8.02 is vulnerable; other versions may also be affected.";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103127");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-03-25 13:20:06 +0100 (Fri, 25 Mar 2011)");
- script_bugtraq_id(47018);
-
- script_name("SyndeoCMS Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/47018");
- script_xref(name : "URL" , value : "http://www.syndeocms.org/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/517160");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/517172");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/517162");
-
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_SyndeoCMS_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+SyndeoCMS 2.8.02 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port, app:"syndeocms"))exit(0);
 
-url = string(dir,"/starnet/addons/scroll_page.php?speed=--></script></head><script>alert('openvas-xss-test');</script>"); 
+url = string(dir,"/starnet/addons/scroll_page.php?speed=--></script></head><script>alert('openvas-xss-test');</script>");
 
 if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\);</script>",check_header:TRUE)) {
-     
+
   security_message(port:port);
   exit(0);
 

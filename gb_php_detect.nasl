@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 11558 2018-09-23 08:25:04Z cfischer $
+# $Id: gb_php_detect.nasl 11992 2018-10-19 13:42:04Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 11558 $");
+  script_version("$Revision: 11992 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-23 10:25:04 +0200 (Sun, 23 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 15:42:04 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "phpinfo.nasl", "webmirror.nasl",
+  script_dependencies("find_service.nasl", "gb_phpinfo_output_detect.nasl", "webmirror.nasl",
                       "sw_apcu_info.nasl", "gb_php_detect_lin.nasl", "secpod_php_detect_win.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
@@ -96,7 +96,7 @@ foreach checkFile( checkFiles ) {
 }
 
 if( isnull( phpVer ) || phpVer == "" ) {
-  # nb: Currently set by sw_apcu_info.nasl and phpinfo.nasl but could be extended by other PHP scripts providing such info
+  # nb: Currently set by sw_apcu_info.nasl and gb_phpinfo_output_detect.nasl but could be extended by other PHP scripts providing such info
   phpscriptsUrls = get_kb_list( "php/banner/from_scripts/" + host + "/" + port + "/urls" );
   if( phpscriptsUrls && is_array( phpscriptsUrls ) ) {
     foreach phpscriptsUrl( phpscriptsUrls ) {

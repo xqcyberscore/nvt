@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl 7553 2017-10-25 03:15:07Z ckuersteiner $
+# $Id: gb_cisco_ip_phone_8821_cisco-sa-20171016-wpa.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Cisco Wireless IP Phone 8821 Multiple WPA2 Vulnerabilities
 #
@@ -28,33 +28,33 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140432");
-  script_version("$Revision: 7553 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-25 05:15:07 +0200 (Wed, 25 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-17 09:02:23 +0700 (Tue, 17 Oct 2017)");
-  script_tag(name: "cvss_base", value: "5.4");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-17 09:02:23 +0700 (Tue, 17 Oct 2017)");
+  script_tag(name:"cvss_base", value:"5.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", "CVE-2017-13081");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco Wireless IP Phone 8821 Multiple WPA2 Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
   script_dependencies("gb_cisco_ip_phone_detect.nasl");
   script_mandatory_keys("cisco/ip_phone/model");
 
-  script_tag(name: "summary", value: "Cisco Wireless IP Phone 8821 is prone to key reinstallation attacks against
+  script_tag(name:"summary", value:"Cisco Wireless IP Phone 8821 is prone to key reinstallation attacks against
 WPA protocol.");
 
-  script_tag(name: "insight", value: "On October 16th, 2017, a research paper with the title of 'Key
+  script_tag(name:"insight", value:"On October 16th, 2017, a research paper with the title of 'Key
 Reinstallation Attacks: Forcing Nonce Reuse in WPA2' was made publicly available. This paper discusses seven
 vulnerabilities affecting session key negotiation in both the Wi-Fi Protected Access (WPA) and the Wi-Fi Protected
 Access II (WPA2) protocols. These vulnerabilities may allow the reinstallation of a pairwise transient key, a
@@ -64,13 +64,13 @@ supplicant supporting either the 802.11z (Extensions to Direct-Link Setup) stand
 Network Management) standard. The three additional vulnerabilities could also allow the reinstallation of a
 pairwise key, group key, or integrity group key.");
 
-  script_tag(name: "impact", value: "An attacker within the wireless communications range of an affected AP and
+  script_tag(name:"impact", value:"An attacker within the wireless communications range of an affected AP and
 client may leverage packet decryption and injection, TCP connection hijacking, HTTP content injection, or the
 replay of unicast, broadcast, and multicast frames.");
 
-  script_tag(name: "solution", value: "Update to version 11.0(3)SR5 or later.");
+  script_tag(name:"solution", value:"Update to version 11.0(3)SR5 or later.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171016-wpa");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171016-wpa");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_vuln_nov11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_realplayer_mult_vuln_nov11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities Nov - 11 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902762");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(50741);
   script_cve_id("CVE-2011-4253", "CVE-2011-4252", "CVE-2011-4251", "CVE-2011-4250",
                 "CVE-2011-4249", "CVE-2011-4248", "CVE-2011-4247", "CVE-2011-4246",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2011-4258", "CVE-2011-4257", "CVE-2011-4256");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-29 13:58:17 +0530 (Tue, 29 Nov 2011)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities Nov - 11 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46954/");
@@ -67,12 +67,12 @@ if(description)
     files.
 
   - An unspecified error exists when handling RTSP SETUP requests.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.0 or later
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.0 or later");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

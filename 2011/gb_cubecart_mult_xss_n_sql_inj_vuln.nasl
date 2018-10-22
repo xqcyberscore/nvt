@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_xss_n_sql_inj_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_cubecart_mult_xss_n_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # CubeCart Multiple Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802199");
-  script_version("$Revision: 7019 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2010-4903");
   script_bugtraq_id(43114);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-04 11:10:29 +0200 (Fri, 04 Nov 2011)");
   script_name("CubeCart Multiple Cross-Site Scripting and SQL Injection Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41352");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/513572/100/0/threaded");
-  script_xref(name : "URL" , value : "http://www.acunetix.com/blog/web-security-zone/articles/sql-injection-xss-cubecart-4-3-3/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41352");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/513572/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.acunetix.com/blog/web-security-zone/articles/sql-injection-xss-cubecart-4-3-3/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -47,26 +47,26 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site and
-  manipulate SQL queries by injecting arbitrary SQL code.
+  manipulate SQL queries by injecting arbitrary SQL code.");
+  script_tag(name:"affected", value:"CubeCart version 4.3.3");
+  script_tag(name:"insight", value:"The flaws are due to
 
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "CubeCart version 4.3.3");
-  script_tag(name : "insight" , value : "The flaws are due to
   - Input passed to the 'amount', 'cartId', 'email', 'transId', and
     'transStatus' parameters in 'modules/gateway/WorldPay/return.php' is not
     properly sanitised before being returned to the user.
+
   - Input passed via the 'searchStr' parameter to index.php
     (when '_a' is set to 'viewCat') is not properly sanitised before being used
     in a SQL query.");
-  script_tag(name : "solution" , value : "Upgrade to CubeCart version 4.4.2 or later
-  For updates refer to http://www.cubecart.com/tour");
-  script_tag(name : "summary" , value : "This host is running CubeCart and is prone to SQL injection and
+  script_tag(name:"solution", value:"Upgrade to CubeCart version 4.4.2 or later");
+  script_tag(name:"summary", value:"This host is running CubeCart and is prone to SQL injection and
   multiple cross-site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.cubecart.com/tour");
   exit(0);
 }
 
@@ -74,10 +74,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -87,15 +85,12 @@ foreach dir (make_list_unique("/cart", "/store", "/shop", "/cubecart", cgi_dirs(
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item: string(dir, "/admin.php?_g=login&goto=%2Fcubecart%2F" +
                         "admin.php"), port:port);
   res = http_keepalive_send_recv(port:port,data:req);
 
-  ## Confirm the Application
   if("<title>CubeCart" >< res)
   {
-    ## Try attack and check the response to confirm vulnerability
     url = string(dir, "/index.php?searchStr='&_a=viewCat&Submit=Go");
 
     if(http_vuln_check(port:port, url:url, pattern:"You have an error " +

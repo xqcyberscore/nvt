@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-26_2017-26_macosx.nasl 8027 2017-12-07 09:50:33Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-26_2017-26_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2017-26_2017-26)-MAC OS X
 #
@@ -29,35 +29,31 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812404");
-  script_version("$Revision: 8027 $");
-  script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826" );
+  script_version("$Revision: 11983 $");
+  script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 10:50:33 +0100 (Thu, 07 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 11:21:51 +0530 (Thu, 07 Dec 2017)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2017-26_2017-26)-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exist due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Use-after-free of 'PressShell' while restyling layout.
 
   - Cross-origin URL information leak through Resource Timing API.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to impact confidentiality, integrity and availability of the system.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to impact confidentiality, integrity and availability of the system.");
 
-  Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 52.5 on MAC OS X.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 52.5 on MAC OS X.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird 52.5 or later,
-  For updates refer to https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird 52.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -67,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

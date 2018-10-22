@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailreader.nasl 11761 2018-10-05 10:25:32Z jschulte $
-# Description: mailreader.com directory traversal and arbitrary command execution
+# $Id: mailreader.nasl 12008 2018-10-22 08:12:11Z cfischer $
+#
+# mailreader.com directory traversal and arbitrary command execution
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,7 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # References:
 # Date: Mon, 28 Oct 2002 17:48:04 +0800
@@ -34,8 +36,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11780");
-  script_version("$Revision: 11761 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:12:11 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1581", "CVE-2002-1582");
   script_bugtraq_id(5393, 6055, 6058);
@@ -43,16 +45,20 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("mailreader.com directory traversal and arbitrary command execution");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("(C) Michel Arboi 2003");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"upgrade to v2.3.32 or later");
+
+  script_tag(name:"solution", value:"Upgrade to v2.3.32 or later.");
+
   script_tag(name:"summary", value:"mailreader.com software is installed. A directory traversal flaw
   allows anybody to read arbitrary files on your system.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

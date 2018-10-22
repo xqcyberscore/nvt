@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jan11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_jan11_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - Jan11 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801826");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2011-0470", "CVE-2011-0471", "CVE-2011-0472", "CVE-2011-0473",
                 "CVE-2011-0474", "CVE-2011-0475", "CVE-2011-0476", "CVE-2011-0477",
@@ -86,12 +86,12 @@ if(description)
   - An error after removal of a DOM node may result in a stale rendering node.
 
   - An error when handling speech can be exploited to reference a stale pointer.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 8.0.552.237 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 8.0.552.237 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

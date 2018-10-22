@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_kses_library_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_wordpress_kses_library_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress KSES Library Cross Site Scripting Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801807");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-12 13:59:47 +0100 (Wed, 12 Jan 2011)");
   script_cve_id("CVE-2010-4536");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress KSES Library Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42755");
-  script_xref(name : "URL" , value : "http://wordpress.org/news/2010/12/3-0-4-update/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3335");
-  script_xref(name : "URL" , value : "http://core.trac.wordpress.org/changeset/17172/branches/3.0");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42755");
+  script_xref(name:"URL", value:"http://wordpress.org/news/2010/12/3-0-4-update/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3335");
+  script_xref(name:"URL", value:"http://core.trac.wordpress.org/changeset/17172/branches/3.0");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -48,24 +48,23 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to insert arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary HTML and
   script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "WordPress versions prior to 3.0.4");
-  script_tag(name : "insight" , value : "The flaw is caused by input validation errors in the 'KSES HTML/XHTML' filter
+  context of an affected site when the malicious data is being viewed.");
+  script_tag(name:"affected", value:"WordPress versions prior to 3.0.4");
+  script_tag(name:"insight", value:"The flaw is caused by input validation errors in the 'KSES HTML/XHTML' filter
   (wp-includes/kses.php) when processing user-supplied data, which could be
   exploited by attackers to execute arbitrary script code on the user's
   browser session in the security context of an affected site.");
-  script_tag(name : "solution" , value : "Upgrade to WordPress version 3.0.4 or later
-  For updates refer to http://wordpress.org/download/");
-  script_tag(name : "summary" , value : "The host is running WordPress and is prone to Cross site scripting
+  script_tag(name:"solution", value:"Upgrade to WordPress version 3.0.4 or later");
+  script_tag(name:"summary", value:"The host is running WordPress and is prone to Cross site scripting
   vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/download/");
   exit(0);
 }
 
@@ -79,7 +78,6 @@ if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 if (dir == "/") dir = "";
 hostname = http_host_name(port:port);
 
-## Construct attack request
 req = string("POST ",dir,"/wp-comments-post.php HTTP/1.1\r\n",
              "Host: ",hostname,"\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
@@ -92,7 +90,6 @@ req = string("POST ",dir,"/wp-comments-post.php HTTP/1.1\r\n",
 res = http_keepalive_send_recv(port:port, data:req);
 if(res)
 {
-  ## Confirm exploit worked by checking the response
   req = http_get(item:string(dir,"/?p=1") , port:port);
   req = string(chomp(req), "\r\nCookie:  wordpress_test_cookie=WP+Cookie",
                "+check; comment_author_b462bdda0bcb111e62778a273812ce8d=",

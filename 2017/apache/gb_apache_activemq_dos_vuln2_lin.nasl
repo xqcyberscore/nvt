@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_dos_vuln2_lin.nasl 7689 2017-11-08 05:46:44Z teissa $
+# $Id: gb_apache_activemq_dos_vuln2_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache ActiveMQ 'CVE-2014-3576' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108287");
-  script_version("$Revision: 7689 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2014-3576");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:54:29 +0100 (Tue, 07 Nov 2017)");
   script_name("Apache ActiveMQ 'CVE-2014-3576' Denial of Service Vulnerability (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache ActiveMQ and is prone to
   a Denial of Service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the Detection-NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote
   attackers to cause a Denial of Service via a shutdown command.");

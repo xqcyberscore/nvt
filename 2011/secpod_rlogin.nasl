@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rlogin.nasl 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: secpod_rlogin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Check for rlogin Service
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901202");
-  script_version("$Revision: 6849 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #script_cve_id("CVE-1999-0651");
+  #  script_cve_id("CVE-1999-0651");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Check for rlogin Service");
@@ -47,20 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/Rlogin");
   script_xref(name:"URL", value:"http://www.ietf.org/rfc/rfc1282.txt");
 
-  tag_insight = "rlogin has several serious security problems,
+  script_tag(name:"insight", value:"rlogin has several serious security problems,
+
   - All information, including passwords, is transmitted unencrypted.
+
   - .rlogin (or .rhosts) file is easy to misuse (potentially allowing
     anyone to login without a password)
 
-  Impact Level: System";
-
-  tag_solution = "Disable rlogin service and use ssh instead.";
-
-  tag_summary = "This remote host is running a rlogin service.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Impact Level: System");
+  script_tag(name:"solution", value:"Disable rlogin service and use ssh instead.");
+  script_tag(name:"summary", value:"This remote host is running a rlogin service.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -97,7 +93,6 @@ res2 = recv( socket:soc, length:1024 );
 close( soc );
 if( isnull( res2 ) ) exit( 0 );
 
-## Confirm rlogin by checking response
 if( res1 == nullStr && "Password:" >< res2 ) {
   vuln = TRUE;
 } else if( res1 == nullStr && ( ( "root@" >< res2 && ":~#" >< res2 ) || "Last login: " >< res2 || ( "Linux" >< res2 && "#1 SMP" >< res2 ) ) ) {

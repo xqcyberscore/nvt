@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_bof_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_realplayer_bof_vuln_win.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # RealNetworks RealPlayer Buffer Overflow Vulnerability (Windows)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801749");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-18 17:42:11 +0100 (Fri, 18 Feb 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,12 +62,12 @@ if(description)
   - temporary files that store references to media files having predictable
     names. This can be exploited in combination with the
     'OpenURLInPlayerBrowser()' method of a browser plugin to execute the file.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 14.0.2 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 14.0.2 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to Buffer
   Overflow Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

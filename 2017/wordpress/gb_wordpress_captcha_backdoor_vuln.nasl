@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_captcha_backdoor_vuln.nasl 8251 2017-12-27 08:14:44Z asteins $
+# $Id: gb_wordpress_captcha_backdoor_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress Captcha Plugin Backdoor Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112155");
-  script_version("$Revision: 8251 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-27 09:14:44 +0100 (Wed, 27 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-27 09:34:51 +0100 (Wed, 27 Dec 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-27 09:34:51 +0100 (Wed, 27 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Captcha Plugin Backdoor Vulnerability");
 
@@ -49,16 +49,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress plugin Captcha is vulnerable to a backdoor vulnerability.");
+  script_tag(name:"summary", value:"WordPress plugin Captcha is vulnerable to a backdoor vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Captcha plugin between version 4.3.6 and 4.4.4.");
+  script_tag(name:"affected", value:"WordPress Captcha plugin between version 4.3.6 and 4.4.4.");
 
-  script_tag(name: "solution", value: "Update to version 4.4.5 or later.
+  script_tag(name:"solution", value:"Update to version 4.4.5 or later.
 Another recommendation is that you uninstall the Captcha plugin immediately since the developer cannot be trusted.");
 
-  script_xref(name: "URL", value: "https://www.wordfence.com/blog/2017/12/backdoor-captcha-plugin/");
+  script_xref(name:"URL", value:"https://www.wordfence.com/blog/2017/12/backdoor-captcha-plugin/");
 
   exit(0);
 }

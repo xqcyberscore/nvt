@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_soffice_dir_traversal_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_openoffice_soffice_dir_traversal_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # OpenOffice.org 'soffice' Directory Traversal Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902284");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"affected", value:"OpenOffice Version 3.x to 3.2.0 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error in 'soffice', which places a zero-length
   directory name in the 'LD_LIBRARY_PATH'.");
-  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.3.0 or later
-  For updates refer to http://www.openoffice.org/");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.3.0 or later");
   script_tag(name:"summary", value:"The host has OpenOffice installed and is prone to directory
   traversal vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

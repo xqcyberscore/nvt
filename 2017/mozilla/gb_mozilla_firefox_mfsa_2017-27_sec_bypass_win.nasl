@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-27_sec_bypass_win.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2017-27_sec_bypass_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Firefox Security Bypass Vulnerability(mfsa_2017-27)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812322");
-  script_version("$Revision: 10868 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-7843");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 12:30:09 +0530 (Tue, 05 Dec 2017)");
   script_name("Mozilla Firefox Security Bypass Vulnerability(mfsa_2017-27)-Windows");
 
@@ -46,14 +46,12 @@ if(description)
   browsing mode can write IndexedDB data.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass security restrictions.
-
-  Impact Level: Application.");
+  attackers to bypass security restrictions.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before 57.0.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 57.0.1
-  or later. For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -63,6 +61,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

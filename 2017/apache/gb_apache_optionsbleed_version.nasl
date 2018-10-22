@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_optionsbleed_version.nasl 9218 2018-03-27 11:35:33Z cfischer $
+# $Id: gb_apache_optionsbleed_version.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108252");
-  script_version("$Revision: 9218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:35:33 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:53:35 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,8 +55,7 @@ if(description)
   from process memory if the Limit directive can be set in a user's .htaccess file, or if httpd.conf
   has certain misconfigurations, aka Optionsbleed.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and
-  check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Optionsbleed is a use after free error in Apache HTTP server that
   causes a corrupted Allow header to be constructed in response to HTTP OPTIONS requests. This can leak

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icq_remote_code_exec_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_icq_remote_code_exec_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # ICQ 7 Instant Messaging Client Remote Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801574");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,13 +51,13 @@ update mechanism.");
   script_tag(name:"insight", value:"The flaw is due to an error in automatic update mechanism.
 It does not check the identity of the update server or the authenticity
 of the updates that it downloads through its automatic update mechanism.");
-  script_tag(name:"solution", value:"Upgrade to ICQ 7.4.4629 or later,
-For updates refer to http://www.icq.com");
+  script_tag(name:"solution", value:"Upgrade to ICQ 7.4.4629 or later.");
   script_tag(name:"summary", value:"This host has ICQ installed and is prone remote code execution
 vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.icq.com");
   exit(0);
 }
 

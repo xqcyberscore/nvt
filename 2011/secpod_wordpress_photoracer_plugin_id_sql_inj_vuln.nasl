@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photoracer_plugin_id_sql_inj_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: secpod_wordpress_photoracer_plugin_id_sql_inj_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # WordPress Photoracer Plugin 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901204");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_bugtraq_id(35382);
   script_cve_id("CVE-2009-2122");
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/photoracer");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to perform SQL Injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  attack and gain sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Photoracer plugin version 1.0");
 

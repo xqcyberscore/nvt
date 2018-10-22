@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_daqfactory_netb_datagram_stack_bof.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Azeotech DAQFactory NETB Datagram Parsing Stack Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802037");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-07 15:45:35 +0200 (Fri, 07 Oct 2011)");
   script_cve_id("CVE-2011-3492");
   script_tag(name:"cvss_base", value:"10.0");
@@ -53,8 +53,7 @@ if(description)
   can be exploited to cause a buffer overflow by sending a crafted NETB packet
   to port 20034/UDP.");
 
-  script_tag(name:"solution", value:"Update to version 5.86 or later,
-  For updates refer to http://www.azeotech.com/daqfactory.php");
+  script_tag(name:"solution", value:"Update to version 5.86 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Azeotech DAQFactory (HMI/SCADA) and
   is prone to denial of service vulnerability.");
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.azeotech.com/daqfactory.php");
   exit(0);
 }
 

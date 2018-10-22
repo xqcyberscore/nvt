@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_zend_mult_dos_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_zend_mult_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP Zend and GD Multiple Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801586");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4697", "CVE-2010-4698");
   script_tag(name:"cvss_base", value:"6.8");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to crash the affected
-  application, denying service to legitimate users.
-
-  Impact Level: Application/Network");
+  application, denying service to legitimate users.");
 
   script_tag(name:"affected", value:"PHP version prior to 5.2.15 and 5.3.x before 5.3.4");
 
@@ -60,8 +58,7 @@ if(description)
   - A stack-based buffer overflow in the 'GD' extension, which allows attackers
     to cause a denial of service.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.3.5 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.3.5 or later");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to multiple denial of
   service vulnerabilities.");
@@ -69,6 +66,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

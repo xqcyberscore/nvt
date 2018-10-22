@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812177");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2015-4910", "CVE-2015-4890", "CVE-2015-4862", "CVE-2015-4800",
                 "CVE-2015-4791");
   script_bugtraq_id(77234, 77231, 77216, 77213, 77147);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 15:09:17 +0530 (Wed, 22 Nov 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-05 Oct15 (Linux)");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL Server 5.6.26 and earlier
   on windows");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2015-2367953.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-078.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: secpod_ms11-078.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Microsoft .NET Framework and Silverlight Remote Code Execution Vulnerability (2604930)
 #
@@ -27,32 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902581");
-  script_version("$Revision: 9323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-1253");
   script_bugtraq_id(49999);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft .NET Framework and Silverlight Remote Code Execution Vulnerability (2604930)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46406");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026161");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026162");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms11-078");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46406");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026161");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026162");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-078");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "gb_ms_silverlight_detect.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  tag_impact = "Successful exploitation could allow attacker to execute arbitrary code within
+  script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute arbitrary code within
   the context of the affected application. Failed exploit attempts will likely
-  result in a denial-of-service condition.
-
-  Impact Level: System/Application";
-
-  tag_affected = "Microsoft Silverlight 4.0
+  result in a denial-of-service condition.");
+  script_tag(name:"affected", value:"Microsoft Silverlight 4.0
 
   Microsoft .NET Framework 4.0
 
@@ -60,24 +57,13 @@ if(description)
 
   Microsoft .NET Framework 2.0 Service Pack 2
 
-  Microsoft .NET Framework 1.1 Service Pack 1";
-
-  tag_insight = "The flaw due to an error when restricting inheritance within classes
-  and can be exploited via a specially crafted web page.";
-
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms11-078";
-
-  tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS11-078.";
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  Microsoft .NET Framework 1.1 Service Pack 1");
+  script_tag(name:"insight", value:"The flaw due to an error when restricting inheritance within classes
+  and can be exploited via a specially crafted web page.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS11-078.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -107,7 +93,6 @@ if(infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight", exi
   mslPath = infos['location'];
 
   if( mslVers ) {
-    ## Check for Microsoft Silverlight version prior to 4.0.60831
     if( version_is_less( version:mslVers, test_version:"4.0.60831" ) ) {
       report = report_fixed_ver( installed_version:mslVers, fixed_version:"4.0.60831", install_path:mslPath );
       security_message( port:0, data:report );
@@ -116,13 +101,11 @@ if(infos = get_app_version_and_location( cpe:"cpe:/a:microsoft:silverlight", exi
   }
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
@@ -131,18 +114,16 @@ foreach item (registry_enum_keys(key:key))
     dllVer = fetch_file_version(sysPath:path, file_name:"mscorlib.dll");
     if(dllVer)
     {
-      ## Windows 2003
       if(hotfix_check_sp(win2003:3) > 0)
       {
         ## GDR 1.1.4322.2490  LDR 1.1.4322.2490
         if(version_in_range(version:dllVer, test_version:"1.1.4322.2000", test_version2:"1.1.4322.2489"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
 
-      ## Windows XP and Windows 2003
       if(hotfix_check_sp(xp:4, win2003:3) > 0)
       {
         ## GDR 4.0.30319.239  LDR 4.0.30319.488
@@ -152,12 +133,11 @@ foreach item (registry_enum_keys(key:key))
            version_in_range(version:dllVer, test_version:"2.0.50727.3000", test_version2:"2.0.50727.3624")||
           version_in_range(version:dllVer, test_version:"2.0.50727.5000", test_version2:"2.0.50727.5680"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
 
-      ## Windows Vista and Windows Server 2008
       if(hotfix_check_sp(winVista:3, win2008:3) > 0)
       {
         SP = get_kb_item("SMB/WinVista/ServicePack");
@@ -177,13 +157,12 @@ foreach item (registry_enum_keys(key:key))
              version_in_range(version:dllVer, test_version:"2.0.50727.5000", test_version2:"2.0.50727.5680")||
              version_in_range(version:dllVer, test_version:"1.1.4322.2000", test_version2:"1.1.4322.2489"))
           {
-            security_message(0);
+            security_message( port: 0, data: "The target host was found to be vulnerable" );
             exit(0);
           }
         }
       }
 
-      ## Windows 7
       if(hotfix_check_sp(win7:2) > 0)
       {
         ## GDR 4.0.30319.239  LDR 4.0.30319.488
@@ -195,7 +174,7 @@ foreach item (registry_enum_keys(key:key))
            version_in_range(version:dllVer, test_version:"2.0.50727.5600", test_version2:"2.0.50727.5680")||
            version_in_range(version:dllVer, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4962"))
         {
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
            exit(0);
         }
       }

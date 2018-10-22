@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-100.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_ms11-100.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Vulnerabilities in .NET Framework Could Allow Elevation of Privilege (2638420)
 #
@@ -24,63 +24,58 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attacker to cause a denial of service,
-  conduct spoofing attacks or bypass certain security restrictions.
-  Impact Level: System/Application";
-tag_affected = "Microsoft .NET Framework 4
-  Microsoft .NET Framework 3.5.1
-  Microsoft .NET Framework 3.5 Service Pack 1
-  Microsoft .NET Framework 2.0 Service Pack 2
-  Microsoft .NET Framework 1.1 Service Pack 1";
-tag_insight = "- An error within ASP.NET when hashing form posts and updating a hash table.
-    This can be exploited to cause a hash collision resulting in high CPU
-    consumption via a specially crafted form sent in a HTTP POST request.
-  - Open redirect vulnerability in the Forms Authentication feature in the
-    ASP.NET subsystem allows remote attackers to redirect users to arbitrary
-    web sites and conduct phishing attacks via a crafted return URL.
-  - The Forms Authentication feature in the ASP.NET subsystem allows remote
-    authenticated users to obtain access to arbitrary user accounts via a
-    crafted username.
-  - The Forms Authentication feature in the ASP.NET subsystem when sliding
-    expiry is enabled, does not properly handle cached content, which allows
-    remote attackers to obtain access to arbitrary user accounts via a crafted
-    URL.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms11-100";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS11-100.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902806");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 11997 $");
   script_bugtraq_id(51186);
   script_cve_id("CVE-2011-3414", "CVE-2011-3415", "CVE-2011-3416", "CVE-2011-3417");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-30 10:10:10 +0530 (Fri, 30 Dec 2011)");
   script_name("Vulnerabilities in .NET Framework Could Allow Elevation of Privilege (2638420)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47323");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/903934");
-  script_xref(name : "URL" , value : "http://www.ocert.org/advisories/ocert-2011-003.html");
-  script_xref(name : "URL" , value : "http://www.nruns.com/_downloads/advisory28122011.pdf");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms11-100");
-  script_xref(name : "URL" , value : "http://blogs.technet.com/b/srd/archive/2011/12/27/more-information-about-the-december-2011-asp-net-vulnerability.aspx");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47323");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/903934");
+  script_xref(name:"URL", value:"http://www.ocert.org/advisories/ocert-2011-003.html");
+  script_xref(name:"URL", value:"http://www.nruns.com/_downloads/advisory28122011.pdf");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-100");
+  script_xref(name:"URL", value:"http://blogs.technet.com/b/srd/archive/2011/12/27/more-information-about-the-december-2011-asp-net-vulnerability.aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attacker to cause a denial of service,
+  conduct spoofing attacks or bypass certain security restrictions.");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 4
+  Microsoft .NET Framework 3.5.1
+  Microsoft .NET Framework 3.5 Service Pack 1
+  Microsoft .NET Framework 2.0 Service Pack 2
+  Microsoft .NET Framework 1.1 Service Pack 1");
+  script_tag(name:"insight", value:"- An error within ASP.NET when hashing form posts and updating a hash table.
+    This can be exploited to cause a hash collision resulting in high CPU
+    consumption via a specially crafted form sent in a HTTP POST request.
+
+  - Open redirect vulnerability in the Forms Authentication feature in the
+    ASP.NET subsystem allows remote attackers to redirect users to arbitrary
+    web sites and conduct phishing attacks via a crafted return URL.
+
+  - The Forms Authentication feature in the ASP.NET subsystem allows remote
+    authenticated users to obtain access to arbitrary user accounts via a
+    crafted username.
+
+  - The Forms Authentication feature in the ASP.NET subsystem when sliding
+    expiry is enabled, does not properly handle cached content, which allows
+    remote attackers to obtain access to arbitrary user accounts via a crafted
+    URL.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS11-100.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -92,18 +87,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:2) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
@@ -129,7 +121,7 @@ if((hotfix_missing(name:"2656351") == 1) && dllv4)
   if(version_in_range(version:dllv4, test_version:"4.0.30319.000", test_version2:"4.0.30319.271")||
      version_in_range(version:dllv4, test_version:"4.0.30319.500", test_version2:"4.0.30319.546"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -140,7 +132,7 @@ if((hotfix_missing(name:"2656352") == 1) && (hotfix_check_sp(xp:4, win2003:3) > 
   if(version_in_range(version:dllv2, test_version:"2.0.50727.0000", test_version2:"2.0.50727.3633")||
      version_in_range(version:dllv2, test_version:"2.0.50727.5000", test_version2:"2.0.50727.5709"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -151,7 +143,7 @@ if((hotfix_missing(name:"2656362") == 1) && (hotfix_check_sp(winVista:3, win2008
   if(version_in_range(version:dllv2, test_version:"2.0.50727.0000", test_version2:"2.0.50727.4222")||
      version_in_range(version:dllv2, test_version:"2.0.50727.5000", test_version2:"2.0.50727.5709"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -162,12 +154,11 @@ if(dllv1 && (((hotfix_missing(name:"2656358") == 1) && (hotfix_check_sp(win2003:
 {
   if(version_in_range(version:dllv1, test_version:"1.1.4322.0", test_version2:"1.1.4322.2493"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-## Get .NET Framework 3.5 Path
 key = "SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\v3.5";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -178,7 +169,6 @@ if(! path) {
   exit(0);
 }
 
-## Get Version
 dllv3 = fetch_file_version(sysPath:path, file_name:"System.Web.Extensions.dll");
 if(! dllv3) {
   exit(0);
@@ -190,7 +180,7 @@ if((hotfix_missing(name:"2657424") == 1) && (hotfix_check_sp(xp:4, win2003:3, wi
   if(version_in_range(version:dllv3, test_version:"3.5.30729.3000", test_version2:"3.5.30729.3677")||
      version_in_range(version:dllv3, test_version:"3.5.30729.5000", test_version2:"3.5.30729.5768"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -201,6 +191,6 @@ if((hotfix_missing(name:"2656355") == 1) && (hotfix_missing(name:"2656356") == 1
   if(version_in_range(version:dllv3, test_version:"3.5.30729.4000", test_version2:"3.5.30729.4957")||
      version_in_range(version:dllv3, test_version:"3.5.30729.5700", test_version2:"3.5.30729.5769")||
      version_in_range(version:dllv3, test_version:"3.5.30729.5400", test_version2:"3.5.30729.5445")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

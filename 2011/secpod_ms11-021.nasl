@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-021.nasl 11560 2018-09-24 06:18:38Z cfischer $
+# $Id: secpod_ms11-021.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2489279)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902410");
-  script_version("$Revision: 11560 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:18:38 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0097", "CVE-2011-0098", "CVE-2011-0101", "CVE-2011-0103",
                 "CVE-2011-0104", "CVE-2011-0105", "CVE-2011-0978", "CVE-2011-0979",
@@ -65,9 +65,7 @@ if(description)
   records within Excel documents, which could be exploited by attackers to execute
   arbitrary code by tricking a user into opening a specially crafted Excel file.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms11-021.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-021.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_beckhoff_twincat_datagram_pkt_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_beckhoff_twincat_datagram_pkt_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Beckhoff TwinCAT 'TCATSysSrv.exe' Network Packet Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802036");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_bugtraq_id(49599);
   script_cve_id("CVE-2011-0514");
@@ -59,8 +59,7 @@ if(description)
   by sending malformed packet to port 48899/UDP.");
 
   script_tag(name:"solution", value:"Vendor has released a patch to fix the issue, please contact
-  the vendor at 'patch@beckhoff.com' for patch information.
-  For updates refer to http://www.beckhoff.de/twincat/");
+  the vendor at 'patch@beckhoff.com' for patch information.");
 
   script_tag(name:"summary", value:"This host is installed with Beckhoff TwinCAT and is prone to
   denial of service vulnerability.");
@@ -68,6 +67,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.beckhoff.de/twincat/");
   exit(0);
 }
 

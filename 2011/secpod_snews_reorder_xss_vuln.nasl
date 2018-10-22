@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_snews_reorder_xss_vuln.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: secpod_snews_reorder_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # sNews 'reorder' Functions Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = 'cpe:/a:solucija:snews';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902544");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2011-2706");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("sNews 'reorder' Functions Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/Jul/296");
-  script_xref(name : "URL" , value : "http://security.bkis.com/snews-1-7-1-xss-vulnerability");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Jul/296");
+  script_xref(name:"URL", value:"http://security.bkis.com/snews-1-7-1-xss-vulnerability");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -45,19 +45,16 @@ if(description)
   script_dependencies("gb_snews_detect.nasl");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to insert arbitrary
-  HTML and script code, which will be executed in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "sNews Version 1.7.1");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
+  HTML and script code, which will be executed in a user's browser session in the context of an affected site.");
+  script_tag(name:"affected", value:"sNews Version 1.7.1");
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via 'reorder' functions of administrator, which allows attackers to execute
   arbitrary HTML and script code on the web server.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running sNews and is prone to cross site scripting
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running sNews and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -72,7 +69,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for sNews version 1.7.1
 if(version_is_equal(version:vers, test_version:"1.7.1")) {
   security_message(port:port);
   exit(0);

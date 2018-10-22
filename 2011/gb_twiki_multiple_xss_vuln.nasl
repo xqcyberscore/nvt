@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_multiple_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_twiki_multiple_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # TWiki 'newtopic' Parameter And SlideShowPlugin XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802335");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-12 16:01:32 +0200 (Wed, 12 Oct 2011)");
   script_cve_id("CVE-2011-3010");
   script_bugtraq_id(49746);
@@ -46,17 +46,16 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject arbitrary web script
   or HTML. This may allow the attacker to steal cookie-based authentication
-  credentials and to launch other attacks.
-
-  Impact Level: Application");
+  credentials and to launch other attacks.");
   script_tag(name:"affected", value:"TWiki version prior to 5.1.0");
   script_tag(name:"insight", value:"Multiple flaws are due to input validation error in,
+
   - 'newtopic' parameter in bin/view/Main/Jump (when 'template' is set to
     'WebCreateNewTopic')
+
   - 'lib/TWiki/Plugins/SlideShowPlugin/SlideShow.pm' in the 'SlideShowPlugin'
     pages containing a slideshow presentation.");
-  script_tag(name:"solution", value:"upgrade to TWiki 5.1.0 or later,
-  For updates refer to http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
+  script_tag(name:"solution", value:"upgrade to TWiki 5.1.0 or later.");
   script_tag(name:"summary", value:"The host is running TWiki and is prone to multiple cross site
   scripting vulnerabilities.");
 
@@ -67,6 +66,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
   exit(0);
 }
 
@@ -80,12 +80,10 @@ if( ! dir = get_app_location( cpe:CPE, port:twikiPort ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack Request
 url = string(dir,"/view/Main/Jump?create=on&amp;newtopic='" +
             '"--></style></script><script>alert(document.cookie)</script>' +
             '&amp;template=WebCreateNewTopic&amp;topicparent=3');
 
-##Confirm the exploit
 if(http_vuln_check(port:twikiPort, url:url,pattern:"</style></script>" +
           "<script>alert\(document.cookie\)</script>",extra_check:"TWiki", check_header:TRUE))
 {

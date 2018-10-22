@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_mult_vuln_jun17.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_sugarcrm_mult_vuln_jun17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # SugarCRM Multiple Vulnerabilities (June 2017)
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140398");
-  script_version("$Revision: 8596 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-26 12:54:30 +0700 (Tue, 26 Sep 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-26 12:54:30 +0700 (Tue, 26 Sep 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SugarCRM Multiple Vulnerabilities (June 2017)");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("gb_sugarcrm_detect.nasl");
   script_mandatory_keys("sugarcrm/installed");
 
-  script_tag(name: "summary", value: "SugarCRM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SugarCRM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "SugarCRM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SugarCRM is prone to multiple vulnerabilities:
 
-- Authenticated users may cause arbitrary code to be executed.
+  - Authenticated users may cause arbitrary code to be executed.
 
-- Custom code may execute an eval through a deprecated function.");
+  - Custom code may execute an eval through a deprecated function.");
 
-  script_tag(name: "affected", value: "SugarCRM version 6.5, 7.7, 7.8 and 7.9.");
+  script_tag(name:"affected", value:"SugarCRM version 6.5, 7.7, 7.8 and 7.9.");
 
-  script_tag(name: "solution", value: "Update to version 6.5.26, 7.7.2.2, 7.8.2.1, 7.9.0.1 or later.");
+  script_tag(name:"solution", value:"Update to version 6.5.26, 7.7.2.2, 7.8.2.1, 7.9.0.1 or later.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_xref(name: "URL", value: "http://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-004/");
-  script_xref(name: "URL", value: "http://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-005/");
+  script_xref(name:"URL", value:"http://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-004/");
+  script_xref(name:"URL", value:"http://support.sugarcrm.com/Resources/Security/sugarcrm-sa-2017-005/");
 
   exit(0);
 }

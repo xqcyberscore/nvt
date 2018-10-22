@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_mult_vuln.nasl 7373 2017-10-06 13:51:46Z cfischer $
+# $Id: gb_apache_openmeetings_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache OpenMeetings < 3.3.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112062");
-  script_version("$Revision: 7373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 15:51:46 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 12:31:22 +0200 (Thu, 05 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,25 +52,25 @@ if(description)
   script_mandatory_keys("Apache/Openmeetings/Installed");
 
   script_tag(name:"summary", value:"Apache OpenMeetings < 3.3.0 is prone to multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Apache OpenMeetings is prone to the following vulnerabilities:
 
-      - Apache Openmeetings is vulnerable to Cross-Site Request Forgery (CSRF) attacks, XSS attacks, click-jacking, and MIME based attacks (CVE-2017-7666).
+  - Apache Openmeetings is vulnerable to Cross-Site Request Forgery (CSRF) attacks, XSS attacks, click-jacking, and MIME based attacks (CVE-2017-7666).
 
-      - Apache OpenMeetings uses not very strong cryptographic storage, captcha is not used in registration and forget password dialogs and auth forms missing brute force protection (CVE-2017-7673).
+  - Apache OpenMeetings uses not very strong cryptographic storage, captcha is not used in registration and forget password dialogs and auth forms missing brute force protection (CVE-2017-7673).
 
-      - Apache OpenMeetings has an overly permissive crossdomain.xml file. This allows for flash content to be loaded from untrusted domains (CVE-2017-7680).
+  - Apache OpenMeetings has an overly permissive crossdomain.xml file. This allows for flash content to be loaded from untrusted domains (CVE-2017-7680).
 
-      - Apache OpenMeetings is vulnerable to SQL injection. This allows authenticated users to modify the structure of the existing query
+  - Apache OpenMeetings is vulnerable to SQL injection. This allows authenticated users to modify the structure of the existing query
       and leak the structure of other queries being made by the application in the back-end (CVE-2017-7681).
 
-      - Apache OpenMeetings displays Tomcat version and detailed error stack trace which is not secure (CVE.2017-7683).
+  - Apache OpenMeetings displays Tomcat version and detailed error stack trace which is not secure (CVE.2017-7683).
 
-      - Apache OpenMeetings doesn't check contents of files being uploaded. An attacker can cause a denial of service by uploading multiple large files to the server (CVE-2017-7684).
+  - Apache OpenMeetings doesn't check contents of files being uploaded. An attacker can cause a denial of service by uploading multiple large files to the server (CVE-2017-7684).
 
-      - Apache OpenMeetingsrespond to the following insecure HTTP Methods: PUT, DELETE, HEAD, and PATCH (CVE-2017-7685).
+  - Apache OpenMeetingsrespond to the following insecure HTTP Methods: PUT, DELETE, HEAD, and PATCH (CVE-2017-7685).
 
-      - Apache OpenMeetings updates user password in insecure manner ");
+  - Apache OpenMeetings updates user password in insecure manner ");
   script_tag(name:"affected", value:"Apache OpenMeetings prior to 3.3.0");
   script_tag(name:"solution", value:"Update your software to version 3.3.0 to fix the issue");
 

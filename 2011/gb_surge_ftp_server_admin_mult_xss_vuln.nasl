@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surge_ftp_server_admin_mult_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_surge_ftp_server_admin_mult_xss_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Surge-FTP Admin Multiple Reflected Cross-site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801970");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,17 +43,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityhome.eu/os/winnt/exploit.php?eid=8349105614e4a2458040b68.10913730");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-  arbitrary html or scripting code in a user's browser session in the context of a vulnerable application/website.
-
-  Impact Level: Application");
+  arbitrary html or scripting code in a user's browser session in the context of a vulnerable application/website.");
   script_tag(name:"affected", value:"Surge-FTP version 23b6");
   script_tag(name:"insight", value:"Input passed through the POST parameters 'fname', 'last',
   'class_name', 'filter', 'domainid', and 'classid' in '/cgi/surgeftpmgr.cgi' is not sanitized properly.
   Allowing the attacker to execute HTML code into admin's browser session.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution
-  options are to upgrade to a newer release, disable respective features, remove the product or
-  replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running Surge-FTP Server and is prone to multiple
   reflected cross-site scripting vulnerabilities.");
 

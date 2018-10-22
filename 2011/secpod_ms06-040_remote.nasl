@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms06-040_remote.nasl 8215 2017-12-21 11:46:59Z cfischer $
+# $Id: secpod_ms06-040_remote.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902782");
-  script_version("$Revision: 8215 $");
+  script_version("$Revision: 11987 $");
   script_bugtraq_id(19409);
   script_cve_id("CVE-2006-3439");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-30 11:26:07 +0530 (Fri, 30 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_name("Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -47,34 +47,21 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/id?1016667");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms06-040");
 
-  tag_impact = "Successful exploitation could allow remote code execution by sending a
-  specially crafted RPC request and can take complete control of an affected system.
-
-  Impact Level: System";
-
-  tag_affected = "Microsoft Windows XP Service Pack 2 and prior
+  script_tag(name:"impact", value:"Successful exploitation could allow remote code execution by sending a
+  specially crafted RPC request and can take complete control of an affected system.");
+  script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 2 and prior
 
   Microsoft Windows 2K3 Service Pack 1 and prior
 
-  Microsoft Windows 2000 Service Pack 4 and prior.";
-
-  tag_insight = "The flaw is due to a boundary error in the 'CanonicalizePathName()'
+  Microsoft Windows 2000 Service Pack 4 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to a boundary error in the 'CanonicalizePathName()'
   function in netapi32.dll and can be exploited to cause a stack-based buffer
   overflow via a malicious NetrpPathCanonicalize RPC request with an overly
-  long path name to the Server Service.";
-
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://technet.microsoft.com/en-us/security/bulletin/ms06-040";
-
-  tag_summary = "This host is missing important security update according to
-  Microsoft Bulletin MS06-040.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  long path name to the Server Service.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing important security update according to
+  Microsoft Bulletin MS06-040.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -175,7 +162,7 @@ smb_sess_andx_req = raw_string(0x00, 0x00, 0x01, 0x02, 0xff, 0x53, 0x4d, 0x42,
                                0x73, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                                0x00, 0x00, 0x42, 0x53, 0x52, 0x53, 0x50, 0x59,
                                0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6)
-                               + raw_string( uid_low, uid_high ) +  
+                               + raw_string( uid_low, uid_high ) +
                                raw_string( 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
                                0x00, 0x00, 0x44, 0x01, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x00,
@@ -289,7 +276,6 @@ if( ! read_andx_resp ) {
   exit( 0 );
 }
 
-## Check the response for specific fields
 ## Packet type: 12 (Bind_ack) @ offset 66 - 1 byte
 ## Auth Length: 00 @ Offset 74 - 2 bytes
 ## Call ID : 00 @ Offset 76 - 4 bytes
@@ -398,7 +384,6 @@ if( ! smb_logoff_resp ) {
 
 close( soc );
 
-## Check the OpenVAS in 'netpath_resp' response to confirm vuln
 ## After applying the patch these fields will filled with '00'
 if( strlen( netpath_resp ) > 98 &&
     ord( netpath_resp[88] ) == 79 && ord( netpath_resp[90] ) == 112 &&

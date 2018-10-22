@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blog_cms_48132.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_blog_cms_48132.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # BLOG:CMS Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103178");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-08 13:54:32 +0200 (Wed, 08 Jun 2011)");
   script_bugtraq_id(48132);
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site. This may let the attacker
   steal cookie-based authentication credentials and launch other attacks.");
-  script_tag(name:"affected", value:"BLOG:CMS 4.2.1.f is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"BLOG:CMS 4.2.1.f is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod", value:"50"); # Prone to false positives
@@ -61,7 +61,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

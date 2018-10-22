@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln01_nov12_lin.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_oracle_mysql_multiple_vuln01_nov12_lin.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Linux)
 #
@@ -29,17 +29,18 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812190");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2012-3197", "CVE-2012-3163", "CVE-2012-3158", "CVE-2012-3150");
   script_bugtraq_id(56036, 56017, 55990, 56005);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 19:08:06 +0530 (Wed, 22 Nov 2017)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-01 Nov12 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51008");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/51008");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
+  script_xref(name:"URL", value:"https://support.oracle.com/rs?type=doc&id=1475188.1");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -47,24 +48,22 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
-  script_tag(name : "impact" , value : "Successful exploitation will allow an
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to disclose potentially sensitive information, manipulate certain
-  data and cause a DoS (Denial of Service).
+  data and cause a DoS (Denial of Service).");
 
-  Impact Level: Application");
-
-  script_tag(name : "affected" , value : "Oracle MySQL version 5.1.x to 5.1.64 and
+  script_tag(name:"affected", value:"Oracle MySQL version 5.1.x to 5.1.64 and
   Oracle MySQL version 5.5.x to 5.5.26 on windows");
 
-  script_tag(name : "insight" , value : "The flaws are due to multiple unspecified
+  script_tag(name:"insight", value:"The flaws are due to multiple unspecified
   errors in MySQL server component related to server replication, information
   schema, protocol and server optimizer.");
 
-  script_tag(name : "solution" , value : "Apply the patch or upgrade to latest
-  version, https://support.oracle.com/rs?type=doc&id=1475188.1");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to latest
+  version.");
 
-  script_tag(name : "summary" , value : "The host is running Oracle MySQL server
+  script_tag(name:"summary", value:"The host is running Oracle MySQL server
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");

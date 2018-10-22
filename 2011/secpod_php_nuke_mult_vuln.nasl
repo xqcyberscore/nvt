@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_mult_vuln.nasl 7276 2017-09-26 11:59:52Z cfischer $
+# $Id: secpod_php_nuke_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP-Nuke Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902600");
-  script_version("$Revision: 7276 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 13:59:52 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1480", "CVE-2011-1481", "CVE-2011-1482");
   script_bugtraq_id(47000, 47001, 47002);
@@ -45,19 +45,18 @@ if(description)
   script_mandatory_keys("php-nuke/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  SQL commands, inject arbitrary web script or hijack the authentication of administrators.
-
-  Impact Level: Application");
+  SQL commands, inject arbitrary web script or hijack the authentication of administrators.");
   script_tag(name:"affected", value:"PHP-Nuke versions 8.0 and prior.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An improper validation of user-supplied input to 'chng_uid', 'sender_name'
   and 'sender_email' parameter in the 'admin.php' and 'modules.php'.
+
   - An improper validation of user-supplied input to add user accounts or grant
   the administrative privilege in the 'mainfile.php'.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running PHP-Nuke and is prone to multiple
   vulnerabilities.");
 
@@ -87,7 +86,6 @@ authVariables = 'sender_name="><img src=x onerror=alert(/OpenVAS-XSS-TEST/'+
                 ')>&sender_email=&message=&opi=ds&submit=Send';
 filename = dir + "/modules.php?name=Feedback";
 
-## Construct attack request
 req = string("POST ", filename, " HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
               "Referer: http://", host, filename, "\r\n",
@@ -98,7 +96,6 @@ req = string("POST ", filename, " HTTP/1.1\r\n",
 ## Posting Exploit
 res = http_keepalive_send_recv( port:port, data:req );
 
-## Confirm the exploit
 if( res =~ "HTTP/1\.. 200" && "onerror=alert(/OpenVAS-XSS-TEST/)">< res ) {
   report = report_vuln_url( port:port, url:filename );
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_quality_and_test_lab_tomcat_mgr_default_account_vuln.nasl 11508 2018-09-20 13:44:58Z cfischer $
+# $Id: gb_ibm_rational_quality_and_test_lab_tomcat_mgr_default_account_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IBM Rational Quality Manager and Rational Test Lab Manager Tomcat Default Account Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800193");
-  script_version("$Revision: 11508 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:44:58 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_cve_id("CVE-2010-4094");
   script_bugtraq_id(44172);
@@ -59,12 +59,12 @@ if(description)
   with default password. A remote attacker can use this vulnerability to
   execute arbitrary code under the context of the Tomcat server.");
 
-  script_tag(name:"solution", value:"Upgrade to version 7.9.0.3 build 1046 or higher
-  For updates refer to https://www.ibm.com/developerworks/rational/products/testmanager");
+  script_tag(name:"solution", value:"Upgrade to version 7.9.0.3 build 1046 or higher");
 
   script_tag(name:"summary", value:"The host is running Tomcat server in IBM Rational Quality Manager/
   IBM Rational Test Lab Manager has a default password for the ADMIN account.");
 
+  script_xref(name:"URL", value:"https://www.ibm.com/developerworks/rational/products/testmanager");
   exit(0);
 }
 

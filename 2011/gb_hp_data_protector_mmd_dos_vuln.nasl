@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_mmd_dos_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: gb_hp_data_protector_mmd_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Media Management Daemon Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801963");
-  script_version("$Revision: 6435 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-2011-2399");
   script_bugtraq_id(48917);
@@ -48,35 +48,21 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103547/HPSBMU02669-SSRT100346-3.txt");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02940981");
 
-  tag_solution = "Apply the patch from below link,
-  http://support.openview.hp.com/selfsolve/patches
-
-  *****
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
+  condition.");
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector Manager version 6.11 and prior.");
+  script_tag(name:"insight", value:"The flaw is caused by an error in the Media Management Daemon (mmd), which
+  could be exploited by remote attackers to crash an affected server.");
+  script_tag(name:"summary", value:"This host is running HP (OpenView Storage) Data Protector Manager and is prone
+  to denial of service vulnerability.");
+  script_tag(name:"solution", value:"Apply the patch  *****
   NOTE : Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-  tag_impact = "Successful exploitation will allow attackers to cause denial of service
-  condition.
-
-  Impact Level: Application.";
-
-  tag_affected = "HP (OpenView Storage) Data Protector Manager version 6.11 and prior.";
-
-  tag_insight = "The flaw is caused by an error in the Media Management Daemon (mmd), which
-  could be exploited by remote attackers to crash an affected server.";
-
-  tag_summary = "This host is running HP (OpenView Storage) Data Protector Manager and is prone
-  to denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  *****");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://support.openview.hp.com/selfsolve/patches");
   exit(0);
 }
 
@@ -86,7 +72,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## check the version is equal or lower then 06.11
 if( version_is_less_equal( version:vers, test_version:"06.11" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"06.12" );
   security_message( port:port, data:report );

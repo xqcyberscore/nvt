@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_icewarp_mail_server_xml_inj_n_info_disc_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_icewarp_mail_server_xml_inj_n_info_disc_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IceWarp Mail Server XML Entity Injection and Information Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902478");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-27 17:29:53 +0200 (Tue, 27 Sep 2011)");
   script_cve_id("CVE-2011-3579", "CVE-2011-3580");
   script_bugtraq_id(49753);
@@ -54,8 +54,7 @@ sensitive information, and possibly cause denial-of-service conditions. Other at
 
   script_tag(name:"affected", value:"IceWarp Mail Server 10.3.2 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to IceWarp Mail Server 10.3.3 or later, For updates refer to
-http://www.icewarp.com");
+  script_tag(name:"solution", value:"Upgrade to IceWarp Mail Server 10.3.3 or later.");
 
   script_tag(name:"summary", value:"The host is running IceWarp Mail Server and is prone to xml entity injection
 and information disclosure vulnerability.
@@ -70,6 +69,7 @@ root. This can be exploited to gain knowledge of sensitive information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.icewarp.com");
   exit(0);
 }
 

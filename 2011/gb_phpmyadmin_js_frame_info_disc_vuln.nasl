@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_js_frame_info_disc_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_phpmyadmin_js_frame_info_disc_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # phpMyAdmin js_frame Parameter Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801994");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-3646");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,14 +53,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to insufficient input validation in 'js_frame'
   parameter in 'phpmyadmin.css.php', which allows attackers to disclose
   information that could be used in further attacks.");
-  script_tag(name:"solution", value:"Upgrade to phpMyAdmin 3.4.6 or Apply the patch from below link,
-  http://www.phpmyadmin.net/home_page/downloads.php
-  http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/phpmyadmin;a=commitdiff;h=d35cba980893aa6e6455fd6e6f14f3e3f1204c52");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin 3.4.6 or Apply the patch from the referenced advisory.");
+  script_xref(name:"URL", value:"http://phpmyadmin.git.sourceforge.net/git/gitweb.cgi?p=phpmyadmin/phpmyadmin;a=commitdiff;h=d35cba980893aa6e6455fd6e6f14f3e3f1204c52");
   script_tag(name:"summary", value:"The host is running phpMyAdmin and is prone to information
   disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
   exit(0);
 }
 

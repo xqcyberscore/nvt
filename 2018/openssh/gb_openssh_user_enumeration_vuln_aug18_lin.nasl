@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_user_enumeration_vuln_aug18_lin.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_openssh_user_enumeration_vuln_aug18_lin.nasl 11994 2018-10-19 16:13:16Z cfischer $
 #
 # OpenSSH User Enumeration Vulnerability-Aug18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813864");
-  script_version("$Revision: 11092 $");
+  script_version("$Revision: 11994 $");
   script_cve_id("CVE-2018-15473");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 17:27:42 +0530 (Mon, 20 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH User Enumeration Vulnerability-Aug18 (Linux)");

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvs_file_existence_info_weak.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: CVS file existence information disclosure weakness
+# $Id: cvs_file_existence_info_weak.nasl 12011 2018-10-22 08:58:15Z cfischer $
+#
+# CVS file existence information disclosure weakness
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -21,55 +23,53 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The remote CVS server, according to its version number,
-can be exploited by malicious users to gain knowledge of 
-certain system information.
-
-This behaviour can be exploited to determine the existence 
-and permissions of arbitrary files and directories on a 
-vulnerable system.";
-
-tag_solution = "Upgrade to CVS 1.11.17 and 1.12.9, or newer";
+CPE = "cpe:/a:cvs:cvs";
 
 # Ref: Sebastian Krahmer
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.14313");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(10955);
- script_cve_id("CVE-2004-0778");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- 
- 
- name = "CVS file existence information disclosure weakness";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.14313");
+  script_version("$Revision: 12011 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:58:15 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(10955);
+  script_cve_id("CVE-2004-0778");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("CVS file existence information disclosure weakness");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2004 David Maciejak");
+  script_family("General");
+  script_dependencies("cvspserver_version.nasl");
+  script_mandatory_keys("cvspserver/detected");
 
+  script_tag(name:"solution", value:"Upgrade to CVS 1.11.17 and 1.12.9, or newer.");
 
- 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"The remote CVS server, according to its version number,
+  can be exploited by malicious users to gain knowledge of certain system information.");
+
+  script_tag(name:"impact", value:"This behaviour can be exploited to determine the existence
+  and permissions of arbitrary files and directories on a vulnerable system.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2004 David Maciejak");
- family = "General";
- script_family(family);
- script_require_ports("Services/cvspserver", 2401);
- script_dependencies("find_service.nasl", "cvspserver_version.nasl");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
-port = get_kb_item("Services/cvspserver");
-if(!port) port = 2401;
-if(!get_port_state(port)) exit(0);
+include("version_func.inc");
+include("host_details.inc");
 
-version = get_kb_item(string("cvs/", port, "/version"));
-if(ereg(pattern:".* 1\.([0-9]\.|10\.|11\.([0-9][^0-9]|1[0-6])|12\.[0-8][^0-9]).*", string:version))
-     		security_message(port);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+
+if( version_is_less( version:vers, test_version:"1.11.17" ) ||
+    version_in_range( version:vers, test_version:"1.12", test_version2:"1.12.8" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.11.17/1.12.9" );
+  security_message( port:port, data:report );
+}
+
+exit( 0 );

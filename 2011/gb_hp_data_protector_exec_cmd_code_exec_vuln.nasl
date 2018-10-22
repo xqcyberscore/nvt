@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Client 'EXEC_CMD' Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801946");
-  script_version("$Revision: 11421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,12 +60,12 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with HP (OpenView Storage) Data Protector and is prone to
   remote code execution vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector A.06.20 or later, For updates refer to
-  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
+  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector A.06.20 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
   exit(0);
 }
 

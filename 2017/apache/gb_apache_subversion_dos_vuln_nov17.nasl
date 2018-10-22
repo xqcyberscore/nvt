@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln_nov17.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_apache_subversion_dos_vuln_nov17.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Subversion Denial of Service Vulnerability - Nov17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811983");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2013-4246");
   script_bugtraq_id(101620);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-08 18:27:59 +0530 (Wed, 08 Nov 2017)");
   ## Only FSFS repositories created with Subversion 1.8 or upgraded to
   ## 1.8 format (using 'svnadmin upgrade') are affected.
@@ -44,24 +44,20 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Subversion
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a failure to handle
   exceptional conditions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to cause a denial-of-service condition.
-
-  Impact Level: Application");
+  remote attackers to cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Apache Subversion 1.8.x before 1.8.2");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.8.2 or later.
-  For updates refer to https://subversion.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.8.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2013-4246-advisory.txt");
+  script_xref(name:"URL", value:"https://subversion.apache.org/security/CVE-2013-4246-advisory.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

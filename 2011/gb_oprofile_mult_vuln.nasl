@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oprofile_mult_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_oprofile_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # OProfile Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802108");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1760", "CVE-2011-2471", "CVE-2011-2472", "CVE-2011-2473");
   script_bugtraq_id(47652);
@@ -60,21 +60,21 @@ if(description)
     and gain privileges via shell meta characters in the several arguments.");
   script_tag(name:"summary", value:"This host is installed OProfile and is prone to multiple
   vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patchs from below links
-  https://bugzilla.redhat.com/attachment.cgi?id=499232
-  https://bugzilla.redhat.com/attachment.cgi?id=499233
-  https://bugzilla.redhat.com/attachment.cgi?id=499234
-  https://bugzilla.redhat.com/attachment.cgi?id=499235
-
+  script_tag(name:"solution", value:"Apply the  patch from the referenced advisory.
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
   *****");
+  script_xref(name:"URL", value:" https://bugzilla.redhat.com/attachment.cgi?id=499233");
+  script_xref(name:"URL", value:"  https://bugzilla.redhat.com/attachment.cgi?id=499234");
+  script_xref(name:"URL", value:"  https://bugzilla.redhat.com/attachment.cgi?id=499235");
+
   script_tag(name:"impact", value:"Successful exploitation will allow local users to run arbitrary commands with
   super-user privileges.");
   script_tag(name:"affected", value:"OProfile version 0.9.6 and prior.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/attachment.cgi?id=499232");
   exit(0);
 }
 

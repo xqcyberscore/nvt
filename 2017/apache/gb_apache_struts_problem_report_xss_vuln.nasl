@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_problem_report_xss_vuln.nasl 7383 2017-10-09 09:19:26Z santu $
+# $Id: gb_apache_struts_problem_report_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Struts 'Problem Report' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812011");
-  script_version("$Revision: 7383 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2015-5169");
   script_bugtraq_id(76625);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-09 11:19:26 +0200 (Mon, 09 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 17:52:42 +0530 (Fri, 06 Oct 2017)");
   ## Apache Struts contains a cross-site scripting vulnerability when devMode is left turned on
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -43,25 +43,22 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Struts and is
   prone to cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper validation
   of input passed via the 'Problem Report' screen when using debug mode.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary script code in the browser of user in the context of the
-  affected site.
-
-  Impact Level: Application");
+  affected site.");
 
   script_tag(name:"affected", value:"Apache Struts Versions 2.0.0 through 2.3.16.3");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.20 or
-  later. For updates refer to http://struts.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://struts.apache.org/docs/s2-025.html");
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-025.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -69,6 +66,7 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl");
   script_mandatory_keys("ApacheStruts/installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 
@@ -76,17 +74,11 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appVer = "";
-appPort = "";
 
-
-## Get Port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }

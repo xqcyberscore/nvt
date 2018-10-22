@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 10421 2018-07-05 12:17:22Z cfischer $
+# $Id: secpod_ms_windows_ip_validation_code_exec_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902588");
-  script_version("$Revision: 10421 $");
+  script_version("$Revision: 11997 $");
   script_cve_id("CVE-2005-0048", "CVE-2005-0688", "CVE-2004-0790",
                 "CVE-2004-1060", "CVE-2004-0230");
   script_bugtraq_id(13116, 13658, 13124, 10183);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-21 15:15:15 +0530 (Mon, 21 Nov 2011)");
   script_name("Microsoft Windows Internet Protocol Validation Remote Code Execution Vulnerability");
   script_category(ACT_KILL_HOST);
@@ -51,9 +51,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms06-064");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service
-  and possibly execute arbitrary code via crafted IP packets with malformed options.
-
-  Impact Level: System");
+  and possibly execute arbitrary code via crafted IP packets with malformed options.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient validation of IP options and can be
   exploited to cause a vulnerable system to stop responding and restart or may allow execution of arbitrary
@@ -67,9 +65,7 @@ if(description)
   Microsoft Windows 2000 Server SP4 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms05-019");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_sec_bypass_vuln.nasl 8107 2017-12-14 04:53:47Z ckuersteiner $
+# $Id: gb_octopus_deploy_sec_bypass_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Octopus Deploy Access Control Bypass Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:octopus:deploy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140601");
-  script_version("$Revision: 8107 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 05:53:47 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-14 11:07:09 +0700 (Thu, 14 Dec 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-14 11:07:09 +0700 (Thu, 14 Dec 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17665");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Octopus Deploy Access Control Bypass Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_octopus_deploy_detect.nasl");
   script_mandatory_keys("octopus_deploy/installed");
 
-  script_tag(name: "summary", value: "In Octopus Deploy, the machine update process doesn't check that the user
+  script_tag(name:"summary", value:"In Octopus Deploy, the machine update process doesn't check that the user
 has access to all environments. This allows an access-control bypass because the set of environments to which a
 machine is scoped may include environments in which the user lacks access.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Octopus Deploy versions prior to 4.1.3.");
+  script_tag(name:"affected", value:"Octopus Deploy versions prior to 4.1.3.");
 
-  script_tag(name: "solution", value: "Update to version 4.1.3 or later.");
+  script_tag(name:"solution", value:"Update to version 4.1.3 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/OctopusDeploy/Issues/issues/4073");
+  script_xref(name:"URL", value:"https://github.com/OctopusDeploy/Issues/issues/4073");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_gsa_csrf_vuln.nasl 6845 2017-08-03 14:41:54Z cfischer $
+# $Id: gb_greenbone_gsa_csrf_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Greenbone Security Assistant Cross-Site Request Forgery Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801919");
-  script_version("$Revision: 6845 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 16:41:54 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 15:50:09 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,26 +44,16 @@ if(description)
   script_require_ports("Services/www", 80, 443, 9392);
   script_mandatory_keys("gsa/installed");
 
-  tag_impact = "Successful exploitation will allow attacker to conduct cross-site
-  request forgery attacks.";
-
-  tag_affected = "Greenbone Security Assistant version prior to 2.0.0.";
-
-  tag_insight = "The application allows users to perform certain actions via HTTP
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross-site
+  request forgery attacks.");
+  script_tag(name:"affected", value:"Greenbone Security Assistant version prior to 2.0.0.");
+  script_tag(name:"insight", value:"The application allows users to perform certain actions via HTTP
   requests without performing any validity checks to verify the requests. This
   can be exploited to execute arbitrary commands in OpenVAS Manager by tricking
-  a logged in administrative user into visiting a malicious web site.";
-
-  tag_solution = "Update Greenbone Security Assistant to version 2.0.0 or later.";
-
-  tag_summary = "This host is installed with Greenbone Security Assistant and is
-  prone to cross-site request forgery vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  a logged in administrative user into visiting a malicious web site.");
+  script_tag(name:"solution", value:"Update Greenbone Security Assistant to version 2.0.0 or later.");
+  script_tag(name:"summary", value:"This host is installed with Greenbone Security Assistant and is
+  prone to cross-site request forgery vulnerability.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43092");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65012");

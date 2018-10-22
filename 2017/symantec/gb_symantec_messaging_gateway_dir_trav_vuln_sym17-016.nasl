@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_dir_trav_vuln_sym17-016.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_dir_trav_vuln_sym17-016.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Symantec Messaging Gateway Directory Traversal Vulnerability (SYM17-016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812359");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-15532");
   script_bugtraq_id(102096);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 16:31:51 +0530 (Thu, 21 Dec 2017)");
 
   script_name("Symantec Messaging Gateway Directory Traversal Vulnerability (SYM17-016)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Symantec Messaging Gateway (SMG) before 10.6.4");
 
   script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway (SMG)
-  10.6.4 or later. For updates refer to https://www.symantec.com");
+  10.6.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

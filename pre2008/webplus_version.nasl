@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webplus_version.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: webplus_version.nasl 12001 2018-10-21 11:10:33Z cfischer $
 #
 # TalentSoft Web+ version detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10373");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 12001 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-21 13:10:33 +0200 (Sun, 21 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -44,19 +44,26 @@ if(description)
 
   script_tag(name:"affected", value:"This bug is known to exist in Web+ 4.X as of March 1999, and probably exists
   in all previous versions as well.");
+
   script_tag(name:"summary", value:"This plug-in detects the version of Web+ CGI. The Web+ CGI has a known
   vulnerability that enables a remote attacker to gain access to local files.
 
   This test in itself does not verify the vulnerability but rather tries to
   discover the version of Web+ which is installed.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
 function extract_version( result, port ) {
 
@@ -177,9 +184,16 @@ function extract_version( result, port ) {
   banner = banner + resultrecv;
   banner = banner + string("\n");
 
-  security_message(port:port, data:banner);
-  exit(0);
+  security_message( port:port, data:banner );
+  exit( 0 );
 }
+
+if( host_runs( "Windows" ) == "yes" )
+  files = make_list( "/webplus.exe" );
+else if( host_runs( "Linux" ) == "yes" )
+  files = make_list( "/webplus" );
+else
+  files = make_list( "/webplus", "/webplus.exe" );
 
 port = get_http_port( default:80 );
 
@@ -187,9 +201,9 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  foreach url( make_list( dir + "/webplus?about",
-                          dir + "/webplus.exe?about" ) ) {
+  foreach file( files ) {
 
+    url = dir + file + "?about";
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req );
 
@@ -199,4 +213,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

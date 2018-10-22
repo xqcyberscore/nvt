@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_mysql_server_myisam_unspecified_vuln_lin.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # MySQL Server Component MyISAM Unspecified Vulnerability (Linux)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812181");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2012-0583");
   script_bugtraq_id(53061);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 14:56:52 +0530 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"insight", value:"Unspecified error in MySQL Server
   component related to MyISAM.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"summary", value:"The host is running MySQL and is prone
   to unspecified vulnerability.");

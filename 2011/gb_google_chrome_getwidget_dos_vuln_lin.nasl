@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_getwidget_dos_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_google_chrome_getwidget_dos_vuln_lin.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Google Chrome 'GetWidget' methods DoS Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802127");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_cve_id("CVE-2011-2761");
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to error while handling a reload of a page generated
   in response to a POST which allows remote attackers to cause a denial of
   service.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.794.0 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.794.0 or later.");
   script_tag(name:"summary", value:"The host is installed Google Chrome and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

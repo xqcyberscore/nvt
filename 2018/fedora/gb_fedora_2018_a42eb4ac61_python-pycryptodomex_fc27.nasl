@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a42eb4ac61_python-pycryptodomex_fc27.nasl 11314 2018-09-11 08:30:14Z santu $
+# $Id: gb_fedora_2018_a42eb4ac61_python-pycryptodomex_fc27.nasl 11994 2018-10-19 16:13:16Z cfischer $
 #
 # Fedora Update for python-pycryptodomex FEDORA-2018-a42eb4ac61
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875041");
-  script_version("$Revision: 11314 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:30:14 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11994 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-08 07:28:28 +0200 (Sat, 08 Sep 2018)");
   script_cve_id("CVE-2018-15560");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-pycryptodomex FEDORA-2018-a42eb4ac61");
   script_tag(name:"summary", value:"Check the version of python-pycryptodomex");

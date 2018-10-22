@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exec_vuln_feb11.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_code_exec_vuln_feb11.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities - Feb 2011
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801846");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2010-2587", "CVE-2010-2588", "CVE-2010-2589",
                 "CVE-2010-4092", "CVE-2010-4093", "CVE-2010-4187",
@@ -57,13 +57,13 @@ if(description)
   buffer and integer overflows, and use-after-free errors in the DIRAPI, IML32,
   TextXtra, 3d Asset, and Xtra.x32 modules when processing malformed Shockwave
   or Director files.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.5.9.620 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.5.9.620 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple remote code execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/otherversions/");
   exit(0);
 }
 

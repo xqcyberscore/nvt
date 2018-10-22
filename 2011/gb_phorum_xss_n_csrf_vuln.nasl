@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phorum_xss_n_csrf_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_phorum_xss_n_csrf_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Phorum Cross-Site Scripting and Cross-site request forgery Vulnerabilities
 #
@@ -24,28 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
-  the context of an application.
-  Impact Level: Application";
-tag_affected = "Phorum version prior to 5.2.16";
-tag_insight = "The flaws are due to unspecified errors in the application.";
-tag_solution = "Upgrade Phorum to 5.2.16 or later,
-  For updates refer to http://www.phorum.org/downloads.php";
-tag_summary = "This host is running Phorum and is prone to cross-site scripting
-  and cross-site request forgery vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802160");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_cve_id("CVE-2011-3381", "CVE-2011-3382");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Phorum Cross-Site Scripting and Cross-site request forgery Vulnerabilities");
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN71435255/index.html");
-  script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000068.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN71435255/index.html");
+  script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2011/JVNDB-2011-000068.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -53,11 +43,15 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("phorum_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
+  the context of an application.");
+  script_tag(name:"affected", value:"Phorum version prior to 5.2.16");
+  script_tag(name:"insight", value:"The flaws are due to unspecified errors in the application.");
+  script_tag(name:"solution", value:"Upgrade Phorum to 5.2.16 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is running Phorum and is prone to cross-site scripting
+  and cross-site request forgery vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.phorum.org/downloads.php");
   exit(0);
 }
 
@@ -65,19 +59,16 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 
-## Get HTTP Port
 phorumPort = get_http_port(default:80);
 if(!phorumPort){
   exit(0);
 }
 
-## Get version from kb
 phorumVer =  get_version_from_kb(port:phorumPort,app:"phorum");
 if(!phorumVer){
   exit(0);
 }
 
-# Check for Phorum Version < 5.2.16
 if(version_is_less(version:phorumVer, test_version:"5.2.16")){
   security_message(phorumPort);
 }

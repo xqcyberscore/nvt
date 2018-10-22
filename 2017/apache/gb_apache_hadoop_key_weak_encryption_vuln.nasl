@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_key_weak_encryption_vuln.nasl 8600 2018-01-31 11:58:54Z cfischer $
+# $Id: gb_apache_hadoop_key_weak_encryption_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache Hadoop Weak Key Encryption Vulnerability
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
-# 
+#
 # Copyright:
 # Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,27 +29,24 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811969");
-  script_version("$Revision: 8600 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2012-4449");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 12:58:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-08 11:34:54 +0530 (Wed, 08 Nov 2017)");
   script_name("Apache Hadoop Weak Key Encryption Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Hadoop
   and is prone to a weak key encryption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in an unknown
   function of the component 'Kerberos Security Feature'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to crack secret keys via a brute-force attack.
-
-  Impact Level: Application");
+  attacker to crack secret keys via a brute-force attack.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -57,7 +54,7 @@ if(description)
   and 2.x before 2.0.2");
 
   script_tag(name:"solution", value:"Upgrade to Apache Hadoop version 0.23.4 or
-  1.0.4 or 2.0.2 or later. For updates refer to http://www.hadoop.apache.org");
+  1.0.4 or 2.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://vuldb.com/de/?id.108783");
@@ -68,6 +65,7 @@ if(description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
   script_require_ports("Services/www", 50070);
+  script_xref(name:"URL", value:"http://www.hadoop.apache.org");
   exit(0);
 }
 

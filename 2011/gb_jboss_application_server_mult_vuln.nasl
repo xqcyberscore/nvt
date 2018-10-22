@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_application_server_mult_vuln.nasl 4216 2016-10-05 11:05:57Z cfi $
+# $Id: gb_jboss_application_server_mult_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # JBoss Application Server Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801987");
-  script_version("$Revision: 4216 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 13:05:57 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,24 +43,23 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Sep/139");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to get the  all
-  services with their paths on the server and get the sensitive information.
-
-  Impact Level: Application");
+  services with their paths on the server and get the sensitive information.");
 
   script_tag(name:"affected", value:"JBoss Application Server 5.0 and prior.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Status page is publicly accessible. Which leads to leakage of logs of last
   connections and (in second case) leakage of all services (with their paths)
   on the server.
+
   - There is no protection against Brute Force attacks at these resources and
   other private resources with BF vulnerability. The list of all resources of
   concrete server can be found at page status?full=true.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"The host is running JBoss Application Server and is prone to
   multiple vulnerabilities.");
@@ -74,16 +73,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get JBoss port set by JBoss_enterprise_aplication_server_detect.nasl
 if( ! port = get_kb_item( "jboss/port" ) ) exit( 0 );
 
 url = "/status?full=true";
 
-## construct the attack request
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
-## Confirm the exploit
 if( ( 'Application list' >< res && 'WebCCReports' >< res && 'PortComponentLinkServlet' >< res ) ||
     ( "<title>Tomcat Status" >< res && "Application list" >< res && "Processing time:" >< res ) ) {
   report = report_vuln_url( port:port, url:url );

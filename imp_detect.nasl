@@ -1,12 +1,14 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imp_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
-# Description: IMP Detection
+# $Id: imp_detect.nasl 12016 2018-10-22 12:50:10Z cfischer $
+#
+# Horde IMP Detection
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
 #
 # Copyright:
-# Copyright (C) 2004 George A. Theall
+# Copyright (C) 2005 George A. Theall
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -20,144 +22,102 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12643");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12016 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 14:50:10 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("IMP Detection");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Horde IMP Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_copyright("This script is Copyright (C) 2004 George A. Theall");
-  script_family("General");
-  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
+  script_copyright("This script is Copyright (C) 2005 George A. Theall");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"This script detects whether the remote host is running IMP and extracts
-version numbers and locations of any instances found.
+  script_xref(name:"URL", value:"http://www.horde.org/imp/");
 
-IMP is a PHP-based webmail package from The Horde Project that provides
-access to mail accounts via POP3 or IMAP. See
-http://www.horde.org/imp/ for more information.");
+  script_tag(name:"summary", value:"This script detects whether the remote host is running Horde IMP
+  and extracts version numbers and locations of any instances found.
+
+  IMP is a PHP-based webmail package from The Horde Project that provides
+  access to mail accounts via POP3 or IMAP.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("cpe.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if (!can_host_php(port:port)) exit(0);
+check_files = make_array(
+  "/services/help/?module=imp&show=about", ">This is Imp .{0,3}\(?([0-9.]+)\)?\.<", # nb: version 4.x, e.g. <h2 align="center">This is Imp H3 (4.1.3).</h2>
+  "/docs/CHANGES", "^ *v([0-9.]+) *-?(RC[0-9]|BETA|cvs)$", # nb: version 3.x+, e.g. v4.1.3-cvs or v4.1-RC2 v4.0-BETA
+  "/test.php", "^ *<li>IMP: +([0-9.]+) *</li> *$", # nb: test.php available is itself a vulnerability but sometimes available
+  "/README", "^Version +([0-9.]+) *$", # nb: README is not guaranteed to be either available or accurate!!!
+  "/lib/version.phps", "IMP_VERSION', '([0-9.]+)'", # nb: another security risk -- ability to view PHP source.
+  "/status.php3", ">IMP, Version ([0-9.]+)<"); # nb: version 2.x
 
-# Search for IMP in a couple of different locations.
-#
-# NB: Directories beyond cgi_dirs() come from a Google search -
-#     'intitle:"welcome to" horde' - and represent the more popular
-#     installation paths currently. Still, cgi_dirs() should catch
-#     the directory if its referenced elsewhere on the target.
-installs = 0;
-foreach dir( make_list_unique( "/webmail", "/horde/imp", "/email", "/imp", "/mail", cgi_dirs( port:port ) ) ) {
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-  res = http_get_cache(port:port, item:dir + "/");
-  if ( res == NULL || "IMP: Copyright 200" >!< res ) continue;
+# nb: Directories beyond cgi_dirs() come from a Google search - 'intitle:"welcome to" horde' - and represent the more popular installation paths currently.
+foreach dir( make_list_unique( "/webmail", "/horde", "/horde/imp", "/email", "/imp", "/mail", cgi_dirs( port:port ) ) ) {
 
-  # Search for version number in a couple of different pages.
-  files = make_list(
-    "/services/help/?module=imp&show=about",
-    "/docs/CHANGES", "/test.php", "/README", "/lib/version.phps",
-    "/status.php3"
-  );
-  foreach file (files) {
-    if (debug_level) display("debug: checking ", dir, file, "...\n");
+  install = dir;
+  if( dir == "/" ) dir = "";
 
-    res = http_get_cache(item:string(dir, file), port:port);
-    if (res == NULL) continue;           # can't connect
-    if (debug_level) display("debug: res =>>", res, "<<\n");
+  url = dir + "/";
+  res = http_get_cache( port:port, item:url );
 
-    if (egrep(string:res, pattern:"^HTTP/.\.. 200 ")) {
-      # Specify pattern used to identify version string.
-      # - version 4.x
-      if (file =~ "^/services/help") {
-        pat = ">This is Imp (.+)\.<";
+  if( res && res =~ "^HTTP/1\.[01] 200" &&
+      ( "<!-- IMP: Copyright 200" >< res ||
+        "document.imp_login.imapuser.value" >< res ||
+        "document.imp_login.loginButton.disabled" >< res ||
+        "IMP: http://horde.org/imp/" >< res
+      ) ) {
+
+    set_kb_item( name:"horde/imp/detected", value:TRUE );
+    version  = "unknown";
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    foreach check_file( keys( check_files ) ) {
+
+      pattern = check_files[check_file];
+
+      url = dir + check_file;
+
+      res = http_get_cache( item:url, port:port );
+
+      if( res =~ "^HTTP/1\.[01] 200" && match = egrep( pattern:pattern, string:res, icase:FALSE ) ) {
+        if( "/docs/CHANGES" >< url ) {
+          foreach _match( split( match ) ) {
+            _match = chomp( _match );
+            vers = eregmatch( pattern:pattern, string:_match );
+            if( vers[1] )
+              break;
+          }
+        } else {
+          vers = eregmatch( pattern:pattern, string:match );
+        }
+
+        if( vers[1] ) {
+          conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+          version = vers[1];
+          break;
+        }
       }
-      # - version 3.x
-      else if (file == "/docs/CHANGES") {
-        pat = "^ *v(.+) *$";
-      }
-      #   nb: test.php available is itself a vulnerability but sometimes available.
-      else if (file == "/test.php") {
-        pat = "^ *<li>IMP: +(.+) *</li> *$";
-      }
-      #   nb: README is not guaranteed to be either available or accurate!!!
-      else if (file == "/README") {
-        pat = "^Version +(.+) *$";
-      }
-      #   nb: another security risk -- ability to view PHP source.
-      else if (file == "/lib/version.phps") {
-        pat = "IMP_VERSION', '(.+)'";
-      }
-      # - version 2.x
-      else if (file == "/status.php3") {
-        pat = ">IMP, Version (.+)<";
-      }
-      # - someone updated files but forgot to add a pattern???
-      else {
-        if (debug_level) display("Don't know how to handle file '", file, "'!\n");
-        exit(1);
-      }
-
-      if (debug_level) display("debug: grepping results for =>>", pat, "<<\n");
-      matches = egrep(pattern:pat, string:res);
-      foreach match (split(matches)) {
-        match = chomp(match);
-        if (debug_level) display("debug: grepping >>", match, "<< for =>>", pat, "<<\n");
-        ver = eregmatch(pattern:pat, string:match);
-        if (ver == NULL) break;
-        ver = ver[1];
-        if (debug_level) display("debug: IMP version =>>", ver, "<<\n");
-
-        # Success!
-        set_kb_item(
-          name:string("www/", port, "/imp"),
-          value:string(ver, " under ", dir)
-        );
-        installations[dir] = ver;
-        ++installs;
-
-        # nb: only worried about the first match.
-        break;
-      }
-      # nb: if we found an installation, stop iterating through files.
-      if (installs) break;
     }
+    register_and_report_cpe( app:"Horde IMP", ver:version, concluded:vers[0], conclUrl:conclUrl, base:"cpe:/a:horde:imp:", expr:"^([0-9.]+)", insloc:install, regPort:port );
   }
-  if (installs) break;
 }
 
-# Report any instances found unless Report verbosity is "Quiet".
-if (installs && report_verbosity > 0) {
-  if (installs == 1) {
-    foreach dir (keys(installations)) {
-      # empty - just need to set 'dir'.
-    }
-    info = string("IMP ", ver, " was detected on the remote host under the path ", dir, ".");
-  }
-  else {
-    info = string(
-      "Multiple instances of IMP were detected on the remote host:\n",
-      "\n"
-    );
-    foreach dir (keys(installations)) {
-      info = info + string("    ", installations[dir], ", installed under ", dir, "\n");
-    }
-    info = chomp(info);
-  }
-
-  log_message(port:port, data:info);
-}
+exit( 0 );

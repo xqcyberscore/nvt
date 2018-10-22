@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wptouch_plugin_wptouch_settings_xss.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_wptouch_plugin_wptouch_settings_xss.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress WPtouch Plugin 'wptouch_settings' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802014");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(45139);
   script_cve_id("CVE-2010-4779");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.htbridge.ch/advisory/xss_in_wptouch_wordpress_plugin.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress WPtouch Plugin 1.9.19.4 and 1.9.20, other versions
   may also be affected.");
@@ -59,8 +57,7 @@ if(description)
   parameter to 'wp-content/plugins/wptouch/include/adsense-new.php', which
   is not properly sanitised before being returned to the user.");
 
-  script_tag(name:"solution", value:"Upgrade to 3.1.1 or later,
-  For updates refer to http://wordpress.org/extend/plugins/wptouch");
+  script_tag(name:"solution", value:"Upgrade to 3.1.1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with WordPress WPtouch Plugin and is
   prone to cross-site scripting vulnerability.");
@@ -68,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/wptouch");
   exit(0);
 }
 

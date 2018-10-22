@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_mult_vuln_mar11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Wireshark Multiple Vulnerabilities - March-11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801755");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_cve_id("CVE-2011-0713", "CVE-2011-1139");
   script_bugtraq_id(46416);
@@ -56,12 +56,12 @@ if(description)
   - Error in 'wiretap/pcapng.c', which allows remote attackers to cause a
     denial of service via a pcap-ng file that contains a large packet-length
     field.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.4  or 1.2.15 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.4  or 1.2.15 or later.");
   script_tag(name:"summary", value:"The host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

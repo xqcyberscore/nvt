@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_mult_vuln_apr11.nasl 4543 2016-11-16 15:41:04Z cfi $
+# $Id: secpod_hp_smh_mult_vuln_apr11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # HP System Management Homepage Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902413");
-  script_version("$Revision: 4543 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:41:04 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-1540", "CVE-2011-1541");
   script_bugtraq_id(47507, 47512);
@@ -46,34 +46,20 @@ if(description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/100629/HPSBMA02662-SSRT100409.txt");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  on the target system and also cause Denial of Service (DoS).
-
-  Impact Level: Application.";
-
-  tag_affected = "HP System Management Homepage (SMH) prior to 6.3";
-
-  tag_solution = "Apply patch or upgrade to HP SMH version 6.3 or later,
-  For updates refer to http://www.hp.com/servers/manage/smh
-
-  *****
+  script_tag(name:"insight", value:"The flaw is caused by unspecified errors with unknown attack vectors.");
+  script_tag(name:"solution", value:"Apply patch or upgrade to HP SMH version 6.3 or later, *****
   NOTE: Ignore this warning if patch is applied already.
-  *****";
-
-  tag_insight = "The flaw is caused by unspecified errors with unknown attack vectors.";
-
-  tag_summary = "This host is running  HP System Management Homepage (SMH) and is
-  prone to multiple vulnerabilities.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  *****");
+  script_tag(name:"summary", value:"This host is running  HP System Management Homepage (SMH) and is
+  prone to multiple vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
+  on the target system and also cause Denial of Service (DoS).");
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) prior to 6.3");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.hp.com/servers/manage/smh");
   exit(0);
 }
 
@@ -83,7 +69,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check HP SMH version < 6.3
 if( version_is_less( version:version, test_version:"6.3" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"6.3");
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_kb3212223_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ms_office_kb3212223_macosx.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-KB3212223 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810911");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2017-8509", "CVE-2017-8511");
   script_bugtraq_id(98812, 98815);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 10:12:53 +0530 (Wed, 14 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-KB3212223 (Mac OS X)");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3212223");

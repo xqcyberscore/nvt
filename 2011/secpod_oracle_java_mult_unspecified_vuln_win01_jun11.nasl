@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: secpod_oracle_java_mult_unspecified_vuln_win01_jun11.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities 01 - June11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902525");
-  script_version("$Revision: 10144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0868", "CVE-2011-0869", "CVE-2011-0872", "CVE-2011-0786",
                 "CVE-2011-0788", "CVE-2011-0817", "CVE-2011-0863");
@@ -44,11 +44,10 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary code in
-  the context of the application.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Oracle Java SE versions 6 Update 25 and prior.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to unspecified errors in the following
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code in
+  the context of the application.");
+  script_tag(name:"affected", value:"Oracle Java SE versions 6 Update 25 and prior.");
+  script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in the following
   components:
 
   - 2D
@@ -58,12 +57,12 @@ if(description)
   - SAAJ
 
   - Deployment");
-  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE version 6 Update 26 or later.
-  For updates refer to http://java.com/en/download/index.jsp");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to multiple
+  script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 6 Update 26 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to multiple
   unspecified vulnerabilities.");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpujune2011-313339.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpujune2011-313339.html");
+  script_xref(name:"URL", value:"http://java.com/en/download/index.jsp");
   exit(0);
 }
 

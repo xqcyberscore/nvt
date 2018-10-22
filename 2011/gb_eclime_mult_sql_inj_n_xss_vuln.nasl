@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 10865 2018-08-09 16:04:50Z cfischer $
+# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Eclime Multiple SQL Injection and Cross-site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801990");
-  script_version("$Revision: 10865 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 18:04:50 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2010-4851", "CVE-2010-4852");
   script_bugtraq_id(45124);
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
   script code or to compromise the application, access or modify data, or exploit
-  latent vulnerabilities in the underlying database.
-
-  Impact Level: Application");
+  latent vulnerabilities in the underlying database.");
 
   script_tag(name:"affected", value:"Eclime version 1.1.2b");
 

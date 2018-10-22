@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_dos_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_ibm_soliddb_dos_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # IBM solidDB Packets Processing Denial of Service Vulnerabilities
 #
@@ -8,7 +8,7 @@
 # Antu Sanadi <santu@secpod.com>
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,51 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the remote unauthenticated
-attackers to crash an affected process or consume CPU resources, creating a
-denial of service condition.
-
-Impact Level: Application";
-
-tag_affected = "IBM solidDB version 6.5.0.3 and prior";
-
-tag_insight = "Multiple flaws caused by input validation, stack exhaustion and
-NULL pointer dereference errors in 'solid.exe' when processing malformed packets
-sent to port 1315/TCP.";
-
-tag_solution = "Apply the relevant updates. For more details refer,
-http://www-01.ibm.com/support/docview.wss?uid=swg27021052";
-
-tag_summary = "This host is running IBM solidDB and is prone to multiple Denial
-of Service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801531");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2010-4055", "CVE-2010-4056", "CVE-2010-4057");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("IBM solidDB Packets Processing Denial of Service Vulnerabilities");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1024597");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/62590");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15261");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2715");
-  script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/soliddb_1-adv.txt");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1024597");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/62590");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15261");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2715");
+  script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/soliddb_1-adv.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_DENIAL);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("find_service.nasl");
   script_require_ports(1315);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated
+attackers to crash an affected process or consume CPU resources, creating a
+denial of service condition.");
+  script_tag(name:"affected", value:"IBM solidDB version 6.5.0.3 and prior");
+  script_tag(name:"insight", value:"Multiple flaws caused by input validation, stack exhaustion and
+NULL pointer dereference errors in 'solid.exe' when processing malformed packets
+sent to port 1315/TCP.");
+  script_tag(name:"solution", value:"Apply the relevant updates from the referenced advisory.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg27021052");
+  script_tag(name:"summary", value:"This host is running IBM solidDB and is prone to multiple Denial
+of Service vulnerabilities.");
   exit(0);
 }
 
@@ -83,7 +72,6 @@ if(safe_checks()){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(sdbport);
 if(!soc){
   exit(0);
@@ -227,5 +215,5 @@ sleep(5);
 
 soc = open_sock_tcp(sdbport);
 if(!soc){
- security_message(0);
+ security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

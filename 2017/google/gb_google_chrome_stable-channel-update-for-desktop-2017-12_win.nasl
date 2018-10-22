@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-12_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812235");
-  script_version("$Revision: 11231 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-15407", "CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410",
                 "CVE-2017-15411", "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415",
                 "CVE-2017-15416", "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2017-15425", "CVE-2017-15426", "CVE-2017-15427", "CVE-2017-15430");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 10:28:49 +0530 (Thu, 07 Dec 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-12)-Windows");
 
@@ -83,9 +83,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to execute arbitrary script,
   conduct spoofing attacks, data corruption or denial of service and
-  information leak.
-
-  Impact Level: System/Application");
+  information leak.");
 
   script_tag(name:"affected", value:"Google Chrome version
   prior to 63.0.3239.84 on Windows");

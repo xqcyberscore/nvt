@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ecoder_xss_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: secpod_ecoder_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ECoder Reflected Cross Site Scripting Vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902451");
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("ECoder Reflected Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101231/ECoder0.4.10-XSS.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101231/ECoder0.4.10-XSS.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
@@ -42,18 +42,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary
-  script code in the browser of an unsuspecting user in the context of the affected site.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "ECoder version 0.4.10 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed via the 'editor' parameter to
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
+  script code in the browser of an unsuspecting user in the context of the affected site.");
+  script_tag(name:"affected", value:"ECoder version 0.4.10 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'editor' parameter to
   the 'edit.php' script is not   properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running ECoder and is prone to reflected cross-site
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running ECoder and is prone to reflected cross-site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -65,10 +62,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -80,15 +75,12 @@ foreach dir (make_list_unique("/ecoder", "/demo", cgi_dirs(port:port)))
 
   rcvRes = http_get_cache(item: dir + "/", port:port);
 
-  ## Confirm application
   if("<title>ecoder</title>" >< rcvRes)
   {
-    ## Try XSS attack
     sndReq = http_get(item:string(dir, '/edit.php?editor=&mode="><script>ale' +
              'rt(document.cookie)</script>'), port:port);
     rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-    ## Confirm the attack
     if(rcvRes =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script>" >< rcvRes)
     {
       security_message(port:port);

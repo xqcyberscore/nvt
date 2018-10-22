@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rt_unspecified_sec_bypass_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_rt_unspecified_sec_bypass_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # RT (Request Tracker) Unspecified Security Bypass Vulnerability
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to trick users into
-  sending credentials to an arbitrary server via unspecified vectors.
-  Impact Level: Application";
-tag_affected = "RT (Request Tracker) versions 3.6.0 through 3.6.10 and 3.8.0 through 3.8.8.";
-tag_insight = "The flaw is caused by an unspecified error and can be exploited to trick
-  a user into sending authentication credentials to an untrusted 3rd party
-  server.";
-tag_solution = "Upgrade to RT (Request Tracker) version 3.8.10 or 3.6.11.
-  For updates refer to http://www.bestpractical.com/rt/";
-tag_summary = "This host is installed with Request Tracker and is prone to
-  unspecified security bypass vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902509");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1690");
   script_bugtraq_id(47383);
@@ -55,14 +43,20 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("rt_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/44189");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/66794");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=696795");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trick users into
+  sending credentials to an arbitrary server via unspecified vectors.");
+  script_tag(name:"affected", value:"RT (Request Tracker) versions 3.6.0 through 3.6.10 and 3.8.0 through 3.8.8.");
+  script_tag(name:"insight", value:"The flaw is caused by an unspecified error and can be exploited to trick
+  a user into sending authentication credentials to an untrusted 3rd party
+  server.");
+  script_tag(name:"solution", value:"Upgrade to RT (Request Tracker) version 3.8.10 or 3.6.11.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Request Tracker and is prone to
+  unspecified security bypass vulnerability.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/44189");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/66794");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=696795");
+  script_xref(name:"URL", value:"http://www.bestpractical.com/rt/");
   exit(0);
 }
 
@@ -70,7 +64,6 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 if(!get_port_state(port)) {
   exit(0);
@@ -80,7 +73,6 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Check for vulnerable RT versions
 if(vers = get_version_from_kb(port:port,app:"rt_tracker"))
 {
   if(version_in_range(version:vers, test_version:"3.8.0", test_version2:"3.8.8") ||

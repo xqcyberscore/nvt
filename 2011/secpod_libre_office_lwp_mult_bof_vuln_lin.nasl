@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_lwp_mult_bof_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_libre_office_lwp_mult_bof_vuln_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # LibreOffice LWP File Processing Multiple Buffer Overflow Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902700");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2011-2685");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to errors in the import filter when processing Lotus
   Word Pro (LWP) files and can be exploited to cause a stack-based buffer
   overflow via a specially crafted file.");
-  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.3.3 or 3.4.0 or later.
-  For updates refer to http://www.libreoffice.org/download/");
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.3.3 or 3.4.0 or later.");
   script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to multiple
   buffer overflow vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.");
@@ -54,6 +53,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44996/");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/953183");
+  script_xref(name:"URL", value:"http://www.libreoffice.org/download/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_3_2_0_mult_vuln.nasl 7373 2017-10-06 13:51:46Z cfischer $
+# $Id: gb_apache_openmeetings_3_2_0_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Apache OpenMeetings 3.2.x Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112063");
-  script_version("$Revision: 7373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 15:51:46 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 14:45:22 +0200 (Thu, 05 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -51,12 +51,12 @@ if(description)
   script_mandatory_keys("Apache/Openmeetings/Installed");
 
   script_tag(name:"summary", value:"Apache OpenMeetings 3.2.x is prone to multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Apache OpenMeetings is prone to the following vulnerabilities:
 
-      - Both global and Room chat are vulnerable to XSS attack (CVE-2017-7663).
+  - Both global and Room chat are vulnerable to XSS attack (CVE-2017-7663).
 
-      - Apache OpenMeetings is vulnerable to parameter manipulation attacks, as a result attacker has access to restricted areas (CVE-2017-7682). ");
+  - Apache OpenMeetings is vulnerable to parameter manipulation attacks, as a result attacker has access to restricted areas (CVE-2017-7682). ");
   script_tag(name:"affected", value:"Apache OpenMeetings versions 3.2.x");
   script_tag(name:"solution", value:"Update your software to version 3.3.0 to fix the issue");
 

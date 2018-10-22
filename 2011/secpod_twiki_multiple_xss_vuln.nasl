@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_twiki_multiple_xss_vuln.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: secpod_twiki_multiple_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # TWiki 'TemplateLogin.pm' Multiple XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:twiki:twiki';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902434");
-  script_version("$Revision: 7015 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,14 +46,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject arbitrary web script
   or HTML. This may allow the attacker to steal cookie-based authentication
-  credentials and to launch other attacks.
-  Impact Level: Application");
+  credentials and to launch other attacks.");
   script_tag(name:"affected", value:"TWiki version prior to 5.0.2");
   script_tag(name:"insight", value:"Multiple flaws are due to an input validation error in lib/TWiki
   /LoginManager/TemplateLogin.pm, when handling 'origurl' parameter to a
   view or login script.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to TWiki 5.0.2 or later,
-  http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to TWiki 5.0.2 or later.");
+  script_xref(name:"URL", value:"http://twiki.org/cgi-bin/view/Codev/DownloadTWiki");
   script_tag(name:"summary", value:"The host is running TWiki and is prone to multiple cross site
   scripting vulnerabilities.");
 
@@ -79,14 +78,12 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack Request
 url = dir + '/login/Main/WebHome?"1=;origurl=1""' +
             '--></style></script><script>alert("XSS-TEST")</script>';
 
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
-## Confirm the exploit
 if(res =~ "HTTP/1\.. 200" && '-></style></script><script>alert("XSS-TEST")</script>' >< res ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

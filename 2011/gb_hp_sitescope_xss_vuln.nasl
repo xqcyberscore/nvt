@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_xss_vuln.nasl 6378 2017-06-20 11:53:10Z cfischer $
+# $Id: gb_hp_sitescope_xss_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # HP SiteScope Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801881");
-  script_version("$Revision: 6378 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 13:53:10 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_cve_id("CVE-2011-1726", "CVE-2011-1727");
   script_bugtraq_id(47554);
@@ -51,17 +51,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker-supplied HTML and script code
   to run in the context of the affected browser, potentially allowing the attacker to steal cookie-based
-  authentication credentials or to control how the site is rendered to the user. Other attacks are also possible.
-
-  Impact Level: Application");
+  authentication credentials or to control how the site is rendered to the user. Other attacks are also possible.");
 
   script_tag(name:"affected", value:"HP SiteScope versions 9.54, 10.13, 11.01, and 11.1");
 
   script_tag(name:"insight", value:"The flaws are caused by input validation errors when processing
   user-supplied data, which could allow cross site scripting or HTML injection attacks.");
 
-  script_tag(name:"solution", value:"Upgrade to HP SiteScope version 11.1 and apply the SS1110110412 hotfix
-  http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02807712");
+  script_tag(name:"solution", value:"Upgrade to HP SiteScope version 11.1 and apply the SS1110110412 hotfix.");
 
   script_tag(name:"summary", value:"This host is running HP SiteScope and is prone to cross site scripting
   and HTML injection vulnerabilities.");
@@ -75,15 +72,13 @@ if(description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-## Construct attack request
 url = string("/SiteScope/jsp/hosted/HostedSiteScopeMessage.jsp?messageKey=",
               "<script>alert('openvas-xss-test')</script>");
 
-## Try XSS and check the response to confirm vulnerability
 if(http_vuln_check(port:port, url:url, check_header: TRUE,
    pattern:"en.<script>alert\('openvas-xss-test'\)</script>"))
 {

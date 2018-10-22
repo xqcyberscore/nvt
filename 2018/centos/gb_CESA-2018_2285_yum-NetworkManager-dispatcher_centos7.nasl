@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2285_yum-NetworkManager-dispatcher_centos7.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_CESA-2018_2285_yum-NetworkManager-dispatcher_centos7.nasl 11994 2018-10-19 16:13:16Z cfischer $
 #
 # CentOS Update for yum-NetworkManager-dispatcher CESA-2018:2285 centos7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882934");
-  script_version("$Revision: 10979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11994 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 05:59:57 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-10897");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for yum-NetworkManager-dispatcher CESA-2018:2285 centos7 ");
   script_tag(name:"summary", value:"Check the version of yum-NetworkManager-dispatcher");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_fusion_team_structure_sql_inj_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
+# $Id: secpod_php_fusion_team_structure_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP-Fusion Teams Structure Module 'team_id' SQL Injection Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902366");
-  script_version("$Revision: 5668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-0512");
   script_bugtraq_id(45826);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("PHP-Fusion Teams Structure Module 'team_id' SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42943");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64727");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16004/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42943");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64727");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16004/");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -47,30 +47,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php-fusion/installed");
 
-  tag_impact = "Successful exploitation will allow remote attackers to to view,
-  add, modify or delete information in the back-end database.
-
-  Impact Level: Application.";
-
-  tag_affected = "PHP-Fusion Teams Structure 3.0";
-
-  tag_insight = "The flaw is due to input passed via the 'team_id' parameter to
+  script_tag(name:"insight", value:"The flaw is due to input passed via the 'team_id' parameter to
   'infusions/teams_structure/team.php' is not properly sanitised before being
-  used in SQL queries.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running PHP-Fusion Teams Structure Module and is prone
-  to SQL injection vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  used in SQL queries.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running PHP-Fusion Teams Structure Module and is prone
+  to SQL injection vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to view,
+  add, modify or delete information in the back-end database.");
+  script_tag(name:"affected", value:"PHP-Fusion Teams Structure 3.0");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -96,7 +83,6 @@ url = dir + "/files/infusions/teams_structure/team.php?team_id=" +
 sndReq = http_get( item:url, port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## Check for the Response to confirm vulnerability
 if( ">SQL-INJECTION-TEST<" >< rcvRes ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

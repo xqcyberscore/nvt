@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_code_execution_vuln_apr11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_adobe_flash_player_code_execution_vuln_apr11_lin.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Adobe Flash Player Arbitrary Code Execution Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801922");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-0611");
   script_bugtraq_id(47314);
@@ -51,8 +51,7 @@ and execute arbitrary code on the system with elevated privileges.");
 player, which allows attackers to execute arbitrary code or cause a denial
 of service via crafted flash content.");
   script_tag(name:"solution", value:"Upgrade adobe flash player to version 10.2.159.1 or later,
-Update Adobe Reader/Acrobat to version 9.4.4 or 10.0.3 or later,
-For updates refer to http://www.adobe.com");
+Update Adobe Reader/Acrobat to version 9.4.4 or 10.0.3 or later.");
   script_tag(name:"summary", value:"This host has Adobe flash Player installed, and is prone to code
 execution vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");

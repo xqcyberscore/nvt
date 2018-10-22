@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 11673 2018-09-28 10:56:33Z asteins $
+# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # vBulletin Search UI Multiple SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902540");
-  script_version("$Revision: 11673 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:56:33 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48815);
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,12 +52,11 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input via the
   'messagegroupid'  and 'categoryid' parameters in search.php, which allows
   attacker to manipulate SQL queries by injecting arbitrary SQL code.");
-  script_tag(name:"solution", value:"Apply the patch from below link:
-
-  https://www.vbulletin.com/forum/showthread.php/384249-vBulletin-4.X-Security-Patch");
+  script_tag(name:"solution", value:"Apply the patch");
   script_tag(name:"summary", value:"The host is running Vbulletin and is prone to multiple SQL
   injection vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://www.vbulletin.com/forum/showthread.php/384249-vBulletin-4.X-Security-Patch");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-23_2017-23_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-23_2017-23_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Thunderbird Security Updates (mfsa_2017-23_2017-23)-Windows
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811940");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-7793", "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7824",
 		"CVE-2017-7805", "CVE-2017-7814", "CVE-2017-7823", "CVE-2017-7810");
   script_bugtraq_id(101055, 101053, 101059, 101054);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 11:10:23 +0530 (Thu, 12 Oct 2017)");
   script_name("Mozilla Thunderbird Security Updates (mfsa_2017-23_2017-23)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exist due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Use-after-free with Fetch API.
 
@@ -64,16 +64,13 @@ if(description)
 
   - Memory safety bugs fixed inThunderbird 52.4");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to gain access to potentially sensitive information,
-  execute arbitrary code and conduct a denial-of-service condition.
+  execute arbitrary code and conduct a denial-of-service condition.");
 
-  Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 52.4 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 52.4 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Thunderbird version 52.4 or later.
-  For updates refer to https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version 52.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -83,6 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

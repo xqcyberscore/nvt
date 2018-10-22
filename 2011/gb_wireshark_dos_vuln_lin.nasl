@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_lin.nasl 7019 2017-08-29 11:51:27Z teissa $
+# $Id: gb_wireshark_dos_vuln_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Wireshark Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801743");
-  script_version("$Revision: 7019 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 13:51:27 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-15 08:14:35 +0100 (Tue, 15 Feb 2011)");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
@@ -47,27 +47,24 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5652");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial
-  of service, execution of arbitrary code.
-
-  Impact Level: Application");
+  of service, execution of arbitrary code.");
   script_tag(name:"affected", value:"Wireshark version 1.4.3 and prior Wireshark version 1.5.0");
   script_tag(name:"insight", value:"The flaw is due to uninitialized pointer during processing of a
   '.pcap' file in the pcap-ng format.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15, 1.4.4 or later.
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15, 1.4.4 or later.");
   script_tag(name:"summary", value:"The host is installed Wireshark and is prone to Denial of
   Service Vulnerability.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Check for Wireshark Version
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
 if(version_is_less_equal(version:ver, test_version:"1.4.3")||

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcptrack_long_command_bof_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_tcptrack_long_command_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Tcptrack Command Line Parsing Heap Based Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801973");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-13 07:51:43 +0200 (Tue, 13 Sep 2011)");
   script_cve_id("CVE-2011-2903");
   script_bugtraq_id(49352);
@@ -51,13 +51,13 @@ if(description)
   script_tag(name:"affected", value:"Tcptrack version prior to 1.4.2");
   script_tag(name:"insight", value:"The flaw is caused  due to error in command line parsing, it is not properly
   handling long command line argument.");
-  script_tag(name:"solution", value:"Upgrade to Tcptrack 1.4.2 or later,
-  For updates refer to http://www.rhythm.cx/~steve/devel/tcptrack/#gettingit");
+  script_tag(name:"solution", value:"Upgrade to Tcptrack 1.4.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Tcptrack and is prone to heap based
   buffer overflow vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.rhythm.cx/~steve/devel/tcptrack/#gettingit");
   exit(0);
 }
 

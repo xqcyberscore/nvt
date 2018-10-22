@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_50449.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: gb_squid_50449.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Squid Proxy Caching Server CNAME Denial of Service Vulnerability
 #
@@ -31,11 +31,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103320");
   script_cve_id("CVE-2011-4096");
   script_bugtraq_id(50449);
-  script_version("$Revision: 6891 $");
+  script_version("$Revision: 12014 $");
   script_name("Squid Proxy Caching Server CNAME Denial of Service Vulnerability");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -50,17 +50,11 @@ if(description)
   script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.oss.general/6144");
   script_xref(name:"URL", value:"http://www.squid-cache.org/");
 
-  tag_summary = "Squid proxy caching server is prone to a denial-of-service
-  vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to cause an affected application to
-  crash, denying service to legitimate users.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"Squid proxy caching server is prone to a denial-of-service
+  vulnerability.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause an affected application to
+  crash, denying service to legitimate users.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

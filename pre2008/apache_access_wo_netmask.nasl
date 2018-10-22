@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_access_wo_netmask.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: apache_access_wo_netmask.nasl 12007 2018-10-22 07:43:49Z cfischer $
 #
 # Description: Apache mod_access rule bypass
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:apache:http_server";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14177");
-  script_version("$Revision: 10121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 12007 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:43:49 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9829);
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,9 +40,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Web Servers");
-  script_dependencies("find_service.nasl", "global_settings.nasl", "http_version.nasl", "gather-package-list.nasl");
-  script_mandatory_keys("www/apache");
-  script_require_ports("Services/www", 80);
+  script_dependencies("secpod_apache_detect.nasl");
+  script_mandatory_keys("apache/installed");
 
   script_xref(name:"GLSA", value:"GLSA 200405-22");
   script_xref(name:"MDKSA", value:"MDKSA-2004:046");
@@ -48,28 +49,18 @@ if(description)
   script_xref(name:"SSA", value:"SSA:2004-133-01");
   script_xref(name:"TSLSA", value:"TSLSA-2004-0027");
 
+  script_xref(name:"URL", value:"http://www.apacheweek.com/features/security-13");
+  script_xref(name:"URL", value:"https://marc.info/?l=apache-cvs&m=107869603013722");
+  script_xref(name:"URL", value:"http://nagoya.apache.org/bugzilla/show_bug.cgi?id=23850");
+
   script_tag(name:"solution", value:"Upgrade to Apache version 1.3.31 or newer.");
 
   script_tag(name:"summary", value:"The target is running an Apache web server that may not properly handle
-access controls. In effect, on big-endian 64-bit platforms, Apache
-fails to match allow or deny rules containing an IP address but not a
-netmask.
+  access controls.");
 
-*****  OpenVAS has determined the vulnerability exists only by looking at
-
-*****  the Server header returned by the web server running on the target.
-
-*****  If the target is not a big-endian 64-bit platform, consider this a
-
-*****  false positive.
-
-Additional information on the vulnerability can be found at :
-
-  - http://www.apacheweek.com/features/security-13
-
-  - http://marc.theaimsgroup.com/?l=apache-cvs&m=107869603013722
-
-  - http://nagoya.apache.org/bugzilla/show_bug.cgi?id=23850");
+  script_tag(name:"insight", value:"In effect, on big-endian 64-bit platforms, Apache
+  fails to match allow or deny rules containing an IP address but not a netmask.
+  Additional information on the vulnerability can be found at the referenced links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -77,24 +68,17 @@ Additional information on the vulnerability can be found at :
   exit(0);
 }
 
-include("global_settings.inc");
-include("http_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-uname = get_kb_item("ssh/login/uname");
-if( uname ){
-  if( egrep(pattern:"i.86", string:uname) ) exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! info = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+vers = info['version'];
+path = info['location'];
+
+if( version_is_less( version:vers, test_version:"1.3.31" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.31", install_path:path );
+  security_message( port:port, data:report );
 }
 
-port = get_http_port(default:80);
-host = http_host_name(port:port);
-
-banner = get_http_banner(port:port);
-if(!banner) exit(0);
-
-sig = strstr(banner, "Server:");
-if(!sig) exit(0);
-
-if(ereg(pattern:"^Server:.*Apache(-AdvancedExtranetServer)?/1\.([0-2]\.[0-9]|3\.([0-9][^0-9]|[0-2][0-9]))", string:sig)) {
-  security_message(port:port);
-  exit(0);
-}
+exit( 0 );

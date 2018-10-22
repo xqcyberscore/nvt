@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multicms_46062.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_multicms_46062.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # MultiCMS 'lng' Parameter Local File Include Vulnerability
 #
@@ -24,40 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "MultiCMS is prone to a local file-include vulnerability because it
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103052");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-01 12:59:13 +0100 (Tue, 01 Feb 2011)");
+  script_bugtraq_id(46062);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_name("MultiCMS 'lng' Parameter Local File Include Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46062");
+  script_xref(name:"URL", value:"http://www.multicms.net/");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Reportedly, the vendor has fixed the issue. However, Symantec has not
+confirmed it. Please contact the vendor for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"MultiCMS is prone to a local file-include vulnerability because it
 fails to properly sanitize user-supplied input.
 
 An attacker can exploit this vulnerability to obtain potentially
 sensitive information and to execute arbitrary local scripts in
 the context of the webserver process. This may allow the attacker
-to compromise the application and the computer; other attacks are
-also possible.";
-
-tag_solution = "Reportedly, the vendor has fixed the issue; however, Symantec has not
-confirmed it. Please contact the vendor for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103052");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-02-01 12:59:13 +0100 (Tue, 01 Feb 2011)");
- script_bugtraq_id(46062);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_name("MultiCMS 'lng' Parameter Local File Include Vulnerability");
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46062");
- script_xref(name : "URL" , value : "http://www.multicms.net/");
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+to compromise the application and the computer. Other attacks are
+also possible.");
+  exit(0);
 }
 
 include("misc_func.inc");

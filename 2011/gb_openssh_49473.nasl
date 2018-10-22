@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_49473.nasl 7906 2017-11-24 12:59:24Z cfischer $
+# $Id: gb_openssh_49473.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # OpenSSH Ciphersuite Specification Information Disclosure Weakness
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103247");
-  script_version("$Revision: 7906 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:59:24 +0100 (Fri, 24 Nov 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 13:52:42 +0200 (Fri, 09 Sep 2011)");
   script_bugtraq_id(49473);
   script_cve_id("CVE-2001-0572");
@@ -48,21 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.openssh.com");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/596827");
 
-  tag_summary = "OpenSSH is prone to a security weakness that may allow attackers to
-  downgrade the ciphersuite.";
-
-  tag_impact = "Successfully exploiting this issue in conjunction with other latent
+  script_tag(name:"impact", value:"Successfully exploiting this issue in conjunction with other latent
   vulnerabilities may allow attackers to gain access to sensitive information that
-  may aid in further attacks.";
-
-  tag_affected = "Releases prior to OpenSSH 2.9p2 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  may aid in further attacks.");
+  script_tag(name:"affected", value:"Releases prior to OpenSSH 2.9p2 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"OpenSSH is prone to a security weakness that may allow attackers to
+  downgrade the ciphersuite.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

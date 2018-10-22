@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_digital_scribe_mult_xss_vuln.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_digital_scribe_mult_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Digital Scribe Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802128");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_bugtraq_id(48945);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Digital Scribe Multiple Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37715/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17590/");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5030.php");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37715/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17590/");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-5030.php");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -45,18 +45,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute HTML code
-  into user's browser session in the context of an affected site.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "Digital Scribe version 1.5");
-  script_tag(name : "insight" , value : "The flaws are due to inputs passed through POST parameters 'title',
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute HTML code
+  into user's browser session in the context of an affected site.");
+  script_tag(name:"affected", value:"Digital Scribe version 1.5");
+  script_tag(name:"insight", value:"The flaws are due to inputs passed through POST parameters 'title',
   'last' and 'email' in 'register.php' are not sanitized before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Digital Scribe and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Digital Scribe and is prone to multiple
   cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -68,10 +65,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 dsPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:dsPort)) {
   exit(0);
 }
@@ -83,13 +78,10 @@ foreach path (make_list_unique("/DigitalScribe", "/digitalscribe", cgi_dirs(port
 
   if(path == "/") path = "";
 
-  ## Send and receive response
   rcvRes = http_get_cache(item:path + "/index.php", port:dsPort);
 
-  ## Confirm the application
   if("<TITLE>Digital Scribe</TITLE>" >< rcvRes)
   {
-    ## Try an exploit
     exp = 'title="><script>alert("XSS")</script>&last="><script>alert("XSS")' +
            '</script>&passuno=&passuno2=&email=&action=4&Submit=Register';
 
@@ -100,7 +92,6 @@ foreach path (make_list_unique("/DigitalScribe", "/digitalscribe", cgi_dirs(port
                  exp);
     res = http_keepalive_send_recv(port:dsPort, data:req);
 
-    ## Check the response to confirm vulnerability
     if(res =~ "HTTP/1\.. 200" && '><script>alert("XSS")</script>' >< res)
     {
       security_message(port:dsPort);

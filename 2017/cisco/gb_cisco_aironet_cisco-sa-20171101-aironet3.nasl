@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet3.nasl 7900 2017-11-24 10:35:02Z asteins $
+# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet3.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Cisco Aironet Access Points MAC Authentication Bypass Vulnerability
 #
@@ -29,46 +29,46 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140472");
- script_version("$Revision: 7900 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-24 11:35:02 +0100 (Fri, 24 Nov 2017) $");
- script_tag(name: "creation_date", value: "2017-11-02 09:51:43 +0700 (Thu, 02 Nov 2017)");
- script_tag(name:"cvss_base", value:"5.4");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.140472");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-02 09:51:43 +0700 (Thu, 02 Nov 2017)");
+  script_tag(name:"cvss_base", value:"5.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
 
- script_cve_id("CVE-2017-12281");
+  script_cve_id("CVE-2017-12281");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Cisco Aironet Access Points MAC Authentication Bypass Vulnerability");
+  script_name("Cisco Aironet Access Points MAC Authentication Bypass Vulnerability");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("CISCO");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("CISCO");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
 
- script_tag(name: "summary", value: "A vulnerability in the implementation of Protected Extensible Authentication
+  script_tag(name:"summary", value:"A vulnerability in the implementation of Protected Extensible Authentication
 Protocol (PEAP) functionality for standalone configurations of Cisco Aironet 1800, 2800, and 3800 Series Access
 Points could allow an unauthenticated, adjacent attacker to bypass authentication and connect to an affected
 device.");
 
- script_tag(name: "insight", value: "The vulnerability exists because the affected device uses an incorrect
+  script_tag(name:"insight", value:"The vulnerability exists because the affected device uses an incorrect
 default configuration setting of fail open when running in standalone mode. An attacker could exploit this
 vulnerability by attempting to connect to an affected device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass authentication and connect to the affected device.");
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass authentication and connect to the affected device.");
 
- script_tag(name: "solution", value: "See the referenced advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced advisory for a solution.");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171101-aironet3");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20171101-aironet3");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

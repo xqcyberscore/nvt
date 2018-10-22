@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_49356.nasl 6891 2017-08-10 12:44:59Z cfischer $
+# $Id: gb_squid_49356.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # Squid Proxy Gopher Remote Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103233");
-  script_version("$Revision: 6891 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-10 14:44:59 +0200 (Thu, 10 Aug 2017) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-30 14:29:55 +0200 (Tue, 30 Aug 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,19 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://www.squid-cache.org/");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2011_3.txt");
 
-  tag_summary = "Squid Proxy is prone remote buffer-overflow vulnerability affects the
-  Gopher-to-HTML functionality.";
-
-  tag_impact = "An attacker can exploit this issue to execute arbitrary code with the
+  script_tag(name:"summary", value:"Squid Proxy is prone remote buffer-overflow vulnerability affects the
+  Gopher-to-HTML functionality.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code with the
   privileges of the vulnerable application. Failed exploit attempts will
-  result in a denial-of-service condition.";
-
-  tag_solution = "The vendor released an update. Please see the references for more
-  information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  result in a denial-of-service condition.");
+  script_tag(name:"solution", value:"The vendor released an update. Please see the references for more
+  information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

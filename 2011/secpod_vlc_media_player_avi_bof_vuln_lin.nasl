@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_avi_bof_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_vlc_media_player_avi_bof_vuln_lin.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # VLC Media Player '.AVI' File BOF Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902707");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-2588");
   script_bugtraq_id(48664);
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an integer underflow error when parsing the 'strf'
   chunk within AVI files can be exploited to cause a heap-based buffer
   overflow.");
-  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.11 or later,
-  For updates refer to http://www.videolan.org/");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.11 or later.");
   script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone to buffer
   overflow vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");

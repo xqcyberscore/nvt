@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_n_easy_login_dos_vuln.nasl 4704 2016-12-07 14:26:08Z cfi $
+# $Id: gb_quick_n_easy_login_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Quick 'n Easy FTP Login Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802003");
-  script_version("$Revision: 4704 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 15:26:08 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 16:08:21 +0100 (Wed, 09 Mar 2011)");
   script_bugtraq_id(14451);
   script_tag(name:"cvss_base", value:"8.5");
@@ -43,31 +43,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16260");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/98782");
 
-  tag_impact = "Successful exploitation will allow the remote attackers to cause
-  a denial of service.
-
-  Impact Level: Application";
-
-  tag_affected = "Quick 'n Easy FTP Server Version 3.2, other versions may also
-  be affected.";
-
-  tag_insight = "The flaw is due to the way server handles 'USER' and 'PASS'
+  script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause
+  a denial of service.");
+  script_tag(name:"affected", value:"Quick 'n Easy FTP Server Version 3.2, other versions may also
+  be affected.");
+  script_tag(name:"insight", value:"The flaw is due to the way server handles 'USER' and 'PASS'
   commands, which can be exploited to crash the FTP service by sending 'USER'
-  and 'PASS' commands with specially-crafted parameters.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "The host is running Quick 'n Easy FTP Server and is prone to
-  denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  and 'PASS' commands with specially-crafted parameters.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running Quick 'n Easy FTP Server and is prone to
+  denial of service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -83,12 +70,10 @@ if(!ftpPort){
   ftpPort = 21;
 }
 
-## check port status
 if(!get_port_state(ftpPort)){
   exit(0);
 }
 
-## Confirm the Application installed
 banner = get_ftp_banner(port:ftpPort);
 if("Quick 'n Easy FTP Server" >!< banner){
   exit(0);
@@ -122,7 +107,6 @@ for(i=0; i<15; i++)
     exit(0);
   }
 
-  ## Construct and Send crafted packets
   craf_cmd +=  "aa" + "?";
   send(socket:soc1, data: 'USER '+ craf_cmd + '\r\n');
   recv_line(socket:soc1, length:100);

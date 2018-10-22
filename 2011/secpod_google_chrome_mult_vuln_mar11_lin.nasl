@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_mar11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_mar11_lin.nasl 12014 2018-10-22 10:01:47Z mmartin $
 #
 # Google Chrome multiple vulnerabilities - March 11 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901198");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12014 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_bugtraq_id(47029);
   script_cve_id("CVE-2011-1291", "CVE-2011-1292", "CVE-2011-1293",
@@ -59,12 +59,12 @@ if(description)
     tree corruption.
 
   - An error in the processing of SVG text which leaves stale pointers behind.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 10.0.648.204 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 10.0.648.204 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_50803.nasl 7651 2017-11-03 13:41:18Z cfischer $
+# $Id: gb_zabbix_50803.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # ZABBIX 'only_hostid' Parameter SQL Injection Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2011-4674");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 7651 $");
+  script_version("$Revision: 11997 $");
   script_name("ZABBIX 'only_hostid' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-30 11:34:16 +0100 (Wed, 30 Nov 2011)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -49,22 +49,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.zabbix.com/index.php");
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-4385");
 
-  tag_summary = "ZABBIX is prone to an SQL-injection vulnerability because it fails
+  script_tag(name:"summary", value:"ZABBIX is prone to an SQL-injection vulnerability because it fails
   to sufficiently sanitize user-supplied data before using it in an
-  SQL query.";
-
-  tag_impact = "Exploiting this issue could allow an attacker to compromise the
+  SQL query.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
   application, access or modify data, or exploit latent vulnerabilities
-  in the underlying database.";
-
-  tag_affected = "ZABBIX versions 1.8.3 and 1.8.4 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  in the underlying database.");
+  script_tag(name:"affected", value:"ZABBIX versions 1.8.3 and 1.8.4 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_prdts_int_overflow_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_prdts_int_overflow_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Foxit Products ICC Parsing Integer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801752");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-0332");
   script_tag(name:"cvss_base", value:"9.3");
@@ -45,19 +45,18 @@ if(description)
   script_mandatory_keys("foxit/phantom_or_reader/detected");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash an affected
   application or execute arbitrary code by tricking a user into opening a
-  malicious file.
-  Impact Level: System/Application");
+  malicious file.");
   script_tag(name:"affected", value:"Foxit Reader version prior to 4.3.1.0218
   Foxit Phantom version prior to 2.3.3.1112");
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error when parsing certain ICC
   chunks and can be exploited to cause a heap-based buffer overflow via a
   specially crafted file.");
   script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 4.3.1.0218 or later.
-  Upgrade to the Foxit Phantom version 2.3.3.1112 or later.
-  For updates refer to http://www.foxitsoftware.com/downloads/index.php");
+  Upgrade to the Foxit Phantom version 2.3.3.1112 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Foxit Products and is prone to integer
   overflow vulnerability.");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/downloads/index.php");
   exit(0);
 }
 

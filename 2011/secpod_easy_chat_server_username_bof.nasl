@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_easy_chat_server_username_bof.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: secpod_easy_chat_server_username_bof.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Easy Chat Server 'username' Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901201");
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-25 09:25:35 +0200 (Thu, 25 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,17 +46,14 @@ if(description)
   script_mandatory_keys("Easy_Chat_Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
-  arbitrary code on the system or cause the application to crash.
-
-  Impact Level: System/Application");
+  arbitrary code on the system or cause the application to crash.");
   script_tag(name:"affected", value:"Easy Chat Server Version 2.5 and before.");
   script_tag(name:"insight", value:"The flaw is due to a boundary error when processing URL
   parameters. Which can be exploited to cause a buffer overflow by sending
   an overly long 'username' parameter to 'chat.ghp' script.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed with Easy Chat Server and is prone to
   Buffer overflow vulnerability.");
 
@@ -66,29 +63,21 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
-include("http_keepalive.inc");
 
-## Get HTTP Port
+
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Easy Chat Server" >!< banner){
   exit(0);
 }
 
-## Construct and Send Malicious Request
 url = "/chat.ghp?username=" + crap(data:"A", length:1000) +
                               "&password=null&room=1&null=2";
 req = http_get(item:url, port:port);
 res = http_send_recv(port:port, data:req);
 
-## Confirm the Easy Chat Server is dead or alive
 if(http_is_dead(port:port)){
   security_message(port:port);
   exit(0);

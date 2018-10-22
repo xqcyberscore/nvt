@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_unspecified_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_oracle_virtualbox_unspecified_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902549");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-29 17:55:33 +0200 (Fri, 29 Jul 2011)");
   script_cve_id("CVE-2011-2300");
   script_bugtraq_id(48793);
@@ -49,15 +49,13 @@ if(description)
   Windows' sub component.");
   script_tag(name:"summary", value:"This host is installed with Oracle VM VirtualBox and is prone to
   unspecified vulnerability.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch  *****
   NOTE: Ignore this warning, if above mentioned workaround is manually applied.
   *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1025805");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html");
   exit(0);
 }

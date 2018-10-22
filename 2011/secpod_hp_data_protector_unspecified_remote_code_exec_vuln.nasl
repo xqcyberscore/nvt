@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_unspecified_remote_code_exec_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
+# $Id: secpod_hp_data_protector_unspecified_remote_code_exec_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Unspecified Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902531");
-  script_version("$Revision: 6435 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1864");
   script_bugtraq_id(48178);
@@ -46,31 +46,18 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02712867");
 
-  tag_solution = "Apply the patch,
-  http://support.openview.hp.com/selfsolve/patches
-
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
+  the context of the affected application.");
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector versions 6.0, 6.10, and 6.11");
+  script_tag(name:"insight", value:"The flaw is caused by an unspecified error, which allows remote attackers to
+  execute arbitrary code via unknown vectors.");
+  script_tag(name:"summary", value:"This host is running HP (OpenView Storage) Data Protector and
+  is prone to remote code execution vulnerability.");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.
   *****
   NOTE : Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code in
-  the context of the affected application.
-
-  Impact Level: System/Application.";
-
-  tag_affected = "HP (OpenView Storage) Data Protector versions 6.0, 6.10, and 6.11";
-
-  tag_insight = "The flaw is caused by an unspecified error, which allows remote attackers to
-  execute arbitrary code via unknown vectors.";
-
-  tag_summary = "This host is running HP (OpenView Storage) Data Protector and
-  is prone to remote code execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  *****");
+  script_xref(name:"URL", value:"http://support.openview.hp.com/selfsolve/patches");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -84,7 +71,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for HP OpenView Storage Data Protector versions 6.0, 6.10, and 6.11
 if( version_is_equal( version:vers, test_version:"06.0" ) ||
     version_is_equal( version:vers, test_version:"06.10" )||
     version_is_equal( version:vers, test_version:"06.11" ) ) {

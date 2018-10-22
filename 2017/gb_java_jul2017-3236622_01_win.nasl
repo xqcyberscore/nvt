@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_jul2017-3236622_01_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_java_jul2017-3236622_01_win.nasl 11989 2018-10-19 11:25:26Z cfischer $
 #
 # Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811241");
-  script_version("$Revision: 11900 $");
+  script_version("$Revision: 11989 $");
   script_cve_id("CVE-2017-10198", "CVE-2017-10096", "CVE-2017-10135", "CVE-2017-10110",
                 "CVE-2017-10115", "CVE-2017-10116", "CVE-2017-10074", "CVE-2017-10053",
                 "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10243", "CVE-2017-10102",
@@ -39,7 +39,7 @@ if(description)
                     99827, 99712, 99674, 99719, 99847, 99851, 99853, 99854, 99756, 99846);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:49:40 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Java SE Security Updates (jul2017-3236622) 01 - Windows");
 
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE version 1.6.0.151 and
   earlier, 1.7.0.141 and earlier, 1.8.0.131 and earlier on Windows");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

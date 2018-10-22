@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_mul_vuln_jun_2017_win.nasl 9490 2018-04-16 07:16:29Z cfischer $
+# $Id: gb_kodi_mul_vuln_jun_2017_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Kodi Multiple Vulnerabilities June 2017 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:kodi:kodi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107277");
-  script_version("$Revision: 9490 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 09:16:29 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 14:23:07 +0100 (Thu, 14 Dec 2017)");
   script_cve_id("CVE-2017-8314");
   script_bugtraq_id(98668);
@@ -43,14 +43,13 @@ if(description)
   script_dependencies("gb_kodi_web_server_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Kodi/WebServer/installed", "Host/runs_windows");
 
-  script_xref(name: "URL", value:"http://www.securityfocus.com/bid/98668");
-  script_xref(name: "URL", value:"https://security.gentoo.org/glsa/201706-17");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/98668");
+  script_xref(name:"URL", value:"https://security.gentoo.org/glsa/201706-17");
 
   script_tag(name:"summary", value:"Multiple vulnerabilities have been found in Kodi, the worst
   of which could allow remote attackers to execute arbitrary code.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of a detection NVT
-  and check if the version is vulnerable.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Remote attackers may use a specially crafted request with
   directory-traversal sequences (&#39 ../&#39 ) to retrieve sensitive information and modify

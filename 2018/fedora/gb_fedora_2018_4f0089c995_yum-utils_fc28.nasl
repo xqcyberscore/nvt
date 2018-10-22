@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4f0089c995_yum-utils_fc28.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_fedora_2018_4f0089c995_yum-utils_fc28.nasl 11994 2018-10-19 16:13:16Z cfischer $
 #
 # Fedora Update for yum-utils FEDORA-2018-4f0089c995
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875113");
-  script_version("$Revision: 11698 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_version("$Revision: 11994 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 13:35:42 +0200 (Fri, 28 Sep 2018)");
   script_cve_id("CVE-2018-10897");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for yum-utils FEDORA-2018-4f0089c995");
   script_tag(name:"summary", value:"Check the version of yum-utils");

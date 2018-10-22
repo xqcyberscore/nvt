@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_46470.nasl 4908 2017-01-02 13:33:15Z cfi $
+# $Id: gb_clamav_46470.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # ClamAV 'vba_read_project_strings()' Double Free Memory Corruption Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103083");
-  script_version("$Revision: 4908 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:33:15 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-22 13:26:53 +0100 (Tue, 22 Feb 2011)");
   script_bugtraq_id(46470);
   script_tag(name:"cvss_base", value:"6.8");
@@ -46,21 +46,13 @@ if(description)
   script_xref(name:"URL", value:"https://wwws.clamav.net/bugzilla/show_bug.cgi?id=2486");
   script_xref(name:"URL", value:"http://git.clamav.net/gitweb?p=clamav-devel.git;a=commitdiff;h=d21fb8d975f8c9688894a8cef4d50d977022e09f");
 
-  tag_summary = "ClamAV is prone to a double-free memory-corruption
-  vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to cause denial-of-service
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"ClamAV is prone to a double-free memory-corruption
+  vulnerability.");
+  script_tag(name:"affected", value:"Versions prior to ClamAV 0.97 are vulnerable.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service
   conditions. Due to the nature of this issue, arbitrary code execution
-  may be possible; this has not been confirmed.";
-
-  tag_affected = "Versions prior to ClamAV 0.97 are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  may be possible. This has not been confirmed.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

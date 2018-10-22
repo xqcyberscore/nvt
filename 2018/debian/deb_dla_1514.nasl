@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1514.nasl 11562 2018-09-24 06:31:32Z cfischer $
+# $Id: deb_dla_1514.nasl 12005 2018-10-22 06:17:37Z cfischer $
 #
 # Auto-generated from advisory DLA 1514-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891514");
-  script_version("$Revision: 11562 $");
-  # TODO: No CVE assigned yet
+  script_version("$Revision: 12005 $");
+  script_cve_id("CVE-2018-17407");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1514-1] texlive-bin security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:31:32 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 08:17:37 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-24 00:00:00 +0200 (Mon, 24 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");

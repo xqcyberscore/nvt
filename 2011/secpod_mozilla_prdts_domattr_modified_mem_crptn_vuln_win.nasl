@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902774");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 12010 $");
   script_cve_id("CVE-2011-3658");
   script_bugtraq_id(51138);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-22 11:48:05 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_name("Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51138/info");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2011/mfsa2011-55.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51138/info");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2011/mfsa2011-55.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
@@ -46,26 +46,22 @@ if(description)
                       "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code in the
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code in the
   context of the affected application. Failed exploit attempts will likely
-  result in denial-of-service conditions.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "SeaMonkey version 2.5
+  result in denial-of-service conditions.");
+  script_tag(name:"affected", value:"SeaMonkey version 2.5
   Thunderbird version 8.0
   Mozilla Firefox version 8.0");
-  script_tag(name : "insight" , value : "The flaw is due to error in SVG implementation which results in an
+  script_tag(name:"insight", value:"The flaw is due to error in SVG implementation which results in an
   out-of-bounds memory access if SVG elements were removed during a
   DOMAttrModified event handler.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox/thunderbird/seamonkey and is
+  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to out of bounds memory corruption vulnerability.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 9.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.6 or later
-  http://www.mozilla.org/projects/seamonkey/
-
-  Upgrade to Thunderbird version to 9.0 or later
-  http://www.mozilla.org/en-US/thunderbird/");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 9.0 or later, Upgrade to SeaMonkey version to 2.6 or later,
+  Upgrade to Thunderbird version to 9.0 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -85,7 +81,6 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
 seaVer = get_kb_item("Seamonkey/Win/Ver");
 if(seaVer)
 {
@@ -96,7 +91,6 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {

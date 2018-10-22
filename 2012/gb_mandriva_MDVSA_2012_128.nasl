@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:128");
   script_oid("1.3.6.1.4.1.25623.1.0.831716");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:41:48 +0530 (Tue, 14 Aug 2012)");
   script_cve_id("CVE-2012-3410");
   script_tag(name:"cvss_base", value:"4.6");
@@ -52,7 +48,7 @@ if(description)
 
   A stack-based buffer overflow flaw was found in the way bash, the
   GNU Bourne Again shell, expanded certain /dev/fd file names when
-  checking file names (&#039;test&#039; command) and evaluating /dev/fd file
+  checking file names ('test' command) and evaluating /dev/fd file
   names in conditinal command expressions. A remote attacker could
   provide a specially-crafted Bash script that, when executed, would
   cause the bash executable to crash (CVE-2012-3410).
@@ -62,9 +58,11 @@ if(description)
   vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_bof_vuln_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_vlc_media_player_mp4_bof_vuln_lin.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # VLC Media Player 'MP4_ReadBox_skcr()' Buffer Overflow Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801783");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_cve_id("CVE-2011-1684");
   script_bugtraq_id(47293);
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by a heap corruption error in the 'MP4_ReadBox_skcr()'
   [modules/demux/mp4/libmp4.c] function when processing malformed MP4
   (MPEG-4 Part 14) data.");
-  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.9 or later,
-  For updates refer to http://download.videolan.org/pub/videolan/vlc/");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.9 or later.");
   script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone buffer
   overflow vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://download.videolan.org/pub/videolan/vlc/");
   exit(0);
 }
 

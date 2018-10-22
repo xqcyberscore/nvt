@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_ibm_lotus_notes_code_exec_vuln_win.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # IBM Lotus Notes 'cai' URI and iCal Remote Code Execution Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902298");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-0912");
   script_tag(name:"cvss_base", value:"9.3");
@@ -54,12 +54,12 @@ if(description)
 
   - A buffer overflow error related to 'iCal', which could be exploited by
     attackers to execute arbitrary code.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Notes 8.0.2 FP6 or 8.5.1 FP5
-  For updates refer to http://www.ibm.com/software/lotus/products/notes/");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Notes 8.0.2 FP6 or 8.5.1 FP5");
   script_tag(name:"summary", value:"This host has IBM Lotus Notes installed and is prone to remote code
   execution vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.ibm.com/software/lotus/products/notes/");
   exit(0);
 }
 

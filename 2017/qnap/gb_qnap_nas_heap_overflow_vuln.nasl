@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_heap_overflow_vuln.nasl 8119 2017-12-14 09:19:28Z teissa $
+# $Id: gb_qnap_nas_heap_overflow_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP NAS Devices Heap Overflow Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106489");
-  script_version("$Revision: 8119 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 10:19:28 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-03 09:57:21 +0700 (Tue, 03 Jan 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-03 09:57:21 +0700 (Tue, 03 Jan 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("QNAP NAS Devices Heap Overflow Vulnerability");
 
@@ -47,18 +47,19 @@ if (description)
   script_dependencies("gb_qnap_nas_detect.nasl");
   script_mandatory_keys("qnap/port");
 
-  script_tag(name: "summary", value: "QNAP NAS devices are prone to a heap overflow vulnerability.");
+  script_tag(name:"summary", value:"QNAP NAS devices are prone to a heap overflow vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "QNAP NAS devices suffer from a critical Heap Overflow in 'cgi.cgi' and non
+  script_tag(name:"insight", value:"QNAP NAS devices suffer from a critical Heap Overflow in 'cgi.cgi' and non
 critical stack crash in 'jc.cgi' and 'mediaGet.cgi'.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gain root privileges.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may gain root privileges.");
 
-  script_tag(name: "solution", value: "QTS 4.2.3 Builds 20170121 and 20170124 are available to fix this vulnerability at https://www.qnap.com/en-uk/support/con_show.php?cid=108.");
+  script_tag(name:"solution", value:"QTS 4.2.3 Builds 20170121 and 20170124 are available to fix this vulnerability.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40985");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40985");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-uk/support/con_show.php?cid=108");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jan11_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_vlc_media_player_bof_vuln_jan11_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # VLC Media Player 'CDG decoder' multiple buffer overflow vulnerabilities (Windows)
 #
@@ -26,45 +26,38 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation could allow attackers to crash the affected
-  application, or execute arbitrary code by convincing a user to open a
-  malicious CD+G (CD+Graphics) media file or visit a specially crafted web
-  page.
-  Impact Level: Application";
-tag_affected = "VLC media player version prior to 1.1.6 on Windows.";
-tag_insight = "The flaws are due to an array indexing errors in the 'DecodeTileBlock()'
-  and 'DecodeScroll()' [modules/codec/cdg.c] functions within the CDG decoder
-  module when processing malformed data.";
-tag_solution = "Upgrade to the VLC media player version 1.1.6 or later,
-  For updates refer to http://www.videolan.org/vlc/";
-tag_summary = "The host is installed with VLC Media Player and is prone multiple
-  buffer overflow vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801726");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-31 05:37:34 +0100 (Mon, 31 Jan 2011)");
   script_cve_id("CVE-2011-0021");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("VLC Media Player 'CDG decoder' multiple buffer overflow vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0185");
-  script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2011/01/20/3");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0185");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2011/01/20/3");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash the affected
+  application, or execute arbitrary code by convincing a user to open a
+  malicious CD+G (CD+Graphics) media file or visit a specially crafted web
+  page.");
+  script_tag(name:"affected", value:"VLC media player version prior to 1.1.6 on Windows.");
+  script_tag(name:"insight", value:"The flaws are due to an array indexing errors in the 'DecodeTileBlock()'
+  and 'DecodeScroll()' [modules/codec/cdg.c] functions within the CDG decoder
+  module when processing malformed data.");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.6 or later.");
+  script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone multiple
+  buffer overflow vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 
@@ -75,7 +68,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for VLC Media Player Version less than 1.1.6
 if( version_is_less( version:vers, test_version:"1.1.6" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.6", install_path:path );
   security_message( port:0, data:report );

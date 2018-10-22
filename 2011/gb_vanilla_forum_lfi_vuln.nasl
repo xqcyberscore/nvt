@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vanilla_forum_lfi_vuln.nasl 11235 2018-09-05 08:57:41Z cfischer $
+# $Id: gb_vanilla_forum_lfi_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Vanilla Forum Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:lussumo:vanilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801794");
-  script_version("$Revision: 11235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 10:57:41 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://securityreason.com/wlb_show/WLB-2011050062");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory
-  traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  traversal attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"Vanilla Forum version 2.0.17.9");
 

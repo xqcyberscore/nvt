@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_IceWarp_49753.nasl 9727 2018-05-04 09:12:47Z cfischer $
+# $Id: gb_IceWarp_49753.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # IceWarp Web Mail Multiple Information Disclosure Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103279");
-  script_version("$Revision: 9727 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 11:12:47 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
   script_bugtraq_id(49753);
-  script_cve_id("CVE-2011-3579","CVE-2011-3580");
+  script_cve_id("CVE-2011-3579", "CVE-2011-3580");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_name("IceWarp Web Mail Multiple Information Disclosure Vulnerabilities");

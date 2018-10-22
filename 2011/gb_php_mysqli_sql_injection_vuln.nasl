@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mysqli_sql_injection_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_mysqli_sql_injection_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP 'set_magic_quotes_runtime()' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801584");
-  script_version("$Revision: 10458 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-4700");
   script_tag(name:"cvss_base", value:"6.8");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to conduct SQL injection
-  attacks via crafted input that had been properly handled in earlier versions.
-
-  Impact Level: Application/Network");
+  attacks via crafted input that had been properly handled in earlier versions.");
 
   script_tag(name:"affected", value:"PHP version 5.3.2 to 5.3.3");
 
@@ -56,8 +54,7 @@ if(description)
   MySQLi extension is used, which fails to properly interact with use of the
   'mysqli_fetch_assoc()' function.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.3.5 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.3.5 or later");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to SQL injection
   vulnerability.");
@@ -65,6 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

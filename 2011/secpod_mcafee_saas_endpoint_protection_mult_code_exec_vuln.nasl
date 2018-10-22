@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mcafee_saas_endpoint_protection_mult_code_exec_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_mcafee_saas_endpoint_protection_mult_code_exec_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
 #
 # McAfee SaaS Endpoint Protection ActiveX Controls Multiple Code Execution Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902562");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-3006", "CVE-2011-3007");
   script_bugtraq_id(49087);
@@ -55,13 +55,13 @@ if(description)
   - The insecure 'Start()' method within the MyCioScan ActiveX control
     (myCIOScn.dll) can be exploited to write to arbitrary files in the context
     of the currently logged-on user.");
-  script_tag(name:"solution", value:"Upgrade to McAfee SaaS Endpoint Protection version 5.2.2 or later,
-  For updates refer to http://www.mcafeeasap.com/");
+  script_tag(name:"solution", value:"Upgrade to McAfee SaaS Endpoint Protection version 5.2.2 or later.");
   script_tag(name:"summary", value:"This host is installed with McAfee SaaS Endpoint Protection and is
   prone to multiple code execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mcafeeasap.com/");
   exit(0);
 }
 

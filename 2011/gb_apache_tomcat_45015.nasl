@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_45015.nasl 4346 2016-10-25 12:54:45Z cfi $
+# $Id: gb_apache_tomcat_45015.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Apache Tomcat 'sort' and 'orderBy' Parameters Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103032");
-  script_version("$Revision: 4346 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 14:54:45 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 14:24:22 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,7 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://jakarta.apache.org/tomcat/");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/514866");
 
-  script_tag(name:"solution", value:"Updates are available; please see the references for more information.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"summary", value:"Apache Tomcat is prone to multiple cross-site scripting
   vulnerabilities because it fails to properly sanitize user-supplied input.");

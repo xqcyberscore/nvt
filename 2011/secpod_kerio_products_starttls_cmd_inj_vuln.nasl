@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kerio_products_starttls_cmd_inj_vuln.nasl 10788 2018-08-06 10:22:35Z cfischer $
+# $Id: secpod_kerio_products_starttls_cmd_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Kerio Products 'STARTTLS' Plaintext Command Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901194");
-  script_version("$Revision: 10788 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:22:35 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_cve_id("CVE-2011-1506");
   script_bugtraq_id(46767);
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0610");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  commands in the context of the user running the application.
-
-  Impact Level: Application");
+  commands in the context of the user running the application.");
 
   script_tag(name:"affected", value:"Kerio MailServer versions 6.x Kerio Connect version 7.1.4
   build 2985");

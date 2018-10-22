@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp-noexternallinks_xss_vuln.nasl 7581 2017-10-26 11:28:22Z asteins $
+# $Id: gb_wordpress_wp-noexternallinks_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # WordPress No External Links Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112094");
-  script_version("$Revision: 7581 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 13:28:22 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-26 13:35:51 +0200 (Thu, 26 Oct 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-26 13:35:51 +0200 (Thu, 26 Oct 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15863");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress No External Links Plugin XSS Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Cross-Site Scripting (XSS) exists in the No External Links plugin via the date1 or date2 parameter to wp-admin/options-general.php.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Cross-Site Scripting (XSS) exists in the No External Links plugin via the date1 or date2 parameter to wp-admin/options-general.php.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress No External Links plugin before 3.5.19.");
+  script_tag(name:"affected", value:"WordPress No External Links plugin before 3.5.19.");
 
-  script_tag(name: "solution", value: "Update to version 3.5.19 or later.");
+  script_tag(name:"solution", value:"Update to version 3.5.19 or later.");
 
-  script_xref(name: "URL", value: "http://lists.openwall.net/full-disclosure/2017/06/02/3");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/wp-noexternallinks/#developers");
+  script_xref(name:"URL", value:"http://lists.openwall.net/full-disclosure/2017/06/02/3");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/wp-noexternallinks/#developers");
 
   exit(0);
 }

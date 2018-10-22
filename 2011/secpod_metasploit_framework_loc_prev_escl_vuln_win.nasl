@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_metasploit_framework_loc_prev_escl_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_metasploit_framework_loc_prev_escl_vuln_win.nasl 12010 2018-10-22 08:23:57Z mmartin $
 #
 # Metasploit Framework Local Privilege Escalation Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902294");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12010 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_bugtraq_id(46300);
   script_tag(name:"cvss_base", value:"6.2");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the application being installed with insecure
   filesystem permissions in the system's root drive. This can be exploited
   to create arbitrary files in certain directories.");
-  script_tag(name:"solution", value:"Upgrade Metasploit Framework 3.5.2 or later,
-  For updates refer to http://www.metasploit.com/framework/download/");
+  script_tag(name:"solution", value:"Upgrade Metasploit Framework 3.5.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Metasploit Framework and is prone to
   local privilege escalation vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.metasploit.com/framework/download/");
   exit(0);
 }
 

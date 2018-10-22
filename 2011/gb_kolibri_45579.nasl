@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_45579.nasl 6696 2017-07-12 11:30:15Z cfischer $
+# $Id: gb_kolibri_45579.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Kolibri Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103009");
-  script_version("$Revision: 6696 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:30:15 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,12 +49,11 @@ if(description)
   execute arbitrary commands in the context of the application. Failed
   attacks will cause denial-of-service conditions.");
 
-  script_tag(name:"affected", value:"Kolibri 2.0 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Kolibri 2.0 is vulnerable. Other versions may also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one
-  year since disclosure of this vulnerability. Likely none will be provided anymore. General
-  solution options are to upgrade to a newer release, disable respective features, remove
-  the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"Kolibri is prone to a remote buffer-overflow vulnerability because it
   fails to perform adequate checks on user-supplied input.");
@@ -66,7 +65,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port( default:8080 );

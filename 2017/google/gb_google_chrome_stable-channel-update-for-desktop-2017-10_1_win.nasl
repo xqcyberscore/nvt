@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-10_1_win.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-10_1_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-10-1)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811882");
-  script_version("$Revision: 11231 $");
+  script_version("$Revision: 11983 $");
   script_cve_id("CVE-2017-15396", "CVE-2017-15406");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-27 11:02:06 +0530 (Fri, 27 Oct 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-10-1)-Windows");
 
@@ -46,9 +46,7 @@ if(description)
   overflow errors in V8.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute arbitrary code or cause denial of service.
-
-  Impact Level: System/Application");
+  to execute arbitrary code or cause denial of service.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   62.0.3202.75 on Windows");

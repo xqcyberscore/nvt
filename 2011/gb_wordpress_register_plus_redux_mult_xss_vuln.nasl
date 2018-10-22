@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_register_plus_redux_mult_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # WordPress Register Plus Redux Plugin Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802324");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_bugtraq_id(45179);
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103773/registerplus373-xss.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute
-  arbitrary HTML and script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  arbitrary HTML and script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress Register Plus Redux Plugin 3.7.3 and prior.");
 

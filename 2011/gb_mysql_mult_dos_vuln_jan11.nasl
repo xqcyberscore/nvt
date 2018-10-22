@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_dos_vuln_jan11.nasl 7044 2017-09-01 11:50:59Z teissa $
+# $Id: gb_mysql_mult_dos_vuln_jan11.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # MySQL Multiple Denial of Service Vulnerabilities
 #
@@ -23,69 +23,65 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_impact = "Successful exploitation could allow an attacker to cause a denial of service
-  and to execute arbitrary code.
-  Impact Level: Application";
-tag_affected = "MySQL 5.0 before 5.0.92, 5.1 before 5.1.51, and 5.5 before 5.5.6";
-tag_insight = "The flaws are due to:
-   - An error in propagating the type errors, which allows remote attackers
-     to cause a denial of service via crafted arguments to extreme-value functions
-     such as 'LEAST' or 'GREATEST'.
-   - An unspecified error in vectors related to materializing a derived table
-     that required a temporary table for grouping and user variable
-     assignments.
-   - An error in handling prepared statements that uses GROUP_CONCAT with the
-     WITH ROLLUP modifier.
-   - An error in handling a query that uses the GREATEST or LEAST function
-     with a mixed list of numeric and LONGBLOB arguments.";
-tag_solution = "Upgrade to MySQL version 5.0.92, or 5.1.51 or 5.5.6
-  For updates refer to http://dev.mysql.com/downloads";
-tag_summary = "The host is running MySQL and is prone to multiple denial of
-  service vulnerabilities.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801571";
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-01 13:50:59 +0200 (Fri, 01 Sep 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801571");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2010-3833", "CVE-2010-3834", "CVE-2010-3836",
                 "CVE-2010-3837", "CVE-2010-3838");
   script_bugtraq_id(43676);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MySQL Multiple Denial of Service Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42875");
-  script_xref(name : "URL" , value : "http://bugs.mysql.com/bug.php?id=54568");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.5/en/news-5-5-6.html");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.0/en/news-5-0-92.html");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-51.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42875");
+  script_xref(name:"URL", value:"http://bugs.mysql.com/bug.php?id=54568");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.5/en/news-5-5-6.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.0/en/news-5-0-92.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-51.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a denial of service
+  and to execute arbitrary code.");
+  script_tag(name:"affected", value:"MySQL 5.0 before 5.0.92, 5.1 before 5.1.51, and 5.5 before 5.5.6");
+  script_tag(name:"insight", value:"The flaws are due to:
+
+  - An error in propagating the type errors, which allows remote attackers
+     to cause a denial of service via crafted arguments to extreme-value functions
+     such as 'LEAST' or 'GREATEST'.
+
+  - An unspecified error in vectors related to materializing a derived table
+     that required a temporary table for grouping and user variable
+     assignments.
+
+  - An error in handling prepared statements that uses GROUP_CONCAT with the
+     WITH ROLLUP modifier.
+
+  - An error in handling a query that uses the GREATEST or LEAST function
+     with a mixed list of numeric and LONGBLOB arguments.");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.0.92, or 5.1.51 or 5.5.6");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is running MySQL and is prone to multiple denial of
+  service vulnerabilities.");
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 
 
 include("misc_func.inc");
 include("version_func.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
-sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+sqlPort = get_app_port(cpe:CPE);
 if(!sqlPort){
   sqlPort = 3306;
 }
@@ -94,7 +90,7 @@ if(!get_port_state(sqlPort)){
   exit(0);
 }
 
-mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort);
+mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
 if(isnull(mysqlVer)){
   exit(0);
 }

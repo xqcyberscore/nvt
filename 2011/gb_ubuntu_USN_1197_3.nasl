@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1197_3.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1197_3.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Ubuntu Update for firefox USN-1197-3
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1197-3/");
   script_oid("1.3.6.1.4.1.25623.1.0.840735");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-12 16:29:49 +0200 (Mon, 12 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if(description)
 
   It was discovered that Dutch Certificate Authority DigiNotar, had
   mis-issued multiple fraudulent certificates. These certificates could allow
-  an attacker to perform a &quot;man in the middle&quot; (MITM) attack which would make
+  an attacker to perform a 'man in the middle' (MITM) attack which would make
   the user believe their connection is secure, but is actually being
   monitored.
 

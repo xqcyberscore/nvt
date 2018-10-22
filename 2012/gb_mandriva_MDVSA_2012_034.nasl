@@ -23,16 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:034");
   script_oid("1.3.6.1.4.1.25623.1.0.831654");
-  script_version("$Revision: 11979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:21:43 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 11985 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:58:44 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1162", "CVE-2012-1163");
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,10 +48,10 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"insight", value:"Multiple vulnerabilities has been found and corrected in libzip:
 
-  libzip (version &lt;= 0.10) uses an incorrect loop construct, which can
+  libzip (version <= 0.10) uses an incorrect loop construct, which can
   result in a heap overflow on corrupted zip files (CVE-2012-1162).
 
-  libzip (version &lt;= 0.10) has a numeric overflow condition, which,
+  libzip (version <= 0.10) has a numeric overflow condition, which,
   for example, results in improper restrictions of operations within
   the bounds of a memory buffer (e.g., allowing information leaks)
   (CVE-2012-1163).
@@ -64,9 +60,11 @@ if(description)
   correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = rpm_get_ssh_release();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
+# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apache httpd Web Server Range Header Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901203");
-  script_version("$Revision: 5839 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_bugtraq_id(49303);
   script_cve_id("CVE-2011-3192");
@@ -46,41 +46,34 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
-  cause a denial of service.
-
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Apache 1.3.x, 2.0.x through 2.0.64 and 2.2.x through 2.2.19");
   script_tag(name:"insight", value:"The flaw is caused the way Apache httpd web server handles certain requests
   with multiple overlapping ranges, which causes significant memory and CPU
   usage on the server leading to application crash and system can become
   unstable.");
-  script_tag(name:"solution", value:"Please refer below link for fix and mitigate this issue until full fix,
-  http://mail-archives.apache.org/mod_mbox/httpd-dev/201108.mbox/%3CCAAPSnn2PO-d-C4nQt_TES2RRWiZr7urefhTKPWBC1b+K1Dqc7g@mail.gmail.com%3E
-  http://marc.info/?l=apache-httpd-dev&m=131420013520206&w=2");
+  script_tag(name:"solution", value:"Please refer below link for fix and mitigate this issue until full fix.");
   script_tag(name:"summary", value:"This host is running Apache httpd web server and is prone to denial
   of service vulnerability.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17696");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104441");
   script_xref(name:"URL", value:"http://marc.info/?l=apache-httpd-dev&m=131420013520206&w=2");
-
+  script_xref(name:"URL", value:"http://mail-archives.apache.org/mod_mbox/httpd-dev/201108.mbox/%3CCAAPSnn2PO-d-C4nQt_TES2RRWiZr7urefhTKPWBC1b+K1Dqc7g@mail.gmail.com%3E");
   script_tag(name:"qod_type", value:"exploit");
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
-## Get HTTP Port
 if(!port = get_app_port(cpe:CPE)) exit(0);
 
-## Get Host Name or IP
 host = http_host_name(port:port);
 
-## Construct Valid Range Request
 ## Expected response will be 206 Partial Content on both
 req1 = string("HEAD / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
@@ -90,14 +83,12 @@ req1 = string("HEAD / HTTP/1.1\r\n",
               "Connection: close\r\n",
               "\r\n" );
 
-## Construct Range bytes
 range_bytes = "";
 for (i = 0; i < 30; i++){
   range_bytes += "5-" + i;
   if(i < 29) range_bytes += ",";
 }
 
-## Construct Invalid Range Request
 ## Expected response will be 200 OK on non vulnerable
 ## Expected response will be 206 Partial Content on vulnerable
 req2 = string("HEAD / HTTP/1.1\r\n",
@@ -108,11 +99,9 @@ req2 = string("HEAD / HTTP/1.1\r\n",
               "Connection: close\r\n",
               "\r\n" );
 
-## Send and Receive the response
 res1 = http_send_recv(port:port, data:req1);
 res2 = http_send_recv(port:port, data:req2);
 
-## Check Server response to verify is it vulnerable
 if(res1 =~ "HTTP\/[0-9]\.[0-9] 206 Partial Content" &&
    res2 =~ "HTTP\/[0-9]\.[0-9] 206 Partial Content"){
   security_message(port:port);

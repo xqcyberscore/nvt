@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_machines_forum_session_hijacking_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_simple_machines_forum_session_hijacking_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Simple Machines Forum Session Hijacking Vulnerability
 #
@@ -24,38 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to obtain sensitive
-information such as user's session credentials and may aid in further
-attacks.
-
-Impact Level: Application";
-
-tag_affected = "Simple Machines Forum (SMF) 2.0";
-
-tag_insight = "The flaw exists due to improper handling of user's sessions,
-allowing a remote attacker to hijack a valid user's session via a specially
-crafted link.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is installed with Simple Machines Forum and is prone
-to session hijacking vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802334");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-16 17:22:17 +0200 (Fri, 16 Sep 2011)");
   script_bugtraq_id(49078);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Simple Machines Forum Session Hijacking Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/69056");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17637/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69056");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17637/");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -63,11 +43,18 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_simple_machines_forum_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive
+information such as user's session credentials and may aid in further
+attacks.");
+  script_tag(name:"affected", value:"Simple Machines Forum (SMF) 2.0");
+  script_tag(name:"insight", value:"The flaw exists due to improper handling of user's sessions,
+allowing a remote attacker to hijack a valid user's session via a specially
+crafted link.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is installed with Simple Machines Forum and is prone
+to session hijacking vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -76,13 +63,11 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 
-## Get the default port
 smfPort = get_http_port(default:80);
 if(!smfPort){
   exit(0);
 }
 
-## Get the version From kb
 ver = get_version_from_kb(port:smfPort, app:"SMF");
 if(!ver){
   exit(0);

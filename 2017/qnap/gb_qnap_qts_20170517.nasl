@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170517.nasl 8119 2017-12-14 09:19:28Z teissa $
+# $Id: gb_qnap_qts_20170517.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # QNAP QTS Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106880");
-  script_version("$Revision: 8119 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-14 10:19:28 +0100 (Thu, 14 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-16 16:07:13 +0700 (Fri, 16 Jun 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-16 16:07:13 +0700 (Fri, 16 Jun 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7629");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("QNAP QTS Multiple Vulnerabilities");
 
@@ -49,19 +49,19 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_qnap_nas_detect.nasl");
-  script_mandatory_keys("qnap/qts","qnap/version","qnap/build");
+  script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build");
 
-  script_tag(name: "summary", value: "QNAP QTS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"QNAP QTS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "QNAP QTS before QTS 4.2.6 build 20170607 and before QTS 4.3.3.0210 Build
+  script_tag(name:"affected", value:"QNAP QTS before QTS 4.2.6 build 20170607 and before QTS 4.3.3.0210 Build
 20170606");
 
-  script_tag(name: "solution", value: "Update to QTS 4.2.6 build 20170607, QTS 4.3.3.0210 Build 20170606 or
+  script_tag(name:"solution", value:"Update to QTS 4.2.6 build 20170607, QTS 4.3.3.0210 Build 20170606 or
 later.");
 
-  script_xref(name: "URL", value: "https://www.qnap.com/en-us/releasenotes/");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-us/releasenotes/");
 
   exit(0);
 }

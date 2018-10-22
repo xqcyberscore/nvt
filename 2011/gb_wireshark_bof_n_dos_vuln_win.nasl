@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_wireshark_bof_n_dos_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802502");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-08 11:40:17 +0200 (Tue, 08 Nov 2011)");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
@@ -53,8 +53,7 @@ if(description)
   - An error in dissect_infiniband_common function in
     epan/dissectors/packet-infiniband.c in the Infiniband dissector, could
     dereference a NULL pointer.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later.");
   script_tag(name:"summary", value:"The host is installed with Wireshark and is prone to heap based
   buffer overflow and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
@@ -64,6 +63,7 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=6476");
   script_xref(name:"URL", value:"http://anonsvn.wireshark.org/viewvc?view=revision&revision=39508");
   script_xref(name:"URL", value:"http://anonsvn.wireshark.org/viewvc?view=revision&revision=39500");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mysqld_mult_dos_vuln.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_mysql_mysqld_mult_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # MySQL Mysqld Multiple Denial Of Service Vulnerabilities
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801567");
-  script_version("$Revision: 10017 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2010-3677", "CVE-2010-3682");
   script_name("MySQL Mysqld Multiple Denial Of Service Vulnerabilities");
-  script_xref(name : "URL" , value : "http://bugs.mysql.com/bug.php?id=54477");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=628172");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/refman/5.1/en/news-5-1-49.html");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/09/28/10");
+  script_xref(name:"URL", value:"http://bugs.mysql.com/bug.php?id=54477");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=628172");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.1/en/news-5-1-49.html");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/09/28/10");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -50,24 +50,21 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow users to cause a Denial of Service
-  condution.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "MySQL version 5.1 before 5.1.49 and 5.0 before 5.0.92 on all running platform.");
-  script_tag(name : "insight" , value : "The flaws are due to:
+  script_tag(name:"impact", value:"Successful exploitation could allow users to cause a Denial of Service
+  condution.");
+  script_tag(name:"affected", value:"MySQL version 5.1 before 5.1.49 and 5.0 before 5.0.92 on all running platform.");
+  script_tag(name:"insight", value:"The flaws are due to:
 
   - An error in handling of a join query that uses a table with a unique
     SET column.
 
   - An error in handling of 'EXPLAIN' with crafted
    'SELECT ... UNION ... ORDER BY (SELECT ... WHERE ...)' statements.");
-  script_tag(name : "solution" , value : "Upgrade to MySQL version 5.1.49 or 5.0.92
-
-  For updates refer to http://dev.mysql.com/downloads");
-  script_tag(name : "summary" , value : "The host is running MySQL and is prone to multiple denial of service
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.49 or 5.0.92");
+  script_tag(name:"summary", value:"The host is running MySQL and is prone to multiple denial of service
   vulnerabilities.");
 
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   exit(0);
 }
 

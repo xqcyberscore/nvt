@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_18f8c6ce79_prosody_fc28.nasl 10199 2018-06-14 13:09:24Z santu $
+# $Id: gb_fedora_2018_18f8c6ce79_prosody_fc28.nasl 12004 2018-10-22 05:34:04Z cfischer $
 #
 # Fedora Update for prosody FEDORA-2018-18f8c6ce79
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874672");
-  script_version("$Revision: 10199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 15:09:24 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 12004 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-10 05:58:33 +0200 (Sun, 10 Jun 2018)");
   script_cve_id("CVE-2018-10847");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for prosody FEDORA-2018-18f8c6ce79");
   script_tag(name:"summary", value:"Check the version of prosody");

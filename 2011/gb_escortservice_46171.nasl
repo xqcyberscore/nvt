@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_escortservice_46171.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_escortservice_46171.nasl 12018 2018-10-22 13:31:29Z mmartin $
 #
 # Escortservice 'custid' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103065");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 12:50:03 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46171);
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,8 +55,8 @@ A successful exploit could allow an attacker to compromise the
 application, access or modify data, or exploit vulnerabilities in the
 underlying database.
 
-Escortservice 1.0 is vulnerable; other versions may also be affected.");
- exit(0);
+Escortservice 1.0 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

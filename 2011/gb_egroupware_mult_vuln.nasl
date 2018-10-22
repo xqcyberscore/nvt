@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_mult_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_egroupware_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # eGroupware Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:egroupware:egroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801944");
-  script_version("$Revision: 11188 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-4951", "CVE-2011-4950", "CVE-2011-4949", "CVE-2011-4948");
   script_bugtraq_id(52770);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101675/eGroupware1.8.001.20110421-Redirect.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory
-  traversal attacks and read arbitrary files on the affected application or to redirect to an arbitrary URL.
-
-  Impact Level: Application");
+  traversal attacks and read arbitrary files on the affected application or to redirect to an arbitrary URL.");
 
   script_tag(name:"affected", value:"eGroupware version 1.8.001.20110421");
 
@@ -63,8 +61,7 @@ if(description)
   - An open redirect vulnerability in '/phpgwapi/ntlm/index.php?', when handling
   the URL.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.8.001.20110805 or later,
-  For updates refer to http://www.egroupware.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.8.001.20110805 or later.");
 
   script_tag(name:"summary", value:"This host is running the eGroupware and is prone to multiple
   vulnerabilities.");
@@ -72,6 +69,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.egroupware.org");
   exit(0);
 }
 

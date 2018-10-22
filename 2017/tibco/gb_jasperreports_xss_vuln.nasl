@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasperreports_xss_vuln.nasl 8063 2017-12-09 11:46:24Z teissa $
+# $Id: gb_jasperreports_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # TIBCO JasperReports XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:tibco:jasperreports_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140529");
-  script_version("$Revision: 8063 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-23 12:45:41 +0700 (Thu, 23 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-23 12:45:41 +0700 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-5532");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("TIBCO JasperReports XSS Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_jasperreports_detect.nasl");
   script_mandatory_keys("jasperreports/installed");
 
-  script_tag(name: "summary", value: "TIBCO JasperReports contain a vulnerability which may allow a subset of
+  script_tag(name:"summary", value:"TIBCO JasperReports contain a vulnerability which may allow a subset of
 authorized users to perform persistent cross-site scripting (XSS) attacks.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "impact", value: "The impact of this vulnerability includes the possibility that a malicious
+  script_tag(name:"impact", value:"The impact of this vulnerability includes the possibility that a malicious
 user can gain access to a more privileged account.");
 
-  script_tag(name: "affected", value: "TIBCO JasperReports Server version 6.2.x, 6.3.x and 6.4.0.");
+  script_tag(name:"affected", value:"TIBCO JasperReports Server version 6.2.x, 6.3.x and 6.4.0.");
 
-  script_tag(name: "solution", value: "Update to version 6.2.4, 6.3.3, 6.4.2 or later.");
+  script_tag(name:"solution", value:"Update to version 6.2.4, 6.3.3, 6.4.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.tibco.com/support/advisories/2017/11/tibco-security-advisory-november-15-2017-tibco-jasperreports-2017-5532");
+  script_xref(name:"URL", value:"https://www.tibco.com/support/advisories/2017/11/tibco-security-advisory-november-15-2017-tibco-jasperreports-2017-5532");
 
   exit(0);
 }

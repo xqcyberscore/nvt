@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_xml_dos_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_shibboleth_xml_dos_vuln_win.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Shibboleth XML Security Signature Key Parsing Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802223");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-15 12:23:42 +0200 (Fri, 15 Jul 2011)");
   script_cve_id("CVE-2011-2516");
   script_bugtraq_id(48611);
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to off-by-one error in the XML signature feature in
   Apache XML Security, allows remote attackers to cause a denial of service
   via a signature using a large RSA key, which triggers a buffer overflow.");
-  script_tag(name:"solution", value:"Upgrade to Shibboleth version 2.4.3 or later,
-  For updates refer to http://shibboleth.internet2.edu/downloads.html");
+  script_tag(name:"solution", value:"Upgrade to Shibboleth version 2.4.3 or later.");
   script_tag(name:"summary", value:"This host is installed with Shibboleth and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://shibboleth.internet2.edu/downloads.html");
   exit(0);
 }
 

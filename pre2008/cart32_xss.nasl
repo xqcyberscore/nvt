@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cart32_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: cart32_xss.nasl 11998 2018-10-20 18:17:12Z cfischer $
 #
 # Cart32 GetLatestBuilds XSS
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12290");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11998 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 20:17:12 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0675");
   script_bugtraq_id(10617);
@@ -42,13 +42,16 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"An attacker may use this bug to steal the credentials of the legitimate users
   of this site.");
+
   script_tag(name:"solution", value:"Upgrade to the newest version of this software");
+
   script_tag(name:"summary", value:"The remote host is using Cart32, a shopping cart software.
 
   There is a bug in this software which makes it vulnerable to cross site
@@ -80,4 +83,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

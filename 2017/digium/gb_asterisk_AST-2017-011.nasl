@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2017-011.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: gb_asterisk_AST-2017-011.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Asterisk Memory Leak Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140495");
-  script_version("$Revision: 8018 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-09 10:52:58 +0700 (Thu, 09 Nov 2017)");
+  script_version("$Revision: 11983 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-09 10:52:58 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-16672");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk Memory Leak Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a memory/RTP/file descriptor leak vulnerability.");
+  script_tag(name:"summary", value:"Asterisk is prone to a memory/RTP/file descriptor leak vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A memory leak occurs when an Asterisk pjsip session object is created and
+  script_tag(name:"insight", value:"A memory leak occurs when an Asterisk pjsip session object is created and
 that call gets rejected before the session itself is fully established. When this happens the session object
 never gets destroyed. This then leads to file descriptors and RTP ports being leaked as well.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.13.");
+  script_tag(name:"affected", value:"Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.13.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 13.18.1, 14.7.1, 15.1.1, 13.13-cert7 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 13.18.1, 14.7.1, 15.1.1, 13.13-cert7 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2017-011.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2017-011.html");
 
   exit(0);
 }

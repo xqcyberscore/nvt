@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-24_2017-25_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-24_2017-25_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-24_2017-25)-Windows
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811351");
-  script_version("$Revision: 9923 $");
-  script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826" );
+  script_version("$Revision: 11983 $");
+  script_cve_id("CVE-2017-7828", "CVE-2017-7830", "CVE-2017-7826");
   script_bugtraq_id(101832);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 12:45:11 +0530 (Thu, 16 Nov 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-24_2017-25)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - Use-after-free of PressShell while restyling layout.
 
@@ -51,17 +51,14 @@ if(description)
 
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, bypass security restrictions, perform
   unauthorized actions, and obtain sensitive information. Failed exploit
-  attempts will likely result in denial-of-service conditions.
+  attempts will likely result in denial-of-service conditions.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version before 52.5 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before 52.5 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 52.5 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 52.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -71,6 +68,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

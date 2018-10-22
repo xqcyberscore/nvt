@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Joomla! com_maianmedia Component 'cat' Parameter SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800199");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2010-4739");
   script_bugtraq_id(44877);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are caused by improper validation of user-supplied input via the
   'cat' parameter to 'index.php', which allows attackers to manipulate SQL
   queries by injecting arbitrary SQL code.");
-  script_tag(name:"solution", value:"An Update is available from vendor,
-  For updates refer to http://www.aretimes.com/index.php?option=com_content&view=category&layout=blog&id=40&Itemid=113");
+  script_tag(name:"solution", value:"An Update is available from vendor.");
   script_tag(name:"summary", value:"This host is installed with Joomla! with Maian Media Silver
   Component and is prone to multiple SQL injection vulnerabilities.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42284");

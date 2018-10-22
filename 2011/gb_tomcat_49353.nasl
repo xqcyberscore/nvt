@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_49353.nasl 4341 2016-10-25 06:58:20Z cfi $
+# $Id: gb_tomcat_49353.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apache Tomcat AJP Protocol Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:tomcat";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103242");
-  script_version("$Revision: 4341 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:58:20 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-08 12:04:18 +0200 (Thu, 08 Sep 2011)");
   script_bugtraq_id(49353);
   script_cve_id("CVE-2011-3190");
@@ -50,20 +50,12 @@ if (description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
   script_xref(name:"URL", value:"http://tomcat.apache.org/");
 
-  tag_summary = "Apache Tomcat is prone to a security-bypass vulnerability.";
-
-  tag_impact = "Successful exploits will allow attackers to bypass certain security
-  restrictions.";
-
-  tag_affected = "Tomcat 5.5.0 through 5.5.33, Tomcat 6.0.0 through 6.0.33, Tomcat 7.0.0
-  through 7.0.20";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successful exploits will allow attackers to bypass certain security
+  restrictions.");
+  script_tag(name:"affected", value:"Tomcat 5.5.0 through 5.5.33, Tomcat 6.0.0 through 6.0.33, Tomcat 7.0.0
+  through 7.0.20");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Apache Tomcat is prone to a security-bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_orangehrm_lfi_vuln.nasl 11235 2018-09-05 08:57:41Z cfischer $
+# $Id: secpod_orangehrm_lfi_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # OrangeHRM 'PluginController.php' Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:orangehrm:orangehrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902367");
-  script_version("$Revision: 11235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 10:57:41 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/100823/OrangeHRM2.6.3-lfi.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform file
-  inclusion attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  inclusion attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"OrangeHRM version 2.6.3 and prior");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dos.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_avaya_ip_office_mgr_tftp_dos.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Avaya IP Office Manager TFTP Denial of Service Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802011");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_bugtraq_id(47021);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Avaya IP Office Manager TFTP Denial of Service Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43819");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17045/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43819");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17045/");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
@@ -44,23 +44,17 @@ if(description)
   script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow unauthenticated attackers to
-  cause the application to crash.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Avaya Ip Office Manager 8.1, Other versions may also be
+  script_tag(name:"impact", value:"Successful exploitation will allow unauthenticated attackers to
+  cause the application to crash.");
+  script_tag(name:"affected", value:"Avaya Ip Office Manager 8.1, Other versions may also be
   affected.");
-  script_tag(name : "insight" , value : "The flaw is due to an error while handling certain crafted TFTP
+  script_tag(name:"insight", value:"The flaw is due to an error while handling certain crafted TFTP
   write requests, which can be exploited by remote unauthenticated attackers to
   crash an affected application");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.
-
-  A workaround is to restrict access to trusted hosts only (e.g. via MAC-based
-  network access control lists).");
-  script_tag(name : "summary" , value : "The host is running Avaya IP Office Manager TFTP Server and is
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running Avaya IP Office Manager TFTP Server and is
   prone to denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -70,19 +64,13 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("tftp.inc");
 
-## Check fot tftp service
 port = get_kb_item("Services/udp/tftp");
 if(!port){
   port = 69;
 }
 
-## Check Port State
 if(!get_udp_port_state(port)){
   exit(0);
 }
@@ -110,7 +98,6 @@ if(!soc){
 send(socket:soc, data:req);
 info = recv(socket:soc, length:1024);
 
-## Check TFTP is still Alive or not
 res = tftp_get(port:port, path:"bin.cfg");
 if(isnull(res) && "avaya" >!< res) {
   security_message(port: port, proto: "udp");

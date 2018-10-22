@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_iwork_9_1_upd.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_macosx_iwork_9_1_upd.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Apple Mac OS X iWork 9.1 Update
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802146");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2010-3785", "CVE-2010-3786", "CVE-2011-1417");
   script_bugtraq_id(44812, 44799, 46832);
@@ -53,12 +53,12 @@ if(description)
 
   - a memory corruption issue, while handling the 'Excel' files and Microsoft
     Word documents.");
-  script_tag(name:"solution", value:"Apply the update from below link
-  For updates refer to http://support.apple.com/downloads/DL1097/en_US/iWork9.1Update.dmg");
+  script_tag(name:"solution", value:"Apply the update from below link");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Mac OS X iWork 9.1 Update.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads/DL1097/en_US/iWork9.1Update.dmg");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_xml_data_dos_vuln.nasl 4711 2016-12-08 10:12:18Z cfi $
+# $Id: gb_adobe_fms_xml_data_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
 #
 # Adobe Flash Media Server XML Data Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:adobe:flash_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801892");
-  script_version("$Revision: 4711 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 11:12:18 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 11997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_bugtraq_id(47840);
   script_cve_id("CVE-2011-0612");
@@ -47,27 +47,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/1224");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb11-11.html");
 
-  tag_impact = "Successful exploitation will allow remote attackers to cause a denial of
-  service.
-
-  Impact Level: Application";
-
-  tag_affected = "Adobe Flash Media Server version before 3.5.6, and 4.x before 4.0.2.";
-
-  tag_insight = "The flaw is due to an XML data corruption, leading to a denial of
-  service.";
-
-  tag_solution = "Upgrade to Adobe Flash Media Server version 3.5.6, 4.0.2 or later,
-  For updates refer to http://www.adobe.com/support/security/bulletins/apsb11-11.html";
-
-  tag_summary = "This host is running Adobe Flash Media Server and is prone to
-  denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
+  service.");
+  script_tag(name:"affected", value:"Adobe Flash Media Server version before 3.5.6, and 4.x before 4.0.2.");
+  script_tag(name:"insight", value:"The flaw is due to an XML data corruption, leading to a denial of
+  service.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Media Server version 3.5.6, 4.0.2 or later.");
+  script_tag(name:"summary", value:"This host is running Adobe Flash Media Server and is prone to
+  denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -81,7 +68,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for vulnerable versions
 if( version_in_range( version:vers, test_version:"4.0", test_version2:"4.0.1" ) ||
     version_is_less( version:vers, test_version:"3.5.6" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"3.5.6/4.0.2" );

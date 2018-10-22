@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_avi_and_it_file_bof_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: secpod_winamp_avi_and_it_file_bof_vuln.nasl 11987 2018-10-19 11:05:52Z mmartin $
 #
 # Winamp AVI And IT Files Parsing Buffer Overflow Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902652");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11987 $");
   script_cve_id("CVE-2011-4857", "CVE-2011-3834");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:05:52 +0200 (Fri, 19 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-22 12:11:40 +0530 (Thu, 22 Dec 2011)");
   script_name("Winamp AVI And IT Files Parsing Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46882");
@@ -52,8 +52,7 @@ if(description)
 
   - 'in_mod.dll' plugin when parsing a crafted song message data in an Impulse
     Tracker (IT) file.");
-  script_tag(name:"solution", value:"Upgrade to Winamp 5.623 or later,
-  For updates refer to http://www.winamp.com/media-player");
+  script_tag(name:"solution", value:"Upgrade to Winamp 5.623 or later.");
   script_tag(name:"summary", value:"This host is installed with Winamp and is prone to buffer overflow
   vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
@@ -62,6 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.winamp.com/media-player");
   exit(0);
 }
 
