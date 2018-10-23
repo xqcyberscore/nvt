@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_javascript_rce_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_javascript_rce_vuln_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813264");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 12026 $");
   script_cve_id("CVE-2018-14295");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 
@@ -53,9 +53,7 @@ if(description)
     result in remote code execution.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF versions before 9.2 on Windows.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastix_55078.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_elastix_55078.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Elastix 'graph.php' Local File Include Vulnerability
 #
@@ -31,14 +31,14 @@ if (description)
   script_bugtraq_id(55078);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 12021 $");
 
   script_name("Elastix 'graph.php' Local File Include Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55078");
   script_xref(name:"URL", value:"http://www.elastix.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-18 12:55:37 +0200 (Sat, 18 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,7 +55,7 @@ An attacker can exploit this vulnerability to view files and execute
 local scripts in the context of the web server process. This may aid
 in further attacks.
 
-Elastix 2.2.0 is vulnerable; other versions may also be affected.");
+Elastix 2.2.0 is vulnerable. Other versions may also be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
 remove the product or replace the product by another one.");

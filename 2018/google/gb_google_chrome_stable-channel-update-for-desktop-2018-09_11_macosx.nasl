@@ -1,5 +1,6 @@
-##############################################################################                                                                  # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_macosx.nasl 11434 2018-09-17 12:53:25Z bshakeel $
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_macosx.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-09_11)-Mac OS X
 #
@@ -28,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814018");
-  script_version("$Revision: 11434 $");
+  script_version("$Revision: 12025 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 14:53:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 11:22:42 +0530 (Mon, 17 Sep 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-09_11)-Mac OS X");
 

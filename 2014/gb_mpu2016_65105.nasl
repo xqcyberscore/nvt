@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mpu2016_65105.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_mpu2016_65105.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Emerson Network Power Avocent MergePoint Unity 2016 KVM Directory Traversal Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/h:emerson:network_power_avocent_mergepoint_unity_2016_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103894");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 12021 $");
   script_bugtraq_id(65105);
   script_cve_id("CVE-2013-6030");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 19:06:00 +0100 (Mon, 27 Jan 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"summary", value:"Emerson Network Power Avocent MergePoint Unity 2016 KVM is prone to a
   directory-traversal vulnerability because it fails to sufficiently sanitize user-supplied input.");
   script_tag(name:"affected", value:"Emerson Network Power Avocent MergePoint Unity 2016 KVM firmware
-  1.9.16473 is vulnerable; other versions may also be affected.");
+  1.9.16473 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

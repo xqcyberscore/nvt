@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1548.nasl 11988 2018-10-19 11:11:15Z cfischer $
+# $Id: deb_dla_1548.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # Auto-generated from advisory DLA 1548-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891548");
-  script_version("$Revision: 11988 $");
+  script_version("$Revision: 12033 $");
   script_cve_id("CVE-2018-10933");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1548-1] libssh security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:11:15 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-19 00:00:00 +0200 (Fri, 19 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

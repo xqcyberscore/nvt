@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_code_exec_vuln_may18_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_mult_code_exec_vuln_may18_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Foxit PhantomPDF Multiple Code Execution Vulnerabilities - May18 (Windows)
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812896");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-5674", "CVE-2018-5677", "CVE-2018-5676", "CVE-2018-5675",
                 "CVE-2018-5678", "CVE-2018-5680", "CVE-2018-5679", "CVE-2018-7407",
                 "CVE-2018-7406");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 13:43:57 +0530 (Fri, 25 May 2018)");
   script_name("Foxit PhantomPDF Multiple Code Execution Vulnerabilities - May18 (Windows)");
 
@@ -53,9 +53,7 @@ if(description)
     file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF versions before 9.1 on
   windows.");

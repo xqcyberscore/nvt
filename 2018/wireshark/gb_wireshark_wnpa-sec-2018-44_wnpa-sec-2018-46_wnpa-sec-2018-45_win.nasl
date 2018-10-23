@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45_win.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_wireshark_wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Wireshark Security Updates (wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45) Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813881");
-  script_version("$Revision: 11231 $");
+  script_version("$Revision: 12026 $");
   script_cve_id("CVE-2018-16058", "CVE-2018-16057", "CVE-2018-16056");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 15:44:50 +0530 (Fri, 31 Aug 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45) Windows");
 
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to crash the affected application or to consume excess memory, denying service
-  to legitimate users.
-
-  Impact Level: Application.");
+  to legitimate users.");
 
   script_tag(name:"affected", value:"Wireshark version 2.6.0 to 2.6.2, 2.4.0 to
   2.4.8 and 2.2.0 to 2.2.16 on Windows.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_web_app_installers.nasl 10166 2018-06-12 13:40:00Z jschulte $
+# $Id: gb_unprotected_web_app_installers.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Unprotected Web App Installers (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107307");
-  script_version("$Revision: 10166 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 15:40:00 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 12:00:20 +0200 (Mon, 07 May 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl", "sw_magento_detect.nasl",
                       "secpod_wordpress_detect_900182.nasl", "osticket_detect.nasl", "gb_dotnetnuke_detect.nasl",
                       "secpod_tikiwiki_detect.nasl", "gb_nuxeo_platform_detect.nasl", "gb_owncloud_detect.nasl");
-  script_require_ports("Services/www", 80 );
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script attempts to identify installation pages of various

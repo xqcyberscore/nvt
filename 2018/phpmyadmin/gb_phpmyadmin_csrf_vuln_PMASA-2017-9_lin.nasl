@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2017-9_lin.nasl 8367 2018-01-11 07:32:43Z cfischer $
+# $Id: gb_phpmyadmin_csrf_vuln_PMASA-2017-9_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin XSRF/CSRF Vulnerability - PMASA-2017-9 (Linux)
 #
 # Authors:
-# Shakeel <bshakeel@secpod.com> 
+# Shakeel <bshakeel@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,36 +29,32 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812374");
-  script_version("$Revision: 8367 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2017-1000499");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 08:32:43 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 12:48:13 +0530 (Wed, 03 Jan 2018)");
   script_name("phpMyAdmin XSRF/CSRF Vulnerability - PMASA-2017-9 (Linux)");
 
-  script_tag(name: "summary" , value:"This host is running phpMyAdmin and is
+  script_tag(name:"summary", value:"This host is running phpMyAdmin and is
   prone to cross site request forgery vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as certain requests were
+  script_tag(name:"insight", value:"The flaw exists as certain requests were
   not protected against CSRF attack.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to perform harmful database operations such as
-  deleting records, dropping/truncating tables, etc.
+  deleting records, dropping/truncating tables, etc.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"phpMyAdmin versions 4.7.x prior to 4.7.7");
 
-  script_tag(name: "affected" , value: "phpMyAdmin versions 4.7.x prior to 4.7.7");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.7.7 or
+  later.");
 
-  script_tag(name: "solution" , value: "Upgrade to phpMyAdmin version 4.7.7 or
-  later. For updates refer to,
-  https://www.phpmyadmin.net");
-
-  script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2017-9/");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2017-9/");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

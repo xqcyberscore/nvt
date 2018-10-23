@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_file_incl_vuln_PMASA-2018-4_lin.nasl 11109 2018-08-24 14:47:20Z mmartin $
+# $Id: gb_phpmyadmin_file_incl_vuln_PMASA-2018-4_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin File Inclusion Vulnerability (PMASA-2018-4)-Linux
 #
@@ -30,29 +30,26 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813452");
-  script_version("$Revision: 11109 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-12613");
   script_bugtraq_id(104532);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 17:47:09 +0530 (Tue, 26 Jun 2018)");
   script_name("phpMyAdmin File Inclusion Vulnerability (PMASA-2018-4)-Linux");
 
   script_tag(name:"summary", value:"The host is installed with phpMyAdmin and
   is prone to a file inclusion vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error from a portion
   of code where pages are redirected and loaded within phpMyAdmin and an improper
   test for whitelisted pages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to view and potentially execute files on the server.
-
-  Impact Level: System/Application");
+  to view and potentially execute files on the server.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.8.0 and 4.8.1 on Linux");
 

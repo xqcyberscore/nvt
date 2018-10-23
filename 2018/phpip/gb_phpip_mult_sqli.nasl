@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpip_mult_sqli.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_phpip_mult_sqli.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpIP Management 'CVE-2008-0538' Multiple SQL Injection Vulnerabilities
 #
@@ -33,10 +33,10 @@ CPE = "cpe:/a:phpip:phpip_management";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108432");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12025 $");
   script_bugtraq_id(27468);
   script_cve_id("CVE-2008-0538");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:36:56 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -63,11 +63,11 @@ if(description)
   script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to compromise the
   application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
-  script_tag(name:"affected", value:"These issues affect phpIP Management 4.3.2; other versions may also be vulnerable.");
+  script_tag(name:"affected", value:"These issues affect phpIP Management 4.3.2. Other versions may also be vulnerable.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this
-  vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable
-  respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");

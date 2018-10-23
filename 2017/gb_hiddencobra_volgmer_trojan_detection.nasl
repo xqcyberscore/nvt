@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hiddencobra_volgmer_trojan_detection.nasl 7970 2017-12-01 10:03:22Z asteins $
+# $Id: gb_hiddencobra_volgmer_trojan_detection.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # HIDDEN COBRA Trojan 'Volgmer' Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112144");
-  script_version("$Revision: 7970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 11:03:22 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 16:06:33 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"insight", value:"As a backdoor Trojan, Volgmer has several capabilities including: gathering system information, updating service registry keys,
 downloading and uploading files, executing commands, terminating processes, and listing directories.
 
-It is suspected that spear phishing is the primary delivery mechanism for Volgmer infections; however, HIDDEN COBRA actors use a suite of custom tools,
+It is suspected that spear phishing is the primary delivery mechanism for Volgmer infections. However, HIDDEN COBRA actors use a suite of custom tools,
 some of which could also be used to initially compromise a system. Therefore, it is possible that additional HIDDEN COBRA malware may be present on network infrastructure compromised with Volgmer.
 
 Volgmer payloads have been observed in 32-bit form as either executables or dynamic-link library (.dll) files.

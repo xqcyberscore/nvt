@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_header_inj_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_concrete5_header_inj_vuln.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Concrete5 Header Injection and CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106762");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 09:03:26 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if (description)
 
   - Concrete5 places incorrect trust in the HTTP Host header during caching, if
 the administrator did not define a 'canonical' URL on installation of Concrete5 using the 'Advanced Options'
-settings. Remote attackers can make a GET request with any domain name in the Host header; this is stored and
+settings. Remote attackers can make a GET request with any domain name in the Host header. This is stored and
 allows for arbitrary domains to be set for certain links displayed to subsequent visitors, potentially an XSS
 vector.
 

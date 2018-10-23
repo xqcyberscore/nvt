@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_znc_66926.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_znc_66926.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # ZNC NULL Pointer Dereference Denial Of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111033");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-29 12:00:00 +0200 (Sat, 29 Aug 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to crash the application,
   denying service to legitimate users.");
 
-  script_tag(name:"affected", value:"ZNC 1.2 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"ZNC 1.2 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 

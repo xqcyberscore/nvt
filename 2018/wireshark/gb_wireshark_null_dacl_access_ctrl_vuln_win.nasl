@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_null_dacl_access_ctrl_vuln_win.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_wireshark_null_dacl_access_ctrl_vuln_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Wireshark 'non-NULL DACL' Access Control Vulnerability (Windows)
 #
@@ -29,38 +29,35 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813590");
-  script_version("$Revision: 10692 $");
+  script_version("$Revision: 12026 $");
   script_cve_id("CVE-2018-14438");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-30 16:30:27 +0530 (Mon, 30 Jul 2018)");
   script_name("Wireshark 'non-NULL DACL' Access Control Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to access control vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to create_app_running_mutex
+  script_tag(name:"insight", value:"The flaw exists due to create_app_running_mutex
   function in wsutil/file_util.c calling SetSecurityDescriptorDacl to set
   a NULL DACL.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to modify the access control arbitrarily.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to modify the access control arbitrarily.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Wireshark version through 2.6.2 on Windows.");
 
-  script_tag(name: "affected" , value: "Wireshark version through 2.6.2 on Windows.");
-
-  script_tag(name: "solution" , value: "No known solution is available as of
+  script_tag(name:"solution", value:"No known solution is available as of
   30th July, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to Reference links.");
 
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14921");
-  script_xref(name : "URL" , value : "https://www.wireshark.org"); 
- 
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=14921");
+  script_xref(name:"URL", value:"https://www.wireshark.org");
+
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);

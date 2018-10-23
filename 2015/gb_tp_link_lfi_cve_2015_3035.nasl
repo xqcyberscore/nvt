@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Multiple TP-LINK Products Local File Include Vulnerability
 #
@@ -31,9 +31,9 @@ if(description)
   script_cve_id("CVE-2015-3035");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11831 $");
+  script_version("$Revision: 12021 $");
   script_name("Multiple TP-LINK Products Local File Include Vulnerabilit");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 16:25:11 +0200 (Fri, 10 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to obtain potentially
   sensitive information and execute arbitrary local scripts in the context of the webserver process.
-  This may allow the attacker to compromise the application and the computer; other attacks are also
+  This may allow the attacker to compromise the application and the computer. Other attacks are also
   possible.");
 
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");

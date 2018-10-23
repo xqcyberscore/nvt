@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_vuln_july18_lin.nasl 11444 2018-09-18 07:17:07Z cfischer $
+# $Id: gb_clamav_mult_vuln_july18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # ClamAV Multiple Vulnerabilities July18 (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813578");
-  script_version("$Revision: 11444 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-0360", "CVE-2018-0361");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 15:54:58 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ClamAV Multiple Vulnerabilities July18 (Linux)");
@@ -42,20 +42,17 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with ClamAV and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - A lack PDF object length check.
- 
+
   - HWP integer overflow error in function 'parsehwp3_paragraph' in file
     libclamav/hwp.c.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause denial of service and lengthen file parsing time.
-
-  Impact Level: Application");
+  to cause denial of service and lengthen file parsing time.");
 
   script_tag(name:"affected", value:"ClamAV version before 0.100.1 on Linux");
 
@@ -64,14 +61,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://blog.clamav.net/2018/07/clamav-01001-has-been-released.html");
-  script_xref(name : "URL" , value : "https://secuniaresearch.flexerasoftware.com/secunia_research/2018-12/");
-  script_xref(name : "URL" , value : "https://www.clamav.net/");
+  script_xref(name:"URL", value:"https://blog.clamav.net/2018/07/clamav-01001-has-been-released.html");
+  script_xref(name:"URL", value:"https://secuniaresearch.flexerasoftware.com/secunia_research/2018-12/");
+  script_xref(name:"URL", value:"https://www.clamav.net/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ClamAV/remote/Ver","Host/runs_unixoide");
+  script_mandatory_keys("ClamAV/remote/Ver", "Host/runs_unixoide");
   script_require_ports(3310);
   exit(0);
 }

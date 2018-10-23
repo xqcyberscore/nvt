@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_info_disclosure_may18.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_zabbix_info_disclosure_may18.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Zabbix Server Information Disclosure Vulnerability May18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812869");
-  script_version("$Revision: 11759 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2017-2826");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:58:57 +0530 (Wed, 02 May 2018)");
 
   script_name("Zabbix Server Information Disclosure Vulnerability May18");
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"The host is installed with Zabbix server and
   is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Zabbix server unable
   to sanitize against a specially crafted iConfig proxy request.");

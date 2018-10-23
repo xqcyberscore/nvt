@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_feb18_lin.nasl 9401 2018-04-09 07:11:51Z cfischer $
+# $Id: gb_phpmyadmin_xss_vuln_feb18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # phpMyAdmin Cross-Site Scripting Vulnerability(PMASA-2018-1)-Linux
 #
@@ -30,34 +30,30 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812813");
-  script_version("$Revision: 9401 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-7260");
   script_bugtraq_id(103099);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:11:51 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 12:56:43 +0530 (Wed, 28 Feb 2018)");
   script_name("phpMyAdmin Cross-Site Scripting Vulnerability(PMASA-2018-1)-Linux");
-  
+
   script_tag(name:"summary", value:"The host is installed with phpMyAdmin and
   is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an invalidated 
+  script_tag(name:"insight", value:"The flaw exists due to an invalidated
   variable total_rows of db_central_columns.php page");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to inject arbitrary web script or HTML via a crafted URL.
-
-  Impact Level: Application");
+  attacker to inject arbitrary web script or HTML via a crafted URL.");
 
   script_tag(name:"affected", value:"phpMyAdmin version 4.7.x prior to 4.7.8 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.7.8 or later.
-  For updates refer to https://www.phpmyadmin.net");
-  
+  script_tag(name:"solution", value:"Upgrade to version 4.7.8 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2018-1");

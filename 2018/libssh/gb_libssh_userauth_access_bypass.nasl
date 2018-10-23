@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libssh_userauth_access_bypass.nasl 11934 2018-10-17 07:20:09Z cfischer $
+# $Id: gb_libssh_userauth_access_bypass.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # libssh Server 'CVE-2018-10933' Authentication Bypass
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:libssh:libssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108473");
-  script_version("$Revision: 11934 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:20:09 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 08:58:02 +0200 (Wed, 17 Oct 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_cve_id("CVE-2018-10933");
   script_name("libssh Server 'CVE-2018-10933' Authentication Bypass");
   script_category(ACT_GATHER_INFO);

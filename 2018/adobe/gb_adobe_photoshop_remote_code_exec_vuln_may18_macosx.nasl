@@ -1,5 +1,6 @@
-###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_remote_code_exec_vuln_may18_macosx.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_adobe_photoshop_remote_code_exec_vuln_may18_macosx.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)
 #
@@ -29,11 +30,11 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812890");
-  script_version("$Revision: 11416 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-4946");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 11:46:20 +0530 (Wed, 16 May 2018)");
   script_name("Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)");
 
@@ -106,4 +107,4 @@ if(fix)
   security_message(data:report);
 }
 
-exit(0); 
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213638.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_ms_kb3213638.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB3213638)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811663");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8676", "CVE-2017-8682", "CVE-2017-8695");
   script_bugtraq_id(100755, 100772, 100773);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:42:17 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB3213638)");
 
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to retrieve information from a targeted system. By itself, the information
-  disclosure does not allow arbitrary code execution; however, it could allow
+  disclosure does not allow arbitrary code execution. However, it could allow
   arbitrary code to be run if the attacker uses it in combination with another
   vulnerability.");
 

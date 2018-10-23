@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rsh.nasl 11522 2018-09-21 13:34:05Z cfischer $
+# $Id: rsh.nasl 12037 2018-10-23 12:45:32Z cfischer $
 #
-# Check for rsh Service
+# rsh Service Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -26,32 +26,23 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.100080");
-  script_version("$Revision: 11522 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:34:05 +0200 (Fri, 21 Sep 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.108478");
+  script_version("$Revision: 12037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:45:32 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 19:23:59 +0100 (Thu, 26 Mar 2009)");
-  #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
-  #However we still should report such a configuration issue with a criticality so this has been commented
-  #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #  script_cve_id("CVE-1999-0651");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_name("Check for rsh Service");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("rsh Service Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Useless services");
+  script_family("Service detection");
   script_dependencies("find_service1.nasl");
   script_require_ports("Services/rsh", "Services/unknown", 514);
 
-  script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0651");
+  script_tag(name:"summary", value:"Checks if the remote host is running a rsh service.
 
-  script_tag(name:"solution", value:"Disable rsh and use ssh instead.");
-  script_tag(name:"summary", value:"rsh Service is running at this Host.
-  rsh (remote shell) is a command line computer program which can execute
-  shell commands as another user, and on another computer across a computer
-  network.");
+  Note: The reporting takes place in a separate VT 'rsh Service Reporting' (OID: 1.3.6.1.4.1.25623.1.0.100080).");
 
-  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -77,7 +68,7 @@ ports = make_list_unique( ports );
 
 foreach port( ports ) {
 
-  vuln = FALSE;
+  found = FALSE;
 
   if( ! get_port_state( port ) ) continue;
   if( ! soc = open_priv_sock_tcp( dport:port ) ) continue;
@@ -89,26 +80,25 @@ foreach port( ports ) {
 
   # TODO/TBD: Add additional detection pattern?
   if( "Permission denied" >< buf ) {
-    vuln = TRUE;
+    found = TRUE;
     report = "The rsh service is not allowing connections from this host.";
   } else if ( egrep( pattern:"uid=[0-9]+.*gid=[0-9]+.*", string:bin2string( ddata:buf ) ) ) {
-    vuln = TRUE;
+    found = TRUE;
     set_kb_item( name:"rsh/login_from", value:"root" );
     set_kb_item( name:"rsh/login_to", value:"root" );
     report = "The rsh service is misconfigured so it is allowing conntections without a password or with default root:root credentials.";
   } else if( "getnameinfo: Temporary failure in name resolution" >< buf ) {
-    vuln = TRUE;
+    found = TRUE;
     report = "The rsh service currently has issues with name resolution and is not allowing connections from this host.";
   }
 
-  if( vuln ) {
-    set_kb_item( name:"rsh/active", value:TRUE );
+  if( found ) {
+    set_kb_item( name:"rsh/detected", value:TRUE );
+    set_kb_item( name:"rsh/" + port + "/detected", value:TRUE );
+    set_kb_item( name:"rsh/" + port + "/service_report", value:report );
     register_service( port:port, proto:"rsh" );
-    security_message( port:port, data:report );
+    log_message( port:port, data:"A rsh service is running at this port." );
   }
 }
 
-if( vuln )
-  exit( 0 );
-else
-  exit( 99 );
+exit( 0 );

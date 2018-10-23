@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 12038 2018-10-23 12:58:19Z asteins $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 11900 $");
+  script_version("$Revision: 12038 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:58:19 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");
@@ -58,12 +58,13 @@ if(description)
 
   script_tag(name:"affected", value:"Tiandy IP cameras version 5.56.17.120.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3444");
 

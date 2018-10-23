@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_an_guestbook_lfi_vuln.nasl 12013 2018-10-22 09:25:12Z cfischer $
+# $Id: gb_an_guestbook_lfi_vuln.nasl 12022 2018-10-23 05:31:56Z cfischer $
 #
 # AN Guestbook Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:an_guestbook:an_guestbook";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800526");
-  script_version("$Revision: 12013 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:25:12 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 07:31:56 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -70,6 +70,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

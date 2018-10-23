@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_21957.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: sw_firepass_21957.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # F5 Firepass Multiple Input Validation Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111016");
-  script_version("$Revision: 11218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,7 @@ if(description)
   These issues include information-disclosure, security bypass, and cross-site scripting vulnerabilities.");
   script_tag(name:"impact", value:"An attacker can exploit these issues to bypass security restrictions,
   to view sensitive information, and to steal cookie-based authentication credentials. This may allow the
-  attacker to compromise the application and the underlying system; other attacks are also possible.");
+  attacker to compromise the application and the underlying system. Other attacks are also possible.");
   script_tag(name:"affected", value:"F5 Firepass from 5.4.0 to 5.5.1 and 6.0.0.");
   script_tag(name:"solution", value:"The vendor has released updates listened in the referred advisory.");
 

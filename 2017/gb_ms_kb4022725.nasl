@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022725.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_ms_kb4022725.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022725)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811167");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8474", "CVE-2017-8524", "CVE-2017-8527", "CVE-2017-8475",
                 "CVE-2017-8476", "CVE-2017-8529", "CVE-2017-8530", "CVE-2017-0282",
                 "CVE-2017-0283", "CVE-2017-8477", "CVE-2017-8478", "CVE-2017-8531",
@@ -53,7 +53,7 @@ if(description)
                     98818, 98843, 98833, 98895);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 13:30:05 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022725)");
 
@@ -68,7 +68,7 @@ if(description)
     timeouts of Surface Hub's cleanup operation.
 
   - An issue with a race condition that prevents Cortana cross-device
-    notification reply from working; users will not be able to use the
+    notification reply from working. Users will not be able to use the
     remote toast activation feature set.
 
   - An issue with the Privacy Separator feature of a Wireless Access Point

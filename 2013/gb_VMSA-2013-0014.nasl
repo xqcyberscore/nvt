@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0014.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_VMSA-2013-0014.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation
 #
@@ -31,13 +31,13 @@ if (description)
   script_cve_id("CVE-2013-3519");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 12021 $");
   script_name("VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0014.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-05 11:04:01 +0100 (Thu, 05 Dec 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -53,7 +53,7 @@ handling of control code in lgtosync.sys. A local malicious user may
 exploit this vulnerability to manipulate the memory allocation. This
 could result in a privilege escalation on 32-bit Guest Operating
 Systems running Windows 2000 Server, Windows XP or Windows 2003 Server
-on ESXi and ESX; or Windows XP on Workstation and Fusion.
+on ESXi and ESX, or Windows XP on Workstation and Fusion.
 
 The vulnerability does not allow for privilege escalation from the
 Guest Operating System to the host. This means that host memory can

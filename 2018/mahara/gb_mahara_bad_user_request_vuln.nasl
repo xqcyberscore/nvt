@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_bad_user_request_vuln.nasl 10251 2018-06-19 09:58:09Z jschulte $
+# $Id: gb_mahara_bad_user_request_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Mahara <18.10.0 Mishandled User Requests Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112306");
-  script_version("$Revision: 10251 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 11:58:09 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 11:22:16 +0200 (Thu, 14 Jun 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://bugs.launchpad.net/mahara/+bug/1422492");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mahara:mahara";

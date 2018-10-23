@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813156");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 12026 $");
   script_cve_id("CVE-2017-14458", "CVE-2017-17557", "CVE-2018-10302", "CVE-2018-10303",
                 "CVE-2018-10473", "CVE-2018-10474", "CVE-2018-10475", "CVE-2018-10476",
                 "CVE-2018-10477", "CVE-2018-10478", "CVE-2018-10479", "CVE-2018-10480",
@@ -57,7 +57,7 @@ if(description)
                 "CVE-2018-9984", "CVE-2018-3924", "CVE-2018-3939");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 14:35:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)");
 
@@ -103,9 +103,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service condition, execute arbitrary code and
-  gain access to sensitive data from memory.
-
-  Impact Level: System/Application");
+  gain access to sensitive data from memory.");
 
   script_tag(name:"affected", value:"Foxit Reader versions 9.0.1.1049 and prior on windows");
 

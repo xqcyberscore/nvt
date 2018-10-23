@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_rce_vuln_jul17.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_ms_security_essentials_rce_vuln_jul17.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Security Essentials Remote Code Execution Vulnerability Jul17
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811492");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8558");
   script_bugtraq_id(99262);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 14:07:22 +0530 (Fri, 14 Jul 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Security Essentials Remote Code Execution Vulnerability Jul17");
@@ -48,8 +48,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code in the security context of the LocalSystem account and
-  take control of the system. An attacker could then install programs; view, change,
-  or delete data; or create new accounts with full user rights.");
+  take control of the system. An attacker could then install programs. View, change,
+  or delete data or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Security Essentials");
 

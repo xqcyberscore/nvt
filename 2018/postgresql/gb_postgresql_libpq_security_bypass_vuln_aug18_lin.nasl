@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_libpq_security_bypass_vuln_aug18_lin.nasl 11884 2018-10-12 13:33:40Z cfischer $
+# $Id: gb_postgresql_libpq_security_bypass_vuln_aug18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # PostgreSQL 'libpq' Security Bypass Vulnerability Aug18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813752");
-  script_version("$Revision: 11884 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-10915");
   script_bugtraq_id(105054);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 18:05:39 +0530 (Mon, 13 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL 'libpq' Security Bypass Vulnerability Aug18 (Linux)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to bypass client-side connection security features and obtain access to higher
-  privileged connections or potentially cause other possible impact.
-
-  Impact Level: Application");
+  privileged connections or potentially cause other possible impact.");
 
   script_tag(name:"affected", value:"PostgreSQL versions before 10.5, 9.6.10,
   9.5.14, 9.4.19 and 9.3.24 on Linux.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_mult_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Foxit PhantomPDF 7.3.4.311 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113108");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"https://fortiguard.com/zeroday/FG-VD-16-021");
   script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:foxitsoftware:phantompdf";

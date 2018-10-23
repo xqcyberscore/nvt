@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_magento_xss_vuln.nasl 12038 2018-10-23 12:58:19Z asteins $
 #
 # Magento 1.9.0.1 Cross-Site Scripting Vulnerability
 #
@@ -30,16 +30,16 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112055");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 12038 $");
   script_cve_id("CVE-2014-9758");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:58:19 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Magento 1.9.0.1 Cross-Site Scripting Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"summary", value:"Magento Web E-Commerce Platform is prone to a cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Several Adobe Flash files that ship with Magento are vulnerable to DOM based Cross Site Scripting (XSS).");
 
@@ -61,11 +61,11 @@ if(description)
 
   script_tag(name:"affected", value:"Magento E-Commerce version 1.9.0.1.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/12/05/4");
-  script_xref(name:"URL", value:"http://appcheck-ng.com/unpatched-vulnerabilities-in-magento-e-commerce-platform/");
 
   exit(0);
 }
@@ -80,7 +80,7 @@ if (!ver = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_equal(version: ver, test_version: "1.9.0.1")) {
-  report = report_fixed_ver(installed_version: ver, fixed_version: "None");
+  report = report_fixed_ver(installed_version: ver, fixed_version: "WillNotFix");
   security_message(port: port, data: report);
   exit(0);
 }

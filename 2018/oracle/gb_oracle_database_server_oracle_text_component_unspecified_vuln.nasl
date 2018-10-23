@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_server_oracle_text_component_unspecified_vuln.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_oracle_database_server_oracle_text_component_unspecified_vuln.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # Oracle Database Server 'Oracle Text' Component Unspecified Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814142");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 12033 $");
   script_cve_id("CVE-2018-3299");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 12:25:37 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Database Server 'Oracle Text' Component Unspecified Vulnerability");
 

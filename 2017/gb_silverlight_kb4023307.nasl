@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_kb4023307.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_silverlight_kb4023307.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Silverlight Multiple Remote Code Execution Vulnerabilities (KB4023307)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810909");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0283", "CVE-2017-8527");
   script_bugtraq_id(63676);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:21:37 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Silverlight Multiple Remote Code Execution Vulnerabilities (KB4023307)");
 
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allow an attacker
   to take control of the affected system. An attacker could then install
-  programs; view, change, or delete data; or create new accounts with full user
+  programs. View, change, or delete data or create new accounts with full user
   rights.");
 
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Windows.");

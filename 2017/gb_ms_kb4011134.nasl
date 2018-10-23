@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011134.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_ms_kb4011134.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office Word Viewer Multiple Vulnerabilities (KB4011134)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811697");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8676", "CVE-2017-8682", "CVE-2017-8695");
   script_bugtraq_id(100755, 100772, 100773);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-14 16:41:31 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Office Word Viewer Multiple Vulnerabilities (KB4011134)");
 
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to retrieve information from a targeted system. By itself, the information
-  disclosure does not allow arbitrary code execution; however, it could allow
+  disclosure does not allow arbitrary code execution. However, it could allow
   arbitrary code to be run if the attacker uses it in combination with another
   vulnerability.");
 

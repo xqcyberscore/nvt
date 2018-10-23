@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_info_disc_vuln_feb18_lin.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_postgresql_info_disc_vuln_feb18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # PostgreSQL Information Disclosure Vulnerability-Feb18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812955");
-  script_version("$Revision: 9094 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-1053");
   script_bugtraq_id(102986);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 11:16:50 +0530 (Wed, 28 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Information Disclosure Vulnerability-Feb18 (Linux)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running PostgreSQL and is
   prone to a information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the application creates
   temporary files in an insecure manner, where all temporary files made with
@@ -51,33 +50,31 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated attacker to gain access to sensitive information that may aid
-  in further attacks.
-
-  Impact Level: Application");
+  in further attacks.");
 
   script_tag(name:"affected", value:"PostgreSQL version 9.3.x before 9.3.21,
   9.4.x before 9.4.16, 9.5.x before 9.5.11, 9.6.x before 9.6.7 and 10.x before
   10.2 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PostgreSQL version 10.2 or 9.6.7
-  or 9.5.11 or 9.4.16 or 9.3.21 or later.
-  For updates refer to http://www.postgresql.org/download");
+  or 9.5.11 or 9.4.16 or 9.3.21 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.postgresql.org/about/news/1829");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/docs/current/static/release-10-2.html");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/docs/current/static/release-9-6-7.html");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/docs/current/static/release-9-5-11.html");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/docs/current/static/release-9-4-16.html");
-  script_xref(name : "URL" , value : "https://www.postgresql.org/docs/current/static/release-9-3-21.html");
+  script_xref(name:"URL", value:"https://www.postgresql.org/about/news/1829");
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/current/static/release-10-2.html");
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/current/static/release-9-6-7.html");
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/current/static/release-9-5-11.html");
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/current/static/release-9-4-16.html");
+  script_xref(name:"URL", value:"https://www.postgresql.org/docs/current/static/release-9-3-21.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
-  script_dependencies("postgresql_detect.nasl","os_detection.nasl");
-  script_mandatory_keys("PostgreSQL/installed","Host/runs_unixoide");
+  script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_unixoide");
   script_require_ports("Services/postgresql", 5432);
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

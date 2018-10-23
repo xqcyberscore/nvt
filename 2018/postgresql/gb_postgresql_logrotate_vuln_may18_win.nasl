@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_logrotate_vuln_may18_win.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: gb_postgresql_logrotate_vuln_may18_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # PostgreSQL logrotate Vulnerability - May18 (Windows)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:postgresql:postgresql';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141083");
-  script_version("$Revision: 10262 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-11 16:05:24 +0700 (Fri, 11 May 2018)");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-11 16:05:24 +0700 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
 
   script_cve_id("CVE-2018-1115");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("PostgreSQL logrotate Vulnerability - May18 (Windows)");
 
@@ -48,20 +48,20 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Databases");
-  script_dependencies("postgresql_detect.nasl","os_detection.nasl");
-  script_mandatory_keys("PostgreSQL/installed","Host/runs_windows");
+  script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "PostgreSQL is vulnerable in the adminpack extension, the
+  script_tag(name:"summary", value:"PostgreSQL is vulnerable in the adminpack extension, the
 pg_catalog.pg_logfile_rotate() function doesn't follow the same ACLs than pg_rorate_logfile. If the adminpack is
 added to a database, an attacker able to connect to it could exploit this to force log rotation.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "PostgreSQL version 9.3.x, 9.4.x, 9.5.x, 9.6.x and 10.x.");
+  script_tag(name:"affected", value:"PostgreSQL version 9.3.x, 9.4.x, 9.5.x, 9.6.x and 10.x.");
 
-  script_tag(name: "solution", value: "Update to version 10.4, 9.6.9, 9.5.13, 9.4.18, 9.3.23 or later.");
+  script_tag(name:"solution", value:"Update to version 10.4, 9.6.9, 9.5.13, 9.4.18, 9.3.23 or later.");
 
-  script_xref(name: "URL", value: "https://www.postgresql.org/about/news/1851/");
+  script_xref(name:"URL", value:"https://www.postgresql.org/about/news/1851/");
 
   exit(0);
 }

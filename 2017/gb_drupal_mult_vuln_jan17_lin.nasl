@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_jan17_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_drupal_mult_vuln_jan17_lin.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Drupal Multiple Vulnerabilities Jan17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108101");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-6377", "CVE-2017-6379", "CVE-2017-6381");
   script_bugtraq_id(96919);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 11:54:37 +0100 (Fri, 17 Mar 2017)");
   script_name("Drupal Multiple Vulnerabilities Jan17 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker can exploit these issues
   to bypass certain security restrictions, perform unauthorized actions,
-  and execute arbitrary code; Failed exploit attempts may result in a
+  and execute arbitrary code. Failed exploit attempts may result in a
   denial of service condition.");
 
   script_tag(name:"affected", value:"Drupal core 8.x versions prior to 8.2.7");

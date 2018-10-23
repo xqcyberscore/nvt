@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_sql_inj_dec17.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_piwigo_sql_inj_dec17.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Piwigo Sql Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107271");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-11 11:11:04 +0700 (Mon, 11 Dec 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name:"insight", value:"Values of the edit_list parameters are not sanitized; these are used to construct an SQL query and retrieve a list of registered users into the application.
+  script_tag(name:"insight", value:"Values of the edit_list parameters are not sanitized. These are used to construct an SQL query and retrieve a list of registered users into the application.
 
   Another sql injection is possible in admin/tags.php in the administration panel, via the tags array parameter in an admin.php?page=tags request. The attacker must be an administrator.");
 

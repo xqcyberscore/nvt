@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_zcs_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_zimbra_zcs_xss_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Zimbra ZCS XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113085");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 15:45:55 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -65,7 +65,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.compass-security.com/fileadmin/Datein/Research/Advisories/CSNC-2018-001_zimbra_stored_xss.txt");
   script_xref(name:"URL", value:"https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034658.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_ms_kb4034658.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4034658)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811277");
-  script_version("$Revision: 11900 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0174", "CVE-2017-0250", "CVE-2017-0293", "CVE-2017-8503",
                 "CVE-2017-8591", "CVE-2017-8593", "CVE-2017-8620", "CVE-2017-8623",
                 "CVE-2017-8624", "CVE-2017-8625", "CVE-2017-8633", "CVE-2017-8635",
@@ -42,7 +42,7 @@ if(description)
                     100037, 100085, 100089, 100072, 100068, 100070, 100071);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:31:54 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4034658)");
 
@@ -92,7 +92,7 @@ if(description)
   attacker to gain the same user rights as the current user, take control
   of the affected system, cause the host server to crash, run unsigned
   malicious code as though it were signed by a trusted source, run processes
-  in an elevated context, install programs; view, change, or delete data
+  in an elevated context, install programs. View, change, or delete data
   or create new accounts with full user rights and gain access to sensitive
   information.");
 

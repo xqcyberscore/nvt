@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4014982.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_dotnet_framework_kb4014982.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014982)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810697");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0160");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 11:30:09 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014982)");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to take control of an affected system. An attacker could then install
-  programs; view, change, or delete data; or create new accounts with full user
+  programs. View, change, or delete data, or create new accounts with full user
   rights.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5

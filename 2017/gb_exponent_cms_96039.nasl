@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_96039.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_exponent_cms_96039.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Exponent CMS 'source_selector.php' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108077");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-5879");
   script_bugtraq_id(96039);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-08 11:31:19 +0100 (Wed, 08 Feb 2017)");
   script_name("Exponent CMS 'source_selector.php' SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -63,7 +63,7 @@ if(description)
   attackers to e.g dump database data out to a malicious server, using an
   out-of-band technique, such as select_loadfile().");
 
-  script_tag(name:"affected", value:"Exponent CMS 2.4.1 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Exponent CMS 2.4.1 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution", value:"Update to version 2.4.1 Patch #2 or later.");
 

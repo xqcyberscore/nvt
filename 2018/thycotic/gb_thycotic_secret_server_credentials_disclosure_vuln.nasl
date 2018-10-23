@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thycotic_secret_server_credentials_disclosure_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_thycotic_secret_server_credentials_disclosure_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Thycotic Secret Server Credentials Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113153");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-10 16:25:00 +0200 (Tue, 10 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://thycotic.com/products/secret-server/resources/advisories/cve-2014-4861/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:thycotic:secret_server";

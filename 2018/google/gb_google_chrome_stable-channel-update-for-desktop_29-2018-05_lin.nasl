@@ -1,5 +1,6 @@
-##############################################################################                                                                  # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_29-2018-05_lin.nasl 10041 2018-05-31 12:51:28Z santu $
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_29-2018-05_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_29-2018-05)-Linux
 #
@@ -28,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813503");
-  script_version("$Revision: 10041 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126",
                 "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130",
                 "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134",
@@ -37,15 +38,14 @@ if(description)
                 "CVE-2018-6143", "CVE-2018-6144", "CVE-2018-6145", "CVE-2018-6147");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 11:46:15 +0530 (Wed, 30 May 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_29-2018-05)-Linux");
 
   script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -54,11 +54,11 @@ if(description)
   - Type confusion in Blink.
 
   - Overly permissive policy in WebUSB.
-  
+
   - Heap buffer overflow in Skia.
- 
+
   - Use after free in indexedDB.
- 
+
   - uXSS in Chrome on iOS.
 
   - Out of bounds memory access in WebRTC, V8 and PDFium.
@@ -83,24 +83,22 @@ if(description)
 
   - Password fields not taking advantage of OS protections in Views.");
 
-  script_tag(name: "impact" , value:"Successful exploitation can potentially 
-  result in the execution of arbitrary code or even enable full remote code 
-  execution capabilities and some unspecified impacts.
+  script_tag(name:"impact", value:"Successful exploitation can potentially
+  result in the execution of arbitrary code or even enable full remote code
+  execution capabilities and some unspecified impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version prior to 67.0.3396.62 
+  script_tag(name:"affected", value:"Google Chrome version prior to 67.0.3396.62
   on Linux.");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   67.0.3396.62 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/05/stable-channel-update-for-desktop_58.html");
-  script_xref(name : "URL" , value : "https://www.google.co.in/chrome");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/05/stable-channel-update-for-desktop_58.html");
+  script_xref(name:"URL", value:"https://www.google.co.in/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

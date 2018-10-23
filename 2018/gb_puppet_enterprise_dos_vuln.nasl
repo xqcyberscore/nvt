@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln.nasl 8990 2018-03-01 07:43:09Z cfischer $
+# $Id: gb_puppet_enterprise_dos_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Puppet Enterprise 2017 < 2017.2.2 Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113101");
-  script_version("$Revision: 8990 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:43:09 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:40:38 +0100 (Fri, 02 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -61,7 +61,7 @@ if( description )
 
   script_tag(name:"deprecated", value:TRUE);
 
-  exit( 0 );
+  exit(0);
 }
 
 exit(66);

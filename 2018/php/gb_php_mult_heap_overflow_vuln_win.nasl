@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_heap_overflow_vuln_win.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_php_mult_heap_overflow_vuln_win.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # PHP Multiple Heap Buffer Overflow and Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813597");
-  script_version("$Revision: 10979 $");
+  script_version("$Revision: 12033 $");
   script_cve_id("CVE-2018-14851", "CVE-2018-14883", "CVE-2018-15132");
-  script_tag(name:"cvss_base", value:"5.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 12:58:19 +0530 (Mon, 06 Aug 2018)");
   script_name("PHP Multiple Heap Buffer Overflow and Information Disclosure Vulnerabilities (Windows)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_priv_elevation_n_info_disc_kb4015195.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_priv_elevation_n_info_disc_kb4015195.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Privilege Elevation And Information Disclosure Vulnerabilities (KB4015195)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810925");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0058", "CVE-2017-0155");
   script_bugtraq_id(97462, 97471);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 17:38:58 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Privilege Elevation And Information Disclosure Vulnerabilities (KB4015195)");
 
@@ -48,8 +48,8 @@ if(description)
   - The Microsoft Graphics Component fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in kernel mode. An attacker could then install programs;
-  view, change, or delete data; or create new accounts with full user rights and
+  to run arbitrary code in kernel mode. An attacker could then install programs.
+  View, change, or delete data, or create new accounts with full user rights and
   obtain information to further compromise the users system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2

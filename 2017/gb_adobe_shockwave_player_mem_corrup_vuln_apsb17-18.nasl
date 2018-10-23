@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mem_corrup_vuln_apsb17-18.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_adobe_shockwave_player_mem_corrup_vuln_apsb17-18.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-18)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811210");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-3086");
   script_bugtraq_id(99019);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-19 11:33:41 +0530 (Mon, 19 Jun 2017)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability (APSB17-18)");
 
@@ -48,8 +48,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain control of the affected system. Depending on the privileges
-  associated with this application, an attacker could then install programs; view,
-  change, or delete data; or create new accounts with full user rights.");
+  associated with this application, an attacker could then install programs. View,
+  change, or delete data, or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Adobe Shockwave Player version before
   12.2.9.199 on Windows.");

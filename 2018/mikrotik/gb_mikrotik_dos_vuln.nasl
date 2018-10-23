@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_dos_vuln.nasl 9534 2018-04-19 10:47:29Z jschulte $
+# $Id: gb_mikrotik_dos_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # MikroTik RouterOS 6.41.4 Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113161");
-  script_version("$Revision: 9534 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 12:47:29 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 12:37:00 +0200 (Thu, 19 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -63,7 +63,7 @@ if( description )
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/147183/MikroTik-6.41.4-Denial-Of-Service.html");
   script_xref(name:"URL", value:"https://mikrotik.com/download");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/o:mikrotik:routeros";

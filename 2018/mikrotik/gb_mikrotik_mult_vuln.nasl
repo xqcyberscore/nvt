@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_mult_vuln.nasl 11806 2018-10-10 07:58:15Z cfischer $
+# $Id: gb_mikrotik_mult_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # MikroTik RouterOS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141395");
-  script_version("$Revision: 11806 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 09:58:15 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-24 14:27:31 +0700 (Fri, 24 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -57,13 +57,13 @@ if (description)
 
   script_tag(name:"insight", value:"MikroTik RouterOS is prone to multiple vulnerabilitites:
 
-- Stack buffer overflow through the license upgrade interface (CVE-2018-1156)
+  - Stack buffer overflow through the license upgrade interface (CVE-2018-1156)
 
-- Memory exhaustion vulnerability (CVE-2018-1157)
+  - Memory exhaustion vulnerability (CVE-2018-1157)
 
-- Stack exhaustion vulnerability (CVE-2018-1158)
+  - Stack exhaustion vulnerability (CVE-2018-1158)
 
-- Memory corruption vulnerability (CVE-2018-1159)");
+  - Memory corruption vulnerability (CVE-2018-1159)");
 
   script_tag(name:"affected", value:"MikroTik RouterOS prior to version 6.42.7 and 6.40.9.");
 

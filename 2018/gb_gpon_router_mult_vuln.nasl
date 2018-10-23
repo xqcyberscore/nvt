@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_router_mult_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_gpon_router_mult_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # GPON Home Routers Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113170");
-  script_version("$Revision: 11759 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:26:55 +0200 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,7 +72,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.vpnmentor.com/blog/critical-vulnerability-gpon-router/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/o:gpon:home_router";

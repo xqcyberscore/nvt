@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_labwiki_50608.nasl 7015 2017-08-28 11:51:24Z teissa $
+# $Id: gb_labwiki_50608.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # LabWiki Multiple Cross Site Scripting And Arbitrary File Upload Vulnerabilities
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103330");
   script_bugtraq_id(50608);
-  script_version("$Revision: 7015 $");
+  script_version("$Revision: 12025 $");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
   script_name("LabWiki Multiple Cross Site Scripting And Arbitrary File Upload Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-28 13:51:24 +0200 (Mon, 28 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 09:50:33 +0100 (Tue, 15 Nov 2011)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -45,6 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.bioinformatics.org/phplabware/labwiki/");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"LabWiki is prone to multiple cross-site scripting and arbitrary file
   upload vulnerabilities because the software fails to sufficiently sanitize user-supplied input.");
   script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code

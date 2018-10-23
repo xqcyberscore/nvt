@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: echo.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: echo.nasl 12037 2018-10-23 12:45:32Z cfischer $
 #
-# Check for echo Service (TCP)
+# echo Service Detection (TCP)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -26,35 +26,23 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.100075");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.108479");
+  script_version("$Revision: 12037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:45:32 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
-  #However we still should report such a configuration issue with a criticality so this has been commented
-  #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
-  #  script_cve_id("CVE-1999-0635");
-  script_name("Check for echo Service (TCP)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("echo Service Detection (TCP)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Useless services");
+  script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/echo", 7);
 
-  script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0635");
+  script_tag(name:"summary", value:"Checks if the remote host is running an echo service via TCP.
 
-  script_tag(name:"solution", value:"Disable the echo Service.");
-  script_tag(name:"summary", value:"An echo Service is running at this Host.
+  Note: The reporting takes place in a separate VT 'echo Service Reporting (TCP + UDP)' (OID: 1.3.6.1.4.1.25623.1.0.100075).");
 
-  The echo service is an Internet protocol defined in RFC 862. It was
-  originally proposed for testing and measurement of round-trip times in IP
-  networks. While still available on most UNIX-like operating systems, testing
-  and measurement is now performed with the Internet Control Message Protocol
-  (ICMP), using the applications ping and traceroute.");
-
-  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -69,16 +57,20 @@ if( ! get_port_state( port ) ) exit( 0 );
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-echo_string = "OpenVAS-Echo-Test";
+vtstrings = get_vt_strings();
+
+echo_string = vtstrings["default"] + "-Echo-Test";
 
 send( socket:soc, data:echo_string );
-buf = recv( socket:soc, length:4096 );
+buf = recv( socket:soc, length:512 );
 close( soc );
 
 if( buf == echo_string ) {
   register_service( port:port, proto:"echo" );
-  security_message( port:port );
-  exit( 0 );
+  set_kb_item( name:"echo_tcp_udp/detected", value:TRUE );
+  set_kb_item( name:"echo_tcp/detected", value:TRUE );
+  set_kb_item( name:"echo_tcp/" + port + "/detected", value:TRUE );
+  log_message( port:port, data:"An echo service is running at this port." );
 }
 
-exit( 99 );
+exit( 0 );

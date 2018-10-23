@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d8f5aea89d_postgresql_fc27.nasl 11110 2018-08-25 05:03:07Z santu $
+# $Id: gb_fedora_2018_d8f5aea89d_postgresql_fc27.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # Fedora Update for postgresql FEDORA-2018-d8f5aea89d
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874971");
-  script_version("$Revision: 11110 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-25 07:03:07 +0200 (Sat, 25 Aug 2018) $");
+  script_version("$Revision: 12033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-19 06:51:21 +0200 (Sun, 19 Aug 2018)");
   script_cve_id("CVE-2018-10915", "CVE-2018-10925", "CVE-2017-15097");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for postgresql FEDORA-2018-d8f5aea89d");
   script_tag(name:"summary", value:"Check the version of postgresql");

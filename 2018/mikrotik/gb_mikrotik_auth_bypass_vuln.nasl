@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_auth_bypass_vuln.nasl 10535 2018-07-18 06:44:49Z asteins $
+# $Id: gb_mikrotik_auth_bypass_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # MikroTik RouterOS 6.41.4 Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113156");
-  script_version("$Revision: 10535 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 08:44:49 +0200 (Wed, 18 Jul 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 13:17:37 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ if( description )
   script_xref(name:"URL", value:"https://janis-streib.de/2018/04/11/mikrotik-openvpn-security/");
   script_xref(name:"URL", value:"https://mikrotik.com/download");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/o:mikrotik:routeros";

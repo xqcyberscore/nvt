@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_vuln_july18_win.nasl 11444 2018-09-18 07:17:07Z cfischer $
+# $Id: gb_clamav_mult_vuln_july18_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # ClamAV Multiple Vulnerabilities July18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813577");
-  script_version("$Revision: 11444 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-0360", "CVE-2018-0361");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 13:50:22 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Vulnerabilities July18 (Windows)");
@@ -52,9 +52,7 @@ if(description)
     libclamav/hwp.c.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause denial of service and lengthen file parsing time.
-
-  Impact Level: Application");
+  to cause denial of service and lengthen file parsing time.");
 
   script_tag(name:"affected", value:"ClamAV version before 0.100.1 on Windows");
 
@@ -70,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ClamAV/remote/Ver","Host/runs_windows");
+  script_mandatory_keys("ClamAV/remote/Ver", "Host/runs_windows");
   script_require_ports(3310);
   exit(0);
 }

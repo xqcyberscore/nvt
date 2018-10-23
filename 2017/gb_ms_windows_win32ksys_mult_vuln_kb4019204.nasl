@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_win32ksys_mult_vuln_kb4019204.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_ms_windows_win32ksys_mult_vuln_kb4019204.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows 'Win32k.sys' Multiple Vulnerabilities (KB4019204)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811028");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0245", "CVE-2017-0246", "CVE-2017-0263", "CVE-2017-8552");
   script_bugtraq_id(98115, 98108);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 10:30:09 +0530 (Wed, 10 May 2017)");
   script_name("Microsoft Windows 'Win32k.sys' Multiple Vulnerabilities (KB4019204)");
 
@@ -51,8 +51,8 @@ if(description)
     handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in kernel mode allowing attacker to install programs;
-  view, change, or delete data; or create new accounts with full user rights.Also
+  to run arbitrary code in kernel mode allowing attacker to install programs,
+  view, change, or delete data, or create new accounts with full user rights.Also
   an attacker who successfully exploited this vulnerability could run processes
   in an elevated context and can lead to denial of service condition as well.This
   vulnerability also could allow attacker obtain sensitive information to further

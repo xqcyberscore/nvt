@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_kb3191835.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_ms_office_compat_pack_kb3191835.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (KB3191835)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811024");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0254");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:00:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (KB3191835)");
@@ -48,8 +48,8 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to run arbitrary code in the context of the current user. If the
   current user is logged on with administrative user rights, an attacker could
-  take control of the affected system. An attacker could then install programs;
-  view, change, or delete data; or create new accounts with full user rights.");
+  take control of the affected system. An attacker could then install programs.
+  View, change, or delete data, or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service
   Pack 3 and prior.");

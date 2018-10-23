@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2018-001_win.nasl 12012 2018-10-22 09:20:29Z asteins $
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2018-001_win.nasl 12023 2018-10-23 05:37:04Z cfischer $
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2018-001) (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812775");
-  script_version("$Revision: 12012 $");
+  script_version("$Revision: 12023 $");
   script_cve_id("CVE-2017-6926", "CVE-2017-6927", "CVE-2017-6928",
   "CVE-2017-6929", "CVE-2017-6930", "CVE-2017-6931", "CVE-2017-6932");
-  script_tag(name:"cvss_base", value:"6.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 11:20:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 07:37:04 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 10:43:18 +0530 (Thu, 22 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2018-001) (Windows)");

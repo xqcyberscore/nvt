@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_dvr_info_discl_vuln.nasl 10224 2018-06-15 14:29:06Z cfischer $
+# $Id: gb_mult_dvr_info_discl_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Multiple DVR Products Information Disclosure Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141062");
-  script_version("$Revision: 10224 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-03 14:37:44 +0700 (Thu, 03 May 2018)");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-03 14:37:44 +0700 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-10676");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Multiple DVR Products Information Disclosure Vulnerability");
 
@@ -50,15 +50,15 @@ if (description)
   script_require_ports("Services/www", 80, 88, 81, 82, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "Multiple DVR devices allow remote attackers to download a file and obtain
+  script_tag(name:"summary", value:"Multiple DVR devices allow remote attackers to download a file and obtain
 sensitive credential information via a direct request for the download.rsp URI.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 06th June, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 06th June, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://misteralfa-hack.blogspot.com/2018/05/0day-dvr-multivendor.html");
+  script_xref(name:"URL", value:"https://misteralfa-hack.blogspot.com/2018/05/0day-dvr-multivendor.html");
 
   exit(0);
 }

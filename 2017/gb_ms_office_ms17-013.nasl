@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms17-013.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ms_office_ms17-013.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810834");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0060", "CVE-2017-0073", "CVE-2017-0108", "CVE-2017-0014");
   script_bugtraq_id(96713, 96637, 96722, 96013);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 14:40:25 +0530 (Thu, 30 Mar 2017)");
   script_name("Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)");
 
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to execute arbitrary code, could take control of the affected system.
-  An attacker could then install programs; view, change, or delete data; or
+  An attacker could then install programs. View, change, or delete data, or
   create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3

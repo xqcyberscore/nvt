@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_gdi32dll_info_disc_kb4019206.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_windows_gdi32dll_info_disc_kb4019206.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows 'GDI32.DLL' Information Disclosure Vulnerability (KB4019206)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811027");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0190");
   script_bugtraq_id(98297);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:58:52 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows 'GDI32.DLL' Information Disclosure Vulnerability (KB4019206)");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to retrieve information from a targeted system. By itself, the information
-  disclosure does not allow arbitrary code execution; however, it could allow
+  disclosure does not allow arbitrary code execution. However, it could allow
   arbitrary code to be run if the attacker uses it in combination with another
   vulnerability.");
 

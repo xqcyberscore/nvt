@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022717.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4022717.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022717)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811165");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-0193", "CVE-2017-8473", "CVE-2017-8474", "CVE-2017-8475",
                 "CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0282", "CVE-2017-8476",
                 "CVE-2017-8477", "CVE-2017-8531", "CVE-2017-0283", "CVE-2017-0284",
@@ -50,7 +50,7 @@ if(description)
                     98842, 98848, 98849, 98843, 98844, 98846);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 10:42:25 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022717)");
 
@@ -85,7 +85,7 @@ if(description)
   attackers to gain the same user rights as the current user. If the current user is
   logged on with administrative user rights, an attacker who successfully exploited the
   vulnerability could take control of an affected system. An attacker could then install
-  programs; view, change, or delete data; or create new accounts with full user rights.");
+  programs. View, change, or delete data, or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
 

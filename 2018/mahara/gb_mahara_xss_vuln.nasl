@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_xss_vuln.nasl 10059 2018-06-04 09:23:28Z asteins $
+# $Id: gb_mahara_xss_vuln.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Mahara <16.10.9, <17.04.7, <17.10.4 XSS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112255");
-  script_version("$Revision: 10059 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 11:23:28 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 15:29:52 +0200 (Mon, 16 Apr 2018)");
 
   script_cve_id("CVE-2018-6182");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Mahara and is prone to a cross-site scripting (XSS) vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"Mahara 16.10 before 16.10.9 and 17.04 before 17.04.7 and 17.10 before 17.10.4");
   script_tag(name:"insight", value:"Mahara is vulnerable to bad input when TinyMCE is bypassed by POST packages.
   Therefore, Mahara should not rely on TinyMCE's code stripping alone but also clean input on the server /

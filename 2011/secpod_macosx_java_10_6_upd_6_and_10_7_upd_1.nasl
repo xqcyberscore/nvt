@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_java_10_6_upd_6_and_10_7_upd_1.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_macosx_java_10_6_upd_6_and_10_7_upd_1.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Java for Mac OS X 10.6 Update 6 And 10.7 Update 1
 #
@@ -40,8 +40,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902630");
   script_tag(name:"creation_date", value:"2011-11-17 11:36:14 +0100 (Thu, 17 Nov 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
-  script_version("$Revision: 9351 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2011-3389", "CVE-2011-3521", "CVE-2011-3544", "CVE-2011-3545",
                 "CVE-2011-3546", "CVE-2011-3547", "CVE-2011-3548", "CVE-2011-3549",
                 "CVE-2011-3551", "CVE-2011-3552", "CVE-2011-3553", "CVE-2011-3554",
@@ -68,6 +68,7 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

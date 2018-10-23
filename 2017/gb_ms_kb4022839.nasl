@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022839.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4022839.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple RCE Vulnerabilities (KB4022839)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811208");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8464", "CVE-2017-8543", "CVE-2017-8552");
   script_bugtraq_id(98818, 98824, 99035);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-16 16:41:25 +0530 (Fri, 16 Jun 2017)");
   script_name("Microsoft Windows Multiple RCE Vulnerabilities (KB4022839)");
 
@@ -51,8 +51,8 @@ if(description)
   - An error in .LNK file due to processing of shortcut LNK references.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in kernel mode allowing attacker to install programs;
-  view, change, or delete data; or create new accounts with full user rights.Also
+  to run arbitrary code in kernel mode allowing attacker to install programs.
+  View, change, or delete data, or create new accounts with full user rights.Also
   an attacker who successfully exploited this vulnerability could run processes
   in an elevated context.");
 

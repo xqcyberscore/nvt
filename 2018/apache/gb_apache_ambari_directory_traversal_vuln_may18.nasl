@@ -1,5 +1,6 @@
-###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_directory_traversal_vuln_may18.nasl 9970 2018-05-26 11:40:06Z cfischer $
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_apache_ambari_directory_traversal_vuln_may18.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Apache Ambari Directory Traversal Vulnerability May18
 #
@@ -29,11 +30,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812875");
-  script_version("$Revision: 9970 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-8003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-26 13:40:06 +0200 (Sat, 26 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 12:47:50 +0530 (Tue, 08 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Ambari Directory Traversal Vulnerability May18");
@@ -41,17 +42,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Ambari and is
   prone to directory traversal vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Apache Ambari unable
   to sanitize against a crafted HTTP request.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to craft an HTTP request which provides read-only access to any file on the
-  filesystem of the host.
-
-  Impact Level: Application");
+  filesystem of the host.");
 
   script_tag(name:"affected", value:"Apache Ambari versions from 1.4.0 through 2.6.1.");
 

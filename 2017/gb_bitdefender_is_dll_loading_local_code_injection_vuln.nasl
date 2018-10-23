@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_bitdefender_is_dll_loading_local_code_injection_vuln.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810940");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:27:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Internet Security DLL Loading Local Code Injection Vulnerability");
 
@@ -46,9 +46,9 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to the product do not
   use the Protected Processes feature, and therefore an attacker can enter an
   arbitrary Application Verifier Provider DLL under Image File Execution Options
-  in the registry; the self-protection mechanism is intended to block all local
+  in the registry. The self-protection mechanism is intended to block all local
   processes (regardless of privileges) from modifying Image File Execution Options
-  for this product; and this mechanism can be bypassed by an attacker who
+  for this product. This mechanism can be bypassed by an attacker who
   temporarily renames Image File Execution Options during the attack.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local

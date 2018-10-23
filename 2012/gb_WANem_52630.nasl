@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WANem_52630.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_WANem_52630.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # WAN Emulator Remote Command Execution Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103561");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 12021 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("WAN Emulator Remote Command Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://itsecuritysolutions.org/2012-08-12-WANem-v2.3-multiple-vulnerabilities/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-10 09:49:21 +0200 (Mon, 10 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,7 +49,7 @@ it fails to properly sanitize user-supplied input.
 Exploiting these issues could allow an attacker to execute arbitrary commands
 within the context of the affected application.
 
-WAN Emulator 2.3 is vulnerable; other versions may also
+WAN Emulator 2.3 is vulnerable. Other versions may also
 be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
   Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,

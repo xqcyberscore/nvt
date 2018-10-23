@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_eol.nasl 9092 2018-03-13 11:58:20Z jschulte $
+# $Id: gb_elasticsearch_kibana_eol.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Elastic Kibana End of Life Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113130");
-  script_version("$Revision: 9092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-13 12:58:20 +0100 (Tue, 13 Mar 2018) $");
+  script_version("$Revision: 12026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-13 11:48:50 +0100 (Tue, 13 Mar 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.elastic.co/support/eol");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:elasticsearch:kibana";

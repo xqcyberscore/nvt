@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_nagios_priv_esc_vuln.nasl 12038 2018-10-23 12:58:19Z asteins $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nagios:nagios';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140375");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12038 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:58:19 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 11:03:19 +0700 (Tue, 19 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Nagios Privilege Escalation Vulnerability");
 
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"summary", value:"Nagios is prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Nagios Core initially executes /usr/sbin/nagios as root but supports
   configuration options in which this file is owned by a non-root account (and similarly can have nagios.cfg owned
@@ -62,8 +62,9 @@ if(description)
 
   script_tag(name:"affected", value:"Nagios 4.3.4 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://github.com/NagiosEnterprises/nagioscore/issues/424");
 

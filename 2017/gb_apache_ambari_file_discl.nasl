@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_file_discl.nasl 6213 2017-05-26 08:21:23Z teissa $
+# $Id: gb_apache_ambari_file_discl.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Apache Ambari Sensitive Data Exposure
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108161");
-  script_version("$Revision: 6213 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 07:42:44 +0200 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name:"affected", value:"Apache Ambari 2.2.2 through 2.4.2; and 2.5.0.");
+  script_tag(name:"affected", value:"Apache Ambari 2.2.2 through 2.4.2 and 2.5.0.");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.3/2.5.1 or later.");
 

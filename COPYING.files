@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 22 Oct 2018 16:17:05 +0200
+# Automatically created on:  Tue, 23 Oct 2018 15:28:57 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -512,7 +512,6 @@
 2009/dokeos_34928.nasl: GPLv2+
 2009/dopewars_server_36606.nasl: GPLv2+
 2009/drupal_34779.nasl: GPLv2+
-2009/echo_udp.nasl: GPLv2+
 2009/eggdrop_24070.nasl: GPLv2+
 2009/eggdrop_34985.nasl: GPLv2+
 2009/eliteCMS_multiple.nasl: GPLv2+
@@ -39612,6 +39611,7 @@
 2018/debian/deb_dla_1549.nasl: GPLv2+
 2018/debian/deb_dla_1550.nasl: GPLv2+
 2018/debian/deb_dla_1551.nasl: GPLv2+
+2018/debian/deb_dla_1552.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41031,6 +41031,8 @@
 2018/freetype/gb_freetype_dos_vuln_lin.nasl: GPLv2+
 2018/freetype/gb_freetype_dos_vuln_win.nasl: GPLv2+
 2018/gb_compromised_webapp_detect.nasl: GPLv2+
+2018/gb_echo_service_reporting.nasl: GPLv2+
+2018/gb_ftp_anonymous_detect.nasl: GPLv2+
 2018/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/gb_http_cleartext_creds_submit.nasl: GPLv2+
 2018/gb_kubernetes_dashboard_exposure_vuln.nasl: GPLv2+
@@ -41042,6 +41044,7 @@
 2018/gb_portscanner_missing.nasl: GPLv2+
 2018/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
 2018/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
+2018/gb_rsh_service_reporting.nasl: GPLv2+
 2018/gb_sensitive_file_disclosures_http.nasl: GPLv2+
 2018/gb_sftp_ftp_pw_exposure.nasl: GPLv2+
 2018/gb_swarmpit_exposure_vuln.nasl: GPLv2+
@@ -42042,6 +42045,11 @@
 2018/opensuse/gb_suse_2018_3107_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3108_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3109_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3202_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3203_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3204_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3211_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3218_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -42260,6 +42268,8 @@
 2018/postgresql/gb_postgresql_logrotate_vuln_may18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_rce_vuln_feb18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_rce_vuln_feb18_win.nasl: GPLv2+
+2018/postgresql/gb_postgresql_untrusted_search_path_vuln_lin.nasl: GPLv2+
+2018/postgresql/gb_postgresql_untrusted_search_path_vuln_win.nasl: GPLv2+
 2018/powerdns/gb_pdns_dnssec_vuln.nasl: GPLv2+
 2018/powerdns/gb_pdns_ghost_domain_names_attack_vuln.nasl: GPLv2+
 2018/powerdns/gb_pdns_powerdns-advisory-2014-02.nasl: GPLv2+
@@ -42648,6 +42658,8 @@
 2018/ubuntu/gb_ubuntu_USN_3791_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3792_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3793_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3795_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3796_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
@@ -42841,6 +42853,7 @@ drupal_detect.nasl: GPLv2+
 dump.inc: GPLv2
 e107_detect.nasl: GPLv2+
 echo.nasl: GPLv2+
+echo_udp.nasl: GPLv2+
 eggdrop_detect.nasl: GPLv2+
 ejabberd_detect.nasl: GPLv2+
 eliteCMS_detect.nasl: GPLv2+
@@ -59757,6 +59770,7 @@ gsf/2018/advantech/gb_advantech_webaccess_CVE-2017-16720.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_hmi_designer_mult_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_may18.nasl: GPLv2+
+gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_sep18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln_active.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_sql_inj_vuln.nasl: GPLv2+
@@ -60897,6 +60911,9 @@ gsf/2018/rhel/gb_RHSA-2018_2892-01_glusterfs.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2898-01_nss.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2916-01_spamassassin.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2918-01_ghostscript.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2921-01_tomcat.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2942-01_java-1.8.0-openjdk.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2943-01_java-1.8.0-openjdk.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+

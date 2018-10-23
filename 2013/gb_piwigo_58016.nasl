@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_58016.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_piwigo_58016.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities
 #
@@ -31,11 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103670");
   script_bugtraq_id(58016);
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 12021 $");
   script_name("Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 14:16:03 +0100 (Tue, 26 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to view arbitrary files
   on the affected computer and to delete arbitrary files within the
   context of the affected application. Other attacks are also possible.");
-  script_tag(name:"affected", value:"Piwigo 2.4.6 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Piwigo 2.4.6 is vulnerable. Other versions may also be affected.");
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
   for more information.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 12030 2018-10-23 09:41:40Z cfischer $
 #
 # Directory Scanner
 #
@@ -8,7 +8,7 @@
 # H D Moore <hdm@digitaloffense.net>
 #
 # Copyright:
-# Copyright (C) 2002 Digital Defense Inc.
+# Copyright (C) 2005 Digital Defense Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 10929 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 12030 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:41:40 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_xref(name:"OWASP", value:"OWASP-CM-006");
   script_name("Directory Scanner");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2002 Digital Defense Inc.");
+  script_copyright("This script is Copyright (C) 2005 Digital Defense Inc.");
   script_family("Service detection");
   # Don't add http_version.nasl which has a dependency to this NVT
   script_dependencies("find_service.nasl", "httpver.nasl", "embedded_web_server_detect.nasl", "global_settings.nasl");
@@ -826,6 +826,7 @@ testDirList = make_list(
 "transpolar",
 "tree",
 "trees",
+"twiki",
 "ucs-overview",
 "univention-management-console",
 "updates",
@@ -967,6 +968,9 @@ testDirList = make_list(
 "webpos/control/main",
 "webtools/control/main",
 "workeffort/control/main",
+# e.g. Metasploitable2 VM
+"dvwa",
+"mutillidae",
 # Tomcat
 "tomcat-docs", #nb: Will be ignored by default
 "manager/html",

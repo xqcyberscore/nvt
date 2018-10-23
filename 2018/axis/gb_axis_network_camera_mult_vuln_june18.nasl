@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 12026 2018-10-23 08:22:54Z mmartin $
 #
 # Axis Network Camera Multiple Vulnerabilities-June18
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813446");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12026 $");
   script_cve_id("CVE-2018-10658", "CVE-2018-10659", "CVE-2018-10660", "CVE-2018-10661",
                 "CVE-2018-10662", "CVE-2018-10663", "CVE-2018-10664");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 15:06:09 +0530 (Tue, 19 Jun 2018)");
   script_name("Axis Network Camera Multiple Vulnerabilities-June18");
 
@@ -82,9 +82,7 @@ if(description)
   attackers to bypass the web-server's authorization mechanism, conduct shell
   command injections, crash the httpd process, gain access to sensitive
   information, crash '/bin/ssid' process and get unrestricted dbus access for
-  users of the '.srv' functionality.
-
-  Impact Level: Application");
+  users of the '.srv' functionality.");
 
   script_tag(name:"affected", value:"Axis IP Cameras with more than 390 models are
   affected. For complete list refer to reference links.");

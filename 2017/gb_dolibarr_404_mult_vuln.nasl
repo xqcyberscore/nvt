@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_404_mult_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_dolibarr_404_mult_vuln.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108160");
-  script_version("$Revision: 11935 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-7886", "CVE-2017-7887", "CVE-2017-7888", "CVE-2017-8879");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-15 10:42:44 +0200 (Mon, 15 May 2017)");
   script_name("Dolibarr ERP & CRM <= 4.0.4 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of a vulnerable site and to cause
   SQL Injection attacks to gain sensitive information.");
-  script_tag(name:"affected", value:"Dolibarr version 4.0.4 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Dolibarr version 4.0.4 is vulnerable. Other versions may also be affected.");
   script_tag(name:"insight", value:"Multiple flaws exists:
 
   - SQL Injection in /theme/eldy/style.css.php via the lang parameter.

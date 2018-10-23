@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_rce_n_info_disc_vuln_win.nasl 11815 2018-10-10 10:35:26Z asteins $
+# $Id: gb_foxit_phantompdf_rce_n_info_disc_vuln_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Foxit PhantomPDF Remote Code Execution And Information Disclosure Vulnerabilities - Oct18 (Windows)
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814066");
-  script_version("$Revision: 11815 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2018-17607", "CVE-2018-17608", "CVE-2018-17609", "CVE-2018-17610",
                 "CVE-2018-17611", "CVE-2018-17781", "CVE-2018-16291", "CVE-2018-16292",
                 "CVE-2018-16293", "CVE-2018-16294", "CVE-2018-16295", "CVE-2018-16296",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2018-3997");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:35:26 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 11:59:56 +0530 (Wed, 03 Oct 2018)");
   script_name("Foxit PhantomPDF Remote Code Execution And Information Disclosure Vulnerabilities - Oct18 (Windows)");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
-	script_tag(name:"insight", value:"The following flaws exist:
+  script_tag(name:"insight", value:"The following flaws exist:
 
   A remote user can:
 

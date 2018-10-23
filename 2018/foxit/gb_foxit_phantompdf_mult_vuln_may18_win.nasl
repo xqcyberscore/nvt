@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_may18_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_mult_vuln_may18_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities-May18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813196");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3842", "CVE-2018-3853",
                 "CVE-2018-3850", "CVE-2018-10303", "CVE-2018-10302", "CVE-2018-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-18 12:43:57 +0530 (Fri, 18 May 2018)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-May18 (Windows)");
 
@@ -79,9 +79,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service condition, execute arbitrary code and
-  gain access to sensitive data from memory.
-
-  Impact Level: System/Application");
+  gain access to sensitive data from memory.");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF version 8.3.5.30351 and
   earlier on windows");

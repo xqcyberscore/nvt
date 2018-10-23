@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asustor_adm_rce_vuln.nasl 11048 2018-08-20 06:15:01Z ckuersteiner $
+# $Id: gb_asustor_adm_rce_vuln.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # ASUSTOR ADM Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:asustor:adm_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141251");
-  script_version("$Revision: 11048 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 08:15:01 +0200 (Mon, 20 Aug 2018) $");
+  script_version("$Revision: 12033 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-29 14:18:00 +0200 (Fri, 29 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-11509", "CVE-2018-11510", "CVE-2018-11511");
 
@@ -55,11 +55,11 @@ if (description)
 
   script_tag(name:"insight", value:"ASUSTOR ADM is prone to multiple vulnerabilities:
 
-- Default credentials and remote access (CVE-2018-11509)
+  - Default credentials and remote access (CVE-2018-11509)
 
-- Unauthenticated Remote Command Execution (CVE-2018-11510)
+  - Unauthenticated Remote Command Execution (CVE-2018-11510)
 
-- Blind SQL Injections (CVE-2018-11511)");
+  - Blind SQL Injections (CVE-2018-11511)");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 

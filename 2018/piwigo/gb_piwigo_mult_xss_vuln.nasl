@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_xss_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_piwigo_mult_xss_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # Piwigo 2.9.3 Multiple XSS Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113128");
-  script_version("$Revision: 9895 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-08 14:54:00 +0100 (Thu, 08 Mar 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -53,11 +53,11 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"There are three vulnerabilities:
 
-- The management panel in Piwigo has stored XSS via the name parameter in a /ws.php request.
+  - The management panel in Piwigo has stored XSS via the name parameter in a /ws.php request.
 
-- The management panel in Piwigo has stored XSS via the virtual_name parameter in a /admin.php request.
+  - The management panel in Piwigo has stored XSS via the virtual_name parameter in a /admin.php request.
 
-- The management panel in Piwigo has stored XSS via the name parameter in a /admin.php?page request.");
+  - The management panel in Piwigo has stored XSS via the name parameter in a /admin.php?page request.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to inject arbitrary HTML and JavaScript into the website.");
   script_tag(name:"affected", value:"Piwigo through version 2.9.3.");
@@ -67,7 +67,7 @@ this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/summ3rf/Vulner/blob/master/Piwigo%20Store%20XSS.md");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:piwigo:piwigo";

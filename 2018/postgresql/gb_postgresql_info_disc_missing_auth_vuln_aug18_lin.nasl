@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_info_disc_missing_auth_vuln_aug18_lin.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_postgresql_info_disc_missing_auth_vuln_aug18_lin.nasl 12033 2018-10-23 11:14:43Z asteins $
 #
 # PostgreSQL Information Disclosure And Missing Authentication Vulnerabilities Aug18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813754");
-  script_version("$Revision: 10979 $");
+  script_version("$Revision: 12033 $");
   script_cve_id("CVE-2018-10925");
   script_bugtraq_id(105052);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 18:20:47 +0530 (Mon, 13 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Information Disclosure And Missing Authentication Vulnerabilities Aug18 (Linux)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to read arbitrary bytes of server memory and update other columns which should
-  have been restricted otherwise.
-
-  Impact Level: Application");
+  have been restricted otherwise.");
 
   script_tag(name:"affected", value:"PostgreSQL versions before 10.5, 9.6.10
   and 9.5.14 on Linux.");

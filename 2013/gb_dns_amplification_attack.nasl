@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_amplification_attack.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: gb_dns_amplification_attack.nasl 12025 2018-10-23 08:16:52Z mmartin $
 #
 # DNS Amplification Attack
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103718");
-  script_version("$Revision: 10411 $");
+  script_version("$Revision: 12025 $");
   script_cve_id("CVE-2006-0987");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 11:31:19 +0200 (Tue, 28 May 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -63,6 +63,8 @@ if(description)
   because the responses are legitimate data coming from valid servers, it is
   especially difficult to block these types of attacks.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"A misconfigured Domain Name System (DNS)server can be exploited to participate
   in a Distributed Denial of Service (DDoS) attack.");
 

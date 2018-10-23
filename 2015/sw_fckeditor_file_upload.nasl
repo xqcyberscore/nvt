@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_fckeditor_file_upload.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: sw_fckeditor_file_upload.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # 'fckeditor' Connectors Arbitrary File Upload Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111022");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-17 13:24:40 +0200 (Fri, 17 Jul 2015)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
   connectors might be prone to an arbitrary-file-upload vulnerability.");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to upload arbitrary files to the
-  affected system; this can result in arbitrary code execution within the context of the vulnerable application.");
+  affected system. This can result in arbitrary code execution within the context of the vulnerable application.");
 
   script_tag(name:"solution", value:"Check the config.php of this connector and make sure that no arbitrary file
   extensions are allowed for uploading.");

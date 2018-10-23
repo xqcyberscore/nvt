@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_30633.nasl 12019 2018-10-22 14:05:34Z cfischer $
+# $Id: gb_apache_tomcat_30633.nasl 12023 2018-10-23 05:37:04Z cfischer $
 #
 # Apache Tomcat 'UTF-8' Directory Traversal Vulnerability
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108476");
-  script_version("$Revision: 12019 $");
+  script_version("$Revision: 12023 $");
   script_cve_id("CVE-2008-2938");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:05:34 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 07:37:04 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-22 15:32:08 +0200 (Mon, 22 Oct 2018)");
   script_bugtraq_id(30633);
   script_name("Apache Tomcat 'UTF-8' Directory Traversal Vulnerability");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

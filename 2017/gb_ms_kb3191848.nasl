@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191848.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms_kb3191848.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Office Multiple Vulnerabilities (KB3191848)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811094");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8528", "CVE-2017-0282", "CVE-2017-0284", "CVE-2017-0285",
                 "CVE-2017-8534");
   script_bugtraq_id(98949, 98885, 98918, 98914, 98822);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 11:49:43 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Multiple Vulnerabilities (KB3191848)");
 
@@ -51,8 +51,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to obtain sensitive information and take complete control of the
-  affected system. An attacker could then install programs; view, change, or
-  delete data; or create new accounts with full user rights.");
+  affected system. An attacker could then install programs. View, change, or
+  delete data, or create new accounts with full user rights.");
 
 
   script_tag(name:"affected", value:"Microsoft Office 2010 Service Pack 2");

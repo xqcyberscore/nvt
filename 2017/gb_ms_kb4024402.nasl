@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4024402.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ms_kb4024402.nasl 12021 2018-10-22 14:54:51Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4024402)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811204");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12021 $");
   script_cve_id("CVE-2017-8543", "CVE-2017-8544");
   script_bugtraq_id(98824, 98826);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:32:08 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4024402)");
 
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to take control of the affected system. An attacker could then
-  install programs; view, change, or delete data; or create new accounts with
+  install programs, view, change, or delete data, or create new accounts with
   full user rights and obtain sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Windows XP SP2 x64

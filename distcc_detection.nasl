@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: distcc_detection.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: distcc_detection.nasl 12037 2018-10-23 12:45:32Z cfischer $
 #
 # DistCC Detection
 #
@@ -8,7 +8,7 @@
 # Noam Rathaus
 #
 # Copyright:
-# Copyright (C) 2004 Noam Rathaus
+# Copyright (C) 2005 Noam Rathaus
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,29 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12638");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 12037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:45:32 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("DistCC Detection");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
+  script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/unknown", 3632);
 
-  script_tag(name:"summary", value:"DistCC is a program to distribute builds of C, C++, Objective C or
-  Objective C++ code across several machines on a network. DistCC should always generate the same results
-  as a local build, is simple to install and use, and is often two or more times faster than a local compile.");
+  script_tag(name:"summary", value:"Tries to detect if the remote host is running a DistCC service.");
 
-  script_tag(name:"impact", value:"DistCC by default trusts its clients completely that in turn could
-  allow a malicious client to execute arbitrary commands on the server.");
-
-  script_tag(name:"solution", value:"For more information about DistCC's security see:
-  http://distcc.samba.org/security.html");
-
-  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
@@ -80,14 +71,13 @@ req = string( "DOTI0000001B",
 
 send( socket:soc, data:req );
 
-response = recv( socket:soc, length:255 );
+res = recv( socket:soc, length:255 );
 close( soc );
 
-if( "DONE00000" >< response ) {
-  set_kb_item( name:"distcc/installed", value:TRUE );
+if( "DONE00000" >< res ) {
+  set_kb_item( name:"distcc/detected", value:TRUE );
   register_service( port:port, proto:"distcc" );
-  security_message( port:port );
-  exit( 0 );
+  log_message( port:port, data:"A DistCC service is running at this port." );
 }
 
-exit( 99 );
+exit( 0 );
