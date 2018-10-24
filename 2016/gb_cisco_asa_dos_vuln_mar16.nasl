@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dos_vuln_mar16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_asa_dos_vuln_mar16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco ASA 5500 Devices Denial of Service Vulnerability - Mar16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806690");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-1312");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-22 12:49:04 +0530 (Tue, 22 Mar 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA 5500 Devices Denial of Service Vulnerability - Mar16");
@@ -61,8 +61,7 @@ if(description)
   - ---");
 
   script_tag(name:"solution", value:"Upgrade to the software version 6.6.1164.0
-  or later. For more details refer to,
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160309-csc");
+  or later. For more details");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

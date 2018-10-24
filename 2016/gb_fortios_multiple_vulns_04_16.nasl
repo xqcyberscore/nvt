@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_multiple_vulns_04_16.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_fortios_multiple_vulns_04_16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # FortiOS: Multiple Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2015-3626");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
 
   script_name("FortiOS: Multiple Vulnerabilities");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"impact", value:"Open redirect/Cross Site Scripting");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to one the following FortiOS versions:
 5.0 branch: 5.0.13 or above
 5.2 branch: 5.2.4 or above
@@ -59,7 +59,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-04 11:42:25 +0200 (Mon, 04 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -67,7 +67,7 @@ if (description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("forti/FortiOS/version");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

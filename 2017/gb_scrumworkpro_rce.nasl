@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkpro_rce.nasl 12038 2018-10-23 12:58:19Z asteins $
+# $Id: gb_scrumworkpro_rce.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # ScrumWorks Pro Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:collabnet:scrumworkspro';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107181");
-  script_version("$Revision: 12038 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:58:19 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 13:57:36 +0200 (Mon, 25 Sep 2017)");
 
   script_tag(name:"cvss_base", value:"10.0");
@@ -58,6 +58,8 @@ if(description)
   upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3387");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_GATHER_INFO);

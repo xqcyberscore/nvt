@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_suspicious_files.nasl 10389 2018-07-04 06:37:37Z cfischer $
+# $Id: smb_suspicious_files.nasl 12056 2018-10-24 12:04:11Z santu $
 #
 # Potentially unwanted software
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80042");
-  script_version("$Revision: 10389 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:37:37 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12056 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"solution", value:"Verify each of the applications found to see if they are compliant
   with your organization's security policy. See the URLs which will appear in the report for more info.");
- 
+
   script_tag(name:"summary", value:"This script checks for the presence of files and programs which
   might have been installed without the consent of the user of the remote host.");
 
@@ -57,6 +57,8 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
+include("misc_func.inc");
+
 
 local_var nname, url, key, item, exp;
 
@@ -81,7 +83,7 @@ function check_reg(nname, url, key, item, exp)
       continue;
     }
 
-    if(exp == NULL || tolower(exp) >< tolower(sz))
+    if(exp == NULL|| tolower(exp) >< tolower(sz))
     {
 
 report = string(

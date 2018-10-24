@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln_oct17.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_oracle_db_mult_unspecified_vuln_oct17.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server 'WLM' And 'Spatial' Components Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811871");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2016-6814", "CVE-2016-8735");
   script_bugtraq_id(94463, 95429);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 14:48:23 +0530 (Wed, 18 Oct 2017)");
   script_name("Oracle Database Server 'WLM' And 'Spatial' Components Multiple Unspecified Vulnerabilities");
 
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle Database Server version 12.2.0.1");
 
-  script_tag(name:"solution", value:"Apply patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_dos_vuln_lin.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_openssl_dos_vuln_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # OpenSSL Deniel Of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806816");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-3196");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 17:41:42 +0530 (Mon, 11 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Denial Of Service Vulnerability (Linux)");
@@ -55,7 +55,7 @@ if(description)
   1.0.0t, 1.0.1 before 1.0.1p, and 1.0.2 before 1.0.2d on Linux");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.0t or
-  1.0.1p or 1.0.2d or later. For updates refer https://www.openssl.org");
+  1.0.1p or 1.0.2d or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.openssl.org");
   exit(0);
 }
 

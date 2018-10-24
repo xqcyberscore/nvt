@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_xss_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_apache_ambari_xss_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache Ambari Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809086");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-3186");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 16:26:03 +0530 (Fri, 04 Nov 2016)");
   script_name("Apache Ambari Cross Site Scripting Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Ambari versions 1.7.0 to 2.0.2");
 
   script_tag(name:"solution", value:"Upgrade to Apache Ambari version 2.1.0 or
-  later. For updates refer to https://ambari.apache.org/");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_apache_ambari_detect.nasl");
   script_mandatory_keys("Apache/Ambari/Installed");
+  script_xref(name:"URL", value:"https://ambari.apache.org/");
   exit(0);
 }
 

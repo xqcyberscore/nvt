@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # K7Firewall Packet Driver Privilege Escalation Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809088");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2014-7136");
   script_bugtraq_id(71611);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-07 14:25:26 +0530 (Mon, 07 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7Firewall Packet Driver Privilege Escalation Vulnerability");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with
   K7 Computing product and is prone to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of 'K7FWFilt.sys'
-  kernel mode driver and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the function handling
   IOCTL 0x830020C4 does not validate the size of the output buffer parameter

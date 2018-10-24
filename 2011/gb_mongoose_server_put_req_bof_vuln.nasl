@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_server_put_req_bof_vuln.nasl 12014 2018-10-22 10:01:47Z mmartin $
+# $Id: gb_mongoose_server_put_req_bof_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Mongoose Web Server Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802139");
-  script_version("$Revision: 12014 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 12:01:47 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12047 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_cve_id("CVE-2011-2900");
   script_bugtraq_id(48980);
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in the 'put_dir()' function
   (mongoose.c) when processing HTTP PUT web requests. This can be exploited
   to cause an assertion error or a stack-based buffer overflow.");
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"The host is running Mongoose Web Server and is prone to remote
   buffer overflow vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jul2018-4258247_02_win.nasl 10664 2018-07-27 13:57:41Z cfischer $
+# $Id: gb_oracle_java_jul2018-4258247_02_win.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle Java SE Security Updates-02 (jul2018-4258247) Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813682");
-  script_version("$Revision: 10664 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2018-2973", "CVE-2018-2940", "CVE-2018-2952");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:57:41 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 11:26:47 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Java SE Security Updates-02 (jul2018-4258247) Windows");
 
@@ -48,12 +48,10 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to modify data, partially access data, cause partial denial of service
-  conditions.
-
-  Impact Level: Application");
+  conditions.");
 
   script_tag(name:"affected", value:"Oracle Java SE version 1.8.0.172 and
-  earlier,  1.7.0.181 and earlier, 1.6.0.191 and earlier and 10.0 through 10.0.1
+  earlier, 1.7.0.181 and earlier, 1.6.0.191 and earlier and 10.0 through 10.0.1
   on Windows");
 
   script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.

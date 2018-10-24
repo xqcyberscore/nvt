@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_arbitrary_code_exec_vuln_june16.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_apache_struts_arbitrary_code_exec_vuln_june16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache Struts Arbitrary Code Execution Vulnerability June16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808080");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-3082");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-09 16:55:12 +0530 (Thu, 09 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Arbitrary Code Execution Vulnerability June16");
@@ -53,8 +53,7 @@ if(description)
   except 2.3.20.3 and 2.3.24.3");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.20.3
-  or 2.3.24.3 or 2.3.28.1 or later. For updates refer to
-  http://struts.apache.org");
+  or 2.3.24.3 or 2.3.28.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

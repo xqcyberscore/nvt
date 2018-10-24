@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln01_aug16_lin.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_phpmyadmin_xss_vuln01_aug16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # phpMyAdmin Double URL Decoding Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808254");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-5099");
   script_bugtraq_id(90877);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:01:28 +0530 (Thu, 04 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("phpMyAdmin Double URL Decoding Cross Site Scripting Vulnerability (Linux)");
@@ -54,8 +54,7 @@ if(description)
   and 4.6.x before 4.6.2 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.4.15.6 or
-  4.6.2 or later.
-  For updates refer to https://www.phpmyadmin.net");
+  4.6.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

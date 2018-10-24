@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_mult_unspecified_vuln01_july16.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_oracle_webLogic_server_mult_unspecified_vuln01_july16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Oracle WebLogic Server Multiple Unspecified Vulnerabilities-01 July16
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807351");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-3445", "CVE-2016-3499", "CVE-2016-3510", "CVE-2016-3586",
                 "CVE-2015-7501", "CVE-2016-5531", "CVE-2016-3505");
   script_bugtraq_id(92003, 92019, 92013, 92016, 78215, 93730, 93708);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-20 18:03:42 +0530 (Wed, 20 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Multiple Unspecified Vulnerabilities-01 July16");
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle WebLogic Server versions 10.3.6.0,
   12.1.3.0, 12.2.1.0 are affected.");
 
-  script_tag(name:"solution", value:"Apply update from the links mentioned below,
-  http://www.oracle.com/technetwork/topics/security/cpujul2016-2881720.html
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_tag(name:"solution", value:"Apply the patches from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +66,7 @@ if(description)
   script_dependencies("oracle_webLogic_server_detect.nasl");
   script_mandatory_keys("OracleWebLogicServer/installed");
   script_require_ports("Services/www", 7001);
+
   exit(0);
 }
 
@@ -91,3 +90,5 @@ if(version_is_equal(version:webVer, test_version:"10.3.6.0")||
   security_message(data:report, port:webPort);
   exit(0);
 }
+
+exit(99);

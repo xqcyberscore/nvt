@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_may16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_openssl_mult_vuln02_may16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # OpenSSL Multiple Vulnerabilities-02 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807816");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-2108");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 17:58:27 +0530 (Tue, 10 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities-02 May16 (Windows)");
@@ -57,7 +57,7 @@ if(description)
   and 1.0.2 before 1.0.2c on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.1o or 1.0.2c or
-  later. For updates refer to https://www.openssl.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

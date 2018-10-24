@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln04_jan16.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_oracle_db_mult_unspecified_vuln04_jan16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities -04 Jan16
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807038");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2014-4245", "CVE-2014-2478", "CVE-2015-0371", "CVE-2015-0370",
                 "CVE-2014-6578", "CVE-2014-6514", "CVE-2014-6544", "CVE-2014-4289");
   script_bugtraq_id(68617, 70547, 72163, 72171, 72149, 72166, 70541);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities -04 Jan16");
 
@@ -60,8 +60,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions
   11.1.0.7, 11.2.0.3, 11.2.0.4, and 12.1.0.1");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
+  script_tag(name:"solution", value:"Apply patches");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

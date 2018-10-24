@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_eol.nasl 9130 2018-03-19 08:53:23Z asteins $
+# $Id: gb_elasticsearch_eol.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Elasticsearch End of Life Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113131");
-  script_version("$Revision: 9130 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 09:53:23 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-13 11:50:59 +0100 (Tue, 13 Mar 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.elastic.co/support/eol");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:elasticsearch:elasticsearch";

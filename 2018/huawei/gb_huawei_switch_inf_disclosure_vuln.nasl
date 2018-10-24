@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_inf_disclosure_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_huawei_switch_inf_disclosure_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Switches Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113083");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 14:44:44 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -53,25 +53,23 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if the target host is an affected product that has a vulnerable firmware version installed.");
   script_tag(name:"affected", value:"Following Huawei Switch models and firmware versions are affected:
 
-  Huawei Campus Switch S9300/S9300E/S7700/S9700 versions: V200R001C00SPC300, V200R002C00SPC300,  V200R003C00SPC500
+  Huawei Campus Switch S9300/S9300E/S7700/S9700 versions: V200R001C00SPC300, V200R002C00SPC300, V200R003C00SPC500
 
   Huawei Campus Switch S5700/S6700/S5300/S6300 versions: V200R001C00SPC300, V200R002C00SPC300, V200R003C00SPC300
 
-  Huawei Campus Switch S2300/S2700/S3300/S3700 versions: V100R006C05
-  ");
+  Huawei Campus Switch S2300/S2700/S3300/S3700 versions: V100R006C05");
   script_tag(name:"solution", value:"Update the software according to your product:
 
   Huawei Campus Switch S9300/S9300E/S7700/S9700 fixed version: V200R005C00SPC300
 
   Huawei Campus Switch S5700/S6700/S5300/S6300 fixed version: V200R005C00SPC300
 
-  Huawei Campus Switch S2300/S2700/S3300/S3700 fixed version: V100R006SPH018
-  ");
+  Huawei Campus Switch S2300/S2700/S3300/S3700 fixed version: V100R006SPH018");
 
   script_xref(name:"URL", value:"http://www.huawei.com/us/psirt/security-advisories/2014/hw-362701");
   script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/vulnerabilities/97763");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

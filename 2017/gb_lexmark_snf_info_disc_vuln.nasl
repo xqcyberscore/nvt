@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_snf_info_disc_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_lexmark_snf_info_disc_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Lexmark Scan To Network Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:lexmark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140358");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 08:42:19 +0700 (Wed, 06 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -39,8 +39,6 @@ if(description)
   script_cve_id("CVE-2017-13771");
 
   script_tag(name:"qod_type", value:"exploit");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Lexmark Scan To Network Information Disclosure Vulnerability");
 
@@ -51,7 +49,7 @@ if(description)
   script_dependencies("gb_lexmark_printers_detect.nasl");
   script_mandatory_keys("lexmark_printer/installed");
 
-  script_tag(name:"summary", value:"Lexmark Scan to Network is prone to an information disclosure
+  script_tag(name:"summary", value:"Lexmark Scan to Network <= 3.2.9 is prone to an information disclosure
 vulnerability");
 
   script_tag(name:"insight", value:"Scan To Network application supports the configuration of network
@@ -60,9 +58,8 @@ It is possible to obatain these credentials which could be used later to escalat
 get access to scanned documents.");
 
   script_tag(name:"vuldetect", value:"Sends a HTTP GET request and checks the response.");
-
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Aug/46");
 

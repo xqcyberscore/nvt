@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,10 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12047 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
+  script_bugtraq_id(48272);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability");
 
@@ -49,16 +50,18 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
   affected application.");
+
   script_tag(name:"affected", value:"Avaya IP Office Manager TFTP Server Version 8.1 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error while handling certain requests containing
-  'dot dot' sequences (..), which can be exploited to download arbitrary files
-  from the host system.");
-  script_tag(name:"solution", value:"Apply the patch");
+  'dot dot' sequences (..), which can be exploited to download arbitrary files from the host system.");
+
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
   script_tag(name:"summary", value:"The host is running Avaya IP Office Manager TFTP Server and is
   prone to directory traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

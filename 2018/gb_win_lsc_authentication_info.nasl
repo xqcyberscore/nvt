@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_lsc_authentication_info.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_win_lsc_authentication_info.nasl 12042 2018-10-23 14:09:36Z cfischer $
 #
 # Windows LSC Authenticated Scan Info Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108442");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12042 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:09:36 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 07:49:52 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("smb_registry_access.nasl", "gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
-
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
   script_exclude_keys("SMB/samba");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jarsigner_sec_bypass_vuln_lin.nasl 9979 2018-05-28 08:58:29Z santu $
+# $Id: gb_oracle_java_jarsigner_sec_bypass_vuln_lin.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Linux)
 #
@@ -29,30 +29,27 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813377");
-  script_version("$Revision: 9979 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2013-4578");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:58:29 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 16:38:47 +0530 (Wed, 23 May 2018)");
   script_name("Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to a security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to jarsigner does not 
+  script_tag(name:"insight", value:"The flaw is due to jarsigner does not
   detect unsigned bytecode injected into signed jars.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to inject malicious unsigned bytecode into a signed JAR without 
-  failing jarsigner verification.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to inject malicious unsigned bytecode into a signed JAR without
+  failing jarsigner verification.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE version before 7u51 on 
+  script_tag(name:"affected", value:"Oracle Java SE version before 7u51 on
   Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 7u51 or
@@ -60,9 +57,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1031471");
-  script_xref(name : "URL" , value : "http://hg.openjdk.java.net/jdk7u/jdk7u/jdk/rev/d5f36e1c927e");
-  script_xref(name : "URL" , value : "http://www.oracle.com");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1031471");
+  script_xref(name:"URL", value:"http://hg.openjdk.java.net/jdk7u/jdk7u/jdk/rev/d5f36e1c927e");
+  script_xref(name:"URL", value:"http://www.oracle.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

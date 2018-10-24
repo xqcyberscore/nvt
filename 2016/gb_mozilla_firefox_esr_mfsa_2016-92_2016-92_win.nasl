@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-92_2016-92_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-92_2016-92_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-92_2016-92 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809826");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-9079");
   script_bugtraq_id(94591);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 12:34:20 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-92_2016-92 )-Windows");
 
@@ -54,7 +54,7 @@ if(description)
   45.5.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox Esr version 45.5.1
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

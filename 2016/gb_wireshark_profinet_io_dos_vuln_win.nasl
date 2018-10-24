@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_profinet_io_dos_vuln_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_wireshark_profinet_io_dos_vuln_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Wireshark 'Profinet I/O dissector' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809811");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-9372");
   script_bugtraq_id(94368);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 12:50:21 +0530 (Fri, 18 Nov 2016)");
   script_name("Wireshark 'Profinet I/O dissector' Denial of Service Vulnerability (Windows)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wireshark version 2.2.0 to 2.2.1 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.2, or later.
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.2, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

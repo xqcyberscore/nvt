@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_modx_cms_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # MODX Revolution CMS XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140286");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 15:39:24 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,8 +40,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("MODX Revolution CMS XSS Vulnerability");
 
   script_category(ACT_GATHER_INFO);
@@ -60,12 +59,11 @@ if (description)
 module are vulnerable to XSS. A malicious payload sent to connectors/index.php will be triggered by every user,
 when they visit this module.");
 
-  script_tag(name:"affected", value:"MODX Revolution version 2.6.1 and prior.");
-
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"affected", value:"MODX Revolution prior version 2.6.4.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
   script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/13564");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/blob/2.x/core/docs/changelog.txt#L81");
 
   exit(0);
 }
@@ -79,8 +77,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "2.6.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "2.6.4")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "2.6.4");
   security_message(port: port, data: report);
   exit(0);
 }

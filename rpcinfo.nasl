@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rpcinfo.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: rpcinfo.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # Obtain list of all port mapper registered programs via RPC
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11111");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("RPC");
-  script_dependencies("secpod_rpc_portmap.nasl");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl");
+  # nb: This could run even before find_service.nasl to avoid that find_service.nasl
+  # is thrown against those services / ports it can't detect anyway.
   script_mandatory_keys("rpc/portmap");
 
   script_tag(name:"summary", value:"This script calls the DUMP RPC on the port mapper, to obtain the
@@ -53,7 +55,7 @@ include("misc_func.inc");
 portmap = get_kb_item( "rpc/portmap" );
 if( ! portmap ) exit( 0 );
 if( ! get_port_state( portmap ) ) exit( 0 );
-soc = open_sock_tcp( portmap );
+soc = open_sock_tcp( portmap ); # TODO: Won't work if the port is only available via UDP...
 if( ! soc ) exit( 0 );
 
 report_tcp = make_list();
@@ -318,4 +320,3 @@ foreach port (keys(report_udp))
 }
 
 log_message(port:portmap, data:result);
-

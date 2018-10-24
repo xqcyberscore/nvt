@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_freak_attack_lin.nasl 11884 2018-10-12 13:33:40Z cfischer $
+# $Id: gb_elasticsearch_logstash_freak_attack_lin.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107279");
-  script_version("$Revision: 11884 $");
+  script_version("$Revision: 12045 $");
   script_bugtraq_id(76015);
   script_cve_id("CVE-2015-5378");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 14:18:58 +0100 (Wed, 31 Jan 2018)");
   script_name("Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability (Linux)");
 
@@ -43,8 +43,7 @@ if(description)
   This script has been merged into the NVT 'Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability'
   (OID: 1.3.6.1.4.1.25623.1.0.107278)");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of a detection NVT and check whether the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the usage of Lumberjack input
   (in combination with Logstash Forwarder agent)");

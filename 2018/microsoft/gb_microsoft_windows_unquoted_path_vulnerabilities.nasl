@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 10423 2018-07-05 13:03:28Z santu $
+# $Id: gb_microsoft_windows_unquoted_path_vulnerabilities.nasl 12046 2018-10-24 06:53:57Z cfischer $
 #
 # Microsoft Windows Unquoted Path Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107303");
-  script_version("$Revision: 10423 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 15:03:28 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 12046 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:53:57 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:14:54 +0100 (Fri, 23 Mar 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"9.3");
@@ -57,6 +57,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.ryanandjeffshow.com/blog/2013/04/11/powershell-fixing-unquoted-service-paths-complete/");
   script_xref(name:"URL", value:"https://www.tecklyfe.com/remediation-microsoft-windows-unquoted-service-path-enumeration-vulnerability/");
   script_xref(name:"URL", value:"https://blogs.technet.microsoft.com/srd/2018/04/04/triaging-a-dll-planting-vulnerability");
+
   script_tag(name:"summary", value:"The script tries to detect Windows 'Uninstall' registry entries and 'Services' using an
   unquoted path containing at least one whitespace.");
 
@@ -96,23 +97,18 @@ include("host_details.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = kb_smb_login();
-passwd  = kb_smb_password();
-if( ! host || ! usrname || ! passwd ) exit( 0 );
-
-domain = kb_smb_domain();
-if( domain ) usrname = domain + '\\' + usrname;
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
 # Only try accessing via WMI if we know it is working / possible
 if( get_kb_item( "WMI/access_successful" ) ) {
 
-  handle = wmi_connect( host:host, username:usrname, password:passwd );
+  handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 
   if( handle ) {
 
     # nb: Make sure to update the foreach loop below if adding new fields here
-    query = "select Name, DisplayName, PathName from Win32_Service where NOT PathName LIKE '%c:\\windows\\System32%' and PathName Like '% %'";
+    query = "SELECT DisplayName, Name, PathName FROM Win32_Service WHERE NOT PathName LIKE '%c:\\windows\\System32%' AND PathName LIKE '% %'";
     services = wmi_query( wmi_handle:handle, query:query );
     wmi_close( wmi_handle:handle );
     if( services ) {
@@ -120,19 +116,23 @@ if( get_kb_item( "WMI/access_successful" ) ) {
       services_list = split( services, keep:FALSE );
 
       foreach service( services_list ) {
-        if( service == "DisplayName|Name|PathName" ) continue; # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above
+
+        if( service == "DisplayName|Name|PathName" )
+          continue; # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above
+
         service_split = split( service, sep:"|", keep:FALSE );
-        path_name   = service_split[2];
+        path_name     = service_split[2];
 
         # If the path is within quotes we know its not vulnerable...
-        if( egrep( string:path_name, pattern:'^".*"' ) ) continue;
+        if( egrep( string:path_name, pattern:'^".*"' ) )
+          continue;
 
         # Basic clean-up of parameters at the end of the path_name avoid false positives if there is only a space before the parameter
         path_name = ereg_replace( string:path_name, pattern:"\s+(/|\-|\-\-).*", replace:"" ); # TODO evaluate a regex which might catch a service using something like C:\program\myservice.exe parameter1 and similar
         if( ' ' >< path_name && ! egrep( string:path_name, pattern:'^".*"' ) ) {
           services_report += service + '\n';
           SERVICES_VULN = TRUE;
-         }
+        }
       }
     }
   }
@@ -202,7 +202,6 @@ if( SERVICES_VULN || UNINSTALL_VULN ) {
     report += services_report;
     security_message( port:0, data:report );
   }
-  exit( 0 );
 }
 
-exit( 99 );
+exit( 0 );

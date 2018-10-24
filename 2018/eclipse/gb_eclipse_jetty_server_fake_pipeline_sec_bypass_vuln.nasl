@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Eclipse Jetty Server Fake Pipeline Request Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:eclipse:jetty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813551");
-  script_version("$Revision: 11151 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2017-7658");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-05 11:10:53 +0530 (Thu, 05 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Eclipse Jetty Server Fake Pipeline Request Security Bypass Vulnerability");
@@ -47,9 +47,7 @@ if(description)
   against pipelined requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass authorization.
-
-  Impact Level: Application");
+  to bypass authorization.");
 
   script_tag(name:"affected", value:"Eclipse Jetty Server versions 9.2.x before
   9.2.25.v20180606, 9.3.x before 9.3.24.v20180605 and 9.4.x before

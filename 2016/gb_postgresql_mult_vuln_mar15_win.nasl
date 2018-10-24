@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_vuln_mar15_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_postgresql_mult_vuln_mar15_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # PostgreSQL Multiple Vulnerabilities - Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807085");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0773", "CVE-2016-0766");
   script_bugtraq_id(83184);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-10 19:31:43 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Multiple Vulnerabilities - Mar15 (Windows)");
@@ -57,8 +57,7 @@ if(description)
   9.5.1 on windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 9.1.20 or 9.2.15 or
-  9.3.11 or 9.4.6 or 9.5.1 or higher,
-  For updates refer to http://www.postgresql.org/download");
+  9.3.11 or 9.4.6 or 9.5.1 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

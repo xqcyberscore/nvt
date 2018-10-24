@@ -29,20 +29,19 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807413");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-5346");
   script_bugtraq_id(83323);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 14:42:54 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Session Fixation Vulnerability - Feb16 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to a Session Fixation Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to insufficient recycling of the
   requestedSessionSSL field.");
@@ -55,8 +54,7 @@ if(description)
   8.0.0.RC1 before 8.0.31, and 9.0.0.M1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.0.66 or
-  8.0.32 or 9.0.0.M3 or later.
-  For updates refer to http://tomcat.apache.org");
+  8.0.32 or 9.0.0.M3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

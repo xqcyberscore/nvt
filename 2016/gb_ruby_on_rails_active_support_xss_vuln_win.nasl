@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_xss_vuln_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ruby_on_rails_active_support_xss_vuln_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Ruby on Rails Active Support Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807381");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-3226");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:29:50 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Active Support Cross Site Scripting Vulnerability (Windows)");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Ruby on Rails versions 3.x, 3.0.x,
   3.1.x, 3.2.x, 4.1.x before 4.1.11, 4.2.x before 4.2.2 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to Ruby on Rails 4.2.2, 4.1.11 or later,
-  For updates refer to http://rubyonrails.org");
+  script_tag(name:"solution", value:"Upgrade to Ruby on Rails 4.2.2, 4.1.11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3000);
+  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
 

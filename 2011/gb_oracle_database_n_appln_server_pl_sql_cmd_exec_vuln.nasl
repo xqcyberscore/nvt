@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_oracle_database_n_appln_server_pl_sql_cmd_exec_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802525");
-  script_version("$Revision: 12018 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2006-0435");
   script_bugtraq_id(16384);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:32:19 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -55,7 +55,7 @@ if(description)
   10.1.3.0.0");
   script_tag(name:"insight", value:"The flaw is due to error in Oracle PL/SQL Gateway, which fails to
   properly validate user-supplied HTTP requests.");
-  script_tag(name:"solution", value:"Apply patches");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is running Oracle database or application server and
   is prone to SQL command execution vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freetype_dos_vuln_lin.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
+# $Id: gb_freetype_dos_vuln_lin.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # FreeType 2 DoS Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113116");
-  script_version("$Revision: 9877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 14:32:33 +0100 (Fri, 16 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -59,7 +59,7 @@ if( description )
   script_xref(name:"URL", value:"https://download.savannah.gnu.org/releases/freetype/");
   script_xref(name:"URL", value:"https://sourceforge.net/projects/freetype/files/freetype2/2.9.1/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:freetype:freetype";

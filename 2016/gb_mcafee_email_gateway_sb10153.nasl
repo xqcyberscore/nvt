@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10153.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_mcafee_email_gateway_sb10153.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # McAfee Email Gateway - Cross-Site Scripting (XSS) Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105599");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 12051 $");
 
   script_name("McAfee Email Gateway - Cross-Site Scripting (XSS) Vulnerability");
 
@@ -47,7 +47,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-08 11:17:54 +0200 (Fri, 08 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_mcafee_email_gateway_version.nasl");
   script_mandatory_keys("mcafee_email_gateway/product_version", "mcafee_email_gateway/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

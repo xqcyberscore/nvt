@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kannel_priv_esc_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_kannel_priv_esc_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Kannel Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kannel:kannel';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140386");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 15:08:29 +0700 (Thu, 21 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,8 +39,6 @@ if (description)
   script_cve_id("CVE-2017-14609");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Kannel Privilege Escalation Vulnerability");
 
@@ -62,9 +60,8 @@ demonstrated by bearerbox.");
 
   script_tag(name:"affected", value:"Kannel version 1.5.0 and prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"https://redmine.kannel.org/issues/771");
 
   exit(0);

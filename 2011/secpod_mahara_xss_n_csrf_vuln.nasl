@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_xss_n_csrf_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_mahara_xss_n_csrf_vuln.nasl 12061 2018-10-24 13:20:52Z asteins $
 #
 # Mahara Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901199");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12061 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 15:20:52 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:39:52 +0200 (Fri, 01 Apr 2011)");
   script_bugtraq_id(47033);
   script_cve_id("CVE-2011-0439", "CVE-2011-0440");
@@ -45,6 +45,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_mahara_detect.nasl");
+  script_mandatory_keys("mahara/detected");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web
   script or HTML in a user's browser session in the context of an affected
@@ -65,25 +66,24 @@ if(description)
   exit(0);
 }
 
+CPE = "cpe:/a:mahara:mahara";
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!port){
+if (!port = get_app_port(cpe:CPE)) exit(0);
+if (!vers = get_app_version(cpe:CPE, port:port)) exit(0);
+
+if(version_in_range(version:vers, test_version:"1.3.0", test_version2:"1.3.3")) {
+  report = report_fixed_ver(installed_version:vers,  fixed_version:"1.3.4");
+  security_message(port:port, data:report);
   exit(0);
 }
 
-if(!can_host_php(port:port)){
+if(version_in_range(version:vers, test_version:"1.2.0", test_version2:"1.2.6")) {
+  report = report_fixed_ver(installed_version:vers,  fixed_version:"1.2.7");
+  security_message(port:port, data:report);
   exit(0);
 }
 
-if(vers = get_version_from_kb(port:port,app:"Mahara"))
-{
-  if(version_in_range(version:vers, test_version:"1.3.0", test_version2:"1.3.3") ||
-     version_in_range(version:vers, test_version:"1.2.0", test_version2:"1.2.6"))
-  {
-    security_message(port:port);
-    exit(0);
-  }
-}
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa3.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa3.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability
 #
@@ -33,41 +33,39 @@ if (description)
   script_cve_id("CVE-2016-6360");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
 
   script_name("Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability ");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa3");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in Advanced Malware Protection (AMP) for Cisco Email Security Appliances (ESA) and
-Web Security Appliances (WSA) could allow an unauthenticated, remote attacker to cause a partial
-denial of service (DoS) condition due to the AMP process unexpectedly restarting.
+  Web Security Appliances (WSA) could allow an unauthenticated, remote attacker to cause a partial
+  denial of service (DoS) condition due to the AMP process unexpectedly restarting.
 
-The vulnerability is due to improper validation of a Java Archive (JAR) file scanned when AMP is
-configured. An attacker could exploit this vulnerability by crafting a JAR file, and attaching
-this JAR file to an email that is then sent through the affected device. An exploit could allow
-the attacker to cause the Cisco ESA and WSA AMP process to unexpectedly restart due to the
-malformed JAR file.
+  The vulnerability is due to improper validation of a Java Archive (JAR) file scanned when AMP is
+  configured. An attacker could exploit this vulnerability by crafting a JAR file, and attaching
+  this JAR file to an email that is then sent through the affected device. An exploit could allow
+  the attacker to cause the Cisco ESA and WSA AMP process to unexpectedly restart due to the
+  malformed JAR file.
 
-Cisco has released software updates that address this vulnerability. Workarounds that address this
-vulnerability are not available.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa3");
+  Cisco has released software updates that address this vulnerability. Workarounds that address this
+  vulnerability are not available.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 13:46:30 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

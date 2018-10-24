@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libupnp_heap_bo_vuln.nasl 6378 2017-06-20 11:53:10Z cfischer $
+# $Id: gb_libupnp_heap_bo_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # libupnp Heap Buffer Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:libupnp_project:libupnp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106377");
-  script_version("$Revision: 6378 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 13:53:10 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 12051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 14:37:33 +0700 (Fri, 04 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,15 +48,14 @@ if(description)
 
   script_tag(name:"summary", value:"libupnp is prone to a heap buffer overflow vulnerability");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"There is a heap buffer overflow vulnerability in the create_url_list
   function in upnp/src/gena/gena_device.c.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker may conduct a denial of service attack.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.6.21 or later,
-  For updates refer to http://pupnp.sourceforge.net/");
+  script_tag(name:"solution", value:"Upgrade to version 1.6.21 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

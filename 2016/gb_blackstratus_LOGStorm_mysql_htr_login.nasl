@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Blackstratus LOGStorm default MySQL password for user `htr`
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140093");
-  script_version("$Revision: 11569 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -44,7 +44,7 @@ if (description)
 
   script_tag(name:"solution", value:'Change the password.');
   script_tag(name:"summary", value:'The remote MySQL service has the password `htr_pwd` for the user `htr`.');
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_total_protection_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_mcafee_total_protection_mult_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # McAfee Total Protection Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:total_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807237");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-8772", "CVE-2015-8773");
   script_bugtraq_id(82143, 82144);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-08 17:22:31 +0530 (Mon, 08 Feb 2016)");
   script_name("McAfee Total Protection Multiple Vulnerabilities (Windows)");
 
@@ -86,7 +86,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\McPvDrv.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Drivers\McPvDrv.sys");
 if(!sysVer){
   exit(0);
 }

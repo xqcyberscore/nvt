@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_csrf_vuln.nasl 9211 2018-03-27 05:28:01Z ckuersteiner $
+# $Id: gb_wampserver_csrf_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # WampServer < 3.1.3 CSRF Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wampserver:wampserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140891");
-  script_version("$Revision: 9211 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-27 07:28:01 +0200 (Tue, 27 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-27 11:28:57 +0700 (Tue, 27 Mar 2018)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-27 11:28:57 +0700 (Tue, 27 Mar 2018)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-8817");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WampServer < 3.1.3 CSRF Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("gb_wampserver_detect.nasl");
   script_mandatory_keys("wampserver/installed");
 
-  script_tag(name: "summary", value: "WampServer is prone to a cross site request forgery (CSRF) vulnerability.");
+  script_tag(name:"summary", value:"WampServer is prone to a cross site request forgery (CSRF) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "WampServer 3.1.2 and prior.");
+  script_tag(name:"affected", value:"WampServer 3.1.2 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 3.1.3 or later.");
+  script_tag(name:"solution", value:"Update to version 3.1.3 or later.");
 
-  script_xref(name: "URL", value: "http://forum.wampserver.com/read.php?2%2C138295%2C150722%2Cpage%3D6%23msg-150722");
+  script_xref(name:"URL", value:"http://forum.wampserver.com/read.php?2%2C138295%2C150722%2Cpage%3D6%23msg-150722");
 
   exit(0);
 }

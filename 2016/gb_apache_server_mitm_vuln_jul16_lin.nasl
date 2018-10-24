@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_server_mitm_vuln_jul16_lin.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_apache_server_mitm_vuln_jul16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache HTTP Server Man-in-the-Middle attack Vulnerability - July16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808632");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-5387");
   script_bugtraq_id(91816);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-26 18:40:57 +0530 (Tue, 26 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Man-in-the-Middle attack Vulnerability - July16 (Linux)");
@@ -59,8 +59,7 @@ if(description)
 
   - ---");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.4.24, or 2.2.32, or newer.
-  For updates refer http://www.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 2.4.24, or 2.2.32, or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.apache.org");
   exit(0);
 }
 

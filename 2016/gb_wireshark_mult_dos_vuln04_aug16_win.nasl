@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln04_aug16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln04_aug16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-04 August16 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809102");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-5357", "CVE-2016-5356", "CVE-2016-5355", "CVE-2016-5354",
                 "CVE-2016-5353", "CVE-2016-5351", "CVE-2016-5350");
   script_bugtraq_id(91140);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 09:53:38 +0530 (Fri, 12 Aug 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-04 August16 (Windows)");
 
@@ -73,8 +73,7 @@ if(description)
   and 1.12.x before 1.12.12 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.0.4 or
-  1.12.12 or later.
-  For updates refer to https://www.wireshark.org");
+  1.12.12 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

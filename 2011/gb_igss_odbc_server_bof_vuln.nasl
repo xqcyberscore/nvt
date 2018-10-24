@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_odbc_server_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_igss_odbc_server_bof_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Interactive Graphical SCADA System ODBC Server Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802241");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12047 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_cve_id("CVE-2011-2959");
   script_bugtraq_id(47960);
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"7T Interactive Graphical SCADA System (IGSS) versions prior to 9.0.0.11143");
   script_tag(name:"insight", value:"The flaw is caused by a memory corruption error in the Open Database
   Connectivity (ODBC) component when processing packets sent to TCP port 20222.");
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Interactive Graphical SCADA System
   and is prone to buffer overflow vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability
 #
@@ -33,16 +33,13 @@ if (description)
   script_cve_id("CVE-2017-6665");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12043 $");
 
   script_name("Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-aniacp");
 
   script_tag(name:"vuldetect", value:"Check the version.");
-
-  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
 
   script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
 could allow an unauthenticated, adjacent attacker to reset the Autonomic Control Plane (ACP) of an affected system
@@ -57,9 +54,10 @@ condition.");
 packets, which should have been encrypted over the ACP, in clear text.");
 
   script_tag(name:"qod_type", value:"package");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 08:48:54 +0700 (Fri, 28 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

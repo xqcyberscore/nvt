@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jul2018-4258247_06_win.nasl 10721 2018-08-02 03:07:04Z ckuersteiner $
+# $Id: gb_oracle_mysql_jul2018-4258247_06_win.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle MySQL Security Updates-06 (jul2018-4258247) Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813714");
-  script_version("$Revision: 10721 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2018-3054", "CVE-2018-3077", "CVE-2018-3056", "CVE-2018-3060",
                 "CVE-2018-3065");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 05:07:04 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 12:35:29 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle MySQL Security Updates-06 (jul2018-4258247) Windows");
 
@@ -48,9 +48,7 @@ if(description)
   components of MySQL Server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to have an impact on confidentiality, integrity and availability.
-
-  Impact Level: Application");
+  attackers to have an impact on confidentiality, integrity and availability.");
 
   script_tag(name:"affected", value:"Oracle MySQL version 5.7.22 and prior,
   8.0.11 and prior on Windows");

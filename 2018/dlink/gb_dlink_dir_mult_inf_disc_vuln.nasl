@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_mult_inf_disc_vuln.nasl 9423 2018-04-10 10:58:06Z jschulte $
+# $Id: gb_dlink_dir_mult_inf_disc_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # D-Link DIR Routers Multiple Information Disclosure Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113141");
-  script_version("$Revision: 9423 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:58:06 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 10:18:29 +0100 (Wed, 21 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -70,7 +70,7 @@ if( description )
   script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-865L/REVA/DIR-865L_REVA_FIRMWARE_PATCH_NOTES_1.10B01_EN_WW.pdf");
   script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-868L/REVA/DIR-868L_REVA_FIRMWARE_PATCH_NOTES_1.20B01_EN_WW.pdf");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

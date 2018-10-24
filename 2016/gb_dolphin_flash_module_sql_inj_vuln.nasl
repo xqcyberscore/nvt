@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_flash_module_sql_inj_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_dolphin_flash_module_sql_inj_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Dolphin flash Modules SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:boonex:dolphin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807369");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:16:59 +0530 (Tue, 27 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Dolphin flash Modules SQL Injection Vulnerability");
@@ -53,8 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Dolphin versions 7.3.0");
 
-  script_tag(name:"solution", value:"Upgrade to version 7.3.1 or later,
-  For updates refer to http://www.boonex.com");
+  script_tag(name:"solution", value:"Upgrade to version 7.3.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("gb_dolphin_detect.nasl");
   script_mandatory_keys("Dolphin/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.boonex.com");
   exit(0);
 }
 

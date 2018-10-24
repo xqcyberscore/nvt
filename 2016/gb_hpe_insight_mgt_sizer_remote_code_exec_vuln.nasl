@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_insight_mgt_sizer_remote_code_exec_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_hpe_insight_mgt_sizer_remote_code_exec_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # HPE Insight Management Sizer Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:insight_management_sizer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809191");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-02 15:19:02 +0530 (Fri, 02 Sep 2016)");
   script_name("HPE Insight Management Sizer Remote Arbitrary Code Execution Vulnerability");
 
@@ -53,7 +53,7 @@ if(description)
   to 16.12.1");
 
   script_tag(name:"solution", value:"Upgrade to HPE Insight Management
-  Sizer version 16.12.1 or later. For updates refer to https://www.hpe.com");
+  Sizer version 16.12.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +65,7 @@ if(description)
   script_dependencies("gb_hpe_insight_management_sizer_detect.nasl");
   script_mandatory_keys("HPE/Insight/Management/Win/Ver");
 
+  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ebook_download_dir_trav_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_wordpress_ebook_download_dir_trav_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Wordpress Ebook Download Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807624");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 12051 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:32 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress Ebook Download Plugin Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -60,12 +60,12 @@ if(description)
   version 1.1");
 
   script_tag(name:"solution", value:"Upgrade to Ebook Download plugin version
-  1.2 or later.
-  For updates refer to https://wordpress.org/plugins/ebook-downloader/");
+  1.2 or later.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/ebook-downloader/");
   exit(0);
 }
 

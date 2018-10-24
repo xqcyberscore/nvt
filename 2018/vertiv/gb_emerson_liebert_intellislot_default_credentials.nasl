@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emerson_liebert_intellislot_default_credentials.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: gb_emerson_liebert_intellislot_default_credentials.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Emerson Liebert IntelliSlot Devices Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113235");
-  script_version("$Revision: 11151 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 13:03:33 +0200 (Tue, 24 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.seebug.org/vuldb/ssvid-97372");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:liebert:intellislot";

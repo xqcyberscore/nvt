@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 12055 2018-10-24 12:00:58Z asteins $
 #
 # Joomla Component 'com_jresearch' Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902386");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 12055 $");
   script_cve_id("CVE-2010-1340");
   script_bugtraq_id(38917);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:00:58 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,8 +55,8 @@ if(description)
   the 'controller' parameter in 'index.php', which allows attackers to read arbitrary files via a ../(dot dot) sequences.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone to local file inclusion
   vulnerability.");
@@ -67,17 +67,16 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
+CPE = "cpe:/a:joomla:joomla";
+
 include("misc_func.inc");
 include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-joomlaPort = get_http_port(default:80);
-
-if(!joomlaDir = get_dir_from_kb(port:joomlaPort, app:"joomla")){
-  exit(0);
-}
+if(!joomlaPort = get_app_port(cpe:CPE)) exit(0);
+if(!joomlaDir = get_app_location(port:joomlaPort, cpe:CPE)) exit(0);
 
 if(joomlaDir == "/") joomlaDir = "";
 

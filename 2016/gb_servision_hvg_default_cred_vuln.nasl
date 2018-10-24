@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servision_hvg_default_cred_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_servision_hvg_default_cred_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # SerVision HVG Default Credentials Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807072");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-0930");
   script_bugtraq_id(72433);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 16:15:07 +0530 (Tue, 16 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("SerVision HVG Default Credentials Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   firmware before 2.2.26a100");
 
   script_tag(name:"solution", value:"Upgrade to SerVision HVG Video Gateway
-  devices with firmware 2.2.26a100 or later.
-  For updates refer to http://www.servision.net");
+  devices with firmware 2.2.26a100 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/522460");
@@ -69,6 +68,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.servision.net");
   exit(0);
 }
 

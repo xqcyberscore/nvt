@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # nextCloud 'share.js' Gallery Application XSS Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809414");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-7419", "CVE-2016-9459", "CVE-2016-9460", "CVE-2016-9461", "CVE-2016-9462");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:59:47 +0530 (Tue, 27 Sep 2016)");
   script_name("nextCloud 'share.js' Gallery Application XSS Vulnerability (Windows)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"nextCloud Server before 9.0.52 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to nextCloud Server 9.0.52 or later.
-  For updates refer to http://nextcloud.com");
+  script_tag(name:"solution", value:"Upgrade to nextCloud Server 9.0.52 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_nextcloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("nextcloud/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://nextcloud.com");
   exit(0);
 }
 

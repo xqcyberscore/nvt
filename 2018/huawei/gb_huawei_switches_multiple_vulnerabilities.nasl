@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switches_multiple_vulnerabilities.nasl 9945 2018-05-24 10:16:55Z jschulte $
+# $Id: gb_huawei_switches_multiple_vulnerabilities.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Switches Multiple Vulnerabilities (sa-20171227-01-h323)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113194");
-  script_version("$Revision: 9945 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 12:16:55 +0200 (Thu, 24 May 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 12:57:41 +0200 (Wed, 23 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -162,7 +162,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20171227-01-h323-en");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

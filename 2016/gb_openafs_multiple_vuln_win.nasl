@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_multiple_vuln_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_openafs_multiple_vuln_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # OpenAFS Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808074");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-4536", "CVE-2016-2860");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 17:01:13 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Vulnerabilities (Windows)");
 
@@ -60,8 +60,7 @@ if(description)
   script_tag(name:"affected", value:"OpenAFS version prior and equal to 1.6.16
   on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to OpenAFS version 1.6.17 or later.
-  For updates refer to https://www.openafs.org");
+  script_tag(name:"solution", value:"Upgrade to OpenAFS version 1.6.17 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -74,6 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_openafs_detect.nasl");
   script_mandatory_keys("OpenAFS/Win/Installed");
+  script_xref(name:"URL", value:"https://www.openafs.org");
   exit(0);
 }
 

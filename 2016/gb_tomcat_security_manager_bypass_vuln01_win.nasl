@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807408");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0714", "CVE-2016-0706");
   script_bugtraq_id(83324, 83327);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 11:25:47 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Security Manager Bypass Vulnerability - 01 - Feb16 (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   7.0.0 before 7.0.68, 8.0.0.RC1 before 8.0.31, and 9.0.0.M1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.45 or 7.0.68 or
-  8.0.32 or 9.0.0.M3 or later.
-  For updates refer to http://tomcat.apache.org");
+  8.0.32 or 9.0.0.M3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

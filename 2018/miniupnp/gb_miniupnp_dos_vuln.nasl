@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniupnp_dos_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_miniupnp_dos_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # MiniUPnP DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:miniupnp_project:miniupnpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140805");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-23 13:56:14 +0700 (Fri, 23 Feb 2018)");
-  script_tag(name: "cvss_base", value: "4.6");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-23 13:56:14 +0700 (Fri, 23 Feb 2018)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-1000494");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MiniUPnP DoS Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_miniupnp_detect_tcp.nasl");
   script_mandatory_keys("miniupnp/installed");
 
-  script_tag(name: "summary", value: "Uninitialized stack variable vulnerability in NameValueParserEndElt
+  script_tag(name:"summary", value:"Uninitialized stack variable vulnerability in NameValueParserEndElt
 (upnpreplyparse.c) in miniupnpd allows an attacker to cause Denial of Service (Segmentation fault and Memory
 Corruption) or possibly have unspecified other impact");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "MiniUPnP version 2.0 and prior.");
+  script_tag(name:"affected", value:"MiniUPnP version 2.0 and prior.");
 
-  script_tag(name: "solution", value: "Apply the provided patch.");
+  script_tag(name:"solution", value:"Apply the provided patch.");
 
-  script_xref(name: "URL", value: "https://github.com/miniupnp/miniupnp/issues/268");
+  script_xref(name:"URL", value:"https://github.com/miniupnp/miniupnp/issues/268");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_dos_vuln01_july16_macosx.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_oracle_virtualbox_dos_vuln01_july16_macosx.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Oracle Virtualbox Denial of Service Vulnerability-01 July16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808260");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-3597");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:24:33 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Virtualbox Denial of Service Vulnerability-01 July16 (Mac OS X)");
 
@@ -52,7 +52,7 @@ if(description)
   on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  5.0.26 or later. For updates refer to https://www.virtualbox.org");
+  5.0.26 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

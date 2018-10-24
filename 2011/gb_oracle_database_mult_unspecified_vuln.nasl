@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_mult_unspecified_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_oracle_database_mult_unspecified_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802527");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2006-0256", "CVE-2006-0257", "CVE-2006-0258", "CVE-2006-0259",
                 "CVE-2006-0260", "CVE-2006-0261", "CVE-2006-0262", "CVE-2006-0263",
                 "CVE-2006-0265", "CVE-2006-0266", "CVE-2006-0267", "CVE-2006-0268",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(16287, 16384, 16294);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:34:24 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to unspecified errors in the multiple components.");
   script_tag(name:"summary", value:"This host is running Oracle database and is prone to multiple
   unspecified vulnerabilities.");
-  script_tag(name:"solution", value:"Apply patches");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

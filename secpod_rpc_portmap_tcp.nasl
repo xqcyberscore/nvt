@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_rpc_portmap_tcp.nasl 5487 2017-03-04 19:00:02Z cfi $
+# $Id: secpod_rpc_portmap_tcp.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # RPC portmapper (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108090");
-  script_version("$Revision: 5487 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 20:00:02 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-03-12 10:50:11 +0100 (Thu, 12 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,6 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("RPC");
+  script_dependencies("secpod_rpc_portmap_udp.nasl");
   script_require_ports(111, 121, 530, 593);
 
   script_tag(name:"summary", value:"This script performs detection of RPC portmapper on TCP.");
@@ -55,14 +56,16 @@ foreach p( ports ) {
 
   port = FALSE;
 
-  if( get_tcp_port_state( p ) ) {
-    port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_TCP, portmap:p );
-    if( port ) {
-      replace_kb_item( name:"rpc/portmap", value:p );
-      register_service( port:p, proto:"rpc-portmap" );
-      log_message( port:p, data:"RPC portmapper is running on this port" );
-    }
-  }
+  if( ! get_tcp_port_state( p ) ) continue;
+
+  port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_TCP, portmap:p );
+  if( ! port ) continue;
+
+  replace_kb_item( name:"rpc/portmap", value:p );
+  set_kb_item( name:"rpc/portmap/tcp/detected", value:TRUE );
+  set_kb_item( name:"rpc/portmap/tcp_or_udp/detected", value:TRUE );
+  register_service( port:p, proto:"rpc-portmap" );
+  log_message( port:p, data:"RPC portmapper is running on this port." );
 }
 
 exit( 0 );

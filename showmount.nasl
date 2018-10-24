@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: showmount.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: showmount.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # NFS export
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102014");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12057 $");
   script_cve_id("CVE-1999-0554", "CVE-1999-0548");
   script_name("NFS export");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 LSS");
   script_family("Remote file access");
-  script_dependencies("secpod_rpc_portmap.nasl");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl");
   script_require_keys("rpc/portmap");
 
   script_tag(name:"summary", value:"This plugin lists NFS exported shares, and warns if some of

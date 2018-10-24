@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mahara_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_mahara_mult_vuln.nasl 12061 2018-10-24 13:20:52Z asteins $
 #
 # Mahara Multiple Remote Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801889");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12061 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 15:20:52 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-23 15:31:07 +0200 (Mon, 23 May 2011)");
   script_bugtraq_id(47798);
   script_cve_id("CVE-2011-1402", "CVE-2011-1403", "CVE-2011-1404",
@@ -44,6 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_mahara_detect.nasl");
+  script_mandatory_keys("mahara/detected");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected
@@ -83,22 +84,18 @@ if(description)
   exit(0);
 }
 
+CPE = "cpe:/a:mahara:mahara";
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!port){
-  exit(0);
+if (!port = get_app_port(cpe:CPE)) exit(0);
+if (!vers = get_app_version(cpe:CPE, port:port)) exit(0);
+
+if(version_is_less(version:vers, test_version:"1.3.6")) {
+	report = report_fixed_ver(installed_version:vers, fixed_version:"1.3.6.");
+	security_message(port:port, data:report);
+	exit(0);
 }
 
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-if(vers = get_version_from_kb(port:port, app:"Mahara"))
-{
-  if(version_is_less(version: vers, test_version: "1.3.6")) {
-    security_message(port:port);
-  }
-}
+exit(99);

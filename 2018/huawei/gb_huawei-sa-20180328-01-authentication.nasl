@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei-sa-20180328-01-authentication.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_huawei-sa-20180328-01-authentication.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Switches Improper Authorization Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112259");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:11:11 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -66,7 +66,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20180328-01-authentication-en");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

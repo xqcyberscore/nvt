@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_tikiwiki_mult_vuln_feb18.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Tiki Wiki Multiple Vulnerabilities Feb18
 #
@@ -30,19 +30,18 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812811");
-  script_version("$Revision: 10128 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2018-7302", "CVE-2018-7303", "CVE-2018-7304");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 12:13:22 +0530 (Fri, 23 Feb 2018)");
   script_name("Tiki Wiki Multiple Vulnerabilities Feb18");
 
   script_tag(name:"summary", value:"The host is installed with Tiki Wiki CMS
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -55,9 +54,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully exploitation will allow an
   attacker to perform a CSV Injection attack to perform malicious activity,
-  XSS and HTML injection attack..
-
-  Impact Level: Application/System");
+  XSS and HTML injection attack..");
 
   script_tag(name:"affected", value:"Tiki Wiki version 17.1");
 

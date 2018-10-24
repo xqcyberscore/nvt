@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -27,25 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802677");
-  script_version("$Revision: 11857 $");
+  script_version("$Revision: 12057 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
+  script_category(ACT_DENIAL);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Denial of Service");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl", "os_detection.nasl");
+  script_mandatory_keys("rpc/portmap", "Host/runs_windows");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/51012/");
   script_xref(name:"URL", value:"http://www.offensive-security.com/vulndev/ca-arcserve-rwslist-remote-code-execution/");
   script_xref(name:"URL", value:"https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={F9EEA31E-8089-423E-B746-41B5C9DD2AC1}");
-
-  script_category(ACT_DENIAL);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Denial of Service");
-  script_dependencies("secpod_rpc_portmap.nasl", "os_detection.nasl");
-  script_mandatory_keys("rpc/portmap", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will remote attackers to execute arbitrary code or
   cause a denial of service condition.");
@@ -59,6 +57,9 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with CA ARCserve Backup and is prone
   multiple vulnerabilities.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

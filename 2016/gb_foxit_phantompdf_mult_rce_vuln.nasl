@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_rce_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_foxit_phantompdf_mult_rce_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Foxit PhantomPDF Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807555");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-4059", "CVE-2016-4060", "CVE-2016-4061", "CVE-2016-4062",
                 "CVE-2016-4063", "CVE-2016-4064", "CVE-2016-4065");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 16:44:43 +0530 (Mon, 25 Apr 2016)");
   script_name("Foxit PhantomPDF Multiple Remote Code Execution Vulnerabilities");
 
@@ -69,7 +69,7 @@ if(description)
   earlier.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version
-  7.3.4 or later, For updates refer to http://www.foxitsoftware.com");
+  7.3.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -84,6 +84,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
   script_mandatory_keys("foxit/phantompdf/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

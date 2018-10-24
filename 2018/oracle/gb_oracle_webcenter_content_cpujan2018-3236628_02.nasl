@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl 9039 2018-03-07 10:56:54Z santu $
+# $Id: gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle WebCenter Content Unspecified Vulnerability-02 (cpujan2018-3236628)
 #
@@ -29,41 +29,37 @@ CPE = "cpe:/a:oracle:webcenter_content";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812960");
-  script_version("$Revision: 9039 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2018-2596");
   script_bugtraq_id(102545);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 12:17:44 +0530 (Tue, 06 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##Patch is available as solution
   script_name("Oracle WebCenter Content Unspecified Vulnerability-02 (cpujan2018-3236628)");
 
-  script_tag(name: "summary" , value:"The host is running Oracle WebCenter Content
+  script_tag(name:"summary", value:"The host is running Oracle WebCenter Content
   and is prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaws exist due to error in the 'Content
+  script_tag(name:"insight", value:"The flaws exist due to error in the 'Content
   Server' component.");
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   can result in unauthorized creation, deletion or modification access to critical
   data or all Oracle WebCenter Content accessible data as well as unauthorized read
-  access to a subset of Oracle WebCenter Content accessible data.
-
-  Impact Level: Application");
+  access to a subset of Oracle WebCenter Content accessible data.");
 
   script_tag(name:"affected", value:"Oracle WebCenter Content version 11.1.1.9.0,
   12.2.1.2.0 and 12.2.1.3.0");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below,
-  http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html");
+  script_tag(name:"solution", value:"Apply the update from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujan2018-3236628.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mako_web_server_mult_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_mako_web_server_mult_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Mako Web Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mako:mako_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811771");
-  script_version("$Revision: 11935 $");
+  script_version("$Revision: 12043 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 16:33:01 +0530 (Mon, 18 Sep 2017)");
   script_name("Mako Web Server Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -72,11 +72,9 @@ if(description)
 
   script_tag(name:"affected", value:"Mako Web Server version 2.5. Other versions
   may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-  this issue will be updated once solution details are available.");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);

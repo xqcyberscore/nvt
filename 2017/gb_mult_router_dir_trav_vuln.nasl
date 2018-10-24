@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 11747 2018-10-04 09:58:33Z jschulte $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 12044 2018-10-24 06:37:40Z mmartin $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 11747 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12044 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:37:40 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -37,8 +37,6 @@ if(description)
   script_cve_id("CVE-2017-15647");
 
   script_tag(name:"qod_type", value:"exploit");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Multiple Router Directory Traversal Vulnerability");
 
@@ -57,11 +55,10 @@ if(description)
   script_tag(name:"insight", value:"On multiple home router products (e.g. FiberHome, PLC Systems), a directory
   traversal vulnerability exists in /cgi-bin/webproc via the getpage parameter in conjunction with a crafted
   var:page value.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
-
-  script_tag(name:"solution", value:"No known solution is available as of 31st July, 2018. Information
-  regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3472");
 

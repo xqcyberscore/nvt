@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_multiple_vulnerabilities_06_16.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_nagios_xi_multiple_vulnerabilities_06_16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Nagios XI Multiple Vulnerabilities
 #
@@ -32,8 +32,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105749");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11449 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 12:51:38 +0200 (Fri, 03 Jun 2016)");
   script_name("Nagios XI Multiple Vulnerabilities");
 
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_nagios_XI_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("nagiosxi/installed");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

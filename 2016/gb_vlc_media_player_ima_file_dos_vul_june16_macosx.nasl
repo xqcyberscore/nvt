@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_macosx.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808222");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-5108");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 14:25:45 +0530 (Mon, 13 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Mac OS X)");
@@ -55,7 +55,7 @@ if(description)
   on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to VideoLAN VLC media player version
-  2.2.4 or later. For details refer to http://www.videolan.org");
+  2.2.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

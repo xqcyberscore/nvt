@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln02_oct16.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_oracle_glassfish_unspecified_vuln02_oct16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Oracle GlassFish Server Multiple Unspecified Vulnerabilities-02 Oct16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809710");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-5519", "CVE-2016-5528", "CVE-2017-3250", "CVE-2017-3249",
                 "CVE-2017-3247");
   script_bugtraq_id(93698, 95478, 95480, 95484, 95483);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:53:33 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle GlassFish Server Multiple Unspecified Vulnerabilities-02 Oct16");
 
@@ -59,11 +59,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle GlassFish Server version 2.1.1, 3.0.1
   and 3.1.2");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html
-
-  http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  script_tag(name:"solution", value:"Apply patches from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2016-1362");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12051 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-01 11:56:51 +0200 (Wed, 01 Jun 2016)");
   script_name("Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco Wireless LAN Controller (WLC) devices running Cisco AireOS Softwar");
   script_tag(name:"impact", value:"The vulnerability is due to the presence of unsupported URLs in the web-based device management interface provided by the affected software. An attacker could exploit this vulnerability by attempting to access a URL that is not generally accessible from and supported by the management interface. A successful exploit could allow the attacker to cause the device to reload, resulting in a DoS condition.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"affected", value:"Releases 4.1 through 7.4.120.0
 All 7.5 releases
@@ -54,7 +54,7 @@ Release 7.6.100.0");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wlc_version.nasl");
   script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  exit(0);
 }
 
 

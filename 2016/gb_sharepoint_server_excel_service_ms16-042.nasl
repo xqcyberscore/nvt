@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms16-042.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_sharepoint_server_excel_service_ms16-042.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3148775)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807543");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0136");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 11:57:14 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3148775)");
@@ -55,8 +55,7 @@ if(description)
   Microsoft SharePoint Server 2010 Service Pack 2 Excel Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/library/security/MS16-042");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-042");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cachelogic_expired_domains_script_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_cachelogic_expired_domains_script_mult_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Cachelogic Expired Domains Script Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902449");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12047 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,14 +51,17 @@ if(description)
   - A full path disclosure vulnerability in 'index.php' when handling various
     parameters.
 
-  - A SQL injection vulnerability in 'index.php' when handling 'ncharacter'
-    parameter.");
-  script_tag(name:"solution", value:"Apply the patch");
+  - A SQL injection vulnerability in 'index.php' when handling 'ncharacter' parameter.");
+
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+
   script_tag(name:"summary", value:"This host is running cahelogic expired domains script and is prone
   multiple vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and manipulate SQL queries by injecting arbitrary SQL code
   in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Cachelogic Expired Domains Script version 1.0");
 
   script_tag(name:"solution_type", value:"VendorFix");

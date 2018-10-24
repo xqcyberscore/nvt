@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ypupdated_remote_exec.nasl 6301 2017-06-10 17:07:40Z cfischer $
+# $Id: ypupdated_remote_exec.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # rpc.ypupdated remote execution
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80036");
-  script_version("$Revision: 6301 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:07:40 +0200 (Sat, 10 Jun 2017) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(1749, 28383);
   script_cve_id("CVE-1999-0208");
@@ -38,30 +38,24 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2008 Tenable Network Security, Inc. and Michel Arboi");
   script_family("RPC");
-  script_dependencies("secpod_rpc_portmap.nasl", "rpcinfo.nasl");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl", "rpcinfo.nasl");
   script_mandatory_keys("rpc/portmap");
 
-  tag_summary = "'ypupdated -i' is running on this port.
-
-  Description :
-
-  ypupdated is part of NIS and allows a client to update NIS maps.
-
-  This old command execution vulnerability was discovered in 1995 and
-  fixed then. However, it is still possible to run ypupdated in insecure
-  mode by adding the '-i' option.
-  Anybody can easily run commands as root on this machine by specifying
-  an invalid map name that starts with a pipe character. Exploits
-  have been publicly available since the first advisory.";
-
-  tag_solution = "Remove the '-i' option.
+  script_tag(name:"solution", value:"Remove the '-i' option.
   If this option was not set, the rpc.ypupdated daemon is still vulnerable
-  to the old flaw; contact your vendor for a patch.";
+  to the old flaw. Contact your vendor for a patch.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"ypupdated with the '-i' option enabled is running on this port.");
+
+  script_tag(name:"insight", value:"ypupdated is part of NIS and allows a client to update NIS maps.
+
+  This old command execution vulnerability was discovered in 1995 and fixed then. However, it is still
+  possible to run ypupdated in insecure mode by adding the '-i' option. Anybody can easily run commands
+  as root on this machine by specifying an invalid map name that starts with a pipe character. Exploits
+  have been publicly available since the first advisory.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_tag(name:"deprecated", value:TRUE);
 
@@ -76,42 +70,39 @@ include("byte_func.inc");
 g_timeout = 15; # Must be greater than the maximum sleep value
 RPC_PROG = 100028;
 
+function test(port, sleeps, udp) {
 
-function test(port, sleeps, udp)
-{
- local_var soc, mapname, packet, tictac1, tictac2, d, data, credentials, sleep;
+  local_var soc, mapname, packet, tictac1, tictac2, d, data, credentials, sleep;
 
- foreach sleep (sleeps)
- {
-  if(!udp)
-  {
-   soc = open_sock_tcp (port);
-   if (!soc) return 0;
-  }
-  else
-  {
-   soc = open_sock_udp (port);
-   if (!soc) return 0;
+  foreach sleep (sleeps) {
+
+    if(!udp) {
+      soc = open_sock_tcp (port);
+      if (!soc)
+        return 0;
+    } else {
+     soc = open_sock_udp (port);
+     if (!soc)
+       return 0;
   }
 
   credentials = xdr_auth_unix(hostname: 'localhost', uid: 0, gid: 0);
 
   mapname = strcat("|sleep ", sleep, "; true > /dev/null;");
 
-  # xdr_* functions doesn't exist
-  data =
-        xdr_string(mapname)  +
-        xdr_long(2)          +
-        xdr_long(0x78000000) +
-        xdr_long(2)          +
-        xdr_long(0x78000000) ;
+  # nb: xdr_* functions doesn't exist
+  data = xdr_string(mapname)  +
+         xdr_long(2)          +
+         xdr_long(0x78000000) +
+         xdr_long(2)          +
+         xdr_long(0x78000000) ;
 
-  # This function doesn't exist
+  # nb: This function doesn't exist
   packet = rpc_packet (prog:RPC_PROG, vers:1, proc:0x01, credentials:credentials, data:data, udp:udp);
 
   tictac1 = unixtime();
 
-  # This function doesn't exist
+  # nb: This function doesn't exist
   data = rpc_sendrecv (socket:soc, packet:packet, udp:udp, timeout:g_timeout);
   close(soc);
 
@@ -121,37 +112,31 @@ function test(port, sleeps, udp)
   if ( isnull(data) || (d < sleep) || (d >= (sleep + 5)) )
     return 0;
  }
-
  return 1;
 }
 
+function check_flaw(ports, udp) {
 
-function check_flaw(ports, udp)
-{
- local_var port;
+  local_var port;
 
- foreach port(ports)
- {
-  if (test(port: port, sleeps: make_list(1, 3, 7), udp: udp))
-    security_message(port: port);
- }
+  foreach port(ports) {
+    if (test(port: port, sleeps: make_list(1, 3, 7), udp: udp))
+     security_message(port: port);
+  }
 }
 
 tcp_ports = get_kb_list('Services/RPC/ypupdated');
-if (isnull(tcp_ports))
-{
+if (isnull(tcp_ports)) {
  port = get_rpc_port(program: RPC_PROG, protocol: IPPROTO_TCP);
  if (port) tcp_ports = make_list(port);
 }
 
 check_flaw(ports:tcp_ports, udp:0);
 
-
 udp_ports = get_kb_list('Services/udp/RPC/ypupdated');
-if (isnull(udp_ports))
-{
- port = get_rpc_port(program: RPC_PROG, protocol: IPPROTO_UDP);
- if (port) udp_ports = make_list(port);
+if (isnull(udp_ports)) {
+  port = get_rpc_port(program: RPC_PROG, protocol: IPPROTO_UDP);
+  if (port) udp_ports = make_list(port);
 }
 
 check_flaw(ports:udp_ports, udp:1);

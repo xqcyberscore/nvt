@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_products_invalid_mem_access_vuln.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_huawei_products_invalid_mem_access_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Huawei Products Invalid Memory Access Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113195");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 12:32:45 +0200 (Thu, 24 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,7 @@ if( description )
 
   script_tag(name:"summary", value:"Multiple Huawei Switches are prone to an invalid memory access vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:" An unauthenticated attacker can send malformed SCCP messages to the host.
+  script_tag(name:"insight", value:"An unauthenticated attacker can send malformed SCCP messages to the host.
   Due to insufficient input validation of some values in the messages, buffer errors can be caused.");
   script_tag(name:"impact", value:"Successful exploitation could lead to Denial of Service or execution of arbitrary code.");
   script_tag(name:"affected", value:"Following products and firmware versions are affected:
@@ -71,7 +71,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20180425-02-buffer-en");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:huawei:switch";

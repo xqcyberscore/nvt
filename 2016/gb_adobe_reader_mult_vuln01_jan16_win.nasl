@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806820");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934",
 		"CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938",
 		"CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942",
@@ -37,7 +37,7 @@ if(description)
 		"CVE-2016-0947", "CVE-2016-1111");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:04:08 +0530 (Mon, 18 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)");
@@ -69,8 +69,7 @@ if(description)
 
   script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.14 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 11.0.14 or later.
-  For updates refer http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 11.0.14 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,6 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

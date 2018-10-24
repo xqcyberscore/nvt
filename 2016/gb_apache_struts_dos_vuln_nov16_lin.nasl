@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_dos_vuln_nov16_lin.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_apache_struts_dos_vuln_nov16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache Struts Denial of Service Vulnerability Nov16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809477");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-4465");
   script_bugtraq_id(91278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 14:41:28 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Denial of Service Vulnerability Nov16 (Linux)");
@@ -54,8 +54,7 @@ if(description)
   and 2.5 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.29
-  or 2.5.1 later. For updates refer to
-  http://struts.apache.org");
+  or 2.5.1 later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 

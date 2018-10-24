@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_server_dos_vuln_jul16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_apache_server_dos_vuln_jul16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Apache HTTP Server Denial of Service Vulnerability - Jul16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807854");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-1546");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 18:36:25 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Denial of Service Vulnerability - Jul16");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Apache HTTP Server 2.4.17 and 2.4.18,
   when mod_http2 is enabled");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.4.20 or newer.
-  For updates refer http://www.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 2.4.20 or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

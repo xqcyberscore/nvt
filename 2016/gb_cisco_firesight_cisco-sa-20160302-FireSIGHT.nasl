@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20160302-FireSIGHT.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_cisco_firesight_cisco-sa-20160302-FireSIGHT.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco FireSIGHT System Software Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1356", "CVE-2016-1355");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12051 $");
 
   script_name("Cisco FireSIGHT System Software Multiple Vulnerabilities");
 
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker could exploit the XSS vulnerability by persuading a user to click a specific link. An attacker could exploit the Convert Timing Channel vulnerability by using a combination of valid system logins, invalid system logins, and time variability to try to continuously authenticate to a device. ");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The XSS vulnerability is due to improper sanitization of parameter values. The Convert Timing Channel Vulnerability is due to implementation details of how system credentials are verified by the affected software.");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 13:46:30 +0100 (Mon, 21 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -61,7 +61,7 @@ if (description)
   script_dependencies("gb_cisco_firesight_management_center_version.nasl",
                      "gb_cisco_firesight_management_center_http_detect.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

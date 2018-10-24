@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_jun16_lin.nasl 11545 2018-09-21 20:43:34Z cfischer $
+# $Id: gb_mysql_unspecified_vuln02_jun16_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-02 Jun16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808114");
-  script_version("$Revision: 11545 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-2575");
   script_bugtraq_id(74075);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 14:34:13 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-02 Jun16 (Linux)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle MySQL 5.1.34 and earlier on Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

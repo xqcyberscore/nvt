@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_convergedsystems_virtualization_remote_code_exec_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_hpe_sizer_convergedsystems_virtualization_remote_code_exec_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # HPE Sizer ConvergedSystems Virtualization Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:sizer_for_converged_systems_virtualization";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809438");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 12:59:16 +0530 (Mon, 10 Oct 2016)");
   script_name("HPE Sizer ConvergedSystems Virtualization Remote Arbitrary Code Execution Vulnerability");
 
@@ -54,7 +54,7 @@ if(description)
   prior to version 16.7.1.");
 
   script_tag(name:"solution", value:"Upgrade to HPE Sizer for ConvergedSystems
-  Virtualization version 16.7.1 or later. For updates refer to https://www.hpe.com");
+  Virtualization version 16.7.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_sizer_convergedsystems_virtualization_detect.nasl");
   script_mandatory_keys("HPE/ConvergedSystems/Virtualization/Sizing/Tool/Win/Ver");
+  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir868l_rce_vuln.nasl 9818 2018-05-14 10:33:24Z asteins $
+# $Id: gb_dlink_dir868l_rce_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # D-Link DIR-868L StarHub Firmware Remote Code Execution Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112252");
-  script_version("$Revision: 9818 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-14 12:33:24 +0200 (Mon, 14 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-09 12:25:00 +0200 (Mon, 09 Apr 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-09 12:25:00 +0200 (Mon, 09 Apr 2018)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-9284");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DIR-868L StarHub Firmware Remote Code Execution Vulnerability");
 
@@ -49,20 +49,20 @@ if (description)
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir", "dlink_fw_version");
 
-  script_tag(name: "summary", value: "D-Link DIR-868L devices are prone to a pre-authenticated remote code execution vulnerability.");
+  script_tag(name:"summary", value:"D-Link DIR-868L devices are prone to a pre-authenticated remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "This vulnerability is an unauthenticated buffer overflow that occurs when the affected router parses authentication requests.");
+  script_tag(name:"insight", value:"This vulnerability is an unauthenticated buffer overflow that occurs when the affected router parses authentication requests.");
 
-  script_tag(name: "impact", value: "Upon successful exploitation, an attacker could then run arbitrary code under the privilege of a web service.");
+  script_tag(name:"impact", value:"Upon successful exploitation, an attacker could then run arbitrary code under the privilege of a web service.");
 
-  script_tag(name: "affected", value: "D-Link DIR-868L with customized Singapore StarHub firmware.");
+  script_tag(name:"affected", value:"D-Link DIR-868L with customized Singapore StarHub firmware.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.21SHCb03 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.21SHCb03 or later.");
 
-  script_xref(name: "URL", value: "http://www.dlink.com.sg/dir-868l/#firmware");
-  script_xref(name: "URL", value: "https://www.fortinet.com/blog/threat-research/fortiguard-labs-discovers-vulnerability-in--d-link-router-dir868.html");
+  script_xref(name:"URL", value:"http://www.dlink.com.sg/dir-868l/#firmware");
+  script_xref(name:"URL", value:"https://www.fortinet.com/blog/threat-research/fortiguard-labs-discovers-vulnerability-in--d-link-router-dir868.html");
 
   exit(0);
 }

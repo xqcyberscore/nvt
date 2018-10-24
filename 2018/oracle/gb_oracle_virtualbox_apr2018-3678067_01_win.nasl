@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_apr2018-3678067_01_win.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: gb_oracle_virtualbox_apr2018-3678067_01_win.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Oracle VirtualBox Security Updates (apr2018-3678067) 01 - Windows
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813302");
-  script_version("$Revision: 9681 $");
-  script_cve_id("CVE-2018-2860", "CVE-2018-0739", "CVE-2018-2842", "CVE-2018-2843", 
-                "CVE-2018-2844", "CVE-2018-2845", "CVE-2018-2831", "CVE-2018-2830", 
+  script_version("$Revision: 12045 $");
+  script_cve_id("CVE-2018-2860", "CVE-2018-0739", "CVE-2018-2842", "CVE-2018-2843",
+                "CVE-2018-2844", "CVE-2018-2845", "CVE-2018-2831", "CVE-2018-2830",
                 "CVE-2018-2837", "CVE-2018-2836", "CVE-2018-2835");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 19:09:04 +0530 (Wed, 18 Apr 2018)");
   script_name("Oracle VirtualBox Security Updates (apr2018-3678067) 01 - Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle VM
+  script_tag(name:"summary", value:"The host is installed with Oracle VM
   VirtualBox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to multiple
+  script_tag(name:"insight", value:"Multiple flaws exists due to multiple
   unspecified errors in 'Core' component of Oracle VM VirtualBox.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to affect confidentiality, availability and integrity via
-  unknown vectors.
+  unknown vectors.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VirtualBox versions prior to 5.1.36, 5.2.x
+  script_tag(name:"affected", value:"VirtualBox versions prior to 5.1.36, 5.2.x
   prior to 5.2.10 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Oracle VirtualBox 5.2.10 or
+  script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox 5.2.10 or
   5.1.36 or later. For updates refer to reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
-  script_xref(name : "URL" , value : "https://www.virtualbox.org");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_content_mgmt_component_unspecified_vuln01.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: gb_oracle_db_content_mgmt_component_unspecified_vuln01.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server Content Management Component Unspecified Vulnerability-01
 #
@@ -28,39 +28,35 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813000");
-  script_version("$Revision: 9117 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2011-0882");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 15:14:30 +0530 (Wed, 07 Mar 2018)");
   script_name("Oracle Database Server Content Management Component Unspecified Vulnerability-01");
 
   script_tag(name:"summary", value:"This host is running Oracle Database Server
   and is prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unspecified error in
   component 'Content Management'.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
-  attackers to affect confidentiality and integrity via unknown vectors.
+  attackers to affect confidentiality and integrity via unknown vectors.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Oracle Database Server version 10.1.0.5, 
+  script_tag(name:"affected", value:"Oracle Database Server version 10.1.0.5,
   10.2.0.3, 10.2.0.4, and 11.1.0.7");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-  https://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html");
+  script_xref(name:"URL", value:"https://www.oracle.com/technetwork/topics/security/cpujuly2011-313328.html");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

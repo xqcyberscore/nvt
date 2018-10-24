@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln01_feb13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_oracle_java_se_mult_vuln01_feb13_win.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities -01 Feb 13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803307");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2013-0431", "CVE-2013-1489", "CVE-2013-0351", "CVE-2013-0409",
                 "CVE-2013-0419", "CVE-2013-0423", "CVE-2013-0424", "CVE-2012-3342",
                 "CVE-2012-3213", "CVE-2012-1541", "CVE-2013-1475", "CVE-2013-0425",
@@ -45,7 +45,7 @@ if(description)
                     57716, 57720, 57722, 57727, 57731, 57729, 57730);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 18:29:04 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -01 Feb 13 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028071");
@@ -90,7 +90,7 @@ if(description)
   - Java API for XML Web Services(JAX_WS)
 
   - Java Secure Socket Extension (JSSE)");
-  script_tag(name:"solution", value:"Apply patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

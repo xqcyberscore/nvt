@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 12038 2018-10-23 12:58:19Z asteins $
+# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112090");
-  script_version("$Revision: 12038 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 14:58:19 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 11:47:18 +0200 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -62,6 +62,8 @@ if (description)
   crypto currency mining, or exploit kit.");
 
   script_tag(name:"affected", value:"dotCMS version 4.1.1.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
   disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to

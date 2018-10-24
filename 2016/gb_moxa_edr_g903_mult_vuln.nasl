@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr_g903_mult_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_moxa_edr_g903_mult_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Moxa EDR G903 Router Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:moxa:edr-g903";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808220");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0875", "CVE-2016-0876", "CVE-2016-0877", "CVE-2016-0878",
                 "CVE-2016-0879");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-09 13:45:38 +0530 (Thu, 09 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Moxa EDR G903 Router Multiple Vulnerabilities");
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"affected", value:"Moxa EDR-G903 Versions V3.4.11 and older.");
 
   script_tag(name:"solution", value:"Upgrade to firmware version v3.4.12 or
-  later. For updates refer to http://www.moxa.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-042-01");
@@ -72,6 +72,7 @@ if(description)
   script_dependencies("gb_moxa_edr_g903_remote_detect.nasl");
   script_mandatory_keys("Moxa/EDR/G903/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.moxa.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_dos_vuln_jan16.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_openssh_dos_vuln_jan16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # OpenSSH Denial of Service Vulnerability - Jan16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806671");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-1907");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:15:36 +0530 (Thu, 28 Jan 2016)");
   script_name("OpenSSH Denial of Service Vulnerability - Jan16");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.1p2");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.1p2 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.1p2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

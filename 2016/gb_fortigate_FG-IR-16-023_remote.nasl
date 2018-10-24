@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105886");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-6909");
   script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)");
 
@@ -56,7 +56,7 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-06 11:28:49 +0200 (Tue, 06 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -65,7 +65,7 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("ETag/banner");
 
- exit(0);
+  exit(0);
 }
 
 

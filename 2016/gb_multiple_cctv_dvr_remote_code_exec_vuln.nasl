@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_cctv_dvr_remote_code_exec_vuln.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_multiple_cctv_dvr_remote_code_exec_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Multiple CCTV-DVR Vendors - Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807674");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 12051 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-20 15:15:28 +0530 (Wed, 20 Apr 2016)");
   script_name("Multiple CCTV-DVR Vendors - Remote Code Execution Vulnerability");
 
@@ -49,7 +49,7 @@ if(description)
   allows any remote user to read configuration files from the application.");
 
   script_tag(name:"affected", value:"For Affecfted vendors,
-  please refer to https://www.exploit-db.com/exploits/39596");
+  please");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20161026-esawsa2.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20161026-esawsa2.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Web Security Appliance MIME Header Bypass Vulnerability
 #
@@ -33,14 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6372");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
 
   script_name("Cisco Web Security Appliance MIME Header Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa2");
 
-
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the email message and content filtering for malformed Multipurpose Internet Mail
@@ -55,22 +54,19 @@ attachment encoded with MIME. A successful exploit could allow the attacker to b
 email message and content filtering.
 
 Cisco has released software updates that address this vulnerability. Workarounds that address this
-vulnerability are not available.
-
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa2");
+vulnerability are not available.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 14:52:53 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

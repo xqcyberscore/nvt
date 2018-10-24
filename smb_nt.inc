@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 11621 2018-09-26 10:00:23Z cfischer $
+# $Id: smb_nt.inc 12058 2018-10-24 12:42:55Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11621 $
+# $Revision: 12058 $
 #
 ###############################################################################
 
@@ -50,9 +50,9 @@ _Workaround = get_kb_list( "HostDetails/NVT/1.3.6.1.4.1.25623.1.0.102011/OS" );
 
 if( _Workaround ) {
   foreach Workaround( _Workaround ) {
-    if( ( "Windows Vista (TM) Ultimate 6001 Service Pack 1" >< Workaround ) ||
-        ( "windows_vista" >< Workaround && "sp1" >< Workaround ) ||
-        ( "Windows Server (R) 2008 Enterprise 6001 Service Pack 1" >< Workaround ) ||
+    if( ( "Windows Vista (TM) Ultimate 6001 Service Pack 1" >< Workaround )||
+        ( "windows_vista" >< Workaround && "sp1" >< Workaround )||
+        ( "Windows Server (R) 2008 Enterprise 6001 Service Pack 1" >< Workaround )||
         ( "windows_server_2008" >< Workaround && "sp1" >< Workaround && "r2" >!< Workaround ) ) {
       ntlmssp_flag = 0;
       break;
@@ -175,7 +175,7 @@ function kb_smb_wmi_connectinfo() {
   host    = get_host_ip();
   usrname = kb_smb_login();
   passwd  = kb_smb_password();
-  if( ! host || ! usrname || ! passwd )
+  if( ! host|| ! usrname|| ! passwd )
     return FALSE;
 
   usrname_wmi_smb = usrname;
@@ -737,7 +737,7 @@ function smb_neg_prot_NTLMSSP( soc ) {
   # New Openvas which supports get_smb2_signature function
   else if( SHA256 ) {
 
-    if( ( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED ) ) ||
+    if( ( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED ) )||
         ( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 ) ) ) {
 
       isSignActive = 1;
@@ -1750,7 +1750,7 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24) || ( len < 24 ) ) return FALSE;
+    if( ( strlen( server_resp ) < 24)|| ( len < 24 ) ) return FALSE;
 
     orig_sign = substr( r, 18, 23 );
     serv_sign = substr( server_resp, 18, 23 );
@@ -2391,7 +2391,7 @@ function smb_tconx_NTLMSSP( soc, name, uid, share ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -2521,7 +2521,7 @@ function smb2_tconx_NTLMSSP( soc, name, uid, share ) {
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
 
-    if( (strlen( server_resp ) < 64 ) || (strlen( r )  < 64 ) ) {
+    if( (strlen( server_resp ) < 64 )|| (strlen( r )  < 64 ) ) {
       return FALSE;
     }
 
@@ -2780,7 +2780,7 @@ function smbntcreatex_NTLMSSP( soc, uid, tid, name, always_return_blob ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -3146,7 +3146,7 @@ function pipe_accessible_registry_NTLMSSP( soc, uid, tid, pipe ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -3604,7 +3604,7 @@ function registry_open_NTLMSSP( soc, uid, tid, pipe, reg_type ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -3861,7 +3861,7 @@ function registry_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
 
-    if( ( strlen( server_resp ) < 24) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24)|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -4421,7 +4421,7 @@ function registry1_enum_key( soc, uid, tid, pipe, reply ) {
         len = strlen( r );
         server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
         if( isnull( server_resp ) ) return FALSE;
-        if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
           return FALSE;
         }
         orig_sign = substr( r, 18, 23 );
@@ -4452,10 +4452,175 @@ function registry1_enum_key( soc, uid, tid, pipe, reply ) {
 }
 
 #----------------------------------------------------------#
+# RegEnumValue() for SMB 2                                 #
+#----------------------------------------------------------#
+# Author: Shakeel
+function registry2_enum_value( soc, uid, tid, pipe, reply ) {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing function
+  # within includes as the calling VT only needs to make sure to have all
+  # required .inc files included and not the include on its own.
+  if( ! defined_func( "dec2hex" ) ) include("misc_func.inc");
+
+  local_var soc, uid, tid, pipe, reply;
+  local_var list, magic, i, j, req, ioctl_req, dcerpc_req1, dcerpc_req2;
+  local_var rrs_req, len_rrs, len_rrs_lo, len_rrs_hi, dcerpc_req, req_l, len_lo, len_hi;
+  local_var sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign, len, name;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_enum_value" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_enum_value" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_enum_value" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_enum_value" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_enum_value");
+
+  list = make_list();
+
+  if( strlen( reply ) < 141 ) return NULL;
+
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
+    }
+  }
+
+  ##Enumerate for index
+  for( j = 0; j >= 0; j++ ) {
+    ##Covert to hex
+    ##misc_func.inc is dependency to be included in NVT
+    enumindex = dec2hex(num:j);
+
+    g_mhi = multiplex_id / 256;
+    g_mlo = multiplex_id % 256;
+
+    req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
+
+    if( isSignActive ) {
+      req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+    } else {
+      req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+    }
+
+    req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00 );
+
+    # Ioctl Req
+    ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                            pipe, 0x78, 0x00, 0x00, 0x00 );
+
+    # Distributed Computing Environment / Remote Procedure Calls
+    dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+    dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                              0x00, 0x00, 0x00, 0x00, 0x0A, 0x00 );
+
+
+
+    # Remote Registry Service Req
+    rrs_req = magic + raw_string( enumindex, 0x00, 0x00, 0x00);            # Enum Index
+
+    rrs_req = rrs_req + raw_string( 0x00, 0x00, 0x14, 0x04, 0x01, 0x00, 0x00,
+                                    0x00, 0x0a, 0x02, 0x00, 0x00, 0x00, 0x00,
+                                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00);       # PTR Name
+
+    rrs_req = rrs_req + raw_string(0x00, 0x00, 0x00, 0x00, # Type
+                                  0x00, 0x00, 0x00, 0x00,  # Value
+                                  0x00, 0x00, 0x00, 0x00,  # Size
+                                  0x00, 0x00, 0x00, 0x00); # Length
+
+    len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
+    len_rrs_lo = len_rrs % 256;
+    len_rrs_hi = len_rrs / 256;
+
+    dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
+
+    ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                             0x00, 0x00, 0x00, 0x00 );
+    req = req + ioctl_req + dcerpc_req + rrs_req;
+    req_l = strlen(req);
+    len_lo =  req_l % 256;
+    len_hi = req_l / 256;
+
+    if( isSignActive ) {
+      sig = get_smb2_signature( buf:req, key:sign_key );
+      if( isnull( sig ) ) {
+        set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_enum_key: buf or key passed to get_smb2_signature empty / too short" );
+        return FALSE;
+      }
+      req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+    } else {
+      req = raw_string( 0x00, 0x00, len_hi, len_lo ) + req;
+    }
+
+    # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 14 ) return NULL;
+
+    ##If status is pending, wait for response
+    status = ord(r[12]);
+    status2 = ord(r[13]);
+    while( status == 3 && status2 == 1 ) {
+      ##PDU will arrive late
+      r = smb_recv( socket:soc );
+      if( strlen( r ) < 14 ) return NULL;
+      status = ord( r[12] );
+      status2 = ord( r[13] );
+    }
+
+    if( strlen( r ) < 80 ) return NULL;
+
+    multiplex_id += 1;
+    if( isSignActive ) {
+      # verify signature
+      seq_number += 1;
+
+      r_head = substr( r, 0, 3 );
+      r = substr( r, 4, strlen( r ) - 1 );
+      if( strlen( r ) < 64 ) return FALSE;
+
+      orig_sign = substr( r, 48, 63 );
+
+      server_resp = get_smb2_signature( buf:r, key:sign_key );
+      if( isnull( server_resp ) ) return FALSE;
+      if( strlen( server_resp ) < 64 ) return FALSE;
+
+      serv_sign = substr( server_resp, 48, 63 );
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      } else {
+        r = r_head + r;
+      }
+    }
+    # END TODO ->
+    if( strlen( r ) > 156 ) {
+      len = ord( r[156] );
+      if( ! len ) break;
+    } else {
+      break;
+    }
+
+    name = "";
+    for( i = 0; i < len - 1; i++ ) {
+      if( strlen( r ) > ( 159 + i * 2 + 1 ) ) {
+        name += r[159+i*2+1];
+      }
+    }
+    list = make_list( list, name );
+  }
+  return list;
+}
+
+#----------------------------------------------------------#
 # RegEnumValue()                                           #
 #----------------------------------------------------------#
 # Author: Nicolas Pouvesle
-function registry_enum_value( soc, uid, tid, pipe, reply ) {
+function registry1_enum_value( soc, uid, tid, pipe, reply ) {
 
   # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
@@ -4464,11 +4629,11 @@ function registry_enum_value( soc, uid, tid, pipe, reply ) {
   local_var magic, i, j, req, len, packet, r, server_resp, orig_sign, serv_sign, name;
   local_var dlen, data;
 
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_enum_value" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_enum_value" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_enum_value" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_enum_value" );
-  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_enum_value" );
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_enum_value" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_enum_value" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_enum_value" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_enum_value" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_enum_value" );
 
   tid_low = tid % 256;
   tid_high = tid / 256;
@@ -4556,7 +4721,7 @@ function registry_enum_value( soc, uid, tid, pipe, reply ) {
         len = strlen( r );
         server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
         if( isnull( server_resp ) ) return FALSE;
-        if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
           return FALSE;
         }
 
@@ -4606,6 +4771,26 @@ function registry_enum_value( soc, uid, tid, pipe, reply ) {
     list[j*2+1] = data;
   }
   return list;
+}
+
+function registry_enum_value( soc, uid, tid, pipe, reply ) {
+
+  local_var soc, uid, tid, pipe, item, reply, res;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_enum_value" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_enum_value" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_enum_value" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_enum_value" );
+  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_enum_value" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_enum_value" );
+
+  if( strlen( uid ) == 8 ) {
+    res = registry2_enum_value( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return res;
+  } else {
+    res = registry1_enum_value( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return res;
+  }
 }
 
 # @brief Implementation of RegOpenKey() to open a specific registry key on the remote registry
@@ -4828,7 +5013,7 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
       seq_number += 1;
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-      if( isnull( server_resp ) || ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( isnull( server_resp )|| ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
         return NULL;
       }
 
@@ -4852,7 +5037,7 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
   }
 
   # access denied, returned by Windows XP+
-  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
+  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 )||
       _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
     return NULL;
   }
@@ -5024,7 +5209,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
       orig_sign = substr( r, 48, 63 );
       server_resp = get_smb2_signature( buf:r, key:sign_key );
-      if( isnull( server_resp ) || strlen( server_resp ) < 64 ) return NULL;
+      if( isnull( server_resp )|| strlen( server_resp ) < 64 ) return NULL;
 
       serv_sign = substr( server_resp, 48, 63 );
 
@@ -5048,7 +5233,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   }
 
   # access denied, returned by Windows XP+
-  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
+  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 )||
       _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
     return NULL;
   }
@@ -5402,7 +5587,7 @@ function registry1_get_item_sz( soc, uid, tid, pipe, item, reply ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
         return FALSE;
       }
 
@@ -5905,7 +6090,7 @@ function registry1_get_item_dword( soc, uid, tid, pipe, item, reply ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
         return FALSE;
       }
 
@@ -6185,7 +6370,7 @@ function registry_get_dword( key, item, type ) {
   # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_dword//Registry//" + type + "//" + tolower( key ) + "//" + tolower( item );
   kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy ) || kb_proxy )
+  if( ! isnull( kb_proxy )|| kb_proxy )
     return kb_proxy;
 
   if( kb_smb_is_samba() ) {
@@ -6503,7 +6688,7 @@ function registry_get_sz( key, item, type ) {
   # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_sz//Registry//" + type + "//" + tolower( key ) + "//" + tolower( item );
   kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy ) || kb_proxy )
+  if( ! isnull( kb_proxy )|| kb_proxy )
     return kb_proxy;
 
   if( kb_smb_is_samba() ) {
@@ -6701,7 +6886,7 @@ function OpenAndX_NTLMSSP( socket, uid, tid, file ) {
     len = strlen( rep );
     server_resp = get_signature( key:s_sign_key, buf:rep, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -7062,7 +7247,7 @@ function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -7279,7 +7464,7 @@ function smb1_close_request( soc, uid, tid, fid ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
         return FALSE;
       }
 
@@ -7455,7 +7640,7 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+    if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
       return FALSE;
     }
 
@@ -7614,7 +7799,7 @@ function FindFirst2( socket, uid, tid, pattern ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      if( ( strlen( server_resp ) < 24 )|| ( len < 24 ) ) {
         return FALSE;
       }
 
@@ -7686,7 +7871,7 @@ function FindFirst2( socket, uid, tid, pattern ) {
       off += nxt;
       if( nxt == 0 ) break;
 
-      if( ( off >= strlen( r ) ) || off < 0 ) {
+      if( ( off >= strlen( r ) )|| off < 0 ) {
         return ret;
       }
     }

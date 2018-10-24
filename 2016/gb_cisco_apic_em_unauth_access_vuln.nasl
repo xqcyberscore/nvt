@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
+# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Cisco APIC Enterprise Module Unauthorized Access Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:application_policy_infrastructure_controller_enterprise_modu
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807836");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2016-1386");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 15:58:36 +0530 (Mon, 13 Jun 2016)");
   script_name("Cisco APIC Enterprise Module Unauthorized Access Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"affected", value:"Cisco APIC-EM version 1.0(1) is affected.");
 
-  script_tag(name:"solution", value:"Apply the updates");
+  script_tag(name:"solution", value:"Apply the updates from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

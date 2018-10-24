@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_comments_xss_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_centreon_comments_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811735");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12043 $");
   script_cve_id("CVE-2015-7672");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 13:47:50 +0530 (Mon, 11 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'Comments' POST Parameter Cross Site Scripting Vulnerability");
@@ -51,11 +51,8 @@ if(description)
 
   script_tag(name:"affected", value:"Centreon version 2.6.1");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.youtube.com/watch?v=sIONzwQAngU");
 
   script_category(ACT_GATHER_INFO);

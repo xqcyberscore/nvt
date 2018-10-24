@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -54,7 +54,7 @@ if(description)
   script code in a user's browser session within the trust relationship
   between their browser and the server.");
   script_tag(name:"affected", value:"Transform Foundation Server version 4.3.1 and 5.2");
-  script_tag(name:"solution", value:"Apply updates");
+  script_tag(name:"solution", value:"Apply the update from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Jun/34");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126907");

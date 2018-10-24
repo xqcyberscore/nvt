@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -41,7 +41,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Eyes Of Network (EON) Multiple Vulnerabilities");
 
@@ -76,9 +75,8 @@ module/admin_group/add_modify_group.php (for insert_group and update_group). (CV
   script_tag(name:"vuldetect", value:"Check the version.");
 
   script_tag(name:"affected", value:"Eyes Of Network (EON) versions 5.1 and below are vulnerable.");
-
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://kk.whitecell-club.org/index.php/archives/220/");
   script_xref(name:"URL", value:"https://github.com/jsj730sos/cve/blob/master/Eonweb_module_admin_group_add_modify_group.php%20SQLi");
@@ -93,7 +91,7 @@ if (!version = get_app_version(cpe: CPE, nofork:TRUE))
   exit(0);
 
 if (version_is_less_equal(version: version, test_version: "5.1")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "5.2");
   security_message(port: 0, data: report);
   exit(0);
 }

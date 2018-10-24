@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_xxe_nd_xee_vuln_lin.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_php_xxe_nd_xee_vuln_lin.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # PHP XML Entity Expansion And XML External Entity Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808615");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-8866");
   script_bugtraq_id(87470);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP XML Entity Expansion And XML External Entity Vulnerabilities (Linux)");
 
@@ -55,7 +55,7 @@ if(description)
   before 5.6.6 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.22, or 5.6.6,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

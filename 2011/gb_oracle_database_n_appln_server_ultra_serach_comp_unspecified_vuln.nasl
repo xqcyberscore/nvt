@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_n_appln_server_ultra_serach_comp_unspecified_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_oracle_database_n_appln_server_ultra_serach_comp_unspecified_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
 #
 # Oracle Database Server and Application Server Ultra Search Component Unspecified Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802524");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 12047 $");
   script_cve_id("CVE-2008-0347");
   script_bugtraq_id(27229);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-07 12:29:09 +0530 (Wed, 07 Dec 2011)");
   script_name("Oracle Database Server and Application Server Ultra Search Component Unspecified Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database server versions 9.2.0.8, 10.1.0.5 and 10.2.0.3
   Oracle Application server versions 9.0.4.3 and 10.1.2.0.2");
   script_tag(name:"insight", value:"The flaw is due to unspecified error in Oracle ultra search component.");
-  script_tag(name:"solution", value:"Apply patches");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is running Oracle database or application server and
   is prone to unspecified vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rpc_kcms.nasl 9328 2018-04-05 11:14:07Z cfischer $
+# $Id: rpc_kcms.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # Kcms Profile Server
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10832");
-  script_version("$Revision: 9328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 13:14:07 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2605);
   script_tag(name:"cvss_base", value:"4.6");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michael Scheidell");
   script_family("RPC");
-  script_dependencies("secpod_rpc_portmap.nasl", "os_detection.nasl");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl", "gather-package-list.nasl", "os_detection.nasl");
   script_require_keys("rpc/portmap");
 
   script_xref(name:"URL", value:"http://packetstorm.decepticons.org/advisories/ibm-ers/96-09");
@@ -52,10 +52,6 @@ if(description)
 
   The KCMS service on Solaris 2.5 could allow a local user
   to write to arbitrary files and gain root access.
-
-  *** This warning may be a false
-  *** positive since the presence
-  *** of the bug has not been tested.
 
   Patches: 107337-02 SunOS 5.7 has been released
   and the following should be out soon:

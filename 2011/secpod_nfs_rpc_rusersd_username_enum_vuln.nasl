@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nfs_rpc_rusersd_username_enum_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_nfs_rpc_rusersd_username_enum_vuln.nasl 12057 2018-10-24 12:23:19Z cfischer $
 #
 # Nfs-utils 'rusersd' User Enumeration Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902473");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 13:40:07 +0200 (Wed, 31 Aug 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_category(ACT_ATTACK);
   script_family("RPC");
-  script_dependencies("secpod_rpc_portmap.nasl");
+  script_dependencies("secpod_rpc_portmap_tcp.nasl");
   script_require_keys("rpc/portmap");
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0626");
@@ -48,11 +48,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to extract the list
   of users currently logged in.");
+
   script_tag(name:"affected", value:"nfs-utils rpc version 1.2.3 prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in remote rusers server which allows
   to extract the list of users currently logged in the remote host.");
+
   script_tag(name:"summary", value:"The host is running RPC rusersd service and is prone to user name
   enumeration vulnerability.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
@@ -62,7 +66,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("misc_func.inc");
 include("byte_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl 11243 2018-09-05 12:22:39Z mmartin $
+# $Id: gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability
 #
@@ -26,42 +26,39 @@
 
 CPE = "cpe:/a:eclipse:jetty";
 
-if(description)                                                                                                                                  
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813552");
-  script_version("$Revision: 11243 $");
+  script_version("$Revision: 12045 $");
   script_cve_id("CVE-2018-12536");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-05 12:17:02 +0530 (Thu, 05 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Eclipse Jetty Server InvalidPathException Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Eclipse Jetty
+  script_tag(name:"summary", value:"The host is installed with Eclipse Jetty
   Server and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
-  
-  script_tag(name: "insight" , value:"The flaw exists due to an improper handling
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"The flaw exists due to an improper handling
   of bad queries.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an attacker
-  to disclose sensitive information.
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
+  to disclose sensitive information.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Eclipse Jetty Server versions 9.2.x, 9.3.x
+  script_tag(name:"affected", value:"Eclipse Jetty Server versions 9.2.x, 9.3.x
   before 9.3.24.v20180605 and 9.4.x before 9.4.11.v20180605");
 
-  script_tag(name: "solution" , value:"Upgrade to Eclipse Jetty Server version
+  script_tag(name:"solution", value:"Upgrade to Eclipse Jetty Server version
   9.3.24.v20180605 or 9.4.11.v20180605 or later as per the series. For updates
   refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://bugs.eclipse.org/bugs/show_bug.cgi?id=535670");
-  script_xref(name : "URL" , value : "https://www.eclipse.org/jetty/");
+  script_xref(name:"URL", value:"https://bugs.eclipse.org/bugs/show_bug.cgi?id=535670");
+  script_xref(name:"URL", value:"https://www.eclipse.org/jetty/");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -82,7 +79,7 @@ infos = get_app_version_and_location( cpe:CPE, port:jPort, exit_no_version:TRUE)
 jVer = infos['version'];
 jPath = infos['location'];
 
-if(version_in_range(version:jVer, test_version:"9.2.0", test_version2:"9.3.24.20180604")){ 
+if(version_in_range(version:jVer, test_version:"9.2.0", test_version2:"9.3.24.20180604")){
   fix = "9.3.24.v20180605";
 }
 else if(version_in_range(version:jVer, test_version:"9.4.0", test_version2:"9.4.11.20180604")){

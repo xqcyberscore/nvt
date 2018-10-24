@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_login_rce_vuln.nasl 11209 2018-09-04 08:24:45Z cfischer $
+# $Id: gb_dlink_dsl_login_rce_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:dlink";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108458");
-  script_version("$Revision: 11209 $");
+  script_version("$Revision: 12045 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 10:24:45 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 09:45:51 +0200 (Tue, 04 Sep 2018)");
   script_name("D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,9 +55,7 @@ if(description)
   and check whether it is possible to read a file on the filesystem or not.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  attacker to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"D-Link DSL-2750B with Firmware Version
   1.0.1 to 1.0.3. Other models or versions might be also affected.");

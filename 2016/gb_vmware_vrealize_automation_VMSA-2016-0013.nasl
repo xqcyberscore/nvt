@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues
 #
@@ -33,12 +33,12 @@ if (description)
   script_cve_id("CVE-2016-5335", "CVE-2016-5336");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_name("VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0013.html");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to 7.1 or newer");
 
@@ -51,7 +51,7 @@ low-privileged account on the appliance.");
 
   script_tag(name:"affected", value:"vRealize Automation 7.0.x");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-25 12:46:41 +0200 (Thu, 25 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -88,7 +88,7 @@ if( fix )
 {
   report = report_fixed_ver( installed_version:version, fixed_version:fix );
   security_message( port:0, data:report );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

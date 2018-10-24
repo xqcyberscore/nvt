@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dalim_es_mult_vuln.nasl 11749 2018-10-04 10:21:12Z jschulte $
+# $Id: gb_dalim_es_mult_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
 #
 # DALIM ES Multiple Vulnerabilities
 #
@@ -30,15 +30,14 @@ CPE = "cpe:/a:dalim:es_core";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140293");
-  script_version("$Revision: 11749 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:21:12 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12043 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-11 16:04:25 +0700 (Fri, 11 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("DALIM ES Multiple Vulnerabilities");
 
@@ -63,8 +62,8 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
-  this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5428.php");
   script_xref(name:"URL", value:"https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5427.php");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_mult_dos_vuln01_jan16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_nginx_mult_dos_vuln01_jan16.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Nginx Server Multiple Denial Of Service Vulnerabilities 01 - Jan16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806849");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-0742", "CVE-2016-0746", "CVE-2016-0747");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 17:26:59 +0530 (Wed, 27 Jan 2016)");
   script_name("Nginx Server Multiple Denial Of Service Vulnerabilities 01 - Jan16");
 
@@ -60,7 +60,7 @@ if(description)
   1.8.1 is not vulnerable");
 
   script_tag(name:"solution", value:"Upgrade to nginx version 1.9.10 or 1.8.1,
-  or later. For updates refer to https://www.nginx.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +74,7 @@ if(description)
   script_dependencies("nginx_detect.nasl");
   script_mandatory_keys("nginx/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.nginx.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:xzeres:442sr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807021");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2015-0985");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-04 13:19:12 +0530 (Mon, 04 Jan 2016)");
   script_name("XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability");
 
@@ -54,10 +54,7 @@ relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"XZERES 442SR Wind Turbin.");
 
-  script_tag(name:"solution", value:"Apply the patch from the link mentioned
-below.
-https://ics-cert.us-cert.gov/advisories/ICSA-15-342-01.
-For updates refer to http://www.xzeres.com/wind-turbine-products");
+  script_tag(name:"solution", value:"Apply the patch updates");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +69,9 @@ For updates refer to http://www.xzeres.com/wind-turbine-products");
   script_dependencies("gb_xzeres_442SR_wind_turbine_detect.nasl");
   script_mandatory_keys("442SR/Wind/Turbine/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-15-342-01.
+For");
+  script_xref(name:"URL", value:"http://www.xzeres.com/wind-turbine-products");
   exit(0);
 }
 

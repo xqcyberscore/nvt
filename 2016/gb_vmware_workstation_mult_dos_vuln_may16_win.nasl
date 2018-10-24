@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_dos_vuln_may16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_vmware_workstation_mult_dos_vuln_may16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # VMware Workstation Multiple Vulnerabilities May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806759");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044", "CVE-2015-2341");
   script_bugtraq_id(72338, 72337, 72336, 75094);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Multiple Vulnerabilities May16 (Windows)");
@@ -61,7 +61,7 @@ if(description)
   10.0.5 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Workstation version
-  10.0.5 or later, For updates refer to http://www.vmware.com");
+  10.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln02_may16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_phpmyadmin_mult_xss_vuln02_may16_win.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # phpMyAdmin Multiple XSS Vulnerabilities -02 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807597");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-2560");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:12:08 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("phpMyAdmin Multiple XSS Vulnerabilities -02 May16 (Windows)");
@@ -66,8 +66,7 @@ if(description)
   4.4.x before 4.4.15.5, and 4.5.x before 4.5.5.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.0.10.15 or
-  4.4.15.5 or 4.5.5.1 or later or apply patch from the link mentioned in reference.
-  For updates refer to https://www.phpmyadmin.net");
+  4.4.15.5 or 4.5.5.1 or later or apply patch from the link mentioned in reference.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

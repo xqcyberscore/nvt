@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir868l_csrf_vuln.nasl 9868 2018-05-16 13:33:21Z cfischer $
+# $Id: gb_dlink_dir868l_csrf_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
 #
 # D-Link DIR-868L < 1.20B01 CSRF Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112281");
-  script_version("$Revision: 9868 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-16 15:33:21 +0200 (Wed, 16 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-14 12:26:41 +0200 (Mon, 14 May 2018)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12045 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-14 12:26:41 +0200 (Mon, 14 May 2018)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-10957");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DIR-868L < 1.20B01 CSRF Vulnerability");
 
@@ -49,19 +49,19 @@ if (description)
   script_dependencies("gb_dlink_dir_detect.nasl");
   script_mandatory_keys("host_is_dlink_dir", "dlink_fw_version");
 
-  script_tag(name: "summary", value: "D-Link DIR-868L devices are prone to a cross-site request forgery (CSRF) vulnerability.");
+  script_tag(name:"summary", value:"D-Link DIR-868L devices are prone to a cross-site request forgery (CSRF) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "impact", value: "An attacker can exploit this vulnerability to perform arbitrary web requests with the identity of the victim
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to perform arbitrary web requests with the identity of the victim
   without being noticed by the victim.");
 
-  script_tag(name: "affected", value: "D-Link DIR-868L before 1.20B01 firmware.");
+  script_tag(name:"affected", value:"D-Link DIR-868L before 1.20B01 firmware.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.20B01 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.20B01 or later.");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/147525/D-Link-DIR-868L-1.12-Cross-Site-Request-Forgery.html");
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-868L/REVA/DIR-868L_REVA_FIRMWARE_PATCH_NOTES_1.20B01_EN_WW.pdf");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/147525/D-Link-DIR-868L-1.12-Cross-Site-Request-Forgery.html");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-868L/REVA/DIR-868L_REVA_FIRMWARE_PATCH_NOTES_1.20B01_EN_WW.pdf");
 
   exit(0);
 }

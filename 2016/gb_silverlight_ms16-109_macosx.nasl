@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-109_macosx.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_silverlight_ms16-109_macosx.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3182373) (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809323");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-3367");
   script_bugtraq_id(92837);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-21 16:02:13 +0530 (Wed, 21 Sep 2016)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3182373) (MAC OS X)");
 
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on MAC OS X.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-109");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

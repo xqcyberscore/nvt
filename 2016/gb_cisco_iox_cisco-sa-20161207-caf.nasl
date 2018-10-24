@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_iox_cisco-sa-20161207-caf.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_cisco_iox_cisco-sa-20161207-caf.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco IOx Application-Hosting Framework Directory Traversal Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9199");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 12051 $");
 
   script_name("Cisco IOx Application-Hosting Framework Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-caf");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 1.2.0.0");
 
@@ -56,14 +56,14 @@ targeted system.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-12 14:57:52 +0700 (Mon, 12 Dec 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_iox_web_detect.nasl");
   script_mandatory_keys("cisco_iox/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

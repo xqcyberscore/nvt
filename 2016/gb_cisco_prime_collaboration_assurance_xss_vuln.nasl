@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
 #
 # Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:prime_collaboration_assurance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809770");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 12051 $");
   script_cve_id("CVE-2016-9200");
   script_bugtraq_id(94806);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-22 19:49:38 +0530 (Thu, 22 Dec 2016)");
   script_name("Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability");
 
@@ -55,9 +55,7 @@ if (description)
   script_tag(name:"affected", value:"Cisco Cisco Prime Collaboration Assurance
   versions 10.5.1 and 10.6.0");
 
-  script_tag(name:"solution", value:"Apply patch from the vendor advisory. For
-  details refer to
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-pca");
+  script_tag(name:"solution", value:"Apply patch from the vendor advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

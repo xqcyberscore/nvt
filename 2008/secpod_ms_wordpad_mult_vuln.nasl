@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wordpad_mult_vuln.nasl 11555 2018-09-22 15:24:22Z cfischer $
+# $Id: secpod_ms_wordpad_mult_vuln.nasl 12056 2018-10-24 12:04:11Z santu $
 #
 # WordPad and Office Text Converter Memory Corruption Vulnerability (960477)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900065");
-  script_version("$Revision: 11555 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12056 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"insight", value:"- Input validation error when parsing document files i.e. Office files, RTF,
     Wordperfect files or Write files.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms09-010.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
   Bulletin MS09-010.");
   script_tag(name:"qod_type", value:"registry");
@@ -72,6 +71,7 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("misc_func.inc");
 
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
   exit(0);
@@ -95,7 +95,7 @@ if(get_kb_item("SMB/Office/Word/Version") =~ "^(9|10)\..*" &&
 {
   if(dllVer)
   {
-    if(hotfix_missing(name:"921606") == 1 || hotfix_missing(name:"933399") == 1)
+    if(hotfix_missing(name:"921606") == 1|| hotfix_missing(name:"933399") == 1)
     {
       if(version_is_less(version:dllVer, test_version:"2003.1100.8202.0"))
       {
