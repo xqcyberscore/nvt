@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_apache_solr_xxe_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache Solr XXE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140954");
-  script_version("$Revision: 9903 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-09 13:39:11 +0700 (Mon, 09 Apr 2018)");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-09 13:39:11 +0700 (Mon, 09 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_cve_id("CVE-2018-1308"); 
+  script_cve_id("CVE-2018-1308");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Solr XXE Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("secpod_apache_solr_detect.nasl");
   script_mandatory_keys("Apache/Solr/Installed");
 
-  script_tag(name: "summary", value: "Apache Solr is prone to a XXE vulnerability");
+  script_tag(name:"summary", value:"Apache Solr is prone to a XXE vulnerability");
 
-  script_tag(name: "insight", value: "This vulnerability relates to an XML external entity expansion (XXE) in the
+  script_tag(name:"insight", value:"This vulnerability relates to an XML external entity expansion (XXE) in the
 '&dataConfig=<inlinexml>' parameter of Solr's DataImportHandler. It can be used as XXE using file/ftp/http
 protocols in order to read arbitrary local files from the Solr server or the internal network.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Apache Solr before 1.2 to 6.6.2 and 7.0.0 to 7.2.1.");
+  script_tag(name:"affected", value:"Apache Solr before 1.2 to 6.6.2 and 7.0.0 to 7.2.1.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.6.3, 7.3.0 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 6.6.3, 7.3.0 or later.");
 
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/SOLR-11971");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/SOLR-11971");
 
   exit(0);
 }

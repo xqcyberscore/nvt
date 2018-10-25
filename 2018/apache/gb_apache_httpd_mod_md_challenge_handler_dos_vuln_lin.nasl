@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mod_md_challenge_handler_dos_vuln_lin.nasl 11444 2018-09-18 07:17:07Z cfischer $
+# $Id: gb_apache_httpd_mod_md_challenge_handler_dos_vuln_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)
 #
@@ -18,46 +18,43 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.                                                                                                   
+# GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################                                                                  
+###############################################################################
 
 CPE = "cpe:/a:apache:http_server";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813266");
-  script_version("$Revision: 11444 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-8011");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:33:08 +0530 (Fri, 20 Jul 2018)");
   script_name("Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"The host is installed with Apache HTTP server
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in 'mod_md'
   challenge handler.Which is not properly handling the specially crafting HTTP
   requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to crash the Apache HTTP Server and perform denial of service attack.
-
-  Impact Level: Application");
+  to crash the Apache HTTP Server and perform denial of service attack.");
 
   script_tag(name:"affected", value:"Apache HTTP server version 2.4.33 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.34 or later.
   For updates refer to Reference links.");
-  
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

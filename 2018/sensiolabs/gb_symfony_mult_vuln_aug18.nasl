@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_mult_vuln_aug18.nasl 10813 2018-08-07 11:38:55Z jschulte $
+# $Id: gb_symfony_mult_vuln_aug18.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Symfony <= 2.7.37, 2.8.* <= 2.8.30, 3.* <= 3.2.13 and 3.3.* <= 3.3.12 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113246");
-  script_version("$Revision: 10813 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:38:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 12:27:08 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,12 +53,12 @@ if( description )
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
-    - An attacker can use the locale parameter to naivate to arbitrary directions.
+  - An attacker can use the locale parameter to naivate to arbitrary directions.
 
-    - An attacker can insert a file path into the 'FileType' POST parameter
+  - An attacker can insert a file path into the 'FileType' POST parameter
       to retrieve the contents of that file.
 
-    - The CSRF protection doesn't use different tokens for HTTP and HTTPS, 
+  - The CSRF protection doesn't use different tokens for HTTP and HTTPS,
       allowing for MITM attacks on HTTP that can then be used in an HTTPS context.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to obtain sensitive information.");
   script_tag(name:"affected", value:"Symfony through version 2.7.37, 2.8.0 through 2.8.30, 3.0.0 through 3.2.13
@@ -68,7 +68,7 @@ if( description )
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2017-16653-csrf-protection-does-not-use-different-tokens-for-http-and-https");
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2017-16790-ensure-that-submitted-data-are-uploaded-files");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:sensiolabs:symfony";

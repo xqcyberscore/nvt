@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug13_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - August 13 (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803859");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12072 $");
   script_cve_id("CVE-2013-1701", "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1712", "CVE-2013-1713", "CVE-2013-1714",
                 "CVE-2013-1717");
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 17:09:57 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - August 13 (Mac OS X)");
 
@@ -81,7 +81,6 @@ security restrictions, perform unauthorized actions and other attacks may also b
 
 include("version_func.inc");
 
-# Thunderbird Check
 tbVer = get_kb_item("ThunderBird-ESR/MacOSX/Version");
 
 if(tbVer && tbVer =~ "^17\.0")

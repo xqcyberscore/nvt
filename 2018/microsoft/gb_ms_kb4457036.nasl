@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4457036.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_ms_kb4457036.nasl 12069 2018-10-25 07:30:30Z cfischer $
 #
 # Microsoft .NET Framework 4.5.2 for Windows 8.1 and Server 2012 R2 RCE Vulnerability (KB4457036)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814202");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12069 $");
   script_cve_id("CVE-2018-8421");
   script_bugtraq_id(105222);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:30:30 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 10:40:22 +0530 (Wed, 12 Sep 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework 4.5.2 for Windows 8.1 and Server 2012 R2 RCE Vulnerability (KB4457036)");
@@ -48,16 +48,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to take control of an affected system. An attacker could then install
-  programs, view, change, delete data or create new accounts with full user rights.
-
-  Impact Level: System/Application");
+  programs, view, change, delete data or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.5.2 for Windows 8.1
   and Server 2012 R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  listed hotfixes or download and install the mentioned hotfixes from the
+  referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4457036");
@@ -70,7 +68,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -91,8 +88,7 @@ if(NetPath && "\Microsoft.NET\Framework" >< NetPath)
 {
   foreach item (registry_enum_keys(key:key))
   {
-    dotPath = "";
-    dotPath = NetPath + item ;
+    dotPath = NetPath + item;
 
     sysdllVer = fetch_file_version(sysPath:dotPath, file_name:"system.workflow.runtime.dll");
     if(!sysdllVer){

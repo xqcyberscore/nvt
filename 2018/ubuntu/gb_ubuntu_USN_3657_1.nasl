@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3657_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3657_1.nasl 12067 2018-10-25 07:10:45Z santu $
 #
 # Ubuntu Update for linux-raspi2 USN-3657-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843534");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12067 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:40:50 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2017-17449", "CVE-2017-17975", "CVE-2017-18203", "CVE-2017-18208", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"7.2");
@@ -64,7 +64,7 @@ crash) or possibly execute arbitrary code. (CVE-2018-8822)");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3657-1");
-  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-May/004409.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3657-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_http_api_priv_escalation_vuln_aug18_win.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_apache_couchdb_http_api_priv_escalation_vuln_aug18_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability Aug18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:couchdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813908");
-  script_version("$Revision: 11897 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-11769");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-09 17:11:15 +0530 (Thu, 09 Aug 2018)");
   script_name("Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability Aug18 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to escalate their privileges to that of the operating system's and
-  remotely execute arbitrary code.
-
-  Impact Level: Application");
+  remotely execute arbitrary code.");
 
   script_tag(name:"affected", value:"Apache CouchDB versions before 2.2.0 on Windows.");
 

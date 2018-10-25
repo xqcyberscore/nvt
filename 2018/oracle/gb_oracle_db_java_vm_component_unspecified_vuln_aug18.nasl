@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_java_vm_component_unspecified_vuln_aug18.nasl 11933 2018-10-17 07:09:44Z asteins $
+# $Id: gb_oracle_db_java_vm_component_unspecified_vuln_aug18.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Database Server 'Java VM' Component Unspecified Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813823");
-  script_version("$Revision: 11933 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-3110");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 15:10:36 +0530 (Mon, 13 Aug 2018)");
   script_name("Oracle Database Server 'Java VM' Component Unspecified Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attackers to affect confidentiality, integrity and availability via unknown
-  vectors.
-
-  Impact Level: Application");
+  vectors.");
 
   script_tag(name:"affected", value:"Oracle Database Server versions 12.1.0.2");
   script_tag(name:"solution", value:"Apply the patch from Reference link.");

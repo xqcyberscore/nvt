@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 10089 2018-06-06 07:43:47Z asteins $
+# $Id: gb_monstra_cms_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 10089 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 09:43:47 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -95,7 +95,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/445");
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/446");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:monstra:monstra";

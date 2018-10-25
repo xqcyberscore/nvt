@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_oracle_glassfish_open_source_default_cred_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle GlassFish Open Source Default Credentials Vulnerability
 #
@@ -30,29 +30,26 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813576");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-14324");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 12:45:41 +0530 (Tue, 17 Jul 2018)");
   script_name("Oracle GlassFish Open Source Default Credentials Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server
   and is prone to default credentials vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to demo feature in Oracle 
-  GlassFish Open Source Edition has TCP port 7676 open by default with a password 
+  script_tag(name:"insight", value:"The flaw is due to demo feature in Oracle
+  GlassFish Open Source Edition has TCP port 7676 open by default with a password
   of admin for the admin account.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to obtain potentially sensitive information, perform database operations, or
-  manipulate the demo via a JMX RMI session.
-
-  Impact Level: Application");
+  manipulate the demo via a JMX RMI session.");
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 5.0");
 
@@ -62,8 +59,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name: "URL", value: "https://github.com/javaee/glassfish/issues/22500");
-  script_xref(name: "URL", value: "http://www.oracle.com/");
+  script_xref(name:"URL", value:"https://github.com/javaee/glassfish/issues/22500");
+  script_xref(name:"URL", value:"http://www.oracle.com/");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

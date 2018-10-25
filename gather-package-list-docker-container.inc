@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 10509 2018-07-16 10:19:56Z cfischer $
+# $Id: gather-package-list-docker-container.inc 12065 2018-10-25 06:59:36Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 10509 $
+# $Revision: 12065 $
 #
 ###############################################################################
 
@@ -74,6 +74,7 @@ OS_CPE = make_array(
     "UCS2.0", "cpe:/o:univention:univention_corporate_server:2.0",
 
     # Ubuntu
+    "UBUNTU18.10",    "cpe:/o:canonical:ubuntu_linux:18.10",
     "UBUNTU18.04 LTS","cpe:/o:canonical:ubuntu_linux:18.04:-:lts",
     "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
@@ -985,6 +986,12 @@ function get_container_os( container_id, soc ) {
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 18.04 LTS", oskey:"UBUNTU18.04 LTS");
     return ret;
   }
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=18.10"><rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 18.10", oskey:"UBUNTU18.10");
+    return ret;
+  }
 
   # Check for Univention Corporate Server (UCS)
   if ( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?') {
@@ -1091,6 +1098,9 @@ function get_container_os( container_id, soc ) {
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 9." + match[1] + " (Stretch)", oskey:"DEB9." + match[1]);
     return ret;
   }
+
+  # nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
+  # if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
   if("buster/sid"><rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );

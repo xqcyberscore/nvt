@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_performance_insight_info_disc_vuln.nasl 12006 2018-10-22 07:42:16Z mmartin $
+# $Id: secpod_hp_performance_insight_info_disc_vuln.nasl 12076 2018-10-25 08:39:24Z cfischer $
 #
 # HP Performance Insight Remote Information Disclosure Vulnerability
 #
@@ -27,40 +27,47 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902417");
-  script_version("$Revision: 12006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 09:42:16 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12076 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:39:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-1536");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("HP Performance Insight Remote Information Disclosure Vulnerability");
-
-  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/1060");
-  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.bugtraq/46897");
-  script_xref(name:"URL", value:"http://www.criticalwatch.com/support/security-advisories.aspx?AID=35689");
-    script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02790298");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_hp_performance_insight_detect.nasl");
   script_require_ports("Services/www", 8080);
-  script_tag(name:"affected", value:"HP Performance Insight version 5.41.002 and prior.");
-  script_tag(name:"insight", value:"The flaw is caused by an unknown error which could be exploited remotely to
-  access sensitive information.");
-  script_tag(name:"summary", value:"This host is running HP Performance Insight and is prone to
-  information disclosure vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to HP Performance Insight 5.41.002 and apply the
-  HF04 / QCCR1B88272 hotfix.
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****");
 
-script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02790298");
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/1060");
+  script_xref(name:"URL", value:"http://permalink.gmane.org/gmane.comp.security.bugtraq/46897");
+  script_xref(name:"URL", value:"http://www.criticalwatch.com/support/security-advisories.aspx?AID=35689");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02790298");
+
   script_tag(name:"impact", value:"Successful exploitation will let remote attackers to gain knowledge of sensitive
   information.");
+
+  script_tag(name:"affected", value:"HP Performance Insight version 5.41.002 and prior.");
+
+  script_tag(name:"insight", value:"The flaw is caused by an unknown error which could be exploited remotely to
+  access sensitive information.");
+
+  script_tag(name:"summary", value:"This host is running HP Performance Insight and is prone to
+  information disclosure vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to HP Performance Insight 5.41.002 and apply the
+  HF04 / QCCR1B88272 hotfix.
+
+  *****
+
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+
+  *****");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

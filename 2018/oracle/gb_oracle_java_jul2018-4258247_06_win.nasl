@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jul2018-4258247_06_win.nasl 10645 2018-07-27 05:27:50Z cfischer $
+# $Id: gb_oracle_java_jul2018-4258247_06_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Java SE Security Updates-06 (jul2018-4258247) Windows
 #
@@ -29,29 +29,27 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813690");
-  script_version("$Revision: 10645 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-2942");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 11:26:47 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Java SE Security Updates-06 (jul2018-4258247) Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Check if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Check if a vulnerable version is present
   on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an unspecified error
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error
   in the 'Windows DLL' component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to gain elevated privileges.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to gain elevated privileges.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE version 1.8.0.172 and 
+  script_tag(name:"affected", value:"Oracle Java SE version 1.8.0.172 and
   earlier, 1.7.0.181 and earlier on Windows");
 
   script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
@@ -59,9 +57,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
-  script_xref(name : "URL" , value : "https://securitytracker.com/id/1041302");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/downloads/index.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
+  script_xref(name:"URL", value:"https://securitytracker.com/id/1041302");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/downloads/index.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

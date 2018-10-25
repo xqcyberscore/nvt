@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3607_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3607_1.nasl 12067 2018-10-25 07:10:45Z santu $
 #
 # Ubuntu Update for screen-resolution-extra USN-3607-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843484");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12067 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 08:51:10 +0200 (Tue, 27 Mar 2018)");
   script_cve_id("CVE-2018-8885");
   script_tag(name:"cvss_base", value:"4.4");
@@ -46,7 +46,7 @@ bypass intended PolicyKit authorizations.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"USN", value:"3607-1");
-  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-March/004328.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3607-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

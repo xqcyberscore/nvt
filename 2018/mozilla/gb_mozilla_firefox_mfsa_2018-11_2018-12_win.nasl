@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-11_2018-12)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813357");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5157", "CVE-2018-5158",
                 "CVE-2018-5159", "CVE-2018-5160", "CVE-2018-5152", "CVE-2018-5153",
                 "CVE-2018-5163", "CVE-2018-5164", "CVE-2018-5166", "CVE-2018-5167",
@@ -39,16 +39,16 @@ if(description)
                 "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 11:54:13 +0530 (Fri, 11 May 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-11_2018-12)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - Use-after-free error with SVG animations, text paths and clip paths.
 
@@ -92,15 +92,13 @@ if(description)
 
   - Memory safety bugs fixed in Firefox 60.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause denial of service condition, bypass security restrictions, execute
-  arbitrary code and disclose sensitive information.
+  arbitrary code and disclose sensitive information.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 60 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 60 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 60
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 60
   or later, For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

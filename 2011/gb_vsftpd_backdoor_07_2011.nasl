@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsftpd_backdoor_07_2011.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_vsftpd_backdoor_07_2011.nasl 12076 2018-10-25 08:39:24Z cfischer $
 #
 # vsftpd Compromised Source Packages Backdoor Vulnerability
 #
@@ -29,9 +29,9 @@ CPE = 'cpe:/a:beasts:vsftpd';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103185");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 12076 $");
   script_bugtraq_id(48539);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:39:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-05 14:24:57 +0200 (Tue, 05 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48539");
   script_xref(name:"URL", value:"http://scarybeastsecurity.blogspot.com/2011/07/alert-vsftpd-download-backdoored.html");
-    script_xref(name:"URL", value:"https://security.appspot.com/vsftpd.html");
+  script_xref(name:"URL", value:"https://security.appspot.com/vsftpd.html");
 
   script_tag(name:"solution", value:"The repaired package can be downloaded from
   the referenced link. Please validate the package with its signature.");
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
-script_xref(name:"URL", value:"https://security.appspot.com/vsftpd.html");
+
   exit(0);
 }
 

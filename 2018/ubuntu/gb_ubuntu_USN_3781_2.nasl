@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3781_2.nasl 11946 2018-10-18 05:43:49Z cfischer $
+# $Id: gb_ubuntu_USN_3781_2.nasl 12067 2018-10-25 07:10:45Z santu $
 #
 # Ubuntu Update for webkit2gtk USN-3781-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843655");
-  script_version("$Revision: 11946 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 07:43:49 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12067 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-11 08:26:28 +0200 (Thu, 11 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ attacks, and arbitrary code execution.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3781-2");
-  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-October/004612.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3781-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

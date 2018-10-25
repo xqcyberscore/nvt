@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_apr2018-3678067_02_lin.nasl 9733 2018-05-04 14:11:22Z cfischer $
+# $Id: gb_oracle_mysql_apr2018-3678067_02_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Mysql Security Updates (apr2018-3678067) 02 - Linux
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813145");
-  script_version("$Revision: 9733 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-2766", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2787",
                 "CVE-2018-2758");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 16:11:22 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 10:32:41 +0530 (Thu, 19 Apr 2018)");
   script_name("Oracle Mysql Security Updates (apr2018-3678067) 02 - Linux");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
 
@@ -50,13 +49,11 @@ if(description)
 
   - An error in the 'Server:Security:Privileges' component of the MySQL Server.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to conduct a denial of service
-  condition and have an impact on integrity.
+  condition and have an impact on integrity.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL versions 5.6.39 and earlier,
+  script_tag(name:"affected", value:"Oracle MySQL versions 5.6.39 and earlier,
   5.7.21 and earlier on Linux");
 
   script_tag(name:"solution", value:"Apply the latest patch from vendor. For
@@ -66,7 +63,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

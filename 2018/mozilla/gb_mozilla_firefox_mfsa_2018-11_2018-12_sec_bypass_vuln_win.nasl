@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_sec_bypass_vuln_win.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_sec_bypass_vuln_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox Security Bypass Vulnerability (mfsa_2018-11_2018-12)-Windows
 #
@@ -29,31 +29,29 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813364");
-  script_version("$Revision: 10824 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-5165");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 11:54:13 +0530 (Fri, 11 May 2018)");
   script_name("Mozilla Firefox Security Bypass Vulnerability (mfsa_2018-11_2018-12)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to a security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exist because in 32-bit versions of
+  script_tag(name:"insight", value:"The flaw exist because in 32-bit versions of
   Firefox, the Adobe Flash plugin setting for 'Enable Adobe Flash protected mode'
   is unchecked by default even though the Adobe Flash sandbox is actually enabled.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to bypass security restrictions.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to bypass security restrictions.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"32-bit versions Mozilla Firefox before version 60 on Windows.");
 
-  script_tag(name: "affected" , value:"32-bit versions Mozilla Firefox before version 60 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 60
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 60
   or later, For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

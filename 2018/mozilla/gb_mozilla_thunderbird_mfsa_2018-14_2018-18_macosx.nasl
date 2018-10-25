@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-14_2018-18_macosx.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-14_2018-18_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-14_2018-18)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813550");
-  script_version("$Revision: 11039 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12372", "CVE-2018-12373",
                 "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365",
                 "CVE-2018-12366", "CVE-2018-12368", "CVE-2018-12374", "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 12:05:34 +0530 (Wed, 04 Jul 2018)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2018-14_2018-18 )-MAC OS X");
 
@@ -73,9 +73,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to crash the application, leak plaintext, perform cross-site request forgery
   attacks, expose of private local files, leak private data into the output and
-  execute arbitrary code.
-
-  Impact Level: System/Application.");
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   52.9 on MAC OS X.");

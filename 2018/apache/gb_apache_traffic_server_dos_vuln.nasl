@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_dos_vuln.nasl 12004 2018-10-22 05:34:04Z cfischer $
+# $Id: gb_apache_traffic_server_dos_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache Traffic Server (ATS) < 6.2.3 DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:traffic_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141414");
-  script_version("$Revision: 12004 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-30 16:54:51 +0700 (Thu, 30 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -63,7 +63,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q3/195");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4019114.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_dotnet_framework_kb4019114.nasl 12069 2018-10-25 07:30:30Z cfischer $
 #
 # Microsoft .NET Framework Security Bypass Vulnerability (4019114)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811037");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12069 $");
   script_cve_id("CVE-2017-0248");
   script_bugtraq_id(98117);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:30:30 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-11 11:37:20 +0530 (Thu, 11 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Security Bypass Vulnerability (4019114)");
@@ -50,12 +50,15 @@ if(description)
   actions.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5
+
   Microsoft .NET Framework 4.5.2
+
   Microsoft .NET Framework 4.6 and 4.6.1
+
   Microsoft .NET Framework 4.6.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4019114");
@@ -68,14 +71,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-
-dotPath = "";
 
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) <= 0){
   exit(0);
@@ -133,7 +132,7 @@ foreach item (registry_enum_keys(key:key))
 
       if(VULN)
       {
-        report = 'File checked:     ' + dotPath + "\system.dll" + '\n' +
+        report = 'File checked:     ' + dotpath + "\system.dll" + '\n' +
                  'File version:     ' + dllVer  + '\n' +
                  'Vulnerable range: ' + vulnerable_range + '\n' ;
         security_message(data:report);

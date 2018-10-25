@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id$
+# $Id: gb_suse_2018_3245_1.nasl 12071 2018-10-25 08:07:34Z santu $
 #
 # SuSE Update for libssh openSUSE-SU-2018:3245-1 (libssh)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851943");
-  script_version("$Revision$");
-  script_tag(name:"last_modification", value:"$Date$");
+  script_version("$Revision: 12071 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:07:34 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-20 07:33:44 +0200 (Sat, 20 Oct 2018)");
   script_cve_id("CVE-2018-10933");
   script_tag(name:"cvss_base", value:"5.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_websockets_dos_macosx.nasl 11887 2018-10-12 13:53:37Z cfischer $
+# $Id: gb_mozilla_seamonkey_websockets_dos_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Seamonkey 'WebSockets' Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803393");
-  script_version("$Revision: 11887 $");
+  script_version("$Revision: 12072 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:53:37 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Seamonkey 'WebSockets' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -61,7 +61,6 @@ if(description)
 
 include("version_func.inc");
 
-# SeaMonkey Check
 seaVer = get_kb_item("SeaMonkey/MacOSX/Version");
 if(seaVer)
 {

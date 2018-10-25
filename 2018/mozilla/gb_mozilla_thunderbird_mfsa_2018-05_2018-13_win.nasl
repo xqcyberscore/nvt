@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-Windows
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812892");
-  script_version("$Revision: 11044 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-5183", "CVE-2018-5184", "CVE-2018-5154", "CVE-2018-5155",
                 "CVE-2018-5159", "CVE-2018-5161", "CVE-2018-5162", "CVE-2018-5170",
                 "CVE-2018-5168", "CVE-2018-5174", "CVE-2018-5178", "CVE-2018-5185",
                 "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 11:26:11 +0530 (Tue, 22 May 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The Flaw exist due to,
+  script_tag(name:"insight", value:"The Flaw exist due to,
 
   - Momory corruption issues in Skia library.
 
@@ -76,21 +76,18 @@ if(description)
 
   - Memory corruption issue in  Thunderbird 52.7.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to reads and writes invalid buffer,
   disclosure of plaintext, use-after-free vulnerability, integer overflow,
   hang on receiving the message, user opening a remote attachment which is a
   different file type than expected, allow a malicious site to install a theme
   without user interaction, allow an unknown and potentially dangerous file to
-  run, buffer overflow and run arbitrary code.
+  run, buffer overflow and run arbitrary code.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before
   52.8 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.8
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.8");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -101,6 +98,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

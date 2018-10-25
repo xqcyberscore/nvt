@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_superantispyware_mult_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_superantispyware_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # SuperAntiSpyware 6.0.1254 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113099");
-  script_version("$Revision: 11759 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 13:06:12 +0100 (Thu, 01 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/ZhiyuanWang-Chengdu-Qihoo360/SUPERAntiSpyware_POC");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:superantispyware:superantispyware";

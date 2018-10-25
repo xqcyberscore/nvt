@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-06_2018-07_win.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2018-06_2018-07_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-06_2018-07)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813034");
-  script_version("$Revision: 11044 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-5127", "CVE-2018-5128", "CVE-2018-5129", "CVE-2018-5130",
                 "CVE-2018-5131", "CVE-2018-5132", "CVE-2018-5133", "CVE-2018-5134",
                 "CVE-2018-5135", "CVE-2018-5136", "CVE-2018-5137", "CVE-2018-5140",
@@ -37,16 +37,16 @@ if(description)
                 "CVE-2018-5125");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-06_2018-07)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A buffer overflow error when manipulating SVG animatedPathSegList through script.
 
@@ -81,17 +81,15 @@ if(description)
 
   - Memory safety bugs fixed in Firefox 59.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct cross-site scripting (XSS) attacks, crash the affected
   system, conduct sandbox escape, access sensitive data and bypass security
-  restrictions.
+  restrictions.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 59 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 59 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 59
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 59
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -101,6 +99,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

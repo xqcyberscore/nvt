@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-19_2018-19_macosx.nasl 10806 2018-08-07 10:06:18Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-19_2018-19_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-19_2018-19)-MAC OS X
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813816");
-  script_version("$Revision: 10806 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12361", "CVE-2018-12362",
                 "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-5156",
                 "CVE-2018-12371", "CVE-2018-12366", "CVE-2018-12367", "CVE-2018-5187",
                 "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 12:06:18 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 11:07:09 +0530 (Tue, 07 Aug 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-19_2018-19)-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Memory safety bugs.
 
@@ -76,15 +75,13 @@ if(description)
 
   - A buffer overflow error using computed size of canvas element.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause denial of service condition, conduct csrf and timing attacks,
-  access private local files and execute arbitrary code.
+  access private local files and execute arbitrary code.");
 
-  Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 60 on MAC OS X.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 60 on MAC OS X.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 60 or later.
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 60 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

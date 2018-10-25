@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 11383 2018-09-14 08:45:31Z cfischer $
+# $Id: gb_ssh_os_detection.nasl 12066 2018-10-25 07:05:23Z cfischer $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 11383 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 10:45:31 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12066 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:05:23 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -53,11 +53,8 @@ include("host_details.inc");
 SCRIPT_DESC = "SSH OS Identification";
 BANNER_TYPE = "SSH banner";
 
-port = get_kb_item( "Services/ssh" );
-if( ! port ) port = 22;
-if( ! get_port_state( port ) ) exit( 0 );
-
-banner = get_kb_item( "SSH/banner/" + port );
+port = get_ssh_port( default:22 );
+banner = get_ssh_server_banner( port:port );
 banner = chomp( banner );
 if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
 
@@ -252,6 +249,12 @@ if( "ubuntu" >< tolower( banner ) )
   if( "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4" >< banner )
   {
     register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.7p1 Ubuntu-4" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

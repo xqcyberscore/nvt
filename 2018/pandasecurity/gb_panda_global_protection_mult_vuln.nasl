@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_mult_vuln.nasl 10688 2018-07-31 06:55:11Z asteins $
+# $Id: gb_panda_global_protection_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Panda Global Protection 17.0.1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113138");
-  script_version("$Revision: 10688 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:55:11 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:20:20 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,7 @@ if( description )
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/25");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Mar/26");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

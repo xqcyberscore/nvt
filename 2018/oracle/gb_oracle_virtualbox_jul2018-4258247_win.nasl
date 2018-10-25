@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_jul2018-4258247_win.nasl 10721 2018-08-02 03:07:04Z ckuersteiner $
+# $Id: gb_oracle_virtualbox_jul2018-4258247_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle VirtualBox Security Updates (jul2018-4258247) (Windows)
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813580");
-  script_version("$Revision: 10721 $");
-  script_cve_id("CVE-2018-3085", "CVE-2018-3087", "CVE-2018-3086", "CVE-2018-3090", 
-                "CVE-2018-3091", "CVE-2018-3089", "CVE-2018-3088", "CVE-2018-3055", 
-                "CVE-2018-3005" );
+  script_version("$Revision: 12068 $");
+  script_cve_id("CVE-2018-3085", "CVE-2018-3087", "CVE-2018-3086", "CVE-2018-3090",
+                "CVE-2018-3091", "CVE-2018-3089", "CVE-2018-3088", "CVE-2018-3055",
+                "CVE-2018-3005");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 05:07:04 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 10:55:19 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle VirtualBox Security Updates (jul2018-4258247) (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle VM
+  script_tag(name:"summary", value:"The host is installed with Oracle VM
   VirtualBox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to an improperly
+  script_tag(name:"insight", value:"Multiple flaws exists due to an improperly
   sanitized core component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an attacker
-  to escalate privileges, access and modify data and cause denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
+  to escalate privileges, access and modify data and cause denial of service.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VirtualBox versions prior to 5.2.16 on
+  script_tag(name:"affected", value:"VirtualBox versions prior to 5.2.16 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Oracle VirtualBox version 5.2.16
+  script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version 5.2.16
   or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html#AppendixOVIR");
-  script_xref(name : "URL" , value : "https://www.virtualbox.org");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html#AppendixOVIR");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

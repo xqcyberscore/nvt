@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln_may18.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
+# $Id: gb_apache_solr_xxe_vuln_may18.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache Solr 6.x < 6.6.4 and 7.x < 7.3.1 XXE Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113190");
-  script_version("$Revision: 10373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 13:32:55 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://mail-archives.apache.org/mod_mbox/www-announce/201805.mbox/%3C08a801d3f0f9%24df46d300%249dd47900%24%40apache.org%3E");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:solr";

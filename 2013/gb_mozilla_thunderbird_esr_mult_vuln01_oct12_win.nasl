@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_oct12_win.nasl 11883 2018-10-12 13:31:09Z cfischer $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_oct12_win.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities-01 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803640");
-  script_version("$Revision: 11883 $");
+  script_version("$Revision: 12072 $");
   script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
                 "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
                 "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -104,7 +104,6 @@ if(description)
 
 include("version_func.inc");
 
-# Thunderbird Check
 tbVer = get_kb_item("Thunderbird-ESR/Win/Ver");
 if(tbVer && tbVer =~ "^10\.0")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_command_exec_vuln.nasl 12010 2018-10-22 08:23:57Z mmartin $
+# $Id: gb_openvas_manager_command_exec_vuln.nasl 12076 2018-10-25 08:39:24Z cfischer $
 #
 # OpenVAS Manager OMP Request Handling Command Injection Vulnerability
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801920");
-  script_version("$Revision: 12010 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12076 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:39:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_cve_id("CVE-2011-0018");
   script_bugtraq_id(45987);
@@ -37,9 +37,10 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/43037");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65011");
-    script_xref(name:"URL", value:"http://www.openvas.org/OVSA20110118.html");
+  script_xref(name:"URL", value:"http://www.openvas.org/OVSA20110118.html");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/16086/");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0208");
+  script_xref(name:"URL", value:"http://www.openvas.org/");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -51,20 +52,26 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands
   with the privileges of the OpenVAS Manager (typically root).");
+
   script_tag(name:"affected", value:"OpenVAS Manager versions prior to 1.0.4 and prior to 2.0.2");
+
   script_tag(name:"insight", value:"The flaw is due to an input validation error in the 'email()' function
   in 'manage_sql.c' while processing OMP (OpenVAS Management Protocol) requests
-  sent by authenticated users of the GSA (Greenbone Security Assistant) web
-  application.");
+  sent by authenticated users of the GSA (Greenbone Security Assistant) web application.");
+
   script_tag(name:"summary", value:"This host is installed with OpenVAS Manager and is prone command
   injection vulnerability.");
+
   script_tag(name:"solution", value:"Apply the patch or upgrade to OpenVAS Manager 1.0.4, 2.0.2 or later.
+
   *****
+
   NOTE : Ignore this warning, if above mentioned patch is already applied.
+
   *****");
+
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.openvas.org/");
-script_xref(name:"URL", value:"http://www.openvas.org/OVSA20110118.html");
+
   exit(0);
 }
 

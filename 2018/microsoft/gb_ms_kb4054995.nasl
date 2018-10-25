@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4054995.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4054995.nasl 12069 2018-10-25 07:30:30Z cfischer $
 #
 # Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4054995)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812709");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12069 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:30:30 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 11:53:08 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4054995)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Security Updates KB4054995.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -50,15 +49,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker who successfully exploited this vulnerability to cause a denial
-  of service against a .NET application and also to bypass security.
-
-  Impact Level: System/Application");
+  of service against a .NET application and also to bypass security.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.5.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link, https://support.microsoft.com/en-us/help/4054995");
+  listed hotfixes or download and update mentioned hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -72,16 +68,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-key = "";
-item = "";
-dotPath = "";
-sysdllVer = "";
 
 if(hotfix_check_sp(win2008:3, win2008x64:3, win2008r2:2, win7:2, win7x64:2) <= 0){
   exit(0);

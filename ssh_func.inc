@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10753 2018-08-03 10:08:48Z cfischer $
+# $Id: ssh_func.inc 12066 2018-10-25 07:05:23Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10753 $
+# $Revision: 12066 $
 #
 ###############################################################################
 
@@ -2211,7 +2211,7 @@ function ssh_reconnect( sock ) {
   local_var sock;
 
   if( ! sock ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_ssh_port" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#ssh_reconnect" );
     return;
   }
 

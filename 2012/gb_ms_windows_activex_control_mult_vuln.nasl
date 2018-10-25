@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802426");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 12072 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 13:25:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)");
   script_cve_id("CVE-2011-1388", "CVE-2011-1391", "CVE-2011-1392", "CVE-2012-0189");
@@ -105,7 +105,6 @@ if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-# Hotfix check 2647518
 if(hotfix_missing(name:"2647518") == 0){
   exit(0);
 }

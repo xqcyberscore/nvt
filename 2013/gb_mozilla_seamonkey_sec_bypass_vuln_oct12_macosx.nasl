@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_macosx.nasl 12072 2018-10-25 08:12:00Z cfischer $
 #
 # Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803674");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12072 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:12:00 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 13:10:26 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -60,7 +60,6 @@ if(description)
 
 include("version_func.inc");
 
-# SeaMonkey Check
 seaVer = get_kb_item("SeaMonkey/MacOSX/Version");
 if(seaVer)
 {

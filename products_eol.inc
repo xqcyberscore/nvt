@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 11624 2018-09-26 12:00:34Z santu $
+# $Id: products_eol.inc 12077 2018-10-25 08:47:44Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11624 $
+# $Revision: 12077 $
 #
 ###############################################################################
 
@@ -102,8 +102,11 @@ eol_cpes[ 'cpe:/a:greenbone:greenbone_security_assistant' ] = make_array(
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
+# '6.0:2018-08-27' temporary removed as GOS 3.1 is still supported
+# and we would report a false positive on slaves if they are only
+# reachable via OMP/GMP.
 eol_cpes[ 'cpe:/a:openvas:openvas_manager' ] = make_array(
-  'versions',      '6.0:2018-08-27;5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
+  'versions',      '5.0:2016-05-10;4.0:2015-04-27;3.0:2014-08-28;2.0:2013-08-07;1.0:2012-09-05',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 

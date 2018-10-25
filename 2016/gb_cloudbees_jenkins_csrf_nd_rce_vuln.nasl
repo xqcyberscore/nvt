@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 11961 2018-10-18 10:49:40Z asteins $
+# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 12070 2018-10-25 07:56:12Z cfischer $
 #
 # Jenkins CSRF And Code Execution Vulnerabilities Aug16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809025");
-  script_version("$Revision: 11961 $");
+  script_version("$Revision: 12070 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:49:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:56:12 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 12:50:25 +0530 (Wed, 31 Aug 2016)");
   script_name("Jenkins CSRF And Code Execution Vulnerabilities Aug16");
 
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"CloudBees Jenkins version 1.626");
 
-  script_tag(name:"solution", value:"Updates are available to fix this issue. ");
+  script_tag(name:"solution", value:"Updates are available to fix this issue.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

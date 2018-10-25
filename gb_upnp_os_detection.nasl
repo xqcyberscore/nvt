@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_upnp_os_detection.nasl 10070 2018-06-04 14:43:22Z cfischer $
+# $Id: gb_upnp_os_detection.nasl 12065 2018-10-25 06:59:36Z cfischer $
 #
 # UPnP Protocol OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108200");
-  script_version("$Revision: 10070 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 16:43:22 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 12065 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 08:59:36 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 11:13:48 +0200 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -144,6 +144,8 @@ if( egrep( pattern:"^SERVER: Ubuntu", string:banner, icase:TRUE ) ) {
     register_and_report_os( os:"Ubuntu", version:"17.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else if( "Ubuntu/bionic" >< banner ) {
     register_and_report_os( os:"Ubuntu", version:"18.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else if( "Ubuntu/cosmic" >< banner ) {
+    register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {
     register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, proto:"udp", banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   }

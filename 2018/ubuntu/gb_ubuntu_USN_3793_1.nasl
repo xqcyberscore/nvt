@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3793_1.nasl 11946 2018-10-18 05:43:49Z cfischer $
+# $Id: gb_ubuntu_USN_3793_1.nasl 12067 2018-10-25 07:10:45Z santu $
 #
 # Ubuntu Update for thunderbird USN-3793-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843659");
-  script_version("$Revision: 11946 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 07:43:49 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12067 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-16 06:20:47 +0200 (Tue, 16 Oct 2018)");
   script_cve_id("CVE-2018-12376", "CVE-2018-12377", "CVE-2018-12378", "CVE-2018-12383", "CVE-2018-12385");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,7 @@ that allowed them to write data to the cache, to execute arbitrary code.
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3793-1");
-  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-October/004619.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3793-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

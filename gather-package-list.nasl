@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 11744 2018-10-04 08:40:58Z cfischer $
+# $Id: gather-package-list.nasl 12065 2018-10-25 06:59:36Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 11744 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 10:40:58 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12065 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 08:59:36 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -137,6 +137,7 @@ OS_CPE = make_array(
     "SLED10.0SP0", "cpe:/o:suse:linux_enterprise_desktop:10:SP0",
 
     # Ubuntu
+    "UBUNTU18.10","cpe:/o:canonical:ubuntu_linux:18.10",
     "UBUNTU18.04 LTS","cpe:/o:canonical:ubuntu_linux:18.04:-:lts",
     "UBUNTU17.10",    "cpe:/o:canonical:ubuntu_linux:17.10",
     "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
@@ -2193,6 +2194,14 @@ if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.04" >< rls ) {
   register_detected_os( os:"Ubuntu 18.04 LTS", oskey:"UBUNTU18.04 LTS" );
   exit( 0 );
 }
+if( "DISTRIB_ID=Ubuntu" >< rls && "DISTRIB_RELEASE=18.10" >< rls ) {
+  set_kb_item( name:"ssh/login/ubuntu_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );
+  if( ! isnull( buf ) ) register_packages( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Ubuntu 18.10" );
+  register_detected_os( os:"Ubuntu 18.10", oskey:"UBUNTU18.10" );
+  exit( 0 );
+}
 
 if( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?' ) {
 
@@ -2440,6 +2449,8 @@ if( match = eregmatch( pattern:"^9\.([0-9]+)$", string:rls ) ) {
   exit( 0 );
 }
 
+# nb: At least Ubuntu 18.10 has "buster/sid" in debian_version so keep this in mind
+# if Ubuntu is wrongly detected and keep the Ubuntu pattern above the Debian ones.
 if( "buster/sid" >< rls ) {
   set_kb_item( name:"ssh/login/debian_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 dpkg -l" );

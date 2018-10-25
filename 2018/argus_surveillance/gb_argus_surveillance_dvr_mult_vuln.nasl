@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_argus_surveillance_dvr_mult_vuln.nasl 11155 2018-08-29 09:07:04Z ckuersteiner $
+# $Id: gb_argus_surveillance_dvr_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Argus Surveillance DVR Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:argus_surveillance:dvr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141409");
-  script_version("$Revision: 11155 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:07:04 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 14:19:28 +0700 (Wed, 29 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -54,9 +54,9 @@ if (description)
 
   script_tag(name:"insight", value:"Argus Surveillance DVR is prone to multiple vulnerabilities:
 
-- Directory traversal (CVE-2018-15745)
+  - Directory traversal (CVE-2018-15745)
 
-- SYSTEM privilege escalation");
+  - SYSTEM privilege escalation");
 
   script_tag(name:"solution", value:"No known solution is available as of 29th August, 2018. Information regarding
 this issue will be updated once solution details are available.");
@@ -66,7 +66,7 @@ this issue will be updated once solution details are available.");
   script_xref(name:"URL", value:"http://hyp3rlinx.altervista.org/advisories/ARGUS-SURVEILLANCE-DVR-v4-UNAUTHENTICATED-PATH-TRAVERSAL-FILE-DISCLOSURE.txt");
   script_xref(name:"URL", value:"http://hyp3rlinx.altervista.org/advisories/ARGUS-SURVEILLANCE-DVR-v4-SYSTEM-PRIVILEGE-ESCALATION.txt");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

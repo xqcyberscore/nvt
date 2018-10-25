@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_info_disc_vuln_lin.nasl 8901 2018-02-21 11:43:14Z cfischer $
+# $Id: gb_apache_activemq_info_disc_vuln_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Apache Active MQ 5.14.0 - 5.15.2 Information Disclosure Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112224");
-  script_version("$Revision: 8901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 12:43:14 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 12068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 14:50:00 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/2b6f04a552c6ec2de6563c2df3bba813f0fe9c7e22cce27b7829db89@%3Cdev.activemq.apache.org%3E");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:activemq";

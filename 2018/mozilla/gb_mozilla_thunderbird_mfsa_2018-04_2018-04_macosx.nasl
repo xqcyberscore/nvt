@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl 10909 2018-08-10 15:03:01Z cfischer $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-04_2018-04)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813050");
-  script_version("$Revision: 10909 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-5095", "CVE-2018-5096", "CVE-2018-5097", "CVE-2018-5098",
                 "CVE-2018-5099", "CVE-2018-5102", "CVE-2018-5103", "CVE-2018-5104",
                 "CVE-2018-5117", "CVE-2018-5089");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 11:48:22 +0530 (Thu, 22 Mar 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-04_2018-04)-MAC OS X");
 
@@ -69,14 +69,11 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to bypass security restrictions and perform unauthorized
   actions, conduct spoofing attack, and execute arbitrary code in the
-  context of the affected application.
-
-  Impact Level: System/Application.");
+  context of the affected application.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 52.6 on MAC OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.6
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.6");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -86,6 +83,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

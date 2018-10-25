@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-18_2018-18_win.nasl 10423 2018-07-05 13:03:28Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-18_2018-18_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-18_2018-18)-Windows
 #
@@ -29,30 +29,29 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813549");
-  script_version("$Revision: 10423 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12372", "CVE-2018-12373",
                 "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365",
                 "CVE-2018-12366", "CVE-2018-12368", "CVE-2018-12374", "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 15:03:28 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 12:02:01 +0530 (Wed, 04 Jul 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-18_2018-18)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Buffer overflow error while using computed size of canvas element.
 
   - Use-after-free error when using focus()
 
   - Allowing S/MIME and PGP decryption oracles to be built with HTML emails.
- 
+
   - S/MIME plaintext can be leaked through HTML reply/forward.
 
   - Integer overflow error in SSSE3 scaler.
@@ -71,17 +70,15 @@ if(description)
 
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to crash the application, leak plaintext, perform cross-site request forgery
   attacks, expose of private local files, leak private data into the output and
-  execute arbitrary code.
+  execute arbitrary code.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 52.9 on
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 52.9 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.9
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.9
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

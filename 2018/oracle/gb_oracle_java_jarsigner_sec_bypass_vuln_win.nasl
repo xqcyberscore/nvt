@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jarsigner_sec_bypass_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_jarsigner_sec_bypass_vuln_win.nasl 12068 2018-10-25 07:21:15Z mmartin $
 #
 # Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Windows)
 #
@@ -29,29 +29,27 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813376");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 12068 $");
   script_cve_id("CVE-2013-4578");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 16:10:50 +0530 (Wed, 23 May 2018)");
   script_name("Oracle Java SE 'jarsigner' Security Bypass Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to a security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to jarsigner does not
+  script_tag(name:"insight", value:"The flaw is due to jarsigner does not
   detect unsigned bytecode injected into signed jars.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject malicious unsigned bytecode into a signed JAR without
-  failing jarsigner verification.
+  failing jarsigner verification.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE version before 7u51 on
+  script_tag(name:"affected", value:"Oracle Java SE version before 7u51 on
   Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 7u51 or
@@ -59,9 +57,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1031471");
-  script_xref(name : "URL" , value : "http://hg.openjdk.java.net/jdk7u/jdk7u/jdk/rev/d5f36e1c927e");
-  script_xref(name : "URL" , value : "http://www.oracle.com");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1031471");
+  script_xref(name:"URL", value:"http://hg.openjdk.java.net/jdk7u/jdk7u/jdk/rev/d5f36e1c927e");
+  script_xref(name:"URL", value:"http://www.oracle.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
