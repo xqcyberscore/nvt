@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_role_scoper_xss_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_wordpress_role_scoper_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Role Scoper Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112044");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 11:33:51 +0200 (Tue, 12 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"WordPress plugin Role Scoper is vulnerable to cross-site scripting (XSS) resulting in
 attackers being able to inject arbitrary web script or HTML via the object_name parameter in a rs-object_role_edit page to wp-admin/admin.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Role Scoper plugin version 1.3.66 and prior.");
 

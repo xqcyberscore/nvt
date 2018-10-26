@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # D-Link DIR Routers HNAP Buffer Overflow Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106587");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:49:17 +0700 (Tue, 14 Feb 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"Several D-Link DIR Routers are prone to a buffer overflow vulnerability in
 HNAP.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Processing malformed SOAP messages when performing the HNAP Login action
 causes a buffer overflow in the stack. The vulnerable XML fields within the SOAP body are: Action, Username,

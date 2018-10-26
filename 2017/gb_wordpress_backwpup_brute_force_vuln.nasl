@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_backwpup_brute_force_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_wordpress_backwpup_brute_force_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress BackWPup Plugin Brute Force Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112061");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-29 09:03:31 +0200 (Fri, 29 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"WordPress plugin BackWPup allows possible brute forcing of backup file for download.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress BackWPup plugin before version 3.4.2.");
 

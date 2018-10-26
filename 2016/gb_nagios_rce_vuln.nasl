@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_rce_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_nagios_rce_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Nagios Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106473");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Nagios is prone to a remote command execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is caused by the use of a vulnerable component for
 handling RSS news feeds - MagpieRSS in Nagios Core control panel/front-end. The component is used by Nagios

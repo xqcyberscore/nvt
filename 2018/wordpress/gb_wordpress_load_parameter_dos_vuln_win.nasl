@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_load_parameter_dos_vuln_win.nasl 10663 2018-07-27 13:48:41Z cfischer $
+# $Id: gb_wordpress_load_parameter_dos_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812692");
-  script_version("$Revision: 10663 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6389");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:48:41 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 20:13:56 +0530 (Mon, 05 Feb 2018)");
   script_name("WordPress 'load-scripts.php' Denial of Service Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the file 'load-scripts.php'
   do not require any authentication and file selectively calls required JavaScript
   files by passing their names into the 'load' parameter, separated by a comma.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct a denial of service condition on affected system.
-
-  Impact Level: System");
+  attackers to conduct a denial of service condition on affected system.");
 
   script_tag(name:"affected", value:"WordPress versions 4.9.2 and prior on Windows");
 

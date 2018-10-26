@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_65674.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_openssh_65674.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2011-4327");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 12095 $");
   script_name("OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:29:38 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Local attackers can exploit this issue to obtain sensitive
   information. Information obtained may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"ssh-keysign.c in ssh-keysign in OpenSSH before 5.8p2 on
   certain platforms executes ssh-rand-helper with unintended open file
   descriptors, which allows local users to obtain sensitive key information

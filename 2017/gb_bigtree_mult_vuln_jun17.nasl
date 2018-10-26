@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_mult_vuln_jun17.nasl 7283 2017-09-27 05:48:42Z asteins $
+# $Id: gb_bigtree_mult_vuln_jun17.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # BigTree CMS <= 4.2.18 Multiple CSRF and XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108181");
-  script_version("$Revision: 7283 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 07:48:42 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 08:57:33 +0200 (Tue, 13 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,9 +45,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("BigTree/Installed");
 
+  script_xref(name:"URL", value:"https://github.com/bigtreecms/BigTree-CMS");
+
   script_tag(name:"summary", value:"BigTree CMS is prone to a CSRF vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"BigTree CMS is prone to a CSRF vulnerability because it
   relies on a substring check for CSRF protection, which allows remote attackers to bypass
@@ -56,7 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions through 4.2.18.");
 
-  script_tag(name:"solution", value:"Update to version 4.2.19. For further information head to https://github.com/bigtreecms/BigTree-CMS ");
+  script_tag(name:"solution", value:"Update to version 4.2.19.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

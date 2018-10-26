@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_heap_buffer_over-read_vuln_may18_win.nasl 9988 2018-05-28 15:16:14Z cfischer $
+# $Id: gb_perl_heap_buffer_over-read_vuln_may18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Perl Heap-Based Buffer Over-read Vulnerability May18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812888");
-  script_version("$Revision: 9988 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6798");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 17:16:14 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-18 17:20:41 +0530 (Fri, 18 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Perl Heap-Based Buffer Over-read Vulnerability May18 (Windows)");
@@ -42,16 +42,13 @@ if(description)
   script_tag(name:"summary", value:"This host is running Perl and is
   prone to heap-based buffer over-read vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because Perl unable to
   sanitize against a crafted locale dependent regular expression.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause a heap-based buffer over-read and potentially information disclosure.
-
-  Impact Level: System/Application");
+  to cause a heap-based buffer over-read and potentially information disclosure.");
 
   script_tag(name:"affected", value:"Perl versions 5.22 through 5.26
   on Windows.");

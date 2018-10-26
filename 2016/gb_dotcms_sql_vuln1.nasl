@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_sql_vuln1.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_dotcms_sql_vuln1.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # dotCMS SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106365");
-  script_version("$Revision: 11523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 09:37:45 +0700 (Wed, 02 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"dotCMS is prone to a SQL injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"SQL injection vulnerability in the 'Workflow Screen' allows remote
 administrators to execute arbitrary SQL commands via the _EXT_15_orderby parameter.");

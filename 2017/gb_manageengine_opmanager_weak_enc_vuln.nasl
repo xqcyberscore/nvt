@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_manageengine_opmanager_weak_enc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ManageEngine OpManager Weak Encryption Algorithm Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140279");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 16:08:23 +0700 (Mon, 07 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"ManageEngine OpManager is prone to a weak encryption algorithm
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Zoho ManageEngine OpManager uses a custom encryption algorithm to protect
 the credential used to access the monitored devices. The implemented algorithm doesn't use a per-system key or

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kannel_priv_esc_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_kannel_priv_esc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Kannel Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kannel:kannel';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140386");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 15:08:29 +0700 (Thu, 21 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"Kannel is prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The server daemons create a PID file after dropping privileges to a
 non-root account, which might allow local users to kill arbitrary processes by leveraging access to this

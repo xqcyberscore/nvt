@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_jan18_win.nasl 11156 2018-08-29 09:25:17Z asteins $
+# $Id: gb_wordpress_mult_vuln_jan18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Multiple Vulnerabilities-Jan 2018 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812507");
-  script_version("$Revision: 11156 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-5776");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 14:09:01 +0530 (Mon, 22 Jan 2018)");
   script_name("WordPress Multiple Vulnerabilities-Jan 2018 (Windows)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An XSS flaw exists in the Flash fallback
   files in MediaElement, a library that is included with WordPress. Because
@@ -49,21 +48,21 @@ if(description)
   removed from WordPress.
 
   21 other bugs were fixed in WordPress 4.9.2:
+
   - JavaScript errors that prevented saving posts in Firefox have been fixed.
+
   - The previous taxonomy-agnostic behavior of get_category_link() and
     category_description() was restored.
+
   - Switching themes will now attempt to restore previous widget assignments,
     even when there are no sidebars to map.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct cross site scripting attacks.
-
-  Impact Level: System/Application");
+  attackers to conduct cross site scripting attacks.");
 
   script_tag(name:"affected", value:"WordPress versions prior to 4.9.2 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress version 4.9.2 or later.
-  For updates refer to https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.9.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

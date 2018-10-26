@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_ldap_inj_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_atlassian_crowd_ldap_inj_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Atlassian Crowd LDAP Java Object Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atlassian:crowd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106375");
-  script_version("$Revision: 11493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 14:37:33 +0700 (Fri, 04 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Atlassian Crowd is prone to a LDAP Java object injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Crowd LDAP directory connector allowed an attacker to gain remote code
 execution in Crowd by injecting malicious attributes in LDAP entries. To exploit this issue, attackers need to

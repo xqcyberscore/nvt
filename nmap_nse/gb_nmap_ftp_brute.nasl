@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_ftp_brute.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_ftp_brute.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap FTP Brute NSE script.
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801241");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12115 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:16:51 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,6 +57,8 @@ if(description)
   usernames and passwords.
 
   This is a wrapper on the Nmap Security Scanner's ftp-brute.nse");
+
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

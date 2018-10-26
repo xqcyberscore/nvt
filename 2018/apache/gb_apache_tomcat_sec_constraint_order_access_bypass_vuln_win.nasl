@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 9268 2018-03-29 14:05:16Z cfischer $
+# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812784");
-  script_version("$Revision: 9268 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1305", "CVE-2018-1304");
   script_bugtraq_id(103144, 103170);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 18:10:55 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)");
@@ -42,34 +42,29 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to an multiple access bypass vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - The system does not properly enforce security constraints that defined by 
-    annotations of Servlets in certain cases, depending on the order that Servlets 
+  - The system does not properly enforce security constraints that defined by
+    annotations of Servlets in certain cases, depending on the order that Servlets
     are loaded.
 
-  - The URL pattern of '' (the empty string) which exactly maps to the context 
-    root was not correctly handled when used as part of a security constraint 
+  - The URL pattern of '' (the empty string) which exactly maps to the context
+    root was not correctly handled when used as part of a security constraint
     definition.");
 
   script_tag(name:"impact", value:"Successfully exploiting these issues will allow
-  remote attackers to bypass security constraints to access ostensibly restricted 
-  resources on the target system.
+  remote attackers to bypass security constraints to access ostensibly restricted
+  resources on the target system.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Apache Tomcat versions 9.0.0.M1 to 9.0.4
+  script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M1 to 9.0.4
   Apache Tomcat versions 8.5.0 to 8.5.27
   Apache Tomcat versions 8.0.0.RC1 to 8.0.49
   Apache Tomcat versions 7.0.0 to 7.0.84 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.5,
-  8.5.28, 8.0.50, 7.0.85 or later. 
-  For updates refer to http://tomcat.apache.org");
+  8.5.28, 8.0.50, 7.0.85 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,7 +76,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_windows");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
   exit(0);
 }
@@ -106,19 +101,19 @@ if(appVer =~ "8\.5")
   if(version_in_range(version:appVer, test_version: "8.5.0", test_version2: "8.5.27")){
     fix = "8.5.28";
   }
-} 
+}
 else if(appVer =~ "7\.0")
 {
   if(version_in_range(version:appVer, test_version: "7.0.0", test_version2: "7.0.84")){
     fix = "7.0.85";
   }
-} 
+}
 else if(appVer =~ "8\.0")
 {
   if((revcomp(a:appVer, b: "8.0.0.RC1") >= 0) && (revcomp(a:appVer, b: "8.0.50") < 0)){
     fix = "8.0.50";
   }
-} 
+}
 else if(appVer =~ "9\.0")
 {
   if((revcomp(a:appVer, b: "9.0.0.M1") >= 0) && (revcomp(a:appVer, b: "9.0.5") < 0)){

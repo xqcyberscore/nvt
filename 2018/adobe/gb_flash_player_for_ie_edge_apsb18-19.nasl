@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_apsb18-19.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_flash_player_for_ie_edge_apsb18-19.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (apsb18-19)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813602");
-  script_version("$Revision: 10143 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-5002", "CVE-2018-4945", "CVE-2018-5000", "CVE-2018-5001");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 12:38:35 +0530 (Fri, 08 Jun 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (apsb18-19)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   within Microsoft Edge or Internet Explorer and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - A type confusion error.
 
@@ -53,13 +52,11 @@ if(description)
 
   - A stack-based buffer overflow error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct arbitrary code execution and disclosure of sensitive
-  information.
+  information.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player within Microsoft Edge or
+  script_tag(name:"affected", value:"Adobe Flash Player within Microsoft Edge or
   Internet Explorer on,
 
   Windows 10 Version 1803 for x32/x64 Edition,
@@ -76,15 +73,15 @@ if(description)
 
   Windows Server 2012/2012 R2/2016");
 
-  script_tag(name: "solution", value:"Run Windows update and update the
+  script_tag(name:"solution", value:"Run Windows update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name: "URL" , value :"http://get.adobe.com/flashplayer");
-  script_xref(name : "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb18-19.html");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb18-19.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

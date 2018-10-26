@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0005.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_panos_pan_sa-2016_0005.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0005
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105562");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-3657");
   script_name("Palo Alto PAN-OS PAN-SA-2016-0005");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"When a PAN-OS device is configured as a GlobalProtect portal, a vulnerability exists where an improper handling of a buffer involved in the processing of SSL VPN requests can result in device crash and possible remote code execution.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS releases 5.0.18, 6.0.13, 6.1.10 and 7.0.5 and newer");
 
   script_tag(name:"impact", value:"An attacker with network access to the vulnerable GlobalProtect portal may be able to perform a denial-of-service (DoS) attack on the device, and may be able to perform remote code execution on the affected device.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 11:50:51 +0100 (Thu, 25 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

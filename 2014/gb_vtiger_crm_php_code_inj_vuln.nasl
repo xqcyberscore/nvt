@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # vTiger CRM PHP Code Injection Vulnerability
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2013-3214");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 12:15:25 +0700 (Thu, 30 Jan 2014)");
 
   script_name("vTiger CRM PHP Code Injection Vulnerability");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"vTiger CRM PHP Code Injection Vulnerability");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Apply the patch from the link below or upgrade to version
   6.0 or later.");

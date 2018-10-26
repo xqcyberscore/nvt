@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_file_disc_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_roundcube_file_disc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Roundcube Webmail File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112134");
-  script_version("$Revision: 11935 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 17:17:17 +0100 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Roundcube Webmail is prone to a file disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Roundcube Webmail allows unauthorized access to arbitrary files on the host's filesystem,
 including configuration files. The attacker must be able to authenticate at the target system with a valid username/password

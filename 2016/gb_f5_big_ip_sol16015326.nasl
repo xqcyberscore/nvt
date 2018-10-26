@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16015326.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_f5_big_ip_sol16015326.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-4397");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"A remote attacker may be able to cause a denial-of-service (DoS) or execute arbitrary code on the BIG-IP system.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple integer overflows in the th_read function in lib/block.c in libtar before 1.2.20 allow remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a long (1) name or (2) link in an archive, which triggers a heap-based buffer overflow.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 18:30:55 +0100 (Thu, 11 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

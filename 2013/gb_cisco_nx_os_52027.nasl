@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_52027.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_cisco_nx_os_52027.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2012-0352");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12083 $");
 
   script_name("Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52027");
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9670/");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20120215-nxos");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-10 11:38:56 +0200 (Thu, 10 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -52,21 +52,29 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause the device to crash,
 denying service to legitimate users.");
-  script_tag(name:"vuldetect", value:"Check the version from SNMP sysdesc");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Cisco NX-OS 4.2.x before 4.2(1)SV1(5.1) on Nexus 1000v series
-switches; 4.x and 5.0.x before 5.0(2)N1(1) on Nexus 5000 series switches; and
+switches; 4.x and 5.0.x before 5.0(2)N1(1) on Nexus 5000 series switches, and
 4.2.x before 4.2.8, 5.0.x before 5.0.5, and 5.1.x before 5.1.1 on Nexus 7000
 series switches allows remote attackers to cause a denial of service
 (netstack process crash and device reload) via a malformed IP packet, aka Bug
 IDs CSCti23447, CSCti49507, and CSCtj01991.");
+
   script_tag(name:"solution", value:"The vendor has released updates. Please see the referenced advisory
 for details.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Multiple Cisco Nexus devices are prone to a denial-of-service
 vulnerability.");
+
   script_tag(name:"affected", value:"The following devices are affected:
+
 Cisco Nexus 1000V
+
 Cisco Nexus 5000
+
 Cisco Nexus 7000");
 
   exit(0);

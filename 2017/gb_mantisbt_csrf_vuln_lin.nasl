@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_csrf_vuln_lin.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_mantisbt_csrf_vuln_lin.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # MantisBT CSRF Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106823");
-  script_version("$Revision: 11472 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 10:37:27 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"MantisBT is prone to a cross-site request forgery (CSRF) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"MantisBT omits a backslash check in string_api.php and consequently has
 conflicting interpretations of an initial \/ substring as introducing either a local pathname or a remote

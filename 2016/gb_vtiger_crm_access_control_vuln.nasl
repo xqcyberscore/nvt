@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_access_control_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_vtiger_crm_access_control_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Vtiger CRM Access Control Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:vtiger:vtiger_crm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106148");
-  script_version("$Revision: 11493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-21 09:24:27 +0700 (Thu, 21 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Vtiger CRM is prone to an access control vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Vtiger CRM contains a vulnerability where it does not properly restrict
 access to user information data.");

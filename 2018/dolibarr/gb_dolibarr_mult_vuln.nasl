@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_mult_vuln.nasl 8784 2018-02-13 10:23:33Z cfischer $
+# $Id: gb_dolibarr_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Dolibarr < 6.0.5 Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112216");
-  script_version("$Revision: 8784 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 11:23:33 +0100 (Tue, 13 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-12 10:00:40 +0100 (Mon, 12 Feb 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-12 10:00:40 +0100 (Mon, 12 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17900", "CVE-2017-17898", "CVE-2017-17899", "CVE-2017-17897");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Dolibarr < 6.0.5 Multiple Vulnerabilities");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_dolibarr_detect.nasl");
   script_mandatory_keys("Dolibarr/installed");
 
-  script_tag(name: "summary", value: "Dolibarr ERP/CRM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Dolibarr ERP/CRM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
-- SQL injection vulnerability in fourn/index.php allows remote attackers to execute arbitrary SQL commands via the socid parameter. (CVE-2017-17900)
+  - SQL injection vulnerability in fourn/index.php allows remote attackers to execute arbitrary SQL commands via the socid parameter. (CVE-2017-17900)
 
-- Dolibarr does not block direct requests to *.tpl.php files, which allows remote attackers to obtain sensitive information. (CVE-2017-17898)
+  - Dolibarr does not block direct requests to *.tpl.php files, which allows remote attackers to obtain sensitive information. (CVE-2017-17898)
 
-- SQL injection vulnerability in adherents/subscription/info.php allows remote attackers to execute arbitrary SQL commands via the rowid parameter. (CVE-2017-17899)
+  - SQL injection vulnerability in adherents/subscription/info.php allows remote attackers to execute arbitrary SQL commands via the rowid parameter. (CVE-2017-17899)
 
-- SQL injection vulnerability in comm/multiprix.php in Dolibarr ERP/CRM version 6.0.4 allows remote attackers to execute arbitrary SQL commands via the id parameter. (CVE-2017-17897)");
+  - SQL injection vulnerability in comm/multiprix.php in Dolibarr ERP/CRM version 6.0.4 allows remote attackers to execute arbitrary SQL commands via the id parameter. (CVE-2017-17897)");
 
-  script_tag(name: "affected", value: "Dolibarr ERP/CRM version 6.0.4 and prior.");
+  script_tag(name:"affected", value:"Dolibarr ERP/CRM version 6.0.4 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to Dolibarr version 6.0.5.");
+  script_tag(name:"solution", value:"Upgrade to Dolibarr version 6.0.5.");
 
-  script_xref(name: "URL", value: "https://github.com/Dolibarr/dolibarr/blob/develop/ChangeLog");
+  script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/blob/develop/ChangeLog");
 
   exit(0);
 }

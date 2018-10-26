@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_pagewide_officejet_printers_rce_vuln.nasl 8550 2018-01-26 13:04:27Z jschulte $
+# $Id: gb_hp_pagewide_officejet_printers_rce_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Pagewide and OfficeJet Printers RCE Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113093");
-  script_version("$Revision: 8550 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 14:04:27 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 14:52:55 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -91,7 +91,7 @@ if( description )
   script_xref(name:"URL", value:"https://support.hp.com/us-en/document/c05462914");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42176/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

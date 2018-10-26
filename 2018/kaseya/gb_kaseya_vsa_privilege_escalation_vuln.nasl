@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_privilege_escalation_vuln.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_kaseya_vsa_privilege_escalation_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Kaseya Virtual System Administrator Agent Local Privilege Escalation Vulnerability
 #
@@ -28,35 +28,32 @@ CPE = "cpe:/a:kaseya:virtual_system_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813382");
-  script_version("$Revision: 10041 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-12410");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 11:18:44 +0530 (Wed, 30 May 2018)");
   script_name("Kaseya Virtual System Administrator Agent Local Privilege Escalation Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running Kaseya 
-  Virtual System Administrator agent and is prone to local privilege escalation 
+  script_tag(name:"summary", value:"This host is running Kaseya
+  Virtual System Administrator agent and is prone to local privilege escalation
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to a Time of Check & 
+  script_tag(name:"insight", value:"The flaw exists due to a Time of Check &
   Time of Use (TOCTOU) issue when VSA agent performs verification if the
   files were modified before running the executables.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
-  attacker to run arbitrary executables with 'NT AUTHORITY\SYSTEM' privileges.
+  script_tag(name:"impact", value:"Successful exploitation will allow an
+  attacker to run arbitrary executables with 'NT AUTHORITY\SYSTEM' privileges.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Kaseya Virtual System Administrator 
+  script_tag(name:"affected", value:"Kaseya Virtual System Administrator
   agent 9.4.0.36 and earlier.");
 
-  script_tag(name: "solution" , value:"Upgrade to Kaseya Virtual System 
-  Administrator version 9.4.0.37 or 9.5 or later. 
+  script_tag(name:"solution", value:"Upgrade to Kaseya Virtual System
+  Administrator version 9.4.0.37 or 9.5 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

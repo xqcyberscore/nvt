@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17253.nasl 11274 2018-09-07 06:20:26Z ckuersteiner $
+# $Id: gb_f5_big_ip_sol17253.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17253 - BIG-IP Configuration utility vulnerability CVE-2015-4040
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-4040");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11274 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17253 - BIG-IP Configuration utility vulnerability CVE-2015-4040");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An authenticated user is able to traverse the web root to gain access to files located within the web root only.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An authenticated user issue a request to the BIG-IP configuration utility that contains a path traversal. (CVE-2015-4040 - pending)");
 
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 08:20:26 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 14:41:41 +0200 (Fri, 18 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

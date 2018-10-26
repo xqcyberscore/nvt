@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_wpa2_krack.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ubnt_wpa2_krack.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -28,14 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108257");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12106 $");
   script_cve_id("CVE-2017-13077", "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080",
                 "CVE-2017-13081", "CVE-2017-13082", "CVE-2017-13084", "CVE-2017-13086",
                 "CVE-2017-13087", "CVE-2017-13088");
   script_bugtraq_id(101274);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 10:31:0 +0200 (Thu, 19 Oct 2017)");
   script_name("Ubiquiti Networks UAP/USW Products WPA2 Key Reinstallation Vulnerabilities - KRACK");
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"summary", value:"WPA2 as used in Ubiquiti Networks UAP/USW products is prone to
   multiple security weaknesses aka Key Reinstallation Attacks (KRACK).");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Exploiting these issues may allow an unauthorized
   user to intercept and manipulate data or disclose sensitive information.

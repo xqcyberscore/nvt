@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_media_manager_xss_vuln.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_media_manager_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Joomla! Core 'Media Manager' XSS Vulnerability (20180509)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813406");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6378");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 11:12:14 +0530 (Wed, 23 May 2018)");
 
   script_name("Joomla! Core 'Media Manager' XSS Vulnerability (20180509)");
@@ -47,9 +47,7 @@ if(description)
   of file and folder names in media manager.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct XSS attack.
-
-  Impact Level: Application");
+  attackers to conduct XSS attack.");
 
   script_tag(name:"affected", value:"Joomla core versions 1.5.0 through 3.8.7");
 

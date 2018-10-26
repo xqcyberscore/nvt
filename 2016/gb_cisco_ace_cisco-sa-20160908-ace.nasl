@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ace_cisco-sa-20160908-ace.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_cisco_ace_cisco-sa-20160908-ace.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco ACE 4710 Application Control Engine Denial of Service Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6399");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Cisco ACE 4710 Application Control Engine Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160908-ace");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Upgrade to version A5(3.5)");
 
@@ -57,7 +57,7 @@ device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-16 11:53:36 +0700 (Fri, 16 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

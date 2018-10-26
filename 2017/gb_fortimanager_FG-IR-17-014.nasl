@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_FG-IR-17-014.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_fortimanager_FG-IR-17-014.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # FortiManager Open Redirect Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:fortinet:fortimanager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140263");
-  script_version("$Revision: 11501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 16:24:31 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"The FortiManager WebUI accept a user-controlled input that specifies a link
 to an external site, and uses that link in a redirect.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Open redirect");
 

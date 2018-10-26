@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eon_97084_97109.nasl 6208 2017-05-24 09:31:53Z cfi $
+# $Id: gb_eon_97084_97109.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Eyes Of Network (EON) <= 5.0 Multiple Security Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108169");
-  script_version("$Revision: 6208 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:31:53 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-24 08:42:44 +0200 (Wed, 24 May 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"summary", value:"Eyes Of Network (EON) is prone to multiple arbitrary code execution
   and SQL injection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Eyes Of Network (EON) is prone to multiple:
 

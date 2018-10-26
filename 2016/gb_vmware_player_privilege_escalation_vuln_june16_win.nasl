@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_privilege_escalation_vuln_june16_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_vmware_player_privilege_escalation_vuln_june16_win.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # VMware Player Privilege Escalation vulnerability June16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808110");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-2077");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:32 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Player Privilege Escalation vulnerability June16 (Windows)");
@@ -53,7 +53,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Player version
-  7.1.3 or later, For updates refer to http://www.vmware.com");
+  7.1.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

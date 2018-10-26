@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_dll_validation_flaw.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: gb_hp_printers_dll_validation_flaw.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Printers Insufficient DLL Signature Validation
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113095");
-  script_version("$Revision: 8941 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-26 14:20:42 +0100 (Fri, 26 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -111,7 +111,7 @@ if( description )
 
   Firmware versions through 2308937_578490: HP PageWide Enterprise Color X556, HP PageWide Managed Color E55650
 
-  Firmware versions thorugh 2308937_578486: HP Scanjet Enterprise 8500 Document Capture Workstation
+  Firmware versions through 2308937_578486: HP Scanjet Enterprise 8500 Document Capture Workstation
 
 
 
@@ -277,7 +277,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://support.hp.com/us-en/document/c05839270");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

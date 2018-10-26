@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17381.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol17381.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17381 - OpenJDK vulnerability CVE-2014-0428
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-0428");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17381 - OpenJDK vulnerability CVE-2014-0428");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"The vulnerable OpenJDK CORBA component is included, but is not used in supported configurations. A local attacker with access to modify and execute code related to the vulnerable components may be able to breach confidentiality, integrity, and availability of the BIG-IP host.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Unspecified vulnerability in Oracle Java SE 5.0u55, 6u65, and 7u45, Java SE Embedded 7u45 and OpenJDK 7 allows remote attackers to affect confidentiality, integrity, and availability via vectors related to CORBA.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 12:11:59 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

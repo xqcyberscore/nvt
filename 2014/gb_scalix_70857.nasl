@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_70857.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_scalix_70857.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Scalix Web Access XML External Entity Injection and Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_bugtraq_id(70857, 70859);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12095 $");
 
   script_name("Scalix Web Access XML External Entity Injection and Cross Site Scripting Vulnerability");
 
@@ -47,7 +47,7 @@ the Cross Site Scripting issue to execute arbitrary script code in the browser o
 in the context of the affected site. This may allow the attacker to steal cookie-based authentication
 credentials and launch other attacks. ");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Scalix Web Access is prone to an XML External Entity injection
@@ -56,7 +56,7 @@ and to a Cross Site Scripting vulnerability.");
   script_tag(name:"affected", value:"Scalix Web Access versions 11.4.6.12377, and 12.2.0.14697 are
 vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-03 14:30:39 +0100 (Mon, 03 Nov 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

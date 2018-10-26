@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_mkv_files_arbitrary_code_exec_win.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_vlc_mkv_files_arbitrary_code_exec_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -30,39 +30,36 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813579");
-  script_version("$Revision: 11388 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-11529");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 11:32:20 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with VLC media player
+  script_tag(name:"summary", value:"The host is installed with VLC media player
   and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to an improper sanitization
+  script_tag(name:"insight", value:"The flaw exist due to an improper sanitization
   used by VLC media player against MKV files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code in the context of the logged-in user and failed
-  exploit attempts will likely result in denial of service conditions.
+  exploit attempts will likely result in denial of service conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VideoLAN VLC media player versions through
+  script_tag(name:"affected", value:"VideoLAN VLC media player versions through
   2.2.8 on Windows");
 
-  script_tag(name: "solution" , value:"Update to version 3.0.3 or above.
+  script_tag(name:"solution", value:"Update to version 3.0.3 or above.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2018/Jul/28");
-  script_xref(name : "URL" , value : "https://www.videolan.org");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Jul/28");
+  script_xref(name:"URL", value:"https://www.videolan.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

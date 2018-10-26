@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K23134279.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_f5_big_ip_K23134279.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - Article: K23134279 - Node.js vulnerability CVE-2016-2216
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-2216", "CVE-2016-9244");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - Article: K23134279 - Node.js vulnerability CVE-2016-2216");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K23134279");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"The HTTP header parsing code in Node.js 0.10.x before 0.10.42, 0.11.6 through 0.11.16, 0.12.x before 0.12.10, 4.x before 4.3.0, and 5.x before 5.6.0 allows remote attackers to bypass an HTTP response-splitting protection mechanism via UTF-8 encoded Unicode characters in the HTTP header, as demonstrated by %c4%8d%c4%8a.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 09:40:01 +0100 (Wed, 22 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

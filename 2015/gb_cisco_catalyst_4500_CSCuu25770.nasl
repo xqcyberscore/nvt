@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-6294");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=41006");
 
   script_tag(name:"impact", value:"An unauthenticated, adjacent attacker could exploit the vulnerability to cause the Cisco Discovery Protocol packet process on the software to stop functioning properly, resulting in a DoS condition on the affected device.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper processing of valid crafted Cisco Discovery Protocol packets. An attacker could exploit this vulnerability by sending crafted Cisco Discovery
 Protocol packets to be processed by an affected device. An exploit could allow the attacker to cause the software to stop functioning properly, resulting in a DoS condition on the affected device.");
@@ -52,7 +52,7 @@ Protocol packets to be processed by an affected device. An exploit could allow t
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-21 15:09:03 +0200 (Mon, 21 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

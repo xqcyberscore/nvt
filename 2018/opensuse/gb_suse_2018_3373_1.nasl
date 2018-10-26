@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3373_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_suse_2018_3373_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # SuSE Update for rpm openSUSE-SU-2018:3373-1 (rpm)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851947");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:00:31 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2017-7500", "CVE-2017-7501");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for rpm openSUSE-SU-2018:3373-1 (rpm)");
   script_tag(name:"summary", value:"Check the version of rpm");

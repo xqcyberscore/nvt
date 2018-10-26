@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol75136237.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_f5_big_ip_sol75136237.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL75136237 - Privilege escalation vulnerability CVE-2015-7393
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-7393");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL75136237 - Privilege escalation vulnerability CVE-2015-7393");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"A locally authenticated user with advanced shell (bash) access may be able to escalate privileges and gain administrative access. However, in order for a lower privilege user to exploit this vulnerability, the user account would need to be granted advanced shell (bash) access through manual modification of the Linux configuration files. This configuration is not supported on the affected F5 platforms.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The dcoep executable as shipped with BIG-IP versions 11.2.0 through 12.0.0 allows a local privilege escalation via undisclosed vectors to an authenticated local user.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-08 12:14:26 +0100 (Fri, 08 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

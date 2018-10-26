@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilo_HPSBHF03420.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ilo_HPSBHF03420.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # HP Integrated Lights-Out 3 and 4 Remote Denial of Service
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-2015-5435");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("HP Integrated Lights-Out 3 and 4 Remote Denial of Service");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 14:58:10 +0200 (Thu, 01 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -46,7 +46,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c04785857");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See vendor advisory for a solution");
 

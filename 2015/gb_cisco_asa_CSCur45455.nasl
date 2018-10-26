@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCur45455.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_asa_CSCur45455.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA DHCPv6 Relay DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106053");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in the DHCPv6 relay feature of Cisco ASA may
 lead to a denial of service.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in the DHCPv6 relay feature could allow an
 unauthenticated, remote attacker to cause an affected device to reload. The vulnerability is due to

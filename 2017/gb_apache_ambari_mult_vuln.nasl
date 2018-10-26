@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_mult_vuln.nasl 11959 2018-10-18 10:33:40Z mmartin $
+# $Id: gb_apache_ambari_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Ambari Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:ambari";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106711");
-  script_version("$Revision: 11959 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-31 11:19:39 +0700 (Fri, 31 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Apache Ambrari is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Apache Ambrari is prone to multiple vulnerabilities:
 

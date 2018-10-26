@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln01_june18.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
+# $Id: gb_open_xchange_appsuite_mult_vuln01_june18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities-01(June18)
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813441");
-  script_version("$Revision: 10824 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-5751", "CVE-2018-5752", "CVE-2018-5756");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 11:01:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities-01(June18)");
 
-  script_tag(name: "summary" , value:"The host is installed with
+  script_tag(name:"summary", value:"The host is installed with
   Open-Xchange (OX) AppSuite and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
 
   - Inviting external users to share content creates temporary user accounts to
     handle permissions. Several APIs expose information about user accounts, however
@@ -64,7 +63,7 @@ if(description)
   - OX App Suite can be used to embed external RSS feeds, which are requested using
     HTTP. Redirects of external HTTP services could be used to access local or internal
     networks instead, when looking up that external account information.
- 
+
   - Permission checks for tasks were incomplete with regards to folder-to-object
     association.");
 
@@ -72,9 +71,7 @@ if(description)
   to gain access to sensitive information like guest users, primarily e-mail
   addresses, internal network configuration, open ports and associated services.
   Also an attacker within the same context will be able to add external participants
-  to other users appointments and delete other users tasks.
-
-  Impact Level: Application");
+  to other users appointments and delete other users tasks.");
 
   script_tag(name:"affected", value:"Open-Xchange OX App Suite before 7.6.3-rev36,
   7.8.x before 7.8.2-rev39, 7.8.3 before 7.8.3-rev44, and 7.8.4 before 7.8.4-rev22");
@@ -85,10 +82,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.open-xchange.com");  
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/44881");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2018/Jun/23");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/148118");
+  script_xref(name:"URL", value:"https://www.open-xchange.com");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44881");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Jun/23");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/148118");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

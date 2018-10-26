@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_91777.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_moxa_mgate_91777.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Moxa MGate Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-5804");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Moxa MGate Authentication Bypass Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-196-02");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"");
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisoryfor more information.");
   script_tag(name:"summary", value:"Moxa Multiple Products are prone to an authentication-bypass vulnerability.");
@@ -57,7 +57,7 @@ MGate MB3270, versions prior to v2.7");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 14:23:53 +0200 (Mon, 25 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

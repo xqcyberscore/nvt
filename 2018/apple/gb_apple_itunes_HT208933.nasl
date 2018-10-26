@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208933.nasl 10492 2018-07-12 13:42:55Z santu $
+# $Id: gb_apple_itunes_HT208933.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apple iTunes Security Updates(HT208933)-Windows
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813558");
-  script_version("$Revision: 10492 $");
-  script_cve_id("CVE-2018-4293", "CVE-2018-4270", "CVE-2018-4278", "CVE-2018-4284", 
-                "CVE-2018-4266", "CVE-2018-4261", "CVE-2018-4262", "CVE-2018-4263", 
-                "CVE-2018-4264", "CVE-2018-4265", "CVE-2018-4267", "CVE-2018-4272", 
+  script_version("$Revision: 12116 $");
+  script_cve_id("CVE-2018-4293", "CVE-2018-4270", "CVE-2018-4278", "CVE-2018-4284",
+                "CVE-2018-4266", "CVE-2018-4261", "CVE-2018-4262", "CVE-2018-4263",
+                "CVE-2018-4264", "CVE-2018-4265", "CVE-2018-4267", "CVE-2018-4272",
                 "CVE-2018-4271", "CVE-2018-4273");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 15:42:55 +0200 (Thu, 12 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 13:34:53 +0530 (Tue, 10 Jul 2018)");
   script_name("Apple iTunes Security Updates(HT208933)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - A cookie management issue in improved checks.
 
@@ -62,21 +61,19 @@ if(description)
 
   - Multiple memory corruption issues in input validation.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to crash Safari, exfiltrate audio data cross-origin, execute arbitrary code and
-  cause a denial of service.
+  cause a denial of service.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Apple iTunes versions before 12.8 on Windows.");
 
-  script_tag(name: "affected" , value:"Apple iTunes versions before 12.8 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple iTunes 12.8 or later.
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.8 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208933");
-  script_xref(name : "URL" , value : "http://www.apple.com/support");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208933");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

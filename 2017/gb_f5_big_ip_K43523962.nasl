@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K43523962.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_f5_big_ip_K43523962.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2016-9257
 #
@@ -32,13 +32,13 @@ if (description)
   script_cve_id("CVE-2016-9257");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - TMM vulnerability CVE-2016-9257");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K43523962");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"BIG-IP APM 12.0.0 through 12.1.2 is vulnerable to Cross Site Scripting (XSS) injection due to rendering of not escaped/not encoded content of session variables in Access Reports.");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
 
   script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
   script_category(ACT_GATHER_INFO);

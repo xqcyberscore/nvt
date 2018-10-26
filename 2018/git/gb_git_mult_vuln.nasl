@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_mult_vuln.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_git_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Git 2.13.x, 2.14.x, 2.15.x, 2.16.x, 2.17.x Multiple Vulnerabilities (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113205");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 14:37:56 +0200 (Thu, 31 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ if( description )
   script_xref(name:"URL", value:"https://securitytracker.com/id/1040991");
   script_xref(name:"URL", value:"https://blogs.msdn.microsoft.com/devops/2018/05/29/announcing-the-may-2018-git-security-vulnerability/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:git_for_windows_project:git_for_windows";

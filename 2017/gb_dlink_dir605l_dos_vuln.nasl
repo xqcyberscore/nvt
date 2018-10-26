@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir605l_dos_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_dlink_dir605l_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # D-Link DIR-605L Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112129");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 15:56:17 +0100 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"summary", value:"On D-Link DIR-605L devices, firmware before 2.08UIBetaB01 allows
 an unauthenticated GET request to denial the service and trigger a reboot.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Firmware versions 2.08UI and lower contain a bug in the function that handles HTTP GET requests for
 directory paths that can allow an unauthenticated attacker to cause complete denial of service (device reboot). This bug can be triggered

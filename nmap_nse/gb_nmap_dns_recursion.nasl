@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dns_recursion.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_dns_recursion.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap DNS Recursion NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801690");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12115 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,6 +47,8 @@ if(description)
   third-party names.
 
   This is a wrapper on the Nmap Security Scanner's dns-recursion.nse.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

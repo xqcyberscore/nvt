@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_improper_priv_manag_vuln_june18.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_open_xchange_appsuite_improper_priv_manag_vuln_june18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Improper Privilege Management Vulnerability-June18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813445");
-  script_version("$Revision: 10868 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-17062");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 12:05:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Improper Privilege Management Vulnerability-June18");
@@ -49,9 +49,7 @@ if(description)
   context.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to void non-repudiation, as there seems no way to access other users attributes.
-
-  Impact Level: Application");
+  to void non-repudiation, as there seems no way to access other users attributes.");
 
   script_tag(name:"affected", value:"Open-Xchange OX App Suite before 7.6.3-rev35,
   7.8.x before 7.8.2-rev38, 7.8.3 before 7.8.3-rev41, and 7.8.4 before 7.8.4-rev19");

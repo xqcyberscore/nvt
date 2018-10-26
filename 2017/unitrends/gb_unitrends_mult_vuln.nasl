@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_unitrends_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Unitrends Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:unitrends:enterprise_backup';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140447");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-23 15:52:55 +0700 (Mon, 23 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,7 @@ if (description)
 
   - Authenticated lowpriv RCE (CVE-2017-12479)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Unitrends UEB prior to version 10.0.0");
 

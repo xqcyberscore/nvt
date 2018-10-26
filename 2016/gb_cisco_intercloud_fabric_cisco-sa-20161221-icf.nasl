@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_intercloud_fabric_cisco-sa-20161221-icf.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_intercloud_fabric_cisco-sa-20161221-icf.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Intercloud Fabric Database Static Credentials Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:cisco:intercloud_fabric';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106487");
-  script_version("$Revision: 11523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 10:52:32 +0700 (Fri, 23 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -52,28 +52,28 @@ if (description)
   script_mandatory_keys("cisco/intercloud_fabric/version");
 
   script_tag(name:"summary", value:"A vulnerability in Cisco Intercloud Fabric for Business and Cisco
-Intercloud Fabric for Providers could allow an unauthenticated, remote attacker to connect to the database used
-by these products.");
+  Intercloud Fabric for Providers could allow an unauthenticated, remote attacker to connect to the database used
+  by these products.");
 
   script_tag(name:"insight", value:"The vulnerability occurs because the database account uses static
-credentials.
+  credentials.
 
-Note that this database contains only internal objects used by the application. The database does not contain
-other credentials.
+  Note that this database contains only internal objects used by the application. The database does not contain
+  other credentials.
 
-Please note that this product has entered the end-of-sale and end-of-life process:
-http://www.cisco.com/c/en/us/products/collateral/cloud-systems-management/intercloud-fabric/eos-eol-notice-c51-738014.html");
+  Please note that this product has entered the end-of-sale and end-of-life process.");
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by using these credentials to
-connect to the database. The contents of the database can then be examined or modified.");
+  connect to the database. The contents of the database can then be examined or modified.");
 
   script_tag(name:"affected", value:"Cisco Cisco Intercloud Fabric 2.2.1, 2.3.1 and 3.1.1.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161221-icf");
+  script_xref(name:"URL", value:"http://www.cisco.com/c/en/us/products/collateral/cloud-systems-management/intercloud-fabric/eos-eol-notice-c51-738014.html");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }
@@ -90,4 +90,4 @@ if (version_is_less(version: version, test_version: "3.2.1")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

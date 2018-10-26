@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_xss_vuln03_mar18_win.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_webmin_xss_vuln03_mar18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Webmin Cross-Site Scripting Vulnerability-03 Mar18 (Windows)
 #
@@ -18,7 +18,7 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.                                                                                                   
+# GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
@@ -30,42 +30,38 @@ CPE = "cpe:/a:webmin:webmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812838");
-  script_version("$Revision: 9267 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2009-4568");
   script_bugtraq_id(37259);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 16:33:35 +0530 (Tue, 27 Mar 2018)");
   script_name("Webmin Cross-Site Scripting Vulnerability-03 Mar18 (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with Webmin and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because Webmin fails to
   sanitize user input for unspecified vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute an arbitrary script on victim's Web browser within the security
-  context of the hosting Web site.
-
-  Impact Level: Application");
+  context of the hosting Web site.");
 
   script_tag(name:"affected", value:"Webmin versions before 1.500 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.500 or later. 
-  For updates refer to www.webmin.com");
-  
+  script_tag(name:"solution", value:"Upgrade to version 1.500 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://www.cvedetails.com/cve/CVE-2009-4568");
   script_xref(name:"URL", value:"http://www.webmin.com/security.html");
- 
+
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

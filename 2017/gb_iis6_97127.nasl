@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis6_97127.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_iis6_97127.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Microsoft Internet Information Services Buffer Overflow Vulnerability
 #
@@ -32,10 +32,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140228");
   script_bugtraq_id(97127);
   script_cve_id("CVE-2017-7269");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 12083 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 17:46:17 +0200 (Thu, 30 Mar 2017)");
   script_name("Microsoft Internet Information Services Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code in the context
   of the affected application. Failed exploit attempts will result in denial-of-service conditions.");
 
-  script_tag(name:"vuldetect", value:"Check the version and if WebDAV is enabled.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host and if WebDAV is enabled.");
 
   script_tag(name:"solution", value:"Microsoft has addressed this issue and provided an update.
   Head over to the references and download and install the necessary update for your system.");

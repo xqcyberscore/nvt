@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_1.nasl 11959 2018-10-18 10:33:40Z mmartin $
+# $Id: gb_openemr_mult_vuln_0517_1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # OpenEMR Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106635");
-  script_version("$Revision: 11959 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"OpenEMR is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability exists due to insufficient filtration of user-supplied
 data in multiple HTTP GET parameters passed to 'openemr-master/gacl/admin/object_search.php' url.

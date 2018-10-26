@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20160803-ucm.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_cisco_cucmim_cisco-sa-20160803-ucm.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Unified Communications Manager IM and Presence Service SIP Packet Processing Denial of Service Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106169");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-05 10:51:26 +0700 (Fri, 05 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 12096 $");
 
   script_cve_id("CVE-2016-1466");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"impact", value:"An unauthenticated remote attacker may cause the Cisco SIP Proxy Daemon
 (sipd) process to restart unexpectedly, resulting in a denial of service (DoS) condition on a targeted system.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper input validation of SIP packet
 headers. An attacker could exploit this vulnerability by sending a crafted SIP packet to a targeted system.
@@ -76,7 +76,7 @@ resulting in a denial of service (DoS) condition on a targeted system.");
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-ucm");
 
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

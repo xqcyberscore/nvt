@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl 9730 2018-05-04 13:36:20Z santu $
+# $Id: gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Nextcloud Server Authorization Bypass Vulnerability May18 (Windows)
 #
@@ -18,52 +18,49 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.                                                                                                   
+# GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-############################################################################### 
+###############################################################################
 
 CPE = "cpe:/a:nextcloud:nextcloud";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813324");
-  script_version("$Revision: 9730 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-0936");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 15:36:20 +0200 (Fri, 04 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 18:06:32 +0530 (Wed, 02 May 2018)");
   script_name("Nextcloud Server Authorization Bypass Vulnerability May18 (Windows)");
 
-  script_tag(name:"summary", value:"The host is installed with Nextcloud Server 
+  script_tag(name:"summary", value:"The host is installed with Nextcloud Server
   and is prone to authorization bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to a missing ownership 
+  script_tag(name:"insight", value:"The flaw exists due to a missing ownership
   check while changing the scope of app passwords of other users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to change the scope of app passwords of other users. Note that the app passwords 
-  themselves where neither disclosed nor could the error be misused to identify as 
-  another user.
-
-  Impact Level: Application");
+  to change the scope of app passwords of other users. Note that the app passwords
+  themselves where neither disclosed nor could the error be misused to identify as
+  another user.");
 
   script_tag(name:"affected", value:"Nextcloud Server before 11.0.7 and 12.0.5");
 
   script_tag(name:"solution", value:"Upgrade to version 11.0.7 or 12.0.5 or later.");
-  
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_xref(name:"URL", value:"https://nextcloud.com/security/advisory/?id=nc-sa-2018-001");
-  script_xref(name:"URL", value:"https://nextcloud.com");  
+  script_xref(name:"URL", value:"https://nextcloud.com");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

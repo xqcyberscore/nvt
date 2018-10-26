@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16121.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol16121.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - BIG-IP directory traversal vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-8727");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - BIG-IP directory traversal vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_tag(name:"impact", value:"An attacker with Resource Administrator or Administrator role access to the BIG-IP
 Configuration utility may be able to delete arbitrary files.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple directory traversal vulnerabilities in F5 BIG-IP before 10.2.2 allow local users with
 the 'Resource Administrator' or 'Administrator' role to enumerate and delete arbitrary files via a .. (dot dot) in the name parameter
@@ -54,7 +54,7 @@ to (1) tmui/Control/jspmap/tmui/system/archive/properties.jsp or (2) tmui/Contro
   script_tag(name:"affected", value:"F5 BIG-IP before 10.2.2");
 
   script_tag(name:"qod_type", value:"package");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-17 08:08:36 +0100 (Tue, 17 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grafana_auth_bypass_vuln.nasl 11319 2018-09-11 09:17:33Z asteins $
+# $Id: gb_grafana_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Grafana Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113260");
-  script_version("$Revision: 11319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 11:17:33 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 12:33:34 +0200 (Fri, 31 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://grafana.com/blog/2018/08/29/grafana-5.2.3-and-4.6.4-released-with-important-security-fix/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:grafana:grafana";

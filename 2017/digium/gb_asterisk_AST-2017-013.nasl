@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2017-013.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_asterisk_AST-2017-013.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Asterisk DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140577");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:31:51 +0700 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Asterisk is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"If the chan_skinny (AKA SCCP protocol) channel driver is flooded with
 certain requests it can cause the asterisk process to use excessive amounts of virtual memory eventually causing

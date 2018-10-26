@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_akka_http_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_akka_http_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # akka HTTP DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:akka:http";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140486");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-03 16:48:17 +0700 (Fri, 03 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,7 +58,7 @@ range starting with a wildcard but having a specific subtype (e.g. */boom) leads
 negotiation of the content type. Per default, stack overflows are treated as fatal errors, so that the JVM
 process will shut itself down immediately.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 10.0.6 or later.");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_heap_overflow_vuln.nasl 10871 2018-08-10 07:00:33Z cfischer $
+# $Id: gb_kamailio_heap_overflow_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Kamailio Heap Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:kamailio:kamailio";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140938");
-  script_version("$Revision: 10871 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:00:33 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Kamailio is prone to a heap overflow vulnerability which may result in a
 denial of service condition.");
 
-  script_tag(name:"vuldetect", value:"Checks the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A specially crafted REGISTER message with a malformed branch or From tag
 triggers an off-by-one heap overflow.");

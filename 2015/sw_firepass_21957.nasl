@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_21957.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: sw_firepass_21957.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 Firepass Multiple Input Validation Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111016");
-  script_version("$Revision: 12021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
   script_mandatory_keys("firepass/installed");
 
   script_tag(name:"summary", value:"F5 Firepass is prone to multiple input-validation vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The device fails to sufficiently sanitize user-supplied input.
   These issues include information-disclosure, security bypass, and cross-site scripting vulnerabilities.");
   script_tag(name:"impact", value:"An attacker can exploit these issues to bypass security restrictions,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atheme_dos_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_atheme_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atheme IRC DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atheme:atheme";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106634");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-07 08:12:26 +0700 (Tue, 07 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Atheme is prone to an denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Memory leak in the login_user function in saslserv/main.c in
 saslserv/main.so allows a remote unauthenticated attacker to consume memory and cause a denial of service.");

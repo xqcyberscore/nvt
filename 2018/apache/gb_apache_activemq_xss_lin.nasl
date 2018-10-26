@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_xss_lin.nasl 8901 2018-02-21 11:43:14Z cfischer $
+# $Id: gb_apache_activemq_xss_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Active MQ 5.14.1 XSS Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113081");
-  script_version("$Revision: 8901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 12:43:14 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 12:46:47 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if( description )
   script_xref(name:"URL", value:"http://activemq.apache.org/security-advisories.data/CVE-2016-6810-announcement.txt");
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/924a3a27fad192d711436421e02977ff90d9fc0f298e1efe6757cfbc@%3Cusers.activemq.apache.org%3E");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:activemq";

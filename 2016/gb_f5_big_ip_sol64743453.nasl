@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol64743453.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_f5_big_ip_sol64743453.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL64743453 - NAT64 vulnerability CVE-2016-5745
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-5745");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL64743453 - NAT64 vulnerability CVE-2016-5745");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/64/sol64743453.html?sr=58084219");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"BIG-IP devices using NAT64 are vulnerable to an unauthenticated remote attack that may allow modification of the BIG-IP system configuration.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-24 14:14:05 +0200 (Mon, 24 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

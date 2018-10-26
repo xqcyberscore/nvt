@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:bws_systems:ha_bridge";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813627");
-  script_version("$Revision: 11228 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12923");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-03 12:50:41 +0530 (Tue, 03 Jul 2018)");
   script_name("BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   mechanism in the '#!/system' URI.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"BWS Systems HA-Bridge.");
 

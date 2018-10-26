@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csr1000v_cisco-sa-20151130-csr.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_csr1000v_cisco-sa-20151130-csr.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Cloud Services Router 1000V Command Injection Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-6385");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Cloud Services Router 1000V Command Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151130-csr");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input validation of event manager environment variables that are configured on the affected device. An attacker could exploit this vulnerability by authenticating to the device with administrative privileges, modifying the configuration of the device, and then invoking a crafted event manager script. A successful exploit could allow the attacker to compromise the affected system using commands that are executed with root-level privileges.");
   script_tag(name:"solution", value:"See vendor advisory for a solution");
   script_tag(name:"summary", value:"A vulnerability in the event manager environment and publish-event function of the Cisco Cloud Services Router 1000V Series could allow an authenticated, local attacker to perform a command injection attack with root-level privileges.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 17:22:52 +0100 (Tue, 01 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

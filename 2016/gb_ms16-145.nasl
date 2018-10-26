@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-145.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms16-145.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Microsoft Edge Multiple Vulnerabilities (3204062)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810237");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-7181", "CVE-2016-7206", "CVE-2016-7279", "CVE-2016-7280",
                 "CVE-2016-7281", "CVE-2016-7282", "CVE-2016-7286", "CVE-2016-7287",
                 "CVE-2016-7288", "CVE-2016-7296", "CVE-2016-7297");
@@ -35,7 +35,7 @@ if(description)
                     94738, 94751);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 08:20:30 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Vulnerabilities (3204062)");
@@ -66,9 +66,7 @@ if(description)
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-145");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3204062");
@@ -79,6 +77,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-145");
   exit(0);
 }
 
@@ -97,7 +96,7 @@ if(!sysPath ){
   exit(0);
 }
 
-if(!egdeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll")){
+if(!egdeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll")){
   exit(0);
 }
 

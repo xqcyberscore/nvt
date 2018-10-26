@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qradar_91377.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_qradar_91377.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # IBM QRadar Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-2868", "CVE-2016-2968", "CVE-2016-2872");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12096 $");
 
   script_name("IBM QRadar Multiple Vulnerabilities");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21985773");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive information that may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"IBM QRadar could allow a remote attacker with administrator privileges to obtain sensitive information, caused by an error when processing XML external entities. By sending specially-crafted XML data, an attacker could exploit this vulnerability to obtain sensitive information.");
   script_tag(name:"solution", value:"Update to 7.2.7 or newer");
   script_tag(name:"summary", value:"IBM QRadar is prone to an information-disclosure vulnerability.");
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-07 17:08:10 +0200 (Thu, 07 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

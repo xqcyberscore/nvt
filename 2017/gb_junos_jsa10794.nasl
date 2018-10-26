@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10794.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_junos_jsa10794.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos MS-MPC or MS-MIC DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106940");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 09:02:35 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability when parsing large
 fragmented traffic through an ALG.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"An MS-MPC or MS-MIC Service PIC may crash when large fragmented packets are
 passed through an Application Layer Gateway (ALG). Repeated crashes of the Service PC can result in an extended

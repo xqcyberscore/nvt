@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_hostname_security_bypass_vuln_lin.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_apache_tomcat_hostname_security_bypass_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813743");
-  script_version("$Revision: 11897 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-8034");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-03 16:58:57 +0530 (Fri, 03 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Linux)");
@@ -41,16 +41,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to a security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a missing host name
   verification when using TLS with the WebSocket client.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass certain security restrictions and perform unauthorized actions.
-
-  Impact Level: Application");
+  to bypass certain security restrictions and perform unauthorized actions.");
 
   script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M1 to 9.0.9,
   8.5.0 to 8.5.31, 8.0.0.RC1 to 8.0.52 and 7.0.35 to 7.0.88 on Linux.");
@@ -71,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_unixoide");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
   exit(0);
 }

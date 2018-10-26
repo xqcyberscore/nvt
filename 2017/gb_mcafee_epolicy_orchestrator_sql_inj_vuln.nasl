@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_sql_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_sql_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # McAfee ePolicy Orchestrator SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106681");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 13:37:15 +0700 (Wed, 22 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to a blind SQL injection
 vulnerability");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An exploitable blind SQL injection vulnerability exists within ePolicy
 Orchestrator. A specially crafted HTTP post can allow an attacker to alter a SQL query, which can result in

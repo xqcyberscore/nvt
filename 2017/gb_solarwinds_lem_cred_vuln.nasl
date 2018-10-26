@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_cred_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_solarwinds_lem_cred_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # SolarWinds Log and Event Manager Hardcoded Credentials Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:solarwinds:log_and_event_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106931");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-07 11:20:51 +0700 (Fri, 07 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:M/C:C/I:N/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"SolarWinds LEM is prone to a hardcoded credentials vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Hardcoded passwords and hash digests were discovered within the LEM
 appliance. These credentials were only accessible via root access.");

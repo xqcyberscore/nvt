@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thycotic_secret_server_redirect_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_thycotic_secret_server_redirect_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Thycotic Secret Server Redirect Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:thycotic:secret_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140258");
-  script_version("$Revision: 11923 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-31 14:35:01 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"The share function in Thycotic Secret Server mishandles the Back Button,
 leading to unintended redirections. ");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Thycotic Secret Server before version 10.2.000019.");
 

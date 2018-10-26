@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_0149.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_junos_cve_2013_0149.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos OSPF Protocol Vulnerabiltiy
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103959");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-29 12:26:17 +0700 (Fri, 29 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in the OSPF protocol allows a remote attacker to
 insert, update or delete routes in the OSPF database.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability has been discovered in the OSPF (Open Shortest
 Path First) protocol that allows a remote attacker to insert, update or delete routes in the OSPF database.");

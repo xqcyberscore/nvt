@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol90230486.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol90230486.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL90230486 - Linux kernel vulnerability CVE-2015-7613
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-7613");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL90230486 - Linux kernel vulnerability CVE-2015-7613");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"SOL9970: Subscribing to email notifications regarding F5 productsSOL9957: Creating a custom RSS feed to view new and updated documentsSOL4918: Overview of the F5 critical issue hotfix policySOL167: Downloading software and firmware from F5");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Race condition in the IPC object implementation in the Linux kernel through 4.2.3 allows local users to gain privileges by triggering an ipc_addid call that leads to uid and gid comparisons against uninitialized data, related to msg.c, shm.c, and util.c.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 17:28:24 +0100 (Wed, 09 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

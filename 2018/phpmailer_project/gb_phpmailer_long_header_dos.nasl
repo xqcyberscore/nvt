@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_long_header_dos.nasl 11592 2018-09-25 08:46:16Z cfischer $
+# $Id: gb_phpmailer_long_header_dos.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PHPMailer < 1.73 Long Header Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108470");
-  script_version("$Revision: 11592 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2005-1807");
   script_bugtraq_id(13805);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 10:46:16 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 09:59:32 +0200 (Tue, 25 Sep 2018)");
   script_name("PHPMailer < 1.73 Long Header Denial of Service Vulnerability");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -59,8 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHPMailer versions before 1.73 are vulnerable. ");
 
-  script_tag(name:"solution", value:"Upgrade to PHPMailer 1.73 or later.
-  For updates refer to https://github.com/PHPMailer/PHPMailer");
+  script_tag(name:"solution", value:"Upgrade to PHPMailer 1.73 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

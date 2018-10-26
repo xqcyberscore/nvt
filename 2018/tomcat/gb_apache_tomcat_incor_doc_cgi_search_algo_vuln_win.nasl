@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl 9023 2018-03-05 07:08:45Z cfischer $
+# $Id: gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812694");
-  script_version("$Revision: 9023 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-15706");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 11:43:37 +0530 (Tue, 06 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to incorrectly documented CGI search algorithm vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the description of the
   search algorithm used by the CGI Servlet to identify which script to execute
@@ -50,19 +49,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will result
   some scripts failing to execute as expected and other scripts to execute
-  unexpectedly.
+  unexpectedly.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Apache Tomcat versions 9.0.0.M22 to 9.0.1
+  script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M22 to 9.0.1
   Apache Tomcat versions 8.5.16 to 8.5.23
   Apache Tomcat versions 8.0.45 to 8.0.47
   Apache Tomcat versions 7.0.79 to 7.0.82 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.2,
-  8.5.24, 8.0.48, 7.0.84 or later. For updates refer to
-  http://tomcat.apache.org");
+  8.5.24, 8.0.48, 7.0.84 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,7 +70,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_windows");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
   exit(0);
 }

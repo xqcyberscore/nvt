@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_network_advisor_mult_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_brocade_network_advisor_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Brocade Network Advisor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:brocade:network_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106516");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Brocade Network Advisor is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Brocade Network Advisor is prone to multiple vulnerabilities:
 

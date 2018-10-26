@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_matrixssl_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # MatrixSSL Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:peersec_networks:matrixssl";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106904");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-23 13:16:03 +0700 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -69,7 +69,7 @@ if (description)
   script_xref(name:"URL", value:"https://www.talosintelligence.com/vulnerability_reports/TALOS-2017-0277");
   script_xref(name:"URL", value:"https://www.talosintelligence.com/vulnerability_reports/TALOS-2017-0278");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

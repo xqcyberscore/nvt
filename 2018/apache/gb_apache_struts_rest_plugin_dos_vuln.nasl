@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plugin_dos_vuln.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: gb_apache_struts_rest_plugin_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Struts 'REST' Plugin DoS Vulnerability
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813062");
-  script_version("$Revision: 9643 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1327");
   script_bugtraq_id(103516);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 16:08:37 +0530 (Mon, 02 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  ## It may lead to FP because older versions can implement custom XML handler based 
+  ## It may lead to FP because older versions can implement custom XML handler based
   ## on the Jackson XML handler from the Apache Struts 2.5.16
   script_name("Apache Struts 'REST' Plugin DoS Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Apache Struts and is
   prone to denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to REST Plugin which is using
   XStream library which is vulnerable and allow to perform a DoS attack when using
@@ -53,17 +52,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   perform a DoS attack when using a malicious request with specially crafted XML
-  payload.
-
-  Impact Level: Application");
+  payload.");
 
   script_tag(name:"affected", value:"Apache Struts Version 2.1.1 through 2.5.14.1");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.5.16 or
-  later. For updates refer to http://struts.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://cwiki.apache.org/confluence/display/WW/S2-056");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/WW/S2-056");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -71,6 +68,7 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl");
   script_mandatory_keys("ApacheStruts/installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 

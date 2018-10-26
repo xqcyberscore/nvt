@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cve_2015_6287.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_wsa_cve_2015_6287.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Web Security Appliance DNS Resolution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6287");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Web Security Appliance DNS Resolution Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability to cause a DoS condition due to DNS
 name resolution failure through the affected device. This could result in the client receiving an HTTP 'Service Unavailable' error.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to the handling of DNS requests awaiting a DNS response when new, incoming DNS requests
 are received. An attacker could exploit this vulnerability by sending TCP proxy traffic to the WSA at a high rate. An exploit could allow the attacker
@@ -56,7 +56,7 @@ to cause a partial DoS condition because DNS name resolution fails, which result
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 17:12:18 +0200 (Wed, 09 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

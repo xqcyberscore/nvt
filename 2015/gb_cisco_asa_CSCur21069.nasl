@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCur21069.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_cisco_asa_CSCur21069.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA Software Failover Command Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105998");
-  script_version("$Revision: 11259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-29 14:07:28 +0700 (Fri, 29 May 2015)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cisco ASA is prone to a failover command injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper handling of secured failover
 communication messages when the failover ipsec feature is configured. An attacker could exploit this

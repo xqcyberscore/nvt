@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_header_inj_vuln.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: gb_concrete5_header_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Concrete5 Header Injection and CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106762");
-  script_version("$Revision: 12021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 09:03:26 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Concrete5 CMS is prone to a header injection and CSRF vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists because:
 

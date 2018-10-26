@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln03_dec16_lin.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_phpmyadmin_mult_vuln03_dec16_lin.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # phpMyAdmin Multiple Security Vulnerabilities - 02 - Dec16 (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108129");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 12:18:02 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"phpMyAdmin is prone to multiple security vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"phpMyAdmin 4.6.x prior to 4.6.4, 4.4.x prior to 4.4.15.8, and 4.0.x prior to 4.0.10.17.");
 

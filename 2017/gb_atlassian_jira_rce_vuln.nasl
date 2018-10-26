@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_jira_rce_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_atlassian_jira_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atlassian JIRA XXE / Deserialization Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:atlassian:jira';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106758");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 10:31:18 +0200 (Tue, 18 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
 improperly uses an XML parser and deserializer, which allows remote attackers to execute arbitrary code, read
 arbitrary files, or cause a denial of service via a crafted serialized Java object.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An anonymous user can perform multiple attacks on a vulnerable JIRA
 instance that could cause remote code execution, the disclosure of private files or execute a denial of service

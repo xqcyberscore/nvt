@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_dos_vuln.nasl 4464 2016-11-10 08:08:58Z cfi $
+# $Id: gb_powerdns_dos_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # PowerDNS Authoritative Server AXFR Response Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:powerdns:authoritative_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106120");
-  script_version("$Revision: 4464 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:08:58 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 10:27:46 +0700 (Fri, 08 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"PowerDNS Authoritative Server is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Primary DNS servers may cause a denial of service (secondary DNS server
   crash) via a large AXFR response, and possibly allows IXFR servers to cause a denial of service (IXFR client

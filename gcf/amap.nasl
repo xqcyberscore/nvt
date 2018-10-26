@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amap.nasl 11665 2018-09-28 07:14:18Z cfischer $
+# $Id: amap.nasl 12084 2018-10-25 10:02:17Z cfischer $
 #
 # amap (NASL wrapper)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14663");
-  script_version("$Revision: 11665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12084 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:02:17 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("amap (NASL wrapper)");
   script_category(ACT_SCANNER);
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
@@ -40,13 +40,11 @@ if(description)
   script_mandatory_keys("Tools/Present/amap", "Tools/Present/amap/bin");
 
   script_add_preference(name:"File containing machine readable results : ", type:"file", value:"");
-
   script_add_preference(name:"Mode", type:"radio", value:"Map applications;Just grab banners;Port scan only");
   script_add_preference(name:"Quicker", type:"checkbox", value:"no");
   script_add_preference(name:"UDP scan (disabled in safe_checks)", type:"checkbox", value:"no");
   script_add_preference(name:"SSL (disabled in safe_checks)", type:"checkbox", value:"yes");
   script_add_preference(name:"RPC (disabled in safe_checks)", type:"checkbox", value:"yes");
-
   script_add_preference(name:"Parallel  tasks", type:"entry", value:"");
   script_add_preference(name:"Connection retries", type:"entry", value:"");
   script_add_preference(name:"Connection timeout", type:"entry", value:"");
@@ -244,11 +242,7 @@ if (! isnull(amap_ident))
    if (soc)
     close(soc);
    else
-    security_message(port: port, data: "Either this port is dynamically allocated
-or amap killed this service.
-If so, upgrade it!
-
-Risk : None / High\n");
+    log_message(port: port, data: "Either this port is dynamically allocated or amap killed this service. If so, upgrade it!\n");
   }
   id = amap_ident[p];
   if (id && id != "unidentified" && id != 'ssl')

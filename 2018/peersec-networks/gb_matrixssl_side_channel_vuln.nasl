@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_side_channel_vuln.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_matrixssl_side_channel_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MatrixSSL (GUARD TLS-TK) Side-Channel Attack Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113210");
-  script_version("$Revision: 10868 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 13:07:40 +0200 (Tue, 19 Jun 2018)");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
@@ -63,7 +63,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.nccgroup.trust/us/our-research/technical-advisory-return-of-the-hidden-number-problem/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:peersec_networks:matrixssl:";

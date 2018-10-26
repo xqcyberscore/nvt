@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_cisco-sa-20170315-tps.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_cisco_telepresence_server_cisco-sa-20170315-tps.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence Server API Privilege Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3815");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence Server API Privilege Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-tps");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -56,7 +56,7 @@ Server endpoint.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-16 14:46:37 +0700 (Thu, 16 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

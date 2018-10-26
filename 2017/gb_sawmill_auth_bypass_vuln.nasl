@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sawmill_auth_bypass_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_sawmill_auth_bypass_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Sawmill Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:sawmill:sawmill";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106618");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Sawmill is prone to a authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Sawmill suffers from a 'Pass The Hash' vulnerability whereby an attacker
 who gains access to the hashed user account passwords can login to the Sawmill interface using the raw MD5 hash

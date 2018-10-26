@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_auth_bypass.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: gb_lantronix_device_auth_bypass.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Lantronix Devices Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107328");
-  script_version("$Revision: 11151 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 13:43:57 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,14 +52,12 @@ if( description )
   script_tag(name:"summary", value:"Lantronix devices do not require a password for telnet access.");
   script_tag(name:"vuldetect", value:"Checks if the target device is vulnerable.");
   script_tag(name:"impact", value:"If not configured manually the device has no password authentication enabled by default.
-  Attackers can gain access, gather infomation about the internal network and try to elevate their provileges.");
+  Attackers can gain access, gather information about the internal network and try to elevate their provileges.");
   script_tag(name:"affected", value:"Lantronixs Devices with telnet access.");
   script_tag(name:"solution", value:"Consult the documentation of your device to set a proper username/password combination
   and/or restrict remote telnet access.");
 
-  script_xref(name:"URL", value:"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12925");
-
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

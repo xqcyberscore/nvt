@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0005.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0005.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0005
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105325");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2015-0005");
 
@@ -42,7 +42,7 @@ if (description)
 do not properly perform authentication against the LDAP server in specific cases, leading to an authentication bypass. There is no issue if you are using Radius or local
 authentication instead of LDAP or prior versions of PAN-OS; nor does this affect authentication attempts from GlobalProtect clients.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 7.0.1");
 
   script_tag(name:"impact", value:"This vulnerability can lead to authentication bypass for captive portal or device management login attempts.");
@@ -52,7 +52,7 @@ authentication instead of LDAP or prior versions of PAN-OS; nor does this affect
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-20 11:43:06 +0200 (Thu, 20 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

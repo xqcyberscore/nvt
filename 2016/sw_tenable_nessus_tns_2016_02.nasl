@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tenable_nessus_tns_2016_02.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: sw_tenable_nessus_tns_2016_02.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Tenable Nessus Multiple Vulnerabilities Feb16
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111087");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2016-82000", "CVE-2016-82001");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 09:00:00 +0100 (Tue, 16 Feb 2016)");
   script_name("Tenable Nessus Multiple Vulnerabilities Feb16");
   script_category(ACT_GATHER_INFO);
@@ -48,12 +48,15 @@ if(description)
   - stored Cross-Site Scripting vulnerabilities
 
   - a possible privilege escalation vulnerability on scanned hosts running Mac OS X");
-  script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain knowledge on
   sensitive information.");
+
   script_tag(name:"affected", value:"Tenable Nessus versions 5.x and 6.0 - 6.5.4");
-  script_tag(name:"solution", value:"Upgrade Tenable Nessus to 6.5.5. For updates refer
-  http://www.tenable.com/products/nessus");
+
+  script_tag(name:"solution", value:"Upgrade Tenable Nessus to 6.5.5.");
 
   script_xref(name:"URL", value:"https://www.tenable.com/security/tns-2016-02");
 
@@ -62,7 +65,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

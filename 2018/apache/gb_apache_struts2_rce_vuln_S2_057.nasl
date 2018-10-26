@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_rce_vuln_S2_057.nasl 11129 2018-08-27 06:49:18Z ckuersteiner $
+# $Id: gb_apache_struts2_rce_vuln_S2_057.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Struts2 Remote Code Execution Vulnerability (S2-057)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813786");
-  script_version("$Revision: 11129 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-11776");
   script_bugtraq_id(105125);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 08:49:18 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 12:45:43 +0530 (Thu, 23 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,9 +54,7 @@ if(description)
   wildcard namespace.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to possibly conduct remote code on the affected application.
-
-  Impact Level: System/Application");
+  attacker to possibly conduct remote code on the affected application.");
 
   script_tag(name:"affected", value:"Apache Struts versions 2.3 through 2.3.34,
   and 2.5 through 2.5.16");

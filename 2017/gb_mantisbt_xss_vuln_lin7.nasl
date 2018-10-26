@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_lin7.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_mantisbt_xss_vuln_lin7.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # MantisBT Multiple XSS Vulnerabilities (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140267");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 12:48:43 +0700 (Wed, 02 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if (description)
 
   - XSS in manage_user_page.php (CVE-2017-12062)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 1.3.12, 2.5.2 or later.");
 

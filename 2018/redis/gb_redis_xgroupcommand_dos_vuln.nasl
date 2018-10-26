@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_xgroupcommand_dos_vuln.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_redis_xgroupcommand_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Redis 'xgroupCommand' function Denial-of-Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:redis:redis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813440");
-  script_version("$Revision: 11044 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12453");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-18 17:33:41 +0530 (Mon, 18 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Redis 'xgroupCommand' function Denial-of-Service Vulnerability");
@@ -41,16 +41,13 @@ if(description)
   script_tag(name:"summary", value:"This host is running Redis and is prone to
   a denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a type confusion in the
   'xgroupCommand' function in 't_stream.c' script in redis-server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to conduct a denial-of-service condition.
-
-  Impact Level: Application");
+  to conduct a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Redis versions before 5.0 RC2");
 
@@ -58,9 +55,9 @@ if(description)
   updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://redis.io");
-  script_xref(name : "URL" , value : "https://github.com/antirez/redis/commit/c04082cf138f1f51cedf05ee9ad36fb6763cafc6");
-  script_xref(name : "URL" , value : "https://gist.github.com/fakhrizulkifli/34a56d575030682f6c564553c53b82b5");
+  script_xref(name:"URL", value:"https://redis.io");
+  script_xref(name:"URL", value:"https://github.com/antirez/redis/commit/c04082cf138f1f51cedf05ee9ad36fb6763cafc6");
+  script_xref(name:"URL", value:"https://gist.github.com/fakhrizulkifli/34a56d575030682f6c564553c53b82b5");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_mult_xss_vuln.nasl 10872 2018-08-10 07:11:31Z cfischer $
+# $Id: gb_squirrelmail_mult_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # SquirrelMail < 1.4.23 Multiple XSS Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112348");
-  script_version("$Revision: 10872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:11:31 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 11:31:46 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"https://bugs.debian.org/905023");
   script_xref(name:"URL", value:"https://sourceforge.net/p/squirrelmail/bugs/2831/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:squirrelmail:squirrelmail";

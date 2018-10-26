@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_imc_cisco-sa-20170405-cimc.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_cisco_imc_cisco-sa-20170405-cimc.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Integrated Management Controller Redirection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-6604");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11935 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Integrated Management Controller Redirection Vulnerability");
 
@@ -50,14 +50,14 @@ system, which could cause the web interface of the affected software to redirect
   script_tag(name:"impact", value:"This vulnerability is known as an open redirect attack, which is used in
 phishing attacks to get users to visit malicious sites without their knowledge.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See vendor advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 10:17:03 +0200 (Fri, 07 Apr 2017)");
 
   script_category(ACT_GATHER_INFO);

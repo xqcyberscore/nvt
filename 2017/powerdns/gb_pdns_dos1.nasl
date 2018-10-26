@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dos1.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_pdns_dos1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # PowerDNS Authoritative Server DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140542");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:39:40 +0700 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"summary", value:"PowerDNS Authoritative Server is prone to a denial of service
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An issue has been found in the API component of PowerDNS Authoritative,
 where some operations that have an impact on the state of the server are still allowed even though the API has

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17551.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol17551.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17551 - Linux kernel vulnerability CVE-2014-9419
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-9419");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17551 - Linux kernel vulnerability CVE-2014-9419");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"A local authenticated attacker may obtain sensitive information from kernel memory by using a specially crafted application.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The __switch_to function in arch/x86/kernel/process_64.c in the Linux kernel through 3.18.1 does not ensure that Thread Local Storage (TLS) descriptors are loaded before proceeding with other steps, which makes it easier for local users to bypass the ASLR protection mechanism via a crafted application that reads a TLS base address. (CVE-2014-9419)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 10:38:23 +0100 (Mon, 09 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

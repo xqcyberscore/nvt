@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16010.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol16010.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL16010 - GNU C Library (glibc) vulnerability CVE-2014-7817
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-7817");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL16010 - GNU C Library (glibc) vulnerability CVE-2014-7817");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker with local access and knowledge of how to make the glibc function trigger an exploit may be able to run arbitrary code. However, the risk level for this vulnerability is considered LOW because F5 product development has verified that the vulnerable code is NOT used in a way that would make an exploit possible.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The wordexp function in GNU C Library (aka glibc) 2.21 does not enforce the WRDE_NOCMD flag, which allows context-dependent attackers to execute arbitrary commands, as demonstrated by input containing '$((`...`))'. (CVE-2014-7817)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-19 10:38:36 +0200 (Sat, 19 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_n_edit_filters_mult_xss_vuln_lin.nasl 10945 2018-08-14 06:57:51Z santu $
+# $Id: gb_mantisbt_view_n_edit_filters_mult_xss_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813814");
-  script_version("$Revision: 10945 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-14504", "CVE-2018-13055");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:57:51 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 18:05:16 +0530 (Mon, 06 Aug 2018)");
   script_name("MantisBT 'View Filters' And 'Edit Filter' Pages XSS Vulnerabilities");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"MantisBT version 2.1.0 through 2.15.0 on Linux.");
 

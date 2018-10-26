@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_72308.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_symantec_encryption_server_72308.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Symantec Encryption Management Server Local Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7288");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Symantec Encryption Management Server  Local Command Injection Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20150129_00M");
 
   script_tag(name:"impact", value:"A local attacker can exploit this issue to execute arbitrary commands with elevated privileges.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Symantec Encryption Management Server is susceptible to a shell command line injection when an authorized, but less privileged administrator,
 is submitting a request for a database backup.  This could potentially result in the malicious administrator gaining privileged access on the server.
@@ -59,7 +59,7 @@ fields such as the subject field.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-18 15:29:34 +0200 (Thu, 18 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

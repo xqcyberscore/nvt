@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_cassandra_rce_vuln.nasl 10369 2018-06-29 11:18:22Z asteins $
+# $Id: gb_apache_cassandra_rce_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Cassandra < 3.11.2 Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112320");
-  script_version("$Revision: 10369 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 13:18:22 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-29 13:08:55 +0200 (Fri, 29 Jun 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/CASSANDRA-14173");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:cassandra";

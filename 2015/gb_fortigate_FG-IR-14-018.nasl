@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-14-018.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_fortigate_FG-IR-14-018.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # FortiOS: Multiple Vulnerabilities in OpenSSL
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-0224", "CVE-2014-0221", "CVE-2014-0195");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("FortiOS: Multiple Vulnerabilities in OpenSSL");
 
@@ -55,7 +55,7 @@ does not affect Fortinet products.
 CVE-2014-0076 can be used to discover ECDSA nonces on multi-user systems by exploiting timing attacks in CPU L3 caches. This does not apply
 to Fortinet products. ");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiGate 4.3.16 (build 686), 5.2.0 (build 589), 5.0.8 (build 291) or higher.");
 
   script_tag(name:"summary", value:"Multiple Vulnerabilities in OpenSSL");
@@ -65,7 +65,7 @@ to Fortinet products. ");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");

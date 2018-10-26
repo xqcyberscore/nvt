@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_macosx.nasl 9527 2018-04-19 07:11:09Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-MAC OS X
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813096");
-  script_version("$Revision: 9527 $");
-  script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088", 
-                "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092", 
-                "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096", 
-                "CVE-2018-6097", "CVE-2018-6098", "CVE-2018-6099", "CVE-2018-6100", 
-                "CVE-2018-6101", "CVE-2018-6102", "CVE-2018-6103", "CVE-2018-6104", 
-                "CVE-2018-6105", "CVE-2018-6106", "CVE-2018-6107", "CVE-2018-6108", 
-                "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112", 
-                "CVE-2018-6113", "CVE-2018-6114", "CVE-2018-6115", "CVE-2018-6116", 
+  script_version("$Revision: 12116 $");
+  script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
+                "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
+                "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096",
+                "CVE-2018-6097", "CVE-2018-6098", "CVE-2018-6099", "CVE-2018-6100",
+                "CVE-2018-6101", "CVE-2018-6102", "CVE-2018-6103", "CVE-2018-6104",
+                "CVE-2018-6105", "CVE-2018-6106", "CVE-2018-6107", "CVE-2018-6108",
+                "CVE-2018-6109", "CVE-2018-6110", "CVE-2018-6111", "CVE-2018-6112",
+                "CVE-2018-6113", "CVE-2018-6114", "CVE-2018-6115", "CVE-2018-6116",
                 "CVE-2018-6117", "CVE-2018-6084");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:11:09 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:30:38 +0530 (Wed, 18 Apr 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-MAC OS X");
 
   script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -69,29 +68,27 @@ if(description)
 
   - An insufficient protection of remote debugging prototol in DevTools.
 
-  - An incorrect handling of promises in V8, files by FileAPI, plaintext files 
+  - An incorrect handling of promises in V8, files by FileAPI, plaintext files
     via 'file://'.
 
   - An incorrect low memory handling in WebAssembly.
 
   - A content security policy bypass error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct spoofing attacks, bypass security restrictions, cause
-  denial of service condition and also some unspecified impacts. 
+  denial of service condition and also some unspecified impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 66.0.3359.117 on MAC OS X");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   66.0.3359.117 or later.For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/04/stable-channel-update-for-desktop.html");
-  script_xref(name : "URL" , value : "http://www.google.com/chrome");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/04/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

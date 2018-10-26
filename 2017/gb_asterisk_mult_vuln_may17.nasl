@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_vuln_may17.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_asterisk_mult_vuln_may17.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Asterisk Multiple Vulnerabilities Vulnerability (May 2017)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106822");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 10:00:40 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Asterisk is prone to multiple vulnerabilities which could lead to a
 denial of service condition.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Asterisk is prone to multiple vulnerabilities:
 

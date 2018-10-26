@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0016.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0016.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS WGET Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106827");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 15:33:39 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"The wget library has been found to contain a vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"wget allows remote servers to write to arbitrary files by redirecting a
 request from HTTP to a crafted FTP resource. Palo Alto Networks software makes use of the vulnerable library and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17386.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol17386.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6546");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker on an adjacent network segment may be able to cause a denial-of-service (DoS) on the BIG-IP vCMP host and any defined guests.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An attacker sourcing malicious traffic from a network adjacent to the BIG-IP system may be able to cause a denial-of-service (DoS) condition on a vCMP host and the vCMP guests running on it. The vulnerability cannot be exploited outside of the local network segment or by way of the management port. (CVE-2015-6546)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 10:55:12 +0200 (Mon, 19 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_google_analyticator_csrf_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_wordpress_google_analyticator_csrf_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Google Analyticator Plugin CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112037");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 08:11:31 +0200 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if (description)
       CSRF which could be used to disrupt the functionality provided by the
       plugin.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Google Analyticator plugin before 6.4.9.4.");
 

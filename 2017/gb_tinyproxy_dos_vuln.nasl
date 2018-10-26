@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tinyproxy_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_tinyproxy_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Tinyproxy DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:banu:tinyproxy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140255");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-31 11:31:40 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,7 +55,7 @@ if (description)
 privileges to a non-root account, which might allow local users to kill arbitrary processes by leveraging access
 to this non-root account for tinyproxy.pid modification before a root script executes a 'kill' command.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update Tinyproxy to the latest master build that is available via github and contains the commit '9acb0cb'.");
 

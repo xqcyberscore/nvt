@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_html2text_lib_rce.nasl 11592 2018-09-25 08:46:16Z cfischer $
+# $Id: gb_phpmailer_html2text_lib_rce.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PHPMailer < 5.2.10 'html2text' Library Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108468");
-  script_version("$Revision: 11592 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2008-5619");
   script_bugtraq_id(32799);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 10:46:16 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 09:59:32 +0200 (Tue, 25 Sep 2018)");
   script_name("PHPMailer < 5.2.10 'html2text' Library Remote Code Execution Vulnerability");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"affected", value:"PHPMailer versions before 5.2.10 are vulnerable. ");
 
   script_tag(name:"solution", value:"Upgrade to PHPMailer 5.2.10 or later and make sure to remove the
-  file 'extras/class.html2text.php' from the installation.
-  
-  For updates refer to https://github.com/PHPMailer/PHPMailer");
+  file 'extras/class.html2text.php' from the installation.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

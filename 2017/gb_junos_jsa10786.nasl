@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10786.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_junos_jsa10786.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos PFE DoS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106749");
-  script_version("$Revision: 11835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability while handling IPv6
 ND advertisements.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in processing IPv6 ND packets originating from subscribers
 and destined to M/MX series routers configured with Enhanced Subscriber Management for DHCPv6 subscribers can

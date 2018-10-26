@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_xss_n_click_jack_vuln.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_hp_diagnostics_xss_n_click_jack_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Diagnostics Cross Site Scripting and Click Jacking Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:diagnostics_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812947");
-  script_version("$Revision: 11550 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2016-8521", "CVE-2016-8522");
   script_bugtraq_id(95427, 95427);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 13:48:49 +0530 (Fri, 23 Feb 2018)");
   script_name("HP Diagnostics Cross Site Scripting and Click Jacking Vulnerabilities");
 
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"affected", value:"HP Diagnostics Server versions 9.24 IP1,
   9.26 and 9.26IP1");
 
-  script_tag(name:"solution", value:"Install the provided patches from vendor.
-  For details refer to,
-  https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c05370100");
+  script_tag(name:"solution", value:"Install the provided patches from vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

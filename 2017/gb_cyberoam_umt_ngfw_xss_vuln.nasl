@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyberoam_umt_ngfw_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_cyberoam_umt_ngfw_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Sophos Cyberoam UMT/NGFW XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:cyberoam:cyberoam_os";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106865");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 16:35:53 +0700 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"Sophos Cyberoam UMT/NGFW is prone to a cross-site scripting vulnerability");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists within the handling of request to 'LiveConnectionDetail.jsp'
 application. GET parameters 'applicationname' and 'username' are not improperly sanitized allowing an attacker to

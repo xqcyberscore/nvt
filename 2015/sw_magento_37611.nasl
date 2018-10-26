@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_37611.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_magento_37611.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Magento Multiple HTML Injection Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105225");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running with Magento which is prone to multiple HTML injection
   vulnerabilities because it fails to properly sanitize user-supplied input.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of the
   affected site, potentially allowing the attacker to steal cookie-based authentication
   credentials and to control how the site is rendered to the user. Other attacks are also possible.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus94026.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_cisco_asa_CSCus94026.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA VPN ISAKMP DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106051");
-  script_version("$Revision: 11296 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in the IKE code of Cisco ASA may lead to a denial
 of service.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in the Internet Key Exchange (IKE) version 1 code
 could allow an unauthenticated, remote attacker to cause an affected system to reload. The vulnerability is

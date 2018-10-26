@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_icewarp_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IceWarp XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:icewarp:mail_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140331");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 10:02:16 +0700 (Tue, 29 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -55,7 +55,7 @@ if (description)
 Server allows remote authenticated domain administrators to inject arbitrary web script or HTML via a crafted
 user name.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"IceWarp version 10.4.4 and maybe prior and later.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

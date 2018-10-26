@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170208-asa.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_cisco_asa_cisco-sa-20170208-asa.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA Clientless SSL VPN CIFS Heap Overflow Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3807");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco ASA Clientless SSL VPN CIFS Heap Overflow Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170208-asa");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -62,7 +62,7 @@ system or potentially execute code.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 13:48:30 +0700 (Thu, 09 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

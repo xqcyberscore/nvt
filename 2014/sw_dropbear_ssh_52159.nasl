@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_52159.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: sw_dropbear_ssh_52159.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Dropbear SSH Server Use-after-free Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105113");
-  script_version("$Revision: 11200 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-07 12:40:00 +0100 (Fri, 07 Nov 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with Dropbear SSH Server and
   is prone to a use-after-free vulnerability.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"A use-after-free vulnerability exists in Dropbear SSH
   Server 0.52 through 2011.54 when command restriction and public key authentication are enabled.");
   script_tag(name:"impact", value:"This flaw allows remote authenticated users

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zhone_znid_gpon_mult_vulns_10_15.nasl 5483 2017-03-04 13:27:49Z cfi $
+# $Id: gb_zhone_znid_gpon_mult_vulns_10_15.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ZHONE ZNID GPON Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/o:zhone_technologies:gpon_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105405");
-  script_version("$Revision: 5483 $");
+  script_version("$Revision: 12106 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 14:27:49 +0100 (Sat, 04 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 14:48:06 +0200 (Thu, 15 Oct 2015)");
   script_name("ZHONE ZNID GPON Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -45,7 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/536663/30/0/threaded");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/536666/30/0/threaded");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"This vulnerability is due to the use of unsafe string functions without sufficient input validation in the httpd binary.");
 

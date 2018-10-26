@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2712.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_junos_cve_2014-2712.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos J-Web XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105905");
-  script_version("$Revision: 11202 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 16:10:41 +0700 (Tue, 29 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cross-Site Scripting Vulnerability in J-Web.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"J-Web is vulnerable to a cross-site scripting injection. Parameters
 passed as arguments to index.php can result in the execution of scripting tags within the user's browser.");

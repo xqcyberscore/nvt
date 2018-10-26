@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_cms_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_efront_cms_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # eFront CMS 3.6.15.4 Multiple Vulnerabilities
 #
@@ -33,8 +33,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113104");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 15:00:00 +0100 (Tue, 06 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -68,7 +68,7 @@ Unrestricted file upload vulnerability: Allows remote authenticated users to exe
 
   script_xref(name:"URL", value:"http://mohankallepalli.blogspot.de/2015/05/eFront-cms-multiple-bugs.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:efrontlearning:efront";

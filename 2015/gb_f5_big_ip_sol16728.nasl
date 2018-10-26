@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16728.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol16728.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - iCall privilege escalation vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-3628");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - iCall privilege escalation vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An authenticated user with limited access (Resource Administration) may be able to escalate privileges and gain administrative access.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An authenticated user, with Resource Administrator role permissions, is able to use iCall scripts and associated handlers to create and modify user account properties.");
 
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"F5 BIG-IP is prone to a privilege escalation vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 16:56:39 +0200 (Mon, 07 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

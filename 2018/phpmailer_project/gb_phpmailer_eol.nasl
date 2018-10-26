@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_eol.nasl 11508 2018-09-20 13:44:58Z cfischer $
+# $Id: gb_phpmailer_eol.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PHPMailer End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108466");
-  script_version("$Revision: 11508 $");
+  script_version("$Revision: 12116 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:44:58 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 07:40:47 +0200 (Thu, 20 Sep 2018)");
   script_name("PHPMailer End Of Life Detection");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"solution", value:"Update the PHPMailer version on the remote host to a still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

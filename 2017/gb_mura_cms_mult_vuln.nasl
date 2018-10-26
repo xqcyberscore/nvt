@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mura_cms_mult_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_mura_cms_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Mura CMS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:blueriver:mura_cms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106788");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-25 08:10:42 +0200 (Tue, 25 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"Mura CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Mura CMS is prone to multiple vulnerabilities:
 

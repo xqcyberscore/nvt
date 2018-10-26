@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trueconf_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_trueconf_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # TrueConf Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:trueconf:trueconf";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106551");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"TrueConf is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"TrueConf is prone to multiple vulnerabilities:
 

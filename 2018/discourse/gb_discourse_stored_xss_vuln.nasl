@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_discourse_stored_xss_vuln.nasl 10827 2018-08-08 07:49:38Z asteins $
+# $Id: gb_discourse_stored_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Discourse < 2.0.0 beta6 Stored XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112352");
-  script_version("$Revision: 10827 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:49:38 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 09:46:25 +0200 (Wed, 08 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,7 @@ if( description )
   script_xref(name:"URL", value:"https://hackerone.com/reports/333507");
   script_xref(name:"URL", value:"https://github.com/discourse/discourse/commit/4fb41663b3c7071dc1ef7d92eb3e5a6516dfe3b5");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:discourse:discourse";

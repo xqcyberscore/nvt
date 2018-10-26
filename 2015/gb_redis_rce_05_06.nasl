@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_rce_05_06.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_redis_rce_05_06.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Redis EVAL Lua Sandbox Escape
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-4335");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Redis EVAL Lua Sandbox Escape");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully attack may allow the attacker to execute code in the context of the application");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"summary", value:"It is possible to break out of the Lua sandbox in Redis and execute arbitrary code.");
   script_tag(name:"affected", value:"Redis < 2.8.21/3.0.2");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-05 16:01:37 +0200 (Fri, 05 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

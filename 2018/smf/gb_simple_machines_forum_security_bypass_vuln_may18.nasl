@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_machines_forum_security_bypass_vuln_may18.nasl 10145 2018-06-08 14:34:24Z asteins $
+# $Id: gb_simple_machines_forum_security_bypass_vuln_may18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Simple Machines Forum Security Bypass Vulnerability May18
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:simplemachines:smf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812886");
-  script_version("$Revision: 10145 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-10305");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:34:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 16:42:36 +0530 (Mon, 14 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Simple Machines Forum Security Bypass Vulnerability May18");
@@ -42,17 +42,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Simple Machines Forum and is
   prone to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the 'MessageSearch2' function
   in PersonalMessage.php script in Simple Machines Forum (SMF) does not properly use
   the 'possible_users' variable in a query.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass intended access restrictions.
-
-  Impact Level: Application");
+  to bypass intended access restrictions.");
 
   script_tag(name:"affected", value:"Simple Machines Forum versions before 2.0.15");
 

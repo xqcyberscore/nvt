@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxmail_rce_vuln_sep18.nasl 11290 2018-09-07 13:11:08Z jschulte $
+# $Id: gb_foxmail_rce_vuln_sep18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Foxmail <= 7.2.9.115 Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113265");
-  script_version("$Revision: 11290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 15:11:08 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 15:01:31 +0200 (Fri, 07 Sep 2018)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if( description )
   script_tag(name:"summary", value:"Tencent Foxmail is prone to a remote code execution (RCE) vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An authenticated user visiting a malicious page or open a malicious file
-  could allow an attacker to execute code unter the context of the current process.
+  could allow an attacker to execute code under the context of the current process.
   The flaw exists within the processing of URI handlers and results from a lack
   of proper validation of a user-supplied string before using it to execute a system call.");
   script_tag(name:"affected", value:"Tencent Foxmail through version 7.2.9.115.");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.zerodayinitiative.com/advisories/ZDI-18-584/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:tencent:foxmail";

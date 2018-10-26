@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_xss_vuln.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: gb_hp_ilo_xss_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # HP Integrated Lights-Out XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106481");
-  script_version("$Revision: 11790 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 15:31:29 +0700 (Mon, 19 Dec 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"HP Integrated Lights-Out is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"HPE Integrated Lights-Out 3 (iLO 3) and HPE Integrated Lights-Out 4
 (iLO 4)");

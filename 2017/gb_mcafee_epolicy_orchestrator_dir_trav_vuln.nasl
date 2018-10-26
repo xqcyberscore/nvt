@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # McAfee ePolicy Orchestrator Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106824");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 11:00:56 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to a directory traversal vulnerability
 which allows remote authenticated users to execute a command of their choice via an authenticated ePO session.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"ePO versions 5.1.3, , 5.3.1, 5.3.2, 5.9.0 and prior.");
 

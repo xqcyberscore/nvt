@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_inf_disc_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_webmin_inf_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Webmin 1.880 Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113135");
-  script_version("$Revision: 11348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 13:16:22 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -62,7 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.7elements.co.uk/resources/technical-advisories/webmin-1-840-1-880-unrestricted-access-arbitrary-files-using-local-file-include/");
   script_xref(name:"URL", value:"http://www.webmin.com/changes.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:webmin:webmin";

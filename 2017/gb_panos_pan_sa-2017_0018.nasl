@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0018.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0018.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS Kernel Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106882");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 09:10:58 +0700 (Tue, 20 Jun 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability exists in the Linux kernel of PAN-OS that may result in
 Remote Code Execution.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in the Linux kernel networking subsystem for UDP could
 enable an attacker to execute arbitrary code within the context of the kernel. The Data Plane (DP) of PAN-OS is

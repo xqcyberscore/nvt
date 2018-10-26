@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libreoffice_swctbwrapper_fun_mem_corru_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)
 #
@@ -29,40 +29,36 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813090");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-10120");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("LibreOffice 'SwCTBWrapper::Read' Function Memory Corruption Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with LibreOffice and
   is prone to a memory corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as 'SwCTBWrapper::Read'
   function in sw/source/filter/ww8/ww8toolbar.cxx in LibreOffice does not
   validate a customizations index.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (heap-based buffer overflow with write
-  access) or possibly have unspecified other impact.
+  access) or possibly have unspecified other impact.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"LibreOffice before 5.4.6.1 and 6.x before
+  script_tag(name:"affected", value:"LibreOffice before 5.4.6.1 and 6.x before
   6.0.2.1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to LibreOffice version 5.4.6.1 or
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 5.4.6.1 or
   6.0.2.1 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=6173");
-  script_xref(name : "URL" , value : "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-10120");
+  script_xref(name:"URL", value:"https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=6173");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");

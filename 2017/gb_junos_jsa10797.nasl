@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10797.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_junos_jsa10797.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106950");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 15:37:21 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability in sendmsg().");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Incorrect argument handling in the socket code allows a malicious local
 user to overwrite large portions of the kernel memory, and in doing so may be able to take control of the system

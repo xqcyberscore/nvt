@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln02.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_dokuwiki_xss_vuln02.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # DokuWiki Stored XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112025");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-22 10:27:42 +0200 (Tue, 22 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"DokuWiki has stored XSS when rendering a malicious RSS or Atom feed or language name in a code element, in /inc/parser/xhtml.php. An attacker can create or edit a wiki with this element to trigger JavaScript execution.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"DokuWiki version 2017-02-19c and prior.");
 

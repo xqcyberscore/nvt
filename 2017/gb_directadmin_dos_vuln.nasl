@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_directadmin_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_directadmin_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # DirectAdmin DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:directadmin:directadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106501");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-09 10:12:05 +0700 (Mon, 09 Jan 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"DirectAdmin is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An attacker can send a username and password in the login screen
 DirectAdmin with a overly long password which results in a denial of service condition.");

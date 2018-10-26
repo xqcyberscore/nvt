@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17170.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol17170.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17170 - Java vulnerability CVE-2015-4736
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-4736");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17170 - Java vulnerability CVE-2015-4736");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"Confidentiality, integrity, and availability may be affected when exploited by attackers. However, affected F5 products that contain the vulnerable software component do not use them in a way that exposes this vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Unspecified vulnerability in Oracle Java SE 7u80 and 8u45 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors related to Deployment. (CVE-2015-4736)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 14:39:37 +0200 (Fri, 18 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

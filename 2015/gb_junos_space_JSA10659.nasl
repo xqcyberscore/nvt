@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10659.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_junos_space_JSA10659.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos Space: Multiple vulnerabilities resolved by third party software upgrades
 #
@@ -33,13 +33,13 @@ if (description)
                "CVE-2013-5908");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Junos Space: Multiple vulnerabilities resolved by third party software upgrades");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10659");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Oracle Java runtime 1.7.0 update_45 was upgraded to 1.7.0 update_65. OpenSSL CentOS package was upgraded from 0.9.8e-20 to 0.9.8e-27.el5.");
 
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:03:28 +0200 (Mon, 19 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("JunOS Local Security Checks");

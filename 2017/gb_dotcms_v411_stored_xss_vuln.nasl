@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_dotcms_v411_stored_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # dotCMS 4.1.1 Stored Cross-Site Scripting (XSS) Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112090");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 11:47:18 +0200 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"dotCMS version 4.1.1 is prone to a stored cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"dotCMS is vulnerable to stored XSS within multiple sections of the application.
   The application does not sanitize user supplied input and renders injected javascript code to the users browsers.");

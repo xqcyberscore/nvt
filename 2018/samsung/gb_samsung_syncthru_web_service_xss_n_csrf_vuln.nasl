@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Samsung Syncthru Web Service XSS And CSRF Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:samsung:syncthru_web_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813745");
-  script_version("$Revision: 10849 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-14904", "CVE-2018-14908");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 18:50:27 +0530 (Mon, 06 Aug 2018)");
   script_name("Samsung Syncthru Web Service XSS And CSRF Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is running Samsung Syncthru Web
+  script_tag(name:"summary", value:"The host is running Samsung Syncthru Web
   Service and is prone to cross-site scripting and cross-site request forgery
   vulnerabilities.");
 
@@ -45,6 +45,7 @@ if(description)
   whether it is possible to read a cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Improper sanitization of user input data like via 'ruiFw_pid' parameter.
 
   - Lack of protection against CSRF attacks.");
@@ -52,11 +53,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct CSRF attacks and inject arbitrary web script or HTML in
   a user's browser session within the trust relationship between their browser
-  and the server.
+  and the server.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Samsung Syncthru Web Service");
+  script_tag(name:"affected", value:"Samsung Syncthru Web Service");
 
   script_tag(name:"solution", value:"No known solution is available as of
   06th August, 2018. Information regarding this issue will be updated once solution

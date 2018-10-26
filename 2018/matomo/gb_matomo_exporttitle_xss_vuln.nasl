@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matomo_exporttitle_xss_vuln.nasl 11995 2018-10-19 17:08:47Z cfischer $
+# $Id: gb_matomo_exporttitle_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Matomo Analytics < 3.6.1 'reportTitle' XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:matomo:matomo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108475");
-  script_version("$Revision: 11995 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 19:08:47 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-19 18:58:41 +0200 (Fri, 19 Oct 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"insight", value:"Matomo Analytics fails to ensure that the report title in an export overlay
   is escaped which could be used to inject and execute JavaScript.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Matomo Analytics before version 3.6.1.");
 

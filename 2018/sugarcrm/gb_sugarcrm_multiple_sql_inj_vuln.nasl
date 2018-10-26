@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
+# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # SugarCRM Multiple SQL Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812802");
-  script_version("$Revision: 11813 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6308");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 15:40:09 +0530 (Thu, 08 Feb 2018)");
 
   script_name("SugarCRM Multiple SQL Injection Vulnerabilities");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running SugarCRM Community
   Edition and is prone to SQL injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exist due to the invalidated
   parameter '$track' of '\modules\Campaigns\Tracker.php' file, the parameter

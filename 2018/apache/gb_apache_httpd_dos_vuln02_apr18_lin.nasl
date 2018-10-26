@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_dos_vuln02_apr18_lin.nasl 9559 2018-04-23 02:29:54Z ckuersteiner $
+# $Id: gb_apache_httpd_dos_vuln02_apr18_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache HTTP Server Denial of Service Vulnerability-02 Apr18 (Linux)
 #
@@ -18,40 +18,37 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.                                                                                                   
+# GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-###############################################################################                                                                  
+###############################################################################
 
 CPE = "cpe:/a:apache:http_server";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812849");
-  script_version("$Revision: 9559 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1303");
   script_bugtraq_id(103522);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 04:29:54 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-04 11:31:58 +0530 (Wed, 04 Apr 2018)");
   script_name("Apache HTTP Server Denial of Service Vulnerability-02 Apr18 (Linux)");
 
   script_tag(name:"summary", value:"The host is installed with Apache HTTP server
   and is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the Apache HTTP Server
   fails to sanitize against a specially crafted HTTP request header.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to crash the Apache HTTP Server resulting in denial of service condition.
-
-  Impact Level: Application");
+  to crash the Apache HTTP Server resulting in denial of service condition.");
 
   script_tag(name:"affected", value:"Apache HTTP server versions 2.4.6, 2.4.7,
   2.4.9, 2.4.10, 2.4.12, 2.4.16 through 2.4.18, 2.4.20, 2.4.23, and 2.4.25 through
@@ -59,14 +56,14 @@ if (description)
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.30 or later.
   For updates refer to reference links.");
-  
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_xref(name:"URL", value:"https://httpd.apache.org/download.cgi");
   script_xref(name:"URL", value:"https://httpd.apache.org/security/vulnerabilities_24.html");
- 
- script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");

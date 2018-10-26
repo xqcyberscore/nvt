@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_priv_esc_vuln2.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_emc_isilon_onefs_priv_esc_vuln2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon OneFS Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106889");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 11:18:56 +0700 (Wed, 21 Jun 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Isilon OneFS is affected by a privilege escalation vulnerability that
 could potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A cluster administrator, a compadmin user, or any user who has been given
 sudo privileges to run  isi_for_array commands could potentially exploit this vulnerability to gain root-level

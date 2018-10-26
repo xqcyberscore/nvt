@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_mult_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
+# $Id: gb_kerberos5_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Kerberos5 through 1.16 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113084");
-  script_version("$Revision: 10787 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:14:14 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -63,7 +63,7 @@ regarding this issue will be updated once solution details are available.");
   script_xref(name:"URL", value:"https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Integer%20Overflow");
   script_xref(name:"URL", value:"https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Denial%20Of%20Service%28DoS%29");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mit:kerberos";

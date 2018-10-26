@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_akka_http_dos_vuln_aug18.nasl 11179 2018-08-31 11:54:09Z jschulte $
+# $Id: gb_akka_http_dos_vuln_aug18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Akka HTTP 10.0.x, 10.1.x Denial of Service vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113262");
-  script_version("$Revision: 11179 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 13:54:09 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 13:43:24 +0200 (Fri, 31 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"https://akka.io/blog/news/2018/08/30/akka-http-dos-vulnerability-found");
   script_xref(name:"URL", value:"https://github.com/akka/akka-http/issues/2137");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:akka:http";

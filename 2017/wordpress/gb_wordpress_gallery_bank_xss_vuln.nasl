@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gallery_bank_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_wordpress_gallery_bank_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Gallery Bank Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112071");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-09 08:27:51 +0200 (Mon, 09 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"WordPress plugin Gallery Bank allows remote attackers to inject arbitrary web script
       or HTML via the order_id parameter in the gallery_album_sorting page to wp-admin/admin.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Gallery Bank plugin version 2.0.26 up to 3.0.69.");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_xss_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_kodak_insite_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Kodak InSite XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:kodak:insite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106821");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 09:17:36 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -57,7 +57,7 @@ fails to sufficiently sanitize user-supplied data.");
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary script
 code in the context of the interface or allow the attacker to access sensitive browser-based information.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Kodak InSite version 6.5 until 8.0.");
 

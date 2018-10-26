@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_discourse_xss_vuln.nasl 11155 2018-08-29 09:07:04Z ckuersteiner $
+# $Id: gb_discourse_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Discourse < 2.1.0.beta5 XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:discourse:discourse";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141410");
-  script_version("$Revision: 11155 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:07:04 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 15:42:26 +0700 (Wed, 29 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if (description)
 
   script_xref(name:"URL", value:"https://meta.discourse.org/t/discourse-2-1-0-beta5-release-notes/95331");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

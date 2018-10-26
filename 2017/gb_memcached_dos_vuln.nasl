@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_memcached_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Memcached < 1.4.39 DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:memcached:memcached";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106981");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-24 15:46:47 +0700 (Mon, 24 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ if (description)
 attackers to cause a denial of service (segmentation fault) via a request to add/set a key, which makes a
 comparison between signed and unsigned int and triggers a heap-based buffer over-read.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Memcached version prior to 1.4.39.");
 

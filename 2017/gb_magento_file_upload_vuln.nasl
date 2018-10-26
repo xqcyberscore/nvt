@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_file_upload_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_magento_file_upload_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Magento Arbitrary File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106792");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-27 10:41:56 +0200 (Thu, 27 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"summary", value:"Magento Web E-Commerce Platform is prone to an arbitrary file upload
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A high risk vulnerability was discovered in Magento that could lead to
 remote code execution and thus the complete system compromise including the database containing sensitive

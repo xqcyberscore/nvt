@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability
 #
@@ -34,13 +34,13 @@ if (description)
   script_cve_id("CVE-2014-2205");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12095 $");
 
   script_name("McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65771");
   script_xref(name:"URL", value:"http://www.mcafee.com/us/enterprise/products/system_security_management/epolicy_orchestrator.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:41:18 +0100 (Thu, 20 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive
 information from the application. This may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Import and Export Framework in McAfee ePolicy Orchestrator
 (ePO) before 4.6.7 Hotfix 940148 allows remote authenticated users with permissions
 to add dashboards to read arbitrary files by importing a crafted XML file, related

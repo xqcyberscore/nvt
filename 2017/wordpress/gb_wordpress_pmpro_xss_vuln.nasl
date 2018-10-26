@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_pmpro_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_wordpress_pmpro_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Paid Memberships Pro Plugin Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112096");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 13:43:51 +0200 (Thu, 26 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Multiple cross-site scripting (XSS) vulnerabilities in the Paid Memberships Pro (PMPro) plugin for WordPress
       allow remote attackers to inject arbitrary web script or HTML via the (1) s parameter to membershiplevels.php, (2) memberslist.php,
       or (3) orders.php in adminpages/ or the (4) edit parameter to adminpages/membershiplevels.php.");
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Paid Memberships Pro plugin before 1.8.4.3.");
 

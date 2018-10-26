@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_59452.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_cisco_nx_os_59452.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Multiple Cisco Products Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-1178", "CVE-2013-1179", "CVE-2013-1180");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12083 $");
   script_name("Multiple Cisco Products  Multiple Remote Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59452");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59454");
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1180");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130424-nxosmulti");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:02:49 +0200 (Wed, 09 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,18 +53,23 @@ if (description)
   script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
   script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code with
-the elevated privileges. Failed exploit attempts will result in a denial-of-
-service condition.");
-  script_tag(name:"vuldetect", value:"Check the version from SNMP sysdesc");
+the elevated privileges. Failed exploit attempts will result in a denial-of-service condition.");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"There are multiple buffer overflows in:
-the Cisco Discovery Protocol (CDP) implementation and
-the SNMP and License Manager implementations");
+
+  - the Cisco Discovery Protocol (CDP) implementation
+
+  - the SNMP and License Manager implementations");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
 for more information.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Multiple Cisco NX-OS-Based products are prone to multiple remote buffer-
-overflow vulnerabilities because they fail to perform adequate boundary-
-checks on user-supplied data.");
+overflow vulnerabilities because they fail to perform adequate boundary-checks on user-supplied data.");
+
   script_tag(name:"affected", value:"These issues being tracked by Cisco Bug IDs CSCtu10630, CSCtu10551,
 CSCtu10550, CSCtw56581, CSCtu10548, CSCtu10544, and CSCuf61275.");
 

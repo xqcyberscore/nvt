@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa1079.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_junos_jsa1079.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos libgd Heap Overflow Vulnerabiliy
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140289");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 11:02:59 +0700 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Junos OS is prone to a heap overflow vulnerability in libgd which allows
 remote attackers to cause a denial of service or potentially execute arbitrary code.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"libgd is an open-source image library which is bundled with PHP version 4.3
 and above. An integer signedness vulnerability exists in libgd 2.1.1 which may result in a heap overflow when

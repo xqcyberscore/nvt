@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0006.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0006.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0006
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105453");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2015-0006");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"An issue has been identified in PAN-OS that prevents old management API keys for local administrator accounts from being invalidated upon password change until the device is rebooted.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 7.0.2/6.1.7");
 
   script_tag(name:"impact", value:"This issue can create a period of time during which an administrator changes the account password, thus creating a new API key, but the old API key is still valid until device reboot.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 10:32:56 +0100 (Mon, 16 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

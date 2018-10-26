@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_win_0817.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_cacti_mult_vuln_win_0817.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cacti <= 0.8.8b Multiple Vulnerabilities (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108208");
-  script_version("$Revision: 11472 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 11:05:37 +0200 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -86,7 +86,7 @@ if (description)
 
   - Cross-Site scripting (XSS) vulnerabilities allow remote attackers to inject arbitrary web script or HTML via the parent_id parameter to tree.php and drp_action parameter to data_sources.php. (CVE-2017-1000032)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Cacti version 0.8.8b and prior.");
 

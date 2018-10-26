@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170726-aniacp.nasl 11916 2018-10-16 08:36:43Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20170726-aniacp.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco IOS Software Autonomic Control Plane Channel Information Disclosure Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-6665");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11916 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco IOS Software Autonomic Control Plane Channel Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-aniacp");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
   disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
@@ -60,7 +60,7 @@ packets, which should have been encrypted over the ACP, in clear text.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 08:38:44 +0700 (Fri, 28 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

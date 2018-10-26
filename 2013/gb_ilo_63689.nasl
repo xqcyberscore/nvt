@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilo_63689.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_ilo_63689.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103859");
   script_bugtraq_id(63689, 63691);
   script_cve_id("CVE-2013-4842", "CVE-2013-4843");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12083 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
   script_name("HP Integrated Lights-Out Multiple Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-18 11:18:02 +0100 (Wed, 18 Dec 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -51,7 +51,7 @@ aid in further attacks or to execute arbitrary HTML and script code in an unsusp
 context of the affected site. This may allow the attacker to steal cookie-based authentication credentials and
 launch other attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version of HP Integrated Lights-Out.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"HP Integrated Lights-Out is prone to a Cross Site Scripting and an
 Information Disclosure Vulnerability.");

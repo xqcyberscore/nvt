@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813737");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-9553", "CVE-2017-9554");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 12:20:00 +0530 (Tue, 31 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)");
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass the encryption protection mechanism and steal account,
   password details. Also attacker can obtain user information via a brute-force
-  attack.
-
-  Impact Level: Application");
+  attack.");
 
   script_tag(name:"affected", value:"Synology DiskStation Manager (DSM) versions
   5.2, 6.0 and 6.1");

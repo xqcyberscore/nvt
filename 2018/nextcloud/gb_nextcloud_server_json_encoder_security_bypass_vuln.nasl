@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_json_encoder_security_bypass_vuln.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_nextcloud_server_json_encoder_security_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Nextcloud Server 'JSON Encoder' Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813917");
-  script_version("$Revision: 11092 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-3776");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 17:29:50 +0530 (Mon, 20 Aug 2018)");
   script_name("Nextcloud Server 'JSON Encoder' Security Bypass Vulnerability");
 
@@ -47,9 +47,7 @@ if (description)
   of data passed to JSON encoder.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to not have their actions logged to the audit log.
-
-  Impact Level: Application");
+  to not have their actions logged to the audit log.");
 
   script_tag(name:"affected", value:"Nextcloud Server before 12.0.3 and 11.0.5");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_mult_dos_vuln_lin.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_graphicsmagick_mult_dos_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # GraphicsMagick 1.3.26 Multiple DoS Vulnerabilities (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113136");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 13:49:55 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -66,7 +66,7 @@ if( description )
   script_xref(name:"URL", value:"https://sourceforge.net/p/graphicsmagick/bugs/473/");
   script_xref(name:"URL", value:"https://sourceforge.net/p/graphicsmagick/bugs/475/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:graphicsmagick:graphicsmagick";

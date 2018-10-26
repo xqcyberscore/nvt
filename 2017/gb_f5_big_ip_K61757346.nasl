@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K61757346.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_f5_big_ip_K61757346.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP Azure cloud vulnerability CVE-2017-6131
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:f5:big-ip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140262");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 13:20:34 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ vulnerable.");
   script_tag(name:"impact", value:"An attacker may be able to remotely access the BIG-IP system using secure
 shell (SSH).");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 

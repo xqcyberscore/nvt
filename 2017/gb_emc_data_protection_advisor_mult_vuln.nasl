@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_protection_advisor_mult_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_emc_data_protection_advisor_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Data Protection Advisor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:emc:data_protection_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106939");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 15:10:44 +0700 (Tue, 11 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"EMC Data Protection Advisor is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"EMC Data Protection Advisor is prone to multiple vulnerabilities:
 

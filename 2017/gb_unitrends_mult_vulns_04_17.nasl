@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vulns_04_17.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_unitrends_mult_vulns_04_17.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Unitrends Multiple Vulnerabilities
 #
@@ -33,14 +33,14 @@ if (description)
   script_tag(name:"cvss_base", value:"10.0");
   script_cve_id("CVE-2017-7280", "CVE-2017-7284", "CVE-2017-7281", "CVE-2017-7279", "CVE-2017-7282", "CVE-2017-7283");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Unitrends Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"https://rhinosecuritylabs.com/research/remote-code-execution-bug-hunting-chapter-1/");
   script_xref(name:"URL", value:"https://www.unitrends.com/");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Ask vendor for an update.");
   script_tag(name:"summary", value:"Unitrends is  prone to multiple vulnerabilities:
 
@@ -57,7 +57,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 16:05:50 +0200 (Wed, 12 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_heap_buffer_overflow_vuln_aug18_win.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
+# $Id: gb_python_heap_buffer_overflow_vuln_aug18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Python Heap Buffer Overflow Vulnerability Aug18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813919");
-  script_version("$Revision: 11099 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1000030");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-22 11:28:01 +0530 (Wed, 22 Aug 2018)");
   script_name("Python Heap Buffer Overflow Vulnerability Aug18 (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   reallocated due to a large size of input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause heap buffer overflow.
-
-  Impact Level: Application");
+  to cause heap buffer overflow.");
 
   script_tag(name:"qod_type", value:"registry");
 

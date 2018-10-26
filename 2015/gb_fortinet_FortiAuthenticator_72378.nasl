@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-1456", "CVE-2015-1455", "CVE-2015-1457", "CVE-2015-1459", "CVE-2015-1458");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities");
 
@@ -43,7 +43,7 @@ if (description)
 
   script_tag(name:"affected", value:"FortiAuthenticator lower than 3.2.1");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiAuthenticator 3.2.1 or higher.");
   script_tag(name:"summary", value:"Fortinet FortiAuthenticator Appliance is prone to the following
 multiple security vulnerabilities:
@@ -60,7 +60,7 @@ credentials, execute arbitrary commands and gain access to potentially sensitive
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 10:40:16 +0100 (Mon, 02 Mar 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");

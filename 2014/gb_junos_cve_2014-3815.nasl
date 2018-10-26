@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3815.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_junos_cve_2014-3815.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos SIP ALG Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105914");
-  script_version("$Revision: 11210 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:33:08 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"DoS on SRX devices when SIP ALG is enabled");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"On SRX Series devices, when SIP ALG is enabled, a certain crafted
 SIP packet may cause the flowd process to crash. SIP ALG is enabled by default on SRX Series devices except

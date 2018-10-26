@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_73342.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_citrix_netscaler_73342.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-2840", "CVE-2015-2838", "CVE-2015-2839");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
 in the browser of an unsuspecting user in the context of the affected site. This may help the attacker
 steal cookie-based authenticationcredentials and launch other attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"CVE-2015-2840: Cross-site scripting
 (XSS) vulnerability in help/rt/large_search.html in Citrix
@@ -75,7 +75,7 @@ to properly sanitize user-supplied input.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 13:10:00 +0200 (Tue, 12 May 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20170816-apic2.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_cisco_apic_cisco-sa-20170816-apic2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Custom Binary Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140305");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-17 08:59:24 +0700 (Thu, 17 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_cisco_apic_web_detect.nasl");
   script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"summary", value:"A vulnerability in the build procedure for certain executable system files
 installed at boot time on Cisco Application Policy Infrastructure Controller (APIC) devices could allow an

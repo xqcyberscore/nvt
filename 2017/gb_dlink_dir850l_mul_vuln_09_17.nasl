@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir850l_mul_vuln_09_17.nasl 9111 2018-03-15 15:16:12Z cfischer $
+# $Id: gb_dlink_dir850l_mul_vuln_09_17.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # D-Link DIR-850L XSS / Backdoor / Code Execution Vulnerabilities
 #
@@ -30,8 +30,8 @@ if(description)
   script_cve_id("CVE-2017-14413", "CVE-2017-14414", "CVE-2017-14415", "CVE-2017-14416", "CVE-2017-14417", "CVE-2017-14418",
                 "CVE-2017-14419", "CVE-2017-14420", "CVE-2017-14421", "CVE-2017-14422", "CVE-2017-14423", "CVE-2017-14424",
                 "CVE-2017-14425", "CVE-2017-14426", "CVE-2017-14427", "CVE-2017-14428", "CVE-2017-14429", "CVE-2017-14430");
-  script_version("$Revision: 9111 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 16:16:12 +0100 (Thu, 15 Mar 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 17:47:21 +0200 (Tue, 12 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"summary", value:"D-Link DIR-850L suffers from cross-site scripting, access bypass, backdoor, bruteforcing,
   information disclosure, remote code execution, and denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Remote attacker can execute XSS attacks, obtain the admin password, forge firmware and to
   execute remote commands.");

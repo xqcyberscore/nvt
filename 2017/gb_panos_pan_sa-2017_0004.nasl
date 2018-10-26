@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0004.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0004.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-5584");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"summary", value:"A persistent cross-site scripting (XSS) vulnerability exists in the management web interface.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 6.1.16 and later, PAN-OS 7.0.13 and later, PAN-OS 7.1.8 and later");
 
   script_tag(name:"affected", value:"PAN-OS 5.1, PAN-OS 6.0, PAN-OS 6.1.15 and earlier, PAN-OS 7.0.12 and earlier, PAN-OS 7.1.7 and earlier");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

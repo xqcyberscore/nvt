@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscart_xxe_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_cscart_xxe_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # CS-Cart XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cs-cart:cs-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106398");
-  script_version("$Revision: 11026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"CS-Cart is prone to an XML External Entity injection (XXE) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"There is a XML External Entity injection (XXE) vulnerability in the Twigmo
   Addon and in the Amazon Payment Addon.");

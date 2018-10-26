@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20140326-sip.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20140326-sip.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco IOS Software Session Initiation Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-2106");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Cisco IOS Software Session Initiation Protocol Denial of Service Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=32537");
   script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar14.html");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the Session Initiation Protocol (SIP) implementation in
@@ -65,7 +65,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-04 18:52:15 +0200 (Wed, 04 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

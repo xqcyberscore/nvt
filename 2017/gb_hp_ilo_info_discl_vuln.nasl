@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_info_discl_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_hp_ilo_info_discl_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # HP Integrated Lights-Out 3 Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:hp:integrated_lights-out_3_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106493");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-05 12:42:59 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"HP Integrated Lights-Out 3 is prone to an information disclosure
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The TLS implementation in HPE Integrated Lights-Out 3 firmware does no
 properly use a MAC protection mechanism in conjunction with CBC padding, which allows remote attackers to obtain

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_mult_vuln.nasl 10127 2018-06-08 02:54:24Z ckuersteiner $
+# $Id: gb_apache_tika_server_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tika Server 1.17 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113167");
-  script_version("$Revision: 10127 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 04:54:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 11:12:13 +0200 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if( description )
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
-  In Apache Tika , clients could send carefully crafted headers to tika-server that could be used to inject commands
+  In Apache Tika, clients could send carefully crafted headers to tika-server that could be used to inject commands
   into the command line of the server running tika-server.
   This vulnerability only affects those running tika-server on a server that is open to untrusted clients.
 
@@ -69,7 +69,7 @@ if( description )
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/b3ed4432380af767effd4c6f27665cc7b2686acccbefeb9f55851dca@%3Cdev.tika.apache.org%3E");
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/4d20c5748fb9f836653bc78a1bad991ba8485d82a1e821f70b641932@%3Cdev.tika.apache.org%3E");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:tika";

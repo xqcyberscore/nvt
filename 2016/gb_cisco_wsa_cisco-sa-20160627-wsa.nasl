@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160627-wsa.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20160627-wsa.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Web Security Appliance Native FTP Denial of Service Vulnerability
 #
@@ -31,17 +31,17 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105779");
   script_cve_id("CVE-2016-1440");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 14:05:06 +0200 (Tue, 28 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Web Security Appliance Native FTP Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"A vulnerability in the native pass-through FTP functionality of the Cisco Web Security Appliance (WSA) could allow an unauthenticated, remote attacker to cause a partial denial of service (DoS) condition due to high CPU utilization.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Cisco WSA < 9.1.1-041");
 

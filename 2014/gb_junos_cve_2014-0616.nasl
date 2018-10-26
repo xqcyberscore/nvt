@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0616.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_junos_cve_2014-0616.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Oversized BGP UPDATE DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103969");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-17 11:22:01 +0700 (Fri, 17 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"summary", value:"Denial of Service vulnerability in routing daemon from oversized
 BGP UPDATE message.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A large BGP UPDATE message which immediately triggers a withdraw
 message to be sent, as demonstrated by a long AS_PATH and a large number of BGP Communities, cause the

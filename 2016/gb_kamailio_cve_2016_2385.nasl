@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_cve_2016_2385.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_kamailio_cve_2016_2385.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Kamailio SEAS module encode_msg heap buffer overflow
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2016-2385");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12096 $");
   script_name("Kamailio SEAS module encode_msg heap buffer overflow");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-31 14:51:12 +0200 (Thu, 31 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker may exploit this issue to cause a denial-of-service condition.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The heap overflow can be triggered if Kamailio is configured to use the SEAS module");
 

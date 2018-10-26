@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_logrotate_vuln_may18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_postgresql_logrotate_vuln_may18_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PostgreSQL logrotate Vulnerability - May18 (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:postgresql:postgresql';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141084");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 16:05:24 +0700 (Fri, 11 May 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
 pg_catalog.pg_logfile_rotate() function doesn't follow the same ACLs than pg_rorate_logfile. If the adminpack is
 added to a database, an attacker able to connect to it could exploit this to force log rotation.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"PostgreSQL version 9.3.x, 9.4.x, 9.5.x, 9.6.x and 10.x.");
 

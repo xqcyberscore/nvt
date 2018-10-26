@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_nfs_export_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_emc_isilon_onefs_nfs_export_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon OneFS NFS Export Upgrade Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106805");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 16:14:35 +0700 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"EMC Isilon OneFS is affected by an NFS export vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"EMC Isilon OneFS is affected by the OneFS NFS Export Upgrade Vulnerability.
 Changing the default export permissions, after having created exports and then upgrading OneFS, can result in

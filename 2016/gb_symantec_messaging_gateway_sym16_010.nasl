@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities
 #
@@ -29,20 +29,28 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105783");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2016-2207", "CVE-2016-2209", "CVE-2016-2210", "CVE-2016-2211", "CVE-2016-3644", "CVE-2016-3645", "CVE-2016-3646");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-29 15:43:27 +0200 (Wed, 29 Jun 2016)");
   script_name("Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities)");
 
-  script_tag(name:"summary", value:' Parsing of maliciously-formatted container files may cause memory corruption, integer overflow or buffer overflow in Symantecs Decomposer engine. Successful exploitation of these vulnerabilities typically results in an application-level denial of service but could result in arbitrary code execution. An attacker could potentially run arbitrary code by sending a specially crafted file to a user.
-In the TNEF unpacker, the overflow does not result in any detrimental actions due to underlying code. However this was an exposure due to improper implementation that could potentially be leveraged further, at some point, by a malicious individual. As such, it also was addressed in the engine update.');
+  script_tag(name:"summary", value:"Parsing of maliciously-formatted container files may cause memory corruption, integer overflow or buffer overflow in Symantecs Decomposer engine.");
 
-  script_tag(name:"vuldetect", value:'Check the version');
-  script_tag(name:"affected", value:' SMG 10.6.1-3 and prior');
-  script_tag(name:"solution", value:'Update to SMG 10.6.1-4');
+  script_tag(name:"impact", value:"Successful exploitation of these vulnerabilities typically results in an application-level denial of service but could result in arbitrary code execution.
+  An attacker could potentially run arbitrary code by sending a specially crafted file to a user.");
+
+  script_tag(name:"insight", value:"In the TNEF unpacker, the overflow does not result in any detrimental actions due to underlying code. However this was an exposure due to improper implementation
+  that could potentially be leveraged further, at some point, by a malicious individual. As such, it also was addressed in the engine update.");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"affected", value:"SMG 10.6.1-3 and prior.");
+
+  script_tag(name:"solution", value:"Update to SMG 10.6.1-4 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160628_00");
 

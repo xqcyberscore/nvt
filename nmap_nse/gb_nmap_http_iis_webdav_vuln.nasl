@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_iis_webdav_vuln.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_http_iis_webdav_vuln.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap IIS WebDAV Vulnerability
 #
@@ -29,9 +29,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801254");
-  script_version("$Revision: 11966 $");
+  script_version("$Revision: 12115 $");
   script_cve_id("CVE-2009-1122", "CVE-2009-1535");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 12:08:05 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
@@ -57,6 +57,8 @@ if(description)
   by Microsoft MS09-020 Security patch update.
 
   This is a wrapper on the Nmap Security Scanner's http-iis-webdav-vuln.nse");
+
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

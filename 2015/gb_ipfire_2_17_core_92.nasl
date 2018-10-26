@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_92.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ipfire_2_17_core_92.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IPFire 2.17 - Core Update 92
 #
@@ -31,13 +31,13 @@ if (description)
   script_cve_id("CVE-2015-1793", "CVE-2015-5400");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("IPFire 2.17 - Core Update 92");
 
   script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-17-core-update-92-released");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The followinig vulnerabilities are fixed with IPFire 2.17 - Core Update 92:
 
 openssl 1.0.2d
@@ -52,7 +52,7 @@ This update comes with a patched version of squid to fix SQUID-2015:2.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:35:54 +0200 (Tue, 18 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

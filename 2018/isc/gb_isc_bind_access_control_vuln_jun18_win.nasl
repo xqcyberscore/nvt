@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_access_control_vuln_jun18_win.nasl 10169 2018-06-13 05:01:13Z ckuersteiner $
+# $Id: gb_isc_bind_access_control_vuln_jun18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ISC BIND Access Control Vulnerability - Jun18 (Windows)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:isc:bind';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141180");
-  script_version("$Revision: 10169 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-13 07:01:13 +0200 (Wed, 13 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-13 11:59:46 +0700 (Wed, 13 Jun 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-13 11:59:46 +0700 (Wed, 13 Jun 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-5738");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("ISC BIND Access Control Vulnerability - Jun18 (Windows)");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Some versions of BIND can improperly permit recursive query service to
+  script_tag(name:"summary", value:"Some versions of BIND can improperly permit recursive query service to
 unauthorized clients.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "ISC BIND 9.9.12, 9.10.7, 9.11.3, 9.12.0->9.12.1-P2, 9.13.0, 9.9.12-S1,
+  script_tag(name:"affected", value:"ISC BIND 9.9.12, 9.10.7, 9.11.3, 9.12.0->9.12.1-P2, 9.13.0, 9.9.12-S1,
 9.10.7-S1, 9.11.3-S1, and 9.11.3-S2 on Linux.");
 
-  script_tag(name: "solution", value: "See the vendor advisory for workarounds.");
+  script_tag(name:"solution", value:"See the vendor advisory for workarounds.");
 
-  script_xref(name: "URL", value: "https://kb.isc.org/article/AA-01616");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01616");
 
   exit(0);
 }

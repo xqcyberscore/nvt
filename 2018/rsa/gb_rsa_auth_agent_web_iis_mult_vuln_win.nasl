@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
+# $Id: gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # RSA Authentication Agent(IIS) Multiple Vulnerabilities
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:emc:rsa_authentication_agent_iis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813118");
-  script_version("$Revision: 9594 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1232", "CVE-2018-1233", "CVE-2018-1234");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 15:34:46 +0530 (Mon, 09 Apr 2018)");
   script_name("RSA Authentication Agent(IIS) Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is installed with RSA Authentication
   Agent for IIS and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -56,9 +55,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause the target service to crash, obtain potentially sensitive information
-  and conduct cross-site scripting attacks.
-
-  Impact Level: Application");
+  and conduct cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"RSA Authentication Agent for Web for IIS
   version 8.0.1 and earlier.");

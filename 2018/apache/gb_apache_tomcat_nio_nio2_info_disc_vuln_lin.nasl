@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_nio_nio2_info_disc_vuln_lin.nasl 11933 2018-10-17 07:09:44Z asteins $
+# $Id: gb_apache_tomcat_nio_nio2_info_disc_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tomcat 'NIO/NIO2' Connectors Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813723");
-  script_version("$Revision: 11933 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-8037");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 11:26:56 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'NIO/NIO2' Connectors Information Disclosure Vulnerability (Linux)");
@@ -41,19 +41,15 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error where a
   mishandling of close in 'NIO/NIO2' connectors, user sessions can get mixed up.");
 
   script_tag(name:"impact", value:"Successful exploitation can allow an attacker
-  to reuse user sessions in a new connection.
+  to reuse user sessions in a new connection.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Apache Tomcat 9.0.0.M9 to 9.0.9
+  script_tag(name:"affected", value:"Apache Tomcat 9.0.0.M9 to 9.0.9
   Apache Tomcat 8.5.5 to 8.5.31 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.10,
@@ -70,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_unixoide");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
   exit(0);
 }

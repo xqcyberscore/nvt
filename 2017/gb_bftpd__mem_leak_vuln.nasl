@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bftpd__mem_leak_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_bftpd__mem_leak_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Bftpd Memory Leak Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bftpd:bftpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140515");
-  script_version("$Revision: 11900 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 10:35:01 +0700 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Bftp FTP server is prone to a memory leak vulnerability in the file
 rename function.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Bftp version 4.6 and prior.");
 

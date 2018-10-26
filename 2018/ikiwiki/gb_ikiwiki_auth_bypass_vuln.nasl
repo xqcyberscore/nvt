@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_auth_bypass_vuln.nasl 9939 2018-05-23 14:50:30Z cfischer $
+# $Id: gb_ikiwiki_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # IkiWiki Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113160");
-  script_version("$Revision: 9939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:00:00 +0200 (Wed, 18 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if( description )
   script_xref(name:"URL", value:"https://marc.info/?l=oss-security&m=148418234314276&w=2");
   script_xref(name:"URL", value:"https://ikiwiki.info/security/#cve-2017-0356");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ikiwiki:ikiwiki";

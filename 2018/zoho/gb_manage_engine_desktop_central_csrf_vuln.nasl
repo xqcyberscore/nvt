@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_csrf_vuln.nasl 8940 2018-02-23 13:47:02Z santu $
+# $Id: gb_manage_engine_desktop_central_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ManageEngine Desktop Central Cross-Site Request Forgery Vulnerability
 #
@@ -30,35 +30,32 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812523");
-  script_version("$Revision: 8940 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2014-9331");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 16:30:22 +0530 (Fri, 23 Feb 2018)");
   script_name("ManageEngine Desktop Central Cross-Site Request Forgery Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with ManageEngine
+  script_tag(name:"summary", value:"This host is installed with ManageEngine
   Desktop Central and is prone to cross-site request forgery vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw enables an anonymous attacker to
+  script_tag(name:"insight", value:"The flaw enables an anonymous attacker to
   add an admin account into the application. This leads to compromising the whole
   domain as the application normally uses privileged domain account to perform
   administration tasks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to create administrator accounts, from browsers, where an authenticated
-  Desktop Central user has logged on.
+  Desktop Central user has logged on.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"ManageEngine Desktop Central before 9 build 90130");
 
-  script_tag(name: "affected" , value:"ManageEngine Desktop Central before 9 build 90130");
-
-  script_tag(name: "solution" , value:"Upgrade to ManageEngine Desktop Central build
-  version 90130 or later. For updates refer to https://www.manageengine.com");
+  script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central build
+  version 90130 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

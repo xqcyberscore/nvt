@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170729.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_qnap_qts_20170729.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # QNAP QTS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:qnap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140260");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 10:17:13 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -69,7 +69,7 @@ if (description)
   - Vulnerability in the Linux kernel that could be exploited to circumvent the stack guard page.
 (CVE-2017-1000364)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"QNAP QTS before QTS 4.2.6 build 20170729 and before QTS 4.3.3.0262 build
 20170727");

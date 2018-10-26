@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0002.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0002.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0002
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-0235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2015-0002");
 
@@ -44,7 +44,7 @@ if (description)
 context of the affected application. Failed exploit attempts may crash the application, denying service
 to legitimate users.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Please ask the vendor for a patch or workaround");
 
   script_tag(name:"summary", value:"The open source library 'glibc' has been
@@ -61,7 +61,7 @@ scheduled software maintenance update. (Ref # 74443)");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-23 13:30:05 +0200 (Thu, 23 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

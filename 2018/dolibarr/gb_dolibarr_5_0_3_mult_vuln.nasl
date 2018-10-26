@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_5_0_3_mult_vuln.nasl 9441 2018-04-11 11:37:08Z jschulte $
+# $Id: gb_dolibarr_5_0_3_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Dolibarr 5.0.3 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113154");
-  script_version("$Revision: 9441 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 13:37:08 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -63,7 +63,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-010");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dolibarr:dolibarr";

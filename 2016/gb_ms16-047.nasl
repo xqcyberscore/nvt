@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-047.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms16-047.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Microsoft Windows SAM and LSAD Privilege Elevation Vulnerability (3148527)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807660");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-0128");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 08:09:15 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows SAM and LSAD Privilege Elevation Vulnerability (3148527)");
 
@@ -56,9 +56,7 @@ if(description)
   Microsoft Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-047");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

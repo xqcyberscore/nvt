@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cnpilot_rbn_183.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_cnpilot_rbn_183.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # cnPilot R200/201 RSA Keys Vulnerability
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/o:cambium_networks:cnpilot_series_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140187");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12106 $");
   script_cve_id("CVE-2017-5859");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 17:34:31 +0100 (Tue, 14 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("cnPilot R200/201 RSA Keys Vulnerability");
 
   script_tag(name:"summary", value:"On Cambium Networks cnPilot R200/201 devices before 4.3, there is a vulnerability involving the certificate of the device and its RSA keys, aka RBN-183.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"cnPilot R200/201 devices before 4.3");
 

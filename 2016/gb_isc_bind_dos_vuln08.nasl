@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln08.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_isc_bind_dos_vuln08.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # ISC BIND Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106291");
-  script_version("$Revision: 11569 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 09:42:23 +0700 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"ISC BIND is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A crafted query could crash the BIND name server daemon, leading to a
 denial of service. All server roles (authoritative, recursive and forwarding) in default configurations are

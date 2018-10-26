@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_xg_path_trav_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_sophos_xg_path_trav_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Sophos XG Firewall Path Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sophos:xg';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106903");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-23 10:58:06 +0700 (Fri, 23 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"Sophos XG Firewall is prone to a path traversal vulnerability where a
 low privileged user may download arbitrary files or elevate his privileges.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Crafting a download request and adding a path traversal vector to it, an
 authenticated user, can use this function to download files that are outside the normal scope of the download

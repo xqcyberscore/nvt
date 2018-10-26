@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20170118-cme1.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_cisco_aironet_cisco-sa-20170118-cme1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Mobility Express 2800 and 3800 802.11 Denial of Service Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9220");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Mobility Express 2800 and 3800 802.11 Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-cme1");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Upgrade to version 8.2.141.0 or later.");
 
@@ -57,7 +57,7 @@ due to the connection table being filled with invalid connections.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-02 11:11:21 +0700 (Thu, 02 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

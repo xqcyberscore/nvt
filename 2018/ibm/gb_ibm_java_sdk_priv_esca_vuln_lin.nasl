@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_java_sdk_priv_esca_vuln_lin.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_ibm_java_sdk_priv_esca_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # IBM Java SDK Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:java_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813819");
-  script_version("$Revision: 10979 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1417");
   script_bugtraq_id(103216);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-09 14:03:02 +0530 (Thu, 09 Aug 2018)");
   script_name("IBM Java SDK Remote Privilege Escalation Vulnerability (Linux)");
 
@@ -48,9 +48,7 @@ if(description)
   in the J9 JVM.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to gain elevated privileges on an affected system.
-
-  Impact Level: Application");
+  attacker to gain elevated privileges on an affected system.");
 
   script_tag(name:"affected", value:"IBM SDK, Java Technology Edition 7.1 before
   7.1.4.20 and 8.0 before 8.0.5.10.");

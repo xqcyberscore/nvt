@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_multi_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_hp_ilo_multi_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106182");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 10:47:20 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"HP Integrated Lights-Out is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Potential security vulnerabilities have been identified in HPE
 Integrated Lights Out. The vulnerabilities could lead to multiple remote vulnerabilities.");

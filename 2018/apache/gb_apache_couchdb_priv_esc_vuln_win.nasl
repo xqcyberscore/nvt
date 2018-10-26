@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_priv_esc_vuln_win.nasl 9135 2018-03-19 12:37:31Z asteins $
+# $Id: gb_apache_couchdb_priv_esc_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # CouchDB 2.0.0 Privilege Escalation Vulnerability (Windows)
 #
@@ -34,12 +34,12 @@ if(description)
   script_cve_id("CVE-2016-8742");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 9135 $");
+  script_version("$Revision: 12116 $");
 
   script_name("CouchDB 2.0.0 Privilege Escalation Vulnerability (Windows)");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 09:02:26 +0100 (Tue, 13 Feb 2018)");
 
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with Apache CouchDB and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:'Upgrade to version 2.0.0.1 or later.
 

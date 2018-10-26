@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dos2.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
+# $Id: gb_pdns_dos2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # PowerDNS Recursor DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140594");
-  script_version("$Revision: 11661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-12 09:39:48 +0700 (Tue, 12 Dec 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"summary", value:"PowerDNS Recursor is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An issue has been found in the parsing of authoritative answers in PowerDNS
 Recursor, leading to a NULL pointer dereference when parsing a specially crafted answer containing a CNAME of a

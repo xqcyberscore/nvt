@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_xss3_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ibm_websphere_portal_xss3_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # IBM WebSphere Portal Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106227");
-  script_version("$Revision: 11473 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 15:24:46 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -67,7 +67,7 @@ authentication credentials.");
 
   script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970176");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

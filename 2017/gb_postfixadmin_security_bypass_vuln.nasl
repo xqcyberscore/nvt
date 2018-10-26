@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postfixadmin_security_bypass_vuln.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_postfixadmin_security_bypass_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Postfix Admin Security Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:postfix_admin_project:postfix_admin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106680");
-  script_version("$Revision: 11923 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-21 14:09:13 +0700 (Tue, 21 Mar 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Postfix Admin is prone to a security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The AliasHandler component allows remote authenticated domain admins to
 delete protected aliases via the delete parameter to delete.php, involving a missing permission check.");

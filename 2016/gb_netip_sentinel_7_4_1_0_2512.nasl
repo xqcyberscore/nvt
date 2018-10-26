@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netip_sentinel_7_4_1_0_2512.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_netip_sentinel_7_4_1_0_2512.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Multiple Security issues with NetIQ Sentinel
 #
@@ -29,40 +29,43 @@ CPE = "cpe:/a:netiq:sentinel";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105619");
- script_cve_id("CVE-2015-0851","CVE-2014-3576");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P"); 
- script_version ("$Revision: 5712 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105619");
+  script_cve_id("CVE-2015-0851", "CVE-2014-3576");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 12083 $");
 
- script_name("Multiple Security issues with NetIQ Sentinel");
+  script_name("Multiple Security issues with NetIQ Sentinel");
 
- script_xref(name:"URL", value:"https://www.netiq.com/documentation/sentinel-74/s741_release_notes/data/s741_release_notes.html");
+  script_xref(name:"URL", value:"https://www.netiq.com/documentation/sentinel-74/s741_release_notes/data/s741_release_notes.html");
 
- script_tag(name: "vuldetect" , value:"Check the version/Revision.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version/revision is present on the target host.");
 
- script_tag(name: "insight" , value:"The following security vulnerabilities are resolved with Sentinel 7.4.1:
-- Sentinel 7.4.1 includes Java 8 update 65, which includes fixes for several security vulnerabilities.
-- Denial of Service
-- Java Deserialization");
+  script_tag(name:"insight", value:"The following security vulnerabilities are resolved with Sentinel 7.4.1:
 
- script_tag(name:  "solution" , value:"Update to NetIQ Sentinel 7.4 SP1 (Sentinel 7.4.1.0) Build 2512 or higher");
+  - Sentinel 7.4.1 includes Java 8 update 65, which includes fixes for several security vulnerabilities.
 
- script_tag(name: "summary" , value:"Sentinel 7.4.1 resolves multiple security vulnerabilities");
- script_tag(name: "affected" , value:"NetIQ Sentinel < 7.4 SP1 (Sentinel 7.4.1.0) Build 2512");
+  - Denial of Service
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  - Java Deserialization");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-04-21 17:08:06 +0200 (Thu, 21 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_netiq_sentinel_detect.nasl");
- script_mandatory_keys("netiq_sentinel/version","netiq_sentinel/rev");
+  script_tag(name:"solution", value:"Update to NetIQ Sentinel 7.4 SP1 (Sentinel 7.4.1.0) Build 2512 or higher");
 
- exit(0);
+  script_tag(name:"summary", value:"Sentinel 7.4.1 resolves multiple security vulnerabilities");
+  script_tag(name:"affected", value:"NetIQ Sentinel < 7.4 SP1 (Sentinel 7.4.1.0) Build 2512");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-21 17:08:06 +0200 (Thu, 21 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_netiq_sentinel_detect.nasl");
+  script_mandatory_keys("netiq_sentinel/version", "netiq_sentinel/rev");
+
+  exit(0);
 }
 
 include("host_details.inc");

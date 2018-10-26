@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_informix_dynamic_server_priv_esc_vuln.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ibm_informix_dynamic_server_priv_esc_vuln.nasl 12088 2018-10-25 10:57:43Z cfischer $
 #
 # IBM Informix Dynamic Server Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:informix_dynamic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808639");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12088 $");
   script_cve_id("CVE-2016-0226");
   script_bugtraq_id(85198);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:57:43 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 13:44:37 +0530 (Mon, 08 Aug 2016)");
   script_name("IBM Informix Dynamic Server Privilege Escalation Vulnerability (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"IBM Informix Dynamic Server 11.70.xCn
   on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,7 +69,6 @@ if(description)
   script_mandatory_keys("IBM/Informix/Dynamic/Server/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

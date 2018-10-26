@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_mitm_vuln_lin.nasl 11502 2018-09-20 12:22:26Z asteins $
+# $Id: gb_apache_activemq_mitm_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Active MQ 5.0.0 - 5.15.5 Missing TLS Hostname Verification (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112386");
-  script_version("$Revision: 11502 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:22:26 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 14:15:00 +0200 (Thu, 20 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ This is now enabled by default.");
 
   script_xref(name:"URL", value:"http://activemq.apache.org/security-advisories.data/CVE-2018-11775-announcement.txt");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_struts_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_atlassian_bamboo_struts_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atlassian Bamboo Struts2 RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106652");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:39:14 +0700 (Wed, 15 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Atlassian Bamboo is prone to a remote code execution vulnerability in
 Struts2.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Bamboo uses a version of Struts 2 that is vulnerable to CVE-2017-5638.
 Attackers can use this vulnerability to execute Java code of their choice on the system.");

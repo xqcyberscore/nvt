@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_priv_esc_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_plone_priv_esc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Plone CMS Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:plone:plone";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106621");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-27 14:16:45 +0700 (Mon, 27 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Plone CMS is prone to a privilege escalation vulnerability in WebDAV
 requests.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Plone does not have security declarations for Dexterity content-related
 WebDAV requests, which allows remote attackers to gain webdav access via unspecified vectors.");

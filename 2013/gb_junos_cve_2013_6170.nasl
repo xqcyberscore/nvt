@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6170.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_junos_cve_2013_6170.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos PIM Join Flooding Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103949");
-  script_version("$Revision: 11056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 12:53:03 +0700 (Mon, 28 Oct 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A large number of crafted PIM join messages can crash the RPD
 routing daemon.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Receipt of a large number of crafted IPv4 or IPv6 PIM join
 messages in a Next-Generation Multicast VPN (NGEN MVPN) environment can trigger the RPD routing daemon

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyfaq_mult_vuln_sep18.nasl 11318 2018-09-11 09:01:14Z jschulte $
+# $Id: gb_phpmyfaq_mult_vuln_sep18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # phpmyFAQ <= 2.9.10 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113266");
-  script_version("$Revision: 11318 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 11:01:14 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 10:48:56 +0200 (Tue, 11 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.phpmyfaq.de/security/advisory-2018-09-02");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:phpmyfaq:phpmyfaq";

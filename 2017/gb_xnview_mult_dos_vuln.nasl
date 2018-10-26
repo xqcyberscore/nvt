@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_dos_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_xnview_mult_dos_vuln.nasl 12108 2018-10-26 06:41:17Z asteins $
 #
 # XnView Multiple DoS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811951");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12108 $");
   script_cve_id("CVE-2017-15787", "CVE-2017-15788", "CVE-2017-15786", "CVE-2017-15785",
 		"CVE-2017-15784", "CVE-2017-15783", "CVE-2017-15782", "CVE-2017-15780",
 		"CVE-2017-15781", "CVE-2017-15779", "CVE-2017-15778", "CVE-2017-15777",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2017-15789");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:41:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 12:35:33 +0530 (Wed, 25 Oct 2017)");
 
   script_name("XnView Multiple DoS Vulnerabilities");
@@ -61,10 +61,11 @@ if(description)
 
   script_tag(name:"affected", value:"XnView Version 2.43");
 
-  script_tag(name:"solution", value:"No known solution is available as of 10th October, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories");
   script_category(ACT_GATHER_INFO);
@@ -82,7 +83,7 @@ if(!xnVer = get_app_version(cpe:CPE))
   exit(0);
 
 if(version_is_equal(version:xnVer, test_version:"2.43")) {
-  report = report_fixed_ver(installed_version:xnVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:xnVer, fixed_version:"WillNotFix");
   security_message(data:report);
   exit(0);
 }

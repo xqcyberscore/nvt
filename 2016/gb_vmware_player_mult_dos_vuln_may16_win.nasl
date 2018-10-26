@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # VMware Player Multiple Vulnerabilities May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806757");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044");
   script_bugtraq_id(72338, 72337, 72336);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Player Multiple Vulnerabilities May16 (Windows)");
@@ -59,7 +59,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Player version
-  6.0.5 or later, For updates refer to http://www.vmware.com");
+  6.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

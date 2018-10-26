@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASR 1000 Series Root Shell License Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-6383");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco ASR 1000 Series Root Shell License Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151130-asa");
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by authenticating to the affected device and crafting specific file names for use when loading packages. An exploit could allow the authenticated attacker to bypass the license required for root shell access. If the authenticated user obtains the root shell access, further compromise is possible.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to lack of proper input validation of file names at the command-line interface (CLI).");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 14:48:03 +0100 (Tue, 01 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

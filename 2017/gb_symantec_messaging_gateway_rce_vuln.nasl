@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_rce_vuln.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Symantec Messaging Gateway Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106862");
-  script_version("$Revision: 11499 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 10:11:59 +0700 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -70,7 +70,7 @@ remote code execution on the web server that runs the affected web application. 
 whereby an individual may obtain the ability to execute commands remotely on a target machine or in a target
 process. (CVE-2017-6326)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Symantec Messaging Gateway version 10.6.3 and prior.");
 

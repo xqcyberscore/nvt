@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Unisys ClearPath MCP Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2017-5872");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Unisys ClearPath MCP Denial of Service Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.unisys.com");
   script_xref(name:"URL", value:"https://public.support.unisys.com/common/public/vulnerability/NVD_Detail_Rpt.aspx?ID=42");
   script_tag(name:"impact", value:"Attackers can exploit this issue to cause a denial-of-service condition.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
   script_tag(name:"summary", value:"Unisys ClearPath MCP is prone to a denial-of-service vulnerability.");
   script_tag(name:"affected", value:"ClearPath MCP system running 57.1 (before 57.152) or 58.1 (before 58.142) Networking and at least one service offering secured connections via SSL/TLS.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # and at least one service offering secured connections via SSL/TLS.
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 18:08:09 +0100 (Tue, 14 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

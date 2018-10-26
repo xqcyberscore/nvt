@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpipam_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_phpipam_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # phpIPAM < 1.2 Multiple XSS Vulnerabilities
 #
@@ -31,9 +31,9 @@ CPE = "cpe:/a:phpipam:phpipam";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108433");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2015-6529");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 13:46:59 +0100 (Fri, 16 Mar 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"summary", value:"phpIPAM is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerabilities exist due to insufficient filtration of user-supplied
   data passed via the (1) section parameter to site/error.php or (2) ip parameter to site/tools/searchResults.php.");
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"phpIPAM 1.1.010 and prior.");
 
-  script_tag(name:"solution", value:"Update to phpIPAM 1.2 or later, see http://phpipam.net for more information.");
+  script_tag(name:"solution", value:"Update to phpIPAM 1.2 or later.");
 
   script_xref(name:"URL", value:"https://phpipam.net/documents/changelog/");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/133055/phpipam-1.1.010-Cross-Site-Scripting.html");
@@ -65,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://phpipam.net");
   exit(0);
 }
 

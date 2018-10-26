@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1737.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -33,32 +33,35 @@ if (description)
   script_cve_id("CVE-2016-9269", "CVE-2016-9314", "CVE-2016-9315", "CVE-2016-9316");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 12083 $");
 
   script_name("Trend Micro InterScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1116672#");
 
-  script_tag(name:"vuldetect", value:"Check the version/build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version/build is present on the target host.");
 
   script_tag(name:"insight", value:"This update resolves multiple vulnerabilities in Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5 in which a remote attacker could potentially attain code execution.
 
 These include:
 
 Remote Command Execution (RCE)
+
 Privilege Escalation
+
 Stored Cross Site Scripting (XSS) vulnerabilities");
 
   script_tag(name:"solution", value:"Update to version 6.5 CP 1737 or newer.");
 
-  script_tag(name:"summary", value:"Trend Micro has released a new build of Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5.  This build resolves vulnerabilities in the product that could potentially allow a remote attacker to execute artibtrary code on vulnerable installations.");
+  script_tag(name:"summary", value:"Trend Micro has released a new build of Trend Micro InterScan Web Security Virtual Appliance (IWSVA) 6.5.
+  This build resolves vulnerabilities in the product that could potentially allow a remote attacker to execute artibtrary code on vulnerable installations.");
 
   script_tag(name:"affected", value:"Version 6.5");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 14:19:46 +0100 (Thu, 16 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -84,4 +87,3 @@ if( vers == "6.5" && int( build ) < 1737 )
 }
 
 exit( 99 );
-

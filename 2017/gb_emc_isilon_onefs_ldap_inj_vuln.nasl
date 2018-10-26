@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_ldap_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_emc_isilon_onefs_ldap_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon OneFS LDAP Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106578");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-08 14:38:14 +0700 (Wed, 08 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Isilon OneFS is affected by an LDAP injection vulnerability that could
 potentially be exploited by a malicious user to compromise the system.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A malicious high-privileged local user may leverage the LDAP injection
 vulnerability by injecting an asterisk into a username in LDAP searches, which may enable the attacker to

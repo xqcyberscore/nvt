@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_sql_inj_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_redaxscript_sql_inj_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Redaxscript SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:redaxscript:redaxscript';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105954");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12083 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,8 +55,8 @@ if (description)
 
   script_tag(name:"summary", value:"Redaxscript is prone to a SQL injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version or if no version detected try to perform
-an SQL injection.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host. If no version was detected a try to perform
+  an SQL injection is done.");
 
   script_tag(name:"insight", value:"The search_post function in includes/search.php is prone to
 an SQL injection vulnerability in the search_terms parameter.");

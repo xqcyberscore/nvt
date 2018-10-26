@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_46646.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_moodle_46646.nasl 12104 2018-10-25 16:22:27Z asteins $
 #
 # Moodle Prior to 1.9.11/2.0.2 Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103103");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12104 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 18:22:27 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-03 13:33:12 +0100 (Thu, 03 Mar 2011)");
   script_bugtraq_id(46646);
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,22 +52,22 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Moodle/Version");
+  script_mandatory_keys("moodle/detected");
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities, including:
 
-1. Multiple cross-site scripting issues
+  1. Multiple cross-site scripting issues
 
-2. Multiple information-disclosure issues
+  2. Multiple information-disclosure issues
 
-3. An HTML-injection issue
+  3. An HTML-injection issue
 
-4. An insecure permissions issue");
+  4. An insecure permissions issue");
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
-restrictions, obtain sensitive information, perform unauthorized
-actions, and compromise the application. Other attacks may also
-be possible.");
+  restrictions, obtain sensitive information, perform unauthorized
+  actions, and compromise the application. Other attacks may also
+  be possible.");
 
   script_tag(name:"affected", value:"These issues affect versions prior to Moodle 1.9.11 and 2.0.2.");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,21 +75,24 @@ be possible.");
   exit(0);
 }
 
-include("http_func.inc");
+CPE = "cpe:/a:moodle:moodle";
 
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if (!can_host_php(port:port)) exit(0);
+if(!port = get_app_port(cpe:CPE)) exit(0);
+if(!vers = get_app_version(cpe:CPE, port:port)) exit(0);
 
-if(vers = get_version_from_kb(port:port,app:"moodle")) {
-
-  if(version_in_range(version: vers, test_version: "2",test_version2:"2.0.1") ||
-     version_in_range(version: vers, test_version: "1.9",test_version2:"1.9.10")) {
-      security_message(port:port);
-      exit(0);
-  }
-
+if(version_in_range(version: vers, test_version: "2",test_version2:"2.0.1")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"2.0.2");
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit(0);
+if(version_in_range(version: vers, test_version: "1.9",test_version2:"1.9.10")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.9.11");
+  security_message(port:port, data:report);
+  exit(0);
+}
+
+exit(99);

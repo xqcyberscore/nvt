@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpm_multi_sql_inj_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_wpm_multi_sql_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # SolarWinds Web Performance Monitor Multiple SQL Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:solarwinds:web_performance_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105973");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 14:12:05 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"SolarWinds Web Performance Monitor is prone to multiple
   SQL Injection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"On both the GetAccounts and GetAccountGroups endpoints, the
   'sort' and 'dir' parameters are susceptible to boolean-/time-based, and stacked injections. The attacker

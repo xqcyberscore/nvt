@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808065");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2015-3152");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-02 18:10:39 +0530 (Thu, 02 Jun 2016)");
   script_name("MariaDB Man-in-the-Middle Attack Vulnerability - Jun16 (Windows)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -62,11 +62,12 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version MariaDB 5.5.44 or
-  later. For updates refer to http://www.oracle.com");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.oracle.com");
   exit(0);
 }
 

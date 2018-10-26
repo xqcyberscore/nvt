@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_matrixssl_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MatrixSSL 3.7.2 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113090");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:37:48 +0100 (Wed, 24 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.ieee-security.org/TC/SP2017/papers/231.pdf");
   script_xref(name:"URL", value:"https://github.com/matrixssl/matrixssl/blob/master/doc/CHANGES.md");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:peersec_networks:matrixssl";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -72,7 +72,7 @@ module/admin_group/add_modify_group.php (for insert_group and update_group). (CV
 
   - Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985, CVE-2017-15188)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Eyes Of Network (EON) versions 5.1 and below are vulnerable.");
   script_tag(name:"solution", value:"Upgrade to the latest version.");

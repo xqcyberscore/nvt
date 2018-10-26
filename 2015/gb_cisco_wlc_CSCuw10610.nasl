@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCuw10610.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_wlc_CSCuw10610.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Wireless LAN Controller Client Disconnection Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-6341");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 14:29:20 +0200 (Wed, 21 Oct 2015)");
   script_name("Cisco Wireless LAN Controller Client Disconnection Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability in the Web Management GUI of the Cisco Wireless LAN Controller (WLC) could allow an unauthenticated, remote attacker to trigger client disconnection.");
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by connecting to the IP address of the Cisco WLC and triggering client disconnections. The attacker must reach the Cisco WLC management IP address on port 80 or port 443 via its wired interface.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a lack of access control to the Cisco WLC Web Management GUI.");
   script_tag(name:"solution", value:"See vendor advisory for a solution");
   script_tag(name:"affected", value:"Cisco WLC Software versions 7.4(140.0) and 8.0(120.0) are vulnerable.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quagga_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_quagga_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Quagga DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:quagga:quagga";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140461");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-01 12:34:31 +0700 (Wed, 01 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Quagga is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The aspath_put function in bgpd/bgp_aspath.c in Quagga allows remote
 attackers to cause a denial of service (session drop) via BGP UPDATE messages, because AS_PATH size calculation

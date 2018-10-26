@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170405-iosxe.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170405-iosxe.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco IOS XE Software Startup Script Local Command Execution Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-6606");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco IOS XE Software Startup Script Local Command Execution Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-iosxe");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -55,7 +55,7 @@ needed to exploit the vulnerability. An attacker would need console access to ex
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 10:44:47 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

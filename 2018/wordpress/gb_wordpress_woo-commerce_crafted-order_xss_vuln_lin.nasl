@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_lin.nasl 11156 2018-08-29 09:25:17Z asteins $
+# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812810");
-  script_version("$Revision: 11156 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2015-2329");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 16:53:22 +0530 (Tue, 20 Feb 2018)");
   script_name("WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Linux)");
 
@@ -49,15 +49,12 @@ if (description)
   error in the order parameter of the order page.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow an
-  attackers to inject arbitrary web script or HTML via a crafted order.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via a crafted order.");
 
   script_tag(name:"affected", value:"WooCommerce plugin for Wordpress versions
   prior to 2.3.6 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.3.6 or later.
-  For updates refer to https://woocommerce.com");
+  script_tag(name:"solution", value:"Upgrade to version 2.3.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -69,6 +66,7 @@ if (description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_unixoide");
 
+  script_xref(name:"URL", value:"https://woocommerce.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # JetBrains Remote Code Execution and Local File Disclosure Vulnerability (Active Check)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:jetbrains:jetbrains";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107231");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12083 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-25 10:25:40 +0530 (Fri, 25 Aug 2017)");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -40,7 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with Jetbrains and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Check the version. If the IDE is Pycharm, send a crafted request via HTTP Get and POST and check The response.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host. If the IDE is Pycharm, send a crafted request via HTTP GET and POST and check the response.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to Over-permissive CORS settings that allows attackers
   to use a malicious website in order to access various internal API endpoints, gain access to data saved by the IDE, and gather various meta-information like IDE version or open a project. ");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"JetBrains releases 2016.1 and before.");
 
-  script_tag(name:"solution", value:"Patch is available.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

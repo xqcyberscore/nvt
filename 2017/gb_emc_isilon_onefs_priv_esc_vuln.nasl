@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon OneFS Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106554");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 11:01:49 +0700 (Thu, 02 Feb 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Isilon OneFS is affected by a privilege escalation vulnerability that
 could potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A malicious user who has both ISI_PRIV_LOGIN_PAPI and ISI_PRIV_SYS_SUPPORT
 privileges could potentially exploit this vulnerability to gain root-level privileges.");

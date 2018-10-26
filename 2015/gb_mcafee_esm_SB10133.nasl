@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10133.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_mcafee_esm_SB10133.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # McAfee Enterprise Security Manager OS Command Injection Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:mcafee:enterprise_security_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105478");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
@@ -38,7 +38,7 @@ if (description)
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10133");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This flaw is encountered if any authenticated user downloads a file with a specially crafted filename from the ESM.");
   script_tag(name:"solution", value:"Update to SIEM 9.3.2MR18, 9.4.2_MR8, 9.5.0MR7, or 9.5.1");
   script_tag(name:"summary", value:"SIEM Enterprise Security Manager (ESM) includes a function to upload and download files for use within the ESM. A carefully crafted filename, when downloaded, can cause command execution in the context of the ESM web server. The attack vector requires valid authentication to the ESM to execute.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-04 13:38:09 +0100 (Fri, 04 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

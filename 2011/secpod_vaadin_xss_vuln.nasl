@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vaadin_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_vaadin_xss_vuln.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Vaadin URI Parameter Cross Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902330");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which is
   prone to a Cross-Site Scripting vulnerability.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Input passed to the 'URL' parameter in 'index.php', is not properly
   sanitised before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to

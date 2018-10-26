@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_access_bypass_vuln_win.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_mariadb_access_bypass_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MariaDB Access Bypass Vulnerability (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112199");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-15365");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 09:22:39 +0100 (Tue, 30 Jan 2018)");
   script_name("MariaDB Access Bypass Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is running MariaDB and is
   prone to an access bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"sql/event_data_objects.cc in MariaDB allows remote authenticated users with SQL access
 to bypass intended access restrictions and replicate data definition language (DDL) statements to cluster nodes by leveraging incorrect ordering of DDL replication and ACL checking.");
@@ -51,7 +50,7 @@ to perform database modification on certain cluster nodes without having privile
 
   script_tag(name:"affected", value:"MariaDB before 10.1.30 and 10.2.x before 10.2.10.");
 
-  script_tag(name:"solution", value:"Update to MariaDB 10.1.30, 10.2.10 or later. For details refer to https://mariadb.org");
+  script_tag(name:"solution", value:"Update to MariaDB 10.1.30, 10.2.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ to perform database modification on certain cluster nodes without having privile
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_mandatory_keys("MariaDB/installed", "Host/runs_windows");
   script_require_ports("Services/mysql", 3306);
+  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 

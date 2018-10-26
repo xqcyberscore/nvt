@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikiwiki_mult_vuln.nasl 9520 2018-04-18 11:58:20Z jschulte $
+# $Id: gb_ikiwiki_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # IkiWiki Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113159");
-  script_version("$Revision: 9520 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 13:58:20 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 13:10:35 +0200 (Wed, 18 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://ikiwiki.info/security/#cve-2016-9645");
   script_xref(name:"URL", value:"https://ikiwiki.info/security/#cve-2016-9646");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ikiwiki:ikiwiki";

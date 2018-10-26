@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_mult_vuln_aug18.nasl 11165 2018-08-30 09:47:45Z ckuersteiner $
+# $Id: gb_apache_traffic_server_mult_vuln_aug18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Traffic Server (ATS) Multiple Vulnerabilities (Aug18)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:traffic_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141411");
-  script_version("$Revision: 11165 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 11:47:45 +0200 (Thu, 30 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-30 11:03:19 +0700 (Thu, 30 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,15 +54,15 @@ if (description)
 
   script_tag(name:"insight", value:"Apache Traffic Server (ATS) is prone to multiple vulnerabilities:
 
-- Adding method ACLs in remap.config can cause a segfault when the user makes a carefully crafted request.
+  - Adding method ACLs in remap.config can cause a segfault when the user makes a carefully crafted request.
 (CVE-2018-1318)
 
-- Multiple HTTP smuggling and cache poisoning issues when clients making malicious requests. (CVE-2018-8004)
+  - Multiple HTTP smuggling and cache poisoning issues when clients making malicious requests. (CVE-2018-8004)
 
-- When there are multiple ranges in a range request, Apache Traffic Server (ATS) will read the entire object from
+  - When there are multiple ranges in a range request, Apache Traffic Server (ATS) will read the entire object from
 cache. This can cause performance problems with large objects in cache. (CVE-2018-8005)
 
-- Pages that are rendered using the ESI plugin can have access to the cookie header when the plugin is configured
+  - Pages that are rendered using the ESI plugin can have access to the cookie header when the plugin is configured
 not to allow access. (CVE-2018-8040)");
 
   script_tag(name:"affected", value:"Apache Traffic Server versions 6.0.0 to 6.2.2 and 7.0.0 to 7.1.3.");
@@ -76,7 +76,7 @@ not to allow access. (CVE-2018-8040)");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q3/198");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q3/196");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

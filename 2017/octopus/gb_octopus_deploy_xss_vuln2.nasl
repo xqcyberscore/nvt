@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_xss_vuln2.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_octopus_deploy_xss_vuln2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Octopus Deploy XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:octopus:deploy";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140519");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 14:00:04 +0700 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerability in the All Variables tab in Octopus
 Deploy allows remote attackers to inject arbitrary web script or HTML via the Variable Set Name parameter.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Octopus Deploy version 3.4.0 until 3.13.6.");
 

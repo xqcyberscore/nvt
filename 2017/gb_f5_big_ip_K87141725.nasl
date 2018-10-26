@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K87141725.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_f5_big_ip_K87141725.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2017-0302
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-0302");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - TMM vulnerability CVE-2017-0302");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K87141725");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -53,7 +53,7 @@ system may be able to cause a traffic disruption if the length of the requested 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
 
   script_category(ACT_GATHER_INFO);

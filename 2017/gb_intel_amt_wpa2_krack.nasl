@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_wpa2_krack.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_intel_amt_wpa2_krack.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Intel Active Management Technology WPA2 Key Reinstallation Vulnerabilities - KRACK
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:intel:active_management_technology";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107191");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 13:48:56 +0700 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"WPA2 as used in Intel Active Management Technology is prone to multiple security weaknesses aka Key Reinstallation Attacks (KRACK)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Intel AMT firmware versions 2.5.x, 2.6, 4.x, 6.x, 7.x, 8.x, 9.x, 10.x, and 11.0-11.8.");
 

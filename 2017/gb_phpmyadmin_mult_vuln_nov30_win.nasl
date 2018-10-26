@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_nov30_win.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_phpmyadmin_mult_vuln_nov30_win.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # phpMyAdmin Multiple Vulnerabilities - 30-Nov-14 (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112001");
-  script_version("$Revision: 11935 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 15:45:02 +0200 (Fri, 18 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"summary", value:"phpMyAdmin is prone to multiple cross-site scripting (XSS)
       and directory traversal vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"phpMyAdmin 4.0.x before 4.0.10.6, 4.1.x before 4.1.14.7 and 4.2.x before 4.2.12");
 

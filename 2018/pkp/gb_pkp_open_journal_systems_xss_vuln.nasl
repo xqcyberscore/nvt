@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pkp_open_journal_systems_xss_vuln.nasl 10932 2018-08-13 02:58:36Z ckuersteiner $
+# $Id: gb_pkp_open_journal_systems_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PKP Open Journal Systems 3.X XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107322");
-  script_version("$Revision: 10932 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 04:58:36 +0200 (Mon, 13 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 10:29:01 +0200 (Thu, 14 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,11 +57,10 @@ if( description )
   script_tag(name:"affected", value:"Open Journal Systems version before 3.1.1-2.");
   script_tag(name:"solution", value:"Upgrade to Open Journal Systems version 3.1.1-2 or later.");
 
-  script_xref(name:"URL", value:"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12229");
   script_xref(name:"URL", value:"https://metamorfosec.com/Files/Advisories/METS-2018-001_A%20XSS%20Vulnerability%20in%20OJS%203.X.txt");
   script_xref(name:"URL", value:"https://github.com/pkp/pkp-lib/issues/3785");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:pkp:open_journal_systems";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K51351360.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_f5_big_ip_K51351360.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2016-9253
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9253");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - TMM vulnerability CVE-2016-9253");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K51351360");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"Specific websocket traffic patterns may cause a disruption of service for virtual servers configured to use the websocket profile. (CVE-2016-9253)");
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
 
   script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
   script_category(ACT_GATHER_INFO);

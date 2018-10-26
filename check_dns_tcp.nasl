@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: check_dns_tcp.nasl 11031 2018-08-17 09:42:45Z cfischer $
+# $Id: check_dns_tcp.nasl 12094 2018-10-25 11:49:02Z cfischer $
 #
 # DNS Server on UDP and TCP
 #
@@ -30,47 +30,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18356");
-  script_version("$Revision: 11031 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12094 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 13:49:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"3.3");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
   script_name("DNS Server on UDP and TCP");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Service detection");
-  script_dependencies('external_svc_ident.nasl', 'dns_server.nasl');
+  script_dependencies("external_svc_ident.nasl", "dns_server.nasl");
   script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("DNS/identified");
 
   script_tag(name:"summary", value:"A DNS server is running on this port but
-  it only answers to UDP requests.
-  This means that TCP requests are blocked by a firewall.
+  it only answers to UDP requests. This means that TCP requests are blocked by a firewall.
 
-  This configuration is incorrect: TCP might be used by any
-  request, it is not restricted to zone transfers.
-  Read RFC1035 or STD0013 for more information.");
+  This configuration is incorrect: TCP might be used by any request, it is not restricted
+  to zone transfers. Read RFC1035 or STD0013 for more information.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
-include('misc_func.inc');
+include("misc_func.inc");
 
-port = get_kb_item( 'Services/udp/domain' );
-if( ! port ) exit( 0 );
-if( ! get_udp_port_state( port ) ) exit( 0 ); # Only on TCP?
+port = get_kb_item( "Services/udp/domain" );
+if( ! port )
+  exit( 0 );
 
-if( verify_service( port:port, ipproto:'tcp', proto:'domain' ) ) exit( 0 );
+if( ! get_udp_port_state( port ) )
+  exit( 0 ); # Only on TCP?
+
+if( verify_service( port:port, ipproto:"tcp", proto:"domain" ) )
+  exit( 0 );
+
 soc = open_sock_tcp( port );
 if( ! soc ) {
-  security_message( port:port );
+  log_message( port:port );
   exit( 0 );
 } else {
   close( soc );
   if( get_port_state( port ) )
-    register_service( port:port, proto:'domain');
+    register_service( port:port, proto:"domain");
 }
 
-exit( 99 );
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2017-009.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_asterisk_AST-2017-009.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Asterisk pjproject Header DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140493");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 10:24:49 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"Asterisk is prone to a buffer overflow vulnerability which leads to a
 denial of service.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"By carefully crafting invalid values in the Cseq and the Via header port,
 pjproject's packet parsing code can create strings larger than the buffer allocated to hold them. This will

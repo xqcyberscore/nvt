@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CCTX201149.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_citrix_netscaler_CCTX201149.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Citrix NetScaler Arbitrary Command Injection (CTX201149)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-5080");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Citrix NetScaler Arbitrary Command Injection (CTX201149)");
 
@@ -42,7 +42,7 @@ if (description)
   script_tag(name:"impact", value:"A vulnerability has been identified in Citrix NetScaler Application Delivery Controller (ADC) and Citrix NetScaler Gateway Management Interface that could
 allow an authenticated malicious user to execute shell commands on the appliance.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to
 Citrix NetScaler ADC and NetScaler Gateway 10.5 Build 56.15 or later.
@@ -59,7 +59,7 @@ Version 10.1 earlier than 10.1.132.8");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-01 13:34:32 +0200 (Wed, 01 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

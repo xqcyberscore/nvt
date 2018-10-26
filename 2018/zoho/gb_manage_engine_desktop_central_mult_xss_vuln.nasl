@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_mult_xss_vuln.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
+# $Id: gb_manage_engine_desktop_central_mult_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ZOHO ManageEngine Desktop Central Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,35 +30,32 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812576");
-  script_version("$Revision: 9430 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-8722");
   script_bugtraq_id(103426);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 10:15:02 +0530 (Wed, 21 Mar 2018)");
   script_name("ZOHO ManageEngine Desktop Central Multiple Cross Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with ManageEngine
+  script_tag(name:"summary", value:"This host is installed with ManageEngine
   Desktop Central and is prone to multiple cross site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw allows to inject client-side script
+  script_tag(name:"insight", value:"The flaw allows to inject client-side script
   into Desktop Centrals web page.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary script code in the browser of an unsuspecting user in
   the context of the affected site. This may allow the attacker to steal
-  cookie-based authentication credentials and to launch other attacks.
+  cookie-based authentication credentials and to launch other attacks.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Zoho ManageEngine Desktop Central version 9.1.0 build 91099");
 
-  script_tag(name: "affected" , value:"Zoho ManageEngine Desktop Central version 9.1.0 build 91099");
-
-  script_tag(name: "solution" , value:"Upgrade to ManageEngine Desktop Central build
-  version 92026 or later. For updates refer to https://www.manageengine.com");
+  script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central build
+  version 92026 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

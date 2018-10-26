@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_securetransport_49355.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: sw_securetransport_49355.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Tumbleweed SecureTransport Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:tumbleweed:securetransport_server_app';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111020");
-  script_version("$Revision: 11257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 08:00:00 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"Tumbleweed SecureTransport is prone to a directory-traversal vulnerability
   because it fails to sufficiently sanitize user-supplied input data.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Exploiting the issue may allow an attacker to obtain sensitive information
   that could aid in further attacks.");
   script_tag(name:"affected", value:"SecureTransport 4.8.x prior to 4.8.2 Patch 12 are vulnerable.");

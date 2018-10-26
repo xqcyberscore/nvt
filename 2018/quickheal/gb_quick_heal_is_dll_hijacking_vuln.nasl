@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_is_dll_hijacking_vuln.nasl 11771 2018-10-08 05:52:02Z asteins $
+# $Id: gb_quick_heal_is_dll_hijacking_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Quick Heal Internet Security DLL Hijacking Vulnerability
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:quick_heal:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813593");
-  script_version("$Revision: 11771 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-8090");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 16:39:04 +0530 (Thu, 02 Aug 2018)");
   script_name("Quick Heal Internet Security DLL Hijacking Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Quick Heal
+  script_tag(name:"summary", value:"This host is installed with Quick Heal
   Internet Security and is prone to DLL hijacking vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an insufficient
+  script_tag(name:"insight", value:"The flaw exists due to an insufficient
   validation on library loading.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to load insecure library, hijack DLL and execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to load insecure library, hijack DLL and execute arbitrary code.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Quick Heal Internet Security version 10.0.0.37");
 
-  script_tag(name: "affected" , value:"Quick Heal Internet Security version 10.0.0.37");
-
-  script_tag(name: "solution" , value:"No known solution is available as of 02nd
+  script_tag(name:"solution", value:"No known solution is available as of 02nd
   August, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://github.com/kernelm0de/CVE-2018-8090");
-  script_xref(name : "URL" , value : "http://www.quickheal.com/quick-heal-antivirus-updates-download");
+  script_xref(name:"URL", value:"https://github.com/kernelm0de/CVE-2018-8090");
+  script_xref(name:"URL", value:"http://www.quickheal.com/quick-heal-antivirus-updates-download");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

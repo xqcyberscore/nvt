@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_75703.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_wsa_75703.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco AsyncOS for Web Security Appliance Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4236");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco AsyncOS for Web Security Appliance Denial of Service Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause an affected device to become unresponsive,
 resulting in a denial-of-service condition.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper handling of packets sent at high rate to an affected system that is configured for clustering.
 An unauthenticated, remote attacker could exploit this vulnerability by sending packets to the target system at a high rate. An exploit could allow the attacker to cause
@@ -57,7 +57,7 @@ the affected system to become unresponsive on the clustering and SSH configured 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 11:09:10 +0200 (Tue, 01 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_info_disc_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_ibm_domino_info_disc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IBM Domino TLS Server Diffie-Hellman Key Validation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106873");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-15 11:51:23 +0700 (Thu, 15 Jun 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,7 +56,7 @@ if (description)
 validation could potentially be exploited in a small subgroup attack which could result in a less secure
 connection. An attacker may be able to exploit this vulnerability to obtain user authentication credentials.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"IBM Domino 8.5.1, 8.5.2, 8.5.3, 9.0 and 9.0.1.");
 

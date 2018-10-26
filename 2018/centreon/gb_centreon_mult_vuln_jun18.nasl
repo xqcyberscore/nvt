@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_jun18.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_centreon_mult_vuln_jun18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Centreon Web <= 2.8.23 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113217");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 10:30:30 +0200 (Wed, 27 Jun 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,7 +68,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://documentation.centreon.com/docs/centreon/en/latest/release_notes/centreon-2.8/centreon-2.8.24.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:centreon:centreon";

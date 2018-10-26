@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_win.nasl 9813 2018-05-14 05:19:41Z ckuersteiner $
+# $Id: gb_imagemagick_dos_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ImageMagick 7.0.7.22 DoS Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113112");
-  script_version("$Revision: 9813 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:19:41 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 12:44:44 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -57,7 +57,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/issues/967");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:imagemagick:imagemagick";

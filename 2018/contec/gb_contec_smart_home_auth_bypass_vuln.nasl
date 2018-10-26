@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
+# $Id: gb_contec_smart_home_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Contec Smart Home Authentication Bypass Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:contec:smart_home";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140937");
-  script_version("$Revision: 9917 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-03 14:47:22 +0700 (Tue, 03 Apr 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-03 14:47:22 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-9162");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Contec Smart Home Authentication Bypass Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_contec_smart_home_detect.nasl");
   script_mandatory_keys("contec_smart_home/detected");
 
-  script_tag(name: "summary", value: "Contec Smart Home 4.15 devices do not require authentication for
+  script_tag(name:"summary", value:"Contec Smart Home 4.15 devices do not require authentication for
 new_user.php, edit_user.php, delete_user.php, and user.php, as demonstrated by changing the admin password and
 then obtaining control over doors.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 22nd May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/44295/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44295/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rediswannamine.nasl 10073 2018-06-05 06:38:16Z cfischer $
+# $Id: gb_rediswannamine.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Redis Server compromised by 'RedisWannaMine' Attack
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:redis:redis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108444");
-  script_version("$Revision: 10073 $");
+  script_version("$Revision: 12116 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 08:38:16 +0200 (Tue, 05 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 07:40:29 +0200 (Tue, 05 Jun 2018)");
   script_name("Redis Server compromised by 'RedisWannaMine' Attack");
   script_category(ACT_ATTACK);
@@ -57,9 +57,7 @@ if(description)
   - the existence of at least one of the following keys: trojan1, trojan2, backup1, backup2, backup3, crackit");
 
   script_tag(name:"impact", value:"The 'RedisWannaMine' drops an crypto miner on the target to misuse the host resources
-  for crypto mining. Furthermore it will try to attack other hosts via the SMB attack 'WannaCry'.
-
-  Impact Level: System/Application");
+  for crypto mining. Furthermore it will try to attack other hosts via the SMB attack 'WannaCry'.");
 
   script_tag(name:"affected", value:"All Redis server publicly accessible without authentication.");
 

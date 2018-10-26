@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_cisco-sa-20170125-expressway.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_cisco_vcs_cisco-sa-20170125-expressway.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence VCS Denial of Service Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3790");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence VCS Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170125-expressway");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version X8.8.2 or higher.");
 
@@ -59,7 +59,7 @@ condition.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-26 11:29:25 +0700 (Thu, 26 Jan 2017)");
 
   script_category(ACT_GATHER_INFO);

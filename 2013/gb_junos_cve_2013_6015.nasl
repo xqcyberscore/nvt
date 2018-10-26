@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6015.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_junos_cve_2013_6015.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos TCP Packet Handling Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103953");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 11:20:27 +0700 (Thu, 21 Nov 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in the Flow Daemon can cause a crash when
 handling certain TCP packets.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"On SRX Series services gateways, when plugins that use TCP proxy
 are configured (e.g. ALGs, UTM), a certain sequence of valid TCP packets may cause the flow daemon (flowd)

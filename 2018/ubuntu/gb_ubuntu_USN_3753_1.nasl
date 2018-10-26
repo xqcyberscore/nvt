@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3753_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_ubuntu_USN_3753_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Ubuntu Update for linux USN-3753-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843627");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-25 06:47:37 +0200 (Sat, 25 Aug 2018)");
   script_cve_id("CVE-2017-13168", "CVE-2018-10876", "CVE-2018-10879", "CVE-2018-10877", "CVE-2018-10878", "CVE-2018-10882", "CVE-2018-10881", "CVE-2018-12233", "CVE-2018-13094", "CVE-2018-13405", "CVE-2018-13406");
   script_tag(name:"cvss_base", value:"7.2");
@@ -88,7 +88,7 @@ code. (CVE-2018-13406)");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3753-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3753-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3753-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

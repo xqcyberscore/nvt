@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_priv_esc_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_emc_data_domain_priv_esc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Data Domain Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:emc:data_domain_os";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106806");
-  script_version("$Revision: 11935 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 16:28:36 +0700 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Data Domain  OS is affected by a privilege escalation vulnerability
 that may potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"EMC Data Domain OS is potentially vulnerable to a privilege escalation
 vulnerability. A rogue administrator may be able to log in as the Security Office (SO) and escalate privileges

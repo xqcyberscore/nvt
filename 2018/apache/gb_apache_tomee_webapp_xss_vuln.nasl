@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomee_webapp_xss_vuln.nasl 10760 2018-08-03 13:20:15Z cfischer $
+# $Id: gb_apache_tomee_webapp_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache TomEE console (tomee-webapp) Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomee";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813736");
-  script_version("$Revision: 10760 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-8031");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 15:20:15 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 09:20:00 +0530 (Tue, 31 Jul 2018)");
   ## unreliable installation via tomee-webapp are vulnerable
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -49,9 +49,7 @@ if(description)
   to a Tomcat installation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct Cross Site Scripting attacks.
-
-  Impact Level: Application");
+  attackers to conduct Cross Site Scripting attacks.");
 
   script_tag(name:"affected", value:"Apache TomEE console (tomee-webapp)");
 

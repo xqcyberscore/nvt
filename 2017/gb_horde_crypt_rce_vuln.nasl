@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_crypt_rce_vuln.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_horde_crypt_rce_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Horde Webmail Remote Code Execution Vulnerability in Horde_Crypt
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:horde:horde_groupware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108115");
-  script_version("$Revision: 5962 $");
+  script_version("$Revision: 12106 $");
   script_cve_id("CVE-2017-7413", "CVE-2017-7414");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 09:33:23 +0200 (Wed, 05 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"summary", value:"The Horde_Crypt library used in Horde Webmail is prone to a remote code
   execution vulnerability if the PGP feature is enabled.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may execute shell commands in the context of an admin or user.");
 

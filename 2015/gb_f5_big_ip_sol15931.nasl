@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15931.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol15931.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - Remote Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-8602");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - Remote Denial of Service Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"impact", value:"An attacker with a properly configured authority server could cause a denial-of-service
 using a crafted DNS recursive query, designed to follow an endless series of delegations.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Iterator.c in NLnet Labs Unbound before 1.5.1 does not limit delegation chaining,
 which allows remote attackers to cause a denial of service (memory and CPU consumption) via a large or infinite number
@@ -54,7 +54,7 @@ of referrals. ");
   script_tag(name:"summary", value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
   script_tag(name:"affected", value:"F5 BIG-IP LTM 11.2.0-11.6.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

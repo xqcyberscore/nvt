@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-137.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms16-137.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809093");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-7238", "CVE-2016-7237", "CVE-2016-7220");
   script_bugtraq_id(92835);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 10:09:34 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)");
 
@@ -75,10 +75,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link:
-
-  https://technet.microsoft.com/library/security/MS16-137");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -93,6 +90,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-137");
   exit(0);
 }
 
@@ -112,8 +110,8 @@ if(!sysPath){
   exit(0);
 }
 
-winVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
-shVer = fetch_file_version(sysPath, file_name:"system32\Schannel.dll");
+winVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
+shVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Schannel.dll");
 if(!winVer && !shVer){
   exit(0);
 }

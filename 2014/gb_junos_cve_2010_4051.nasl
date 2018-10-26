@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2010_4051.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_junos_cve_2010_4051.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Stack Exhaustion Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103966");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 22:21:03 +0700 (Thu, 09 Jan 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"summary", value:"Denial of Service vulnerability due to stack exhaustion in glibc
 used by Junos");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A stack consumption vulnerability in the regcomp implementation
 in the GNU C Library allows an attacker to cause a denial of service via a regular expression containing

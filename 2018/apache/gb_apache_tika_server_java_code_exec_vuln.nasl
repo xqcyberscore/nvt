@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_java_code_exec_vuln.nasl 10299 2018-06-22 11:50:53Z santu $
+# $Id: gb_apache_tika_server_java_code_exec_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Tika Server Java Code Execution Vulnerability
 #
@@ -12,7 +12,7 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
-# (or any later version), as published by the Free Software Foundation.                                                                          
+# (or any later version), as published by the Free Software Foundation.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,28 +29,25 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813537");
-  script_version("$Revision: 10299 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2016-6809");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 13:50:53 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 17:03:55 +0530 (Wed, 20 Jun 2018)");
   script_name("Apache Tika Server Java Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Tika Server
   and is prone to arbitrary Java code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Apache Tika Server
   invoking JMatIO to do native deserialization.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary Java code for serialized objects embedded in
-  MATLAB files.
-
-  Impact Level: Application");
+  MATLAB files.");
 
   script_tag(name:"affected", value:"Apache Tika Server from versions 1.6 to 1.13");
 
@@ -59,8 +56,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "https://lists.apache.org/thread.html/93618b15cdf3b38fa1f0bfc0c8c7cf384607e552935bd3db2e322e07@%3Cdev.tika.apache.org%3E");
-  script_xref(name : "URL" , value : "https://tika.apache.org");
+  script_xref(name:"URL", value:"https://lists.apache.org/thread.html/93618b15cdf3b38fa1f0bfc0c8c7cf384607e552935bd3db2e322e07@%3Cdev.tika.apache.org%3E");
+  script_xref(name:"URL", value:"https://tika.apache.org");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -85,6 +82,6 @@ if(version_in_range(version:tVer, test_version: "1.6", test_version2: "1.13"))
 {
   report = report_fixed_ver(installed_version:tVer, fixed_version:"1.14", install_path:tPath);
   security_message(data:report, port:tPort);
-  exit(0); 
-}  
-exit(0);  
+  exit(0);
+}
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_code_exec_n_priv_esc_vuln_apsb18-11_macosx.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_adobe_indesign_code_exec_n_priv_esc_vuln_apsb18-11_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe InDesign Code Execution And Privilege Escalation Vulnerabilities - APSB18-11 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813085");
-  script_version("$Revision: 10349 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-4927", "CVE-2018-4928");
   script_bugtraq_id(103716, 103714);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 15:22:31 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Code Execution And Privilege Escalation Vulnerabilities - APSB18-11 (Mac OS X)");
@@ -42,17 +42,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Adobe InDesign and is
   prone to code execution and privilege escalation vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to memory corruption
   error and untrusted search path errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the user running the
-  affected applications and also to escalate privileges.
-
-  Impact Level: System/Application");
+  affected applications and also to escalate privileges.");
 
   script_tag(name:"affected", value:"Adobe InDesign CC versions 13.0 and earlier on Mac OS X.");
 

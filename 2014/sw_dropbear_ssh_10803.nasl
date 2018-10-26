@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_10803.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: sw_dropbear_ssh_10803.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Dropbear SSH Server DSS verification code Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105116");
-  script_version("$Revision: 11202 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 12:00:00 +0100 (Fri, 14 Nov 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with Dropbear SSH Server and
   is prone to a DSS verification code vulnerability.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The DSS verification code in Dropbear SSH Server before 0.43
   frees uninitialized variables.");
   script_tag(name:"impact", value:"This flaw might allow remote attackers to gain access.");

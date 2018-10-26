@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_xss_vuln.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_splunk_light_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Splunk Light Multiple XSS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106714");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-03 09:45:47 +0700 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Splunk Light is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Splunk Light is prone to multiple cross-site scripting vulnerabilities:
 

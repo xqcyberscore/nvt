@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
+# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Dolibarr <= 7.0.3 Multiple SQL Injection Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112324");
-  script_version("$Revision: 11292 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 13:20:11 +0200 (Tue, 10 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,13 +55,13 @@ if( description )
 
   script_tag(name:"insight", value:"Dolibarr is prone to multiple SQL injection vulnerabilities in the following parameters:
 
-- statut (CVE-2018-13447)
+  - statut (CVE-2018-13447)
 
-- country_id (CVE-2018-13448)
+  - country_id (CVE-2018-13448)
 
-- statut_buy (CVE-2018-13449)
+  - statut_buy (CVE-2018-13449)
 
-- status_batch (CVE-2018-13450)");
+  - status_batch (CVE-2018-13450)");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to inject arbitrary SQL commands on
   the target host.");
@@ -73,7 +73,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/36402c22eef49d60edd73a2f312f8e28fe0bd1cb");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dolibarr:dolibarr";

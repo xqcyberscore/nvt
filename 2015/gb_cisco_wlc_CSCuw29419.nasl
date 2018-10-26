@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCuw29419.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_wlc_CSCuw29419.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Wireless LAN Controller Radius Packet of Disconnect Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-6302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-23 13:23:46 +0200 (Wed, 23 Sep 2015)");
   script_name("Cisco Wireless LAN Controller Radius Packet of Disconnect Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cisco Wireless LAN Controller contains a vulnerability that could allow an unauthenticated, remote attacker to cause a denial of service condition.");
   script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability to cause the vulnerable software on an affected device to disconnect user sessions, resulting in a DoS condition.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input validation of the RADIUS Disconnect-Request packet. An attacker could exploit this vulnerability by sending crafted RADIUS UDP
 Disconnect-Request packets to the affected device. An exploit could allow the attacker to cause a partial DoS condition due to the disconnect of random user sessions.");
   script_tag(name:"solution", value:"See vendor advisory for a solution");

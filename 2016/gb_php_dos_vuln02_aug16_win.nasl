@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln02_aug16_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_php_dos_vuln02_aug16_win.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # PHP Denial of Service Vulnerability - 02 - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809138");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-5114");
   script_bugtraq_id(81808);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 15:48:17 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Denial of Service Vulnerability - 02 - Aug16 (Windows)");
 
@@ -54,8 +54,7 @@ if(description)
   5.6.17, and 7.x before 7.0.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.31, or 5.6.17,
-  or 7.0.2, or later.
-  For updates refer to http://www.php.net");
+  or 7.0.2, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

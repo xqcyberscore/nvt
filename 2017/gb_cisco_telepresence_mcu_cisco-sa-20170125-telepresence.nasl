@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_mcu_cisco-sa-20170125-telepresence.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_cisco_telepresence_mcu_cisco-sa-20170125-telepresence.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence Multipoint Control Unit Remote Code Execution Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence Multipoint Control Unit Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170125-telepresence");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -58,7 +58,7 @@ attacker could execute arbitrary code or cause a DoS condition on the affected s
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-26 11:29:25 +0700 (Thu, 26 Jan 2017)");
 
   script_category(ACT_GATHER_INFO);

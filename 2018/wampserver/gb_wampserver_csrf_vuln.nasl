@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_csrf_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_wampserver_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WampServer < 3.1.3 CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wampserver:wampserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140891");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 11:28:57 +0700 (Tue, 27 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"WampServer is prone to a cross site request forgery (CSRF) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WampServer 3.1.2 and prior.");
 

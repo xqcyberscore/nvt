@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_xss_vuln.nasl 11485 2018-09-20 06:25:34Z cfischer $
+# $Id: gb_phpmailer_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # PHPMailer XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106987");
-  script_version("$Revision: 11485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-27 15:21:49 +0700 (Thu, 27 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"summary", value:"PHPMailer is prone to a cross-site scripting vulneragility in the
   'From Email Address' and 'To Email Address' fields of code_generator.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"PHPMailer version 5.2.23 and prior.");
 

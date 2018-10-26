@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCut14223.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_cisco_asa_CSCut14223.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA Management Interface XML Parser DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106055");
-  script_version("$Revision: 11225 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 11:34:37 +0700 (Thu, 03 Dec 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A vulnerability in the XML parser of the management interface
 of Cisco ASA may lead to a denial of service.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient hardening of the XML
 parser code. Cisco ASA may process a crafted XML file if the file is passed through the management interface

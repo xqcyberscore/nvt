@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2016_17.nasl 11903 2018-10-15 10:26:16Z asteins $
+# $Id: gb_tenable_nessus_tns_2016_17.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Tenable Nessus < 6.9.1 Stored Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108019");
-  script_version("$Revision: 11903 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2016-9259");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 13:00:00 +0100 (Fri, 11 Nov 2016)");
   script_name("Tenable Nessus < 6.9.1 Stored Cross-Site Scripting Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Nessus and is prone to
   a stored Cross-Site Scripting vulnerability");
 
-  script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML.");

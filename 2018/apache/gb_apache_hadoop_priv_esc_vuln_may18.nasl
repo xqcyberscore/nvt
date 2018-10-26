@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_priv_esc_vuln_may18.nasl 9906 2018-05-18 10:34:56Z santu $
+# $Id: gb_apache_hadoop_priv_esc_vuln_may18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Hadoop Privilege Escalation Vulnerability May18
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
-# 
+#
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813367");
-  script_version("$Revision: 9906 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2016-6811");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 12:45:23 +0530 (Thu, 17 May 2018)");
   script_name("Apache Hadoop Privilege Escalation Vulnerability May18");
 
   script_tag(name:"summary", value:"The host is installed with Apache Hadoop
   and is prone to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to privilege escalation
   error while escalating to yarn user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker who can escalate to yarn user to possibly run arbitrary commands 
-  as root user.
-
-  Impact Level: Application");
+  attacker who can escalate to yarn user to possibly run arbitrary commands
+  as root user.");
 
   ## Mitigation available for affected versions
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

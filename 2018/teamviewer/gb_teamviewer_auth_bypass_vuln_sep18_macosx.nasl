@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_auth_bypass_vuln_sep18_macosx.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_teamviewer_auth_bypass_vuln_sep18_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # TeamViewer Authentication Bypass Vulnerability Sep18 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813897");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-16550");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 13:42:31 +0530 (Fri, 07 Sep 2018)");
   script_name("TeamViewer Authentication Bypass Vulnerability Sep18 (Mac OS X)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation would allow attackers
   to bypass the authentication protection mechanism and determine the correct value
-  of the default 4-digit PIN.
-
-  Impact Level: Application");
+  of the default 4-digit PIN.");
 
   script_tag(name:"affected", value:"TeamViewer versions 10.x through 13.x");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160803-cpi.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_pis_cisco-sa-20160803-cpi.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Prime Infrastructure Cross-Frame Scripting Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-1474");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Cisco Prime Infrastructure Cross-Frame Scripting Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-cpi");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Upgrade to Cisco Prime Infrastructure
  version 3.1(1) or later.");
@@ -53,14 +53,14 @@ allow the attacker to conduct clickjacking or other client-side browser attacks.
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 12:28:14 +0700 (Thu, 04 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_pis_version.nasl");
   script_mandatory_keys("cisco_pis/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

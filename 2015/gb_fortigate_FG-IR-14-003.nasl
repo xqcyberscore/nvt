@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-14-003.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_fortigate_FG-IR-14-003.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # FortiOS: FortiGate Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-7182");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("FortiOS: FortiGate Cross-Site Scripting Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"A remote unauthenticated attacker may be able to execute arbitrary script in the context of the end-user's browser session.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiOS 5.0.6 or higher.");
 
   script_tag(name:"summary", value:"FortiOS 5.0.5 and earlier versions contain a cross-site scripting vulnerability. The mkey parameter in the URL
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");

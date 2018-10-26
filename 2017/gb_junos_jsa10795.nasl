@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10795.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_junos_jsa10795.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos MPLS DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140290");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 11:17:39 +0700 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability in rpd when receiving
 a malformed MPLS ping packet.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A denial of service vulnerability in rpd daemon of Juniper Networks Junos
 OS allows a malformed MPLS ping packet to crash the rpd daemon. Repeated crashes of the rpd daemon can result in

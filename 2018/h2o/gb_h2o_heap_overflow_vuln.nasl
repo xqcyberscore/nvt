@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_heap_overflow_vuln.nasl 10072 2018-06-05 04:25:59Z ckuersteiner $
+# $Id: gb_h2o_heap_overflow_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # H2O HTTP Server < 2.2.5 Heap Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:h2o_project:h2o";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141139");
-  script_version("$Revision: 10072 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-05 06:25:59 +0200 (Tue, 05 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-05 11:05:59 +0700 (Tue, 05 Jun 2018)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-05 11:05:59 +0700 (Tue, 05 Jun 2018)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-0608");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("H2O HTTP Server < 2.2.5 Heap Overflow Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_h2o_http_server_detect.nasl");
   script_mandatory_keys("h2o/installed");
 
-  script_tag(name: "summary", value: "H2O HTTP Server is prone to a heap buffer overflow while trying to emit
+  script_tag(name:"summary", value:"H2O HTTP Server is prone to a heap buffer overflow while trying to emit
 access log.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "H2O version 2.2.4 and prior.");
+  script_tag(name:"affected", value:"H2O version 2.2.4 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.2.5 or later.");
+  script_tag(name:"solution", value:"Update to version 2.2.5 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1775");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1775");
 
   exit(0);
 }

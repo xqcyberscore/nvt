@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_apache_http_server_mod_cluster_dos_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812580");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2016-8612");
   script_bugtraq_id(94939);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 12:33:01 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Linux)");
@@ -49,9 +49,7 @@ if(description)
   allows attacker to cause a Segmentation Fault in the serving httpd process.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service condition.
-
-  Impact Level: Application");
+  attackers to cause a denial of service condition.");
 
   script_tag(name:"affected", value:"Apache HTTP Server prior to version 2.4.23 on Linux.");
 

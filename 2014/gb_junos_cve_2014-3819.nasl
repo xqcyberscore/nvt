@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3819.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_junos_cve_2014-3819.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos RPD Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105918");
-  script_version("$Revision: 11194 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-31 13:15:00 +0200 (Thu, 31 Jul 2014)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"DoS of RPD routing process");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Receipt of a malformed PIM packet may cause the RPD routing process
 to crash and restart. All PIM routers that are configured to use Auto-RP for automatic distribution of

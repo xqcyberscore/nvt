@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_web_filter_74384.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_barracuda_web_filter_74384.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-0961", "CVE-2015-0962");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"impact", value:"Successfully exploiting these issues allow attackers to perform man-in-the-
 middle attacks or impersonate trusted servers, which will aid in further attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Barracuda Web Filter when SSL Inspection is enabled, uses the same root Certification Authority certificate
 across different customers' installations, which makes it easier for remote attackers to conduct man-in-the-middle attacks against SSL sessions
@@ -56,7 +56,7 @@ by leveraging the certificate's trust relationship");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 16:03:11 +0200 (Wed, 03 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

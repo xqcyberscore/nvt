@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_sqli.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: sw_firepass_sqli.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 Firepass SQL injection vulnerability in my.activation.php3
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111017");
-  script_version("$Revision: 11221 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"SQL injection vulnerability in my.activation.php3 allows remote
   attackers to execute arbitrary SQL commands via the state parameter. ");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"F5 Firepass from 6.0.0 to 6.1.0 and 7.0.0");
   script_tag(name:"solution", value:"The vendor has released a Hotfix HF-377712-1 listened in the referred advisory.");
 

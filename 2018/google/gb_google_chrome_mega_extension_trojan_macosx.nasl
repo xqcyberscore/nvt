@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mega_extension_trojan_macosx.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_google_chrome_mega_extension_trojan_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Google Chrome MEGA Extension Trojan-Mac OS X
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813791");
-  script_version("$Revision: 11350 $");
+  script_version("$Revision: 12116 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Mac OS X");
 
@@ -48,9 +48,7 @@ if(description)
   version, extension would exfiltrate credentials for sites including amazon.com,
   live.com, github.com, google.com (or webstore login), myetherwallet.com,
   mymonero.com, idex.market and HTTP POST requests to any other sites. Then it
-  will send them to a server located in Ukraine.
-
-  Impact Level: Application");
+  will send them to a server located in Ukraine.");
 
   script_tag(name:"affected", value:"MEGA extension version 3.39.4 for Chrome on Mac OS X");
 

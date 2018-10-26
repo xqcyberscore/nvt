@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_macosx.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Mac OS X
 #
@@ -28,44 +28,41 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813028");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-4920", "CVE-2018-4919");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple remote code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to a type confusion
+  script_tag(name:"insight", value:"Multiple flaws exist due to a type confusion
   error and use-after-free error in the flash player.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these vulnerabilities
+  script_tag(name:"impact", value:"Successful exploitation of these vulnerabilities
   will allow an attacker to execute arbitrary code on affected system and take
-  control of the affected system.
+  control of the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player version 28.0.0.161 and
+  script_tag(name:"affected", value:"Adobe Flash Player version 28.0.0.161 and
   earlier within Google Chrome on Mac OS X.");
 
-  script_tag(name: "solution", value:"Upgrade to Adobe Flash Player version
-  29.0.0.113 or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
+  29.0.0.113 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb18-05.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb18-05.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_flash_player_within_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Chrome/MacOSX/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

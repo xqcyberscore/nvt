@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_php_local_file_inclusion_vuln.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_php_local_file_inclusion_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813458");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12712");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 16:36:27 +0530 (Wed, 27 Jun 2018)");
 
   script_name("Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)");
@@ -47,9 +47,7 @@ if(description)
   where 'class_exists' function validates invalid names as valid.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct local file inclusion attacks.
-
-  Impact Level: Application");
+  attackers to conduct local file inclusion attacks.");
 
   script_tag(name:"affected", value:"Joomla core versions 2.5.0 through 3.8.8");
 

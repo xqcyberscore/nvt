@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K97285349.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_f5_big_ip_K97285349.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP XSS vulnerability in the BIG-IP and Enterprise Manager Configuration utilities CVE-2016-7469
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-7469");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - XSS vulnerability in the BIG-IP and Enterprise Manager Configuration utilities CVE-2016-7469");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/#/article/K97285349");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A stored cross-site scripting (XSS) vulnerability in the BIG-IP Configuration utility device name change page allows an authenticated user to inject arbitrary web script or HTML. Exploitation requires Resource Administrator or Administrator privileges, and it could cause the Configuration utility client to become unstable.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 09:33:08 +0100 (Tue, 10 Jan 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

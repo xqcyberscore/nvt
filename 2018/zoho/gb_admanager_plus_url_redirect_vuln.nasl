@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_admanager_plus_url_redirect_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_admanager_plus_url_redirect_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ManageEngine AD Manager Plus URL Redirection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113106");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 11:30:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if( description )
   script_xref(name:"URL", value:"https://umbrielsecurity.wordpress.com/2018/01/31/dangerous-url-redirection-and-csrf-in-zoho-manageengine-ad-manager-plus-cve-2017-17552/");
   script_xref(name:"URL", value:"https://www.manageengine.com/products/ad-manager/release-notes.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:manageengine:admanager_plus";

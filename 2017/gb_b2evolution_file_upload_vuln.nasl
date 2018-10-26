@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_file_upload_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_b2evolution_file_upload_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # b2evolution File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:b2evolution:b2evolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106669");
-  script_version("$Revision: 11919 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 15:44:20 +0700 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"b2evolution is prone to a unrestricted file upload vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Unrestricted file upload vulnerability in 'file upload' modules in
 b2evolution CMS allows authenticated user to upload malicious code (shell), even though in the system has

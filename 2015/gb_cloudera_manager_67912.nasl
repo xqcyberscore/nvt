@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudera_manager_67912.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cloudera_manager_67912.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cloudera Manager Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-0220");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cloudera Manager Information Disclosure Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
 may aid in launching further attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Cloudera Manager allows remote authenticated users to obtain sensitive configuration information
 via the API.");
   script_tag(name:"solution", value:"Udate Cloudera Manager to version 4.8.3/5.0.1 or later.");
@@ -51,7 +51,7 @@ via the API.");
   script_tag(name:"affected", value:"Cloudera Manager prior to 4.8.3 and 5.0.0 are vulnerable.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 17:01:26 +0100 (Tue, 20 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

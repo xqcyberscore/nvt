@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_inf_disc.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: gb_hp_printers_inf_disc.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Printers Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113092");
-  script_version("$Revision: 8893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 11:40:04 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -85,7 +85,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://support.hp.com/us-en/document/c05624457");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

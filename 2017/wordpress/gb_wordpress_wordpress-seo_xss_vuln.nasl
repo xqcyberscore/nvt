@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wordpress-seo_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_wordpress_wordpress-seo_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Yoast SEO Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112127");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 12:00:00 +0100 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A cross-site scripting (XSS) vulnerability in admin/google_search_console/class-gsc-table.php
 in the Yoast SEO plugin for WordPress allows remote attackers to inject arbitrary web script or HTML.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Yoast SEO plugin before version 5.8.0.");
 

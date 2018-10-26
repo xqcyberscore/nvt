@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Data Protection Advisor Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:emc:data_protection_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106549");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Data Protection Advisor is prone to a directory traversal
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"EMC Data Protection Advisor is affected by a path traversal vulnerability.
 Attackers may potentially exploit this vulnerability to access unauthorized information by supplying specially

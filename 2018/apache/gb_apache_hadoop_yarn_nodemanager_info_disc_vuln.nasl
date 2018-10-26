@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 8811 2018-02-14 12:41:44Z cfischer $
+# $Id: gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Hadoop YARN NodeManager Information Disclosure Vulnerability
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
-# 
+#
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812673");
-  script_version("$Revision: 8811 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-15718");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 13:41:44 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 11:40:52 +0530 (Thu, 25 Jan 2018)");
   script_name("Apache Hadoop YARN NodeManager Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Hadoop
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as if the CredentialProvider
   feature is used to encrypt passwords used in NodeManager configs, it may be
@@ -50,16 +49,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to gain access to the password for credential store provider used by
-  the NodeManager to YARN Applications.
-
-  Impact Level: Application");
+  the NodeManager to YARN Applications.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"affected", value:"Apache Hadoop versions 2.7.3 and 2.7.4");
 
   script_tag(name:"solution", value:"Upgrade to Apache Hadoop version 2.7.5 or
-  later. For updates refer to http://www.hadoop.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://lists.apache.org/thread.html/773c93c2d8a6a52bbe97610c2b1c2ad205b970e1b8c04fb5b2fccad6@<general.hadoop.apache.org>");
@@ -70,6 +67,7 @@ if(description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
   script_require_ports("Services/www", 50070);
+  script_xref(name:"URL", value:"http://www.hadoop.apache.org");
   exit(0);
 }
 

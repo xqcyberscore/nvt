@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_opencart_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Opencart <= 3.0.2.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113202");
-  script_version("$Revision: 10387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:47:28 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -66,7 +66,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.bigdiao.cc/2018/05/24/Opencart-v3-0-2-0/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:opencart:opencart";

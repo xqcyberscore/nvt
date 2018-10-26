@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln_jul11-02_win.nasl 7539 2017-10-24 08:52:47Z cfischer $
+# $Id: gb_phpmyadmin_mult_vuln_jul11-02_win.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # phpMyAdmin 3.x < 3.3.10.3; 3.4.x < 3.4.3.2 Multiple Vulnerabilities (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108241");
-  script_version("$Revision: 7539 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 10:52:47 +0200 (Tue, 24 Oct 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 08:48:02 +0200 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -54,7 +54,7 @@ if(description)
 
   - possible superglobal and local variables manipulation in swekey authentication.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"phpMyAdmin 3.x before 3.3.10.3 and 3.4.x before 3.4.3.2.");
 

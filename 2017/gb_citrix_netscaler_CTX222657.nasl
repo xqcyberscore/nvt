@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX222657.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_citrix_netscaler_CTX222657.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Citrix NetScaler Gateway Heap Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:citrix:netscaler";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106808");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 13:56:33 +0700 (Wed, 17 May 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Citrix NetScaler Gateway is prone to a heap overflow vulnerability which
 allows remote authenticated attackers to run arbitrary commands.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A heap overflow vulnerability has been identified in Citrix NetScaler
 Gateway that could allow a remote, authenticated user to execute arbitrary commands on the NetScaler Gateway

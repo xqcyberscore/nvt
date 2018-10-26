@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20160817-ipp.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_cisco_ip_phone_cisco-sa-20160817-ipp.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco IP Phone 8800 Series Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106188");
-  script_version("$Revision: 11569 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 15:00:49 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability in the web server of the Cisco IP Phone 8800 Series
 could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper validation of user-supplied input
 by the affected software. An attacker could exploit this vulnerability by sending a malicious HTTP request to

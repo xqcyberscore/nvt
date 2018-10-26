@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_8861_cisco-sa-20171016-wpa.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_cisco_ip_phone_8861_cisco-sa-20171016-wpa.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco IP Phone 8861 Multiple WPA2 Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140451");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 10:08:52 +0700 (Wed, 25 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,7 @@ if (description)
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");

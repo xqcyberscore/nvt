@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-001-openssh.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_extremexos_vn-2016-001-openssh.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Extreme ExtremeXOS OpenSSH Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106425");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Extreme ExtremeXOS is prone to multiple OpenSSH vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Roaming is enabled by default in the OpenSSH client, and contains two
 vulnerabilities that can be exploited by a malicious SSH server (or a trusted but compromised server):

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_apache_struts_urlvalidator_dos_vuln_lin.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Struts URLValidator DoS Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106954");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -55,7 +55,7 @@ if (description)
 URLValidator is used, it is possible to prepare a special URL which will be used to overload server process when
 performing validation of the URL.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Struts 2.5 - Struts 2.5.10.1");
 

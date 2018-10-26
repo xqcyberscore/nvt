@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_hive_view_xml_inj.nasl 6231 2017-05-29 09:29:50Z teissa $
+# $Id: gb_apache_ambari_hive_view_xml_inj.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Ambari XML injection vulnerability in Hive View
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108159");
-  script_version("$Revision: 6231 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-15 08:42:44 +0200 (Mon, 15 May 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"impact", value:"An authorized user of the Ambari Hive View may be able to gain unauthorized read access to files on the host
   where the Amari server executes. Access to files are limit to the set of files for which the user that executes the Ambari server has read access.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Ambari 2.4.x (before 2.4.3) and 2.5.0.");
 

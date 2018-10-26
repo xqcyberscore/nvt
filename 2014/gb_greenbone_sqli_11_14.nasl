@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbone_sqli_11_14.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_greenbone_sqli_11_14.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Greenbone OS SQL Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-9220");
   script_bugtraq_id(71360);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 12083 $");
 
   script_name("Greenbone OS SQL Injection Vulnerability");
 
@@ -48,15 +48,17 @@ account for the web interface or for OMP. The attacker will gain read access to 
   script_tag(name:"insight", value:"A software bug in OpenVAS Manager allows remote attackers to
 inject SQL code that reads data from the database. ");
 
-  script_tag(name:"vuldetect", value:"Check the version of Greenbone OS.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Update to Greenbone OS 2.2.0-34/3.0.29");
 
   script_tag(name:"affected", value:"Greenbone OS 2.2.0-1 up to 2.2.0-33.
+
 Greenbone OS 3.0.1 up to 3.0.28. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-30 14:20:39 +0200 (Sun, 30 Nov 2014)");
 
   script_category(ACT_GATHER_INFO);
@@ -85,10 +87,8 @@ if( version_is_less_equal( version:version, test_version:"2.2.0.33" ) ||
     fixed_version = '3.0.29';
 
   report = 'Installed GOS version: ' + version + '\nFixed Version:         ' + fixed_version + '\n';
-
   security_message( port:0, data:report );
   exit( 0 );
 }
 
 exit( 99 );
-

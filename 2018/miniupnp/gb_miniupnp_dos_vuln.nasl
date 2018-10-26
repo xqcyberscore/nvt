@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniupnp_dos_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_miniupnp_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MiniUPnP DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:miniupnp_project:miniupnpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140805");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 13:56:14 +0700 (Fri, 23 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
 (upnpreplyparse.c) in miniupnpd allows an attacker to cause Denial of Service (Segmentation fault and Memory
 Corruption) or possibly have unspecified other impact");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"MiniUPnP version 2.0 and prior.");
 

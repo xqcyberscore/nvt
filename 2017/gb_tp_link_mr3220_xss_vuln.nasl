@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_mr3220_xss_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_tp_link_mr3220_xss_vuln.nasl 12108 2018-10-26 06:41:17Z asteins $
 #
 # TP-Link TL-MR3220 Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:tp-link:wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811881");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 12108 $");
   script_cve_id("CVE-2017-15291");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:41:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:11:30 +0530 (Wed, 25 Oct 2017)");
   script_name("TP-Link TL-MR3220 Cross-Site Scripting Vulnerability");
 
@@ -54,11 +54,12 @@ if(description)
 
   script_tag(name:"affected", value:"TP-LINK TL-MR3220");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -84,7 +85,7 @@ if(!model = get_kb_item("TP-LINK/Wireless/Router/model")){
 }
 
 if(model == "MR3220"){
-  report = report_fixed_ver(installed_version:"TP-LINK Wireless Router " + model, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:"TP-LINK Wireless Router " + model, fixed_version:"WillNotFix");
   security_message(data:report, port:tlPort);
   exit(0);
 }

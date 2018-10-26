@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20170503-cme.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_cisco_aironet_cisco-sa-20170503-cme.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Aironet 1800, 2800, and 3800 Series Access Points Plug-and-Play Arbitrary Code Execution Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3873");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Aironet 1800, 2800, and 3800 Series Access Points Plug-and-Play Arbitrary Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170503-cme");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 8.3.112.0 or later.");
 
@@ -60,7 +60,7 @@ with root privileges on the underlying operating system of the device.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 22:11:53 +0700 (Wed, 10 May 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

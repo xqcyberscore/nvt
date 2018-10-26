@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kmccontrols_bac_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_kmccontrols_bac_mult_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # KMC Controls BAC-5051E Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:kmc_controls:bac-5051e";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106129");
-  script_version("$Revision: 11640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 14:08:41 +0700 (Tue, 12 Jul 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"KMC Controls BAC-5051E is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"KMC Controls BAC-5051E is prone to multiple vulnerabilities:
 

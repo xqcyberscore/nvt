@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0022.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0022.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS NTP Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106996");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 10:39:33 +0700 (Fri, 28 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
 vulnerabilities CVE-2016-9042 and CVE-2017-6460. Palo Alto Networks software makes use of the vulnerable library
 and may be affected. This issue only affects the management plane of the firewall.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"PAN-OS 6.1, PAN-OS 7.0, PAN-OS 7.1, PAN-OS 8.0.3 and earlier.");
 

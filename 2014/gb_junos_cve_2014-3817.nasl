@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3817.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_junos_cve_2014-3817.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos NAT Protocol Translation Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105916");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:24:53 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"DoS in NAT Protocol Translation");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"On SRX Series devices, when NAT protocol translation from IPv4 to
 IPv6 is enabled, a certain crafted packet may cause the flowd process to hang or crash.");

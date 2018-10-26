@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3816.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_junos_cve_2014-3816.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Multiple Privilege Escalation Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105915");
-  script_version("$Revision: 11202 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:38:16 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"Privilege Escalation Vulnerability over CLI");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Certain combinations of Junos OS CLI commands and arguments have
 been found to be exploitable in a way that can allow root access to the operating system.");

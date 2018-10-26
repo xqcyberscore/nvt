@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811728");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2017-9757");
   script_bugtraq_id(99173);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 16:29:23 +0530 (Wed, 06 Sep 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability");
@@ -41,7 +41,7 @@ if (description)
   script_tag(name:"summary", value:"This host is running IPFire and is prone to
   remote command injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version of IPFire");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the file 'ids.cgi'
   doesn't sanitize the 'OINKCODE' parameter and input gets passed to a system

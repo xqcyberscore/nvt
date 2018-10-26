@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013-6618.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_junos_cve_2013-6618.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos J-Web Sajax Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105911");
-  script_version("$Revision: 11196 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 11:33:56 +0700 (Mon, 16 Jun 2014)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"Remote Code Execution on J-Web");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Juniper Junos could allow a remote authenticated attacker to execute
 arbitrary commands on the system, caused by the failure to restrict access to /jsdm/ajax/port.php. If J-Web

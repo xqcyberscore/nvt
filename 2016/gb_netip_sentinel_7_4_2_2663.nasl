@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netip_sentinel_7_4_2_2663.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_netip_sentinel_7_4_2_2663.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download
 #
@@ -33,17 +33,17 @@ if (description)
   script_cve_id("CVE-2016-1605");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12083 $");
 
   script_name("NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download");
 
   script_xref(name:"URL", value:"https://www.netiq.com/support/kb/doc.php?id=7017803");
 
-  script_tag(name: "vuldetect", value:"Check the version/Revision.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version/revision is present on the target host.");
 
   script_tag(name:"insight", value:"Authentication is required to exploit this vulnerability but it can be bypassed by exploiting a separate flaw in the authentication handling.");
 
-  script_tag(name:"solution", value:"Upgrade to Sentinel Server 7.4.2");
+  script_tag(name:"solution", value:"Upgrade to Sentinel Server 7.4.2.");
 
   script_tag(name:"summary", value:"A vulnerability was discovered in NetIQ Sentinel Server that may allow remote attackers to disclose arbitrary file contents.");
   script_tag(name:"affected", value:"NetIQ Sentinel 7.4.x Sentinel Server");
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-03 12:16:39 +0200 (Wed, 03 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

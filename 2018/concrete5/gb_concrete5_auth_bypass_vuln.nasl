@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_auth_bypass_vuln.nasl 8962 2018-02-27 09:44:31Z ckuersteiner $
+# $Id: gb_concrete5_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Concrete5 Authentication Bypass Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:concrete5:concrete5";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140817");
-  script_version("$Revision: 8962 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 10:44:31 +0100 (Tue, 27 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-27 13:37:17 +0700 (Tue, 27 Feb 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-27 13:37:17 +0700 (Tue, 27 Feb 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-18195");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Concrete5 Authentication Bypass Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_concrete5_detect.nasl");
   script_mandatory_keys("concrete5/installed");
 
-  script_tag(name: "summary", value: "An issue was discovered in tools/conversations/view_ajax.php in Concrete5.
+  script_tag(name:"summary", value:"An issue was discovered in tools/conversations/view_ajax.php in Concrete5.
 An unauthenticated user can enumerate comments from all blog posts by POSTing requests to
 /index.php/tools/required/conversations/view_ajax with incremental 'cnvID' integers.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "Concrete5 prior to version 8.3.0");
+  script_tag(name:"affected", value:"Concrete5 prior to version 8.3.0");
 
-  script_tag(name: "solution", value: "Update to version 8.3.0 or later.");
+  script_tag(name:"solution", value:"Update to version 8.3.0 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/concrete5/concrete5/releases/tag/8.3.0");
-  script_xref(name: "URL", value: "https://github.com/r3naissance/NSE/blob/master/http-vuln-cve2017-18195.nse");
+  script_xref(name:"URL", value:"https://github.com/concrete5/concrete5/releases/tag/8.3.0");
+  script_xref(name:"URL", value:"https://github.com/r3naissance/NSE/blob/master/http-vuln-cve2017-18195.nse");
 
   exit(0);
 }

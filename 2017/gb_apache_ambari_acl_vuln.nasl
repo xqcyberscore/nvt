@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_acl_vuln.nasl 5882 2017-04-06 11:53:46Z cfi $
+# $Id: gb_apache_ambari_acl_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Ambari Insufficient ACLs during Installation
 #
@@ -27,11 +27,11 @@
 
 CPE = "cpe:/a:apache:ambari";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108121");
-  script_version("$Revision: 5882 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 13:53:46 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-06 07:42:44 +0200 (Thu, 06 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,18 +44,18 @@ if (description)
   script_mandatory_keys("Apache/Ambari/Installed");
 
   script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities#AmbariVulnerabilities-FixedinAmbari2.5.0");
+  script_xref(name:"URL", value:"https://github.com/apache/ambari/blob/release-2.5.0/ambari-server/src/main/resources/scripts/check_ambari_permissions.py");
 
   script_tag(name:"summary", value:"Apache Ambari Server artifacts are not created with proper ACLs during the installation.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Ambari 2.4.0 to 2.4.2");
 
   script_tag(name:"solution", value:"Upgrade to version 2.5.0 which sets correct ACLs during the installation.
 
-  Users of Version 2.4.0 through 2.4.2 may execute the script found at
-  https://github.com/apache/ambari/blob/release-2.5.0/ambari-server/src/main/resources/scripts/check_ambari_permissions.py
-  to fix the permissions on Ambari server artifacts on the Ambari server host.");
+  Users of Version 2.4.0 through 2.4.2 may execute the check_ambari_permissions.py script found at the references to fix the
+  permissions on Ambari server artifacts on the Ambari server host.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

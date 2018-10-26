@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208474.nasl 9681 2018-05-02 02:36:53Z ckuersteiner $
+# $Id: gb_apple_itunes_HT208474.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apple iTunes Security Updates( HT208474 )
 #
@@ -29,42 +29,39 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812666");
-  script_version("$Revision: 9681 $");
-  script_cve_id("CVE-2018-4088", "CVE-2018-4096" );
+  script_version("$Revision: 12116 $");
+  script_cve_id("CVE-2018-4088", "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 04:36:53 +0200 (Wed, 02 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:06:17 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple iTunes Security Updates( HT208474 )");
 
   script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to multiple memory
+  script_tag(name:"insight", value:"Multiple flaws exists due to multiple memory
   corruption issues.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to execute arbitrary code on the
-  affected system.
+  affected system.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apple iTunes versions before 12.7.3");
 
-  script_tag(name: "affected" , value:"Apple iTunes versions before 12.7.3");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple iTunes 12.7.3 or later.
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.7.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208474");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208474");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Ver");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

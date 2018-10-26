@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_cve_2015_1388.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_arubaos_cve_2015_1388.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ArubaOS Remote Access Point (RAP) Command Injection
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-1388");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("ArubaOS Remote Access Point (RAP) Command Injection");
 
   script_xref(name:"URL", value:"http://www.arubanetworks.com/assets/alert/ARUBA-PSA-2015-004.txt");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The 'RAP console' feature in ArubaOS on Aruba access points in Remote Access Point (AP) mode allows remote
 attackers to execute arbitrary commands via unspecified vectors.");
@@ -67,7 +67,7 @@ Aruba access points operating in Remote AP mode.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 14:06:08 +0200 (Tue, 07 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

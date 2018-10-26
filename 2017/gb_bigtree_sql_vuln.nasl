@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_sql_vuln.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_bigtree_sql_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # BigTree CMS SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140256");
-  script_version("$Revision: 11962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-31 12:43:19 +0700 (Mon, 31 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"insight", value:"SQL injection vulnerability in core\admin\auto-modules\forms\process.php in
 BigTree allows remote authenticated users to execute arbitrary SQL commands via the tags array parameter.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Upgrade to version 4.2.19 or later.");
 

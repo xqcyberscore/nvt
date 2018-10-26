@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ilias_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ILIAS XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ilias:ilias";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140444");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 12:39:08 +0700 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -57,7 +57,7 @@ if (description)
 authenticated user to inject JavaScript to gain administrator privileges, related to the setParameter function in
 Services/MediaObjects/classes/class.ilMediaItem.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"ILIAS version 5.2.x and prior to version 5.1.21");
 

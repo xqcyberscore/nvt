@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln01.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln01.nasl 12088 2018-10-25 10:57:43Z cfischer $
 #
 # Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability-01
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:database_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812738");
-  script_version("$Revision: 12068 $");
+  script_version("$Revision: 12088 $");
   script_cve_id("CVE-2017-10282");
   script_bugtraq_id(102534);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:57:43 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-19 16:41:33 +0530 (Fri, 19 Jan 2018)");
   script_name("Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability-01");
 
@@ -52,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions
   12.1.0.2, 12.2.0.1");
 
-  script_tag(name:"solution", value:"Apply patches");
+  script_tag(name:"solution", value:"Apply the patche from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,12 +68,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-dbport = "";
-dbVer = "";
 
 if(!dbport = get_app_port(cpe:CPE)){
   exit(0);

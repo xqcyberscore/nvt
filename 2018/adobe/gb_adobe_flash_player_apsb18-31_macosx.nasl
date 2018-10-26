@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb18-31_macosx.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_adobe_flash_player_apsb18-31_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Flash Player Security Updates(apsb18-31)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814006");
-  script_version("$Revision: 11350 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-15967");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 10:44:08 +0530 (Wed, 12 Sep 2018)");
   script_name("Adobe Flash Player Security Updates(apsb18-31)-MAC OS X");
 
@@ -47,9 +47,7 @@ if(description)
   issue.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose sensitive information.
-
-  Impact Level: Application");
+  attackers to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Adobe Flash Player version before 31.0.0.108 on MAC OS X.");
 

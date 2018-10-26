@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_xss_vuln.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_axis_network_camera_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Axis Network Camera Cross-Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:axis:network_camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811276");
-  script_version("$Revision: 11935 $");
+  script_version("$Revision: 12106 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 18:10:07 +0530 (Mon, 07 Aug 2017)");
 
   script_cve_id("CVE-2017-12413");
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"summary", value:"The host is running Axis Network Cameras and is
   prone to cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper sanitization
   of input to 'admin.shtml' page.");

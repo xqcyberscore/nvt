@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_015.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_sym16_015.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Symantec Messaging Gateway Decomposer Engine Security Update (SYM16-015)
 #
@@ -29,21 +29,24 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105897");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2016-5310", "CVE-2016-5309");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-21 10:37:51 +0200 (Wed, 21 Sep 2016)");
 
   script_name("Symantec Messaging Gateway Decomposer Engine Security Update (SYM16-015)");
 
-  script_tag(name:"summary", value:' Symantec has released an update to address two issues in the RAR file parser
-component of the antivirus decomposer engine used by multiple Symantec products.
-Parsing of maliciously formatted RAR container files may cause an application-level denial of service condition.');
+  script_tag(name:"summary", value:"Symantec has released an update to address two issues in the RAR file parser
+component of the antivirus decomposer engine used by multiple Symantec products.");
 
-  script_tag(name:"vuldetect", value:'Check the version');
-  script_tag(name:"solution", value:'Update to SMG 10.6.2 or newer');
+  script_tag(name:"impact", value:"Parsing of maliciously formatted RAR container files may cause an application-level denial of service condition.");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"solution", value:"Update to SMG 10.6.2 or newer.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160919_00");
 

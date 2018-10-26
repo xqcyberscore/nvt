@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K13053402.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_f5_big_ip_K13053402.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2016-7468
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-7468", "CVE-2016-9244", "CVE-2016-5023");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - TMM vulnerability CVE-2016-7468");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K13053402");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"An unauthenticated remote attacker may be able to disrupt services on the BIG-IP system with maliciously crafted network traffic. This vulnerability affects virtual servers associated with TCP profiles when the BIG-IP system's tm.tcpprogressive database variable value is set to enabled. The default value for the tm.tcpprogressive database variable is negotiate.");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-27 11:54:44 +0200 (Mon, 27 Mar 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

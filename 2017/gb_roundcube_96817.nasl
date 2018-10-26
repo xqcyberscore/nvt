@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_96817.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_roundcube_96817.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Roundcube Webmail CVE-2017-6820 Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108097");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 12083 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 14:00:00 +0100 (Mon, 13 Mar 2017)");
   script_bugtraq_id(96817);
   script_cve_id("CVE-2017-6820");
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Roundcube Webmail and is prone to
   a Cross Site Scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site. This may allow

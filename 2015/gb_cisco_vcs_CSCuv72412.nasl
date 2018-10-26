@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_CSCuv72412.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_vcs_CSCuv72412.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-6376");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151120-tvcs");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a lack of cross-site request forgery (CSRF) protections. An attacker could exploit this vulnerability by persuading a user of the web application to execute an adverse action.");
   script_tag(name:"solution", value:"See vendor advisory");
   script_tag(name:"summary", value:"A vulnerability in Cisco TelePresence Video Communication Server (VCS) could allow an unauthenticated, remote attacker to execute unwanted actions.");
@@ -48,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 13:00:05 +0100 (Thu, 26 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

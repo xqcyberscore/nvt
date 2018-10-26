@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-004.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_extremexos_vn-2016-004.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Extreme ExtremeXOS DROWN Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106428");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Extreme ExtremeXOS is prone to the OpenSSL 'DROWN' vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The SSLv2 protocol requires a server to send a ServerVerify message before
 establishing that a client possesses certain plaintext RSA data, which makes it easier for remote attackers to

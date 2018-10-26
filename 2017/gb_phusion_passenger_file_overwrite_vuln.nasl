@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phusion_passenger_file_overwrite_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_phusion_passenger_file_overwrite_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Phusion Passenger File Overwrite Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:phusion:passenger';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106765");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 16:11:47 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Phusion Passenger is prone to a /tmp file overwrite vulnerability which
 could allow local attackers to gain the privileges of the passenger user.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"With access to the system, a user could plant a symlink in /tmp that
 resulted in a chosen-file overwrite attempt whenever passenger-install-nginx-module was run, using the access

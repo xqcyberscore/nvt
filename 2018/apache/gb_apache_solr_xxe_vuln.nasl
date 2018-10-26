@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_apache_solr_xxe_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Solr XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140954");
-  script_version("$Revision: 12068 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 13:39:11 +0700 (Mon, 09 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ if (description)
 '&dataConfig=<inlinexml>' parameter of Solr's DataImportHandler. It can be used as XXE using file/ftp/http
 protocols in order to read arbitrary local files from the Solr server or the internal network.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Solr before 1.2 to 6.6.2 and 7.0.0 to 7.2.1.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA_NSX_2015-0003.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_VMSA_NSX_2015-0003.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # VMSA-2015-0003: VMware NSX updates address critical information disclosure issue in JRE
 #
@@ -31,12 +31,12 @@ if (description)
   script_cve_id("CVE-2014-6593");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 12083 $");
   script_name("VMSA-2015-0003: VMware NSX updates address critical information disclosure issue in JRE");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0003.html");
 
-  script_tag(name:"vuldetect", value:"Check the version/build");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version/build is present on the target host.");
 
   script_tag(name:"insight", value:"Oracle JRE is updated in VMware products to address a critical security issue that existed in earlier releases of Oracle JRE.");
 
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"affected", value:"NSX for vSphere prior 6.1.4 Build 2691049
 NSX for Multi-Hypervisor prior to 4.2.4 Build 42965");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-27 17:31:18 +0100 (Tue, 27 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

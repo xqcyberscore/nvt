@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_file_download_vuln.nasl 9433 2018-04-11 07:37:46Z ckuersteiner $
+# $Id: gb_dokuwiki_file_download_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # DokuWiki Reflected File Download Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:dokuwiki:dokuwiki";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140814");
-  script_version("$Revision: 9433 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-11 09:37:46 +0200 (Wed, 11 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-27 10:06:40 +0700 (Tue, 27 Feb 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-27 10:06:40 +0700 (Tue, 27 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-18123");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("DokuWiki Reflected File Download Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_dokuwiki_detect.nasl");
   script_mandatory_keys("dokuwiki/installed");
 
-  script_tag(name: "summary", value: "The call parameter of /lib/exe/ajax.php in DokuWiki does not properly encode
+  script_tag(name:"summary", value:"The call parameter of /lib/exe/ajax.php in DokuWiki does not properly encode
 user input, which leads to a reflected file download vulnerability, and allows remote attackers to run arbitrary
 programs.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "affected", value: "DokuWiki 2017-02-19e and prior.");
+  script_tag(name:"affected", value:"DokuWiki 2017-02-19e and prior.");
 
-  script_tag(name: "solution", value: "Apply the provided patch.");
+  script_tag(name:"solution", value:"Apply the provided patch.");
 
-  script_xref(name: "URL", value: "https://github.com/splitbrain/dokuwiki/issues/2029");
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2029");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10713.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_juniper_screenos_JSA10713.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Multiple Security issues with ScreenOS (JSA10713)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-7755", "CVE-2015-7754", "CVE-2015-7756");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Multiple Security issues with ScreenOS (JSA10713)");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10713&actp=RSS");
   script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10712&actp=RSS");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The first issue allows unauthorized remote administrative access to the device over SSH or telnet. Exploitation of this vulnerability can lead to complete compromise
 of the affected system. The second issue may allow a knowledgeable attacker who can monitor VPN traffic to decrypt that traffic. It is independent of the first issue.
@@ -59,7 +59,7 @@ in a system crash could lead to remote code execution. This issue can affect any
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 09:58:55 +0100 (Fri, 18 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_wordpress_email_subs_n_news_info_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812672");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12116 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 10:24:30 +0530 (Thu, 25 Jan 2018)");
   script_name("WordPress Plugin EmailSubscribers And Newsletters Information Disclosure Vulnerability");
 
@@ -48,16 +48,13 @@ if(description)
   and e-mail addresses.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Plugin Email Subscribers and
   Newsletters version 3.4.7");
 
   script_tag(name:"solution", value:"Upgrade to WordPress Plugin Email Subscribers
-  and Newsletters version 3.4.8 or later. For details refer to,
-  https://wordpress.org/plugins/email-subscribers");
+  and Newsletters version 3.4.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +68,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/email-subscribers");
   exit(0);
 }
 

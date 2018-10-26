@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_cisco-sa-20170118-wms.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_cisco_webex_cisco-sa-20170118-wms.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco WebEx Meetings Server Cross-Site Request Forgery Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106529");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-19 11:43:50 +0700 (Thu, 19 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -68,7 +68,7 @@ the affected device via the Administration pages with the privileges of the user
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-wms");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abyss_heap_overflow_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_abyss_heap_overflow_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Abyss Web Server Heap Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:aprelium:abyss_web_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140581");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 13:18:33 +0700 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,13 +51,13 @@ if (description)
 
   script_tag(name:"summary", value:"Abyss Web Server is prone to a heap overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"It is possible to corrupt heap memory of the Abyss Web Server by sending
 specially crafted HTML in repeated HTTP POST requests.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker may conduct a denial of service attack or
-execute arbitray code.");
+execute arbitrary code.");
 
   script_tag(name:"affected", value:"Abyss Web Server prior to version 2.11.6.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807523");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960",
                 "CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1961", "CVE-2016-1962",
                 "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1969",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-14 18:44:58 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)");
 
@@ -84,7 +84,7 @@ if(description)
   before 38.7 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  38.7 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  38.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -97,6 +97,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

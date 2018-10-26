@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3258_1.nasl 12071 2018-10-25 08:07:34Z santu $
+# $Id: gb_suse_2018_3258_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # SuSE Update for icinga openSUSE-SU-2018:3258-1 (icinga)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851944");
-  script_version("$Revision: 12071 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:07:34 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-20 07:33:47 +0200 (Sat, 20 Oct 2018)");
   script_cve_id("CVE-2015-8010", "CVE-2016-0726", "CVE-2016-10089", "CVE-2016-8641");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for icinga openSUSE-SU-2018:3258-1 (icinga)");
   script_tag(name:"summary", value:"Check the version of icinga");

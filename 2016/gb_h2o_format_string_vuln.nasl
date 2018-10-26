@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_format_string_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_h2o_format_string_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # H2O HTTP Server Format String Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:h2o_project:h2o';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106247");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 15:47:03 +0700 (Thu, 15 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"H2O HTTP Server is prone to a format string vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A format string vulnerability exists in H2O, that can be used by remote
 attackers to mount Denial-of-Service attacks.

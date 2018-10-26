@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_sym16_002.nasl 11938 2018-10-17 10:08:39Z asteins $
+# $Id: gb_symantec_encryption_server_sym16_002.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Symantec Encryption Management Server Multiple Security Issues
 #
@@ -34,13 +34,13 @@ if (description)
   script_cve_id("CVE-2015-8151", "CVE-2015-8150", "CVE-2015-8149", "CVE-2015-8148");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
-  script_version("$Revision: 11938 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Symantec Encryption Management Server Server Multiple Security Issues");
 
   script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2016&suid=20160218_00");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Symantec Encryption Management Server's web administration interface was susceptible to command execution on the underlying operating system when an authorized but less-privileged administrator has console access. Input fields available through the server console did not properly filter arbitrary user input which could allow OS command execution with elevated privileges.
 
@@ -58,7 +58,7 @@ By successfully manipulating an LDAP request, it was possible for a user able to
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 12:08:39 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

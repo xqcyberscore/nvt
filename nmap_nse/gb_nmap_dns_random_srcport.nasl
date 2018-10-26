@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dns_random_srcport.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_dns_random_srcport.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap DNS Random Source Ports NSE script.
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801688");
-  script_version("$Revision: 11966 $");
+  script_version("$Revision: 12115 $");
   script_cve_id("CVE-2008-1447");
   script_bugtraq_id(30131);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -49,6 +49,8 @@ if(description)
   recursion vulnerability.
 
   This is a wrapper on the Nmap Security Scanner's dns-random-srcport.nse.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

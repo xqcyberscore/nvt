@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_dos_vuln_aug18.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: gb_xnview_mult_dos_vuln_aug18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # XnView Multiple Denial of Service Vulnerabilities Aug18
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813820");
-  script_version("$Revision: 11790 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-15175", "CVE-2018-15176", "CVE-2018-15174");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("XnView Multiple Denial of Service Vulnerabilities Aug18");
 
   script_tag(name:"summary", value:"This host is installed with XnView and is
   prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 

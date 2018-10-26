@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3326_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_suse_2018_3326_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # SuSE Update for fuse openSUSE-SU-2018:3326-1 (fuse)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851945");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-24 06:35:53 +0200 (Wed, 24 Oct 2018)");
   script_cve_id("CVE-2018-10906");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for fuse openSUSE-SU-2018:3326-1 (fuse)");
   script_tag(name:"summary", value:"Check the version of fuse");

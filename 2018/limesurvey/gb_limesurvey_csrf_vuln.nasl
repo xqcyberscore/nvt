@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_csrf_vuln.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_limesurvey_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LimeSurvey CSRF Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140788");
-  script_version("$Revision: 9094 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-20 17:01:16 +0700 (Tue, 20 Feb 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-20 17:01:16 +0700 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-1000053");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("LimeSurvey CSRF Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_limesurvey_detect.nasl");
   script_mandatory_keys("limesurvey/installed");
 
-  script_tag(name: "summary", value: "LimeSurvey contains a Cross ite Request Forgery (CSRF) vulnerability in
+  script_tag(name:"summary", value:"LimeSurvey contains a Cross ite Request Forgery (CSRF) vulnerability in
 Theme Uninstallation that can result in CSRF causing LimeSurvey admins to delete all their themes, rendering the
 website unusable. This attack appear to be exploitable via Simple HTML markup can be used to send a GET request to
 the affected endpoint.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "solution", value: "Update to version 3.3.1 (build 180214) or later.");
+  script_tag(name:"solution", value:"Update to version 3.3.1 (build 180214) or later.");
 
-  script_xref(name: "URL", value: "https://github.com/LimeSurvey/LimeSurvey/commit/1e440208a8d8bfd71ad7802e6369a136e8bba3dd");
+  script_xref(name:"URL", value:"https://github.com/LimeSurvey/LimeSurvey/commit/1e440208a8d8bfd71ad7802e6369a136e8bba3dd");
 
   exit(0);
 }

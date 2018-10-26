@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_72083.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_ise_72083.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Identity Services Engine  Multiple Cross Site Scripting Vulnerabilities
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2014-8022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Identity Services Engine Multiple Cross Site Scripting Vulnerabilities");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=37045");
 
   script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability to execute arbitrary script or HTML code in the user's browser in the security context of the affected application. This action could allow the attacker to steal sensitive browser-based information, including authentication cookies and recently submitted data, or to take actions on the site as the affected user.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation on several web pages. An attacker could exploit this vulnerability by persuading a user to access a malicious link.");
   script_tag(name:"solution", value:"See vendor advisory for a solution");
   script_tag(name:"summary", value:"A vulnerability in the web framework of Cisco Identity Services Engine could allow an unauthenticated, remote attacker to conduct a cross-site scripting (XSS) attack against a user of the web interface on the affected system.");
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 15:23:53 +0100 (Tue, 01 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

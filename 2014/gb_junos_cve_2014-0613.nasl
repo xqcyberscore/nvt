@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0613.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_junos_cve_2014-0613.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos DoS Vulnerability in XNM Command Processor
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103971");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 09:42:45 +0700 (Tue, 21 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
 
   script_tag(name:"summary", value:"Denial of Service vulnerability in XNM command processor.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"When xnm-ssl or xnm-clear-text is enabled within the hierarchy
 level of the Junos configuration, an unauthenticated, remote user could exploit the XNM command processor

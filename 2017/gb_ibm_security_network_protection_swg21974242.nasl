@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_security_network_protection_swg21974242.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_ibm_security_network_protection_swg21974242.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IBM Security Network Protection Information Disclosure Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:ibm:security_network_protection";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140117");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
   script_name("IBM Security Network Protection Information Disclosure Vulnerability");
   script_cve_id("CVE-2016-0201");
   script_tag(name:"cvss_base", value:"4.3");
@@ -38,7 +38,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21974242");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"IBM GSKit could allow a remote attacker to obtain sensitive information, caused by a MD5 collision. An attacker could exploit this vulnerability to obtain authentication credentials.");
   script_tag(name:"solution", value:"Update to 5.3.1.7/5.3.2.1 or newer");
   script_tag(name:"summary", value:"A vulnerability has been addressed in the GSKit component of IBM Security Network Protection.");
@@ -49,7 +49,7 @@ IBM Security Network Protection 5.3.2");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 09:29:08 +0100 (Tue, 10 Jan 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

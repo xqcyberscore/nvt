@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0003.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0003.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0003
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105281");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2015-0003");
 
@@ -41,7 +41,7 @@ if (description)
   script_tag(name:"impact", value:"This issue affects the management interface of the device, where an authenticated administrator
 may be tricked into injecting malicious javascript into the web UI interface.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 6.1.3, PAN-OS 6.0.9, or PAN-OS 5.0.16");
 
   script_tag(name:"summary", value:"A cross-site scripting vulnerability exists in the web-based device management interface whereby
@@ -52,7 +52,7 @@ data provided by the user is echoed back to the user without sanitization. (Ref#
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 14:38:26 +0200 (Wed, 27 May 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Data Center Network Manager Directory Traversal Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2015-0666");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Data Center Network Manager Directory Traversal Vulnerability");
 
   script_tag(name:"impact", value:"Exploiting this issue can allow an attacker to gain read access to
 arbitrary files. Information harvested may aid in launching further attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCus00241.");
   script_tag(name:"solution", value:"Update to 7.1(1) or higher.");
   script_tag(name:"summary", value:"Cisco Data Center Network Manager is prone to a directory-traversal
@@ -51,7 +51,7 @@ vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 14:19:43 +0200 (Tue, 14 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

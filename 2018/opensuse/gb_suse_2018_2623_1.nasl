@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2623_1.nasl 11302 2018-09-10 11:41:36Z santu $
+# $Id: gb_suse_2018_2623_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # SuSE Update for yubico-piv-tool openSUSE-SU-2018:2623-1 (yubico-piv-tool)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851880");
-  script_version("$Revision: 11302 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:41:36 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 07:12:51 +0200 (Thu, 06 Sep 2018)");
   script_cve_id("CVE-2018-14779", "CVE-2018-14780");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for yubico-piv-tool openSUSE-SU-2018:2623-1 (yubico-piv-tool)");
   script_tag(name:"summary", value:"Check the version of yubico-piv-tool");

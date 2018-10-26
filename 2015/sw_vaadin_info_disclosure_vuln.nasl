@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_info_disclosure_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: sw_vaadin_info_disclosure_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Vaadin Framework Portlet Information Disclosure Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105182");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to information-disclosure because the application fails to properly sanitize user-supplied input.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This flaw exists due to an existing unused code from AbstractApplicationPortlet.");
   script_tag(name:"impact", value:"A remote user who has access to a portlet on the portal could be able to read files
   in the portlet deployment directory using specially crafted resource requests provided the attacker knows the file name.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1746.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1746.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Trend Micro InternScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106708");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-31 09:02:03 +0700 (Fri, 31 Mar 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 Security Virtual Appliance (IWSVA) 6.5.  This CP resolves multiple vulnerabilities in the product that could
 potentially allow a remote attacker to execute artibtrary code on vulnerable installations.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Trend Micro InterScan Web Security Virtual Appliance (IWSVA) is prone to
 multiple vulnerabilities:

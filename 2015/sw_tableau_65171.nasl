@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tableau_65171.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: sw_tableau_65171.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Tableau Server Unspecified SQL Injection Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:tableausoftware:tableau_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111049");
-  script_version("$Revision: 11257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 12:00:00 +0100 (Mon, 09 Nov 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"Tableau Server is prone to multiple SQL-injection vulnerabilities because
   it fails to sufficiently sanitize user-supplied data.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"An attacker can exploit these issues by manipulating the SQL query logic
   to carry out unauthorized actions on the underlying database.");
   script_tag(name:"affected", value:"Tableau Server prior to 8.0.7 and 8.1.2 are vulnerable.");

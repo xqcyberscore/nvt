@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0037.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_panos_pan_sa-2016_0037.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Palo Alto PAN-OS XPath Injection (PAN-SA-2016-0037)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-9149");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Palo Alto PAN-OS XPath Injection (PAN-SA-2016-0037)");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"summary", value:"The Addresses Object parsing function does not properly escape single quotes. This post-authentication vulnerability could allow XPath manipulation.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
 
   script_tag(name:"affected", value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 11:15:24 +0100 (Mon, 21 Nov 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -57,7 +57,7 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

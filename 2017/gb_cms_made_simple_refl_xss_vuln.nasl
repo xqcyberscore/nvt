@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_cms_made_simple_refl_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # CMS Made Simple 2.2.2 Reflected XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112120");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-13 14:05:33 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"CMS Made Simple is prone to a reflected cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"There is reflected XSS via the cntnt01detailtemplate parameter.");
 

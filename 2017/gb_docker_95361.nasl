@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_95361.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_docker_95361.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Docker Local Privilege Escalation Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.140120");
   script_bugtraq_id(95361);
   script_cve_id("CVE-2016-9962");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12106 $");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jan/21");
 
   script_tag(name:"impact", value:"A local attacker can exploit this issue to gain elevated privileges.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to 1.12.6 or newer");
   script_tag(name:"summary", value:"Docker is prone to a local privilege-escalation vulnerability.");
   script_tag(name:"affected", value:"Versions prior to Docker 1.12.6 are vulnerable.");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 17:15:30 +0100 (Wed, 11 Jan 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

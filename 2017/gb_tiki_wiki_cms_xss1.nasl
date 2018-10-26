@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_wiki_cms_xss1.nasl 11936 2018-10-17 09:05:37Z mmartin $
+# $Id: gb_tiki_wiki_cms_xss1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Tiki Wiki CMS Groupware XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106961");
-  script_version("$Revision: 11936 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 11:05:37 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 11:04:20 +0700 (Tue, 18 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -55,7 +55,7 @@ if (description)
 attackers to bypass the XSS filter via padded zero characters, as demonstrated by an attack on
 tiki-batch_send_newsletter.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware 16.2.");
 

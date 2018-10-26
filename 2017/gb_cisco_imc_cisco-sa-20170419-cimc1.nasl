@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_imc_cisco-sa-20170419-cimc1.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_cisco_imc_cisco-sa-20170419-cimc1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Integrated Management Controller Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-6618");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Integrated Management Controller Cross-Site Scripting Vulnerability");
 
@@ -49,14 +49,14 @@ web-based GUI on an affected system to follow a malicious link.");
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary code in
 the context of the web-based GUI on the affected system.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 3.0.1d or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 09:20:08 +0200 (Thu, 20 Apr 2017)");
 
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knot_dns_tsig_auth_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_knot_dns_tsig_auth_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # KNOT DNS Server Security Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:knot:dns";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106938");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -55,7 +55,7 @@ if (description)
 updates. A remote attacker able to communicate with an authoritative KNOT server could use this flaw to
 manipulate the contents of a zone, by forging a valid TSIG or SIG(0) signature for a dynamic update request.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"KNOT DNS Server prior to version 2.4.5 and 2.5.2.");
 

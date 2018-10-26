@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_xss_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_ubnt_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Ubiquiti Networks EdgeRouter XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106984");
-  script_version("$Revision: 11919 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-25 13:16:00 +0700 (Tue, 25 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -54,7 +54,7 @@ scripting vulnerability.");
   script_tag(name:"insight", value:"A reflected cross site scripting vulnerability was identified because of an
 initialization error in '/files/index/'.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Ubiquiti Networks EP-R6, ER-X, ER-X-SFP firmware version 1.9.1 and prior.");
 

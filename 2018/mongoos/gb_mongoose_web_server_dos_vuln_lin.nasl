@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cesanta:mongoose";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813632");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-10945");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 14:45:19 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)");
@@ -47,9 +47,7 @@ if(description)
   error in 'mg_handle_cgi' function in 'mongoose.c' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
-  cause a denial of service.
-
-  Impact Level: Application");
+  cause a denial of service.");
 
   script_tag(name:"affected", value:"Mongoose version 6.11");
 

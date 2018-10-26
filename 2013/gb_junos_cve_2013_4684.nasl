@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4684.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_junos_cve_2013_4684.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos PIM Handling DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103960");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-06 11:10:40 +0700 (Fri, 06 Dec 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Certain PIM packets subject to NAT may cause the Flow Daemon to
 crash which can cause a DoS contition.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"On SRX Series devices where Protocol-Independent Multicast (PIM)
 is enabled, certain PIM packets subject to Network Address Translation (NAT) may cause the Flow Daemon

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus47259.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_cisco_asa_CSCus47259.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA XAUTH Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106012");
-  script_version("$Revision: 11220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-23 09:56:22 +0700 (Tue, 23 Jun 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cisco ASA is prone to a XAUTH bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in IKE version 1 code of Cisco ASA Software
 could allow an authenticated, remote attacker to bypass Extended Authentication (XAUTH) and successfully

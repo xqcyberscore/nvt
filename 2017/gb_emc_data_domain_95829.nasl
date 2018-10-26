@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_95829.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_emc_data_domain_95829.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Data Domain OS Local Command Injection Vulnerability
 #
@@ -35,7 +35,7 @@ if (description)
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
 
   script_name("EMC Data Domain OS Local Command Injection Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/Jan/att-79/ESA-2016-160.txt");
 
   script_tag(name:"impact", value:"A local attacker can exploit this issue to bypass the Data Domain restricted shell (ddsh) to gain shell access and execute arbitrary commands with root privileges.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"The following EMC Data Domain OS (DD OS) release contains a resolution to this vulnerability:
 EMC Data Domain DD OS 5.7 family version 5.7.2.10 and later
 EMC Data Domain DD OS 5.6 family version 5.6.2.0  and later
@@ -58,7 +58,7 @@ EMC Data Domain OS (DD OS) 5.7 family all versions prior to 5.7.2.10");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-01 14:29:24 +0100 (Wed, 01 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

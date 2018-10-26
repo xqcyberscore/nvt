@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_searchfor_param_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_livezilla_searchfor_param_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
-# LiveZilla 'knowledgebase.php' Cross Site Scripting Vulnerability 
+# LiveZilla 'knowledgebase.php' Cross Site Scripting Vulnerability
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,32 +29,28 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812760");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-15869");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 13:29:54 +0530 (Mon, 12 Feb 2018)");
   script_name("LiveZilla 'knowledgebase.php' Cross Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with LiveZilla and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an insufficient validation
   of user supplied input via 'search-for' parameter in 'knowledgebase.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via the search-for parameter.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via the search-for parameter.");
 
   script_tag(name:"affected", value:"LiveZilla versions 7.0.6.0");
 
-  script_tag(name:"solution", value:"Upgrade to version 7.0.8.9 or later,
-  For updates refer to https://www.livezilla.net");
+  script_tag(name:"solution", value:"Upgrade to version 7.0.8.9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,6 +63,7 @@ if(description)
   script_dependencies("gb_livezilla_detect.nasl");
   script_mandatory_keys("LiveZilla/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.livezilla.net");
   exit(0);
 }
 

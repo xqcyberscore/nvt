@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_56453.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_magento_56453.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Magento SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105226");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to a security-bypass vulnerability.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Magento is prone to a security-bypass vulnerability because the
   application fails to properly validate SSL certificates from a server.");
   script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to perform

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_xxe_vuln.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: gb_sugarcrm_xxe_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # SugarCRM 6.5.16 XXE Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113111");
-  script_version("$Revision: 8893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 10:40:00 +0100 (Wed, 14 Feb 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/92");
   script_xref(name:"URL", value:"https://web.archive.org/web/20151105182132/http://www.pnigos.com/?p=294");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:sugarcrm:sugarcrm";

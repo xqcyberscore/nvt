@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_66459.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_openssh_66459.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # OpenSSH Certificate Validation Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-2653");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 12095 $");
   script_name("OpenSSH Certificate Validation Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:45:39 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security
   restrictions and perform unauthorized actions. This may aid in further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The verify_host_key function in sshconnect.c in the client in
   OpenSSH 6.6 and earlier allows remote servers to trigger the skipping of
   SSHFP DNS RR checking by presenting an unacceptable HostCertificate.");

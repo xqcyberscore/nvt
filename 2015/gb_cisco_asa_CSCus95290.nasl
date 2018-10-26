@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus95290.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_asa_CSCus95290.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA VPN XML Parser DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106000");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-29 15:12:10 +0700 (Fri, 29 May 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cisco ASA is prone to a DoS vulnerability in the VPN XML Parser.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to insufficient hardening of the XML
 parser configuration. An attacker could exploit this vulnerability by sending a crafted XML message to

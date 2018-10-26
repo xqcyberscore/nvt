@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_network_automation_hpsbgn03677.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_hp_network_automation_hpsbgn03677.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # HP Network Automation RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:hp:network_automation';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106430");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 11:55:23 +0700 (Thu, 01 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"HP Network Automation is prone to a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Potential security vulnerabilities in RPCServlet and Java deserialization
 were addressed by HPE Network Automation. The vulnerabilities could be remotely exploited to allow code

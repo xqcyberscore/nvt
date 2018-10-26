@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_homelynk_cmd_inj_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_schneider_homelynk_cmd_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Schneider Electric homeLYnk Command Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:schneider_electric:homelynk";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106746");
-  script_version("$Revision: 11816 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:05:46 +0200 (Wed, 12 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Schneider Electric homeLYnk Controller is prone to a command injection
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The homeLYnk controller is susceptible to a command injection attack.");
 

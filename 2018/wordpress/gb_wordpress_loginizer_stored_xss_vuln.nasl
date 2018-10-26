@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_loginizer_stored_xss_vuln.nasl 10373 2018-06-29 14:46:15Z ckuersteiner $
+# $Id: gb_wordpress_loginizer_stored_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Loginizer Plugin Stored XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113197");
-  script_version("$Revision: 10373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 16:46:15 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 16:32:39 +0200 (Thu, 24 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if( description )
   script_xref(name:"URL", value:"https://blog.dewhurstsecurity.com/2018/05/22/loginizer-wordpress-plugin-xss-vulnerability.html");
   script_xref(name:"URL", value:"https://plugins.trac.wordpress.org/changeset/1878502/loginizer");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:wordpress:wordpress";

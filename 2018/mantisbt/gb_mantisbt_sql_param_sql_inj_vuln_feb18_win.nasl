@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_param_sql_inj_vuln_feb18_win.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_mantisbt_sql_param_sql_inj_vuln_feb18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MantisBT 'sql' Parameter SQL Injection Vulnerability - Feb18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812753");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6382");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 11:55:27 +0530 (Mon, 05 Feb 2018)");
 
   script_name("MantisBT 'sql' Parameter SQL Injection Vulnerability - Feb18 (Windows)");
@@ -52,9 +52,7 @@ This host is installed with MantisBT and is prone to sql injection vulnerability
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   users to conduct SQL Injection attacks and if there is no configuration,
-  the physical path address is leaked.
-
-  Impact Level: Application");
+  the physical path address is leaked.");
 
   script_tag(name:"affected", value:"MantisBT version 2.10.0 on Windows");
 

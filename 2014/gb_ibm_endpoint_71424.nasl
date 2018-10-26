@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_71424.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ibm_endpoint_71424.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-6140");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12095 $");
 
   script_name("IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_tag(name:"impact", value:"An attacker could use this vulnerability to steal the victim's cookie-based
 authentication credentials and execute arbitrary code.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"BM Tivoli Endpoint Manager Mobile Device Management (MDM) is vulnerable
 to cross-site scripting, caused by improper validation of user-supplied input. A remote attacker could exploit
@@ -59,7 +59,7 @@ site scripting vulnerability because it fails to sanitize user-supplied input.")
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-03 16:30:20 +0100 (Wed, 03 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

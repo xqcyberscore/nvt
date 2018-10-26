@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10775.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_junos_jsa10775.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Junos Multiple OpenSSL Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106949");
-  script_version("$Revision: 11919 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 15:09:50 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Junos OS is prone to multiple vulnerabilities in OpenSSL");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"affected", value:"Junos OS 14.1, 14.1X53, 14.2, 15.1, 15.1X49, 15.1X53, 15.1X56, 16.1, 16.2,
 17.1.");

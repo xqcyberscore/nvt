@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_user_enumeration_vuln_aug18_win.nasl 11994 2018-10-19 16:13:16Z cfischer $
+# $Id: gb_openssh_user_enumeration_vuln_aug18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # OpenSSH User Enumeration Vulnerability-Aug18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813863");
-  script_version("$Revision: 11994 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-15473");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 18:13:16 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 17:27:42 +0530 (Mon, 20 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSH User Enumeration Vulnerability-Aug18 (Windows)");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attacker to test whether a certain user exists or not (username enumeration)
-  on a target OpenSSH server.
-
-  Impact Level: Application");
+  on a target OpenSSH server.");
 
   script_tag(name:"affected", value:"OpenSSH version 7.7 and prior on Windows.");
 

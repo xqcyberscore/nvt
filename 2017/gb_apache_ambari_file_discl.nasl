@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_file_discl.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: gb_apache_ambari_file_discl.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Ambari Sensitive Data Exposure
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108161");
-  script_version("$Revision: 12021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 07:42:44 +0200 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Sensitive data may be stored on disk in temporary files on the Ambari Server host. The temporary files are readable
   by any user authenticated on the host which might cause an exposure of sensitive data.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Ambari 2.2.2 through 2.4.2 and 2.5.0.");
 

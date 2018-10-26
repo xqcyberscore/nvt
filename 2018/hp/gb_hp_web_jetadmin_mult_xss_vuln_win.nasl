@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 9187 2018-03-23 10:39:47Z cfischer $
+# $Id: gb_hp_web_jetadmin_mult_xss_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -29,33 +29,29 @@ CPE = "cpe:/a:hp:web_jetadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812518");
-  script_version("$Revision: 9187 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2012-2011");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 11:39:47 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 17:30:33 +0530 (Tue, 20 Feb 2018)");
   script_name("HP Web Jetadmin Multiple Cross-Site Scripting Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with HP Web Jetadmin
   and is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The software does not properly filter HTML
   code from user-supplied input before displaying the input. A remote user can
   cause arbitrary scripting code to be executed by the target users browser.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow an
-  attacker to inject arbitrary web script or HTML via unspecified vectors.
-
-  Impact Level: Application");
+  attacker to inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"HP Web Jetadmin versions 8.x on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to version 10.x or later,
-  For updates refer to http://www8.hp.com/us/en/solutions/business-solutions/printingsolutions/wja.html");
+  script_tag(name:"solution", value:"Upgrade to version 10.x or later.");
 
   script_xref(name:"URL", value:"https://www.securitytracker.com/id?1027138");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -67,6 +63,7 @@ if(description)
   script_require_ports("Services/www", 8000);
   script_mandatory_keys("HpWebJetadmin/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www8.hp.com/us/en/solutions/business-solutions/printingsolutions/wja.html");
   exit(0);
 }
 

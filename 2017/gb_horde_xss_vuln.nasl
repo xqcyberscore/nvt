@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_xss_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_horde_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Horde Groupware Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:horde:horde_groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140527");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-22 17:09:33 +0700 (Wed, 22 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ CVE-2017-16907, CVE-2017-16906)
   - SQL Injection exists via the group parameter to /services/prefs.php or the homePostalCode parameter to
 /turba/search.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"No known solution is available as of 12rd September, 2018. Information
   regarding this issue will be updated once solution details are available.");

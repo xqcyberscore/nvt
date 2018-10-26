@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d29be920dc_apache-commons-compress_fc28.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_fedora_2018_d29be920dc_apache-commons-compress_fc28.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # Fedora Update for apache-commons-compress FEDORA-2018-d29be920dc
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875213");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12105 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-21 07:25:07 +0200 (Sun, 21 Oct 2018)");
   script_cve_id("CVE-2018-11771");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for apache-commons-compress FEDORA-2018-d29be920dc");
   script_tag(name:"summary", value:"Check the version of apache-commons-compress");

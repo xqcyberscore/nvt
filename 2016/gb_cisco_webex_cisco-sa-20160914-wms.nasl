@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_cisco-sa-20160914-wms.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_cisco_webex_cisco-sa-20160914-wms.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco WebEx Meetings Server Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106253");
-  script_version("$Revision: 11523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -68,7 +68,7 @@ condition.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wms");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

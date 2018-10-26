@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_rce_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_op5_rce_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # op5 Monitor Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:op5:monitor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106380");
-  script_version("$Revision: 11640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-07 12:46:37 +0700 (Mon, 07 Nov 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"op5 Monitor is prone to a remote command execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"op5 has a CSRF entry point that can be used to execute arbitrary remote
 commands on op5 system sent via HTTP GET requests, allowing attackers to completely takeover the affected host,

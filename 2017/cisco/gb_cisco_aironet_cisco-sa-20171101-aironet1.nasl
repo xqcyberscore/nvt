@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet1.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_cisco_aironet_cisco-sa-20171101-aironet1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Aironet Access Point Platforms 802.11 Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140482");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 14:24:55 +0700 (Thu, 02 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
@@ -46,7 +46,7 @@ if (description)
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");

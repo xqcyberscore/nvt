@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_deny_answer_aliases_dos_vuln.nasl 10945 2018-08-14 06:57:51Z santu $
+# $Id: gb_isc_bind_deny_answer_aliases_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813750");
-  script_version("$Revision: 10945 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-5740");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:57:51 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 12:14:44 +0530 (Fri, 10 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'deny-answer-aliases' Denial of Service Vulnerability");
@@ -47,9 +47,7 @@ if(description)
   feature 'deny-answer-aliases' which leads to assertion failure in 'name.c'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (assertion failure).
-
-  Impact Level: Application");
+  attackers to cause a denial of service (assertion failure).");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.7.0 through 9.8.8,
   9.9.0 through 9.9.13, 9.10.0 through 9.10.8, 9.11.0 through 9.11.4,

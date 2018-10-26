@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170215-asyncos.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_cisco_wsa_cisco-sa-20170215-asyncos.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco AsyncOS Software for Cisco WSA Filtering Bypass Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3827");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco AsyncOS Software for Cisco WSA Filtering Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-asyncos");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -59,7 +59,7 @@ the device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 11:36:45 +0700 (Thu, 16 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

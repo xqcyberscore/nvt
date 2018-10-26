@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nghttp2_dos_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_nghttp2_dos_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # nghttp2 Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nghttp2:nghttp2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106172");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 11:13:25 +0700 (Mon, 08 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -52,7 +52,7 @@ if (description)
   script_tag(name:"summary", value:"nghttp2 is prone to a denial of serice vulnerability.");
 
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"nghttpd is prone to a remote denial-of-service attack. A remote
 attacker could exploit this issue by sending a crafted request that will induce a dependency cycle, causing

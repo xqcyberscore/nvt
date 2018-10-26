@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208694.nasl 9762 2018-05-09 02:09:11Z ckuersteiner $
+# $Id: gb_apple_itunes_HT208694.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apple iTunes Security Updates(HT208694)-Windows
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813110");
-  script_version("$Revision: 9762 $");
-  script_cve_id("CVE-2018-4144", "CVE-2018-4101", "CVE-2018-4114", "CVE-2018-4118", 
-                "CVE-2018-4119", "CVE-2018-4120", "CVE-2018-4121", "CVE-2018-4122", 
-                "CVE-2018-4125", "CVE-2018-4127", "CVE-2018-4128", "CVE-2018-4129", 
-                "CVE-2018-4130", "CVE-2018-4161", "CVE-2018-4162", "CVE-2018-4163", 
+  script_version("$Revision: 12116 $");
+  script_cve_id("CVE-2018-4144", "CVE-2018-4101", "CVE-2018-4114", "CVE-2018-4118",
+                "CVE-2018-4119", "CVE-2018-4120", "CVE-2018-4121", "CVE-2018-4122",
+                "CVE-2018-4125", "CVE-2018-4127", "CVE-2018-4128", "CVE-2018-4129",
+                "CVE-2018-4130", "CVE-2018-4161", "CVE-2018-4162", "CVE-2018-4163",
                 "CVE-2018-4165", "CVE-2018-4113", "CVE-2018-4146", "CVE-2018-4117");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 04:09:11 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-02 10:32:52 +0530 (Mon, 02 Apr 2018)");
   script_name("Apple iTunes Security Updates(HT208694)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A buffer overflow error due to improper size validation..
 
@@ -57,25 +56,23 @@ if(description)
 
   - A cross-origin issue existed with the fetch API.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to elevate privileges, exfiltrate data cross-origin,
-  execute arbitrary code and lead to a denial of service condition.
+  execute arbitrary code and lead to a denial of service condition.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Apple iTunes versions before 12.7.4 on Windows");
 
-  script_tag(name: "affected" , value:"Apple iTunes versions before 12.7.4 on Windows");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple iTunes 12.7.4 or later.
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.7.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT208694");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT208694");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Ver");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

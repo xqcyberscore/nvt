@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xss_vuln1.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_icewarp_xss_vuln1.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IceWarp XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:icewarp:mail_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140345");
-  script_version("$Revision: 11919 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-01 15:42:08 +0700 (Fri, 01 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -56,7 +56,7 @@ if (description)
   script_tag(name:"insight", value:"In the webmail component in IceWarp Server, there was an XSS vulnerability
 discovered in the 'language' parameter.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 12.0.2.0 or later.");
 

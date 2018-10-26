@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_75994.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_apic_75994.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Access Control Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2015-4235");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Application Policy Infrastructure Controller Access Control Vulnerability ");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150722-apic");
 
   script_tag(name:"impact", value:"An exploit could allow the attacker to gain access to the APIC as the root user and perform root-level commands.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to improper implementation of access controls in the APIC filesystem. An attacker could exploit this vulnerability by accessing the cluster management configuration of the APIC.");
   script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"summary", value:"A vulnerability in the cluster management configuration of the Cisco Application Policy Infrastructure Controller (APIC) could allow an authenticated, remote attacker to access the APIC as the root user.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 12:54:47 +0100 (Wed, 10 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

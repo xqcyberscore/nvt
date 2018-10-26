@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wso2_identity_server_xxe_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_wso2_identity_server_xxe_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # WSO2 Identity Server CSRF And XXE Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:wso2:carbon_identity_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106343");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-4311", "CVE-2016-4312");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 12:16:07 +0700 (Mon, 10 Oct 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,7 @@ service and server-side request forgery, port scanning and other system impacts 
 
   script_tag(name:"solution", value:"Apply the provide patch or upgrade to 5.2.0 or later.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

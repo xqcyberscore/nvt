@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_imc_cisco-sa-20170419-cimc2.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_cisco_imc_cisco-sa-20170419-cimc2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Integrated Management Controller User Session Hijacking Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-6617");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Integrated Management Controller User Session Hijacking Vulnerability");
 
@@ -50,14 +50,14 @@ this vulnerability by using a hijacked session identifier to connect to the soft
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to hijack an authenticated
 user's browser session on the affected system.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to version 3.0.1d or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 14:59:32 +0200 (Thu, 20 Apr 2017)");
 
   script_category(ACT_GATHER_INFO);

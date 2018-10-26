@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagvis_xss_vuln.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_nagvis_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # NagVis XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nagvis:nagvis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106638");
-  script_version("$Revision: 11472 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"NagVis is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability exists due to insufficient filtration of user-supplied
 data passed to the 'nagvis-master/share/userfiles/gadgets/std_table.php' URL.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K47284724.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: gb_f5_big_ip_K47284724.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - TMM vulnerability CVE-2016-9256
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9256");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 12021 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - TMM vulnerability CVE-2016-9256");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K47284724");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"Permissions enforced by iControl can lag behind the actual permissions assigned to a user if the role_map is not reloaded between the time the permissions are changed and the time of the user's next request. This is a race condition that occurs rarely in normal usage. The typical period in which this is possible is limited to at most a few seconds after the permission change. (CVE-2016-9256)");
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
 
   script_tag(name:"creation_date", value:"2017-05-17 14:28:20 +0200 (Wed, 17 May 2017)");
   script_category(ACT_GATHER_INFO);

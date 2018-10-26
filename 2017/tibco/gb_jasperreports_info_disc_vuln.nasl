@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasperreports_info_disc_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_jasperreports_info_disc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # TIBCO JasperReports Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:tibco:jasperreports_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140528");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 11:58:55 +0700 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"TIBCO JasperReports contain a vulnerability which fails to prevent remote
 access to all the contents of the web application, including key configuration files.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"The impact includes the possible access to web application configuration
 files that contain the credentials used by the server. Those credentials could then be used to affect external

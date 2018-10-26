@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K05121675.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_f5_big_ip_K05121675.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - F5 TLS vulnerability CVE-2016-9244
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9244");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - F5 TLS vulnerability CVE-2016-9244");
 
   script_xref(name:"URL", value:"https://support.f5.com/csp/article/K05121675");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A BIG-IP SSL virtual server with the non-default Session Tickets option enabled may leak up to 31 bytes of uninitialized memory. ");
@@ -47,7 +47,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 09:58:08 +0100 (Thu, 09 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

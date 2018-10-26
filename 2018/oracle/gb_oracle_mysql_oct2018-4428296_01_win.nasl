@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_oct2018-4428296_01_win.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_oracle_mysql_oct2018-4428296_01_win.nasl 12105 2018-10-26 05:54:03Z cfischer $
 #
 # Oracle Mysql Security Updates-01 (oct2018-4428296) Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814256");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 12105 $");
   script_cve_id("CVE-2018-3156", "CVE-2018-3251", "CVE-2018-3278", "CVE-2018-3276",
                 "CVE-2018-3143", "CVE-2018-3247");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 11:11:21 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Mysql Security Updates-01 (oct2018-4428296) Windows");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_sql_inj_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_foreman_sql_inj_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Foreman < 1.16.1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:theforeman:foreman";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140939");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 16:45:09 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Foreman is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Foreman is prone to multiple vulnerabilities:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_8439.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: sw_dropbear_ssh_8439.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Dropbear SSH Server Username Remote Format String Buffer Overflow
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105121");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-19 07:00:00 +0100 (Wed, 19 Nov 2014)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with Dropbear SSH Server and
   is prone to a username remote format string buffer overflow.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The program fails to perform proper bounds checking
   resulting in a format string buffer overflow.");
   script_tag(name:"impact", value:"By attempting to log on to a Dropbear Server with a

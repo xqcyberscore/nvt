@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_gss2_user_enumeration_vuln_lin.nasl 11273 2018-09-07 04:59:58Z santu $
+# $Id: gb_openssh_gss2_user_enumeration_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813888");
-  script_version("$Revision: 11273 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-15919");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 06:59:58 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-05 13:12:09 +0530 (Wed, 05 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Linux)");
@@ -50,9 +50,7 @@ if(description)
   is used on an affected system.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
-  attacker to harvest valid user accounts, which may aid in brute-force attacks.
-
-  Impact Level: Application");
+  attacker to harvest valid user accounts, which may aid in brute-force attacks.");
 
   script_tag(name:"affected", value:"OpenSSH version 5.9 to 7.8 on Linux.");
 

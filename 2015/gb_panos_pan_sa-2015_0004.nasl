@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0004.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0004.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0004
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105324");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2015-0004");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"impact", value:"This issue affects the management interface of the device, where an authenticated administrator injects malicious XML data into the web UI interface.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 6.1.4, PAN-OS 6.0.8, or PAN-OS 5.0.16");
 
   script_tag(name:"summary", value:"An XML parsing vulnerability exists in PAN-OS allowing a malicious user within PAN-OS to inject malicious
@@ -52,7 +52,7 @@ authenticated user issuing the request. (Ref #71273)");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-20 11:43:06 +0200 (Thu, 20 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

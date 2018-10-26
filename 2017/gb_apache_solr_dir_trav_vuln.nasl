@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_dir_trav_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_apache_solr_dir_trav_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Solr Path Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140341");
-  script_version("$Revision: 11900 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 15:14:14 +0700 (Thu, 31 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ file name, hence it was possible to craft a special request involving path trave
 to the Solr server process exposed. Solr servers protected and restricted by firewall rules and/or authentication
 would not be at risk since only trusted clients and users would gain direct HTTP access.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Solr before 5.5.4 and 6.x.");
 

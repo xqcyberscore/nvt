@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_dos_vuln_win.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_graphicsmagick_dos_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # GraphicsMagick Denial of Service Vulnerability (Windows)
 #
@@ -29,30 +29,28 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112212");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6799");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-09 11:31:13 +0100 (Fri, 09 Feb 2018)");
   script_name("GraphicsMagick Denial of Service Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with GraphicsMagick
   and is prone to a denial of service (DoS) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The AcquireCacheNexus function in magick/pixel_cache.c allows remote attackers
 to cause a denial of service (heap overwrite) or possibly have unspecified other impact via a crafted image file, because a pixel staging area is not used.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  attackers to cause a denial of service or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"GraphicsMagick before version 1.3.28.");
 
-  script_tag(name:"solution", value: "Update to version 1.3.28 or later");
+  script_tag(name:"solution", value:"Update to version 1.3.28 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

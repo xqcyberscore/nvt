@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_session_hijack_vuln_apr16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ibm_websphere_session_hijack_vuln_apr16.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # IBM Websphere Apllication Server Session Hijack Vulnerability Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807651");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2015-1936");
   script_bugtraq_id(75480);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:51 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Session Hijack Vulnerability Apr16");
@@ -54,8 +54,7 @@ if(description)
   8.0.0 before 8.0.0.12 and 8.5 before 8.5.5.6");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) 8.0.0.12, 8.5.5.6 or later,
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  Server (WAS) 8.0.0.12, 8.5.5.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mantis_multiple_sql_inj_vuln.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # MantisBT Multiple SQL Injection Vulnerabilities
 #
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105902");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 12095 $");
 
   script_name("MantisBT Multiple SQL Injection Vulnerabilities");
 
@@ -42,7 +42,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16879");
   script_xref(name:"URL", value:"http://www.mantisbt.org/bugs/view.php?id=16880");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 11:38:14 +0700 (Tue, 25 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"summary", value:"There are multiple SQL Injection vulnerabilities in MantisBT which allow
   a remote attacker to access or modify data.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to version 1.2.16 or higher.");
   script_tag(name:"insight", value:"Use of db_query() instead of db_query_bound() allowed SQL injection
   attacks due to unsanitized use of parameters within the query when using

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_check_mk_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_check_mk_info_disc_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Check_MK Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:check_mk_project:check_mk";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140449");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-24 14:59:40 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -58,7 +58,7 @@ information disclosure.");
 because of a race condition, which allows remote attackers to obtain sensitive user information by reading a GUI
 crash report.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Check_MK before version 1.2.8p26.");
 

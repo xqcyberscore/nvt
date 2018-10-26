@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # IBM WebSphere MQ Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:websphere_mq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106909");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 12:09:42 +0700 (Tue, 27 Jun 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
@@ -58,7 +58,7 @@ service to the MQXR channel when trace is enabled.");
 
   script_tag(name:"solution", value:"Upgrade to version 8.0.0.6, 9.0.0.1, 9.0.2 or later.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:'https://www-01.ibm.com/support/docview.wss?uid=swg22001468');
 

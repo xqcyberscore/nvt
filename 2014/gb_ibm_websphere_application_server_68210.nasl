@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_68210.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ibm_websphere_application_server_68210.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-0965", "CVE-2014-3022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12095 $");
 
   script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.ibm.com");
   script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,7 +56,7 @@ if (description)
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
 may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The IBM WebSphere Application Server is prone to an unspecified remote

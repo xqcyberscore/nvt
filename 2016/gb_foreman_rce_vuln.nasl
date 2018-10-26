@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_rce_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_foreman_rce_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Foreman Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106423");
-  script_version("$Revision: 11493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Foreman is prone to a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The smart proxy TFTP API is vulnerable to arbitrary remote code execution,
 as it passes untrusted user input (the PXE template type) to the eval() function causing it to be executed.");

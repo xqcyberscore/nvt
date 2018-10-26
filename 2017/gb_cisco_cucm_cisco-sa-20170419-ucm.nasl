@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170419-ucm.nasl 11923 2018-10-16 10:38:56Z mmartin $
+# $Id: gb_cisco_cucm_cisco-sa-20170419-ucm.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Unified Communications Manager Denial of Service Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-3808");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11923 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco Unified Communications Manager Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-ucm");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -56,7 +56,7 @@ unexpectedly. The device and services will restart automatically.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:38:56 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 16:25:38 +0200 (Thu, 20 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

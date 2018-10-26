@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20170705-FireSIGHT.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: gb_cisco_firesight_cisco-sa-20170705-FireSIGHT.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco FireSIGHT System Software Arbitrary Code Execution Vulnerability
 #
@@ -33,13 +33,13 @@ if(description)
   script_cve_id("CVE-2017-6735");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11039 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco FireSIGHT System Software Arbitrary Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170705-FireSIGHT");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-06 10:35:21 +0700 (Thu, 06 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

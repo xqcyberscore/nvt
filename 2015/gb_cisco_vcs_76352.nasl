@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76352.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_vcs_76352.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Expressway Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4315");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence Video Communication Server Expressway Denial of Service Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv31853");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to cause a denial of service condition or read arbitrary files on an affected system.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of declared document type definitions (DTD) stored externally. An attacker could exploit this
 vulnerability by supplying a specially crafted XML file to the targeted system. An exploit could allow the attacker to launch a denial of service or read arbitrary files.
 
@@ -54,7 +54,7 @@ This issue is being tracked by Cisco bug ID CSCuv31853");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-27 15:43:02 +0200 (Thu, 27 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

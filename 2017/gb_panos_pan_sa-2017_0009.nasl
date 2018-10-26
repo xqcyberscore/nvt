@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0009.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0009.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS Local Privilege Escalation in the Management Web Interface
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-7218");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS Local Privilege Escalation in the Management Web Interface");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability exists in the Management Web Interface that could allow for local privilege escalation. The Management Web Interface does not properly validate specific request parameters which can potentially allow executing code with higher privileges.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 7.1.9 or later");
 
   script_tag(name:"affected", value:"PAN-OS 7.1.8 and earlier");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 16:25:31 +0200 (Wed, 12 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

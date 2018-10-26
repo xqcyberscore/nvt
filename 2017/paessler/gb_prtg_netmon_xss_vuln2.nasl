@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln2.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_prtg_netmon_xss_vuln2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # PRTG Network Monitor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140434");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-17 16:07:51 +0700 (Tue, 17 Oct 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -70,7 +70,7 @@ proceeding in spite of the error message (CVE-2017-15651)
   - it's possible to create a Map as a read-only user, by forging a request and sending it to the server
 (CVE-2017-15917)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"PRTG Network Monitor version 17.3.33.2830 and prior.");
 

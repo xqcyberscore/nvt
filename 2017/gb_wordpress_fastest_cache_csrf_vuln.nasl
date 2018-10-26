@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_fastest_cache_csrf_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_wordpress_fastest_cache_csrf_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Fastest Cache Plugin CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112053");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 09:35:51 +0200 (Mon, 25 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Multiple cross-site request forgery (CSRF) vulnerabilities in the optionsPageRequest function in admin.php in WP Fastest Cache plugin before 0.8.3.5 for WordPress allow remote attackers to hijack the authentication of unspecified victims for requests that call the (1) saveOption, (2) deleteCache, (3) deleteCssAndJsCache, or (4) addCacheTimeout method via the wpFastestCachePage parameter in the WpFastestCacheOptions/ page.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Fastest Cache plugin version 0.8.3.4 and prior.");
 

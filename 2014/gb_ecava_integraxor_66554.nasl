@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_66554.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ecava_integraxor_66554.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Ecava IntegraXor Account Information Disclosure Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
   script_bugtraq_id(66554);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12095 $");
 
   script_name("Ecava IntegraXor Account Information Disclosure Vulnerability");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66554");
   script_xref(name:"URL", value:"http://www.integraxor.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 13:12:18 +0200 (Thu, 03 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
 may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Ecava IntegraXor is prone to an information-disclosure vulnerability.");

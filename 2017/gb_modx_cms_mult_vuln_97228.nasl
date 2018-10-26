@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_mult_vuln_97228.nasl 5882 2017-04-06 11:53:46Z cfi $
+# $Id: gb_modx_cms_mult_vuln_97228.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # MODX Revolution CMS Multiple Security Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:modx:revolution';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108120");
-  script_version("$Revision: 5882 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 13:53:46 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-06 07:42:44 +0200 (Thu, 06 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"MODX Revolution CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"MODX Revolution CMS is prone to multiple vulnerabilities:
 

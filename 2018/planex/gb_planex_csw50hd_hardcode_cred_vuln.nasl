@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_planex_csw50hd_hardcode_cred_vuln.nasl 11273 2018-09-07 04:59:58Z santu $
+# $Id: gb_planex_csw50hd_hardcode_cred_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # PLANEX CS-W50HD Hardcode Credential Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:planex:ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813883");
-  script_version("$Revision: 11273 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-12574");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 06:59:58 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-03 15:43:26 +0530 (Mon, 03 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PLANEX CS-W50HD Hardcode Credential Vulnerability");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain unauthorized access and control the device completely,
-  the account can't be modified or deleted.
-
-  Impact Level: Application");
+  the account can't be modified or deleted.");
 
   script_tag(name:"affected", value:"PLANEX CS-W50HD devices with firmware before 030720");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_jan17_win.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_cacti_mult_vuln_jan17_win.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cacti < 1.0.0 Multiple Vulnerabilities (Windows)
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108296");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12106 $");
   script_cve_id("CVE-2014-4000", "CVE-2016-2313");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 13:54:25 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if(description)
   to bypass intended access restrictions by logging in as a user not in the cacti
   database (CVE-2016-2313).");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Cacti versions prior to 1.0.0.");
 

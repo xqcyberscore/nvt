@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_spring_dos_vuln_win.nasl 11935 2018-10-17 08:47:01Z mmartin $
+# $Id: gb_apache_struts_spring_dos_vuln_win.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Apache Struts Spring AOP DoS Vulnerability (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106957");
-  script_version("$Revision: 11935 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 10:47:01 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"When using a Spring AOP functionality to secure Struts actions it is
 possible to perform a DoS attack when user was properly authenticated");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Struts 2.3.7 - Struts 2.3.32, Struts 2.5 - Struts 2.5.10.1");
 

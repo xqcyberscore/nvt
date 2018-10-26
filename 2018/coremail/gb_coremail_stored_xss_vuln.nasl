@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coremail_stored_xss_vuln.nasl 9921 2018-05-22 13:02:25Z jschulte $
+# $Id: gb_coremail_stored_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Coremail XT <= 3.0 Stored XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113192");
-  script_version("$Revision: 9921 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:02:25 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 14:52:35 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.youtube.com/watch?v=LRK3c_DhXn4");
   script_xref(name:"URL", value:"http://www.coremail.cn/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mailtech:coremail";

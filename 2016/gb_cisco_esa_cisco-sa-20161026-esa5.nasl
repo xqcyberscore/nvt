@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa5.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esa5.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Email Security Appliance Drop Bypass Vulnerability
 #
@@ -33,39 +33,37 @@ if (description)
   script_cve_id("CVE-2016-6357");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Cisco Email Security Appliance Drop Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa5");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the configured security policies, including drop email filtering, in Cisco
-AsyncOS for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to
-bypass a configured drop filter by using an email with a corrupted attachment.
+  AsyncOS for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to
+  bypass a configured drop filter by using an email with a corrupted attachment.
 
-The vulnerability is due to improper error handling. An attacker could exploit this vulnerability by
-sending an email message with a corrupted attachment. A successful exploit could allow the attacker
-to bypass a configured drop filter.
+  The vulnerability is due to improper error handling. An attacker could exploit this vulnerability by
+  sending an email message with a corrupted attachment. A successful exploit could allow the attacker
+  to bypass a configured drop filter.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa5");
+  Cisco has released software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 14:09:52 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

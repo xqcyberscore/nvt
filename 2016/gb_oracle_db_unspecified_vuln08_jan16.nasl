@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln08_jan16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_oracle_db_unspecified_vuln08_jan16.nasl 12110 2018-10-26 06:58:59Z cfischer $
 #
 # Oracle Database Server Unspecified Vulnerability -08 Jan16
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:database_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807048");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12110 $");
   script_cve_id("CVE-2015-0468");
   script_bugtraq_id(75853);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:58:59 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -08 Jan16");
 
@@ -52,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions
   11.1.0.7, 11.2.0.3, and 12.1.0.1");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

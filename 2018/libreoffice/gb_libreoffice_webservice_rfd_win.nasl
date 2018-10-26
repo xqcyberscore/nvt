@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_webservice_rfd_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libreoffice_webservice_rfd_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108332");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6871");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 12:24:46 +0100 (Mon, 12 Feb 2018)");
   script_name("LibreOffice 'WEBSERVICE formula' Remote File Disclosure Vulnerability (Windows)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -48,24 +48,20 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with LibreOffice
   and is prone to a remote file disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of a Detection-NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers
   to read arbitrary files via WEBSERVICE calls in a document, which use the
-  COM.MICROSOFT.WEBSERVICE function.
-
-  Impact Level: Application/System");
+  COM.MICROSOFT.WEBSERVICE function.");
 
   script_tag(name:"affected", value:"LibreOffice versions before 5.4.5 and 6.x before 6.0.1.");
 
-  script_tag(name:"solution", value:"Upgrade to LibreOffice version 5.4.5, 6.0.1 or later.
-
-  For updates refer to http://www.libreoffice.org");
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 5.4.5, 6.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name:"URL", value:"http://www.libreoffice.org");
   exit(0);
 }
 

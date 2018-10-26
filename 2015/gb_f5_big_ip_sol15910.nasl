@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15910.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol15910.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - Linux kernel SCTP vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-3687", "CVE-2014-3673");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - Linux kernel SCTP vulnerabilities");
 
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name:"impact", value:"Remote attackers may be able to cause a denial-of-service (DoS) using malformed or duplicate ASCONF chunk.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"CVE-2014-3673
 The SCTP implementation in the Linux kernel through 3.17.2 allows remote attackers to cause a denial of service
@@ -57,7 +57,7 @@ trigger an incorrect uncork within the side-effect interpreter.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

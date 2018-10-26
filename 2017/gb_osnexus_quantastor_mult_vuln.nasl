@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osnexus_quantastor_mult_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_osnexus_quantastor_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # OSNEXUS QuantaStor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:osnexus:quantastor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140333");
-  script_version("$Revision: 11977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 13:36:20 +0700 (Tue, 29 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -63,7 +63,7 @@ common usernames. (CVE-2017-9978)
 invoked. The response sent to the user isn't sanitized in this case. An attacker can leverage this issue by
 including arbitrary HTML or JavaScript code as a parameter, aka XSS. (CVE-2017-9979)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"OSNEXUS QuantaStor prior to version 4.3.1.007");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_apr18_lin.nasl 11156 2018-08-29 09:25:17Z asteins $
+# $Id: gb_wordpress_mult_vuln_apr18_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # WordPress Multiple Vulnerabilities-April 2018 (Linux)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813086");
-  script_version("$Revision: 11156 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-10100", "CVE-2018-10101", "CVE-2018-10102");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 12:10:45 +0530 (Tue, 17 Apr 2018)");
   script_name("WordPress Multiple Vulnerabilities-April 2018 (Linux)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -55,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct cross site scripting, url redirection attacks and
-  bypass security restrictions.
-
-  Impact Level: Application");
+  bypass security restrictions.");
 
   script_tag(name:"affected", value:"WordPress versions prior to 4.9.5 on Linux");
 

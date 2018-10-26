@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)
 #
@@ -29,29 +29,29 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105722");
-  script_version("$Revision: 11499 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2014-0160");
   script_bugtraq_id(66690);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:54:13 +0200 (Tue, 17 May 2016)");
 
   script_name("Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)");
 
-  script_tag(name:"summary", value:'Symantec Messaging Gateway (SMG) Appliance 10.6.x management console was
+  script_tag(name:"summary", value:"Symantec Messaging Gateway (SMG) Appliance 10.6.x management console was
 susceptible to potential unauthorized loss of privileged information due to an inadvertent static link of an
-updated component library to a version of SSL susceptible to the Heartbleed vulnerability (CVE-2014-0160).');
+updated component library to a version of SSL susceptible to the Heartbleed vulnerability (CVE-2014-0160).");
 
-  script_tag(name:"vuldetect", value:'Check the version');
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:'Symantec became aware of a recently updated ACE library shipped in SMG 10.6.x
+  script_tag(name:"insight", value:"Symantec became aware of a recently updated ACE library shipped in SMG 10.6.x
 that was statically linked inadvertently to a version of SSL susceptible to CVE-2014-0160, Heartbleed vice
-dynamically linked to the non-vulnerable SSL version in the shipping OS of the Appliance.');
+dynamically linked to the non-vulnerable SSL version in the shipping OS of the Appliance.");
 
-  script_tag(name:"affected", value:'SMG 10.x, 10.6.1 and earlier ');
+  script_tag(name:"affected", value:"SMG 10.x, 10.6.1 and earlier.");
 
-  script_tag(name:"solution", value:'Update to SMG 10.6.1-3 or newer.');
+  script_tag(name:"solution", value:"Update to SMG 10.6.1-3 or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

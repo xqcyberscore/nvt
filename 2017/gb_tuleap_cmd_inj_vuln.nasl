@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tuleap_cmd_inj_vuln.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_tuleap_cmd_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Tuleap Remote OS Command Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:enalean:tuleap";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106910");
-  script_version("$Revision: 11472 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 08:25:42 +0700 (Wed, 28 Jun 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Tuleap allows command injection via the PhpWiki SyntaxHighlighter plugin.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Remote command execution is achieved by entering a SyntaxHighlighter plugin
 directive in a new wiki page on any wiki available in any project. The SyntaxHighligter plugin in vulnerable

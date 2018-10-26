@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl 11984 2018-10-19 10:13:05Z mmartin $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl 12109 2018-10-26 06:57:05Z cfischer $
 #
 # Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2017-6664");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11984 $");
+  script_version("$Revision: 12109 $");
 
   script_name("Cisco IOS XE Software Autonomic Networking Infrastructure Certificate Revocation Vulnerability");
 
-   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Administrators can mitigate this vulnerability by doing the following for autonomic nodes that were disconnected from the Autonomic Network domain:
 
@@ -47,20 +47,18 @@ if (description)
 
   - Update the Autonomic Networking whitelist file on the registrar
 
-
-These actions will prevent the autonomic node from re-establishing connectivity to the Autonomic Network domain of an affected system.");
+  These actions will prevent the autonomic node from re-establishing connectivity to the Autonomic Network domain of an affected system.");
 
   script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software could allow an unauthenticated, remote, autonomic node to access the Autonomic Networking infrastructure of an affected system, after the certificate for the autonomic node has been revoked.");
 
   script_tag(name:"insight", value:"The vulnerability exists because the affected software does not transfer certificate revocation lists (CRLs) across Autonomic Control Plane (ACP) channels. An attacker could exploit this vulnerability by connecting an autonomic node, which has a known and revoked certificate, to the autonomic domain of an affected system.");
 
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to insert a previously trusted autonomic node into the autonomic domain of an affected system after the certificate for the node has been revoked.");
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anicrl");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:13:05 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:57:05 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 08:55:11 +0700 (Fri, 28 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -117,4 +115,3 @@ foreach af (affected) {
 }
 
 exit(99);
-

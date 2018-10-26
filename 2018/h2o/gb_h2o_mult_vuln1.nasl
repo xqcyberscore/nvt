@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_mult_vuln1.nasl 8966 2018-02-27 11:39:18Z cfischer $
+# $Id: gb_h2o_mult_vuln1.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # H2O HTTP Server Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:h2o_project:h2o";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140820");
-  script_version("$Revision: 8966 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:39:18 +0100 (Tue, 27 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-27 16:01:53 +0700 (Tue, 27 Feb 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-27 16:01:53 +0700 (Tue, 27 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-10908", "CVE-2017-10872");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("H2O HTTP Server Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_h2o_http_server_detect.nasl");
   script_mandatory_keys("h2o/installed");
 
-  script_tag(name: "summary", value: "H2O HTTP Server is prone to multiple denial of service vulnerabilities.");
+  script_tag(name:"summary", value:"H2O HTTP Server is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "H2O HTTP Server is prone to multiple denial of service vulnerabilities:
+  script_tag(name:"insight", value:"H2O HTTP Server is prone to multiple denial of service vulnerabilities:
 
-- Denial of service in the server via unspecified vectors (CVE-2017-10872)
+  - Denial of service in the server via unspecified vectors (CVE-2017-10872)
 
-- Denial of service in the server via specially crafted HTTP/2 header (CVE-2017-10908)");
+  - Denial of service in the server via specially crafted HTTP/2 header (CVE-2017-10908)");
 
-  script_tag(name: "affected", value: "H2O version 2.2.3 and prior.");
+  script_tag(name:"affected", value:"H2O version 2.2.3 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.2.4 or later.");
+  script_tag(name:"solution", value:"Update to version 2.2.4 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1544");
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1543");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1544");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1543");
 
   exit(0);
 }

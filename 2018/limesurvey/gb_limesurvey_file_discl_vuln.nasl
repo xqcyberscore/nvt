@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_file_discl_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: gb_limesurvey_file_discl_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LimeSurvey File Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:limesurvey:limesurvey";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140848");
-  script_version("$Revision: 9226 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-05 09:07:18 +0700 (Mon, 05 Mar 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-05 09:07:18 +0700 (Mon, 05 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2018-7556");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("LimeSurvey File Disclosure Vulnerability");
 
@@ -51,14 +51,14 @@ if (description)
   script_dependencies("secpod_limesurvey_detect.nasl");
   script_mandatory_keys("limesurvey/installed");
 
-  script_tag(name: "summary", value: "LimeSurvey mishandles application/controller/InstallerController.php after
+  script_tag(name:"summary", value:"LimeSurvey mishandles application/controller/InstallerController.php after
 installation, which allows remote attackers to access the configuration file.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "solution", value: "Update to version 2.6.7 LTS, 2.73.1, 3.4.2 or later.");
+  script_tag(name:"solution", value:"Update to version 2.6.7 LTS, 2.73.1, 3.4.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.limesurvey.org/about-us/news/2075-limesurvey-security-advisory-02-2018");
+  script_xref(name:"URL", value:"https://www.limesurvey.org/about-us/news/2075-limesurvey-security-advisory-02-2018");
 
   exit(0);
 }

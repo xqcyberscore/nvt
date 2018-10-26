@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hughes_broadband_satellite_modems_mult_vuln.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_hughes_broadband_satellite_modems_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Hughes Broadband Satellite Modems Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hughes:broadband_satelite_modem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813749");
-  script_version("$Revision: 11388 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2016-9497", "CVE-2016-9496", "CVE-2016-9494", "CVE-2016-9495");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 14:01:09 +0530 (Wed, 08 Aug 2018)");
   script_name("Hughes Broadband Satellite Modems Multiple Vulnerabilities");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct a denial-of-service condition, gain access to the device's
-  default telnet port 23 and telnet port 1953 and cause modem to reboot.
-
-  Impact Level: System/Application");
+  default telnet port 23 and telnet port 1953 and cause modem to reboot.");
 
   script_tag(name:"affected", value:"Hughes Broadband Satellite Modem models
   HN7740S, DW7000 and HN7000S/SM. Other models may also be affected.");

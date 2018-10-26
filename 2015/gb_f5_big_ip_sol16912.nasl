@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16912.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol16912.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL16912 - Bind vulnerability CVE-2015-4620
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-4620");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL16912 - Bind vulnerability CVE-2015-4620");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"This issue may affect BIG-IP systems on which BIND has been manually configured to allow recursion and perform Domain Name System Security Extensions (DNSSEC) validation.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"name.c in named in ISC BIND 9.7.x through 9.9.x before 9.9.7-P1 and 9.10.x before 9.10.2-P2, when configured as a recursive resolver with DNSSEC validation, allows remote attackers to cause a denial of service (REQUIRE assertion failure and daemon exit) by constructing crafted zone data and then making a query for a name in that zone. (CVE-2015-4620)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 15:30:17 +0200 (Fri, 18 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

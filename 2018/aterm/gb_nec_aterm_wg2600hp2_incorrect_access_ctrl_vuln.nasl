@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 11335 2018-09-11 14:12:03Z cfischer $
+# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813880");
-  script_version("$Revision: 11335 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2017-12575");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:12:03 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 18:21:50 +0530 (Fri, 07 Sep 2018)");
   script_name("NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -53,9 +53,7 @@ if(description)
   control for some web service APIs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to access configurations. This may aid to launch further attacks.
-
-  Impact Level: Application");
+  attacker to access configurations. This may aid to launch further attacks.");
 
   script_tag(name:"affected", value:"NEC Aterm WG2600HP2 wireless LAN router");
 

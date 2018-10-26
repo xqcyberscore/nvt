@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl 11972 2018-10-19 05:34:20Z cfischer $
+# $Id: gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:vmware:horizon_view_client";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813822");
-  script_version("$Revision: 11972 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6970");
   script_bugtraq_id(105031);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with VMware
   Horizon Client and is prone to an out-of-bounds read vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an out-of-bounds read
   error in the Message Framework library.");

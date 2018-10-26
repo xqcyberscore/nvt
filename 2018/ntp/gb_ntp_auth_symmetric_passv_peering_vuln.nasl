@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_auth_symmetric_passv_peering_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_ntp_auth_symmetric_passv_peering_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # NTP Authenticated Symmetric Passive Peering Remote Vulnerability
 #
@@ -29,53 +29,47 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812793");
-  script_version("$Revision: 11317 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-7170");
   script_bugtraq_id(103194);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 12:17:55 +0530 (Wed, 07 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##qod is unreliable because of backort issue
   script_name("NTP Authenticated Symmetric Passive Peering Remote Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running NTP and is prone to
+  script_tag(name:"summary", value:"The host is running NTP and is prone to
   a remote security vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exist due to if a system is 
-  set up to use a trustedkey and if one is not using the feature introduced in 
-  ntp-4.2.8p6 allowing an optional 4th field in the ntp.keys file to specify 
+  script_tag(name:"insight", value:"The flaw exist due to if a system is
+  set up to use a trustedkey and if one is not using the feature introduced in
+  ntp-4.2.8p6 allowing an optional 4th field in the ntp.keys file to specify
   which IPs can serve time.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions and perform some unauthorized
-  actions to the application. This may aid in further attacks.
-
-  Impact Level: Application");
+  actions to the application. This may aid in further attacks.");
 
   script_tag(name:"affected", value:"NTP version 4.2.x before 4.2.8p7 and 4.3.x before 4.3.92");
 
   script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p7 or 4.2.8p11
-  or 4.3.92. For updates refer to http://www.ntp.org/downloads.html");
+  or 4.3.92.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://support.ntp.org/bin/view/Main/NtpBug3454");
+  script_xref(name:"URL", value:"http://support.ntp.org/bin/view/Main/NtpBug3454");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
+  script_xref(name:"URL", value:"http://www.ntp.org/downloads.html");
   exit(0);
 }
-
-##
-## Code Starts Here
-##
 
 include("version_func.inc");
 include("revisions-lib.inc");

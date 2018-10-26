@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCun11074.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_asa_CSCun11074.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA SunRPC Inspection Engine DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105981");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 12:14:11 +0700 (Fri, 13 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"The SunRPC Inspection Engine of Cisco ASA is prone to a Denial of
 Service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in the SunRPC inspection engine of Cisco ASA
 Software could allow an unauthenticated, remote attacker to cause the reload of an affected system.

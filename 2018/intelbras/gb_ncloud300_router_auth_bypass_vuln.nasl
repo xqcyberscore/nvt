@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ncloud300_router_auth_bypass_vuln.nasl 9890 2018-05-17 14:31:12Z jschulte $
+# $Id: gb_ncloud300_router_auth_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Intelbras NCLOUD 300 Router Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113189");
-  script_version("$Revision: 9890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 16:31:12 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 15:05:55 +0200 (Thu, 17 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,13 +56,14 @@ if( description )
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker
   to gain complete control over the target system.");
   script_tag(name:"affected", value:"All Intelbras NCLOUD 300 devices - All firmware versions are affected.");
-  script_tag(name:"solution", value:"The vendor labelled the product 'discontinued'
-  and informed that no fix or patch will be developed.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44637/");
   script_xref(name:"URL", value:"https://blog.kos-lab.com/Hello-World/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

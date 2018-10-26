@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_skype_business_server_remote_code_exec_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_hpe_sizer_microsoft_skype_business_server_remote_code_exec_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # HPE Sizer for Microsoft Skype for Business Server Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:sizer_for_microsoft_skype_for_business_server_2015";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809458");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-17 16:24:43 +0530 (Mon, 17 Oct 2016)");
   script_name("HPE Sizer for Microsoft Skype for Business Server Remote Arbitrary Code Execution Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
   Server prior to version 16.5.1");
 
   script_tag(name:"solution", value:"Upgrade to HPE Sizer for Microsoft Skype
-  for Business Server version 16.5.1 or later. For updates refer to
-  https://www.hpe.com");
+  for Business Server version 16.5.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -66,6 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_sizer_microsoft_skype_business_server_detect.nasl");
   script_mandatory_keys("HPE/Sizer/Microsoft/Skype/Business/Server/Win/Ver");
+  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

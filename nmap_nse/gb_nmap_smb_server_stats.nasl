@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_server_stats.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_smb_server_stats.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap SMB Server Statistics NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801294");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12115 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -56,6 +56,8 @@ if(description)
   script_tag(name:"summary", value:"This script attempts to get the server's statistics over the SMB protocol.
 
   This is a wrapper on the Nmap Security Scanner's smb-server-stats.nse.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dos_vuln.nasl 10928 2018-08-11 11:29:48Z cfischer $
+# $Id: gb_dnsmasq_dos_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Dnsmasq DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106095");
-  script_version("$Revision: 10928 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 12:45:27 +0700 (Wed, 15 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"Dnsmasq is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Dnsmasq crashes when an A or AAAA record is defined locally,
   in a hosts file, and an upstream server sends a reply that the same name is empty.");

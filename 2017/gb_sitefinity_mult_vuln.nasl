@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_mult_vuln.nasl 11717 2018-10-02 06:52:54Z ckuersteiner $
+# $Id: gb_sitefinity_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Sitefinity CMS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:progress:sitefinity';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140541");
-  script_version("$Revision: 11717 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 08:52:54 +0200 (Tue, 02 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:24:34 +0700 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"Sitefinity CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Sitefinity CMS is prone to multiple vulnerabilities:
 

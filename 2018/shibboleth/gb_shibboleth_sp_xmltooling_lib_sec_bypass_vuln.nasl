@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Shibboleth XMLTooling-C Library Security Bypass Vulnerability
 #
@@ -29,49 +29,46 @@ CPE = "cpe:/a:internet2:shibboleth-sp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813051");
-  script_version("$Revision: 9226 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-0489");
   script_bugtraq_id(103172);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 14:44:12 +0530 (Thu, 22 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Shibboleth XMLTooling-C Library Security Bypass Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Shibboleth 
+  script_tag(name:"summary", value:"The host is installed with Shibboleth
   Service Provider and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to limitations in older 
-  versions of the XML parser that make it impossible to fully disable Document Type 
+  script_tag(name:"insight", value:"The flaw exists due to limitations in older
+  versions of the XML parser that make it impossible to fully disable Document Type
   Definition (DTD) processing. Through addition/manipulation of a DTD, it's possible
   to make changes to an XML document that do not break a digital signature but are
   mishandled by the SP and its libraries processing.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to bypass the authentication mechanism and perform unauthorized actions. 
-  This may lead to further attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to bypass the authentication mechanism and perform unauthorized actions.
+  This may lead to further attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Shibboleth XMLTooling-C before 1.6.4, as used 
+  script_tag(name:"affected", value:"Shibboleth XMLTooling-C before 1.6.4, as used
   in Shibboleth Service Provider before 2.6.1.4.");
 
-  script_tag(name: "solution" , value:"Upgrade to Shibboleth Service Provider release
-  (V2.6.1.4) or upgrade XMLTooling-C library to version 1.6.4. 
-  For updates refer to https://shibboleth.net");
+  script_tag(name:"solution", value:"Upgrade to Shibboleth Service Provider release
+  (V2.6.1.4) or upgrade XMLTooling-C library to version 1.6.4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://shibboleth.net/community/advisories/secadv_20180112.txt");
-  script_xref(name : "URL" , value : "https://www.securitytracker.com/id/1040435");
+  script_xref(name:"URL", value:"https://shibboleth.net/community/advisories/secadv_20180112.txt");
+  script_xref(name:"URL", value:"https://www.securitytracker.com/id/1040435");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_shibboleth_sp_detect_win.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("Shibboleth/SP/Win/Ver");
   exit(0);
 }
@@ -88,14 +85,12 @@ location = infos['location'];
 
 if(version_is_less(version:shVer, test_version:"2.6.1.4"))
 {
-  ## Checking XMLTooling-C library is upgraded or not
   path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                          item:"ProgramFilesDir");
   if(path)
   {
     path = path + "\Shibboleth\SP\lib";
 
-    ## Get version from 'xmltooling_1.6.dll' file
     dllVer = fetch_file_version(sysPath:path, file_name:"xmltooling1_6.dll");
 
     if(dllVer && version_is_less(version:dllVer, test_version:"1.6.4.0"))

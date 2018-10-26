@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2017-0004.nasl 11836 2018-10-11 08:56:08Z mmartin $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2017-0004.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # VMSA-201-0004: vRealize Operations (vROps) Remote Code Execution Vulnerability Via Apache Struts 2
 #
@@ -33,12 +33,12 @@ if (description)
   script_cve_id("CVE-2017-5638");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12106 $");
   script_name("VMSA-201-0004: vRealize Operations (vROps) Remote Code Execution Vulnerability Via Apache Struts 2");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0004.html");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Updates are available");
 
@@ -47,7 +47,7 @@ if (description)
 
   script_tag(name:"affected", value:"vROps 6.2.1, 6.3, 6.4 and 6.5");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-31 10:25:48 +0200 (Fri, 31 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

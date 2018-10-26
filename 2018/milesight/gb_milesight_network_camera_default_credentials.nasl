@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_milesight_network_camera_default_credentials.nasl 10536 2018-07-18 07:44:57Z jschulte $
+# $Id: gb_milesight_network_camera_default_credentials.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Milesight Network Cameras Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113231");
-  script_version("$Revision: 10536 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 09:44:57 +0200 (Wed, 18 Jul 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 16:09:00 +0200 (Tue, 17 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.milesight.com/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:milesight:network_camera";

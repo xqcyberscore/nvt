@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limesurvey_mult_vuln_sep18_2.nasl 11593 2018-09-25 08:52:57Z jschulte $
+# $Id: gb_limesurvey_mult_vuln_sep18_2.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # LimeSurvey <= 3.14.7 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113263");
-  script_version("$Revision: 11593 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 10:52:57 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-05 11:15:05 +0200 (Wed, 05 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -62,7 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/LimeSurvey/LimeSurvey/blob/3be9b41e76826b57f5860d18d93b23f47d59d2e4/docs/release_notes.txt#L51");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/149435/LimeSurvey-3.14.7-Cross-Site-Scripting.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:limesurvey:limesurvey";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl 8941 2018-02-23 14:26:50Z cfischer $
+# $Id: gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # MantisBT 'view_all_bug_page' Path Disclosure Vulnerability (Windows)
 #
@@ -29,33 +29,29 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812755");
-  script_version("$Revision: 8941 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6526");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 15:26:50 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-05 11:55:27 +0530 (Mon, 05 Feb 2018)");
   script_name("MantisBT 'view_all_bug_page' Path Disclosure Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with MantisBT and is
   prone to an path disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient validation
-  of user supplied input via 'filter' parameter related to a 'filter_ensure_valid_filter' 
+  of user supplied input via 'filter' parameter related to a 'filter_ensure_valid_filter'
   call in 'current_user_api.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause site path leakage.
-
-  Impact Level: Application");
+  attackers to cause site path leakage.");
 
   script_tag(name:"affected", value:"MantisBT version 2.10.0 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to MantisBT version 2.11.0 or later,
-  For updates refer to http://www.mantisbt.org/download.php");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 2.11.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -68,6 +64,7 @@ if(description)
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
   exit(0);
 }
 

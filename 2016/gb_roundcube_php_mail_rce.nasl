@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_php_mail_rce.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_roundcube_php_mail_rce.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Roundcube Webmail Remote Code Execution Vulnerability via mail()
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108023");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2016-9920");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-07 13:00:00 +0100 (Wed, 07 Dec 2016)");
   script_name("Roundcube Webmail Remote Code Execution Vulnerability via mail()");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Roundcube Webmail and is prone to
   a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated
   attackers to execute arbitrary code on the host.");

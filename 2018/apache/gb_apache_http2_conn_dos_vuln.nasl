@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http2_conn_dos_vuln.nasl 11109 2018-08-24 14:47:20Z mmartin $
+# $Id: gb_apache_http2_conn_dos_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache HTTP Server 'HTTP/2 connection' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813812");
-  script_version("$Revision: 11109 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-1333");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 16:10:09 +0530 (Thu, 02 Aug 2018)");
   ## Affects servers that have configured and enabled HTTP/2 support
   ## which is not the default
@@ -49,9 +49,7 @@ if(description)
   of specially crafted HTTP/2 requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (DoS) condition on a targeted system.
-
-  Impact Level: Application");
+  attackers to cause a denial of service (DoS) condition on a targeted system.");
 
   script_tag(name:"affected", value:"Apache HTTP Server versions 2.4.18 through
   2.4.30 and 2.4.33.");

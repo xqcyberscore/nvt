@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_password_manager_csrf_vuln.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_manageengine_password_manager_csrf_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ManageEngine Password Manager Pro CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:manageengine:password_manager_pro';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106790");
-  script_version("$Revision: 11472 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-26 12:24:01 +0200 (Wed, 26 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -53,10 +53,10 @@ if (description)
 
   script_tag(name:"summary", value:"ManageEngine Password Manager Pro is prone to a CSRF vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The personal area of the product, in which a user store his personal
-password entries for differents account type, is exposed to CSRF attacks. Using this attack, it's possible to
+password entries for different account type, is exposed to CSRF attacks. Using this attack, it's possible to
 create or delete an arbitrary account.");
 
   script_tag(name:"affected", value:"ManageEngine Password Manager Pro prior to build 8500.");

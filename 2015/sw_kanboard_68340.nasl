@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_kanboard_68340.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: sw_kanboard_68340.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Kanboard CVE-2014-3920 Cross Site Request Forgery Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111063");
-  script_version("$Revision: 11299 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-04 13:00:00 +0100 (Fri, 04 Dec 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"Kanboard is prone to a cross-site request-forgery vulnerability
   because it does not properly validate HTTP requests.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Exploiting this issue may allow a remote attacker to perform
   certain unauthorized actions. This may lead to further attacks. ");
   script_tag(name:"affected", value:"Kanboard versions below 1.0.6 are vulnerable.");

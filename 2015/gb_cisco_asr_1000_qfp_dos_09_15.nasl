@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_qfp_dos_09_15.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_asr_1000_qfp_dos_09_15.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASR 1000 Series Aggregation Services Routers Data-Plane Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6274");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco ASR 1000 Series Aggregation Services Routers Data-Plane Processing Denial of Service Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCuv71273");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to cause a denial-of-service.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to the processing of excessive number of IPv4 packets that require fragmentation and reassembly. An
 attacker could exploit this vulnerability by sending an excessive number of fragmented packets, causing high Cisco QuantumFlow Processor (QFP) CPU utilization in
@@ -54,7 +54,7 @@ the Embedded Services Processor (ESP).");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 16:17:02 +0200 (Tue, 01 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

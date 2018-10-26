@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_universal_media_server_xxe_vuln.nasl 12004 2018-10-22 05:34:04Z cfischer $
+# $Id: gb_universal_media_server_xxe_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Universal Media Server XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:universal_media_server:universal_media_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141352");
-  script_version("$Revision: 12004 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 07:34:04 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 08:45:28 +0700 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,9 +58,9 @@ account running UMS, Initiate SMB connections to capture a NetNTLM challenge/res
 password, or Initiate SMB connections to relay a NetNTLM challenge/response and achieve Remote Command Execution
 in Windows domains.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"affected", value: "Universal Media Server version 7.1.0 and probably prior.");
+  script_tag(name:"affected", value:"Universal Media Server version 7.1.0 and probably prior.");
 
   script_tag(name:"solution", value:"No known solution is available as of 07th August, 2018. Information regarding
 this issue will be updated once solution details are available.");

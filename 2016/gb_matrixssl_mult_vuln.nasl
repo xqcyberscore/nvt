@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_matrixssl_mult_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # MatrixSSL Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:peersec_networks:matrixssl";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106347");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 11:13:38 +0700 (Wed, 12 Oct 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -78,7 +78,7 @@ service condition or execute arbitrary code in the context of the SSL stack.");
   script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/396440");
   script_xref(name:"URL", value:"http://www.tripwire.com/state-of-security/security-data-protection/cyber-security/flawed-matrixssl-code-highlights-need-for-better-iot-update-practices/");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

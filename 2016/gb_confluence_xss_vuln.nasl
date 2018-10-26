@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_confluence_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_confluence_xss_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:atlassian:confluence";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806815");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2015-8398", "CVE-2015-8399");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-08 16:21:20 +0530 (Fri, 08 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities");
@@ -57,8 +57,7 @@ if(description)
   and to read configuration files from the application.");
 
   script_tag(name:"affected", value:"Confluence versions 5.9.1, 5.8.14
-  5.8.15, 5.2
-  For Updates refer to https://www.atlassian.com/software/confluence");
+  5.8.15, 5.2");
 
   script_tag(name:"solution", value:"Upgrade to Confluence version 5.8.17 or later");
 
@@ -73,6 +72,7 @@ if(description)
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_mandatory_keys("atlassian_confluence/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.atlassian.com/software/confluence");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_debut_dos_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_debut_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Debut Embedded Server DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140295");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-14 12:10:48 +0700 (Mon, 14 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -60,7 +60,7 @@ POST request can cause the server to hang until eventually replying with an HTTP
 hung, print jobs over the network are blocked and the web interface is inaccessible. An attacker can continuously
 send this malformed request to keep the device inaccessible to legitimate traffic. (CVE-2017-16249)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Debut embedded httpd 1.20 and prior (Brother/HP printer http admin)");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

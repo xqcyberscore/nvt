@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_75525.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_openssh_75525.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2015-5352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 12083 $");
   script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-09 10:06:32 +0200 (Thu, 09 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass certain security
   restrictions and perform unauthorized actions. This may lead to further attacks");
 
-  script_tag(name:"vuldetect", value:"Check the version from ssh-banner.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Update to 6.9 or newer.");
 

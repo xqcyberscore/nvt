@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_bypass_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_atlassian_confluence_bypass_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Atlassian Confluence Access Restriction Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106869");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:24:05 +0700 (Wed, 14 Jun 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Atlassian Confluence is prone to a access restriction bypass vulnerability
 using watch notifications.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Confluence does not check if a user had permission to view a page when
 creating a workbox notification about new comments. An attacker who can login to Confluence could receive workbox

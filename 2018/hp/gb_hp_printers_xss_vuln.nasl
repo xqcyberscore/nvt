@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_xss_vuln.nasl 8849 2018-02-16 14:02:28Z asteins $
+# $Id: gb_hp_printers_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # HP Printers XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113096");
-  script_version("$Revision: 8849 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 15:02:28 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 11:50:00 +0100 (Tue, 30 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -168,7 +168,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://support.hp.com/us-en/document/c05541569");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

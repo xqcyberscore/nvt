@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffmpeg_info_disc_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_ffmpeg_info_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # FFmpeg Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112190");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 16:35:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"summary", value:"Integer underflow in the mov_read_default function in libavformat/mov.c in FFmpeg
 allows remote attackers to obtain sensitive information from heap and/or stack memory via a crafted MP4 file.");
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"FFmpeg before version 2.4.6.");
   script_tag(name:"solution", value:"Upgrade to version 2.4.6 or later");
 

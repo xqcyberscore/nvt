@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_xss_vuln_lin3.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_cacti_xss_vuln_lin3.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cacti XSS Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113043");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 10:00:00 +0200 (Thu, 02 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if( description )
   script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerabilities in include/global_session.php in Cacti
 allow remote attackers to inject arbitrary web scripts or HTML.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Cacti version 1.1.25 and prior.");
 

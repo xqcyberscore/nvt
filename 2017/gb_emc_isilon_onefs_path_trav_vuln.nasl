@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_path_trav_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_emc_isilon_onefs_path_trav_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon OneFS Path Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106701");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 11:44:57 +0700 (Thu, 30 Mar 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"EMC Isilon OneFS is affected by a path traversal vulnerability that may
 potentially be exploited by attackers to compromise the affected system.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"EMC Isilon OneFS is affected by a path traversal vulnerability. Attackers
 could potentially exploit this vulnerability to access unauthorized information by supplying specially crafted

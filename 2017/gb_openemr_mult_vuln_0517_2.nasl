@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_2.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_openemr_mult_vuln_0517_2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # OpenEMR <= 5.0.0 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108206");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 09:04:14 +0200 (Tue, 15 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with OpenEMR and is prone to multiple
 vulnerabilities");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to:
 

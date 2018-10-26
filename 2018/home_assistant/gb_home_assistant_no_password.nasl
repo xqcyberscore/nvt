@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_home_assistant_no_password.nasl 11080 2018-08-22 12:09:26Z jschulte $
+# $Id: gb_home_assistant_no_password.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Home Assistant Dashboard No Password
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113250");
-  script_version("$Revision: 11080 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 14:09:26 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-22 12:10:24 +0200 (Wed, 22 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.home-assistant.io/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:home_assistant:home_assistant";

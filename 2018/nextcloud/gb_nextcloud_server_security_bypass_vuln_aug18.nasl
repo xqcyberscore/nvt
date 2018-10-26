@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_security_bypass_vuln_aug18.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: gb_nextcloud_server_security_bypass_vuln_aug18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Nextcloud Server Security Bypass Vulnerability Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813915");
-  script_version("$Revision: 12033 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-3775");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 17:29:50 +0530 (Mon, 20 Aug 2018)");
   script_name("Nextcloud Server Security Bypass Vulnerability Aug18");
 
@@ -47,9 +47,7 @@ if (description)
   of the second factor challenge.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass the second factor validation completely.
-
-  Impact Level: Application");
+  to bypass the second factor validation completely.");
 
   script_tag(name:"affected", value:"Nextcloud Server before 12.0.3");
 

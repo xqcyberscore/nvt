@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_dolibarr_7_0_0_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Dolibarr 7.0.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113155");
-  script_version("$Revision: 10128 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 13:19:33 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -54,9 +54,9 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
-- Dolibarr ERP/CRM is affected by stored Cross-Site Scripting (XSS).
+  - Dolibarr ERP/CRM is affected by stored Cross-Site Scripting (XSS).
 
-- Dolibarr ERP/CRM is affected by multiple SQL injection vulnerabilities via comm/propal/list.php (viewstatut
+  - Dolibarr ERP/CRM is affected by multiple SQL injection vulnerabilities via comm/propal/list.php (viewstatut
 parameter) or comm/propal/list.php (propal_statut parameter, aka search_statut parameter).");
 
   script_tag(name:"affected", value:"Dolibarr through version 7.0.0");
@@ -66,7 +66,7 @@ this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-010");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dolibarr:dolibarr";

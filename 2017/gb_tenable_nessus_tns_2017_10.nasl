@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_10.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_tenable_nessus_tns_2017_10.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108148");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 12083 $");
   script_cve_id("CVE-2017-7849", "CVE-2017-7849");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 08:08:04 +0200 (Thu, 20 Apr 2017)");
   script_name("Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Nessus and is prone to
   multiple vulnerabilities when running in agent mode.");
 
-  script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to:
 

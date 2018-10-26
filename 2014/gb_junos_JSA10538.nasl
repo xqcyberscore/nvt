@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10538.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_junos_JSA10538.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos RDP Crash
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105912");
-  script_version("$Revision: 11213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 11:34:19 +0700 (Mon, 16 Jun 2014)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"summary", value:"RDP crash when receiving BGP UPDATE with malformed inetflow prefix.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"Receipt of a BGP UPDATE message containing a crafted flow specification
 NLRI may cause RPD to crash. The update creates an invalid inetflow prefix which causes the RPD process

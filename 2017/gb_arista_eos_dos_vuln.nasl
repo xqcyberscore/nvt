@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arista_eos_dos_vuln.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_arista_eos_dos_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Arista EOS DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:arista:eos";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106495");
-  script_version("$Revision: 11982 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-05 11:09:21 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"Arista EOS on DCS-7050 series is prone to a denial of service
 vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"By sending crafted packets to the control plane it is possible to cause
 a denial of service condition (device reboot).");

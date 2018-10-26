@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aerospike_database_server_95415.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_aerospike_database_server_95415.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Aerospike Database Server Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-9050", "CVE-2016-9054", "CVE-2016-9052", "CVE-2016-9049", "CVE-2016-9051", "CVE-2016-9053");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Aerospike Database Server Multiple Vulnerabilities");
 
@@ -48,7 +48,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.talosintelligence.com/reports/TALOS-2016-0267/");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Ask the vendor for an update.");
 
   script_tag(name:"summary", value:"Aerospike Database Server is prone to multiple vulnerabilities.
@@ -89,7 +89,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 14:35:35 +0100 (Fri, 27 Jan 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_auth_bypass.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_manageengine_servicedesk_plus_auth_bypass.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ManageEngine ServiceDesk Plus Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106819");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 16:23:48 +0700 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -58,7 +58,7 @@ ONLY if Active Directory/LDAP is being used.
 
 This flaw exists because of the lack of password randomization in the application version 9.0.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"ManageEngine ServiceDesk Plus prior version 9.2 build 9241");
 

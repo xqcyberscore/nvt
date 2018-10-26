@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocs_inventory_ng_mult_vuln.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_ocs_inventory_ng_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # OCS Inventory NG < 2.5 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112351");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 11:54:06 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.tarlogic.com/en/blog/vulnerabilities-in-ocs-inventory-2-4-1/");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Aug/6");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:ocsinventory-ng:ocs_inventory_ng";

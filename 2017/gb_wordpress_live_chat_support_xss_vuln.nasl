@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_live_chat_support_xss_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_wordpress_live_chat_support_xss_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress WP Live Chat Support Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112066");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 09:21:51 +0200 (Fri, 06 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"WordPress plugin WP Live Chat Support is vulnerable to cross-site scripting (XSS) resulting in
 attackers being able to inject arbitrary web script or HTML via unspecified vectors.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress WP Live Chat Support plugin version 7.0.06 and prior.");
 

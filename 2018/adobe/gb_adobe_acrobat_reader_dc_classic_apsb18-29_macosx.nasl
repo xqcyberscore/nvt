@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_dc_classic_apsb18-29_macosx.nasl 11017 2018-08-17 07:07:42Z santu $
+# $Id: gb_adobe_acrobat_reader_dc_classic_apsb18-29_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Acrobat Reader DC (Classic Track) Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813859");
-  script_version("$Revision: 11017 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12808", "CVE-2018-12799");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:07:42 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-16 11:03:52 +0530 (Thu, 16 Aug 2018)");
   script_name("Adobe Acrobat Reader DC (Classic Track) Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Mac OS X)");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to conduct arbitrary code execution in the context of the current
-  user.
-
-  Impact Level: System/Application");
+  user.");
 
   script_tag(name:"affected", value:"Adobe Acrobat Reader DC (Classic Track)
   2015.006.30434 and earlier versions on Mac OS X.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuq41510.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_cisco_asa_CSCuq41510.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco ASA VNMC Command Input Validation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105983");
-  script_version("$Revision: 11299 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 12:36:49 +0700 (Fri, 13 Mar 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"The Virtual Network Management Center implementation of Cisco ASA is
 prone to a command input validation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in the Virtual Network Management Center (VNMC) policy
 code of Cisco ASA Software could allow an authenticated, local attacker to access the underlying Linux operating

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_insightiq_95945.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_emc_isilon_insightiq_95945.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # EMC Isilon InsightIQ Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2017-2765");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11901 $");
+  script_version("$Revision: 12106 $");
 
   script_name("EMC Isilon InsightIQ Authentication Bypass Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.emc.com/");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
   script_tag(name:"summary", value:"EMC Isilon InsightIQ is prone to an authentication-bypass vulnerability.");
   script_tag(name:"affected", value:"EMC Isilon InsightIQ versions 4.1.0, 4.0.1, 4.0.0, 3.2.2, 3.2.1, 3.2.0, 3.1.1, 3.1.0, 3.0.1 and 3.0.0 are vulnerable.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 11:06:53 +0100 (Thu, 02 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

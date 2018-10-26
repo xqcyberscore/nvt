@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_dos_vuln1.nasl 9216 2018-03-27 09:14:44Z santu $
+# $Id: gb_h2o_dos_vuln1.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # H2O HTTP Server DoS Vulnerability-01
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:h2o_project:h2o";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140822");
-  script_version("$Revision: 9216 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-27 16:25:17 +0700 (Tue, 27 Feb 2018)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-27 16:25:17 +0700 (Tue, 27 Feb 2018)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 
   script_cve_id("CVE-2016-7835");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("H2O HTTP Server DoS Vulnerability-01");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_h2o_http_server_detect.nasl");
   script_mandatory_keys("h2o/installed");
 
-  script_tag(name: "summary", value: "Use-after-free vulnerability in H2O allows remote attackers to cause a
+  script_tag(name:"summary", value:"Use-after-free vulnerability in H2O allows remote attackers to cause a
 denial-of-service (DoS) or obtain server certificate private keys and possibly other information.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "H2O version 2.0.4 and prior.");
+  script_tag(name:"affected", value:"H2O version 2.0.4 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.0.5 or later.");
+  script_tag(name:"solution", value:"Update to version 2.0.5 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1144");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1144");
 
   exit(0);
 }

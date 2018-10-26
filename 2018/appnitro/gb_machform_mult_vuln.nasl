@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_machform_mult_vuln.nasl 10097 2018-06-06 10:50:30Z cfischer $
+# $Id: gb_machform_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Appnitro MachForm Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:appnitro:machform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141126");
-  script_version("$Revision: 10097 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-31 09:43:14 +0700 (Thu, 31 May 2018)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-31 09:43:14 +0700 (Thu, 31 May 2018)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-6409", "CVE-2018-6410", "CVE-2018-6411");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Appnitro MachForm Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_appnitro_machform_detect.nasl");
   script_mandatory_keys("appnitro_machform/installed");
 
-  script_tag(name: "summary", value: "Appnitro MachForm is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Appnitro MachForm is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Appnitro MachForm is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Appnitro MachForm is prone to multiple vulnerabilities:
 
-- Path traversal (CVE-2018-6409)
+  - Path traversal (CVE-2018-6409)
 
-- SQL-Injection (CVE-2018-6410)
+  - SQL-Injection (CVE-2018-6410)
 
-- Bypass of file upload filter (CVE-2018-6411)");
+  - Bypass of file upload filter (CVE-2018-6411)");
 
-  script_tag(name: "vuldetect", value: "Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
+  script_tag(name:"vuldetect", value:"Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 30th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 30th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/44794/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44794/");
 
   exit(0);
 }

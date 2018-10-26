@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_classic_apsb18-21_win.nasl 10496 2018-07-13 06:18:05Z santu $
+# $Id: gb_adobe_acrobat_dc_classic_apsb18-21_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Adobe Acrobat DC (Classic Track) Multiple Vulnerabilities-apsb18-21 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813667");
-  script_version("$Revision: 10496 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12782", "CVE-2018-5015", "CVE-2018-5028", "CVE-2018-5032",
                 "CVE-2018-5036", "CVE-2018-5038", "CVE-2018-5040", "CVE-2018-5041",
                 "CVE-2018-5045", "CVE-2018-5052", "CVE-2018-5058", "CVE-2018-5067",
@@ -58,17 +58,16 @@ if(description)
                 "CVE-2018-5034", "CVE-2018-5037", "CVE-2018-5043", "CVE-2018-12784");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:18:05 +0200 (Fri, 13 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 13:11:59 +0530 (Thu, 12 Jul 2018)");
   script_name("Adobe Acrobat DC (Classic Track) Multiple Vulnerabilities-apsb18-21 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat DC
   (Classic Track) and is prone to multiple vulnerabilities.");
-  
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
-  
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - A double free error.
 
@@ -88,24 +87,22 @@ if(description)
 
   - MUltiple buffer errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
-  attacker to gain escalated privileges, disclose sensitive information, 
-  execute arbitrary code on affected system and take control of the affected 
-  system.
+  script_tag(name:"impact", value:"Successful exploitation will allow an
+  attacker to gain escalated privileges, disclose sensitive information,
+  execute arbitrary code on affected system and take control of the affected
+  system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Acrobat DC (Classic Track)
+  script_tag(name:"affected", value:"Adobe Acrobat DC (Classic Track)
   2015.006.30418 and earlier versions on Windows.");
-  
-  script_tag(name: "solution", value:"Upgrade to Adobe Acrobat DC (Classic Track)
+
+  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat DC (Classic Track)
   version 2015.006.30434 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb18-21.html");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb18-21.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

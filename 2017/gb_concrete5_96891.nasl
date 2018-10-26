@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_concrete5_96891.nasl 6303 2017-06-10 17:29:16Z cfischer $
+# $Id: gb_concrete5_96891.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Concrete5 <= 5.6.3.4 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108152");
-  script_version("$Revision: 6303 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:29:16 +0200 (Sat, 10 Jun 2017) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-08 09:03:26 +0200 (Mon, 08 May 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"summary", value:"Concrete5 is prone to multiple cross-site scripting vulnerabilities because it
   fails to sufficiently sanitize user-supplied input.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code in the browser
   of an unsuspecting user in the context of the affected site. This may allow the attacker to steal cookie-based authentication

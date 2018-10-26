@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Cisco Email Security Appliance File Type Filtering Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-1461");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12096 $");
 
   script_name("Cisco Email Security Appliance File Type Filtering Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"Upgrade to Cisco ESA version 9.1.1-038 or
  later.");
@@ -56,7 +56,7 @@ the attacker to cause the ESA to fail to detect and act upon possible malware in
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-29 11:42:15 +0700 (Fri, 29 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

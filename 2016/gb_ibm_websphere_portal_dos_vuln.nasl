@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_dos_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ibm_websphere_portal_dos_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # IBM WebSphere Portal DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106199");
-  script_version("$Revision: 11523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-25 13:21:11 +0700 (Thu, 25 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -65,7 +65,7 @@ Cumulative Fix 19.");
 
   script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21969906");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-05_macosx.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-05_macosx.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-05)-MAC OS X
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813356");
-  script_version("$Revision: 9802 $");
-  script_cve_id("CVE-2018-6121", "CVE-2018-6122", "CVE-2018-6120" );
+  script_version("$Revision: 12116 $");
+  script_cve_id("CVE-2018-6121", "CVE-2018-6122", "CVE-2018-6120");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 11:12:21 +0530 (Fri, 11 May 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-05)-MAC OS X");
 
   script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -51,23 +50,21 @@ if(description)
 
   - Heap buffer overflow error in PDFium.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to execute arbitrary code, escalate privileges and also
-  cause data corruption or unexpected behavior. 
+  cause data corruption or unexpected behavior.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 66.0.3359.170 on MAC OS X");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 66.0.3359.170 on MAC OS X");
-
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   66.0.3359.170 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/05/stable-channel-update-for-desktop.html");
-  script_xref(name : "URL" , value : "https://www.google.co.in/chrome");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/05/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"https://www.google.co.in/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

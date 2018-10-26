@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10137.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_mcafee_esm_SB10137.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # McAfee Enterprise Security Manager Authentication Bypass Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105479");
   script_cve_id("CVE-2015-8024");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if (description)
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10137");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"McAfee Enterprise Security Manager (ESM), Enterprise Security Manager/Log Manager (ESMLM), and Enterprise Security Manager/Receiver (ESMREC) 9.3.x before 9.3.2MR19, 9.4.x before 9.4.2MR9, and 9.5.x before 9.5.0MR8, when configured to use Active Directory or LDAP authentication sources, allow remote attackers to bypass authentication.");
   script_tag(name:"solution", value:"Update to SIEM ESM 9.5.0MR8 or 9.4.2MR9");
   script_tag(name:"summary", value:"A specially crafted username can bypass SIEM ESM authentication (password is not validated) if the ESM is configured to use Active Directory or LDAP authentication sources. This can result in the attacker gaining NGCP (master user) access to the ESM.");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-04 14:28:09 +0100 (Fri, 04 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

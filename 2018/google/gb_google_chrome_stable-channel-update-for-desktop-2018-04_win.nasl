@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-04_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813094");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
                 "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
                 "CVE-2018-6093", "CVE-2018-6094", "CVE-2018-6095", "CVE-2018-6096",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2018-6117");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 14:30:38 +0530 (Wed, 18 Apr 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-04)-Windows");
 
@@ -75,21 +75,19 @@ if(description)
 
   - A content security policy bypass error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct spoofing attacks, bypass security restrictions, cause
-  denial of service condition and also some unspecified impacts.
+  denial of service condition and also some unspecified impacts.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 66.0.3359.117 on Windows");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 66.0.3359.117 on Windows");
-
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   66.0.3359.117 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/04/stable-channel-update-for-desktop.html");
-  script_xref(name : "URL" , value : "http://www.google.com/chrome");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/04/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_check_vulns.nasl 11966 2018-10-18 13:56:21Z cfischer $
+# $Id: gb_nmap_smb_check_vulns.nasl 12115 2018-10-26 09:30:41Z cfischer $
 #
 # Wrapper for Nmap SMB Check Vulnerabilities NSE script.
 #
@@ -29,8 +29,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801287");
-  script_version("$Revision: 11966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 15:56:21 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12115 $");
+  script_cve_id("CVE-2006-2370", "CVE-2006-2371", "CVE-2007-1748", "CVE-2008-4250", "CVE-2009-3103");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 11:30:41 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,6 +56,11 @@ if(description)
   script_add_preference(name:"smbsign :", value:"", type:"entry");
   script_add_preference(name:"randomseed :", value:"", type:"entry");
 
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securityadvisories/2009/975497");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2007/ms07-029");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2006/ms06-025");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067");
+
   script_tag(name:"summary", value:"This script attempts to check the following vulnerabilities:
 
   - MS08-067, a Windows RPC vulnerability
@@ -66,6 +72,8 @@ if(description)
   - SMBv2 exploit (CVE-2009-3103)
 
   This is a wrapper on the Nmap Security Scanner's smb-check-vulns.nse.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

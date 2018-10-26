@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3689_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_ubuntu_USN_3689_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Ubuntu Update for libgcrypt20 USN-3689-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843565");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:05:46 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2018-0495");
   script_tag(name:"cvss_base", value:"1.9");
@@ -47,7 +47,7 @@ private keys.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3689-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3689-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3689-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

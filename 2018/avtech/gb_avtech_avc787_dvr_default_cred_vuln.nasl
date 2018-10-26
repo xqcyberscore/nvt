@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_avc787_dvr_default_cred_vuln.nasl 10887 2018-08-10 12:05:12Z santu $
+# $Id: gb_avtech_avc787_dvr_default_cred_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:avtech:avc7xx_dvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813818");
-  script_version("$Revision: 10887 $");
+  script_version("$Revision: 12116 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:05:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 12:34:02 +0530 (Tue, 07 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTech AVC 787 DVR Web Interface Default Credentials Vulnerability");
@@ -47,9 +47,7 @@ if(description)
   coded credentials.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to bypass authentication and launch further attacks.
-
-  Impact Level: Application");
+  attacker to bypass authentication and launch further attacks.");
 
   script_tag(name:"affected", value:"AVTech AVC 787 DVR device");
 

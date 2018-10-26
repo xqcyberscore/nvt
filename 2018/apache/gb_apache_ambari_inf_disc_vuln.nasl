@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_inf_disc_vuln.nasl 11444 2018-09-18 07:17:07Z cfischer $
+# $Id: gb_apache_ambari_inf_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Apache Ambari >= 2.5.0, <= 2.6.2 Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113241");
-  script_version("$Revision: 11444 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 11:02:53 +0200 (Thu, 02 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities#AmbariVulnerabilities-CVE-2018-8042");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:ambari";

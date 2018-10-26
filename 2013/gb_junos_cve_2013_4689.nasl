@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4689.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_junos_cve_2013_4689.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos CSRF Protection bypass vulnerability in J-Web
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103951");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-15 14:20:14 +0700 (Fri, 15 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"summary", value:"A CSRF Protection bypass in J-Web allows an attacker to gain
 unauthorized access to the affected device.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in J-Web may allow remote attackers to bypass
 CSRF (Cross-Site Request Forgery) Protection in J-Web.");

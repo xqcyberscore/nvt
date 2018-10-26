@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_sql_inj_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_ecava_integraxor_sql_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # ECAVA IntegraXor SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106607");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"ECAVA IntegraXor is prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Ecava IntegraXor web server has parameters that are vulnerable to SQL
 injection. If the queries are not sanitized, the host's database could be subject to read, write, and delete

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol23946311.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_f5_big_ip_sol23946311.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL23946311 - glibc vulnerability CVE-2015-8776
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-8776");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL23946311 - glibc vulnerability CVE-2015-8776");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An application or daemon that passes out-of-range time values to the strftime() function may crash and lead to a denial-of-service (DoS) on the application or daemon.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Passing out-of-range data to the strftime() function will access invalid memory and cause the calling application to crash.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-04 13:37:21 +0200 (Mon, 04 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln_july18.nasl 11243 2018-09-05 12:22:39Z mmartin $
+# $Id: gb_open_xchange_appsuite_mult_vuln_july18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities (July18)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141264");
-  script_version("$Revision: 11243 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-03 14:31:36 +0200 (Tue, 03 Jul 2018)");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-03 14:31:36 +0200 (Tue, 03 Jul 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-9997", "CVE-2018-9998");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities (July18)");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_ox_app_suite_detect.nasl");
   script_mandatory_keys("open_xchange_appsuite/installed");
 
-  script_tag(name: "summary", value: "Open-Xchange AppSuite is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Open-Xchange AppSuite is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Open-Xchange AppSuite is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Open-Xchange AppSuite is prone to multiple vulnerabilities:
 
-- XXE vulnerability
+  - XXE vulnerability
 
-- Multiple XSS vulnerabilities (CVE-2018-9997)
+  - Multiple XSS vulnerabilities (CVE-2018-9997)
 
-- Information Exposure (CVE-2018-9998)");
+  - Information Exposure (CVE-2018-9998)");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "solution", value: "Update to version 7.6.3-rev31, 7.8.2-rev31, 7.8.3-rev41, 7.8.4-rev28 or
+  script_tag(name:"solution", value:"Update to version 7.6.3-rev31, 7.8.2-rev31, 7.8.3-rev41, 7.8.4-rev28 or
 later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2018/Jul/12");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Jul/12");
 
   exit(0);
 }

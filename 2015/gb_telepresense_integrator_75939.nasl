@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresense_integrator_75939.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_telepresense_integrator_75939.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4271");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication mechanism on an affected device. This may lead to further attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A vulnerability in Cisco TelePresence Integrator C Series could allow an unauthenticated, remote attacker to bypass authentication.
 The vulnerability is due to insufficient validation of user-supplied values. An attacker could exploit this vulnerability by sending multiple request parameters to an affected device.
@@ -60,7 +60,7 @@ sufficiently sanitize the user-supplied input.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-11 11:38:35 +0200 (Fri, 11 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17407.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_big_ip_sol17407.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 BIG-IP - SOL17407 - Datastor kernel vulnerability CVE-2015-7394
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-7394");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 BIG-IP - SOL17407 - Datastor kernel vulnerability CVE-2015-7394");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An authenticated attacker who can upload and execute customized code on the BIG-IP system may be able to cause a denial-of-service (DoS) attack and/or gain administrative access to the system.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The datastor kernel module flaw in BIG-IP 11.1.0 through 11.6.0 can lead to a denial of service and/or elevation of privileges. (CVE-2015-7394)");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 11:06:18 +0100 (Wed, 28 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

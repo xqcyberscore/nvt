@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0003.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_panos_pan_sa-2017_0003.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Palo Alto PAN-OS Kernel Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-5195");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Palo Alto PAN-OS Kernel Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability exists in the kernel of PAN-OS that may result in an elevation of privilege. This issue is publicly known as Dirty COW.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Update to PAN-OS 7.1.8 or later");
 
   script_tag(name:"affected", value:"PAN-OS 5.1, PAN-OS 6.0, PAN-OS 6.1, PAN-OS 7.0, PAN-OS 7.1.7 and earlier");
@@ -49,7 +49,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6014.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_junos_cve_2013_6014.nasl 12095 2018-10-25 12:00:24Z cfischer $
 #
 # Junos Security issue with Proxy ARP enabled on unnumbered interface
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103952");
-  script_version("$Revision: 11584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:00:24 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 12:34:58 +0700 (Mon, 18 Nov 2013)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"New builds of Junos OS software are available from Juniper.");
 
-  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable OS build is present on the target host.");
 
   script_tag(name:"insight", value:"When Proxy ARP is enabled on an unnumbered interface, it allows
 remote attackers to perform ARP poisoning attacks and possibly obtain sensitive information via a crafted

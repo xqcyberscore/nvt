@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_csrf_vuln2.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_bigtree_csrf_vuln2.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # BigTree CMS <= 4.2.17 CSRF Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108143");
-  script_version("$Revision: 11343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 07:57:33 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if(description)
 
   script_tag(name:"summary", value:"BigTree CMS is prone to a CSRF vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"BigTree CMS is prone to a CSRF vulnerability because it
   relies on a substring check for CSRF protection, which allows remote attackers to bypass

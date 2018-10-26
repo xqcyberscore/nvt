@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir868l_csrf_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_dlink_dir868l_csrf_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # D-Link DIR-868L < 1.20B01 CSRF Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112281");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-14 12:26:41 +0200 (Mon, 14 May 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"D-Link DIR-868L devices are prone to a cross-site request forgery (CSRF) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to perform arbitrary web requests with the identity of the victim
   without being noticed by the victim.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_fields_rce_vuln.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_com_fields_rce_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Joomla! Core 'com_fields' Remote Code Execution Vulnerability (20180506)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813409");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-11321");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 12:55:14 +0530 (Wed, 23 May 2018)");
 
   script_name("Joomla! Core 'com_fields' Remote Code Execution Vulnerability (20180506)");
@@ -47,9 +47,7 @@ if(description)
   filter field in 'com_fields'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on affected system.");
 
   script_tag(name:"affected", value:"Joomla core versions 3.7.0 through 3.8.7");
 

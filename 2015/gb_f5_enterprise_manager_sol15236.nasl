@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_enterprise_manager_sol15236.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_f5_enterprise_manager_sol15236.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2014-2927");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15236.html");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within the context of the application.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An open Rsync configuration for the ConfigSync IP address allows for remote read/write file system access in Enterprise Manager 3.x versions before 3.1.1 HF2");
   script_tag(name:"solution", value:"Update to Enterprise Manager 3.1.1 HF2 or higher.");
   script_tag(name:"summary", value:"F5 Networks Enterprise Manager is prone to a remote code-execution vulnerability.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 14:31:00 +0200 (Wed, 24 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

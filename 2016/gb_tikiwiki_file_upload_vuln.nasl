@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_file_upload_vuln.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tikiwiki_file_upload_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
 #
 # Tiki Wiki CMS Groupware File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106131");
-  script_version("$Revision: 5144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 12083 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 13:02:15 +0700 (Wed, 13 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to a remote file upload vulnerability");
 
-  script_tag(name:"vuldetect", value:"Checks the version and if the vulnerable component is accessible.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version and components is/are present on the target host.");
 
   script_tag(name:"insight", value:"The 3rd party component ELFinder 2.0 comes with an example page which
   demonstrates file upload, remove, rename and creating directories. The default configuration of Tiki Wiki
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"impact", value:"An unauthenticated attacker may upload PHP files and execute them.");
 
-  script_tag(name:"affected", value:"Versions 15.1, 14.3 and 12.8 LTS and prior");
+  script_tag(name:"affected", value:"Versions 15.1, 14.3 and 12.8 LTS and prior.");
 
   script_tag(name:"solution", value:"Update to the latest supported version.");
 

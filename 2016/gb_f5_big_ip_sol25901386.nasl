@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol25901386.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_f5_big_ip_sol25901386.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL25901386 - GRUB2 vulnerability CVE-2015-8370
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-8370");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL25901386 - GRUB2 vulnerability CVE-2015-8370");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"This vulnerability can be exploited under certain circumstances, allowing physically proximate attackers to bypass the system's access authentication. By default, the GRUB2 configuration used in F5 products does not expose this issue. The customization of GRUB2 configurations is not supported.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple integer underflows in Grub2 1.98 through 2.02 allow physically proximate attackers to bypass authentication, obtain sensitive information, or cause a denial of service (disk corruption) via backspace characters in the (1) grub_username_get function in grub-core/normal/auth.c or the (2) grub_password_get function in lib/crypto.c, which trigger an 'Off-by-two' or 'Out of bounds overwrite' memory error.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:40:40 +0100 (Tue, 19 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeipa_mult_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
+# $Id: gb_freeipa_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # freeIPA Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:freeipa:freeipa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140335");
-  script_version("$Revision: 11901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-30 09:14:16 +0700 (Wed, 30 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -59,7 +59,7 @@ if (description)
 
   - Insufficient permission check in certprofile-mod. (CVE-2016-9575)");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"freeIPA prior version 4.3.3");
 

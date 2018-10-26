@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol02201365.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_f5_big_ip_sol02201365.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # F5 BIG-IP - SOL02201365 - SLOTH: TLS 1.2 handshake vulnerability CVE-2015-7575
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-7575");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
 
   script_name("F5 BIG-IP - SOL02201365 - SLOTH: TLS 1.2 handshake vulnerability CVE-2015-7575");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/02/sol02201365.html?sr=51595235");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A flaw was found in the way TLS 1.2 uses RSA+MD5 signatures with Client Authentication and ServerKeyExchange messages during a TLS 1.2 handshakes. An attacker with a Man-in-the-Middle network position and the ability to force / observe the use of RSA+MD5 during a TLS Handshake, may be able to successfully generate a hash collision and impersonate a TLS client or server. The vulnerability of CVE-2015-7575 is relevant to cryptography software which supports TLS 1.2 only as earlier versions of TLS used different hash functionality in those protocols.");
 
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 16:20:45 +0100 (Tue, 16 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -57,7 +57,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

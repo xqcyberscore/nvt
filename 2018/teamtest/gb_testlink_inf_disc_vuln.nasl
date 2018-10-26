@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_testlink_inf_disc_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_testlink_inf_disc_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # TestLink 1.9.16 Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113125");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 14:30:00 +0100 (Wed, 07 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://lists.openwall.net/full-disclosure/2018/02/28/1");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:teamst:testlink";

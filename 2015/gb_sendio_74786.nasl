@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendio_74786.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_sendio_74786.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Sendio ESP Multiple Information Disclosure Vulnerabilities
 #
@@ -34,13 +34,13 @@ if (description)
   script_cve_id("CVE-2014-0999", "CVE-2014-8391");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12106 $");
 
   script_name("Sendio ESP Multiple Information Disclosure Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74786");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Sendio before 7.2.4 includes the session identifier in URLs in emails, which allows remote attackers to obtain sensitive information and hijack
 sessions by reading the jsessionid parameter in the Referrer HTTP header.");
@@ -53,7 +53,7 @@ sessions by reading the jsessionid parameter in the Referrer HTTP header.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 11:20:38 +0200 (Wed, 10 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_loginizer_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_wordpress_loginizer_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # WordPress Loginizer Plugin Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140287");
-  script_version("$Revision: 11874 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-08 16:16:18 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if (description)
   - Cross Site Request Forgery (CSRF) in the Blacklist and Whitelist IP Wizard in init.php because the HTTP Referer
 header is not checked. (CVE-2017-12651)");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Loginizer plugin version 1.3.5 and prior.");
 

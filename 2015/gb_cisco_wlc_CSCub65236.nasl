@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCub65236.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_wlc_CSCub65236.nasl 12106 2018-10-26 06:33:36Z cfischer $
 #
 # Cisco Wireless LAN Controller 802.11i Management Frame DoS
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-6311");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11872 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12106 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 14:24:59 +0200 (Wed, 14 Oct 2015)");
   script_name("Cisco Wireless LAN Controller 802.11i Management Frame DoS");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"Cisco Wireless LAN Controller contains a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition. ");
   script_tag(name:"impact", value:"An unauthenticated, adjacent attacker could exploit this vulnerability to cause a DoS condition on a targeted device.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a failure to properly discard certain malformed values in an 802.11i management frame received from a wireless client. An attacker could trigger the vulnerability by submitting a crafted frame to an access point managed by the affected Cisco WLC.");
   script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"affected", value:"Cisco WLC Software releases 7.4(1.19), 7.3(101.0), and 7.0(240.0) are vulnerable");

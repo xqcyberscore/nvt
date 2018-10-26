@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_jan2018-3236628_05_lin.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_oracle_mysql_jan2018-3236628_05_lin.nasl 12088 2018-10-25 10:57:43Z cfischer $
 #
 # Oracle Mysql Security Updates (jan2018-3236628) 05 - Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812653");
-  script_version("$Revision: 12068 $");
+  script_version("$Revision: 12088 $");
   script_cve_id("CVE-2018-2591");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 12:57:43 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:44:27 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Mysql Security Updates (jan2018-3236628) 05 - Linux");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.38 and earlier,
   5.7.19 and earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

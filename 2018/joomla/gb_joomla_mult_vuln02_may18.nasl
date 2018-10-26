@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_vuln02_may18.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_mult_vuln02_may18.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Joomla! Core Multiple Vulnerabilities-02 May18 (20180507/20180505/20180504)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813410");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-11324", "CVE-2018-11326", "CVE-2018-11325");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 13:35:14 +0530 (Wed, 23 May 2018)");
 
   script_name("Joomla! Core Multiple Vulnerabilities-02 May18 (20180507/20180505/20180504)");
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to sensitive information like password, recreation
-  of sessions and conduct XSS attacks.
-
-  Impact Level: Application");
+  of sessions and conduct XSS attacks.");
 
   script_tag(name:"affected", value:"Joomla core version 3.0.0 through 3.8.7");
 

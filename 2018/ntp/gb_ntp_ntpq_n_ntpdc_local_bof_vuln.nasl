@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # NTP Local Buffer Overflow And Sybil Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813448");
-  script_version("$Revision: 11092 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-12327", "CVE-2016-1549");
   script_bugtraq_id(104517, 88200);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 17:21:15 +0530 (Mon, 25 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##backport issue
   script_name("NTP Local Buffer Overflow And Sybil Vulnerabilities");
@@ -57,9 +57,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute code or escalate to higher privileges and bypass certain security
   restrictions and perform some unauthorized actions to the application.
-  This may aid in further attacks
-
-  Impact Level: Application");
+  This may aid in further attacks.");
 
   script_tag(name:"affected", value:"All ntp-4 releases up to, but not including
   4.2.8p12, and 4.3.0 up to, but not including 4.3.94.");

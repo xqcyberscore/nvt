@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_exponent_cms_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Exponent CMS 2.3.9 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113127");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-08 13:45:55 +0100 (Thu, 08 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/exponentcms/exponent-cms/releases/tag/v2.4.0");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:exponentcms:exponent_cms";

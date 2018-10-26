@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_apsb18-31.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_flash_player_for_ie_edge_apsb18-31.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (apsb18-31)
 #
@@ -29,27 +29,24 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814010");
-  script_version("$Revision: 11350 $");
+  script_version("$Revision: 12116 $");
   script_cve_id("CVE-2018-15967");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 11:00:57 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (apsb18-31)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   within Microsoft Edge or Internet Explorer and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a privilege escalation
   issue.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose sensitive information.
-
-  Impact Level: System/Application");
+  attackers to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Adobe Flash Player within Microsoft Edge or
   Internet Explorer on,

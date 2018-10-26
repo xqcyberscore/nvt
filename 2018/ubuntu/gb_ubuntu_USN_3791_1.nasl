@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3791_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_ubuntu_USN_3791_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
 #
 # Ubuntu Update for git USN-3791-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843657");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12116 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-12 06:34:56 +0200 (Fri, 12 Oct 2018)");
   script_cve_id("CVE-2018-17456");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,7 @@ operations are used.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3791-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3791-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3791-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

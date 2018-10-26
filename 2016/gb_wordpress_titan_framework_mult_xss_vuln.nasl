@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_titan_framework_mult_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_wordpress_titan_framework_mult_xss_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
 #
 # Wordpress Titan Framework Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807057");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12096 $");
   script_cve_id("CVE-2014-6444");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-05 09:30:21 +0530 (Fri, 05 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Titan Framework Multiple Cross Site Scripting Vulnerabilities");
@@ -60,8 +60,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Titan Framework plugin version
   before 1.6");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.6 or higher,
-  For updates refer to https://wordpress.org/plugins/titan-framework");
+  script_tag(name:"solution", value:"Upgrade to version 1.6 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +73,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/titan-framework");
   exit(0);
 }
 
