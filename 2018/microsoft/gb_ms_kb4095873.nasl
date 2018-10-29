@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4095873.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4095873.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4095873)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812876");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-1039");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 13:39:10 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4095873)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4095873");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists,
 
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to cause a denial of service and circumvent a User Mode Code
-  Integrity (UMCI) policy on the machine.
-
-  Impact Level: System/Application");
+  Integrity (UMCI) policy on the machine.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 Service Pack 2 on Windows Server 2008
   Microsoft .NET Framework 2.0 Service Pack 2 on Windows Server 2008");
 

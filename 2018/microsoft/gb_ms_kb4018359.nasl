@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018359.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4018359.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Word 2010 Service Pack 2 Information Disclosure Vulnerability (KB4018359)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812857");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0950");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:50:08 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Word 2010 Service Pack 2 Information Disclosure Vulnerability (KB4018359)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4018359");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Office rendering Rich
   Text Format (RTF) email messages containing OLE objects when a message is opened
@@ -47,16 +46,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to automatically initiate SMB session and to brute-force attack and disclose
-  the hash password.
-
-  Impact Level: System/Application");
+  the hash password.");
 
   script_tag(name:"affected", value:"Microsoft Word 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4018359");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

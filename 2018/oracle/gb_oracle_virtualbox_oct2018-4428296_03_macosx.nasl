@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_oct2018-4428296_03_macosx.nasl 11941 2018-10-17 12:58:16Z santu $
+# $Id: gb_oracle_virtualbox_oct2018-4428296_03_macosx.nasl 12137 2018-10-29 04:13:47Z ckuersteiner $
 #
 # Oracle VirtualBox Security Updates (oct2018-4428296)-MAC OS X
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814266");
-  script_version("$Revision: 11941 $");
+  script_version("$Revision: 12137 $");
   script_cve_id("CVE-2018-3287", "CVE-2018-0732", "CVE-2018-2909", "CVE-2018-3290",
                 "CVE-2018-3291", "CVE-2018-3292", "CVE-2018-3293", "CVE-2018-3294",
                 "CVE-2018-3295", "CVE-2018-3296", "CVE-2018-3297", "CVE-2018-3298",
                 "CVE-2018-3289", "CVE-2018-3288");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 14:58:16 +0200 (Wed, 17 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 05:13:47 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 12:26:38 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle VirtualBox Security Updates (oct2018-4428296) 03 - MAC OS X");
 

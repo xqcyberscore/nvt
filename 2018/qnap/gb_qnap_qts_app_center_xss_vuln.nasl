@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_app_center_xss_vuln.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_qnap_qts_app_center_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS App Center XSS Vulnerability
 #
@@ -27,11 +27,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813521");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-13072");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 11:14:29 +0530 (Tue, 12 Jun 2018)");
   script_name("QNAP QTS App Center XSS Vulnerability");
 
@@ -44,9 +44,7 @@ if (description)
   sanitization of user-supplied data in App Center.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject Javascript code in the compromised application.
-
-  Impact Level: Application");
+  attackers to inject Javascript code in the compromised application.");
 
   script_tag(name:"affected", value:"QNAP QTS versions 4.2.6 build 20171208 and
   earlier, 4.3.3 build 20171213 and earlier, 4.3.4 build 20171223 and earlier.");

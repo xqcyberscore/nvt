@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018311.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4018311.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4018311)
 #
@@ -27,29 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813125");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1028");
   script_bugtraq_id(103641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:28:24 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4018311)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4018311");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error when the
   Office graphics component improperly handles specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code on affected system and take complete control of the
-  affected system.
-
-  Impact Level: System/Application");
+  affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2010 Service Pack 2");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_sql_inj_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_dotcms_sql_inj_vuln.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # dotCMS SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106616");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12131 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 15:43:41 +0700 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if (description)
   script_tag(name:"insight", value:"The findChildrenByFilter() function which is called by the web accessible
 path /categoriesServlet performs string interpolation and direct SQL query execution. SQL quote escaping and a
 keyword blacklist were implemented in a new class, SQLUtil (main/java/com/dotmarketing/common/util/SQLUtil.java),
-as part of the remediation of CVE-2016-8902; however, these can be overcome in the case of the q and inode
+as part of the remediation of CVE-2016-8902. However, these can be overcome in the case of the q and inode
 parameters to the /categoriesServlet path. Overcoming these controls permits a number of blind boolean SQL
 injection vectors in either parameter. The /categoriesServlet web path can be accessed remotely and without
 authentication in a default dotCMS deployment.");

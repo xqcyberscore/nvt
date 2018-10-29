@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln_june18.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_mybb_mult_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # MyBB Multiple Vulnerabilities-June18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813456");
-  script_version("$Revision: 11228 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1000503", "CVE-2018-1000502");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 13:22:02 +0530 (Wed, 27 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MyBB Multiple Vulnerabilities-June18");
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass forum password check and conduct local file inclusion
-  attacks.
-
-  Impact Level: Application");
+  attacks.");
 
   script_tag(name:"affected", value:"MyBB versions prior to 1.8.15");
 

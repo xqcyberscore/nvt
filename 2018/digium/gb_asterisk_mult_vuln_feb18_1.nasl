@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_vuln_feb18_1.nasl 9199 2018-03-26 05:56:21Z cfischer $
+# $Id: gb_asterisk_mult_vuln_feb18_1.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Asterisk Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140791");
-  script_version("$Revision: 9199 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-22 11:18:04 +0700 (Thu, 22 Feb 2018)");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-22 11:18:04 +0700 (Thu, 22 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-7285", "CVE-2018-7287");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Asterisk is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Asterisk is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Asterisk is prone to multiple vulnerabilities:
 
-- Crash when receiving unnegotiated dynamic payload (CVE-2018-7285)
+  - Crash when receiving unnegotiated dynamic payload (CVE-2018-7285)
 
-- WebSocket frames with 0 sized payload causes DoS (CVE-2018-7287)");
+  - WebSocket frames with 0 sized payload causes DoS (CVE-2018-7287)");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 15.x.");
+  script_tag(name:"affected", value:"Asterisk Open Source 15.x.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 15.2.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 15.2.2 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-001.html");
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-006.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-001.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-006.html");
 
   exit(0);
 }

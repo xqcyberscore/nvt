@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_loop_dos_vuln_lin.nasl 10453 2018-07-07 15:35:36Z cfischer $
+# $Id: gb_php_fpm_loop_dos_vuln_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP 'PHP-FPM' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812520");
-  script_version("$Revision: 10453 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2015-9253");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-07 17:35:36 +0200 (Sat, 07 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 18:02:59 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'PHP-FPM' Denial of Service Vulnerability (Linux)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exist due to the php-fpm master
   process restarts a child process in an endless loop when using program
@@ -60,9 +59,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploitation will allow an
   attackers to consume 100% of the CPU, and consume disk space with a large
   volume of error logs, as demonstrated by an attack by a customer of a
-  shared-hosting facility.
-
-  Impact Level: Application");
+  shared-hosting facility.");
 
   script_tag(name:"affected", value:"PHP versions 5.x up to and including 5.6.36. All 7.0.x versions,
   7.1.x before 7.1.20, 7.2.x before 7.2.8 and 7.3.x before 7.3.0alpha3 on Windows.");

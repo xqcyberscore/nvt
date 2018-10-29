@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_default_credentials.nasl 10815 2018-08-07 12:10:30Z jschulte $
+# $Id: gb_vicon_industries_network_camera_default_credentials.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Vicon Industries Network Cameras Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107336");
-  script_version("$Revision: 10815 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:10:30 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 14:06:43 +0200 (Thu, 02 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.vicon-security.com/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

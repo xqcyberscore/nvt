@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_pers_xss_vuln_apr18_lin.nasl 9809 2018-05-14 02:46:53Z ckuersteiner $
+# $Id: gb_typo3_pers_xss_vuln_apr18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:typo3:typo3';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813313");
-  script_version("$Revision: 9809 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-6905");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 04:46:53 +0200 (Mon, 14 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 13:46:03 +0530 (Fri, 20 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Typo3 Persistent Cross Site Scripting Vulnerability Apr18 (Linux)");
@@ -41,25 +41,22 @@ if(description)
   script_tag(name:"summary", value:"This host is running Typo3 and is prone
   to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to an insufficient 
+  script_tag(name:"insight", value:"The flaw is due to an insufficient
   sanitization of user supplied input in the page module.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute a script on victim's Web browser within the security
-  context of the hosting Web site.
-
-  Impact Level: Application");
+  context of the hosting Web site.");
 
   script_tag(name:"affected", value:"Typo3 CMS version 9.1.0 and versions before
   8.7.11 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to 8.7.11 or later for all versions
-  before 8.7.11. 
+  before 8.7.11.
   For updates refer to Reference links.");
-   
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://github.com/pradeepjairamani/TYPO3-XSS-POC");
   script_category(ACT_GATHER_INFO);

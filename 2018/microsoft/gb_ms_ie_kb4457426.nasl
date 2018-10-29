@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_kb4457426.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_ms_ie_kb4457426.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4457426)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814001");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8447", "CVE-2018-8452", "CVE-2018-8315", "CVE-2018-8457",
                 "CVE-2018-8470");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 09:30:00 +0530 (Wed, 12 Sep 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4457426)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft security updates KB4457426.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -56,9 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code in the context of the current user, access any session
   belonging to web pages currently opened (or cached) by the browser and disclose
-  sensitive information.
-
-  Impact Level: System/Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 9.x, 10.x
   and 11.x");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Flir Brickstream Sensors Incorrect Access Control Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:flir:brickstream_sensor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812370");
-  script_version("$Revision: 10128 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-3813");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-02 17:29:37 +0530 (Tue, 02 Jan 2018)");
   script_name("Flir Brickstream Sensors Incorrect Access Control Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   measures taken by the sensor.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to access administration of the device.
-
-  Impact Level: System/Application");
+  attacker to access administration of the device.");
 
   script_tag(name:"affected", value:"FLIR Brickstream 2300 devices");
 
@@ -60,7 +58,7 @@ this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name: "URL", value: "http://misteralfa-hack.blogspot.in/2018/01/brickstream-recuento-y-seguimiento-de.html");
+  script_xref(name:"URL", value:"http://misteralfa-hack.blogspot.in/2018/01/brickstream-recuento-y-seguimiento-de.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

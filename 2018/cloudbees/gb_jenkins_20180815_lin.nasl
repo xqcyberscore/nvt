@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180815_lin.nasl 11131 2018-08-27 08:40:03Z asteins $
+# $Id: gb_jenkins_20180815_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Jenkins < 2.138 and < 2.121.3 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112359");
-  script_version("$Revision: 11131 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1999042", "CVE-2018-1999043", "CVE-2018-1999044", "CVE-2018-1999045",
   "CVE-2018-1999046", "CVE-2018-1999047");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 10:40:03 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 10:30:00 +0200 (Mon, 27 Aug 2018)");
   script_name("Jenkins < 2.138 and < 2.121.3 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -50,26 +50,27 @@ if(description)
 
   script_tag(name:"insight", value:"Jenkins is prone to the following vulnerabilities:
 
-- Jenkins allowed deserialization of URL objects via Remoting (agent communication) and XStream (CVE-2018-1999042).
+  - Jenkins allowed deserialization of URL objects via Remoting (agent communication) and XStream (CVE-2018-1999042).
 
-- Ephemeral user record was created on some invalid authentication attempts (CVE-2018-1999043).
+  - Ephemeral user record was created on some invalid authentication attempts (CVE-2018-1999043).
 
-- Cron expression form validation could enter infinite loop, potentially resulting in denial of service (CVE-2018-1999044).
+  - Cron expression form validation could enter infinite loop, potentially resulting in denial of service (CVE-2018-1999044).
 
-- 'Remember me' cookie was evaluated even if that feature is disabled (CVE-2018-1999045).
+  - 'Remember me' cookie was evaluated even if that feature is disabled (CVE-2018-1999045).
 
-- Unauthorized users could access agent logs (CVE-2018-1999046).
+  - Unauthorized users could access agent logs (CVE-2018-1999046).
 
-- Unauthorized users could cancel scheduled restarts initiated from the update center  (CVE-2018-1999047).");
+  - Unauthorized users could cancel scheduled restarts initiated from the update center  (CVE-2018-1999047).");
 
   script_tag(name:"affected", value:"Jenkins LTS up to and including 2.121.2, Jenkins weekly up to and including 2.137.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.138 or later / Jenkins LTS to 2.121.3 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

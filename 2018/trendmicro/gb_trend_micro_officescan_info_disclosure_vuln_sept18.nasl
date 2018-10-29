@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_info_disclosure_vuln_sept18.nasl 11302 2018-09-10 11:41:36Z santu $
+# $Id: gb_trend_micro_officescan_info_disclosure_vuln_sept18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro OfficeScan Information Disclosure Vulnerability Sep18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813924");
-  script_version("$Revision: 11302 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-15364");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:41:36 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 16:54:20 +0530 (Tue, 04 Sep 2018)");
   script_name("Trend Micro OfficeScan Information Disclosure Vulnerability Sep18");
 
@@ -47,9 +47,7 @@ if(description)
   able to process out-of-bounds read.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to disclose sensitive information.
-
-  Impact Level: System/Application.");
+  to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Trend Micro OfficeScan versions XG 12.0");
 

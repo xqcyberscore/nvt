@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025337.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4025337.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4025337)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811519");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-0170", "CVE-2017-8463", "CVE-2017-8467", "CVE-2017-8486",
                 "CVE-2017-8495", "CVE-2017-8556", "CVE-2017-8557", "CVE-2017-8563",
                 "CVE-2017-8564", "CVE-2017-8565", "CVE-2017-8573", "CVE-2017-8577",
@@ -39,7 +39,7 @@ if(description)
                     99427, 99396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 10:12:05 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4025337)");
 
@@ -65,7 +65,7 @@ if(description)
 
   - When Windows improperly handles objects in memory.
 
-  - In the Windows System Information&nbsp;Console when it improperly parses
+  - In the Windows System Information Console when it improperly parses
     XML input containing a reference to an external entity.
 
   - In Microsoft Windows when Kerberos fails to prevent tampering with the SNAME

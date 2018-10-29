@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Odoo 'Backup Database Action' Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:odoo:odoo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812757");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-6620");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
   script_name("Odoo 'Backup Database Action' Authentication Bypass Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   authentication to be configured for a 'Backup Database' action.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to backup websites databases directly with no authenticated accounts.
-
-  Impact Level: Application");
+  attacker to backup websites databases directly with no authenticated accounts.");
 
   script_tag(name:"affected", value:"Odoo Management Software.");
 

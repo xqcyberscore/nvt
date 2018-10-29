@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_help_page_xss_vuln.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_adobe_coldfusion_help_page_xss_vuln.nasl 12142 2018-10-29 08:28:54Z cfischer $
 #
 # Adobe ColdFusion Help Page Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812286");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12142 $");
   script_cve_id("CVE-2014-5315");
   script_bugtraq_id(69791);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-29 11:29:42 +0530 (Fri, 29 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Help Page Cross Site Scripting Vulnerability");
@@ -67,14 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-cfPort = 0;
-cfdVer = "";
-path = "";
-fix = "";
 
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_rce_vuln_may18_01_lin.nasl 9835 2018-05-15 08:55:01Z cfischer $
+# $Id: gb_moodle_rce_vuln_may18_01_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle 2.x / 3.x Remote Code Execution Vulnerability - Mar'17 (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113183");
-  script_version("$Revision: 9835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:55:01 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 13:16:19 +0200 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://moodle.org/mod/forum/discuss.php?d=349419");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:moodle:moodle";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_xss_vuln.nasl 10151 2018-06-11 11:07:29Z asteins $
+# $Id: gb_twonky_server_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Twonky Server < 8.5.1 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112301");
-  script_version("$Revision: 10151 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 13:07:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 13:06:00 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ if( description )
   script_xref(name:"URL", value:"https://gist.github.com/prafagr/bd641fcfe71661065e659672c737173b");
   script_xref(name:"URL", value:"https://gist.github.com/priyanksethi/08fb93341cf7e61344aad5c4fee3aa9b");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:twonky:twonky_server";

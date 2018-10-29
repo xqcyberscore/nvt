@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reservo_image_hosting_xss_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_reservo_image_hosting_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Reservo Image Hosting XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113086");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 10:46:47 +0100 (Thu, 18 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43676/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:reservo:image_hosting";

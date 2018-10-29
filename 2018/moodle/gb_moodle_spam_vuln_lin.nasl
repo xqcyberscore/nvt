@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_spam_vuln_lin.nasl 9939 2018-05-23 14:50:30Z cfischer $
+# $Id: gb_moodle_spam_vuln_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle 3.x Spam Vulnerability - Mar'18 (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113171");
-  script_version("$Revision: 9939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 11:03:45 +0200 (Tue, 08 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://moodle.org/mod/forum/discuss.php?d=367938");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:moodle:moodle";

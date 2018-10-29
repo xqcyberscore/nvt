@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338419.nasl 11370 2018-09-13 11:32:51Z asteins $
+# $Id: gb_ms_kb4338419.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4338419)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813490");
-  script_version("$Revision: 11370 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8356", "CVE-2018-8284", "CVE-2018-8202", "CVE-2018-8260");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 12:06:24 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4338419)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4338419.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -56,9 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain elevated privileges, bypass security restrictions and take control of an
   affected system allowing to install programs or view data, change data, delete
-  data or create new accounts with full user rights.
-
-  Impact Level: System/Application");
+  data or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.6, 4.6.1, 4.6.2,
   4.7, 4.7.1 for Windows 8.1 and Server 2012 R2");

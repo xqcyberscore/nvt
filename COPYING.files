@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 26 Oct 2018 12:12:22 +0200
+# Automatically created on:  Mon, 29 Oct 2018 10:14:27 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38879,6 +38879,8 @@
 2018/centos/gb_CESA-2018_2921_tomcat_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_2942_java_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_2943_java_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3005_firefox_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3006_firefox_centos6.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_5392896132_dhcp_fc26.nasl: GPLv2+
 2018/centos/gb_fedora_2018_98684f429b_xen_fc27.nasl: GPLv2+
@@ -38920,6 +38922,7 @@
 2018/cybozu/gb_cybozu_garoon_notification_list_sql_inj_vuln.nasl: GPLv2+
 2018/cybozu/gb_cybozu_office_mult_vuln01_june18.nasl: GPLv2+
 2018/cybozu/gb_cybozu_office_mult_vuln02_june18.nasl: GPLv2+
+2018/dahua/gb_dahua_devices_default_credentials.nasl: GPLv2+
 2018/debian/deb_4075.nasl: GPLv2+
 2018/debian/deb_4076.nasl: GPLv2+
 2018/debian/deb_4077.nasl: GPLv2+
@@ -39170,6 +39173,9 @@
 2018/debian/deb_4323.nasl: GPLv2+
 2018/debian/deb_4324.nasl: GPLv2+
 2018/debian/deb_4325.nasl: GPLv2+
+2018/debian/deb_4326.nasl: GPLv2+
+2018/debian/deb_4327.nasl: GPLv2+
+2018/debian/deb_4328.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39623,6 +39629,10 @@
 2018/debian/deb_dla_1552.nasl: GPLv2+
 2018/debian/deb_dla_1553.nasl: GPLv2+
 2018/debian/deb_dla_1554.nasl: GPLv2+
+2018/debian/deb_dla_1555.nasl: GPLv2+
+2018/debian/deb_dla_1556.nasl: GPLv2+
+2018/debian/deb_dla_1557.nasl: GPLv2+
+2018/debian/deb_dla_1558.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40026,6 +40036,7 @@
 2018/fedora/gb_fedora_2018_1434efb8f3_evolution-ews_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1434efb8f3_evolution_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_143886fdbd_drupal7_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_14526cbebe_python26_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_147d33439c_phpMyAdmin_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_147d33439c_php-phpmyadmin-motranslator_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_147d33439c_php-phpmyadmin-sql-parser_fc26.nasl: GPLv2+
@@ -40437,6 +40448,7 @@
 2018/fedora/gb_fedora_2018_75f7624a9f_git_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_75fdc70018_pam_yubico_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_7626df1731_yara_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_7689556ab2_python35_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_76afaf1961_openssl_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_76c82b393e_pdns-recursor_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_7714b514e2_glibc_fc27.nasl: GPLv2+
@@ -40640,6 +40652,7 @@
 2018/fedora/gb_fedora_2018_a2316e0baf_iniparser_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a233dae4ab_tomcat_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a24be2586d_zziplib_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_a2c1453607_python35_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a2cc71c081_afflib_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a31054181a_lighttpd_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_a32082df51_postgresql_fc27.nasl: GPLv2+
@@ -40858,6 +40871,7 @@
 2018/fedora/gb_fedora_2018_d2b08aa37f_clamav_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d2b135d345_rootsh_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d2d4ab5961_firefox_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_d3b53d81e6_python26_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d3cb6f113c_xen_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d41d114d3e_libtiff_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d4746c772f_mujs_fc26.nasl: GPLv2+
@@ -41013,6 +41027,7 @@
 2018/fedora/gb_fedora_2018_f67fda3db6_community-mysql_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f6adf1cb62_libcgroup_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f6dc921a19_roundcubemail_fc26.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_f716c8f9e6_firefox_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f76e6d17f1_chromium_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f7a1334c68_sox_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_f8ad787538_p7zip_fc27.nasl: GPLv2+
@@ -60239,6 +60254,7 @@ gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxossnmp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_par_cisco-sa-20180905-cpar-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pca_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pca_cisco-sa-20180905-pca-xss.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_pca_cisco-sa-20181017-cpca-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180307-cpcp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-cpcp-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-diskdos.nasl: GPLv2+
@@ -60295,6 +60311,7 @@ gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-aironet-auth.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-wlc-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-wlc-ip.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-wlc-mfdos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20181017-ap-ft-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wsa_cisco-sa-20180117-wsa1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wsa_cisco-sa-20180307-wsa.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wsa_cisco-sa-20180606-wsa.nasl: GPLv2+
@@ -60321,6 +60338,7 @@ gsf/2018/citrix/gb_xenserver_ctx235225.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235745.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235748.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx236548.nasl: GPLv2+
+gsf/2018/citrix/gb_xenserver_ctx239100.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
 gsf/2018/crestron/gb_crestron_airmedia_mult_vuln.nasl: GPLv2+
@@ -60359,6 +60377,7 @@ gsf/2018/f5/gb_f5_big_ip_K02043709.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02360853.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02652550.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K03165684.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K04524282.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K04912972.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05018525.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05112543.nasl: GPLv2+
@@ -60376,6 +60395,7 @@ gsf/2018/f5/gb_f5_big_ip_K11068141.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K11464209.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K11718033.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K12403422.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K12636.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K13213573.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K13540723.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15217245.nasl: GPLv2+
@@ -60395,6 +60415,7 @@ gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20225390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K21042153.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K21462542.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K21665601.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K22183127.nasl: GPLv2+
@@ -60428,10 +60449,12 @@ gsf/2018/f5/gb_f5_big_ip_K38243073.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K39512927.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40507733.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K40625021.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K41704442.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K42142782.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43267483.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K44462254.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44923228.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K45320419.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K45325728.nasl: GPLv2+
@@ -60444,6 +60467,7 @@ gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50254952.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K51220077.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51754851.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51920288.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K52167636.nasl: GPLv2+

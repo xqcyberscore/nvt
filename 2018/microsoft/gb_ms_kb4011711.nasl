@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011711.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4011711.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Outlook 2010 Service Pack 2 Multiple Vulnerabilities (KB4011711)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812901");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0850", "CVE-2018-0852");
   script_bugtraq_id(102866, 102871);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 09:07:38 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Multiple Vulnerabilities (KB4011711)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4011711");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -53,16 +52,12 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to run arbitrary code in the
   context of the current user and force Outlook to load a local or remote message
-  store (over SMB).
-
-  Impact Level: System/Application");
+  store (over SMB).");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011711");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

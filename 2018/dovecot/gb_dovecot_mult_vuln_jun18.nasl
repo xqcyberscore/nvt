@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_mult_vuln_jun18.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_dovecot_mult_vuln_jun18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Dovecot <= 2.2.34 and 2.3.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113213");
-  script_version("$Revision: 10349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:28:52 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -65,7 +65,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.dovecot.org/list/dovecot-news/2018-February/000370.html");
   script_xref(name:"URL", value:"https://github.com/dovecot/core/commit/1a29ed2f96da1be22fa5a4d96c7583aa81b8b060.patch");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dovecot:dovecot";

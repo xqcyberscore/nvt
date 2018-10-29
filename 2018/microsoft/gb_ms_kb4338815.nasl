@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338815.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
+# $Id: gb_ms_kb4338815.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4338815)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813652");
-  script_version("$Revision: 11416 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8282", "CVE-2018-0949", "CVE-2018-8206", "CVE-2018-8242",
                 "CVE-2018-8287", "CVE-2018-8288", "CVE-2018-8291", "CVE-2018-8296",
                 "CVE-2018-8304", "CVE-2018-8307", "CVE-2018-8308", "CVE-2018-8309",
@@ -36,15 +36,14 @@ if(description)
   script_bugtraq_id(104705);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 11:49:36 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4338815)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4338815");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists doe to error,
 
@@ -111,7 +110,7 @@ if(!sysPath ){
   exit(0);
 }
 
-fileVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"Win32k.sys");
 if(!fileVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_info_disc_vuln_mar17_01_win.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_info_disc_vuln_mar17_01_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Moodle 3.2.x < 3.2.2 Information Disclosure Vulnerability (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112270");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 12:51:33 +0200 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://moodle.org/mod/forum/discuss.php?d=349420");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:moodle:moodle";

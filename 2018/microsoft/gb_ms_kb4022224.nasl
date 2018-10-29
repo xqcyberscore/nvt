@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022224.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_ms_kb4022224.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Word 2013 Service Pack 1 Tampering Vulnerability (KB4022224)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813562");
-  script_version("$Revision: 11388 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8310");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 19:29:19 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Word 2013 Service Pack 1 Tampering Vulnerability (KB4022224)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4022224");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Microsoft
   Outlook does not properly handle specific attachment types when
@@ -47,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to bypass certain security restrictions, this may aid in
-  launching further attacks.
-
-  Impact Level: Application");
+  launching further attacks.");
 
   script_tag(name:"affected", value:"Microsoft Word 2013 Service Pack 1");
 

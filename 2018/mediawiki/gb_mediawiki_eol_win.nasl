@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_eol_win.nasl 10838 2018-08-08 12:05:36Z cfischer $
+# $Id: gb_mediawiki_eol_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Mediawiki End of Life Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114002");
-  script_version("$Revision: 10838 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 15:13:48 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,11 +55,11 @@ if( description )
 
   script_tag(name:"solution", value:"Update the Mediawiki version on the remote host to a still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://www.mediawiki.org/wiki/Version_lifecycle");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mediawiki:mediawiki";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_security_bypass_vuln_may18_win.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_php_security_bypass_vuln_may18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Security Bypass Vulnerability May18 (Windows)
 #
@@ -30,28 +30,25 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813161");
-  script_version("$Revision: 10148 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-10545");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 17:42:59 +0530 (Wed, 02 May 2018)");
   script_name("PHP Security Bypass Vulnerability May18 (Windows)");
 
   script_tag(name:"summary", value:"The host is installed with php and is prone
   to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the dumpable FPM child
   processes allow bypassing opcache access controls");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to bypass security restrictions and access sensitive configuration data for
-  other accounts directly in the PHP worker process's memory.
-
-  Impact Level: Application");
+  other accounts directly in the PHP worker process's memory.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.6.35,
 

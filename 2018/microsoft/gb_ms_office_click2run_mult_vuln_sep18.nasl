@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_mult_vuln_sep18.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_ms_office_click2run_mult_vuln_sep18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-September18
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814207");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8429", "CVE-2018-8430", "CVE-2018-8331", "CVE-2018-8332");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 18:05:53 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-September18");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Office Click-to-Run updates.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -51,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user and gain access to
-  potentially sensitive information.
-
-  Impact Level: System/Application");
+  potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016 Click-to-Run");
 

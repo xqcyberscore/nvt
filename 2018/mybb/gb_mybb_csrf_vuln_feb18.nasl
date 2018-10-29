@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 11813 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-7305");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
 
   script_name("MyBB Cross Site Request Forgery Vulnerability");
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"The host is installed with MyBB and is
   prone to cross site request forgery vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to MyBB not checking
   for a valid CSRF token.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_vuln_feb18.nasl 9192 2018-03-23 14:54:27Z cfischer $
+# $Id: gb_asterisk_mult_vuln_feb18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Asterisk Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140792");
-  script_version("$Revision: 9192 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-23 15:54:27 +0100 (Fri, 23 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-22 11:26:42 +0700 (Thu, 22 Feb 2018)");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-22 11:26:42 +0700 (Thu, 22 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-7284", "CVE-2018-7286");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk Multiple Vulnerabilities");
 
@@ -51,28 +51,28 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Asterisk is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Asterisk is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Asterisk is prone to multiple vulnerabilities:
 
-- Crash when given an invalid SDP media format description
+  - Crash when given an invalid SDP media format description
 
-- Crash with an invalid SDP fmtp attribute
+  - Crash with an invalid SDP fmtp attribute
 
-- Crash when receiving SUBSCRIBE request (CVE-2018-7284)
+  - Crash when receiving SUBSCRIBE request (CVE-2018-7284)
 
-- Crash when large numbers of TCP connections are closed suddenly (CVE-2018-7286)");
+  - Crash when large numbers of TCP connections are closed suddenly (CVE-2018-7286)");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.18.");
+  script_tag(name:"affected", value:"Asterisk Open Source 13.x, 14.x, 15.x and Certified Asterisk 13.18.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 13.19.2, 14.7.6, 15.2.2, 13.18-cert3 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 13.19.2, 14.7.6, 15.2.2, 13.18-cert3 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-002.html");
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-003.html");
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-004.html");
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-005.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-002.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-003.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-004.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-005.html");
 
   exit(0);
 }

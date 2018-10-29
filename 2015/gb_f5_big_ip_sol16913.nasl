@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16913.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_f5_big_ip_sol16913.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # F5 BIG-IP - SOL16913 - OpenSSL vulnerability CVE-2015-1789
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-1789");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 12131 $");
 
   script_name("F5 BIG-IP - SOL16913 - OpenSSL vulnerability CVE-2015-1789");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/900/sol16913.html?sr=48315687");
 
-  script_tag(name:"impact", value:"An attacker can exploit this vulnerability by using crafted malformed certificates and Certificate Revocation Lists (CRLs); applications may stop responding when attempting to verify the malformed certificates or CRLs.");
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability by using crafted malformed certificates and Certificate Revocation Lists (CRLs). Applications may stop responding when attempting to verify the malformed certificates or CRLs.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 15:05:03 +0200 (Fri, 18 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");

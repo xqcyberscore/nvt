@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_code_exec_n_xss_vuln_june18.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_trend_micro_officescan_code_exec_n_xss_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro OfficeScan RCE And XSS Vulnerabilities June18
-# 
+#
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813616");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-11393", "CVE-2017-11394");
   script_bugtraq_id(100127);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 11:07:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Trend Micro OfficeScan RCE And XSS Vulnerabilities June18");
 
-  script_tag(name: "summary" , value: "This host is installed with Trend Micro
-  OfficeScan and is prone to multiple code execution and cross site scripting 
+  script_tag(name:"summary", value:"This host is installed with Trend Micro
+  OfficeScan and is prone to multiple code execution and cross site scripting
   vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - An improper parsing of the tr and T parameters in Proxy.php, the process 
-    does not properly validate a user-supplied string before using it to execute 
+  - An improper parsing of the tr and T parameters in Proxy.php, the process
+    does not properly validate a user-supplied string before using it to execute
     a system call.
 
-  - An input validation error in the third-party component previously used for 
+  - An input validation error in the third-party component previously used for
     mapping displays.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
-  to execute arbitrary code on vulnerable installations of Trend Micro OfficeScan.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to execute arbitrary code on vulnerable installations of Trend Micro OfficeScan.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Trend Micro OfficeScan versions XG(12.0) 
+  script_tag(name:"affected", value:"Trend Micro OfficeScan versions XG(12.0)
   prior to XG CP 1641 r1 and 11.0 SP1 prior to 11.0 SP1 CP 6392 r1.");
 
-  script_tag(name: "solution" , value:"Upgrade to OfficeScan XG CP 1708 or
+  script_tag(name:"solution", value:"Upgrade to OfficeScan XG CP 1708 or
   11.0 SP1 CP 6392 r1 or later.
   For updates refer to Reference links.");
 
@@ -72,8 +69,8 @@ if(description)
   ## Can result in FP, if CP 1641-r1 is already applied, not sure about build version after patch
   script_tag(name:"qod", value:"30");
 
-  script_xref(name: "URL" , value : "https://success.trendmicro.com/solution/1117762-osce-11-0-sp1-critical-patch-6392-and-osce-xg-critical-patch-1641-is-now-available-in-the-download-c");
-  script_xref(name: "URL" , value : "http://esupport.trendmicro.com");
+  script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1117762-osce-11-0-sp1-critical-patch-6392-and-osce-xg-critical-patch-1641-is-now-available-in-the-download-c");
+  script_xref(name:"URL", value:"http://esupport.trendmicro.com");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

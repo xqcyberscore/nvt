@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_ad_ldap_info_disc_vuln_aug18.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_samba_ad_ldap_info_disc_vuln_aug18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Samba 'AD LDAP' Information Disclosure Vulnerability - Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813784");
-  script_version("$Revision: 11042 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-10919");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 13:20:38 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba 'AD LDAP' Information Disclosure Vulnerability - Aug18");
 
@@ -47,9 +47,7 @@ if(description)
   checks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to gain access to confidential attribute values.
-
-  Impact Level: Application");
+  to gain access to confidential attribute values.");
 
   script_tag(name:"affected", value:"All versions of Samba from 4.0.0 onwards");
 

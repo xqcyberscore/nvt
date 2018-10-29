@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180718_lin.nasl 11561 2018-09-24 06:20:05Z cfischer $
+# $Id: gb_jenkins_20180718_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112331");
-  script_version("$Revision: 11561 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1999001", "CVE-2018-1999002", "CVE-2018-1999003", "CVE-2018-1999004",
   "CVE-2018-1999005", "CVE-2018-1999006", "CVE-2018-1999007");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 10:15:00 +0200 (Tue, 24 Jul 2018)");
   script_name("Jenkins < 2.133 and < 2.121.2 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -50,28 +50,29 @@ if(description)
 
   script_tag(name:"insight", value:"Jenkins is prone to the following vulnerabilities:
 
-- Users without Overall/Read permission can have Jenkins reset parts of global configuration on the next restart (CVE-2018-1999001).
+  - Users without Overall/Read permission can have Jenkins reset parts of global configuration on the next restart (CVE-2018-1999001).
 
-- Arbitrary file read vulnerability (CVE-2018-1999002).
+  - Arbitrary file read vulnerability (CVE-2018-1999002).
 
-- Unauthorized users could cancel queued builds (CVE-2018-1999003).
+  - Unauthorized users could cancel queued builds (CVE-2018-1999003).
 
-- Unauthorized users could initiate and abort agent launches (CVE-2018-1999004).
+  - Unauthorized users could initiate and abort agent launches (CVE-2018-1999004).
 
-- Stored XSS vulnerability (CVE-2018-1999005).
+  - Stored XSS vulnerability (CVE-2018-1999005).
 
-- Unauthorized users are able to determine when a plugin was extracted from its JPI package (CVE-2018-1999006).
+  - Unauthorized users are able to determine when a plugin was extracted from its JPI package (CVE-2018-1999006).
 
-- XSS vulnerability in Stapler debug mode (CVE-2018-1999007).");
+  - XSS vulnerability in Stapler debug mode (CVE-2018-1999007).");
 
   script_tag(name:"affected", value:"Jenkins LTS up to and including 2.121.1, Jenkins weekly up to and including 2.132.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.132 or later / Jenkins LTS to 2.121.2 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

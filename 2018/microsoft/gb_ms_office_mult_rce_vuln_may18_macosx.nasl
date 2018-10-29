@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_rce_vuln_may18_macosx.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_office_mult_rce_vuln_may18_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813379");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8147", "CVE-2018-8162", "CVE-2018-8176");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 14:22:04 +0530 (Fri, 25 May 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)");
@@ -40,8 +40,7 @@ if(description)
   update for Microsoft Office 2016 on Mac OSX according to Microsoft security
   update May 2018");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -58,9 +57,7 @@ if(description)
 
   - view, change, or delete data
 
-  - create new accounts with full user rights.
-
-  Impact Level: System/Application");
+  - create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 

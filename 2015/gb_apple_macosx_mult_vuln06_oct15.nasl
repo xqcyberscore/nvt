@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln06_oct15.nasl 9846 2018-05-15 14:10:09Z santu $
+# $Id: gb_apple_macosx_mult_vuln06_oct15.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Apple Mac OS X Multiple Vulnerabilities-06 October-15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806151");
-  script_version("$Revision: 9846 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2014-4459", "CVE-2014-4458");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 16:10:09 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 14:23:09 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-06 October-15");
 
@@ -45,9 +45,7 @@ if(description)
   the 'System Profiler About This Mac' component.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to execute arbitrary code via crafted page objects in an HTML document.);
-
-  Impact Level: System/Application");
+  to execute arbitrary code via crafted page objects in an HTML document.");
 
   script_tag(name: "affected" , value:"Apple Mac OS X versions 10.x before
   10.10.1");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etcd_info_discl_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_etcd_info_discl_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # etcd Information Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:coreos:etcd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140888");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-27 08:55:55 +0700 (Tue, 27 Mar 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-27 08:55:55 +0700 (Tue, 27 Mar 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("etcd Information Disclosure Vulnerability");
 
@@ -49,17 +49,18 @@ if (description)
   script_dependencies("gb_etcd_detect.nasl");
   script_mandatory_keys("etcd/installed");
 
-  script_tag(name: "summary", value: "etcd is prone to an information disclosure vulnerability if no authentication
+  script_tag(name:"summary", value:"etcd is prone to an information disclosure vulnerability if no authentication
 is enabled. An attacker may read all stored key values which might contain sensitive information like passwords.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET requst and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gather sensitive information which could lead
+  script_tag(name:"impact", value:"An unauthenticated attacker may gather sensitive information which could lead
 to further attacks.");
 
-  script_tag(name: "solution", value: "Enable authentication (see https://coreos.com/etcd/docs/latest/v2/authentication.html)");
+  script_tag(name:"solution", value:"Enable authentication as referenced in the advisory.");
+  script_xref(name:"URL", value:"https://coreos.com/etcd/docs/latest/v2/authentication.html)");
 
-  script_xref(name: "URL", value: "https://elweb.co/the-security-footgun-in-etcd/");
+  script_xref(name:"URL", value:"https://elweb.co/the-security-footgun-in-etcd/");
 
   exit(0);
 }

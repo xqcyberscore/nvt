@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_multiple_vuln_aug18.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_samba_multiple_vuln_aug18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Samba Multiple Vulnerabilities - Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813783");
-  script_version("$Revision: 11042 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-10918", "CVE-2018-1139");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 13:10:38 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba Multiple Vulnerabilities - Aug18");
 
@@ -44,6 +44,7 @@ if(description)
   on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
+
   - A missing database output checks on the returned directory attributes from
     the LDB database layer.
 
@@ -53,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to conduct a denial of service attack and authenticate using NTLMv1 over an SMB1
-  transport.
-
-  Impact Level: Application");
+  transport.");
 
   script_tag(name:"affected", value:"All versions of Samba from 4.7.0 onwards");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsa18-01_macosx.nasl 8711 2018-02-08 07:34:16Z santu $
+# $Id: gb_adobe_flash_player_apsa18-01_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Flash Player Multiple Remote Code Execution Vulnerabilities - Mac OS X
 #
@@ -29,53 +29,47 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812684");
-  script_version("$Revision: 8711 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-4878", "CVE-2018-4877");
   script_bugtraq_id(102893, 102930);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-08 08:34:16 +0100 (Thu, 08 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:00:27 +0530 (Fri, 02 Feb 2018)");
   script_name("Adobe Flash Player Multiple Remote Code Execution Vulnerabilities - Mac OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple remote code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to multiple 
+  script_tag(name:"insight", value:"Multiple flaws exist due to multiple
   use-after-free errors in the flash player.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these 
-  vulnerabilities will allow an attacker to execute arbitrary code on 
-  affected system and take control of the affected system.
+  script_tag(name:"impact", value:"Successful exploitation of these
+  vulnerabilities will allow an attacker to execute arbitrary code on
+  affected system and take control of the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player version 28.0.0.137 and
+  script_tag(name:"affected", value:"Adobe Flash Player version 28.0.0.137 and
   earlier on Mac OS X.");
 
-  script_tag(name: "solution", value:"Upgrade to Adobe Flash Player version
-  28.0.0.161, or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
+  28.0.0.161, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsa18-01.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsa18-01.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-playerVer = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];

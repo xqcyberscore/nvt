@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_fax_rce_vuln.nasl 11084 2018-08-22 17:10:42Z cfischer $
+# $Id: gb_hp_printers_fax_rce_vuln.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # HP Ink Printers RCE Vulnerabilities (Faxploit)
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141380");
-  script_version("$Revision: 11084 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 12130 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 10:33:30 +0700 (Fri, 17 Aug 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-5924", "CVE-2018-5925");
 

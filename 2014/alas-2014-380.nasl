@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120402");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 12131 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:25:33 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_name("Amazon Linux Local Check: ALAS-2014-380");
-  script_tag(name:"insight", value:"It was reported that Python built-in _json module have a flaw (insufficient bounds checking), which allows a local user to read current process' arbitrary memory.Quoting the upstream bug report:The sole prerequisites of this attack are that the attacker is able to control or influence the two parameters of the default scanstring function: the string to be decoded and the index.The bug is caused by allowing the user to supply a negative index value. The index value is then used directly as an index to an array in the C code; internally the address of the array and its index are added to each other in order to yield the address of the value that is desired. However, by supplying a negative index value and adding this to the address of the array, the processor's register value wraps around and the calculated value will point to a position in memory which isn't within the bounds of the supplied string, causing the function to access other parts of the process memory.");
+  script_tag(name:"insight", value:"It was reported that Python built-in _json module have a flaw (insufficient bounds checking), which allows a local user to read current process' arbitrary memory.Quoting the upstream bug report:The sole prerequisites of this attack are that the attacker is able to control or influence the two parameters of the default scanstring function: the string to be decoded and the index.The bug is caused by allowing the user to supply a negative index value. The index value is then used directly as an index to an array in the C code. Internally the address of the array and its index are added to each other in order to yield the address of the value that is desired. However, by supplying a negative index value and adding this to the address of the array, the processor's register value wraps around and the calculated value will point to a position in memory which isn't within the bounds of the supplied string, causing the function to access other parts of the process memory.");
   script_tag(name:"solution", value:"Run yum update python27 to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2014-380.html");

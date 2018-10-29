@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_mult_vuln_4018271.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_ms_ie_mult_vuln_4018271.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4018271)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811032");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-0064", "CVE-2017-0222", "CVE-2017-0226", "CVE-2017-0228",
                 "CVE-2017-0231", "CVE-2017-0238");
   script_bugtraq_id(98121, 98127, 98139, 98164, 98173, 98237);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:38:44 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4018271)");
@@ -62,7 +62,7 @@ if(description)
   arbitrary code in the context of the current user.If the current user is logged
   on with administrative user rights, an attacker who successfully exploited the
   vulnerability could take control of an affected system. An attacker could then
-  install programs; view, change, or delete data; or create new accounts with full
+  install programs, view, change, or delete data or create new accounts with full
   user rights.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 9.x,

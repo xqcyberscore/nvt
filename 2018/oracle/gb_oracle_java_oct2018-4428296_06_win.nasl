@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_oct2018-4428296_06_win.nasl 11968 2018-10-18 14:31:48Z cfischer $
+# $Id: gb_oracle_java_oct2018-4428296_06_win.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # Oracle Java SE Denial of Service Vulnerability(oct2018-4428296)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814402");
-  script_version("$Revision: 11968 $");
+  script_version("$Revision: 12130 $");
   script_cve_id("CVE-2018-3214");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:31:48 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 11:39:28 +0530 (Wed, 17 Oct 2018)");
   script_name("Oracle Java SE Denial of Service Vulnerability(oct2018-4428296)-Windows");
 

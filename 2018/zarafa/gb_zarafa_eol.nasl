@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_eol.nasl 10838 2018-08-08 12:05:36Z cfischer $
+# $Id: gb_zarafa_eol.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Zarafa Products End Of Life
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113150");
-  script_version("$Revision: 10838 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-04 15:26:25 +0200 (Wed, 04 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.zarafa.com/?");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

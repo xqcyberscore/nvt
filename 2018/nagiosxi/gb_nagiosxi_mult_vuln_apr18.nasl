@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Nagios XI Multiple Vulnerabilities-April18
 #
@@ -31,13 +31,13 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813215");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8733", "CVE-2018-8734", "CVE-2018-8735", "CVE-2018-8736",
                 "CVE-2018-10736", "CVE-2018-10735", "CVE-2018-10738", "CVE-2018-10737",
                 "CVE-2018-10810");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 10:44:16 +0530 (Fri, 27 Apr 2018)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Nagios XI Multiple Vulnerabilities-April18");
@@ -73,9 +73,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary SQL commands, execute arbitrary commands and
-  to leverage an RCE vulnerability escalating to root.
-
-  Impact Level: Application");
+  to leverage an RCE vulnerability escalating to root.");
 
   script_tag(name:"affected", value:"Nagios XI versions 5.2.x through 5.4.x before 5.4.13");
 

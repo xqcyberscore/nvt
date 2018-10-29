@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4284819.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_ms_kb4284819.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4284819)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813526");
-  script_version("$Revision: 10868 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0871", "CVE-2018-0978", "CVE-2018-0982", "CVE-2018-1036",
                 "CVE-2018-1040", "CVE-2018-8111", "CVE-2018-8113", "CVE-2018-8121",
                 "CVE-2018-8140", "CVE-2018-8169", "CVE-2018-8175", "CVE-2018-8201",
@@ -39,15 +39,14 @@ if(description)
                 "CVE-2018-8236", "CVE-2018-8239", "CVE-2018-8251", "CVE-2018-8267");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 09:05:09 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4284819)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4284819");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to errors,
 
@@ -118,9 +117,7 @@ if(description)
   arbitrary code, read privileged data, force the browser to send restricted data,
   interject cross-process communication, install programs, view, change, or delete
   data or create new accounts with full user rights and create a denial of service
-  condition.
-
-  Impact Level: System");
+  condition.");
 
   script_tag(name:"affected", value:"Windows 10 Version 1709 for x32/x64-bit Systems");
 
@@ -155,7 +152,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

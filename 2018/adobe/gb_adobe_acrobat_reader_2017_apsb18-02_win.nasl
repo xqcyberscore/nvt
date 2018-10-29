@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_2017_apsb18-02_win.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_adobe_acrobat_reader_2017_apsb18-02_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Acrobat Reader 2017 Multiple Vulnerabilities-apsb18-02 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812927");
-  script_version("$Revision: 10480 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-4872", "CVE-2018-4890", "CVE-2018-4904", "CVE-2018-4910",
                 "CVE-2018-4917", "CVE-2018-4888", "CVE-2018-4892", "CVE-2018-4902",
                 "CVE-2018-4911", "CVE-2018-4913", "CVE-2018-4879", "CVE-2018-4895",
@@ -43,40 +43,42 @@ if(description)
                 "CVE-2018-4914", "CVE-2018-4997", "CVE-2018-4998", "CVE-2018-4999");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 13:54:40 +0530 (Thu, 15 Feb 2018)");
   script_name("Adobe Acrobat Reader 2017 Multiple Vulnerabilities-apsb18-02 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat Reader
   2017 and is prone to multiple vulnerabilities.");
-  
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
-  
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
-  - Multiple Out-of-bounds read errors.
-  - Multiple Out-of-bounds write errors.
-  - Multiple Use-after-free errors.
-  - Multiple Heap Overflow errors.
-  - A memory corruption error.
-  - A Security Mitigation Bypass error.");
-  
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
-  attacker to gain escalated privileges, execute arbitrary code on affected
-  system and take control of the affected system.
-  
-  Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Adobe Acrobat Reader 2017.011.30070 and earlier
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
+  - Multiple Out-of-bounds read errors.
+
+  - Multiple Out-of-bounds write errors.
+
+  - Multiple Use-after-free errors.
+
+  - Multiple Heap Overflow errors.
+
+  - A memory corruption error.
+
+  - A Security Mitigation Bypass error.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow an
+  attacker to gain escalated privileges, execute arbitrary code on affected
+  system and take control of the affected system.");
+
+  script_tag(name:"affected", value:"Adobe Acrobat Reader 2017.011.30070 and earlier
   versions on Windows.");
-  
-  script_tag(name: "solution", value:"Upgrade to Adobe Acrobat Reader 2017 version
-  2017.011.30078 or later.
-  For details refer to https://helpx.adobe.com/security/products/acrobat/apsb18-02.html");
+
+  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat Reader 2017 version
+  2017.011.30078 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb18-02.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb18-02.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

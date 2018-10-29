@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032213.nasl 11972 2018-10-19 05:34:20Z cfischer $
+# $Id: gb_ms_kb4032213.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Excel Viewer 2007 SP3 RCE and Information Disclosure Vulnerabilities (KB4032213)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813291");
-  script_version("$Revision: 11972 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8375", "CVE-2018-8382");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 11:29:13 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Excel Viewer 2007 SP3 RCE and Information Disclosure Vulnerabilities (KB4032213)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4032213");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exists when Microsoft Excel fails
   to properly handle objects in memory and improperly discloses the contents of
@@ -47,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to run arbitrary code and use the information to compromise the
-  computer or data.
-
-  Impact Level: System/Application");
+  computer or data.");
 
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Connect Authentication Bypass Vulnerability (APSB18-18)
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813361");
-  script_version("$Revision: 10349 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-4994");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 12:59:18 +0530 (Fri, 11 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## A mitigation is available to customers by modifying Tomcat filters to
   ## control remote access to system configuration files
   script_name("Adobe Connect Authentication Bypass Vulnerability (APSB18-18)");
 
-  script_tag(name: "summary" , value:"The host is installed with Adobe Connect
+  script_tag(name:"summary", value:"The host is installed with Adobe Connect
   and is prone to an authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an authentication
+  script_tag(name:"insight", value:"The flaw is due to an authentication
   bypass error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose sensitive information.
-
-  Impact Level: Application");
+  attackers to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Adobe Connect versions prior to 9.8.1");
 
-  script_tag(name:"solution", value:"Upgrade to Adobe Connect version 9.8.1 or 
+  script_tag(name:"solution", value:"Upgrade to Adobe Connect version 9.8.1 or
   later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/connect/apsb18-18.html");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/adobe-connect/connect-downloads-updates.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/connect/apsb18-18.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/adobe-connect/connect-downloads-updates.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");

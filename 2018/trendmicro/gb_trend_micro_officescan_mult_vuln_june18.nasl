@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mult_vuln_june18.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_trend_micro_officescan_mult_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro OfficeScan Multiple Vulnerabilities June18
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813615");
-  script_version("$Revision: 10778 $");
-  script_cve_id("CVE-2018-10358", "CVE-2018-10359", "CVE-2018-10505", "CVE-2018-10506", 
+  script_version("$Revision: 12120 $");
+  script_cve_id("CVE-2018-10358", "CVE-2018-10359", "CVE-2018-10505", "CVE-2018-10506",
                 "CVE-2018-10507", "CVE-2018-10508", "CVE-2018-10509");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 10:57:13 +0530 (Tue, 26 Jun 2018)");
   script_name("Trend Micro OfficeScan Multiple Vulnerabilities June18");
 
   script_tag(name:"summary", value:"This host is installed with Trend Micro
   OfficeScan and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to, 
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - The lack of proper validation of the length of user-supplied data prior to
     using that length to initialize a pool-based buffer within the processing of
@@ -62,9 +61,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose sensitive information, escalate privileges and to bypass other
-  security restrictions on vulnerable installations of Trend Micro OfficeScan.
-
-  Impact Level: System/Application.");
+  security restrictions on vulnerable installations of Trend Micro OfficeScan.");
 
   script_tag(name:"affected", value:"Trend Micro OfficeScan versions XG SP1
   prior to XG SP1 CP 5147, XG (GM Version) prior to XG CP 1876 (Pre-SP1), 11.0

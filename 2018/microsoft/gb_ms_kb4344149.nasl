@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4344149.nasl 11972 2018-10-19 05:34:20Z cfischer $
+# $Id: gb_ms_kb4344149.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (KB4344149)
 #
@@ -27,28 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813763");
-  script_version("$Revision: 11972 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8360");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 10:51:10 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (KB4344149)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4344149");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when .NET Framework is used
   in high-load/high-density network connections where content from one stream
   can blend into another stream.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to access information in multi-tenant environments.
-
-  Impact Level: System/Application");
+  to access information in multi-tenant environments.");
 
   script_tag(name:"affected", value:".NET Framework 4.5.2 for Windows 7 SP1,
   Server 2008 R2 SP1, and Server 2008 SP2");

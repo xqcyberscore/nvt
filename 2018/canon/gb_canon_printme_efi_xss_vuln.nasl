@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printme_efi_xss_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_canon_printme_efi_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Canon PrintMe EFI Cross Site Scripting Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:efi:fiery";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813608");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-12111");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 12:23:19 +0530 (Fri, 15 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Canon PrintMe EFI Cross Site Scripting Vulnerability");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML in a user's browser session
-  within the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  within the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Canon PrintMe EFI");
 

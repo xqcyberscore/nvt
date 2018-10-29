@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_continuum_46311.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_apache_continuum_46311.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Apache Continuum Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:continuum";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103074");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12131 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-11 13:54:50 +0100 (Fri, 11 Feb 2011)");
   script_bugtraq_id(46311);
   script_tag(name:"cvss_base", value:"4.3");
@@ -57,7 +57,7 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may let the attacker steal cookie-based authentication
 credentials and launch other attacks.
 
-Apache Continuum 1.3.6 and 1.4.0 (Beta) are vulnerable; other versions
+Apache Continuum 1.3.6 and 1.4.0 (Beta) are vulnerable. Other versions
 may also be affected.");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46311");

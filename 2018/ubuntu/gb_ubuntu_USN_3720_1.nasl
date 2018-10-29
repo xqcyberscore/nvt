@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3720_1.nasl 12112 2018-10-26 07:33:01Z santu $
+# $Id: gb_ubuntu_USN_3720_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
 #
 # Ubuntu Update for python-cryptography USN-3720-1
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843683");
-  script_version("$Revision: 12112 $");
+  script_version("$Revision: 12126 $");
   script_cve_id("CVE-2018-10903");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 09:33:01 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:06:41 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for python-cryptography USN-3720-1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
 
   script_xref(name:"USN", value:"3720-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3720-1/");

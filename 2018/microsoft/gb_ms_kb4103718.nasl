@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4103718.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4103718.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4103718)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813336");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0954", "CVE-2018-0955", "CVE-2018-0959", "CVE-2018-1022",
                 "CVE-2018-1025", "CVE-2018-8114", "CVE-2018-8120", "CVE-2018-8122",
                 "CVE-2018-8124", "CVE-2018-8127", "CVE-2018-8136", "CVE-2018-8145",
@@ -36,15 +36,14 @@ if(description)
                 "CVE-2018-0886");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 08:12:54 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4103718)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4103718");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -73,9 +72,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to gain the same user rights as the current user, run arbitrary
   code, disclose sensitive information and run processes in an elevated context
-  and it may lead to further compromise of the system.
-
-  Impact Level: System");
+  and it may lead to further compromise of the system.");
 
   script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
 
@@ -111,7 +108,7 @@ if(!sysPath){
   exit(0);
 }
 
-fileVer = fetch_file_version(sysPath, file_name:"advapi32.dll");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"advapi32.dll");
 if(!fileVer){
   exit(0);
 }

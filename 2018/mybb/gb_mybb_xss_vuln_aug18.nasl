@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln_aug18.nasl 11178 2018-08-31 11:06:23Z jschulte $
+# $Id: gb_mybb_xss_vuln_aug18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # myBB <= 1.8.17 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113261");
-  script_version("$Revision: 11178 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 13:06:23 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 12:56:57 +0200 (Fri, 31 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://blog.mybb.com/2018/08/22/mybb-1-8-18-released-security-maintenance-release/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mybb:mybb";

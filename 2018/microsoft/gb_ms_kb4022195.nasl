@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022195.nasl 11972 2018-10-19 05:34:20Z cfischer $
+# $Id: gb_ms_kb4022195.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Excel Viewer 2007 Service Pack 3 Multiple Vulnerabilities (KB4022195)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813277");
-  script_version("$Revision: 11972 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8378", "CVE-2018-8382");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 10:30:29 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Excel Viewer 2007 Service Pack 3 Multiple Vulnerabilities (KB4022195)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4022195");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw existso,
 
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to view out of bound memory and use the information to compromise the users
-  computer or data.
-
-  Impact Level: Application");
+  computer or data.");
 
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3");
 

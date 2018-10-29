@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-36_macosx.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_adobe_reader_apsb17-36_macosx.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Adobe Reader Security Updates(apsb17-36)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811342");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-16377", "CVE-2017-16378", "CVE-2017-16360", "CVE-2017-16388",
 		"CVE-2017-16389", "CVE-2017-16390", "CVE-2017-16393", "CVE-2017-16398",
 		"CVE-2017-16381", "CVE-2017-16385", "CVE-2017-16392", "CVE-2017-16395",
@@ -51,7 +51,7 @@ if(description)
                     101830, 101820, 101814, 101817, 101815, 101813);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:56:52 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe Reader Security Updates(apsb17-36)-MAC OS X");
 
@@ -107,7 +107,7 @@ if(description)
   attackers to execute arbitrary code in the context of the application.
   Failed attacks may cause a denial-of-service condition. Also attackers will be
   able to gain access to potentially sensitive information, get excessive resource
-  consumption and get unintentional downloads of malicious software);.");
+  consumption and get unintentional downloads of malicious software.");
 
   script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.23 on MAC OS X.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln.nasl 9917 2018-05-22 08:38:12Z ckuersteiner $
+# $Id: gb_twonky_server_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Version Check)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113148");
-  script_version("$Revision: 9917 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 10:38:12 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:36:00 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -69,7 +69,7 @@ this issue will be updated once solution details are available.
   script_xref(name:"URL", value:"https://github.com/mechanico/sharingIsCaring/blob/master/twonky.py");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44350/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:twonky:twonky_server";

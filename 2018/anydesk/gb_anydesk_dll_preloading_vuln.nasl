@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anydesk_dll_preloading_vuln.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_anydesk_dll_preloading_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # AnyDesk DLL Preloading Privilege Escalation Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:anydesk:anydesk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813554");
-  script_version("$Revision: 11388 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-13102");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 16:47:10 +0530 (Fri, 06 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("AnyDesk DLL Preloading Privilege Escalation Vulnerability (Windows)");
@@ -42,16 +42,13 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with AnyDesk and is
   prone to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exist due to improper sanitization
   of an unknown function in the component DLL Loader.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to escalate privilege and gain control of the application.
-
-  Impact Level: Application");
+  to escalate privilege and gain control of the application.");
 
   script_tag(name:"affected", value:"AnyDesk version before 4.1.3 on Windows 7
   SP1");
@@ -60,8 +57,8 @@ if(description)
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value : "https://download.anydesk.com/changelog.txt");
-  script_xref(name:"URL", value : "https://anydesk.com/");
+  script_xref(name:"URL", value:"https://download.anydesk.com/changelog.txt");
+  script_xref(name:"URL", value:"https://anydesk.com/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

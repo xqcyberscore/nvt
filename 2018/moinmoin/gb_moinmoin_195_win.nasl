@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_195_win.nasl 8761 2018-02-12 09:49:47Z cfischer $
+# $Id: gb_moinmoin_195_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
-# MoinMoin 1.9 < 1.9.5 ACL Security Bug (Windows) 
+# MoinMoin 1.9 < 1.9.5 ACL Security Bug (Windows)
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,11 +29,11 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108327");
-  script_version("$Revision: 8761 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2012-4404");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 10:49:47 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 10:47:19 +0100 (Mon, 12 Feb 2018)");
   script_name("MoinMoin 1.9 < 1.9.5 ACL Security Bug (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -46,21 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://moinmo.in/SecurityFixes");
   script_xref(name:"URL", value:"http://hg.moinmo.in/moin/1.9/rev/7b9f39289e16");
 
-  tag_summary = 'MoinMoin does not properly handle group names that contain virtual
-  group names such as "All," "Known," or "Trusted,"';
-
-  tag_impact = "This issue may allow remote authenticated users with virtual group
-  membership to be treated as a member of the group.";
-
-  tag_affected = "MoinMoin 1.9 through 1.9.4.";
-
-  tag_solution = "Update to version 1.9.5 or later. Please see the references for
-  more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"This issue may allow remote authenticated users with virtual group
+  membership to be treated as a member of the group.");
+  script_tag(name:"affected", value:"MoinMoin 1.9 through 1.9.4.");
+  script_tag(name:"solution", value:"Update to version 1.9.5 or later. Please see the references for
+  more information.");
+  script_tag(name:"summary", value:"MoinMoin does not properly handle group names that contain virtual
+  group names such as 'All, ' 'Known, ' or 'Trusted, '");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

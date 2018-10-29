@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hikvision_ip_camera_detect.nasl 11783 2018-10-08 20:10:21Z tpassfeld $
+# $Id: gb_hikvision_ip_camera_detect.nasl 12132 2018-10-26 14:29:51Z tpassfeld $
 #
 # Hikvision IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114037");
-  script_version("$Revision: 11783 $");
+  script_version("$Revision: 12132 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 22:10:21 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:29:51 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 14:33:50 +0200 (Fri, 05 Oct 2018)");
   script_name("Hikvision IP Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,7 +80,7 @@ if('"/hikvision://"' >< res || '{case"HIKVISION"' >< res) {
   }
 
   #seajs.web_version="V4.0.1build171121" #web_version:"3.1.3.131126" #web_version: "3.0.51.170214"
-  ver = eregmatch(pattern: 'seajs.web_version="V([0-9.]+)[a-zA-Z]+([0-9]+)"|web_version:\\s?"([0-9.]+)"', string: res);
+  ver = eregmatch(pattern: 'seajs.web_version\\s*=\\s*"V([0-9.]+)[a-zA-Z]+([0-9]+)"|web_version:\\s?"([0-9.]+)"', string: res);
   if(!isnull(ver[1]) && !isnull(ver[2])) version = ver[1] + "." + ver[2]; #Unifying the extracted versions for later use
   if(!isnull(ver[3])) version = ver[3];
 

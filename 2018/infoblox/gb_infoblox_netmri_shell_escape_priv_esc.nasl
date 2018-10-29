@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_infoblox_netmri_shell_escape_priv_esc.nasl 11331 2018-09-11 13:13:01Z mmartin $
+# $Id: gb_infoblox_netmri_shell_escape_priv_esc.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Infoblox NetMRI Administration Shell Escape and Privilege Escalation Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107340");
-  script_version("$Revision: 11331 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:13:01 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 15:43:15 +0200 (Mon, 10 Sep 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -55,7 +55,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.korelogic.com/Resources/Advisories/KL-001-2017-017.txt");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:infoblox:netmri";

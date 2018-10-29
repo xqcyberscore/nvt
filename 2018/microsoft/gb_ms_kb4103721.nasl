@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4103721.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4103721.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4103721)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813339");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-0954", "CVE-2018-0955", "CVE-2018-0958",
                 "CVE-2018-0959", "CVE-2018-0961", "CVE-2018-1022", "CVE-2018-1025",
                 "CVE-2018-1039", "CVE-2018-8112", "CVE-2018-8114", "CVE-2018-8122",
@@ -40,15 +40,14 @@ if(description)
                 "CVE-2018-0946", "CVE-2018-0953", "CVE-2018-0886");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 10:15:05 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4103721)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4103721");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -84,9 +83,7 @@ if(description)
   circumvent a User Mode Code Integrity (UMCI) policy on the machine, gain the
   same user rights as the current user, discloses information to further
   compromise the user's computer or data, interrupt system functionality and cause
-  denial of service condition.
-
-  Impact Level: System");
+  denial of service condition.");
 
   script_tag(name:"affected", value:"Windows 10 Version 1803 for 32-bit Systems
 
@@ -122,7 +119,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

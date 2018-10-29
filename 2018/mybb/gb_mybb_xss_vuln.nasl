@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
+# $Id: gb_mybb_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # MyBB 1.8.14 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113109");
-  script_version("$Revision: 11759 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 10:50:30 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ this issue will be updated once solution details are available.");
   script_xref(name:"URL", value:"https://websecnerd.blogspot.de/2018/02/mybb-forum-1.html");
   script_xref(name:"URL", value:"https://blog.mybb.com/category/updates/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mybb:mybb";

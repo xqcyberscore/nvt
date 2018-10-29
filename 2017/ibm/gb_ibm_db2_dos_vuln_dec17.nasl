@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dos_vuln_dec17.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ibm_db2_dos_vuln_dec17.nasl 12142 2018-10-29 08:28:54Z cfischer $
 #
 # IBM DB2 Denial of Service Vulnerability Dec17
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812264");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12142 $");
   script_cve_id("CVE-2014-6097");
   script_bugtraq_id(70983);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-15 15:19:39 +0530 (Fri, 15 Dec 2017)");
   script_name("IBM DB2 Denial of Service Vulnerability Dec17");
 
@@ -64,14 +64,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-ibmVer  = "";
-ibmPort = "";
-fix = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_info_disc_vuln_dec17_macosx.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_office_info_disc_vuln_dec17_macosx.nasl 12144 2018-10-29 08:59:52Z cfischer $
 #
 # Microsoft Office PowerPoint Information Disclosure Vulnerability - Dec17 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812728");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12144 $");
   script_cve_id("CVE-2017-11934");
   script_bugtraq_id(102064);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:59:52 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-11 14:22:59 +0530 (Thu, 11 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Information Disclosure Vulnerability - Dec17 (Mac OS X)");
@@ -41,21 +41,17 @@ if(description)
   update for Microsoft Office 2016 on Mac OSX according to Microsoft security
   update December 2017");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the way certain functions
   handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to obtain sensitive information that may aid in launching further attacks.
-
-  Impact Level: Application");
+  to obtain sensitive information that may aid in launching further attacks.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://support.office.com/en-us/article/Release-notes-for-Office-2016-for-Mac-ed2da564-6d53-4542-9954-7e3209681a41?ui=en-US&rs=en-US&ad=US");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.office.com/en-us/article/Release-notes-for-Office-2016-for-Mac-ed2da564-6d53-4542-9954-7e3209681a41?ui=en-US&rs=en-US&ad=US");

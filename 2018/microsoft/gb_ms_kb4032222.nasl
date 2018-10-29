@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032222.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_ms_kb4032222.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Outlook 2010 Service Pack 2 Defense in Depth Vulnerability (KB4032222)
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813288");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 12120 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 11:19:59 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Outlook 2010 Service Pack 2 Defense in Depth Vulnerability (KB4032222)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4032222");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Microsoft has released an update for
   Microsoft Office that provides enhanced security as a defense in depth
   measure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attackers to gains access to a system.
-
-  Impact Level: Application");
+  attackers to gains access to a system.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2010 Service Pack 2");
 

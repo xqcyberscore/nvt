@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpunit_rce.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_phpunit_rce.nasl 12143 2018-10-29 08:53:57Z cfischer $
 #
 # PHPUnit 'CVE-2017-9841' Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108439");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12143 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:53:57 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-14 15:29:22 +0200 (Sat, 14 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -128,6 +128,7 @@ if( modirs ) {
   }
 }
 
+#nb: The final list with the directories from webmirror.nasl and DDI_Directory_Scanner.nasl.
 files = make_list(
 # Installed via composer
 "/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php",

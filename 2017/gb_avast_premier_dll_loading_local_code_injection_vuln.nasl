@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_premier_dll_loading_local_code_injection_vuln.nasl 12021 2018-10-22 14:54:51Z mmartin $
+# $Id: gb_avast_premier_dll_loading_local_code_injection_vuln.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Avast Premier DoubleAgent Attack Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:avast:avast_premier";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810901");
-  script_version("$Revision: 12021 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-5567");
   script_bugtraq_id(97017);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 16:54:51 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 10:13:58 +0530 (Wed, 05 Apr 2017)");
   script_name("Avast Premier DoubleAgent Attack Local Code Injection Vulnerability");
 
@@ -48,7 +48,7 @@ if(description)
   arbitrary Application Verifier Provider DLL under Image File Execution Options
   in the registry. The self-protection mechanism is intended to block all local
   processes (regardless of privileges) from modifying Image File Execution Options
-  for this product; and this mechanism can be bypassed by an attacker who
+  for this product. This mechanism can be bypassed by an attacker who
   temporarily renames Image File Execution Options during the attack.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tuleap_sql_injection.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_tuleap_sql_injection.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Tuleap 'CVE-2018-7538' SQL Injection Vulnerability
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:enalean:tuleap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108431");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 16:00:04 +0100 (Wed, 14 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"Tuleap is prone to a SQL injection vulnerability in the tracker functionality.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Tuleap does not sanitize properly user inputs when constructing SQL queries for
   a tracker report when a criteria is a cross reference or a permissions on artifact field.");

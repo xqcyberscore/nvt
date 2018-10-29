@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4344147.nasl 11972 2018-10-19 05:34:20Z cfischer $
+# $Id: gb_ms_kb4344147.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4344147)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813759");
-  script_version("$Revision: 11972 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8360", "CVE-2018-8202");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 07:34:20 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 09:11:10 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4344147)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4344147");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists
 
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to access information in multi-tenant environments and elevate their privilege
-  level.
-
-  Impact Level: System/Application");
+  level.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.5.2 for Windows
   8.1 and Windows Server 2012 R2");

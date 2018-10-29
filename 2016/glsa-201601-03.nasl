@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa-201601-03.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa-201601-03.nasl 12128 2018-10-26 13:35:25Z cfischer $
 #
 # Gentoo Linux security check
 #
@@ -8,7 +8,7 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://solinor.com
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.121438");
-  script_version("$Revision: 11671 $");
+  script_version("$Revision: 12128 $");
   script_tag(name:"creation_date", value:"2016-01-27 07:32:19 +0200 (Wed, 27 Jan 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:35:25 +0200 (Fri, 26 Oct 2018) $");
   script_name("Gentoo Security Advisory GLSA 201601-03");
   script_tag(name:"insight", value:"Multiple vulnerabilities have been discovered in Adobe Flash Player. Please review the CVE identifiers referenced below for details.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
@@ -42,7 +42,7 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201601-03");
+  script_tag(name:"summary", value:"Gentoo Linux Local Security Checks GLSA 201601-03");
   script_copyright("Eero Volotinen");
   script_family("Gentoo Local Security Checks");
 

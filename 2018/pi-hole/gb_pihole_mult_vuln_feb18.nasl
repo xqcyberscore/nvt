@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pihole_mult_vuln_feb18.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_pihole_mult_vuln_feb18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Pi-hole Ad-Blocker < 3.3 Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:pihole:web";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108343");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12120 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-18 11:43:37 +0100 (Sun, 18 Feb 2018)");
   script_name("Pi-hole Ad-Blocker < 3.3 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with the Pi-hole Ad-Blocker and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the Detection-NVT and check if the version is vulnerable.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -59,15 +58,11 @@ if(description)
   - XSS attack vectors in the php/auth.php and php/debug.php files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to conduct SQL injection and XSS attacks.
-
-  Impact Level: Application/System.");
+  remote attackers to conduct SQL injection and XSS attacks.");
 
   script_tag(name:"affected", value:"Versions of the Pi-hole Ad-Blocker Web-Interface prior to 3.3.");
 
-  script_tag(name:"solution", value:"Update the Pi-hole Ad-Blocker to version 3.3 or later.
-
-  For updates refer to https://pi-hole.net");
+  script_tag(name:"solution", value:"Update the Pi-hole Ad-Blocker to version 3.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

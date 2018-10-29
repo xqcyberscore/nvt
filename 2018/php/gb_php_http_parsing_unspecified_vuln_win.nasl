@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_http_parsing_unspecified_vuln_win.nasl 11771 2018-10-08 05:52:02Z asteins $
+# $Id: gb_php_http_parsing_unspecified_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP 'HTTP Parsing' Function Unspecified Vulnerability (Windows)
 #
@@ -29,27 +29,24 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813903");
-  script_version("$Revision: 11771 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-14884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 13:05:15 +0530 (Tue, 07 Aug 2018)");
   script_name("PHP 'HTTP Parsing' Function Unspecified Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exist due to an inappropriate parsing
   of HTTP response 'http_header_value' in 'ext/standard/http_fopen_wrapper.c'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause segmentation fault.
-
-  Impact Level: Application");
+  to cause segmentation fault.");
 
   script_tag(name:"affected", value:"PHP versions 7.0.x before 7.0.27, 7.1.x
   before 7.1.13, and 7.2.x before 7.2.1 on Windows.");

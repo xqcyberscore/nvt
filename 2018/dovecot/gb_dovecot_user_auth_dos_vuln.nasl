@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_user_auth_dos_vuln.nasl 11109 2018-08-24 14:47:20Z mmartin $
+# $Id: gb_dovecot_user_auth_dos_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Dovecot User Authentication Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113215");
-  script_version("$Revision: 11109 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 14:11:32 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -64,7 +64,7 @@ if( description )
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2017/04/11/1");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2017-2669");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dovecot:dovecot";

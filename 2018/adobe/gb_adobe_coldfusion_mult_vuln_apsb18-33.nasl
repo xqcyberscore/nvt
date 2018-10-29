@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln_apsb18-33.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_adobe_coldfusion_mult_vuln_apsb18-33.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe ColdFusion Multiple Vulnerabilities (APSB18-33)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813925");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-15965", "CVE-2018-15957", "CVE-2018-15958", "CVE-2018-15959",
                 "CVE-2018-15964", "CVE-2018-15963", "CVE-2018-15962", "CVE-2018-15961",
                 "CVE-2018-15960");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 12:38:39 +0530 (Wed, 12 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities (APSB18-33)");
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, disclose information, create arbitrary
-  page and overwrite arbitrary file.
-
-  Impact Level: System/Application");
+  page and overwrite arbitrary file.");
 
   script_tag(name:"affected", value:"Adobe ColdFusion 2018 (July 12 release),
   ColdFusion 2016 update 6 and earlier, ColdFusion 11 Update 14 and earlier.");

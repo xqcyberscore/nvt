@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_WZR-1750DHP2_mult_vuln.nasl 9913 2018-05-22 01:05:37Z ckuersteiner $
+# $Id: gb_buffalo_WZR-1750DHP2_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Buffalo WZR-1750DHP2 < 2.31 Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:buffalo:wzr-1750dhp2_firmware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140996");
-  script_version("$Revision: 9913 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-22 03:05:37 +0200 (Tue, 22 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-18 14:09:34 +0700 (Wed, 18 Apr 2018)");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-18 14:09:34 +0700 (Wed, 18 Apr 2018)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2018-0554", "CVE-2018-0555", "CVE-2018-0556"); 
+  script_cve_id("CVE-2018-0554", "CVE-2018-0555", "CVE-2018-0556");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Buffalo WZR-1750DHP2 < 2.31 Multiple Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_buffalo_airstation_detect.nasl");
   script_mandatory_keys("buffalo_airstation/detected");
 
-  script_tag(name: "summary", value: "Buffalo WZR-1750DHP2 is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Buffalo WZR-1750DHP2 is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Buffalo WZR-1750DHP2 is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Buffalo WZR-1750DHP2 is prone to multiple vulnerabilities:
 
-- bypass of authentication and executing arbitrary commands on the device via unspecified vectors. (CVE-2018-0554)
+  - bypass of authentication and executing arbitrary commands on the device via unspecified vectors. (CVE-2018-0554)
 
-- executing arbitrary code via a specially crafted file. (CVE-2018-0555)
+  - executing arbitrary code via a specially crafted file. (CVE-2018-0555)
 
-- executing arbitrary OS commands via unspecified vectors. (CVE-2018-0556");
+  - executing arbitrary OS commands via unspecified vectors. (CVE-2018-0556");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "Buffalo WZR-1750DHP2 firmware vesion 2.30 and prior.");
+  script_tag(name:"affected", value:"Buffalo WZR-1750DHP2 firmware vesion 2.30 and prior.");
 
-  script_tag(name: "solution", value: "Update to firmware version 2.31 or later.");
+  script_tag(name:"solution", value:"Update to firmware version 2.31 or later.");
 
-  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN93397125/index.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN93397125/index.html");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_classic_apsb17-36_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_adobe_acrobat_dc_classic_apsb17-36_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Acrobat DC (Classic Track) Multiple Vulnerabilities-apsb17-36 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_dc_classic";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812965");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-16377", "CVE-2017-16378", "CVE-2017-16360", "CVE-2017-16388",
 		"CVE-2017-16389", "CVE-2017-16390", "CVE-2017-16393", "CVE-2017-16398",
 		"CVE-2017-16381", "CVE-2017-16385", "CVE-2017-16392", "CVE-2017-16395",
@@ -51,7 +51,7 @@ if(description)
                     101830, 101820, 101814, 101817, 101815, 101813);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 12:23:24 +0530 (Tue, 06 Mar 2018)");
   script_name("Adobe Acrobat DC (Classic Track) Multiple Vulnerabilities-apsb17-36 (Windows)");
 
@@ -107,7 +107,7 @@ if(description)
   attackers to execute arbitrary code in the context of the application.
   Failed attacks may cause a denial-of-service condition. Also attackers will be
   able to gain access to potentially sensitive information, get excessive resource
-  consumption and get unintentional download of malicious software).");
+  consumption and get unintentional download of malicious software.");
 
   script_tag(name:"affected", value:"Adobe Acrobat DC (Classic Track)
   2015.006.30355 and earlier versions on Windows.");

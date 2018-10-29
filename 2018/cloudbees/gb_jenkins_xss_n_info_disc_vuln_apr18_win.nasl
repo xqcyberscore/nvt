@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_xss_n_info_disc_vuln_apr18_win.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_jenkins_xss_n_info_disc_vuln_apr18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813315");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1000169", "CVE-2018-1000170");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 16:40:26 +0530 (Mon, 23 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Jenkins Cross Site Scripting And Information disclosure Vulnerabilities Apr18 (Windows)");
@@ -41,28 +41,25 @@ if(description)
   script_tag(name:"summary", value:"This host is running Jenkins and is prone
   to cross site scripting and information disclosure vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - Some JavaScript confirmation dialogs included the item name in an unsafe 
+  - Some JavaScript confirmation dialogs included the item name in an unsafe
     manner.
 
-  - The Jenkins CLI send different error responses for commands with view and 
-    agent arguments depending on the existence of the specified views or agents 
+  - The Jenkins CLI send different error responses for commands with view and
+    agent arguments depending on the existence of the specified views or agents
     to unauthorized users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute a script on victim's Web browser within the security
-  context of the hosting Web site and also disclose sensitive information.
+  context of the hosting Web site and also disclose sensitive information.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Jenkins 2.115 and older, LTS 2.107.1 and 
+  script_tag(name:"affected", value:"Jenkins 2.115 and older, LTS 2.107.1 and
   older.");
 
-  script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.116 or 
+  script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.116 or
   later, Jenkins LTS to 2.107.2 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -87,20 +84,20 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:jport, exit_no_version:TR
 jenVer = infos['version'];
 path = infos['location'];
 
-if(get_kb_item("jenkins/" + jport + "/is_lts")) 
+if(get_kb_item("jenkins/" + jport + "/is_lts"))
 {
   if(version_is_less(version:jenVer, test_version:"2.107.2")){
     fix = "2.107.2";
   }
-} 
-else 
+}
+else
 {
   if(version_is_less(version:jenVer, test_version:"2.116")){
     fix = "2.116";
   }
 }
 
-if(fix) 
+if(fix)
 {
   report = report_fixed_ver(installed_version:jenVer, fixed_version:fix, install_path:path);
   security_message(port:jport, data:report);

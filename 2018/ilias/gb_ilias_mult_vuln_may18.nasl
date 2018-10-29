@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_mult_vuln_may18.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: gb_ilias_mult_vuln_may18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ILIAS < 5.1.27, 5.2.16, 5.3.5 Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112288");
-  script_version("$Revision: 10262 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-18 09:30:08 +0200 (Fri, 18 May 2018)");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-18 09:30:08 +0200 (Fri, 18 May 2018)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2018-11117", "CVE-2018-11118", "CVE-2018-11119", "CVE-2018-11120");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ILIAS < 5.1.27, 5.2.16, 5.3.5 Multiple Vulnerabilities");
 
@@ -49,9 +49,9 @@ if (description)
   script_dependencies("gb_ilias_detect.nasl");
   script_mandatory_keys("ilias/installed");
 
-  script_tag(name: "summary", value: "ILIAS eLearning is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ILIAS eLearning is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "The following vulnerabilities exist:
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - Services/Feeds/classes/class.ilExternalFeedItem.php in ILIAS has XSS via a link attribute. (CVE-2018-11117)
 
@@ -61,13 +61,13 @@ if (description)
 
   - Services/COPage/classes/class.ilPCSourceCode.php in ILIAS has XSS. (CVE-2018-11120)");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "ILIAS 5.1.x up to 5.1.26, 5.2.x up to 5.2.15, 5.3.x up to 5.3.4");
+  script_tag(name:"affected", value:"ILIAS 5.1.x up to 5.1.26, 5.2.x up to 5.2.15, 5.3.x up to 5.3.4");
 
-  script_tag(name: "solution", value: "Update to version 5.1.27, 5.2.16 or 5.3.5 respectively.");
+  script_tag(name:"solution", value:"Update to version 5.1.27, 5.2.16 or 5.3.5 respectively.");
 
-  script_xref(name: "URL", value: "https://www.ilias.de/docu/goto.php?target=st_229");
+  script_xref(name:"URL", value:"https://www.ilias.de/docu/goto.php?target=st_229");
 
   exit(0);
 }

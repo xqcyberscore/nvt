@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4074590.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4074590.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4074590)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812771");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0742", "CVE-2018-0756", "CVE-2018-0757", "CVE-2018-0771",
                 "CVE-2018-0820", "CVE-2018-0821", "CVE-2018-0822", "CVE-2018-0825",
                 "CVE-2018-0826", "CVE-2018-0828", "CVE-2018-0829", "CVE-2018-0830",
@@ -37,15 +37,14 @@ if(description)
                 "CVE-2018-0859", "CVE-2018-0860", "CVE-2018-0861", "CVE-2018-0866");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 12:07:16 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4074590)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4074590");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -72,18 +71,14 @@ if(description)
   rights as the current user, run arbitrary code in kernel mode, obtain
   information to further compromise the user's system, cause the affected system
   to stop responding until it is manually restarted, spoof content, perform
-  phishing attacks, or otherwise manipulate content of a document.
-
-  Impact Level: System");
+  phishing attacks, or otherwise manipulate content of a document.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1607 x32/x64
 
   Microsoft Windows Server 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4074590");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -115,7 +110,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

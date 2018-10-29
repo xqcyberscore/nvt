@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_true_key_dll_loading_privilege_elevation_vuln_win.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_mcafee_true_key_dll_loading_privilege_elevation_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # McAfee True Key DLL Side Loading Privilege Elevation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:true_key";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813323");
-  script_version("$Revision: 9903 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-6661");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:31:27 +0530 (Wed, 02 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("McAfee True Key DLL Side Loading Privilege Elevation Vulnerability (Windows)");
@@ -41,23 +41,20 @@ if(description)
   script_tag(name:"summary", value:"This host is running McAfee True Key and is
   prone to privilege elevation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to one of the True Key Service 
-  binaries loading a McAfee dynamic library in an insecure manner. An adversary could 
+  script_tag(name:"insight", value:"The flaw is due to one of the True Key Service
+  binaries loading a McAfee dynamic library in an insecure manner. An adversary could
   carefully craft an exploit to launch an Elevation of Privilege attack.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow local 
-  users to gain privilege elevation via not verifying a particular DLL file 
-  signature.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  users to gain privilege elevation via not verifying a particular DLL file
+  signature.");
 
   script_tag(name:"affected", value:"True Key version 4.20 and earlier on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 4.20.110 or later.
-  For updates refer to Reference links."); 
+  For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://service.mcafee.com/webcenter/portal/cp/home/articleview?articleId=TS102801");

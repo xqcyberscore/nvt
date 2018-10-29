@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4095876.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4095876.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4095876)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813185");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-1039");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:52:36 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft .NET Framework Security Feature Bypass And DoS Vulnerabilities (KB4095876)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4095876");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -49,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker who successfully exploited this vulnerability to cause a denial
-  of service against a .NET application and also to bypass security.
-
-  Impact Level: System/Application");
+  of service against a .NET application and also to bypass security.");
 
   script_tag(name:"affected", value:".NET Framework 4.5.2 for Windows 8.1, and Server 2012 R2");
 

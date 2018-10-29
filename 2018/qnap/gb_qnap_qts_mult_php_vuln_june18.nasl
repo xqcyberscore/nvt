@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_mult_php_vuln_june18.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_qnap_qts_mult_php_vuln_june18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS Multiple PHP Vulnerabilities-June18
 #
 # Authors:
-# Rajat Mishra <rajatm@secpod.com> 
+# Rajat Mishra <rajatm@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,21 +27,20 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813519");
-  script_version("$Revision: 10349 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2016-1283", "CVE-2017-16642", "CVE-2018-5711", "CVE-2018-5712");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 17:13:13 +0530 (Mon, 11 Jun 2018)");
   script_name("QNAP QTS Multiple PHP Vulnerabilities-June18");
 
-  script_tag(name: "summary" , value:"This host is running QNAP QTS and is prone
+  script_tag(name:"summary", value:"This host is running QNAP QTS and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws exist due to - 
+  script_tag(name:"insight", value:"Multiple flaws exist due to -
 
   - The pcre_compile2 function in pcre_compile.c in PCRE 8.38 mishandles the
     multiple patterns with named subgroups.
@@ -49,35 +48,33 @@ if (description)
   - An error in the date extension's 'timelib_meridian' handling of 'front of'
     and 'back of' directives.
 
-  - An input validation error on the PHAR 404 error page via the URI of a request 
+  - An input validation error on the PHAR 404 error page via the URI of a request
     for a .phar file.
 
-  - An integer signedness error in gd_gif_in.c in the GD Graphics Library 
+  - An integer signedness error in gd_gif_in.c in the GD Graphics Library
     (aka libgd).");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to access sensitive information on the NAS, launch denial-of-service
-  (DoS), or Cross-Site-Scripting (XSS) attacks.
+  (DoS), or Cross-Site-Scripting (XSS) attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"QNAP QTS versions 4.3.3 build 20180126 and
+  script_tag(name:"affected", value:"QNAP QTS versions 4.3.3 build 20180126 and
   earlier, 4.3.4 build 20180215 and earlier.");
 
-  script_tag(name: "solution" , value:"Upgrade to QNAP QTS 4.3.3 build  20180402
+  script_tag(name:"solution", value:"Upgrade to QNAP QTS 4.3.3 build  20180402
   or 4.3.4 build 20180315 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL" , value:"https://www.qnap.com/en-in/security-advisory/nas-201805-10");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-in/security-advisory/nas-201805-10");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_qnap_nas_detect.nasl");
-  script_mandatory_keys("qnap/qts","qnap/version","qnap/build", "qnap/port");
+  script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build", "qnap/port");
   script_require_ports("Services/www", 80, 8080);
   exit(0);
-} 
+}
 
 include("version_func.inc");
 

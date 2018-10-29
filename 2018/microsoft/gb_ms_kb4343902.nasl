@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4343902.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_ms_kb4343902.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (KB4343902)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813835");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-12824", "CVE-2018-12825", "CVE-2018-12826", "CVE-2018-12827",
                 "CVE-2018-12828");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 10:00:20 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (KB4343902)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4343902");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -54,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to escalate privileges, disclose sensitive information and bypass
-  security restrictions.
-
-  Impact Level: System/Application");
+  security restrictions.");
 
   script_tag(name:"affected", value:"Adobe Flash Player within Microsoft Edge or
   Internet Explorer on,

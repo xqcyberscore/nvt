@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_mem_corr_vuln_apsb18-28_win.nasl 11097 2018-08-23 13:21:19Z santu $
+# $Id: gb_adobe_photoshop_mult_mem_corr_vuln_apsb18-28_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Windows)
 #
@@ -30,43 +30,40 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813870");
-  script_version("$Revision: 11097 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-12810", "CVE-2018-12811");
   script_bugtraq_id(105123);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 15:21:19 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 10:51:12 +0530 (Thu, 23 Aug 2018)");
   script_name("Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Adobe Photoshop
+  script_tag(name:"summary", value:"The host is installed with Adobe Photoshop
   CC and is prone to multiple memory corruption vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple
   unspecified memory corruption vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code in the context of the user running the affected
   application. Failed exploit attempts will likely result in denial-of-service
-  conditions.
+  conditions.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Photoshop CC 2017 18.1.5 and earlier
+  script_tag(name:"affected", value:"Adobe Photoshop CC 2017 18.1.5 and earlier
   and Adobe Photoshop CC 2018 19.1.5 and earlier versions on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Photoshop CC 2017
+  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop CC 2017
   18.1.6 or Photoshop CC 2018 19.1.6 or later. For updates refer to Reference
   links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value :"https://helpx.adobe.com/security/products/photoshop/apsb18-28.html");
-  script_xref(name : "URL" , value :"http://www.adobe.com/in/products/photoshop.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/photoshop/apsb18-28.html");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

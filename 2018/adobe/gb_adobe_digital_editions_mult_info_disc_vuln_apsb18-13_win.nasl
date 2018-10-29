@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_win.nasl 9477 2018-04-13 11:33:30Z santu $
+# $Id: gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Digital Editions Multiple Information Disclosure Vulnerabilities-APSB18-13 (Windows)
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813081");
-  script_version("$Revision: 9477 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-4925", "CVE-2018-4926");
   script_bugtraq_id(103712);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification",  value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 11:41:52 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Multiple Information Disclosure Vulnerabilities-APSB18-13 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Digital
+  script_tag(name:"summary", value:"This host is installed with Adobe Digital
   Edition and is prone to multiple information disclosure vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws exists due to an out-of-bounds
+  script_tag(name:"insight", value:"Multiple flaws exists due to an out-of-bounds
   read error and a stack overflow error caused by unsafe processing of specially
   crafted 'epub' files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to gain access to potentially sensitive information.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to gain access to potentially sensitive information.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Adobe Digital Edition prior to 4.5.8 on Windows.");
 
-  script_tag(name: "affected" , value:"Adobe Digital Edition prior to 4.5.8 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Adobe Digital Edition version
+  script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version
   4.5.8 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.adobe.com/in/solutions/ebook/digital-editions/download.html");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/Digital-Editions/apsb18-13.html");
+  script_xref(name:"URL", value:"https://www.adobe.com/in/solutions/ebook/digital-editions/download.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/Digital-Editions/apsb18-13.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

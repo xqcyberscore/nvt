@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_sec_bypass_vuln_july18_lin.nasl 11370 2018-09-13 11:32:51Z asteins $
+# $Id: gb_ms_powershell_sec_bypass_vuln_july18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813698");
-  script_version("$Revision: 11370 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8356");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:49:16 +0530 (Fri, 20 Jul 2018)");
   script_name("Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Linux)");
 
@@ -41,16 +41,13 @@ if(description)
   update for PowerShell Core according to Microsoft security advisory
   CVE-2018-8356.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when Microsoft .NET Framework
   components do not correctly validate certificates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to present expired certificates when challenged.
-
-  Impact Level: Application");
+  to present expired certificates when challenged.");
 
   script_tag(name:"affected", value:"PowerShell Core versions 6.x prior to 6.0.3
   and 6.1.x prior to 6.1.0-preview.4 on Linux.");

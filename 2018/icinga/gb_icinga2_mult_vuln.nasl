@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga2_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_icinga2_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Icinga2 < 2.8.2 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113121");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 11:56:30 +0100 (Fri, 02 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/Icinga/icinga2/issues/5793");
   script_xref(name:"URL", value:"https://www.icinga.com/2018/03/22/icinga-2-8-2-released/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:icinga:icinga2";

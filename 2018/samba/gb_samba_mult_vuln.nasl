@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_mult_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Samba 4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113133");
-  script_version("$Revision: 10398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:45:55 +0100 (Wed, 14 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -71,7 +71,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2018-1050.html");
   script_xref(name:"URL", value:"https://www.samba.org/samba/security/CVE-2018-1057.html");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:samba:samba";

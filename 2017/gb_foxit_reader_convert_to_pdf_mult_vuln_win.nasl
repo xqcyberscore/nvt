@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_convert_to_pdf_mult_vuln_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
+# $Id: gb_foxit_reader_convert_to_pdf_mult_vuln_win.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Foxit Reader Multiple Vulnerabilities - May17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107143");
-  script_version("$Revision: 11900 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-6883", "CVE-2017-8454", "CVE-2017-8455", "CVE-2017-8453");
   script_bugtraq_id(96870, 98317, 98320, 98319);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 18:47:49 +0530 (Wed, 05 Apr 2017)");
   script_name("Foxit Reader Multiple Vulnerabilities - May17 (Windows)");
 
@@ -55,8 +55,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (out-of-bounds read and application crash)
-  via a crafted TIFF image. The vulnerability could lead to information disclosure;
-  an attacker can leverage this in conjunction with other vulnerabilities to execute
+  via a crafted TIFF image. The vulnerability could lead to information disclosure.
+  An attacker can leverage this in conjunction with other vulnerabilities to execute
   code in the context of the current process.");
 
   script_tag(name:"affected", value:"Foxit Reader version prior to 8.2.1 on

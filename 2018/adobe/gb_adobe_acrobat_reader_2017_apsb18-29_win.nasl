@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_2017_apsb18-29_win.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_adobe_acrobat_reader_2017_apsb18-29_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Acrobat Reader 2017 Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813850");
-  script_version("$Revision: 12105 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-12808", "CVE-2018-12799");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-16 11:03:52 +0530 (Thu, 16 Aug 2018)");
   script_name("Adobe Acrobat Reader 2017 Multiple Arbitrary Code Execution Vulnerabilities-apsb18-29 (Windows)");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to conduct arbitrary code execution in the context of the current
-  user.
-
-  Impact Level: System/Application");
+  user.");
 
   script_tag(name:"affected", value:"Adobe Acrobat Reader 2017.011.30096 and earlier
   versions on Windows.");

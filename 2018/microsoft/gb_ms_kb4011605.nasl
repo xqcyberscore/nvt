@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011605.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4011605.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 RCE Vulnerability (KB4011605)
 #
@@ -27,34 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812619");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0796");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 12:01:01 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 RCE Vulnerability (KB4011605)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011605");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists in Microsoft Office software
   which sometimes fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  to run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011605");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

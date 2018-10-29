@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_may18_lin.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_php_mult_vuln_may18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Multiple Vulnerabilities May18 (Linux)
 #
@@ -30,19 +30,18 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813160");
-  script_version("$Revision: 10148 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-10549", "CVE-2018-10546", "CVE-2018-10548", "CVE-2018-10547");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 18:02:28 +0530 (Wed, 02 May 2018)");
   script_name("PHP Multiple Vulnerabilities May18 (Linux)");
 
   script_tag(name:"summary", value:"The host is installed with php and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
 
@@ -61,9 +60,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to conduct XSS attacks, crash PHP, conduct denial-of-service condition and
-  execute arbitrary code in the context of the affected application.
-
-  Impact Level: System/Application");
+  execute arbitrary code in the context of the affected application.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.6.36,
 

@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120317");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 12131 $");
   script_tag(name:"creation_date", value:"2015-09-08 13:23:26 +0200 (Tue, 08 Sep 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_name("Amazon Linux Local Check: ALAS-2014-358");
-  script_tag(name:"insight", value:"It was found [1] that the Capture::Tiny module, provided by the perl-Capture-Tiny package, used the File::temp::tmpnam module to generate temporary files:./lib/Capture/Tiny.pm:  $stash->{flag_files}{$which} = scalar tmpnam();This module makes use of the mktemp() function when called in the scalar context, which creates significantly more predictable temporary files. Additionally, the temporary file is created with world-writable (0666) permission. A local attacker could use this flaw to perform a symbolic link attack, overwriting arbitrary files accessible to a program using the Capture::Tiny module.");
+  script_tag(name:"insight", value:"It was found [1] that the Capture::Tiny module, provided by the perl-Capture-Tiny package, used the File::temp::tmpnam module to generate temporary files:./lib/Capture/Tiny.pm:  $stash->{flag_files}{$which} = scalar tmpnam() This module makes use of the mktemp() function when called in the scalar context, which creates significantly more predictable temporary files. Additionally, the temporary file is created with world-writable (0666) permission. A local attacker could use this flaw to perform a symbolic link attack, overwriting arbitrary files accessible to a program using the Capture::Tiny module.");
   script_tag(name:"solution", value:"Run yum update perl-Capture-Tiny to update your system.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2014-358.html");

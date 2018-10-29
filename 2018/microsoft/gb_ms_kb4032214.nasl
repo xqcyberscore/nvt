@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4032214.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_ms_kb4032214.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (KB4032214)
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813574");
-  script_version("$Revision: 11317 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8281");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 12:33:35 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (KB4032214)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4032214");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Microsoft Office
   software failing to properly handle objects in memory. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  to run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Word Viewer");
 

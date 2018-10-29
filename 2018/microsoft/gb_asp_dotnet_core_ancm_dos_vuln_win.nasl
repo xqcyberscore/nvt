@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ASP.NET Core ANCM Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813044");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0808");
   script_bugtraq_id(103225);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("ASP.NET Core ANCM Denial of Service Vulnerability (Windows)");
 
@@ -47,16 +47,13 @@ if(description)
   handles web requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause a denial of service against an ASP.NET Core web application.
-
-  Impact Level: Application");
+  to cause a denial of service against an ASP.NET Core web application.");
 
   script_tag(name:"affected", value:"Microsoft ASP.NET Core 1.0, 1.1 and 2.0
   running AspNetCoreModule (ANCM) prior to 7.1.1990.0");
 
   script_tag(name:"solution", value:"Upgrade to AspNetCoreModule (ANCM) version
-  7.1.1990.0 or later.
-  For details refer to https://github.com/aspnet/Announcements/issues/294");
+  7.1.1990.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -94,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-acnmVer = fetch_file_version(sysPath, file_name:"inetsrv\aspnetcore.dll");
+acnmVer = fetch_file_version(sysPath:sysPath, file_name:"inetsrv\aspnetcore.dll");
 if(!acnmVer){
   exit(0);
 }

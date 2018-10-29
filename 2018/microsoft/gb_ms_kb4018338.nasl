@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018338.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
+# $Id: gb_ms_kb4018338.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Access Remote Code Execution Vulnerability (KB4018338)
 #
@@ -27,28 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813657");
-  script_version("$Revision: 11292 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8312");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 11:24:45 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Access Remote Code Execution Vulnerability (KB4018338)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4018338.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when Microsoft Access software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to take control of the affected system. An attacker could then install programs,
-  view, change, or delete data or create new accounts with full user rights.
-
-  Impact Level: System");
+  view, change, or delete data or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Access 2016.");
 

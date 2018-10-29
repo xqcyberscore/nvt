@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_2017_mult_vuln_july18.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_ms_visual_studio_2017_mult_vuln_july18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813573");
-  script_version("$Revision: 11388 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8172", "CVE-2018-8232");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 13:08:27 +0530 (Thu, 12 Jul 2018)");
   script_name("Microsoft Visual Studio 2017 Multiple Vulnerabilities-July18");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Security Update.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists,
 
@@ -49,9 +48,7 @@ if(description)
   - When Microsoft Macro Assembler improperly validates code logic.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to tamper the code and execute arbitrary code.
-
-  Impact Level: Application");
+  attackers to tamper the code and execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Visual Studio 2017");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_auth_bypass.nasl 10100 2018-06-06 12:51:49Z jschulte $
+# $Id: gb_canon_printers_auth_bypass.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Canon Printers Authentication Bypass Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113207");
-  script_version("$Revision: 10100 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 14:51:49 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 13:10:45 +0200 (Wed, 06 Jun 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -62,7 +62,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://gist.github.com/huykha/2dfbe97810e96a05e67359fd9e7cc9ff");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_core_sdk_dos_vuln_may18_win.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_dotnet_core_sdk_dos_vuln_may18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # .NET Core SDK Denial of Service Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:microsoft:.netcore_sdk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813190");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0765");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 14:17:38 +0530 (Tue, 15 May 2018)");
   script_name(".NET Core SDK Denial of Service Vulnerability (Windows)");
 
@@ -45,9 +45,7 @@ if(description)
   and .NET Core improperly process XML documents.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to cause a denial of service against a .NET application.
-
-  Impact Level: System/Application");
+  to cause a denial of service against a .NET application.");
 
   script_tag(name:"affected", value:".NET Core SDK 2.x prior to version 2.1.200");
 

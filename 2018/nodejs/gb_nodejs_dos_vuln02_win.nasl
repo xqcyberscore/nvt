@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_dos_vuln02_win.nasl 10511 2018-07-16 10:57:31Z cfischer $
+# $Id: gb_nodejs_dos_vuln02_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Node.js Denial-of-Service Vulnerability-02 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813467");
-  script_version("$Revision: 10511 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1000168");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:57:31 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 17:20:49 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js Denial-of-Service Vulnerability-02 (Windows)");
@@ -41,16 +41,13 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Node.js and is
   prone to a denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an uninitialized
   read (and a subsequent segfault) error on receiving a malformed ALTSVC frame.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Node.js versions 8.4.x and higher prior to
   8.11.3, 9.x prior to 9.11.2 and 10.x prior to 10.4.1");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rce_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_otrs_rce_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # OTRS 5.0.24 and 6.0.1 RCE Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113124");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 12:23:32 +0100 (Tue, 06 Mar 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://0day.today/exploit/29938");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:otrs:otrs";

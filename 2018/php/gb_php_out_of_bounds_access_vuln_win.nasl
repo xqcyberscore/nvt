@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 11736 2018-10-04 03:08:30Z ckuersteiner $
+# $Id: gb_php_out_of_bounds_access_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813599");
-  script_version("$Revision: 11736 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-9118");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 05:08:30 +0200 (Thu, 04 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:10:24 +0530 (Mon, 06 Aug 2018)");
   script_name("PHP 'php_pcre_replace_impl' Out of Bounds Access Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to out of bounds access vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an  error in
   'php_pcre_replace_impl()' in '/sapi/cli/php' which improperly handles

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180509_win.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_jenkins_20180509_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112298");
-  script_version("$Revision: 10778 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1000192", "CVE-2018-1000193", "CVE-2018-1000194", "CVE-2018-1000195");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 12:00:00 +0200 (Thu, 07 Jun 2018)");
   script_name("Jenkins < 2.121 and < 2.107.3 LTS Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -51,25 +51,26 @@ if(description)
 
   script_tag(name:"insight", value:"Jenkins is prone to the following vulnerabilities:
 
-- An information exposure vulnerability in AboutJenkins.java, ListPluginsCommand.java that allows users with Overall/Read access to enumerate all installed plugins. (CVE-2018-1000192)
+  - An information exposure vulnerability in AboutJenkins.java, ListPluginsCommand.java that allows users with Overall/Read access to enumerate all installed plugins. (CVE-2018-1000192)
 
-- An improper neutralization of control sequences vulnerability in HudsonPrivateSecurityRealm.java that allows users to sign up using user names containing control characters
+  - An improper neutralization of control sequences vulnerability in HudsonPrivateSecurityRealm.java that allows users to sign up using user names containing control characters
 that can then appear to have the same name as other users, and cannot be deleted via the UI. (CVE-2018-1000193)
 
-- A path traversal vulnerability in FilePath.java, SoloFilePathFilter.java that allows malicious agents to read and write arbitrary
+  - A path traversal vulnerability in FilePath.java, SoloFilePathFilter.java that allows malicious agents to read and write arbitrary
 files on the Jenkins master, bypassing the agent-to-master security subsystem protection. (CVE-2018-1000194)
 
-- A server-side request forgery vulnerability in ZipExtractionInstaller.java that allows users with Overall/Read permission to have
+  - A server-side request forgery vulnerability in ZipExtractionInstaller.java that allows users with Overall/Read permission to have
 Jenkins submit a HTTP GET request to an arbitrary URL and learn whether the response is successful (200) or not. (CVE-2018-1000195)");
 
   script_tag(name:"affected", value:"Jenkins LTS up to and including 2.107.2, Jenkins weekly up to and including 2.120.");
 
   script_tag(name:"solution", value:"Upgrade to Jenkins weekly to 2.121 or later / Jenkins LTS to 2.107.3 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

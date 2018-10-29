@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_lin_0817.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_cacti_mult_vuln_lin_0817.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Cacti <= 0.8.8b Multiple Vulnerabilities (Linux)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108207");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12131 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 11:05:37 +0200 (Wed, 16 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,7 +76,7 @@ if (description)
 
   - Cross-site scripting (XSS) vulnerability in data_sources.php allows remote authenticated users with console access to inject arbitrary web script or HTML via the name_cache parameter in a ds_edit action. (CVE-2014-5025)
 
-  - Multiple cross-site scripting (XSS) vulnerabilities allow remote authenticated users with console access to inject arbitrary web script or HTML via a (1) Graph Tree Title in a delete or (2) edit action; (3) CDEF Name, (4) Data Input Method Name, or (5) Host Templates Name in a delete action; (6) Data Source Title; (7) Graph Title; or (8) Graph Template Name in a delete or (9) duplicate action. (CVE-2014-5026)
+  - Multiple cross-site scripting (XSS) vulnerabilities allow remote authenticated users with console access to inject arbitrary web script or HTML via a (1) Graph Tree Title in a delete or (2) edit action, (3) CDEF Name, (4) Data Input Method Name, or (5) Host Templates Name in a delete action, (6) Data Source Title, (7) Graph Title or (8) Graph Template Name in a delete or (9) duplicate action. (CVE-2014-5026)
 
   - The graph settings script (graph_settings.php) allows remote attackers to execute arbitrary commands via shell metacharacters in a font size, related to the rrdtool commandline in lib/rrd.php. (CVE-2014-5261)
 

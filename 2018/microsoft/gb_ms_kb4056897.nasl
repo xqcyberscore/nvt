@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4056897.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4056897.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4056897)
 #
@@ -27,23 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812384");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0741", "CVE-2018-0747", "CVE-2018-0748", "CVE-2018-0749",
                 "CVE-2018-0750", "CVE-2018-0754", "CVE-2018-0788", "CVE-2017-5753",
                 "CVE-2017-5715", "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 15:14:57 +0530 (Thu, 04 Jan 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4056897)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4056897");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Multiple errors in Windows Adobe Type Manager Font Driver (ATMFD.dll) when
     it fails to properly handle objects in memory.
 
@@ -71,18 +71,14 @@ if(description)
   user rights, gain access to sensitive data, bypass certain security checks,
   impersonate processes, interject cross-process communication, interrupt system
   functionality and conduct bounds check bypass, branch target injection, rogue
-  data cache load.
-
-  Impact Level: System");
+  data cache load.");
 
   script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
 
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4056897");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -114,7 +110,7 @@ if(!sysPath ){
   exit(0);
 }
 
-fileVer = fetch_file_version(sysPath, file_name:"Advapi32.dll");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"Advapi32.dll");
 if(!fileVer){
   exit(0);
 }

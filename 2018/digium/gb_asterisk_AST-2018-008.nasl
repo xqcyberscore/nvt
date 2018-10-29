@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2018-008.nasl 10168 2018-06-13 03:27:59Z ckuersteiner $
+# $Id: gb_asterisk_AST-2018-008.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Asterisk Information Disclosure Vulnerability (AST-2018-008)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141178");
-  script_version("$Revision: 10168 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-13 05:27:59 +0200 (Wed, 13 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-13 10:18:20 +0700 (Wed, 13 Jun 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-13 10:18:20 +0700 (Wed, 13 Jun 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-12227");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk Information Disclosure Vulnerability (AST-2018-008)");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Asterisk is prone to a information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "When endpoint specific ACL rules block a SIP request they respond with a 403
+  script_tag(name:"insight", value:"When endpoint specific ACL rules block a SIP request they respond with a 403
 forbidden. However, if an endpoint is not identified then a 401 unauthorized response is sent. This vulnerability
 just discloses which requests hit a defined endpoint. The ACL rules cannot be bypassed to gain access to the
 disclosed endpoints.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 13.x, 14.x, 15.x, Certified Asterisk 13.18 and
+  script_tag(name:"affected", value:"Asterisk Open Source 13.x, 14.x, 15.x, Certified Asterisk 13.18 and
 Certified Asterisk 13.21.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 13.21.1, 14.7.7, 15.4.1, 13.18-cert4, 13.21-cert2 or
+  script_tag(name:"solution", value:"Upgrade to Version 13.21.1, 14.7.7, 15.4.1, 13.18-cert4, 13.21-cert2 or
 later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-008.html");
-  script_xref(name: "URL", value: "https://issues.asterisk.org/jira/browse/ASTERISK-27818");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-008.html");
+  script_xref(name:"URL", value:"https://issues.asterisk.org/jira/browse/ASTERISK-27818");
 
   exit(0);
 }

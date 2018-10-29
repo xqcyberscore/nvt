@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_personalcloud_rce_vuln.nasl 10205 2018-06-15 04:59:05Z ckuersteiner $
+# $Id: gb_seagate_personalcloud_rce_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Seagate Personal Cloud < 4.3.18.0 RCE Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141186");
-  script_version("$Revision: 10205 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-15 06:59:05 +0200 (Fri, 15 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-15 11:22:07 +0700 (Fri, 15 Jun 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-15 11:22:07 +0700 (Fri, 15 Jun 2018)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-5347");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Seagate Personal Cloud < 4.3.18.0 RCE Vulnerability");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_seagate_nas_detect.nasl");
   script_mandatory_keys("seagate_nas/detected");
 
-  script_tag(name: "summary", value: "Seagate Media Server in Seagate Personal Cloud has unauthenticated command
+  script_tag(name:"summary", value:"Seagate Media Server in Seagate Personal Cloud has unauthenticated command
 injection in the uploadTelemetry and getLogs functions in views.py because .psp URLs are handled by the
 fastcgi.server component and shell metacharacters are mishandled.");
 
-  script_tag(name: "vuldetect", value: "Checks the firmware version.");
+  script_tag(name:"vuldetect", value:"Checks the firmware version.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary commands.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary commands.");
 
-  script_tag(name: "solution", value: "Update to firmware version 4.3.18.0 or later.");
+  script_tag(name:"solution", value:"Update to firmware version 4.3.18.0 or later.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3548");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3548");
 
   exit(0);
 }

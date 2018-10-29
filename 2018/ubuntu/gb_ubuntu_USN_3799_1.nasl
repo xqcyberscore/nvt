@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3799_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_ubuntu_USN_3799_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
 #
 # Ubuntu Update for mysql-5.7 USN-3799-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843667");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12126 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-24 06:34:42 +0200 (Wed, 24 Oct 2018)");
   script_cve_id("CVE-2018-3133", "CVE-2018-3143", "CVE-2018-3144", "CVE-2018-3155", "CVE-2018-3156", "CVE-2018-3161", "CVE-2018-3162", "CVE-2018-3171", "CVE-2018-3173", "CVE-2018-3174", "CVE-2018-3185", "CVE-2018-3187", "CVE-2018-3200", "CVE-2018-3247", "CVE-2018-3251", "CVE-2018-3276", "CVE-2018-3277", "CVE-2018-3278", "CVE-2018-3282", "CVE-2018-3283", "CVE-2018-3284");
   script_tag(name:"cvss_base", value:"5.5");
@@ -58,7 +58,7 @@ features, and possibly incompatible changes.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

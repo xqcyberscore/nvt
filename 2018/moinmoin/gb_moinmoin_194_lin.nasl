@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_194_lin.nasl 8761 2018-02-12 09:49:47Z cfischer $
+# $Id: gb_moinmoin_194_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # MoinMoin < 1.9.4 Cross-Site Scripting Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108324");
-  script_version("$Revision: 8761 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2011-1058");
   script_bugtraq_id(46476);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 10:49:47 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 10:47:19 +0100 (Mon, 12 Feb 2018)");
   script_name("MoinMoin < 1.9.4 Cross-Site Scripting Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -49,23 +49,15 @@ if(description)
   script_xref(name:"URL", value:"http://hg.moinmo.in/moin/1.9/rev/97208f67798f");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46476");
 
-  tag_summary = "MoinMoin is prone to multiple cross-site scripting vulnerabilities because it
-  fails to sufficiently sanitize user-supplied input data in the xslt and rst parser.";
-
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected
   site. This may help the attacker steal cookie-based authentication
-  credentials and launch other attacks.";
-
-  tag_affected = "MoinMoin 1.9.3 and prior are vulnerable.";
-
-  tag_solution = "Update to version 1.9.4 or later. Please see the references for
-  more information.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  credentials and launch other attacks.");
+  script_tag(name:"affected", value:"MoinMoin 1.9.3 and prior are vulnerable.");
+  script_tag(name:"solution", value:"Update to version 1.9.4 or later. Please see the references for
+  more information.");
+  script_tag(name:"summary", value:"MoinMoin is prone to multiple cross-site scripting vulnerabilities because it
+  fails to sufficiently sanitize user-supplied input data in the xslt and rst parser.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

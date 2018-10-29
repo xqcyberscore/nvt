@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_sec_bypass_vuln_dec17_win.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_postgresql_sec_bypass_vuln_dec17_win.nasl 12142 2018-10-29 08:28:54Z cfischer $
 #
 # PostgreSQL Security Bypass Vulnerability-Dec17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812311");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12142 $");
   script_cve_id("CVE-2017-15099");
   script_bugtraq_id(101781);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 17:20:41 +0530 (Mon, 04 Dec 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Security Bypass Vulnerability-Dec17 (Windows)");
@@ -74,11 +74,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-pgsqlPort = "";
-pgsqlVer = "";
-fix = "";
-pgsqlPath = "";
-
 pgsqlPort = get_app_port(cpe:CPE);
 if(!pgsqlPort){
   exit(0);
@@ -88,21 +83,21 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_versio
 pgsqlVer = infos['version'];
 pgsqlPath = infos['location'];
 
-if(pgsqlVer =~ "^(9\.5)")
+if(pgsqlVer =~ "^9\.5")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.5.10")){
     fix = "9.5.10";
   }
 }
 
-else if(pgsqlVer =~ "^(9\.6)")
+else if(pgsqlVer =~ "^9\.6")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.6.6")){
     fix = "9.6.6";
   }
 }
 
-else if(pgsqlVer =~ "^(10\.)")
+else if(pgsqlVer =~ "^10\.")
 {
   if(version_is_less(version:pgsqlVer, test_version:"10.1")){
     fix = "10.1";

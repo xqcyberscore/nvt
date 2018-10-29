@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3930.nasl 6906 2017-08-11 13:21:18Z cfischer $
+# $Id: deb_3930.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Auto-generated from advisory DSA 3930-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703930");
-  script_version("$Revision: 6906 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-10978", "CVE-2017-10979", "CVE-2017-10980", "CVE-2017-10981", "CVE-2017-10982", "CVE-2017-10983", "CVE-2017-10984", "CVE-2017-10985", "CVE-2017-10986", "CVE-2017-10987");
   script_name("Debian Security Advisory DSA 3930-1 (freeradius - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 15:21:18 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 00:00:00 +0200 (Thu, 10 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,7 +55,7 @@ if(description)
 - Authentication by local files, SQL, Kerberos, LDAP, PAM, and more.
 - Powerful policy configuration language.
 - Proxying and replicating requests by any criteria.
-- Support for many EAP types; TLS, PEAP, TTLS, etc.
+- Support for many EAP types, TLS, PEAP, TTLS, etc.
 - Many vendor-specific attributes.
 - Regexp matching in string attributes.
 

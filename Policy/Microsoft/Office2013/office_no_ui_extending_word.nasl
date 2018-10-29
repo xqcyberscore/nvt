@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office_no_ui_extending_word.nasl 11843 2018-10-11 14:33:21Z emoss $
+# $Id: office_no_ui_extending_word.nasl 12129 2018-10-26 13:57:15Z cfischer $
 #
 # Check value for Disable UI extending from documents and templates (Word)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109665");
-  script_version("$Revision: 11843 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 16:33:21 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 12129 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:57:15 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-10 09:06:49 +0200 (Wed, 10 Oct 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This test checks the setting for policy 'Disable UI extending
 from documents and templates' for Microsoft Word 2013 (at least) on Windows hosts.
 
-The policy setting controls whether Microsft Word loads any custom user interface (UI) code
+The policy setting controls whether Microsoft Word loads any custom user interface (UI) code
 included with a document or template. Word allows developers to extend the UI with customization
 code that is included in a document or template.");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_malicious_npm_packages.nasl 10834 2018-08-08 11:30:25Z cfischer $
+# $Id: gb_malicious_npm_packages.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Malicious npm package detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113208");
-  script_version("$Revision: 10834 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:30:25 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 13:13:13 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -197,7 +197,7 @@ if( description )
   script_xref(name:"URL", value:"https://nodesecurity.io/advisories/519");
   script_xref(name:"URL", value:"https://nodesecurity.io/advisories/520");
 
-  exit( 0 );
+  exit(0);
 }
 
 if( ! npms = get_kb_item( "ssh/login/npms" ) ) exit( 0 );

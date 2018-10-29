@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3797_2.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_ubuntu_USN_3797_2.nasl 12126 2018-10-26 13:00:10Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3797-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843666");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12126 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-23 11:56:58 +0200 (Tue, 23 Oct 2018)");
   script_cve_id("CVE-2018-14734", "CVE-2018-16658", "CVE-2018-9363", "CVE-2018-10938");
   script_tag(name:"cvss_base", value:"5.0");
@@ -69,7 +69,7 @@ could cause a denial of service (infinite loop). (CVE-2018-10938)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0818.nasl 10995 2018-08-16 07:05:33Z asteins $
+# $Id: gb_openemr_mult_vuln_0818.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # OpenEMR < 5.0.1.4 Multiple Vulnerabilities
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112356");
-  script_version("$Revision: 10995 $");
+  script_version("$Revision: 12130 $");
   script_cve_id("CVE-2018-15139", "CVE-2018-15140", "CVE-2018-15141",
   "CVE-2018-15142", "CVE-2018-15143", "CVE-2018-15144", "CVE-2018-15145",
   "CVE-2018-15146", "CVE-2018-15147", "CVE-2018-15148", "CVE-2018-15149",
   "CVE-2018-15150", "CVE-2018-15151", "CVE-2018-15152", "CVE-2018-15153",
   "CVE-2018-15154", "CVE-2018-15155", "CVE-2018-15156");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 09:05:33 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 09:22:33 +0200 (Tue, 14 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 

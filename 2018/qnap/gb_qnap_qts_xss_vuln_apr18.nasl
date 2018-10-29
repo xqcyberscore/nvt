@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_xss_vuln_apr18.nasl 9780 2018-05-09 12:51:34Z cfischer $
+# $Id: gb_qnap_qts_xss_vuln_apr18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS Cross-Site Scripting Vulnerability-Apr18
 #
@@ -28,32 +28,29 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813120");
-  script_version("$Revision: 9780 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-7632");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 14:51:34 +0200 (Wed, 09 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 10:36:37 +0530 (Fri, 20 Apr 2018)");
   script_name("QNAP QTS Cross-Site Scripting Vulnerability-Apr18");
 
-  script_tag(name: "summary" , value:"This host is running QNAP QTS and is prone
+  script_tag(name:"summary", value:"This host is running QNAP QTS and is prone
   to cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw exists as application does not
+  script_tag(name:"insight", value:"The flaw exists as application does not
   properly filter HTML code from user-supplied input before displaying the input.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to conduct cross-site scripting attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to conduct cross-site scripting attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"QNAP QTS versions 4.2.6 build 20171026 and
+  script_tag(name:"affected", value:"QNAP QTS versions 4.2.6 build 20171026 and
   prior, 4.3.3 build 20170727 and prior.");
 
-  script_tag(name: "solution" , value:"Upgrade to QNAP QTS 4.2.6 build 20171028
+  script_tag(name:"solution", value:"Upgrade to QNAP QTS 4.2.6 build 20171028
   or 4.3.3 Build 20170901 or later.
   For updates refer to Reference links.");
 
@@ -61,13 +58,13 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL" , value:"https://www.qnap.com/nl-nl/security-advisory/nas-201803-23");
+  script_xref(name:"URL", value:"https://www.qnap.com/nl-nl/security-advisory/nas-201803-23");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_qnap_nas_detect.nasl");
-  script_mandatory_keys("qnap/qts","qnap/version","qnap/build");
+  script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build");
   script_require_ports("Services/www", 80, 8080);
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20171222.nasl 8343 2018-01-09 12:25:45Z jschulte $
+# $Id: gb_qnap_qts_20171222.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS Multiple RCE Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113076");
-  script_version("$Revision: 8343 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 13:25:45 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-09 11:55:11 +0100 (Tue, 09 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.qnap.com/zh-tw/security-advisory/nas-201712-15");
 
-  exit( 0 );
+  exit(0);
 }
 
 include("version_func.inc");

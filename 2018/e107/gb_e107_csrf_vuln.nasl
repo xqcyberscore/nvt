@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_csrf_vuln.nasl 10302 2018-06-22 13:15:51Z cfischer $
+# $Id: gb_e107_csrf_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # e107 < 2.1.8 CSRF Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113187");
-  script_version("$Revision: 10302 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:15:51 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 15:14:23 +0200 (Wed, 16 May 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if( description )
   script_xref(name:"URL", value:"https://github.com/e107inc/e107");
   script_xref(name:"URL", value:"https://github.com/e107inc/e107/issues/3128");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:e107:e107";

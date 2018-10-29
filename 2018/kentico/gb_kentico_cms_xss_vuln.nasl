@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_xss_vuln.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
+# $Id: gb_kentico_cms_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Kentico CMS 9-11 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113118");
-  script_version("$Revision: 11813 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 14:34:43 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -61,7 +61,7 @@ this issue will be updated once solution details are available.");
   script_xref(name:"URL", value:"https://www.securityfocus.com/archive/1/541792");
   script_xref(name:"URL", value:"https://devnet.kentico.com/download/hotfixes");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:kentico:cms";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3795_1.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: gb_ubuntu_USN_3795_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
 #
 # Ubuntu Update for libssh USN-3795-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843662");
-  script_version("$Revision: 12033 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12126 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:28:43 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-10933");
   script_tag(name:"cvss_base", value:"6.4");
@@ -52,7 +52,7 @@ this issue to bypass authentication without any credentials.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011186.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_ms_kb4011186.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813249");
-  script_version("$Revision: 11550 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8245");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 11:39:08 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011186");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Office software when it fails to properly handle objects in memory.");

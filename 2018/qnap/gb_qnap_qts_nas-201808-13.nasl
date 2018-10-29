@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_nas-201808-13.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_qnap_qts_nas-201808-13.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # QNAP QTS <= 4.2.6, <= 4.3.3, 4.3.4 Command Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112355");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 15:13:57 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.qnap.com/zh-tw/security-advisory/nas-201808-13");
 
-  exit( 0 );
+  exit(0);
 }
 
 

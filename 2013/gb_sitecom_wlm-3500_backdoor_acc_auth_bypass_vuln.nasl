@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803193");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12131 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:27:50 +0530 (Thu, 18 Apr 2013)");
   script_name("Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability");
 
@@ -60,7 +60,7 @@ if(description)
   image. Despite these users cannot access all the pages of the web interface,
   they can still access page '/romfile.cfg', the (clear-text) configuration file
   of the device that contains, among the other things, also the password for the
-  'admin' user; thus, escalating to administrative privileges is trivial.");
+  'admin' user. Thus, escalating to administrative privileges is trivial.");
 
   script_xref(name:"URL", value:"http://www.sitecom.com/");
   exit(0);

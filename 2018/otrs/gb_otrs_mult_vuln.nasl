@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mult_vuln.nasl 11709 2018-10-01 10:36:45Z asteins $
+# $Id: gb_otrs_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # OTRS < 6.0.11, < 5.0.30, < 4.0.32 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112389");
-  script_version("$Revision: 11709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 12:36:45 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-01 12:12:22 +0200 (Mon, 01 Oct 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -64,7 +64,7 @@ If a user with admin permissions opens it, it causes deletions of arbitrary file
   script_xref(name:"URL", value:"https://community.otrs.com/security-advisory-2018-04-security-update-for-otrs-framework/");
   script_xref(name:"URL", value:"https://community.otrs.com/security-advisory-2018-05-security-update-for-otrs-framework/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:otrs:otrs";

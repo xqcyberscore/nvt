@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knot_dns_dos_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_knot_dns_dos_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Knot DNS 1.5.2 Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113152");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-10 15:35:37 +0200 (Tue, 10 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -59,7 +59,7 @@ if( description )
   script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/vulnerabilities/96185");
   script_xref(name:"URL", value:"https://www.knot-dns.cz/download/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:knot:dns";

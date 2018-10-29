@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mautic_inf_disc_vuln.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_mautic_inf_disc_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Mautic 2.12 Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113162");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-19 13:45:35 +0200 (Thu, 19 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/mautic/mautic/releases/tag/2.13.0");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:mautic:mautic";

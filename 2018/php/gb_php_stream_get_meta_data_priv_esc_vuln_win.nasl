@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_stream_get_meta_data_priv_esc_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Windows)
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812513");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2016-10712");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 12:16:20 +0530 (Tue, 20 Feb 2018)");
   script_name("PHP 'stream_get_meta_data' Privilege Escalation Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in the function
   stream_get_meta_data of the component File Upload. The manipulation as part
   of a Return Value leads to a privilege escalation vulnerability (Metadata).");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow an attacker
-  to update the 'metadata' and affect on confidentiality, integrity,and availability.
-
-  Impact Level: Application");
+  to update the 'metadata' and affect on confidentiality, integrity, and availability.");
 
   script_tag(name:"affected", value:"PHP versions before 5.5.32, 7.0.x before
   7.0.3, and 5.6.x before 5.6.18 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.32, 7.0.3,
-  or 5.6.18 or later. For updates refer to http://www.php.net");
+  or 5.6.18 or later.");
 
   script_xref(name:"URL", value:"https://vuldb.com/?id.113055");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=71323");
@@ -70,6 +67,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

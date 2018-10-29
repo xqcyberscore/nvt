@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ASP.NET Core Multiple Vulnerabilities (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812950");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0785", "CVE-2018-0784");
   script_bugtraq_id(102379, 102377);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 12:03:33 +0530 (Tue, 27 Feb 2018)");
   script_name("ASP.NET Core Multiple Vulnerabilities (Windows)");
 
@@ -51,17 +51,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited these vulnerabilities to change the recovery codes
-  associated with the victim's user account without his/her consent.
-
-  Impact Level: System/Application");
+  associated with the victim's user account without his/her consent.");
 
   script_tag(name:"affected", value:"ASP.NET Core 2.0 with .NET SDK version
   2.0.0, 2.0.2, 2.0.3, 2.1.2 and 2.1.3");
 
   script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.0 with .NET SDK
-  version 2.1.4 or later. For details refer to,
-  https://github.com/aspnet/Announcements/issues/284
-  https://github.com/aspnet/Announcements/issues/285");
+  version 2.1.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,6 +71,7 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_asp_dotnet_core_detect_win.nasl");
   script_mandatory_keys("ASP.NET/Core/Ver", ".NET/Core/SDK/Ver");
+  script_xref(name:"URL", value:"https://github.com/aspnet/Announcements/issues/284");
   exit(0);
 }
 

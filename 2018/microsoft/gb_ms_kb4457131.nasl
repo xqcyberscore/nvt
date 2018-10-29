@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4457131.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_ms_kb4457131.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4457131)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814013");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8446", "CVE-2018-8447", "CVE-2018-8449", "CVE-2018-8452",
                 "CVE-2018-0965", "CVE-2018-8271", "CVE-2018-8315", "CVE-2018-8332",
                 "CVE-2018-8335", "CVE-2018-8354", "CVE-2018-8367", "CVE-2018-8392",
@@ -40,15 +40,14 @@ if(description)
                 "CVE-2018-8470", "CVE-2018-8475", "CVE-2018-5391");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 12:06:44 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4457131)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4457131");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -100,9 +99,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to crash the affected system, execute arbitrary code on the host operating system,
   disclose contents of System memory and also read privileged data across trust
-  boundaries.
-
-  Impact Level: System");
+  boundaries.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1607 x32/x64
 
@@ -139,7 +136,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

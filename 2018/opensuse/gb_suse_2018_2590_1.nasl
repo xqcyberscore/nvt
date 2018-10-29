@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2590_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_suse_2018_2590_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # SuSE Update for cobbler openSUSE-SU-2018:2590-1 (cobbler)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851877");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12130 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:38 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-1000225", "CVE-2018-1000226", "CVE-2018-10931");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for cobbler openSUSE-SU-2018:2590-1 (cobbler)");
   script_tag(name:"summary", value:"Check the version of cobbler");

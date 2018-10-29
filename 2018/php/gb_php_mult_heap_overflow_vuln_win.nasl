@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_heap_overflow_vuln_win.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: gb_php_mult_heap_overflow_vuln_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Multiple Heap Buffer Overflow and Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813597");
-  script_version("$Revision: 12033 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-14851", "CVE-2018-14883", "CVE-2018-15132");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 12:58:19 +0530 (Mon, 06 Aug 2018)");
   script_name("PHP Multiple Heap Buffer Overflow and Information Disclosure Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple heap buffer overflow and information disclosure vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -54,9 +53,7 @@ if(description)
   - linkinfo function on windows doesn't implement openbasedir check.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause heap overflow, denial of service and disclose sensitive information.
-
-  Impact Level: Application");
+  to cause heap overflow, denial of service and disclose sensitive information.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.37, 7.0.x before
   7.0.31, 7.1.x before 7.1.20, and 7.2.x before 7.2.8");

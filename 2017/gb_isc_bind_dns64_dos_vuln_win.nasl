@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dns64_dos_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_isc_bind_dns64_dos_vuln_win.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # ISC BIND DNS64 Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810975");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-3136");
   script_bugtraq_id(97653);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 11:40:43 +0530 (Tue, 23 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND DNS64 Denial of Service Vulnerability (Windows)");
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to improper
   handling of queries when server is configured to use DNS64 and if the
-  option 'break-dnssec yes;' is in use.");
+  option 'break-dnssec yes' is in use.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause denial-of-service against a server.");

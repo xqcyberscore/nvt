@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb18-25_lin.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_adobe_flash_player_within_chrome_apsb18-25_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Security Update(apsb18-25)- Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813833");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-12824", "CVE-2018-12825", "CVE-2018-12826", "CVE-2018-12827",
                 "CVE-2018-12828");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 09:37:07 +0530 (Wed, 15 Aug 2018)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb18-25)- Linux");
 
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to escalate privileges, disclose sensitive information and bypass
-  security restrictions.
-
-  Impact Level: System/Application");
+  security restrictions.");
 
   script_tag(name:"affected", value:"Adobe Flash Player prior to 30.0.0.154
   within Google Chrome on Linux.");

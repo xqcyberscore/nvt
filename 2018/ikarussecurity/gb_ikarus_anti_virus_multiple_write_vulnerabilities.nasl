@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # IKARUS anti.virus Multiple Arbitrary/Out of Bounds Write Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112157");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-14961", "CVE-2017-14962", "CVE-2017-14963", "CVE-2017-14964", "CVE-2017-14965",
       "CVE-2017-14966", "CVE-2017-14967", "CVE-2017-14968", "CVE-2017-14969");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:34:01 +0100 (Thu, 04 Jan 2018)");
   script_name("IKARUS anti.virus Multiple Arbitrary/Out of Bounds Write Vulnerabilities");
 
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with IKARUS anti.virus
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"In IKARUS anti.virus, various drivers contain Arbitrary or Out of Bounds Write vulnerabilities because of not validating input values from various sources.");
 

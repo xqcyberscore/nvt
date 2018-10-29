@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln_apsb18-14.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_adobe_coldfusion_mult_vuln_apsb18-14.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-APSB18-14
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813083");
-  script_version("$Revision: 10374 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-4938", "CVE-2018-4939", "CVE-2018-4940", "CVE-2018-4941",
                 "CVE-2018-4942");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 12:11:00 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-APSB18-14");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -57,9 +56,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the affected application,
-  disclose sensitive information and also to escalate privileges.
-
-  Impact Level: System/Application");
+  disclose sensitive information and also to escalate privileges.");
 
   script_tag(name:"affected", value:"Adobe ColdFusion version 11 before Update 14");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_mult_vuln03_may18.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_ilias_mult_vuln03_may18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # ILIAS LMS Multiple Vulnerabilities-03 May18
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:ilias:ilias";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813200");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-10306", "CVE-2018-10428");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-21 14:56:09 +0530 (Mon, 21 May 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ILIAS LMS Multiple Vulnerabilities-03 May18");
@@ -40,10 +40,10 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with ILIAS LMS
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Insufficient validation of input passed via 'invalid date' to
   'Services/Form/classes/class.ilDateDurationInputGUI.php' script and
   'Services/Form/classes/class.ilDateTimeInputGUI.php' script.
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to conduct XSS attack and have unspecified impact on affected
-  system.
-
-  Impact Level: Application");
+  system.");
 
   script_tag(name:"affected", value:"ILIAS LMS 5.1.x prior to 5.1.26");
 
@@ -62,8 +60,8 @@ if(description)
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.ilias.de/docu/ilias.php?ref_id=35&obj_id=116793&from_page=116805&cmd=layout&cmdClass=illmpresentationgui&cmdNode=wc&baseClass=ilLMPresentationGUI");
-  script_xref(name : "URL" , value : "https://www.ilias.de");
+  script_xref(name:"URL", value:"https://www.ilias.de/docu/ilias.php?ref_id=35&obj_id=116793&from_page=116805&cmd=layout&cmdClass=illmpresentationgui&cmdNode=wc&baseClass=ilLMPresentationGUI");
+  script_xref(name:"URL", value:"https://www.ilias.de");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

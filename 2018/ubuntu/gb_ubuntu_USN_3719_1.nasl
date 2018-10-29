@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3719_1.nasl 12112 2018-10-26 07:33:01Z santu $
+# $Id: gb_ubuntu_USN_3719_1.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # Ubuntu Update for mutt USN-3719-1
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843788");
-  script_version("$Revision: 12112 $");
+  script_version("$Revision: 12130 $");
   script_cve_id("CVE-2018-14350", "CVE-2018-14352", "CVE-2018-14354", "CVE-2018-14359", "CVE-2018-14358", "CVE-2018-14353", "CVE-2018-14357", "CVE-2018-14355", "CVE-2018-14356", "CVE-2018-14351", "CVE-2018-14362", "CVE-2018-14349");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 09:33:01 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:19:50 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for mutt USN-3719-1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
 
   script_xref(name:"USN", value:"3719-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3719-1/");

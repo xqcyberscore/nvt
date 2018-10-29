@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_3_2_mult_vuln.nasl 8731 2018-02-09 07:50:57Z asteins $
+# $Id: gb_trendmicro_3_2_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro Smart Protection Server 3.2 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113088");
-  script_version("$Revision: 8731 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-23 11:11:11 +0100 (Tue, 23 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ if( description )
   script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1118992");
   script_xref(name:"URL", value:"https://www.coresecurity.com/advisories/trend-micro-smart-protection-server-multiple-vulnerabilities");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:trendmicro:smart_protection_server";

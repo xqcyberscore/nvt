@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025339.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb4025339.nasl 12131 2018-10-26 14:03:52Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4025339)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811515");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12131 $");
   script_cve_id("CVE-2017-8592", "CVE-2017-8595", "CVE-2017-8596", "CVE-2017-8598",
                 "CVE-2017-8599", "CVE-2017-8601", "CVE-2017-8602", "CVE-2017-0170",
                 "CVE-2017-8463", "CVE-2017-8603", "CVE-2017-8604", "CVE-2017-8605",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2017-8589", "CVE-2017-8590");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 16:03:52 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 09:39:04 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4025339)");
 
@@ -90,7 +90,7 @@ if(description)
   - Windows System Information Console when it improperly parses XML input
     containing a reference to an external entity.
 
-  - Windows Performance Monitor Console&nbsp;when it improperly parses XML
+  - Windows Performance Monitor Console when it improperly parses XML
     input containing a reference to an external entity.
 
   - Microsoft WordPad parses specially crafted files.

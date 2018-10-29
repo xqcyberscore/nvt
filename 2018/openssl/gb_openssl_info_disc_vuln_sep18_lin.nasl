@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 11362 2018-09-12 13:37:01Z santu $
+# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # OpenSSL Information Disclosure Vulnerability-Sep 2018 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813794");
-  script_version("$Revision: 11362 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2016-7056");
   script_bugtraq_id(95375);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:37:01 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 11:57:47 +0530 (Tue, 11 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Information Disclosure Vulnerability-Sep 2018 (Linux)");
@@ -51,9 +51,7 @@ if(description)
   condition.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a malicious
-  user with local access to recover ECDSA P-256 private keys.
-
-  Impact Level: Application");
+  user with local access to recover ECDSA P-256 private keys.");
 
   script_tag(name:"affected", value:"OpenSSL versions 1.0.1u and prior.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1552.nasl 12027 2018-10-23 09:04:16Z cfischer $
+# $Id: deb_dla_1552.nasl 12129 2018-10-26 13:57:15Z cfischer $
 #
 # Auto-generated from advisory DLA 1552-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891552");
-  script_version("$Revision: 12027 $");
+  script_version("$Revision: 12129 $");
   script_cve_id("CVE-2018-17961", "CVE-2018-18073", "CVE-2018-18284");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1552-1] ghostscript security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:04:16 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:57:15 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-23 00:00:00 +0200 (Tue, 23 Oct 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,7 +60,7 @@ We recommend that you upgrade your ghostscript packages.");
   script_tag(name:"summary",  value:"This is a follow-up update for the recently discovered -dSAFER issues
 reported by Tavis Ormandy.
 
-Tavis Ormandy discovered multiple vulnerabilites in Ghostscript, an
+Tavis Ormandy discovered multiple vulnerabilities in Ghostscript, an
 interpreter for the PostScript language, which could result in denial of
 service, the creation of files or the execution of arbitrary code if a
 malformed Postscript file is processed (despite the dSAFER sandbox being

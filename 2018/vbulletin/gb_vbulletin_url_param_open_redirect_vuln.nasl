@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_vbulletin_url_param_open_redirect_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # vBulletin 'url' GET Parameter Open Redirect Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812677");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-6200");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 12:48:53 +0530 (Thu, 08 Feb 2018)");
   script_name("vBulletin 'url' GET Parameter Open Redirect Vulnerability");
 
@@ -47,18 +47,14 @@ if(description)
   sanitization of input passed via 'url' parameter to redirector.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to redirect users to arbitrary web sites and conduct phishing attacks.
-
-  Impact Level: Application");
+  attackers to redirect users to arbitrary web sites and conduct phishing attacks.");
 
   script_tag(name:"affected", value:"vBulletin versions 3.x.x and 4.2.x through
   4.2.5");
 
   script_tag(name:"solution", value:"No known solution is available as of
   18th June, 2018. Information regarding this issue will be updated once
-  solution details are available.
-
-  For details refer to https://www.vbulletin.com");
+  solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
@@ -72,6 +68,7 @@ if(description)
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://www.vbulletin.com");
   exit(0);
 }
 

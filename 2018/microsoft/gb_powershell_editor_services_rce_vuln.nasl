@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_editor_services_rce_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_powershell_editor_services_rce_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft PowerShell Editor Services Remote Code Execution Vulnerability
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813676");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-8327");
   script_bugtraq_id(104649);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 14:49:04 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft PowerShell Editor Services Remote Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft advisory (CVE-2018-8327).");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of 'PowerShell
-  Editor Services' and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper way of securing
   local connections by PowerShell Editor Services.");

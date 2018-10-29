@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_AST-2018-007.nasl 10168 2018-06-13 03:27:59Z ckuersteiner $
+# $Id: gb_asterisk_AST-2018-007.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Asterisk DoS Vulnerability (AST-2018-007)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141177");
-  script_version("$Revision: 10168 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-13 05:27:59 +0200 (Wed, 13 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-13 10:10:33 +0700 (Wed, 13 Jun 2018)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-13 10:10:33 +0700 (Wed, 13 Jun 2018)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_cve_id("CVE-2018-12228");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk DoS Vulnerability (AST-2018-007)");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"Asterisk is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "When connected to Asterisk via TCP/TLS if the client abruptly disconnects,
+  script_tag(name:"insight", value:"When connected to Asterisk via TCP/TLS if the client abruptly disconnects,
 or sends a specially crafted message then Asterisk gets caught in an infinite loop while trying to read the data
 stream. Thus rendering the system as unusable.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 15.x.");
+  script_tag(name:"affected", value:"Asterisk Open Source 15.x.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 15.4.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 15.4.1 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2018-007.html");
-  script_xref(name: "URL", value: "https://issues.asterisk.org/jira/browse/ASTERISK-27807");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2018-007.html");
+  script_xref(name:"URL", value:"https://issues.asterisk.org/jira/browse/ASTERISK-27807");
 
   exit(0);
 }

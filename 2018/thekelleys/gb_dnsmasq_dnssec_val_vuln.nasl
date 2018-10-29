@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 10928 2018-08-11 11:29:48Z cfischer $
+# $Id: gb_dnsmasq_dnssec_val_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Dnsmasq DNSSEC Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112193");
-  script_version("$Revision: 10928 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 12:15:27 +0100 (Thu, 25 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"summary", value:"Dnsmasq is prone to an improper DNSSEC validation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Wildcard synthesized NSEC records could be improperly interpreted to prove the non-existence of hostnames that actually exist.");
 

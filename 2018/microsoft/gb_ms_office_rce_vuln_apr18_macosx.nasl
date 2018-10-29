@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_rce_vuln_apr18_macosx.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_office_rce_vuln_apr18_macosx.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerability-Apr18 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813136");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-1029");
   script_bugtraq_id(103617);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 12:13:26 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability-Apr18 (Mac OS X)");
@@ -41,8 +41,7 @@ if(description)
   update for Microsoft Office 2016 on Mac OSX according to Microsoft security
   update April 2018");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Excel software when the software fails to properly handle objects in memory.");
@@ -50,9 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to run arbitrary code in the context of the current user. If the current user
   is logged on with administrative user rights, an attacker could take control
-  of the affected system.
-
-  Impact Level: System/Application");
+  of the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016 on Mac OS X");
 

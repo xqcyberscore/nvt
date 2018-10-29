@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stack_buffer_overflow_vuln_mar18_win.nasl 9299 2018-04-04 11:06:32Z cfischer $
+# $Id: gb_php_stack_buffer_overflow_vuln_mar18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # PHP Stack Buffer Overflow Vulnerability Mar18 (Windows)
 #
@@ -24,36 +24,33 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-      
+
 CPE = "cpe:/a:php:php";
 
 if (description)
-{   
+{
   script_oid("1.3.6.1.4.1.25623.1.0.812820");
-  script_version("$Revision: 9299 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-7584");
   script_bugtraq_id(103204);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:06:32 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 15:58:06 +0530 (Fri, 09 Mar 2018)");
   script_name("PHP Stack Buffer Overflow Vulnerability Mar18 (Windows)");
-  
+
   script_tag(name:"summary", value:"The host is installed with php and is prone
   to stack buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because php fails to
-  adequately bounds-check user-supplied data before copying it into an 
+  adequately bounds-check user-supplied data before copying it into an
   insufficiently sized buffer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code in the context of the affected application. Failed
-  exploit attempts will result in denial-of-service conditions.
-
-  Impact Level: Application");
+  exploit attempts will result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"PHP versions 7.2.x prior to 7.2.3,
 
@@ -64,8 +61,8 @@ if (description)
   PHP versions 7.1.x prior to 7.1.15 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.2.3, 7.0.28,
-  5.6.34, 7.1.15 or later. For updates refer to http://www.php.net.");
-  
+  5.6.34, 7.1.15 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"http://php.net/ChangeLog-7.php");
@@ -76,6 +73,7 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.php.net.");
   exit(0);
 }
 

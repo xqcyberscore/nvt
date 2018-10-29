@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visual_studio_elevation_priv_vuln_aug18.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_ms_visual_studio_elevation_priv_vuln_aug18.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Microsoft Visual Studio 'Diagnostic Hub Standard Collector' Elevation Of Privilege Vulnerability-Aug18
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813781");
-  script_version("$Revision: 11042 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-0952");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-16 16:40:35 +0530 (Thu, 16 Aug 2018)");
   script_name("Microsoft Visual Studio 'Diagnostic Hub Standard Collector' Elevation Of Privilege Vulnerability-Aug18");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Security Update.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error when the
   'Diagnostics Hub Standard Collector' or 'Visual Studio Standard Collector'
@@ -47,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker to run a specially crafted application and take control of an
-  affected system.
-
-  Impact Level: System/Application");
+  affected system.");
 
   script_tag(name:"affected", value:"Microsoft Visual Studio 2017
 

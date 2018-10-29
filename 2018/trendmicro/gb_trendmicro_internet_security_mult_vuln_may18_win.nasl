@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_mult_vuln_may18_win.nasl 11289 2018-09-07 12:25:14Z santu $
+# $Id: gb_trendmicro_internet_security_mult_vuln_may18_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Trend Micro Internet Security Multiple Vulnerabilities May18 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:trendmicro:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813335");
-  script_version("$Revision: 11289 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2018-6232", "CVE-2018-6233", "CVE-2018-6234", "CVE-2018-6235",
                 "CVE-2018-6236", "CVE-2018-3608", "CVE-2018-10513", "CVE-2018-10514",
                 "CVE-2018-15363");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 14:25:14 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 13:30:09 +0530 (Tue, 08 May 2018)");
   ## Patched version is not available from registry or anywhere, so it can result in FP for 12.0 patched versions
   script_tag(name:"qod", value:"30");
@@ -64,9 +64,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to escalate privileges, disclose sensitive information and inject malicious
-  code into other processes.
-
-  Impact Level: Application");
+  code into other processes.");
 
   script_tag(name:"affected", value:"Trend Micro Internet Security 12.0 (ignore if
   patch is applied or has the latest updated version 12.0.1226) and below on

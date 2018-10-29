@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 10870 2018-08-10 06:36:53Z cfischer $
+# $Id: gb_modx_cms_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # MODX Revolution CMS 2.6.3 Stored XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112291");
-  script_version("$Revision: 10870 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-08-10 08:36:53 +0200 (Fri, 10 Aug 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-04 11:48:33 +0200 (Mon, 04 Jun 2018)");
-  script_tag(name: "cvss_base", value: "3.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 12120 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-04 11:48:33 +0200 (Mon, 04 Jun 2018)");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-10382", "CVE-2017-5223");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MODX Revolution CMS 2.6.3 Stored XSS Vulnerability");
 
@@ -52,17 +52,17 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
-  script_tag(name: "summary", value: "MODX Revolution CMS is prone to a stored cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"MODX Revolution CMS is prone to a stored cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "MODX Revolution version 2.6.3 and probably prior.");
+  script_tag(name:"affected", value:"MODX Revolution version 2.6.3 and probably prior.");
 
-  script_tag(name: "solution", value: "Apply the changes from the referenced github commit / pull request.");
+  script_tag(name:"solution", value:"Apply the changes from the referenced github commit / pull request.");
 
-  script_xref(name: "URL", value: "https://raw.githubusercontent.com/modxcms/revolution/v2.6.4-pl/core/docs/changelog.txt");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13887");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13887/commits/3241473d8213e9551cef4ed0e8ac4645cfbd10c4");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/modxcms/revolution/v2.6.4-pl/core/docs/changelog.txt");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13887");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13887/commits/3241473d8213e9551cef4ed0e8ac4645cfbd10c4");
 
   exit(0);
 }

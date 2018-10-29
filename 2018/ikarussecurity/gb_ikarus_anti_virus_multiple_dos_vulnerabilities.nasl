@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl 10237 2018-06-18 14:06:54Z cfischer $
+# $Id: gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # IKARUS anti.virus Multiple Denial of Service/BSOD Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112158");
-  script_version("$Revision: 10237 $");
+  script_version("$Revision: 12120 $");
   script_cve_id("CVE-2017-17804", "CVE-2017-17795", "CVE-2017-17797");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 16:06:54 +0200 (Mon, 18 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:32:01 +0100 (Thu, 04 Jan 2018)");
 
   script_category(ACT_GATHER_INFO);
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with IKARUS anti.virus
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"In IKARUS anti.virus, various driver files allow local users to cause a denial of service (BSOD)
   or possibly have unspecified other impact because of not validating input values correctly.");

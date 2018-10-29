@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2942_java_centos7.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: gb_CESA-2018_2942_java_centos7.nasl 12130 2018-10-26 13:59:17Z cfischer $
 #
 # CentOS Update for java CESA-2018:2942 centos7
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882965");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12130 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:59:17 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-23 11:43:23 +0200 (Tue, 23 Oct 2018)");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169",
                 "CVE-2018-3180", "CVE-2018-3183", "CVE-2018-3214");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for java CESA-2018:2942 centos7 ");
   script_tag(name:"summary", value:"Check the version of java");

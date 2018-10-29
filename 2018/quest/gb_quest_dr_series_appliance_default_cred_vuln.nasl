@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_dr_series_appliance_default_cred_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_quest_dr_series_appliance_default_cred_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
 #
 # Quest DR Series Appliance Default Login Credentials Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:quest:dr_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813012");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 12120 $");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-09 13:07:37 +0530 (Fri, 09 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Quest DR Series Appliance Default Login Credentials Vulnerability");
@@ -47,9 +47,7 @@ if(description)
   Appliance has default credentials.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to access the Web GUI and login directly into the DR system.
-
-  Impact Level: System");
+  attacker to access the Web GUI and login directly into the DR system.");
 
   script_tag(name:"affected", value:"Quest DR Series Appliance.");
 

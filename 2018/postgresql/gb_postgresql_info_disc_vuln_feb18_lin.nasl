@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_info_disc_vuln_feb18_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_postgresql_info_disc_vuln_feb18_lin.nasl 12142 2018-10-29 08:28:54Z cfischer $
 #
 # PostgreSQL Information Disclosure Vulnerability-Feb18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812955");
-  script_version("$Revision: 12025 $");
+  script_version("$Revision: 12142 $");
   script_cve_id("CVE-2018-1053");
   script_bugtraq_id(102986);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 09:28:54 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 11:16:50 +0530 (Wed, 28 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Information Disclosure Vulnerability-Feb18 (Linux)");
@@ -81,11 +81,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-pgsqlPort = "";
-pgsqlVer = "";
-fix = "";
-pgsqlPath = "";
-
 pgsqlPort = get_app_port(cpe:CPE);
 if(!pgsqlPort){
   exit(0);
@@ -95,35 +90,35 @@ infos = get_app_version_and_location(cpe:CPE, port:pgsqlPort, exit_no_version:TR
 pgsqlVer = infos['version'];
 pgsqlPath = infos['location'];
 
-if(pgsqlVer =~ "^(9\.3)")
+if(pgsqlVer =~ "^9\.3")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.3.21")){
     fix = "9.3.21";
   }
 }
 
-else if(pgsqlVer =~ "^(9\.4)")
+else if(pgsqlVer =~ "^9\.4")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.4.16")){
     fix = "9.4.16";
   }
 }
 
-else if(pgsqlVer =~ "^(9\.5)")
+else if(pgsqlVer =~ "^9\.5")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.5.11")){
     fix = "9.5.11";
   }
 }
 
-else if(pgsqlVer =~ "^(9\.6)")
+else if(pgsqlVer =~ "^9\.6")
 {
   if(version_is_less(version:pgsqlVer, test_version:"9.6.7")){
     fix = "9.6.7";
   }
 }
 
-else if(pgsqlVer =~ "^(10\.)")
+else if(pgsqlVer =~ "^10\.")
 {
   if(version_is_less(version:pgsqlVer, test_version:"10.2")){
     fix = "10.2";
