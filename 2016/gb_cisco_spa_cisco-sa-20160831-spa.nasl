@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_spa_cisco-sa-20160831-spa.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_spa_cisco-sa-20160831-spa.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Small Business SPA3x/5x Series Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106217");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 13:50:07 +0700 (Thu, 01 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -65,7 +65,7 @@ crafted HTTP requests to a phone, resulting in a DoS condition.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-spa");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

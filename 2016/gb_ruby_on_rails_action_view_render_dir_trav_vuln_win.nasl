@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_view_render_dir_trav_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ruby_on_rails_action_view_render_dir_trav_vuln_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Ruby on Rails Action View 'render' Directory Traversal Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809354");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-2097");
   script_bugtraq_id(83726);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-14 20:09:25 +0530 (Fri, 14 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Action View 'render' Directory Traversal Vulnerability (Windows)");
@@ -55,7 +55,7 @@ if(description)
   Ruby on Rails 4.x before 4.1.14.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Ruby on Rails 3.2.22.2 or 4.1.14.2
-  or later. For updates refer to http://rubyonrails.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3000);
+  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
 

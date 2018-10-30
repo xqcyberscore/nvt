@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-020.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms16-020.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # MS Active Directory Federation Services Denial of Service Vulnerability (3134222)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807062");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-0037");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 08:15:01 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Denial of Service Vulnerability (3134222)");
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/library/security/MS16-020");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-adfs_ver = fetch_file_version(sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
+adfs_ver = fetch_file_version(sysPath:sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
 
 if(adfs_ver)
 {

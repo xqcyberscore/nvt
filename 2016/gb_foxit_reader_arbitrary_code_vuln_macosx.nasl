@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbitrary_code_vuln_macosx.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_foxit_reader_arbitrary_code_vuln_macosx.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Foxit Reader Arbitrary Code Execution Vulnerability (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809336");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-8856");
   script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 17:31:49 +0530 (Tue, 08 Nov 2016)");
   script_name("Foxit Reader Arbitrary Code Execution Vulnerability (MAC OS X)");
 
@@ -54,7 +54,7 @@ if(description)
   earlier");
 
   script_tag(name:"solution", value:"Upgrade to Foxit Reader version
-  2.2.1025 or later, For updates refer to http://www.foxitsoftware.com");
+  2.2.1025 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_macosx.nasl");
   script_mandatory_keys("foxit/reader/mac_osx/version");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

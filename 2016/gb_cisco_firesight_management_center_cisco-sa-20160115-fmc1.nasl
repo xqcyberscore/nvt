@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20160115-fmc1.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20160115-fmc1.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco FireSIGHT Management Center Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1293", "CVE-2016-1294");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco FireSIGHT Management Center Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -42,7 +42,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker could exploit these vulnerabilities by injecting malicious code into an affected parameter");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerabilities are due to improper sanitization of parameter values.");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 12:25:41 +0100 (Tue, 19 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -61,7 +61,7 @@ if (description)
   script_dependencies("gb_cisco_firesight_management_center_version.nasl",
                      "gb_cisco_firesight_management_center_http_detect.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

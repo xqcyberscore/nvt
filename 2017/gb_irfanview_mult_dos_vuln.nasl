@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_mult_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_irfanview_mult_dos_vuln.nasl 12154 2018-10-29 15:06:04Z mmartin $
 #
 # IrfanView Multiple DoS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:irfanview:irfanview:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811953");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12154 $");
   script_cve_id("CVE-2017-15769", "CVE-2017-15768", "CVE-2017-15766", "CVE-2017-15767",
                 "CVE-2017-15765", "CVE-2017-15764", "CVE-2017-15763", "CVE-2017-15762",
                 "CVE-2017-15761", "CVE-2017-15759", "CVE-2017-15760", "CVE-2017-15758",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2017-15737");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 16:06:04 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:40:33 +0530 (Thu, 26 Oct 2017)");
   script_name("IrfanView Multiple DoS Vulnerabilities");
 
@@ -64,12 +64,9 @@ if(description)
   attackers to to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"IrfanView Version 4.50 64-bit");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  06th August, 2018. Information regarding this issue will be updated once
-  solution details are available.");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories");
   script_category(ACT_GATHER_INFO);

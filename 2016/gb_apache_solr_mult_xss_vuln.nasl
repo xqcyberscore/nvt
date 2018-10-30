@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_mult_xss_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_apache_solr_mult_xss_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Apache Solr Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806880");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-8797", "CVE-2015-8796");
   script_bugtraq_id(83243);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:34 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Solr Multiple Cross-Site Scripting Vulnerabilities");
@@ -60,8 +60,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Solr versions 4.9, 4.10.4, 5.2.1.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Solr version 5.3.1 or later.
-  For Updates refer to http://lucene.apache.org/solr/");
+  script_tag(name:"solution", value:"Upgrade to Apache Solr version 5.3.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +73,7 @@ if(description)
   script_dependencies("secpod_apache_solr_detect.nasl");
   script_mandatory_keys("Apache/Solr/Installed");
   script_require_ports("Services/www", 8983);
+  script_xref(name:"URL", value:"http://lucene.apache.org/solr/");
   exit(0);
 }
 

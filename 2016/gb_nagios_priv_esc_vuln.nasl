@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: gb_nagios_priv_esc_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106474");
-  script_version("$Revision: 11790 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Nagios is prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Nagios startup script, run by root, is insecurely giving owner of file
 to nagios. If the Nagios user symlink $NagiosRunFile to a file that he has no access to, at startup or reboot of

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-062.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-062.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3158222)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808018");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-0171", "CVE-2016-0173", "CVE-2016-0174", "CVE-2016-0196",
                 "CVE-2016-0175", "CVE-2016-0176", "CVE-2016-0197");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 09:35:43 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3158222)");
@@ -96,8 +96,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
-dllVer2 = fetch_file_version(sysPath, file_name:"System32\Dxgkrnl.sys");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Dxgkrnl.sys");
 
 if(!dllVer1 && !dllVer2){
   exit(0);

@@ -1,6 +1,6 @@
 ############i###################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rips_lfi_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_rips_lfi_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Rips Scanner Multiple Directory Listing Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:rips_scanner:rips";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806808");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-06 12:48:22 +0530 (Wed, 06 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Rips Scanner Multiple Directory Listing Vulnerabilities");
@@ -67,7 +67,7 @@ if (description)
   script_dependencies("gb_rips_detect.nasl");
   script_mandatory_keys("rips/Installed");
   script_require_ports("Services/www", 80);
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

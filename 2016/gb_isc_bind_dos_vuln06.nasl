@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln06.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_isc_bind_dos_vuln06.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ISC BIND Denial of Service Vulnerability - 06 - Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807200");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-5477");
   script_bugtraq_id(76092);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 15:07:28 +0530 (Wed, 27 Jan 2016)");
   script_name("ISC BIND Denial of Service Vulnerability - 06 - Jan16");
   script_category(ACT_GATHER_INFO);
@@ -60,11 +60,12 @@ if(description)
   9.10.0 through 9.10.2-P2.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.7-P2
-  or 9.10.2-P3 or later. For updates refer to https://www.isc.org");
+  or 9.10.2-P3 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

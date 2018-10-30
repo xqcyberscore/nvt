@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln01_jan16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_oracle_db_unspecified_vuln01_jan16.nasl 12153 2018-10-29 13:38:34Z cfischer $
 #
 # Oracle Database Server Unspecified Vulnerability -01 Jan16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807035");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12153 $");
   script_cve_id("CVE-2015-4925");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:38:34 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 13:02:26 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -01 Jan16");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server version
   11.2.0.4.");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

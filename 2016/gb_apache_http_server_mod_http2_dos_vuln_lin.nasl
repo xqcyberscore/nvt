@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_http2_dos_vuln_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_apache_http_server_mod_http2_dos_vuln_lin.nasl 12153 2018-10-29 13:38:34Z cfischer $
 #
 # Apache HTTP Server 'mod_http2' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810303");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12153 $");
   script_cve_id("CVE-2016-8740");
   script_bugtraq_id(94650);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:38:34 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 18:47:46 +0530 (Tue, 06 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_http2' Denial of Service Vulnerability (Linux)");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Apache HTTP Server 2.4.17 through 2.4.23
   on Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://github.com/apache/httpd/commit/29c63b786ae028d82405421585e91283c8fa0da3");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.apache.org/security/asf-httpoxy-response.txt");
@@ -65,6 +64,7 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://github.com/apache/httpd/commit/29c63b786ae028d82405421585e91283c8fa0da3");
   exit(0);
 }
 

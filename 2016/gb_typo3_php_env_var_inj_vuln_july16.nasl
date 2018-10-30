@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_php_env_var_inj_vuln_july16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_typo3_php_env_var_inj_vuln_july16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # TYPO3 Environment Variable Injection Vulnerability July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808272");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-5385");
   script_bugtraq_id(91821);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 Environment Variable Injection Vulnerability July16");
 
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"TYPO3 versions 8.0.0 to 8.2.0");
 
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 8.2.1 or later.
-  For updates refer to https://typo3.org/typo3-cms");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 8.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

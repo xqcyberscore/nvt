@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808599");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12153 $");
   script_cve_id("CVE-2016-3471");
   script_bugtraq_id(91913);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:38:34 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:53:01 +0530 (Thu, 21 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Unspecified Vulnerability-01 July16 (Linux)");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL Server 5.5.45 and earlier,
   5.6.26 and earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

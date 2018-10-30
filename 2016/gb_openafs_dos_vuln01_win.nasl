@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_dos_vuln01_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_openafs_dos_vuln01_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # OpenAFS Denial of Service Vulnerability-01 (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808077");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-3285");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:35:27 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Denial of Service Vulnerability-01 (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"OpenAFS version 1.0.3 through 1.6.12
   on Windows.");
 
-  script_tag(name:"solution", value:"Update to OpenAFS version 1.6.13 or later.
-  For updates refer to https://www.openafs.org");
+  script_tag(name:"solution", value:"Update to OpenAFS version 1.6.13 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -66,6 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_openafs_detect.nasl");
   script_mandatory_keys("OpenAFS/Win/Installed");
+  script_xref(name:"URL", value:"https://www.openafs.org");
   exit(0);
 }
 

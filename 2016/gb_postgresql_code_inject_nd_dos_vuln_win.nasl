@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_code_inject_nd_dos_vuln_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_postgresql_code_inject_nd_dos_vuln_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # PostgreSQL Code Injection and Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808664");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_bugtraq_id(92433, 92435);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-30 18:03:40 +0530 (Tue, 30 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Code Injection and Denial of Service Vulnerabilities (Windows)");
@@ -58,8 +58,7 @@ if(description)
   9.5.4 on windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 9.1.23 or 9.2.18 or
-  9.3.14 or 9.4.9 or 9.5.4 or higher,
-  For updates refer to http://www.postgresql.org/download");
+  9.3.14 or 9.4.9 or 9.5.4 or higher.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

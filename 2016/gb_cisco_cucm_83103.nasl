@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_83103.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_cucm_83103.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Unified Communications Manager Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-1319");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Multiple Cisco Unified Products Information Disclosure Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-ucm");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to obtain sensitive information.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to an encryption key that can be read in plain text.");
   script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
   script_tag(name:"summary", value:"Multiple Cisco Unified Products are prone to an information-disclosure vulnerability.");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 14:47:29 +0100 (Fri, 12 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -60,7 +60,7 @@ if (description)
   script_dependencies("gb_cisco_cucm_version.nasl");
   script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

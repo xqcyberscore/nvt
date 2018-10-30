@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ExaGrid_default_ssh_login.nasl 11650 2018-09-27 10:32:13Z jschulte $
+# $Id: gb_ExaGrid_default_ssh_login.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Exagrid SSH Known SSH Private Key
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105597");
-  script_version("$Revision: 11650 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Exagrid SSH Known SSH Private Key");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-07 17:30:40 +0200 (Thu, 07 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -49,7 +49,7 @@ if (description)
   script_dependencies("find_service.nasl", "os_detection.nasl");
   script_require_keys("Host/runs_unixoide");
   script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

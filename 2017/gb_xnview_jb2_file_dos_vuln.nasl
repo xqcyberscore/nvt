@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jb2_file_dos_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_xnview_jb2_file_dos_vuln.nasl 12154 2018-10-29 15:06:04Z mmartin $
 #
 # XnView 'jb2 file' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811952");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12154 $");
   script_cve_id("CVE-2017-14580");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 16:06:04 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:35:33 +0530 (Thu, 26 Oct 2017)");
 
   script_name("XnView 'jb2 file' DoS Vulnerability");
@@ -50,11 +50,9 @@ if(description)
   attackers to to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"XnView Version 2.41");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"solution", value:"No known solution is available as of 10th October, 2018. Information regarding
-this issue will be updated once solution details are available.");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-14580");
   script_category(ACT_GATHER_INFO);

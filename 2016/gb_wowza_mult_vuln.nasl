@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_wowza_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Wowza Streaming Engine Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:wowza:streaming_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106225");
-  script_version("$Revision: 11640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
@@ -75,7 +75,7 @@ users context.");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40134/");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40135/");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

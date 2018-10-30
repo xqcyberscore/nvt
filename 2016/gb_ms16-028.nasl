@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-028.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-028.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Windows PDF Library Remote Code Execution Vulnerabilities (3143081)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807310");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-0117", "CVE-2016-0118");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 10:34:45 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows PDF Library Remote Code Execution Vulnerabilities (3143081)");
 
@@ -92,8 +92,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Glcndfilter.dll");
-dllVer2 = fetch_file_version(sysPath, file_name:"System32\Windows.data.pdf.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Glcndfilter.dll");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Windows.data.pdf.dll");
 if(!dllVer1 && !dllVer2){
   exit(0);
 }

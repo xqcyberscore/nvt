@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms16-107.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ms_powerpoint_ms16-107.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerability (3185852)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807359");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-3360");
   script_bugtraq_id(92796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 11:08:57 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerability (3185852)");
@@ -55,9 +55,7 @@ if(description)
   Microsoft PowerPoint 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/MS16-107");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

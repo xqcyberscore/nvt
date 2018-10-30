@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx212736.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_xenserver_ctx212736.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Citrix XenServer Multiple Security Updates (CTX212736)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-3710", "CVE-2016-3712", "CVE-2016-2107", "CVE-2016-2108");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX212736)");
 
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-26 12:29:51 +0200 (Thu, 26 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

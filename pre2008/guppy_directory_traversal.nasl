@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: guppy_directory_traversal.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: guppy_directory_traversal.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # GuppY pg Parameter Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19942");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2853");
   script_bugtraq_id(14752, 14984);
@@ -45,18 +45,12 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2005-09/0362.html");
 
   script_tag(name:"solution", value:"Upgrade to version 4.5.6a or later.");
-  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to cross-site
-  scripting and possibly directory traversal attacks.
 
-  Description :
+  script_tag(name:"summary", value:"The version of Guppy / EasyGuppY installed on the remote host fails to
+  sanitize user-supplied input to the 'pg' field in the 'printfaq.php' script.");
 
-  The remote host is running GuppY / EasyGuppY, a CMS written in PHP.
-
-  The version of Guppy / EasyGuppY installed on the remote host fails to
-  sanitize user-supplied input to the 'pg' field in the 'printfaq.php'
-  script. An attacker can exploit this flaw to launch cross-site
-  scripting and possibly directory traversal attacks against the affected
-  application.");
+  script_tag(name:"impact", value:"An attacker can exploit this flaw to launch cross-site scripting and
+  possibly directory traversal attacks against the affected application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,9 +61,11 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-# A simple alert.
-xss = "<script>alert('" + SCRIPT_NAME + "');</script>";
+vtstrings = get_vt_strings();
+
+xss = "<script>alert('" + vtstrings["lowercase_rand"] + "');</script>";
 # nb: the url-encoded version is what we need to pass in.
 exss = urlencode( str:xss );
 
@@ -79,31 +75,20 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 host = http_host_name( dont_add_port:TRUE );
 if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
-host = http_host_name( port:port );
-
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   url = dir + "/printfaq.php?lng=en&pg=1";
 
-  # Make sure the affected script exists.
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  # If it does and looks like GuppY...
   if( res =~ "^HTTP/1\.[01] 200" && "<title>GuppY - " >< res ) {
-    #
-    # nb: we'll use a POST since 4.5.5 prevents GETs from working but
-    #     still allows us to pass data via POSTs and cookies. Also, we
-    #     check for the XSS rather than try to read an arbitrary file
-    #     since the latter doesn't work with 4.5.5 except under Windows.
+    # nb: we'll use a POST since 4.5.5 prevents GETs from working but still allows us to pass data via POSTs and cookies.
+    # Also, we check for the XSS rather than try to read an arbitrary file since the latter doesn't work with 4.5.5 except under Windows.
     postdata = string( 'pg=', exss );
-    req = string( "POST ", dir, "/printfaq.php HTTP/1.1\r\n",
-                  "Host: ", host, "\r\n",
-                  "Content-Type: application/x-www-form-urlencoded\r\n",
-                  "Content-Length: ", strlen( postdata ), "\r\n",
-                  "\r\n",
-                  postdata );
+    url = dir + "/printfaq.php";
+    req = http_post( item:url, port:port, data:postdata );
     res = http_keepalive_send_recv( port:port, data:req );
 
     if( res =~ "^HTTP/1\.[01] 200" && xss >< res ) {
@@ -114,4 +99,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

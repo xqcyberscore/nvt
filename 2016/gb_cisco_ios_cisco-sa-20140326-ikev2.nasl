@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20140326-ikev2.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20140326-ikev2.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS Software Internet Key Exchange Version 2 Denial of Service Vulnerability
 #
@@ -33,47 +33,53 @@ if (description)
   script_cve_id("CVE-2014-2108");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco IOS Software Internet Key Exchange Version 2 Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140326-ikev2");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20140326-bundle");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=33346");
+  script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar14.html");
 
-
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
-  script_tag(name:"summary", value:"A vulnerability in the Internet Key Exchange Version 2 (IKEv2) module of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause a reload of the affected device that would lead to a denial of service (DoS) condition.
+  script_tag(name:"summary", value:"A vulnerability in the Internet Key Exchange Version 2 (IKEv2) module
+  of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause
+  a reload of the affected device that would lead to a denial of service (DoS) condition.
 
-The vulnerability is due to how an affected device processes certain malformed IKEv2 packets. An attacker could exploit this vulnerability by sending malformed IKEv2 packets to an affected device to be processed. An exploit could allow the attacker to cause a reload of the affected device that would lead to a DoS condition.
+  The vulnerability is due to how an affected device processes certain malformed IKEv2 packets.
+  An attacker could exploit this vulnerability by sending malformed IKEv2 packets to an affected
+  device to be processed. An exploit could allow the attacker to cause a reload of the affected
+  device that would lead to a DoS condition.
 
-Although IKEv2 is automatically enabled on Cisco IOS Software and Cisco IOS XE Software devices when the Internet Security Association and Key Management Protocol (ISAKMP) is enabled, the vulnerability can be triggered only by sending a malformed IKEv2 packet.
+  Although IKEv2 is automatically enabled on Cisco IOS Software and Cisco IOS XE Software devices
+  when the Internet Security Association and Key Management Protocol (ISAKMP) is enabled,
+  the vulnerability can be triggered only by sending a malformed IKEv2 packet.
 
-Only IKEv2 packets can trigger this vulnerability.
+  Only IKEv2 packets can trigger this vulnerability.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds to mitigate this vulnerability.
+  Cisco has released software updates that address this vulnerability. There are no workarounds to mitigate this vulnerability.
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140326-ikev2
+  Note: The March 26, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories.
+  All advisories address vulnerabilities in Cisco IOS Software. Each Cisco IOS Software Security Advisory lists the Cisco
+  IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS
+  Software releases that correct all Cisco IOS Software vulnerabilities in the March 2014 bundled publication.
 
-Note: The March 26, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories. All advisories address vulnerabilities in Cisco IOS Software. Each Cisco IOS Software Security Advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS Software releases that correct all Cisco IOS Software vulnerabilities in the March 2014 bundled publication.
-
-Individual publication links are in Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication at the following link:
-
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar14.html");
+  Individual publication links are in Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication at the references.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-04 18:49:42 +0200 (Wed, 04 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

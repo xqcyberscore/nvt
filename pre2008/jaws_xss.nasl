@@ -1,17 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jaws_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: jaws_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # JAWS HTML injection vulnerabilities
 #
 # Authors:
 # Josh Zlatin-Amishav
-# Fixed by Tenable:
-#   - added CVE xrefs.
-#   - added details about the problem to the description.
-#   - added See also and Solution.
-#   - fixed script family.
-#   - fixed exploit and extended it to cover versions 0.4.x.
 #
 # Copyright:
 # Copyright (C) 2005 Josh Zlatin-Amishav
@@ -33,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19394");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-1231", "CVE-2005-1800");
   script_bugtraq_id(13254, 13796);
@@ -52,12 +46,10 @@ if(description)
   script_xref(name:"URL", value:"http://lists.grok.org.uk/pipermail/full-disclosure/2005-May/034354.html");
 
   script_tag(name:"solution", value:"Upgrade to JAWS 0.5.2 or later.");
-  script_tag(name:"summary", value:"The remote host is running JAWS, a content management system written in PHP.
 
-  The remote version of this software does not perform a proper
-  validation of user-supplied input to several variables used in the
-  'GlossaryModel.php' script, and is therefore vulnerable to cross-site
-  scripting attacks.");
+  script_tag(name:"summary", value:"The remote version of JAWS does not perform a proper validation of
+  user-supplied input to several variables used in the 'GlossaryModel.php' script, and is therefore
+  vulnerable to cross-site scripting attacks.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,18 +60,17 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-# A simple alert.
-xss = "<script>alert('" + SCRIPT_NAME + "');</script>";
+vtstrings = get_vt_strings();
+
+xss = "<script>alert('" + vtstrings["lowercase_rand"] + "');</script>";
 # nb: the url-encoded version is what we need to pass in.
 exss = urlencode( str:xss );
 
-# Exploits
 exploits = make_list(
-  # for 0.5.x
-  string("gadget=Glossary&action=ViewTerm&term=", exss),
-  # for 0.4.x
-  string("gadget=Glossary&action=view&term=", exss)
+  string("gadget=Glossary&action=ViewTerm&term=", exss), # for 0.5.x
+  string("gadget=Glossary&action=view&term=", exss) # for 0.4.x
 );
 
 port = get_http_port( default:80 );
@@ -106,4 +97,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

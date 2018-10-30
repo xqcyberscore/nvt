@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cmsimple_guestbook_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: cmsimple_guestbook_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # CMSimple index.php guestbook XSS
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19693");
-  script_version("$Revision: 10862 $");
+  script_version("$Revision: 12150 $");
   script_bugtraq_id(12303);
   script_xref(name:"OSVDB", value:"13130");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("CMSimple index.php guestbook XSS");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_family("Web application abuses");
   script_copyright("(C) 2005 Josh Zlatin-Amishav");
   script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
@@ -45,11 +45,10 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2005/Jan/1012926.html");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4 Beta 5 or higher.");
-  script_tag(name:"summary", value:"The remote host is running CMSimple, a CMS written in PHP.
 
-  The version of CMSimple installed on the remote host is prone to
-  cross-site scripting attacks due to its failure to sanitize
-  user-supplied input to both the search and guestbook modules.");
+  script_tag(name:"summary", value:"The version of CMSimple installed on the remote host is prone to
+  cross-site scripting attacks due to its failure to sanitize user-supplied input to both the search
+  and guestbook modules.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
@@ -60,10 +59,11 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-if( safe_checks() ) exit( 0 );
+vtstrings = get_vt_strings();
 
-xss = "<script>alert('" + SCRIPT_NAME + "');</script>";
+xss = "<script>alert('" + vtstrings["lowercase_rand"] + "');</script>";
 exss = urlencode( str:xss );
 
 port = get_http_port( default:80 );
@@ -91,4 +91,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

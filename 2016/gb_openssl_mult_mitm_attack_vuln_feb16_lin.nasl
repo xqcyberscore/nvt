@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # OpenSSL Multiple MitM Attack Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806676");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-3197", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-01 16:38:12 +0530 (Mon, 01 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple MitM Attack Vulnerabilities (Linux)");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"OpenSSL versions 1.0.1x before 1.0.1r and
   1.0.2x before 1.0.2f on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.1r or 1.0.2f or later.
-  For updates refer https://www.openssl.org");
+  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.1r or 1.0.2f or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

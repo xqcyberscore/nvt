@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_nnmi_c05325823.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
+# $Id: gb_hpe_nnmi_c05325823.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # HPE Network Node Manager i (NNMi) Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:network_node_manager_i";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106401");
-  script_version("$Revision: 11790 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"HPE Network Node Manager i is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"HPE Network Node Manager i is prone to multiple vulnerabilities:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160831-wlc-1.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_cisco_wlc_cisco-sa-20160831-wlc-1.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Wireless LAN Controller TSM SNMP Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:cisco:wireless_lan_controller_software';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106218");
-  script_version("$Revision: 11596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 14:58:40 +0700 (Thu, 01 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
@@ -70,7 +70,7 @@ versions of 8.0.140, 8.2.121.0, and 8.3.102.0.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-wlc-1");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

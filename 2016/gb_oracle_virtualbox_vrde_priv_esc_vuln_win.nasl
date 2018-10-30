@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_vrde_priv_esc_vuln_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_oracle_virtualbox_vrde_priv_esc_vuln_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Oracle Virtualbox VRDE Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809078");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-5605");
   script_bugtraq_id(93685);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:40:28 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle Virtualbox VRDE Privilege Escalation Vulnerability (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"VirtualBox versions prior to 5.1.4 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  5.1.4 or later on Windows. For updates refer to https://www.virtualbox.org");
+  5.1.4 or later on Windows.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_bigtree_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Bigtree Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807792");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 14:17:30 +0530 (Mon, 18 Apr 2016)");
   script_name("Bigtree Multiple Vulnerabilities");
 
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree 4.2.8");
 
-  script_tag(name:"solution", value:"Upgrade to version 4.2.9 or later
-  For updates refer to https://www.bigtreecms.org/");
+  script_tag(name:"solution", value:"Upgrade to version 4.2.9 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_mandatory_keys("BigTree/Installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://www.bigtreecms.org/");
   exit(0);
 }
 

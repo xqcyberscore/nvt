@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807412");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-5345");
   script_bugtraq_id(83328);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 14:41:53 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Directory Disclosure Vulnerability - Feb16 (Linux)");
 
@@ -54,8 +54,7 @@ if(description)
   7.x before 7.0.67, 8.0.0.RC1 before 8.0.30, and 9.0.0.M1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.45 or 7.0.67 or
-  8.0.30 or 9.0.0.M3 later.
-  For updates refer to http://tomcat.apache.org");
+  8.0.30 or 9.0.0.M3 later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

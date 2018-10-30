@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_cisco-sa-20160406-cts2.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_telepresence_server_cisco-sa-20160406-cts2.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco TelePresence Server Malformed STUN Packet Processing Denial of Service Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105609");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-6312");
   script_name("Cisco TelePresence Server Malformed STUN Packet Processing Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by submitting malformed STUN packets to the device. If successful, the attacker could force the device to reload and drop all calls in the process.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability exists due to a failure to properly process malformed Session Traversal Utilities for NAT (STUN) packets.");
 
@@ -59,7 +59,7 @@ Cisco TelePresence Server on Virtual Machine (VM)");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 15:50:01 +0200 (Mon, 18 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -68,7 +68,7 @@ Cisco TelePresence Server on Virtual Machine (VM)");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("cisco_telepresence_server/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

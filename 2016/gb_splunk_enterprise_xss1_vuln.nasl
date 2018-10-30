@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_xss1_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_splunk_enterprise_xss1_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Splunk Enterprise XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106265");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"summary", value:"Splunk Enterprise is prone a cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Splunk Enterprise is affected by a cross-site scripting vulnerability
 in the Splunk Web.");

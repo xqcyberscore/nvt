@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160517-ise.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_ise_cisco-sa-20160517-ise.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2016-1402");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-ise");
 
   script_tag(name:"impact", value:"");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"");
   script_tag(name:"solution", value:"");
   script_tag(name:"summary", value:"");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 09:52:59 +0200 (Wed, 18 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_cisco_ise_version.nasl");
   script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

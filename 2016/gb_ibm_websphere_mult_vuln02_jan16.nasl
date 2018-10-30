@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln02_jan16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ibm_websphere_mult_vuln02_jan16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities-02 Jan16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806824");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2012-3306", "CVE-2012-3304", "CVE-2012-3311", "CVE-2012-3325",
                 "CVE-2012-4853");
   script_bugtraq_id(55678, 55671, 55309, 56458);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:35:34 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-02 Jan16");
@@ -68,8 +68,7 @@ if(description)
   and 8.5 before 8.5.0.1");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) version  6.1.0.45, or 7.0.0.25, or 8.0.0.5, or 8.5.0.1, or later
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  Server (WAS) version  6.1.0.45, or 7.0.0.25, or 8.0.0.5, or 8.5.0.1, or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,6 +80,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

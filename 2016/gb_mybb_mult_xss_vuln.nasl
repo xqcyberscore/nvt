@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_xss_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_mybb_mult_xss_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # MyBB Multiple Cross Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809094");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-15 12:12:12 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("MyBB Multiple Cross Site Scripting Vulnerabilities");
@@ -70,8 +70,7 @@ if(description)
 
   script_tag(name:"affected", value:"MyBB version 1.8.6");
 
-  script_tag(name:"solution", value:"Upgrade to MyBB version 1.8.7 or later.
-  For updates refer to http://www.mybb.com");
+  script_tag(name:"solution", value:"Upgrade to MyBB version 1.8.7 or later.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Nov/57");
 
@@ -82,6 +81,7 @@ if(description)
   script_dependencies("sw_mybb_detect.nasl");
   script_mandatory_keys("MyBB/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mybb.com");
   exit(0);
 }
 

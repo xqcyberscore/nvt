@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_pixel_cache_morphology_bof_macosx.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_imagemagick_pixel_cache_morphology_bof_macosx.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ImageMagick 'ContrastStretchImage()' Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810257");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-6520");
   script_bugtraq_id(92252);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick 'ContrastStretchImage()' Buffer Overflow Vulnerability (Mac OS X)");
@@ -55,7 +55,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to ImageMagick version
-  7.0.2-7 or later. For updates refer to http://www.imagemagick.org");
+  7.0.2-7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

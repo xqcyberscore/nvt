@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpliteadmin_mult_vuln.nasl 12005 2018-10-22 06:17:37Z cfischer $
+# $Id: gb_phpliteadmin_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # phpLiteAdmin Multiple Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:phpliteadmin_project:phpliteadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106090");
-  script_version("$Revision: 12005 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-6517", "CVE-2015-6518");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 08:17:37 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-31 08:10:56 +0700 (Tue, 31 May 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"summary", value:"phpLiteAdmin is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"phpLiteAdmin contains multiple vulnerabilities:
 Cross-site request forgery (CSRF) vulnerability allows remote attackers to hijack the authentication of

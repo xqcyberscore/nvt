@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bmforum_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: bmforum_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # BMForum multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19500");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14396);
   script_xref(name:"OSVDB", value:"18306");
@@ -55,16 +55,9 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a
-  cross site scripting issue.
 
-  Description :
-
-  The remote host is running BMForum, a web forum written in PHP.
-
-  The remote version of this software is affected by several cross-site
-  scripting vulnerabilities. The issues are due to failures of the
-  application to properly sanitize user-supplied input.");
+  script_tag(name:"summary", value:"The remote version of BMForum is affected by several cross-site
+  scripting vulnerabilities. The issues are due to failures of the application to properly sanitize user-supplied input.");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -75,9 +68,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-# A simple alert.
-xss = '"><script>alert(" + SCRIPT_NAME + ")</script>';
+vtstrings = get_vt_strings();
+xss = '"><script>alert(" + vtstrings["lowercase_rand"] + ")</script>';
 # nb: the url-encoded version is what we need to pass in.
 exss = urlencode(str:xss);
 
@@ -102,4 +96,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

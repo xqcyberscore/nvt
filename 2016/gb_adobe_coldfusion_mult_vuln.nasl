@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_adobe_coldfusion_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Adobe ColdFusion Multiple Vulnerabilities(march-2016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807014");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-8052", "CVE-2015-8053", "CVE-2015-5255");
   script_bugtraq_id(77625, 77626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-11 14:43:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(march-2016)");
@@ -58,8 +58,7 @@ if(description)
   11 before Update 7");
 
   script_tag(name:"solution", value:"Upgrade to version 10 Update 18 or
-  11 Update 7 or later.
-  For updates refer to http://www.adobe.com");
+  11 Update 7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

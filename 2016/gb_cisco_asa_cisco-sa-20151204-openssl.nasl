@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20151204-openssl.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_asa_cisco-sa-20151204-openssl.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Adaptive Security Appliance Multiple Vulnerabilities in OpenSSL
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2015-3193", "CVE-2015-3194", "CVE-2015-3195", "CVE-2015-3196", "CVE-2015-1794");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco Adaptive Security Appliance Multiple Vulnerabilities in OpenSSL");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151204-openssl");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -67,14 +67,14 @@ remote attacker to cause a denial of service (DoS) condition (CVE-2015-1794).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 11:38:29 +0700 (Thu, 22 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

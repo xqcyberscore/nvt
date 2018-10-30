@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-074.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ms16-074.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3164036)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808086");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-3216", "CVE-2016-3219", "CVE-2016-3220");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 09:21:26 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3164036)");
 
@@ -74,10 +74,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/library/security/MS16-074");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -109,8 +106,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllver1 = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
-dllver2 = fetch_file_version(sysPath, file_name:"System32\Fontsub.dll");
+dllver1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Gdi32.dll");
+dllver2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Fontsub.dll");
 if(!dllver1 && !dllver2){
   exit(0);
 }

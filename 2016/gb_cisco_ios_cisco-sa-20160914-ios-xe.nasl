@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160914-ios-xe.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20160914-ios-xe.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS Software Data in Motion Denial of Service Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6403");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco IOS Software Data in Motion Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-ios-xe");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -57,14 +57,14 @@ system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-16 11:26:46 +0700 (Fri, 16 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

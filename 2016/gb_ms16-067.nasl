@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-067.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_ms16-067.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807325");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-0190");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:30:07 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)");
 
@@ -52,9 +52,7 @@ if(description)
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-067");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-067");
   exit(0);
 }
 
@@ -87,7 +86,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Drivers\volmgr.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Drivers\volmgr.sys");
 if(!sysVer){
   exit(0);
 }

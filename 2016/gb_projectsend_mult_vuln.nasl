@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_projectsend_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_projectsend_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ProjectSend Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:projectsend:projectsend";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807550");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-19 11:50:28 +0530 (Tue, 19 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("ProjectSend Multiple Vulnerabilities");
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"affected", value:"ProjectSend r582 and probably prior.");
 
-  script_tag(name:"solution", value:"Fixes had been added in https://github.com/ignacionelson/ProjectSend/pull/82. Update to the last version. For updates refer to http://www.projectsend.org");
+  script_tag(name:"solution", value:"Fixes are available via the references. Update to the latest version.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39385");
   script_xref(name:"URL", value:"https://www.wearesegment.com/research/Projectsend_multiple_vulnerabilities");
@@ -72,6 +72,7 @@ if(description)
   script_dependencies("gb_projectsend_remote_detect.nasl");
   script_mandatory_keys("ProjectSend/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.projectsend.org");
   exit(0);
 }
 

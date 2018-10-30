@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4326.nasl 12140 2018-10-29 07:40:23Z cfischer $
+# $Id: deb_4326.nasl 12160 2018-10-30 04:32:12Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4326-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704326");
-  script_version("$Revision: 12140 $");
+  script_version("$Revision: 12160 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169", "CVE-2018-3180",
                 "CVE-2018-3183", "CVE-2018-3214");
   script_name("Debian Security Advisory DSA 4326-1 (openjdk-8 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 08:40:23 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 05:32:12 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 00:00:00 +0200 (Thu, 25 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

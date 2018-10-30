@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_2016_06_20_nexus.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_sonatype_2016_06_20_nexus.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Sonatype Nexus Repository Manager Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:sonatype:nexus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105819");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.sonatype.org/advisories/archive/2016-06-20-Nexus/");
 
   script_tag(name:"impact", value:"The vulnerability allows for an unauthenticated attacker with network access to perform remote code exploits.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"The vulnerability is fixed in Nexus 2.11.2-01 and above.");
   script_tag(name:"summary", value:"A remote code execution has been discovered in Nexus Repository Manager.");
   script_tag(name:"affected", value:"All previous Nexus Repository Manager OSS/Pro versions up to and including 2.11.1");
@@ -47,7 +47,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:28:37 +0200 (Thu, 21 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -56,7 +56,7 @@ if (description)
   script_require_ports("Services/www", 8081);
   script_mandatory_keys("nexus/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

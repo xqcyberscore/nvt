@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atutor_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: atutor_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # ATutor Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19587");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2649");
   script_bugtraq_id(14598);
@@ -50,14 +50,8 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a
-  cross site scripting issue.
 
-  Description :
-
-  The remote host is running ATutor, a CMS written in PHP.
-
-  The remote version of this software is prone to cross-site scripting
+  script_tag(name:"summary", value:"The remote version of ATutor is prone to cross-site scripting
   attacks due to its failure to sanitize user-supplied input.");
 
   script_tag(name:"qod_type", value:"remote_active");
@@ -69,9 +63,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-# A simple alert.
-xss = "<script>alert(" + SCRIPT_NAME + ")</script>";
+vtstrings = get_vt_strings();
+xss = "<script>alert(" + vtstrings["lowercase_rand"] + ")</script>";
 # nb: the url-encoded version is what we need to pass in.
 exss = urlencode( str:xss );
 
@@ -97,4 +92,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

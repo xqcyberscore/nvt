@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806876");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12153 $");
   script_cve_id("CVE-2016-0609", "CVE-2016-0608", "CVE-2016-0606", "CVE-2016-0600",
                 "CVE-2016-0598", "CVE-2016-0597", "CVE-2016-0546", "CVE-2016-0505");
   script_bugtraq_id(81258, 81226, 81188, 81182, 81151, 81066, 81088);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:38:34 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-08 16:01:20 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Feb16 (Windows)");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL Server 5.5.46 and earlier,
   5.6.27 and earlier, and 5.7.9 on windows");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
   exit(0);
 }
 

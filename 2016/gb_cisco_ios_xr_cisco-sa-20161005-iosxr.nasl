@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6428");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-iosxr");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -57,14 +57,14 @@ logged-in to the device with valid admin credentials.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 11:31:48 +0700 (Thu, 06 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ios_xr_version.nasl");
   script_mandatory_keys("cisco/ios_xr/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

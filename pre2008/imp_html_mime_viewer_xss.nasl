@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imp_html_mime_viewer_xss.nasl 12016 2018-10-22 12:50:10Z cfischer $
+# $Id: imp_html_mime_viewer_xss.nasl 12156 2018-10-29 15:30:05Z mmartin $
 #
 # Horde IMP HTML MIME Viewer XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:horde:imp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15393");
-  script_version("$Revision: 12016 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 14:50:10 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 16:30:05 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"summary", value:"The target is running at least one instance of Horde IMP whose version number
   is between 3.0 and 3.2.5 inclusive.");
 
-  script_tag(name:"insights", value:"Such versions are vulnerable to several XSS attacks when viewing HTML messages
+  script_tag(name:"insight", value:"Such versions are vulnerable to several XSS attacks when viewing HTML messages
   with the HTML MIME viewer and certain browsers.
 
   For additional information, see the referenced 3.2.6 release announcement.");

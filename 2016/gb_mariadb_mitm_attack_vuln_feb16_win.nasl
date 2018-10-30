@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_mitm_attack_vuln_feb16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_mariadb_mitm_attack_vuln_feb16_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # MariaDB Man-in-the-Middle Attack Vulnerability - Feb16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806678");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-2047");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 11:37:51 +0530 (Tue, 02 Feb 2016)");
   script_name("MariaDB Man-in-the-Middle Attack Vulnerability - Feb16 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -63,11 +63,12 @@ if(description)
   10.0.23, and 10.1.x before 10.1.10 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to MariaDB version 5.5.47 or 10.0.23
-  or 10.1.10 or later. For updates refer https://mariadb.org");
+  or 10.1.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://mariadb.org");
   exit(0);
 }
 

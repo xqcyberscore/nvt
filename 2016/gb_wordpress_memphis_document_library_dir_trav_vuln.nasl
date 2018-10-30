@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_memphis_document_library_dir_trav_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_wordpress_memphis_document_library_dir_trav_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Wordpress Memphis Document Library Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807530");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:34 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress Memphis Document Library Plugin Directory Traversal Vulnerability");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Plugin Memphis Document Library
   versions 2.3 to 3.1.5");
 
-  script_tag(name:"solution", value:"Update to Wordpress Plugin Memphis Document Library 3.1.6. For updates refer to
-  https://wordpress.org/plugins/memphis-documents-library");
+  script_tag(name:"solution", value:"Update to Wordpress Plugin Memphis Document Library 3.1.6.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/memphis-documents-library");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_red_hat_jboss_eap_server_dos_vuln01_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_red_hat_jboss_eap_server_dos_vuln01_lin.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Red Hat JBoss EAP Server Denial of Service Vulnerability01 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810314");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-5304");
   script_bugtraq_id(79788);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-16 19:22:06 +0530 (Fri, 16 Dec 2016)");
   script_name("Red Hat JBoss EAP Server Denial of Service Vulnerability01 (Linux)");
 
@@ -57,7 +57,7 @@ if(description)
   6.4.5 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Red Hat JBoss EAP server version
-  6.4.5 or later  For updates refer to http://jbossas.jboss.org");
+  6.4.5 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("gb_red_hat_jboss_eap_server_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Redhat/JBoss/EAP/Installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 443);
+  script_xref(name:"URL", value:"http://jbossas.jboss.org");
   exit(0);
 }
 

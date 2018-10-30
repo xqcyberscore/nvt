@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bmc_trackit_rce_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_bmc_trackit_rce_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # BMC Track-It! Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bmc:bmc_track-it!";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106147");
-  script_version("$Revision: 11640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-19 11:00:37 +0700 (Tue, 19 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"BMC Track-It! is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"BMC Track-It! is prone to an arbitrary file upload and a execute
 any action without authentication via .NET Remoting request.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808094");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2015-4152");
   script_bugtraq_id(75112);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-23 16:16:20 +0530 (Thu, 23 Jun 2016)");
   script_name("Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability");
 
@@ -57,9 +57,7 @@ if(description)
   1.4.3.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Logstash version 1.4.3,
-  or later.
-
-  For updates refer to https://www.elastic.co");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

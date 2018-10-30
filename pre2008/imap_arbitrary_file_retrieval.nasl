@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imap_arbitrary_file_retrieval.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: IMAP arbitrary file retrieval
+# $Id: imap_arbitrary_file_retrieval.nasl 12150 2018-10-29 11:46:42Z cfischer $
+#
+# IMAP arbitrary file retrieval
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
@@ -20,59 +22,52 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The target is running an IMAP daemon that allows an authenticated user
-to retrieve and manipulate files that would be available to that user
-via a shell.  If IMAP users are denied shell access, you may consider
-this a vulnerability.";
-
-tag_solution = "Contact your vendor for a fix.";
-
-if (description) {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.12254");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-
   script_cve_id("CVE-2002-1782");
   script_bugtraq_id(4909);
-
-  name = "IMAP arbitrary file retrieval";
-  script_name(name);
-
+  script_name("IMAP arbitrary file retrieval");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-
-  family = "Remote file access";
-  script_family(family);
-
+  script_family("Remote file access");
   script_dependencies("find_service.nasl", "global_settings.nasl", "logins.nasl");
   script_require_ports("Services/imap", 143);
   script_mandatory_keys("imap/login", "imap/password");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.washington.edu/imap/IMAP-FAQs/index.html#5.1");
+
+  script_xref(name:"URL", value:"http://www.washington.edu/imap/IMAP-FAQs/index.html#5.1");
+
+  script_tag(name:"solution", value:"Contact your vendor for a fix.");
+
+  script_tag(name:"summary", value:"The target is running an IMAP daemon that allows an authenticated user
+  to retrieve and manipulate files that would be available to that user via a shell. If IMAP users are denied
+  shell access, you may consider this a vulnerability.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
-include("global_settings.inc");
 include("misc_func.inc");
+include("imap_func.inc");
 
-file = "/etc/group";                    # file to grab from target.
 user = get_kb_item("imap/login");
 pass = get_kb_item("imap/password");
 if (!user || !pass) {
-  if (log_verbosity > 1) display("imap/login and/or imap/password are empty; ", SCRIPT_NAME, " skipped!\n");
-  exit(1);
+  exit(0);
 }
 
-port = get_kb_item("Services/imap");
-if (!port) port = 143;
-if (!get_port_state(port)) exit(0);
+file = "/etc/group"; # file to grab from target.
+
+port = get_imap_port(default:143);
 
 # Establish a connection.
 tag = 0;
@@ -87,7 +82,6 @@ if (!strlen(s)) {
 }
 s = chomp(s);
 
-# Try to log in.
 #
 # - try the PLAIN SASL mechanism.
 #   nb: RFC 3501 requires this be supported by imap4rev1 servers, although

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-88_2016-88_macosx.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-88_2016-88_macosx.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-88_2016-88 )-MAC OS X
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809395");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-5270", "CVE-2016-5272", "CVE-2016-5276", "CVE-2016-5274",
 		"CVE-2016-5277", "CVE-2016-5278", "CVE-2016-5280", "CVE-2016-5284",
 		"CVE-2016-5250", "CVE-2016-5257", "CVE-2016-5281");
   script_bugtraq_id(93049, 92260);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:37:09 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-88_2016-88 )-MAC OS X");
 
@@ -76,8 +76,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   45.4 on MAC OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 45.4
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 45.4");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -90,6 +89,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # CMS Made Simple Multiple Vulnerabilities - June16
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808061");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-2784");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:53 +0530 (Tue, 07 Jun 2016)");
   script_name("CMS Made Simple Multiple Vulnerabilities - June16");
 
@@ -56,8 +56,7 @@ information or conduct cross site scripting attacks.");
 
   script_tag(name:"affected", value:"CMS Made Simple version 2.x prior to 2.1.3 and version 1.x prior to 1.12.2");
 
-  script_tag(name:"solution", value:"Upgrade to CMS Made Simple version 2.1.3 or 1.12.2 or later. For updates
-refer to http://www.cmsmadesimple.org");
+  script_tag(name:"solution", value:"Upgrade to CMS Made Simple version 2.1.3 or 1.12.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

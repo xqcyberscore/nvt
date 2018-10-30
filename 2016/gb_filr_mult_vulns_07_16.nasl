@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-1607", "CVE-2016-1608", "CVE-2016-1609", "CVE-2016-1610", "CVE-2016-1611");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Multiple Vulnerabilities in Micro Focus (Novell) Filr");
 
   script_xref(name:"URL", value:"https://www.sec-consult.com/en/Vulnerability-Lab/Advisories.htm");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The following vulnerabilities where detected in filr:
 1) Cross Site Request Forgery (CSRF) - CVE-2016-1607
 2) OS Command Injection - CVE-2016-1608
@@ -58,7 +58,7 @@ See the referenced advisory for further information.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 16:47:46 +0200 (Mon, 25 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -66,7 +66,7 @@ See the referenced advisory for further information.");
   script_dependencies("gb_filr_version.nasl");
   script_mandatory_keys("filr/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

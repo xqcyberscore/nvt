@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 11658 2018-09-27 14:21:41Z cfischer $
+# $Id: misc_func.inc 12163 2018-10-30 08:27:15Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11658 $
+# $Revision: 12163 $
 #
 ###############################################################################
 
@@ -1579,14 +1579,7 @@ function get_local_gos_version() {
   }
 }
 
-# @brief Returns a Vulnerability Test (VT) string which can be used in VTs as e.g. a user name.
-#        Note: The returned string depends on the platform (OpenVAS/GVM/GOS) the scanner is running at.
-#
-# @param lowercase If set to TRUE the returned string will be converted
-#                  to lowercase before returning it.
-#
-# @return A string containing either "GBN-VT" or "OpenVAS-VT" depending on the platform
-#         the scanner is running at.
+# @deprecated Use @ref get_vt_strings instead
 #
 function get_vt_string( lowercase ) {
 
@@ -1604,13 +1597,31 @@ function get_vt_string( lowercase ) {
   return vt_string;
 }
 
-# @brief PoC for a replacement of @ref get_vt_string to return various representations of
-#        the VT string in one call.
+# @brief Returns an array containing various representations of a Vulnerability Test (VT) string which can
+#        be used in VTs as e.g. a user name.
 #
-# @todo  Update functions description once the function is feature complete and was accepted.
+# @note The returned string depends on the platform (OpenVAS/GVM/GOS) the scanner is running at.
 #
 # @return An array containing various string representations of either "GBN-VT" or "OpenVAS-VT"
-#         depending on the platform the scanner is running at.
+#         depending on the platform the scanner is running at. Currently the following array indices
+#         are supported / available:
+#
+#         ret_array["default"] = either "GBN-VT" or "OpenVAS-VT"
+#         ret_array["default_rand"] = "default" with random numbers appended
+#         ret_array["default_hex"] = "default" converted to a hex string
+#         ret_array["default_rand_hex"] = "default_rand" converted to a hex string
+#
+#         ret_array["ping_string"] = either "GBN-VT" or "OpenVAS-VT" in a form of e.g. "_GBN-VT1234_" filled up to 16 bytes of total length, for the use in the "-p" parameter of unixoide ping commands which allows a max. of 16 bytes in the passed string
+#
+#         ret_array["lowercase"] = either "gbn-vt" or "openvas-vt"
+#         ret_array["lowercase_rand"] = "lowercase" with random numbers appended
+#         ret_array["lowercase_hex"] = "lowercase" converted to a hex string
+#         ret_array["lowercase_rand_hex"] = "lowercase_rand" converted to a hex string
+#
+#         ret_array["uppercase"] = either "GBN-VT" or "OPENVAS-VT"
+#         ret_array["uppercase_rand"] = "uppercase" with random numbers appended
+#         ret_array["uppercase_hex"] = "uppercase" converted to a hex string
+#         ret_array["uppercase_rand_hex"] = "uppercase_rand" converted to a hex string
 #
 function get_vt_strings() {
 
@@ -1632,8 +1643,9 @@ function get_vt_strings() {
   ret_array["default_rand"] = vt_string + rand_numbers;
   ret_array["default_hex"] = hexstr( vt_string );
   ret_array["default_rand_hex"] = hexstr( vt_string + rand_numbers );
+
    # nb: e.g. for the use in the "-p" parameter of unixoide ping commands which allows a max. of 16 bytes in the passed string
-  ret_array["default_max_16"] = vt_string + substr( rand_numbers, 0, 16 - strlen( vt_string ) - 1 );
+  ret_array["ping_string"] = "_" + vt_string + substr( rand_numbers, 0, 16 - strlen( vt_string ) - 3 ) + "_";
 
   ret_array["lowercase"] = vt_string_lo;
   ret_array["lowercase_rand"] = vt_string_lo + rand_numbers;

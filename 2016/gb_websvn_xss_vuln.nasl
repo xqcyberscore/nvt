@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websvn_xss_vuln.nasl 11727 2018-10-02 13:45:55Z cfischer $
+# $Id: gb_websvn_xss_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # WebSVN Cross site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tigris:websvn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806882");
-  script_version("$Revision: 11727 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-2511", "CVE-2016-1236");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 15:45:55 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:36 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WebSVN Cross site Scripting Vulnerability");
@@ -57,12 +57,12 @@ if(description)
   script_tag(name:"affected", value:"WebSVN 2.3.3 and probably earlier versions.");
 
   script_tag(name:"solution", value:"As a workaround make the changes in the file
-  'include/setup.php' as mentioned in https://packetstormsecurity.com/files/135886.
-  For updates refer to http://www.websvn.info");
+  'include/setup.php' as mentioned in the advisory at the references.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/99");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135886");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -70,6 +70,7 @@ if(description)
   script_dependencies("secpod_websvn_detect.nasl");
   script_mandatory_keys("WebSVN/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.websvn.info");
   exit(0);
 }
 

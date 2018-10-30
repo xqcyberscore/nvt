@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20110928-smart-install.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20110928-smart-install.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco IOS Software Smart Install Remote Code Execution Vulnerability
 #
@@ -33,43 +33,43 @@ if (description)
   script_cve_id("CVE-2011-3271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco IOS Software Smart Install Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20110928-smart-install");
-   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20110928-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20110928-bundle");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20110928-bundle");
+  script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep11.html");
 
-
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability exists in the Smart Install feature of Cisco Catalyst
-Switches running Cisco IOS Software that could allow an
-unauthenticated, remote attacker to perform remote code execution on the
-affected device.
+  Switches running Cisco IOS Software that could allow an
+  unauthenticated, remote attacker to perform remote code execution on the
+  affected device.
 
-Cisco has released software updates that address this vulnerability.
-There are no workarounds available to mitigate this vulnerability other than disabling the Smart Install feature.
+  Cisco has released software updates that address this vulnerability.
+  There are no workarounds available to mitigate this vulnerability other than disabling the Smart Install feature.
 
-Note: The September 28, 2011, Cisco IOS Software Security Advisory bundled publication includes ten Cisco Security Advisories. Nine of the advisories address vulnerabilities in Cisco IOS Software, and one advisory addresses a vulnerability in Cisco Unified Communications Manager. Each advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS Software releases that correct all vulnerabilities in the September 2011 Bundled Publication.
+  Note: The September 28, 2011, Cisco IOS Software Security Advisory bundled publication includes ten Cisco Security Advisories.
+  Nine of the advisories address vulnerabilities in Cisco IOS Software, and one advisory addresses a vulnerability in Cisco Unified Communications Manager.
+  Each advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed
+  in the advisory as well as the Cisco IOS Software releases that correct all vulnerabilities in the September 2011 Bundled Publication.
 
-Individual publication links are in `Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication` at the following link:
-
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep11.html");
+  Individual publication links are in `Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication` at the references.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 19:23:33 +0200 (Tue, 03 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

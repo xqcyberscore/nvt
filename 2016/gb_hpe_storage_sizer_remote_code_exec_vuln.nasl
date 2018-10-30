@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_storage_sizer_remote_code_exec_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_hpe_storage_sizer_remote_code_exec_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # HPE Storage Sizer Remote Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:storage_sizing_tool";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809187");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 16:12:15 +0530 (Thu, 01 Sep 2016)");
   script_name("HPE Storage Sizer Remote Arbitrary Code Execution Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"HPE Storage Sizer prior to 13.0.");
 
   script_tag(name:"solution", value:"Upgrade to HPE Storage Sizer version
-  13.0 or later. For updates refer to https://www.hpe.com");
+  13.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -63,6 +63,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_storage_sizer_detect.nasl");
   script_mandatory_keys("HPE/Storage/Sizer/Win/Ver");
+  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 

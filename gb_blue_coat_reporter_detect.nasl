@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blue_coat_reporter_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_blue_coat_reporter_detect.nasl 12152 2018-10-29 13:35:30Z asteins $
 #
 # Blue Coat Reporter Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103245");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12152 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:35:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-08 15:23:37 +0200 (Thu, 08 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Blue Coat Reporter Detection");
@@ -45,9 +45,10 @@ if (description)
   exit(0);
 }
 
+include("cpe.inc");
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
 
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);
@@ -59,41 +60,43 @@ url = string("/");
 buf = http_get_cache(item:url, port:port);
 if( buf == NULL )continue;
 
-if(egrep(pattern: "Blue Coat Reporter", string: buf, icase: TRUE))
-{
+if(egrep(pattern:"Blue Coat Reporter", string:buf, icase:TRUE)) {
 
-    vers = string("unknown");
+  set_kb_item(name:"bluecoat/reporter/detected", value:TRUE);
 
-    version = eregmatch(string: buf, pattern:'[ \t\r\n]alert[ \t]*\\([ \t]*"Blue Coat Reporter:[ \t]*([0-9.]+).*-[ \t]*build number:[ \t]*([0-9]+))"');
+  vers = "unknown";
 
-    if(!isnull(version)) {
-      vers  = version[1];
-      if(!isnull(version[2]))vers = vers + ' Build ' + version[2];
+  version = eregmatch(string:buf, pattern:'[ \t\r\n]alert[ \t]*\\([ \t]*"Blue Coat Reporter:[ \t]*([0-9.]+).*-[ \t]*build number:[ \t]*([0-9]+))"');
 
-    } else {
+  if(!isnull(version)) {
+    vers  = version[1];
+    if(!isnull(version[2])) {
+      set_kb_item(name:"bluecoat/reporter/build", value:version[2]);
+      extra = "Build " + version[2];
+    }
+  } else {
 
-      server_info = eregmatch(pattern:'src="(serverinfo.js\\?cb=[^"]+)"',string:buf);
+    server_info = eregmatch(pattern:'src="(serverinfo.js\\?cb=[^"]+)"', string:buf);
 
-      if(!isnull(server_info[1])) {
+    if(!isnull(server_info[1])) {
 
-        url = "/" + server_info[1];
-        req = http_get(item:url, port:port);
-        buf1 = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-        version = eregmatch(string: buf1, pattern: "version='([0-9.]+)'.*build='([0-9]+)'",icase:TRUE);
+      url = "/" + server_info[1];
+      req = http_get(item:url, port:port);
+      buf1 = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+      version = eregmatch(string:buf1, pattern:"version='([0-9.]+)'.*build='([0-9]+)'", icase:TRUE);
 
-        if(!isnull(version)) {
-          vers  = version[1];
-  	  if(!isnull(version[2]))vers = vers + ' Build '+  version[2];
+      if(!isnull(version)) {
+        vers = version[1];
+        if(!isnull(version[2])) {
+          set_kb_item(name:"bluecoat/reporter/build", value:version[2]);
+          extra = "Build " + version[2];
         }
       }
     }
+  }
 
-    set_kb_item(name: string("www/", port, "/blue_coat_reporter"), value: string(vers," under /"));
+  register_and_report_cpe(app:"Blue Coat Reporter", ver:vers, concluded:version[0], base:"cpe:/a:bluecoat:reporter:", expr:"^([0-9.]+)", insloc:url, regPort:port, conclUrl:url, extra:extra);
 
-    info = string("Blue Coat Reporter Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host\n");
-    log_message(port:port,data:info);
 }
 
 exit(0);

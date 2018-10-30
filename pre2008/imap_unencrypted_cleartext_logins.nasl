@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: imap_unencrypted_cleartext_logins.nasl 11971 2018-10-18 15:13:33Z cfischer $
+# $Id: imap_unencrypted_cleartext_logins.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # IMAP Unencrypted Cleartext Logins
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15856");
-  script_version("$Revision: 11971 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 17:13:33 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -59,21 +59,17 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
 include("misc_func.inc");
 include("imap_func.inc");
 
-# nb: non US ASCII characters in user and password must be
-#     represented in UTF-8.
+# nb: non US ASCII characters in user and password must be represented in UTF-8.
 user = get_kb_item("imap/login");
 pass = get_kb_item("imap/password");
 if (!user || !pass) {
-  if (log_verbosity > 1) display("imap/login and/or imap/password are empty; ", SCRIPT_NAME, " skipped!\n");
-  exit(1);
+  exit(0);
 }
 
 port = get_imap_port(default:143);
-debug_print("checking if IMAP daemon on port ", port, " allows unencrypted cleartext logins.");
 
 # nb: skip it if traffic is encrypted.
 encaps = get_port_transport( port );
@@ -91,7 +87,6 @@ if (!strlen(s)) {
   exit(0);
 }
 s = chomp(s);
-debug_print("S: '", s, "'.");
 
 # Determine server's capabilities.
 #
@@ -100,7 +95,6 @@ pat = "CAPABILITY ([^]]+)";
 matches = egrep(string:s, pattern:pat, icase:TRUE);
 foreach match (split(matches)) {
   match = chomp(match);
-  debug_print("grepping >>", match, "<< for =>>", pat, "<<");
   caps = eregmatch(pattern:pat, string:match, icase:TRUE);
   if (!isnull(caps)) caps = caps[1];
 }
@@ -108,13 +102,10 @@ foreach match (split(matches)) {
 if (isnull(caps)) {
   ++tag;
   c = string("a", string(tag), " CAPABILITY");
-  debug_print("C: '", c, "'.");
   send(socket:soc, data:string(c, "\r\n"));
   while (s = recv_line(socket:soc, length:1024)) {
     s = chomp(s);
-    debug_print("S: '", s, "'.");
     pat = "^\* CAPABILITY (.+)";
-    debug_print("grepping '", s, "' for '", pat, "'.");
     caps = eregmatch(pattern:pat, string:s, icase:TRUE);
     if (!isnull(caps)) caps = caps[1];
   }
@@ -142,18 +133,17 @@ if (!done) {
   # - try the PLAIN SASL mechanism.
   ++tag;
   c = string("a", string(tag), ' AUTHENTICATE "PLAIN"');
-  debug_print("C: '", c, "'.");
   send(socket:soc, data:string(c, "\r\n"));
   s = recv_line(socket:soc, length:1024);
   s = chomp(s);
-  debug_print("S: '", s, "'.");
+
   if (s =~ "^\+") {
     c = base64(str:raw_string(0, user, 0, pass));
-    debug_print("C: '", c, "'.");
+
     send(socket:soc, data:string(c, "\r\n"));
     while (s = recv_line(socket:soc, length:1024)) {
       s = chomp(s);
-      debug_print("S: '", s, "'.");
+
       m = eregmatch(pattern:string("^a", string(tag), " (OK|BAD|NO)"), string:s, icase:TRUE);
       if (!isnull(m)) {
         resp = m[1];
@@ -170,11 +160,11 @@ if (!done) {
   if (isnull(resp)) {
     ++tag;
     c = string("a", string(tag), " LOGIN ", user, " ", pass);
-    debug_print("C: '", c, "'.");
+
     send(socket:soc, data:string(c, "\r\n"));
     while (s = recv_line(socket:soc, length:1024)) {
       s = chomp(s);
-      debug_print("S: '", s, "'.");
+
       m = eregmatch(pattern:string("^a", string(tag), " (OK|BAD|NO)"), string:s, icase:TRUE);
       if (!isnull(m)) {
         resp = m[1];
@@ -192,11 +182,10 @@ if (!done) {
 # Logout.
 ++tag;
 c = string("a", string(tag), " LOGOUT");
-debug_print("C: '", c, "'.");
+
 send(socket:soc, data:string(c, "\r\n"));
 while (s = recv_line(socket:soc, length:1024)) {
   s = chomp(s);
-  debug_print("S: '", s, "'.");
   m = eregmatch(pattern:string("^a", string(tag), " (OK|BAD|NO)"), string:s, icase:TRUE);
   if (!isnull(m)) {
     resp = m[1];

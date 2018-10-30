@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ntp_mult_vuln_nov16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # NTP.org 'ntp' Multiple Vulnerabilities (Nov-2016)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106404");
-  script_version("$Revision: 11596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"summary", value:"NTP.org's reference implementation of NTP server, ntpd, contains
 multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"ntpd contains multiple vulnerabilities:
 

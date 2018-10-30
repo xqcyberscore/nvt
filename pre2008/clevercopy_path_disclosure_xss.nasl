@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: clevercopy_path_disclosure_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+# $Id: clevercopy_path_disclosure_xss.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # Multiple vulnerabilities in Clever Copy
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19392");
-  script_version("$Revision: 10862 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2326");
   script_bugtraq_id(14278, 14395, 14397);
@@ -69,12 +69,9 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"The remote host is running Clever Copy, a free, fully-scalable web
-  site portal and news posting system written in PHP
 
-  The remote version of this software contains multiple vulnerabilities
-  that can lead to path disclosure, cross-site scripting and
-  unauthorized access to private messages");
+  script_tag(name:"summary", value:"The remote version of Clever Copy contains multiple vulnerabilities
+  that can lead to path disclosure, cross-site scripting and unauthorized access to private messages");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -85,9 +82,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
-# A simple alert.
-xss = "<script>alert('" + SCRIPT_NAME + "');</script>";
+vtstrings = get_vt_strings();
+xss = "<script>alert('" + vtstrings["lowercase_rand"] + "');</script>";
 # nb: the url-encoded version is what we need to pass in.
 exss = urlencode(str:xss);
 
@@ -100,7 +98,7 @@ if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/results.php?", 'searchtype=">', exss, "category&searchterm=OpenVAS" );
+  url = string( dir, "/results.php?", 'searchtype=">', exss, "category&searchterm=", vtstrings["default"] );
 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
@@ -112,4 +110,4 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-exit( 99 );
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_resource_access_bypass_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_mcafee_agent_resource_access_bypass_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # McAfee Agent (MA) Resource Access Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807973");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-3984");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 13:07:15 +0530 (Tue, 10 May 2016)");
   script_name("McAfee Agent (MA) Resource Access Bypass Vulnerability");
 
@@ -53,8 +53,7 @@ if(description)
   5.0.2 hotfix 1110392(5.0.2.333)");
 
   script_tag(name:"solution", value:"Upgrade to McAfee Agent (MA) 5.0.2 hotfix
-  1110392 (5.0.2.333) or 5.0.3 or later. For updates refer to
-  http://www.mcafee.com/us/");
+  1110392 (5.0.2.333) or 5.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mcafee_agent_detect.nasl");
   script_mandatory_keys("McAfee/Agent/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/");
   exit(0);
 }
 

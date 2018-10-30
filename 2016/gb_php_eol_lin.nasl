@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_eol_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_eol_lin.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # PHP End Of Life Detection (Linux)
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105889");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 10455 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 07:00:00 +0200 (Thu, 15 Sep 2016)");
   script_name("PHP End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ if(description)
 
   script_tag(name:"solution", value:"Update the PHP version on the remote host to a still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

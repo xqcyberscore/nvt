@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_enterprise_lin_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_mcafee_virusscan_enterprise_lin_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # McAfee VirusScan Enterprise for Linux Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_linux';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106470");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 11:28:02 +0700 (Wed, 14 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"summary", value:"McAfee VirusScan Enterprise for Linux is prone to multiple
 vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"McAfee VirusScan Enterprise for Linux is prone to multiple vulnerabilities:
 

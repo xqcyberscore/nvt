@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dos2.nasl 4464 2016-11-10 08:08:58Z cfi $
+# $Id: gb_pdns_dos2.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # PowerDNS Authoritative Server DoS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106238");
-  script_version("$Revision: 4464 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:08:58 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 10:44:19 +0700 (Mon, 12 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"summary", value:"PowerDNS Authoritative Server is prone to two denial of service
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Two issues have been found in PowerDNS Authoritative Server allowing a
   remote, unauthenticated attacker to cause an abnormal load on the PowerDNS backend by sending crafted DNS

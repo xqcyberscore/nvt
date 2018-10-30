@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_3_6_4.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
+# $Id: gb_joomla_3_6_4.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Joomla Core < 3.6.4 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140018");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-8870", "CVE-2016-8869", "CVE-2016-9081");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 17:01:05 +0200 (Tue, 25 Oct 2016)");
 
   script_name("Joomla Core < 3.6.4 Multiple Vulnerabilities");
@@ -48,7 +48,7 @@ vulnerabilities.
   3. Incorrect use of unfiltered data allows for existing user accounts to be modified to include
   resetting their username, password, and user group assignments.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to inadequate filtering of request data.");
 

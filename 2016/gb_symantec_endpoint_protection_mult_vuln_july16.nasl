@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_july16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_july16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities- July16
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808510");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-2207", "CVE-2016-2209", "CVE-2016-2210", "CVE-2016-2211",
                 "CVE-2016-3644", "CVE-2016-3645", "CVE-2016-3646", "CVE-2016-3647",
                 "CVE-2016-3648", "CVE-2016-3649", "CVE-2016-3650", "CVE-2016-3651",
@@ -42,7 +42,7 @@ if(description)
                     91446, 92866, 92868);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:15:06 +0530 (Mon, 04 Jul 2016)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities- July16");
 
@@ -70,8 +70,7 @@ if(description)
   12.1.6 MP4 and prior.");
 
   script_tag(name:"solution", value:"Update to Symantec Endpoint Protection (SEP)
-  version SEP 12.1 RU6 MP5 or later.
-  For updates refer to https://support.symantec.com/en_US/article.TECH103088.html");
+  version SEP 12.1 RU6 MP5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -84,6 +83,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
+  script_xref(name:"URL", value:"https://support.symantec.com/en_US/article.TECH103088.html");
   exit(0);
 }
 

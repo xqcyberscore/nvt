@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20161207-asyncos.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_cisco_csma_cisco-sa-20161207-asyncos.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Content Security Management Appliance AsyncOS Software Update Server Certificate Validation Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-1411");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
 
   script_name("Cisco Content Security Management Appliance AsyncOS Software Update Server Certificate Validation Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-asyncos");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -56,14 +56,14 @@ attack (such as DNS hijacking) and impersonating the update server.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_csma_version.nasl");
   script_mandatory_keys("cisco_csm/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

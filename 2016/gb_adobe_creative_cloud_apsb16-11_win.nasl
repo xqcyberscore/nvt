@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_creative_cloud_apsb16-11_win.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_adobe_creative_cloud_apsb16-11_win.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Adobe Creative Cloud Security Updates APSB16-11 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:creative_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807670");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-1034");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 16:13:45 +0530 (Mon, 18 Apr 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Creative Cloud Security Updates APSB16-11 (Windows)");
@@ -53,8 +53,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Creative Cloud version
-  3.6.0.244 or later.
-  For updates refer https://www.adobe.com/creativecloud/desktop-app.html.");
+  3.6.0.244 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_creative_cloud_detect_win.nasl");
   script_mandatory_keys("AdobeCreativeCloud/Win/Ver");
+  script_xref(name:"URL", value:"https://www.adobe.com/creativecloud/desktop-app.html.");
   exit(0);
 }
 

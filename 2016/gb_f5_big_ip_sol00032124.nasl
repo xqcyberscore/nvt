@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol00032124.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_f5_big_ip_sol00032124.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # F5 BIG-IP - SOL00032124 - BIG-IP last hop kernel module vulnerability CVE-2015-5516
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-5516");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
 
   script_name("F5 BIG-IP - SOL00032124 - BIG-IP last hop kernel module vulnerability CVE-2015-5516");
 
@@ -53,7 +53,7 @@ if (description)
 
   - A pool in which the Alternate and Fallback load balancing methods are set to None and all pools associated with the wide IP are unavailable.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The BIG-IP last hop kernel module may leak memory when processing User Datagram Protocol (UDP) traffic. The memory leak may cause denial-of-service (DoS) conditions for the BIG-IP system.");
 
@@ -63,7 +63,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:57:11 +0100 (Tue, 19 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -71,7 +71,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

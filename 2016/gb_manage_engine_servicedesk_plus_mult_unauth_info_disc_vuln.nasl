@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_unauth_info_disc_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_manage_engine_servicedesk_plus_mult_unauth_info_disc_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809071");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-20 12:16:44 +0530 (Thu, 20 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities");
@@ -54,8 +54,7 @@ if(description)
   9.2 Build 9207 (Other versions could also be affected).");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine ServiceDesk Plus
-  9.2 Build 9228 or later.
-  For updates refer to https://www.manageengine.com/products/service-desk/readme-9.2.html");
+  9.2 Build 9228 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:manageengine:servicedesk_plus';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106319");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -70,7 +70,7 @@ logged in. If an attacker obtains a user's cookie, the password contained in the
   script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN72559412/index.html");
   script_xref(name:"URL", value:"https://www.manageengine.com/products/service-desk/readme-9.2.html");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

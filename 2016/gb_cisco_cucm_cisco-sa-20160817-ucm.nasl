@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20160817-ucm.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_cucm_cisco-sa-20160817-ucm.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # Cisco Unified Communications Manager Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106190");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12149 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 10:22:15 +0700 (Fri, 19 Aug 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -68,7 +68,7 @@ confidential and should require authentication to retrieve via the UDS API.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-ucm");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

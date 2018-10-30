@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_fusion_6_00_110.nasl 5668 2017-03-21 14:16:34Z cfi $
+# $Id: php_fusion_6_00_110.nasl 12150 2018-10-29 11:46:42Z cfischer $
 #
 # PHP-Fusion < 6.00.110 Multiple SQL Injection Vulnerabilities
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20009");
-  script_version("$Revision: 5668 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 12150 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 12:46:42 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,19 +47,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php-fusion/installed");
 
-  tag_solution = "Update to at least version 6.00.110 of PHP-Fusion.";
+  script_xref(name:"URL", value:"http://securityfocus.org/archive/1/411909");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/secunia/2005-q4/0021.html");
 
-  tag_summary = "The remote version of this software is vulnerable to multiple SQL
-  injection attacks due to its failure to properly sanitize certain parameters.
-  Provided PHP's 'magic_quotes_gpc' setting is disabled, these flaws allow an
-  attacker to manipulate database queries, which may result in the disclosure or
-  modification of data.";
+  script_tag(name:"solution", value:"Update to at least version 6.00.110 of PHP-Fusion.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote version of PHP-Fusion is vulnerable to multiple SQL
+  injection attacks due to its failure to properly sanitize certain parameters.");
 
-  script_xref(name : "URL" , value : "http://securityfocus.org/archive/1/411909");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/secunia/2005-q4/0021.html");
+  script_tag(name:"impact", value:"Provided PHP's 'magic_quotes_gpc' setting is disabled, these flaws
+  allow an attacker to manipulate database queries, which may result in the disclosure or
+  modification of data.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -76,12 +74,12 @@ include("url_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );
-
 ver = infos['version'];
 dir = infos['location'];
 
 if( ! safe_checks() ) {
 
+  vtstrings = get_vt_strings();
   if( dir == "/" ) dir = "";
 
   user = rand_str(charset:"abcdefghijklmnopqrstuvwxyz0123456789_");
@@ -95,15 +93,10 @@ if( ! safe_checks() ) {
            "}");
 
   postdata = string("activate=", rand_str(), "'+", urlencode(str:sploit));
-  url = dir + "/register.php?plugin=" + SCRIPT_NAME;
-  req = string( "POST ", url, " HTTP/1.1\r\n",
-                "Host: ", get_host_name(), "\r\n",
-                "Content-Type: application/x-www-form-urlencoded\r\n",
-                "Content-Length: ", strlen(postdata), "\r\n",
-                "\r\n",
-                postdata );
+  url = dir + "/register.php?plugin=" + vtstrings["lowercase"];
+  req = http_post(item:url, port:port, data:postdata);
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
-  if( isnull( res ) ) exit( 0 );
+  if( !res ) exit( 0 );
 
   if( "Your account has been verified." >< res ) {
     report = report_vuln_url( port:port, url:url );
@@ -115,7 +108,6 @@ if( ! safe_checks() ) {
 if( version_is_less_equal( version:ver, test_version:"6.00.100" ) ) {
   report = report_fixed_ver( installed_version:ver, fixed_version:"6.00.110" );
   security_message( port:port, data:report );
-  exit( 0 );
 }
 
-exit( 99 );
+exit( 0 );

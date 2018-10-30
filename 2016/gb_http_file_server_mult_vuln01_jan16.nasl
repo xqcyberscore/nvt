@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_mult_vuln01_jan16.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_http_file_server_mult_vuln01_jan16.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # HTTP File Server Remote Command Execution Vulnerability-01 Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806813");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2014-7226");
   script_bugtraq_id(70216);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 19:14:20 +0530 (Tue, 05 Jan 2016)");
   script_name("HTTP File Server Remote Command Execution Vulnerability-01 Jan16");
 
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"HttpFileServer version 2.3c and prior.");
 
-  script_tag(name:"solution", value:"Update to version 2.3d or later,
-  For updates refer to http://www.rejetto.com/hfs");
+  script_tag(name:"solution", value:"Update to version 2.3d or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_http_file_server_detect.nasl");
   script_mandatory_keys("hfs/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.rejetto.com/hfs");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 12149 2018-10-29 10:48:30Z asteins $
 #
 # IBM Domino 'java console' Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808191");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12149 $");
   script_cve_id("CVE-2016-0304");
   script_bugtraq_id(90804);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 17:25:38 +0530 (Tue, 12 Jul 2016)");
   script_name("IBM Domino 'java console' Authentication Bypass Vulnerability");
 
@@ -55,8 +55,7 @@ if(description)
   8.5.3 FP6 IF13 and 9.x before 9.0.1 FP6");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 9.0.1 FP6,
-  8.5.3 FP6 IF13 or later.
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21983328");
+  8.5.3 FP6 IF13 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
