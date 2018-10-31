@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_multi_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_hp_ilo_multi_vuln.nasl 12177 2018-10-31 10:30:46Z ckuersteiner $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106182");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12177 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 11:30:46 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 10:47:20 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -71,7 +71,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe  = infos['cpe'];
 port = infos['port'];
 if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );

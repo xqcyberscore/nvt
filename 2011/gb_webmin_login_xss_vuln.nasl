@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_login_xss_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_webmin_login_xss_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # Webmin / Usermin Login Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802258");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2002-0756");
   script_bugtraq_id(4694);
@@ -72,7 +72,7 @@ include("host_details.inc");
 
 cpe_list = make_list( "cpe:/a:webmin:usermin", "cpe:/a:webmin:webmin" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 port = infos['port'];
 
 host = http_host_name( port:port );

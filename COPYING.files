@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 30 Oct 2018 09:34:31 +0100
+# Automatically created on:  Wed, 31 Oct 2018 16:12:36 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38659,10 +38659,12 @@
 2018/apple/gb_apple_icloud_HT208853.nasl: GPLv2+
 2018/apple/gb_apple_icloud_HT208932.nasl: GPLv2+
 2018/apple/gb_apple_icloud_HT209141.nasl: GPLv2+
+2018/apple/gb_apple_icloud_HT209198.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208474.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208694.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208852.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208933.nasl: GPLv2+
+2018/apple/gb_apple_itunes_HT209197.nasl: GPLv2+
 2018/apple/gb_apple_itunes_mult_vuln_HT209140.nasl: GPLv2+
 2018/apple/gb_apple_macosx_code_exec_vuln_may_18.nasl: GPLv2+
 2018/apple/gb_apple_macosx_dos_vuln_may_18.nasl: GPLv2+
@@ -38692,6 +38694,7 @@
 2018/apple/gb_apple_safari_HT208854.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT208934.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT209109.nasl: GPLv2+
+2018/apple/gb_apple_safari_HT209196.nasl: GPLv2+
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
 2018/argus_surveillance/gb_argus_surveillance_dvr_mult_vuln.nasl: GPLv2+
@@ -41272,6 +41275,7 @@
 2018/limesurvey/gb_limesurvey_file_discl_vuln.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_mult_vuln_sep18_2.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_mult_vuln_sep18.nasl: GPLv2+
+2018/linksys/gb_linksys_eseries_cmd_exec_vuln.nasl: GPLv2+
 2018/livezilla/gb_livezilla_searchfor_param_xss_vuln.nasl: GPLv2+
 2018/lutron/gb_lutron_homeworks_processor_default_password.nasl: GPLv2+
 2018/lutron/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
@@ -42480,6 +42484,8 @@
 2018/piwigo/gb_piwigo_mult_xss_vuln.nasl: GPLv2+
 2018/pkp/gb_pkp_open_journal_systems_xss_vuln.nasl: GPLv2+
 2018/planex/gb_planex_csw50hd_hardcode_cred_vuln.nasl: GPLv2+
+2018/postgresql/gb_postgresql_dos_vuln_oct18_lin.nasl: GPLv2+
+2018/postgresql/gb_postgresql_dos_vuln_oct18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_missing_auth_vuln_aug18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_missing_auth_vuln_aug18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_vuln01_feb18_lin.nasl: GPLv2+
@@ -42599,6 +42605,7 @@
 2018/telerik/gb_sitefinity_mult_vuln.nasl: GPLv2+
 2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-05.nasl: GPLv2+
 2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-08.nasl: GPLv2+
+2018/tenable/gb_tenable_nessus_mult_vuln_tns-2018-14.nasl: GPLv2+
 2018/tenable/gb_tenable_nessus_priv_esc_vuln.nasl: GPLv2+
 2018/tencent/gb_foxmail_rce_vuln_sep18.nasl: GPLv2+
 2018/theforeman/gb_foreman_info_discl_vuln1.nasl: GPLv2+
@@ -44963,6 +44970,8 @@ gb_yabsoft_aihs_detect.nasl: GPLv2+
 gb_yahoo_msg_detect.nasl: GPLv2+
 gb_yawcam_detect.nasl: GPLv2+
 gb_yealink_ip_phone_detect.nasl: GPLv2+
+gb_yealink_ip_phone_http_detect.nasl: GPLv2+
+gb_yealink_ip_phone_sip_detect.nasl: GPLv2+
 gb_yokogawa_stardom_detect.nasl: GPLv2+
 gb_zarafa_webaccess_detect.nasl: GPLv2+
 gb_zarafa_webapp_detect.nasl: GPLv2+
@@ -60546,6 +60555,7 @@ gsf/2018/f5/gb_f5_big_ip_cookie_info_discl_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00363258.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00373024.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K01043241.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K01067037.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02043709.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02360853.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02652550.nasl: GPLv2+
@@ -60573,6 +60583,7 @@ gsf/2018/f5/gb_f5_big_ip_K13213573.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K13540723.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15217245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K16248201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16674.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16845.nasl: GPLv2+
@@ -60585,6 +60596,7 @@ gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19634255.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20134942.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K20222812.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20225390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
@@ -60600,6 +60612,7 @@ gsf/2018/f5/gb_f5_big_ip_K23873366.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K24324390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25552364.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K25573437.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K26583415.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K27044729.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K27391542.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K30363030.nasl: GPLv2+
@@ -60628,6 +60641,7 @@ gsf/2018/f5/gb_f5_big_ip_K42142782.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K42378447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43121447.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K43267483.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K43625118.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44200194.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44462254.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K44923228.nasl: GPLv2+
@@ -60659,6 +60673,7 @@ gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62201098.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62750376.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K64208870.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K64552448.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K64721111.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
@@ -60666,11 +60681,13 @@ gsf/2018/f5/gb_f5_big_ip_K66171422.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K70321874.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K72403108.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K72442354.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K73008537.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K74374841.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75429050.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75432956.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75543432.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K77313277.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K77508618.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K77671456.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K78131906.nasl: GPLv2+
@@ -60804,6 +60821,7 @@ gsf/2018/ibm/gb_ibm_websphere_app_server_spoofing_vuln_swg22012341.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22013601.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22016821.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729521.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729547.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729563.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729571.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_lin.nasl: GPLv2+
@@ -60919,6 +60937,7 @@ gsf/2018/microfocus/gb_microfocus_smg_mult_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_exchange_server_privilege_elevation_vuln_apr18.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_exchange_server_rce_and_dos_vuln_apr18.nasl: GPLv2+
 gsf/2018/microsoft/gb_microsoft_identity_manager_xss_vuln.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_exchange_server_kb2565063.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_kb4340731.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_kb4340733.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_exchange_server_malwr_prot_eng_rce_vuln_apr18.nasl: GPLv2+
@@ -61136,6 +61155,9 @@ gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2893_active.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_01.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_02.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpujan2018-3236628_03.nasl: GPLv2+
+gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_01.nasl: GPLv2+
+gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_02.nasl: GPLv2+
+gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_03.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_wls_wsat_rce_vuln.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_807_xss_vuln.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_mult_vuln.nasl: GPLv2+

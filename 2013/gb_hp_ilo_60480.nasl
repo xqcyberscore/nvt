@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_60480.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_hp_ilo_60480.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # HP Integrated Lights-Out Remote Unauthorized Access Vulnerability
 #
@@ -32,11 +32,11 @@ if (description)
   script_cve_id("CVE-2013-2338");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12175 $");
 
   script_name("HP Integrated Lights-Out Remote Unauthorized Access Vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-10 18:32:43 +0200 (Tue, 10 Sep 2013)");
 
   script_category(ACT_GATHER_INFO);
@@ -75,7 +75,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe  = infos['cpe'];
 port = infos['port'];
 if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );

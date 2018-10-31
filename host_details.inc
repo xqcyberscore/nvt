@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 11908 2018-10-15 13:35:13Z cfischer $
+# $Id: host_details.inc 12171 2018-10-30 14:50:37Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,9 +23,15 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11908 $
+# $Revision: 12171 $
 #
 ###############################################################################
+
+# Used in get_app_port/get_app_location to return a default
+# location if none was previously detected and optimize_test
+# is set to "no".
+global_var optimize_test_enabled;
+optimize_test_enabled = get_preference( "optimize_test" );
 
 # Those are for debugging purposes (see get_app_version() and get_app_location())
 global_var _get_app_version_used, _get_app_location_used;
@@ -750,7 +756,7 @@ function get_app_version( cpe, port, service, nofork, version_regex ) {
   }
 
   if( typeof( cpe ) == "array" )
-    return get_single_app_version_from_list( cpe_list:cpe, port:port );
+    return get_single_app_versions_from_list( cpe_list:cpe, port:port );
   else
     return get_app_details( cpe:cpe, type:"version", port:port, service:service, nofork:nofork, version_regex:version_regex );
 }
@@ -797,15 +803,18 @@ function get_highest_app_version( cpe ) {
 # @param port      The port of the application to get the location for, e.g. "80".
 # @param nofork    If the function shouldn't fork and only return the first registered location (and not all available).
 # @param skip_port If set to TRUE allows to get all locations independent from the port.
+# @param default   The default location to return in the case "optimize_test" is set to "no" and no location was found
+#                  for the given CPE and/or port.
 #
 # @return A location of the application matching the specified data, NULL in the case no CPE was passed or no matching info was found.
+#         The return value is either a list of locations if nofork is set to TRUE or a string containing the list.
 #
 # @note *NEVER* use get_app_version() and get_app_location() together in a single NVT. If both information is required,
 #       use get_app_version_and_location() or get_app_full().
 #
-function get_app_location( cpe, port, nofork, skip_port ) {
+function get_app_location( cpe, port, nofork, skip_port, default ) {
 
-  local_var cpe, port, nofork, skip_port;
+  local_var cpe, port, nofork, skip_port, default;
 
   # To report if get_app_version() and get_app_location() is used together in one single NVT
   _get_app_location_used = TRUE;
@@ -820,22 +829,25 @@ function get_app_location( cpe, port, nofork, skip_port ) {
   if( ! port && ! nofork && ! skip_port )
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
 
-  return get_app_details( cpe:cpe, type:"location", port:port, nofork:nofork );
+  return get_app_details( cpe:cpe, type:"location", port:port, nofork:nofork, default:default );
 }
 
-# @brief Returns a single (first found) port of an app from a list of passed CPEs.
+# @brief Returns all ports of a (first found) app from a list of passed CPEs. Note: This function will fork on multiple found ports.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param service  A service to limit the returned ports to, e.g. "www" or "mysql".
+# @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
+#                 for the given CPE.
 #
 # @return A port matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
 #
-function get_single_app_port_from_list( cpe_list, service ) {
+function get_single_app_ports_from_list( cpe_list, service, default ) {
 
-  local_var cpe_list, service, cpe, base_cpe, port, services;
+  local_var cpe_list, service, default;
+  local_var cpe, base_cpe, port, services;
 
   if( ! cpe_list ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_port_from_list" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_ports_from_list" );
     return;
   }
 
@@ -856,22 +868,38 @@ function get_single_app_port_from_list( cpe_list, service ) {
         return port;
     }
   }
-  return;
+
+  if( default && optimize_test_enabled && "no" >< optimize_test_enabled ) {
+    foreach cpe( cpe_list ) {
+      ret_arr['cpe']  = cpe;
+      ret_arr['port'] = default;
+      return ret_arr;      
+    }
+  } else {
+    return;
+  }
 }
 
-# @brief Returns all ports of an app from a list of passed CPEs. Note: This function will fork on multiple found applications.
+# @brief Returns all ports of an app from a list of passed CPEs in the form of an array. Note: This function will fork on multiple found applications.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param service  A service to limit the returned ports to, e.g. "www" or "mysql".
+# @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
+#                 for the given CPE.
 #
-# @return A port matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
+# @return An array containing the port and CPE matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
+#         The array indices are the following:
 #
-function get_all_app_port_from_list( cpe_list, service ) {
+#         ret_array["port"] = the found port
+#         ret_array["cpe"]  = the CPE assigned to this specific port
+#
+function get_all_app_ports_from_list( cpe_list, service, default ) {
 
-  local_var cpe_list, service, cpe, base_cpe, _ports, _port, services, _service, infos, _infos, ret_arr;
+  local_var cpe_list, service, default;
+  local_var cpe, base_cpe, _ports, _port, services, _service, infos, _infos, ret_arr;
 
   if( ! cpe_list ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_port_from_list" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_ports_from_list" );
     return;
   }
 
@@ -887,10 +915,12 @@ function get_all_app_port_from_list( cpe_list, service ) {
       if( service ) {
         services = get_kb_list( "get_app/services/" + _port + "/" + base_cpe );
         foreach _service( services ) {
-          if( _port =~ '^[0-9]{1,5}$' && _service >< service ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
+          if( _port =~ '^[0-9]{1,5}$' && _service >< service )
+            set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
         }
       } else {
-        if( _port =~ '^[0-9]{1,5}$' ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
+        if( _port =~ '^[0-9]{1,5}$' )
+          set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + _port );
       }
     }
   }
@@ -902,22 +932,31 @@ function get_all_app_port_from_list( cpe_list, service ) {
     ret_arr['port'] = _infos[1];
     return ret_arr;
   }
-  return;
+
+  if( default && optimize_test_enabled && "no" >< optimize_test_enabled ) {
+    foreach cpe( cpe_list ) {
+      ret_arr['cpe']  = cpe;
+      ret_arr['port'] = default;
+      return ret_arr;      
+    }
+  } else {
+    return;
+  }
 }
 
-# @brief Returns a single (first found) version of an app from a list of passed CPEs.
+# @brief Returns all versions of a (first found) app from a list of passed CPEs. Note: This function will fork on multiple found versions.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param port     The port of the application to get the version for, e.g. "80".
 #
 # @return A version matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
 #
-function get_single_app_version_from_list( cpe_list, port ) {
+function get_single_app_versions_from_list( cpe_list, port ) {
 
   local_var cpe_list, port, cpe, ap;
 
   if( ! cpe_list ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_version_from_list" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_versions_from_list" );
     return;
   }
 
@@ -935,12 +974,15 @@ function get_single_app_version_from_list( cpe_list, port ) {
 # @param service A service to limit the returned ports to, e.g. "www" or "mysql".
 # @param all     If a list of CPEs is passed via the cpe parameter this allows to specify if only
 #                the first found port (all empty or FALSE) or all found ports (all = TRUE) is returned.
+# @param default The default port to return in the case "optimize_test" is set to "no" and no port was found
+#                for the given CPE.
 #
 # @return A port matching one of the specified CPEs and data, NULL in the case no CPE was passed or no matching info was found.
 #
-function get_app_port( cpe, service, all ) {
+function get_app_port( cpe, service, all, default ) {
 
-  local_var cpe, service, all, base_cpe, port, services;
+  local_var cpe, service, all, default;
+  local_var base_cpe, port, services;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
@@ -949,9 +991,9 @@ function get_app_port( cpe, service, all ) {
 
   if( typeof( cpe ) == "array" ) {
     if( all )
-      return get_all_app_port_from_list( cpe_list:cpe, service:service );
+      return get_all_app_ports_from_list( cpe_list:cpe, service:service, default:default );
     else
-      return get_single_app_port_from_list( cpe_list:cpe, service:service );
+      return get_single_app_ports_from_list( cpe_list:cpe, service:service, default:default );
   } else {
     if( all )
       set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_app_port(): all parameter set to TRUE but no array within the cpe parameter." );
@@ -974,16 +1016,21 @@ function get_app_port( cpe, service, all ) {
     if( port =~ '^[0-9]{1,5}$' )
       return port;
   }
-  return;
+
+  if( default && optimize_test_enabled && "no" >< optimize_test_enabled )
+    return default;
+  else
+    return;
 }
 
 # @brief Returns the version and location of an application registered for the remote host within the KB matching the specified data.
 #
-# @param cpe             The CPE to get the version and location for.
-# @param port            The port of the application to get the version and location for, e.g. "80".
-# @param exit_no_version If the function should exit if no version was found. Note: The function still return if a version but no location was found.
-# @param version_regex   A regex to restrict the returned version to. E.g. if a version "1.2" was registered but a
-#                        regex like "^[0-9]+\.[0-9]+\.[0-9]+" is specified the function won't return the version.
+# @param cpe              The CPE to get the version and location for.
+# @param port             The port of the application to get the version and location for, e.g. "80".
+# @param exit_no_version  If the function should exit if no version was found. Note: The function still return if a version but no location was found.
+# @param version_regex    A regex to restrict the returned version to. E.g. if a version "1.2" was registered but a
+#                         regex like "^[0-9]+\.[0-9]+\.[0-9]+" is specified the function won't return the version.
+# @param default_location The default location to return in the case "optimize_test" is set to "no" and no location was found for the given CPE.
 #
 # @return An array containing the info about the application matching the specified data in a form of the following array keys:
 #
@@ -994,19 +1041,24 @@ function get_app_port( cpe, service, all ) {
 #
 # @note get_app_version_and_location() should be used instead of get_app_version() and get_app_location() together in a single NVT if both information is required.
 #
-function get_app_version_and_location( cpe, port, exit_no_version, version_regex) {
+function get_app_version_and_location( cpe, port, exit_no_version, version_regex, default_location ) {
 
-  local_var cpe, port, exit_no_version, version_regex, app_details;
+  local_var cpe, port, exit_no_version, version_regex, default_location;
+  local_var app_details;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
     return;
   }
 
-  app_details = get_app_details( cpe:cpe, type:"version_location", port:port, exit_no_version:exit_no_version , version_regex:version_regex);
+  app_details = get_app_details( cpe:cpe, type:"version_location", port:port, exit_no_version:exit_no_version, version_regex:version_regex, default_location:default_location );
   # nb: This is used here as get_app_details() might return earlier with NULL without even
   # reaching the exit_no_version check in the "version_location" part.
   if( isnull( app_details ) && exit_no_version )
+    exit( 0 );
+
+  # nb: This is for the "optimize_test" = "no" case where app_details above might contain an empty version index
+  if( app_details && ! app_details["version"] && exit_no_version )
     exit( 0 );
 
   return app_details;
@@ -1014,8 +1066,10 @@ function get_app_version_and_location( cpe, port, exit_no_version, version_regex
 
 # @brief Returns the location and protocol of an application registered for the remote host within the KB matching the specified data.
 #
-# @param cpe  The CPE to get the location and protocol for.
-# @param port The port of the application to get the location and protocol for, e.g. "80".
+# @param cpe              The CPE to get the location and protocol for.
+# @param port             The port of the application to get the location and protocol for, e.g. "80".
+# @param default_location The default location to return in the case "optimize_test" is set to "no" and no location was found for the given CPE.
+# @param default_proto    The default protocol to return in the case "optimize_test" is set to "no" and no protocol was found for the given CPE.
 #
 # @return An array containing the info about the application matching the specified data in a form of the following array keys:
 #
@@ -1024,16 +1078,16 @@ function get_app_version_and_location( cpe, port, exit_no_version, version_regex
 #
 #         or NULL in the case no CPE was passed or no matching info was found.
 #
-function get_app_location_and_proto( cpe, port ) {
+function get_app_location_and_proto( cpe, port, default_location, default_proto ) {
 
-  local_var cpe, port;
+  local_var cpe, port, default_location, default_proto;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location_and_proto" );
     return;
   }
 
-  return get_app_details( cpe:cpe, type:"location_proto", port:port );
+  return get_app_details( cpe:cpe, type:"location_proto", port:port, default_location:default_location, default_proto:default_proto );
 }
 
 # @brief Returns the version and protocol of an application registered for the remote host within the KB matching the specified data.
@@ -1041,6 +1095,7 @@ function get_app_location_and_proto( cpe, port ) {
 # @param cpe             The CPE to get the version and protocol for.
 # @param port            The port of the application to get the version and protocol for, e.g. "80".
 # @param exit_no_version If the function should exit if no version was found. Note: The function still return if a version but no protocol was found.
+# @param default_proto   The default protocol to return in the case "optimize_test" is set to "no" and no protocol was found for the given CPE.
 #
 # @return An array containing the info about the application matching the specified data in a form of the following array keys:
 #
@@ -1049,19 +1104,24 @@ function get_app_location_and_proto( cpe, port ) {
 #
 #         or NULL in the case no CPE was passed or no matching info was found.
 #
-function get_app_version_and_proto( cpe, port, exit_no_version ) {
+function get_app_version_and_proto( cpe, port, exit_no_version, default_proto ) {
 
-  local_var cpe, port, exit_no_version, app_details;
+  local_var cpe, port, exit_no_version, default_proto;
+  local_var app_details;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_proto" );
     return;
   }
 
-  app_details = get_app_details( cpe:cpe, type:"version_proto", port:port, exit_no_version:exit_no_version );
+  app_details = get_app_details( cpe:cpe, type:"version_proto", port:port, exit_no_version:exit_no_version, default_proto:default_proto );
   # nb: This is used here as get_app_details() might return earlier with NULL without even
   # reaching the exit_no_version check in the "version_proto" part.
   if( isnull( app_details ) && exit_no_version )
+    exit( 0 );
+
+  # nb: This is for the "optimize_test" = "no" case where app_details above might contain an empty version index
+  if( app_details && ! app_details["version"] && exit_no_version )
     exit( 0 );
 
   return app_details;
@@ -1099,13 +1159,16 @@ function get_app_full( cpe, port ) {
 # @brief Returns the port from a CPE prefix / vendor part. For example "cpe:/h:qnap:ts-x53" is the full CPE
 #        and the function is accepting e.g. "cpe:/h:qnap" to get the port for all vendor devices.
 #
-# @param cpe The CPE to get the port for.
+# @param cpe      The CPE to get the port for.
+# @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
+#                 for the given CPE.
 #
 # @return A string containing the port matching the passed data or NULL in the case no CPE was passed or no matching info was found.
 #
-function get_app_port_from_cpe_prefix( cpe ) {
+function get_app_port_from_cpe_prefix( cpe, default ) {
 
-  local_var cpe, data, entry, parts, _cpe;
+  local_var cpe, default;
+  local_var data, entry, parts, _cpe;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port_from_cpe_prefix" );
@@ -1136,15 +1199,19 @@ function get_app_port_from_cpe_prefix( cpe ) {
 
     return get_app_port( cpe:_cpe );
   }
-  return;
+
+  if( default && optimize_test_enabled && "no" >< optimize_test_enabled )
+    return default;
+  else
+    return;
 }
 
 # @brief Internal function not to be used directly, please use the other wrappers
 #        within this include calling this function.
 #
-function get_app_details( cpe, type, port, exit_no_version, service, nofork, version_regex ) {
+function get_app_details( cpe, type, port, exit_no_version, service, nofork, version_regex, default, default_location, default_proto ) {
 
-  local_var cpe, type, port, exit_no_version, service, nofork, version_regex;
+  local_var cpe, type, port, exit_no_version, service, nofork, version_regex, default, default_location, default_proto;
   local_var base_cpe, version_list, ap, dt, t, t_cpe, app_versions, app_locations;
   local_var t_oid, t_loc, app_details, x, x_oid, x_cpe, x_loc, x_port, x_proto, x_service, ret_arr;
 
@@ -1155,7 +1222,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
 
   # "1.3.6.1.4.1.25623.1.0.xxxxx#-#cpe:/a:foo:bar:1.1.0#-#/foo#-#80" or
   # "1.3.6.1.4.1.25623.1.0.xxxxx#-#cpe:/a:foo:bar:1.1.0#-#/foo#-#80#-#www"
-  if( type == 'all_versions' ) {
+  if( type == "all_versions" ) {
 
     version_list = make_list();
 
@@ -1183,7 +1250,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
 
     return version_list;
 
-  } else if( nofork && type == 'version' ) { # nofork is currently only valid for get_app_version() and get_app_location
+  } else if( nofork && type == "version" ) { # nofork is currently only valid for get_app_version() and get_app_location
 
     ap = get_kb_list( "get_app/" + base_cpe );
     if( ! ap )
@@ -1210,10 +1277,13 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
       return app_versions;
     }
     return; # no version...
-  } else if( nofork && type == 'location' ) { # nofork is currently only valid for get_app_version() and get_app_location
+  } else if( nofork && type == "location" ) { # nofork is currently only valid for get_app_version() and get_app_location
 
     ap = get_kb_list( "get_app/" + base_cpe );
-    if( ! ap ) return;
+    if( ! ap && default && optimize_test_enabled && "no" >< optimize_test_enabled )
+      return make_list( default );
+    else if( ! ap )
+      return;
 
     app_locations = make_list();
 
@@ -1236,8 +1306,38 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     app_details = get_kb_item( "get_app/" + base_cpe ); # this could fork
   }
 
-  if( ! app_details )
+  # nb: This is kept here as we don't get anny "app_details" from above if
+  # no app was detected priviously and the "default" is used.
+  if( ! app_details && optimize_test_enabled && "no" >< optimize_test_enabled ) {
+
+    if( type == "location" && default ) {
+      return default;
+    } else if( type == "version_location" && default_location ) {
+      ret_arr['version']  = '';
+      ret_arr['location'] = default_location;
+      return ret_arr;
+    } else if( type == "version_proto" && default_proto ) {
+      ret_arr['version'] = '';
+      ret_arr['proto']   = default_proto;
+      return ret_arr;
+    } else if( type == "location_proto" && ( default_proto || default_location ) ) {
+      if( default_proto )
+        ret_arr['proto'] = default_proto;
+      else
+        ret_arr['proto'] = 'tcp';
+
+      if( default_location )
+        ret_arr['location'] = default_location;
+      else
+        ret_arr['location'] = '';
+
+      return ret_arr;
+    } else {
+      return;
+    }
+  } else if( ! app_details ) {
     return;
+  }
 
   x = split( app_details, sep:'#-#', keep:FALSE );
 
@@ -1255,7 +1355,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
   if( ! isnull( port ) && int( x_port ) != int( port ) )
     return;
 
-  if( type == 'version' ) {
+  if( type == "version" ) {
 
     if( ! app_versions = get_version_from_cpe( cpe:x_cpe ) )
       return;
@@ -1270,7 +1370,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     return app_versions;
   }
 
-  if( type == 'location' ) {
+  if( type == "location" ) {
 
     if( x_loc ) {
       register_host_detail( name:"detected_by", value:x_oid );
@@ -1282,7 +1382,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     return;
   }
 
-  if( type == 'version_location' ) {
+  if( type == "version_location" ) {
 
     app_versions = get_version_from_cpe( cpe:x_cpe );
 
@@ -1314,7 +1414,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     return ret_arr;
   }
 
-  if( type == 'version_proto' ) {
+  if( type == "version_proto" ) {
 
     app_versions = get_version_from_cpe( cpe:x_cpe );
 
@@ -1341,7 +1441,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     return ret_arr;
   }
 
-  if( type == 'location_proto' ) {
+  if( type == "location_proto" ) {
 
     if( x_proto )
       ret_arr['proto'] = x_proto;
@@ -1360,7 +1460,7 @@ function get_app_details( cpe, type, port, exit_no_version, service, nofork, ver
     return ret_arr;
   }
 
-  if( type == 'full' ) {
+  if( type == "full" ) {
 
     app_versions = get_version_from_cpe( cpe:x_cpe );
 

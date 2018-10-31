@@ -20,7 +20,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-PLUGIN_SET = "201810300829";
+PLUGIN_SET = "201810311507";
 PLUGIN_FEED = "Greenbone Community Feed";
 FEED_VENDOR = "Greenbone Networks GmbH";
 FEED_HOME = "http://www.openvas.org/openvas-nvt-feed.html";

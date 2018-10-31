@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1961_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_1961_1.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852088");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2017-11337", "CVE-2017-11338", "CVE-2017-11339", "CVE-2017-11340", "CVE-2017-11553", "CVE-2017-11591", "CVE-2017-11592", "CVE-2017-11683", "CVE-2017-12955", "CVE-2017-12956", "CVE-2017-12957", "CVE-2017-14859", "CVE-2017-14860", "CVE-2017-14862", "CVE-2017-14864");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:43:16 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)");
   script_category(ACT_GATHER_INFO);

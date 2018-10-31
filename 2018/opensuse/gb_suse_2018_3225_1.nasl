@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3225_1.nasl 12071 2018-10-25 08:07:34Z santu $
+# $Id: gb_suse_2018_3225_1.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3225-1 (ImageMagick)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851942");
-  script_version("$Revision: 12071 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 10:07:34 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12164 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-19 06:28:33 +0200 (Fri, 19 Oct 2018)");
   script_cve_id("CVE-2017-13058", "CVE-2018-12599", "CVE-2018-12600", "CVE-2018-17965", "CVE-2018-17966", "CVE-2018-18016", "CVE-2018-18024");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3225-1 (ImageMagick)");
   script_tag(name:"summary", value:"Check the version of ImageMagick");

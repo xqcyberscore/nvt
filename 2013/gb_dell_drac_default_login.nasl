@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_default_login.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_dell_drac_default_login.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # Dell Remote Access Controller Default Login
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:dell:remote_access_card';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103681");
-  script_version("$Revision: 11219 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,7 +63,7 @@ include("host_details.inc");
 # TODO: check for iDRAC8
 cpe_list = make_list("cpe:/a:dell:idrac4", "cpe:/a:dell:idrac5", "cpe:/a:dell:idrac6", "cpe:/a:dell:idrac7");
 
-if (!infos = get_all_app_port_from_list(cpe_list: cpe_list))
+if (!infos = get_all_app_ports_from_list(cpe_list: cpe_list))
   exit(0);
 port = infos['port'];
 

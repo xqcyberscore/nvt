@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_personalcloud_sql_inj_vuln.nasl 11094 2018-08-23 10:27:11Z ckuersteiner $
+# $Id: gb_seagate_personalcloud_sql_inj_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # Seagate Personal Cloud < 4.3.19.3 SQL Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141391");
-  script_version("$Revision: 11094 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 12:27:11 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 15:55:34 +0700 (Thu, 23 Aug 2018)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -67,7 +67,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 cpe_list = make_list("cpe:/h:seagate:personal_cloud", "cpe:/h:seagate:personal_cloud_2_bay");
-if (!infos = get_all_app_port_from_list(cpe_list: cpe_list))
+if (!infos = get_all_app_ports_from_list(cpe_list: cpe_list))
   exit(0);
 
 cpe = infos['cpe'];

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_02.nasl 12166 2018-10-30 10:10:44Z santu $
 #
-# Oracle WebLogic Server 'JNDI' And 'Web Container' Components Unspecified Vulnerabilities (cpujul2017-3236622)
+# Oracle WebLogic Server Multiple Unspecified Vulnerabilities (cpujul2017-3236622-cpuoct2018-4428296)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811245");
-  script_version("$Revision: 11977 $");
-  script_cve_id("CVE-2017-10137", "CVE-2017-10152");
-  script_bugtraq_id(99634, 101351);
+  script_version("$Revision: 12166 $");
+  script_cve_id("CVE-2017-10137", "CVE-2017-10152", "CVE-2018-2902");
+  script_bugtraq_id(99634, 101351, 105654);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 11:10:44 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 13:53:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Oracle WebLogic Server 'JNDI' And 'Web Container' Components Unspecified Vulnerabilities (cpujul2017-3236622)");
+  script_name("Oracle WebLogic Server Multiple Unspecified Vulnerabilities (cpujul2017-3236622-cpuoct2018-4428296)");
 
   script_tag(name:"summary", value:"The host is running Oracle WebLogic Server
   and is prone to some unspecified vulnerabilities.");
@@ -45,8 +45,8 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple
-  unspecified errors in the 'JNDI' and 'Web Container' components of the
-  application.");
+  unspecified errors in the 'JNDI', 'Console' and 'Web Container' components of
+  the application.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to have an impact on confidentiality, integrity and availability.");
@@ -60,6 +60,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -67,7 +68,6 @@ if(description)
   script_dependencies("oracle_webLogic_server_detect.nasl");
   script_mandatory_keys("OracleWebLogicServer/installed");
   script_require_ports("Services/www", 7001);
-  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
   exit(0);
 }
 
@@ -79,16 +79,16 @@ if(!webPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!webVer = get_app_version(cpe:CPE, port:webPort)){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, port:webPort, exit_no_version:TRUE );
+webVer = infos['version'];
+path = infos['location'];
 
 affected = make_list('10.3.6.0', '12.1.3.0');
 foreach version (affected)
 {
   if( webVer == version)
   {
-    report = report_fixed_ver(installed_version:webVer, fixed_version:"Apply the appropriate patch");
+    report = report_fixed_ver(installed_version:webVer, fixed_version:"Apply the appropriate patch", install_path:path);
     security_message(data:report, port:webPort);
     exit(0);
   }

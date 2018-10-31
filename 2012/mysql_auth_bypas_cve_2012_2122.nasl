@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_auth_bypas_cve_2012_2122.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: mysql_auth_bypas_cve_2012_2122.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MySQL / MariaDB Authentication Bypass
 #
@@ -30,9 +30,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103492");
   script_bugtraq_id(53911);
   script_cve_id("CVE-2012-2122");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 12175 $");
   script_name("MySQL / MariaDB Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 18:38:54 +0200 (Mon, 11 Jun 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -73,7 +73,7 @@ cpe_list = make_list( "cpe:/a:mysql:mysql",
                       "cpe:/a:oracle:mysql",
                       "cpe:/a:mariadb:mariadb" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 port = infos['port'];
 
 if( get_kb_item( "MySQL/" + port + "/blocked" ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modx_0921_rfi.nasl 11669 2018-09-28 08:44:24Z jschulte $
+# $Id: modx_0921_rfi.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MODX CMS base_path Parameter Remote File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80072");
-  script_version("$Revision: 11669 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:44:24 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -72,7 +72,7 @@ cpe_list = make_list( "cpe:/a:modx:unknown",
                       "cpe:/a:modx:revolution",
                       "cpe:/a:modx:evolution" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe = infos['cpe'];
 port = infos['port'];
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_modx_cms_xss_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MODX CMS Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804124");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12175 $");
   script_bugtraq_id(63274);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:49:17 +0530 (Tue, 29 Oct 2013)");
   script_name("MODX CMS Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -77,7 +77,7 @@ cpe_list = make_list( "cpe:/a:modx:unknown",
                       "cpe:/a:modx:revolution",
                       "cpe:/a:modx:evolution" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe = infos['cpe'];
 port = infos['port'];
 

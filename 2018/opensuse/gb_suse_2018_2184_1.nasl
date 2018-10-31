@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2184_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_2184_1.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:2184-1 (wireshark)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851990");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2018-14339", "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342", "CVE-2018-14343", "CVE-2018-14344", "CVE-2018-14367", "CVE-2018-14368", "CVE-2018-14369", "CVE-2018-14370");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:29:36 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for wireshark openSUSE-SU-2018:2184-1 (wireshark)");
   script_category(ACT_GATHER_INFO);

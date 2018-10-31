@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_revolution_callback_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_modx_revolution_callback_xss_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805235");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 12175 $");
   script_cve_id("CVE-2014-8992");
   script_bugtraq_id(71821);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 14:55:47 +0530 (Wed, 07 Jan 2015)");
   script_name("MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -79,7 +79,7 @@ cpe_list = make_list( "cpe:/a:modx:unknown",
                       "cpe:/a:modx:revolution",
                       "cpe:/a:modx:evolution" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe = infos['cpe'];
 port = infos['port'];
 

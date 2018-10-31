@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3513_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3513_1.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # Ubuntu Update for libxml2 USN-3513-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843763");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2017-15412");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:16:03 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for libxml2 USN-3513-1");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_mem_corr_vuln_apsb18-28_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_adobe_photoshop_mult_mem_corr_vuln_apsb18-28_win.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2017";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813870");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2018-12810", "CVE-2018-12811");
   script_bugtraq_id(105123);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 10:51:12 +0530 (Thu, 23 Aug 2018)");
   script_name("Adobe Photoshop CC Multiple Memory Corruption Vulnerabilities - APSB18-28 (Windows)");
 

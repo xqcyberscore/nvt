@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2016-04.nasl 11365 2018-09-12 16:02:10Z asteins $
+# $Id: gb_pdns_powerdns-advisory-2016-04.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # PowerDNS Security Advisory 2016-04: Insufficient validation of TSIG signatures
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112374");
-  script_version("$Revision: 11365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 18:02:10 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 16:54:11 +0200 (Wed, 12 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -79,7 +79,7 @@ include("host_details.inc");
 
 cpe_list = make_list( 'cpe:/a:powerdns:authoritative_server', 'cpe:/a:powerdns:recursor' );
 
-if( ! list_infos = get_all_app_port_from_list( cpe_list:cpe_list ) )
+if( ! list_infos = get_all_app_ports_from_list( cpe_list:cpe_list ) )
   exit( 0 );
 
 cpe = list_infos['cpe'];

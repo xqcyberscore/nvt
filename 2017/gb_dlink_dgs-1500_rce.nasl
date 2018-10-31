@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dgs-1500_rce.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_dlink_dgs-1500_rce.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # D-Link DGS-1500 Ax RCE Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107253");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 14:03:54 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,7 +74,7 @@ include("version_func.inc");
 
 cpe_list = make_list( "cpe:/o:d-link:dgs-1500-20_firmware", "cpe:/o:d-link:dgs-1500-28_firmware", "cpe:/o:d-link:dgs-1500-28p_firmware", "cpe:/o:d-link:dgs-1500-52_firmware");
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 
 cpe = infos['cpe'];
 port = infos['port'];

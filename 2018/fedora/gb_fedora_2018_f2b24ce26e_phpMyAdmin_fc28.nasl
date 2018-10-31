@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f2b24ce26e_phpMyAdmin_fc28.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_fedora_2018_f2b24ce26e_phpMyAdmin_fc28.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # Fedora Update for phpMyAdmin FEDORA-2018-f2b24ce26e
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875027");
-  script_version("$Revision: 11231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12164 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:45:06 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-15605");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for phpMyAdmin FEDORA-2018-f2b24ce26e");
   script_tag(name:"summary", value:"Check the version of phpMyAdmin");

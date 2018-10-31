@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_03.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_webLogic_server_cpujul2017-3236622_03.nasl 12174 2018-10-31 04:26:58Z ckuersteiner $
 #
-# Oracle WebLogic Server 'Web Container' Component Unspecified Vulnerability (cpujul2017-3236622)
+# Oracle WLS 'Web Container' And 'WLS Core' Components Multiple Vulnerabilities (cpujul2017-3236622 - cpuoct2018-4428296)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,34 +29,38 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811246");
-  script_version("$Revision: 12047 $");
-  script_cve_id("CVE-2017-10123");
+  script_version("$Revision: 12174 $");
+  script_cve_id("CVE-2017-10123", "CVE-2018-3197");
   script_bugtraq_id(99650);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 05:26:58 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 13:58:23 +0530 (Wed, 19 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Oracle WebLogic Server 'Web Container' Component Unspecified Vulnerability (cpujul2017-3236622)");
+  script_name("Oracle WLS 'Web Container' And 'WLS Core' Components Multiple Vulnerabilities (cpujul2017-3236622 - cpuoct2018-4428296)");
 
   script_tag(name:"summary", value:"The host is running Oracle WebLogic Server
-  and is prone to some unspecified vulnerability.");
+  and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Check if a vulnerable version is present
+  on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to unspecified error
-  in the 'Web Container' component of the application.");
+  script_tag(name:"insight", value:"Multiple flaws exist due to multiple
+  unspecified errors in the 'Web Container' and 'WLS Core' components of the
+  application.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality.");
+  to have an impact on confidentiality, integrity and availability.");
 
   script_tag(name:"affected", value:"Oracle WebLogic Server versions 12.1.3.0");
 
-  script_tag(name:"solution", value:"Apply the update from the referenced advisory.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
+  For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
+  script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -67,7 +71,6 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
@@ -75,13 +78,13 @@ if(!webPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!webVer = get_app_version(cpe:CPE, port:webPort)){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, port:webPort, exit_no_version:TRUE );
+webVer = infos['version'];
+path = infos['location'];
 
 if( webVer == "12.1.3.0")
 {
-  report = report_fixed_ver(installed_version:webVer, fixed_version:"Apply the appropriate patch");
+  report = report_fixed_ver(installed_version:webVer, fixed_version:"Apply the appropriate patch", install_path:path);
   security_message(data:report, port:webPort);
   exit(0);
 }

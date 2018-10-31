@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_javascript_rce_vuln_win.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_foxit_reader_javascript_rce_vuln_win.nasl 12176 2018-10-31 07:39:16Z santu $
 #
 # Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813263");
-  script_version("$Revision: 12025 $");
+  script_version("$Revision: 12176 $");
   script_cve_id("CVE-2018-11617", "CVE-2018-11618", "CVE-2018-11619", "CVE-2018-11620",
                 "CVE-2018-11621", "CVE-2018-11622", "CVE-2018-11623", "CVE-2018-14241",
                 "CVE-2018-14242", "CVE-2018-14243", "CVE-2018-14244", "CVE-2018-14245",
@@ -51,10 +51,13 @@ if(description)
                 "CVE-2018-14304", "CVE-2018-14305", "CVE-2018-14306", "CVE-2018-14307",
                 "CVE-2018-14308", "CVE-2018-14309", "CVE-2018-14310", "CVE-2018-14311",
                 "CVE-2018-14312", "CVE-2018-14313", "CVE-2018-14314", "CVE-2018-14315",
-                "CVE-2018-14316", "CVE-2018-14317", "CVE-2018-3924", "CVE-2018-3939");
+                "CVE-2018-14316", "CVE-2018-14317", "CVE-2018-3924", "CVE-2018-3939",
+                "CVE-2018-17624", "CVE-2018-17622", "CVE-2018-17620", "CVE-2018-17621",
+                "CVE-2018-17618", "CVE-2018-17619", "CVE-2018-17617", "CVE-2018-17615",
+                "CVE-2018-17616");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 08:39:16 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 

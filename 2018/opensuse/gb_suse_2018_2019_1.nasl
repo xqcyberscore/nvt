@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2019_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_2019_1.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # SuSE Update for rsyslog openSUSE-SU-2018:2019-1 (rsyslog)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852085");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2015-3243");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:43:07 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for rsyslog openSUSE-SU-2018:2019-1 (rsyslog)");
   script_category(ACT_GATHER_INFO);

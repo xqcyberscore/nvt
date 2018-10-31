@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_cec7093baa_lldpad_fc28.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_fedora_2018_cec7093baa_lldpad_fc28.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # Fedora Update for lldpad FEDORA-2018-cec7093baa
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875229");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12164 $");
   script_cve_id("CVE-2018-10932");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-29 06:19:26 +0100 (Mon, 29 Oct 2018)");
   script_name("Fedora Update for lldpad FEDORA-2018-cec7093baa");
   script_category(ACT_GATHER_INFO);

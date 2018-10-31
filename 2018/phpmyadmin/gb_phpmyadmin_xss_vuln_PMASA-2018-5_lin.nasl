@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-5_lin.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-5_lin.nasl 12164 2018-10-30 09:02:07Z asteins $
 #
 # phpMyAdmin <= 4.8.2 XSS Vulnerability - PMASA-2018-5 (Linux)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113255");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12164 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 11:16:18 +0200 (Wed, 29 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

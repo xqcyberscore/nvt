@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_JBoss_enterprise_aplication_server_45148.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_JBoss_enterprise_aplication_server_45148.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # JBoss Enterprise Application Platform Multiple Remote Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100931");
-  script_version("$Revision: 5889 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 12175 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-12-02 19:42:22 +0100 (Thu, 02 Dec 2010)");
   script_bugtraq_id(45148);
-  script_cve_id("CVE-2010-3708","CVE-2010-3862","CVE-2010-3878");
+  script_cve_id("CVE-2010-3708", "CVE-2010-3862", "CVE-2010-3878");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("JBoss Enterprise Application Platform Multiple Remote Vulnerabilities");
@@ -42,16 +42,16 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("jboss/detected");
 
-  script_tag(name:"solution", value:"Updates are available; please see the references for more information.");
+  script_tag(name:"solution", value:"Updates are available, please see the references for more information.");
 
   script_tag(name:"summary", value:"The JBoss Enterprise Application Platform is prone to multiple vulnerabilities,
   including a remote code-execution issue, a remote denial-of-service issue, and a cross-site request-forgery issue.");
 
   script_tag(name:"impact", value:"Successful exploits can allow attackers to execute arbitrary code within the context
   of the affected application, perform certain administrative actions, deploy arbitrary WAR files on the server, or
-  cause denial-of-service conditions; other attacks may also be possible.");
+  cause denial-of-service conditions, other attacks may also be possible.");
 
-  script_tag(name:"affected", value:"These issues affect JBoss Enterprise Application Platform 4.3.0; other
+  script_tag(name:"affected", value:"These issues affect JBoss Enterprise Application Platform 4.3.0, other
   versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,7 +65,7 @@ include("host_details.inc");
 
 cpe_list = make_list( "cpe:/a:redhat:jboss_application_server", "cpe:/a:jboss:jboss_application_server", "cpe:/a:redhat:jboss_enterprise_application_platform" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe = infos['cpe'];
 port = infos['port'];
 

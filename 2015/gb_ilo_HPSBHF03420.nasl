@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilo_HPSBHF03420.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_ilo_HPSBHF03420.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # HP Integrated Lights-Out 3 and 4 Remote Denial of Service
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-2015-5435");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 12175 $");
 
   script_name("HP Integrated Lights-Out 3 and 4 Remote Denial of Service");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 14:58:10 +0200 (Thu, 01 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -67,7 +67,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 cpe_list = make_list( "cpe:/o:hp:integrated_lights-out_3_firmware", "cpe:/o:hp:integrated_lights-out_4_firmware" );
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe  = infos['cpe'];
 port = infos['port'];
 if( ! fw_vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_94585.nasl 10569 2018-07-23 09:01:04Z cfischer $
+# $Id: gb_dell_drac_94585.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2016-5685");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 11:01:04 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-30 13:23:23 +0100 (Wed, 30 Nov 2016)");
-  script_version("$Revision: 10569 $");
+  script_version("$Revision: 12175 $");
   script_name("Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ include("host_details.inc");
 include("version_func.inc");
 
 cpe_list = make_list("cpe:/a:dell:idrac7", "cpe:/a:dell:idrac8");
-if (!infos = get_all_app_port_from_list(cpe_list: cpe_list))
+if (!infos = get_all_app_ports_from_list(cpe_list: cpe_list))
   exit(0);
 
 port = infos['port'];

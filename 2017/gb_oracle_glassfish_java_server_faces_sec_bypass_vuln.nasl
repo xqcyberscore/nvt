@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 12166 2018-10-30 10:10:44Z santu $
 #
 # Oracle GlassFish Server Multiple Security Vulnerabilities
 #
@@ -29,23 +29,25 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810747");
-  script_version("$Revision: 11919 $");
-  script_cve_id("CVE-2017-3626", "CVE-2017-10400", "CVE-2016-3092");
+  script_version("$Revision: 12166 $");
+  script_cve_id("CVE-2017-3626", "CVE-2017-10400", "CVE-2016-3092", "CVE-2018-2911",
+                "CVE-2018-3152");
   script_bugtraq_id(97896, 101383, 91453);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-30 11:10:44 +0100 (Tue, 30 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 13:45:58 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle GlassFish Server Multiple Security Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
+  on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in
-  the Java Server Faces sub-component, Web Container (Apache Commons FileUpload)
-  sub-component and Administration Graphical User Interface sub-component.");
+  the Java Server Faces, Administration, Web Container (Apache Commons FileUpload)
+  and Administration Graphical User Interface sub-components.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   users unauthorized read access to a subset of Oracle GlassFish Server accessible
@@ -54,7 +56,8 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 3.1.2");
 
-  script_tag(name:"solution", value:"Apply the Vendor patches.");
+  script_tag(name:"solution", value:"Apply the appropriate patch from the vendor.
+  For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,13 +66,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017verbose-3236619.html");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_xref(name:"URL", value:"https://www.oracle.com/technetwork/security-advisory/cpuoct2018-4428296.html#AppendixFMW");
+  script_xref(name:"URL", value:"http://www.oracle.com/");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
   script_mandatory_keys("GlassFish/installed");
-  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
   exit(0);
 }
 
@@ -80,15 +84,15 @@ if(!dbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!dbVer = get_app_version(cpe:CPE, port:dbPort)){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE, port:dbPort);
+dbVer = infos['version'];
+dbPath = infos['location'];
 
-if(dbVer =~ "^(3\.)")
+if(dbVer =~ "^3\.")
 {
   if(version_is_equal(version:dbVer, test_version:"3.1.2"))
   {
-    report = report_fixed_ver(installed_version:dbVer, fixed_version:"Apply the appropriate patch");
+    report = report_fixed_ver(installed_version:dbVer, fixed_version:"Apply the appropriate patch", install_path:dbPath);
     security_message(data:report, port:dbPort);
     exit(0);
   }

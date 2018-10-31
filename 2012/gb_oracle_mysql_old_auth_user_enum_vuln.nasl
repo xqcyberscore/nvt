@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
 #
 # MySQL/MariaDB Authentication Error Message User Enumeration Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802046");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 12175 $");
   script_bugtraq_id(56766);
   script_cve_id("CVE-2012-5615");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 16:13:41 +0530 (Fri, 07 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -81,7 +81,7 @@ cpe_list = make_list( "cpe:/a:mysql:mysql",
                       "cpe:/a:oracle:mysql",
                       "cpe:/a:mariadb:mariadb" );
 
-if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_ports_from_list( cpe_list:cpe_list ) ) exit( 0 );
 cpe = infos['cpe'];
 port = infos['port'];
 
