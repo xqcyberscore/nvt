@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: default_credentials.inc 9573 2018-04-24 06:48:30Z cfischer $
+# $Id: default_credentials.inc 12179 2018-11-01 07:49:50Z ckuersteiner $
 #
 # Default Credentials
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 9573 $
+# $Revision: 12179 $
 #
 ###############################################################################
 
@@ -228,7 +228,8 @@ credentials = make_list(
 "pi:raspberry:raspberry:ssh",
 "root:toor:kali linux,backtrack linux:all",
 "msfadmin:msfadmin:metasploitable:ssh",
-"root:abcd1234:trango:all"
+"root:abcd1234:trango:all",
+"root:nutanix/4u:nutanix:ssh"
 );
 
 uploaded_credentials = get_kb_list( "default_credentials/credentials" );

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 31 Oct 2018 16:12:36 +0100
+# Automatically created on:  Thu, 01 Nov 2018 09:18:39 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44089,6 +44089,7 @@ gb_jboss_on_detect.nasl: GPLv2+
 gb_jetbrains_ide_detection.nasl: GPLv2+
 gb_jetty_detect.nasl: GPLv2+
 gb_jpgraph_detect.nasl: GPLv2+
+gb_jquery_detect.nasl: GPLv2+
 gb_jre_detect_macosx.nasl: GPLv2+
 gb_junos_snmp_version.nasl: GPLv2+
 gb_junos_space_version.nasl: GPLv2+
@@ -60240,6 +60241,7 @@ gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-acl-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-dma-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-ipsec-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181003-asa-syslog-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_asa_cisco-sa-20181031-asaftd-sip-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20171115-esa.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180207-esacsm.nasl: GPLv2+
