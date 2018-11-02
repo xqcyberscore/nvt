@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_344.nasl 12197 2018-11-02 08:48:38Z emoss $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 4.344
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94248");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 12197 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 09:48:38 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "Policy/Microsoft/WindowsGeneral/win_AdvancedPolicySettings.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "win_AdvancedPolicySettings.nasl");
   script_require_keys("WMI/ELCP/GENERAL");
   script_tag(name:"summary", value:"IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008
 

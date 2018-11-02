@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_16bb8b00c5_zsh_fc28.nasl 11389 2018-09-14 14:20:05Z bshakeel $
+# $Id: gb_fedora_2018_16bb8b00c5_zsh_fc28.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Fedora Update for zsh FEDORA-2018-16bb8b00c5
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875054");
-  script_version("$Revision: 11389 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 16:20:05 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 07:26:16 +0200 (Wed, 12 Sep 2018)");
   script_cve_id("CVE-2018-0502", "CVE-2018-13259");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for zsh FEDORA-2018-16bb8b00c5");
   script_tag(name:"summary", value:"Check the version of zsh");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4303.nasl 11590 2018-09-25 07:42:10Z cfischer $
+# $Id: deb_4303.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4303-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704303");
-  script_version("$Revision: 11590 $");
+  script_version("$Revision: 12193 $");
   script_cve_id("CVE-2018-1000801");
   script_name("Debian Security Advisory DSA 4303-1 (okular - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:42:10 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-23 00:00:00 +0200 (Sun, 23 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

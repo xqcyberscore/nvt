@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_342.nasl 11387 2018-09-14 12:19:57Z emoss $
+# $Id: GSHB_M4_342.nasl 12197 2018-11-02 08:48:38Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.342
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94247");
-  script_version("$Revision: 11387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 14:19:57 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12197 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 09:48:38 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "Policy/Microsoft/WindowsGeneral/MSSLegacy/win_last_access_timestamp.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "gsf/Policy/WindowsGeneral/MSSLegacy/win_last_access_timestamp.nasl");
   script_require_keys("1.3.6.1.4.1.25623.1.0.96047/RESULT");
   script_tag(name:"summary", value:"IT-Grundschutz M4.342: Aktivierung des Last Access Zeitstempels ab Windows Vista.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_octopus_deploy_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_octopus_deploy_detect.nasl 12182 2018-11-01 09:38:16Z jschulte $
 #
 # Octopus Deploy Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140517");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12182 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-01 10:38:16 +0100 (Thu, 01 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 13:06:44 +0700 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Octopus Deploy.
 
-The script sends a connection request to the server and attempts to detect Octopus Deploy and extract its
-version.");
+  The script sends a connection request to the server and attempts to detect Octopus Deploy and extract its
+  version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -55,6 +55,8 @@ version.");
 
   exit(0);
 }
+
+CPE = "cpe:/a:octopus:deploy:";
 
 include("cpe.inc");
 include("host_details.inc");
@@ -78,15 +80,15 @@ if (">Octopus Deploy</title>" >< res && ("Sorry, could not connect to the Octopu
 
   set_kb_item(name: "octopus_deploy/installed", value: TRUE);
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:octopus:deploy:");
-  if (!cpe)
-    cpe = 'cpe:/a:octopus:deploy';
+  register_and_report_cpe(app: "Octopus Deploy",
+                          ver: version,
+                          concluded: vers[0],
+                          base: CPE,
+                          expr: '^([0-9.]+)',
+                          insloc: install,
+                          regPort: port,
+                          conclUrl: install);
 
-  register_product(cpe: cpe, location: install, port: port);
-
-  log_message(data: build_detection_report(app: "Octopus Deploy", version: version, install: install, cpe: cpe,
-                                           concluded: vers[0]),
-              port: port);
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_elementtree_dos_vuln_macosx.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_python_elementtree_dos_vuln_macosx.nasl 12191 2018-11-01 15:41:33Z mmartin $
 #
 # Python Elementtree Denial of Service Vulnerability (Mac OS X)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814307");
-  script_version("$Revision: 11734 $");
+  script_version("$Revision: 12191 $");
   script_cve_id("CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-01 16:41:33 +0100 (Thu, 01 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:01:58 +0530 (Wed, 03 Oct 2018)");
   script_name("Python Elementtree Denial of Service Vulnerability (Mac OS X)");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Python versions 3.8, 3.7, 3.6, 3.5, 3.4 and 2.7 Mac OS X");
 
   script_tag(name:"solution", value:"No known solution is available as of
-  01st October, 2018. Information regarding this issue will be updated once
+  01st November, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to Reference links.");
 
   script_tag(name:"qod_type", value:"executable_version");

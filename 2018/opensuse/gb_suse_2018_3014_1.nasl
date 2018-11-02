@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3014_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3014_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3014-1 (ImageMagick)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851974");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12193 $");
   script_cve_id("CVE-2018-16323", "CVE-2018-16328", "CVE-2018-16329", "CVE-2018-16413", "CVE-2018-16640", "CVE-2018-16641", "CVE-2018-16642", "CVE-2018-16643", "CVE-2018-16644", "CVE-2018-16645");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:24:24 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3014-1 (ImageMagick)");
   script_category(ACT_GATHER_INFO);

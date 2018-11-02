@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asustor_mult_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_asustor_mult_vuln.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # ASUSTOR Data Master < 3.1.6 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112365");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 10:11:00 +0200 (Tue, 28 Aug 2018)");
   script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:C");
 
   script_cve_id("CVE-2018-15694", "CVE-2018-15695", "CVE-2018-15696",
   "CVE-2018-15697", "CVE-2018-15698", "CVE-2018-15699");

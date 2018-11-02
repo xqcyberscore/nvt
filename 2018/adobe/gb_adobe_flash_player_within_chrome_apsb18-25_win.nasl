@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb18-25_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_adobe_flash_player_within_chrome_apsb18-25_win.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Adobe Flash Player Within Google Chrome Security Update(apsb18-25)- Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813832");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12193 $");
   script_cve_id("CVE-2018-12824", "CVE-2018-12825", "CVE-2018-12826", "CVE-2018-12827",
                 "CVE-2018-12828");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 09:37:06 +0530 (Wed, 15 Aug 2018)");
   script_name("Adobe Flash Player Within Google Chrome Security Update(apsb18-25)- Windows");
 

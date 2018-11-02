@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_28447b6f2e_ghostscript_fc27.nasl 11344 2018-09-12 06:57:52Z emoss $
+# $Id: gb_fedora_2018_28447b6f2e_ghostscript_fc27.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Fedora Update for ghostscript FEDORA-2018-28447b6f2e
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875044");
-  script_version("$Revision: 11344 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-08 07:29:00 +0200 (Sat, 08 Sep 2018)");
   script_cve_id("CVE-2018-10194", "CVE-2018-15909", "CVE-2018-16541",
                 "CVE-2018-16540", "CVE-2018-16539", "CVE-2018-15911", "CVE-2018-16542");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ghostscript FEDORA-2018-28447b6f2e");
   script_tag(name:"summary", value:"Check the version of ghostscript");

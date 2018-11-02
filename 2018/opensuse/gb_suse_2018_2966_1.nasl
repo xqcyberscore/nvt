@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2966_1.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_suse_2018_2966_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # SuSE Update for zsh openSUSE-SU-2018:2966-1 (zsh)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851921");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 08:06:44 +0200 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-0502", "CVE-2018-1071", "CVE-2018-1083", "CVE-2018-1100", "CVE-2018-13259");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for zsh openSUSE-SU-2018:2966-1 (zsh)");
   script_tag(name:"summary", value:"Check the version of zsh");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20180815_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_jenkins_20180815_lin.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Jenkins < 2.138 and < 2.121.3 LTS Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112359");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12193 $");
   script_cve_id("CVE-2018-1999042", "CVE-2018-1999043", "CVE-2018-1999044", "CVE-2018-1999045",
   "CVE-2018-1999046", "CVE-2018-1999047");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 10:30:00 +0200 (Mon, 27 Aug 2018)");
   script_name("Jenkins < 2.138 and < 2.121.3 LTS Multiple Vulnerabilities (Linux)");
   script_category(ACT_GATHER_INFO);

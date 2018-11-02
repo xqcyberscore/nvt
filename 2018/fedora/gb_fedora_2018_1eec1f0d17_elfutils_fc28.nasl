@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1eec1f0d17_elfutils_fc28.nasl 11764 2018-10-05 12:21:04Z santu $
+# $Id: gb_fedora_2018_1eec1f0d17_elfutils_fc28.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
 #
 # Fedora Update for elfutils FEDORA-2018-1eec1f0d17
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875135");
-  script_version("$Revision: 11764 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 14:21:04 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12193 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 08:29:13 +0200 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-16062", "CVE-2018-16402", "CVE-2018-16403");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for elfutils FEDORA-2018-1eec1f0d17");
   script_tag(name:"summary", value:"Check the version of elfutils");
