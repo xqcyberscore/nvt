@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4457129.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4457129.nasl 12202 2018-11-02 11:53:56Z asteins $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4457129)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814003");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12202 $");
   script_cve_id("CVE-2018-5391", "CVE-2018-8271", "CVE-2018-8315", "CVE-2018-8332",
                 "CVE-2018-8335", "CVE-2018-8392", "CVE-2018-8393", "CVE-2018-8410",
                 "CVE-2018-8419", "CVE-2018-8420", "CVE-2018-8424", "CVE-2018-8433",
@@ -35,9 +35,9 @@ if(description)
                 "CVE-2018-8442", "CVE-2018-8443", "CVE-2018-8444", "CVE-2018-8446",
                 "CVE-2018-8447", "CVE-2018-8452", "CVE-2018-8455", "CVE-2018-8457",
                 "CVE-2018-8468", "CVE-2018-8470", "CVE-2018-8475");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 12:53:56 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 10:20:08 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4457129)");
 
@@ -95,9 +95,9 @@ if(description)
   to further compromise the user's system, gain elevated privileges on a targeted
   system and also cause the affected system to crash.");
 
-  script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64.
 
-  Microsoft Windows Server 2012 R2");
+  Microsoft Windows Server 2012 R2.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory

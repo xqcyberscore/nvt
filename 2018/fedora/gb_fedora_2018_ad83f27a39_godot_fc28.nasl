@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ad83f27a39_godot_fc28.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_fedora_2018_ad83f27a39_godot_fc28.nasl 12208 2018-11-05 04:24:03Z ckuersteiner $
 #
 # Fedora Update for godot FEDORA-2018-ad83f27a39
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875019");
-  script_version("$Revision: 11231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12208 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-05 05:24:03 +0100 (Mon, 05 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:37:25 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-1000224");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for godot FEDORA-2018-ad83f27a39");
   script_tag(name:"summary", value:"Check the version of godot");

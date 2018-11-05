@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_vlc_media_player_detect_win.nasl 12203 2018-11-02 14:42:44Z bshakeel $
 #
 # VLC Media Player Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900528");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12203 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Version Detection (Windows)");
@@ -86,14 +86,13 @@ foreach key (key_list)
   {
 
     set_kb_item(name:"VLCPlayer/Win/Installed", value:TRUE);
+    set_kb_item(name:"VLCPlayer/Win/Ver", value:vlcVer);
+      register_and_report_cpe( app:"VLC Media Player", ver:vlcVer, base:"cpe:/a:videolan:vlc_media_player:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:vlcPath );
 
     ## 64 bit apps on 64 bit platform
     if("x64" >< os_arch && "Wow6432Node" >!< key) {
       set_kb_item(name:"VLCPlayer64/Win/Ver", value:vlcVer);
       register_and_report_cpe( app:"VLC Media Player", ver:vlcVer, base:"cpe:/a:videolan:vlc_media_player:x64:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:vlcPath );
-    } else {
-      set_kb_item(name:"VLCPlayer/Win/Ver", value:vlcVer);
-      register_and_report_cpe( app:"VLC Media Player", ver:vlcVer, base:"cpe:/a:videolan:vlc_media_player:", expr:"^([0-9.]+([a-z0-9]+)?)", insloc:vlcPath );
     }
   }
 }

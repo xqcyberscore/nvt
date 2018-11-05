@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_win.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_thunderbird_detect_win.nasl 12203 2018-11-02 14:42:44Z bshakeel $
 #
 # Mozilla Thunderbird Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800015");
-  script_version("$Revision: 10908 $");
+  script_version("$Revision: 12203 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Thunderbird Version Detection (Windows)");
@@ -60,76 +60,91 @@ if(!os_arch){
 }
 
 if("x86" >< os_arch){
-  key = "SOFTWARE";
+  key_list = make_list("SOFTWARE");
 } else if("x64" >< os_arch){
-  key = "SOFTWARE\Wow6432Node";
+  key_list = make_list("SOFTWARE", "SOFTWARE\Wow6432Node");
 }
 
-foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org")) {
+foreach key(key_list)
+{
+  foreach regKey (make_list( key + "\Mozilla", key + "\mozilla.org"))
+  {
 
-  if(registry_key_exists(key:regKey)) {
+    if(registry_key_exists(key:regKey))
+    {
+      birdVer = registry_get_sz(item:"CurrentVersion", key:regKey + "\Mozilla Thunderbird");
 
-    birdVer = registry_get_sz(item:"CurrentVersion", key:regKey + "\Mozilla Thunderbird");
+      if(birdVer)
+      {
+        # Special case for thunderbird 1.5 (Get the version from file)
+        if(birdVer =~ "^(1.5)")
+        {
 
-    if(birdVer) {
+          filePath = registry_get_sz(item:"PathToExe", key:regKey + "\Mozilla Thunderbird 1.5\bin");
+          if(!filePath) exit(0);
+          tbirdVer = GetVersionFromFile(file:filePath, verstr:"prod");
+          if(!tbirdVer) exit(0);
+        }
+        else
+        {
+          birdVer = eregmatch(pattern:"[0-9.]+", string:birdVer);
+          if(birdVer[0]) tbirdVer = birdVer[0];
+        }
 
-      # Special case for thunderbird 1.5 (Get the version from file)
-      if(birdVer =~ "^(1.5)") {
+        path = registry_get_sz(key:key + "\Microsoft\Windows\CurrentVersion\", item:"ProgramFilesDir");
+        if(!path) exit(0);
 
-       filePath = registry_get_sz(item:"PathToExe", key:regKey + "\Mozilla Thunderbird 1.5\bin");
-       if(!filePath) exit(0);
-       tbirdVer = GetVersionFromFile(file:filePath, verstr:"prod");
-       if(!tbirdVer) exit(0);
-      } else {
-        birdVer = eregmatch(pattern:"[0-9.]+", string:birdVer);
-        if(birdVer[0]) tbirdVer = birdVer[0];
+        appPath = path + "\Mozilla Thunderbird";
+        exePath = appPath + "\update-settings.ini";
+        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
+        file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
+
+        ## Read the content of .ini file
+        readmeText = read_file(share:share, file:file, offset:0, count:3000);
+
+        if(readmeText && readmeText =~ "comm-esr")
+        {
+          set_kb_item(name:"Thunderbird-ESR/Win/Ver", value:tbirdVer);
+          set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
+
+          cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird_esr:");
+          if(isnull(cpe))
+            cpe = "cpe:/a:mozilla:thunderbird_esr";
+
+          appName = 'Mozilla Thunderbird ESR';
+
+        }
+        else
+        {
+          set_kb_item(name:"Thunderbird/Win/Ver", value:tbirdVer);
+          set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
+
+          cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird:");
+          if(isnull(cpe))
+            cpe = "cpe:/a:mozilla:thunderbird";
+
+          if("64" >< os_arch && "Wow6432Node" >!< key)
+          {
+            set_kb_item(name:"Thunderbird64/Win/Ver", value:tbirdVer);
+            cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird:x64:");
+            if(isnull(cpe))
+              cpe = "cpe:/a:mozilla:thunderbird:x64";
+          }
+
+          appName = 'Mozilla Thunderbird';
+        }
+
+        # Used in gb_thunderbird_detect_portable_win.nasl to avoid doubled detections.
+        # We're also stripping a possible ending backslash away as the portable NVT is getting
+        # the file path without the ending backslash from WMI.
+        tmp_location = tolower(appPath);
+        tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
+        set_kb_item(name:"Thunderbird/Win/InstallLocations", value:tmp_location);
+
+        register_product(cpe:cpe, location:appPath);
+        log_message(port:0, data:build_detection_report(app:appName, version:tbirdVer, install:appPath, cpe:cpe, concluded:tbirdVer));
       }
-
-      path = registry_get_sz(key:key + "\Microsoft\Windows\CurrentVersion\", item:"ProgramFilesDir");
-      if(!path) exit(0);
-
-      appPath = path + "\Mozilla Thunderbird";
-      exePath = appPath + "\update-settings.ini";
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
-
-      ## Read the content of .ini file
-      readmeText = read_file(share:share, file:file, offset:0, count:3000);
-
-      if(readmeText && readmeText =~ "comm-esr") {
-
-        set_kb_item(name:"Thunderbird-ESR/Win/Ver", value:tbirdVer);
-        set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
-
-        cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird_esr:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:mozilla:thunderbird_esr";
-
-        appName = 'Mozilla Thunderbird ESR';
-
-      } else {
-
-        set_kb_item(name:"Thunderbird/Win/Ver", value:tbirdVer);
-        set_kb_item(name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE);
-
-        cpe = build_cpe(value:tbirdVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:thunderbird:");
-        if(isnull(cpe))
-          cpe = "cpe:/a:mozilla:thunderbird";
-
-        appName = 'Mozilla Thunderbird';
-      }
-
-      # Used in gb_thunderbird_detect_portable_win.nasl to avoid doubled detections.
-      # We're also stripping a possible ending backslash away as the portable NVT is getting
-      # the file path without the ending backslash from WMI.
-      tmp_location = tolower(appPath);
-      tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
-      set_kb_item(name:"Thunderbird/Win/InstallLocations", value:tmp_location);
-
-      register_product(cpe:cpe, location:appPath);
-      log_message(port:0, data:build_detection_report(app:appName, version:tbirdVer, install:appPath, cpe:cpe, concluded:tbirdVer));
     }
   }
 }
-
 exit(0);
