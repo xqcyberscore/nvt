@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 10766 2018-08-03 15:11:10Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 12213 2018-11-05 10:04:22Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 10766 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 17:11:10 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 12213 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-05 11:04:22 +0100 (Mon, 05 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -131,10 +131,11 @@ foreach hn( hnlist ) {
 }
 
 magentofiles = make_array(
-"/app/etc/local.xml",'Magento 1 Database Configuration File containing a username and/or password.#-#(<config|Mage)#-#<(username|password)>' );
+"/app/etc/local.xml", 'Magento 1 Database Configuration File containing a username and/or password.#-#(<config|Mage)#-#<(username|password)>' );
 
 drupalfiles = make_array(
-"/sites/default/private/files/backup_migrate/scheduled/test.txt", 'If the file "test.txt" is accessible on a Drupal server, it means that site backups may be publicly exposed.#-#this file should not be publicly accessible' );
+"/sites/default/private/files/backup_migrate/scheduled/test.txt", 'If the file "test.txt" is accessible on a Drupal server, it means that site backups may be publicly exposed.#-#this file should not be publicly accessible',
+"/sites/default/files/.ht.sqlite", "Drupal Database file publicly accessible.#-#^SQLite format [0-9]" );
 
 global_var report, VULN;
 

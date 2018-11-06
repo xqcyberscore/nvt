@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4323.nasl 12009 2018-10-22 08:22:26Z cfischer $
+# $Id: deb_4323.nasl 12223 2018-11-06 07:50:49Z cfischer $
 #
 # Auto-generated from advisory DSA 4323-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704323");
-  script_version("$Revision: 12009 $");
+  script_version("$Revision: 12223 $");
   # TODO: No CVE assigned yet.
   script_name("Debian Security Advisory DSA 4323-1 (drupal7 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:22:26 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-06 08:50:49 +0100 (Tue, 06 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 00:00:00 +0200 (Thu, 18 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

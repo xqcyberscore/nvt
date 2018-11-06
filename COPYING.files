@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 05 Nov 2018 09:46:26 +0100
+# Automatically created on:  Tue, 06 Nov 2018 11:02:28 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39189,6 +39189,8 @@
 2018/debian/deb_4330.nasl: GPLv2+
 2018/debian/deb_4331.nasl: GPLv2+
 2018/debian/deb_4332.nasl: GPLv2+
+2018/debian/deb_4333.nasl: GPLv2+
+2018/debian/deb_4334.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39651,6 +39653,9 @@
 2018/debian/deb_dla_1561.nasl: GPLv2+
 2018/debian/deb_dla_1562.nasl: GPLv2+
 2018/debian/deb_dla_1564.nasl: GPLv2+
+2018/debian/deb_dla_1565.nasl: GPLv2+
+2018/debian/deb_dla_1566.nasl: GPLv2+
+2018/debian/deb_dla_1567.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41218,6 +41223,7 @@
 2018/huawei/gb_huawei_switch_inf_disclosure_vuln.nasl: GPLv2+
 2018/hughes/gb_hughes_broadband_satellite_modems_mult_vuln.nasl: GPLv2+
 2018/ibm/gb_ibm_java_sdk_priv_esca_vuln_lin.nasl: GPLv2+
+2018/icecast/gb_icecast_buf_ovflw_vuln.nasl: GPLv2+
 2018/icewarp/gb_icewarp_CVE-2015-1503_dir_trav.nasl: GPLv2+
 2018/icewarp/gb_icewarp_mail_server_xss_vuln.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
@@ -41286,6 +41292,8 @@
 2018/lantronix/gb_lantronix_device_auth_bypass.nasl: GPLv2+
 2018/lantronix/gb_lantronix_device_default_credentials.nasl: GPLv2+
 2018/ldap/gb_ldap_account_manager_xss_n_csrf_vuln_mar18.nasl: GPLv2+
+2018/lexmark/gb_lexmark_printers_CVE-2018-15519.nasl: GPLv2+
+2018/lexmark/gb_lexmark_printers_CVE-2018-15520.nasl: GPLv2+
 2018/lg/gb_lg_smart_ip_default_credentials.nasl: GPLv2+
 2018/libreoffice/gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl: GPLv2+
 2018/libreoffice/gb_libreoffice_stgsmallstrm_mem_corru_vuln_macosx.nasl: GPLv2+
@@ -41323,6 +41331,7 @@
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_n_edit_filters_mult_xss_vuln_lin.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_n_edit_filters_mult_xss_vuln_win.nasl: GPLv2+
+2018/marchnetworks/gb_march_networks_vision_web_default_credentials.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_lin.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_win.nasl: GPLv2+
 2018/matomo/gb_matomo_exporttitle_xss_vuln.nasl: GPLv2+
@@ -44084,6 +44093,7 @@ gb_ibm_websphere_detect.nasl: GPLv2+
 gb_ibm_websphere_mq_detect_lin.nasl: GPLv2+
 gb_ibm_websphere_mq_detect.nasl: GPLv2+
 gb_ibm_websphere_portal_detect.nasl: GPLv2+
+gb_icecast_detect.nasl: GPLv2+
 gb_icewarp_mail_detect.nasl: GPLv2+
 gb_icewarp_web_detect.nasl: GPLv2+
 gb_icinga2_detect.nasl: GPLv2+
@@ -44239,6 +44249,7 @@ gb_manageengine_servicedesk_plus_msp_detect.nasl: GPLv2+
 gb_manageengine_supportcenter_detect.nasl: GPLv2+
 gb_mango_automation_detect.nasl: GPLv2+
 gb_mapserver_detect.nasl: GPLv2+
+gb_march_networks_vision_web_detect.nasl: GPLv2+
 gb_master_ip_camera01_detect.nasl: GPLv2+
 gb_matomo_detect.nasl: GPLv2+
 gb_matrixssl_detect.nasl: GPLv2+
@@ -44843,6 +44854,7 @@ gb_teleopti_wfm_detect.nasl: GPLv2+
 gb_telepark_wiki_detect.nasl: GPLv2+
 gb_telesquare_skt_lte_router_SDT-CS3B1_detect.nasl: GPLv2+
 gb_telpho10_web_interface_detect.nasl: GPLv2+
+gb_teltonika_router_http_detect.nasl: GPLv2+
 gb_tematres_detect.nasl: GPLv2+
 gb_terramaster_nas_detect.nasl: GPLv2+
 gb_threema_web_detect.nasl: GPLv2+
@@ -61495,6 +61507,7 @@ gsf/2018/symantec/gb_sep_multiple_vuln_SYMSA1454.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_encryption_server_symsa1458_dos_vuln.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_messaging_gateway_SYMSA1461.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
+gsf/2018/teltonika/gb_teltonika_rut9xx_mult_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_ddi_xss_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
 gsf/2018/tridium/gb_tridium_niagara_mult_vuln.nasl: GPLv2+

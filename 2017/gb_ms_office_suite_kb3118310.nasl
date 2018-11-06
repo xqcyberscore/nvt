@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_suite_kb3118310.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_office_suite_kb3118310.nasl 12216 2018-11-05 15:10:03Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (KB3118310)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810787");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12216 $");
   script_cve_id("CVE-2017-0261", "CVE-2017-0262", "CVE-2017-8510");
   script_bugtraq_id(98104, 98279, 98813);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-05 16:10:03 +0100 (Mon, 05 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 13:49:53 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (KB3118310)");
@@ -67,7 +67,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3118310, ");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3118310");
   exit(0);
 }
 

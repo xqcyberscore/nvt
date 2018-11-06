@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wampserver_xss_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_wampserver_xss_vuln.nasl 12216 2018-11-05 15:10:03Z mmartin $
 #
 # WampServer 3.1.1 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113139");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12216 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-05 16:10:03 +0100 (Mon, 05 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 12:40:00 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -57,7 +57,7 @@ if( description )
   script_tag(name:"affected", value:"WampServer through version 3.1.1.");
   script_tag(name:"solution", value:"Update to version 3.1.2.");
 
-  script_xref(name:"URL", value:"http://forum.wampserver.com/read.php?2, 138295, 150615, page=6#msg-150615");
+  script_xref(name:"URL", value:"http://forum.wampserver.com/read.php?2,138295,150615,page=6#msg-150615");
 
   exit(0);
 }

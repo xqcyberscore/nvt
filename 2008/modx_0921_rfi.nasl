@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modx_0921_rfi.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
+# $Id: modx_0921_rfi.nasl 12215 2018-11-05 14:48:16Z mmartin $
 #
 # MODX CMS base_path Parameter Remote File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80072");
-  script_version("$Revision: 12175 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
+  script_version("$Revision: 12215 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-05 15:48:16 +0100 (Mon, 05 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
   script_mandatory_keys("modx_cms/installed");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/2706");
-  script_xref(name:"URL", value:"http://modxcms.com/forums/index.php/topic, 8604.0.html");
+  script_xref(name:"URL", value:"http://modxcms.com/forums/index.php/topic,8604.0.html");
 
   script_tag(name:"summary", value:"The remote web server is running MODX CMS, an open source content
   management system which is affected by a remote file include issue.");
