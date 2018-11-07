@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3805_1.nasl 12203 2018-11-02 14:42:44Z bshakeel $
+# $Id: gb_ubuntu_USN_3805_1.nasl 12229 2018-11-06 12:56:44Z cfischer $
 #
 # Ubuntu Update for curl USN-3805-1
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843802");
-  script_version("$Revision: 12203 $");
+  script_version("$Revision: 12229 $");
   script_cve_id("CVE-2018-16839", "CVE-2018-16840", "CVE-2018-16842");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 15:42:44 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-06 13:56:44 +0100 (Tue, 06 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-01 06:05:25 +0100 (Thu, 01 Nov 2018)");
   script_name("Ubuntu Update for curl USN-3805-1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|18\.10|16\.04 LTS)");
 
   script_xref(name:"USN", value:"3805-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3805-1/");

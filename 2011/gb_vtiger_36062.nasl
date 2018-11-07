@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_36062.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_vtiger_36062.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # vtiger CRM Multiple Input Validation Vulnerabilities
 #
@@ -23,14 +23,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-CPE = "cpe:/a:vtiger:vtiger_crm";
 
+CPE = "cpe:/a:vtiger:vtiger_crm";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103109");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12239 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-03-07 13:16:38 +0100 (Mon, 07 Mar 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,8 +51,7 @@ if (description)
   script_dependencies("gb_vtiger_crm_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("vtiger/installed");
-  script_tag(name:"solution", value:"Reportedly, the vendor fixed some of the issues in the latest release,
-but Symantec has not confirmed this information.");
+
   script_tag(name:"summary", value:"vtiger CRM is prone to multiple input-validation vulnerabilities:
 
   - A remote PHP code-execution vulnerability
@@ -61,18 +60,20 @@ but Symantec has not confirmed this information.");
 
   - A cross-site scripting vulnerability
 
-  - Multiple cross-site request-forgery vulnerabilities
+  - Multiple cross-site request-forgery vulnerabilities");
 
- Attackers can exploit these issues to execute arbitrary script code
- within the context of the webserver, perform unauthorized actions,
- compromise the affected application, steal cookie-based
- authentication credentials, or obtain information that could aid in
- further attacks.
+  script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary script code
+  within the context of the webserver, perform unauthorized actions, compromise the affected application,
+  steal cookie-based authentication credentials, or obtain information that could aid in further attacks.");
 
-The issues affect vtiger CRM 5.0.4. Other versions may also be
-affected.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"The issues affect vtiger CRM 5.0.4. Other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -83,8 +84,6 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!get_port_state(port))exit(0);
-
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 files = traversal_files();

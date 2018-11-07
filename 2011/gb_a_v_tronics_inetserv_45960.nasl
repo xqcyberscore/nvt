@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_a_v_tronics_inetserv_45960.nasl 12018 2018-10-22 13:31:29Z mmartin $
+# $Id: gb_a_v_tronics_inetserv_45960.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # A-V Tronics InetServ SMTP Denial of Service Vulnerability
 #
@@ -27,15 +27,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103040");
-  script_version("$Revision: 12018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 15:31:29 +0200 (Mon, 22 Oct 2018) $");
+  script_version("$Revision: 12239 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-24 13:11:38 +0100 (Mon, 24 Jan 2011)");
   script_bugtraq_id(45960);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("A-V Tronics InetServ SMTP Denial of Service Vulnerability");
 
-  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/45960");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/45960");
   script_xref(name:"URL", value:"http://www.avtronics.net/inetserv.php");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -44,17 +44,18 @@ if (description)
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25);
-  script_tag(name:"solution", value:"Currently, we are not aware of any vendor-supplied patches. If you
-feel we are in error or are aware of more recent information, please
-mail us at: vuldb@securityfocus.com.");
-  script_tag(name:"summary", value:"InetServ is prone to a denial-of-service vulnerability.
 
-Exploiting this issue may allow attackers to cause the application to
-crash, resulting in denial-of-service conditions.
+  script_tag(name:"summary", value:"InetServ is prone to a denial-of-service vulnerability.");
 
-Inetserv 3.23 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"impact", value:"Exploiting this issue may allow attackers to cause the application to
+  crash, resulting in denial-of-service conditions.");
 
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Inetserv 3.23 is vulnerable. Other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);

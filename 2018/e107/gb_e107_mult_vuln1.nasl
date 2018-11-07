@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_mult_vuln1.nasl 11385 2018-09-14 10:20:10Z ckuersteiner $
+# $Id: gb_e107_mult_vuln1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # e107 < 2.1.9 Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:e107:e107";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141480");
-  script_version("$Revision: 11385 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 12:20:10 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-14 16:39:34 +0700 (Fri, 14 Sep 2018)");
-  script_tag(name:"cvss_base", value:"4.7");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-16388", "CVE-2018-16389");
 

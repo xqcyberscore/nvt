@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_detect.nasl 11792 2018-10-09 09:50:39Z asteins $
+# $Id: gb_interleave_detect.nasl 12231 2018-11-06 14:39:09Z cfischer $
 #
 # Interleave Detection
 #
@@ -24,25 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103111");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11792 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 11:50:39 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-06 15:39:09 +0100 (Tue, 06 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Interleave Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"summary", value:"This host is running Interleave, an Open source Business Process
-Management software.");
+
   script_xref(name:"URL", value:"http://www.interleave.nl");
+
+  script_tag(name:"summary", value:"This host is running Interleave, an Open source Business Process
+  Management software.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -61,8 +65,7 @@ foreach dir(make_list_unique("/interleave", cgi_dirs(port:port))) {
 
   url = dir + "/index.php";
   buf = http_get_cache(item:url, port:port);
-
-  if(buf == NULL) continue;
+  if(!buf) continue;
 
   if(egrep(pattern:"<title>Interleave Business Process Management", string:buf, icase:TRUE) &&
     "Please enter your username and password" >< buf)  {
@@ -71,7 +74,7 @@ foreach dir(make_list_unique("/interleave", cgi_dirs(port:port))) {
 
     vers = "unknown";
 
-    url = dir +"/README";
+    url = dir + "/README";
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 

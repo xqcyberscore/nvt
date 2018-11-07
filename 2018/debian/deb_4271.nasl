@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4271.nasl 10966 2018-08-15 05:27:39Z cfischer $
+# $Id: deb_4271.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4271-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704271");
-  script_version("$Revision: 10966 $");
+  script_version("$Revision: 12236 $");
   script_cve_id("CVE-2018-10858", "CVE-2018-10919");
   script_name("Debian Security Advisory DSA 4271-1 (samba - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:27:39 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 00:00:00 +0200 (Tue, 14 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_magento_xss_vuln.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # Magento 1.9.0.1 Cross-Site Scripting Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112055");
-  script_version("$Revision: 12043 $");
+  script_version("$Revision: 12239 $");
   script_cve_id("CVE-2014-9758");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,7 +60,7 @@ if(description)
   of a users session with the application or full control of the application if the targeted user has administrative privileges.");
 
   script_tag(name:"affected", value:"Magento E-Commerce version 1.9.0.1.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2723_1.nasl 11565 2018-09-24 08:00:39Z santu $
+# $Id: gb_suse_2018_2723_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # SuSE Update for ffmpeg-4 openSUSE-SU-2018:2723-1 (ffmpeg-4)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851894");
-  script_version("$Revision: 11565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 10:00:39 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-16 07:52:45 +0200 (Sun, 16 Sep 2018)");
   script_cve_id("CVE-2018-13300", "CVE-2018-15822");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ffmpeg-4 openSUSE-SU-2018:2723-1 (ffmpeg-4)");
   script_tag(name:"summary", value:"Check the version of ffmpeg-4");

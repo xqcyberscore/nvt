@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_eseries_cmd_exec_vuln.nasl 12165 2018-10-30 09:37:01Z ckuersteiner $
+# $Id: gb_linksys_eseries_cmd_exec_vuln.nasl 12231 2018-11-06 14:39:09Z cfischer $
 #
 # Linksys ESeries Multiple OS Command Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:linksys:devices";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141621");
-  script_version("$Revision: 12165 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:37:01 +0100 (Tue, 30 Oct 2018) $");
+  script_version("$Revision: 12231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-06 15:39:09 +0100 (Tue, 06 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-30 14:57:10 +0700 (Tue, 30 Oct 2018)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("Linksys ESeries Multiple OS Command Injection Vulnerabilities");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");

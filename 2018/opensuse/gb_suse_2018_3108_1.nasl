@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3108_1.nasl 11927 2018-10-16 12:17:30Z santu $
+# $Id: gb_suse_2018_3108_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # SuSE Update for mgetty openSUSE-SU-2018:3108-1 (mgetty)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851932");
-  script_version("$Revision: 11927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 14:17:30 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-13 06:54:06 +0200 (Sat, 13 Oct 2018)");
   script_cve_id("CVE-2018-16741", "CVE-2018-16742", "CVE-2018-16743", "CVE-2018-16744", "CVE-2018-16745");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mgetty openSUSE-SU-2018:3108-1 (mgetty)");
   script_tag(name:"summary", value:"Check the version of mgetty");

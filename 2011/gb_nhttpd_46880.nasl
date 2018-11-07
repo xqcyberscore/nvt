@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nhttpd_46880.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_nhttpd_46880.nasl 12239 2018-11-07 08:22:09Z cfischer $
 #
 # nostromo nhttpd Directory Traversal Remote Command Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103119");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12239 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 09:22:09 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
   script_bugtraq_id(46880);
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,16 +48,19 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("nostromo/banner");
   script_require_ports("Services/www", 80);
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+
   script_tag(name:"summary", value:"nostromo nhttpd is prone to a remote command-execution vulnerability
-because it fails to properly validate user-supplied data.
+  because it fails to properly validate user-supplied data.");
 
-An attacker can exploit this issue to access arbitrary files and
-execute arbitrary commands with application-level privileges.
+  script_tag(name:"impact", value:"An attacker can exploit this issue to access arbitrary files and
+  execute arbitrary commands with application-level privileges.");
 
-nostromo versions prior to 1.9.4 are affected.");
-  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"affected", value:"nostromo versions prior to 1.9.4 are affected.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -66,10 +69,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 banner = get_http_banner(port:port);
 if("Server: nostromo" >!< banner)exit(0);
 

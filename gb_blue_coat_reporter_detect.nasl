@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blue_coat_reporter_detect.nasl 12152 2018-10-29 13:35:30Z asteins $
+# $Id: gb_blue_coat_reporter_detect.nasl 12231 2018-11-06 14:39:09Z cfischer $
 #
 # Blue Coat Reporter Detection
 #
@@ -24,24 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103245");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12152 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 14:35:30 +0100 (Mon, 29 Oct 2018) $");
+  script_version("$Revision: 12231 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-06 15:39:09 +0100 (Tue, 06 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-09-08 15:23:37 +0200 (Thu, 08 Sep 2011)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Blue Coat Reporter Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("BCReport/banner");
   script_require_ports("Services/www", 80);
-  script_tag(name:"summary", value:"This host is running the Blue Coat Reporter.");
+
   script_xref(name:"URL", value:"http://www.bluecoat.com/products/proxysg/addons/reporter");
+
+  script_tag(name:"summary", value:"This host is running the Blue Coat Reporter.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -52,13 +56,10 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 banner = get_http_banner(port:port);
-if(!banner)exit(0);
+if(!banner || ("BCReport" >!< banner && "Blue Coat Reporter" >!< banner)) exit(0);
 
-if("BCReport" >!< banner && "Blue Coat Reporter" >!< banner)exit(0);
-
-url = string("/");
-buf = http_get_cache(item:url, port:port);
-if( buf == NULL )continue;
+buf = http_get_cache(item:"/", port:port);
+if(!buf) exit(0);
 
 if(egrep(pattern:"Blue Coat Reporter", string:buf, icase:TRUE)) {
 
@@ -95,7 +96,7 @@ if(egrep(pattern:"Blue Coat Reporter", string:buf, icase:TRUE)) {
     }
   }
 
-  register_and_report_cpe(app:"Blue Coat Reporter", ver:vers, concluded:version[0], base:"cpe:/a:bluecoat:reporter:", expr:"^([0-9.]+)", insloc:url, regPort:port, conclUrl:url, extra:extra);
+  register_and_report_cpe(app:"Blue Coat Reporter", ver:vers, concluded:version[0], base:"cpe:/a:bluecoat:reporter:", expr:"^([0-9.]+)", insloc:"/", regPort:port, conclUrl:url, extra:extra);
 
 }
 

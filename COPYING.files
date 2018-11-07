@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 06 Nov 2018 11:02:28 +0100
+# Automatically created on:  Wed, 07 Nov 2018 09:55:40 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39656,6 +39656,7 @@
 2018/debian/deb_dla_1565.nasl: GPLv2+
 2018/debian/deb_dla_1566.nasl: GPLv2+
 2018/debian/deb_dla_1567.nasl: GPLv2+
+2018/debian/deb_dla_1568.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42474,6 +42475,7 @@
 2018/owncloud/gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_cmd_inj_vuln.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_stack_overflow_vuln.nasl: GPLv2+
+2018/panasonic/gb_panasonic_ip_camera_default_credentials.nasl: GPLv2+
 2018/pandasecurity/gb_panda_global_protection_mult_vuln.nasl: GPLv2+
 2018/patniemeyer/gb_beanshell_rce_http.nasl: GPLv2+
 2018/patniemeyer/gb_beanshell_rce_telnet.nasl: GPLv2+
@@ -42559,6 +42561,10 @@
 2018/powerdns/gb_pdns_powerdns-advisory-2016-03.nasl: GPLv2+
 2018/powerdns/gb_pdns_powerdns-advisory-2016-04.nasl: GPLv2+
 2018/powerdns/gb_pdns_powerdns-advisory-2018-02.nasl: GPLv2+
+2018/powerdns/gb_pdns_powerdns-advisory-2018-03.nasl: GPLv2+
+2018/powerdns/gb_pdns_powerdns-advisory-2018-04.nasl: GPLv2+
+2018/powerdns/gb_pdns_powerdns-advisory-2018-05.nasl: GPLv2+
+2018/powerdns/gb_pdns_powerdns-advisory-2018-06-7.nasl: GPLv2+
 2018/prestashop/gb_prestashop_mult_vuln.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_macosx.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_win.nasl: GPLv2+
@@ -42615,6 +42621,8 @@
 2018/samba/gb_samba_libsmbclient_heap_bof_vuln_aug18.nasl: GPLv2+
 2018/samba/gb_samba_multiple_vuln_aug18.nasl: GPLv2+
 2018/samba/gb_samba_mult_vuln.nasl: GPLv2+
+2018/samba/gb_samba_priv_delegation_vuln_nov18.nasl: GPLv2+
+2018/samba/gb_samba_priv_esc_vuln_nov18.nasl: GPLv2+
 2018/samsung/gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl: GPLv2+
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/sanyo/gb_sanyo_network_camera_default_credentials.nasl: GPLv2+
@@ -43671,6 +43679,7 @@ gb_cisco_wsa_web_detect.nasl: GPLv2+
 gb_citrix_license_server_detect.nasl: GPLv2+
 gb_citrix_netscaler_version.nasl: GPLv2+
 gb_citrix_provisioning_services_detect.nasl: GPLv2+
+gb_citrix_sdwan_detect.nasl: GPLv2+
 gb_citrix_xenmobile_detect.nasl: GPLv2+
 gb_clamav_detect_lin.nasl: GPLv2+
 gb_clamav_detect_win.nasl: GPLv2+
@@ -44515,6 +44524,7 @@ gb_palo_alto_panOS_version.nasl: GPLv2+
 gb_palo_alto_version_api.nasl: GPLv2+
 gb_palo_alto_webgui_detect.nasl: GPLv2+
 gb_panasonic_fpwin_pro_detect_win.nasl: GPLv2+
+gb_panasonic_ip_camera_detect.nasl: GPLv2+
 gb_panda_prdts_detect.nasl: GPLv2+
 gb_panda_security_url_filtering_service_detect_win.nasl: GPLv2+
 gb_pandora_fms_detect.nasl: GPLv2+
@@ -60574,6 +60584,7 @@ gsf/2018/citrix/gb_citrix_netscaler_CTX232199.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX234869.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_CTX239002.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_netscaler_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/citrix/gb_citrix_sdwan_CTX236992.nasl: GPLv2+
 gsf/2018/citrix/gb_citrix_xenmobile_CTX234879.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx231390.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx232096.nasl: GPLv2+
@@ -60606,6 +60617,7 @@ gsf/2018/efi/gb_efi_fiery_file_discl_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_avamar_access_ctrl_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_data_protection_advisor_xxe_vuln.nasl: GPLv2+
+gsf/2018/emc/gb_emc_esrs_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_DSA-2018-147.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_DSA-2018-130.nasl: GPLv2+
@@ -61997,7 +62009,6 @@ gsf/Policy/WindowsGeneral/MSSecurityGuide/win_sg_smbv1_client_driver.nasl: GPLv2
 gsf/Policy/WindowsGeneral/MSSecurityGuide/win_sg_smbv1_server.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/MSSecurityGuide/win_sg_uac_restrictions_local_accounts.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/MSSecurityGuide/win_sg_wdigest_authentication.nasl: GPLv2+
-gsf/Policy/WindowsGeneral/MSSLegacy/win_last_access_timestamp.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/MSSLegacy/win_ml_autologon.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/MSSLegacy/win_ml_dialup_passwd_saved.nasl: GPLv2+
 gsf/Policy/WindowsGeneral/MSSLegacy/win_ml_enableicmpredirect.nasl: GPLv2+
@@ -63369,6 +63380,7 @@ Policy/gb_policy_tls.nasl: GPLv2+
 Policy/gb_policy_tls_passed.nasl: GPLv2+
 Policy/gb_policy_tls_violation.nasl: GPLv2+
 Policy/Microsoft/Office/office2013_automatic_updates.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/win_last_access_timestamp.nasl: GPLv2+
 Policy/policy_BSI-TR-03116-4_error.nasl: GPLv2+
 Policy/policy_BSI-TR-03116-4.nasl: GPLv2+
 Policy/policy_BSI-TR-03116-4_ok.nasl: GPLv2+

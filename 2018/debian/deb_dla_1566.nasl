@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1566.nasl 12222 2018-11-06 07:21:42Z cfischer $
+# $Id: deb_dla_1566.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1566-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,14 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891566");
-  script_version("$Revision: 12222 $");
+  script_version("$Revision: 12236 $");
   script_cve_id("CVE-2018-2767", "CVE-2018-3058", "CVE-2018-3063", "CVE-2018-3066", "CVE-2018-3070",
                 "CVE-2018-3081", "CVE-2018-3133", "CVE-2018-3174", "CVE-2018-3282");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1566-1] mysql-5.5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-06 08:21:42 +0100 (Tue, 06 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-06 00:00:00 +0100 (Tue, 06 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

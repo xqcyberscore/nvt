@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_mult_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_e107_mult_vuln.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # e107 <= 2.1.8 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112373");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 14:34:11 +0200 (Tue, 11 Sep 2018)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

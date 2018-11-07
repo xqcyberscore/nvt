@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_48f74c8eb2_libtiff_fc28.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_fedora_2018_48f74c8eb2_libtiff_fc28.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # Fedora Update for libtiff FEDORA-2018-48f74c8eb2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875210");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-21 07:14:48 +0200 (Sun, 21 Oct 2018)");
   script_cve_id("CVE-2018-17100", "CVE-2018-17101", "CVE-2018-10779", "CVE-2017-11613", "CVE-2017-9935", "CVE-2017-18013", "CVE-2018-8905", "CVE-2018-10963", "CVE-2018-7456", "CVE-2018-10801");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libtiff FEDORA-2018-48f74c8eb2");
   script_tag(name:"summary", value:"Check the version of libtiff");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3211_1.nasl 12028 2018-10-23 09:06:24Z santu $
+# $Id: gb_suse_2018_3211_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
 #
 # SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851940");
-  script_version("$Revision: 12028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:06:24 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:30:24 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-10919");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)");
   script_tag(name:"summary", value:"Check the version of samba");
