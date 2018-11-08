@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3825.nasl 9356 2018-04-06 07:17:02Z cfischer $
+# $Id: deb_3825.nasl 12252 2018-11-08 07:19:31Z asteins $
 # Auto-generated from advisory DSA 3825-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703825");
-    script_version("$Revision: 9356 $");
+    script_version("$Revision: 12252 $");
     script_cve_id("CVE-2016-3822");
     script_name("Debian Security Advisory DSA 3825-1 (jhead - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
     script_tag(name: "creation_date", value: "2017-03-31 00:00:00 +0200 (Fri, 31 Mar 2017)");
-    script_tag(name:"cvss_base", value:"7.5");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+    script_tag(name:"cvss_base", value:"6.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3e9f26489b_lcms2_fc27.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_fedora_2018_3e9f26489b_lcms2_fc27.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Fedora Update for lcms2 FEDORA-2018-3e9f26489b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875139");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12252 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 08:39:51 +0200 (Fri, 05 Oct 2018)");
   script_cve_id("CVE-2018-16435");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for lcms2 FEDORA-2018-3e9f26489b");
   script_tag(name:"summary", value:"Check the version of lcms2");

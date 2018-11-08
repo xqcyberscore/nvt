@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 12063 2018-10-24 14:21:54Z cfischer $
+# $Id: gb_get_http_banner.nasl 12248 2018-11-07 15:25:41Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 12063 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 16:21:54 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12248 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -366,13 +366,13 @@ set_mandatory_key( key:"akka", regex: "Server: akka-http/", banner:banner );
 set_mandatory_key( key:"voipnow", regex: "Server: voipnow", banner:banner );
 set_mandatory_key( key:"D-LinkDNS", regex: "Server: (lighttpd/|GoAhead-Webs)", banner:banner );
 set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd/|WebServer)", banner:banner );
+set_mandatory_key( key:"D-LinkDSL", regex:"Server: (Boa/|micro_httpd|Linux,|RomPager/)", banner:banner ); # For gb_dlink_dsl_detect.nasl
 set_mandatory_key( key:"Cohu", regex: "Server: Cohu Camera", banner:banner );
 set_mandatory_key( key:"HTTPserv", regex: "Server: .*HTTPserv:", banner:banner );
 set_mandatory_key( key:"ABwww", regex: "Server: A-B WWW", banner:banner );
 set_mandatory_key( key:"yawcam", regex: "Server: yawcam", banner:banner );
 set_mandatory_key( key:"JetBrainsIDEs", regex: "server: (PyCharm|WebStorm|CLion|DataGrip|IntelliJ|JetBrains|JetBrains|jetBrains|RubyMine)", banner:banner );
 set_mandatory_key( key:"tplink_httpd", regex: "Server: TP-LINK HTTPD/", banner:banner );
-set_mandatory_key( key:"Boa_or_micro_httpd", regex:"Server: (Boa/|micro_httpd)", banner:banner ); # For gb_dlink_dsl_detect.nasl
 set_mandatory_key( key:"monit", regex: "Server: monit", banner:banner );
 set_mandatory_key( key:"CirCarLife", regex: "Server: CirCarLife Scada", banner:banner );
 set_mandatory_key( key:"mt-daapd", regex: "Server: mt-daapd", banner:banner );

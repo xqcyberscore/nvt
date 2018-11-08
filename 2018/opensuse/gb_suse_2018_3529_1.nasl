@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3529_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3529_1.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # SuSE Update for lcms2 openSUSE-SU-2018:3529-1 (lcms2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852105");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12252 $");
   script_cve_id("CVE-2018-16435");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-28 06:04:16 +0100 (Sun, 28 Oct 2018)");
   script_name("SuSE Update for lcms2 openSUSE-SU-2018:3529-1 (lcms2)");
   script_category(ACT_GATHER_INFO);

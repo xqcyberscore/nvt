@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4284.nasl 11253 2018-09-06 06:07:51Z cfischer $
+# $Id: deb_4284.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Auto-generated from advisory DSA 4284-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704284");
-  script_version("$Revision: 11253 $");
+  script_version("$Revision: 12252 $");
   script_cve_id("CVE-2018-16435");
   script_name("Debian Security Advisory DSA 4284-1 (lcms2 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 08:07:51 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 00:00:00 +0200 (Tue, 04 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

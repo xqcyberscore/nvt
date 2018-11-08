@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3770_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3770_1.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Ubuntu Update for lcms2 USN-3770-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843704");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 12252 $");
   script_cve_id("CVE-2016-10165", "CVE-2018-16435");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:08:52 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for lcms2 USN-3770-1");
   script_category(ACT_GATHER_INFO);

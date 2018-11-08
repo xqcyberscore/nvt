@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_d0dff2abaa_opensc_fc28.nasl 11820 2018-10-10 12:13:33Z santu $
+# $Id: gb_fedora_2018_d0dff2abaa_opensc_fc28.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Fedora Update for opensc FEDORA-2018-d0dff2abaa
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875145");
-  script_version("$Revision: 11820 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:13:33 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12252 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-06 08:37:57 +0200 (Sat, 06 Oct 2018)");
   script_cve_id("CVE-2018-16418", "CVE-2018-16419", "CVE-2018-16420", "CVE-2018-16421",
                 "CVE-2018-16423", "CVE-2018-16424", "CVE-2018-16425", "CVE-2018-16426",
                 "CVE-2018-16427", "CVE-2018-16391", "CVE-2018-16392", "CVE-2018-16393",
                 "CVE-2018-16422");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for opensc FEDORA-2018-d0dff2abaa");
   script_tag(name:"summary", value:"Check the version of opensc");

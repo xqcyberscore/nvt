@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_site_detect.nasl 11396 2018-09-14 16:36:30Z cfischer $
+# $Id: gb_open_site_detect.nasl 12240 2018-11-07 09:03:47Z cfischer $
 #
-# openSite Detection
+# Primal Fusion openSite Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103021");
-  script_version("$Revision: 11396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12240 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 10:03:47 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:28:19 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("openSite Detection");
+  script_name("Primal Fusion openSite Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -52,37 +52,35 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("cpe.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) )
+  exit( 0 );
 
 foreach dir( make_list_unique( "/os", "/os/upload", cgi_dirs( port:port ) ) ) {
 
   install = dir;
-  if( dir == "/" ) dir = "";
-  url = dir + "/index.php";
-  buf = http_get_cache( item:url, port:port );
-  if(!buf) continue;
+  if( dir == "/" )
+    dir = "";
 
-  if(egrep(pattern: "<title>Primal Fusion openSite", string: buf, icase: TRUE)) {
+  buf = http_get_cache( item:dir + "/index.php", port:port );
+  if( ! buf )
+    continue;
 
-    vers = string("unknown");
-    version = eregmatch(string: buf, pattern: " <title>Primal Fusion openSite v([^<]+)",icase:TRUE);
+  if( egrep( pattern:"<title>Primal Fusion openSite", string:buf, icase:TRUE ) ) {
 
-    if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
-    }
+    set_kb_item( name:"primalfusion/opensite/detected", value:TRUE );
+    vers = "unknown";
+    version = eregmatch( string:buf, pattern:"<title>Primal Fusion openSite v([^<]+)", icase:TRUE );
 
-    set_kb_item(name: string("www/", port, "/opensite"), value: string(vers," under ",install));
+    if( ! isnull( version[1] ) )
+      vers = chomp( version[1] );
 
-    info = string("openSite Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
-    log_message(port:port,data:info);
-    exit(0);
+    register_and_report_cpe( app:"Primal Fusion openSite", ver:vers, concluded:version[0], base:"cpe:/a:primalfusion:opensite:", expr:"^([0-9.]+)", insloc:install, regPort:port );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 0 );

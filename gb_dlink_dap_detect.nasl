@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dap_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_dlink_dap_detect.nasl 12246 2018-11-07 13:40:39Z cfischer $
 #
-# Dlink DAP Devices Detection
+# D-Link DAP Devices Detection
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -27,18 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810234");
-  script_version("$Revision: 10888 $");
+  script_version("$Revision: 12246 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-07 14:40:39 +0100 (Wed, 07 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 15:22:03 +0530 (Fri, 09 Dec 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Dlink DAP Devices Detection");
-  script_tag(name:"summary", value:"Detection of Dlink DAP Devices.
-
-  The script sends a connection request to the server and attempts to
-  determine if the remote host is a Dlink DAP device from the reply.");
-
+  script_name("D-Link DAP Devices Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -46,53 +40,86 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_tag(name:"summary", value:"Detection of D-Link DAP Devices.
+
+  The script sends a connection request to the server and attempts to
+  determine if the remote host is a D-Link DAP device from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
-dlPort = get_http_port(default:80);
+port = get_http_port( default:80 );
+buf = http_get_cache( item:"/", port:port );
 
-buf = http_get_cache( item:"/", port:dlPort );
+if( ( buf =~ 'Product Page:.*>DAP' || 'Product Page :.*>DAP' ) &&
+    ( buf =~ ">Copyright.*D-Link Systems, Inc" || ( "<title>D-LINK SYSTEMS, INC. | WIRELESS AP : LOGIN</title>" >< buf ) ) ) {
 
-if((buf =~ 'Product Page:.*>DAP' || 'Product Page :.*>DAP') &&
-   (buf =~ ">Copyright.*D-Link Systems, Inc" || ("<title>D-LINK SYSTEMS, INC. | WIRELESS AP : LOGIN</title>" >< buf)))
-{
-  ver = "unknown";
-  model = "unknown";
+  set_kb_item( name:"Host/is_dlink_dap_device", value:TRUE );
+  set_kb_item( name:"Host/is_dlink_device", value:TRUE );
 
-  model = eregmatch( pattern:'>DAP-([0-9.]+)', string:buf );
-  if(model[1]){
-    set_kb_item( name:"dlink/dap/model", value:model[1] );
+  fw_version = "unknown";
+  os_app     = "D-Link DAP";
+  os_cpe     = "cpe:/o:d-link:dap";
+  hw_version = "unknown";
+  hw_app     = "D-Link DAP";
+  hw_cpe     = "cpe:/h:d-link:dap";
+  model      = "unknown";
+  install    = "/";
+
+  mo = eregmatch( pattern:'>DAP-([0-9.]+)', string:buf );
+  if( mo[1] ) {
+    model = mo[1];
+    os_app += "-" + model + " Firmware";
+    os_cpe += "-" + model + "_firmware";
+    hw_app += "-" + model + " Device";
+    hw_cpe += "-" + model;
+    set_kb_item( name:"d-link/dap/model", value:model );
+  } else {
+    os_app += " Unknown Model Firmware";
+    os_cpe += "-unknown_model_firmware";
+    hw_app += " Unknown Model Device";
+    os_cpe += "-unknown_model";
   }
 
-  ver = eregmatch( pattern:'Firmware Version ?: V?([0-9.]+)', string:buf );
-  if(ver[1])
-  {
-    ver = ver[1];
-    set_kb_item( name:"dlink/dap/firmver", value:ver );
+  # <td align="right" nowrap>Hardware Version: A1 &nbsp;&nbsp;&nbsp;Firmware Version: 1.13</td>
+  fw_ver = eregmatch( pattern:'Firmware Version ?: V?([0-9.]+)', string:buf );
+  if( fw_ver[1] ) {
+    os_cpe    += ":" + fw_ver[1];
+    fw_version = fw_ver[1];
+    set_kb_item( name:"d-link/dap/fw_version", value:fw_version );
   }
 
-  hwver = eregmatch( pattern:'>Hardware Version : ([0-9A-Za-z.]+)', string:buf );
-  if(hwver[1]){
-    set_kb_item( name:"dlink/dap/hwver", value:hwver[1] );
+  # <td align="right" nowrap>Hardware Version: A1 &nbsp;&nbsp;&nbsp;Firmware Version: 1.13</td>
+  hw_ver = eregmatch( pattern:'>Hardware Version ?: ([0-9A-Za-z.]+)', string:buf );
+  if( hw_ver[1] ) {
+    hw_cpe    += ":" + tolower( hw_ver[1] );
+    hw_version = hw_ver[1];
+    set_kb_item( name:"d-link/dap/hw_version", value:hw_version );
   }
 
-  cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/h:dlink:dap:");
-  if( isnull( cpe ) )
-    cpe = 'cpe:/h:dlink:dap';
+  register_and_report_os( os:os_app, cpe:os_cpe, banner_type:"D-Link DAP Device Login Page", port:port, desc:"D-Link DAP Devices Detection", runs_key:"unixoide" );
+  register_product( cpe:os_cpe, location:install, port:port, service:"www" );
+  register_product( cpe:hw_cpe, location:install, port:port, service:"www" );
 
-  register_product( cpe:cpe, location:'/', port:dlPort);
-  log_message( data: build_detection_report( app: "D-Link DAP",
-                                             version: ver,
-                                             install: '/',
-                                             cpe: cpe,
-                                             concluded: ver),
-                                             port: dlPort);
+  report = build_detection_report( app:os_app,
+                                   version:fw_version,
+                                   concluded:fw_ver[0],
+                                   install:install,
+                                   cpe:os_cpe );
 
-  exit (0);
+  report += '\n\n' + build_detection_report( app:hw_app,
+                                             version:hw_version,
+                                             concluded:hw_ver[0],
+                                             install:install,
+                                             cpe:hw_cpe );
+
+  log_message( port:port, data:report );
 }
-exit (0);
+
+exit( 0 );
