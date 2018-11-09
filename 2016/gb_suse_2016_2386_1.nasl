@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2386_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2386_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2386-1 (MozillaFirefox, mozilla-nss)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851396");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 05:48:14 +0200 (Tue, 27 Sep 2016)");
-  script_cve_id("CVE-2016-2827", "CVE-2016-5256", "CVE-2016-5257", "CVE-2016-5270", 
-                "CVE-2016-5271", "CVE-2016-5272", "CVE-2016-5273", "CVE-2016-5274", 
-                "CVE-2016-5275", "CVE-2016-5276", "CVE-2016-5277", "CVE-2016-5278", 
-                "CVE-2016-5279", "CVE-2016-5280", "CVE-2016-5281", "CVE-2016-5282", 
+  script_cve_id("CVE-2016-2827", "CVE-2016-5256", "CVE-2016-5257", "CVE-2016-5270",
+                "CVE-2016-5271", "CVE-2016-5272", "CVE-2016-5273", "CVE-2016-5274",
+                "CVE-2016-5275", "CVE-2016-5276", "CVE-2016-5277", "CVE-2016-5278",
+                "CVE-2016-5279", "CVE-2016-5280", "CVE-2016-5281", "CVE-2016-5282",
                 "CVE-2016-5283", "CVE-2016-5284");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2386-1 (MozillaFirefox, mozilla-nss)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox, mozilla-nss");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  MozillaFirefox was updated to version 49.0 (boo#999701)
+  script_tag(name:"insight", value:"MozillaFirefox was updated to version 49.0 (boo#999701)
   - New features
   * Updated Firefox Login Manager to allow HTTPS pages to use saved
   HTTP logins.
@@ -89,7 +88,7 @@ of detect NVT and check if the version is vulnerable or not.");
   * Added support for ChaCha with TLS 1.3
   * Added support for TLS 1.2 ciphersuites that use SHA384 as the PRF
   * In previous versions, when using client authentication with TLS
-  1.2, NSS only supported certificate_verify messag ... 
+  1.2, NSS only supported certificate_verify messag ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "MozillaFirefox, mozilla-nss on openSUSE 13.1");

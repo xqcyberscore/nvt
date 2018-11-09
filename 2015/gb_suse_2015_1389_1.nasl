@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1389_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1389_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2015:1389-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850685");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:40:10 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2015-4473", "CVE-2015-4474", "CVE-2015-4475", "CVE-2015-4477", "CVE-2015-4478", "CVE-2015-4479", "CVE-2015-4480", "CVE-2015-4481", "CVE-2015-4482", "CVE-2015-4483", "CVE-2015-4484", "CVE-2015-4485", "CVE-2015-4486", "CVE-2015-4487", "CVE-2015-4488", "CVE-2015-4489", "CVE-2015-4490", "CVE-2015-4491", "CVE-2015-4492", "CVE-2015-4493", "CVE-2015-4495");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2015:1389-1 (MozillaFirefox)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  - update to Firefox 40.0 (bnc#940806)
+  script_tag(name:"insight", value:"- update to Firefox 40.0 (bnc#940806)
   * Added protection against unwanted software downloads
   * Suggested Tiles show sites of interest, based on categories from your
   recent browsing history

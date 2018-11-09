@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0529_1.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_suse_2018_0529_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for postgresql95 openSUSE-SU-2018:0529-1 (postgresql95)
 #
@@ -27,26 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851709");
-  script_version("$Revision: 9094 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 09:06:11 +0100 (Fri, 23 Feb 2018)");
-  script_cve_id("CVE-2017-15098", "CVE-2017-15099", "CVE-2017-7546", "CVE-2017-7547", 
+  script_cve_id("CVE-2017-15098", "CVE-2017-15099", "CVE-2017-7546", "CVE-2017-7547",
                 "CVE-2017-7548", "CVE-2018-1053");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql95 openSUSE-SU-2018:0529-1 (postgresql95)");
   script_tag(name: "summary", value: "Check the version of postgresql95");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for postgresql95 fixes the following issues:
+  script_tag(name:"insight", value:"This update for postgresql95 fixes the following issues:
 
-  Upate to PostgreSQL 9.5.11:
+  Update to PostgreSQL 9.5.11:
 
   Security issues fixed:
 
-  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-11.html'
   * CVE-2018-1053, boo#1077983: Ensure that all temporary files made by
   pg_upgrade are non-world-readable.
   * boo#1079757: Rename pg_rewind's copy_file_range function to avoid
@@ -54,14 +52,12 @@ of detect NVT and check if the version is vulnerable or not.");
 
   In version 9.5.10:
 
-  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-10.html'
   * CVE-2017-15098, boo#1067844: Memory disclosure in JSON functions.
   * CVE-2017-15099, boo#1067841: INSERT ... ON CONFLICT DO UPDATE fails to
   enforce SELECT privileges.
 
   In version 9.5.9:
 
-  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-9.html'
   * Show foreign tables in information_schema.table_privileges view.
   * Clean up handling of a fatal exit (e.g., due to receipt of SIGTERM)
   that occurs while trying to execute a ROLLBACK of a failed transaction.
@@ -75,7 +71,6 @@ of detect NVT and check if the version is vulnerable or not.");
 
   In version 9.5.8
 
-  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-8.html'
   * CVE-2017-7547, boo#1051685: Further restrict visibility of
   pg_user_mappings.umoptions, to protect passwords stored as user
   mapping options.

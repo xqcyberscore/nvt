@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0007_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0007_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2017:0007-1 (xen)
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851466");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 09:00:45 +0100 (Wed, 04 Jan 2017)");
-  script_cve_id("CVE-2016-10013", "CVE-2016-10024", "CVE-2016-7777", "CVE-2016-7908", 
-                "CVE-2016-7909", "CVE-2016-7995", "CVE-2016-8576", "CVE-2016-8667", 
-                "CVE-2016-8669", "CVE-2016-8909", "CVE-2016-8910", "CVE-2016-9101", 
-                "CVE-2016-9377", "CVE-2016-9378", "CVE-2016-9379", "CVE-2016-9380", 
-                "CVE-2016-9381", "CVE-2016-9382", "CVE-2016-9383", "CVE-2016-9385", 
+  script_cve_id("CVE-2016-10013", "CVE-2016-10024", "CVE-2016-7777", "CVE-2016-7908",
+                "CVE-2016-7909", "CVE-2016-7995", "CVE-2016-8576", "CVE-2016-8667",
+                "CVE-2016-8669", "CVE-2016-8909", "CVE-2016-8910", "CVE-2016-9101",
+                "CVE-2016-9377", "CVE-2016-9378", "CVE-2016-9379", "CVE-2016-9380",
+                "CVE-2016-9381", "CVE-2016-9382", "CVE-2016-9383", "CVE-2016-9385",
                 "CVE-2016-9386", "CVE-2016-9637", "CVE-2016-9776", "CVE-2016-9932");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2017:0007-1 (xen)");
   script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This updates xen to version 4.5.5 to fix the following issues:
+  script_tag(name:"insight", value:"This updates xen to version 4.5.5 to fix the following issues:
 
   - An unprivileged user in a guest could gain guest could escalate
   privilege to that of the guest kernel, if it had could invoke the
@@ -87,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   process on x86 HVM guests. (boo#1009109, CVE-2016-9381)
   - A vulnerability in pygrub allowed a malicious guest administrator to
   obtain the contents of sensitive host files, or even delete those files
-  (boo#1009111, CV ... 
+  (boo#1009111, CV ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "xen on openSUSE Leap 42.1");

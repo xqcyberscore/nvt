@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0696_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0696_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Linux SUSE-SU-2014:0696-1 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851057");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:07:12 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-4470", "CVE-2013-4579", "CVE-2013-6382", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7264", "CVE-2013-7265", "CVE-2013-7339", "CVE-2014-0069", "CVE-2014-0101", "CVE-2014-0196", "CVE-2014-1444", "CVE-2014-1445", "CVE-2014-1446", "CVE-2014-1737", "CVE-2014-1738", "CVE-2014-1874", "CVE-2014-2039", "CVE-2014-2523", "CVE-2014-2678", "CVE-2014-3122");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for Linux SUSE-SU-2014:0696-1 (Linux)");
   script_tag(name: "summary", value: "Check the version of Linux");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The SUSE Linux Enterprise Server 11 SP2 LTSS kernel received a roll-up
+  script_tag(name:"insight", value:"The SUSE Linux Enterprise Server 11 SP2 LTSS kernel received a roll-up
   update to fix security and non-security issues.
 
   The following security bugs have been fixed:
@@ -95,7 +94,7 @@ if(description)
 
   CVE-2013-7264: The l2tp_ip_recvmsg function in net/l2tp/l2tp_ip.c in
   the Linux kernel before 3.12.4 updates a certain length value before
-  ensuring that an ass ... 
+  ensuring that an ass ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux on SUSE Linux Enterprise Server 11 SP2 LTSS");

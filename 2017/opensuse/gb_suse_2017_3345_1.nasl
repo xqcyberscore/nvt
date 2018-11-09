@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3345_1.nasl 8291 2018-01-04 09:51:36Z asteins $
+# $Id: gb_suse_2017_3345_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2017:3345-1 (openssl)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851665");
-  script_version("$Revision: 8291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 10:51:36 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-17 07:32:27 +0100 (Sun, 17 Dec 2017)");
-  script_cve_id("CVE-2017-3737", "CVE-2017-3738", "CVE-2016-0701", "CVE-2017-3736", 
+  script_cve_id("CVE-2017-3737", "CVE-2017-3738", "CVE-2016-0701", "CVE-2017-3736",
                 "CVE-2017-3732", "CVE-2015-3193");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2017:3345-1 (openssl)");
   script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for openssl fixes the following issues:
+  script_tag(name:"insight", value:"This update for openssl fixes the following issues:
 
   - OpenSSL Security Advisory [07 Dec 2017]
   * CVE-2017-3737: OpenSSL 1.0.2 (starting from version 1.0.2b) introduced

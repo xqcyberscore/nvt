@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2648_1.nasl 11736 2018-10-04 03:08:30Z ckuersteiner $
+# $Id: gb_suse_2018_2648_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for php7 openSUSE-SU-2018:2648-1 (php7)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851882");
-  script_version("$Revision: 11736 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 05:08:30 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-08 07:13:50 +0200 (Sat, 08 Sep 2018)");
   script_cve_id("CVE-2017-9118");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for php7 openSUSE-SU-2018:2648-1 (php7)");
   script_tag(name:"summary", value:"Check the version of php7");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for php7 fixes the following issues:
+  script_tag(name:"insight", value:"This update for php7 fixes the following issues:
 
   - CVE-2017-9118: Fixed an out of bounds access in php_pcre_replace_impl
   via a crafted preg_replace call (bsc#1105466)

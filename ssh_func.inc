@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 12066 2018-10-25 07:05:23Z cfischer $
+# $Id: ssh_func.inc 12262 2018-11-08 13:34:21Z emoss $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12066 $
+# $Revision: 12262 $
 #
 ###############################################################################
 
@@ -2621,4 +2621,31 @@ function ssh_rand_str( length, charset ) {
     s += charset[n];
   }
   return s;
+}
+
+# @brief looks on linux host if a given file
+#        can be found / accessed
+#
+# @param socket (optional) an open socket. If
+#             non given, a new one will be
+#             opened
+#        file the file to check the existence
+#             (filepath)
+#
+# @return TRUE or FALSE
+#
+function ssh_check_file_existence( socket, file ) {
+	if( ! socket ){
+		socket = ssh_login_or_reuse_connection();
+	}
+	if( ! file ){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#ssh_check_file_existence" );
+		return;
+	}
+	cmd = '[ -f ' + file + ' ] && echo "TRUE" || echo "FALSE"';
+	file_exists = ssh_cmd(cmd:cmd, socket:socket);
+	if(file_exists == 'TRUE')
+		return(TRUE);
+	if(file_exists == 'FALSE')
+		return(FALSE);
 }

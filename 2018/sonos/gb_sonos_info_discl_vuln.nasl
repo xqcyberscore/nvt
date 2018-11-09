@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonos_info_discl_vuln.nasl 10688 2018-07-31 06:55:11Z asteins $
+# $Id: gb_sonos_info_discl_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Sonos Speaker Information Disclosure Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:sonos';
+CPE_PREFIX = 'cpe:/a:sonos';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141020");
-  script_version("$Revision: 10688 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:55:11 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 10:15:48 +0700 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,11 +54,11 @@ if (description)
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
   script_tag(name:"insight", value:"By accessing /status or /tools it is possible for an unauthenticated attacker
-to gather information about the device settings and possible other information. This may lead to further
-attacks.");
+  to gather information about the device settings and possible other information. This may lead to further
+  attacks.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 31st July, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 08th November, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://conference.hitb.org/hitbsecconf2018ams/materials/D1%20COMMSEC%20-%20Stephen%20Hilt%20-%20Hacking%20IoT%20Speakers.pdf");
 
@@ -69,10 +69,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
 
-url = "/status/topology";
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + "/status/topology";
 if (http_vuln_check(port: port, url: url, pattern: "<ZPSupportInfo><ZonePlayers>", check_header: TRUE)) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);

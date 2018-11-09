@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1422_1.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_suse_2018_1422_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for icu openSUSE-SU-2018:1422-1 (icu)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851765");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:45:12 +0200 (Sat, 26 May 2018)");
-  script_cve_id("CVE-2014-8146", "CVE-2014-8147", "CVE-2016-6293", "CVE-2017-14952", 
+  script_cve_id("CVE-2014-8146", "CVE-2014-8147", "CVE-2016-6293", "CVE-2017-14952",
                 "CVE-2017-15422", "CVE-2017-17484", "CVE-2017-7867", "CVE-2017-7868");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for icu openSUSE-SU-2018:1422-1 (icu)");
   script_tag(name:"summary", value:"Check the version of icu");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  icu was updated to fix two security issues.
+  script_tag(name:"insight", value:"icu was updated to fix two security issues.
 
   These security issues were fixed:
   - CVE-2014-8147: The resolveImplicitLevels function in common/ubidi.c in
@@ -80,7 +79,7 @@ on the target host.");
   application crash) or possibly have unspecified other impact via a
   crafted string, as demonstrated by ZNC  (bnc#1072193)
   - CVE-2017-15422: An integer overflow in icu during persian calendar date
-  processing could ... 
+  processing could ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"icu on openSUSE Leap 42.3");

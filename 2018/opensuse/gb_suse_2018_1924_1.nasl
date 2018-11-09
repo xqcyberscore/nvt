@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1924_1.nasl 11180 2018-08-31 14:10:20Z mmartin $
+# $Id: gb_suse_2018_1924_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for nextcloud openSUSE-SU-2018:1924-1 (nextcloud)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851815");
-  script_version("$Revision: 11180 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 16:10:20 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 05:57:46 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-3761", "CVE-2018-3762");
   script_tag(name:"cvss_base", value:"5.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for nextcloud openSUSE-SU-2018:1924-1 (nextcloud)");
   script_tag(name:"summary", value:"Check the version of nextcloud");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for nextcloud fixes the following issues:
+  script_tag(name:"insight", value:"This update for nextcloud fixes the following issues:
 
   Security issues fixed:
 
@@ -51,7 +50,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1620_1.nasl 9467 2018-04-13 06:21:59Z cfischer $
+# $Id: gb_suse_2017_1620_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:1620-1 (Mozilla)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851568");
-  script_version("$Revision: 9467 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 07:03:19 +0200 (Tue, 20 Jun 2017)");
-  script_cve_id("CVE-2017-5470", "CVE-2017-5472", "CVE-2017-7749", "CVE-2017-7750", 
-                "CVE-2017-7751", "CVE-2017-7752", "CVE-2017-7754", "CVE-2017-7755", 
-                "CVE-2017-7756", "CVE-2017-7757", "CVE-2017-7758", "CVE-2017-7760", 
-                "CVE-2017-7761", "CVE-2017-7764", "CVE-2017-7765", "CVE-2017-7766", 
-                "CVE-2017-7767", "CVE-2017-7768", "CVE-2017-7771", "CVE-2017-7772", 
-                "CVE-2017-7773", "CVE-2017-7774", "CVE-2017-7775", "CVE-2017-7776", 
+  script_cve_id("CVE-2017-5470", "CVE-2017-5472", "CVE-2017-7749", "CVE-2017-7750",
+                "CVE-2017-7751", "CVE-2017-7752", "CVE-2017-7754", "CVE-2017-7755",
+                "CVE-2017-7756", "CVE-2017-7757", "CVE-2017-7758", "CVE-2017-7760",
+                "CVE-2017-7761", "CVE-2017-7764", "CVE-2017-7765", "CVE-2017-7766",
+                "CVE-2017-7767", "CVE-2017-7768", "CVE-2017-7771", "CVE-2017-7772",
+                "CVE-2017-7773", "CVE-2017-7774", "CVE-2017-7775", "CVE-2017-7776",
                 "CVE-2017-7777", "CVE-2017-7778");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:1620-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for Mozilla Firefox, Thunderbird, and NSS fixes the following
+  script_tag(name:"insight", value:"This update for Mozilla Firefox, Thunderbird, and NSS fixes the following
   issues:
 
   Mozilla Firefox was updated to 52.2esr (boo#1043960) MFSA 2017-16:
@@ -93,7 +92,7 @@ of detect NVT and check if the version is vulnerable or not.");
   * Implemented domain name constraints for CA: TUBITAK Kamu SM SSL Kok
   Sertifikasi - Surum 1. (bmo#1350859)
   * March 2017 batch of root CA changes (bmo#1350859) (version 2.14) CA
-  certificates removed: O = Japanese Government, OU = ApplicationCA CN ... 
+  certificates removed: O = Japanese Government, OU = ApplicationCA CN ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Mozilla on openSUSE Leap 42.2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3448_1.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
+# $Id: gb_suse_2017_3448_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2017:3448-1 (phpMyAdmin)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851672");
-  script_version("$Revision: 9430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-30 07:36:58 +0100 (Sat, 30 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -36,10 +36,9 @@ if(description)
   script_cve_id("CVE-2017-1000499");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2017:3448-1 (phpMyAdmin)");
   script_tag(name: "summary", value: "Check the version of phpMyAdmin");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for phpMyAdmin to version 4.7.7 fixes a security issue and
+  script_tag(name:"insight", value:"This update for phpMyAdmin to version 4.7.7 fixes a security issue and
   bugs.
 
   The following vulnerability was fixed:

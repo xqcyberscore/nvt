@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1942_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1942_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2015:1942-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851132");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-10 06:11:47 +0100 (Tue, 10 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-4514", "CVE-2015-4515", "CVE-2015-4518",
                 "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7185",
@@ -42,8 +42,7 @@ if(description)
   script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2015:1942-1 (MozillaFirefox,)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Mozilla Firefox was updated to version 42.0, fixing bugs and security
+  script_tag(name:"insight", value:"Mozilla Firefox was updated to version 42.0, fixing bugs and security
   issues. Mozilla xulrunner was updated to xulrunner 38.4.0. Seamonkey was
   updated to 2.39.
 
@@ -91,7 +90,7 @@ if(description)
   bmo#1204061, bmo#1204155) Vulnerabilities found through code inspection
   * MFSA 2015-132/CVE-2015-7197 (bmo#1204269) Mixed content WebSocket policy
   bypass through workers
-  * MFSA 2015-133/CVE-2015-7181/CVE-2015- ... 
+  * MFSA 2015-133/CVE-2015-7181/CVE-2015- ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "MozillaFirefox, on openSUSE 13.2, openSUSE 13.1");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0829_1.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
+# $Id: gb_suse_2018_0829_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for librelp openSUSE-SU-2018:0829-1 (librelp)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851726");
-  script_version("$Revision: 9594 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-28 08:51:53 +0200 (Wed, 28 Mar 2018)");
   script_cve_id("CVE-2018-1000140");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for librelp openSUSE-SU-2018:0829-1 (librelp)");
   script_tag(name: "summary", value: "Check the version of librelp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for librelp fixes the following issues:
+  script_tag(name:"insight", value:"This update for librelp fixes the following issues:
 
   - CVE-2018-1000140: A stack-based buffer overflow in the code for checking
   of x509 certificates allowed a remote attacker with an access to the
@@ -51,7 +50,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

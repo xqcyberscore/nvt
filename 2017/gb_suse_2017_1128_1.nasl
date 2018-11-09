@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1128_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1128_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for ruby2.1 openSUSE-SU-2017:1128-1 (ruby2.1)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851543");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-29 07:16:59 +0200 (Sat, 29 Apr 2017)");
   script_cve_id("CVE-2014-4975", "CVE-2015-1855", "CVE-2015-3900", "CVE-2015-7551", "CVE-2016-2339");
   script_tag(name:"cvss_base", value:"10.0");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of ruby2.1");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This ruby2.1 update to version 2.1.9 fixes the following issues:
+  script_tag(name:"insight", value:"This ruby2.1 update to version 2.1.9 fixes the following issues:
 
   Security issues fixed:
   - CVE-2016-2339: heap overflow vulnerability in the
@@ -57,9 +56,6 @@ if(description)
   variable properly (bsc#1014863)
   - Segmentation fault after pack &amp  ioctl &amp  unpack (bsc#909695)
   - Ruby:HTTP Header injection in 'net/http' (bsc#986630)
-
-  ChangeLog:
-  - <a  rel='nofollow' href='http://svn.ruby-lang.org/repos/ruby/tags/v2_1_9/ChangeLog'>http://svn.ruby-lang.org/repos/ruby/tags/v2_1_9/ChangeLog
 
   This update was imported from the SUSE:SLE-12:Update update project.");
   script_tag(name: "affected", value: "ruby2.1 on openSUSE Leap 42.2, openSUSE Leap 42.1");

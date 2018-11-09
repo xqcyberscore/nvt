@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2052_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2052_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2016:2052-1 (java-1_7_0-openjdk)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851380");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:48:50 +0200 (Fri, 12 Aug 2016)");
-  script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3498", "CVE-2016-3500", 
-                "CVE-2016-3503", "CVE-2016-3508", "CVE-2016-3511", "CVE-2016-3550", 
+  script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3498", "CVE-2016-3500",
+                "CVE-2016-3503", "CVE-2016-3508", "CVE-2016-3511", "CVE-2016-3550",
                 "CVE-2016-3598", "CVE-2016-3606", "CVE-2016-3610");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2016:2052-1 (java-1_7_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for java-1_7_0-openjdk fixes the following issues:
+  script_tag(name:"insight", value:"This update for java-1_7_0-openjdk fixes the following issues:
 
   - Update to 2.6.7 - OpenJDK 7u111
   * Security fixes
@@ -96,7 +95,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - S8022439: Fix lint warnings in sun.security.ec
   - S8022594: Potential deadlock in  clinit  of sun.nio.ch.Util/IOUtil
   - S8023546: sun/security/mscapi/ShortRSAKey1024.sh fails intermittently
-  - S8036612: [parfait] JNI exception pendin ... 
+  - S8036612: [parfait] JNI exception pendin ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "java-1_7_0-openjdk on openSUSE Leap 42.1");

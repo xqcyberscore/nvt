@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0475_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0475_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for sudo SUSE-SU-2014:0475-1 (sudo)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850754");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-0106");
   script_tag(name:"cvss_base", value:"6.6");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of sudo");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This collective update for sudo provides fixes for the
+  script_tag(name:"insight", value:"This collective update for sudo provides fixes for the
   following issues:
 
   * Security policy bypass when env_reset is disabled.
@@ -51,8 +50,7 @@ if(description)
 
   Security Issues references:
 
-  * CVE-2014-0106
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0106");
+  * CVE-2014-0106");
   script_tag(name: "affected", value: "sudo on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2014:0475_1");

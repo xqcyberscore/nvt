@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3235_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_3235_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for java-11-openjdk openSUSE-SU-2018:3235-1 (java-11-openjdk)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851996");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3150", "CVE-2018-3157", "CVE-2018-3169", "CVE-2018-3180", "CVE-2018-3183");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:32:43 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for java-11-openjdk openSUSE-SU-2018:3235-1 (java-11-openjdk)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for java-11-openjdk fixes the following issues:
+  script_tag(name:"insight", value:"This update for java-11-openjdk fixes the following issues:
 
   Update to upstream tag jdk-11.0.1+13 (Oracle October 2018 CPU)
 

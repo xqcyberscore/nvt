@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1348_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_suse_2018_1348_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for ghostscript openSUSE-SU-2018:1348-1 (ghostscript)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851751");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-20 05:40:42 +0200 (Sun, 20 May 2018)");
   script_cve_id("CVE-2018-10194");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ghostscript openSUSE-SU-2018:1348-1 (ghostscript)");
   script_tag(name:"summary", value:"Check the version of ghostscript");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ghostscript fixes the following issues:
+  script_tag(name:"insight", value:"This update for ghostscript fixes the following issues:
 
   - CVE-2018-10194: A stack-based buffer overflow was fixed in gdevpdts.c
   (bsc#1090099)
@@ -49,7 +48,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

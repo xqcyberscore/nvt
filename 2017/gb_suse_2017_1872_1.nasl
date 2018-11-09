@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1872_1.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_suse_2017_1872_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2017:1872-1 (qemu)
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851580");
-  script_version("$Revision: 11317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-16 07:22:49 +0200 (Sun, 16 Jul 2017)");
-  script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-9602", "CVE-2016-9603", 
-                "CVE-2017-5579", "CVE-2017-5973", "CVE-2017-5987", "CVE-2017-6505", 
-                "CVE-2017-7377", "CVE-2017-7471", "CVE-2017-7493", "CVE-2017-7718", 
-                "CVE-2017-7980", "CVE-2017-8086", "CVE-2017-8112", "CVE-2017-8309", 
-                "CVE-2017-8379", "CVE-2017-8380", "CVE-2017-9330", "CVE-2017-9373", 
+  script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-9602", "CVE-2016-9603",
+                "CVE-2017-5579", "CVE-2017-5973", "CVE-2017-5987", "CVE-2017-6505",
+                "CVE-2017-7377", "CVE-2017-7471", "CVE-2017-7493", "CVE-2017-7718",
+                "CVE-2017-7980", "CVE-2017-8086", "CVE-2017-8112", "CVE-2017-8309",
+                "CVE-2017-8379", "CVE-2017-8380", "CVE-2017-9330", "CVE-2017-9373",
                 "CVE-2017-9374", "CVE-2017-9375", "CVE-2017-9503");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2017:1872-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for qemu fixes several issues.
+  script_tag(name:"insight", value:"This update for qemu fixes several issues.
 
   These security issues were fixed:
 
@@ -87,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   privileges to that of the device model process (bsc#1028656)
   - CVE-2017-7718: hw/display/cirrus_vga_rop.h allowed local guest OS
   privileged users to cause a denial of service (out-of-bounds read and
-  QEMU process crash) via vectors related to copy ... 
+  QEMU process crash) via vectors related to copy ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "qemu on openSUSE Leap 42.2");

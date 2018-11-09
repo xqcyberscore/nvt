@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0318_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_suse_2016_0318_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for the openSUSE-SU-2016:0318-1 (kernel)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851197");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 06:23:13 +0100 (Thu, 04 Feb 2016)");
-  script_cve_id("CVE-2014-8989", "CVE-2014-9529", "CVE-2015-5157", "CVE-2015-5307", 
-                "CVE-2015-6937", "CVE-2015-7550", "CVE-2015-7799", "CVE-2015-7885", 
-                "CVE-2015-7990", "CVE-2015-8104", "CVE-2015-8215", "CVE-2015-8543", 
-                "CVE-2015-8550", "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", 
+  script_cve_id("CVE-2014-8989", "CVE-2014-9529", "CVE-2015-5157", "CVE-2015-5307",
+                "CVE-2015-6937", "CVE-2015-7550", "CVE-2015-7799", "CVE-2015-7885",
+                "CVE-2015-7990", "CVE-2015-8104", "CVE-2015-8215", "CVE-2015-8543",
+                "CVE-2015-8550", "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569",
                 "CVE-2015-8575", "CVE-2015-8767", "CVE-2016-0728", "CVE-2015-0272");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:0318-1 (kernel)");
   script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.2 kernel was updated to receive various security and
+  script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
 
   Following security bugs were fixed:
@@ -86,7 +85,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2015-5307: The KVM subsystem in the Linux kernel through 4.2.6, and
   Xen 4.3.x through 4.6.x, allowed guest OS users to cause a denial
   of service (host OS panic or hang) by triggering many #AC (aka Alignment
-  Check) exceptions, related to svm.c and vmx. ... 
+  Check) exceptions, related to svm.c and vmx. ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "kernel on openSUSE 13.2");

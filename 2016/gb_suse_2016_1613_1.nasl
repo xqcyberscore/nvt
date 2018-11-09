@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1613_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1613_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2016:1613-1 (flash-player)
 #
@@ -27,27 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851343");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-18 05:20:18 +0200 (Sat, 18 Jun 2016)");
-  script_cve_id("CVE-2016-4122", "CVE-2016-4123", "CVE-2016-4124", "CVE-2016-4125", 
-                "CVE-2016-4127", "CVE-2016-4128", "CVE-2016-4129", "CVE-2016-4130", 
-                "CVE-2016-4131", "CVE-2016-4132", "CVE-2016-4133", "CVE-2016-4134", 
-                "CVE-2016-4135", "CVE-2016-4136", "CVE-2016-4137", "CVE-2016-4138", 
-                "CVE-2016-4139", "CVE-2016-4140", "CVE-2016-4141", "CVE-2016-4142", 
-                "CVE-2016-4143", "CVE-2016-4144", "CVE-2016-4145", "CVE-2016-4146", 
-                "CVE-2016-4147", "CVE-2016-4148", "CVE-2016-4149", "CVE-2016-4150", 
-                "CVE-2016-4151", "CVE-2016-4152", "CVE-2016-4153", "CVE-2016-4154", 
+  script_cve_id("CVE-2016-4122", "CVE-2016-4123", "CVE-2016-4124", "CVE-2016-4125",
+                "CVE-2016-4127", "CVE-2016-4128", "CVE-2016-4129", "CVE-2016-4130",
+                "CVE-2016-4131", "CVE-2016-4132", "CVE-2016-4133", "CVE-2016-4134",
+                "CVE-2016-4135", "CVE-2016-4136", "CVE-2016-4137", "CVE-2016-4138",
+                "CVE-2016-4139", "CVE-2016-4140", "CVE-2016-4141", "CVE-2016-4142",
+                "CVE-2016-4143", "CVE-2016-4144", "CVE-2016-4145", "CVE-2016-4146",
+                "CVE-2016-4147", "CVE-2016-4148", "CVE-2016-4149", "CVE-2016-4150",
+                "CVE-2016-4151", "CVE-2016-4152", "CVE-2016-4153", "CVE-2016-4154",
                 "CVE-2016-4155", "CVE-2016-4156", "CVE-2016-4166", "CVE-2016-4171");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for flash-player SUSE-SU-2016:1613-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
 detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Adobe flash-player was updated to 11.2.202.626 to fix the following
+  script_tag(name:"insight", value:"Adobe flash-player was updated to 11.2.202.626 to fix the following
   security issues:
 
   Security update to 11.2.202.626 (boo#984695):
@@ -59,11 +58,8 @@ detect NVT and check if the version is vulnerable or not.");
   CVE-2016-4143, CVE-2016-4144, CVE-2016-4145, CVE-2016-4146,
   CVE-2016-4147, CVE-2016-4148, CVE-2016-4149, CVE-2016-4150,
   CVE-2016-4151, CVE-2016-4152, CVE-2016-4153, CVE-2016-4154,
-  CVE-2016-4155, CVE-2016-4156, CVE-2016-4166, CVE-2016-4171
+  CVE-2016-4155, CVE-2016-4156, CVE-2016-4166, CVE-2016-4171");
 
-  Please see
-  'https://helpx.adobe.com/security/products/flash-player/apsb16-18.html' for
-  more information.");
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 

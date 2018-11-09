@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0214_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0214_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for roundcubemail openSUSE-SU-2016:0214-1 (roundcubemail)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851165");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 06:12:40 +0100 (Mon, 25 Jan 2016)");
   script_cve_id("CVE-2015-8770");
   script_tag(name:"cvss_base", value:"6.0");
@@ -38,9 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of roundcubemail");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Update to 1.0.8
-  - Add workaround for https://bugs.php.net/bug.php?id=70757 (#1490582)
+  script_tag(name:"insight", value:"Update to 1.0.8
   - Fix HTML sanitizer to skip &amp lt !-- node type X --&amp gt  in output
   (#1490583)
   - Fix charset encoding of message/rfc822 part bodies (#1490606)

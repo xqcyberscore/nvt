@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_nas_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_seagate_nas_detect.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Seagate NAS Device Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141184");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 09:53:35 +0700 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ if ("NAS_CUSTOM_INFO" >< res && 'NAS_CUSTOM_INFO["VENDOR_NAME"]' >< res) {
   if (!cpe)
     cpe = cpe_base;
 
-  register_product(cpe: cpe, location: "/", port: port);
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
 
   log_message(data: build_detection_report(app: "Seagate " + product, version: version, install: "/",
                                            cpe: cpe, concluded: vers[0], concludedUrl: concUrl),

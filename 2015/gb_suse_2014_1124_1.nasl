@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1124_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1124_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2014:1124-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850970");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:15:38 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-0547", "CVE-2014-0548", "CVE-2014-0549", "CVE-2014-0550", "CVE-2014-0551", "CVE-2014-0552", "CVE-2014-0553", "CVE-2014-0554", "CVE-2014-0555", "CVE-2014-0556", "CVE-2014-0557", "CVE-2014-0559");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for flash-player SUSE-SU-2014:1124-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Adobe Flash Player has been updated to 11.2.202.406 which fixes various
+  script_tag(name:"insight", value:"Adobe Flash Player has been updated to 11.2.202.406 which fixes various
   security issues.
 
   These updates:
@@ -56,30 +55,17 @@ if(description)
   * resolve a heap buffer overflow vulnerability that could have lead to
   code execution (CVE-2014-0556, CVE-2014-0559).
 
-  More information can be found on
-  http://helpx.adobe.com/security/products/flash-player/apsb14-21.html
-   
   Security Issues:
 
   * CVE-2014-0547
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0547 
   * CVE-2014-0548
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0548 
   * CVE-2014-0549
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0549 
   * CVE-2014-0550
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0550 
   * CVE-2014-0551
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0551 
   * CVE-2014-0552
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0552 
   * CVE-2014-0553
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0553 
   * CVE-2014-0554
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0554 
   * CVE-2014-0555
-   
-
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");

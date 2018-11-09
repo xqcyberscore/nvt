@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1211_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1211_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2015:1211-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850845");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 12:12:54 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2014-0578", "CVE-2015-3114", "CVE-2015-3115", "CVE-2015-3116",
                 "CVE-2015-3117", "CVE-2015-3118", "CVE-2015-3119", "CVE-2015-3120",
@@ -45,8 +45,7 @@ if(description)
   script_name("SuSE Update for flash-player SUSE-SU-2015:1211-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  flash-player was updated to fix 35 security issues.
+  script_tag(name:"insight", value:"flash-player was updated to fix 35 security issues.
 
   These security issues were fixed:
   - CVE-2015-3135, CVE-2015-4432, CVE-2015-5118: Heap buffer overflow

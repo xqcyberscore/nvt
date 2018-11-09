@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0734_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_suse_2018_0734_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851720");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-19 08:26:15 +0100 (Mon, 19 Mar 2018)");
   script_cve_id("CVE-2017-12122", "CVE-2017-14440", "CVE-2017-14441", "CVE-2017-14442",
                 "CVE-2017-14448", "CVE-2017-14449", "CVE-2017-14450");
@@ -38,8 +38,7 @@ if(description)
   script_name("SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2,)");
   script_tag(name: "summary", value: "Check the version of SDL2,");
   script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "
-  This update for SDL2 and SDL2_image fixes the following issues:
+  script_tag(name:"insight", value:"This update for SDL2 and SDL2_image fixes the following issues:
 
   - CVE-2017-14441: Code execution in the ICO image rendering (bsc#1084282).
   - CVE-2017-14440: Potential code execution in the ILBM image rendering

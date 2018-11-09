@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0493_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0493_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2015:0493-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851104");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 20:04:41 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0332", "CVE-2015-0333", "CVE-2015-0334", "CVE-2015-0335", "CVE-2015-0336", "CVE-2015-0337", "CVE-2015-0338", "CVE-2015-0339", "CVE-2015-0340", "CVE-2015-0341", "CVE-2015-0342", "CVE-2016-0332");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for flash-player SUSE-SU-2015:0493-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  flash-player has been updated to fix eleven security vulnerabilities:
+  script_tag(name:"insight", value:"flash-player has been updated to fix eleven security vulnerabilities:
 
   * Memory corruption vulnerabilities that could have lead to code
   execution (CVE-2016-0332, CVE-2015-0333, CVE-2015-0335,
@@ -57,27 +56,16 @@ if(description)
   Security Issues:
 
   * CVE-2015-0332
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0332 
   * CVE-2015-0333
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0333 
   * CVE-2015-0334
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0334 
   * CVE-2015-0335
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0335 
   * CVE-2015-0336
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0336 
   * CVE-2015-0337
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0337 
   * CVE-2015-0338
-  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0338 
   * CVE-2015-0339
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0339 
   * CVE-2015-0340
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0340 
   * CVE-2015-0341
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0341 
-  * CVE-2015-0342
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0342");
+  * CVE-2015-0342");
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2015:0493_1");

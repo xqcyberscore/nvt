@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0510_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0510_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for glibc openSUSE-SU-2016:0510-1 (glibc)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851207");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:57 +0530 (Tue, 01 Mar 2016)");
-  script_cve_id("CVE-2014-9761", "CVE-2015-7547", "CVE-2015-8776", "CVE-2015-8778", 
+  script_cve_id("CVE-2014-9761", "CVE-2015-7547", "CVE-2015-8776", "CVE-2015-8778",
                 "CVE-2015-8779");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for glibc openSUSE-SU-2016:0510-1 (glibc)");
   script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for glibc fixes the following issues:
+  script_tag(name:"insight", value:"This update for glibc fixes the following issues:
 
   - errorcheck-mutex-no-elision.patch: Don't do lock elision on an error
   checking mutex (boo#956716, BZ #17514)

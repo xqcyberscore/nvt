@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2991_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_suse_2016_2991_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2016:2991-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851440");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 05:42:54 +0100 (Mon, 05 Dec 2016)");
   script_cve_id("CVE-2016-9079");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2016:2991-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update contains Mozilla Thunderbird 45.5.1 and fixes one
+  script_tag(name:"insight", value:"This update contains Mozilla Thunderbird 45.5.1 and fixes one
   vulnerability.
 
   In Mozilla Thunderbird, this vulnerability may be exploited when used in a

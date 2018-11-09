@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1086_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1086_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for IBM SUSE-SU-2015:1086-1 (IBM)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851094");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:53:54 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0138", "CVE-2015-0192", "CVE-2015-0204", "CVE-2015-0458", "CVE-2015-0459", "CVE-2015-0469", "CVE-2015-0477", "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488", "CVE-2015-0491", "CVE-2015-1914", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,14 +37,7 @@ if(description)
   script_name("SuSE Update for IBM SUSE-SU-2015:1086-1 (IBM)");
   script_tag(name: "summary", value: "Check the version of IBM");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  IBM Java 1.6.0 was updated to SR16-FP4 fixing security issues and bugs.
-
-  Tabulated information can be found on:
-  http://www.ibm.com/developerworks/java/jdk/alerts/#IBM_Security_Update_May_
-  2015
-   http://www.ibm.com/developerworks/java/jdk/alerts/#IBM_Security_Update_May
-  _2015 
+  script_tag(name:"insight", value:"IBM Java 1.6.0 was updated to SR16-FP4 fixing security issues and bugs.
 
   CVE-2015-0192 CVE-2015-2808 CVE-2015-1914 CVE-2015-0138 CVE-2015-0491
   CVE-2015-0458 CVE-2015-0459 CVE-2015-0469 CVE-2015-0480 CVE-2015-0488

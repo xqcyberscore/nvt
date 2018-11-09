@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2664_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_suse_2018_2664_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2018:2664-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851883");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-09 07:06:26 +0200 (Sun, 09 Sep 2018)");
   script_cve_id("CVE-2017-15430", "CVE-2018-16065", "CVE-2018-16066", "CVE-2018-16067",
                 "CVE-2018-16068", "CVE-2018-16069", "CVE-2018-16070", "CVE-2018-16071",
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of chromium");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
  on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Chromium to version 69.0.3497.81 fixes multiple issues.
+  script_tag(name:"insight", value:"This update for Chromium to version 69.0.3497.81 fixes multiple issues.
 
   Security issues fixed (boo#1107235):
 

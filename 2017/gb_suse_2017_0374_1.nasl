@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0374_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0374_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2017:0374-1 (java-1_8_0-openjdk)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851485");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-04 05:46:38 +0100 (Sat, 04 Feb 2017)");
-  script_cve_id("CVE-2016-2183", "CVE-2016-5546", "CVE-2016-5547", "CVE-2016-5548", 
-                "CVE-2016-5549", "CVE-2016-5552", "CVE-2017-3231", "CVE-2017-3241", 
-                "CVE-2017-3252", "CVE-2017-3253", "CVE-2017-3260", "CVE-2017-3261", 
+  script_cve_id("CVE-2016-2183", "CVE-2016-5546", "CVE-2016-5547", "CVE-2016-5548",
+                "CVE-2016-5549", "CVE-2016-5552", "CVE-2017-3231", "CVE-2017-3241",
+                "CVE-2017-3252", "CVE-2017-3253", "CVE-2017-3260", "CVE-2017-3261",
                 "CVE-2017-3272", "CVE-2017-3289");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2017:0374-1 (java-1_8_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_8_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for java-1_8_0-openjdk fixes the following issues: Oracle
+  script_tag(name:"insight", value:"This update for java-1_8_0-openjdk fixes the following issues: Oracle
   Critical Patch Update of January 2017 (bsc#1020905) Upgrade to version
   jdk8u121 (icedtea 3.3.0):
   - S8138725: Add options for Javadoc generation

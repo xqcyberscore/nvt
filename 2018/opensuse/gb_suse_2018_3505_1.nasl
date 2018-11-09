@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3505_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3505_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for clamav openSUSE-SU-2018:3505-1 (clamav)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852099");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682", "CVE-2018-15378");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-27 06:24:47 +0200 (Sat, 27 Oct 2018)");
   script_name("SuSE Update for clamav openSUSE-SU-2018:3505-1 (clamav)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for clamav fixes the following issues:
+  script_tag(name:"insight", value:"This update for clamav fixes the following issues:
 
   clamav was updated to version 0.100.2:
 

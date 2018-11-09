@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0743_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0743_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850960");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:04:16 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2010-5298", "CVE-2012-5615", "CVE-2014-0195", "CVE-2014-0198",
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-2494", "CVE-2014-3470",
@@ -46,8 +46,7 @@ if(description)
   script_name("SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)");
   script_tag(name: "summary", value: "Check the version of mariadb");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  mariadb was updated to version 10.0.16 to fix 40 security issues.
+  script_tag(name:"insight", value:"mariadb was updated to version 10.0.16 to fix 40 security issues.
 
   These security issues were fixed:
   - CVE-2015-0411: Unspecified vulnerability in Oracle MySQL Server 5.5.40
@@ -88,7 +87,7 @@ if(description)
   SERVER:SSL:yaSSL, a different vulnerability than CVE-2014-6491
   (bnc#915912).
   - CVE-2014-6469: Unspecified vulnerability in Oracle MySQL Server 5.5.39
-  ... 
+  ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "mariadb on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");

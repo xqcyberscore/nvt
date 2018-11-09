@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2407_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2407_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2016:2407-1 (openssl)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851399");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-29 05:43:57 +0200 (Thu, 29 Sep 2016)");
-  script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180", 
-                "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302", 
+  script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180",
+                "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302",
                 "CVE-2016-6303", "CVE-2016-6304", "CVE-2016-6306");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2016:2407-1 (openssl)");
   script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for openssl fixes the following issues:
+  script_tag(name:"insight", value:"This update for openssl fixes the following issues:
 
   OpenSSL Security Advisory [22 Sep 2016] (bsc#999665)
 
@@ -62,9 +61,6 @@ of detect NVT and check if the version is vulnerable or not.");
   * Malformed SHA512 ticket DoS (CVE-2016-6302) (bsc#995324)
   * OOB write in MDC2_Update() (CVE-2016-6303) (bsc#995377)
   * Certificate message OOB reads (CVE-2016-6306) (bsc#999668)
-
-  More information can be found on:
-  'https://www.openssl.org/news/secadv/20160922.txt'
 
   Also following bugs were fixed:
   * update expired S/MIME certs (bsc#979475)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0825_1.nasl 9269 2018-03-30 05:36:10Z santu $
+# $Id: gb_suse_2018_0825_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for clamav openSUSE-SU-2018:0825-1 (clamav)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851727");
-  script_version("$Revision: 9269 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-30 07:36:10 +0200 (Fri, 30 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-28 08:51:56 +0200 (Wed, 28 Mar 2018)");
-  script_cve_id("CVE-2012-6706", "CVE-2017-11423", "CVE-2017-6419", "CVE-2018-0202", 
+  script_cve_id("CVE-2012-6706", "CVE-2017-11423", "CVE-2017-6419", "CVE-2018-0202",
                 "CVE-2018-1000085");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for clamav openSUSE-SU-2018:0825-1 (clamav)");
   script_tag(name: "summary", value: "Check the version of clamav");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for clamav fixes the following issues:
+  script_tag(name:"insight", value:"This update for clamav fixes the following issues:
 
   Security issues fixed:
 
@@ -60,7 +59,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

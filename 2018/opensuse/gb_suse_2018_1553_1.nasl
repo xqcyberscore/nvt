@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1553_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_suse_2018_1553_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for git openSUSE-SU-2018:1553-1 (git)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851774");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:47:36 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2018-11233", "CVE-2018-11235");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for git openSUSE-SU-2018:1553-1 (git)");
   script_tag(name:"summary", value:"Check the version of git");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for fixes the following security issues:
+  script_tag(name:"insight", value:"This update for fixes the following security issues:
 
   * path sanity-checks on NTFS can read arbitrary memory (CVE-2018-11233,
   boo#1095218)
@@ -49,7 +48,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

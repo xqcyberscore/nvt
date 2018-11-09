@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln1.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_moxa_awk_info_disc_vuln1.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Moxa AWK Series Systemlog Information Disclosure Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:moxa";
+CPE_PREFIX = "cpe:/h:moxa";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106741");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,14 +53,14 @@ if (description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"Moxa AWK series wireless access points are prone to a systemlog.log
-information disclosure vulnerability.");
+  information disclosure vulnerability.");
 
   script_tag(name:"vuldetect", value:"Sends a HTTP request and checks the response.");
 
   script_tag(name:"insight", value:"The file systemlog.log can be accessed without any authentication which
-might reveal sensitive information.");
+  might reveal sensitive information.");
 
-  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sentive information.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sensitive information.");
 
   script_tag(name:"solution", value:"Update to version 1.4 or later.");
 
@@ -73,10 +73,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
 
-url = "/systemlog.log";
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + "/systemlog.log";
 
 if (http_vuln_check(port: port, url: url, pattern: "\([0-9]+\) [0-9/]+,[0-9]+h:[0-9]+m:[0-9]+s",
                     check_header: TRUE)) {

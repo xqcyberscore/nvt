@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1380_1.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_suse_2018_1380_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2018:1380-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851756");
-  script_version("$Revision: 10387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:47:41 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-3639");
   script_tag(name:"cvss_base", value:"4.9");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2018:1380-1 (qemu)");
   script_tag(name:"summary", value:"Check the version of qemu");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for qemu fixes several issues.
+  script_tag(name:"insight", value:"This update for qemu fixes several issues.
 
   This security issue was fixed:
 
@@ -70,7 +69,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

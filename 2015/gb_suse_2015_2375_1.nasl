@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2375_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_2375_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for grub2 openSUSE-SU-2015:2375-1 (grub2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851150");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-27 05:50:23 +0100 (Sun, 27 Dec 2015)");
   script_cve_id("CVE-2015-8370");
   script_tag(name:"cvss_base", value:"6.9");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of grub2");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for grub2 fixes the following issue:
+  script_tag(name:"insight", value:"This update for grub2 fixes the following issue:
 
   Changes in grub2:
   - CVE-2015-8370: Fix for overflow in grub_password_get and grub_user_get

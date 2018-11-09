@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0022_1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_suse_2018_0022_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0022-1 (Linux Kernel)
 #
@@ -27,22 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851678");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:57:13 +0100 (Fri, 05 Jan 2018)");
-  script_cve_id("CVE-2017-17805", "CVE-2017-17806", "CVE-2017-5715", "CVE-2017-5753", 
+  script_cve_id("CVE-2017-17805", "CVE-2017-17806", "CVE-2017-5715", "CVE-2017-5753",
                 "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0022-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.104 to receive various
-  security and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was
+  updated to 4.4.104 to receive various security and bugfixes.
 
   This update adds mitigations for various side channel attacks against
   modern CPUs that could disclose content of otherwise unreadable memory
@@ -99,7 +97,7 @@ of detect NVT and check if the version is vulnerable or not.");
   is unkeyed, allowing a local attacker able to use the AF_ALG-based hash
   interface (CONFIG_CRYPTO_USER_API_HASH) and the SHA-3 hash algorithm
   (CONFIG_CRYPTO_SHA3) to cause a kernel stack buffer overflow by
-  executing a crafted sequence of system calls that encounter a missin ... 
+  executing a crafted sequence of system calls that encounter a missing
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");

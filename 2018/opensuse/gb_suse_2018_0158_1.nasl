@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0158_1.nasl 8893 2018-02-21 06:36:27Z cfischer $
+# $Id: gb_suse_2018_0158_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for xmltooling openSUSE-SU-2018:0158-1 (xmltooling)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851684");
-  script_version("$Revision: 8893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 07:36:27 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-21 07:41:19 +0100 (Sun, 21 Jan 2018)");
   script_cve_id("CVE-2018-0486");
   script_tag(name:"cvss_base", value:"6.4");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xmltooling openSUSE-SU-2018:0158-1 (xmltooling)");
   script_tag(name: "summary", value: "Check the version of xmltooling");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xmltooling fixes the following issues:
+  script_tag(name:"insight", value:"This update for xmltooling fixes the following issues:
 
   - CVE-2018-0486: Fixed a security bug when xmltooling mishandles digital
   signatures of user attribute data, which allows remote attackers to

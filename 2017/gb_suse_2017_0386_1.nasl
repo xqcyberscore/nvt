@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0386_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0386_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for gnutls openSUSE-SU-2017:0386-1 (gnutls)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851486");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-05 05:43:56 +0100 (Sun, 05 Feb 2017)");
-  script_cve_id("CVE-2016-7444", "CVE-2016-8610", "CVE-2017-5335", "CVE-2017-5336", 
+  script_cve_id("CVE-2016-7444", "CVE-2016-8610", "CVE-2017-5335", "CVE-2017-5336",
                 "CVE-2017-5337");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for gnutls openSUSE-SU-2017:0386-1 (gnutls)");
   script_tag(name: "summary", value: "Check the version of gnutls");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for gnutls fixes the following security issues:
+  script_tag(name:"insight", value:"This update for gnutls fixes the following security issues:
 
   - GnuTLS could have crashed when processing maliciously crafted OpenPGP
   certificates (GNUTLS-SA-2017-2, bsc#1018832, CVE-2017-5335,

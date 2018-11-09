@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12248 2018-11-07 15:25:41Z cfischer $
+# $Id: host_details.inc 12265 2018-11-08 15:57:01Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12248 $
+# $Revision: 12265 $
 #
 ###############################################################################
 
@@ -125,6 +125,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -217,6 +218,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -836,14 +838,20 @@ function get_app_location( cpe, port, nofork, skip_port, default ) {
   return get_app_details( cpe:cpe, type:"location", port:port, nofork:nofork, default:default );
 }
 
-# @brief Returns all ports of a (first found) app from a list of passed CPEs. Note: This function will fork on multiple found ports.
+# @brief Returns all ports (in the form of an array) of a (first found) app from a list of passed CPEs.
+#
+# @note This function will fork on multiple found ports.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param service  A service to limit the returned ports to, e.g. "www" or "mysql".
 # @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
 #                 for the given CPE.
 #
-# @return A port matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
+# @return An array containing the port and CPE matching one of the specified CPEs, NULL in the case no CPE was
+#         passed or no matching info was found. The array indices are the following:
+#
+#         ret_array["port"] = the found port
+#         ret_array["cpe"]  = the CPE assigned to this specific port
 #
 function get_single_app_ports_from_list( cpe_list, service, default ) {
 
@@ -865,11 +873,17 @@ function get_single_app_ports_from_list( cpe_list, service, default ) {
 
     if( service ) {
       services = get_kb_item( "get_app/services/" + port + "/" + base_cpe ); # this could fork
-      if( port =~ '^[0-9]{1,5}$' && services >< service )
-        return port;
+      if( port =~ '^[0-9]{1,5}$' && services >< service ) {
+        ret_arr['cpe']  = cpe;
+        ret_arr['port'] = port;
+        return ret_arr;
+      }
     } else {
-      if( port =~ '^[0-9]{1,5}$' )
-        return port;
+      if( port =~ '^[0-9]{1,5}$' ) {
+        ret_arr['cpe']  = cpe;
+        ret_arr['port'] = port;
+        return ret_arr;
+      }
     }
   }
 
@@ -877,22 +891,24 @@ function get_single_app_ports_from_list( cpe_list, service, default ) {
     foreach cpe( cpe_list ) {
       ret_arr['cpe']  = cpe;
       ret_arr['port'] = default;
-      return ret_arr;      
+      return ret_arr;
     }
   } else {
     return;
   }
 }
 
-# @brief Returns all ports of an app from a list of passed CPEs in the form of an array. Note: This function will fork on multiple found applications.
+# @brief Returns all ports (in the form of an array) of an app from a list of passed CPEs.
+#
+# @note This function will fork on multiple found applications.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param service  A service to limit the returned ports to, e.g. "www" or "mysql".
 # @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
 #                 for the given CPE.
 #
-# @return An array containing the port and CPE matching one of the specified CPEs, NULL in the case no CPE was passed or no matching info was found.
-#         The array indices are the following:
+# @return An array containing the port and CPE matching one of the specified CPEs, NULL in the case no CPE was
+#         passed or no matching info was found. The array indices are the following:
 #
 #         ret_array["port"] = the found port
 #         ret_array["cpe"]  = the CPE assigned to this specific port
@@ -941,14 +957,16 @@ function get_all_app_ports_from_list( cpe_list, service, default ) {
     foreach cpe( cpe_list ) {
       ret_arr['cpe']  = cpe;
       ret_arr['port'] = default;
-      return ret_arr;      
+      return ret_arr;
     }
   } else {
     return;
   }
 }
 
-# @brief Returns all versions of a (first found) app from a list of passed CPEs. Note: This function will fork on multiple found versions.
+# @brief Returns all versions of a (first found) app from a list of passed CPEs.
+#
+# @note This function will fork on multiple found versions.
 #
 # @param cpe_list A list of CPEs to evaluate.
 # @param port     The port of the application to get the version for, e.g. "80".
@@ -986,18 +1004,24 @@ function get_single_app_versions_from_list( cpe_list, port ) {
 function get_app_port( cpe, service, all, default ) {
 
   local_var cpe, service, all, default;
-  local_var base_cpe, port, services;
+  local_var infos, base_cpe, port, services;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
     return;
   }
 
+  # TODO: Evaulate all VTs passing a list and migrate them to call the functions
+  # directly. Afterwards remove this part as the function shouldn't take different
+  # inputs (strin and array) in the cpe parameter at all.
   if( typeof( cpe ) == "array" ) {
-    if( all )
-      return get_all_app_ports_from_list( cpe_list:cpe, service:service, default:default );
-    else
-      return get_single_app_ports_from_list( cpe_list:cpe, service:service, default:default );
+    if( all ) {
+      infos = get_all_app_ports_from_list( cpe_list:cpe, service:service, default:default );
+      return infos["port"];
+    } else {
+      infos = get_single_app_ports_from_list( cpe_list:cpe, service:service, default:default );
+      return infos["port"];
+    }
   } else {
     if( all )
       set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_app_port(): all parameter set to TRUE but no array within the cpe parameter." );
@@ -1163,16 +1187,25 @@ function get_app_full( cpe, port ) {
 # @brief Returns the port from a CPE prefix / vendor part. For example "cpe:/h:qnap:ts-x53" is the full CPE
 #        and the function is accepting e.g. "cpe:/h:qnap" to get the port for all vendor devices.
 #
-# @param cpe      The CPE to get the port for.
-# @param default  The default port to return in the case "optimize_test" is set to "no" and no port was found
-#                 for the given CPE.
+# @note This function might fork on multiple found ports.
 #
-# @return A string containing the port matching the passed data or NULL in the case no CPE was passed or no matching info was found.
+# @param cpe            The CPE prefix / vendor part (e.g. cpe:/h:qnap) to get the port for.
+# @param default        The default port to return in the case "optimize_test" is set to "no" and no port was found
+#                       for the given CPE prefix / vendor part.
+# @param service        A service to limit the returned ports to, e.g. "www" or "mysql".
+# @param first_cpe_only If set to TRUE only the ports of the first found CPE are returned. Note that the function is
+#                       still forking if multiple ports are found for the same CPE.
 #
-function get_app_port_from_cpe_prefix( cpe, default ) {
+# @return An array containing the port and CPE matching the specified CPE prefix / vendor part, NULL in the case
+#         no CPE prefix / vendor part was passed or no matching info was found. The array indices are the following:
+#
+#         ret_array["port"] = the found port
+#         ret_array["cpe"]  = the CPE assigned to this specific port
+#
+function get_app_port_from_cpe_prefix( cpe, default, service, first_cpe_only ) {
 
-  local_var cpe, default;
-  local_var data, entry, parts, _cpe;
+  local_var cpe, default, service, first_only;
+  local_var data, _cpelist, entry, parts, _cpe;
 
   if( ! cpe ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port_from_cpe_prefix" );
@@ -1182,6 +1215,8 @@ function get_app_port_from_cpe_prefix( cpe, default ) {
   data = get_kb_list( "get_app/ports/" + cpe + '*' );
   if( ! data )
     return;
+
+  _cpelist = make_list();
 
   foreach entry( keys( data ) ) {
 
@@ -1201,13 +1236,13 @@ function get_app_port_from_cpe_prefix( cpe, default ) {
     if( cpe >!< _cpe )
       continue;
 
-    return get_app_port( cpe:_cpe );
+    _cpelist = make_list( _cpelist, _cpe );
   }
 
-  if( default && optimize_test_enabled && "no" >< optimize_test_enabled )
-    return default;
+  if( first_only )
+    return get_single_app_ports_from_list( cpe_list:_cpelist, service:service, default:default );
   else
-    return;
+    return get_all_app_ports_from_list( cpe_list:_cpelist, service:service, default:default );
 }
 
 # @brief Internal function not to be used directly, please use the other wrappers

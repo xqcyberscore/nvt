@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3358_1.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_suse_2017_3358_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:3358-1 (Linux Kernel)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851667");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 07:45:30 +0100 (Tue, 19 Dec 2017)");
-  script_cve_id("CVE-2017-1000405", "CVE-2017-1000410", "CVE-2017-11600", "CVE-2017-12193", 
-                "CVE-2017-15115", "CVE-2017-16528", "CVE-2017-16536", "CVE-2017-16537", 
-                "CVE-2017-16646", "CVE-2017-16939", "CVE-2017-16994", "CVE-2017-17448", 
-                "CVE-2017-17449", "CVE-2017-17450", "CVE-2017-7482", "CVE-2017-8824", 
+  script_cve_id("CVE-2017-1000405", "CVE-2017-1000410", "CVE-2017-11600", "CVE-2017-12193",
+                "CVE-2017-15115", "CVE-2017-16528", "CVE-2017-16536", "CVE-2017-16537",
+                "CVE-2017-16646", "CVE-2017-16939", "CVE-2017-16994", "CVE-2017-17448",
+                "CVE-2017-17449", "CVE-2017-17450", "CVE-2017-7482", "CVE-2017-8824",
                 "CVE-2017-16645");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:3358-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
+  script_tag(name:"insight", value:"
   The openSUSE Leap 42.2 kernel was updated to 4.4.102 to receive various
   security and bugfixes.
 
@@ -87,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2017-16645: The ims_pcu_get_cdc_union_desc function in
   drivers/input/misc/ims-pcu.c in the Linux kernel allowed local users to
   cause a denial of service (ims_pcu_parse_cdc_data out-of-bounds read and
-  system crash) or possibly have unspecified other impa ... 
+  system crash) or possibly have unspecified other impa ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");

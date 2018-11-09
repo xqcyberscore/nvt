@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1734_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_1734_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for aubio openSUSE-SU-2018:1734-1 (aubio)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851998");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2017-17554");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:33:14 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for aubio openSUSE-SU-2018:1734-1 (aubio)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for aubio fixes the following security issue:
+  script_tag(name:"insight", value:"This update for aubio fixes the following security issue:
 
   - CVE-2017-17554: Prevent NULL pointer dereference in the function
   aubio_source_avcodec_readframe which may have lead to DoS when playing a

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2229_1.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_suse_2018_2229_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libofx openSUSE-SU-2018:2229-1 (libofx)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851842");
-  script_version("$Revision: 10868 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 05:51:25 +0200 (Wed, 08 Aug 2018)");
   script_cve_id("CVE-2017-2816", "CVE-2017-2920");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libofx openSUSE-SU-2018:2229-1 (libofx)");
   script_tag(name:"summary", value:"Check the version of libofx");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libofx fixes the following issues:
+  script_tag(name:"insight", value:"This update for libofx fixes the following issues:
 
   The following security vulnerabilities have been addressed:
 
@@ -53,7 +52,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

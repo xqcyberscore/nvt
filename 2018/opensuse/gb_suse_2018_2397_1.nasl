@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2397_1.nasl 11109 2018-08-24 14:47:20Z mmartin $
+# $Id: gb_suse_2018_2397_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for apache2 openSUSE-SU-2018:2397-1 (apache2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851860");
-  script_version("$Revision: 11109 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:33:22 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2018-1333");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for apache2 openSUSE-SU-2018:2397-1 (apache2)");
   script_tag(name:"summary", value:"Check the version of apache2");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for apache2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for apache2 fixes the following issues:
 
   The following security vulnerability were fixed:
 
@@ -50,7 +49,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2168_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2168_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2016:2168-1 (phpMyAdmin)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851387");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-30 05:44:06 +0200 (Tue, 30 Aug 2016)");
-  script_cve_id("CVE-2016-6606", "CVE-2016-6607", "CVE-2016-6608", "CVE-2016-6609", 
-                "CVE-2016-6610", "CVE-2016-6611", "CVE-2016-6612", "CVE-2016-6613", 
-                "CVE-2016-6614", "CVE-2016-6615", "CVE-2016-6616", "CVE-2016-6617", 
-                "CVE-2016-6618", "CVE-2016-6619", "CVE-2016-6620", "CVE-2016-6621", 
-                "CVE-2016-6622", "CVE-2016-6623", "CVE-2016-6624", "CVE-2016-6625", 
-                "CVE-2016-6626", "CVE-2016-6627", "CVE-2016-6628", "CVE-2016-6629", 
+  script_cve_id("CVE-2016-6606", "CVE-2016-6607", "CVE-2016-6608", "CVE-2016-6609",
+                "CVE-2016-6610", "CVE-2016-6611", "CVE-2016-6612", "CVE-2016-6613",
+                "CVE-2016-6614", "CVE-2016-6615", "CVE-2016-6616", "CVE-2016-6617",
+                "CVE-2016-6618", "CVE-2016-6619", "CVE-2016-6620", "CVE-2016-6621",
+                "CVE-2016-6622", "CVE-2016-6623", "CVE-2016-6624", "CVE-2016-6625",
+                "CVE-2016-6626", "CVE-2016-6627", "CVE-2016-6628", "CVE-2016-6629",
                 "CVE-2016-6630", "CVE-2016-6631", "CVE-2016-6632", "CVE-2016-6633");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2016:2168-1 (phpMyAdmin)");
   script_tag(name: "summary", value: "Check the version of phpMyAdmin");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
 detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  phpMyAdmin was updated to version 4.4.15.8 (2016-08-16) to fix the
+  script_tag(name:"insight", value:"phpMyAdmin was updated to version 4.4.15.8 (2016-08-16) to fix the
   following issues:
 
   - Upstream changelog for 4.4.15.8:
@@ -59,7 +58,6 @@ detect NVT and check if the version is vulnerable or not.");
   * Administrators could trigger SQL injection attack against users
   - other fixes
   * Remove Swekey support
-  - Security fixes: 'https://www.phpmyadmin.net/security/'
   * Weaknesses with cookie encryption see PMASA-2016-29 (CVE-2016-6606,
   CWE-661)
   * Multiple XSS vulnerabilities see PMASA-2016-30 (CVE-2016-6607, CWE-661)
@@ -93,7 +91,7 @@ detect NVT and check if the version is vulnerable or not.");
   * Detect if user is logged in see PMASA-2016-48 (CVE-2016-6625, CWE-661)
   * Bypass URL redirection protection see PMASA-2016-49 (CVE-2016-6626,
   CWE-661)
-  * Referrer leak see PMASA-2016-50 (CVE-201 ... 
+  * Referrer leak see PMASA-2016-50 (CVE-201 ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "phpMyAdmin on openSUSE Leap 42.1, openSUSE 13.2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3373_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_suse_2018_3373_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for rpm openSUSE-SU-2018:3373-1 (rpm)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851947");
-  script_version("$Revision: 12105 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:00:31 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2017-7500", "CVE-2017-7501");
   script_tag(name:"cvss_base", value:"7.2");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for rpm openSUSE-SU-2018:3373-1 (rpm)");
   script_tag(name:"summary", value:"Check the version of rpm");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for rpm fixes the following issues:
+  script_tag(name:"insight", value:"This update for rpm fixes the following issues:
 
   These security issues were fixed:
 

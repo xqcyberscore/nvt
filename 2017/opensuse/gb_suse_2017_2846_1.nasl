@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2846_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2846_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2846-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851632");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 18:05:41 +0530 (Thu, 02 Nov 2017)");
   script_cve_id("CVE-2017-13080", "CVE-2017-15265", "CVE-2017-15649", "CVE-2017-6346");
   script_tag(name:"cvss_base", value:"6.9");
@@ -36,12 +36,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2846-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3  kernel was updated to 4.4.92 to receive various
-  security and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3  kernel was updated
+  to 4.4.92 to receive various security and bugfixes.
 
 
   The following security bugs were fixed:
@@ -92,7 +90,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - arm64: perf: Use the builtin_platform_driver (bsc#1062279).
   - arm64: pmu: add fallback probe table (bsc#1062279).
   - arm64: pmu: Hoist pmu platform device name (bsc#1062279).
-  - a ... 
+  - a ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");

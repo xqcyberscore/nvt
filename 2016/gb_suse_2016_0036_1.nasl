@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0036_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0036_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for grub2 openSUSE-SU-2016:0036-1 (grub2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851189");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:23 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2015-8370");
   script_tag(name:"cvss_base", value:"6.9");
@@ -36,12 +36,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for grub2 openSUSE-SU-2016:0036-1 (grub2)");
   script_tag(name: "summary", value: "Check the version of grub2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  - Fix buffer overflows when reading username and password. (bsc#956631,
-  CVE-2015-8370)
+  script_tag(name:"insight", value:"Fix buffer overflows when reading username
+  and password. (bsc#956631, CVE-2015-8370)
   - Check MS-DOS header to find PE file header. (bsc#954126)
   - Use dirname for copying Xen kernel and initrd to esp. (bsc#955493)
   - Fix reading password by grub2-mkpasswd-pbdk2 without controlling tty.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_snf_info_disc_vuln.nasl 12043 2018-10-23 14:16:52Z mmartin $
+# $Id: gb_lexmark_snf_info_disc_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Lexmark Scan To Network Information Disclosure Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:lexmark";
+CPE_PREFIX = "cpe:/h:lexmark";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140358");
-  script_version("$Revision: 12043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 16:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 08:42:19 +0700 (Wed, 06 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,15 +50,17 @@ if(description)
   script_mandatory_keys("lexmark_printer/installed");
 
   script_tag(name:"summary", value:"Lexmark Scan to Network <= 3.2.9 is prone to an information disclosure
-vulnerability");
+  vulnerability.");
 
   script_tag(name:"insight", value:"Scan To Network application supports the configuration of network
-credentials and if used they will be stored in plaintext and transmitted in every request to the configuration tab.
-It is possible to obatain these credentials which could be used later to escalate privileges in the network or
-get access to scanned documents.");
+  credentials and if used they will be stored in plaintext and transmitted in every request to the configuration tab.
+  It is possible to obatain these credentials which could be used later to escalate privileges in the network or
+  get access to scanned documents.");
 
   script_tag(name:"vuldetect", value:"Sends a HTTP GET request and checks the response.");
+
   script_tag(name:"solution", value:"Upgrade to the latest version.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Aug/46");
@@ -70,10 +72,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
 
-url = '/cgi-bin/direct/printer/prtappauth/apps/ImportExportServlet?exportButton=clicked';
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + '/cgi-bin/direct/printer/prtappauth/apps/ImportExportServlet?exportButton=clicked';
 
 if (http_vuln_check(port: port, url: url, pattern: 'cifs.pwd "', check_header: TRUE,
                     extra_check: 'cifs.uName "')) {

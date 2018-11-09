@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1099_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_suse_2017_1099_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:1099-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851540");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-25 06:34:14 +0200 (Tue, 25 Apr 2017)");
   script_cve_id("CVE-2017-5429", "CVE-2017-5443", "CVE-2017-5444", "CVE-2017-5446",
                 "CVE-2017-5447", "CVE-2017-5448", "CVE-2017-5449", "CVE-2017-5460",
@@ -40,8 +40,7 @@ if(description)
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:1099-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Mozilla Firefox was updated to Firefox 52.1.0esr.
+  script_tag(name:"insight", value:"Mozilla Firefox was updated to Firefox 52.1.0esr.
 
   The following vulnerabilities were fixed (bsc#1035082):
 

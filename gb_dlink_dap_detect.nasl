@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dap_detect.nasl 12246 2018-11-07 13:40:39Z cfischer $
+# $Id: gb_dlink_dap_detect.nasl 12266 2018-11-08 16:05:51Z cfischer $
 #
 # D-Link DAP Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810234");
-  script_version("$Revision: 12246 $");
+  script_version("$Revision: 12266 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 14:40:39 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 17:05:51 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 15:22:03 +0530 (Fri, 09 Dec 2016)");
   script_name("D-Link DAP Devices Detection");
   script_category(ACT_GATHER_INFO);
@@ -84,7 +84,7 @@ if( ( buf =~ 'Product Page:.*>DAP' || 'Product Page :.*>DAP' ) &&
     os_app += " Unknown Model Firmware";
     os_cpe += "-unknown_model_firmware";
     hw_app += " Unknown Model Device";
-    os_cpe += "-unknown_model";
+    hw_cpe += "-unknown_model";
   }
 
   # <td align="right" nowrap>Hardware Version: A1 &nbsp;&nbsp;&nbsp;Firmware Version: 1.13</td>

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3245_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_suse_2018_3245_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libssh openSUSE-SU-2018:3245-1 (libssh)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851943");
-  script_version("$Revision: 12105 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-20 07:33:44 +0200 (Sat, 20 Oct 2018)");
   script_cve_id("CVE-2018-10933");
   script_tag(name:"cvss_base", value:"6.4");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libssh openSUSE-SU-2018:3245-1 (libssh)");
   script_tag(name:"summary", value:"Check the version of libssh");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libssh fixes the following security issue:
+  script_tag(name:"insight", value:"This update for libssh fixes the following security issue:
 
   - CVE-2018-10933: Fixed a server mode authentication bypass (boo#1108020).
 

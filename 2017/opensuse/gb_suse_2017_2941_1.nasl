@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2941_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2941_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2017:2941-1 (qemu)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851641");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 11:05:48 +0100 (Tue, 07 Nov 2017)");
-  script_cve_id("CVE-2017-10664", "CVE-2017-10806", "CVE-2017-10911", "CVE-2017-11334", 
-                "CVE-2017-11434", "CVE-2017-12809", "CVE-2017-13672", "CVE-2017-14167", 
+  script_cve_id("CVE-2017-10664", "CVE-2017-10806", "CVE-2017-10911", "CVE-2017-11334",
+                "CVE-2017-11434", "CVE-2017-12809", "CVE-2017-13672", "CVE-2017-14167",
                 "CVE-2017-15038", "CVE-2017-15268", "CVE-2017-15289", "CVE-2017-9524");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2017:2941-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for qemu fixes several issues.
+  script_tag(name:"insight", value:"This update for qemu fixes several issues.
 
   These security issues were fixed:
 
@@ -84,7 +83,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2017-11334: The address_space_write_continue function allowed local
   guest OS privileged users to cause a denial of service (out-of-bounds
   access and guest instance crash) by leveraging use of qemu_map_ram_ptr
-  to access guest ram block are ... 
+  to access guest ram block are ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "qemu on openSUSE Leap 42.2");

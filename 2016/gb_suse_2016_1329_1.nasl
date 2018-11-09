@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1329_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1329_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for ntp openSUSE-SU-2016:1329-1 (ntp)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851318");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:22:13 +0200 (Thu, 19 May 2016)");
-  script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547", 
-                "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551", 
+  script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547",
+                "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551",
                 "CVE-2016-2516", "CVE-2016-2517", "CVE-2016-2518", "CVE-2016-2519");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ntp openSUSE-SU-2016:1329-1 (ntp)");
   script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for ntp to 4.2.8p7 fixes the following issues:
+  script_tag(name:"insight", value:"This update for ntp to 4.2.8p7 fixes the following issues:
 
   * CVE-2016-1547, bsc#977459: Validate crypto-NAKs, AKA: CRYPTO-NAK DoS.
   * CVE-2016-1548, bsc#977461: Interleave-pivot
@@ -62,7 +61,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Bugs fixed:
   - Restrict the parser in the startup script to the first
-  occurrance of 'keys' and 'controlkey' in ntp.conf (bsc#957226).
+  occurrence of 'keys' and 'controlkey' in ntp.conf (bsc#957226).
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
   script_tag(name: "affected", value: "ntp on openSUSE Leap 42.1");

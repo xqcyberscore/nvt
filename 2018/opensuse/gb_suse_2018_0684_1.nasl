@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0684_1.nasl 9141 2018-03-20 06:46:48Z cfischer $
+# $Id: gb_suse_2018_0684_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:0684-1 (java-1_7_0-openjdk)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851717");
-  script_version("$Revision: 9141 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 07:46:48 +0100 (Tue, 20 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-17 08:44:55 +0100 (Sat, 17 Mar 2018)");
-  script_cve_id("CVE-2018-2579", "CVE-2018-2588", "CVE-2018-2599", "CVE-2018-2602", 
-                "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629", "CVE-2018-2633", 
-                "CVE-2018-2634", "CVE-2018-2637", "CVE-2018-2641", "CVE-2018-2663", 
+  script_cve_id("CVE-2018-2579", "CVE-2018-2588", "CVE-2018-2599", "CVE-2018-2602",
+                "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629", "CVE-2018-2633",
+                "CVE-2018-2634", "CVE-2018-2637", "CVE-2018-2641", "CVE-2018-2663",
                 "CVE-2018-2677", "CVE-2018-2678");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:0684-1 (java-1_7_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for java-1_7_0-openjdk fixes the following issues:
+  script_tag(name:"insight", value:"This update for java-1_7_0-openjdk fixes the following issues:
 
   Security issues fixed in OpenJDK 7u171 (January 2018 CPU)(bsc#1076366):
 

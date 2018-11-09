@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2099_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_2099_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for libpng12 openSUSE-SU-2015:2099-1 (libpng12)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851136");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-29 17:30:29 +0530 (Tue, 29 Dec 2015)");
   script_cve_id("CVE-2015-7981", "CVE-2015-8126");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of libpng12");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The libpng12 package was updated to fix the following security issues:
+  script_tag(name:"insight", value:"The libpng12 package was updated to fix the following security issues:
 
   - CVE-2015-8126: Fixed a buffer overflow vulnerabilities in
   png_get_PLTE/png_set_PLTE functions (bsc#954980).

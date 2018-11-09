@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3061_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_3061_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Kernel openSUSE-SU-2016:3061-1 (Kernel)
 #
@@ -27,23 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851448");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 05:38:41 +0100 (Fri, 09 Dec 2016)");
-  script_cve_id("CVE-2015-8962", "CVE-2015-8963", "CVE-2016-7042", "CVE-2016-7910", 
-                "CVE-2016-7911", "CVE-2016-7913", "CVE-2016-7914", "CVE-2016-7916", 
+  script_cve_id("CVE-2015-8962", "CVE-2015-8963", "CVE-2016-7042", "CVE-2016-7910",
+                "CVE-2016-7911", "CVE-2016-7913", "CVE-2016-7914", "CVE-2016-7916",
                 "CVE-2016-8633", "CVE-2016-8646", "CVE-2016-8655", "CVE-2016-9555");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2016:3061-1 (Kernel)");
   script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE 13.2 kernel was updated to receive various security and
-  bugfixes.
+  script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to
+  receive various security and bugfixes.
 
   The following security bugs were fixed:
 
@@ -85,7 +83,7 @@ of detect NVT and check if the version is vulnerable or not.");
   fs/proc/base.c in the Linux kernel allowed local users to obtain
   sensitive information from kernel memory by reading a /proc/*/environ
   file during a process-setup time interval in which environment-variable
-  copying is i ... 
+  copying is i ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Kernel on openSUSE 13.2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0665_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0665_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla SUSE-SU-2014:0665-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850986");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:12:41 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1492", "CVE-2014-1518", "CVE-2014-1523", "CVE-2014-1524", "CVE-2014-1529", "CVE-2014-1530", "CVE-2014-1531", "CVE-2014-1532");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for Mozilla SUSE-SU-2014:0665-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This Mozilla Firefox and Mozilla NSS update fixes several security and
+  script_tag(name:"insight", value:"This Mozilla Firefox and Mozilla NSS update fixes several security and
   non-security issues.
 
   Mozilla Firefox has been updated to 24.5.0esr which fixes the following
@@ -68,21 +67,13 @@ if(description)
   Security Issue references:
 
   * CVE-2014-1532
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1532 
   * CVE-2014-1531
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1531 
   * CVE-2014-1530
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1530 
   * CVE-2014-1529
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1529 
   * CVE-2014-1524
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1524 
   * CVE-2014-1523
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1523 
   * CVE-2014-1518
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1518 
-  * CVE-2014-1492
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1492");
+  * CVE-2014-1492");
   script_tag(name: "affected", value: "Mozilla on SUSE Linux Enterprise Server 11 SP1 LTSS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2014:0665_1");

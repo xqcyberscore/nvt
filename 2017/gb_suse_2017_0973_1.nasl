@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0973_1.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
+# $Id: gb_suse_2017_0973_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for pidgin openSUSE-SU-2017:0973-1 (pidgin)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851535");
-  script_version("$Revision: 11661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 06:32:55 +0200 (Wed, 12 Apr 2017)");
   script_cve_id("CVE-2017-2640");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for pidgin openSUSE-SU-2017:0973-1 (pidgin)");
   script_tag(name: "summary", value: "Check the version of pidgin");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for pidgin to version 2.12.0 fixes the following issues:
+  script_tag(name:"insight", value:"This update for pidgin to version 2.12.0 fixes the following issues:
 
   This security issue was fixed:
   - CVE-2017-2640: Out of bounds memory read in
@@ -61,8 +60,6 @@ of detect NVT and check if the version is vulnerable or not.");
   - Remove the Yahoo! protocol plugin. Yahoo has completely reimplemented
   their protocol, so this version is no longer
   operable as of August 5th, 2016.
-  - Remove the Facebook (XMPP) account option. According to
-  'https://developers.facebook.com/docs/chat'
   ended April 30th, 2015.
   - Fix gnutls certificate validation errors that mainly affected Google.
   + General:

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3211_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_3211_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851940");
-  script_version("$Revision: 12236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:30:24 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-10919");
   script_tag(name:"cvss_base", value:"4.0");
@@ -37,9 +37,8 @@ if(description)
   script_name("SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)");
   script_tag(name:"summary", value:"Check the version of samba");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-
-  Samba was updated to 4.6.15, bringing bug and security fixes. (bsc#1110943)
+  script_tag(name:"insight", value:"Samba was updated to 4.6.15, bringing
+  bug and security fixes. (bsc#1110943)
 
   Following security issues were fixed:
 

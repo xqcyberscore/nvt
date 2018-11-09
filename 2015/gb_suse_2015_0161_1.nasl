@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0161_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0161_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for libpng16 openSUSE-SU-2015:0161-1 (libpng16)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850631");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-01-29 05:13:05 +0100 (Thu, 29 Jan 2015)");
   script_cve_id("CVE-2014-9495", "CVE-2015-0973");
   script_tag(name:"cvss_base", value:"10.0");
@@ -36,8 +36,7 @@ if(description)
   script_name("SuSE Update for libpng16 openSUSE-SU-2015:0161-1 (libpng16)");
   script_tag(name: "summary", value: "Check the version of libpng16");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  libpng was updated to fix some security issues:
+  script_tag(name:"insight", value:"libpng was updated to fix some security issues:
 
   * CVE-2014-9495 [bnc#912076]: Heap-buffer overflow png_combine_row() with
   very wide interlaced images

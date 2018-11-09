@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2188_1.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
+# $Id: gb_suse_2018_2188_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:2188-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851832");
-  script_version("$Revision: 11416 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 05:46:51 +0200 (Sat, 04 Aug 2018)");
   script_cve_id("CVE-2018-14339", "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342",
                 "CVE-2018-14343", "CVE-2018-14344", "CVE-2018-14368", "CVE-2018-14369",
@@ -39,8 +39,7 @@ if(description)
   script_name("SuSE Update for wireshark openSUSE-SU-2018:2188-1 (wireshark)");
   script_tag(name:"summary", value:"Check the version of wireshark");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for wireshark fixes the following issues:
+  script_tag(name:"insight", value:"This update for wireshark fixes the following issues:
 
   Security issues fixed:
 
@@ -59,13 +58,11 @@ if(description)
 
   Bug fixes:
 
-  - Further bug fixes and updated protocol support as listed in:
-  <a  rel='nofollow' href='https://www.wireshark.org/docs/relnotes/wireshark-2.2.16.html'>https://www.wireshark.org/docs/relnotes/wireshark-2.2.16.html
-
+  - Further bug fixes and updated protocol support.
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

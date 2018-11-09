@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1385_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_suse_2018_1385_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for opencv openSUSE-SU-2018:1385-1 (opencv)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851755");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:46:28 +0200 (Thu, 24 May 2018)");
-  script_cve_id("CVE-2016-1516", "CVE-2017-12597", "CVE-2017-12598", "CVE-2017-12599", 
-                "CVE-2017-12600", "CVE-2017-12601", "CVE-2017-12602", "CVE-2017-12603", 
-                "CVE-2017-12604", "CVE-2017-12605", "CVE-2017-12606", "CVE-2017-12862", 
+  script_cve_id("CVE-2016-1516", "CVE-2017-12597", "CVE-2017-12598", "CVE-2017-12599",
+                "CVE-2017-12600", "CVE-2017-12601", "CVE-2017-12602", "CVE-2017-12603",
+                "CVE-2017-12604", "CVE-2017-12605", "CVE-2017-12606", "CVE-2017-12862",
                 "CVE-2017-12863", "CVE-2017-12864", "CVE-2017-14136");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for opencv openSUSE-SU-2018:1385-1 (opencv)");
   script_tag(name:"summary", value:"Check the version of opencv");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for opencv fixes the following issues:
+  script_tag(name:"insight", value:"This update for opencv fixes the following issues:
 
   Security issues fixed:
 
@@ -87,7 +86,7 @@ on the target host.");
   or denial of service. (boo#1054019)
   - CVE-2017-12863: In opencv/modules/imgcodecs/src/grfmt_pxm.cpp, function
   PxMDecoder::readData has an integer overflow when calculate src_pitch.
-  If ... 
+  If ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"opencv on openSUSE Leap 42.3");

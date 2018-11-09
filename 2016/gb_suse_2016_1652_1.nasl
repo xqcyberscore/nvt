@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1652_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1652_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for vlc openSUSE-SU-2016:1652-1 (vlc)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851353");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-23 05:24:34 +0200 (Thu, 23 Jun 2016)");
-  script_cve_id("CVE-2015-7981", "CVE-2015-8126", "CVE-2016-1514", "CVE-2016-1515", 
+  script_cve_id("CVE-2015-7981", "CVE-2015-8126", "CVE-2016-1514", "CVE-2016-1515",
                 "CVE-2016-5108");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for vlc openSUSE-SU-2016:1652-1 (vlc)");
   script_tag(name: "summary", value: "Check the version of vlc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for vlc to 2.2.4 to fix the following security issue:
+  script_tag(name:"insight", value:"This update for vlc to 2.2.4 to fix the following security issue:
   - CVE-2016-5108: Fix out-of-bound write in adpcm QT IMA codec (boo#984382).
 
   This also include an update of codecs and libraries to fix these 3rd party

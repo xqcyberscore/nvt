@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3244_1.nasl 8085 2017-12-12 10:25:30Z santu $
+# $Id: gb_suse_2017_3244_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2017:3244-1 (chromium)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851660");
-  script_version("$Revision: 8085 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 11:25:30 +0100 (Tue, 12 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-09 07:39:49 +0100 (Sat, 09 Dec 2017)");
-  script_cve_id("CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410", "CVE-2017-15411", 
-                "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415", "CVE-2017-15416", 
-                "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419", "CVE-2017-15420", 
-                "CVE-2017-15422", "CVE-2017-15423", "CVE-2017-15424", "CVE-2017-15425", 
+  script_cve_id("CVE-2017-15408", "CVE-2017-15409", "CVE-2017-15410", "CVE-2017-15411",
+                "CVE-2017-15412", "CVE-2017-15413", "CVE-2017-15415", "CVE-2017-15416",
+                "CVE-2017-15417", "CVE-2017-15418", "CVE-2017-15419", "CVE-2017-15420",
+                "CVE-2017-15422", "CVE-2017-15423", "CVE-2017-15424", "CVE-2017-15425",
                 "CVE-2017-15426", "CVE-2017-15427");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:3244-1 (chromium)");
   script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to Chromium 63.0.3239.84 fixes the following security issues:
+  script_tag(name:"insight", value:"This update to Chromium 63.0.3239.84 fixes the following security issues:
 
   - CVE-2017-15408: Heap buffer overflow in PDFium
   - CVE-2017-15409: Out of bounds write in Skia

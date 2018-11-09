@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1831_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1831_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for haproxy openSUSE-SU-2015:1831-1 (haproxy)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851120");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 07:18:30 +0100 (Wed, 28 Oct 2015)");
   script_cve_id("CVE-2015-3281");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for haproxy openSUSE-SU-2015:1831-1 (haproxy)");
   script_tag(name: "summary", value: "Check the version of haproxy");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  haproxy was updated to fix two security issues.
+  script_tag(name:"insight", value:"haproxy was updated to fix two security issues.
 
   These security issues were fixed:
   - CVE-2015-3281: The buffer_slow_realign function in HAProxy did not
@@ -53,7 +52,7 @@ if(description)
   - BUG/MINOR: ssl: fix smp_fetch_ssl_fc_session_id
   - MEDIUM: ssl: replace standards DH groups with custom ones
   - BUG/MEDIUM: ssl: fix tune.ssl.default-dh-param value being overwritten
-  - MINOR: ssl: add a destructor to free allocated SSL ressources
+  - MINOR: ssl: add a destructor to free allocated SSL resources
   - BUG/MINOR: ssl: Display correct filename in error message
   - MINOR: ssl: load certificates in alphabetical order
   - BUG/MEDIUM: checks: fix conflicts between agent checks and ssl

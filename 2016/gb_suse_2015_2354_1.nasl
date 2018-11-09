@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2354_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2015_2354_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for ldb, openSUSE-SU-2015:2354-1 (ldb,)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851191");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:29 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299", 
+  script_cve_id("CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299",
                 "CVE-2015-5330", "CVE-2015-8467");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ldb, openSUSE-SU-2015:2354-1 (ldb,)");
   script_tag(name: "summary", value: "Check the version of ldb,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for ldb, samba, talloc, tdb, tevent fixes the following
+  script_tag(name:"insight", value:"This update for ldb, samba, talloc, tdb, tevent fixes the following
   security issues and bugs:
 
   The Samba LDB was updated to version 1.1.24:
@@ -56,13 +55,13 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - Malicious request can cause Samba LDAP server to hang, spinning using
   CPU  CVE-2015-3223  (bso#11325)  (bnc#958581).
-  - Remote read memory exploit in LDB  CVE-2015-5330  (bso#11599) 
+  - Remote read memory exploit in LDB  CVE-2015-5330  (bso#11599)
   (bnc#958586).
-  - Insufficient symlink verification (file access outside the share) 
+  - Insufficient symlink verification (file access outside the share)
   CVE-2015-5252  (bso#11395)  (bnc#958582).
   - No man in the middle protection when forcing smb encryption on the
   client side  CVE-2015-5296  (bso#11536)  (bnc#958584).
-  - Currently the snapshot browsing is not secure thru windows previous
+  - Currently the snapshot browsing is not secure through windows previous
   version (shadow_copy2)  CVE-2015-5299  (bso#11529)  (bnc#958583).
   - Fix Microsoft MS15-096 to prevent machine accounts from being changed
   into user accounts  CVE-2015-8467  (bso#11552)  (bnc#958585).
@@ -78,10 +77,10 @@ of detect NVT and check if the version is vulnerable or not.");
   - async_req: Fix non-blocking connect()  (bso#11564).
   - auth: gensec: Fix a memory leak  (bso#11565).
   - lib: util: Make non-critical message a warning  (bso#11566).
-  - Fix winbindd crashes with samlogon for trusted domain user  (bso#11569) 
+  - Fix winbindd crashes with samlogon for trusted domain user  (bso#11569)
   (bnc#949022).
   - smbd: Send SMB2 oplock breaks unencrypted  (bso#11570).
-  - ctdb: Open the RO tracking db with perms 0600 instead of 0000 
+  - ctdb: Open the RO tracking db with perms 0600 instead of 0000
   (bso#11577).
   - manpage: Correct small typo error  (bso#11584).
   - s3: smbd: If EA's are turned off on a share don't allow an SMB2 create
@@ -89,9 +88,9 @@ of detect NVT and check if the version is vulnerable or not.");
   - Backport some valgrind fixes from upstream master  (bso#11597).
   - s3: smbd: have_file_open_below() fails to enumerate open files below an
   open directory handle  (bso#11615).
-  - docs: Fix some typos in the idmap config section of man 5 smb.conf 
+  - docs: Fix some typos in the idmap config section of man 5 smb.conf
   (bso#11619).
-  - Cleanup and enhan ... 
+  - Cleanup and enhan ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "ldb, on openSUSE Leap 42.1");

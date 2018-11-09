@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1619_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1619_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for mariadb SUSE-SU-2016:1619-1 (mariadb)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851344");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-18 05:21:20 +0200 (Sat, 18 Jun 2016)");
-  script_cve_id("CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0596", "CVE-2016-0597", 
-                "CVE-2016-0598", "CVE-2016-0600", "CVE-2016-0606", "CVE-2016-0608", 
-                "CVE-2016-0609", "CVE-2016-0616", "CVE-2016-0640", "CVE-2016-0641", 
-                "CVE-2016-0642", "CVE-2016-0643", "CVE-2016-0644", "CVE-2016-0646", 
-                "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649", "CVE-2016-0650", 
-                "CVE-2016-0651", "CVE-2016-0655", "CVE-2016-0666", "CVE-2016-0668", 
+  script_cve_id("CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0596", "CVE-2016-0597",
+                "CVE-2016-0598", "CVE-2016-0600", "CVE-2016-0606", "CVE-2016-0608",
+                "CVE-2016-0609", "CVE-2016-0616", "CVE-2016-0640", "CVE-2016-0641",
+                "CVE-2016-0642", "CVE-2016-0643", "CVE-2016-0644", "CVE-2016-0646",
+                "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649", "CVE-2016-0650",
+                "CVE-2016-0651", "CVE-2016-0655", "CVE-2016-0666", "CVE-2016-0668",
                 "CVE-2016-2047");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb SUSE-SU-2016:1619-1 (mariadb)");
   script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
 detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  mariadb was updated to version 10.0.25 to fix 25 security issues.
+  script_tag(name:"insight", value:"mariadb was updated to version 10.0.25 to fix 25 security issues.
 
   These security issues were fixed:
   - CVE-2016-0505: Unspecified vulnerability allowed remote authenticated
@@ -88,7 +87,7 @@ detect NVT and check if the version is vulnerable or not.");
   availability via vectors related to DDL (bsc#980904).
   - CVE-2016-0646: Unspecified vulnerability allowed local users to affect
   availability via vectors related to DML (bsc#980904).
-  - CVE-2016-0647: Unspecified vulnerability allowed ... 
+  - CVE-2016-0647: Unspecified vulnerability allowed ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "mariadb on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2736_1.nasl 11565 2018-09-24 08:00:39Z santu $
+# $Id: gb_suse_2018_2736_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for curl openSUSE-SU-2018:2736-1 (curl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851892");
-  script_version("$Revision: 11565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 10:00:39 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-16 07:52:25 +0200 (Sun, 16 Sep 2018)");
   script_cve_id("CVE-2018-14618");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for curl openSUSE-SU-2018:2736-1 (curl)");
   script_tag(name:"summary", value:"Check the version of curl");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for curl fixes the following issues:
+  script_tag(name:"insight", value:"This update for curl fixes the following issues:
 
   This security issue was fixed:
 

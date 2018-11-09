@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1600_1.nasl 10307 2018-06-25 05:05:34Z asteins $
+# $Id: gb_suse_2018_1600_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for glibc openSUSE-SU-2018:1600-1 (glibc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851778");
-  script_version("$Revision: 10307 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-09 05:49:00 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2017-18269", "CVE-2018-11236", "CVE-2018-11237");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for glibc openSUSE-SU-2018:1600-1 (glibc)");
   script_tag(name:"summary", value:"Check the version of glibc");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for glibc fixes the following issues:
+  script_tag(name:"insight", value:"This update for glibc fixes the following issues:
 
   - CVE-2017-18269: Fix SSE2 memmove issue when crossing 2GB boundary
   (bsc#1094150)
@@ -56,7 +55,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

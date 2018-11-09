@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2271_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2271_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2017:2271-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851599");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 08:06:33 +0200 (Tue, 29 Aug 2017)");
   script_cve_id("CVE-2017-11403", "CVE-2017-9439", "CVE-2017-9440", "CVE-2017-9501");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2017:2271-1 (ImageMagick)");
   script_tag(name: "summary", value: "Check the version of ImageMagick");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   Security issues fixed:
   - CVE-2017-9439: A memory leak was found in the function ReadPDBImage

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0468_1.nasl 9094 2018-03-14 07:52:16Z cfischer $
+# $Id: gb_suse_2018_0468_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for exim openSUSE-SU-2018:0468-1 (exim)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851706");
-  script_version("$Revision: 9094 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 08:52:16 +0100 (Wed, 14 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 08:45:05 +0100 (Tue, 20 Feb 2018)");
   script_cve_id("CVE-2018-6789");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for exim openSUSE-SU-2018:0468-1 (exim)");
   script_tag(name: "summary", value: "Check the version of exim");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for exim fixes the following issues:
+  script_tag(name:"insight", value:"This update for exim fixes the following issues:
 
   - CVE-2018-6789: Fixed a buffer overflow in the base64decode function,
   which could be used to execute code remotely. (boo#1079832)");

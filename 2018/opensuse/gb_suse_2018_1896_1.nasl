@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1896_1.nasl 10443 2018-07-06 12:04:26Z santu $
+# $Id: gb_suse_2018_1896_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for git-annex openSUSE-SU-2018:1896-1 (git-annex)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851809");
-  script_version("$Revision: 10443 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 14:04:26 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 05:50:43 +0200 (Fri, 06 Jul 2018)");
   script_cve_id("CVE-2018-10857", "CVE-2018-10859");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for git-annex openSUSE-SU-2018:1896-1 (git-annex)");
   script_tag(name:"summary", value:"Check the version of git-annex");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for git-annex to version 6.20180626 fixes the following issues:
+  script_tag(name:"insight", value:"This update for git-annex to version 6.20180626 fixes the following issues:
 
   - CVE-2018-10857: Prevent file content disclosure by refusing to download
   content that cannot be verified with a hash, from encrypted special
@@ -49,13 +48,9 @@ on the target host.");
   special remotes (bsc#1098364).
 
   This update brings many other bug fixes and new features.
-  'http://hackage.haskell.org/package/git-annex-6.20180626/changelog' has a
-  detailed list of changes.
-
-
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

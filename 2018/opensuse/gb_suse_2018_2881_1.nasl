@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2881_1.nasl 11741 2018-10-04 08:03:44Z santu $
+# $Id: gb_suse_2018_2881_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libzypp, openSUSE-SU-2018:2881-1 (libzypp,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851914");
-  script_version("$Revision: 11741 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 10:03:44 +0200 (Thu, 04 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-27 08:11:17 +0200 (Thu, 27 Sep 2018)");
   script_cve_id("CVE-2018-7685");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libzypp, openSUSE-SU-2018:2881-1 (libzypp,)");
   script_tag(name:"summary", value:"Check the version of libzypp,");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libzypp, zypper fixes the following issues:
+  script_tag(name:"insight", value:"This update for libzypp, zypper fixes the following issues:
 
   Update libzypp to version 16.17.20:
 

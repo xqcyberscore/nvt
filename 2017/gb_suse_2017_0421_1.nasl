@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0421_1.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
+# $Id: gb_suse_2017_0421_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for spice openSUSE-SU-2017:0421-1 (spice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851487");
-  script_version("$Revision: 11661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 05:49:28 +0100 (Thu, 09 Feb 2017)");
   script_cve_id("CVE-2016-9577", "CVE-2016-9578");
   script_tag(name:"cvss_base", value:"6.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for spice openSUSE-SU-2017:0421-1 (spice)");
   script_tag(name: "summary", value: "Check the version of spice");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This security update for spice fixes the following issues:
+  script_tag(name:"insight", value:"This security update for spice fixes the following issues:
 
   CVE-2016-9577: A buffer overflow in the spice server could have
   potentially been used by unauthenticated attackers to execute arbitrary

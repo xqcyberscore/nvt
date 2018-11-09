@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_moxa_awk_detect.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Moxa AWK Series Devices Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106740");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 13:52:39 +0200 (Tue, 11 Apr 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,7 @@ if ("<title>Moxa AWK-" >< res && "Password508=" >< res && "llogin.gif" >< res) {
 
   cpe = 'cpe:/h:moxa:' + tolower(model);
 
-  register_product(cpe: cpe, location: "/", port: port);
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
 
   log_message(data: 'The remote host is a Moxa ' + model + '\n\nCPE: ' + cpe, port: port);
   exit(0);

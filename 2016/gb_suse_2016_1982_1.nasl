@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1982_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1982_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Chromium openSUSE-SU-2016:1982-1 (Chromium)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851376");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 05:37:51 +0200 (Mon, 08 Aug 2016)");
-  script_cve_id("CVE-2016-5139", "CVE-2016-5140", "CVE-2016-5141", "CVE-2016-5142", 
+  script_cve_id("CVE-2016-5139", "CVE-2016-5140", "CVE-2016-5141", "CVE-2016-5142",
                 "CVE-2016-5143", "CVE-2016-5144", "CVE-2016-5145", "CVE-2016-5146");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2016:1982-1 (Chromium)");
   script_tag(name: "summary", value: "Check the version of Chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Chromium was updated to 52.0.2743.116 to fix the following security
+  script_tag(name:"insight", value:"Chromium was updated to 52.0.2743.116 to fix the following security
   issues: (boo#992305)
 
   - CVE-2016-5141: Address bar spoofing (boo#992314)

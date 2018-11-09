@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0259_1.nasl 8606 2018-01-31 13:07:06Z santu $
+# $Id: gb_suse_2018_0259_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2018:0259-1 (chromium)
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851692");
-  script_version("$Revision: 8606 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:07:06 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 07:47:09 +0100 (Mon, 29 Jan 2018)");
-  script_cve_id("CVE-2017-15420", "CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033", 
-                "CVE-2018-6034", "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037", 
-                "CVE-2018-6038", "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041", 
-                "CVE-2018-6042", "CVE-2018-6043", "CVE-2018-6045", "CVE-2018-6046", 
-                "CVE-2018-6047", "CVE-2018-6048", "CVE-2018-6049", "CVE-2018-6050", 
+  script_cve_id("CVE-2017-15420", "CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033",
+                "CVE-2018-6034", "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037",
+                "CVE-2018-6038", "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041",
+                "CVE-2018-6042", "CVE-2018-6043", "CVE-2018-6045", "CVE-2018-6046",
+                "CVE-2018-6047", "CVE-2018-6048", "CVE-2018-6049", "CVE-2018-6050",
                 "CVE-2018-6051", "CVE-2018-6052", "CVE-2018-6053", "CVE-2018-6054");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2018:0259-1 (chromium)");
   script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for chromium to 64.0.3282.119 fixes several issues.
+  script_tag(name:"insight", value:"This update for chromium to 64.0.3282.119 fixes several issues.
 
   These security issues were fixed:
 

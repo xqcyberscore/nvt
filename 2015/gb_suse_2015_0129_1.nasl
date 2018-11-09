@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0129_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0129_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2015:0129-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850939");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:48:48 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0310");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,10 +37,8 @@ if(description)
   script_name("SuSE Update for flash-player SUSE-SU-2015:0129-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Adobe Flash Player was updated to 11.2.202.438 to fix one security isssue.
+  script_tag(name:"insight", value:"Adobe Flash Player was updated to 11.2.202.438 to fix one security issue.
 
-  http://helpx.adobe.com/security/products/flash-player/apsb15-02.html
   (APSB15-02, CVE-2015-0310)");
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1710_1.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: gb_suse_2018_1710_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:1710-1 (java-1_7_0-openjdk)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851786");
-  script_version("$Revision: 10262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-16 05:50:00 +0200 (Sat, 16 Jun 2018)");
-  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796", 
-                "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800", 
+  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796",
+                "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800",
                 "CVE-2018-2814", "CVE-2018-2815");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2018:1710-1 (java-1_7_0-openjdk)");
   script_tag(name:"summary", value:"Check the version of java-1_7_0-openjdk");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for java-1_7_0-openjdk to version 7u181 fixes the following
+  script_tag(name:"insight", value:"This update for java-1_7_0-openjdk to version 7u181 fixes the following
   issues:
 
   + S8162488: JDK should be updated to use LittleCMS 2.8
@@ -73,7 +72,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1335_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1335_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for bind openSUSE-SU-2015:1335-1 (bind)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850667");
-  script_version("$Revision: 8046 $");
+  script_version("$Revision: 12259 $");
   script_cve_id("CVE-2015-5477");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-04 06:27:31 +0200 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bind openSUSE-SU-2015:1335-1 (bind)");
   script_tag(name: "summary", value: "Check the version of bind");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  bind was updated to fix one security issue.
+  script_tag(name:"insight", value:"bind was updated to fix one security issue.
 
   This security issue was fixed:
   - CVE-2015-5477: Remote DoS via TKEY queries (boo#939567)

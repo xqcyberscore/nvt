@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2764_1.nasl 11578 2018-09-25 05:40:17Z cfischer $
+# $Id: gb_suse_2018_2764_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for exempi openSUSE-SU-2018:2764-1 (exempi)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851899");
-  script_version("$Revision: 11578 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:40:17 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-21 08:10:35 +0200 (Fri, 21 Sep 2018)");
   script_cve_id("CVE-2017-18233", "CVE-2017-18236", "CVE-2017-18238");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for exempi openSUSE-SU-2018:2764-1 (exempi)");
   script_tag(name:"summary", value:"Check the version of exempi");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for exempi fixes the following security issue:
+  script_tag(name:"insight", value:"This update for exempi fixes the following security issue:
 
   - CVE-2017-18236: The ASF_Support::ReadHeaderObject function allowed
   remote attackers to cause a denial of service (infinite loop) via a

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1330_1.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_suse_2018_1330_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for enigmail openSUSE-SU-2018:1330-1 (enigmail)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851748");
-  script_version("$Revision: 10374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-18 05:38:27 +0200 (Fri, 18 May 2018)");
   script_cve_id("CVE-2017-17688", "CVE-2017-17689");
   script_tag(name:"cvss_base", value:"4.3");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for enigmail openSUSE-SU-2018:1330-1 (enigmail)");
   script_tag(name:"summary", value:"Check the version of enigmail");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for enigmail to version 2.0.4 fixes multiple issues.
+  script_tag(name:"insight", value:"This update for enigmail to version 2.0.4 fixes multiple issues.
 
   Security issues fixed:
 
@@ -67,7 +66,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

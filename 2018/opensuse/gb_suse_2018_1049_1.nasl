@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1049_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_suse_2018_1049_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for PackageKit openSUSE-SU-2018:1049-1 (PackageKit)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851735");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:40:58 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2018-1106");
   script_tag(name:"cvss_base", value:"2.1");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for PackageKit openSUSE-SU-2018:1049-1 (PackageKit)");
   script_tag(name: "summary", value: "Check the version of PackageKit");
   script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "
-  This update for PackageKit fixes the following security issue:
+  script_tag(name:"insight", value:"This update for PackageKit fixes the following security issue:
 
   - CVE-2018-1106: Drop the polkit rule which could allow users in wheel
   group to install packages without root password (bsc#1086936).

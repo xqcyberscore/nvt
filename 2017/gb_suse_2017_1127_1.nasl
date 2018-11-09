@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1127_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1127_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for libosip2 openSUSE-SU-2017:1127-1 (libosip2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851542");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-29 07:16:48 +0200 (Sat, 29 Apr 2017)");
   script_cve_id("CVE-2016-10324", "CVE-2016-10325", "CVE-2016-10326", "CVE-2017-7853");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of libosip2");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for libosip2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libosip2 fixes the following issues:
 
   Changes in libosip2:
 

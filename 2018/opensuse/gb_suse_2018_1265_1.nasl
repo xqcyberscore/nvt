@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1265_1.nasl 9876 2018-05-17 03:47:45Z ckuersteiner $
+# $Id: gb_suse_2018_1265_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for opencv openSUSE-SU-2018:1265-1 (opencv)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851743");
-  script_version("$Revision: 9876 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 05:47:45 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-12 05:51:31 +0200 (Sat, 12 May 2018)");
   script_cve_id("CVE-2016-1516", "CVE-2016-1517");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for opencv openSUSE-SU-2018:1265-1 (opencv)");
   script_tag(name:"summary", value:"Check the version of opencv");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for opencv fixes the following issues:
+  script_tag(name:"insight", value:"This update for opencv fixes the following issues:
 
   - CVE-2016-1517: Fixed a denial of service (segfault) via vectors
   involving corrupt chunks (boo#1033150)
@@ -49,7 +48,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

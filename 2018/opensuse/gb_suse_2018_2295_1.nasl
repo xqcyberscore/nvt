@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2295_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2295_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for virtualbox openSUSE-SU-2018:2295-1 (virtualbox)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852054");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-3005", "CVE-2018-3055", "CVE-2018-3085", "CVE-2018-3086", "CVE-2018-3087", "CVE-2018-3088", "CVE-2018-3089", "CVE-2018-3090", "CVE-2018-3091");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:39:29 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for virtualbox openSUSE-SU-2018:2295-1 (virtualbox)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for virtualbox to version 5.2.16 fixes the following issues:
+  script_tag(name:"insight", value:"This update for virtualbox to version 5.2.16 fixes the following issues:
 
   The following security vulnerabilities were fixed (boo#1101667):
 

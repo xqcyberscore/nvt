@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2615_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2615_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:2615-1 (Mozilla)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851624");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:55:26 +0530 (Thu, 05 Oct 2017)");
-  script_cve_id("CVE-2017-7793", "CVE-2017-7805", "CVE-2017-7810", "CVE-2017-7814", 
+  script_cve_id("CVE-2017-7793", "CVE-2017-7805", "CVE-2017-7810", "CVE-2017-7814",
                 "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7823", "CVE-2017-7824");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:2615-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to Mozilla Firefox 52.4esr, along with Mozilla NSS 3.28.6,
+  script_tag(name:"insight", value:"This update to Mozilla Firefox 52.4esr, along with Mozilla NSS 3.28.6,
   fixes security issues and bugs.
 
   The following vulnerabilities advised upstream under MFSA 2017-22

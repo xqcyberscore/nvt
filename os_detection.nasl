@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 12248 2018-11-07 15:25:41Z cfischer $
+# $Id: os_detection.nasl 12265 2018-11-08 15:57:01Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 12248 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12265 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 16:57:01 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,6 +66,7 @@ if(description)
                       "gb_watchguard_fireware_detect.nasl", "gb_vibnode_consolidation.nasl",
                       "gb_hyperip_consolidation.nasl", "gb_avm_fritz_box_detect.nasl",
                       "gb_dlink_dap_detect.nasl", "gb_dlink_dsl_detect.nasl",
+                      "gb_dlink_dns_detect.nasl",
                       "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",

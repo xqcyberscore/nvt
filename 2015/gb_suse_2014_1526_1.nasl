@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1526_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1526_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for IBM SUSE-SU-2014:1526-1 (IBM)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850771");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-3065", "CVE-2014-3566", "CVE-2014-4288", "CVE-2014-6456", "CVE-2014-6457", "CVE-2014-6458", "CVE-2014-6466", "CVE-2014-6476", "CVE-2014-6492", "CVE-2014-6493", "CVE-2014-6502", "CVE-2014-6503", "CVE-2014-6506", "CVE-2014-6511", "CVE-2014-6512", "CVE-2014-6513", "CVE-2014-6515", "CVE-2014-6527", "CVE-2014-6531", "CVE-2014-6532", "CVE-2014-6558");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for IBM SUSE-SU-2014:1526-1 (IBM)");
   script_tag(name: "summary", value: "Check the version of IBM");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  java-1_7_0-ibm has been updated to version 1.7.0_sr7.2 to fix 21 security
+  script_tag(name:"insight", value:"java-1_7_0-ibm has been updated to version 1.7.0_sr7.2 to fix 21 security
   issues.
 
   These security issues have been fixed:
@@ -85,7 +84,7 @@ if(description)
   (CVE-2014-6458).
   * Unspecified vulnerability in Oracle Java SE 6u81, 7u67, and 8u20,
   when running on Internet Explorer, allows local users to affect
-  c ... 
+  c ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "IBM on SUSE Linux Enterprise Server 11 SP3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_rce.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_qnap_qts_rce.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # QNAP QTS Unauthenticated Remote Code Execution Vulnerability
 #
@@ -25,22 +25,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:qnap";
+CPE_PREFIX = "cpe:/h:qnap";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107274");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12260 $");
 
   script_name("QNAP QTS Unauthenticated Remote Code Execution Vulnerability");
 
-  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3565");
   script_cve_id("CVE-2017-17029", "CVE-2017-17030", "CVE-2017-17031", "CVE-2017-17032", "CVE-2017-17033",
                 "CVE-2017-14746", "CVE-2017-15275", "CVE-2017-7631");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 13:24:30 +0100 (Wed, 13 Dec 2017)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -51,25 +50,35 @@ if (description)
   script_require_ports("Services/www", 80, 8080);
   script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build");
 
-  script_tag(name:"vuldetect", value:"Check the firmware version");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3565");
+  script_xref(name:"URL", value:"https://www.qnap.com/de-de/releasenotes/");
+
+  script_tag(name:"vuldetect", value:"Check the firmware version.");
+
   script_tag(name:"solution", value:"Update to QNAP QTS 4.3.4.0416 (beta 3) build 20171213 for 4.3.x
   frameworks and to QTS 4.2.6 build 20171208 for 4.2.x frameworks. For details.");
+
   script_tag(name:"summary", value:"QNAP QTS is vulnerable to unauthenticated remote code execution.");
+
   script_tag(name:"insight", value:"The flaw is due to lack of proper bounds checking in authLogin.cgi");
+
   script_tag(name:"impact", value:"It is possible to overflow a stack buffer with a specially crafted
   HTTP request and hijack the control flow to achieve arbitrary code execution.");
 
   script_tag(name:"affected", value:"QNAP QTS versions 4.3.x and 4.2.x, including the 4.3.3.0299.");
 
-  script_xref(name:"URL", value:"https://www.qnap.com/de-de/releasenotes/");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE)) exit(0);
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE)) exit(0);
 
+port = infos["port"];
+CPE = infos["cpe"];
+
+# TODO: Use get_app_version() and make sure it returns the version as well as the build
 if (! version = get_kb_item( "qnap/version")) exit(0);
 if (! build = get_kb_item( "qnap/build")) exit(0);
 

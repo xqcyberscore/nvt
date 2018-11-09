@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wepresent_wipg_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_wepresent_wipg_mult_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # wePresent WiPG Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:wepresent:wipg';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106782");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 08:12:54 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -82,7 +82,10 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
+
+if (!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
 
 url = '/cgi-bin/login.cgi?lang=en&src=../../../bin/mountstor.sh';

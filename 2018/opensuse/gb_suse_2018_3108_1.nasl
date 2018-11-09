@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3108_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_3108_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for mgetty openSUSE-SU-2018:3108-1 (mgetty)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851932");
-  script_version("$Revision: 12236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-13 06:54:06 +0200 (Sat, 13 Oct 2018)");
   script_cve_id("CVE-2018-16741", "CVE-2018-16742", "CVE-2018-16743", "CVE-2018-16744", "CVE-2018-16745");
   script_tag(name:"cvss_base", value:"7.2");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for mgetty openSUSE-SU-2018:3108-1 (mgetty)");
   script_tag(name:"summary", value:"Check the version of mgetty");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for mgetty fixes the following issues:
+  script_tag(name:"insight", value:"This update for mgetty fixes the following issues:
 
   - CVE-2018-16741: Fixed a command injection in fax/faxq-helper.c
   (boo#1108752)

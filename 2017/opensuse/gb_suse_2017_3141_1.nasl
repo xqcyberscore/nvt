@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3141_1.nasl 8247 2017-12-26 13:32:16Z cfischer $
+# $Id: gb_suse_2017_3141_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for samba openSUSE-SU-2017:3141-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851653");
-  script_version("$Revision: 8247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:48:02 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-14746", "CVE-2017-15275");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2017:3141-1 (samba)");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for samba fixes the following issues:
+  script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   Security issues fixed:
 

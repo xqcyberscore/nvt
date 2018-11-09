@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2591_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_2591_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for zutils openSUSE-SU-2018:2591-1 (zutils)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851875");
-  script_version("$Revision: 12236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:10 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-1000637");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of zutils");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update for zutils to version 1.7 fixes one security issue:
+  script_tag(name:"insight", value:"This update for zutils to version 1.7 fixes one security issue:
 
   - CVE-2018-1000637: buffer overrun in zcat utility (boo#1103878)
 

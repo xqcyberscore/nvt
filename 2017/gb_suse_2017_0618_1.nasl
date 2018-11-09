@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0618_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0618_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2017:0618-1 (mysql-community-server)
 #
@@ -27,25 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851520");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-07 05:44:29 +0100 (Tue, 07 Mar 2017)");
-  script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3238", "CVE-2017-3244", 
-                "CVE-2017-3257", "CVE-2017-3258", "CVE-2017-3265", "CVE-2017-3273", 
-                "CVE-2017-3291", "CVE-2017-3312", "CVE-2017-3313", "CVE-2017-3317", 
+  script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3238", "CVE-2017-3244",
+                "CVE-2017-3257", "CVE-2017-3258", "CVE-2017-3265", "CVE-2017-3273",
+                "CVE-2017-3291", "CVE-2017-3312", "CVE-2017-3313", "CVE-2017-3317",
                 "CVE-2017-3318");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2017:0618-1 (mysql-community-server)");
   script_tag(name: "summary", value: "Check the version of mysql-community-server");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  mysql-community-server was updated to version 5.6.35 to fix bugs and
+  script_tag(name:"insight", value:"mysql-community-server was updated to version 5.6.35 to fix bugs and
   security issues:
 
-  * Changes 'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html'
   * Fixed CVEs: CVE-2016-8318 [boo#1020872], CVE-2017-3312 [boo#1020873],
   CVE-2017-3258 [boo#1020875], CVE-2017-3273 [boo#1020876], CVE-2017-3244
   [boo#1020877], CVE-2017-3257 [boo#1020878], CVE-2017-3238 [boo#1020882],

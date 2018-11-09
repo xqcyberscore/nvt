@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2166_1.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_suse_2018_2166_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for rsyslog openSUSE-SU-2018:2166-1 (rsyslog)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851829");
-  script_version("$Revision: 10778 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 05:48:43 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2015-3243");
   script_tag(name:"cvss_base", value:"2.1");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for rsyslog openSUSE-SU-2018:2166-1 (rsyslog)");
   script_tag(name:"summary", value:"Check the version of rsyslog");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for rsyslog fixes the following issues:
+  script_tag(name:"insight", value:"This update for rsyslog fixes the following issues:
 
   The following security vulnerability was addressed:
 
@@ -50,7 +49,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

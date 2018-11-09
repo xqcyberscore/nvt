@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1045_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1045_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Xen SUSE-SU-2015:1045-1 (Xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850745");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 14:11:29 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-3209", "CVE-2015-4103", "CVE-2015-4104", "CVE-2015-4105",
                 "CVE-2015-4106", "CVE-2015-4163", "CVE-2015-4164");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of Xen");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Xen was updated to fix seven security vulnerabilities:
+  script_tag(name:"insight", value:"Xen was updated to fix seven security vulnerabilities:
 
   * CVE-2015-4103: Potential unintended writes to host MSI message data
   field via qemu. (XSA-128, bnc#931625)
@@ -60,20 +59,12 @@ if(description)
   Security Issues:
 
   * CVE-2015-4103
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4103 
   * CVE-2015-4104
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4104 
   * CVE-2015-4105
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4105 
   * CVE-2015-4106
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4106 
   * CVE-2015-4163
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4163 
   * CVE-2015-4164
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4164 
   * CVE-2015-3209
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3209 
-
 
   Special Instructions and Notes:
 

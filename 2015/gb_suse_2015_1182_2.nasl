@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1182_2.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1182_2.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for OpenSSL SUSE-SU-2015:1182-2 (OpenSSL)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850749");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 14:25:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791",
                 "CVE-2015-1792", "CVE-2015-3216", "CVE-2015-4000");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of OpenSSL");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  OpenSSL 0.9.8k was updated to fix several security issues:
+  script_tag(name:"insight", value:"OpenSSL 0.9.8k was updated to fix several security issues:
 
   * CVE-2015-4000: The Logjam Attack (weakdh.org) has been addressed by
   rejecting connections with DH parameters shorter than 1024 bits.
@@ -66,19 +65,12 @@ if(description)
   Security Issues:
 
   * CVE-2015-1788
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1788 
   * CVE-2015-1789
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1789 
   * CVE-2015-1790
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1790 
   * CVE-2015-1791
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1791 
   * CVE-2015-1792
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1792 
   * CVE-2015-3216
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3216 
-  * CVE-2015-4000
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-4000");
+  * CVE-2015-4000");
   script_tag(name: "affected", value: "OpenSSL on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2015:1182_2");

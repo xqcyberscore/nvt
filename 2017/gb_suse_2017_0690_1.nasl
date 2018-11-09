@@ -1,6 +1,6 @@
  ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0690_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0690_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2017:0690-1 (MozillaFirefox,)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851523");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 18:29:26 +0100 (Tue, 14 Mar 2017)");
-  script_cve_id("CVE-2017-5398", "CVE-2017-5399", "CVE-2017-5400", "CVE-2017-5401", 
-                "CVE-2017-5402", "CVE-2017-5403", "CVE-2017-5404", "CVE-2017-5405", 
-                "CVE-2017-5406", "CVE-2017-5407", "CVE-2017-5408", "CVE-2017-5410", 
-                "CVE-2017-5412", "CVE-2017-5413", "CVE-2017-5414", "CVE-2017-5415", 
-                "CVE-2017-5416", "CVE-2017-5417", "CVE-2017-5418", "CVE-2017-5419", 
-                "CVE-2017-5420", "CVE-2017-5421", "CVE-2017-5422", "CVE-2017-5426", 
+  script_cve_id("CVE-2017-5398", "CVE-2017-5399", "CVE-2017-5400", "CVE-2017-5401",
+                "CVE-2017-5402", "CVE-2017-5403", "CVE-2017-5404", "CVE-2017-5405",
+                "CVE-2017-5406", "CVE-2017-5407", "CVE-2017-5408", "CVE-2017-5410",
+                "CVE-2017-5412", "CVE-2017-5413", "CVE-2017-5414", "CVE-2017-5415",
+                "CVE-2017-5416", "CVE-2017-5417", "CVE-2017-5418", "CVE-2017-5419",
+                "CVE-2017-5420", "CVE-2017-5421", "CVE-2017-5422", "CVE-2017-5426",
                 "CVE-2017-5427");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2017:0690-1 (MozillaFirefox,)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for MozillaFirefox and mozilla-nss fixes the following issues:
+  script_tag(name:"insight", value:"This update for MozillaFirefox and mozilla-nss fixes the following issues:
 
   MozillaFirefox was updated to Firefox 52.0 (boo#1028391)
   * requires NSS  = 3.28.3
@@ -75,7 +74,7 @@ if(description)
   choose incorrect default directory (bmo#1319370) CVE-2017-5415: Addressbar
   spoofing through blob URL (bmo#1321719) CVE-2017-5416: Null dereference
   crash in HttpChannel (bmo#1328121) CVE-2017-5417: Addressbar spoofing by
-  draging and dropping URLs (bmo#791597) CVE-2017-5426: Gecko Media Plugin
+  dragging and dropping URLs (bmo#791597) CVE-2017-5426: Gecko Media Plugin
   sandbox is not started if seccomp-bpf filter is running (bmo#1257361)
   CVE-2017-5427: Non-existent chrome.manifest file loaded during startup
   (bmo#1295542) CVE-2017-5418: Out of bounds read when parsing HTTP digest
@@ -86,7 +85,7 @@ if(description)
   for ports (bmo#1336699) CVE-2017-5421: Print preview spoofing
   (bmo#1301876) CVE-2017-5422: DOS attack by using view-source: protocol
   repeatedly in one hyperlink (bmo#1295002) CVE-2017-5399: Memory safety
-  bugs fixed in Firefox 52 CVE-2017-5398 ... 
+  bugs fixed in Firefox 52 CVE-2017-5398 ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "MozillaFirefox, on openSUSE Leap 42.2, openSUSE Leap 42.1");

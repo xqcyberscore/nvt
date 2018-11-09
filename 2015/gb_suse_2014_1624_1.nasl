@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1624_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1624_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Mozilla SUSE-SU-2014:1624-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850841");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-1587", "CVE-2014-1588", "CVE-2014-1589", "CVE-2014-1590", "CVE-2014-1591", "CVE-2014-1592", "CVE-2014-1593", "CVE-2014-1594", "CVE-2014-1595");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for Mozilla SUSE-SU-2014:1624-1 (Mozilla)");
   script_tag(name: "summary", value: "Check the version of Mozilla");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Mozilla Firefox has been updated to the 31.3ESR release fixing bugs and
+  script_tag(name:"insight", value:"Mozilla Firefox has been updated to the 31.3ESR release fixing bugs and
   security issues.
 
   *
@@ -93,7 +92,7 @@ if(description)
   because of an initialization bug in the framework. This issue has been
   addressed in Mozilla products by explicitly turning off the framework's
   logging of input events. On vulnerable systems, this issue can result in
-  private data such as usernames, passwords, and other inputed data bei ... 
+  private data such as usernames, passwords, and other inputed data bei ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Mozilla on SUSE Linux Enterprise Server 11 SP3");

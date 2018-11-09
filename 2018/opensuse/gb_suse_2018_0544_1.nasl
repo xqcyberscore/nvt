@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0544_1.nasl 8990 2018-03-01 07:43:09Z cfischer $
+# $Id: gb_suse_2018_0544_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for lame openSUSE-SU-2018:0544-1 (lame)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851711");
-  script_version("$Revision: 8990 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 08:43:09 +0100 (Thu, 01 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 08:15:45 +0100 (Tue, 27 Feb 2018)");
   script_cve_id("CVE-2015-9100", "CVE-2015-9101", "CVE-2017-11720", "CVE-2017-13712", "CVE-2017-15019", "CVE-2017-9410", "CVE-2017-9411", "CVE-2017-9412", "CVE-2017-9869", "CVE-2017-9870", "CVE-2017-9871", "CVE-2017-9872");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for lame openSUSE-SU-2018:0544-1 (lame)");
   script_tag(name: "summary", value: "Check the version of lame");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for lame fixes the following issues:
+  script_tag(name:"insight", value:"This update for lame fixes the following issues:
 
   Lame was updated to version 3.100:
 

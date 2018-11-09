@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2567_1.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: gb_suse_2018_2567_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libX11 openSUSE-SU-2018:2567-1 (libX11)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851873");
-  script_version("$Revision: 12033 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:21:42 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-14598", "CVE-2018-14599", "CVE-2018-14600");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libX11 openSUSE-SU-2018:2567-1 (libX11)");
   script_tag(name:"summary", value:"Check the version of libX11");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libX11 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libX11 fixes the following issues:
 
   Security issues fixed:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0921_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0921_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for gstreamer-0_10-plugins-bad SUSE-SU-2015:0921-1 (gstreamer-0_10-plugins-bad)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851085");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:42:41 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0797");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,14 +37,12 @@ if(description)
   script_name("SuSE Update for gstreamer-0_10-plugins-bad SUSE-SU-2015:0921-1 (gstreamer-0_10-plugins-bad)");
   script_tag(name: "summary", value: "Check the version of gstreamer-0_10-plugins-bad");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  gstreamer-0_10-plugins-bad was updated to fix a security issue, a buffer
+  script_tag(name:"insight", value:"gstreamer-0_10-plugins-bad was updated to fix a security issue, a buffer
   overflow in mp4 parsing (bnc#927559 CVE-2015-0797).
 
   Security Issues:
 
-  * CVE-2015-0797
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0797");
+  * CVE-2015-0797");
   script_tag(name: "affected", value: "gstreamer-0_10-plugins-bad on SUSE Linux Enterprise Desktop 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2015:0921_1");

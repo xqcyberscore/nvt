@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1056_1.nasl 9638 2018-04-27 02:43:52Z ckuersteiner $
+# $Id: gb_suse_2018_1056_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for hdf5 openSUSE-SU-2018:1056-1 (hdf5)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851736");
-  script_version("$Revision: 9638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 04:43:52 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:41:02 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2016-4330", "CVE-2016-4331", "CVE-2016-4332", "CVE-2016-4333");
   script_tag(name:"cvss_base", value:"6.9");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hdf5 openSUSE-SU-2018:1056-1 (hdf5)");
   script_tag(name: "summary", value: "Check the version of hdf5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for hdf5 fixes the following issues:
+  script_tag(name:"insight", value:"This update for hdf5 fixes the following issues:
 
   - fix security issues (arbitrary code execution): CVE-2016-4330: H5T_ARRAY
   Code Execution (boo#1011201) CVE-2016-4331: H5Z_NBIT Code Execution
@@ -49,7 +48,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

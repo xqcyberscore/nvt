@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2769_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2769_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2016:2769-1 (mysql-community-server)
 #
@@ -27,29 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851430");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 05:46:58 +0100 (Fri, 11 Nov 2016)");
-  script_cve_id("CVE-2016-2105", "CVE-2016-3459", "CVE-2016-3477", "CVE-2016-3486", 
-                "CVE-2016-3492", "CVE-2016-3501", "CVE-2016-3521", "CVE-2016-3614", 
-                "CVE-2016-3615", "CVE-2016-5439", "CVE-2016-5440", "CVE-2016-5507", 
-                "CVE-2016-5584", "CVE-2016-5609", "CVE-2016-5612", "CVE-2016-5616", 
-                "CVE-2016-5617", "CVE-2016-5626", "CVE-2016-5627", "CVE-2016-5629", 
-                "CVE-2016-5630", "CVE-2016-6304", "CVE-2016-6662", "CVE-2016-7440", 
+  script_cve_id("CVE-2016-2105", "CVE-2016-3459", "CVE-2016-3477", "CVE-2016-3486",
+                "CVE-2016-3492", "CVE-2016-3501", "CVE-2016-3521", "CVE-2016-3614",
+                "CVE-2016-3615", "CVE-2016-5439", "CVE-2016-5440", "CVE-2016-5507",
+                "CVE-2016-5584", "CVE-2016-5609", "CVE-2016-5612", "CVE-2016-5616",
+                "CVE-2016-5617", "CVE-2016-5626", "CVE-2016-5627", "CVE-2016-5629",
+                "CVE-2016-5630", "CVE-2016-6304", "CVE-2016-6662", "CVE-2016-7440",
                 "CVE-2016-8283", "CVE-2016-8284", "CVE-2016-8288");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2016:2769-1 (mysql-community-server)");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
 detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  mysql-community-server was updated to 5.6.34 to fix the following issues:
+  script_tag(name:"insight", value:"mysql-community-server was updated to 5.6.34 to fix the following issues:
 
-  * Changes 'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-34.html'
-  'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-33.html'
-  'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-32.html'
-  'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-31.html'
   * fixed CVEs: CVE-2016-6304, CVE-2016-6662, CVE-2016-7440, CVE-2016-5584,
   CVE-2016-5617, CVE-2016-5616, CVE-2016-5626, CVE-2016-3492,
   CVE-2016-5629, CVE-2016-5507, CVE-2016-8283, CVE-2016-5609,

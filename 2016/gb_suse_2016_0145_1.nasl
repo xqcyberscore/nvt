@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0145_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0145_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openssh openSUSE-SU-2016:0145-1 (openssh)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851158");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-16 06:15:41 +0100 (Sat, 16 Jan 2016)");
   script_cve_id("CVE-2016-0777", "CVE-2016-0778");
   script_tag(name:"cvss_base", value:"4.6");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of openssh");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  - CVE-2016-0777: A malicious or compromised server could cause the
+  script_tag(name:"insight", value:"- CVE-2016-0777: A malicious or compromised server could cause the
   OpenSSH client to expose part or all of the client's private key
   through the roaming feature (bsc#961642)
   - CVE-2016-0778: A malicious or compromised server could could trigger a

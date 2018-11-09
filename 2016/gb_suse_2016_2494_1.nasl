@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2494_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2494_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2016:2494-1 (xen)
 #
@@ -27,30 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851407");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 05:46:28 +0200 (Wed, 12 Oct 2016)");
-  script_cve_id("CVE-2014-3615", "CVE-2014-3672", "CVE-2015-7512", "CVE-2015-8504", 
-                "CVE-2015-8558", "CVE-2015-8568", "CVE-2015-8613", "CVE-2015-8743", 
-                "CVE-2016-1714", "CVE-2016-1981", "CVE-2016-3158", "CVE-2016-3159", 
-                "CVE-2016-3710", "CVE-2016-3712", "CVE-2016-3960", "CVE-2016-4001", 
-                "CVE-2016-4002", "CVE-2016-4020", "CVE-2016-4037", "CVE-2016-4439", 
-                "CVE-2016-4441", "CVE-2016-4453", "CVE-2016-4454", "CVE-2016-4480", 
-                "CVE-2016-4952", "CVE-2016-4962", "CVE-2016-4963", "CVE-2016-5105", 
-                "CVE-2016-5106", "CVE-2016-5107", "CVE-2016-5126", "CVE-2016-5238", 
-                "CVE-2016-5337", "CVE-2016-5338", "CVE-2016-5403", "CVE-2016-6258", 
-                "CVE-2016-6259", "CVE-2016-6351", "CVE-2016-6833", "CVE-2016-6834", 
-                "CVE-2016-6835", "CVE-2016-6836", "CVE-2016-6888", "CVE-2016-7092", 
+  script_cve_id("CVE-2014-3615", "CVE-2014-3672", "CVE-2015-7512", "CVE-2015-8504",
+                "CVE-2015-8558", "CVE-2015-8568", "CVE-2015-8613", "CVE-2015-8743",
+                "CVE-2016-1714", "CVE-2016-1981", "CVE-2016-3158", "CVE-2016-3159",
+                "CVE-2016-3710", "CVE-2016-3712", "CVE-2016-3960", "CVE-2016-4001",
+                "CVE-2016-4002", "CVE-2016-4020", "CVE-2016-4037", "CVE-2016-4439",
+                "CVE-2016-4441", "CVE-2016-4453", "CVE-2016-4454", "CVE-2016-4480",
+                "CVE-2016-4952", "CVE-2016-4962", "CVE-2016-4963", "CVE-2016-5105",
+                "CVE-2016-5106", "CVE-2016-5107", "CVE-2016-5126", "CVE-2016-5238",
+                "CVE-2016-5337", "CVE-2016-5338", "CVE-2016-5403", "CVE-2016-6258",
+                "CVE-2016-6259", "CVE-2016-6351", "CVE-2016-6833", "CVE-2016-6834",
+                "CVE-2016-6835", "CVE-2016-6836", "CVE-2016-6888", "CVE-2016-7092",
                 "CVE-2016-7093", "CVE-2016-7094");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:2494-1 (xen)");
   script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen fixes the following issues:
+  script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   These security issues were fixed:
   - CVE-2016-7092: The get_page_from_l3e function in arch/x86/mm.c in Xen
@@ -91,7 +90,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2016-6351: The esp_do_dma function in hw/scsi/esp.c, when built with
   ESP/NCR53C9x controller emulation support, allowed local guest OS
   administrators to cause a denial of service (out-of-bounds write and
-  QEMU process c ... 
+  QEMU process c ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "xen on openSUSE Leap 42.1");

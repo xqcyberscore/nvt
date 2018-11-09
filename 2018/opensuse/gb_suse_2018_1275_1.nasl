@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1275_1.nasl 9863 2018-05-16 12:29:42Z santu $
+# $Id: gb_suse_2018_1275_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Chromium openSUSE-SU-2018:1275-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851744");
-  script_version("$Revision: 9863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-16 14:29:42 +0200 (Wed, 16 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-13 05:36:16 +0200 (Sun, 13 May 2018)");
   script_cve_id("CVE-2018-6120", "CVE-2018-6121", "CVE-2018-6122");
   script_tag(name:"cvss_base", value:"10.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2018:1275-1 (Chromium)");
   script_tag(name:"summary", value:"Check the version of Chromium");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Chromium to version 66.0.3359.170 fixes the following
+  script_tag(name:"insight", value:"This update for Chromium to version 66.0.3359.170 fixes the following
   issues:
 
   Security issues fixed (boo#1092923):
@@ -55,7 +54,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

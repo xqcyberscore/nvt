@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1902_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1902_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2015:1902-1 (java-1_7_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851128");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:19:59 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806",
                 "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842", "CVE-2015-4843",
@@ -41,8 +41,7 @@ if(description)
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2015:1902-1 (java-1_7_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  java-1_7_0-openjdk was updated to fix 17 security issues.
+  script_tag(name:"insight", value:"java-1_7_0-openjdk was updated to fix 17 security issues.
 
   These security issues were fixed:
   - CVE-2015-4843: Unspecified vulnerability in Oracle Java SE 6u101, 7u85,
@@ -84,7 +83,7 @@ if(description)
   - CVE-2015-4882: Unspecified vulnerability in Oracle Java SE 6u101, 7u85,
   and 8u60, and Java SE Embedded 8u51, allowed remote attackers to affect
   availability via vectors related to CORBA (bsc#951376).
-  - CVE-2015-4 ... 
+  - CVE-2015-4 ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "java-1_7_0-openjdk on openSUSE 13.2");

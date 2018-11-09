@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1137_1.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_suse_2018_1137_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for patch openSUSE-SU-2018:1137-1 (patch)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851739");
-  script_version("$Revision: 9903 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 05:36:45 +0200 (Fri, 04 May 2018)");
   script_cve_id("CVE-2016-10713", "CVE-2018-1000156", "CVE-2018-6951");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for patch openSUSE-SU-2018:1137-1 (patch)");
   script_tag(name:"summary", value:"Check the version of patch");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for patch fixes the following issues:
+  script_tag(name:"insight", value:"This update for patch fixes the following issues:
 
   Security issues fixed:
 
@@ -55,7 +54,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1727_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_suse_2015_1727_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for kernel-source SUSE-SU-2015:1727-1 (kernel-source)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850904");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 13:54:05 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-5156", "CVE-2015-5157", "CVE-2015-5283", "CVE-2015-5697", "CVE-2015-6252", "CVE-2015-6937", "CVE-2015-7613");
   script_tag(name:"cvss_base", value:"7.2");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for kernel-source SUSE-SU-2015:1727-1 (kernel-source)");
   script_tag(name: "summary", value: "Check the version of kernel-source");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The SUSE Linux Enterprise 12 kernel was updated to 3.12.48-52.27 to
+  script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.48-52.27 to
   receive various security and bugfixes.
 
   Following security bugs were fixed:
@@ -80,7 +79,7 @@ if(description)
   - Btrfs: Backport subvolume mount option handling (bsc#934962)
   - Btrfs: Handle unaligned length in extent_same (bsc#937609).
   - Btrfs: advertise which crc32c implementation is being used on mount
-  ( ... 
+  ( ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "kernel-source on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");

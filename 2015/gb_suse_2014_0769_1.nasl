@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0769_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0769_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MySQL SUSE-SU-2014:0769-1 (MySQL)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850784");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-4316", "CVE-2013-5860", "CVE-2013-5881", "CVE-2013-5882",
                 "CVE-2013-5891", "CVE-2013-5894", "CVE-2013-5908", "CVE-2014-0001",
@@ -46,43 +46,20 @@ if(description)
   script_tag(name: "summary", value: "Check the version of MySQL");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  MySQL was updated to version 5.5.37 to address various security issues.
-
-  More information is available at
-http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html#A
-  ppendixMSQL
-http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html#
-  AppendixMSQL  and
-http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html#A
-  ppendixMSQL
-http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html#
-  AppendixMSQL  .
+  script_tag(name:"insight", value:"MySQL was updated to version 5.5.37 to address various security issues.
 
   Security Issues references:
 
   * CVE-2014-2444
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2444 
   * CVE-2014-2436
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2436 
   * CVE-2014-2440
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2440 
   * CVE-2014-2434
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2434 
   * CVE-2014-2435
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2435 
   * CVE-2014-2442
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2442 
   * CVE-2014-2450
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2450 
   * CVE-2014-2419
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2419 
   * CVE-2014-0384
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0384 
   * CVE-2014-2430
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-2430 
-  * CVE-201 ... 
-
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "MySQL on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");

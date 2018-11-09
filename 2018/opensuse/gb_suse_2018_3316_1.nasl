@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3316_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_3316_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for singularity openSUSE-SU-2018:3316-1 (singularity)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852060");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-12021");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:40:23 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for singularity openSUSE-SU-2018:3316-1 (singularity)");
   script_category(ACT_GATHER_INFO);
@@ -50,10 +50,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-
-  Singularity was updated to version 2.6.0, bringing features, bugfixes and
-  security fixes.
+  script_tag(name:"insight", value:"Singularity was updated to version 2.6.0,
+  bringing features, bugfixes and security fixes.
 
   Security issues fixed:
 

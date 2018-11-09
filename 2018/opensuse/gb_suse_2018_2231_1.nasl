@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2231_1.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_suse_2018_2231_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for znc openSUSE-SU-2018:2231-1 (znc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851841");
-  script_version("$Revision: 10849 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 05:51:19 +0200 (Wed, 08 Aug 2018)");
   script_cve_id("CVE-2018-14055", "CVE-2018-14056");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for znc openSUSE-SU-2018:2231-1 (znc)");
   script_tag(name:"summary", value:"Check the version of znc");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for znc fixes the following issues:
+  script_tag(name:"insight", value:"This update for znc fixes the following issues:
 
   - Update to version 1.7.1
   * CVE-2018-14055: non-admin user could gain admin privileges and shell
@@ -76,7 +75,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0972_1.nasl 9643 2018-04-27 07:20:03Z cfischer $
+# $Id: gb_suse_2018_0972_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851731");
-  script_version("$Revision: 9643 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:20:03 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 08:43:06 +0200 (Wed, 18 Apr 2018)");
   script_cve_id("CVE-2018-1091", "CVE-2018-7740", "CVE-2018-8043");
   script_tag(name:"cvss_base", value:"4.9");
@@ -36,12 +36,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.126 to receive various
-  security and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was
+  updated to 4.4.126 to receive various security and bugfixes.
 
   The following security bugs were fixed:
 
@@ -91,7 +89,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - alsa: hda/realtek - Fix speaker no sound after system resume
   (bsc#1031717).
   - alsa: hda - Revert power_save option default value (git-fixes).
-  - alsa: pcm: Fix UAF in snd_pcm_oss_get_formats() (bnc#1012382) ... 
+  - alsa: pcm: Fix UAF in snd_pcm_oss_get_formats() (bnc#1012382) ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");

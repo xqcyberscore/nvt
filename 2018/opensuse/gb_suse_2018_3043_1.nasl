@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3043_1.nasl 11921 2018-10-16 10:20:07Z mmartin $
+# $Id: gb_suse_2018_3043_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for unzip openSUSE-SU-2018:3043-1 (unzip)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851927");
-  script_version("$Revision: 11921 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:20:07 +0200 (Tue, 16 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-06 08:20:39 +0200 (Sat, 06 Oct 2018)");
   script_cve_id("CVE-2014-9636", "CVE-2014-9913", "CVE-2015-7696", "CVE-2015-7697", "CVE-2016-9844", "CVE-2018-1000035");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for unzip openSUSE-SU-2018:3043-1 (unzip)");
   script_tag(name:"summary", value:"Check the version of unzip");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for unzip fixes the following security issues:
+  script_tag(name:"insight", value:"This update for unzip fixes the following security issues:
 
   - CVE-2014-9913: Specially crafted zip files could trigger invalid memory
   writes possibly resulting in DoS or corruption (bsc#1013993)

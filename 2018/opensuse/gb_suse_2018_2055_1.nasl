@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2055_1.nasl 10658 2018-07-27 11:41:40Z santu $
+# $Id: gb_suse_2018_2055_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Chromium openSUSE-SU-2018:2055-1 (Chromium)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851821");
-  script_version("$Revision: 10658 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 13:41:40 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 06:00:59 +0200 (Thu, 26 Jul 2018)");
-  script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126", 
-                "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130", 
-                "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134", 
-                "CVE-2018-6135", "CVE-2018-6136", "CVE-2018-6137", "CVE-2018-6138", 
-                "CVE-2018-6139", "CVE-2018-6140", "CVE-2018-6141", "CVE-2018-6142", 
-                "CVE-2018-6143", "CVE-2018-6144", "CVE-2018-6145", "CVE-2018-6147", 
+  script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126",
+                "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130",
+                "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134",
+                "CVE-2018-6135", "CVE-2018-6136", "CVE-2018-6137", "CVE-2018-6138",
+                "CVE-2018-6139", "CVE-2018-6140", "CVE-2018-6141", "CVE-2018-6142",
+                "CVE-2018-6143", "CVE-2018-6144", "CVE-2018-6145", "CVE-2018-6147",
                 "CVE-2018-6148", "CVE-2018-6149");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2018:2055-1 (Chromium)");
   script_tag(name:"summary", value:"Check the version of Chromium");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Chromium to version 67.0.3396.99 fixes multiple issues.
+  script_tag(name:"insight", value:"This update for Chromium to version 67.0.3396.99 fixes multiple issues.
 
   Security issues fixed (bsc#1095163):
 
@@ -83,7 +82,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_detect.nasl 12248 2018-11-07 15:25:41Z cfischer $
+# $Id: gb_dlink_dsl_detect.nasl 12266 2018-11-08 16:05:51Z cfischer $
 #
 # D-Link DSL Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812377");
-  script_version("$Revision: 12248 $");
+  script_version("$Revision: 12266 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 17:05:51 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 16:00:40 +0530 (Wed, 03 Jan 2018)");
   script_name("D-Link DSL Devices Detection");
   script_category(ACT_GATHER_INFO);
@@ -106,7 +106,7 @@ foreach url( make_list( "/", "/cgi-bin/webproc" ) ) {
       os_app += " Unknown Model Firmware";
       os_cpe += "-unknown_model_firmware";
       hw_app += " Unknown Model Device";
-      os_cpe += "-unknown_model";
+      hw_cpe += "-unknown_model";
     }
 
     # <div class="fwv">Firmware Version : AU_1.02.06<span id="fw_ver" align="left"></span></div>

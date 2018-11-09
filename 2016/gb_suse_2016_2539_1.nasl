@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2539_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2539_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for systemd openSUSE-SU-2016:2539-1 (systemd)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851411");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-15 05:53:15 +0200 (Sat, 15 Oct 2016)");
   script_cve_id("CVE-2016-7796");
   script_tag(name:"cvss_base", value:"4.9");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of systemd");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for systemd fixes the following security issue:
+  script_tag(name:"insight", value:"This update for systemd fixes the following security issue:
 
   - CVE-2016-7796: A zero-length message received over systemd's
   notification socket could make manager_dispatch_notify_fd() return an

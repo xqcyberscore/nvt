@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1209_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1209_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2017:1209-1 (mysql-community-server)
 #
@@ -27,27 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851549");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-09 06:50:33 +0200 (Tue, 09 May 2017)");
-  script_cve_id("CVE-2016-5483", "CVE-2017-3302", "CVE-2017-3305", "CVE-2017-3308", 
-                "CVE-2017-3309", "CVE-2017-3329", "CVE-2017-3450", "CVE-2017-3452", 
-                "CVE-2017-3453", "CVE-2017-3456", "CVE-2017-3461", "CVE-2017-3462", 
+  script_cve_id("CVE-2016-5483", "CVE-2017-3302", "CVE-2017-3305", "CVE-2017-3308",
+                "CVE-2017-3309", "CVE-2017-3329", "CVE-2017-3450", "CVE-2017-3452",
+                "CVE-2017-3453", "CVE-2017-3456", "CVE-2017-3461", "CVE-2017-3462",
                 "CVE-2017-3463", "CVE-2017-3464", "CVE-2017-3599", "CVE-2017-3600");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2017:1209-1 (mysql-community-server)");
   script_tag(name: "summary", value: "Check the version of mysql-community-server");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for mysql-community-server to version 5.6.36 fixes the
+  script_tag(name:"insight", value:"This update for mysql-community-server to version 5.6.36 fixes the
   following issues:
 
   These security issues were fixed:
 
-  
+
 - CVE-2016-5483: Mysqldump failed to properly quote certain identifiers in
   SQL statements written to the dump output, allowing for execution of
   arbitrary commands (bsc#1029014)
@@ -76,16 +75,14 @@ if(description)
   - '--ssl-mode=REQUIRED' can be specified to require a secure connection
   (it fails if a secure connection cannot be obtained)
 
-  
+
   These non-security issues were fixed:
   - Set the default umask to 077 in mysql-systemd-helper (boo#1020976)
   - Change permissions of the configuration dir/files to 755/644. Please
   note that storing the password in the /etc/my.cnf file is not safe. Use
   for example an option file that is accessible only by yourself
-  (boo#889126)
+  (boo#889126)");
 
-  For more information please see
-  'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-36.html'");
   script_tag(name: "affected", value: "mysql-community-server on openSUSE Leap 42.2, openSUSE Leap 42.1");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 

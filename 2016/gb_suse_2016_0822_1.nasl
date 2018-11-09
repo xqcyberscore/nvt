@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0822_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0822_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for tomcat SUSE-SU-2016:0822-1 (tomcat)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851245");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-19 06:18:04 +0100 (Sat, 19 Mar 2016)");
-  script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351", 
+  script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351",
                 "CVE-2016-0706", "CVE-2016-0714", "CVE-2016-0763");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tomcat SUSE-SU-2016:0822-1 (tomcat)");
   script_tag(name: "summary", value: "Check the version of tomcat");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for tomcat fixes the following security issues.
+  script_tag(name:"insight", value:"This update for tomcat fixes the following security issues.
 
   Tomcat has been updated from 7.0.55 to 7.0.68.
 
@@ -81,7 +80,7 @@ of detect NVT and check if the version is vulnerable or not.");
   authorized, which allowed remote authenticated users to bypass intended
   SecurityManager restrictions and read or write to arbitrary application
   data, or cause a denial of service (application disruption), via a web
-  application that sets a crafted global  ... 
+  application that sets a crafted global  ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "tomcat on SUSE Linux Enterprise Server 12");

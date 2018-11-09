@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3346_1.nasl 8185 2017-12-20 04:08:16Z santu $
+# $Id: gb_suse_2017_3346_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2017:3346-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851664");
-  script_version("$Revision: 8185 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 05:08:16 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-17 07:32:24 +0100 (Sun, 17 Dec 2017)");
   script_cve_id("CVE-2017-15429");
   script_tag(name:"cvss_base", value:"10.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:3346-1 (chromium)");
   script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to Chromium 63.0.3239.108 fixes the following issues:
+  script_tag(name:"insight", value:"This update to Chromium 63.0.3239.108 fixes the following issues:
 
   - CVE-2017-15429: UXSS in V8 (bsc#1072976)
   - Various fuzzing fixes");

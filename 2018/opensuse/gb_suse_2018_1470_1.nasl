@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1470_1.nasl 10046 2018-06-01 02:46:35Z ckuersteiner $
+# $Id: gb_suse_2018_1470_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for ceph openSUSE-SU-2018:1470-1 (ceph)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851771");
-  script_version("$Revision: 10046 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 04:46:35 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 05:46:36 +0200 (Thu, 31 May 2018)");
   script_cve_id("CVE-2017-16818", "CVE-2018-7262");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of ceph");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ceph fixes the following issues:
+  script_tag(name:"insight", value:"This update for ceph fixes the following issues:
 
   Security issues fixed:
 

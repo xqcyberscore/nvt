@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3427_1.nasl 8264 2017-12-29 17:15:40Z santu $
+# $Id: gb_suse_2017_3427_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for enigmail openSUSE-SU-2017:3427-1 (enigmail)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851669");
-  script_version("$Revision: 8264 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 18:15:40 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-23 07:49:13 +0100 (Sat, 23 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for enigmail openSUSE-SU-2017:3427-1 (enigmail)");
   script_tag(name: "summary", value: "Check the version of enigmail");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for enigmail to version 1.9.9 fixes the following issues
+  script_tag(name:"insight", value:"This update for enigmail to version 1.9.9 fixes the following issues
   (boo#1073858):
 
   * Enigmail could be coerced to use a malicious PGP public key with a

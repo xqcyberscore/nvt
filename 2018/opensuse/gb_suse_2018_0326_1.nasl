@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0326_1.nasl 8731 2018-02-09 07:50:57Z asteins $
+# $Id: gb_suse_2018_0326_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2018:0326-1 (webkit2gtk3)
 #
@@ -27,42 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851693");
-  script_version("$Revision: 8731 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 08:50:57 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-01 07:49:36 +0100 (Thu, 01 Feb 2018)");
-  script_cve_id("CVE-2016-4692", "CVE-2016-4743", "CVE-2016-7586", "CVE-2016-7587", 
-                "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7598", "CVE-2016-7599", 
-                "CVE-2016-7610", "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", 
-                "CVE-2016-7639", "CVE-2016-7641", "CVE-2016-7645", "CVE-2016-7652", 
-                "CVE-2016-7654", "CVE-2016-7656", "CVE-2017-13788", "CVE-2017-13798", 
-                "CVE-2017-13803", "CVE-2017-13856", "CVE-2017-13866", "CVE-2017-13870", 
-                "CVE-2017-2350", "CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356", 
-                "CVE-2017-2362", "CVE-2017-2363", "CVE-2017-2364", "CVE-2017-2365", 
-                "CVE-2017-2366", "CVE-2017-2369", "CVE-2017-2371", "CVE-2017-2373", 
-                "CVE-2017-2496", "CVE-2017-2510", "CVE-2017-2539", "CVE-2017-5715", 
-                "CVE-2017-5753", "CVE-2017-5754", "CVE-2017-7006", "CVE-2017-7011", 
-                "CVE-2017-7012", "CVE-2017-7018", "CVE-2017-7019", "CVE-2017-7020", 
-                "CVE-2017-7030", "CVE-2017-7034", "CVE-2017-7037", "CVE-2017-7038", 
-                "CVE-2017-7039", "CVE-2017-7040", "CVE-2017-7041", "CVE-2017-7042", 
-                "CVE-2017-7043", "CVE-2017-7046", "CVE-2017-7048", "CVE-2017-7049", 
-                "CVE-2017-7052", "CVE-2017-7055", "CVE-2017-7056", "CVE-2017-7059", 
-                "CVE-2017-7061", "CVE-2017-7064", "CVE-2017-7081", "CVE-2017-7087", 
-                "CVE-2017-7089", "CVE-2017-7090", "CVE-2017-7091", "CVE-2017-7092", 
-                "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096", 
-                "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", "CVE-2017-7102", 
-                "CVE-2017-7104", "CVE-2017-7107", "CVE-2017-7109", "CVE-2017-7111", 
-                "CVE-2017-7117", "CVE-2017-7120", "CVE-2017-7142", "CVE-2017-7156", 
+  script_cve_id("CVE-2016-4692", "CVE-2016-4743", "CVE-2016-7586", "CVE-2016-7587",
+                "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7598", "CVE-2016-7599",
+                "CVE-2016-7610", "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635",
+                "CVE-2016-7639", "CVE-2016-7641", "CVE-2016-7645", "CVE-2016-7652",
+                "CVE-2016-7654", "CVE-2016-7656", "CVE-2017-13788", "CVE-2017-13798",
+                "CVE-2017-13803", "CVE-2017-13856", "CVE-2017-13866", "CVE-2017-13870",
+                "CVE-2017-2350", "CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356",
+                "CVE-2017-2362", "CVE-2017-2363", "CVE-2017-2364", "CVE-2017-2365",
+                "CVE-2017-2366", "CVE-2017-2369", "CVE-2017-2371", "CVE-2017-2373",
+                "CVE-2017-2496", "CVE-2017-2510", "CVE-2017-2539", "CVE-2017-5715",
+                "CVE-2017-5753", "CVE-2017-5754", "CVE-2017-7006", "CVE-2017-7011",
+                "CVE-2017-7012", "CVE-2017-7018", "CVE-2017-7019", "CVE-2017-7020",
+                "CVE-2017-7030", "CVE-2017-7034", "CVE-2017-7037", "CVE-2017-7038",
+                "CVE-2017-7039", "CVE-2017-7040", "CVE-2017-7041", "CVE-2017-7042",
+                "CVE-2017-7043", "CVE-2017-7046", "CVE-2017-7048", "CVE-2017-7049",
+                "CVE-2017-7052", "CVE-2017-7055", "CVE-2017-7056", "CVE-2017-7059",
+                "CVE-2017-7061", "CVE-2017-7064", "CVE-2017-7081", "CVE-2017-7087",
+                "CVE-2017-7089", "CVE-2017-7090", "CVE-2017-7091", "CVE-2017-7092",
+                "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096",
+                "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", "CVE-2017-7102",
+                "CVE-2017-7104", "CVE-2017-7107", "CVE-2017-7109", "CVE-2017-7111",
+                "CVE-2017-7117", "CVE-2017-7120", "CVE-2017-7142", "CVE-2017-7156",
                 "CVE-2017-7157");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2018:0326-1 (webkit2gtk3)");
   script_tag(name: "summary", value: "Check the version of webkit2gtk3");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  This update for webkit2gtk3 fixes the following issues:
+  script_tag(name:"insight", value:"This update for webkit2gtk3 fixes
+  the following issues:
 
   Update to version 2.18.5:
 

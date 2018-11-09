@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 12045 2018-10-24 06:51:17Z mmartin $
+# $Id: gb_dlink_dir_shareport_auth_bypass_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # D-Link DIR Routers SharePort Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113146");
-  script_version("$Revision: 12045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 08:51:17 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 09:53:55 +0200 (Thu, 29 Mar 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,32 +51,47 @@ if( description )
   script_mandatory_keys("host_is_dlink_dir");
 
   script_tag(name:"summary", value:"D-Link DIR Routers are prone to Authentication Bypass Vulnerability.");
+
   script_tag(name:"vuldetect", value:"The script tries to access protected information without authentication.");
+
   script_tag(name:"insight", value:"The directories '/category_view.php' and '/folder_view.php' can be accessed directly without authentication.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access information about the target system
   that would normally require authentication.");
+
   script_tag(name:"affected", value:"D-Link DIR Routers with SharePort functionality. Firmware versions through 2.06.");
-  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+
+  script_tag(name:"solution", value:"No known solution is available as of 08th November, 2018. Information regarding
+  this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.youtube.com/watch?v=Wmm4p8znS3s");
 
   exit(0);
 }
 
-CPE = 'cpe:/o:d-link';
+CPE_PREFIX = 'cpe:/o:d-link';
 
 include( "host_details.inc" );
 include( "http_func.inc" );
 include( "http_keepalive.inc" );
 
 # D-Link NVTs normally use 8080, but Shodan has more than ten times the results with 8181
-if( ! port = get_app_port_from_cpe_prefix( cpe: CPE ) ) exit( 0 );
+if( ! infos = get_app_port_from_cpe_prefix( cpe: CPE_PREFIX, service: "www", first_cpe_only: TRUE ) ) exit( 0 );
+
+port = infos["port"];
+CPE = infos["cpe"];
 
 vuln_urls = make_list( '/folder_view.php', '/category_view.php' );
 
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
 foreach url ( vuln_urls ) {
 
+  url = dir + url;
   req = http_get( port: port, item: url );
   res = http_keepalive_send_recv( port: port, data: req );
 

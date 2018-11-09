@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0126_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0126_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2016:0126-1 (xen)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851188");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:07 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2015-5307", "CVE-2015-7504", "CVE-2015-7549", "CVE-2015-8339", 
-                "CVE-2015-8340", "CVE-2015-8341", "CVE-2015-8345", "CVE-2015-8504", 
-                "CVE-2015-8550", "CVE-2015-8554", "CVE-2015-8555", "CVE-2015-8558", 
+  script_cve_id("CVE-2015-5307", "CVE-2015-7504", "CVE-2015-7549", "CVE-2015-8339",
+                "CVE-2015-8340", "CVE-2015-8341", "CVE-2015-8345", "CVE-2015-8504",
+                "CVE-2015-8550", "CVE-2015-8554", "CVE-2015-8555", "CVE-2015-8558",
                 "CVE-2015-8567", "CVE-2015-8568");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:0126-1 (xen)");
   script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen fixes the following issues:
+  script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   - CVE-2015-8567,CVE-2015-8568: xen: qemu: net: vmxnet3: host memory
   leakage (boo#959387)

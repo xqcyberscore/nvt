@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3071_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3071_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for the openSUSE-SU-2018:3071-1 (the)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852091");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-10940", "CVE-2018-1128", "CVE-2018-1129", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095", "CVE-2018-14613", "CVE-2018-14617", "CVE-2018-14633", "CVE-2018-15572", "CVE-2018-16658", "CVE-2018-17182", "CVE-2018-6554", "CVE-2018-6555", "CVE-2018-9363");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:46:29 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:3071-1 (the)");
   script_category(ACT_GATHER_INFO);
@@ -50,10 +50,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-
-  The openSUSE Leap 15.0 kernel was updated to receive various security and
-  bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 15.0 kernel was updated
+  to receive various security and bugfixes.
 
   The following security bugs were fixed:
 

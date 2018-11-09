@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2178_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_suse_2018_2178_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libgcrypt openSUSE-SU-2018:2178-1 (libgcrypt)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851831");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 05:46:47 +0200 (Sat, 04 Aug 2018)");
   script_cve_id("CVE-2018-0495");
   script_tag(name:"cvss_base", value:"1.9");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libgcrypt openSUSE-SU-2018:2178-1 (libgcrypt)");
   script_tag(name:"summary", value:"Check the version of libgcrypt");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libgcrypt fixes the following issues:
+  script_tag(name:"insight", value:"This update for libgcrypt fixes the following issues:
 
   The following security vulnerability was addressed:
 
@@ -58,7 +57,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

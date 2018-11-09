@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1690_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1690_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for ntp SUSE-SU-2014:1690-1 (ntp)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851069");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:22:35 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-9295", "CVE-2014-9296");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for ntp SUSE-SU-2014:1690-1 (ntp)");
   script_tag(name: "summary", value: "Check the version of ntp");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The network timeservice ntp was updated to fix critical security issues
+  script_tag(name:"insight", value:"The network timeservice ntp was updated to fix critical security issues
   (bnc#910764, CERT VU#852879)
 
   * A potential remote code execution problem was found inside ntpd. The

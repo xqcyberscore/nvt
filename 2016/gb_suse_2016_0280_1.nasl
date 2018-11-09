@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0280_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0280_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for the Linux Kernel openSUSE-SU-2016:0280-1 (Linux Kernel)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851179");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:15:24 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2015-7550", "CVE-2015-8539", "CVE-2015-8543", "CVE-2015-8550", 
-                "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575", 
+  script_cve_id("CVE-2015-7550", "CVE-2015-8539", "CVE-2015-8543", "CVE-2015-8550",
+                "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575",
                 "CVE-2015-8767", "CVE-2016-0728");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the Linux Kernel openSUSE-SU-2016:0280-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The Linux kernel for openSUSE Leap 42.1 was updated to the 4.1.15 stable
+  script_tag(name:"insight", value:"The Linux kernel for openSUSE Leap 42.1 was updated to the 4.1.15 stable
   release, and also includes security and bugfixes.
 
   Following security bugs were fixed:
@@ -87,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - ALSA: hda - Fix noise problems on Thinkpad T440s (boo#958504).
   - ALSA: hda - Flush the pending probe work at remove (boo#960710).
   - ALSA: hda - Set codec to D3 at reboot/shutdown on Thinkpads (bsc#958439).
-  - Add Cavium Thunderx network enha ... 
+  - Add Cavium Thunderx network enha ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.1");

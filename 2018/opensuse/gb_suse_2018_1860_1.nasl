@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1860_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_suse_2018_1860_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:1860-1 (ImageMagick)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851807");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-01 05:47:24 +0200 (Sun, 01 Jul 2018)");
-  script_cve_id("CVE-2017-10928", "CVE-2017-13758", "CVE-2017-18271", "CVE-2018-10804", 
+  script_cve_id("CVE-2017-10928", "CVE-2017-13758", "CVE-2017-18271", "CVE-2018-10804",
                 "CVE-2018-10805", "CVE-2018-11251", "CVE-2018-11655", "CVE-2018-9133");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:1860-1 (ImageMagick)");
   script_tag(name:"summary", value:"Check the version of ImageMagick");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
 the target host.");
-  script_tag(name:"insight", value:"
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   These security issues were fixed:
 
@@ -70,7 +69,7 @@ the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0156_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0156_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for python-pycrypto openSUSE-SU-2017:0156-1 (python-pycrypto)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851475");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-17 05:48:04 +0100 (Tue, 17 Jan 2017)");
   script_cve_id("CVE-2013-7459");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for python-pycrypto openSUSE-SU-2017:0156-1 (python-pycrypto)");
   script_tag(name: "summary", value: "Check the version of python-pycrypto");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for python-pycrypto fixes the following issues:
+  script_tag(name:"insight", value:"This update for python-pycrypto fixes the following issues:
 
   - A heap buffer overflow in the AES module was fixed that could have lead
   to remote code execution, if the mode of operation can be specified from

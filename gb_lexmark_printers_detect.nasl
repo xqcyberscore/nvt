@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_printers_detect.nasl 12212 2018-11-05 09:42:23Z ckuersteiner $
+# $Id: gb_lexmark_printers_detect.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Lexmark Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103685");
-  script_version("$Revision: 12212 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-05 10:42:23 +0100 (Mon, 05 Nov 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-28 11:31:24 +0100 (Thu, 28 Mar 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -116,7 +116,7 @@ foreach url(keys(urls)) {
       if (!cpe)
         cpe = 'cpe:/h:lexmark:' + cpe_model;
 
-      register_product(cpe:cpe, location:port + "/tcp", port:port);
+      register_product(cpe:cpe, location:"/", port:port, service:"www");
 
       log_message(data: build_detection_report(app: "Lexmark " + model, version: version, install: "/", cpe: cpe,
                                                concluded: vers[0], concludedUrl: concUrl),

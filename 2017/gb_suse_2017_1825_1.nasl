@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1825_1.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_suse_2017_1825_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for the openSUSE-SU-2017:1825-1 (Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851578");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:29 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-1000365", "CVE-2017-7518");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,12 +36,10 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2017:1825-1 (Kernel)");
   script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.2 kernel was updated to 4.4.74 to receive various
-  security and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated
+  to 4.4.74 to receive various security and bugfixes.
 
   This update fixes some long standing btrfs issues.
 
@@ -88,7 +86,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - iwlwifi: avoid d0i3 commands when no/init ucode is loaded (FATE#321353,
   FATE#323335).
   - iwlwifi: bail out in case of bad trans state (FATE#321353, FATE#323335).
-  - iwlwifi: block the queues when we send A ... 
+  - iwlwifi: block the queues when we send A ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.2");

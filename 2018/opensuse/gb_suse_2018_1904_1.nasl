@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1904_1.nasl 10495 2018-07-13 06:13:03Z ckuersteiner $
+# $Id: gb_suse_2018_1904_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for ucode-intel openSUSE-SU-2018:1904-1 (ucode-intel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851811");
-  script_version("$Revision: 10495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 08:13:03 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 05:53:44 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2018-3640");
   script_tag(name:"cvss_base", value:"4.9");
@@ -37,19 +37,13 @@ if(description)
   script_name("SuSE Update for ucode-intel openSUSE-SU-2018:1904-1 (ucode-intel)");
   script_tag(name:"summary", value:"Check the version of ucode-intel");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-
-  This update for ucode-intel fixes the following issues:
+  script_tag(name:"insight", value:"This update for ucode-intel fixes the following issues:
 
   The microcode bundles was updated to the 20180703 release
 
   For the listed CPU chipsets this fixes CVE-2018-3640 (Spectre v3a) and
   helps mitigating CVE-2018-3639 (Spectre v4)  (bsc#1100147 bsc#1087082
   bsc#1087083).
-
-  More information on:
-  'https://downloadcenter.intel.com/download/27945/Linux-Processor-Microcode-D'
-  ata-File
 
   Following chipsets are fixed in this round:
 
@@ -71,7 +65,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

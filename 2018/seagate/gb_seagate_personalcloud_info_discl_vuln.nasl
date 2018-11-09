@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_personalcloud_info_discl_vuln.nasl 11428 2018-09-17 10:03:51Z ckuersteiner $
+# $Id: gb_seagate_personalcloud_info_discl_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Seagate Personal Cloud < 4.3.19.3 Information Disclosure Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/h:seagate';
+CPE_PREFIX = 'cpe:/h:seagate';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141482");
-  script_version("$Revision: 11428 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:03:51 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 12:15:49 +0700 (Mon, 17 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,14 +50,14 @@ if (description)
   script_mandatory_keys("seagate_nas/detected");
 
   script_tag(name:"summary", value:"Seagate Personal Cloud is prone to multiple information disclosure
-vulnerabilities.");
+  vulnerabilities.");
 
   script_tag(name:"insight", value:"It was found that the web application used to manage the NAS is affected by
-various unauthenticated information disclosure vulnerabilities. The web application is configured with an HTML5
-cross-origin resource sharing (CORS) policy that trusts any Origin. In addition, the NAS is available using the
-personalcloud.local domain name via multicast Domain Name System (mDNS). Due to this it is possible to exploit
-this issue via a malicious website without requiring the NAS to be directly accessible over the internet and/or to
-know its IP address.");
+  various unauthenticated information disclosure vulnerabilities. The web application is configured with an HTML5
+  cross-origin resource sharing (CORS) policy that trusts any Origin. In addition, the NAS is available using the
+  personalcloud.local domain name via multicast Domain Name System (mDNS). Due to this it is possible to exploit
+  this issue via a malicious website without requiring the NAS to be directly accessible over the internet and/or to
+  know its IP address.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
@@ -75,10 +75,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
 
-url = "/api/external/8.0/simple_sharing.SimpleSharing.list_users";
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + "/api/external/8.0/simple_sharing.SimpleSharing.list_users";
 data = '{"list_info":{"__type__":"ListInfo", "__version__":0, "__sub_version__":0, "__properties__":' +
        '{"limit":-1, "offset":0, "search_parameters":{"__type__":"Dict", "__sub_type__":"Unicode",' +
        ' "__elements__":{}}}}, "with_parameters":{"__type__":"List","__sub_type__":"Unicode","__elements__":{}}}';
@@ -87,7 +96,6 @@ req = http_post(port: port, item: url, data: data);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
 
 if ('{"user_list":' >< res && '"email":' >< res) {
-
   report = 'It was possible to obtain a list of users.\n\nResponse:\n' + res;
   security_message(port: port, data: report);
   exit(0);

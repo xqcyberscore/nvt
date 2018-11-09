@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1848_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_suse_2018_1848_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for procps openSUSE-SU-2018:1848-1 (procps)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851802");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-30 05:50:30 +0200 (Sat, 30 Jun 2018)");
   script_cve_id("CVE-2018-1122", "CVE-2018-1123", "CVE-2018-1124", "CVE-2018-1125", "CVE-2018-1126");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for procps openSUSE-SU-2018:1848-1 (procps)");
   script_tag(name:"summary", value:"Check the version of procps");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for procps fixes the following security issues:
+  script_tag(name:"insight", value:"This update for procps fixes the following security issues:
 
   - CVE-2018-1122: Prevent local privilege escalation in top. If a user ran
   top with HOME unset in an attacker-controlled directory, the attacker
@@ -66,7 +65,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

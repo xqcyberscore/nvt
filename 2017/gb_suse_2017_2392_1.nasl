@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2392_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2392_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for postgresql94 openSUSE-SU-2017:2392-1 (postgresql94)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851614");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-09 07:21:17 +0200 (Sat, 09 Sep 2017)");
   script_cve_id("CVE-2017-7546", "CVE-2017-7547", "CVE-2017-7548");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql94 openSUSE-SU-2017:2392-1 (postgresql94)");
   script_tag(name: "summary", value: "Check the version of postgresql94");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for postgresql94 fixes the following issues:
+  script_tag(name:"insight", value:"This update for postgresql94 fixes the following issues:
 
   * CVE-2017-7547: Further restrict visibility of
   pg_user_mappings.umoptions, to protect passwords stored as user mapping

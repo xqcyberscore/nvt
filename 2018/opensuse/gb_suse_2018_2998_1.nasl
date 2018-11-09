@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2998_1.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_suse_2018_2998_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for texlive openSUSE-SU-2018:2998-1 (texlive)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851924");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 08:21:37 +0200 (Fri, 05 Oct 2018)");
   script_cve_id("CVE-2018-17407");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for texlive openSUSE-SU-2018:2998-1 (texlive)");
   script_tag(name:"summary", value:"Check the version of texlive");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for texlive fixes the following issue:
+  script_tag(name:"insight", value:"This update for texlive fixes the following issue:
 
   - CVE-2018-17407: Prevent buffer overflow when handling of Type 1 fonts
   allowed arbitrary code execution when a malicious font was loaded by one

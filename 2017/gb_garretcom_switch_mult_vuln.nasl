@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_garretcom_switch_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_garretcom_switch_mult_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # Belden GarrettCom 6K/10K Switches Multiple Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/o:garrettcom";
+CPE_PREFIX = "cpe:/o:garrettcom";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106834");
-  script_version("$Revision: 11863 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-26 16:11:38 +0700 (Fri, 26 May 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,20 +50,20 @@ if (description)
   script_mandatory_keys("garretcom_switch/detected", "garretcom_switch/model");
 
   script_tag(name:"summary", value:"Belden GarrettCom 6K and 10KT (Magnum) series network switches are
-prone to multiple vulnerabilities.");
+  prone to multiple vulnerabilities.");
 
   script_tag(name:"insight", value:"Belden GarrettCom 6K and 10KT (Magnum) series network switches are
-prone to multiple vulnerabilities:
+  prone to multiple vulnerabilities:
 
   - A certain hardcoded string can be used to bypass web authentication
 
   - Unprivileged but authenticated users can potentially elevate their access to manager level
 
   - Issuing a certain form of URL against the device's web server can lead to a buffer overflow in the HTTP Server
-which  can  can  lead  to  memory corruption, possibly  including  remote  code execution
+  which  can  can  lead  to  memory corruption, possibly  including  remote  code execution
 
   - Firmware version 4.6.0 devices use the same default SSL certificates and the documentation is not clear that
-users must install their own keys and certificates on the switch to override the default
+  users must install their own keys and certificates on the switch to override the default
 
   - The switches support a number of weak SSL ciphers such as 56-bit DES, RC4, MD5 based MACs
 
@@ -72,7 +72,7 @@ users must install their own keys and certificates on the switch to override the
   script_tag(name:"impact", value:"An unauthenticated attacker may gain complete access to the device.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP request to try to bypass authentication and checks
-the response.");
+  the response.");
 
   script_tag(name:"solution", value:"Update to firmware version 4.7.7 or later.");
 
@@ -86,14 +86,23 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
+
+port = infos["port"];
+CPE = infos["cpe"];
 
 model = get_kb_item("garretcom_switch/model");
 if (!model || model !~ "(6k|10k)")
   exit(0);
 
-url = '/gc/service.php?a=getSystemInformation&key=GoodKey';
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + '/gc/service.php?a=getSystemInformation&key=GoodKey';
 
 if (http_vuln_check(port: port, url: url, pattern: "<sysversion val=", check_header: TRUE,
                     extra_check: "<serialnumber val=")) {

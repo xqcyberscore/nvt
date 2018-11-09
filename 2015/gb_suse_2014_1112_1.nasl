@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1112_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1112_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox SUSE-SU-2014:1112-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851068");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:22:11 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1567", "CVE-2014-1562");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for MozillaFirefox SUSE-SU-2014:1112-1 (MozillaFirefox)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Mozilla Firefox was updated to the 24.8.0ESR release, fixing security
+  script_tag(name:"insight", value:"Mozilla Firefox was updated to the 24.8.0ESR release, fixing security
   issues and bugs.
 
   Only some of the published security advisories affect the Mozilla Firefox
@@ -58,16 +57,10 @@ if(description)
   * Jan de Mooij reported a memory safety problem that affects Firefox
   ESR 24.7, ESR 31 and Firefox 31. (CVE-2014-1562)
 
-  More information is referenced on:
-  https://www.mozilla.org/security/announce/
-  
-
   Security Issues:
 
   * CVE-2014-1562
-  http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1562 
-  * CVE-2014-1567
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1567");
+  * CVE-2014-1567");
   script_tag(name: "affected", value: "MozillaFirefox on SUSE Linux Enterprise Server 11 SP2 LTSS");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "SUSE-SU", value: "2014:1112_1");

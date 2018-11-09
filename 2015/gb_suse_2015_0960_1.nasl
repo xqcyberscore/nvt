@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0960_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0960_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox SUSE-SU-2015:0960-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850853");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 12:19:28 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710",
                 "CVE-2015-2713", "CVE-2015-2716");
@@ -38,8 +38,7 @@ if(description)
   script_name("SuSE Update for MozillaFirefox SUSE-SU-2015:0960-1 (MozillaFirefox)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to Firefox 31.7.0 ESR (bsc#930622) fixes the following issues:
+  script_tag(name:"insight", value:"This update to Firefox 31.7.0 ESR (bsc#930622) fixes the following issues:
 
   * MFSA 2015-46/CVE-2015-2708/CVE-2015-2709 (bmo#1120655, bmo#1143299,
   bmo#1151139, bmo#1152177, bmo#1111251, bmo#1117977, bmo#1128064,

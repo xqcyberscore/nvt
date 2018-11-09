@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2290_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_2290_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for Chromium openSUSE-SU-2015:2290-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851143");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 05:45:07 +0100 (Fri, 18 Dec 2015)");
   script_cve_id("CVE-2015-6764", "CVE-2015-6765", "CVE-2015-6766", "CVE-2015-6767",
                 "CVE-2015-6768", "CVE-2015-6769", "CVE-2015-6770", "CVE-2015-6771",
@@ -44,8 +44,7 @@ if(description)
   script_tag(name: "summary", value: "Check the version of Chromium");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Chromium was updated to 47.0.2526.80 to fix security issues and bugs.
+  script_tag(name:"insight", value:"Chromium was updated to 47.0.2526.80 to fix security issues and bugs.
 
   The following vulnerabilities were fixed:
 

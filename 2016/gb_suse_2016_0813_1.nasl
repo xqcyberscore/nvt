@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0813_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0813_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for samba openSUSE-SU-2016:0813-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851248");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-19 06:18:22 +0100 (Sat, 19 Mar 2016)");
   script_cve_id("CVE-2015-7560", "CVE-2016-0771");
   script_tag(name:"cvss_base", value:"4.9");
@@ -36,19 +36,18 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:0813-1 (samba)");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for samba fixes the following issues:
+  script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   Version update to 4.1.23.
   + Getting and setting Windows ACLs on symlinks can change permissions on
   link target  CVE-2015-7560  (bso#11648)  (boo#968222).
-  + Fix Out-of-bounds read in internal DNS server  CVE-2016-0771 
+  + Fix Out-of-bounds read in internal DNS server  CVE-2016-0771
   (bso#11128)  (bso#11686)  (boo#968223).
 
   Also fixed:
-  - Ensure samlogon fallback requests are rerouted after kerberos failure 
+  - Ensure samlogon fallback requests are rerouted after kerberos failure
   (bnc#953382)  (bnc#953972).");
   script_tag(name: "affected", value: "samba on openSUSE 13.2");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");

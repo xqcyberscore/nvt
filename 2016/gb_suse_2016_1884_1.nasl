@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1884_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1884_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for karchive openSUSE-SU-2016:1884-1 (karchive)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851372");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:55:45 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6232");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for karchive openSUSE-SU-2016:1884-1 (karchive)");
   script_tag(name: "summary", value: "Check the version of karchive");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for karchive fixes the following issues:
+  script_tag(name:"insight", value:"This update for karchive fixes the following issues:
 
   - CVE-2016-6232: A remote attacker could have been able to overwrite
   arbitrary files when tricking the user into downloading KDE extras such

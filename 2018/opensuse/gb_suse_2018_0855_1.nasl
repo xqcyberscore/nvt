@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0855_1.nasl 9288 2018-04-04 06:15:11Z asteins $
+# $Id: gb_suse_2018_0855_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for memcached openSUSE-SU-2018:0855-1 (memcached)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851729");
-  script_version("$Revision: 9288 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 08:15:11 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-31 08:55:01 +0200 (Sat, 31 Mar 2018)");
   script_cve_id("CVE-2017-9951");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for memcached openSUSE-SU-2018:0855-1 (memcached)");
   script_tag(name: "summary", value: "Check the version of memcached");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for memcached fixes the following issues:
+  script_tag(name:"insight", value:"This update for memcached fixes the following issues:
 
   - CVE-2017-9951: Fixed heap-based buffer over-read in try_read_command
   function which allowed remote attackers to cause a denial of service
@@ -50,7 +49,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

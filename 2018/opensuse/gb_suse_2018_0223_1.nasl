@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0223_1.nasl 8624 2018-02-01 12:56:46Z cfischer $
+# $Id: gb_suse_2018_0223_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2018:0223-1 (mysql-community-server)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851688");
-  script_version("$Revision: 8624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:56:46 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-26 07:46:50 +0100 (Fri, 26 Jan 2018)");
-  script_cve_id("CVE-2017-3737", "CVE-2018-2562", "CVE-2018-2573", "CVE-2018-2583", 
-                "CVE-2018-2590", "CVE-2018-2591", "CVE-2018-2612", "CVE-2018-2622", 
-                "CVE-2018-2640", "CVE-2018-2645", "CVE-2018-2647", "CVE-2018-2665", 
+  script_cve_id("CVE-2017-3737", "CVE-2018-2562", "CVE-2018-2573", "CVE-2018-2583",
+                "CVE-2018-2590", "CVE-2018-2591", "CVE-2018-2612", "CVE-2018-2622",
+                "CVE-2018-2640", "CVE-2018-2645", "CVE-2018-2647", "CVE-2018-2665",
                 "CVE-2018-2668", "CVE-2018-2696", "CVE-2018-2703");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2018:0223-1 (mysql-community-server)");
   script_tag(name: "summary", value: "Check the version of mysql-community-server");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for mysql-community-server to version 5.6.39 fixes several
+  script_tag(name:"insight", value:"This update for mysql-community-server to version 5.6.39 fixes several
   issues.
 
   These security issues were fixed:
@@ -83,7 +82,7 @@ of detect NVT and check if the version is vulnerable or not.");
   Privileges). Supported versions that are affected are 5.6.38 and prior
   and 5.7.20 and prior. Easily exploitable vulnerability allowed
   unauthenticated attacker with network access via multiple protocols to
-  compromise MySQL Server. Successful attacks of this vul ... 
+  compromise MySQL Server. Successful attacks of this vul ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "mysql-community-server on openSUSE Leap 42.3, openSUSE Leap 42.2");

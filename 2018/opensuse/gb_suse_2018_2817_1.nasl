@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2817_1.nasl 11667 2018-09-28 07:49:01Z santu $
+# $Id: gb_suse_2018_2817_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2018:2817-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851902");
-  script_version("$Revision: 11667 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:49:01 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 08:19:27 +0200 (Tue, 25 Sep 2018)");
   script_cve_id("CVE-2018-12383", "CVE-2018-12385");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2018:2817-1 (MozillaFirefox)");
   script_tag(name:"summary", value:"Check the version of MozillaFirefox");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Mozilla Firefox to version 60.2.1esr fixes the following
+  script_tag(name:"insight", value:"This update for Mozilla Firefox to version 60.2.1esr fixes the following
   issues:
 
   Security issues fixed (MFSA 2018-23):

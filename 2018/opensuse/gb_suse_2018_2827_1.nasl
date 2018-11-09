@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2827_1.nasl 12252 2018-11-08 07:19:31Z asteins $
+# $Id: gb_suse_2018_2827_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for jhead openSUSE-SU-2018:2827-1 (jhead)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851909");
-  script_version("$Revision: 12252 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 08:24:10 +0200 (Tue, 25 Sep 2018)");
   script_cve_id("CVE-2016-3822", "CVE-2018-16554");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for jhead openSUSE-SU-2018:2827-1 (jhead)");
   script_tag(name:"summary", value:"Check the version of jhead");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for jhead fixes the following security issues:
+  script_tag(name:"insight", value:"This update for jhead fixes the following security issues:
 
   - CVE-2016-3822: jhead remote attackers to execute arbitrary code or cause
   a denial of service (out-of-bounds access) via crafted EXIF data

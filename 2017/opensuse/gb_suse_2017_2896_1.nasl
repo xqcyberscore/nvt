@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2896_1.nasl 9199 2018-03-26 05:56:21Z cfischer $
+# $Id: gb_suse_2017_2896_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851636");
-  script_version("$Revision: 9199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 07:56:21 +0200 (Mon, 26 Mar 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:24:40 +0100 (Mon, 30 Oct 2017)");
-  script_cve_id("CVE-2015-1863", "CVE-2015-4141", "CVE-2015-4142", "CVE-2015-4143", 
-                "CVE-2015-4144", "CVE-2015-4145", "CVE-2015-5314", "CVE-2016-4476", 
-                "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", "CVE-2017-13081", 
+  script_cve_id("CVE-2015-1863", "CVE-2015-4141", "CVE-2015-4142", "CVE-2015-4143",
+                "CVE-2015-4144", "CVE-2015-4145", "CVE-2015-5314", "CVE-2016-4476",
+                "CVE-2017-13078", "CVE-2017-13079", "CVE-2017-13080", "CVE-2017-13081",
                 "CVE-2017-13087", "CVE-2017-13088");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)");
   script_tag(name: "summary", value: "Check the version of hostapd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  This update for hostapd fixes the following issues:
+  script_tag(name:"insight", value:"This update for hostapd fixes the
+  following issues:
 
   - Fix KRACK attacks on the AP side (boo#1063479, CVE-2017-13078,
   CVE-2017-13079, CVE-2017-13080, CVE-2017-13081, CVE-2017-13087,
@@ -51,13 +50,10 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Hostap was updated to upstream release 2.6
 
-  * fixed EAP-pwd last fragment validation ['http://w1.fi/security/2015-7/']
-  (CVE-2015-5314)
   * fixed WPS configuration update vulnerability with malformed passphrase
-  ['http://w1.fi/security/2016-1/'] (CVE-2016-4476)
   * extended channel switch support for VHT bandwidth changes
   * added support for configuring new ANQP-elements with
-  anqp_elem= InfoID : hexdump of payload 
+  anqp_elem= InfoID : hexdump of payload
   * fixed Suite B 192-bit AKM to use proper PMK length (note: this makes old
   releases incompatible with the fixed behavior)
   * added no_probe_resp_if_max_sta=1 parameter to disable Probe Response
@@ -96,7 +92,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - add require_message_authenticator configuration option to require
   CoA/Disconnect-Request packets to be authenticated
   * started to postpone WNM-Notification frame sending by 100 ms so that the
-  ST ... 
+  ST ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "hostapd on openSUSE Leap 42.3, openSUSE Leap 42.2");

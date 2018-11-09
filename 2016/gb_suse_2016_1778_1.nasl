@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1778_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1778_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2016:1778-1 (MozillaThunderbird)
 #
@@ -27,25 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851366");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-11 05:26:25 +0200 (Mon, 11 Jul 2016)");
-  script_cve_id("CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954", "CVE-2016-1955", 
-                "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1960", "CVE-2016-1961", 
-                "CVE-2016-1964", "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790", 
-                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", 
-                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", 
-                "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802", 
+  script_cve_id("CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954", "CVE-2016-1955",
+                "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1960", "CVE-2016-1961",
+                "CVE-2016-1964", "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790",
+                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794",
+                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798",
+                "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802",
                 "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2815", "CVE-2016-2818");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaThunderbird openSUSE-SU-2016:1778-1 (MozillaThunderbird)");
   script_tag(name: "summary", value: "Check the version of MozillaThunderbird");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update contains Mozilla Thunderbird 45.2. (boo#983549)
+  script_tag(name:"insight", value:"This update contains Mozilla Thunderbird 45.2. (boo#983549)
 
   It fixes security issues mostly affecting the e-mail program when used in
   a browser context, such as viewing a web page or HTMl formatted e-mail.

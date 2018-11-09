@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0130_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0130_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2015:0130-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850630");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-01-24 05:48:38 +0100 (Sat, 24 Jan 2015)");
   script_cve_id("CVE-2014-3569", "CVE-2014-3570", "CVE-2014-3571", "CVE-2014-3572", "CVE-2014-8275", "CVE-2015-0204", "CVE-2015-0205", "CVE-2015-0206");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,11 +36,7 @@ if(description)
   script_name("SuSE Update for openssl openSUSE-SU-2015:0130-1 (openssl)");
   script_tag(name: "summary", value: "Check the version of openssl");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  openssl was updated to 1.0.1k to fix various security issues and bugs.
-
-  More information can be found in the openssl advisory:
-  <a  rel='nofollow' href='http://openssl.org/news/secadv_20150108.txt'>http://openssl.org/news/secadv_20150108.txt
+  script_tag(name:"insight", value:"openssl was updated to 1.0.1k to fix various security issues and bugs.
 
   Following issues were fixed:
 

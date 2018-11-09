@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0814_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0814_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for samba SUSE-SU-2016:0814-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851246");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-19 06:18:14 +0100 (Sat, 19 Mar 2016)");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
@@ -36,21 +36,20 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba SUSE-SU-2016:0814-1 (samba)");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for samba fixes the following issues:
+  script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   - CVE-2015-7560: Getting and setting Windows ACLs on symlinks can change
   permissions on link target. (bso#11648 bsc#968222)
 
   Also the following bugs were fixed:
   - Add quotes around path of update-apparmor-samba-profile  (bsc#962177).
-  - Prevent access denied if the share path is '/'  (bso#11647) 
+  - Prevent access denied if the share path is '/'  (bso#11647)
   (bsc#960249).
-  - Ensure samlogon fallback requests are rerouted after kerberos failure 
+  - Ensure samlogon fallback requests are rerouted after kerberos failure
   (bsc#953382).
-  - samba: winbind crash -  netlogon_creds_client_authenticator 
+  - samba: winbind crash -  netlogon_creds_client_authenticator
   (bsc#953972).");
   script_tag(name: "affected", value: "samba on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");

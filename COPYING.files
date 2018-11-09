@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 08 Nov 2018 10:54:06 +0100
+# Automatically created on:  Fri, 09 Nov 2018 09:26:30 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39660,6 +39660,7 @@
 2018/debian/deb_dla_1568.nasl: GPLv2+
 2018/debian/deb_dla_1570.nasl: GPLv2+
 2018/debian/deb_dla_1571.nasl: GPLv2+
+2018/debian/deb_dla_1572.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -43767,6 +43768,7 @@ gb_dlink_dap_detect.nasl: GPLv2+
 gb_dlink_dir_detect.nasl: GPLv2+
 gb_dlink_dns_detect.nasl: GPLv2+
 gb_dlink_dsl_detect.nasl: GPLv2+
+gb_dlink_dwr_detect.nasl: GPLv2+
 gb_dlink_wifimanger_detect.nasl: GPLv2+
 gb_dlxspot_web_detect.nasl: GPLv2+
 gb_dm_filemanager_detect.nasl: GPLv2+
@@ -44142,6 +44144,7 @@ gb_invoiceplane_detect.nasl: GPLv2+
 gb_iojs_detect_win.nasl: GPLv2+
 gb_ipam_detect.nasl: GPLv2+
 gb_ipass_open_mobile_detect_win.nasl: GPLv2+
+gb_ipconfigure_orchid_vms_http_detect.nasl: GPLv2+
 gb_ipecs_cm_detect.nasl: GPLv2+
 gb_ipecs_nms_detect.nasl: GPLv2+
 gb_ipmi_default_pw.nasl: GPLv2+
@@ -60622,6 +60625,7 @@ gsf/2018/dell/gb_dell_idrac_mult_vuln.nasl: GPLv2+
 gsf/2018/dell/gb_sonicwall_gms_multiple_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
+gsf/2018/d-link/gb_dlink_dwr_rce_vuln.nasl: GPLv2+
 gsf/2018/d-link/gb_dlink_wifimanager_mult_vuln.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_default_credentials.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_xss_vuln.nasl: GPLv2+
@@ -60952,6 +60956,7 @@ gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012416.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22013097.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22014392.nasl: GPLv2+
 gsf/2018/idashboards/gb_idashboard_mult_vuln.nasl: GPLv2+
+gsf/2018/ipconfigure/gb_ipconfigure_orchid_vms_dir_trav_vuln_nov18.nasl: GPLv2+
 gsf/2018/ipecs/gb_ipecs_cm_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/ipecs/gb_ipecs_nms_mult_vuln.nasl: GPLv2+
 gsf/2018/ipswitch/gb_ipswitch_whatsup_mult_vuln1.nasl: GPLv2+
@@ -61247,6 +61252,7 @@ gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln1.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-supervisor_mult_vuln_nov18_1.nasl: GPLv2+
 gsf/2018/openxchange/gb_open_xchange_appsuite_mult_vuln_sep18.nasl: GPLv2+
 gsf/2018/opmantek/gb_open_audit_mult_vuln.nasl: GPLv2+
 gsf/2018/opmantek/gb_open_audit_xss_vuln1.nasl: GPLv2+
@@ -61717,7 +61723,6 @@ gsf/Policy/Office2013/office2013_office_presentation_service.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_online_content_options.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_open_as_read_write_browsing.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_openxml_encryption.nasl: GPLv2+
-gsf/Policy/Office2013/office2013_opt-in_wizard.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_option_to_enable_disable_updates.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_password_to_open_ui.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_png_output_format.nasl: GPLv2+
@@ -61760,6 +61765,13 @@ gsf/Policy/Office2013/office_saved_from_url.nasl: GPLv2+
 gsf/Policy/Office2013/office_scripted_window.nasl: GPLv2+
 gsf/Policy/Office2013/office_send_personal_information.nasl: GPLv2+
 gsf/Policy/Office2013/office_zone_elevation.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_admin_token.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_config_ownership.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_config_permission.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_hash_algorithm.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_insecure_debug.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_max_req.nasl: GPLv2+
+gsf/Policy/OpenStack/openstack_keystone_token_provider.nasl: GPLv2+
 gsf/Policy/policy_controls_summary.nasl: GPLv2+
 gsf/Policy/policy_cyber_essentials_err.nasl: GPLv2+
 gsf/Policy/policy_cyber_essentials_fail.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2251_1.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_suse_2018_2251_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Recommended openSUSE-SU-2018:2251-1 (Recommended)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851843");
-  script_version("$Revision: 10979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-09 05:50:33 +0200 (Thu, 09 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,8 +36,7 @@ if(description)
   script_name("SuSE Update for Recommended openSUSE-SU-2018:2251-1 (Recommended)");
   script_tag(name:"summary", value:"Check the version of Recommended");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for enigmail to 2.0.8 fixes the following issues:
+  script_tag(name:"insight", value:"This update for enigmail to 2.0.8 fixes the following issues:
 
   The enigmail 2.0.8 release addresses a security issue and solves a few
   regression bugs.

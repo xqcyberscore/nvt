@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3035_1.nasl 11902 2018-10-15 09:26:53Z santu $
+# $Id: gb_suse_2018_3035_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for gitolite openSUSE-SU-2018:3035-1 (gitolite)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851925");
-  script_version("$Revision: 11902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-06 08:17:09 +0200 (Sat, 06 Oct 2018)");
   script_cve_id("CVE-2018-16976");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for gitolite openSUSE-SU-2018:3035-1 (gitolite)");
   script_tag(name:"summary", value:"Check the version of gitolite");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for gitolite fixes the following issues:
+  script_tag(name:"insight", value:"This update for gitolite fixes the following issues:
 
   Gitolite was updated to 3.6.9:
 

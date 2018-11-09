@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1419_1.nasl 10046 2018-06-01 02:46:35Z ckuersteiner $
+# $Id: gb_suse_2018_1419_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for bash openSUSE-SU-2018:1419-1 (bash)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851763");
-  script_version("$Revision: 10046 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 04:46:35 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:44:47 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2016-0634", "CVE-2016-7543");
   script_tag(name:"cvss_base", value:"7.2");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of bash");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for bash fixes the following issues:
+  script_tag(name:"insight", value:"This update for bash fixes the following issues:
 
   Security issues fixed:
 

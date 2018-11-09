@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2733_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2733_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for chromium openSUSE-SU-2016:2733-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851425");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-05 05:31:43 +0100 (Sat, 05 Nov 2016)");
   script_cve_id("CVE-2016-5198");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2016:2733-1 (chromium)");
   script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to Chromium 54.0.2840.90: fixes the following security issues:
+  script_tag(name:"insight", value:"This update to Chromium 54.0.2840.90: fixes the following security issues:
 
   - CVE-2016-5198: out of bounds memory access in v8 (boo#1008274)");
   script_tag(name: "affected", value: "chromium on openSUSE Leap 42.1, openSUSE 13.2");

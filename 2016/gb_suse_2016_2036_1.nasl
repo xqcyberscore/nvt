@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2036_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2036_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for libarchive openSUSE-SU-2016:2036-1 (libarchive)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851382");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:49:33 +0200 (Fri, 12 Aug 2016)");
-  script_cve_id("CVE-2015-8918", "CVE-2015-8919", "CVE-2015-8920", "CVE-2015-8921", 
-                "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924", "CVE-2015-8925", 
-                "CVE-2015-8926", "CVE-2015-8928", "CVE-2015-8929", "CVE-2015-8930", 
-                "CVE-2015-8931", "CVE-2015-8932", "CVE-2015-8933", "CVE-2015-8934", 
+  script_cve_id("CVE-2015-8918", "CVE-2015-8919", "CVE-2015-8920", "CVE-2015-8921",
+                "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924", "CVE-2015-8925",
+                "CVE-2015-8926", "CVE-2015-8928", "CVE-2015-8929", "CVE-2015-8930",
+                "CVE-2015-8931", "CVE-2015-8932", "CVE-2015-8933", "CVE-2015-8934",
                 "CVE-2016-4300", "CVE-2016-4301", "CVE-2016-4302", "CVE-2016-4809");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libarchive openSUSE-SU-2016:2036-1 (libarchive)");
   script_tag(name: "summary", value: "Check the version of libarchive");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
 detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  libarchive was updated to fix 20 security issues.
+  script_tag(name:"insight", value:"libarchive was updated to fix 20 security issues.
 
   These security issues were fixed:
   - CVE-2015-8918: Overlapping memcpy in CAB parser (bsc#985698).

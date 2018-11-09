@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1207_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_suse_2018_1207_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for php7 openSUSE-SU-2018:1207-1 (php7)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851741");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 05:36:04 +0200 (Fri, 11 May 2018)");
   script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547", "CVE-2018-10548");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of php7");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for php7 fixes the following issues:
+  script_tag(name:"insight", value:"This update for php7 fixes the following issues:
 
   Security issues fixed:
 

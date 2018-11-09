@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1428_1.nasl 10049 2018-06-01 08:09:17Z ckuersteiner $
+# $Id: gb_suse_2018_1428_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:1428-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851764");
-  script_version("$Revision: 10049 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 10:09:17 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:44:58 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2018-11356", "CVE-2018-11357", "CVE-2018-11358", "CVE-2018-11359",
                 "CVE-2018-11360", "CVE-2018-11362");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of wireshark");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for wireshark fixes the following issues:
+  script_tag(name:"insight", value:"This update for wireshark fixes the following issues:
 
   Minor vulnerabilities that could be used to trigger dissector crashes or
   cause excessive memory use by making Wireshark read specially crafted
@@ -54,9 +53,6 @@ on the target host.");
   - CVE-2018-11362: LDSS dissector crash
 
   This update to version 2.4.7 also contains bug fixes and updated protocol
-  support as listed in:
-  'https://www.wireshark.org/docs/relnotes/wireshark-2.4.7.html'
-
 
   Patch Instructions:
 

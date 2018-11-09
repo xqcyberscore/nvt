@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2781_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_2781_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2018:2781-1 (webkit2gtk3)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852082");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-12911", "CVE-2018-4261", "CVE-2018-4262", "CVE-2018-4263", "CVE-2018-4264", "CVE-2018-4265", "CVE-2018-4266", "CVE-2018-4267", "CVE-2018-4270", "CVE-2018-4271", "CVE-2018-4272", "CVE-2018-4273", "CVE-2018-4278", "CVE-2018-4284");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:42:25 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2018:2781-1 (webkit2gtk3)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for webkit2gtk3 to version 2.20.5 fixes the following issues:
+  script_tag(name:"insight", value:"This update for webkit2gtk3 to version 2.20.5 fixes the following issues:
 
   Security issue fixed:
 

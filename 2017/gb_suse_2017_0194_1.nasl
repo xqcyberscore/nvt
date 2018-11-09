@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0194_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0194_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for qemu openSUSE-SU-2017:0194-1 (qemu)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851499");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:15:38 +0100 (Wed, 22 Feb 2017)");
-  script_cve_id("CVE-2016-9102", "CVE-2016-9103", "CVE-2016-9381", "CVE-2016-9776", 
-                "CVE-2016-9845", "CVE-2016-9846", "CVE-2016-9907", "CVE-2016-9908", 
-                "CVE-2016-9911", "CVE-2016-9912", "CVE-2016-9913", "CVE-2016-9921", 
+  script_cve_id("CVE-2016-9102", "CVE-2016-9103", "CVE-2016-9381", "CVE-2016-9776",
+                "CVE-2016-9845", "CVE-2016-9846", "CVE-2016-9907", "CVE-2016-9908",
+                "CVE-2016-9911", "CVE-2016-9912", "CVE-2016-9913", "CVE-2016-9921",
                 "CVE-2016-9922");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2017:0194-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  qemu was updated to fix several issues.
+  script_tag(name:"insight", value:"qemu was updated to fix several issues.
 
   These security issues were fixed:
 
@@ -83,7 +82,7 @@ of detect NVT and check if the version is vulnerable or not.");
   resulting in DoS for the host (bsc#1014111).
   - CVE-2016-9912: The Virtio GPU Device emulator support was vulnerable to
   a memory leakage issue while destroying gpu resource object in
-  'virtio_gpu_resource_destroy'. A guest user/process co ... 
+  'virtio_gpu_resource_destroy'. A guest user/process co ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "qemu on openSUSE Leap 42.2");

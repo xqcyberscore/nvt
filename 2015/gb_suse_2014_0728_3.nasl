@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0728_3.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0728_3.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for IBM SUSE-SU-2014:0728-3 (IBM)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850798");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-6629", "CVE-2013-6954", "CVE-2014-0428", "CVE-2014-0429",
                 "CVE-2014-0446", "CVE-2014-0449", "CVE-2014-0451", "CVE-2014-0452",
@@ -44,43 +44,24 @@ if(description)
   script_tag(name: "summary", value: "Check the version of IBM");
   script_tag(name: "vuldetect", value: "Get the installed version with the help
   of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  BM Java 6 was updated to version 6 SR16 to fix several security issues and
+  script_tag(name:"insight", value:"BM Java 6 was updated to version 6 SR16 to fix several security issues and
   various other bugs.
-
-  More information can be found at:
-http://www.ibm.com/developerworks/java/jdk/alerts/
-http://www.ibm.com/developerworks/java/jdk/alerts/ 
 
   Security Issues references:
 
   * CVE-2013-6629
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6629 
   * CVE-2013-6954
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6954 
   * CVE-2014-0429
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0429 
   * CVE-2014-0446
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0446 
   * CVE-2014-0449
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0449 
   * CVE-2014-0451
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0451 
   * CVE-2014-0452
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0452 
   * CVE-2014-0457
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0457 
   * CVE-2014-0458
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0458 
   * CVE-2014-0459
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0459 
   * CVE-2014-0460
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0460 
   * CVE-2014-0461
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0461 
   * CVE-2014-1876
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-1876 
-  * C ... 
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "IBM on SUSE Linux Enterprise Server 11 SP3");

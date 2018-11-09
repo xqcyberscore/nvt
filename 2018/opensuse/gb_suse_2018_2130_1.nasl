@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2130_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_suse_2018_2130_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for qutebrowser openSUSE-SU-2018:2130-1 (qutebrowser)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851822");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-29 05:57:57 +0200 (Sun, 29 Jul 2018)");
   script_cve_id("CVE-2018-1000559");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for qutebrowser openSUSE-SU-2018:2130-1 (qutebrowser)");
   script_tag(name:"summary", value:"Check the version of qutebrowser");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for qutebrowser fixes the following issues:
+  script_tag(name:"insight", value:"This update for qutebrowser fixes the following issues:
 
   Security issue fixed:
 
@@ -47,7 +46,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

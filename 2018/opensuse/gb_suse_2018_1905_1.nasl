@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1905_1.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_suse_2018_1905_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:1905-1 (Mozilla)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851814");
-  script_version("$Revision: 10480 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 05:54:04 +0200 (Sat, 07 Jul 2018)");
-  script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363", 
-                "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12372", 
+  script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
+                "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12372",
                 "CVE-2018-12373", "CVE-2018-12374", "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2018:1905-1 (Mozilla)");
   script_tag(name:"summary", value:"Check the version of Mozilla");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Mozilla Thunderbird to version 52.9.0 fixes multiple
+  script_tag(name:"insight", value:"This update for Mozilla Thunderbird to version 52.9.0 fixes multiple
   issues.
 
   Security issues fixed, inherited from the Mozilla common code base (MFSA
@@ -92,7 +91,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

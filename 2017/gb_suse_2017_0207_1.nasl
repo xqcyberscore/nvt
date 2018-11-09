@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0207_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0207_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openjpeg2 openSUSE-SU-2017:0207-1 (openjpeg2)
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851480");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 05:40:23 +0100 (Fri, 20 Jan 2017)");
-  script_cve_id("CVE-2016-7445", "CVE-2016-8332", "CVE-2016-9112", "CVE-2016-9113", 
-                "CVE-2016-9114", "CVE-2016-9115", "CVE-2016-9116", "CVE-2016-9117", 
-                "CVE-2016-9118", "CVE-2016-9572", "CVE-2016-9573", "CVE-2016-9580", 
+  script_cve_id("CVE-2016-7445", "CVE-2016-8332", "CVE-2016-9112", "CVE-2016-9113",
+                "CVE-2016-9114", "CVE-2016-9115", "CVE-2016-9116", "CVE-2016-9117",
+                "CVE-2016-9118", "CVE-2016-9572", "CVE-2016-9573", "CVE-2016-9580",
                 "CVE-2016-9581");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openjpeg2 openSUSE-SU-2017:0207-1 (openjpeg2)");
   script_tag(name: "summary", value: "Check the version of openjpeg2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for openjpeg2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for openjpeg2 fixes the following issues:
 
   * CVE-2016-9572 CVE-2016-9573: Insuficient check in imagetopnm() could
   lead to heap buffer overflow [bsc#1014543]

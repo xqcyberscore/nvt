@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0877_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0877_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for samba openSUSE-SU-2016:0877-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851259");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-25 06:14:29 +0100 (Fri, 25 Mar 2016)");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:0877-1 (samba)");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for the samba server fixes the following issues:
+  script_tag(name:"insight", value:"This update for the samba server fixes the following issues:
 
   Security issue fixed:
   - CVE-2015-7560: Getting and setting Windows ACLs on symlinks can change
@@ -47,11 +46,11 @@ of detect NVT and check if the version is vulnerable or not.");
 
   Other bugs fixed:
   - Enable clustering (CTDB) support  (bsc#966271).
-  - s3: smbd: Fix timestamp rounding inside SMB2 create  (bso#11703) 
+  - s3: smbd: Fix timestamp rounding inside SMB2 create  (bso#11703)
   (bsc#964023).
   - vfs_fruit: Fix renaming directories with open files  (bso#11065).
   - Fix MacOS finder error 36 when copying folder to Samba  (bso#11347).
-  - s3:smbd/oplock: Obey kernel oplock setting when releasing oplocks 
+  - s3:smbd/oplock: Obey kernel oplock setting when releasing oplocks
   (bso#11400).
   - Fix copying files with vfs_fruit when using vfs_streams_xattr without
   stream prefix and type suffix  (bso#11466).
@@ -63,12 +62,12 @@ of detect NVT and check if the version is vulnerable or not.");
   - smbd: make 'hide dot files' option work with 'store dos attributes =
   yes'  (bso#11645).
   - smbcacls: Fix uninitialized variable  (bso#11682).
-  - s3:smbd: Ignore initial allocation size for directory creation 
+  - s3:smbd: Ignore initial allocation size for directory creation
   (bso#11684).
   - Add quotes around path of update-apparmor-samba-profile  (bsc#962177).
-  - Prevent access denied if the share path is '/'  (bso#11647) 
+  - Prevent access denied if the share path is '/'  (bso#11647)
   (bsc#960249).
-  - Ensure samlogon fallback requests are rerouted after kerberos failure 
+  - Ensure samlogon fallback requests are rerouted after kerberos failure
   (bsc#953972).
   - samba: winbind crash -  netlogon_creds_client_authenticator  (bsc#953972)
 

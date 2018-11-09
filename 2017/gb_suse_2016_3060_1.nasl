@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3060_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2016_3060_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for GraphicsMagick openSUSE-SU-2016:3060-1 (GraphicsMagick)
 #
@@ -27,26 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851511");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:17:51 +0100 (Wed, 22 Feb 2017)");
-  script_cve_id("CVE-2014-9805", "CVE-2014-9807", "CVE-2014-9809", "CVE-2014-9815", 
-                "CVE-2014-9817", "CVE-2014-9820", "CVE-2014-9831", "CVE-2014-9834", 
-                "CVE-2014-9835", "CVE-2014-9837", "CVE-2014-9845", "CVE-2014-9846", 
-                "CVE-2014-9853", "CVE-2016-5118", "CVE-2016-6823", "CVE-2016-7101", 
-                "CVE-2016-7515", "CVE-2016-7522", "CVE-2016-7528", "CVE-2016-7529", 
-                "CVE-2016-7531", "CVE-2016-7533", "CVE-2016-7537", "CVE-2016-7800", 
-                "CVE-2016-7996", "CVE-2016-7997", "CVE-2016-8682", "CVE-2016-8683", 
+  script_cve_id("CVE-2014-9805", "CVE-2014-9807", "CVE-2014-9809", "CVE-2014-9815",
+                "CVE-2014-9817", "CVE-2014-9820", "CVE-2014-9831", "CVE-2014-9834",
+                "CVE-2014-9835", "CVE-2014-9837", "CVE-2014-9845", "CVE-2014-9846",
+                "CVE-2014-9853", "CVE-2016-5118", "CVE-2016-6823", "CVE-2016-7101",
+                "CVE-2016-7515", "CVE-2016-7522", "CVE-2016-7528", "CVE-2016-7529",
+                "CVE-2016-7531", "CVE-2016-7533", "CVE-2016-7537", "CVE-2016-7800",
+                "CVE-2016-7996", "CVE-2016-7997", "CVE-2016-8682", "CVE-2016-8683",
                 "CVE-2016-8684", "CVE-2016-8862", "CVE-2016-9556");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for GraphicsMagick openSUSE-SU-2016:3060-1 (GraphicsMagick)");
   script_tag(name: "summary", value: "Check the version of GraphicsMagick");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for GraphicsMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for GraphicsMagick fixes the following issues:
 
   - a possible shell execution attack was fixed. if the first character of
   an input filename for 'convert' was a 'pipe' char then the remainder of the

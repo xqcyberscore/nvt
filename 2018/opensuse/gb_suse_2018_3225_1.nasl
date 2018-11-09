@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3225_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_3225_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3225-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851942");
-  script_version("$Revision: 12164 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-19 06:28:33 +0200 (Fri, 19 Oct 2018)");
   script_cve_id("CVE-2017-13058", "CVE-2018-12599", "CVE-2018-12600", "CVE-2018-17965", "CVE-2018-17966", "CVE-2018-18016", "CVE-2018-18024");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3225-1 (ImageMagick)");
   script_tag(name:"summary", value:"Check the version of ImageMagick");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   Security issues fixed:
 

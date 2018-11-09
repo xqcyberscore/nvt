@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1906_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_suse_2018_1906_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2018:1906-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851810");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 05:53:37 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-0732");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2018:1906-1 (openssl)");
   script_tag(name:"summary", value:"Check the version of openssl");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for openssl fixes the following issues:
+  script_tag(name:"insight", value:"This update for openssl fixes the following issues:
 
   - CVE-2018-0732: During key agreement in a TLS handshake using a DH(E)
   based ciphersuite a malicious server could have sent a very large prime
@@ -54,7 +53,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1773_1.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_suse_2018_1773_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for the openSUSE-SU-2018:1773-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851795");
-  script_version("$Revision: 10868 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 05:51:28 +0200 (Fri, 22 Jun 2018)");
   script_cve_id("CVE-2017-13305", "CVE-2017-17741", "CVE-2017-18241", "CVE-2017-18249", "CVE-2018-1092", "CVE-2018-1093", "CVE-2018-1094", "CVE-2018-12233", "CVE-2018-3639", "CVE-2018-3665", "CVE-2018-5848");
   script_tag(name:"cvss_base", value:"7.1");
@@ -37,10 +37,8 @@ if(description)
   script_name("SuSE Update for the openSUSE-SU-2018:1773-1 (the)");
   script_tag(name:"summary", value:"Check the version of the");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-
-  The openSUSE Leap 42.3 was updated to 4.4.138 to receive various security
-  and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 was updated to 4.4.138
+  to receive various security and bugfixes.
 
   The following security bugs were fixed:
 
@@ -81,7 +79,7 @@ if(description)
   cause a denial of service (ext4_xattr_inode_hash NULL pointer
   dereference and system crash) via a crafted ext4 image (bnc#1087007
   1092903).
-  - CVE-2018-1092: The ext4_iget function in fs/ext4/inode.c mishand ... 
+  - CVE-2018-1092: The ext4_iget function in fs/ext4/inode.c mishand ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"the on openSUSE Leap 42.3");

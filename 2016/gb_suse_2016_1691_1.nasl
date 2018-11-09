@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1691_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1691_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2016:1691-1 (MozillaFirefox,)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851359");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:27:54 +0200 (Tue, 28 Jun 2016)");
-  script_cve_id("CVE-2016-2815", "CVE-2016-2818", "CVE-2016-2819", "CVE-2016-2821", 
-                "CVE-2016-2822", "CVE-2016-2824", "CVE-2016-2828", "CVE-2016-2831", 
+  script_cve_id("CVE-2016-2815", "CVE-2016-2818", "CVE-2016-2819", "CVE-2016-2821",
+                "CVE-2016-2822", "CVE-2016-2824", "CVE-2016-2828", "CVE-2016-2831",
                 "CVE-2016-2834");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, SUSE-SU-2016:1691-1 (MozillaFirefox,)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  MozillaFirefox, MozillaFirefox-branding-SLE, mozilla-nss and mozilla-nspr
+  script_tag(name:"insight", value:"MozillaFirefox, MozillaFirefox-branding-SLE, mozilla-nss and mozilla-nspr
   were updated to fix nine security issues.
 
   MozillaFirefox was updated to version 45.2.0 ESR. mozilla-nss was updated

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3481_1.nasl 12252 2018-11-08 07:19:31Z asteins $
+# $Id: gb_suse_2018_3481_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for jhead openSUSE-SU-2018:3481-1 (jhead)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852097");
-  script_version("$Revision: 12252 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2018-16554", "CVE-2018-17088", "CVE-2016-3822");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 08:19:31 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-27 06:24:34 +0200 (Sat, 27 Oct 2018)");
   script_name("SuSE Update for jhead openSUSE-SU-2018:3481-1 (jhead)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for jhead fixes the following issues:
+  script_tag(name:"insight", value:"This update for jhead fixes the following issues:
 
   Security issues fixed:
 

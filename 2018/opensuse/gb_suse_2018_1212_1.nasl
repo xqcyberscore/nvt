@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1212_1.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_suse_2018_1212_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:1212-1 (Mozilla)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851740");
-  script_version("$Revision: 11044 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 05:35:43 +0200 (Fri, 11 May 2018)");
-  script_cve_id("CVE-2018-5150", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5157", 
-                "CVE-2018-5158", "CVE-2018-5159", "CVE-2018-5168", "CVE-2018-5178", 
+  script_cve_id("CVE-2018-5150", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5157",
+                "CVE-2018-5158", "CVE-2018-5159", "CVE-2018-5168", "CVE-2018-5178",
                 "CVE-2018-5183");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2018:1212-1 (Mozilla)");
   script_tag(name:"summary", value:"Check the version of Mozilla");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Mozilla Firefox to 52.8.0 ESR fixes the following issues:
+  script_tag(name:"insight", value:"This update for Mozilla Firefox to 52.8.0 ESR fixes the following issues:
 
   Security issssue fixed: (bsc#1092548, MFSA 2018-12):
 
@@ -68,7 +67,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

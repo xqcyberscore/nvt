@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_humax_gateway_file_dwnld_vuln.nasl 11916 2018-10-16 08:36:43Z asteins $
+# $Id: gb_humax_gateway_file_dwnld_vuln.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # HUMAX Gateway Backup File Download Vulnerability
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:humaxdigital";
+CPE_PREFIX = "cpe:/a:humaxdigital";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106917");
-  script_version("$Revision: 11916 $");
+  script_version("$Revision: 12260 $");
   script_cve_id("CVE-2017-7316", "CVE-2017-7317", "CVE-2017-7315");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:36:43 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 11:22:04 +0700 (Mon, 03 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
   script_mandatory_keys("humax_gateway/detected");
 
   script_tag(name:"summary", value:"Humax HG100R devices are prone to a backup file download vulnerability.
-This file contains sensitive information which may lead to further attacks.");
+  This file contains sensitive information which may lead to further attacks.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
@@ -68,10 +68,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE, service: "www"))
   exit(0);
 
-url = '/view/basic/GatewaySettings.bin';
+port = infos["port"];
+CPE = infos["cpe"];
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
+
+url = dir + '/view/basic/GatewaySettings.bin';
 
 if (http_vuln_check(port: port, url: url, pattern: "Content-Type: application/x-download", check_header: TRUE,
                     extra_check: "Content-disposition: attachment; filename=GatewaySettings.bin")) {

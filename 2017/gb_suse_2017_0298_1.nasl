@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0298_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0298_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for gstreamer-0_10-plugins-good openSUSE-SU-2017:0298-1 (gstreamer-0_10-plugins-good)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851481");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:11:01 +0530 (Fri, 03 Feb 2017)");
-  script_cve_id("CVE-2016-9634", "CVE-2016-9635", "CVE-2016-9636", "CVE-2016-9807", 
+  script_cve_id("CVE-2016-9634", "CVE-2016-9635", "CVE-2016-9636", "CVE-2016-9807",
                 "CVE-2016-9808", "CVE-2016-9810");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for gstreamer-0_10-plugins-good openSUSE-SU-2017:0298-1 (gstreamer-0_10-plugins-good)");
   script_tag(name: "summary", value: "Check the version of gstreamer-0_10-plugins-good");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for gstreamer-0_10-plugins-good fixes the following issues:
+  script_tag(name:"insight", value:"This update for gstreamer-0_10-plugins-good fixes the following issues:
 
   - CVE-2016-9634: Invalid FLIC files could have caused and an out-of-bounds
   write (bsc#1012102)

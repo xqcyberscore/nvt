@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1694_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1694_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openvpn SUSE-SU-2014:1694-1 (openvpn)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851015");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:51:34 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-8104");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for openvpn SUSE-SU-2014:1694-1 (openvpn)");
   script_tag(name: "summary", value: "Check the version of openvpn");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  A remote denial of service attack against openvpn was fixed, where a
+  script_tag(name:"insight", value:"A remote denial of service attack against openvpn was fixed, where a
   authenticated client cloud stop the server by triggering a server-side
   ASSERT (CVE-2014-8104),");
   script_tag(name: "affected", value: "openvpn on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");

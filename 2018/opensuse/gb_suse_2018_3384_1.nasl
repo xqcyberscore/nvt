@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3384_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_suse_2018_3384_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for apache-pdfbox openSUSE-SU-2018:3384-1 (apache-pdfbox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851946");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:00:25 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2018-11797", "CVE-2018-8036");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for apache-pdfbox openSUSE-SU-2018:3384-1 (apache-pdfbox)");
   script_tag(name:"summary", value:"Check the version of apache-pdfbox");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for apache-pdfbox fixes the following security issue:
+  script_tag(name:"insight", value:"This update for apache-pdfbox fixes the following security issue:
 
   - CVE-2018-8036: A crafted file could have triggered an infinite loop
   which lead to DoS (bsc#1099721).

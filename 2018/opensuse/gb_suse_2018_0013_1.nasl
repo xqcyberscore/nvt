@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0013_1.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_suse_2018_0013_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for kernel-firmware openSUSE-SU-2018:0013-1 (kernel-firmware)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851673");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:56:25 +0100 (Fri, 05 Jan 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kernel-firmware openSUSE-SU-2018:0013-1 (kernel-firmware)");
   script_tag(name: "summary", value: "Check the version of kernel-firmware");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for kernel-firmware fixes the following issues:
+  script_tag(name:"insight", value:"This update for kernel-firmware fixes the following issues:
 
   - Add microcode_amd_fam17h.bin (bsc#1068032 CVE-2017-5715)
 

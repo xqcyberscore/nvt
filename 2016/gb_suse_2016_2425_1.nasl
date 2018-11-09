@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2425_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2425_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for postgresql93 openSUSE-SU-2016:2425-1 (postgresql93)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851400");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 15:43:12 +0530 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_tag(name:"cvss_base", value:"6.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql93 openSUSE-SU-2016:2425-1 (postgresql93)");
   script_tag(name: "summary", value: "Check the version of postgresql93");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The postgresql server postgresql93 was updated to 9.3.14 fixes the
+  script_tag(name:"insight", value:"The postgresql server postgresql93 was updated to 9.3.14 fixes the
   following issues:
 
   Update to version 9.3.14:
@@ -56,9 +55,6 @@ of detect NVT and check if the version is vulnerable or not.");
   * Fix several one-byte buffer over-reads in to_number()
   * Avoid unsafe intermediate state during expensive paths through
   heap_update()
-  * For the other bug fixes, see the release notes:
- 'https://www.postgresql.org/docs/9.3/static/release-9-3-14.html'
-
   Update to version 9.3.13:
 
   This update fixes several problems which caused downtime for users,
@@ -86,12 +82,10 @@ of detect NVT and check if the version is vulnerable or not.");
   - Support building with Visual Studio 2015
   - This update also contains tzdata release 2016d, with updates for Russia,
   Venezuela, Kirov, and Tomsk.
-  'http://www.postgresql.org/docs/current/static/release-9-3-13.html'
-
   Update to version 9.3.12:
 
   - Fix two bugs in indexed ROW() comparisons
-  - Avoid dat ... 
+  - Avoid dat ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "postgresql93 on openSUSE 13.2");

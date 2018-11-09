@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0446_1.nasl 9023 2018-03-05 07:08:45Z cfischer $
+# $Id: gb_suse_2018_0446_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for libreoffice openSUSE-SU-2018:0446-1 (libreoffice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851701");
-  script_version("$Revision: 9023 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 08:45:14 +0100 (Thu, 15 Feb 2018)");
   script_cve_id("CVE-2018-6871");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libreoffice openSUSE-SU-2018:0446-1 (libreoffice)");
   script_tag(name: "summary", value: "Check the version of libreoffice");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for libreoffice fixes the following issues:
+  script_tag(name:"insight", value:"This update for libreoffice fixes the following issues:
 
   LibreOffice was updated to 5.4.5.1:
 

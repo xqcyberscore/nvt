@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0494_1.nasl 8966 2018-02-27 11:39:18Z cfischer $
+# $Id: gb_suse_2018_0494_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for glibc openSUSE-SU-2018:0494-1 (glibc)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851708");
-  script_version("$Revision: 8966 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 12:39:18 +0100 (Tue, 27 Feb 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:47:56 +0100 (Wed, 21 Feb 2018)");
-  script_cve_id("CVE-2017-12132", "CVE-2017-8804", "CVE-2018-1000001", "CVE-2018-6485", 
+  script_cve_id("CVE-2017-12132", "CVE-2017-8804", "CVE-2018-1000001", "CVE-2018-6485",
                 "CVE-2018-6551");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for glibc openSUSE-SU-2018:0494-1 (glibc)");
   script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for glibc fixes the following issues:
+  script_tag(name:"insight", value:"This update for glibc fixes the following issues:
 
   Security issues fixed:
 

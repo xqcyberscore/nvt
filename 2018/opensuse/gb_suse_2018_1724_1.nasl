@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1724_1.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_suse_2018_1724_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for gpg2 openSUSE-SU-2018:1724-1 (gpg2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851792");
-  script_version("$Revision: 10778 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-17 05:53:52 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2018-12020");
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for gpg2 openSUSE-SU-2018:1724-1 (gpg2)");
   script_tag(name:"summary", value:"Check the version of gpg2");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for gpg2 fixes the following security issue:
+  script_tag(name:"insight", value:"This update for gpg2 fixes the following security issue:
 
   - CVE-2018-12020: GnuPG mishandled the original filename during decryption
   and verification actions, which allowed remote attackers to spoof the
@@ -50,7 +49,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0720_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0720_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for openssl openSUSE-SU-2016:0720-1 (openssl)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851228");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-12 06:13:13 +0100 (Sat, 12 Mar 2016)");
-  script_cve_id("CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0703", "CVE-2016-0704", 
+  script_cve_id("CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0703", "CVE-2016-0704",
                 "CVE-2016-0797", "CVE-2016-0799", "CVE-2016-0800", "CVE-2015-0293");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2016:0720-1 (openssl)");
   script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for compat-openssl098 fixes various security issues and bugs:
+  script_tag(name:"insight", value:"This update for compat-openssl098 fixes various security issues and bugs:
 
   Security issues fixed:
   - CVE-2016-0800 aka the 'DROWN' attack (bsc#968046): OpenSSL was
@@ -59,7 +58,7 @@ of detect NVT and check if the version is vulnerable or not.");
   Note that various services and clients had already disabled SSL
   protocol 2 by default previously.
 
-  * Disable all weak EXPORT ciphers by default. These can be reenabled if
+  * Disable all weak EXPORT ciphers by default. These can be re-enabled if
   required by old legacy software using the environment variable
   'OPENSSL_ALLOW_EXPORT'.
 
@@ -93,7 +92,7 @@ of detect NVT and check if the version is vulnerable or not.");
   were fixed by us with CVE-2015-0293 in 2015:
 
   - CVE-2016-0703 (bsc#968051): This issue only affected versions of OpenSSL
-  prior to March 19th 2015 at which time the code was refactor ... 
+  prior to March 19th 2015 at which time the code was refactor ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "openssl on openSUSE Leap 42.1");

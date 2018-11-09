@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2514_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2514_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for xen openSUSE-SU-2017:2514-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851619");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 07:19:09 +0200 (Mon, 18 Sep 2017)");
   script_cve_id("CVE-2017-14316", "CVE-2017-14317", "CVE-2017-14318", "CVE-2017-14319");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2017:2514-1 (xen)");
   script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen fixes several issues.
+  script_tag(name:"insight", value:"This update for xen fixes several issues.
 
   These security issues were fixed:
 

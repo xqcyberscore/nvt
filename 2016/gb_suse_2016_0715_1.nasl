@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0715_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0715_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for flash-player SUSE-SU-2016:0715-1 (flash-player)
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851231");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-12 06:14:42 +0100 (Sat, 12 Mar 2016)");
-  script_cve_id("CVE-2016-0960", "CVE-2016-0961", "CVE-2016-0962", "CVE-2016-0963", 
-                "CVE-2016-0986", "CVE-2016-0987", "CVE-2016-0988", "CVE-2016-0989", 
-                "CVE-2016-0990", "CVE-2016-0991", "CVE-2016-0992", "CVE-2016-0993", 
-                "CVE-2016-0994", "CVE-2016-0995", "CVE-2016-0996", "CVE-2016-0997", 
-                "CVE-2016-0998", "CVE-2016-0999", "CVE-2016-1000", "CVE-2016-1001", 
+  script_cve_id("CVE-2016-0960", "CVE-2016-0961", "CVE-2016-0962", "CVE-2016-0963",
+                "CVE-2016-0986", "CVE-2016-0987", "CVE-2016-0988", "CVE-2016-0989",
+                "CVE-2016-0990", "CVE-2016-0991", "CVE-2016-0992", "CVE-2016-0993",
+                "CVE-2016-0994", "CVE-2016-0995", "CVE-2016-0996", "CVE-2016-0997",
+                "CVE-2016-0998", "CVE-2016-0999", "CVE-2016-1000", "CVE-2016-1001",
                 "CVE-2016-1002", "CVE-2016-1005", "CVE-2016-1010");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for flash-player SUSE-SU-2016:0715-1 (flash-player)");
   script_tag(name: "summary", value: "Check the version of flash-player");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Adobe flash-player was updated to 11.2.202.577 to fix the following list
+  script_tag(name:"insight", value:"Adobe flash-player was updated to 11.2.202.577 to fix the following list
   of security issues (bsc#970547):
 
   These updates resolve integer overflow vulnerabilities that could lead to
@@ -60,10 +59,8 @@ of detect NVT and check if the version is vulnerable or not.");
 
   These updates resolve memory corruption vulnerabilities that could lead to
   code execution (CVE-2016-0960, CVE-2016-0961, CVE-2016-0962,
-  CVE-2016-0986, CVE-2016-0989, CVE-2016-0992, CVE-2016-1002, CVE-2016-1005).
+  CVE-2016-0986, CVE-2016-0989, CVE-2016-0992, CVE-2016-1002, CVE-2016-1005).");
 
-  Adobe advisory with more information:
-  https://helpx.adobe.com/security/products/flash-player/apsb16-08.html");
   script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 12");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 

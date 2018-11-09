@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1961_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_1961_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852088");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12257 $");
   script_cve_id("CVE-2017-11337", "CVE-2017-11338", "CVE-2017-11339", "CVE-2017-11340", "CVE-2017-11553", "CVE-2017-11591", "CVE-2017-11592", "CVE-2017-11683", "CVE-2017-12955", "CVE-2017-12956", "CVE-2017-12957", "CVE-2017-14859", "CVE-2017-14860", "CVE-2017-14862", "CVE-2017-14864");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:43:16 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for exiv2 to 0.26 fixes the following security issues:
+  script_tag(name:"insight", value:"This update for exiv2 to 0.26 fixes the following security issues:
 
   - CVE-2017-14864: Prevent invalid memory address dereference in
   Exiv2::getULong that could have caused a segmentation fault and

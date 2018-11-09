@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2307_1.nasl 11768 2018-10-05 14:07:38Z cfischer $
+# $Id: gb_suse_2018_2307_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for Recommended openSUSE-SU-2018:2307-1 (Recommended)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851853");
-  script_version("$Revision: 11768 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 05:56:34 +0200 (Tue, 14 Aug 2018)");
   script_cve_id("CVE-2018-10900");
   script_tag(name:"cvss_base", value:"7.2");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for Recommended openSUSE-SU-2018:2307-1 (Recommended)");
   script_tag(name:"summary", value:"Check the version of Recommended");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for NetworkManager-vpnc fixes the following issues:
+  script_tag(name:"insight", value:"This update for NetworkManager-vpnc fixes the following issues:
 
   Security issue fixed:
 

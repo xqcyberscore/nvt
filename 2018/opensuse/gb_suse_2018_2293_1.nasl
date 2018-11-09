@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2293_1.nasl 10991 2018-08-16 02:24:13Z ckuersteiner $
+# $Id: gb_suse_2018_2293_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2018:2293-1 (mysql-community-server)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851845");
-  script_version("$Revision: 10991 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 04:24:13 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:00:24 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-0739", "CVE-2018-2767", "CVE-2018-3058", "CVE-2018-3062", "CVE-2018-3064", "CVE-2018-3066", "CVE-2018-3070", "CVE-2018-3081");
   script_tag(name:"cvss_base", value:"5.5");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2018:2293-1 (mysql-community-server)");
   script_tag(name:"summary", value:"Check the version of mysql-community-server");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for mysql-community-server to version 5.6.41 fixes the
+  script_tag(name:"insight", value:"This update for mysql-community-server to version 5.6.41 fixes the
   following issues:
 
   Security vulnerabilities fixed:

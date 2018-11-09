@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2658_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_suse_2018_2658_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2018:2658-1 (MozillaThunderbird)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851886");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-09 07:10:07 +0200 (Sun, 09 Sep 2018)");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12361", "CVE-2018-12362",
                 "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366",
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of MozillaThunderbird");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update for MozillaThunderbird to version 60.0 fixes the following
+  script_tag(name:"insight", value:"This update for MozillaThunderbird to version 60.0 fixes the following
   issues:
 
   These security issues were fixed:

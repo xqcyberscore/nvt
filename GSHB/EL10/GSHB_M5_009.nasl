@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_009.nasl 11379 2018-09-13 13:48:15Z cfischer $
+# $Id: GSHB_M5_009.nasl 12275 2018-11-09 08:06:20Z cfischer $
 #
 # IT-Grundschutz, 10. EL, Maﬂnahme 5.009
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95009");
-  script_version("$Revision: 11379 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:48:15 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 12275 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 09:06:20 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-29 13:54:01 +0200 (Thu, 29 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M5.009: Protokollierung am Server");
-  #  script_add_preference(name:"Alle Logfile-Eintr‰ge Auflisten", type:"checkbox", value:"no");
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m05009.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"general_note");

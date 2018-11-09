@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170729.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_qnap_qts_20170729.nasl 12260 2018-11-08 12:46:52Z cfischer $
 #
 # QNAP QTS Multiple Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:qnap";
+CPE_PREFIX = "cpe:/h:qnap";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140260");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12260 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:46:52 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 10:17:13 +0700 (Tue, 01 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,19 +63,15 @@ if (description)
 
   - XSS vulnerability in Storage Manager and Backup Station.
 
-  - 'Orpheus' Lyre' vulnerability in Samba that could be exploited to bypass authentication mechanisms.
-(CVE-2017-11103)
+  - 'Orpheus' Lyre' vulnerability in Samba that could be exploited to bypass authentication mechanisms. (CVE-2017-11103)
 
-  - Vulnerability in the Linux kernel that could be exploited to circumvent the stack guard page.
-(CVE-2017-1000364)");
+  - Vulnerability in the Linux kernel that could be exploited to circumvent the stack guard page. (CVE-2017-1000364)");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"affected", value:"QNAP QTS before QTS 4.2.6 build 20170729 and before QTS 4.3.3.0262 build
-20170727");
+  script_tag(name:"affected", value:"QNAP QTS before QTS 4.2.6 build 20170729 and before QTS 4.3.3.0262 build 20170727");
 
-  script_tag(name:"solution", value:"Update to QTS 4.2.6 build 20170729, QTS 4.3.3.0262 build 20170727 or
-later.");
+  script_tag(name:"solution", value:"Update to QTS 4.2.6 build 20170729, QTS 4.3.3.0262 build 20170727 or later.");
 
   script_xref(name:"URL", value:"https://www.qnap.com/en-us/releasenotes/");
 
@@ -85,9 +81,13 @@ later.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port_from_cpe_prefix(cpe: CPE))
+if (!infos = get_app_port_from_cpe_prefix(cpe: CPE_PREFIX, first_cpe_only: TRUE))
   exit(0);
 
+port = infos["port"];
+CPE = infos["cpe"];
+
+# TODO: Use get_app_version() and make sure it returns the version as well as the build
 if (!version = get_kb_item("qnap/version"))
   exit(0);
 

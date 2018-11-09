@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0270_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0270_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0270-1 (java-1_8_0-openjdk)
 #
@@ -27,26 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851185");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:16:18 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806", 
-                "CVE-2015-4810", "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842", 
-                "CVE-2015-4843", "CVE-2015-4844", "CVE-2015-4860", "CVE-2015-4868", 
-                "CVE-2015-4872", "CVE-2015-4881", "CVE-2015-4882", "CVE-2015-4883", 
-                "CVE-2015-4893", "CVE-2015-4901", "CVE-2015-4902", "CVE-2015-4903", 
-                "CVE-2015-4906", "CVE-2015-4908", "CVE-2015-4911", "CVE-2015-4916", 
-                "CVE-2015-7575", "CVE-2015-8126", "CVE-2015-8472", "CVE-2016-0402", 
+  script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806",
+                "CVE-2015-4810", "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842",
+                "CVE-2015-4843", "CVE-2015-4844", "CVE-2015-4860", "CVE-2015-4868",
+                "CVE-2015-4872", "CVE-2015-4881", "CVE-2015-4882", "CVE-2015-4883",
+                "CVE-2015-4893", "CVE-2015-4901", "CVE-2015-4902", "CVE-2015-4903",
+                "CVE-2015-4906", "CVE-2015-4908", "CVE-2015-4911", "CVE-2015-4916",
+                "CVE-2015-7575", "CVE-2015-8126", "CVE-2015-8472", "CVE-2016-0402",
                 "CVE-2016-0448", "CVE-2016-0466", "CVE-2016-0483", "CVE-2016-0494");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0270-1 (java-1_8_0-openjdk)");
   script_tag(name: "summary", value: "Check the version of java-1_8_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  java-1_8_0-openjdk was updated to version 7u95 to fix several security
+  script_tag(name:"insight", value:"java-1_8_0-openjdk was updated to version 7u95 to fix several security
   issues. (bsc#962743)
 
   The following vulnerabilities were fixed:
@@ -57,7 +56,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2015-8472: Vulnerability in the AWT component, addressed by same fix
   - CVE-2016-0402: Vulnerability in the Networking component related to URL
   processing
-  - CVE-2016-0448: Vulnerability in the JMX comonent related to attribute
+  - CVE-2016-0448: Vulnerability in the JMX component related to attribute
   processing
   - CVE-2016-0466: Vulnerability in the JAXP component, related to limits
   - CVE-2016-0483: Vulnerability in the AWT component related to image
@@ -95,7 +94,7 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2015-4893: A remote user can exploit a flaw in the JRockit JAXP
   component to cause partial denial of service conditions
   - CVE-2015-4902: A remote user can exploit a flaw in the Java SE
-  Deployment co ... 
+  Deployment co ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name: "affected", value: "java-1_8_0-openjdk on openSUSE Leap 42.1");

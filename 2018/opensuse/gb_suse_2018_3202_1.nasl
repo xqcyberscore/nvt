@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3202_1.nasl 12028 2018-10-23 09:06:24Z santu $
+# $Id: gb_suse_2018_3202_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for the openSUSE-SU-2018:3202-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851937");
-  script_version("$Revision: 12028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 11:06:24 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:28:53 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-13096", "CVE-2018-13097", "CVE-2018-13098", "CVE-2018-13099", "CVE-2018-13100", "CVE-2018-14613", "CVE-2018-14617", "CVE-2018-14633", "CVE-2018-16276", "CVE-2018-16597", "CVE-2018-17182", "CVE-2018-7480", "CVE-2018-7757");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,10 +37,8 @@ if(description)
   script_name("SuSE Update for the openSUSE-SU-2018:3202-1 (the)");
   script_tag(name:"summary", value:"Check the version of the");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.159 to receive various
-  security and bugfixes.
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.159
+  to receive various security and bugfixes.
 
   The following security bugs were fixed:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2602_1.nasl 11302 2018-09-10 11:41:36Z santu $
+# $Id: gb_suse_2018_2602_1.nasl 12257 2018-11-08 10:34:56Z santu $
 #
 # SuSE Update for spice openSUSE-SU-2018:2602-1 (spice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851879");
-  script_version("$Revision: 11302 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:41:36 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-05 06:54:17 +0200 (Wed, 05 Sep 2018)");
   script_cve_id("CVE-2018-10873", "CVE-2018-10893");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for spice openSUSE-SU-2018:2602-1 (spice)");
   script_tag(name:"summary", value:"Check the version of spice");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for spice fixes the following issues:
+  script_tag(name:"insight", value:"This update for spice fixes the following issues:
 
   Security issues fixed:
 
@@ -51,7 +50,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0944_1.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: gb_suse_2017_0944_1.nasl 12259 2018-11-08 12:33:31Z santu $
 #
 # SuSE Update for samba openSUSE-SU-2017:0944-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851533");
-  script_version("$Revision: 9488 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 12259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-06 06:33:25 +0200 (Thu, 06 Apr 2017)");
   script_cve_id("CVE-2017-2619");
   script_tag(name:"cvss_base", value:"6.0");
@@ -36,23 +36,22 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2017:0944-1 (samba)");
   script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
 of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for samba fixes the following issues:
+  script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   Security issues fixed:
   - CVE-2017-2619: Symlink race permits opening files outside share
   directory (bsc#1027147).
 
   Bugfixes:
-  - Force usage of ncurses6-config thru NCURSES_CONFIG env var (bsc#1023847).
+  - Force usage of ncurses6-config through NCURSES_CONFIG env var (bsc#1023847).
   - Add missing ldb module directory (bsc#1012092).
   - Don't package man pages for VFS modules that aren't built (bsc#993707).
-  - sync_req: make async_connect_send() 'reentrant'  (bso#12105) 
+  - sync_req: make async_connect_send() 'reentrant'  (bso#12105)
   (bsc#1024416).
   - Document 'winbind: ignore domains' parameter  (bsc#1019416).
-  - Prevent core, make sure response- extra_data.data is always cleared out 
+  - Prevent core, make sure response- extra_data.data is always cleared out
   (bsc#993692).
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
