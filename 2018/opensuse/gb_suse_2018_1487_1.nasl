@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1487_1.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_suse_2018_1487_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2018:1487-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851773");
-  script_version("$Revision: 10387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-02 05:49:52 +0200 (Sat, 02 Jun 2018)");
   script_cve_id("CVE-2018-10981", "CVE-2018-10982", "CVE-2018-3639");
   script_tag(name:"cvss_base", value:"7.2");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2018:1487-1 (xen)");
   script_tag(name:"summary", value:"Check the version of xen");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for xen fixes the following issues:
+  script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   Security issues fixed:
 
@@ -48,23 +47,27 @@ on the target host.");
 
   This feature can be controlled by the 'ssbd=on/off' commandline flag for
   the XEN hypervisor.
+
   - CVE-2018-10982: x86 vHPET interrupt injection errors (XSA-261
   bsc#1090822)
+
   - CVE-2018-10981: qemu may drive Xen into unbounded loop (XSA-262
   bsc#1090823)
 
   Other bugfixes:
 
   - Upstream patches from Jan (bsc#1027519)
+
   - additional fixes related to Page Table Isolation (XPTI). (bsc#1074562
   XSA-254)
+
   - qemu-system-i386 cannot handle more than 4 HW NICs (bsc#1090296)
 
 
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.");
   script_tag(name:"affected", value:"xen on openSUSE Leap 42.3");
@@ -77,19 +80,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2243_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_2243_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2015:2243-1 (Security)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851141");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-11 05:50:43 +0100 (Fri, 11 Dec 2015)");
   script_cve_id("CVE-2015-0286", "CVE-2015-0288", "CVE-2015-1789", "CVE-2015-1793",
                 "CVE-2015-3152", "CVE-2015-4730", "CVE-2015-4766", "CVE-2015-4792",
@@ -42,11 +42,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Security openSUSE-SU-2015:2243-1 (Security)");
-  script_tag(name: "summary", value: "Check the version of Security");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  MySQL was updated to 5.6.27 to fix security issues and bugs.
+  script_tag(name:"summary", value:"Check the version of Security");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"MySQL was updated to 5.6.27 to fix security issues and bugs.
 
   The following vulnerabilities were fixed as part of the upstream release
   [boo#951391]: CVE-2015-1793, CVE-2015-0286, CVE-2015-0288, CVE-2015-1789,
@@ -62,31 +60,29 @@ of detect NVT and check if the version is vulnerable or not.");
   The following security relevant changes are included additionally:
 
   * CVE-2015-3152: MySQL lacked SSL enforcement. Using
-  --ssl-verify-server-cert and --ssl[-*] implies that the ssl connection
+
+  - -ssl-verify-server-cert and --ssl[-*] implies that the ssl connection
   is required. The mysql client will now print an error if ssl is
   required, but the server can not handle a ssl connection [boo#924663],
   [boo#928962]");
-  script_tag(name: "affected", value: "Security on openSUSE 13.2, openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:2243_1");
+  script_tag(name:"affected", value:"Security on openSUSE 13.2, openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:2243_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE13\.2|openSUSE13\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -199,7 +195,7 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -315,6 +311,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0309_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0309_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:0309-1 (MozillaFirefox)
 #
@@ -27,22 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851177");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 06:17:50 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2015-7208", "CVE-2016-1930", "CVE-2016-1931", "CVE-2016-1933", 
-                "CVE-2016-1935", "CVE-2016-1937", "CVE-2016-1938", "CVE-2016-1939", 
-                "CVE-2016-1942", "CVE-2016-1943", "CVE-2016-1944", "CVE-2016-1945", 
+  script_cve_id("CVE-2015-7208", "CVE-2016-1930", "CVE-2016-1931", "CVE-2016-1933",
+                "CVE-2016-1935", "CVE-2016-1937", "CVE-2016-1938", "CVE-2016-1939",
+                "CVE-2016-1942", "CVE-2016-1943", "CVE-2016-1944", "CVE-2016-1945",
                 "CVE-2016-1946", "CVE-2016-1947");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:0309-1 the (MozillaFirefox)");
-  script_tag(name: "summary", value: "Check the version of the MozillaFirefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to MozillaFirefox fixes several security issues and bugs.
+  script_tag(name:"summary", value:"Check the version of the MozillaFirefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update to MozillaFirefox fixes several security issues and bugs.
 
   Mozilla Firefox was updated to 44.0. Mozilla NSS was updated to 3.21
   Mozilla NSPR was updated to 4.11.
@@ -51,19 +49,27 @@ of detect NVT and check if the version is vulnerable or not.");
 
   * CVE-2016-1930/CVE-2016-1931: Miscellaneous memory safety hazards
   (boo#963633)
+
   * CVE-2016-1933: Out of Memory crash when parsing GIF format images
   (boo#963634)
+
   * CVE-2016-1935:  Buffer overflow in WebGL after out of memory allocation
   (boo#963635)
+
   * CVE-2015-7208/CVE-2016-1939: Firefox allows for control characters to be
   set in cookie names (boo#963637)
+
   * CVE-2016-1937: Missing delay following user click events in protocol
   handler dialog (boo#963641)
+
   * CVE-2016-1938: Errors in mp_div and mp_exptmod cryptographic functions
   in NSS (boo#963731)
+
   * CVE-2016-1942/CVE-2016-1943: Addressbar spoofing attacks (boo#963643)
+
   * CVE-2016-1944/CVE-2016-1945/CVE-2016-1946: Unsafe memory manipulation
   found through code inspection (boo#963644)
+
   * CVE-2016-1947: Application Reputation service disabled in Firefox 43
   (boo#963645)
 
@@ -72,28 +78,25 @@ of detect NVT and check if the version is vulnerable or not.");
   * Re-enable SHA-1 certificates to prevent outdated man-in-the-middle
   security devices from interfering with properly secured SSL/TLS
   connections");
-  script_tag(name: "affected", value: "MozillaFirefox on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0309_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0309_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -326,6 +329,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

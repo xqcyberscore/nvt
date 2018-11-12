@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2583_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_2583_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Kernel openSUSE-SU-2016:2583-1 (Kernel)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851414");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-22 06:03:41 +0200 (Sat, 22 Oct 2016)");
   script_cve_id("CVE-2016-5195", "CVE-2016-7039", "CVE-2016-7425", "CVE-2016-8658", "CVE-2016-8666");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2016:2583-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.1 kernel was updated to 4.1.34, fixing bugs and
   security issues.
 
@@ -45,17 +44,20 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - CVE-2016-5195: A local privilege escalation using MAP_PRIVATE was fixed,
   which is reportedly exploited in the wild (bsc#1004418).
+
   - CVE-2016-8658: Stack-based buffer overflow in the
   brcmf_cfg80211_start_ap function in
   drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c in the Linux
   kernel allowed local users to cause a denial of service (system crash)
   or possibly have unspecified other impact via a long SSID Information
   Element in a command to a Netlink socket (bnc#1004462).
+
   - CVE-2016-7039: The IP stack in the Linux kernel allowed remote attackers
   to cause a denial of service (stack consumption and panic) or possibly
   have unspecified other impact by triggering use of the GRO path for
   large crafted packets, as demonstrated by packets that contain only VLAN
   headers, a related issue to CVE-2016-8666 (bnc#1001486).
+
   - CVE-2016-7425: The arcmsr_iop_message_xfer function in
   drivers/scsi/arcmsr/arcmsr_hba.c in the Linux kernel did not restrict a
   certain length field, which allowed local users to gain privileges
@@ -63,53 +65,67 @@ of detect NVT and check if the version is vulnerable or not.");
   ARCMSR_MESSAGE_WRITE_WQBUFFER control code (bnc#999932).
 
   The following non-security bugs were fixed:
+
   - 9p: use file_dentry() (bsc#1005101).
+
   - af_unix: Do not set err in unix_stream_read_generic unless there was an
   error (bsc#1005101).
+
   - alsa: hda - Fix superfluous HDMI jack repoll (bsc#1005101).
+
   - alsa: hda - Turn off loopback mixing as default (bsc#1001462).
+
   - apparmor: add missing id bounds check on dfa verification (bsc#1000304).
+
   - apparmor: check that xindex is in trans_table bounds (bsc#1000304).
+
   - apparmor: do not check for vmalloc_addr if kvzalloc() failed
   (bsc#1000304).
+
   - apparmor: do not expose kernel stack (bsc#1000304).
+
   - apparmor: ensure the target profile name is always audited (bsc#1000304).
+
   - apparmor: exec should not be returning ENOENT when it denies
   (bsc#1000304).
+
   - apparmor: fix audit full profile hname on successful load (bsc#1000304).
+
   - apparmor: fix change_hat not finding hat after policy replacement
   (bsc#1000287).
+
   - apparmor: fix disconnected bind mnts reconnection (bsc#1000304).
+
   - apparmor: fix log failures for all profiles in a set (bsc#1000304).
+
   - apparmor: fix module parameters can be changed after policy is locked
   (bsc#1000304).
+
   - apparmor: fix oops in profile_unpack() when policy_db is not present
   (bsc#1000304).
+
   - apparmor: fix put() parent ref after updating the active re ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2583_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2583_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -762,6 +778,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

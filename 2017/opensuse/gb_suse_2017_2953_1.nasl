@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2953_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2953_1.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # SuSE Update for chromium openSUSE-SU-2017:2953-1 (chromium)
 #
@@ -27,45 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851643");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12308 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 07:28:39 +0100 (Thu, 09 Nov 2017)");
   script_cve_id("CVE-2017-15398", "CVE-2017-15399");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:2953-1 (chromium)");
-  script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for Chromium to version 62.0.3202.89 fixes the following
+  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for Chromium to version 62.0.3202.89 fixes the following
   vulnerabilities (boo#1066851):
 
   - CVE-2017-15398: Stack buffer overflow in QUIC
-  - CVE-2017-15399: Use after free in V8");
-  script_tag(name: "affected", value: "chromium on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2953_1");
+  - CVE-2017-15399: Use after free in V8");
+  script_tag(name:"affected", value:"chromium on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2017:2953_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -100,7 +96,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -138,6 +134,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

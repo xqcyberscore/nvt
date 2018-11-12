@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0630_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0630_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla Firefox and others openSUSE-SU-2013:0630-1 (Mozilla Firefox and others)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850461");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:55 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0788", "CVE-2013-0789", "CVE-2013-0791", "CVE-2013-0792",
                 "CVE-2013-0793", "CVE-2013-0794", "CVE-2013-0795", "CVE-2013-0796",
@@ -38,9 +36,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Mozilla Firefox and others openSUSE-SU-2013:0630-1 (Mozilla Firefox and others)");
-
-  tag_insight = "
-  The Mozilla suite received security and bugfix updates:
+  script_tag(name:"affected", value:"Mozilla Firefox and others on openSUSE 12.2, openSUSE 12.1");
+  script_tag(name:"insight", value:"The Mozilla suite received security and bugfix updates:
 
   Mozilla Firefox was updated to version 20.0. Mozilla
   Thunderbird was updated to version 17.0.5. Mozilla
@@ -49,91 +46,106 @@ if(description)
   version 3.14.3. mozilla-nspr was updated to version 4.9.6.
 
   mozilla-nspr was updated to version 4.9.6:
+
   * aarch64 support
+
   * added PL_SizeOfArenaPoolExcludingPool function
   (bmo#807883)
+
   * Auto detect android api version for x86 (bmo#782214)
+
   * Initialize Windows CRITICAL_SECTIONs without debug info
   and with nonzero spin count (bmo#812085) Previous update
   to version 4.9.5
+
   * bmo#634793: define NSPR's exact-width integer types
   PRInt{N} and PRUint{N} types to match the &lt;stdint.h&gt;
   exact-width integer types int{N}_t and uint{N}_t.
+
   * bmo#782815: passing 'int *' to parameter of type
   'unsigned int *' in setsockopt().
+
   * bmo#822932: Port bmo#802527 (NDK r8b support for x86) to
   NSPR.
+
   * bmo#824742: NSPR shouldn't require librt on Android.
+
   * bmo#831793: data race on lib-&gt;refCount in
   PR_UnloadLibrary.
 
   mozilla-nss was updated to version 3.14.3:
+
   * disable tests with expired certificates
+
   * add SEC_PKCS7VerifyDetachedSignatureAtTime using patch
   from mozilla tree to fulfill Firefox 21 requirements
 
   * No new major functionality is introduced in this release.
   This release is a patch release to address CVE-2013-1620
   (bmo#822365)
+
   * &quot;certutil -a&quot; was not correctly producing ASCII output as
   requested. (bmo#840714)
+
   * NSS 3.14.2 broke compilation with older versions of
   sqlite that lacked the SQLITE_FCNTL_TEMPFILENAME file
   control. NSS 3.14.3 now properly compiles when used with
   older versions of sqlite (bmo#837799) - remove
   system-sqlite.patch
+
   * add arm aarch64 support
 
   * added system-sqlite.patch (bmo#837799)
+
   * do not depend on latest sqlite just for a #define
+
   * enable system sqlite usage again
 
   * update to 3.14.2
+
   * required for Firefox &gt;= 20
+
   * removed obsolete nssckbi update patch
+
   * MFSA 2013-40/CVE-2013-0791 (bmo#629816) Out-of-bounds
   array read in CERT_DecodeCertPackage
+
   * disable system sqlite usage since we depend on 3.7.15
   which is not provided in any openSUSE distribution
+
   * add nss-sqlitename.patch to avoid any name clash
 
   Changes in MozillaFirefox:
+
   - update to Firefox 20.0 (bnc#813026)
+
   * requires NSPR 4.9.5 and NSS 3.14.3
+
   * MFSA 2013-30/CVE-2013-0788/CVE-2013-0789 Miscellaneous
   memory safety hazards
-  * MFSA 2013-31/CVE-2013-0800 (bmo#825721) Out-of-bounds";
 
-  tag_affected = "Mozilla Firefox and others on openSUSE 12.2, openSUSE 12.1";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  * MFSA 2013-31/CVE-2013-0800 (bmo#825721) Out-of-bounds");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "openSUSE-SU", value: "2013:0630_1");
-  script_tag(name: "summary" , value: "Check for the Version of Mozilla Firefox and others");
+  script_xref(name:"openSUSE-SU", value:"2013:0630_1");
+  script_tag(name:"summary", value:"Check for the Version of Mozilla Firefox and others");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.2|openSUSE12\.1)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -498,7 +510,7 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1010,6 +1022,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

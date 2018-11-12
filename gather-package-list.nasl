@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gather-package-list.nasl 12304 2018-11-10 12:18:34Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 12162 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_version("$Revision: 12304 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-10 13:18:34 +0100 (Sat, 10 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -77,11 +77,11 @@ SCRIPT_DESC = "Determine OS and list of installed packages via SSH login";
 OS_CPE = make_array(
 
     # OpenSUSE
-   # cpe:/o:opensuse:leap:15.0
     "openSUSELeap15.0", "cpe:/o:opensuse:leap:15.0",
-    "openSUSELeap42.3", "cpe:/o:opensuse_project:leap:42.3",
-    "openSUSELeap42.2", "cpe:/o:opensuse_project:leap:42.2", # Starting with 42.2 the correct one is used by the NVD
-    "openSUSELeap42.1", "cpe:/o:novell:leap:42.1", # NVD is currently using a wrong vendor here
+    "openSUSELeap42.3", "cpe:/o:opensuse:leap:42.3",
+    "openSUSELeap42.2", "cpe:/o:opensuse:leap:42.2",
+    "openSUSELeap42.1", "cpe:/o:opensuse:leap:42.1",
+    "openSUSELeap42.0", "cpe:/o:opensuse:leap:42.0",
     "openSUSE13.2", "cpe:/o:novell:opensuse:13.2",
     "openSUSE13.1", "cpe:/o:novell:opensuse:13.1",
     "openSUSE12.3", "cpe:/o:novell:opensuse:12.3",
@@ -222,6 +222,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.6", "cpe:/o:debian:debian_linux:9.6",
     "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
     "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
@@ -302,6 +303,8 @@ OS_CPE = make_array(
     "MAGEIA1",     "cpe:/o:mageia:linux:1",
 
     # Slackware
+    "SLK14.2", "cpe:/o:slackware:slackware_linux:14.2",
+    "SLK14.1", "cpe:/o:slackware:slackware_linux:14.1",
     "SLK14.0", "cpe:/o:slackware:slackware_linux:14.0",
     "SLK13.37", "cpe:/o:slackware:slackware_linux:13.37",
     "SLK13.1", "cpe:/o:slackware:slackware_linux:13.1",
@@ -2468,6 +2471,22 @@ rls = ssh_cmd( socket:sock, cmd:"cat /etc/slackware-version" );
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/slackware-version: ' + rls + '\n\n';
 
+if( "Slackware 14.2" >< rls ) {
+  set_kb_item( name:"ssh/login/slackware_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"ls /var/log/packages" );
+  set_kb_item( name:"ssh/login/slackpack", value:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Slackware 14.2" );
+  register_detected_os( os:"Slackware 14.2", oskey:"SLK14.2" );
+  exit( 0 );
+}
+if( "Slackware 14.1" >< rls ) {
+  set_kb_item( name:"ssh/login/slackware_linux", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"ls /var/log/packages" );
+  set_kb_item( name:"ssh/login/slackpack", value:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Slackware 14.1" );
+  register_detected_os( os:"Slackware 14.1", oskey:"SLK14.1" );
+  exit( 0 );
+}
 if( "Slackware 14.0" >< rls ) {
   set_kb_item( name:"ssh/login/slackware_linux", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"ls /var/log/packages" );
@@ -2740,7 +2759,6 @@ if( "openSUSE Leap 15.0" >< rls ) {
   register_detected_os( os:"openSUSE Leap 15.0", oskey:"openSUSELeap15.0" );
   exit( 0 );
 }
-
 if( "openSUSE Leap 42.3" >< rls ) {
   set_kb_item( name:"ssh/login/suse", value:TRUE );
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
@@ -2763,6 +2781,14 @@ if( "openSUSE Leap 42.1" >< rls ) {
   register_rpms( buf:buf );
   log_message( port:port, data:"We are able to login and detect that you are running openSUSE Leap 42.1" );
   register_detected_os( os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1" );
+  exit( 0 );
+}
+if( "openSUSE Leap 42.0" >< rls ) {
+  set_kb_item( name:"ssh/login/suse", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running openSUSE Leap 42.0" );
+  register_detected_os( os:"openSUSE Leap 42.0", oskey:"openSUSELeap42.0" );
   exit( 0 );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2134_1.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_suse_2018_2134_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2018:2134-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851823");
-  script_version("$Revision: 10692 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-29 05:58:00 +0200 (Sun, 29 Jul 2018)");
   script_cve_id("CVE-2018-4117", "CVE-2018-6044", "CVE-2018-6153", "CVE-2018-6154", "CVE-2018-6155", "CVE-2018-6156", "CVE-2018-6157", "CVE-2018-6158", "CVE-2018-6159", "CVE-2018-6161", "CVE-2018-6162", "CVE-2018-6163", "CVE-2018-6164", "CVE-2018-6165", "CVE-2018-6166", "CVE-2018-6167", "CVE-2018-6168", "CVE-2018-6169", "CVE-2018-6170", "CVE-2018-6171", "CVE-2018-6172", "CVE-2018-6173", "CVE-2018-6174", "CVE-2018-6175", "CVE-2018-6176", "CVE-2018-6177", "CVE-2018-6178", "CVE-2018-6179");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,38 +37,64 @@ if(description)
   script_name("SuSE Update for Chromium openSUSE-SU-2018:2134-1 (Chromium)");
   script_tag(name:"summary", value:"Check the version of Chromium");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Chromium to version 68.0.3440.75 fixes multiple issues.
+  script_tag(name:"insight", value:"This update for Chromium to version 68.0.3440.75 fixes multiple issues.
 
   Security issues fixed (boo#1102530):
 
   - CVE-2018-6153: Stack buffer overflow in Skia
+
   - CVE-2018-6154: Heap buffer overflow in WebGL
+
   - CVE-2018-6155: Use after free in WebRTC
+
   - CVE-2018-6156: Heap buffer overflow in WebRTC
+
   - CVE-2018-6157: Type confusion in WebRTC
+
   - CVE-2018-6158: Use after free in Blink
+
   - CVE-2018-6159: Same origin policy bypass in ServiceWorker
+
   - CVE-2018-6161: Same origin policy bypass in WebAudio
+
   - CVE-2018-6162: Heap buffer overflow in WebGL
+
   - CVE-2018-6163: URL spoof in Omnibox
+
   - CVE-2018-6164: Same origin policy bypass in ServiceWorker
+
   - CVE-2018-6165: URL spoof in Omnibox
+
   - CVE-2018-6166: URL spoof in Omnibox
+
   - CVE-2018-6167: URL spoof in Omnibox
+
   - CVE-2018-6168: CORS bypass in Blink
+
   - CVE-2018-6169: Permissions bypass in extension installation
+
   - CVE-2018-6170: Type confusion in PDFium
+
   - CVE-2018-6171: Use after free in WebBluetooth
+
   - CVE-2018-6172: URL spoof in Omnibox
+
   - CVE-2018-6173: URL spoof in Omnibox
+
   - CVE-2018-6174: Integer overflow in SwiftShader
+
   - CVE-2018-6175: URL spoof in Omnibox
+
   - CVE-2018-6176: Local user privilege escalation in Extensions
+
   - CVE-2018-6177: Cross origin information leak in Blink
+
   - CVE-2018-6178: UI spoof in Extensions
+
   - CVE-2018-6179: Local file information leak in Extensions
+
   - CVE-2018-6044: Request privilege escalation in Extensions
+
   - CVE-2018-4117: Cross origin information leak in Blink
 
   The following user interface changes are included:
@@ -78,7 +104,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -101,19 +127,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

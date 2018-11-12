@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The implementation of the blowfish based password hashing method had
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850170");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-08-27 16:37:49 +0200 (Sat, 27 Aug 2011)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_xref(name:"SUSE-SA", value:"2011-035");
+  script_cve_id("CVE-2011-2483");
+  script_name("SuSE Update for glibc, pam-modules, libxcrypt, pwdutils SUSE-SA:2011:035");
+
+  script_tag(name:"summary", value:"Check for the Version of glibc, pam-modules, libxcrypt, pwdutils");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE11\.3)");
+  script_tag(name:"impact", value:"weak password hashing algorithm");
+  script_tag(name:"affected", value:"glibc, pam-modules, libxcrypt, pwdutils on openSUSE 11.3, openSUSE 11.4, SUSE SLES 9");
+  script_tag(name:"insight", value:"The implementation of the blowfish based password hashing method had
   a bug affecting passwords that contain 8bit characters (e.g.
   umlauts).  Affected passwords are potentially faster to crack via
   brute force methods CVE-2011-2483.
@@ -37,7 +56,7 @@ tag_insight = "The implementation of the blowfish based password hashing method 
   password contains 8bit characters. For system logins via PAM the
   pam_unix2 module activates a compat mode and keeps processing
   existing $2a hashes with the old algorithm. This ensures no user
-  gets locked out. New password hashes are created with the id  &qt $2y &qt 
+  gets locked out. New password hashes are created with the id  &qt $2y &qt
   to unambiguously identify them as generated with the correct
   implementation.
 
@@ -81,50 +100,21 @@ tag_insight = "The implementation of the blowfish based password hashing method 
   password ASAP.
 
   Q: How do I turn off the compat mode for system logins?
-  A: Set BLOWFISH_2a2x=no in /etc/default/passwd";
-tag_solution = "Please Install the Updated Packages.";
+  A: Set BLOWFISH_2a2x=no in /etc/default/passwd");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "weak password hashing algorithm";
-tag_affected = "glibc,pam-modules,libxcrypt,pwdutils on openSUSE 11.3, openSUSE 11.4, SUSE SLES 9";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850170");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-08-27 16:37:49 +0200 (Sat, 27 Aug 2011)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_xref(name: "SUSE-SA", value: "2011-035");
-  script_cve_id("CVE-2011-2483");
-  script_name("SuSE Update for glibc,pam-modules,libxcrypt,pwdutils SUSE-SA:2011:035");
-
-  script_tag(name:"summary", value:"Check for the Version of glibc,pam-modules,libxcrypt,pwdutils");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -261,7 +251,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -401,6 +391,6 @@ if(release == "openSUSE11.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

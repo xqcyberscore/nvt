@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2615_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2615_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:2615-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851624");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:55:26 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-7793", "CVE-2017-7805", "CVE-2017-7810", "CVE-2017-7814",
                 "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7823", "CVE-2017-7824");
@@ -36,9 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:2615-1 (Mozilla)");
-  script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Mozilla");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update to Mozilla Firefox 52.4esr, along with Mozilla NSS 3.28.6,
   fixes security issues and bugs.
 
@@ -46,13 +45,19 @@ of detect NVT and check if the version is vulnerable or not.");
   (boo#1060445) were fixed:
 
   - CVE-2017-7793: Use-after-free with Fetch API
+
   - CVE-2017-7818: Use-after-free during ARIA array manipulation
+
   - CVE-2017-7819: Use-after-free while resizing images in design mode
+
   - CVE-2017-7824: Buffer overflow when drawing and validating elements with
   ANGLE
+
   - CVE-2017-7814: Blob and data URLs bypass phishing and malware protection
   warnings
+
   - CVE-2017-7823: CSP sandbox directive did not create a unique origin
+
   - CVE-2017-7810: Memory safety bugs fixed in Firefox 56 and Firefox ESR
   52.4
 
@@ -67,28 +72,25 @@ of detect NVT and check if the version is vulnerable or not.");
 
   For compatibility reasons, java-1_8_0-openjdk was rebuilt to the updated
   version of NSS.");
-  script_tag(name: "affected", value: "Mozilla on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Mozilla on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2615_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2615_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -405,7 +407,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -725,6 +727,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

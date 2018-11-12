@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1140_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1140_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2017:1140-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851544");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-02 06:44:02 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2016-4997", "CVE-2016-4998", "CVE-2017-2671", "CVE-2017-7187",
                 "CVE-2017-7261", "CVE-2017-7294", "CVE-2017-7308", "CVE-2017-7374",
@@ -37,12 +37,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2017:1140-1 (the)");
-  script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.2 kernel was updated to 4.4.62 to receive various
+  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.62 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -50,65 +47,69 @@ if(description)
   - CVE-2017-7618: crypto/ahash.c in the Linux kernel allowed attackers to
   cause a denial of service (API operation calling its own callback, and
   infinite recursion) by triggering EBUSY on a full queue (bnc#1033340).
+
   - CVE-2016-4997: The compat IPT_SO_SET_REPLACE and IP6T_SO_SET_REPLACE
   setsockopt implementations in the netfilter subsystem in the Linux
   kernel allowed local users to gain privileges or cause a denial of
   service (memory corruption) by leveraging in-container root access to
   provide a crafted offset value that triggers an unintended decrement
   (bnc#986362).
+
   - CVE-2016-4998: The IPT_SO_SET_REPLACE setsockopt implementation in the
   netfilter subsystem in the Linux kernel allowed local users to cause a
   denial of service (out-of-bounds read) or possibly obtain sensitive
   information from kernel heap memory by leveraging in-container root
   access to provide a crafted offset value that leads to crossing a
   ruleset blob boundary (bnc#986365).
+
   - CVE-2017-7616: Incorrect error handling in the set_mempolicy and mbind
   compat syscalls in mm/mempolicy.c in the Linux kernel allowed local
   users to obtain sensitive information from uninitialized stack data by
   triggering failure of a certain bitmap operation (bnc#1033336).
+
   - CVE-2017-2671: The ping_unhash function in net/ipv4/ping.c in the Linux
   kernel was too late in obtaining a certain lock and consequently cannot
   ensure that disconnect function calls are safe, which allowed local
   users to cause a denial of service (panic) by leveraging access to the
   protocol value of IPPROTO_ICMP in a socket system call (bnc#1031003).
+
   - CVE-2017-7308: The packet_set_ring function in net/packet/af_packet.c in
   the Linux kernel did not properly validate certain block-size data,
   which allowed local users to cause a denial of service (overflow) or
   possibly have unspecified other impact via crafted system calls
   (bnc#1031579).
+
   - CVE-2017-7294: The vmw_surface_define_ioctl function in
   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c in the Linux kernel did not
   validate addition of certain levels data, which allowed local users to
   trigger an integer overflow and out-of-bounds write, and cause a denial
   of service (system hang or crash) or possibly gain privileges, via a
   crafted ioctl call for a /dev/dri/renderD* device (bnc#1031440).
+
   - CVE-2017-7261: The vmw_surface_define_ioctl function in
   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c in the Linux kernel did not
-  check for a ... 
+  check for a ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "the on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"the on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1140_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1140_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -293,6 +294,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

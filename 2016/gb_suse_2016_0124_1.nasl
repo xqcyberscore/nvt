@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0124_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0124_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2016:0124-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851157");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-15 06:15:23 +0100 (Fri, 15 Jan 2016)");
   script_cve_id("CVE-2015-5307", "CVE-2015-7311", "CVE-2015-7504", "CVE-2015-7549",
                 "CVE-2015-7970", "CVE-2015-8104", "CVE-2015-8339", "CVE-2015-8340",
@@ -38,63 +38,73 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:0124-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for xen fixes the following security issues:
 
   - CVE-2015-8550: paravirtualized drivers incautious about shared memory
   contents (XSA-155, boo#957988)
+
   - CVE-2015-8558: qemu: usb: infinite loop in ehci_advance_state results in
   DoS (boo#959006)
+
   - CVE-2015-7549: qemu pci: null pointer dereference issue (boo#958918)
+
   - CVE-2015-8504: qemu: ui: vnc: avoid floating point exception (boo#958493)
+
   - CVE-2015-8554: qemu-dm buffer overrun in MSI-X handling (XSA-164,
   boo#958007)
+
   - CVE-2015-8555: information leak in legacy x86 FPU/XMM initialization
   (XSA-165, boo#958009)
+
   - boo#958523 xen: ioreq handling possibly susceptible to multiple read
   issue (XSA-166)
+
   - CVE-2015-8345: xen: qemu: net: eepro100: infinite loop in processing
   command block list (boo#956832)
+
   - boo#956592: xen: virtual PMU is unsupported (XSA-163)
+
   - CVE-2015-8339, CVE-2015-8340: xen: XENMEM_exchange error handling issues
   (XSA-159, boo#956408)
+
   - CVE-2015-8341: xen: libxl leak of pv kernel and initrd on error
   (XSA-160, boo#956409)
+
   - CVE-2015-7504: xen: heap buffer overflow vulnerability in pcnet emulator
   (XSA-162, boo#956411)
+
   - CVE-2015-7311: xen: libxl fails to honour readonly flag on disks with
   qemu-xen (xsa-142, boo#947165)
+
   - CVE-2015-8104: Xen: guest to host DoS by triggering an infinite loop in
   microcode via #DB exception (boo#954405)
+
   - CVE-2015-5307: xen: x86: CPU lockup during fault delivery (XSA-156,
   boo#954018)
+
   - CVE-2015-7970: xen: x86: Long latency populate-on-demand operation is
   not preemptible (XSA-150, boo#950704)");
-  script_tag(name: "affected", value: "xen on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"xen on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0124_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0124_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -219,6 +229,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

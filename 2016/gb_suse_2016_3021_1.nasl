@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3021_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_3021_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Kernel openSUSE-SU-2016:3021-1 (Kernel)
 #
@@ -27,22 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851444");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:01:26 +0100 (Wed, 07 Dec 2016)");
-  script_cve_id("CVE-2013-5634", "CVE-2015-8956", "CVE-2016-2069", "CVE-2016-5696", 
-                "CVE-2016-6130", "CVE-2016-6327", "CVE-2016-6480", "CVE-2016-6828", 
+  script_cve_id("CVE-2013-5634", "CVE-2015-8956", "CVE-2016-2069", "CVE-2016-5696",
+                "CVE-2016-6130", "CVE-2016-6327", "CVE-2016-6480", "CVE-2016-6828",
                 "CVE-2016-7042", "CVE-2016-7097", "CVE-2016-7425", "CVE-2016-8658");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2016:3021-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE 13.1 kernel was updated to 3.12.67 to receive various
+  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.1 kernel was updated to 3.12.67 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -52,64 +49,69 @@ of detect NVT and check if the version is vulnerable or not.");
   service (NULL pointer dereference, OOPS, and host OS crash) or possibly
   have unspecified other impact by omitting vCPU initialization before a
   KVM_GET_REG_LIST ioctl call. (bsc#994758)
+
   - CVE-2016-2069: Race condition in arch/x86/mm/tlb.c in the Linux kernel
   allowed local users to gain privileges by triggering access to a paging
   structure by a different CPU (bnc#963767).
+
   - CVE-2016-7042: The proc_keys_show function in security/keys/proc.c in
   the Linux kernel used an incorrect buffer size for certain timeout data,
   which allowed local users to cause a denial of service (stack memory
   corruption and panic) by reading the /proc/keys file (bnc#1004517).
+
   - CVE-2016-7097: The filesystem implementation in the Linux kernel
   preserved the setgid bit during a setxattr call, which allowed local
   users to gain group privileges by leveraging the existence of a setgid
   program with restrictions on execute permissions (bnc#995968).
+
   - CVE-2015-8956: The rfcomm_sock_bind function in
   net/bluetooth/rfcomm/sock.c in the Linux kernel allowed local users to
   obtain sensitive information or cause a denial of service (NULL pointer
   dereference) via vectors involving a bind system call on a Bluetooth
   RFCOMM socket (bnc#1003925).
+
   - CVE-2016-8658: Stack-based buffer overflow in the
   brcmf_cfg80211_start_ap function in
   drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c in the Linux
   kernel allowed local users to cause a denial of service (system crash)
   or possibly have unspecified other impact via a long SSID Information
   Element in a command to a Netlink socket (bnc#1004462).
+
   - CVE-2016-7425: The arcmsr_iop_message_xfer function in
   drivers/scsi/arcmsr/arcmsr_hba.c in the Linux kernel did not restrict a
   certain length field, which allowed local users to gain privileges or
   cause a denial of service (heap-based buffer overflow) via an
   ARCMSR_MESSAGE_WRITE_WQBUFFER control code (bnc#999932).
+
   - CVE-2016-6327: drivers/infiniband/ulp/srpt/ib_srpt.c in the Linux kernel
   allowed local users to cause a denial of service (NULL pointer
   dereference and system crash) by using an ABORT_TASK command to abort a
   device write operation (bnc#994748).
+
   - CVE-2016-6828: The tcp_check_send_head function in include/net/tcp.h in
   the Linux kernel did not properly maintain certain SACK state after a
-  fai ... 
+  fai ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:3021_1");
+  script_xref(name:"openSUSE-SU", value:"2016:3021_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -1428,6 +1430,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

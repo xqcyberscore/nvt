@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3396_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_suse_2018_3396_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2018:3396-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851948");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:00:36 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2018-17462", "CVE-2018-17463", "CVE-2018-17464", "CVE-2018-17465", "CVE-2018-17466", "CVE-2018-17467", "CVE-2018-17468", "CVE-2018-17469", "CVE-2018-17470", "CVE-2018-17471", "CVE-2018-17472", "CVE-2018-17473", "CVE-2018-17474", "CVE-2018-17475", "CVE-2018-17476", "CVE-2018-17477", "CVE-2018-5179");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,27 +37,42 @@ if(description)
   script_name("SuSE Update for Chromium openSUSE-SU-2018:3396-1 (Chromium)");
   script_tag(name:"summary", value:"Check the version of Chromium");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Chromium to version 70.0.3538.67 fixes multiple issues.
+  script_tag(name:"insight", value:"This update for Chromium to version 70.0.3538.67 fixes multiple issues.
 
   Security issues fixed (bsc#1112111):
 
   - CVE-2018-17462: Sandbox escape in AppCache
+
   - CVE-2018-17463: Remote code execution in V8
+
   - Heap buffer overflow in Little CMS in PDFium
+
   - CVE-2018-17464: URL spoof in Omnibox
+
   - CVE-2018-17465: Use after free in V8
+
   - CVE-2018-17466: Memory corruption in Angle
+
   - CVE-2018-17467: URL spoof in Omnibox
+
   - CVE-2018-17468: Cross-origin URL disclosure in Blink
+
   - CVE-2018-17469: Heap buffer overflow in PDFium
+
   - CVE-2018-17470: Memory corruption in GPU Internals
+
   - CVE-2018-17471: Security UI occlusion in full screen mode
+
   - CVE-2018-17473: URL spoof in Omnibox
+
   - CVE-2018-17474: Use after free in Blink
+
   - CVE-2018-17475: URL spoof in Omnibox
+
   - CVE-2018-17476: Security UI occlusion in full screen mode
+
   - CVE-2018-5179: Lack of limits on update() in ServiceWorker
+
   - CVE-2018-17477: UI spoof in Extensions
 
   VAAPI hardware accelerated rendering is now enabled by default.
@@ -65,7 +80,9 @@ if(description)
   This update contains the following packaging changes:
 
   - Use the system libusb-1.0 library
+
   - Use bundled harfbuzz library
+
   - Disable gnome-keyring to avoid crashes
 
 
@@ -90,19 +107,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

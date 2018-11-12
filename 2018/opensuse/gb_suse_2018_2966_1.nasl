@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2966_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_suse_2018_2966_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for zsh openSUSE-SU-2018:2966-1 (zsh)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851921");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 08:06:44 +0200 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-0502", "CVE-2018-1071", "CVE-2018-1083", "CVE-2018-1100", "CVE-2018-13259");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,28 +37,32 @@ if(description)
   script_name("SuSE Update for zsh openSUSE-SU-2018:2966-1 (zsh)");
   script_tag(name:"summary", value:"Check the version of zsh");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for zsh to version 5.6.2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for zsh to version 5.6.2 fixes the following issues:
 
   These security issues were fixed:
 
   - CVE-2018-0502: The beginning of a #! script file was mishandled,
   potentially leading to an execve call to a program named on the second
   line (bsc#1107296)
+
   - CVE-2018-13259: Shebang lines exceeding 64 characters were truncated,
   potentially leading to an execve call to a program name that is a
   substring of the intended one (bsc#1107294)
+
   - CVE-2018-1100: Prevent stack-based buffer overflow in the
   utils.c:checkmailpath function that allowed local attackers to execute
   arbitrary code in the context of another user (bsc#1089030).
+
   - CVE-2018-1071: Prevent stack-based buffer overflow in the
   exec.c:hashcmd() function that allowed local attackers to cause a denial
   of service (bsc#1084656).
+
   - CVE-2018-1083: Prevent buffer overflow in the shell autocomplete
   functionality that allowed local unprivileged users to create a
   specially crafted directory path which lead to code execution in the
   context of the user who tries to use autocomplete to traverse the
   mentioned path (bsc#1087026).
+
   - Disallow evaluation of the initial values of integer variables imported
   from the environment
 
@@ -66,27 +70,41 @@ if(description)
 
   - Fixed that the signal SIGWINCH was being ignored when zsh is not in the
   foreground.
+
   - Fixed two regressions with pipelines getting backgrounded and emitting
   the signal SIGTTOU
+
   - The effect of the NO_INTERACTIVE_COMMENTS option extends into $(...) and
   `...` command substitutions when used on the command line.
+
   - The 'exec' and 'command' precommand modifiers, and options to them, are
   now parsed after parameter expansion.
+
   - Functions executed by ZLE widgets no longer have their standard input
   closed, but redirected from /dev/null instead.
+
   - There is an option WARN_NESTED_VAR, a companion to the existing
   WARN_CREATE_GLOBAL that causes a warning if a function updates a
   variable from an enclosing scope without using typeset -g.
+
   - zmodload now has an option -s to be silent on a failure to find a module
   but still print other errors.
+
   - Fix typo in chflags completion
+
   - Fixed invalid git commands completion
+
   - VCS info system: vcs_info git: Avoid a fork.
+
   - Fix handling of 'printf -' and 'printf --'
+
   - fix broken completion for filterdiff (boo#1019130)
+
   - Unicode9 support, this needs support from your terminal to work
   correctly.
+
   - The new word modifier ':P' computes the physical path of the argument.
+
   - The output of 'typeset -p' uses 'export' commands or the '-g'
   option for parameters that are not local to the cu ...
 
@@ -101,19 +119,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

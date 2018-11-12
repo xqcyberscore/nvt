@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2695_1.nasl 11398 2018-09-14 18:00:26Z cfischer $
+# $Id: gb_suse_2018_2695_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for compat-openssl098 openSUSE-SU-2018:2695-1 (compat-openssl098)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851888");
-  script_version("$Revision: 11398 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 20:00:26 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-13 07:20:59 +0200 (Thu, 13 Sep 2018)");
   script_cve_id("CVE-2018-0732", "CVE-2018-0737", "CVE-2018-0739");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of compat-openssl098");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
  on the target host.");
-  script_tag(name:"insight", value:"
-  This update for compat-openssl098 fixes the following security issues:
+  script_tag(name:"insight", value:"This update for compat-openssl098 fixes the following security issues:
 
   - CVE-2018-0732: During key agreement in a TLS handshake using a DH(E)
   based ciphersuite a malicious server could have sent a very large prime
@@ -47,11 +46,14 @@ if(description)
   long period of time generating a key for this prime resulting in a hang
   until the client has finished. This could be exploited in a Denial Of
   Service attack (bsc#1097158)
+
   - Blinding enhancements for ECDSA and DSA (bsc#1097624, bsc#1098592)
+
   - CVE-2018-0737: The RSA Key generation algorithm has been shown to be
   vulnerable to a cache timing side channel attack. An attacker with
   sufficient access to mount cache timing attacks during the RSA key
   generation process could have recovered the private key (bsc#1089039)
+
   - CVE-2018-0739: Constructed ASN.1 types with a recursive definition (such
   as can be found in PKCS7) could eventually exceed the stack given
   malicious input with excessive recursion. This could have resulted in
@@ -81,19 +83,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

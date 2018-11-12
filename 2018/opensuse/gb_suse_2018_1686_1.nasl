@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1686_1.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_suse_2018_1686_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for taglib openSUSE-SU-2018:1686-1 (taglib)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851784");
-  script_version("$Revision: 10387 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 05:49:51 +0200 (Thu, 14 Jun 2018)");
   script_cve_id("CVE-2018-11439");
   script_tag(name:"cvss_base", value:"4.3");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for taglib openSUSE-SU-2018:1686-1 (taglib)");
   script_tag(name:"summary", value:"Check the version of taglib");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for taglib fixes this security issues:
+  script_tag(name:"insight", value:"This update for taglib fixes this security issues:
 
   - CVE-2018-11439: The TagLib::Ogg::FLAC::File::scan function allowed
   remote attackers to cause information disclosure (heap-based buffer
@@ -48,7 +47,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -71,19 +70,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

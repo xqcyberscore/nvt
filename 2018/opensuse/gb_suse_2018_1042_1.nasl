@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1042_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1042_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2018:1042-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851732");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-21 08:59:09 +0200 (Sat, 21 Apr 2018)");
   script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
                 "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
@@ -43,49 +43,81 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2018:1042-1 (chromium)");
-  script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for Chromium to version 66.0.3359.117 fixes the following
   issues:
 
   Security issues fixed (boo#1090000):
 
   - CVE-2018-6085: Use after free in Disk Cache
+
   - CVE-2018-6086: Use after free in Disk Cache
+
   - CVE-2018-6087: Use after free in WebAssembly
+
   - CVE-2018-6088: Use after free in PDFium
+
   - CVE-2018-6089: Same origin policy bypass in Service Worker
+
   - CVE-2018-6090: Heap buffer overflow in Skia
+
   - CVE-2018-6091: Incorrect handling of plug-ins by Service Worker
+
   - CVE-2018-6092: Integer overflow in WebAssembly
+
   - CVE-2018-6093: Same origin bypass in Service Worker
+
   - CVE-2018-6094: Exploit hardening regression in Oilpan
+
   - CVE-2018-6095: Lack of meaningful user interaction requirement before
   file upload
+
   - CVE-2018-6096: Fullscreen UI spoof
+
   - CVE-2018-6097: Fullscreen UI spoof
+
   - CVE-2018-6098: URL spoof in Omnibox
+
   - CVE-2018-6099: CORS bypass in ServiceWorker
+
   - CVE-2018-6100: URL spoof in Omnibox
+
   - CVE-2018-6101: Insufficient protection of remote debugging prototol in
   DevTools
+
   - CVE-2018-6102: URL spoof in Omnibox
+
   - CVE-2018-6103: UI spoof in Permissions
+
   - CVE-2018-6104: URL spoof in Omnibox
+
   - CVE-2018-6105: URL spoof in Omnibox
+
   - CVE-2018-6106: Incorrect handling of promises in V8
+
   - CVE-2018-6107: URL spoof in Omnibox
+
   - CVE-2018-6108: URL spoof in Omnibox
+
   - CVE-2018-6109: Incorrect handling of files by FileAPI
+
   - CVE-2018-6110: Incorrect handling of plaintext files via file://
+
   - CVE-2018-6111: Heap-use-after-free in DevTools
+
   - CVE-2018-6112: Incorrect URL handling in DevTools
+
   - CVE-2018-6113: URL spoof in Navigation
+
   - CVE-2018-6114: CSP bypass
+
   - CVE-2018-6115: SmartScreen bypass in downloads
+
   - CVE-2018-6116: Incorrect low memory handling in WebAssembly
+
   - CVE-2018-6117: Confusing autofill settings
+
   - Various fixes from internal audits, fuzzing and other initiatives
 
   This update also supports mitigation against the Spectre vulnerabilities:
@@ -97,8 +129,11 @@ of detect NVT and check if the version is vulnerable or not.");
   The following other changes are included:
 
   - distrust certificates issued by Symantec before 2016-06-01
+
   - add option to export saved passwords
+
   - Reduce videos that auto-play with sound
+
   - boo#1086199: Fix UI freezing when loading/scaling down large images
 
   This update also contains a number of upstream bug fixes and improvements.
@@ -109,29 +144,26 @@ of detect NVT and check if the version is vulnerable or not.");
   To install this openSUSE Security Update use the S ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "chromium on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"chromium on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:1042_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-04/msg00063.html");
+  script_xref(name:"openSUSE-SU", value:"2018:1042_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-04/msg00063.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -166,6 +198,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2567_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2567_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libX11 openSUSE-SU-2018:2567-1 (libX11)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851873");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:21:42 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-14598", "CVE-2018-14599", "CVE-2018-14600");
   script_tag(name:"cvss_base", value:"7.5");
@@ -43,8 +43,10 @@ if(description)
 
   - CVE-2018-14598: Fixed a crash on invalid reply in XListExtensions
   (boo#1102073)
+
   - CVE-2018-14599: Fixed an off-by-one write in XListExtensions
   (boo#1102062)
+
   - CVE-2018-14600: Fixed an out of boundary write in XListExtensions
   (boo#1102068)
 
@@ -70,19 +72,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

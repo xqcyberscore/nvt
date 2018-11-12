@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1381_1.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_suse_2018_1381_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for openjpeg2 openSUSE-SU-2018:1381-1 (openjpeg2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851761");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:47:59 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2015-1239", "CVE-2017-171479", "CVE-2017-17479", "CVE-2017-17480");
   script_tag(name:"cvss_base", value:"10.0");
@@ -36,16 +36,17 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openjpeg2 openSUSE-SU-2018:1381-1 (openjpeg2)");
   script_tag(name:"summary", value:"Check the version of openjpeg2");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for openjpeg2 fixes the following security issues:
+  script_tag(name:"insight", value:"This update for openjpeg2 fixes the following security issues:
 
   - CVE-2015-1239: A double free vulnerability in the j2k_read_ppm_v3
   function allowed remote attackers to cause a denial of service (crash)
   (bsc#1066713)
+
   - CVE-2017-17479: A stack-based buffer overflow in the pgxtoimage function
   in jpwl/convert.c could crash the converter. (bsc#1072125)
+
   - CVE-2017-17480: A stack-based buffer overflow in the pgxtovolume
   function in jp3d/convert.c could crash the converter. (bsc#1072124)
 
@@ -54,7 +55,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -73,19 +74,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0743_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0743_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850960");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:04:16 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2010-5298", "CVE-2012-5615", "CVE-2014-0195", "CVE-2014-0198",
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-2494", "CVE-2014-3470",
@@ -44,73 +44,80 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"mariadb was updated to version 10.0.16 to fix 40 security issues.
 
   These security issues were fixed:
+
   - CVE-2015-0411: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier, and 5.6.21 and earlier, allowed remote attackers to affect
   confidentiality, integrity, and availability via unknown vectors related
   to Server : Security : Encryption (bnc#915911).
+
   - CVE-2015-0382: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier and 5.6.21 and earlier allowed remote attackers to affect
   availability via unknown vectors related to Server : Replication, a
   different vulnerability than CVE-2015-0381 (bnc#915911).
+
   - CVE-2015-0381: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier and 5.6.21 and earlier allowed remote attackers to affect
   availability via unknown vectors related to Server : Replication, a
   different vulnerability than CVE-2015-0382 (bnc#915911).
+
   - CVE-2015-0432: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier allowed remote authenticated users to affect availability
   via vectors related to Server : InnoDB : DDL : Foreign Key (bnc#915911).
+
   - CVE-2014-6568: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier, and 5.6.21 and earlier, allowed remote authenticated users
   to affect availability via vectors related to Server : InnoDB : DML
   (bnc#915911).
+
   - CVE-2015-0374: Unspecified vulnerability in Oracle MySQL Server 5.5.40
   and earlier and 5.6.21 and earlier allowed remote authenticated users to
   affect confidentiality via unknown vectors related to Server : Security
   : Privileges : Foreign Key (bnc#915911).
+
   - CVE-2014-6507: Unspecified vulnerability in Oracle MySQL Server 5.5.39
   and earlier, and 5.6.20 and earlier, allowed remote authenticated users
   to affect confidentiality, integrity, and availability via vectors
   related to SERVER:DML (bnc#915912).
+
   - CVE-2014-6491: Unspecified vulnerability in Oracle MySQL Server 5.5.39
   and earlier and 5.6.20 and earlier allowed remote attackers to affect
   confidentiality, integrity, and availability via vectors related to
   SERVER:SSL:yaSSL, a different vulnerability than CVE-2014-6500
   (bnc#915912).
+
   - CVE-2014-6500: Unspecified vulnerability in Oracle MySQL Server 5.5.39
   and earlier, and 5.6.20 and earlier, allowed remote attackers to affect
   confidentiality, integrity, and availability via vectors related to
   SERVER:SSL:yaSSL, a different vulnerability than CVE-2014-6491
   (bnc#915912).
+
   - CVE-2014-6469: Unspecified vulnerability in Oracle MySQL Server 5.5.39
   ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "mariadb on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0743_1");
+  script_tag(name:"affected", value:"mariadb on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0743_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -187,7 +194,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -267,6 +274,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

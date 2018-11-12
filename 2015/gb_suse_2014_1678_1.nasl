@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1678_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1678_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux openSUSE-SU-2014:1678-1 (Linux)
 #
@@ -27,50 +27,57 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850682");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:38:58 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-3673", "CVE-2014-3687", "CVE-2014-3688", "CVE-2014-7826", "CVE-2014-7841", "CVE-2014-8133", "CVE-2014-9090", "CVE-2014-9322");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux openSUSE-SU-2014:1678-1 (Linux)");
-  script_tag(name: "summary", value: "Check the version of Linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.2 kernel was updated to version 3.16.7.
+  script_tag(name:"summary", value:"Check the version of Linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to version 3.16.7.
 
   These security issues were fixed:
+
   - CVE-2014-9322: A local privilege escalation in the x86_64 32bit
   compatibility signal handling was fixed, which could be used by local
   attackers to crash the machine or execute code. (bnc#910251)
+
   - CVE-2014-9090: The do_double_fault function in arch/x86/kernel/traps.c
   in the Linux kernel did not properly handle faults associated with the
   Stack Segment (SS) segment register, which allowed local users to cause
   a denial of service (panic) via a modify_ldt system call, as
   demonstrated by sigreturn_32 in the linux-clock-tests test suite.
   (bnc#907818)
+
   - CVE-2014-8133: Insufficient validation of TLS register usage could leak
   information from the kernel stack to userspace. (bnc#909077)
+
   - CVE-2014-3673: The SCTP implementation in the Linux kernel through
   3.17.2 allowed remote attackers to cause a denial of service (system
   crash) via a malformed ASCONF chunk, related to net/sctp/sm_make_chunk.c
   and net/sctp/sm_statefuns.c (bnc#902346, bnc#902349).
+
   - CVE-2014-3687: The sctp_assoc_lookup_asconf_ack function in
   net/sctp/associola.c in the SCTP implementation in the Linux kernel
   through 3.17.2 allowed remote attackers to cause a denial of service
   (panic) via duplicate ASCONF chunks that triggered an incorrect uncork
   within the side-effect interpreter (bnc#902349).
+
   - CVE-2014-3688: The SCTP implementation in the Linux kernel before 3.17.4
   allowed remote attackers to cause a denial of service (memory
   consumption) by triggering a large number of chunks in an association's
   output queue, as demonstrated by ASCONF probes, related to
   net/sctp/inqueue.c and net/sctp/sm_statefuns.c (bnc#902351).
+
   - CVE-2014-7826: kernel/trace/trace_syscalls.c in the Linux kernel through
   3.17.2 did not properly handle private syscall numbers during use of the
   ftrace subsystem, which allowed local users to gain privileges or cause
   a denial of service (invalid pointer dereference) via a crafted
   application (bnc#904013).
+
   - CVE-2014-7841: The sctp_process_param function in
   net/sctp/sm_make_chunk.c in the SCTP implementation in the Linux kernel
   before 3.17.4, when ASCONF is used, allowed remote attackers to cause a
@@ -78,34 +85,34 @@ if(description)
   malformed INIT chunk (bnc#905100).
 
   These non-security issues were fixed:
+
   - ahci: Check and set 64-bit DMA mask for platform AHCI driver
   (bnc#902632).
+
   - ahci/xgene: Remove logic to set 64-bit DMA mask (bnc#902632).
+
   - ahci_xgene: Skip the PHY and clock initialization if already configured
- ... 
+ ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2014:1678_1");
+  script_tag(name:"affected", value:"Linux on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2014:1678_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -416,6 +423,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

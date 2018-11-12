@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1390_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_1390_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2015:1390-1 (MozillaFirefox)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850668");
-  script_version("$Revision: 8046 $");
+  script_version("$Revision: 12294 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4474", "CVE-2015-4475", "CVE-2015-4477",
                 "CVE-2015-4478", "CVE-2015-4479", "CVE-2015-4480", "CVE-2015-4481",
                 "CVE-2015-4482", "CVE-2015-4483", "CVE-2015-4484", "CVE-2015-4485",
@@ -36,86 +36,110 @@ if(description)
                 "CVE-2015-4495");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-15 05:00:45 +0200 (Sat, 15 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2015:1390-1 (MozillaFirefox)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  - update to Firefox 40.0 (bnc#940806)
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"- update to Firefox 40.0 (bnc#940806)
+
   * Added protection against unwanted software downloads
+
   * Suggested Tiles show sites of interest, based on categories from your
   recent browsing history
+
   * Hello allows adding a link to conversations to provide context
   on what the conversation will be about
+
   * New style for add-on manager based on the in-content preferences style
+
   * Improved scrolling, graphics, and video playback performance with off
   main thread compositing (GNU/Linux only)
+
   * Graphic blocklist mechanism improved: Firefox version ranges can be
   specified, limiting the number of devices blocked security fixes:
+
   * MFSA 2015-79/CVE-2015-4473/CVE-2015-4474 Miscellaneous memory safety
   hazards
+
   * MFSA 2015-80/CVE-2015-4475 (bmo#1175396) Out-of-bounds read with
   malformed MP3 file
+
   * MFSA 2015-81/CVE-2015-4477 (bmo#1179484) Use-after-free in MediaStream
   playback
+
   * MFSA 2015-82/CVE-2015-4478 (bmo#1105914) Redefinition of
   non-configurable JavaScript object properties
+
   * MFSA 2015-83/CVE-2015-4479/CVE-2015-4480/CVE-2015-4493 Overflow issues
   in libstagefright
+
   * MFSA 2015-84/CVE-2015-4481 (bmo1171518) Arbitrary file overwriting
   through Mozilla Maintenance Service with hard links (only affected
   Windows)
+
   * MFSA 2015-85/CVE-2015-4482 (bmo#1184500) Out-of-bounds write with
   Updater and malicious MAR file (does not affect openSUSE RPM packages
   which do not ship the updater)
+
   * MFSA 2015-86/CVE-2015-4483 (bmo#1148732) Feed protocol with POST
   bypasses mixed content protections
+
   * MFSA 2015-87/CVE-2015-4484 (bmo#1171540) Crash when using shared
   memory in JavaScript
+
   * MFSA 2015-88/CVE-2015-4491 (bmo#1184009) Heap overflow in gdk-pixbuf
   when scaling bitmap images
+
   * MFSA 2015-89/CVE-2015-4485/CVE-2015-4486 (bmo#1177948, bmo#1178148)
   Buffer overflows on Libvpx when decoding WebM video
+
   * MFSA 2015-90/CVE-2015-4487/CVE-2015-4488/CVE-2015-4489 Vulnerabilities
   found through code inspection
+
   * MFSA 2015-91/CVE-2015-4490 (bmo#1086999) Mozilla Content Security
   Policy allows for asterisk wildcards in violation of CSP specification
+
   * MFSA 2015-92/CVE-2015-4492 (bmo#1185820) Use-after-free in
   XMLHttpRequest with shared workers
+
   - added mozilla-no-stdcxx-check.patch
+
   - removed obsolete patches
+
   * mozilla-add-glibcxx_use_cxx11_abi.patch
+
   * firefox-multilocale-chrome.patch
+
   - rebased patches
+
   - requires version 40 of the branding package
+
   - removed browser/searchplugins/ location as it's not valid anymore
 
   - includes security update to Firefox 39.0.3 (bnc#940918)
+
   * MFSA 2015-78/CVE-2015-4495 (bmo#1179262, bmo#1178058) Same origin
   violation and local file stealing via PDF reader");
-  script_tag(name: "affected", value: "MozillaFirefox on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:1390_1");
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:1390_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -174,6 +198,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

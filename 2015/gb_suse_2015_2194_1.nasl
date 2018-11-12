@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2194_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_2194_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2015:2194-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851138");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-05 08:43:02 +0100 (Sat, 05 Dec 2015)");
   script_cve_id("CVE-2015-0272", "CVE-2015-2925", "CVE-2015-5283", "CVE-2015-5307",
                 "CVE-2015-7799", "CVE-2015-7872", "CVE-2015-7990", "CVE-2015-8104",
@@ -37,78 +37,88 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2015:2194-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.51 to receive
   various security and bugfixes.
 
   Following security bugs were fixed:
+
   - CVE-2015-7799: The slhc_init function in drivers/net/slip/slhc.c in the
   Linux kernel did not ensure that certain slot numbers were valid, which
   allowed local users to cause a denial of service (NULL pointer
   dereference and system crash) via a crafted PPPIOCSMAXCID ioctl call
   (bnc#949936).
+
   - CVE-2015-5283: The sctp_init function in net/sctp/protocol.c in the
   Linux kernel had an incorrect sequence of protocol-initialization steps,
   which allowed local users to cause a denial of service (panic or memory
   corruption) by creating SCTP sockets before all of the steps have
   finished (bnc#947155).
+
   - CVE-2015-2925: The prepend_path function in fs/dcache.c in the Linux
   kernel did not properly handle rename actions inside a bind mount, which
   allowed local users to bypass an intended container protection mechanism
   by renaming a directory, related to a 'double-chroot attack (bnc#926238).
+
   - CVE-2015-8104: The KVM subsystem in the Linux kernel allowed guest OS
   users to cause a denial of service (host OS panic or hang) by triggering
   many #DB (aka Debug) exceptions, related to svm.c (bnc#954404).
+
   - CVE-2015-5307: The KVM subsystem in the Linux kernel allowed guest OS
   users to cause a denial of service (host OS panic or hang) by triggering
   many #AC (aka Alignment Check) exceptions, related to svm.c and vmx.c
   (bnc#953527).
+
   - CVE-2015-7990: RDS: There was no verification that an underlying
   transport exists when creating a connection, causing usage of a NULL
   pointer (bsc#952384).
+
   - CVE-2015-7872: The key_gc_unused_keys function in security/keys/gc.c in
   the Linux kernel allowed local users to cause a denial of service (OOPS)
   via crafted keyctl commands (bnc#951440).
+
   - CVE-2015-0272: Missing checks allowed remote attackers to cause a denial
   of service (IPv6 traffic disruption) via a crafted MTU value in an IPv6
   Router Advertisement (RA) message, a different vulnerability than
   CVE-2015-8215 (bnc#944296).
 
   The following non-security bugs were fixed:
+
   - ALSA: hda - Disable 64bit address for Creative HDA controllers
   (bnc#814440).
+
   - Add PCI IDs of Intel Sunrise Point-H SATA Controller S232/236
   (bsc#953796).
+
   - Btrfs: fix file corruption and data loss after cloning inline extents
   (bnc#956053).
+
   - Btrfs: fix truncation of compressed and inlined extents (bnc#956053).
+
   - Disable some ppc64le netfilter modules to restore the kabi (bsc#951546)
+
   - Fix regression .
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:2194_1");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:2194_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -197,7 +207,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -307,6 +317,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

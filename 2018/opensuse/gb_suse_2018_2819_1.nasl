@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2819_1.nasl 11690 2018-09-28 13:52:27Z cfischer $
+# $Id: gb_suse_2018_2819_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for liblouis openSUSE-SU-2018:2819-1 (liblouis)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851903");
-  script_version("$Revision: 11690 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:52:27 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 08:19:53 +0200 (Tue, 25 Sep 2018)");
   script_cve_id("CVE-2018-11440", "CVE-2018-11577", "CVE-2018-11683", "CVE-2018-11684", "CVE-2018-11685", "CVE-2018-12085");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,22 +37,26 @@ if(description)
   script_name("SuSE Update for liblouis openSUSE-SU-2018:2819-1 (liblouis)");
   script_tag(name:"summary", value:"Check the version of liblouis");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for liblouis fixes the following issues:
+  script_tag(name:"insight", value:"This update for liblouis fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-11440: Fixed a stack-based buffer overflow in the function
   parseChars() in compileTranslationTable.c (bsc#1095189)
+
   - CVE-2018-11577: Fixed a segmentation fault in lou_logPrint in logging.c
   (bsc#1095945)
+
   - CVE-2018-11683: Fixed a stack-based buffer overflow in the function
   parseChars() in compileTranslationTable.c (different vulnerability than
   CVE-2018-11440) (bsc#1095827)
+
   - CVE-2018-11684: Fixed stack-based buffer overflow in the function
   includeFile() in compileTranslationTable.c (bsc#1095826)
+
   - CVE-2018-11685: Fixed a stack-based buffer overflow in the function
   compileHyphenation() in compileTranslationTable.c (bsc#1095825)
+
   - CVE-2018-12085: Fixed a stack-based buffer overflow in the function
   parseChars() in compileTranslationTable.c (different vulnerability than
   CVE-2018-11440) (bsc#1097103)
@@ -81,19 +85,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

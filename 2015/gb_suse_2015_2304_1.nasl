@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2304_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_2304_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for ldb, SUSE-SU-2015:2304-1 (ldb,)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851144");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-19 05:43:32 +0100 (Sat, 19 Dec 2015)");
   script_cve_id("CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299",
                 "CVE-2015-5330", "CVE-2015-8467");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for ldb, SUSE-SU-2015:2304-1 (ldb,)");
-  script_tag(name: "summary", value: "Check the version of ldb,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for ldb, SUSE-SU-2015:2304-1 (ldb, )");
+  script_tag(name:"summary", value:"Check the version of ldb.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for ldb, samba, talloc, tdb, tevent fixes the following
   security issues:
 
@@ -57,63 +56,82 @@ of detect NVT and check if the version is vulnerable or not.");
   (bso#945116).
 
   Samba was updated to fix these issues:
+
   - Malicious request can cause samba ldap server to hang, spinning using
   cpu  CVE-2015-3223  (bso#11325)  (bsc#958581).
+
   - Remote read memory exploit in ldb  cve-2015-5330  (bso#11599)
   (bsc#958586).
+
   - Insufficient symlink verification (file access outside the share)
   CVE-2015-5252  (bso#11395)  (bsc#958582).
+
   - No man in the middle protection when forcing smb encryption on the
   client side  CVE-2015-5296  (bso#11536)  (bsc#958584).
+
   - Currently the snapshot browsing is not secure through windows previous
   version (shadow_copy2)  CVE-2015-5299  (bso#11529)  (bsc#958583).
+
   - Fix microsoft ms15-096 to prevent machine accounts from being changed
   into user accounts  CVE-2015-8467  (bso#11552)  (bsc#958585).
+
   - Changing log level of two entries to from 1 to 3  (bso#9912).
+
   - Vfs_gpfs: re-enable share modes  (bso#11243).
+
   - Wafsamba: also build libraries with relro protection  (bso#11346).
+
   - Ctdb: strip trailing spaces from nodes file  (bso#11365).
+
   - S3-smbd: fix old dos client doing wildcard delete - gives a attribute
   type
   of zero  (bso#11452).
+
   - Nss_wins: do not run into use after free issues when we access memory
   allocated on the globals and the global being reinitialized  (bso#11563).
+
   - Async_req: fix non-blocking connect()  (bso#11564).
+
   - Auth: gensec: fix a memory leak  (bso#11565).
+
   - Lib: util: make non-critical message a warning  (bso#11566).
+
   - Fix winbindd crashes with samlogon for trusted domain user  (bso#11569)
   (bsc#949022).
+
   - Smbd: send smb2 oplock breaks unencrypted  (bso#11570).
+
   - Ctdb: open the ro tracking db with perms 0600 instead of 0000
   (bso#11577).
+
   - Manpage: correct small typo error  (bso#11584).
+
   - S3: smbd: if ea's are turned off on a share don't allow an smb2 create
   containing them  (bso#11589).
+
   - Backport some valgrind fixes from upstream master  (bso#11597).
+
   - S3: smb .
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "ldb, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:2304_1");
+  script_tag(name:"affected", value:"ldb, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:2304_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -838,7 +856,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1578,6 +1596,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

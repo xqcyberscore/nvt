@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3028_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_3028_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2016:3028-1 (mariadb)
 #
@@ -27,80 +27,96 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851443");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:01:16 +0100 (Wed, 07 Dec 2016)");
-  script_cve_id("CVE-2016-3492", "CVE-2016-5584", "CVE-2016-5616", "CVE-2016-5624", 
-                "CVE-2016-5626", "CVE-2016-5629", "CVE-2016-6663", "CVE-2016-7440", 
+  script_cve_id("CVE-2016-3492", "CVE-2016-5584", "CVE-2016-5616", "CVE-2016-5624",
+                "CVE-2016-5626", "CVE-2016-5629", "CVE-2016-6663", "CVE-2016-7440",
                 "CVE-2016-8283");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2016:3028-1 (mariadb)");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This mariadb update to version 10.0.28 fixes the following issues
+  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This mariadb update to version 10.0.28 fixes the following issues
   (bsc#1008318):
 
   Security fixes:
+
   - CVE-2016-8283: Unspecified vulnerability in subcomponent Types
   (bsc#1005582)
+
   - CVE-2016-7440: Unspecified vulnerability in subcomponent Encryption
   (bsc#1005581)
+
   - CVE-2016-5629: Unspecified vulnerability in subcomponent Federated
   (bsc#1005569)
+
   - CVE-2016-5626: Unspecified vulnerability in subcomponent GIS
   (bsc#1005566)
+
   - CVE-2016-5624: Unspecified vulnerability in subcomponent DML
   (bsc#1005564)
+
   - CVE-2016-5616: Unspecified vulnerability in subcomponent MyISAM
   (bsc#1005562)
+
   - CVE-2016-5584: Unspecified vulnerability in subcomponent Encryption
   (bsc#1005558)
+
   - CVE-2016-3492: Unspecified vulnerability in subcomponent Optimizer
   (bsc#1005555)
+
   - CVE-2016-6663: Privilege Escalation / Race Condition (bsc#1001367)
 
   Bugfixes:
+
   - mysql_install_db can't find data files (bsc#1006539)
+
   - mariadb failing test sys_vars.optimizer_switch_basic (bsc#1003800)
+
   - Remove useless mysql@default.service (bsc#1004477)
+
   - Replace all occurrences of the string '@sysconfdir@' with '/etc' as it
   wasn't expanded properly (bsc#990890)
+
   - Notable changes:
+
   * XtraDB updated to 5.6.33-79.0
+
   * TokuDB updated to 5.6.33-79.0
+
   * Innodb updated to 5.6.33
+
   * Performance Schema updated to 5.6.33
+
   - Release notes and upstream changelog:
+
   * 'https://kb.askmonty.org/en/mariadb-10028-release-notes'
+
   * 'https://kb.askmonty.org/en/mariadb-10028-changelog'
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
-  script_tag(name: "affected", value: "mariadb on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"mariadb on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:3028_1");
+  script_xref(name:"openSUSE-SU", value:"2016:3028_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -237,6 +253,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

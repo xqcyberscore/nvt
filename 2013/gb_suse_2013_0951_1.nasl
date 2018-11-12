@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0951_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0951_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0951-1 (kernel)
 #
@@ -24,21 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850552");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 13:21:20 +0530 (Tue, 10 Dec 2013)");
   script_cve_id("CVE-2013-0290", "CVE-2013-2094");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for kernel openSUSE-SU-2013:0951-1 (kernel)");
-
-  tag_insight = "
-  The openSUSE 12.3 kernel was updated to fix a critical
+  script_tag(name:"affected", value:"kernel on openSUSE 12.3");
+  script_tag(name:"insight", value:"The openSUSE 12.3 kernel was updated to fix a critical
   security issue, other security issues and several bugs.
 
   Security issues fixed: CVE-2013-2094: The perf_swevent_init
@@ -54,6 +51,7 @@ if(description)
   loop and system hang) via a crafted application.
 
   Bugs fixed:
+
   - qlge: fix dma map leak when the last chunk is not
   allocated (bnc#819519).
 
@@ -80,8 +78,11 @@ if(description)
   Currently UCB1400 is only used on ARM OMAP systems, and
   part of the code is dead code that can't even be
   modularized.
+
   - CONFIG_UCB1400_CORE=n
+
   - CONFIG_TOUCHSCREEN_UCB1400=n
+
   - CONFIG_GPIO_UCB1400=n
 
   - rpm/config.sh: Drop the ARM repository, the KOTD will
@@ -101,50 +102,44 @@ if(description)
 
   - unix/stream: fix peeking with an offset larger than data
   in queue (bnc#803931 CVE-2013-0290).
+
   - unix/dgram: fix peeking with an offset larger than data
   in queue (bnc#803931 CVE-2013-0290).
+
   - unix/dgram: peek beyond 0-sized skbs (bnc#803931
   CVE-2013-0290).
+
   - net: fix infinite loop in __skb_recv_datagram()
   (bnc#803931 CVE-2013-0290).
 
   - TTY: fix atime/mtime regression (bnc#815745).
 
-  - md/raid1,raid10: fix deadlock with freeze_array()
+  - md/raid1, raid10: fix deadlock with freeze_array()
   (813889).
-  - md: raid1,10 ...
 
-  Description truncated, for more information please check the Reference URL";
+  - md: raid1, 10 ...
 
-  tag_affected = "kernel on openSUSE 12.3";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2013:0951_1");
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
+  script_xref(name:"openSUSE-SU", value:"2013:0951_1");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.3");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -503,6 +498,6 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

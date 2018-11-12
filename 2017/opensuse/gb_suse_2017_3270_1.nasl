@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3270_1.nasl 8203 2017-12-21 05:55:19Z cfischer $
+# $Id: gb_suse_2017_3270_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for GraphicsMagick openSUSE-SU-2017:3270-1 (GraphicsMagick)
 #
@@ -27,56 +27,56 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851663");
-  script_version("$Revision: 8203 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 06:55:19 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 07:44:03 +0100 (Wed, 13 Dec 2017)");
-  script_cve_id("CVE-2017-10799", "CVE-2017-12140", "CVE-2017-12644", "CVE-2017-12662", 
+  script_cve_id("CVE-2017-10799", "CVE-2017-12140", "CVE-2017-12644", "CVE-2017-12662",
                 "CVE-2017-14733", "CVE-2017-14994");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for GraphicsMagick openSUSE-SU-2017:3270-1 (GraphicsMagick)");
-  script_tag(name: "summary", value: "Check the version of GraphicsMagick");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for GraphicsMagick fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of GraphicsMagick");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for GraphicsMagick fixes the following issues:
 
   * CVE-2017-12140: ReadDCMImage in coders\dcm.c has a ninteger
   signedness error leading to excessive memory consumption
   (bnc#1051847)
+
   * CVE-2017-14994: NULL pointer in ReadDCMImage in coders/dcm.c could
   lead to denial of service (bnc#1061587)
+
   * CVE-2017-12662: Memory leak in WritePDFImage in coders/pdf.c could
   lead to denial of service (bnc#1052758)
+
   * CVE-2017-14733: Heap overflow on ReadRLEImage in coders/rle.c could
   lead to denial of service (bnc#1060577)
+
   * CVE-2017-12644: Memory leak in ReadDCMImage in coders\dcm.c could
   lead to denial of service (bnc#1052764)
+
   * CVE-2017-10799: denial of service (OOM) can occur inReadDPXImage()
   (bnc#1047054)");
-  script_tag(name: "affected", value: "GraphicsMagick on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"GraphicsMagick on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:3270_1");
+  script_xref(name:"openSUSE-SU", value:"2017:3270_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -165,7 +165,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -257,6 +257,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1106_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1106_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2016:1106-1 (samba)
 #
@@ -27,63 +27,66 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851282");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-21 05:18:52 +0200 (Thu, 21 Apr 2016)");
-  script_cve_id("CVE-2012-6150", "CVE-2013-4408", "CVE-2013-4496", "CVE-2015-0240", 
-                "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330", 
-                "CVE-2015-5370", "CVE-2015-7560", "CVE-2016-2110", "CVE-2016-2111", 
-                "CVE-2016-2112", "CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115", 
+  script_cve_id("CVE-2012-6150", "CVE-2013-4408", "CVE-2013-4496", "CVE-2015-0240",
+                "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330",
+                "CVE-2015-5370", "CVE-2015-7560", "CVE-2016-2110", "CVE-2016-2111",
+                "CVE-2016-2112", "CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115",
                 "CVE-2016-2118");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:1106-1 (samba)");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update fixes these security vulnerabilities:
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update fixes these security vulnerabilities:
+
   - CVE-2015-5370: DCERPC server and client were vulnerable to DOS and MITM
   attacks (bsc#936862).
+
   - CVE-2016-2110: A man-in-the-middle could have downgraded NTLMSSP
   authentication (bsc#973031).
+
   - CVE-2016-2111: Domain controller netlogon member computer could have
   been spoofed (bsc#973032).
-  - CVE-2016-2112: LDAP conenctions were vulnerable to downgrade and MITM
+
+  - CVE-2016-2112: LDAP connenctions were vulnerable to downgrade and MITM
   attack (bsc#973033).
+
   - CVE-2016-2113: TLS certificate validation were missing (bsc#973034).
-  - CVE-2016-2114: 'server signing = mandatory' not enforced (bsc#973035).
+
+  - CVE-2016-2114:'server signing = mandatory' not enforced (bsc#973035).
+
   - CVE-2016-2115: Named pipe IPC were vulnerable to MITM attacks
   (bsc#973036).
-  - CVE-2016-2118: 'Badlock' DCERPC impersonation of authenticated account
+
+  - CVE-2016-2118:'Badlock' DCERPC impersonation of authenticated account
   were possible (bsc#971965).
 
   The openSUSE 13.1 update also upgrades to samba 4.2.4 as 4.1.x versions
   are no longer supported by upstream. As a side effect, libpdb0 package was
   replaced by libsamba-passdb0.");
-  script_tag(name: "affected", value: "samba on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"samba on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1106_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1106_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -964,6 +967,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

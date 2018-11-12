@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2811_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_suse_2018_2811_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:2811-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851906");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-25 08:22:04 +0200 (Tue, 25 Sep 2018)");
   script_cve_id("CVE-2018-14434", "CVE-2018-14435", "CVE-2018-14436", "CVE-2018-14437", "CVE-2018-16323", "CVE-2018-16329");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,25 +37,30 @@ if(description)
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:2811-1 (ImageMagick)");
   script_tag(name:"summary", value:"Check the version of ImageMagick");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   The following security vulnerabilities were fixed:
 
   - CVE-2018-16329: Prevent NULL pointer dereference in the
   GetMagickProperty function leading to DoS (bsc#1106858)
+
   - CVE-2018-16323: ReadXBMImage left data uninitialized when processing an
   XBM file that has a negative pixel value. If the affected code was used
   as a library loaded into a process that includes sensitive information,
   that information sometimes can be leaked via the image data (bsc#1106855)
+
   - CVE-2018-14434: Fixed a memory leak for a colormap in WriteMPCImage
   (bsc#1102003)
+
   - CVE-2018-14435: Fixed a memory leak in DecodeImage in coders/pcd.c
   (bsc#1102007)
+
   - CVE-2018-14436: Fixed a memory leak in ReadMIFFImage in coders/miff.c
   (bsc#1102005)
+
   - CVE-2018-14437: Fixed a memory leak in parse8BIM in coders/meta.c
   (bsc#1102004)
+
   - Disable PS, PS2, PS3, XPS and PDF coders in default policy.xml
   (bsc#1105592)
 
@@ -83,19 +88,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

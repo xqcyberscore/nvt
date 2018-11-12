@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1900_1.nasl 10448 2018-07-06 16:51:26Z cfischer $
+# $Id: gb_suse_2018_1900_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for postgresql95 openSUSE-SU-2018:1900-1 (postgresql95)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851808");
-  script_version("$Revision: 10448 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 18:51:26 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 05:50:39 +0200 (Fri, 06 Jul 2018)");
   script_cve_id("CVE-2018-1115");
   script_tag(name:"cvss_base", value:"6.4");
@@ -36,13 +36,13 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql95 openSUSE-SU-2018:1900-1 (postgresql95)");
   script_tag(name:"summary", value:"Check the version of postgresql95");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for postgresql95 fixes the following issues:
+  script_tag(name:"insight", value:"This update for postgresql95 fixes the following issues:
 
   - Update to PostgreSQL 9.5.13:
-  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-13.html' 
+
+  * 'https://www.postgresql.org/docs/9.5/static/release-9-5-13.html'
   A dump/restore is not required for those running 9.5.X. However, if the
   function marking mistakes mentioned belowpg_logfile_rotate affect you,
   you will want to take steps to correct your database catalogs.
@@ -77,7 +77,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -96,19 +96,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2801_1.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_suse_2018_2801_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for obs-service-refresh_patches openSUSE-SU-2018:2801-1 (obs-service-refresh_patches)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851900");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-22 07:44:06 +0200 (Sat, 22 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,8 +36,7 @@ if(description)
   script_name("SuSE Update for obs-service-refresh_patches openSUSE-SU-2018:2801-1 (obs-service-refresh_patches)");
   script_tag(name:"summary", value:"Check the version of obs-service-refresh_patches");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for obs-service-refresh_patches fixes the following security
+  script_tag(name:"insight", value:"This update for obs-service-refresh_patches fixes the following security
   issue:
 
   - An attacker creating a specially formatted archive could have tricked the
@@ -69,19 +68,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

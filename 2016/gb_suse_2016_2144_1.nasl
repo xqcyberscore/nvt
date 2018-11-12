@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2144_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2144_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2016:2144-1 (kernel)
 #
@@ -27,99 +27,103 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851386");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-25 05:40:38 +0200 (Thu, 25 Aug 2016)");
-  script_cve_id("CVE-2012-6701", "CVE-2013-7446", "CVE-2014-9904", "CVE-2015-3288", 
-                "CVE-2015-6526", "CVE-2015-7566", "CVE-2015-8709", "CVE-2015-8785", 
-                "CVE-2015-8812", "CVE-2015-8816", "CVE-2015-8830", "CVE-2016-0758", 
-                "CVE-2016-1583", "CVE-2016-2053", "CVE-2016-2184", "CVE-2016-2185", 
-                "CVE-2016-2186", "CVE-2016-2187", "CVE-2016-2188", "CVE-2016-2384", 
-                "CVE-2016-2543", "CVE-2016-2544", "CVE-2016-2545", "CVE-2016-2546", 
-                "CVE-2016-2547", "CVE-2016-2548", "CVE-2016-2549", "CVE-2016-2782", 
-                "CVE-2016-2847", "CVE-2016-3134", "CVE-2016-3136", "CVE-2016-3137", 
-                "CVE-2016-3138", "CVE-2016-3139", "CVE-2016-3140", "CVE-2016-3156", 
-                "CVE-2016-3672", "CVE-2016-3689", "CVE-2016-3951", "CVE-2016-4470", 
-                "CVE-2016-4482", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4565", 
-                "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4580", "CVE-2016-4581", 
-                "CVE-2016-4805", "CVE-2016-4913", "CVE-2016-4997", "CVE-2016-5244", 
+  script_cve_id("CVE-2012-6701", "CVE-2013-7446", "CVE-2014-9904", "CVE-2015-3288",
+                "CVE-2015-6526", "CVE-2015-7566", "CVE-2015-8709", "CVE-2015-8785",
+                "CVE-2015-8812", "CVE-2015-8816", "CVE-2015-8830", "CVE-2016-0758",
+                "CVE-2016-1583", "CVE-2016-2053", "CVE-2016-2184", "CVE-2016-2185",
+                "CVE-2016-2186", "CVE-2016-2187", "CVE-2016-2188", "CVE-2016-2384",
+                "CVE-2016-2543", "CVE-2016-2544", "CVE-2016-2545", "CVE-2016-2546",
+                "CVE-2016-2547", "CVE-2016-2548", "CVE-2016-2549", "CVE-2016-2782",
+                "CVE-2016-2847", "CVE-2016-3134", "CVE-2016-3136", "CVE-2016-3137",
+                "CVE-2016-3138", "CVE-2016-3139", "CVE-2016-3140", "CVE-2016-3156",
+                "CVE-2016-3672", "CVE-2016-3689", "CVE-2016-3951", "CVE-2016-4470",
+                "CVE-2016-4482", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4565",
+                "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4580", "CVE-2016-4581",
+                "CVE-2016-4805", "CVE-2016-4913", "CVE-2016-4997", "CVE-2016-5244",
                 "CVE-2016-5829");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kernel openSUSE-SU-2016:2144-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.2 kernel was updated to fix various bugs and security
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to fix various bugs and security
   issues.
 
   The following security bugs were fixed:
+
   - CVE-2016-1583: Prevent the usage of mmap when the lower file system does
   not allow it. This could have lead to local privilege escalation when
   ecryptfs-utils was installed and /sbin/mount.ecryptfs_private was setuid
   (bsc#983143).
+
   - CVE-2016-4913: The get_rock_ridge_filename function in fs/isofs/rock.c
   in the Linux kernel mishandles NM (aka alternate name) entries
   containing \0 characters, which allowed local users to obtain sensitive
   information from kernel memory or possibly have unspecified other impact
   via a crafted isofs filesystem (bnc#980725).
+
   - CVE-2016-4580: The x25_negotiate_facilities function in
   net/x25/x25_facilities.c in the Linux kernel did not properly initialize
   a certain data structure, which allowed attackers to obtain sensitive
   information from kernel stack memory via an X.25 Call Request
   (bnc#981267).
+
   - CVE-2016-0758: Tags with indefinite length could have corrupted pointers
   in asn1_find_indefinite_length (bsc#979867).
+
   - CVE-2016-2053: The asn1_ber_decoder function in lib/asn1_decoder.c in
   the Linux kernel allowed attackers to cause a denial of service (panic)
   via an ASN.1 BER file that lacks a public key, leading to mishandling by
   the public_key_verify_signature function in
   crypto/asymmetric_keys/public_key.c (bnc#963762).
+
   - CVE-2016-2187: The gtco_probe function in drivers/input/tablet/gtco.c in
   the Linux kernel allowed physically proximate attackers to cause a
   denial of service (NULL pointer dereference and system crash) via a
   crafted endpoints value in a USB device descriptor (bnc#971919 971944).
+
   - CVE-2016-4482: The proc_connectinfo function in drivers/usb/core/devio.c
   in the Linux kernel did not initialize a certain data structure, which
   allowed local users to obtain sensitive information from kernel stack
   memory via a crafted USBDEVFS_CONNECTINFO ioctl call (bnc#978401
   bsc#978445).
+
   - CVE-2016-4565: The InfiniBand (aka IB) stack in the Linux kernel
   incorrectly relies on the write system call, which allowed local users
   to cause a denial of service (kernel memory write operation) or possibly
   have unspecified other impact via a uAPI interface (bnc#979548
   bsc#980363).
+
   - CVE-2016-3672: The arch_pick_mmap_layout function in arch/x86/mm/mmap.c
   in the Linux kernel did not properly randomize the legacy base address,
   which made it easier for local users to defeat the intended restrictions
   on the ADDR_NO_RANDOMIZE flag, and bypass the ASLR protection mechanism
-  for a setuid or  ... 
+  for a setuid or  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kernel on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2144_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2144_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -1234,6 +1238,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

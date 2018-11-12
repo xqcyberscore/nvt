@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0510_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_0510_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for glibc openSUSE-SU-2016:0510-1 (glibc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851207");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:57 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2014-9761", "CVE-2015-7547", "CVE-2015-8776", "CVE-2015-8778",
                 "CVE-2015-8779");
@@ -36,47 +36,49 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for glibc openSUSE-SU-2016:0510-1 (glibc)");
-  script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of glibc");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for glibc fixes the following issues:
 
   - errorcheck-mutex-no-elision.patch: Don't do lock elision on an error
   checking mutex (boo#956716, BZ #17514)
+
   - reinitialize-dl_load_write_lock.patch: Reinitialize dl_load_write_lock
   on fork (boo#958315, BZ #19282)
+
   - send-dg-buffer-overflow.patch: Fix getaddrinfo stack-based buffer
   overflow (CVE-2015-7547, boo#961721, BZ #18665)
+
   - strftime-range-check.patch: Add range check on time fields
   (CVE-2015-8776, boo#962736, BZ #18985)
+
   - hcreate-overflow-check.patch: Handle overflow in hcreate (CVE-2015-8778,
   boo#962737, BZ #18240)
+
   - refactor-nan-parsing.patch: Refactor strtod parsing of NaN payloads
   (CVE-2014-9761, boo#962738, BZ #16962)
+
   - catopen-unbound-alloca.patch: Fix unbound alloca in catopen
   (CVE-2015-8779, boo#962739, BZ #17905)");
-  script_tag(name: "affected", value: "glibc on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"glibc on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0510_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0510_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -267,6 +269,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

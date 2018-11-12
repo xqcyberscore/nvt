@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2739_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2739_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libzypp, openSUSE-SU-2018:2739-1 (libzypp,)
 #
@@ -29,23 +29,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852022");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2017-9269", "CVE-2018-7685");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:35:05 +0200 (Fri, 26 Oct 2018)");
-  script_name("SuSE Update for libzypp, openSUSE-SU-2018:2739-1 (libzypp,)");
+  script_name("SuSE Update for libzypp, openSUSE-SU-2018:2739-1 (libzypp, )");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2739_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00035.html");
 
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'libzypp,'
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libzypp, '
   package(s) announced via the openSUSE-SU-2018:2739_1 advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
@@ -56,40 +56,65 @@ if(description)
 
   - CVE-2018-7685: PackageProvider: Validate RPMs before caching
   (bsc#1091624, bsc#1088705)
+
   - CVE-2017-9269: Be sure bad packages do not stay in the cache
   (bsc#1045735)
 
   Changes in libzypp:
 
   - Update to version 17.6.4
+
   - Automatically fetch repository signing key from gpgkey url (bsc#1088037)
-  - lsof: use '-K i' if lsof supports it (bsc#1099847,bsc#1036304)
+
+  - lsof: use '-K i' if lsof supports it (bsc#1099847, bsc#1036304)
+
   - Check for not imported keys after multi key import from rpmdb
   (bsc#1096217)
+
   - Flags: make it std=c++14 ready
+
   - Ignore /var, /tmp and /proc in zypper ps. (bsc#1096617)
+
   - Show GPGME version in log
+
   - Adapt to changes in libgpgme11-11.1.0 breaking the signature
   verification (bsc#1100427)
+
   - RepoInfo::provideKey: add report telling where we look for missing keys.
+
   - Support listing gpgkey URLs in repo files (bsc#1088037)
+
   - Add new report to request user approval for importing a package key
+
   - Handle http error 502 Bad Gateway in curl backend (bsc#1070851)
+
   - Add filesize check for downloads with known size (bsc#408814)
+
   - Removed superfluous space in translation (bsc#1102019)
+
   - Prevent the system from sleeping during a commit
+
   - RepoManager: Explicitly request repo2solv to generate application pseudo
   packages.
+
   - libzypp-devel should not require cmake (bsc#1101349)
+
   - Avoid zombies from ExternalProgram
+
   - Update ApiConfig
+
   - HardLocksFile: Prevent against empty commit without Target having been
   been loaded (bsc#1096803)
+
   - lsof: use '-K i' if lsof supports it (bsc#1099847)
+
   - Add filesize check for downloads with known size (bsc#408814)
+
   - Fix detection of metalink downloads and prevent aborting if a metalink
   file is larger than the expected data file.
+
   - Require libsolv-devel  = 0.6.35 during build (fixing bsc#1100095)
+
   - Make use of %license macro (bsc#1082318)
 
   Security fix in zypper:
@@ -100,15 +125,22 @@ if(description)
 
   - Always set error status if any nr of unknown repositories are passed to
   lr and ref (bsc#1093103)
+
   - Notify user about unsupported rpm V3 keys in an old rpm database
   (bsc#1096217)
+
   - Detect read only filesystem on system modifying operations (fixes #199)
+
   - Use %license (bsc#1082318)
+
   - Handle repo aliases containing multiple ':' in the PackageArgs parser
   (bsc #1041178)
+
   - Fix broken display of detailed query results.
+
   - Fix broken search for items with a dash. (bsc#907538, bsc#1043166,
   bsc#1070770)
+
   - Disable repository operations when searching installed packages.
   (bsc#1084525)
  ...

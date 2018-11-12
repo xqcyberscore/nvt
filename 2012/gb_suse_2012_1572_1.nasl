@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1572_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_1572_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for XEN openSUSE-SU-2012:1572-1 (XEN)
 #
@@ -24,8 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "This security update of XEN fixes various bugs and security
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850374");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-12-13 17:01:50 +0530 (Thu, 13 Dec 2012)");
+  script_cve_id("CVE-2007-0998", "CVE-2012-2625", "CVE-2012-2934", "CVE-2012-3494",
+                "CVE-2012-3495", "CVE-2012-3496", "CVE-2012-3497", "CVE-2012-3498",
+                "CVE-2012-3515", "CVE-2012-4411", "CVE-2012-4535", "CVE-2012-4536",
+                "CVE-2012-4537", "CVE-2012-4538", "CVE-2012-4539", "CVE-2012-4544");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"openSUSE-SU", value:"2012:1572_1");
+  script_name("SuSE Update for XEN openSUSE-SU-2012:1572-1 (XEN)");
+
+  script_tag(name:"summary", value:"Check for the Version of XEN");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+  script_tag(name:"affected", value:"XEN on openSUSE 12.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"This security update of XEN fixes various bugs and security
   issues.
 
   - Upstream patch 26088-xend-xml-filesize-check.patch
@@ -33,6 +55,7 @@ tag_insight = "This security update of XEN fixes various bugs and security
   - bnc#787163 - CVE-2012-4544: xen: Domain builder Out-of-
   memory due to malicious kernel/ramdisk (XSA 25)
   CVE-2012-4544-xsa25.patch
+
   - bnc#779212 - CVE-2012-4411: XEN / qemu: guest
   administrator can access qemu monitor console (XSA-19)
   CVE-2012-4411-xsa19.patch
@@ -40,16 +63,22 @@ tag_insight = "This security update of XEN fixes various bugs and security
 
   - bnc#786516 - CVE-2012-4535: xen: Timer overflow DoS
   vulnerability CVE-2012-4535-xsa20.patch
+
   - bnc#786518 - CVE-2012-4536: xen: pirq range check DoS
   vulnerability CVE-2012-4536-xsa21.patch
+
   - bnc#786517 - CVE-2012-4537: xen: Memory mapping failure
   DoS vulnerability CVE-2012-4537-xsa22.patch
+
   - bnc#786519 - CVE-2012-4538: xen: Unhooking empty PAE
   entries DoS vulnerability CVE-2012-4538-xsa23.patch
+
   - bnc#786520 - CVE-2012-4539: xen: Grant table hypercall
   infinite loop DoS vulnerability CVE-2012-4539-xsa24.patch
+
   - bnc#784087 - L3: Xen BUG at io_apic.c:129
   26102-x86-IOAPIC-legacy-not-first.patch
+
   - Upstream patches from Jan
   26054-x86-AMD-perf-ctr-init.patch
   26055-x86-oprof-hvm-mode.patch
@@ -58,6 +87,7 @@ tag_insight = "This security update of XEN fixes various bugs and security
   26062-ACPI-ERST-move-data.patch
   26063-x86-HPET-affinity-lock.patch
   26093-HVM-PoD-grant-mem-type.patch
+
   - Upstream patches from Jan
   25931-x86-domctl-iomem-mapping-checks.patch
   25952-x86-MMIO-remap-permissions.patch
@@ -92,53 +122,22 @@ tag_insight = "This security update of XEN fixes various bugs and security
   25757-x86-EPT-PoD-1Gb-assert.patch
   25764-x86-unknown-cpu-no-sysenter.patch
   25765-x86_64-allow-unsafe-adjust.patch
-  25771-grant ... 
+  25771-grant ...
 
-  Description truncated, for more information please check the Reference URL";
+  Description truncated, for more information please check the Reference URL");
 
-tag_affected = "XEN on openSUSE 12.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850374");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-12-13 17:01:50 +0530 (Thu, 13 Dec 2012)");
-  script_cve_id("CVE-2007-0998", "CVE-2012-2625", "CVE-2012-2934", "CVE-2012-3494",
-                "CVE-2012-3495", "CVE-2012-3496", "CVE-2012-3497", "CVE-2012-3498",
-                "CVE-2012-3515", "CVE-2012-4411", "CVE-2012-4535", "CVE-2012-4536",
-                "CVE-2012-4537", "CVE-2012-4538", "CVE-2012-4539", "CVE-2012-4544");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1572_1");
-  script_name("SuSE Update for XEN openSUSE-SU-2012:1572-1 (XEN)");
-
-  script_tag(name: "summary" , value: "Check for the Version of XEN");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {
@@ -269,6 +268,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

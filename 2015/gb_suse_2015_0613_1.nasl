@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0613_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0613_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Xen SUSE-SU-2015:0613-1 (Xen)
 #
@@ -27,76 +27,92 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850866");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 13:15:39 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3615", "CVE-2014-9065", "CVE-2014-9066", "CVE-2015-0361", "CVE-2015-2044", "CVE-2015-2045", "CVE-2015-2151", "CVE-2015-2152");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Xen SUSE-SU-2015:0613-1 (Xen)");
-  script_tag(name: "summary", value: "Check the version of Xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The XEN hypervisor received updates to fix various security issues and
+  script_tag(name:"summary", value:"Check the version of Xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The XEN hypervisor received updates to fix various security issues and
   bugs.
 
   The following security issues were fixed:
+
   - CVE-2015-2151: XSA-123: A hypervisor memory corruption due to x86
   emulator flaw.
+
   - CVE-2015-2045: XSA-122: Information leak through version information
   hypercall.
+
   - CVE-2015-2044: XSA-121: Information leak via internal x86 system device
   emulation.
+
   - CVE-2015-2152: XSA-119: HVM qemu was unexpectedly enabling emulated VGA
   graphics backends.
+
   - CVE-2014-3615: Information leakage when guest sets high graphics
   resolution.
+
   - CVE-2015-0361: XSA-116: A xen crash due to use after free on hvm guest
   teardown.
+
   - CVE-2014-9065, CVE-2014-9066: XSA-114: xen: p2m lock starvation.
 
   Also the following bugs were fixed:
+
   - bnc#919098 - XEN blktap device intermittently fails to connect
+
   - bnc#882089 - Windows 2012 R2 fails to boot up with greater than 60 vcpus
+
   - bnc#903680 - Problems with detecting free loop devices on Xen guest
   startup
+
   - bnc#861318 - xentop reports 'Found interface vif101.0 but domain 101
   does not exist.'
+
   - Update seabios to rel-1.7.3.1 which is the correct version for Xen 4.4
+
   - Enhancement to virsh/libvirtd 'send-key' command The xen side small fix.
   (FATE#317240)
+
   - bnc#901488 - Intel ixgbe driver assigns rx/tx queues per core resulting
   in irq problems on servers with a large amount of CPU cores
+
   - bnc#910254 - SLES11 SP3 Xen VT-d igb NIC doesn't work
+
   - Add domain_migrate_constraints_set API to Xend's http interface
   (FATE#317239)
+
   - Restore missing fixes from block-dmmd script
+
   - bnc#904255 - XEN boot hangs in early boot on UEFI system
+
   - bsc#912011 - high ping latency after upgrade to latest SLES11SP3 on xen
   Dom0
+
   - Fix missing banner by restoring the figlet program.");
-  script_tag(name: "affected", value: "Xen on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0613_1");
+  script_tag(name:"affected", value:"Xen on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0613_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -149,7 +165,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -235,6 +251,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

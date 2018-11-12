@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1553_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1553_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:1553-1 (php5)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851332");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-12 05:26:24 +0200 (Sun, 12 Jun 2016)");
   script_cve_id("CVE-2013-7456", "CVE-2015-4116", "CVE-2015-8873", "CVE-2015-8874",
                 "CVE-2015-8876", "CVE-2015-8877", "CVE-2015-8879", "CVE-2016-3074",
@@ -38,70 +38,78 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:1553-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for php5 fixes the following issues:
 
   - CVE-2013-7456: imagescale out-of-bounds read (bnc#982009).
+
   - CVE-2016-5093: get_icu_value_internal out-of-bounds read (bnc#982010).
+
   - CVE-2016-5094: Don't create strings with lengths outside int range
   (bnc#982011).
+
   - CVE-2016-5095: Don't create strings with lengths outside int range
   (bnc#982012).
+
   - CVE-2016-5096: int/size_t confusion in fread (bsc#982013).
+
   - CVE-2016-5114: fpm_log.c memory leak and buffer overflow (bnc#982162).
+
   - CVE-2015-8877: The gdImageScaleTwoPass function in gd_interpolation.c in
   the GD Graphics Library (aka libgd), as used in PHP, used inconsistent
   allocate and free approaches, which allowed remote attackers to cause a
   denial of service (memory consumption) via a crafted call, as
   demonstrated by a call to the PHP imagescale function (bsc#981061).
+
   - CVE-2015-8876: Zend/zend_exceptions.c in PHP did not validate certain
   Exception objects, which allowed remote attackers to cause a denial of
   service (NULL pointer dereference and application crash) or trigger
   unintended method execution via crafted serialized data (bsc#981049).
+
   - CVE-2015-8879: The odbc_bindcols function in ext/odbc/php_odbc.c in PHP
   mishandled driver behavior for SQL_WVARCHAR columns, which allowed
   remote attackers to cause a denial of service (application crash) in
   opportunistic circumstances by leveraging use of the odbc_fetch_array
   function to access a certain type of Microsoft SQL Server table Aliased:
   (bsc#981050).
+
   - CVE-2015-4116: Use-after-free vulnerability in the spl_ptr_heap_insert
   function in ext/spl/spl_heap.c in PHP allowed remote attackers to
   execute arbitrary code by triggering a failed SplMinHeap::compare
   operation (bsc#980366).
+
   - CVE-2015-8874: Stack consumption vulnerability in GD in PHP allowed
   remote attackers to cause a denial of service via a crafted
   imagefilltoborder call (bsc#980375).
+
   - CVE-2015-8873: Stack consumption vulnerability in Zend/zend_exceptions.c
   in PHP allowed remote attackers to cause a denial of service
   (segmentation fault) via recursive method calls (bsc#980373).
+
   - CVE-2016-3074: Integer signedness error in GD Graphics Library (aka
   libgd or libgd2) allowed remote attackers to cause a denial of service
   (crash) or potentially execute arbitrary code via crafted compressed gd2
   data, which triggers a heap-based buffer overflow (bsc#976775).");
-  script_tag(name: "affected", value: "php5 on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php5 on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1553_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1553_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -796,6 +804,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1687_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2012_1687_1.nasl 12290 2018-11-09 14:21:13Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)
 #
@@ -8,7 +8,7 @@
 # System Generated Check
 #
 # Copyright:
-# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2013 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,8 +24,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "XEN was updated to fix various denial of service issues.
+if(description)
+{
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00019.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.850386");
+  script_version("$Revision: 12290 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-03-11 18:29:54 +0530 (Mon, 11 Mar 2013)");
+  script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
+                "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4537",
+                "CVE-2012-4538");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"openSUSE-SU", value:"2012:1687_1");
+  script_name("SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)");
+
+  script_tag(name:"summary", value:"Check for the Version of xen");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+  script_tag(name:"affected", value:"xen on openSUSE 12.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"XEN was updated to fix various denial of service issues.
 
 
   - bnc#789945 - CVE-2012-5510: xen: Grant table version
@@ -65,54 +87,23 @@ tag_insight = "XEN was updated to fix various denial of service issues.
 
   - Fix exception in balloon.py and osdep.py
   xen-max-free-mem.diff
+
   - bnc#792476 - efi files missing in latest XEN update
   Revert c/s 25751 EFI Makefile changes in
-  23614-x86_64-EFI-boot.patch";
+  23614-x86_64-EFI-boot.patch");
 
-
-tag_affected = "xen on openSUSE 12.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00019.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.850386");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2013-03-11 18:29:54 +0530 (Mon, 11 Mar 2013)");
-  script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
-                "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4537",
-                "CVE-2012-4538");
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1687_1");
-  script_name("SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)");
-
-  script_tag(name:"summary", value:"Check for the Version of xen");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {
@@ -243,6 +234,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2479_1.nasl 11171 2018-08-31 02:55:34Z ckuersteiner $
+# $Id: gb_suse_2018_2479_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ceph openSUSE-SU-2018:2479-1 (ceph)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851866");
-  script_version("$Revision: 11171 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 04:55:34 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 07:36:34 +0200 (Thu, 23 Aug 2018)");
   script_cve_id("CVE-2017-16818", "CVE-2018-7262");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,47 +37,67 @@ if(description)
   script_name("SuSE Update for ceph openSUSE-SU-2018:2479-1 (ceph)");
   script_tag(name:"summary", value:"Check the version of ceph");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ceph fixes the following issues:
+  script_tag(name:"insight", value:"This update for ceph fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-7262: rgw: malformed http headers can crash rgw (bsc#1081379).
+
   - CVE-2017-16818: User reachable asserts allow for DoS (bsc#1063014).
 
   Bug fixes:
 
   - bsc#1061461: OSDs keep generating coredumps after adding new OSD node to
   cluster.
+
   - bsc#1079076: RGW openssl fixes.
+
   - bsc#1067088: Upgrade to SES5 restarted all nodes, majority of OSDs
   aborts during start.
+
   - bsc#1056125: Some OSDs are down when doing performance testing on rbd
   image in EC Pool.
+
   - bsc#1087269: allow_ec_overwrites option not in command options list.
+
   - bsc#1051598: Fix mountpoint check for systemctl enable --runtime.
+
   - bsc#1070357: Zabbix mgr module doesn't recover from HEALTH_ERR.
+
   - bsc#1066502: After upgrading a single OSD from SES 4 to SES 5 the OSDs
   do not rejoin the cluster.
+
   - bsc#1067119: Crushtool decompile creates wrong device entries (device 20
   device20) for not existing / deleted OSDs.
+
   - bsc#1060904: Loglevel misleading during keystone authentication.
+
   - bsc#1056967: Monitors goes down after pool creation on cluster with 120
   OSDs.
+
   - bsc#1067705: Issues with RGW Multi-Site Federation between SES5 and RH
   Ceph Storage 2.
+
   - bsc#1059458: Stopping / restarting rados gateway as part of deepsea
   stage.4 executions causes core-dump of radosgw.
+
   - bsc#1087493: Commvault cannot reconnect to storage after restarting
   haproxy.
+
   - bsc#1066182: Container synchronization between two Ceph clusters failed.
+
   - bsc#1081600: Crash in civetweb/RGW.
+
   - bsc#1054061: NFS-GANESHA service failing while trying to list mountpoint
   on client.
+
   - bsc#1074301: OSDs keep aborting: SnapMapper failed asserts.
+
   - bsc#1086340: XFS metadata corruption on rbd-nbd mapped image with
   journaling feature enabled.
+
   - bsc#1080788: fsid mismatch when creating additional OSDs.
+
   - bsc#1071386: Metadata spill onto block.slow.
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
@@ -104,19 +124,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2337_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2337_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for php7 openSUSE-SU-2017:2337-1 (php7)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851607");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-05 07:21:01 +0200 (Tue, 05 Sep 2017)");
   script_cve_id("CVE-2016-10397", "CVE-2016-5766", "CVE-2017-11142", "CVE-2017-11144",
                 "CVE-2017-11145", "CVE-2017-11146", "CVE-2017-11147", "CVE-2017-11628",
@@ -37,64 +37,69 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php7 openSUSE-SU-2017:2337-1 (php7)");
-  script_tag(name: "summary", value: "Check the version of php7");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of php7");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for php7 fixes the following issues:
 
   - CVE-2016-10397: parse_url() can be bypassed to return fake host.
   (bsc#1047454)
+
   - CVE-2017-11142: Remoteattackers could cause a CPU consumption denial of
   service attack by injectinglong form variables, related to
   main/php_variables. (bsc#1048100)
+
   - CVE-2017-11144: The opensslextension PEM sealing code did not check the
   return value of the OpenSSL sealingfunction, which could lead to a
   crash. (bsc#1048096)
+
   - CVE-2017-11145: Lack of bounds checks in timelib_meridian could lead to
   information leak. (bsc#1048112)
+
   - CVE-2017-11146: Lack of bounds checks in timelib_meridian parse code
   could lead to information leak. (bsc#1048111)
+
   - CVE-2017-11147: The PHAR archive handler could beused by attackers
   supplying malicious archive files to crash the PHP interpreteror
   potentially disclose information. (bsc#1048094)
+
   - CVE-2017-11628:  Stack-base dbuffer overflow in zend_ini_do_op() could
   lead to denial of service (bsc#1050726)
+
   - CVE-2017-7890: Buffer over-read from uninitialized data in
   gdImageCreateFromGifCtx function could lead to denial of service
   (bsc#1050241)
+
   - CVE-2016-5766:  Integer Overflow in _gd2GetHeader() resulting in heap
   overflow could lead to denial of service or code execution (bsc#986386)
 
   Other fixes:
 
   - Soap Request with References (bsc#1053645)
+
   - php7-pear should explicitly require php7-pear-Archive_Tar
   otherwise this dependency must be declared in every php7-pear-* package
   explicitly. [bnc#1052389]
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "php7 on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php7 on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2337_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2337_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -771,7 +776,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1451,6 +1456,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

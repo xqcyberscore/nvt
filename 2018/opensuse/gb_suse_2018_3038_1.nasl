@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3038_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3038_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ghostscript openSUSE-SU-2018:3038-1 (ghostscript)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851986");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-15908", "CVE-2018-15909", "CVE-2018-15910", "CVE-2018-15911", "CVE-2018-16509", "CVE-2018-16510", "CVE-2018-16511", "CVE-2018-16513", "CVE-2018-16539", "CVE-2018-16540", "CVE-2018-16541", "CVE-2018-16542", "CVE-2018-16543", "CVE-2018-16585", "CVE-2018-16802", "CVE-2018-17183");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:27:07 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for ghostscript openSUSE-SU-2018:3038-1 (ghostscript)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3038_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00012.html");
@@ -57,45 +57,58 @@ if(description)
   - CVE-2018-17183: Remote attackers were be able to supply crafted
   PostScript to potentially overwrite or replace error handlers to inject
   code (bsc#1109105)
+
   - CVE-2018-15909: Prevent type confusion using the .shfill operator that
   could have been used by attackers able to supply crafted PostScript
   files to crash the interpreter or potentially execute code (bsc#1106172).
+
   - CVE-2018-15908: Prevent attackers that are able to supply malicious
   PostScript files to bypass .tempfile restrictions and write files
   (bsc#1106171).
+
   - CVE-2018-15910: Prevent a type confusion in the LockDistillerParams
   parameter that could have been used to crash the interpreter or execute
   code (bsc#1106173).
+
   - CVE-2018-15911: Prevent use uninitialized memory access in the aesdecode
   operator that could have been used to crash the interpreter or
   potentially execute code (bsc#1106195).
+
   - CVE-2018-16513: Prevent a type confusion in the setcolor function that
   could have been used to crash the interpreter or possibly have
   unspecified other impact (bsc#1107412).
+
   - CVE-2018-16509: Incorrect 'restoration of privilege' checking during
   handling
   of /invalidaccess exceptions could be have been used by attackers able
   to supply crafted PostScript to execute code using the 'pipe'
   instruction (bsc#1107410).
+
   - CVE-2018-16510: Incorrect exec stack handling in the 'CS' and 'SC' PDF
   primitives could have been used by remote attackers able to supply
   crafted PDFs to crash the interpreter or possibly have unspecified other
   impact (bsc#1107411).
+
   - CVE-2018-16542: Prevent attackers able to supply crafted PostScript
   files from using insufficient interpreter stack-size checking during
   error handling to crash the interpreter (bsc#1107413).
+
   - CVE-2018-16541: Prevent attackers able to supply crafted PostScript
   files from using incorrect free logic in pagedevice replacement to crash
   the interpreter (bsc#1107421).
+
   - CVE-2018-16540: Prevent use-after-free in copydevice handling that could
   have been used to crash the interpreter or possibly have unspecified
   other impact (bsc#1107420).
+
   - CVE-2018-16539: Prevent attackers able to supply crafted PostScript
   files from using incorrect access checking in temp file handling to
   disclose contents
   of files on the system otherwise not readable (bsc#1107422).
+
   - CVE-2018-16543: gssetresolution and gsgetresolution allowed attackers to
   have an unspecified impact (bsc#1107423).
+
   - CVE-2018-16511: A type confusion in 'zty ...
 
   Description truncated, for more information please check the Reference URL");

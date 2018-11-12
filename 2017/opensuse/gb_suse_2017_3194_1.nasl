@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3194_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_3194_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2017:3194-1 (xen)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851655");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 18:48:14 +0530 (Mon, 04 Dec 2017)");
   script_cve_id("CVE-2017-15289", "CVE-2017-15597");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2017:3194-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen to version 4.7.4 (bsc#1027519) fixes several issues.
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for xen to version 4.7.4 (bsc#1027519) fixes several issues.
 
   This new feature was added:
 
@@ -49,13 +47,16 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - bsc#1068187: Failure to recognize errors in the Populate on Demand (PoD)
   code allowed for DoS (XSA-246)
+
   - bsc#1068191: Missing p2m error checking in PoD code allowed unprivileged
   guests to retain a writable mapping of freed memory leading to
   information leaks, privilege escalation or DoS (XSA-247).
+
   - CVE-2017-15289: The mode4and5 write functions allowed local OS guest
   privileged users to cause a denial of service (out-of-bounds write
   access and Qemu process crash) via vectors related to dst calculation
   (bsc#1063123)
+
   - CVE-2017-15597: A grant copy operation being done on a grant of a dying
   domain allowed a malicious guest administrator to corrupt hypervisor
   memory, allowing for DoS or potentially privilege escalation and
@@ -66,28 +67,25 @@ of detect NVT and check if the version is vulnerable or not.");
   - bsc#1055047: Fixed --initrd-inject option in virt-install
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
-  script_tag(name: "affected", value: "xen on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"xen on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:3194_1");
+  script_xref(name:"openSUSE-SU", value:"2017:3194_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -164,6 +162,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3223_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_suse_2018_3223_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for binutils openSUSE-SU-2018:3223-1 (binutils)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851941");
-  script_version("$Revision: 12105 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-19 06:24:56 +0200 (Fri, 19 Oct 2018)");
   script_cve_id("CVE-2014-9939", "CVE-2017-15938", "CVE-2017-15939", "CVE-2017-15996", "CVE-2017-16826", "CVE-2017-16827", "CVE-2017-16828", "CVE-2017-16829", "CVE-2017-16830", "CVE-2017-16831", "CVE-2017-16832", "CVE-2017-6965", "CVE-2017-6966", "CVE-2017-6969", "CVE-2017-7209", "CVE-2017-7210", "CVE-2017-7223", "CVE-2017-7224", "CVE-2017-7225", "CVE-2017-7226", "CVE-2017-7299", "CVE-2017-7300", "CVE-2017-7301", "CVE-2017-7302", "CVE-2017-7303", "CVE-2017-7304", "CVE-2017-8392", "CVE-2017-8393", "CVE-2017-8394", "CVE-2017-8396", "CVE-2017-8421", "CVE-2017-9746", "CVE-2017-9747", "CVE-2017-9748", "CVE-2017-9750", "CVE-2017-9755", "CVE-2017-9756", "CVE-2018-10372", "CVE-2018-10373", "CVE-2018-10534", "CVE-2018-10535", "CVE-2018-6323", "CVE-2018-6543", "CVE-2018-6759", "CVE-2018-6872", "CVE-2018-7208", "CVE-2018-7568", "CVE-2018-7569", "CVE-2018-7570", "CVE-2018-7642", "CVE-2018-7643", "CVE-2018-8945");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for binutils openSUSE-SU-2018:3223-1 (binutils)");
   script_tag(name:"summary", value:"Check the version of binutils");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for binutils to 2.31 fixes the following issues:
+  script_tag(name:"insight", value:"This update for binutils to 2.31 fixes the following issues:
 
   These security issues were fixed:
 
@@ -46,37 +45,44 @@ if(description)
   service (excessive memory allocation) or possibly have unspecified other
   impact via a crafted ELF file that triggered a buffer overflow on fuzzed
   archive header (bsc#1065643).
+
   - CVE-2017-15939: Binary File Descriptor (BFD) library (aka libbfd)
   mishandled NULL files in a .debug_line file table, which allowed remote
   attackers to cause a denial of service (NULL pointer dereference and
   application crash) via a crafted ELF file, related to concat_filename
   (bsc#1065689).
+
   - CVE-2017-15938: the Binary File Descriptor (BFD) library (aka libbfd)
   miscalculated DW_FORM_ref_addr die refs in the case of a relocatable
   object file, which allowed remote attackers to cause a denial of service
   (find_abstract_instance_name invalid memory read, segmentation fault,
   and application crash) (bsc#1065693).
+
   - CVE-2017-16826: The coff_slurp_line_table function the Binary File
   Descriptor (BFD) library (aka libbfd) allowed remote attackers to cause
   a denial of service (invalid memory access and application crash) or
   possibly have unspecified other impact via a crafted PE file
   (bsc#1068640).
+
   - CVE-2017-16832: The pe_bfd_read_buildid function in the Binary File
   Descriptor (BFD) library (aka libbfd) did not validate size and offset
   values in the data dictionary, which allowed remote attackers to cause a
   denial of service (segmentation violation and application crash) or
   possibly have unspecified other impact via a crafted PE file
   (bsc#1068643).
+
   - CVE-2017-16831: Binary File Descriptor (BFD) library (aka libbfd) did
   not validate the symbol count, which allowed remote attackers to cause a
   denial of service (integer overflow and application crash, or excessive
   memory allocation) or possibly have unspecified other impact via a
   crafted PE file (bsc#1068887).
+
   - CVE-2017-16830: The print_gnu_property_note function did not have
   integer-overflow protection on 32-bit platforms, which allowed remote
   attackers to cause a denial of service (segmentation violation and
   application crash) or possibly have unspecified other impact via a
   crafted ELF file (bsc#1068888).
+
   - CVE-2017-16829: The _bfd_elf_parse_gnu_properties function in the Binary
   File Descriptor (BFD) library (aka libbfd) did not prevent negative
   pointers, which allowed remote attackers to cause a denial of service
@@ -94,19 +100,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

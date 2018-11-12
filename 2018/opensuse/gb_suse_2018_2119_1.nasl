@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2119_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_2119_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2119-1 (the)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851987");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2017-5715", "CVE-2017-5753", "CVE-2018-1000200", "CVE-2018-1000204", "CVE-2018-10087", "CVE-2018-10124", "CVE-2018-10323", "CVE-2018-1092", "CVE-2018-1093", "CVE-2018-1094", "CVE-2018-1108", "CVE-2018-1118", "CVE-2018-1120", "CVE-2018-1130", "CVE-2018-12233", "CVE-2018-13053", "CVE-2018-13405", "CVE-2018-13406", "CVE-2018-5803", "CVE-2018-5848", "CVE-2018-7492", "CVE-2018-8781", "CVE-2018-9385");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:27:58 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:2119-1 (the)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2119_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00036.html");
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  The openSUSE Leap 15 kernel was updated to receive various security and
+  script_tag(name:"insight", value:"The openSUSE Leap 15 kernel was updated to receive various security and
   bugfixes.
 
   The following security bugs were fixed:
@@ -60,39 +59,49 @@ if(description)
   could have result in local attackers being able to crash the kernel or
   potentially elevate privileges because kmalloc_array is not used
   (bnc#1100418)
+
   - CVE-2018-13053: The alarm_timer_nsleep function had an integer overflow
   via a large relative timeout because ktime_add_safe was not used
   (bnc#1099924)
+
   - CVE-2018-9385: Prevent overread of the 'driver_override' buffer
   (bsc#1100491)
+
   - CVE-2018-13405: The inode_init_owner function allowed local users to
   create files with an unintended group ownership allowing attackers to
   escalate privileges by making a plain file executable and SGID
   (bnc#1100416)
+
   - CVE-2017-5753: Systems with microprocessors utilizing speculative
   execution and branch prediction may have allowed unauthorized disclosure
   of information to an attacker with local user access via a side-channel
   analysis (bsc#1068032).
+
   - CVE-2018-1118: Linux kernel vhost did not properly initialize memory in
   messages passed between virtual guests and the host operating system.
   This could have allowed local privileged users to read some kernel
   memory contents when reading from the /dev/vhost-net device file
   (bsc#1092472).
+
   - CVE-2018-12233: A memory corruption bug in JFS could have been triggered
   by calling setxattr twice with two different extended attribute names on
   the same file. This vulnerability could be triggered by an unprivileged
   user with the ability to create files and execute programs (bsc#1097234)
+
   - CVE-2018-5848: In the function wmi_set_ie(), the length validation code
   did not handle unsigned integer overflow properly. As a result, a large
   value of the 'ie_len' argument could have caused a buffer overflow
   (bnc#1097356)
+
   - CVE-2018-1000204: Prevent infoleak caused by incorrect handling of the
   SG_IO ioctl (bsc#1096728)
+
   - CVE-2018-1120: By mmap()ing a FUSE-backed file onto a process's memory
   containing command line arguments (or environment strings), an attacker
   could have caused utilities from psutils or procps (such as ps, w) to
   block indefinitely (denial of service) or for some controlled time (as a
   synchronization primitive for other attacks) (bsc#1093158).
+
   - CVE-2018-1094: The ext4_fill_super function did not always initialize
   the crc32c checksum driver, which allowed attackers to cause a denial of
   service (ext4_xattr_inode_hash NULL pointer dereference and system

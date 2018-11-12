@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1064_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1064_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2016:1064-1 (samba)
 #
@@ -27,95 +27,118 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851279");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 05:21:37 +0200 (Mon, 18 Apr 2016)");
-  script_cve_id("CVE-2014-8143", "CVE-2015-0240", "CVE-2015-3223", "CVE-2015-5252", 
-                "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-5370", 
-                "CVE-2015-7560", "CVE-2015-8467", "CVE-2016-2110", "CVE-2016-2111", 
+  script_cve_id("CVE-2014-8143", "CVE-2015-0240", "CVE-2015-3223", "CVE-2015-5252",
+                "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-5370",
+                "CVE-2015-7560", "CVE-2015-8467", "CVE-2016-2110", "CVE-2016-2111",
                 "CVE-2016-2112", "CVE-2016-2113", "CVE-2016-2115", "CVE-2016-2118");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:1064-1 (samba)");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  samba was updated to version 4.2.4 to fix 14 security issues.
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"samba was updated to version 4.2.4 to fix 14 security issues.
 
   These security issues were fixed:
+
   - CVE-2015-5370: DCERPC server and client were vulnerable to DOS and MITM
   attacks (bsc#936862).
+
   - CVE-2016-2110: A man-in-the-middle could have downgraded NTLMSSP
   authentication (bsc#973031).
+
   - CVE-2016-2111: Domain controller netlogon member computer could have
   been spoofed (bsc#973032).
-  - CVE-2016-2112: LDAP conenctions were vulnerable to downgrade and MITM
+
+  - CVE-2016-2112: LDAP connenctions were vulnerable to downgrade and MITM
   attack (bsc#973033).
+
   - CVE-2016-2113: TLS certificate validation were missing (bsc#973034).
+
   - CVE-2016-2115: Named pipe IPC were vulnerable to MITM attacks
   (bsc#973036).
-  - CVE-2016-2118: 'Badlock' DCERPC impersonation of authenticated account
+
+  - CVE-2016-2118:'Badlock' DCERPC impersonation of authenticated account
   were possible (bsc#971965).
+
   - CVE-2015-3223: Malicious request can cause Samba LDAP server to hang,
   spinning using CPU (boo#958581).
+
   - CVE-2015-5330: Remote read memory exploit in LDB (boo#958586).
+
   - CVE-2015-5252: Insufficient symlink verification (file access outside
   the share)(boo#958582).
+
   - CVE-2015-5296: No man in the middle protection when forcing smb
   encryption on the client side (boo#958584).
-  - CVE-2015-5299: Currently the snapshot browsing is not secure thru
+
+  - CVE-2015-5299: Currently the snapshot browsing is not secure through
   windows previous version (shadow_copy2) (boo#958583).
+
   - CVE-2015-8467: Fix Microsoft MS15-096 to prevent machine accounts from
   being changed into user accounts (boo#958585).
+
   - CVE-2015-7560: Getting and setting Windows ACLs on symlinks can change
   permissions on link target (boo#968222).
 
   These non-security issues were fixed:
+
   - Fix samba.tests.messaging test and prevent potential tdb corruption by
   removing obsolete now invalid tdb_close call  (boo#974629).
+
   - Align fsrvp feature sources with upstream version.
+
   - Obsolete libsmbsharemodes0 from samba-libs and libsmbsharemodes-devel
   from samba-core-devel  (boo#973832).
+
   - s3:utils/smbget: Fix recursive download  (bso#6482).
+
   - s3: smbd: posix_acls: Fix check for setting u:g:o entry on a filesystem
   with no ACL support  (bso#10489).
+
   - docs: Add example for domain logins to smbspool man page  (bso#11643).
+
   - s3-client: Add a KRB5 wrapper for smbspool  (bso#11690).
+
   - loadparm: Fix memory leak issue  (bso#11708).
+
   - lib/tsocket: Work around sockets not supporting FIONREAD  (bso#11714).
-  - ctdb-scripts: Drop use of 'smbcontrol winbindd ip-dropped ...' 
+
+  - ctdb-scripts: Drop use of 'smbcontrol winbindd ip-dropped ...'
   (bso#11719).
+
   - s3:smbd:open: Skip redundant call to file_set_dosmode when creating a
   new file  (bso#11727).
+
   - param: Fix str_list_v3 to accept ' ' again  (bso#11732).
-  - Real memeory leak(buildup) issue in loadparm  (bso#11740).
-  - Obsolete libsmbclient from libsmbcl ... 
+
+  - Real memory leak(buildup) issue in loadparm  (bso#11740).
+
+  - Obsolete libsmbclient from libsmbcl ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "samba on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"samba on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1064_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1064_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -996,6 +1019,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

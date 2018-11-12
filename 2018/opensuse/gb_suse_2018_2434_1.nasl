@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2434_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2434_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2018:2434-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851864");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 11:04:40 +0200 (Mon, 20 Aug 2018)");
   script_cve_id("CVE-2018-3646");
   script_tag(name:"cvss_base", value:"4.7");
@@ -44,6 +44,7 @@ if(description)
   disclosure of information residing in the L1 data cache to an attacker
   with local user access with guest OS privilege via a terminal page fault
   and a side-channel analysis (bsc#1091107, bsc#1027519).
+
   - Incorrect MSR_DEBUGCTL handling let guests enable BTS allowing a
   malicious or buggy guest administrator can lock up the entire host
   (bsc#1103276)
@@ -72,19 +73,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

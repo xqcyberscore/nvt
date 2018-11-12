@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1871_1.nasl 9467 2018-04-13 06:21:59Z cfischer $
+# $Id: gb_suse_2013_1871_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:1871-1 (Mozilla)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850559");
-  script_version("$Revision: 9467 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 08:21:59 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:03:27 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-5609", "CVE-2013-5610", "CVE-2013-5613", "CVE-2013-5615",
                 "CVE-2013-5616", "CVE-2013-5618", "CVE-2013-6629", "CVE-2013-6630",
@@ -39,74 +37,79 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Mozilla openSUSE-SU-2013:1871-1 (Mozilla)");
+  script_tag(name:"affected", value:"Mozilla on openSUSE 11.4");
+  script_tag(name:"insight", value:"This patch contains
 
-  tag_insight = "
-  This patch contains
   * mozilla-nss 3.15.3.1 which includes a certstore update
   (1.95) to explicitly revoke AC DG Tresor SSL
   intermediate CA which was misused.
+
   * Firefox 24.2esr
+
   * Thunderbird 24.2
+
   * Seamonkey 2.23
 
   These updates fix several security issues:
 
   * CVE-2013-5611 Mozilla: Application Installation
   doorhanger persists on navigation (MFSA 2013-105)
+
   * CVE-2013-5609 Mozilla: Miscellaneous memory safety
   hazards (rv:24.2) (MFSA 2013-104)
+
   * CVE-2013-5610 Mozilla: Miscellaneous memory safety
   hazards (rv:26.0) (MFSA 2013-104)
+
   * CVE-2013-5612 Mozilla: Character encoding cross-origin
   XSS attack (MFSA 2013-106)
+
   * CVE-2013-5614 Mozilla: Sandbox restrictions not applied
   to nested object elements (MFSA 2013-107)
+
   * CVE-2013-5616 Mozilla: Use-after-free in event listeners
   (MFSA 2013-108)
+
   * CVE-2013-5619 Mozilla: Potential overflow in JavaScript
   binary search algorithms (MFSA 2013-110)
+
   * CVE-2013-6671 Mozilla: Segmentation violation when
   replacing ordered list elements (MFSA 2013-111)
+
   * CVE-2013-6673 Mozilla: Trust settings for built-in roots
   ignored during EV certificate validation (MFSA 2013-113)
+
   * CVE-2013-5613 Mozilla: Use-after-free in synthetic mouse
   movement (MFSA 2013-114)
+
   * CVE-2013-5615 Mozilla: GetElementIC typed array stubs can
   be generated outside observed typesets (MFSA 2013-115)
+
   * CVE-2013-6672 Mozilla: Linux clipboard information
   disclosure though selection paste (MFSA 2013-112)
+
   * CVE-2013-5618 Mozilla: Use-after-free during Table
-  Editing (MFSA 2013-109)";
-
-  tag_affected = "Mozilla on openSUSE 11.4";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Editing (MFSA 2013-109)");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2013:1871_1");
+  script_xref(name:"openSUSE-SU", value:"2013:1871_1");
   script_tag(name:"summary", value:"Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -459,6 +462,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

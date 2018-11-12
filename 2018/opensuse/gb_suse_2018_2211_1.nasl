@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2211_1.nasl 11281 2018-09-07 09:10:30Z cfischer $
+# $Id: gb_suse_2018_2211_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2018:2211-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851835");
-  script_version("$Revision: 11281 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:10:30 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 05:49:37 +0200 (Tue, 07 Aug 2018)");
   script_cve_id("CVE-2018-11806", "CVE-2018-12891", "CVE-2018-12892", "CVE-2018-12893",
                 "CVE-2018-3665");
@@ -38,24 +38,28 @@ if(description)
   script_name("SuSE Update for xen openSUSE-SU-2018:2211-1 (xen)");
   script_tag(name:"summary", value:"Check the version of xen");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for xen fixes the following issues:
+  script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-3665: Fix Lazy FP Save/Restore issue (XSA-267) (bsc#1095242).
+
   - CVE-2018-12891: Fix possible Denial of Service (DoS) via certain PV MMU
   operations that affect the entire host (XSA-264) (bsc#1097521).
+
   - CVE-2018-12892: Fix libxl to honour the readonly flag on HVM emulated
   SCSI disks (XSA-266) (bsc#1097523).
+
   - CVE-2018-12893: Fix crash/Denial of Service (DoS) via safety check
   (XSA-265) (bsc#1097522).
+
   - CVE-2018-11806: Fix heap buffer overflow while reassembling fragmented
   datagrams (bsc#1096224).
 
   Bug fixes:
 
   - bsc#1027519: Add upstream patches from January.
+
   - bsc#1087289: Fix xen scheduler crash.
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
@@ -63,7 +67,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -82,19 +86,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

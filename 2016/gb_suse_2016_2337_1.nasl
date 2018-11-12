@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2337_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2337_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:2337-1 (php5)
 #
@@ -27,55 +27,59 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851394");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-20 05:42:02 +0200 (Tue, 20 Sep 2016)");
-  script_cve_id("CVE-2016-7124", "CVE-2016-7125", "CVE-2016-7126", "CVE-2016-7127", 
-                "CVE-2016-7128", "CVE-2016-7129", "CVE-2016-7130", "CVE-2016-7131", 
+  script_cve_id("CVE-2016-7124", "CVE-2016-7125", "CVE-2016-7126", "CVE-2016-7127",
+                "CVE-2016-7128", "CVE-2016-7129", "CVE-2016-7130", "CVE-2016-7131",
                 "CVE-2016-7132", "CVE-2016-7134");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:2337-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for php5 fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for php5 fixes the following security issues:
 
   * CVE-2016-7124: Create an Unexpected Object and Don't Invoke __wakeup()
   in Deserialization
-  * CVE-2016-7125: PHP Session Data Injection Vulnerability
-  * CVE-2016-7126: select_colors write out-of-bounds
-  * CVE-2016-7127: imagegammacorrect allowed arbitrary write access
-  * CVE-2016-7128: Memory Leakage In exif_process_IFD_in_TIFF
-  * CVE-2016-7129: wddx_deserialize allowed illegal memory access
-  * CVE-2016-7130: wddx_deserialize null dereference
-  * CVE-2016-7131: wddx_deserialize null dereference with invalid xml
-  * CVE-2016-7132: wddx_deserialize null dereference in php_wddx_pop_element
-  * CVE-2016-7134: Heap overflow in the function curl_escape");
-  script_tag(name: "affected", value: "php5 on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2337_1");
+  * CVE-2016-7125: PHP Session Data Injection Vulnerability
+
+  * CVE-2016-7126: select_colors write out-of-bounds
+
+  * CVE-2016-7127: imagegammacorrect allowed arbitrary write access
+
+  * CVE-2016-7128: Memory Leakage In exif_process_IFD_in_TIFF
+
+  * CVE-2016-7129: wddx_deserialize allowed illegal memory access
+
+  * CVE-2016-7130: wddx_deserialize null dereference
+
+  * CVE-2016-7131: wddx_deserialize null dereference with invalid xml
+
+  * CVE-2016-7132: wddx_deserialize null dereference in php_wddx_pop_element
+
+  * CVE-2016-7134: Heap overflow in the function curl_escape");
+  script_tag(name:"affected", value:"php5 on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2016:2337_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -770,6 +774,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

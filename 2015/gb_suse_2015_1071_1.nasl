@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1071_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_1071_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2015:1071-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850926");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:32:44 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3647", "CVE-2014-8086", "CVE-2014-8159", "CVE-2015-1465",
                 "CVE-2015-2041", "CVE-2015-2042", "CVE-2015-2666", "CVE-2015-2830",
@@ -38,8 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2015:1071-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to version 3.12.43 to
   receive various security and bugfixes.
 
@@ -49,65 +49,73 @@ if(description)
   kernel through 3.17.2 did not properly perform RIP changes, which
   allowed guest OS users to cause a denial of service (guest OS crash) via
   a crafted application (bsc#899192).
+
   - CVE-2014-8086: Race condition in the ext4_file_write_iter function in
   fs/ext4/file.c in the Linux kernel through 3.17 allowed local users to
   cause a denial of service (file unavailability) via a combination of a
   write action and an F_SETFL fcntl operation for the O_DIRECT flag
   (bsc#900881).
+
   - CVE-2014-8159: The InfiniBand (IB) implementation did not properly
   restrict use of User Verbs for registration of memory regions, which
   allowed local users to access arbitrary physical memory locations, and
   consequently cause a denial of service (system crash) or gain
   privileges, by leveraging permissions on a uverbs device under
   /dev/infiniband/ (bsc#914742).
+
   - CVE-2015-1465: The IPv4 implementation in the Linux kernel before 3.18.8
   did not properly consider the length of the Read-Copy Update (RCU) grace
   period for redirecting lookups in the absence of caching, which allowed
   remote attackers to cause a denial of service (memory consumption or
   system crash) via a flood of packets (bsc#916225).
+
   - CVE-2015-2041: net/llc/sysctl_net_llc.c in the Linux kernel before 3.19
   used an incorrect data type in a sysctl table, which allowed local users
   to obtain potentially sensitive information from kernel memory or
   possibly have unspecified other impact by accessing a sysctl entry
   (bsc#919007).
+
   - CVE-2015-2042: net/rds/sysctl.c in the Linux kernel before 3.19 used an
   incorrect data type in a sysctl table, which allowed local users to
   obtain potentially sensitive information from kernel memory or possibly
   have unspecified other impact by accessing a sysctl entry (bsc#919018).
+
   - CVE-2015-2666: Fixed a flaw that allowed crafted microcode to overflow
   the kernel stack (bsc#922944).
+
   - CVE-2015-2830: Fixed int80 fork from 64-bit tasks mishandling
   (bsc#926240).
+
   - CVE-2015-2922: Fixed possible denial of service (DoS) attack against
   IPv6 network stacks due to improper handling of Router Advertisements
   (bsc#922583).
+
   - CVE-2015-3331: Fixed buffer overruns in RFC4106 implementation using
   AESNI (bsc#927257).
+
   - CVE-2015-3332: Fixed TCP Fast Open local DoS (bsc#928135).
+
   - CVE-2015-3339: Fixed race condition f ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:1071_1");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:1071_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -196,7 +204,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -306,6 +314,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0448_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0448_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2014:0448-1 (MozillaFirefox)
 #
@@ -24,113 +24,129 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850578");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 12:33:49 +0530 (Thu, 03 Apr 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1497", "CVE-2014-1498", "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502", "CVE-2014-1504", "CVE-2014-1505", "CVE-2014-1508", "CVE-2014-1509", "CVE-2014-1510", "CVE-2014-1511", "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2014:0448-1 (MozillaFirefox)");
-
-  tag_insight = "
-  Mozilla Firefox was updated to version 28.0, receiving
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE 13.1, openSUSE 12.3");
+  script_tag(name:"insight", value:"Mozilla Firefox was updated to version 28.0, receiving
   enhancements, bug and security fixes. Mozilla NSPR was
   updated to 4.10.4 receiving enhancements, bug and security
   fixes. Mozilla NSS  was updated to 3.15.5 receiving
   enhancements, bug and security fixes.
 
   Changes in MozillaFirefox:
+
   - update to Firefox 28.0 (bnc#868603)
+
   * MFSA 2014-15/CVE-2014-1493/CVE-2014-1494 Miscellaneous
   memory safety hazards
+
   * MFSA 2014-17/CVE-2014-1497 (bmo#966311) Out of bounds
   read during WAV file decoding
+
   * MFSA 2014-18/CVE-2014-1498 (bmo#935618)
   crypto.generateCRMFRequest does not validate type of key
+
   * MFSA 2014-19/CVE-2014-1499 (bmo#961512) Spoofing attack
   on WebRTC permission prompt
+
   * MFSA 2014-20/CVE-2014-1500 (bmo#956524) onbeforeunload
   and Javascript navigation DOS
+
   * MFSA 2014-22/CVE-2014-1502 (bmo#972622) WebGL content
   injection from one domain to rendering in another
+
   * MFSA 2014-23/CVE-2014-1504 (bmo#911547) Content
   Security Policy for data: documents not preserved by
   session restore
+
   * MFSA 2014-26/CVE-2014-1508 (bmo#963198) Information
   disclosure through polygon rendering in MathML
+
   * MFSA 2014-27/CVE-2014-1509 (bmo#966021) Memory
   corruption in Cairo during PDF font rendering
+
   * MFSA 2014-28/CVE-2014-1505 (bmo#941887) SVG filters
   information disclosure through feDisplacementMap
+
   * MFSA 2014-29/CVE-2014-1510/CVE-2014-1511 (bmo#982906,
   bmo#982909) Privilege escalation using
   WebIDL-implemented APIs
+
   * MFSA 2014-30/CVE-2014-1512 (bmo#982957) Use-after-free
   in TypeObject
+
   * MFSA 2014-31/CVE-2014-1513 (bmo#982974) Out-of-bounds
   read/write through neutering ArrayBuffer objects
+
   * MFSA 2014-32/CVE-2014-1514 (bmo#983344) Out-of-bounds
   write through TypedArrayObject after neutering
+
   - requires NSPR 4.10.3 and NSS 3.15.5
+
   - new build dependency (and recommends):
+
   * libpulse
+
   * JS math correctness issue (bmo#941381)
 
   Changes in mozilla-nspr:
+
   - update to version 4.10.4
+
   * bmo#767759: Add support for new x32 abi
+
   * bmo#844784: Thread data race in PR_EnterMonitor
+
   * bmo#939786: data race
   nsprpub/pr/src/pthreads/ptthread.c:137 _pt_root
+
   * bmo#958796: Users of _beginthreadex that set a custom
   stack size may not be getting the behavior they want
+
   * bmo#963033: AArch64 support update for NSPR
+
   * bmo#969061:        Incorrect end-of-list test when iterating
   over a PRCList in prcountr.c and prtrace.c
+
   * bmo#971152: IPv6 detection on linux depends on
   availability of /proc/net/if_inet6
 
   - update to version 4.10.3
+
   * bmo#749849: ensure we'll free the thread-specific data
   key.
-  * bmo#941461: don't compile andr ... 
 
-  Description truncated, for more information please check the Reference URL";
+  * bmo#941461: don't compile andr ...
 
-  tag_affected = "MozillaFirefox on openSUSE 13.1, openSUSE 12.3";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0448_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0448_1");
   script_tag(name:"summary", value:"Check for the Version of MozillaFirefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.3|openSUSE13\.1)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -363,7 +379,7 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -599,6 +615,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

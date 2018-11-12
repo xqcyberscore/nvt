@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1721_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1721_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for poppler openSUSE-SU-2018:1721-1 (poppler)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851791");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-17 05:53:19 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2017-1000456", "CVE-2017-14517", "CVE-2017-14518", "CVE-2017-14520",
                 "CVE-2017-14617", "CVE-2017-14928", "CVE-2017-14975", "CVE-2017-14976",
@@ -46,38 +46,48 @@ on the target host.");
 
   - CVE-2017-14517: Prevent NULL Pointer dereference in the
   XRef::parseEntry() function via a crafted PDF document (bsc#1059066).
+
   - CVE-2017-9865: Fixed a stack-based buffer overflow vulnerability in
   GfxState.cc that would have allowed attackers to facilitate a
   denial-of-service attack via specially crafted PDF documents.
   (bsc#1045939)
+
   - CVE-2017-14518: Remedy a floating point exception in
   isImageInterpolationRequired() that could have been exploited using a
   specially crafted PDF document. (bsc#1059101)
+
   - CVE-2017-14520: Remedy a floating point exception in
   Splash::scaleImageYuXd() that could have been exploited using a
   specially crafted PDF document. (bsc#1059155)
+
   - CVE-2017-14617: Fixed a floating point exception in Stream.cc, which may
   lead to a potential attack when handling malicious PDF files.
   (bsc#1060220)
+
   - CVE-2017-14928: Fixed a NULL Pointer dereference in
   AnnotRichMedia::Configuration::Configuration() in Annot.cc, which may
   lead to a potential attack when handling malicious PDF files.
   (bsc#1061092)
+
   - CVE-2017-14975: Fixed a NULL pointer dereference vulnerability, that
   existed because a data structure in FoFiType1C.cc was not initialized,
   which allowed an attacker to launch a denial of service attack.
   (bsc#1061263)
+
   - CVE-2017-14976: Fixed a heap-based buffer over-read vulnerability in
   FoFiType1C.cc that occurred when an out-of-bounds font dictionary index
   was encountered, which allowed an attacker to launch a denial of service
   attack. (bsc#1061264)
+
   - CVE-2017-14977: Fixed a NULL pointer dereference vulnerability in the
   FoFiTrueType::getCFFBlock() function in FoFiTrueType.cc that occurred
   due to lack of validation of a table pointer, which allows an attacker
   to launch a denial of service attack. (bsc#1061265)
+
   - CVE-2017-15565: Prevent NULL Pointer dereference in the
   GfxImageColorMap::getGrayLine() function via a crafted PDF document
   (bsc#1064593).
+
   - CVE-2017-1000456: Validate boundaries in TextPool::addWord to prevent
   overflows in subsequent calculations (bsc#1074453).
 
@@ -105,19 +115,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

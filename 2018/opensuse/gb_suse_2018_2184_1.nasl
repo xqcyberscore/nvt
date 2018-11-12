@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2184_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2184_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:2184-1 (wireshark)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851990");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-14339", "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342", "CVE-2018-14343", "CVE-2018-14344", "CVE-2018-14367", "CVE-2018-14368", "CVE-2018-14369", "CVE-2018-14370");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:29:36 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for wireshark openSUSE-SU-2018:2184-1 (wireshark)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2184_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00004.html");
@@ -50,23 +50,31 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for wireshark fixes the following issues:
+  script_tag(name:"insight", value:"This update for wireshark fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-14342: BGP dissector large loop (wnpa-sec-2018-34, boo#1101777)
+
   - CVE-2018-14344: ISMP dissector crash (wnpa-sec-2018-35, boo#1101788)
+
   - CVE-2018-14340: Multiple dissectors could crash (wnpa-sec-2018-36,
   boo#1101804)
+
   - CVE-2018-14343: ASN.1 BER dissector crash (wnpa-sec-2018-37, boo#1101786)
+
   - CVE-2018-14339: MMSE dissector infinite loop (wnpa-sec-2018-38,
   boo#1101810)
+
   - CVE-2018-14341: DICOM dissector crash (wnpa-sec-2018-39, boo#1101776)
+
   - CVE-2018-14368: Bazaar dissector infinite loop (wnpa-sec-2018-40,
   boo#1101794)
+
   - CVE-2018-14369: HTTP2 dissector crash (wnpa-sec-2018-41, boo#1101800)
+
   - CVE-2018-14367: CoAP dissector crash (wnpa-sec-2018-42, boo#1101791)
+
   - CVE-2018-14370: IEEE 802.11 dissector crash (wnpa-sec-2018-43,
   boo#1101802)
 

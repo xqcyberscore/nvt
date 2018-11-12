@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1553_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1553_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for git openSUSE-SU-2018:1553-1 (git)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851774");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:47:36 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2018-11233", "CVE-2018-11235");
   script_tag(name:"cvss_base", value:"6.8");
@@ -42,6 +42,7 @@ on the target host.");
 
   * path sanity-checks on NTFS can read arbitrary memory (CVE-2018-11233,
   boo#1095218)
+
   * arbitrary code execution when recursively cloning a malicious repository
   (CVE-2018-11235, boo#1095219)
 
@@ -71,19 +72,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0377_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0377_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for MySQL openSUSE-SU-2016:0377-1 (MySQL)
 #
@@ -27,89 +27,95 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851201");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-09 06:24:44 +0100 (Tue, 09 Feb 2016)");
-  script_cve_id("CVE-2015-7744", "CVE-2016-0502", "CVE-2016-0503", "CVE-2016-0504", 
-                "CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0594", "CVE-2016-0595", 
-                "CVE-2016-0596", "CVE-2016-0597", "CVE-2016-0598", "CVE-2016-0600", 
-                "CVE-2016-0605", "CVE-2016-0606", "CVE-2016-0607", "CVE-2016-0608", 
+  script_cve_id("CVE-2015-7744", "CVE-2016-0502", "CVE-2016-0503", "CVE-2016-0504",
+                "CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0594", "CVE-2016-0595",
+                "CVE-2016-0596", "CVE-2016-0597", "CVE-2016-0598", "CVE-2016-0600",
+                "CVE-2016-0605", "CVE-2016-0606", "CVE-2016-0607", "CVE-2016-0608",
                 "CVE-2016-0609", "CVE-2016-0610", "CVE-2016-0611");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MySQL openSUSE-SU-2016:0377-1 (MySQL)");
-  script_tag(name: "summary", value: "Check the version of MySQL");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to MySQL 5.6.28 fixes the following issues (bsc#962779):
+  script_tag(name:"summary", value:"Check the version of MySQL");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update to MySQL 5.6.28 fixes the following issues (bsc#962779):
 
   - CVE-2015-7744: Lack of verification against faults associated with the
   Chinese Remainder Theorem (CRT) process when allowing ephemeral key
   exchange without low memory optimizations on a server, which makes it
   easier for remote attackers to obtain private RSA keys by capturing TLS
   handshakes, aka a Lenstra attack.
+
   - CVE-2016-0502: Unspecified vulnerability in Oracle MySQL 5.5.31 and
   earlier and 5.6.11 and earlier allows remote authenticated users to
   affect availability via unknown vectors related to Optimizer.
+
   - CVE-2016-0503: Unspecified vulnerability in Oracle MySQL 5.6.27 and
   earlier and 5.7.9 allows remote authenticated users to affect
   availability via vectors related to DML, a different vulnerability than
   CVE-2016-0504.
+
   - CVE-2016-0504: Unspecified vulnerability in Oracle MySQL 5.6.27 and
   earlier and 5.7.9 allows remote authenticated users to affect
   availability via vectors related to DML, a different vulnerability than
   CVE-2016-0503.
+
   - CVE-2016-0505: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier, 5.6.27 and earlier, and 5.7.9 allows remote authenticated users
   to affect availability via unknown vectors related to Options.
+
   - CVE-2016-0546: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier, 5.6.27 and earlier, and 5.7.9 allows local users to affect
   confidentiality, integrity, and availability via unknown vectors related
   to Client.
+
   - CVE-2016-0594: Unspecified vulnerability in Oracle MySQL 5.6.21 and
   earlier allows remote authenticated users to affect availability via
   vectors related to DML.
+
   - CVE-2016-0595: Unspecified vulnerability in Oracle MySQL 5.6.27 and
   earlier allows remote authenticated users to affect availability via
   vectors related to DML.
+
   - CVE-2016-0596: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier and 5.6.27 and earlier allows remote authenticated users to
   affect availability via vectors related to DML.
+
   - CVE-2016-0597: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier, 5.6.27 and earlier, and 5.7.9 allows remote authenticated users
   to affect availability via unknown vectors related to Optimizer.
+
   - CVE-2016-0598: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier, 5.6.27 and earlier, and 5.7.9 allows remote authenticated users
   to affect availability via vectors related to DML.
+
   - CVE-2016-0600: Unspecified vulnerability in Oracle MySQL 5.5.46 and
   earlier, 5.6.27 and earlier, and 5.7.9 allows remote authenticated users
-  to affect availability via unknown vectors re ... 
+  to affect availability via unknown vectors re ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "MySQL on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MySQL on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0377_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0377_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -222,6 +228,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

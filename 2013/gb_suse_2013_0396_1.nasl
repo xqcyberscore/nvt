@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0396_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2013_0396_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0396-1 (kernel)
 #
@@ -24,8 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The Linux kernel was updated to fix various bugs and
+if(description)
+{
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00005.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.850414");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-03-11 18:29:39 +0530 (Mon, 11 Mar 2013)");
+  script_cve_id("CVE-2012-0957", "CVE-2012-2745", "CVE-2012-3412", "CVE-2012-4530",
+                "CVE-2013-0160", "CVE-2013-0216", "CVE-2013-0231", "CVE-2013-0268",
+                "CVE-2013-0309", "CVE-2013-0871", "CVE-2012-5374", "CVE-2012-4508",
+                "CVE-2012-3375", "CVE-2012-3400");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"openSUSE-SU", value:"2013:0396_1");
+  script_name("SuSE Update for kernel openSUSE-SU-2013:0396-1 (kernel)");
+
+  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+  script_tag(name:"affected", value:"kernel on openSUSE 12.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The Linux kernel was updated to fix various bugs and
   security issues:
 
   CVE-2013-0871: Race condition in the ptrace functionality
@@ -88,55 +111,22 @@ tag_insight = "The Linux kernel was updated to fix various bugs and
   CVE-2012-2745: The copy_creds function in kernel/cred.c in
   the Linux kernel provided an invalid replacement session
   keyring to a child process, which allowed local users to
-  cause a denial of service ... 
+  cause a denial of service ...
 
-  Description truncated, for more information please check the Reference URL";
+  Description truncated, for more information please check the Reference URL");
 
-
-tag_affected = "kernel on openSUSE 12.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00005.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.850414");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2013-03-11 18:29:39 +0530 (Mon, 11 Mar 2013)");
-  script_cve_id("CVE-2012-0957", "CVE-2012-2745", "CVE-2012-3412", "CVE-2012-4530",
-                "CVE-2013-0160", "CVE-2013-0216", "CVE-2013-0231", "CVE-2013-0268",
-                "CVE-2013-0309", "CVE-2013-0871", "CVE-2012-5374", "CVE-2012-4508",
-                "CVE-2012-3375", "CVE-2012-3400");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "openSUSE-SU", value: "2013:0396_1");
-  script_name("SuSE Update for kernel openSUSE-SU-2013:0396-1 (kernel)");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {
@@ -519,6 +509,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

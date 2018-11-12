@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0332_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0332_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for virtualbox openSUSE-SU-2017:0332-1 (virtualbox)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851482");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:10:58 +0530 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2016-5545", "CVE-2017-3290", "CVE-2017-3316", "CVE-2017-3332");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for virtualbox openSUSE-SU-2017:0332-1 (virtualbox)");
-  script_tag(name: "summary", value: "Check the version of virtualbox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for virtualbox to version 5.0.32 fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of virtualbox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for virtualbox to version 5.0.32 fixes the following issues:
 
   These security issues were fixed:
 
@@ -48,41 +46,41 @@ of detect NVT and check if the version is vulnerable or not.");
   access to some data as well as unauthorized read access to a subset of
   VirtualBox accessible data and unauthorized ability to cause a partial
   denial of service (bsc#1020856).
+
   - CVE-2017-3290: Vulnerability in the Shared Folder subcomponent of
   virtualbox allows high privileged attacker unauthorized creation,
   deletion or modification access to critical data and unauthorized
   ability to cause a hang or frequently repeatable crash (bsc#1020856).
+
   - CVE-2017-3316: Vulnerability in the GUI subcomponent of virtualbox
   allows high privileged attacker with network access via multiple
   protocols to compromise Oracle VM VirtualBox (bsc#1020856).
+
   - CVE-2017-3332: Vulnerability in the SVGA Emulation subcomponent of
   virtualbox allows low privileged attacker unauthorized creation,
   deletion or modification access to critical data and unauthorized
   ability to cause a hang or frequently repeatable crash (bsc#1020856).
 
   For other changes please read the changelog.");
-  script_tag(name: "affected", value: "virtualbox on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"virtualbox on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0332_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0332_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -207,6 +205,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

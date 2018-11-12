@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0797_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0797_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2014:0797-1 (Mozilla)
 #
@@ -24,63 +24,57 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850592");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:04:47 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2014-1533", "CVE-2014-1534", "CVE-2014-1536", "CVE-2014-1537",
                 "CVE-2014-1538", "CVE-2014-1541", "CVE-2014-1545");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Mozilla openSUSE-SU-2014:0797-1 (Mozilla)");
+  script_tag(name:"affected", value:"Mozilla on openSUSE 11.4");
+  script_tag(name:"insight", value:"These updates contain the latest security and maintenance updates for
 
-  tag_insight = "
-  These updates contain the latest security and maintenance updates for
   - Mozilla Firefox 24.6esr
+
   - Mozilla Thunderbird 24.6
+
   - Mozilla NSPR is also updated to 4.10.6
 
   to fix
+
   * MFSA 2014-48/CVE-2014-1533/CVE-2014-1534 Miscellaneous memory safety
   hazards
+
   * MFSA 2014-49/CVE-2014-1536/CVE-2014-1537/CVE-2014-1538 Use-after-free
   and out of bounds issues found using Address Sanitizer
+
   * MFSA 2014-52/CVE-2014-1541 Use-after-free with SMIL Animation Controller
-  * MFSA 2014-55/CVE-2014-1545 Out of bounds write in NSPR";
 
-  tag_affected = "Mozilla on openSUSE 11.4";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  * MFSA 2014-55/CVE-2014-1545 Out of bounds write in NSPR");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0797_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0797_1");
   script_tag(name:"summary", value:"Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -229,6 +223,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

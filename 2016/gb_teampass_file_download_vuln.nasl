@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teampass_file_download_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_teampass_file_download_vuln.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # TeamPass Arbitrary File Download and Unauthenticated Blind SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:teampass:teampass';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106166");
-  script_version("$Revision: 11516 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-03 11:33:48 +0700 (Wed, 03 Aug 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ Remote attackers are able to download internal uploaded files without any authen
 it is even possible to download configuration files from the app exposing sensitive information to the
 attacker");
 
-  script_tag(name:"impact", value:"An unauthenticated attacker may download arbitray files and gain
+  script_tag(name:"impact", value:"An unauthenticated attacker may download arbitrary files and gain
 sensitive information.");
 
   script_tag(name:"affected", value:"Version 2.1.25 and prior.");

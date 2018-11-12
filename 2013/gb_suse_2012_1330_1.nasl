@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1330_1.nasl 9587 2018-04-24 12:50:26Z cfischer $
+# $Id: gb_suse_2012_1330_1.nasl 12292 2018-11-09 15:04:59Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2012:1330-1 (kernel)
 #
@@ -24,8 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "This kernel update to 3.4.11 fixes various bugs and
+if(description)
+{
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-10/msg00005.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.850429");
+  script_version("$Revision: 12292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:04:59 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-03-11 18:29:37 +0530 (Mon, 11 Mar 2013)");
+  script_cve_id("CVE-2012-3412", "CVE-2012-3520");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"openSUSE-SU", value:"2012:1330_1");
+  script_name("SuSE Update for kernel openSUSE-SU-2012:1330-1 (kernel)");
+
+  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+  script_tag(name:"affected", value:"kernel on openSUSE 12.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"This kernel update to 3.4.11 fixes various bugs and
   security issues.
 
   The changes up to 3.4.11 contain both security and bugfixes
@@ -39,13 +59,17 @@ tag_insight = "This kernel update to 3.4.11 fixes various bugs and
   sfc driver and tcp stack.
 
   Following non-security bugs were fixed:
+
   - nbd: clear waiting_queue on shutdown (bnc#778630).
+
   - NFS: avoid warning from nfs_drop_nlink (bnc#780624).
+
   - net: do not disable sg for packets requiring no checksum
   (bnc#774859).
 
   - sfc: Fix maximum number of TSO segments and minimum TX
   queue size (bnc#774523 CVE-2012-3412).
+
   - net: Allow driver to limit number of GSO segments per skb
   (bnc#774523 CVE-2012-3412).
 
@@ -56,7 +80,9 @@ tag_insight = "This kernel update to 3.4.11 fixes various bugs and
   (bnc#781134).
 
   - Linux 3.4.11.
+
   - Update config files.
+
   - Refresh patches.suse/scsi-error-test-unit-ready-timeout.
 
   - Btrfs: fix tree log remove space corner case (bnc#779432)
@@ -67,15 +93,18 @@ tag_insight = "This kernel update to 3.4.11 fixes various bugs and
   - Linux 3.4.10.
 
   - Linux 3.4.9.
+
   - kABI: protect struct irq_desc.
 
   - Linux 3.4.8.
+
   - kABI: sdhci, remove inclusion.
 
   - reiserfs: fix deadlock with nfs racing on create/lookup
   (bnc#762693).
 
   - Properly update Xen patches to 3.4.7.
+
   - Refresh other Xen patches (bnc#772831).
 
   - config: enable various ARM errata workarounds to improve
@@ -97,83 +126,20 @@ tag_insight = "This kernel update to 3.4.11 fixes various bugs and
   - ACPI, APEI: Fixup common access width firmware bug
   (bnc#765230).
 
-  - i2c/busses: Fix build error if
-  CONFIG_I2C_DESIGNWARE_PLATFORM=y and CONFIG_I2C_DESIGN.
+  Description truncated, for more information please check the Reference URL");
 
-  - Update ARM configs to match kernel 3.4.7
-
-  - Update ARM omap2plus config to match kernel 3.4.7 and add
-  Smartreflex support (auto voltage)
-
-  - ALSA: hda - Fix mute-LED GPIO initialization for IDT
-  codecs (bnc#772923).
-  - ALSA: hda - Fix polarity of mute LED on HP Mini 210
-  (bnc#772923).
-
-  - Linux 3.4.7.
-  - Refresh patches.suse/dm-raid45-26-Nov-2009.patch.
-
-  - Enable RTL8150 for omap2plus Generic USB Network device
-  that also works fine on ARM, so enable it
-
-  - update RNDIS_OID_GEN_RNDIS_CONFIG_PARAMETER patch name
-
-  - Drivers: hv: Cleanup the guest ID computation.
-
-  - hyperv: Add a check for ring_size value.
-  - hyperv: Add error handling to rndis_filter_device_add().
-  - Drivers: hv: Change the hex constant to a decimal
-  constant.
-  - hyperv: Add support for setting MAC from within guests.
-  - net/hyperv: Use wait_event on outstanding sends during
-  device removal.
-  - hv: add RNDIS_OID_GEN_RNDIS_CONFIG_PARAMETER.
-
-  - Refresh patches.suse/SUSE-bootsplash. Fix wrong vfree()
-  (bnc#773406)
-
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "kernel on openSUSE 12.2";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-10/msg00005.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.850429");
-  script_version("$Revision: 9587 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2013-03-11 18:29:37 +0530 (Mon, 11 Mar 2013)");
-  script_cve_id("CVE-2012-3412", "CVE-2012-3520");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1330_1");
-  script_name("SuSE Update for kernel openSUSE-SU-2012:1330-1 (kernel)");
-
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -544,6 +510,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

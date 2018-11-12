@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1906_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1906_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2018:1906-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851810");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 05:53:37 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-0732");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,6 +46,7 @@ on the target host.");
   long period of time generating a key for this prime resulting in a hang
   until the client has finished. This could be exploited in a Denial Of
   Service attack (bsc#1097158).
+
   - Blinding enhancements for ECDSA and DSA (bsc#1097624, bsc#1098592)
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.
@@ -72,19 +73,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

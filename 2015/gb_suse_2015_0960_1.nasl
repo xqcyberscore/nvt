@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0960_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0960_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox SUSE-SU-2015:0960-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850853");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 12:19:28 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710",
                 "CVE-2015-2713", "CVE-2015-2716");
@@ -36,43 +36,44 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox SUSE-SU-2015:0960-1 (MozillaFirefox)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update to Firefox 31.7.0 ESR (bsc#930622) fixes the following issues:
 
   * MFSA 2015-46/CVE-2015-2708/CVE-2015-2709 (bmo#1120655, bmo#1143299,
   bmo#1151139, bmo#1152177, bmo#1111251, bmo#1117977, bmo#1128064,
   bmo#1135066, bmo#1143194, bmo#1146101, bmo#1149526, bmo#1153688,
   bmo#1155474) Miscellaneous memory safety hazards (rv:38.0 / rv:31.7)
+
   * MFSA 2015-47/CVE-2015-0797 (bmo#1080995) Buffer overflow parsing H.264
   video with Linux Gstreamer
+
   * MFSA 2015-48/CVE-2015-2710 (bmo#1149542) Buffer overflow with SVG
   content and CSS
+
   * MFSA 2015-51/CVE-2015-2713 (bmo#1153478) Use-after-free during text
   processing with vertical text enabled
+
   * MFSA 2015-54/CVE-2015-2716 (bmo#1140537) Buffer overflow when parsing
   compressed XML");
-  script_tag(name: "affected", value: "MozillaFirefox on SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0960_1");
+  script_tag(name:"affected", value:"MozillaFirefox on SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0960_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLED12\.0SP0");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -101,6 +102,6 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

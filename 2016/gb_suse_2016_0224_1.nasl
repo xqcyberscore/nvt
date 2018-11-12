@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0224_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0224_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for openldap2 SUSE-SU-2016:0224-1 (openldap2)
 #
@@ -27,24 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851167");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-26 06:11:06 +0100 (Tue, 26 Jan 2016)");
   script_cve_id("CVE-2015-4000", "CVE-2015-6908");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openldap2 SUSE-SU-2016:0224-1 (openldap2)");
-  script_tag(name: "summary", value: "Check the version of openldap2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of openldap2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update fixes the following security issues:
 
   - CVE-2015-6908: The ber_get_next function allowed remote attackers to
   cause a denial
   of service (reachable assertion and application crash) via crafted BER
   data, as demonstrated by an attack against slapd. (bsc#945582)
+
   - CVE-2015-4000: Fix weak Diffie-Hellman size vulnerability. (bsc#937766)
 
   It also fixes the following non-security bugs:
@@ -54,28 +53,25 @@ of detect NVT and check if the version is vulnerable or not.");
   This update adds the following functionality:
 
   - fate#319300: SHA2 password hashing module that can be loaded on-demand.");
-  script_tag(name: "affected", value: "openldap2 on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"openldap2 on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:0224_1");
+  script_xref(name:"SUSE-SU", value:"2016:0224_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -122,7 +118,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -202,6 +198,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

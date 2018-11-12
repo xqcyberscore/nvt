@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3012_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3012_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libX11 openSUSE-SU-2018:3012-1 (libX11)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851988");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-14598", "CVE-2018-14599", "CVE-2018-14600");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:29:10 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for libX11 openSUSE-SU-2018:3012-1 (libX11)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3012_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00006.html");
@@ -55,9 +55,11 @@ if(description)
   - CVE-2018-14599: The function XListExtensions was vulnerable to an
   off-by-one error caused by malicious server responses, leading to DoS or
   possibly unspecified other impact (bsc#1102062)
+
   - CVE-2018-14600: The function XListExtensions interpreted a variable as
   signed instead of unsigned, resulting in an out-of-bounds write (of up
   to 128 bytes), leading to DoS or remote code execution (bsc#1102068)
+
   - CVE-2018-14598: A malicious server could have sent a reply in which the
   first string overflows, causing a variable to be set to NULL that will
   be freed later

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_multiple_vuln_aug18.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_samba_multiple_vuln_aug18.nasl 12296 2018-11-09 15:51:28Z mmartin $
 #
 # Samba Multiple Vulnerabilities - Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813783");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12296 $");
   script_cve_id("CVE-2018-10918", "CVE-2018-1139");
-  script_tag(name:"cvss_base", value:"7.9");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:51:28 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 13:10:38 +0530 (Fri, 17 Aug 2018)");
   script_name("Samba Multiple Vulnerabilities - Aug18");
 

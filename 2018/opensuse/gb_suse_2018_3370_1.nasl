@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3370_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3370_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2018:3370-1 (tiff)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852073");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-10779", "CVE-2018-16335", "CVE-2018-17100", "CVE-2018-17101", "CVE-2018-17795", "CVE-2017-9935", "CVE-2018-15209");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:45 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for tiff openSUSE-SU-2018:3370-1 (tiff)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3370_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00055.html");
@@ -50,25 +50,28 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for tiff fixes the following issues:
+  script_tag(name:"insight", value:"This update for tiff fixes the following issues:
 
   Security issue fixed:
 
   - CVE-2018-10779: TIFFWriteScanline in tif_write.c had a heap-based buffer
   over-read, as demonstrated by bmp2tiff.(bsc#1092480)
+
   - CVE-2018-17100: There is a int32 overflow in multiply_ms in
   tools/ppm2tiff.c, which can cause a denial of service (crash) or
   possibly have unspecified other impact via a crafted image file.
   (bsc#1108637)
+
   - CVE-2018-17101: There are two out-of-bounds writes in cpTags in
   tools/tiff2bw.c and tools/pal2rgb.c, which can cause a denial of service
   (application crash) or possibly have unspecified other impact via a
   crafted image file. (bsc#1108627)
+
   - CVE-2018-17795: The function t2p_write_pdf in tiff2pdf.c allowed remote
   attackers to cause a denial of service (heap-based buffer overflow and
   application crash) or possibly have unspecified other impact via a
   crafted TIFF file, a similar issue to CVE-2017-9935. (bsc#1110358)
+
   - CVE-2018-16335: newoffsets handling in ChopUpSingleUncompressedStrip in
   tif_dirread.c allowed remote attackers to cause a denial of service
   (heap-based buffer overflow and application crash) or possibly have

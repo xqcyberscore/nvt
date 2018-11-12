@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2306_1.nasl 10991 2018-08-16 02:24:13Z ckuersteiner $
+# $Id: gb_suse_2018_2306_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libvirt openSUSE-SU-2018:2306-1 (libvirt)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851854");
-  script_version("$Revision: 10991 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 04:24:13 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 05:56:37 +0200 (Tue, 14 Aug 2018)");
   script_cve_id("CVE-2018-3639");
   script_tag(name:"cvss_base", value:"4.9");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libvirt openSUSE-SU-2018:2306-1 (libvirt)");
   script_tag(name:"summary", value:"Check the version of libvirt");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libvirt fixes the following issues:
+  script_tag(name:"insight", value:"This update for libvirt fixes the following issues:
 
   Security issue fixed:
 
@@ -49,16 +48,24 @@ if(description)
   Bug fixes:
 
   - bsc#1094325: Enable virsh blockresize for XEN guests (FATE#325467).
+
   - bsc#1095556: Fix qemu VM creating with --boot uefi due to missing
   AppArmor profile.
+
   - bsc#1094725: Fix `virsh blockresize` to work with Xen qdisks.
+
   - bsc#1094480: Fix `virsh list` to list domains with `xl list`.
+
   - bsc#1087416: Fix missing video device within guest with default
   installation by virt-mamanger.
+
   - bsc#1079150: Fix libvirt-guests start dependency.
+
   - bsc#1076861: Fix locking of lockspace resource
   '/devcfs/disks/uatidmsvn1-xvda'.
+
   - bsc#1074014: Fix KVM live migration when shutting down cluster node.
+
   - bsc#959329: Fix wrong state of VMs in virtual manager.
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
@@ -85,19 +92,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

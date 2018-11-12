@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1100_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_1100_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Firefox openSUSE-SU-2014:1100-1 (Firefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850607");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 05:54:29 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2007-3089", "CVE-2007-3285", "CVE-2007-3656", "CVE-2007-3670",
                 "CVE-2007-3734", "CVE-2007-3735", "CVE-2007-3736", "CVE-2007-3737",
@@ -152,17 +152,19 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Firefox openSUSE-SU-2014:1100-1 (Firefox)");
-  script_tag(name: "insight", value: "
-  This patch contains security updates for
+  script_tag(name:"insight", value:"This patch contains security updates for
 
   * mozilla-nss 3.16.4
+
   - The following 1024-bit root CA certificate was restored to allow more
   time to develop a better transition strategy for affected sites. It
   was removed in NSS 3.16.3, but discussion in the
   mozilla.dev.security.policy forum led to the decision to keep this
   root included longer in order to give website administrators more time
   to update their web servers.
+
   - CN = GTE CyberTrust Global Root
+
   * In NSS 3.16.3, the 1024-bit 'Entrust.net Secure Server Certification
   Authority' root CA certificate was removed. In NSS 3.16.4, a 2048-bit
   intermediate CA certificate has been included, without explicit trust.
@@ -177,30 +179,27 @@ if(description)
 
   * Firefox 31.1esr Firefox is updated from 24esr to 31esr as maintenance
   for version 24 stopped");
-  script_tag(name: "affected", value: "Firefox on openSUSE 11.4");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Firefox on openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "openSUSE-SU", value: "2014:1100_1");
+  script_xref(name:"openSUSE-SU", value:"2014:1100_1");
   script_tag(name:"summary", value:"Check for the Version of Firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-exit(0);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -457,6 +456,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

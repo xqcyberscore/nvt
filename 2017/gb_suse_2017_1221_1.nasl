@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1221_1.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_suse_2017_1221_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2017:1221-1 (xen)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851551");
-  script_version("$Revision: 11317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:54:06 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2016-9603", "CVE-2017-7718");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2017:1221-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for xen fixes several issues.
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for xen fixes several issues.
 
   These security issues were fixed:
 
@@ -47,15 +45,18 @@ of detect NVT and check if the version is vulnerable or not.");
   allowing for all of privilege escalation, host crashes, and information
   leaks by placing a IRET hypercall in the middle of a multicall batch
   (XSA-213, bsc#1034843)
+
   - A malicious pair of guests may be able to access all of system memory,
   allowing for all of privilege escalation, host crashes, and information
-  leaks because of a missing check when transfering pages via
+  leaks because of a missing check when transferring pages via
   GNTTABOP_transfer (XSA-214, bsc#1034844).
+
   - CVE-2017-7718: hw/display/cirrus_vga_rop.h allowed local guest OS
   privileged users to cause a denial of service (out-of-bounds read and
   QEMU process crash) via vectors related to copying VGA data via the
   cirrus_bitblt_rop_fwd_transp_ and cirrus_bitblt_rop_fwd_ functions
   (bsc#1034994).
+
   - CVE-2016-9603: A privileged user within the guest VM could have caused a
   heap overflow in the device model process, potentially escalating their
   privileges to that of the device model process (bsc#1028655)
@@ -63,33 +64,32 @@ of detect NVT and check if the version is vulnerable or not.");
   These non-security issues were fixed:
 
   - bsc#1029827: Additional xenstore patch
+
   - bsc#1036146: Xen VM dumped core to wrong path
+
   - bsc#1022703: Prevent Xen HVM guest with OVMF to hang with unattached
   CDRom
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
-  script_tag(name: "affected", value: "xen on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"xen on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1221_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1221_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -166,6 +166,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

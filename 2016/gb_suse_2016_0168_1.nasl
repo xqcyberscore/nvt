@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0168_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0168_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2016:0168-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851159");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 06:16:51 +0100 (Wed, 20 Jan 2016)");
   script_cve_id("CVE-2015-7550", "CVE-2015-8539", "CVE-2015-8543", "CVE-2015-8550",
                 "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575");
@@ -36,83 +36,101 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2016:0168-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The SUSE Linux Enterprise 12 kernel was updated to receive various
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to receive various
   security and bugfixes.
 
   Following security bugs were fixed:
+
   - CVE-2015-7550: A local user could have triggered a race between read and
   revoke in keyctl (bnc#958951).
+
   - CVE-2015-8539: A negatively instantiated user key could have been used
   by a local user to leverage privileges (bnc#958463).
+
   - CVE-2015-8543: The networking implementation in the Linux kernel did not
   validate protocol identifiers for certain protocol families, which
   allowed local users to cause a denial of service (NULL function pointer
   dereference and system crash) or possibly gain privileges by leveraging
   CLONE_NEWUSER support to execute a crafted SOCK_RAW application
   (bnc#958886).
+
   - CVE-2015-8550: Compiler optimizations in the XEN PV backend drivers
   could have lead to double fetch vulnerabilities, causing denial of
   service or arbitrary code execution (depending on the configuration)
   (bsc#957988).
+
   - CVE-2015-8551, CVE-2015-8552: xen/pciback: For
   XEN_PCI_OP_disable_msi[Ix] only disable if device has MSI(X) enabled
   (bsc#957990).
+
   - CVE-2015-8569: The (1) pptp_bind and (2) pptp_connect functions in
   drivers/net/ppp/pptp.c in the Linux kernel did not verify an address
   length, which allowed local users to obtain sensitive information from
   kernel memory and bypass the KASLR protection mechanism via a crafted
   application (bnc#959190).
+
   - CVE-2015-8575: Validate socket address length in sco_sock_bind() to
   prevent information leak (bsc#959399).
 
   The following non-security bugs were fixed:
+
   - ACPICA: Correctly cleanup after a ACPI table load failure (bnc#937261).
+
   - ALSA: hda - Fix noise problems on Thinkpad T440s (boo#958504).
+
   - Input: aiptek - fix crash on detecting device without endpoints
   (bnc#956708).
+
   - Re-add copy_page_vector_to_user()
+
   - Refresh patches.xen/xen3-patch-3.12.46-47 (bsc#959705).
+
   - Refresh patches.xen/xen3-patch-3.9 (bsc#951155).
+
   - Update
   patches.suse/btrfs-8361-Btrfs-keep-dropped-roots-in-cache-until-transaction
-  -.patch (bnc#935087, bnc#945649, bnc#951615).
+
+  - .patch (bnc#935087, bnc#945649, bnc#951615).
+
   - bcache: Add btree_insert_node() (bnc#951638).
+
   - bcache: Add explicit keylist arg to btree_insert() (bnc#951638).
+
   - bcache: Clean up keylist code (bnc#951638).
+
   - bcache: Convert btree_insert_check_key() to btree_insert_node()
   (bnc#951638).
+
   - bcache: Convert bucket_wait to wait_queue_head_t (bnc#951638).
+
   - bcache: Convert try_wait to wait_queue_head_t (bnc#951638).
+
   - bcache: Explicitly track btree node's parent (bnc#951638).
+
   - bcache: Fix a bug when detaching (b ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:0168_1");
+  script_xref(name:"SUSE-SU", value:"2016:0168_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -201,7 +219,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -311,6 +329,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

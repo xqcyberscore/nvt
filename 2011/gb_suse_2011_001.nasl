@@ -7,7 +7,7 @@
 # System Generated Check
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The openSUSE 11.3 kernel was updated to fix various bugs and security
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850157");
+  script_version("$Revision: 12290 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"SUSE-SA", value:"2011-001");
+  script_cve_id("CVE-2010-0435", "CVE-2010-3067", "CVE-2010-3432", "CVE-2010-3437", "CVE-2010-3442", "CVE-2010-3861", "CVE-2010-3865", "CVE-2010-3874", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4078", "CVE-2010-4080", "CVE-2010-4081", "CVE-2010-4082", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4158", "CVE-2010-4162", "CVE-2010-4163", "CVE-2010-4164", "CVE-2010-4165", "CVE-2010-4169", "CVE-2010-4175", "CVE-2010-4258", "CVE-2010-4347");
+  script_name("SuSE Update for kernel SUSE-SA:2011:001");
+
+  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.3");
+  script_tag(name:"impact", value:"local privilege escalation, remote denial of service");
+  script_tag(name:"affected", value:"kernel on openSUSE 11.3");
+  script_tag(name:"insight", value:"The openSUSE 11.3 kernel was updated to fix various bugs and security
   issues.
 
   Following security issues have been fixed:
@@ -83,52 +102,23 @@ tag_insight = "The openSUSE 11.3 kernel was updated to fix various bugs and secu
   via an ETHTOOL_GRXCLSRLALL ethtool command with a large info.rule_cnt
   value.
 
-  CVE-2010-3442: Multiple integer overflows in the snd_ctl_ne ... 
+  CVE-2010-3442: Multiple integer overflows in the snd_ctl_ne ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "local privilege escalation, remote denial of service";
-tag_affected = "kernel on openSUSE 11.3";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850157");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "SUSE-SA", value: "2011-001");
-  script_cve_id("CVE-2010-0435", "CVE-2010-3067", "CVE-2010-3432", "CVE-2010-3437", "CVE-2010-3442", "CVE-2010-3861", "CVE-2010-3865", "CVE-2010-3874", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4078", "CVE-2010-4080", "CVE-2010-4081", "CVE-2010-4082", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4158", "CVE-2010-4162", "CVE-2010-4163", "CVE-2010-4164", "CVE-2010-4165", "CVE-2010-4169", "CVE-2010-4175", "CVE-2010-4258", "CVE-2010-4347");
-  script_name("SuSE Update for kernel SUSE-SA:2011:001");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.3")
 {
@@ -319,6 +309,6 @@ if(release == "openSUSE11.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

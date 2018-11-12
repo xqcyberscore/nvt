@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0760_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_0760_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox,)
 #
@@ -24,119 +24,141 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Changes in MozillaFirefox:
-  - update to Firefox 13.0 (bnc#765204)
-  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
-  Miscellaneous memory safety hazards
-  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
-  Security Policy inline-script bypass
-  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
-  disclosure though Windows file shares and shortcut files
-  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
-  while replacing/inserting a node in a document
-  * MFSA 2012-40/CVE-2012-1947/CVE-2012-1940/CVE-2012-1941
-  Buffer overflow and use-after-free issues found using
-  Address Sanitizer
-  - require NSS 3.13.4
-  * MFSA 2012-39/CVE-2012-0441 (bmo#715073)
-  - fix sound notifications when filename/path contains a
-  whitespace (bmo#749739)
-
-  - fix build on arm
-
-  - reenabled crashreporter for Factory/12.2 (fix in
-  mozilla-gcc47.patch)
-
-  Changes in MozillaThunderbird:
-  - update to Thunderbird 13.0 (bnc#765204)
-  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
-  Miscellaneous memory safety hazards
-  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
-  Security Policy inline-script bypass
-  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
-  disclosure though Windows file shares and shortcut files
-  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
-  while replacing/inserting a node in a document
-  * MFSA 2012-40/CVE-2012-1947/CVE-2012-1940/CVE-2012-1941
-  Buffer overflow and use-after-free issues found using
-  Address Sanitizer
-  - require NSS 3.13.4
-  * MFSA 2012-39/CVE-2012-0441 (bmo#715073)
-  - fix build with system NSPR (mozilla-system-nspr.patch)
-  - add dependentlibs.list for improved XRE startup
-  - update enigmail to 1.4.2
-
-  - reenabled crashreporter for Factory/12.2 (fix in
-  mozilla-gcc47.patch)
-
-  - update to Thunderbird 12.0.1
-  * fix regressions
-  - POP3 filters (bmo#748090)
-  - Message Body not loaded when using &quot;Fetch Headers
-  Only&quot; (bmo#748865)
-  - Received messages contain parts of other messages
-  with movemail account (bmo#748726)
-  - New mail notification issue (bmo#748997)
-  - crash in nsMsgDatabase::MatchDbName (bmo#748432)
-
-  - fixed build with gcc 4.7
-
-  Changes in seamonkey:
-  - update to Seamonkey 2.10 (bnc#765204)
-  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
-  Miscellaneous memory safety hazards
-  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
-  Security Policy inline-script bypass
-  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
-  disclosure though Windows file shares and shortcut files
-  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
-  while replacing/insert ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "MozillaFirefox, on openSUSE 12.1, openSUSE 11.4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850247");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:39 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3101", "CVE-2012-0441", "CVE-2012-1937", "CVE-2012-1938",
                 "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945",
                  "CVE-2012-1946", "CVE-2012-1947");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:0760_1");
-  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox,)");
+  script_xref(name:"openSUSE-SU", value:"2012:0760_1");
+  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox, )");
 
-  script_tag(name: "summary" , value: "Check for the Version of MozillaFirefox,");
+  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
+  script_tag(name:"affected", value:"MozillaFirefox, on openSUSE 12.1, openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Changes in MozillaFirefox:
+
+  - update to Firefox 13.0 (bnc#765204)
+
+  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
+  Miscellaneous memory safety hazards
+
+  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
+  Security Policy inline-script bypass
+
+  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
+  disclosure though Windows file shares and shortcut files
+
+  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
+  while replacing/inserting a node in a document
+
+  * MFSA 2012-40/CVE-2012-1947/CVE-2012-1940/CVE-2012-1941
+  Buffer overflow and use-after-free issues found using
+  Address Sanitizer
+
+  - require NSS 3.13.4
+
+  * MFSA 2012-39/CVE-2012-0441 (bmo#715073)
+
+  - fix sound notifications when filename/path contains a
+  whitespace (bmo#749739)
+
+  - fix build on arm
+
+  - re-enabled crashreporter for Factory/12.2 (fix in
+  mozilla-gcc47.patch)
+
+  Changes in MozillaThunderbird:
+
+  - update to Thunderbird 13.0 (bnc#765204)
+
+  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
+  Miscellaneous memory safety hazards
+
+  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
+  Security Policy inline-script bypass
+
+  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
+  disclosure though Windows file shares and shortcut files
+
+  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
+  while replacing/inserting a node in a document
+
+  * MFSA 2012-40/CVE-2012-1947/CVE-2012-1940/CVE-2012-1941
+  Buffer overflow and use-after-free issues found using
+  Address Sanitizer
+
+  - require NSS 3.13.4
+
+  * MFSA 2012-39/CVE-2012-0441 (bmo#715073)
+
+  - fix build with system NSPR (mozilla-system-nspr.patch)
+
+  - add dependentlibs.list for improved XRE startup
+
+  - update enigmail to 1.4.2
+
+  - re-enabled crashreporter for Factory/12.2 (fix in
+  mozilla-gcc47.patch)
+
+  - update to Thunderbird 12.0.1
+
+  * fix regressions
+
+  - POP3 filters (bmo#748090)
+
+  - Message Body not loaded when using &quot;Fetch Headers
+  Only&quot; (bmo#748865)
+
+  - Received messages contain parts of other messages
+  with movemail account (bmo#748726)
+
+  - New mail notification issue (bmo#748997)
+
+  - crash in nsMsgDatabase::MatchDbName (bmo#748432)
+
+  - fixed build with gcc 4.7
+
+  Changes in seamonkey:
+
+  - update to Seamonkey 2.10 (bnc#765204)
+
+  * MFSA 2012-34/CVE-2012-1938/CVE-2012-1937/CVE-2011-3101
+  Miscellaneous memory safety hazards
+
+  * MFSA 2012-36/CVE-2012-1944 (bmo#751422) Content
+  Security Policy inline-script bypass
+
+  * MFSA 2012-37/CVE-2012-1945 (bmo#670514) Information
+  disclosure though Windows file shares and shortcut files
+
+  * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
+  while replacing/insert ...
+
+  Description truncated, for more information please check the Reference URL");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -525,7 +547,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1043,6 +1065,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3035_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_3035_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2016:3035-1 (tiff)
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851447");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 05:33:44 +0100 (Thu, 08 Dec 2016)");
-  script_cve_id("CVE-2014-8127", "CVE-2015-7554", "CVE-2015-8665", "CVE-2015-8683", 
-                "CVE-2016-3622", "CVE-2016-3658", "CVE-2016-5321", "CVE-2016-5323", 
-                "CVE-2016-5652", "CVE-2016-5875", "CVE-2016-9273", "CVE-2016-9297", 
+  script_cve_id("CVE-2014-8127", "CVE-2015-7554", "CVE-2015-8665", "CVE-2015-8683",
+                "CVE-2016-3622", "CVE-2016-3658", "CVE-2016-5321", "CVE-2016-5323",
+                "CVE-2016-5652", "CVE-2016-5875", "CVE-2016-9273", "CVE-2016-9297",
                 "CVE-2016-9448", "CVE-2016-9453");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tiff openSUSE-SU-2016:3035-1 (tiff)");
-  script_tag(name: "summary", value: "Check the version of tiff");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Tiff was updated to version 4.0.7. This update fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of tiff");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Tiff was updated to version 4.0.7. This update fixes the following issues:
 
   * libtiff/tif_aux.c
   + Fix crash in TIFFVGetFieldDefaulted() when requesting Predictor tag
   and that the zip/lzw codec is not configured.
   'http://bugzilla.maptools.org/show_bug.cgi?id=2591'
+
   * libtiff/tif_compress.c
   + Make TIFFNoDecode() return 0 to indicate an error and make upper
   level read routines treat it accordingly.
   'http://bugzilla.maptools.org/show_bug.cgi?id=2517'
+
   * libtiff/tif_dir.c
   + Discard values of SMinSampleValue and SMaxSampleValue when they have
   been read and the value of SamplesPerPixel is changed afterwards
@@ -62,6 +62,7 @@ of detect NVT and check if the version is vulnerable or not.");
   had been allocated with just
   one), thus causing a out of bound read access. (CVE-2014-8127,
   boo#914890, duplicate: CVE-2016-3658, boo#974840)
+
   * libtiff/tif_dirread.c
   + In TIFFFetchNormalTag(), do not dereference NULL pointer when values
   of tags with TIFF_SETGET_C16_ASCII/TIFF_SETGET_C32_ASCII access are
@@ -81,35 +82,33 @@ of detect NVT and check if the version is vulnerable or not.");
   one-strip file without a StripByteCounts tag.
   + Workaround false positive warning of Clang Static Analyzer about
   null pointer dereference in TIFFCheckDirOffset().
+
   * libtiff/tif_dirwrite.c
   + Avoid null pointer dereference on td_stripoffset when writing
   directory, if FIELD_STRIPOFFSETS was artificially set for a hack
   case in OJPEG case. Fixes (CVE-2014-8127, boo#914890, duplicate:
-  CVE-2016-3658, ... 
+  CVE-2016-3658, ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "tiff on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"tiff on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:3035_1");
+  script_xref(name:"openSUSE-SU", value:"2016:3035_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -168,6 +167,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

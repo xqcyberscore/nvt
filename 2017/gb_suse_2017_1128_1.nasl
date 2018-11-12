@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1128_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_1128_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for ruby2.1 openSUSE-SU-2017:1128-1 (ruby2.1)
 #
@@ -27,59 +27,63 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851543");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-29 07:16:59 +0200 (Sat, 29 Apr 2017)");
   script_cve_id("CVE-2014-4975", "CVE-2015-1855", "CVE-2015-3900", "CVE-2015-7551", "CVE-2016-2339");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ruby2.1 openSUSE-SU-2017:1128-1 (ruby2.1)");
-  script_tag(name: "summary", value: "Check the version of ruby2.1");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of ruby2.1");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This ruby2.1 update to version 2.1.9 fixes the following issues:
 
   Security issues fixed:
+
   - CVE-2016-2339: heap overflow vulnerability in the
   Fiddle::Function.new'initialize' (bsc#1018808)
+
   - CVE-2015-7551: Unsafe tainted string usage in Fiddle and DL (bsc#959495)
+
   - CVE-2015-3900: hostname validation does not work when fetching gems or
   making API requests (bsc#936032)
+
   - CVE-2015-1855: Ruby'a OpenSSL extension suffers a vulnerability through
   overly permissive matching of hostnames (bsc#926974)
+
   - CVE-2014-4975: off-by-one stack-based buffer overflow in the encodes()
   function (bsc#887877)
 
   Bugfixes:
+
   - SUSEconnect doesn't handle domain wildcards in no_proxy environment
   variable properly (bsc#1014863)
+
   - Segmentation fault after pack &amp  ioctl &amp  unpack (bsc#909695)
+
   - Ruby:HTTP Header injection in 'net/http' (bsc#986630)
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "ruby2.1 on openSUSE Leap 42.2, openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ruby2.1 on openSUSE Leap 42.2, openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1128_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1128_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -150,7 +154,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -224,6 +228,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

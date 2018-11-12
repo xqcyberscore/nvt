@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3071_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3071_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:3071-1 (the)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852091");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-10940", "CVE-2018-1128", "CVE-2018-1129", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095", "CVE-2018-14613", "CVE-2018-14617", "CVE-2018-14633", "CVE-2018-15572", "CVE-2018-16658", "CVE-2018-17182", "CVE-2018-6554", "CVE-2018-6555", "CVE-2018-9363");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:46:29 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:3071-1 (the)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3071_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00020.html");
@@ -68,30 +68,37 @@ if(description)
   escalation cannot be fully ruled out, although we believe it is highly
   unlikely. Kernel versions 4.18.x, 4.14.x and 3.10.x are believed to be
   vulnerable (bnc#1107829).
+
   - CVE-2018-17182: The vmacache_flush_all function in mm/vmacache.c
   mishandled sequence number overflows. An attacker can trigger a
   use-after-free (and possibly gain privileges) via certain thread
   creation, map, unmap, invalidation, and dereference operations
   (bnc#1108399).
+
   - CVE-2018-14617: There is a NULL pointer dereference and panic in
   hfsplus_lookup() in fs/hfsplus/dir.c when opening a file (that is
   purportedly a hard link) in an hfs+ filesystem that has malformed
   catalog data, and is mounted read-only without a metadata directory
   (bnc#1102870).
+
   - CVE-2018-14613: There is an invalid pointer dereference in
   io_ctl_map_page() when mounting and operating a crafted btrfs image,
   because of a lack of block group item validation in check_leaf_item in
   fs/btrfs/tree-checker.c (bnc#1102896).
+
   - CVE-2018-10940: The cdrom_ioctl_media_changed function in
   drivers/cdrom/cdrom.c allowed local attackers to use a incorrect bounds
   check in the CDROM driver CDROM_MEDIA_CHANGED ioctl to read out kernel
   memory (bnc#1092903).
+
   - CVE-2018-13093: There is a NULL pointer dereference and panic in
   lookup_slow() on a NULL inode- i_ops pointer when doing pathwalks on a
   corrupted xfs image. This occurs because of a lack of proper validation
   that cached inodes are free during allocation (bnc#1100001).
+
   - CVE-2018-13094: An OOPS may occur for a corrupted xfs image after
   xfs_da_shrink_inode() is called with a NULL bp (bnc#1100000).
+
   - CVE-2018-13095: A denial of service (memory corruption and BUG) can
   occur for a corrupted xfs image upon encountering an inode that is in
   extent format, but has more ...

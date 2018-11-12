@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2178_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2178_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libgcrypt openSUSE-SU-2018:2178-1 (libgcrypt)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851831");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 05:46:47 +0200 (Sat, 04 Aug 2018)");
   script_cve_id("CVE-2018-0495");
   script_tag(name:"cvss_base", value:"1.9");
@@ -47,8 +47,10 @@ if(description)
   The following other issues were fixed:
 
   - Extended the fipsdrv dsa-sign and dsa-verify commands with the
-  --algo parameter for the FIPS testing of DSA SigVer and SigGen
+
+  - -algo parameter for the FIPS testing of DSA SigVer and SigGen
   (bsc#1064455).
+
   - Ensure libgcrypt20-hmac and libgcrypt20 are installed in the correct
   order. (bsc#1090766)
 
@@ -76,19 +78,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

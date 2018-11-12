@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1457_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1457_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for cyrus-imapd SUSE-SU-2016:1457-1 (cyrus-imapd)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851323");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:07 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2014-3566", "CVE-2015-8076", "CVE-2015-8077", "CVE-2015-8078");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for cyrus-imapd SUSE-SU-2016:1457-1 (cyrus-imapd)");
-  script_tag(name: "summary", value: "Check the version of cyrus-imapd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  - Previous versions of cyrus-imapd would not allow its users to disable
+  script_tag(name:"summary", value:"Check the version of cyrus-imapd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"- Previous versions of cyrus-imapd would not allow its users to disable
   old protocols like SSLv1 and SSLv2 that are unsafe due to various known
   attacks like BEAST and POODLE.
   https://bugzilla.cyrusimap.org/show_bug.cgi?id=3867 remedies this issue
@@ -52,34 +50,32 @@ of detect NVT and check if the version is vulnerable or not.");
   however, will have an imapd.conf file that contains these settings
   already, i.e. newly installed IMAP servers do *not* support SSLv1 and
   SSLv2 unless that support is explicitly enabled by the user. (bsc#901748)
+
   - An integer overflow vulnerability in cyrus-imapd's urlfetch range
   checking code was fixed. (CVE-2015-8076, CVE-2015-8077, CVE-2015-8078,
   bsc#981670, bsc#954200, bsc#954201)
-  
+
   - Support for Elliptic Curve Diffie-Hellman (ECDH) has been added to
   cyrus-imapd. (bsc#860611).");
-  script_tag(name: "affected", value: "cyrus-imapd on SUSE Linux Enterprise Server 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"cyrus-imapd on SUSE Linux Enterprise Server 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:1457_1");
+  script_xref(name:"SUSE-SU", value:"2016:1457_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES12\.0SP0");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES12.0SP0")
 {
@@ -120,6 +116,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

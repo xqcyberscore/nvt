@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0178_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0178_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2015:0178-1 (kernel)
 #
@@ -27,29 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850992");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:17:11 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3687", "CVE-2014-3690", "CVE-2014-8559", "CVE-2014-9420", "CVE-2014-9585");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2015:0178-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.36 to receive
   various security and bugfixes.
 
   Following security bugs were fixed:
+
   - CVE-2014-8559: The d_walk function in fs/dcache.c in the Linux kernel
   through 3.17.2 did not properly maintain the semantics of rename_lock,
   which allowed local users to cause a denial of service (deadlock and
   system hang) via a crafted application (bnc#903640).
+
   - CVE-2014-9420: The rock_continue function in fs/isofs/rock.c in the
   Linux kernel through 3.18.1 did not restrict the number of Rock Ridge
   continuation entries, which allowed local users to cause a denial of
   service (infinite loop, and system crash or hang) via a crafted iso9660
   image (bnc#906545 911325).
+
   - CVE-2014-3690: arch/x86/kvm/vmx.c in the KVM subsystem in the Linux
   kernel before 3.17.2 on Intel processors did not ensure that the value
   in the CR4 control register remained the same after a VM entry, which
@@ -57,11 +60,13 @@ if(description)
   service (system disruption) by leveraging /dev/kvm access, as
   demonstrated by PR_SET_TSC prctl calls within a modified copy of QEMU
   (bnc#902232).
+
   - CVE-2014-3687: The sctp_assoc_lookup_asconf_ack function in
   net/sctp/associola.c in the SCTP implementation in the Linux kernel
   through 3.17.2 allowed remote attackers to cause a denial of service
   (panic) via duplicate ASCONF chunks that triggered an incorrect uncork
   within the side-effect interpreter (bnc#902349).
+
   - CVE-2014-9585: The vdso_addr function in arch/x86/vdso/vma.c in the
   Linux kernel through 3.18.2 did not properly choose memory locations for
   the vDSO area, which made it easier for local users to bypass the ASLR
@@ -69,44 +74,50 @@ if(description)
   (bnc#912705).
 
   The following non-security bugs were fixed:
+
   - ACPI idle: permit sparse C-state sub-state numbers (bnc#907969).
+
   - ALSA: hda - verify pin:converter connection on unsol event for HSW and
   VLV.
+
   - ALSA: hda - verify pin:cvt connection on preparing a stream for Intel
   HDMI codec.
+
   - ALSA: hda/hdmi - apply Valleyview fix-ups to Cherryview display codec.
+
   - ALSA: hda_intel: Add Device IDs for Intel Sunrise Point PCH.
+
   - ALSA: hda_intel: Add DeviceIDs for Sunrise Point-LP.
+
   - Btrfs: Disable
   patches.suse/Btrfs-fix-abnormal-long-waiting-in-fsync.patch (bnc#910697)
   because it needs to be revisited due partial msync behavior.
+
   - Btrfs: Fix misuse of chunk mutex (bnc#912514).
+
   - Btrfs: always clear a block group node when removing it from the tree
   (bnc#912514).
  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0178_1");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0178_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -195,7 +206,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -305,6 +316,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

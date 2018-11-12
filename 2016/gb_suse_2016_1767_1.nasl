@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1767_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1767_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Mozilla Thunderbird openSUSE-SU-2016:1767-1 (Mozilla Thunderbird)
 #
@@ -27,25 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851365");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-11 05:25:35 +0200 (Mon, 11 Jul 2016)");
-  script_cve_id("CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954", "CVE-2016-1955", 
-                "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1960", "CVE-2016-1961", 
-                "CVE-2016-1964", "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790", 
-                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", 
-                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", 
-                "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802", 
+  script_cve_id("CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954", "CVE-2016-1955",
+                "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1960", "CVE-2016-1961",
+                "CVE-2016-1964", "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790",
+                "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794",
+                "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798",
+                "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802",
                 "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2815", "CVE-2016-2818");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla Thunderbird openSUSE-SU-2016:1767-1 (Mozilla Thunderbird)");
-  script_tag(name: "summary", value: "Check the version of Mozilla Thunderbird");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update contains Mozilla Thunderbird 45.2. (boo#983549)
+  script_tag(name:"summary", value:"Check the version of Mozilla Thunderbird");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update contains Mozilla Thunderbird 45.2. (boo#983549)
 
   It fixes security issues mostly affecting the e-mail program when used in
   a browser context, such as viewing a web page or HTMl formatted e-mail.
@@ -64,16 +62,24 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - CVE-2016-1952, CVE-2016-1953: Miscellaneous memory safety hazards (MFSA
   2016-16)
+
   - CVE-2016-1954: Local file overwriting and potential privilege escalation
   through CSP reports (MFSA 2016-17)
+
   - CVE-2016-1955: CSP reports fail to strip location information for
   embedded iframe pages (MFSA 2016-18)
+
   - CVE-2016-1956: Linux video memory DOS with Intel drivers (MFSA 2016-19)
+
   - CVE-2016-1957: Memory leak in libstagefright when deleting an array
   during MP4 processing (MFSA 2016-20)
+
   - CVE-2016-1960: Use-after-free in HTML5 string parser (MFSA 2016-23)
+
   - CVE-2016-1961: Use-after-free in SetBody (MFSA 2016-24)
+
   - CVE-2016-1964: Use-after-free during XML transformations (MFSA 2016-27)
+
   - CVE-2016-1974: Out-of-bounds read in HTML parser following a failed
   allocation (MFSA 2016-34)
 
@@ -89,30 +95,29 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - fix build issues with gcc/binutils combination used in Leap 42.2
   (boo#984637)
-  - gcc6 fixes (boo#986162)
-  - running on 48bit va aarch64 (boo#984126)");
-  script_tag(name: "affected", value: "Mozilla Thunderbird on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1767_1");
+  - gcc6 fixes (boo#986162)
+
+  - running on 48bit va aarch64 (boo#984126)");
+  script_tag(name:"affected", value:"Mozilla Thunderbird on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2016:1767_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -159,6 +164,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

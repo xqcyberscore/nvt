@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0639_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0639_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for OpenJDK SUSE-SU-2014:0639-1 (OpenJDK)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851107");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 20:10:12 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-6629", "CVE-2013-6954", "CVE-2014-0429", "CVE-2014-0446", "CVE-2014-0451", "CVE-2014-0452", "CVE-2014-0453", "CVE-2014-0454", "CVE-2014-0455", "CVE-2014-0456", "CVE-2014-0457", "CVE-2014-0458", "CVE-2014-0459", "CVE-2014-0460", "CVE-2014-0461", "CVE-2014-1876", "CVE-2014-2397", "CVE-2014-2398", "CVE-2014-2402", "CVE-2014-2403", "CVE-2014-2412", "CVE-2014-2413", "CVE-2014-2414", "CVE-2014-2421", "CVE-2014-2423", "CVE-2014-2427");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for OpenJDK SUSE-SU-2014:0639-1 (OpenJDK)");
-  script_tag(name: "summary", value: "Check the version of OpenJDK");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This java-1_7_0-openjdk update to version 2.4.7 fixes the following
+  script_tag(name:"summary", value:"Check the version of OpenJDK");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This java-1_7_0-openjdk update to version 2.4.7 fixes the following
   security and non-security issues:
 
   *
@@ -80,33 +79,30 @@ if(description)
   o S8004145: New improved hgforest.sh, ctrl-c now properly
   terminates mercurial processes. o S8007625: race with nested repos in
   /common/bin/hgforest.sh o S8011178: improve common/bin/hgforest.sh python
-  detection (MacOS) o S8011342: hgforest.sh : 'python --version' not
+  detection (MacOS) o S8011342: hgforest.sh:'python --version' not
   supported on older python o S8011350: hgforest.sh uses non-POSIX sh
   features that may fail with some shells o S8024200: handle hg wrapper with
-  space after #! o S8025796: h ... 
+  space after #! o S8025796: h ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "OpenJDK on SUSE Linux Enterprise Desktop 11 SP3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:0639_1");
+  script_tag(name:"affected", value:"OpenJDK on SUSE Linux Enterprise Desktop 11 SP3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:0639_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLED11\.0SP3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED11.0SP3")
 {
@@ -129,6 +125,6 @@ if(release == "SLED11.0SP3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

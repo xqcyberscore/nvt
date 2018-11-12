@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1800_1.nasl 10664 2018-07-27 13:57:41Z cfischer $
+# $Id: gb_suse_2018_1800_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2018:1800-1 (mariadb)
 #
@@ -27,53 +27,69 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851797");
-  script_version("$Revision: 10664 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:57:41 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-23 05:57:46 +0200 (Sat, 23 Jun 2018)");
-  script_cve_id("CVE-2018-2755", "CVE-2018-2761", "CVE-2018-2766", "CVE-2018-2767", 
-                "CVE-2018-2771", "CVE-2018-2781", "CVE-2018-2782", "CVE-2018-2784", 
+  script_cve_id("CVE-2018-2755", "CVE-2018-2761", "CVE-2018-2766", "CVE-2018-2767",
+                "CVE-2018-2771", "CVE-2018-2781", "CVE-2018-2782", "CVE-2018-2784",
                 "CVE-2018-2787", "CVE-2018-2813", "CVE-2018-2817", "CVE-2018-2819");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2018:1800-1 (mariadb)");
   script_tag(name:"summary", value:"Check the version of mariadb");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for MariaDB to version 10.0.35 fixes multiple issues:
+  script_tag(name:"insight", value:"This update for MariaDB to version 10.0.35 fixes multiple issues:
 
   Security issues fixed:
 
   * CVE-2018-2782: Unspecified DoS vulnerability in InnoDB (bsc#1090518)
+
   * CVE-2018-2784: Unspecified DoS vulnerability in InnoDB (bsc#1090518)
+
   * CVE-2018-2787: Unspecified vulnerability in InnoDB allowing writes
   (bsc#1090518)
+
   * CVE-2018-2766: Unspecified DoS vulnerability InnoDB (bsc#1090518)
+
   * CVE-2018-2755: Unspecified vulnerability in Replication allowing server
   compromise (bsc#1090518)
+
   * CVE-2018-2819: Unspecified DoS vulnerability in InnoDB  (bsc#1090518)
+
   * CVE-2018-2817: Unspecified DoS vulnerability in DDL (bsc#1090518)
+
   * CVE-2018-2761: Unspecified DoS vulnerability in Client programs
   (bsc#1090518)
+
   * CVE-2018-2781: Unspecified DoS vulnerability in Server/Optimizer
   (bsc#1090518)
+
   * CVE-2018-2771: Unspecified DoS vulnerability in the Server/Locking
   component (bsc#1090518)
+
   * CVE-2018-2813: Unspecified vulnerability in The DDL component allowing
   unauthorized reads (bsc#1090518)
+
   * CVE-2018-2767: The embedded server library now supports SSL when
   connecting to remote servers (bsc#1088681)
 
   The following changes are included:
 
   * XtraDB updated to 5.6.39-83.1
+
   * TokuDB updated to 5.6.39-83.1
+
   * InnoDB updated to 5.6.40
+
   * Fix for Crash in MVCC read after IMPORT TABLESPACE
+
   * Fix for innodb_read_only trying to modify files if transactions were
   recovered in COMMITTED state
+
   * Fix for DROP TABLE hang on InnoDB table with FULLTEXT index
+
   * Fix for Crash in INFORMATION_SCHEMA.INNODB_SYS_TABLES whenaccessing
   corrupted record
 
@@ -82,7 +98,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -101,19 +117,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

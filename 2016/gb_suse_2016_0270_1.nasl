@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0270_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_0270_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0270-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851185");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:16:18 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806",
                 "CVE-2015-4810", "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842",
@@ -42,83 +42,100 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0270-1 (java-1_8_0-openjdk)");
-  script_tag(name: "summary", value: "Check the version of java-1_8_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of java-1_8_0-openjdk");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"java-1_8_0-openjdk was updated to version 7u95 to fix several security
   issues. (bsc#962743)
 
   The following vulnerabilities were fixed:
 
   - CVE-2015-7575: Further reduce use of MD5 (SLOTH) (bsc#960996)
+
   - CVE-2015-8126: Vulnerability in the AWT component related to
   splashscreen displays
+
   - CVE-2015-8472: Vulnerability in the AWT component, addressed by same fix
+
   - CVE-2016-0402: Vulnerability in the Networking component related to URL
   processing
+
   - CVE-2016-0448: Vulnerability in the JMX component related to attribute
   processing
+
   - CVE-2016-0466: Vulnerability in the JAXP component, related to limits
+
   - CVE-2016-0483: Vulnerability in the AWT component related to image
   decoding
+
   - CVE-2016-0494: Vulnerability in 2D component related to font actions
 
   Includes the following fixes from the October 2015 update: (bsc#951376)
 
   - CVE-2015-4734: A remote user can exploit a flaw in the Embedded JGSS
   component to partially access data
+
   - CVE-2015-4803: A remote user can exploit a flaw in the JRockit JAXP
   component to cause partial denial of service conditions
+
   - CVE-2015-4805: A remote user can exploit a flaw in the Embedded
   Serialization component to gain elevated privileges
+
   - CVE-2015-4806: A remote user can exploit a flaw in the Java SE Embedded
   Libraries component to partially access and partially modify data
+
   - CVE-2015-4835: A remote user can exploit a flaw in the Embedded CORBA
   component to gain elevated privileges
+
   - CVE-2015-4842: A remote user can exploit a flaw in the Embedded JAXP
   component to partially access data
+
   - CVE-2015-4843: A remote user can exploit a flaw in the Java SE Embedded
   Libraries component to gain elevated privileges
+
   - CVE-2015-4844: A remote user can exploit a flaw in the Embedded 2D
   component to gain elevated privileges
+
   - CVE-2015-4860: A remote user can exploit a flaw in the Embedded RMI
   component to gain elevated privileges
+
   - CVE-2015-4872: A remote user can exploit a flaw in the JRockit Security
   component to partially modify data [].
+
   - CVE-2015-4881: A remote user can exploit a flaw in the Embedded CORBA
   component to gain elevated privileges
+
   - CVE-2015-4882: A remote user can exploit a flaw in the Embedded CORBA
   component to cause partial denial of service conditions
+
   - CVE-2015-4883: A remote user can exploit a flaw in the Embedded RMI
   component to gain elevated privileges
+
   - CVE-2015-4893: A remote user can exploit a flaw in the JRockit JAXP
   component to cause partial denial of service conditions
+
   - CVE-2015-4902: A remote user can exploit a flaw in the Java SE
   Deployment co ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java-1_8_0-openjdk on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0270_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0270_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -189,6 +206,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

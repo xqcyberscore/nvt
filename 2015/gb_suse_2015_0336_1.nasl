@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0336_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0336_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk SUSE-SU-2015:0336-1 (java-1_7_0-openjdk)
 #
@@ -27,56 +27,65 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850910");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:05:27 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6549", "CVE-2014-6585", "CVE-2014-6587", "CVE-2014-6591", "CVE-2014-6593", "CVE-2014-6601", "CVE-2015-0383", "CVE-2015-0395", "CVE-2015-0400", "CVE-2015-0403", "CVE-2015-0406", "CVE-2015-0407", "CVE-2015-0408", "CVE-2015-0410", "CVE-2015-0412", "CVE-2015-0413", "CVE-2015-0421", "CVE-2015-0437");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk SUSE-SU-2015:0336-1 (java-1_7_0-openjdk)");
-  script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of java-1_7_0-openjdk");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"java-1_7_0-openjdk was updated to fix 19 security issues.
 
   Security Issues:
 
   * CVE-2014-6601
+
   * CVE-2015-0412
+
   * CVE-2014-6549
+
   * CVE-2015-0408
+
   * CVE-2015-0395
+
   * CVE-2015-0437
+
   * CVE-2015-0403
+
   * CVE-2015-0421
+
   * CVE-2015-0406
+
   * CVE-2015-0383
+
   * CVE-2015-0400
+
   * CVE-2015-0407
+
   * CVE-2015-0410
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java-1_7_0-openjdk on SUSE Linux Enterprise Desktop 11 SP3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0336_1");
+  script_tag(name:"affected", value:"java-1_7_0-openjdk on SUSE Linux Enterprise Desktop 11 SP3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0336_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLED11\.0SP3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED11.0SP3")
 {
@@ -99,6 +108,6 @@ if(release == "SLED11.0SP3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

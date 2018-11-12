@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3435_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3435_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:3435-1 (Mozilla)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851993");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-12389", "CVE-2018-12390", "CVE-2018-12392", "CVE-2018-12393", "CVE-2018-12395", "CVE-2018-12396", "CVE-2018-12397");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:30:14 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for Mozilla openSUSE-SU-2018:3435-1 (Mozilla)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.3|openSUSELeap15\.0)");
 
   script_xref(name:"openSUSE-SU", value:"2018:3435_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00063.html");
@@ -50,21 +50,26 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for Mozilla Firefox to version 60.3.0esr fixes security issues
+  script_tag(name:"insight", value:"This update for Mozilla Firefox to version 60.3.0esr fixes security issues
   and stability bugs.
 
   The following security issues were fixed (MFSA 2018-27, boo#1112852):
 
   - CVE-2018-12392: Crash with nested event loops
+
   - CVE-2018-12393: Integer overflow during Unicode conversion while loading
   JavaScript
+
   - CVE-2018-12395: WebExtension bypass of domain restrictions through
   header rewriting
+
   - CVE-2018-12396: WebExtension content scripts can execute in disallowed
   contexts
+
   - CVE-2018-12397: WebExtension local file access vulnerability
+
   - CVE-2018-12389: Memory safety bugs fixed in Firefox ESR 60.3
+
   - CVE-2018-12390: Memory safety bugs fixed in Firefox 63 and Firefox ESR
   60.3
 

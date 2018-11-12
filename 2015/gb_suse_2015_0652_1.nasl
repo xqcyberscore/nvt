@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0652_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0652_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Linux SUSE-SU-2015:0652-1 (Linux)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850994");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:19:17 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2010-5313", "CVE-2012-6657", "CVE-2013-4299", "CVE-2013-7263", "CVE-2014-0181", "CVE-2014-3184", "CVE-2014-3185", "CVE-2014-3673", "CVE-2014-3687", "CVE-2014-3688", "CVE-2014-7841", "CVE-2014-7842", "CVE-2014-8160", "CVE-2014-8709", "CVE-2014-9420", "CVE-2014-9584", "CVE-2014-9585");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux SUSE-SU-2015:0652-1 (Linux)");
-  script_tag(name: "summary", value: "Check the version of Linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The SUSE Linux Enterprise 11 Service Pack 1 LTSS kernel was updated to fix
+  script_tag(name:"summary", value:"Check the version of Linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The SUSE Linux Enterprise 11 Service Pack 1 LTSS kernel was updated to fix
   security issues on kernels on the x86_64 architecture.
 
   The following security bugs have been fixed:
@@ -48,65 +47,70 @@ if(description)
   allowed remote authenticated users to obtain sensitive information
   or modify data via a crafted mapping to a snapshot block device
   (bnc#846404).
+
   * CVE-2014-8160: SCTP firewalling failed until the SCTP module was
   loaded (bnc#913059).
+
   * CVE-2014-9584: The parse_rock_ridge_inode_internal function in
   fs/isofs/rock.c in the Linux kernel before 3.18.2 did not validate a
   length value in the Extensions Reference (ER) System Use Field,
   which allowed local users to obtain sensitive information from
   kernel memory via a crafted iso9660 image (bnc#912654).
+
   * CVE-2014-9585: The vdso_addr function in arch/x86/vdso/vma.c in the
   Linux kernel through 3.18.2 did not properly choose memory locations
   for the vDSO area, which made it easier for local users to bypass
   the ASLR protection mechanism by guessing a location at the end of a
   PMD (bnc#912705).
+
   * CVE-2014-9420: The rock_continue function in fs/isofs/rock.c in the
   Linux kernel through 3.18.1 did not restrict the number of Rock
   Ridge continuation entries, which allowed local users to cause a
   denial of service (infinite loop, and system crash or hang) via a
   crafted iso9660 image (bnc#911325).
+
   * CVE-2014-0181: The Netlink implementation in the Linux kernel
   through 3.14.1 did not provide a mechanism for authorizing socket
   operations based on the opener of a socket, which allowed local
   users to bypass intended access restrictions and modify network
   configurations by using a Netlink socket for the (1) stdout or (2)
   stderr of a setuid program (bnc#875051).
+
   * CVE-2010-5313: Race condition in arch/x86/kvm/x86.c in the Linux
   kernel before 2.6.38 allowed L2 guest OS users to cause a denial of
   service (L1 guest OS crash) via a crafted instruction that triggers
   an L2 emulation failure report, a similar issue to CVE-2014-7842
   (bnc#907822).
+
   * CVE-2014-7842: Race condition in arch/x86/kvm/x86.c in the Linux
   kernel before 3.17.4 allowed guest OS users to cause a denial of
   service (guest OS crash) via a crafted application that performs an
   MMIO transaction or a PIO transaction to trigger a guest userspace
   emulation error report, a similar issue to CVE-2010-5313
   (bnc#905312).
+
   * CVE-2014-3688: The SCTP implementation in the Linux kernel before
-  3.17.4 allowed remote attackers to caus ... 
+  3.17.4 allowed remote attackers to caus ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux on SUSE Linux Enterprise Server 11 SP1 LTSS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0652_1");
+  script_tag(name:"affected", value:"Linux on SUSE Linux Enterprise Server 11 SP1 LTSS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0652_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP1")
 {
@@ -237,6 +241,6 @@ if(release == "SLES11.0SP1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

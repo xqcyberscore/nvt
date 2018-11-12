@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1430_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1430_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2016:1430-1 (Chromium)
 #
@@ -27,73 +27,91 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851321");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:08 +0530 (Fri, 03 Jun 2016)");
-  script_cve_id("CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675", 
-                "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679", 
-                "CVE-2016-1680", "CVE-2016-1681", "CVE-2016-1682", "CVE-2016-1683", 
-                "CVE-2016-1684", "CVE-2016-1685", "CVE-2016-1686", "CVE-2016-1687", 
-                "CVE-2016-1688", "CVE-2016-1689", "CVE-2016-1690", "CVE-2016-1691", 
+  script_cve_id("CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675",
+                "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679",
+                "CVE-2016-1680", "CVE-2016-1681", "CVE-2016-1682", "CVE-2016-1683",
+                "CVE-2016-1684", "CVE-2016-1685", "CVE-2016-1686", "CVE-2016-1687",
+                "CVE-2016-1688", "CVE-2016-1689", "CVE-2016-1690", "CVE-2016-1691",
                 "CVE-2016-1692", "CVE-2016-1693", "CVE-2016-1694", "CVE-2016-1695");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2016:1430-1 (Chromium)");
-  script_tag(name: "summary", value: "Check the version of Chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Chromium was updated to 51.0.2704.63 to fix the following vulnerabilities
+  script_tag(name:"summary", value:"Check the version of Chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Chromium was updated to 51.0.2704.63 to fix the following vulnerabilities
   (boo#981886):
 
   - CVE-2016-1672: Cross-origin bypass in extension bindings
+
   - CVE-2016-1673: Cross-origin bypass in Blink
+
   - CVE-2016-1674: Cross-origin bypass in extensions
+
   - CVE-2016-1675: Cross-origin bypass in Blink
+
   - CVE-2016-1676: Cross-origin bypass in extension bindings
+
   - CVE-2016-1677: Type confusion in V8
+
   - CVE-2016-1678: Heap overflow in V8
+
   - CVE-2016-1679: Heap use-after-free in V8 bindings
+
   - CVE-2016-1680: Heap use-after-free in Skia
+
   - CVE-2016-1681: Heap overflow in PDFium
+
   - CVE-2016-1682: CSP bypass for ServiceWorker
+
   - CVE-2016-1683: Out-of-bounds access in libxslt
+
   - CVE-2016-1684: Integer overflow in libxslt
+
   - CVE-2016-1685: Out-of-bounds read in PDFium
+
   - CVE-2016-1686: Out-of-bounds read in PDFium
+
   - CVE-2016-1687: Information leak in extensions
+
   - CVE-2016-1688: Out-of-bounds read in V8
+
   - CVE-2016-1689: Heap buffer overflow in media
+
   - CVE-2016-1690: Heap use-after-free in Autofill
+
   - CVE-2016-1691: Heap buffer-overflow in Skia
+
   - CVE-2016-1692: Limited cross-origin bypass in ServiceWorker
+
   - CVE-2016-1693: HTTP Download of Software Removal Tool
+
   - CVE-2016-1694: HPKP pins removed on cache clearance
+
   - CVE-2016-1695: Various fixes from internal audits, fuzzing and other
   initiatives");
-  script_tag(name: "affected", value: "Chromium on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Chromium on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1430_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1430_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -152,6 +170,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1412_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_1412_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)
 #
@@ -24,60 +24,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla Firefox, Thunderbird and XULRunner were updated to
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850356");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-12-13 17:01:56 +0530 (Thu, 13 Dec 2012)");
+  script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_xref(name:"openSUSE-SU", value:"2012:1412_1");
+  script_name("SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)");
+
+  script_tag(name:"summary", value:"Check for the Version of Mozilla Suite");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
+  script_tag(name:"affected", value:"Mozilla Suite on openSUSE 12.1, openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Mozilla Firefox, Thunderbird and XULRunner were updated to
   16.0.2. Mozilla Seamonkey was updated to 2.13.2.
 
   Tracker bug: bnc#786522
 
   A security issues was fixed:
+
   * MFSA 2012-90/CVE-2012-4194/CVE-2012-4195/CVE-2012-4196
   (bmo#800666, bmo#793121, bmo#802557) Fixes for Location
   object issues
 
   The update also brings back Obsoletes for libproxy's mozjs
-  plugin for distributions before 12.2 to avoid crashes";
+  plugin for distributions before 12.2 to avoid crashes");
 
-tag_affected = "Mozilla Suite on openSUSE 12.1, openSUSE 11.4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850356");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-12-13 17:01:56 +0530 (Thu, 13 Dec 2012)");
-  script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
-  script_tag(name:"cvss_base", value:"5.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_xref(name: "openSUSE-SU", value: "2012:1412_1");
-  script_name("SuSE Update for Mozilla Suite openSUSE-SU-2012:1412-1 (Mozilla Suite)");
-
-  script_tag(name: "summary" , value: "Check for the Version of Mozilla Suite");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -238,7 +230,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -498,6 +490,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

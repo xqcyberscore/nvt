@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2991_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2991_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)
 #
@@ -27,92 +27,99 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851645");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-11 07:31:25 +0100 (Sat, 11 Nov 2017)");
-  script_cve_id("CVE-2016-7586", "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7599", 
-                "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", "CVE-2016-7639", 
-                "CVE-2016-7641", "CVE-2016-7645", "CVE-2016-7652", "CVE-2016-7654", 
-                "CVE-2016-7656", "CVE-2017-2350", "CVE-2017-2354", "CVE-2017-2355", 
-                "CVE-2017-2356", "CVE-2017-2362", "CVE-2017-2363", "CVE-2017-2364", 
-                "CVE-2017-2365", "CVE-2017-2366", "CVE-2017-2369", "CVE-2017-2371", 
-                "CVE-2017-2373", "CVE-2017-2496", "CVE-2017-2510", "CVE-2017-2538", 
-                "CVE-2017-2539", "CVE-2017-7018", "CVE-2017-7030", "CVE-2017-7034", 
-                "CVE-2017-7037", "CVE-2017-7039", "CVE-2017-7046", "CVE-2017-7048", 
+  script_cve_id("CVE-2016-7586", "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7599",
+                "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", "CVE-2016-7639",
+                "CVE-2016-7641", "CVE-2016-7645", "CVE-2016-7652", "CVE-2016-7654",
+                "CVE-2016-7656", "CVE-2017-2350", "CVE-2017-2354", "CVE-2017-2355",
+                "CVE-2017-2356", "CVE-2017-2362", "CVE-2017-2363", "CVE-2017-2364",
+                "CVE-2017-2365", "CVE-2017-2366", "CVE-2017-2369", "CVE-2017-2371",
+                "CVE-2017-2373", "CVE-2017-2496", "CVE-2017-2510", "CVE-2017-2538",
+                "CVE-2017-2539", "CVE-2017-7018", "CVE-2017-7030", "CVE-2017-7034",
+                "CVE-2017-7037", "CVE-2017-7039", "CVE-2017-7046", "CVE-2017-7048",
                 "CVE-2017-7055", "CVE-2017-7056", "CVE-2017-7061", "CVE-2017-7064");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)");
-  script_tag(name: "summary", value: "Check the version of webkit2gtk3");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for webkit2gtk3 to version 2.18.0 fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of webkit2gtk3");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for webkit2gtk3 to version 2.18.0 fixes the following issues:
 
   These security issues were fixed:
 
   - CVE-2017-7039: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7018: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7030: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7037: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7034: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7055: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7056: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7064: An issue was fixed that allowed remote attackers to
   bypass intended memory-read restrictions via a crafted app (bsc#1050469).
+
   - CVE-2017-7061: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7048: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-7046: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1050469).
+
   - CVE-2017-2538: An issue was fixed that allowed remote attackers to
   execute arbitrary code or cause a denial of service (memory corruption
   and application crash) via a crafted web site (bsc#1045460)
+
   - CVE-2017-2496: An issue was fixed that allowed remote attackers to
- ... 
+ ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "webkit2gtk3 on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"webkit2gtk3 on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2991_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2991_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -237,7 +244,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -365,6 +372,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

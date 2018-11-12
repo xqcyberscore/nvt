@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2664_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2664_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2018:2664-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851883");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-09 07:06:26 +0200 (Sun, 09 Sep 2018)");
   script_cve_id("CVE-2017-15430", "CVE-2018-16065", "CVE-2018-16066", "CVE-2018-16067",
                 "CVE-2018-16068", "CVE-2018-16069", "CVE-2018-16070", "CVE-2018-16071",
@@ -48,29 +48,53 @@ if(description)
   Security issues fixed (boo#1107235):
 
   - CVE-2018-16065: Out of bounds write in V8
+
   - CVE-2018-16066:Out of bounds read in Blink
+
   - CVE-2018-16067: Out of bounds read in WebAudio
+
   - CVE-2018-16068: Out of bounds write in Mojo
+
   - CVE-2018-16069:Out of bounds read in SwiftShader
+
   - CVE-2018-16070: Integer overflow in Skia
+
   - CVE-2018-16071: Use after free in WebRTC
+
   - CVE-2018-16073: Site Isolation bypass after tab restore
+
   - CVE-2018-16074: Site Isolation bypass using Blob URLS
+
   - Out of bounds read in Little-CMS
+
   - CVE-2018-16075: Local file access in Blink
+
   - CVE-2018-16076: Out of bounds read in PDFium
+
   - CVE-2018-16077: Content security policy bypass in Blink
+
   - CVE-2018-16078: Credit card information leak in Autofill
+
   - CVE-2018-16079: URL spoof in permission dialogs
+
   - CVE-2018-16080: URL spoof in full screen mode
+
   - CVE-2018-16081: Local file access in DevTools
+
   - CVE-2018-16082: Stack buffer overflow in SwiftShader
+
   - CVE-2018-16083: Out of bounds read in WebRTC
+
   - CVE-2018-16084: User confirmation bypass in external protocol handling
+
   - CVE-2018-16085: Use after free in Memory Instrumentation
+
   - CVE-2017-15430: Unsafe navigation in Chromecast (boo#1106341)
+
   - CVE-2018-16086: Script injection in New Tab Page
+
   - CVE-2018-16087: Multiple download restriction bypass
+
   - CVE-2018-16088: User gesture requirement bypass
 
   The re2 regular expression library was updated to the current version
@@ -102,19 +126,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

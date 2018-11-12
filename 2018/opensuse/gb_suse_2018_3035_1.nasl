@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3035_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3035_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for gitolite openSUSE-SU-2018:3035-1 (gitolite)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851925");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-06 08:17:09 +0200 (Sat, 06 Oct 2018)");
   script_cve_id("CVE-2018-16976");
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,25 +43,33 @@ if(description)
 
   - CVE-2018-16976: prevent racy access to repos in process of migration to
   gitolite (boo#1108272)
+
   - 'info' learns new '-p' option to show only physical repos (as opposed to
   wild repos)
 
   The update to 3.6.8 contains:
 
   - fix bug when deleting *all* hooks for a repo
+
   - allow trailing slashes in repo names
+
   - make pre-receive hook driver bail on non-zero exit of a pre-receive hook
+
   - allow templates in gitolite.conf (new feature)
+
   - various optimiations
 
   The update to 3.6.7 contains:
 
   - allow repo-specific hooks to be organised into subdirectories, and allow
   the multi-hook driver to be placed in some other location of your choice
+
   - allow simple test code to be embedded within the gitolite.conf file  see
   contrib/utils/testconf for how. (This goes on the client side, not on
   the server)
+
   - allow syslog 'facility' to be changed, from the default of 'local0'
+
   - allow syslog 'facility' to be changed, from the default of replaced with
   a space separated list of members
 
@@ -69,8 +77,10 @@ if(description)
 
   - simple but important fix for a future perl deprecation (perl will be
   removing '.' from @INC in 5.24)
+
   - 'perms' now requires a '-c' to activate batch mode (should not affect
   interactive use but check your scripts perhaps?)
+
   - gitolite setup now accepts a '-m' option to supply a custom message
   (useful when it is used by a script)
 
@@ -104,19 +114,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

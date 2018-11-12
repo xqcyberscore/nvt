@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0499_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0499_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2017:0499-1 (chromium)
 #
@@ -27,26 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851492");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-19 05:01:18 +0100 (Sun, 19 Feb 2017)");
-  script_cve_id("CVE-2017-5006", "CVE-2017-5007", "CVE-2017-5008", "CVE-2017-5009", 
-                "CVE-2017-5010", "CVE-2017-5011", "CVE-2017-5012", "CVE-2017-5013", 
-                "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5016", "CVE-2017-5017", 
-                "CVE-2017-5018", "CVE-2017-5019", "CVE-2017-5020", "CVE-2017-5021", 
-                "CVE-2017-5022", "CVE-2017-5023", "CVE-2017-5024", "CVE-2017-5025", 
+  script_cve_id("CVE-2017-5006", "CVE-2017-5007", "CVE-2017-5008", "CVE-2017-5009",
+                "CVE-2017-5010", "CVE-2017-5011", "CVE-2017-5012", "CVE-2017-5013",
+                "CVE-2017-5014", "CVE-2017-5015", "CVE-2017-5016", "CVE-2017-5017",
+                "CVE-2017-5018", "CVE-2017-5019", "CVE-2017-5020", "CVE-2017-5021",
+                "CVE-2017-5022", "CVE-2017-5023", "CVE-2017-5024", "CVE-2017-5025",
                 "CVE-2017-5026");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:0499-1 (chromium)");
-  script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Google chromium was updated to 56.0.2924.87:
+  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Google chromium was updated to 56.0.2924.87:
 
   * Various small fixes
+
   * Disabled option to enable/disable plugins in the chrome://plugins
 
   - Changed the build requirement of libavformat to library version
@@ -54,55 +53,75 @@ of detect NVT and check if the version is vulnerable or not.");
   supports the public AVStream API 'codecpar'.
 
   It also contains the version update to 56.0.2924.76  (bsc#1022049):
+
   - CVE-2017-5007: Universal XSS in Blink
+
   - CVE-2017-5006: Universal XSS in Blink
+
   - CVE-2017-5008: Universal XSS in Blink
+
   - CVE-2017-5010: Universal XSS in Blink
+
   - CVE-2017-5011: Unauthorised file access in Devtools
+
   - CVE-2017-5009: Out of bounds memory access in WebRTC
+
   - CVE-2017-5012: Heap overflow in V8
+
   - CVE-2017-5013: Address spoofing in Omnibox
+
   - CVE-2017-5014: Heap overflow in Skia
+
   - CVE-2017-5015: Address spoofing in Omnibox
+
   - CVE-2017-5019: Use after free in Renderer
+
   - CVE-2017-5016: UI spoofing in Blink
+
   - CVE-2017-5017: Uninitialised memory access in webm video
+
   - CVE-2017-5018: Universal XSS in chrome://apps
+
   - CVE-2017-5020: Universal XSS in chrome://downloads
+
   - CVE-2017-5021: Use after free in Extensions
+
   - CVE-2017-5022: Bypass of Content Security Policy in Blink
+
   - CVE-2017-5023: Type confusion in metrics
+
   - CVE-2017-5024: Heap overflow in FFmpeg
+
   - CVE-2017-5025: Heap overflow in FFmpeg
+
   - CVE-2017-5026: UI spoofing. Credit to Ronni Skansing
 
   - Enable VAAPI hardware accelerated video decoding.
 
   - Chromium 55.0.2883.87:
-  * various fixes for crashes and specific wesites
-  * update Google pinned certificates");
-  script_tag(name: "affected", value: "chromium on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0499_1");
+  * various fixes for crashes and specific wesites
+
+  * update Google pinned certificates");
+  script_tag(name:"affected", value:"chromium on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2017:0499_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -425,6 +444,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

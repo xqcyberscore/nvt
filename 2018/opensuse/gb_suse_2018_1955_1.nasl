@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1955_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1955_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for slurm openSUSE-SU-2018:1955-1 (slurm)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852068");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-10995");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:08 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for slurm openSUSE-SU-2018:1955-1 (slurm)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:1955_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00016.html");
@@ -60,12 +60,18 @@ if(description)
   These non-security issues were fixed:
 
   - CRAY - Add slurmsmwd to the contribs/cray dir
+
   - PMIX - Added the direct connect authentication.
+
   - Prevent the backup slurmctld from losing the active/available node
   features list on takeover.
+
   - Be able to force power_down of cloud node even if in power_save state.
+
   - Allow cloud nodes to be recognized in Slurm when booted out of band.
+
   - Notify srun and ctld when unkillable stepd exits.
+
   - Fixes daemoniziation in newly introduced slurmsmwd daemon.
 
   The following tracked packaging changes are included:

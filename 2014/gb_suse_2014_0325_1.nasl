@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0325_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0325_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for gnutls openSUSE-SU-2014:0325-1 (gnutls)
 #
@@ -24,56 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850575");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:29:26 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2014-0092");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("SuSE Update for gnutls openSUSE-SU-2014:0325-1 (gnutls)");
-
-  tag_insight = "
-  The gnutls library was updated to fixed x509 certificate
+  script_tag(name:"affected", value:"gnutls on openSUSE 13.1");
+  script_tag(name:"insight", value:"The gnutls library was updated to fixed x509 certificate
   validation problems, where man-in-the-middle attackers
   could hijack SSL connections.
 
   This update also reenables Elliptic Curve support to meet
-  current day cryptographic requirements.";
-
-  tag_affected = "gnutls on openSUSE 13.1";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  current day cryptographic requirements.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0325_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0325_1");
   script_tag(name:"summary", value:"Check for the Version of gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -168,6 +155,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

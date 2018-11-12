@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1345_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_suse_2018_1345_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libvorbis openSUSE-SU-2018:1345-1 (libvorbis)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851749");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-19 05:43:01 +0200 (Sat, 19 May 2018)");
   script_cve_id("CVE-2017-14160", "CVE-2018-10393");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,13 +38,13 @@ if(description)
   script_tag(name:"summary", value:"Check the version of libvorbis");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libvorbis fixes the following issues:
+  script_tag(name:"insight", value:"This update for libvorbis fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-10393: Fixed stack-based buffer over-read in bark_noise_hybridm
   (bsc#1091072).
+
   - CVE-2017-14160: Fixed out-of-bounds access inside bark_noise_hybridmp
   function (bsc#1059812).
 
@@ -72,19 +72,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

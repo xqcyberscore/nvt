@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1600_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1600_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for glibc openSUSE-SU-2018:1600-1 (glibc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851778");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-09 05:49:00 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2017-18269", "CVE-2018-11236", "CVE-2018-11237");
   script_tag(name:"cvss_base", value:"7.5");
@@ -42,7 +42,9 @@ on the target host.");
 
   - CVE-2017-18269: Fix SSE2 memmove issue when crossing 2GB boundary
   (bsc#1094150)
+
   - CVE-2018-11236: Fix overflow in path length computation (bsc#1094161)
+
   - CVE-2018-11237: Don't write beyond buffer destination in
   __mempcpy_avx512_no_vzeroupper (bsc#1094154)
 
@@ -74,19 +76,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

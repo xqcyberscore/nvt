@@ -7,7 +7,7 @@
 # System Generated Check
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -23,57 +23,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The unprivileged user exim is running as could tell the exim daemon
-  to read a different config file and leverage that to escalate
-  privileges to root CVE-2010-4345.
-
-  A buffer overflow in exim allowed remote attackers to execute
-  arbitrary code CVE-2010-4344. openSUSE 11.3 is not affected by
-  this flaw.";
-tag_solution = "Please Install the Updated Packages.";
-
-tag_impact = "remote code execution";
-tag_affected = "exim on openSUSE 11.1, openSUSE 11.2";
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850152");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12290 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "SUSE-SA", value: "2010-059");
+  script_xref(name:"SUSE-SA", value:"2010-059");
   script_cve_id("CVE-2010-4344", "CVE-2010-4345");
   script_name("SuSE Update for exim SUSE-SA:2010:059");
 
   script_tag(name:"summary", value:"Check for the Version of exim");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.1|openSUSE11\.2)");
+  script_tag(name:"impact", value:"remote code execution");
+  script_tag(name:"affected", value:"exim on openSUSE 11.1, openSUSE 11.2");
+  script_tag(name:"insight", value:"The unprivileged user exim is running as could tell the exim daemon
+  to read a different config file and leverage that to escalate
+  privileges to root CVE-2010-4345.
+
+  A buffer overflow in exim allowed remote attackers to execute
+  arbitrary code CVE-2010-4344. openSUSE 11.3 is not affected by
+  this flaw.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.1")
 {
@@ -96,7 +86,7 @@ if(release == "openSUSE11.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -122,6 +112,6 @@ if(release == "openSUSE11.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

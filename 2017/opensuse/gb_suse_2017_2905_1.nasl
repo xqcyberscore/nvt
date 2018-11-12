@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2905_1.nasl 8049 2017-12-08 09:11:55Z santu $
+# $Id: gb_suse_2017_2905_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2905-1 (Linux Kernel)
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851638");
-  script_version("$Revision: 8049 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:11:55 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:25:38 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2017-13080", "CVE-2017-15265", "CVE-2017-15649", "CVE-2017-6346");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2905-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.2 kernel was updated to 4.4.92 to receive various
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.92 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -49,11 +46,13 @@ of detect NVT and check if the version is vulnerable or not.");
   reinstallation of the Group Temporal Key (GTK) during the group key
   handshake, allowing an attacker within radio range to replay frames from
   access points to clients (bnc#1063667).
+
   - CVE-2017-15265: Race condition in the ALSA subsystem in the Linux kernel
   allowed local users to cause a denial of service (use-after-free) or
   possibly have unspecified other impact via crafted /dev/snd/seq ioctl
   calls, related to sound/core/seq/seq_clientmgr.c and
   sound/core/seq/seq_ports.c (bnc#1062520).
+
   - CVE-2017-15649: net/packet/af_packet.c in the Linux kernel allowed local
   users to gain privileges via crafted system calls that trigger
   mishandling of packet_fanout data structures, because of a race
@@ -64,58 +63,75 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - alsa: au88x0: avoid theoretical uninitialized access (bnc#1012382).
+
   - alsa: compress: Remove unused variable (bnc#1012382).
+
   - alsa: usb-audio: Check out-of-bounds access by corrupted buffer
   descriptor (bnc#1012382).
+
   - alsa: usx2y: Suppress kernel warning at page allocation failures
   (bnc#1012382).
+
   - arm: 8635/1: nommu: allow enabling REMAP_VECTORS_TO_RAM (bnc#1012382).
+
   - arm: dts: r8a7790: Use R-Car Gen 2 fallback binding for msiof nodes
   (bnc#1012382).
+
   - arm: remove duplicate 'const' annotations' (bnc#1012382).
+
   - asoc: dapm: fix some pointer error handling (bnc#1012382).
+
   - asoc: dapm: handle probe deferrals (bnc#1012382).
+
   - audit: log 32-bit socketcalls (bnc#1012382).
+
   - blacklist 0e7736c6b806 powerpc/powernv: Fix data type for @r in
   pnv_ioda_parse_m64_window()
+
   - blacklist.conf: not fitting cleanup patch
+
   - brcmfmac: setup passive scan if requested by user-space (bnc#1012382).
+
   - bridge: netlink: register netdevice before executing changelink
   (bnc#1012382).
+
   - ceph: avoid panic in create_session_open_msg() if utsname() returns NULL
   (bsc#1061451).
+
   - ceph: check negative offsets in ceph_llseek() (bsc#1061451).
+
   - driver core: platform: Do not read past the end of 'driver_override'
   buffer (bnc#1012382).
+
   - drivers: firmware: psci: drop duplicate const from psci_of_match
   (bnc#1012382).
+
   - drivers: hv: fcopy: restore correct transfer length (bnc#1012382).
+
   - drm/amdkfd: fix improper return value on error (bnc#1012382).
-  - drm: bridge: add DT bind ... 
+
+  - drm: bridge: add DT bind ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2905_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2905_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -300,6 +316,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

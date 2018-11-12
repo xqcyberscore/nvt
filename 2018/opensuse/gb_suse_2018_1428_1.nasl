@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1428_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1428_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:1428-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851764");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:44:58 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2018-11356", "CVE-2018-11357", "CVE-2018-11358", "CVE-2018-11359",
                 "CVE-2018-11360", "CVE-2018-11362");
@@ -46,10 +46,15 @@ on the target host.");
   packages from the network or capture files (boo#1094301):
 
   - CVE-2018-11356: DNS dissector crash
+
   - CVE-2018-11357: Multiple dissectors could consume excessive memory
+
   - CVE-2018-11358: Q.931 dissector crash
+
   - CVE-2018-11359: The RRC dissector and other dissectors could crash
+
   - CVE-2018-11360: GSM A DTAP dissector crash
+
   - CVE-2018-11362: LDSS dissector crash
 
   This update to version 2.4.7 also contains bug fixes and updated protocol
@@ -79,19 +84,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

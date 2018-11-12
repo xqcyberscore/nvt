@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0583_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_0583_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0583-1 (update)
 #
@@ -24,55 +24,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_affected = "update on openSUSE 12.1, openSUSE 11.4";
-tag_insight = "- docs-xml: fix default name resolve order; (bso#7564).
-  - s3-aio-fork: Fix a segfault in vfs_aio_fork; (bso#8836).
-  - docs: remove whitespace in example samba.ldif; (bso#8789).
-  - s3-smbd: move print_backend_init() behind
-  init_system_info(); (bso#8845).
-  - s3-docs: Prepend '/' to filename argument; (bso#8826).
-  - Restrict self granting privileges where security=ads for
-  Samba post-3.3.16; CVE-2012-2111; (bnc#757576).";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850252");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:02 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-2111");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_xref(name: "openSUSE-SU", value: "2012:0583_1");
+  script_xref(name:"openSUSE-SU", value:"2012:0583_1");
   script_name("SuSE Update for update openSUSE-SU-2012:0583-1 (update)");
 
-  script_tag(name: "summary" , value: "Check for the Version of update");
+  script_tag(name:"summary", value:"Check for the Version of update");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
+  script_tag(name:"affected", value:"update on openSUSE 12.1, openSUSE 11.4");
+  script_tag(name:"insight", value:"- docs-xml: fix default name resolve order; (bso#7564).
+
+  - s3-aio-fork: Fix a segfault in vfs_aio_fork; (bso#8836).
+
+  - docs: remove whitespace in example samba.ldif; (bso#8789).
+
+  - s3-smbd: move print_backend_init() behind
+  init_system_info(); (bso#8845).
+
+  - s3-docs: Prepend '/' to filename argument; (bso#8826).
+
+  - Restrict self granting privileges where security=ads for
+  Samba post-3.3.16; CVE-2012-2111; (bnc#757576).");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -509,7 +506,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -949,6 +946,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

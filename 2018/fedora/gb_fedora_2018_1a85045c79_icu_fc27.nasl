@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1a85045c79_icu_fc27.nasl 11471 2018-09-19 11:17:08Z santu $
+# $Id: gb_fedora_2018_1a85045c79_icu_fc27.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Fedora Update for icu FEDORA-2018-1a85045c79
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875080");
-  script_version("$Revision: 11471 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:17:08 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12308 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 08:37:09 +0200 (Tue, 18 Sep 2018)");
   script_cve_id("CVE-2017-15422", "CVE-2017-14952");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for icu FEDORA-2018-1a85045c79");
   script_tag(name:"summary", value:"Check the version of icu");

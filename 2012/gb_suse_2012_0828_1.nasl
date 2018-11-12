@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0828_1.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: gb_suse_2012_0828_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0828-1 (java-1_6_0-openjdk)
 #
@@ -24,68 +24,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "This version upgrade of java-1_6_0-openjdk fixes multiple
-  security flaws:
-
-  - S7079902, CVE-2012-1711: Refine CORBA data models
-  - S7143606, CVE-2012-1717: File.createTempFile should be
-  improved for temporary files created by the platform.
-  - S7143614, CVE-2012-1716: SynthLookAndFeel stability
-  improvement
-  - S7143617, CVE-2012-1713: Improve fontmanager layout
-  lookup operations
-  - S7143851, CVE-2012-1719: Improve IIOP stub and tie
-  generation in RMIC
-  - S7143872, CVE-2012-1718: Improve certificate extension
-  processing
-  - S7152811, CVE-2012-1723: Issues in client compiler
-  - S7157609, CVE-2012-1724: Issues with loop
-  - S7160757, CVE-2012-1725: Problem with hotspot
-  runtime_classfile";
-
-tag_affected = "java-1_6_0-openjdk on openSUSE 12.1, openSUSE 11.4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850206");
-  script_version("$Revision: 8649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:31 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1713", "CVE-2012-1716", "CVE-2012-1717",
                 "CVE-2012-1718", "CVE-2012-1719", "CVE-2012-1723", "CVE-2012-1724",
                 "CVE-2012-1725");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:0828_1");
+  script_xref(name:"openSUSE-SU", value:"2012:0828_1");
   script_name("SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0828-1 (java-1_6_0-openjdk)");
 
-  script_tag(name: "summary" , value: "Check for the Version of java-1_6_0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1_6_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
+  script_tag(name:"affected", value:"java-1_6_0-openjdk on openSUSE 12.1, openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"This version upgrade of java-1_6_0-openjdk fixes multiple
+  security flaws:
+
+  - S7079902, CVE-2012-1711: Refine CORBA data models
+
+  - S7143606, CVE-2012-1717: File.createTempFile should be
+  improved for temporary files created by the platform.
+
+  - S7143614, CVE-2012-1716: SynthLookAndFeel stability
+  improvement
+
+  - S7143617, CVE-2012-1713: Improve fontmanager layout
+  lookup operations
+
+  - S7143851, CVE-2012-1719: Improve IIOP stub and tie
+  generation in RMIC
+
+  - S7143872, CVE-2012-1718: Improve certificate extension
+  processing
+
+  - S7152811, CVE-2012-1723: Issues in client compiler
+
+  - S7157609, CVE-2012-1724: Issues with loop
+
+  - S7160757, CVE-2012-1725: Problem with hotspot
+  runtime_classfile");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -144,7 +143,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -206,6 +205,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

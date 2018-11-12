@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2311_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2311_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2016:2311-1 (chromium)
 #
@@ -27,65 +27,71 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851392");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 05:48:06 +0200 (Thu, 15 Sep 2016)");
-  script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173", 
+  script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173",
                 "CVE-2016-5174", "CVE-2016-5175");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2016:2311-1 (chromium)");
-  script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  Chromium was updated to 53.0.2785.113 to fix a number of security issues
+  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Chromium was updated to 53.0.2785.113 to fix a number of security issues
   and bugs.
 
   The following vulnerabilities were fixed:
 
   - CVE-2016-5170: Use after free in Blink
+
   - CVE-2016-5171: Use after free in Blink
+
   - CVE-2016-5172: Arbitrary Memory Read in v8
+
   - CVE-2016-5173: Extension resource access
+
   - CVE-2016-5174: Popup not correctly suppressed
+
   - CVE-2016-5175: Various fixes from internal audits, fuzzing and other
   initiatives.
 
   The following upstream fixes are included:
 
   - SPDY crasher fixes
+
   - Disable NV12 DXGI video on AMD
+
   - Forward --password-store switch to os_crypt
+
   - Tell the kernel to discard USB requests when they time out.
+
   - disallow WKBackForwardListItem navigations for pushState pages
+
   - arc: bluetooth: Fix advertised uuid
+
   - fix conflicting PendingIntent for stop button and swipe away
 
   The widevine plugin was re-enabled (boo#998328).");
-  script_tag(name: "affected", value: "chromium on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"chromium on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2311_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2311_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -138,6 +144,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

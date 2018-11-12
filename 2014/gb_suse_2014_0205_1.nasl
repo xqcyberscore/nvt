@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0205_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0205_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0205-1 (kernel)
 #
@@ -24,22 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850565");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:38:00 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2013-4511", "CVE-2013-4563", "CVE-2013-4587", "CVE-2013-6367",
                 "CVE-2013-6368", "CVE-2013-6376", "CVE-2013-6432", "CVE-2014-0038");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for kernel openSUSE-SU-2014:0205-1 (kernel)");
-
-  tag_insight = "
-  The Linux Kernel was updated to version 3.11.10, fixing
+  script_tag(name:"affected", value:"kernel on openSUSE 13.1");
+  script_tag(name:"insight", value:"The Linux Kernel was updated to version 3.11.10, fixing
   security issues and bugs:
 
   - floppy: bail out in open() if drive is not responding to
@@ -53,34 +50,51 @@ if(description)
 
   - HID: usbhid: quirk for Synaptics Quad HD touchscreen
   (bnc#859804).
+
   - HID: usbhid: quirk for Synaptics HD touchscreen
   (bnc#859804).
+
   - HID: usbhid: merge the sis quirk (bnc#859804).
+
   - HID: hid-multitouch: add support for SiS panels
   (bnc#859804).
+
   - HID: usbhid: quirk for SiS Touchscreen (bnc#859804).
+
   - HID: usbhid: quirk for Synaptics Large Touchccreen
   (bnc#859804).
 
   - drivers: net: cpsw: fix dt probe for one port ethernet.
+
   - drivers: net: cpsw: fix for cpsw crash when build as
   modules.
+
   - dma: edma: Remove limits on number of slots.
+
   - dma: edma: Leave linked to Null slot instead of DUMMY
   slot.
+
   - dma: edma: Find missed events and issue them.
+
   - dma: edma: Write out and handle MAX_NR_SG at a given time.
+
   - dma: edma: Setup parameters to DMA MAX_NR_SG at a time.
+
   - ARM: edma: Add function to manually trigger an EDMA
   channel.
+
   - ARM: edma: Fix clearing of unused list for DT DMA
   resources.
 
   - ACPI: Add Toshiba NB100 to Vista _OSI blacklist.
+
   - ACPI: add missing win8 OSI comment to blacklist
   (bnc#856294).
+
   - ACPI: update win8 OSI blacklist.
+
   - ACPI: blacklist win8 OSI for buggy laptops.
+
   - ACPI: blacklist win8 OSI for ASUS Zenbook Prime UX31A
   (bnc#856294).
 
@@ -95,7 +109,9 @@ if(description)
 
   - x86/dumpstack: Fix printk_address for direct addresses
   (bnc#845621).
+
   - Refresh patches.suse/stack-unwind.
+
   - Refresh patches.xen/xen-x86_64-dump-user-pgt.
 
   - KVM: x86: Convert vapic synchronization to _cached
@@ -108,7 +124,9 @@ if(description)
 
   - xencons: generalize use of add_preferred_console()
   (bnc#733022, bnc#852652).
+
   - Update Xen patches to 3.11.10.
+
   - Rename patches.xen/xen-pcpu-hotplug to
   patches.xen/xen-pcpu.
 
@@ -120,37 +138,27 @@ if(description)
 
   - ipv6: fix he ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "kernel on openSUSE 13.1";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0205_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0205_1");
   script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -509,6 +517,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

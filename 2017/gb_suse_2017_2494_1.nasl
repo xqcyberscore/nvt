@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2494_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2494_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2494-1 (Linux Kernel)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851616");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:26:56 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-1000251", "CVE-2017-11472", "CVE-2017-14106");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2494-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated
   to 4.4.87 to receive various security and bugfixes.
 
@@ -48,11 +47,13 @@ of detect NVT and check if the version is vulnerable or not.");
   was vulnerable to a stack overflow vulnerability in the processing of
   L2CAP configuration responses resulting in Remote code execution in
   kernel space (bnc#1057389).
+
   - CVE-2017-14106: The tcp_disconnect function in net/ipv4/tcp.c in the
   Linux kernel allowed local users to cause a denial of service
   (__tcp_select_window divide-by-zero error and system crash) by
   triggering a disconnect within a certain tcp_recvmsg code path
   (bnc#1056982).
+
   - CVE-2017-11472: The acpi_ns_terminate() function in
   drivers/acpi/acpica/nsutils.c in the Linux kernel did not flush the
   operand cache and causes a kernel stack dump, which allowed local users
@@ -62,58 +63,76 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - acpica: IORT: Update SMMU models for revision C (bsc#1036060).
+
   - acpi/nfit: Fix memory corruption/Unregister mce decoder on failure
   (bsc#1057047).
+
   - ahci: do not use MSI for devices with the silly Intel NVMe remapping
   scheme (bsc#1048912).
+
   - ahci: thunderx2: stop engine fix update (bsc#1057031).
+
   - alsa: hda/realtek - Add support headphone Mic for ALC221 of HP platform
   (bsc#1024405).
+
   - arm64: mm: select CONFIG_ARCH_PROC_KCORE_TEXT (bsc#1046529).
+
   - arm64: PCI: Fix struct acpi_pci_root_ops allocation failure path
   (bsc#1056849).
+
   - arm64: Update config files. Enable ARCH_PROC_KCORE_TEXT
+
   - blacklist.conf: gcc7 compiler warning (bsc#1056849)
+
   - bnxt: add a missing rcu synchronization (bnc#1038583).
+
   - bnxt: do not busy-poll when link is down (bnc#1038583).
+
   - bnxt_en: Enable MRU enables bit when configuring VNIC MRU (bnc#1038583).
+
   - bnxt_en: Fix and clarify link_info- advertising (bnc#1038583).
+
   - bnxt_en: Fix a VXLAN vs GENEVE issue (bnc#1038583).
+
   - bnxt_en: Fix NULL pointer dereference in a failure path during open
   (bnc#1038583).
+
   - bnxt_en: Fix NULL pointer dereference in reopen failure path
   (bnc#1038583).
+
   - bnxt_en: fix pci cleanup in bnxt_init_one() failure path (bnc#1038583).
+
   - bnxt_en: Fix ring arithmetic in bnxt_setup_tc() (bnc#1038583).
+
   - bnxt_en: Fix TX push operation on ARM64 (bnc#1038583).
+
   - bnxt_en: Fix 'uninitialized variable' bug in TPA code path (bnc#1038583).
+
   - bnxt_en: Fix VF virtual link state (bnc#1038583).
+
   - bnxt_en: initialize rc to zero to avoid returning garbage (bnc#1038583).
    ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2494_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2494_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -298,6 +317,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

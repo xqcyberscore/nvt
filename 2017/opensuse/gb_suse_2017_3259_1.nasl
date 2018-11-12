@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3259_1.nasl 9268 2018-03-29 14:05:16Z cfischer $
+# $Id: gb_suse_2017_3259_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for OBS toolchain openSUSE-SU-2017:3259-1 (OBS toolchain)
 #
@@ -27,62 +27,64 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851662");
-  script_version("$Revision: 9268 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 16:05:16 +0200 (Thu, 29 Mar 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-10 07:43:31 +0100 (Sun, 10 Dec 2017)");
   script_cve_id("CVE-2010-4226", "CVE-2017-14804", "CVE-2017-9274");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for OBS toolchain openSUSE-SU-2017:3259-1 (OBS toolchain)");
-  script_tag(name: "summary", value: "Check the version of the OBS toolchain");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This OBS toolchain update fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of the OBS toolchain");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This OBS toolchain update fixes the following issues:
 
   Package 'build':
 
   - CVE-2010-4226: force use of bsdtar for VMs (bnc#665768)
+
   - CVE-2017-14804: Improve file name check extractbuild (bsc#1069904)
+
   - switch baselibs scheme for debuginfo packages from foo-debuginfo-32bit
   to foo-32bit-debuginfo (fate#323217)
 
   Package 'obs-service-source_validator':
+
   - CVE-2017-9274: Don't use rpmbuild to extract sources, patches etc. from
   a spec (bnc#938556).
+
   - Update to version 0.7
+
   - use spec_query instead of output_versions using the specfile parser from
   the build package (boo#1059858)
 
   Package 'osc':
+
   - update to version 0.162.0
+
   - add Recommends: ca-certificates to enable TLS verification without
   manually installing them. (bnc#1061500)
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "OBS toolchain on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"OBS toolchain on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:3259_1");
+  script_xref(name:"openSUSE-SU", value:"2017:3259_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -129,7 +131,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -179,6 +181,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

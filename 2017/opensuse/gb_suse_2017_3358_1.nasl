@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3358_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_3358_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:3358-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851667");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 07:45:30 +0100 (Tue, 19 Dec 2017)");
   script_cve_id("CVE-2017-1000405", "CVE-2017-1000410", "CVE-2017-11600", "CVE-2017-12193",
                 "CVE-2017-15115", "CVE-2017-16528", "CVE-2017-16536", "CVE-2017-16537",
@@ -39,11 +39,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:3358-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name:"insight", value:"
-  The openSUSE Leap 42.2 kernel was updated to 4.4.102 to receive various
+  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.102 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -51,66 +49,71 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2017-1000405: A bug in the THP CoW support could be used by local
   attackers to corrupt memory of other processes and cause them to crash
   (bnc#1069496).
+
   - CVE-2017-1000410: The Linux kernel was affected by an information leak
   in the processing of incoming L2CAP commands - ConfigRequest, and
   ConfigResponse messages. (bnc#1070535).
+
   - CVE-2017-11600: net/xfrm/xfrm_policy.c in the Linux kernel did not
   ensure that the dir value of xfrm_userpolicy_id is XFRM_POLICY_MAX or
   less, which allowed local users to cause a denial of service
   (out-of-bounds access) or possibly have unspecified other impact via an
   XFRM_MSG_MIGRATE xfrm Netlink message (bnc#1050231).
+
   - CVE-2017-12193: The assoc_array_insert_into_terminal_node function in
   lib/assoc_array.c in the Linux kernel mishandled node splitting, which
   allowed local users to cause a denial of service (NULL pointer
   dereference and panic) via a crafted application, as demonstrated by the
   keyring key type, and key addition and link creation operations
   (bnc#1066192).
+
   - CVE-2017-15115: The sctp_do_peeloff function in net/sctp/socket.c in the
   Linux kernel did not check whether the intended netns is used in a
   peel-off action, which allowed local users to cause a denial of service
   (use-after-free and system crash) or possibly have unspecified other
   impact via crafted system calls (bnc#1068671).
+
   - CVE-2017-16528: sound/core/seq_device.c in the Linux kernel allowed
   local users to cause a denial of service (snd_rawmidi_dev_seq_free
   use-after-free and system crash) or possibly have unspecified other
   impact via a crafted USB device (bnc#1066629).
+
   - CVE-2017-16536: The cx231xx_usb_probe function in
   drivers/media/usb/cx231xx/cx231xx-cards.c in the Linux kernel allowed
   local users to cause a denial of service (NULL pointer dereference and
   system crash) or possibly have unspecified other impact via a crafted
   USB device (bnc#1066606).
+
   - CVE-2017-16537: The imon_probe function in drivers/media/rc/imon.c in
   the Linux kernel allowed local users to cause a denial of service (NULL
   pointer dereference and system crash) or possibly have unspecified other
   impact via a crafted USB device (bnc#1066573).
+
   - CVE-2017-16645: The ims_pcu_get_cdc_union_desc function in
   drivers/input/misc/ims-pcu.c in the Linux kernel allowed local users to
   cause a denial of service (ims_pcu_parse_cdc_data out-of-bounds read and
   system crash) or possibly have unspecified other impa ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:3358_1");
+  script_xref(name:"openSUSE-SU", value:"2017:3358_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -295,6 +298,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

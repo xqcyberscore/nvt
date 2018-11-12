@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0877_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_0877_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2016:0877-1 (samba)
 #
@@ -27,73 +27,87 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851259");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-25 06:14:29 +0100 (Fri, 25 Mar 2016)");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:0877-1 (samba)");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for the samba server fixes the following issues:
 
   Security issue fixed:
+
   - CVE-2015-7560: Getting and setting Windows ACLs on symlinks can change
   permissions on link target  (bso#11648)  (bsc#968222).
 
   Other bugs fixed:
+
   - Enable clustering (CTDB) support  (bsc#966271).
+
   - s3: smbd: Fix timestamp rounding inside SMB2 create  (bso#11703)
   (bsc#964023).
+
   - vfs_fruit: Fix renaming directories with open files  (bso#11065).
+
   - Fix MacOS finder error 36 when copying folder to Samba  (bso#11347).
+
   - s3:smbd/oplock: Obey kernel oplock setting when releasing oplocks
   (bso#11400).
+
   - Fix copying files with vfs_fruit when using vfs_streams_xattr without
   stream prefix and type suffix  (bso#11466).
+
   - s3:libsmb: Correctly initialize the list head when keeping a list of
   primary followed by DFS connections  (bso#11624).
+
   - Reduce the memory footprint of empty string options  (bso#11625).
+
   - lib/async_req: Do not install async_connect_send_test  (bso#11639).
+
   - docs: Fix typos in man vfs_gpfs  (bso#11641).
+
   - smbd: make 'hide dot files' option work with 'store dos attributes =
   yes'  (bso#11645).
+
   - smbcacls: Fix uninitialized variable  (bso#11682).
+
   - s3:smbd: Ignore initial allocation size for directory creation
   (bso#11684).
+
   - Add quotes around path of update-apparmor-samba-profile  (bsc#962177).
+
   - Prevent access denied if the share path is '/'  (bso#11647)
   (bsc#960249).
+
   - Ensure samlogon fallback requests are rerouted after kerberos failure
   (bsc#953972).
+
   - samba: winbind crash -  netlogon_creds_client_authenticator  (bsc#953972)
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
-  script_tag(name: "affected", value: "samba on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"samba on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0877_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0877_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -962,6 +976,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

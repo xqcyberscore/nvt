@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0995_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0995_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2016:0995-1 (xen)
 #
@@ -27,87 +27,100 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851269");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-09 05:01:01 +0200 (Sat, 09 Apr 2016)");
   script_cve_id("CVE-2013-4529", "CVE-2013-4530", "CVE-2013-4533", "CVE-2013-4534", "CVE-2013-4537", "CVE-2013-4538", "CVE-2013-4539", "CVE-2014-0222", "CVE-2014-3689", "CVE-2014-7815", "CVE-2014-9718", "CVE-2015-1779", "CVE-2015-5239", "CVE-2015-5278", "CVE-2015-6815", "CVE-2015-6855", "CVE-2015-7512", "CVE-2015-8345", "CVE-2015-8613", "CVE-2015-8619", "CVE-2015-8743", "CVE-2015-8744", "CVE-2015-8745", "CVE-2016-1568", "CVE-2016-1570", "CVE-2016-1571", "CVE-2016-1714", "CVE-2016-1981", "CVE-2016-2198", "CVE-2016-2270", "CVE-2016-2271", "CVE-2016-2392", "CVE-2016-2538");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:0995-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  xen was updated to version 4.4.4 to fix 33 security issues.
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"xen was updated to version 4.4.4 to fix 33 security issues.
 
   These security issues were fixed:
+
   - CVE-2016-2392: NULL pointer dereference in remote NDIS control message
   handling (bsc#967012).
+
   - CVE-2015-5239: Integer overflow in vnc_client_read() and
   protocol_client_msg() (bsc#944463).
+
   - CVE-2016-2270: Xen allowed local guest administrators to cause a denial
   of service (host reboot) via vectors related to multiple mappings of
   MMIO pages with different cachability settings  (boo#965315).
+
   - CVE-2016-2538: Integer overflow in remote NDIS control message handling
   (bsc#967969).
+
   - CVE-2015-7512: Buffer overflow in the pcnet_receive function in
   hw/net/pcnet.c, when a guest NIC has a larger MTU, allowed remote
   attackers to cause a denial of service (guest OS crash) or execute
   arbitrary code via a large packet (boo#962360).
+
   - CVE-2014-3689: The vmware-vga driver (hw/display/vmware_vga.c) allowed
   local guest users to write to qemu memory locations and gain privileges
   via unspecified parameters related to rectangle handling (boo#962611).
+
   - CVE-2015-5278: Infinite loop in ne2000_receive() function (bsc#945989).
+
   - CVE-2016-1568: AHCI use-after-free vulnerability in aio port commands
   (bsc#961332).
+
   - CVE-2016-1981: e1000 infinite loop in start_xmit and e1000_receive_iov
   routines (bsc#963782).
+
   - CVE-2016-2198: EHCI NULL pointer dereference in ehci_caps_write
   (bsc#964413).
+
   - CVE-2015-6815: e1000: infinite loop issue (bsc#944697).
+
   - CVE-2014-0222: Integer overflow in the qcow_open function in
   block/qcow.c allowed remote attackers to cause a denial of service
   (crash) via a large L2 table in a QCOW version 1 image (boo#964925).
+
   - CVE-2015-6855: hw/ide/core.c did not properly restrict the commands
   accepted by an ATAPI device, which allowed guest users to cause a denial
   of service or possibly have unspecified other impact via certain IDE
   commands, as demonstrated by a WIN_READ_NATIVE_MAX command to an empty
   drive, which triggers a divide-by-zero error and instance crash
   (boo#965156).
+
   - CVE-2016-2271: VMX in using an Intel or Cyrix CPU, allowed local HVM
   guest users to cause a denial of service (guest crash) via vectors
   related to a non-canonical RIP (boo#965317).
+
   - CVE-2013-4534: Buffer overflow in hw/intc/openpic.c allowed remote
   attackers to cause a denial of service or possibly execute arbitrary
   code via vectors related to IRQDest elements (boo#964452).
+
   - CVE-2013-4537: The ssi_sd_transfer function in hw/sd/ssi-sd.c allowed
   remote attackers to execute arbitrary code via a crafted arglen value in
   a savevm image (boo#962642).
-  - ... 
+
+  - ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "xen on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"xen on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0995_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0995_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -208,6 +221,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

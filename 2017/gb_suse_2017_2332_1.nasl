@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2332_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_suse_2017_2332_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for freerdp openSUSE-SU-2017:2332-1 (freerdp)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851604");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-03 07:18:44 +0200 (Sun, 03 Sep 2017)");
   script_cve_id("CVE-2017-2834", "CVE-2017-2835", "CVE-2017-2836", "CVE-2017-2837",
                 "CVE-2017-2838", "CVE-2017-2839");
@@ -36,44 +36,45 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for freerdp openSUSE-SU-2017:2332-1 (freerdp)");
-  script_tag(name: "summary", value: "Check the version of freerdp");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "
-  This update for freerdp fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of freerdp");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for freerdp fixes the following issues:
 
   - CVE-2017-2834: Out-of-bounds write in license_recv() (bsc#1050714)
+
   - CVE-2017-2835: Out-of-bounds write in rdp_recv_tpkt_pdu (bsc#1050712)
+
   - CVE-2017-2836: Rdp Client Read Server Proprietary Certificate Denial of
   Service (bsc#1050699)
+
   - CVE-2017-2837: Client GCC Read Server Security Data DoS (bsc#1050704)
+
   - CVE-2017-2838: Client License Read Product Info Denial of Service
   Vulnerability (bsc#1050708)
+
   - CVE-2017-2839: Client License Read Challenge Packet Denial of Service
   (bsc#1050711)
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
-  script_tag(name: "affected", value: "freerdp on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"freerdp on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2332_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2332_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {

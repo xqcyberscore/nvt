@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1691_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1691_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2016:1691-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851359");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:27:54 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2016-2815", "CVE-2016-2818", "CVE-2016-2819", "CVE-2016-2821",
                 "CVE-2016-2822", "CVE-2016-2824", "CVE-2016-2828", "CVE-2016-2831",
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2016:1691-1 (MozillaFirefox,)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2016:1691-1 (MozillaFirefox, )");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox, MozillaFirefox-branding-SLE, mozilla-nss and mozilla-nspr
   were updated to fix nine security issues.
 
@@ -47,53 +46,63 @@ of detect NVT and check if the version is vulnerable or not.");
   to version 3.21.1.
 
   These security issues were fixed:
+
   - CVE-2016-2834: Memory safety bugs in NSS (MFSA 2016-61) (bsc#983639).
+
   - CVE-2016-2824: Out-of-bounds write with WebGL shader (MFSA 2016-53)
   (bsc#983651).
+
   - CVE-2016-2822: Addressbar spoofing though the SELECT element (MFSA
   2016-52) (bsc#983652).
+
   - CVE-2016-2821: Use-after-free deleting tables from a contenteditable
   document (MFSA 2016-51) (bsc#983653).
+
   - CVE-2016-2819: Buffer overflow parsing HTML5 fragments (MFSA 2016-50)
   (bsc#983655).
+
   - CVE-2016-2828: Use-after-free when textures are used in WebGL operations
   after recycle pool destruction (MFSA 2016-56) (bsc#983646).
+
   - CVE-2016-2831: Entering fullscreen and persistent pointerlock without
   user permission (MFSA 2016-58) (bsc#983643).
+
   - CVE-2016-2815, CVE-2016-2818: Miscellaneous memory safety hazards (MFSA
   2016-49) (bsc#983638)
 
   These non-security issues were fixed:
+
   - bsc#982366: Unknown SSL protocol error in connections
+
   - Fix crashes on aarch64
+
   * Determine page size at runtime (bsc#984006)
+
   * Allow aarch64 to work in safe mode (bsc#985659)
+
   - Fix crashes on mainframes
 
   All extensions must now be signed by addons.mozilla.org. Please read
   README.SUSE for more details.");
-  script_tag(name: "affected", value: "MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:1691_1");
+  script_xref(name:"SUSE-SU", value:"2016:1691_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -296,7 +305,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -526,6 +535,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

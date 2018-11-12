@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0570_1.nasl 9041 2018-03-07 11:55:11Z cfischer $
+# $Id: gb_suse_2018_0570_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for freexl openSUSE-SU-2018:0570-1 (freexl)
 #
@@ -27,58 +27,58 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851712");
-  script_version("$Revision: 9041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:55:11 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-02 08:42:04 +0100 (Fri, 02 Mar 2018)");
-  script_cve_id("CVE-2018-7435", "CVE-2018-7436", "CVE-2018-7437", "CVE-2018-7438", 
+  script_cve_id("CVE-2018-7435", "CVE-2018-7436", "CVE-2018-7437", "CVE-2018-7438",
                 "CVE-2018-7439");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for freexl openSUSE-SU-2018:0570-1 (freexl)");
-  script_tag(name: "summary", value: "Check the version of freexl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for freexl fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of freexl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for freexl fixes the following issues:
 
   freexl was updated to version 1.0.5:
 
   * No changelog provided by upstream
+
   * Various heapoverflows in 1.0.4 have been fixed:
 
   * CVE-2018-7439: heap-buffer-overflow in freexl.c:3912
   read_mini_biff_next_record (boo#1082774)
+
   * CVE-2018-7438: heap-buffer-overflow in freexl.c:383
   parse_unicode_string (boo#1082775)
+
   * CVE-2018-7437: heap-buffer-overflow in freexl.c:1866
   parse_SST(boo#1082776)
+
   * CVE-2018-7436: heap-buffer-overflow in freexl.c:1805 parse_SST
   parse_SST (boo#1082777)
+
   * CVE-2018-7435: heap-buffer-overflow in freexl::destroy_cell
   (boo#1082778)");
-  script_tag(name: "affected", value: "freexl on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"freexl on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0570_1");
+  script_xref(name:"openSUSE-SU", value:"2018:0570_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -107,6 +107,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

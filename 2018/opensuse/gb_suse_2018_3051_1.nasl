@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3051_1.nasl 11902 2018-10-15 09:26:53Z santu $
+# $Id: gb_suse_2018_3051_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2018:3051-1 (MozillaThunderbird)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851928");
-  script_version("$Revision: 11902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-07 08:24:56 +0200 (Sun, 07 Oct 2018)");
   script_cve_id("CVE-2017-16541", "CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12361", "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12367", "CVE-2018-12371", "CVE-2018-12376", "CVE-2018-12377", "CVE-2018-12378", "CVE-2018-12383", "CVE-2018-12385", "CVE-2018-16541", "CVE-2018-5156", "CVE-2018-5187", "CVE-2018-5188");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for MozillaThunderbird openSUSE-SU-2018:3051-1 (MozillaThunderbird)");
   script_tag(name:"summary", value:"Check the version of MozillaThunderbird");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for Mozilla Thunderbird to version 60.2.1 fixes multiple
+  script_tag(name:"insight", value:"This update for Mozilla Thunderbird to version 60.2.1 fixes multiple
   issues.
 
   Multiple security issues were fixed in the Mozilla platform as advised in
@@ -47,40 +46,59 @@ if(description)
   potentially risks in browser or browser-like contexts:
 
   - CVE-2018-12377: Use-after-free in refresh driver timers (bsc#1107343)
+
   - CVE-2018-12378: Use-after-free in IndexedDB (bsc#1107343)
+
   - CVE-2017-16541: Proxy bypass using automount and autofs (bsc#1066489)
+
   - CVE-2018-12376: Memory safety bugs fixed in Firefox 62 and Firefox ESR
   60.2 (bsc#1107343)
+
   - CVE-2018-12385: Crash in TransportSecurityInfo due to cached data
   (bsc#1109363)
+
   - CVE-2018-12383: Setting a master password did not delete unencrypted
   previously stored passwords (bsc#1107343)
+
   - CVE-2018-12359: Buffer overflow using computed size of canvas element
   (bsc#1098998)
+
   - CVE-2018-12360: Use-after-free when using focus() (bsc#1098998)
+
   - CVE-2018-12361: Integer overflow in SwizzleData (bsc#1098998)
+
   - CVE-2018-12362: Integer overflow in SSSE3 scaler (bsc#1098998)
+
   - CVE-2018-12363: Use-after-free when appending DOM nodes (bsc#1098998)
+
   - CVE-2018-12364: CSRF attacks through 307 redirects and NPAPI plugins
   (bsc#1098998)
+
   - CVE-2018-12365: Compromised IPC child process can list local filenames
   (bsc#1098998)
+
   - CVE-2018-12371: Integer overflow in Skia library during edge builder
   allocation (bsc#1098998)
+
   - CVE-2018-12366: Invalid data handling during QCMS transformations
   (bsc#1098998)
+
   - CVE-2018-12367: Timing attack mitigation of PerformanceNavigationTiming
   (bsc#1098998)
+
   - CVE-2018-5156: Media recorder segmentation fault when track type is
   changed during capture (bsc#1098998)
+
   - CVE-2018-5187: Memory safety bugs fixed in Firefox 61, Firefox ESR 60.1,
   and Thunderbird 60 (bsc#1098998)
+
   - CVE-2018-5188: Memory safety bugs fixed in Firefox 61, Firefox ESR 60.1,
   Firefox ESR 52.9, and Thunderbird 60 (bsc#1098998)
 
   Other bugs fixes:
 
   - Fix date display issues (bsc#1109379)
+
   - Fix start-up crash due to folder name with special characters
   (bsc#1107772)
 
@@ -110,19 +128,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

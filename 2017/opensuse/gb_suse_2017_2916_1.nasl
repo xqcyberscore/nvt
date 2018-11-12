@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2916_1.nasl 11533 2018-09-21 19:24:04Z cfischer $
+# $Id: gb_suse_2017_2916_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2017:2916-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851639");
-  script_version("$Revision: 11533 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:24:04 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-01 21:48:37 +0100 (Wed, 01 Nov 2017)");
   script_cve_id("CVE-2017-15588", "CVE-2017-15589", "CVE-2017-15590", "CVE-2017-15591",
                 "CVE-2017-15592", "CVE-2017-15593", "CVE-2017-15594", "CVE-2017-15595",
@@ -91,7 +91,7 @@ if(description)
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
   script_tag(name:"affected", value:"xen on openSUSE Leap 42.2");
-  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2017:2916_1");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -99,19 +99,16 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {

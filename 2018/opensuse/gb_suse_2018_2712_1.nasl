@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2712_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2712_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for python3 openSUSE-SU-2018:2712-1 (python3)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851890");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-15 07:24:32 +0200 (Sat, 15 Sep 2018)");
   script_cve_id("CVE-2018-1060", "CVE-2018-1061");
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,6 +44,7 @@ if(description)
   - CVE-2018-1061: Prevent catastrophic backtracking in the
   difflib.IS_LINE_JUNK method. An attacker could have used this flaw to
   cause denial of service (bsc#1088004).
+
   - CVE-2018-1060: Prevent catastrophic backtracking in pop3lib's apop()
   method. An attacker could have used this flaw to cause denial of service
   (bsc#1088009).
@@ -52,6 +53,7 @@ if(description)
 
   - Sort files and directories when creating tarfile archives so that they
   are created in a more predictable way. (bsc#1086001)
+
   - Add -fwrapv to OPTS (bsc#1107030)
 
   This update was imported from the SUSE:SLE-12:Update update project.
@@ -78,19 +80,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

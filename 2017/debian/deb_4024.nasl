@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4024.nasl 7728 2017-11-10 09:05:33Z teissa $
+# $Id: deb_4024.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4024-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704024");
-  script_version("$Revision: 7728 $");
+  script_version("$Revision: 12308 $");
   script_cve_id("CVE-2017-15398", "CVE-2017-15399");
   script_name("Debian Security Advisory DSA 4024-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-10 10:05:33 +0100 (Fri, 10 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-08 00:00:00 +0100 (Wed, 08 Nov 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3202_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3202_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:3202-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851937");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:28:53 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-13096", "CVE-2018-13097", "CVE-2018-13098", "CVE-2018-13099", "CVE-2018-13100", "CVE-2018-14613", "CVE-2018-14617", "CVE-2018-14633", "CVE-2018-16276", "CVE-2018-16597", "CVE-2018-17182", "CVE-2018-7480", "CVE-2018-7757");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,27 +45,34 @@ if(description)
   - CVE-2018-13096: A denial of service (out-of-bounds memory access and
   BUG) can occur upon encountering an abnormal bitmap size when mounting a
   crafted f2fs image (bnc#1100062).
+
   - CVE-2018-13097: There is an out-of-bounds read or a divide-by-zero error
   for an incorrect user_block_count in a corrupted f2fs image, leading to
   a denial of service (BUG) (bnc#1100061).
+
   - CVE-2018-13098: A denial of service (slab out-of-bounds read and BUG)
   can occur for a modified f2fs filesystem image in which FI_EXTRA_ATTR is
   set in an inode (bnc#1100060).
+
   - CVE-2018-13099: A denial of service (out-of-bounds memory access and
   BUG) can occur for a modified f2fs filesystem image in which an inline
   inode contains an invalid reserved blkaddr (bnc#1100059).
+
   - CVE-2018-13100: An issue was discovered in fs/f2fs/super.c which did not
   properly validate secs_per_zone in a corrupted f2fs image, as
   demonstrated by a divide-by-zero error (bnc#1100056).
+
   - CVE-2018-14613: There is an invalid pointer dereference in
   io_ctl_map_page() when mounting and operating a crafted btrfs image,
   because of a lack of block group item validation in check_leaf_item in
   fs/btrfs/tree-checker.c (bnc#1102896).
+
   - CVE-2018-14617: There is a NULL pointer dereference and panic in
   hfsplus_lookup() in fs/hfsplus/dir.c when opening a file (that is
   purportedly a hard link) in an hfs+ filesystem that has malformed
   catalog data, and is mounted read-only without a metadata directory
   (bnc#1102870).
+
   - CVE-2018-14633: A security flaw was found in the
   chap_server_compute_md5() function in the ISCSI target code in the Linux
   kernel in a way an authentication request from an ISCSI initiator is
@@ -79,6 +86,7 @@ if(description)
   escalation cannot be fully ruled out, although we believe it is highly
   unlikely. Kernel versions 4.18.x, 4.14.x and 3.10.x are believed to be
   vulnerable (bnc#1107829).
+
   - CVE-2018-16276: Local attackers could use user access read/writes with
   incorrect bounds checking in the ...
 
@@ -93,19 +101,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

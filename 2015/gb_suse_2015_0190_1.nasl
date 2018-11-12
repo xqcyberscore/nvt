@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0190_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0190_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2015:0190-1 (java-1_7_0-openjdk)
 #
@@ -27,59 +27,73 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850671");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:27:41 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6585", "CVE-2014-6587", "CVE-2014-6591", "CVE-2014-6593", "CVE-2014-6601", "CVE-2015-0383", "CVE-2015-0395", "CVE-2015-0400", "CVE-2015-0407", "CVE-2015-0408", "CVE-2015-0410", "CVE-2015-0412");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2015:0190-1 (java-1_7_0-openjdk)");
-  script_tag(name: "summary", value: "Check the version of java-1_7_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of java-1_7_0-openjdk");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"OpenJDK was updated to 2.5.4 - OpenJDK 7u75 to fix security issues and
   bugs:
 
   * Security fixes
+
   - S8046656: Update protocol support
+
   - S8047125, CVE-2015-0395: (ref) More phantom object references
+
   - S8047130: Fewer escapes from escape analysis
+
   - S8048035, CVE-2015-0400: Ensure proper proxy protocols
+
   - S8049253: Better GC validation
+
   - S8050807, CVE-2015-0383: Better performing performance data handling
+
   - S8054367, CVE-2015-0412: More references for endpoints
+
   - S8055304, CVE-2015-0407: More boxing for DirectoryComboBoxModel
+
   - S8055309, CVE-2015-0408: RMI needs better transportation considerations
+
   - S8055479: TLAB stability
+
   - S8055489, CVE-2014-6585: Better substitution formats
+
   - S8056264, CVE-2014-6587: Multicast support improvements
+
   - S8056276, CVE-2014-6591: Fontmanager feature improvements
+
   - S8057555, CVE-2014-6593: Less cryptic cipher suite management
+
   - S8058982, CVE-2014-6601: Better verification of an exceptional
   invokespecial
+
   - S8059485, CVE-2015-0410: Resolve parsing ambiguity
+
   - S8061210, CVE-2014-3566: Issues in TLS");
-  script_tag(name: "affected", value: "java-1_7_0-openjdk on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:0190_1");
+  script_tag(name:"affected", value:"java-1_7_0-openjdk on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:0190_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -198,6 +212,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

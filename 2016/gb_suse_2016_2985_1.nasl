@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2985_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_2985_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2985-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851438");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-03 05:43:39 +0100 (Sat, 03 Dec 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5556", "CVE-2016-5568",
                 "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
@@ -36,9 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2985-1 (java-1_8_0-openjdk)");
-  script_tag(name: "summary", value: "Check the version of java-1_8_0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of java-1_8_0-openjdk");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"OpenJDK Java was updated to jdk8u111 (icedtea 3.2.0) to fix the following
   issues:
 
@@ -70,6 +69,7 @@ of detect NVT and check if the version is vulnerable or not.");
   + S8160838, CVE-2016-5597: Better HTTP service (bsc#1005528)
   + PR3206, RH1367357: lcms2: Out-of-bounds read in Type_MLU_Read()
   + CVE-2016-5556 (bsc#1005524)
+
   * New features
   + PR1370: Provide option to build without debugging
   + PR1375: Provide option to strip and link debugging info after build
@@ -79,6 +79,7 @@ of detect NVT and check if the version is vulnerable or not.");
   + PR3182: Support building without pre-compiled headers
   + PR3183: Support Fedora/RHEL system crypto policy
   + PR3221: Use pkgconfig to detect Kerberos CFLAGS and libraries
+
   * Import of OpenJDK 8 u102 build 14
   + S4515292: ReferenceType.isStatic() returns true for arrays
   + S4858370: JDWP: Memory Leak: GlobalRefs never deleted when
@@ -98,28 +99,25 @@ of detect NVT and check if the version is vulnerable or not.");
   + S8044772: ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java-1_8_0-openjdk on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2985_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2985_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -196,6 +194,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

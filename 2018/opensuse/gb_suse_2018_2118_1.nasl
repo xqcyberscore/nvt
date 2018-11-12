@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2118_1.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_suse_2018_2118_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2118-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851828");
-  script_version("$Revision: 10692 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-29 05:59:28 +0200 (Sun, 29 Jul 2018)");
   script_cve_id("CVE-2018-13053", "CVE-2018-13405", "CVE-2018-13406", "CVE-2018-9385");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for the openSUSE-SU-2018:2118-1 (the)");
   script_tag(name:"summary", value:"Check the version of the");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  The openSUSE 42.3 was updated to 4.4.140 to receive various security and
+  script_tag(name:"insight", value:"The openSUSE 42.3 was updated to 4.4.140 to receive various security and
   bugfixes.
 
   The following security bugs were fixed:
@@ -46,12 +45,15 @@ if(description)
   - CVE-2018-13053: The alarm_timer_nsleep function had an integer overflow
   via a large relative timeout because ktime_add_safe was not used
   (bnc#1099924).
+
   - CVE-2018-9385: Prevent overread of the 'driver_override' buffer
   (bsc#1100491).
+
   - CVE-2018-13405: The inode_init_owner function allowed local users to
   create files with an unintended group ownership allowing attackers to
   escalate privileges by making a plain file executable and SGID
   (bnc#1100416).
+
   - CVE-2018-13406: An integer overflow in the uvesafb_setcmap function
   could have result in local attackers being able to crash the kernel or
   potentially elevate privileges because kmalloc_array is not used
@@ -61,35 +63,57 @@ if(description)
 
   - 1wire: family module autoload fails because of upper/lower case mismatch
   (bnc#1012382).
+
   - ALSA: hda - Clean up ALC299 init code (bsc#1099810).
+
   - ALSA: hda - Enable power_save_node for CX20722 (bsc#1099810).
+
   - ALSA: hda - Fix a wrong FIXUP for alc289 on Dell machines (bsc#1099810).
+
   - ALSA: hda - Fix incorrect usage of IS_REACHABLE() (bsc#1099810).
+
   - ALSA: hda - Fix pincfg at resume on Lenovo T470 dock (bsc#1099810).
+
   - ALSA: hda - Handle kzalloc() failure in snd_hda_attach_pcm_stream()
   (bnc#1012382).
+
   - ALSA: hda - Use acpi_dev_present() (bsc#1099810).
+
   - ALSA: hda - add a new condition to check if it is thinkpad (bsc#1099810).
+
   - ALSA: hda - silence uninitialized variable warning in activate_amp_in()
   (bsc#1099810).
+
   - ALSA: hda/patch_sigmatel: Add AmigaOne X1000 pinconfigs (bsc#1099810).
+
   - ALSA: hda/realtek - Add a quirk for FSC ESPRIMO U9210 (bsc#1099810).
+
   - ALSA: hda/realtek - Add headset mode support for Dell laptop
   (bsc#1099810).
+
   - ALSA: hda/realtek - Add support headset mode for DELL WYSE (bsc#1099810).
+
   - ALSA: hda/realtek - Clevo P950ER ALC1220 Fixup (bsc#1099810).
+
   - ALSA: hda/realtek - Enable Thinkpad Dock device for ALC298 platform
   (bsc#1099810).
+
   - ALSA: hda/realtek - Enable mic-mute hotkey for several Lenovo AIOs
   (bsc#1099810).
+
   - ALSA: hda/realtek - Fix Dell headset Mic can't record (bsc#1099810).
+
   - ALSA: hda/realtek - Fix pop noise on Lenovo P50 and co (bsc#1099810).
+
   - ALSA: hda/realtek - Fix the problem of two front mics on more machines
   (bsc#1099810).
+
   - ALSA: hda/realtek - Fixup for HP x360 laptops with BO speakers
   (bsc#1099810).
+
   - ALSA: hda/realtek - Fixup mute led on HP Spectre x360 (bsc#1099810).
-  - ALSA: hda/realtek - Make dock sound work on ThinkPad L57 ... 
+
+  - ALSA: hda/realtek - Make dock sound work on ThinkPad L57 ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"the on openSUSE Leap 42.3");
@@ -102,19 +126,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

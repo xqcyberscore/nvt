@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2259_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2259_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for clamav openSUSE-SU-2018:2259-1 (clamav)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851976");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-0360", "CVE-2018-0361");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:25:12 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for clamav openSUSE-SU-2018:2259-1 (clamav)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2259_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00027.html");
@@ -56,17 +56,23 @@ if(description)
 
   - CVE-2018-0360: HWP integer overflow, infinite loop vulnerability
   (bsc#1101410)
+
   - CVE-2018-0361: PDF object length check, unreasonably long time to parse
   relatively small file (bsc#1101412)
+
   - Buffer over-read in unRAR code due to missing max value checks in table
   initialization
+
   - Libmspack heap buffer over-read in CHM parser (bsc#1103040)
+
   - PDF parser bugs
 
   The following other changes were made:
 
   - Disable YARA support for licensing reasons (bsc#1101654).
+
   - Add HTTPS support for clamsubmit
+
   - Fix for DNS resolution for users on IPv4-only machines where IPv6 is not
   available or is link-local only
 

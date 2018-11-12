@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1698_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1698_1.nasl 12288 2018-11-09 14:02:45Z cfischer $
 #
 # SuSE Update for Linux SUSE-SU-2014:1698-1 (Linux)
 #
@@ -27,50 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851002");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:02:45 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:30:36 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-8133", "CVE-2014-9090", "CVE-2014-9322");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux SUSE-SU-2014:1698-1 (Linux)");
-  script_tag(name: "summary", value: "Check the version of Linux");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The SUSE Linux Enterprise 11 Service Pack 2 LTSS kernel has been updated
+  script_tag(name:"summary", value:"Check the version of Linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The SUSE Linux Enterprise 11 Service Pack 2 LTSS kernel has been updated
   to fix security issues on kernels on the x86_64 architecture.
 
   The following security bugs have been fixed:
 
-  *
-
-  CVE-2014-9322: A local privilege escalation in the x86_64 32bit
+  * CVE-2014-9322: A local privilege escalation in the x86_64 32bit
   compatibility signal handling was fixed, which could have been used by
   local attackers to crash the machine or execute code.
 
-  *
-
-  CVE-2014-9090: The do_double_fault function in
+  * CVE-2014-9090: The do_double_fault function in
   arch/x86/kernel/traps.c in the Linux kernel did not properly handle faults
   associated with the Stack Segment (SS) segment register, which allowed
   local users to cause a denial of service (panic) via a modify_ldt system
   call, as demonstrated by sigreturn_32 in the 1
-  -clock-tests test suite.
 
-  *
+  - clock-tests test suite.
 
-  CVE-2014-8133: Insufficient validation of TLS register usage could
+  * CVE-2014-8133: Insufficient validation of TLS register usage could
   have leaked information from the kernel stack to userspace.
-
-  Security Issues:
-
-  * CVE-2014-8133
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8133 
-  * CVE-2014-9090
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9090 
-  * CVE-2014-9322
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-9322 
 
   Indications:
 
@@ -79,27 +64,25 @@ if(description)
   Special Instructions and Notes:
 
   Please reboot the system after installing this update.");
-  script_tag(name: "affected", value: "Linux on SUSE Linux Enterprise Server 11 SP2 LTSS, SUSE Linux Enterprise Server 11 SP1 LTSS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:1698_1");
+
+  script_tag(name:"affected", value:"Linux on SUSE Linux Enterprise Server 11 SP2 LTSS, SUSE Linux Enterprise Server 11 SP1 LTSS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:1698_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLES11\.0SP2|SLES11\.0SP1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP2")
 {
@@ -200,7 +183,7 @@ if(release == "SLES11.0SP2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -304,6 +287,6 @@ if(release == "SLES11.0SP1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

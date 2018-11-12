@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1229_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_1229_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for bash openSUSE-SU-2014:1229-1 (bash)
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850615");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:58:25 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-7169", "CVE-2014-7186", "CVE-2014-7187", "CVE-2014-6271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for bash openSUSE-SU-2014:1229-1 (bash)");
-  script_tag(name: "insight", value: "
-  The command-line shell 'bash' evaluates environment variables, which
+  script_tag(name:"insight", value:"The command-line shell 'bash' evaluates environment variables, which
   allows the injection of characters and might be used to access files on
   the system in some circumstances (CVE-2014-7169).
 
@@ -53,30 +52,27 @@ if(description)
   Nested HERE documents could lead to a crash of bash.
 
   CVE-2014-7187: Nesting of for loops could lead to a crash of bash.");
-  script_tag(name: "affected", value: "bash on openSUSE 12.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"bash on openSUSE 12.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "openSUSE-SU", value: "2014:1229_1");
+  script_xref(name:"openSUSE-SU", value:"2014:1229_1");
   script_tag(name:"summary", value:"Check for the Version of bash");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -177,6 +173,6 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

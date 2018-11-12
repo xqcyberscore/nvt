@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_gss2_user_enumeration_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_openssh_gss2_user_enumeration_vuln_lin.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813888");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12308 $");
   script_cve_id("CVE-2018-15919");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-05 13:12:09 +0530 (Wed, 05 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH 'auth2-gss.c' User Enumeration Vulnerability (Linux)");

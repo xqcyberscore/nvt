@@ -23,11 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The openSUSE 11.2 kernel was updated to fix lots of security issues.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850163");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-04-22 16:44:44 +0200 (Fri, 22 Apr 2011)");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"SUSE-SA", value:"2011-017");
+  script_cve_id("CVE-2010-1173", "CVE-2010-3699", "CVE-2010-3705", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3858", "CVE-2010-3875", "CVE-2010-3876", "CVE-2010-3877", "CVE-2010-3880", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4075", "CVE-2010-4076", "CVE-2010-4077", "CVE-2010-4083", "CVE-2010-4163", "CVE-2010-4243", "CVE-2010-4248", "CVE-2010-4342", "CVE-2010-4346", "CVE-2010-4527", "CVE-2010-4529", "CVE-2010-4648", "CVE-2010-4649", "CVE-2010-4650", "CVE-2010-4668", "CVE-2011-0521", "CVE-2011-0711", "CVE-2011-0712", "CVE-2011-1010", "CVE-2011-1012", "CVE-2011-1082", "CVE-2011-1090", "CVE-2011-1163", "CVE-2011-1182", "CVE-2011-1476", "CVE-2011-1477", "CVE-2011-1493");
+  script_name("SuSE Update for kernel SUSE-SA:2011:017");
+
+  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.2");
+  script_tag(name:"impact", value:"local privilege escalation, remote denial of service");
+  script_tag(name:"affected", value:"kernel on openSUSE 11.2");
+  script_tag(name:"insight", value:"The openSUSE 11.2 kernel was updated to fix lots of security issues.
 
   This will probably be the last 11.2 kernel update released by the
-  SUSE Security Team, as our suppport for 11.2 ends in 1 month.
+  SUSE Security Team, as our support for 11.2 ends in 1 month.
 
   Following security issues were fixed:
   CVE-2011-1493: In the rose networking stack, when parsing the
@@ -76,52 +95,23 @@ tag_insight = "The openSUSE 11.2 kernel was updated to fix lots of security issu
   properly audit INET_DIAG bytecode, which allowed local users
   to cause a denial of service (kernel infinite loop) via crafted
   INET_DIAG_REQ_BYTECODE instructions in a netlink message that contains
-  multiple attribute elements, as demonst ... 
+  multiple attribute elements, as demonst ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "local privilege escalation, remote denial of service";
-tag_affected = "kernel on openSUSE 11.2";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850163");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-04-22 16:44:44 +0200 (Fri, 22 Apr 2011)");
-  script_tag(name:"cvss_base", value:"8.3");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "SUSE-SA", value: "2011-017");
-  script_cve_id("CVE-2010-1173", "CVE-2010-3699", "CVE-2010-3705", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3858", "CVE-2010-3875", "CVE-2010-3876", "CVE-2010-3877", "CVE-2010-3880", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4075", "CVE-2010-4076", "CVE-2010-4077", "CVE-2010-4083", "CVE-2010-4163", "CVE-2010-4243", "CVE-2010-4248", "CVE-2010-4342", "CVE-2010-4346", "CVE-2010-4527", "CVE-2010-4529", "CVE-2010-4648", "CVE-2010-4649", "CVE-2010-4650", "CVE-2010-4668", "CVE-2011-0521", "CVE-2011-0711", "CVE-2011-0712", "CVE-2011-1010", "CVE-2011-1012", "CVE-2011-1082", "CVE-2011-1090", "CVE-2011-1163", "CVE-2011-1182", "CVE-2011-1476", "CVE-2011-1477", "CVE-2011-1493");
-  script_name("SuSE Update for kernel SUSE-SA:2011:017");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.2")
 {
@@ -270,6 +260,6 @@ if(release == "openSUSE11.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

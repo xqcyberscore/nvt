@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0547_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0547_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:0547-1 (Linux Kernel)
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851516");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-23 05:05:51 +0100 (Thu, 23 Feb 2017)");
   script_cve_id("CVE-2017-5897", "CVE-2017-5970", "CVE-2017-5986", "CVE-2017-6074");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:0547-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.1 kernel was updated to receive various security and
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.1 kernel was updated to receive various security and
   bugfixes.
 
   The following security bugs were fixed:
@@ -51,72 +48,89 @@ of detect NVT and check if the version is vulnerable or not.");
   service (invalid free) or possibly have unspecified other impact via an
   application that made an IPV6_RECVPKTINFO setsockopt system call
   (bnc#1026024).
+
   - CVE-2017-5986: Race condition in the sctp_wait_for_sndbuf function in
   net/sctp/socket.c in the Linux kernel allowed local users to cause a
   denial of service (assertion failure and panic) via a multithreaded
   application that peels off an association in a certain buffer-full state
   (bnc#1025235).
+
   - CVE-2017-5970: The ipv4_pktinfo_prepare function in
   net/ipv4/ip_sockglue.c in the Linux kernel allowed attackers to cause a
   denial of service (system crash) via (1) an application that made
   crafted system calls or possibly (2) IPv4 traffic with invalid IP
   options (bnc#1024938).
+
   - CVE-2017-5897: A potential remote denial of service within the IPv6 GRE
   protocol was fixed. (bsc#1023762)
 
   The following non-security bugs were fixed:
 
   - btrfs: support NFSv2 export (bnc#929871).
+
   - btrfs: Direct I/O: Fix space accounting (bsc#1025058).
+
   - btrfs: add RAID 5/6 BTRFS_RBIO_REBUILD_MISSING operation (bsc#1025069).
+
   - btrfs: bail out if block group has different mixed flag (bsc#1025072).
+
   - btrfs: be more precise on errors when getting an inode from disk
   (bsc#981038).
+
   - btrfs: check pending chunks when shrinking fs to avoid corruption
   (bnc#936445).
+
   - btrfs: check prepare_uptodate_page() error code earlier (bnc#966910).
+
   - btrfs: do not BUG() during drop snapshot (bsc#1025076).
+
   - btrfs: do not collect ordered extents when logging that inode exists
   (bsc#977685).
+
   - btrfs: do not initialize a space info as full to prevent ENOSPC
   (bnc#944001).
+
   - btrfs: do not leak reloc root nodes on error (bsc#1025074).
+
   - btrfs: fix block group -&amp gt space_info null pointer dereference
   (bnc#935088).
+
   - btrfs: fix chunk allocation regression leading to transaction abort
   (bnc#938550).
+
   - btrfs: fix crash on close_ctree() if cleaner starts new transaction
   (bnc#938891).
+
   - btrfs: fix deadlock between direct IO reads and buffered writes
   (bsc#973855).
+
   - btrfs: fix deadlock between direct IO write and defrag/readpages
   (bnc#965344).
+
   - btrfs: fix device replace of a missing RAID 5/6 device (bsc#1025057).
-  - btrfs: fix empty symlink after creating symlink and fsync pa ... 
+
+  - btrfs: fix empty symlink after creating symlink and fsync pa ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0547_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0547_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -433,6 +447,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

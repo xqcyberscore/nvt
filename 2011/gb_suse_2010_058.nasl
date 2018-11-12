@@ -7,7 +7,7 @@
 # System Generated Check
 #
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -23,52 +23,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_impact = "remote code execution";
-tag_affected = "acoread on openSUSE 11.1, openSUSE 11.2";
-tag_insight = "Specially crafted PDF documents could crash acroread or lead to
-  execution of arbitrary code. acroread was updated to version 9.4.1
-  which addresses the issues.";
-tag_solution = "Please Install the Updated Packages.";
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850151");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12290 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "SUSE-SA", value: "2010-058");
+  script_xref(name:"SUSE-SA", value:"2010-058");
   script_cve_id("CVE-2010-3654", "CVE-2010-4091");
   script_name("SuSE Update for acoread SUSE-SA:2010:058");
 
   script_tag(name:"summary", value:"Check for the Version of acoread");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.1|openSUSE11\.2)");
+  script_tag(name:"impact", value:"remote code execution");
+  script_tag(name:"affected", value:"acoread on openSUSE 11.1, openSUSE 11.2");
+  script_tag(name:"insight", value:"Specially crafted PDF documents could crash acroread or lead to
+  execution of arbitrary code. acroread was updated to version 9.4.1
+  which addresses the issues.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.1")
 {
@@ -85,7 +76,7 @@ if(release == "openSUSE11.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -105,6 +96,6 @@ if(release == "openSUSE11.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

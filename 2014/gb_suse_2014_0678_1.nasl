@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0678_1.nasl 9576 2018-04-24 07:24:33Z cfischer $
+# $Id: gb_suse_2014_0678_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0678-1 (kernel)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850587");
-  script_version("$Revision: 9576 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 09:24:33 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 15:13:41 +0530 (Mon, 26 May 2014)");
   script_cve_id("CVE-2013-4579", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7264",
                 "CVE-2013-7265", "CVE-2013-7281", "CVE-2014-0069", "CVE-2014-0101",
@@ -41,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for kernel openSUSE-SU-2014:0678-1 (kernel)");
 
-  tag_insight = "This Linux kernel security update fixes various security issues and bugs.
+  script_tag(name:"affected", value:"kernel on openSUSE 13.1");
+  script_tag(name:"insight", value:"This Linux kernel security update fixes various security issues and bugs.
 
   The Linux Kernel was updated to fix various security issues and bugs.
 
@@ -55,6 +54,7 @@ if(description)
   potentially execute code in the kernel (CVE-2014-1737 CVE-2014-1738).
 
   Other security issues and bugfixes:
+
   - netfilter: nf_nat: fix access to uninitialized buffer in IRC NAT helper
   (bnc#860835 CVE-2014-1690).
 
@@ -70,14 +70,20 @@ if(description)
   - Update arm config files: Enable all USB-to-serial drivers Specifically,
   enable USB_SERIAL_WISHBONE and USB_SERIAL_QT2 on all arm flavors.
 
-  - mei: limit the number of consecutive resets (bnc#821619,bnc#852656).
-  - mei: revamp mei reset state machine (bnc#821619,bnc#852656).
+  - mei: limit the number of consecutive resets (bnc#821619, bnc#852656).
+
+  - mei: revamp mei reset state machine (bnc#821619, bnc#852656).
+
   - mei: use hbm idle state to prevent spurious resets (bnc#821619).
+
   - mei: do not run reset flow from the interrupt thread
-  (bnc#821619,bnc#852656).
+  (bnc#821619, bnc#852656).
+
   - mei: don't get stuck in select during reset (bnc#821619).
+
   - mei: wake also writers on reset (bnc#821619).
-  - mei: remove flash_work_queue (bnc#821619,bnc#852656).
+
+  - mei: remove flash_work_queue (bnc#821619, bnc#852656).
 
   - mei: me: do not load the driver if the FW doesn't support MEI interface
   (bnc#821619).
@@ -100,6 +106,7 @@ if(description)
   - i7core_edac: Fix PCI device reference count.
 
   - KABI: revert tcp: TSO packets automatic sizing.
+
   - KABI: revert tcp: TSQ can use a dynamic limit.
 
   - kabi: add exceptions for kvm and l2tp
@@ -110,36 +117,27 @@ if(description)
 
   - Update kabi files. The kABI r ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "kernel on openSUSE 13.1";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0678_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0678_1");
   script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -1434,6 +1432,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

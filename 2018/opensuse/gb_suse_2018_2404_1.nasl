@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2404_1.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_suse_2018_2404_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2404-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851863");
-  script_version("$Revision: 11092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:33:45 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2017-18344", "CVE-2018-10876", "CVE-2018-10877", "CVE-2018-10878", "CVE-2018-10879", "CVE-2018-10880", "CVE-2018-10881", "CVE-2018-10882", "CVE-2018-10883", "CVE-2018-14734", "CVE-2018-3620", "CVE-2018-3646", "CVE-2018-5390", "CVE-2018-5391");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,9 +37,7 @@ if(description)
   script_name("SuSE Update for the openSUSE-SU-2018:2404-1 (the)");
   script_tag(name:"summary", value:"Check the version of the");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.143 to receive various
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.143 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -51,38 +49,47 @@ if(description)
   allowed userspace applications to read arbitrary kernel memory (on a
   kernel built with CONFIG_POSIX_TIMERS and CONFIG_CHECKPOINT_RESTORE)
   (bnc#1102851 bnc#1103580).
+
   - CVE-2018-10876: A flaw was found in Linux kernel in the ext4 filesystem
   code. A use-after-free is possible in ext4_ext_remove_space() function
   when mounting and operating a crafted ext4 image. (bnc#1099811)
+
   - CVE-2018-10877: Linux kernel ext4 filesystem is vulnerable to an
   out-of-bound access in the ext4_ext_drop_refs() function when operating
   on a crafted ext4 filesystem image. (bnc#1099846)
+
   - CVE-2018-10878: A flaw was found in the ext4 filesystem. A local user
   can cause an out-of-bounds write and a denial of service or unspecified
   other impact is possible by mounting and operating a crafted ext4
   filesystem image. (bnc#1099813)
+
   - CVE-2018-10879: A flaw was found in the ext4 filesystem. A local user
   can cause a use-after-free in ext4_xattr_set_entry function and a denial
   of service or unspecified other impact may occur by renaming a file in a
   crafted ext4 filesystem image. (bnc#1099844)
+
   - CVE-2018-10880: Linux kernel is vulnerable to a stack-out-of-bounds
   write in the ext4 filesystem code when mounting and writing to a crafted
   ext4 image in ext4_update_inline_data(). An attacker could use this to
   cause a system crash and a denial of service. (bnc#1099845)
+
   - CVE-2018-10881: A flaw was found in the ext4 filesystem. A local user
   can cause an out-of-bound access in ext4_get_group_info function, a
   denial of service, and a system crash by mounting and operating on a
   crafted ext4 filesystem image. (bnc#1099864)
+
   - CVE-2018-10882: A flaw was found in the ext4 filesystem. A local user
   can cause an out-of-bound write in in fs/jbd2/transaction.c code, a
   denial of service, and a system crash by unmounting a crafted ext4
   filesystem image. (bnc#1099849)
+
   - CVE-2018-10883: A flaw was found in the ext4 filesystem. A local user
   can cause an out-of-bounds write in jbd2_journal_dirty_metadata(), a
   denial of service, and a system crash by mounting and operating on a
   crafted ext4 filesystem image. (bnc#1099863)
+
   - CVE-2018-14734: drivers/infiniband/core/ucma.c allowed
-  ucma_leave_ ... 
+  ucma_leave_ ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"the on openSUSE Leap 42.3");
@@ -95,19 +102,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

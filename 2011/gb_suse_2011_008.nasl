@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "This patch updates the SUSE Linux Enterprise Server 9 kernel to fix
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850159");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-16 14:19:17 +0100 (Wed, 16 Feb 2011)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"SUSE-SA", value:"2011-008");
+  script_cve_id("CVE-2010-2946", "CVE-2010-3067", "CVE-2010-3310", "CVE-2010-3442", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3873", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4081", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4158", "CVE-2010-4160", "CVE-2010-4164", "CVE-2010-4242", "CVE-2010-4258", "CVE-2010-4342", "CVE-2010-4527", "CVE-2010-4529");
+  script_name("SuSE Update for kernel SUSE-SA:2011:008");
+
+  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms", re:"ssh/login/release=SLES9\.0");
+  script_tag(name:"impact", value:"local privilege escalation, remote denial of service");
+  script_tag(name:"affected", value:"kernel on SUSE SLES 9");
+  script_tag(name:"insight", value:"This patch updates the SUSE Linux Enterprise Server 9 kernel to fix
   various security issues and some bugs.
 
   Following security issues were fixed:
@@ -73,52 +92,23 @@ tag_insight = "This patch updates the SUSE Linux Enterprise Server 9 kernel to f
   configure econet addresses via an SIOCSIFADDR ioctl call.
 
   CVE-2010-4258: The do_exit function in kernel/exit.c in the Linux
-  ... 
+  ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "local privilege escalation, remote denial of service";
-tag_affected = "kernel on SUSE SLES 9";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850159");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-02-16 14:19:17 +0100 (Wed, 16 Feb 2011)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "SUSE-SA", value: "2011-008");
-  script_cve_id("CVE-2010-2946", "CVE-2010-3067", "CVE-2010-3310", "CVE-2010-3442", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3873", "CVE-2010-4072", "CVE-2010-4073", "CVE-2010-4081", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4158", "CVE-2010-4160", "CVE-2010-4164", "CVE-2010-4242", "CVE-2010-4258", "CVE-2010-4342", "CVE-2010-4527", "CVE-2010-4529");
-  script_name("SuSE Update for kernel SUSE-SA:2011:008");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse_sles", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES9.0")
 {
@@ -159,6 +149,6 @@ if(release == "SLES9.0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0301_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0301_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:0301-1 (kernel)
 #
@@ -27,52 +27,55 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851176");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 06:16:13 +0100 (Tue, 02 Feb 2016)");
-  script_cve_id("CVE-2014-2568", "CVE-2014-8133", "CVE-2014-8989", "CVE-2014-9090", 
-                "CVE-2014-9419", "CVE-2014-9529", "CVE-2014-9683", "CVE-2014-9715", 
-                "CVE-2014-9728", "CVE-2014-9729", "CVE-2014-9730", "CVE-2014-9731", 
-                "CVE-2015-0272", "CVE-2015-0777", "CVE-2015-1420", "CVE-2015-1421", 
-                "CVE-2015-2041", "CVE-2015-2042", "CVE-2015-2150", "CVE-2015-2666", 
-                "CVE-2015-2830", "CVE-2015-2922", "CVE-2015-2925", "CVE-2015-3212", 
-                "CVE-2015-3339", "CVE-2015-3636", "CVE-2015-4001", "CVE-2015-4002", 
-                "CVE-2015-4003", "CVE-2015-4004", "CVE-2015-4036", "CVE-2015-4167", 
-                "CVE-2015-4692", "CVE-2015-4700", "CVE-2015-5157", "CVE-2015-5283", 
-                "CVE-2015-5307", "CVE-2015-5364", "CVE-2015-5366", "CVE-2015-5707", 
-                "CVE-2015-6937", "CVE-2015-7550", "CVE-2015-7799", "CVE-2015-7833", 
-                "CVE-2015-7872", "CVE-2015-7885", "CVE-2015-7990", "CVE-2015-8104", 
-                "CVE-2015-8215", "CVE-2015-8543", "CVE-2015-8550", "CVE-2015-8551", 
-                "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575", "CVE-2015-8767", 
+  script_cve_id("CVE-2014-2568", "CVE-2014-8133", "CVE-2014-8989", "CVE-2014-9090",
+                "CVE-2014-9419", "CVE-2014-9529", "CVE-2014-9683", "CVE-2014-9715",
+                "CVE-2014-9728", "CVE-2014-9729", "CVE-2014-9730", "CVE-2014-9731",
+                "CVE-2015-0272", "CVE-2015-0777", "CVE-2015-1420", "CVE-2015-1421",
+                "CVE-2015-2041", "CVE-2015-2042", "CVE-2015-2150", "CVE-2015-2666",
+                "CVE-2015-2830", "CVE-2015-2922", "CVE-2015-2925", "CVE-2015-3212",
+                "CVE-2015-3339", "CVE-2015-3636", "CVE-2015-4001", "CVE-2015-4002",
+                "CVE-2015-4003", "CVE-2015-4004", "CVE-2015-4036", "CVE-2015-4167",
+                "CVE-2015-4692", "CVE-2015-4700", "CVE-2015-5157", "CVE-2015-5283",
+                "CVE-2015-5307", "CVE-2015-5364", "CVE-2015-5366", "CVE-2015-5707",
+                "CVE-2015-6937", "CVE-2015-7550", "CVE-2015-7799", "CVE-2015-7833",
+                "CVE-2015-7872", "CVE-2015-7885", "CVE-2015-7990", "CVE-2015-8104",
+                "CVE-2015-8215", "CVE-2015-8543", "CVE-2015-8550", "CVE-2015-8551",
+                "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575", "CVE-2015-8767",
                 "CVE-2016-0728");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:0301-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.1 kernel was updated to receive various security and
+  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.1 kernel was updated to receive various security and
   bugfixes.
 
   Following security bugs were fixed:
+
   - CVE-2016-0728: A reference leak in keyring handling with
   join_session_keyring() could lead to local attackers gain root
   privileges. (bsc#962075).
+
   - CVE-2015-7550: A local user could have triggered a race between read and
   revoke in keyctl (bnc#958951).
+
   - CVE-2015-8569: The (1) pptp_bind and (2) pptp_connect functions in
   drivers/net/ppp/pptp.c in the Linux kernel did not verify an address
   length, which allowed local users to obtain sensitive information from
   kernel memory and bypass the KASLR protection mechanism via a crafted
   application (bnc#959190).
+
   - CVE-2015-8543: The networking implementation in the Linux kernel did not
   validate protocol identifiers for certain protocol families, which
   allowed local users to cause a denial of service (NULL function pointer
   dereference and system crash) or possibly gain privileges by leveraging
   CLONE_NEWUSER support to execute a crafted SOCK_RAW application
   (bnc#958886).
+
   - CVE-2014-8989: The Linux kernel did not properly restrict dropping
   of supplemental group memberships in certain namespace scenarios, which
   allowed local users to bypass intended file permissions by leveraging a
@@ -80,47 +83,48 @@ of detect NVT and check if the version is vulnerable or not.");
   restrictive than the entry for the other category, aka a 'negative
   groups' issue, related to kernel/groups.c, kernel/uid16.c, and
   kernel/user_namespace.c (bnc#906545).
+
   - CVE-2015-5157: arch/x86/entry/entry_64.S in the Linux kernel on the
   x86_64 platform mishandles IRET faults in processing NMIs that
   occurred during userspace execution, which might allow local users to
   gain privileges by triggering an NMI (bnc#937969).
+
   - CVE-2015-7799: The slhc_init function in drivers/net/slip/slhc.c in the
   Linux kernel through 4.2.3 did not ensure that certain slot numbers are
   valid, which allowed local users to cause a denial of service (NULL
   pointer dereference and system crash) via a crafted PPPIOCSMAXCID ioctl
   call (bnc#949936).
+
   - CVE-2015-8104: The KVM subsystem in the Linux kernel through 4.2.6, and
   Xen 4.3.x through 4.6.x, allowed guest OS users to cause a denial
   of service (host OS panic or hang) by triggering many #DB (aka Debug)
   exceptions, related to svm.c (bnc#954404).
+
   - CVE-2015-5307: The KVM subsystem in the Linux kernel through 4.2.6, and
   Xen 4.3.x through 4.6.x, allowed guest OS users to cause a denial
   of service (host OS panic or hang) by triggering many #AC (aka Alignment
-  Check) exceptions, related to svm.c and vmx. ... 
+  Check) exceptions, related to svm.c and vmx. ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kernel on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0301_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0301_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -1361,6 +1365,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2290_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_2290_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2015:2290-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851143");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 05:45:07 +0100 (Fri, 18 Dec 2015)");
   script_cve_id("CVE-2015-6764", "CVE-2015-6765", "CVE-2015-6766", "CVE-2015-6767",
                 "CVE-2015-6768", "CVE-2015-6769", "CVE-2015-6770", "CVE-2015-6771",
@@ -41,69 +41,92 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2015:2290-1 (Chromium)");
-  script_tag(name: "summary", value: "Check the version of Chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Chromium was updated to 47.0.2526.80 to fix security issues and bugs.
 
   The following vulnerabilities were fixed:
 
   * CVE-2015-6788: Type confusion in extensions
+
   * CVE-2015-6789: Use-after-free in Blink
+
   * CVE-2015-6790: Escaping issue in saved pages
+
   * CVE-2015-6791: Various fixes from internal audits, fuzzing and other
   initiatives
 
   The following vulnerabilities were fixed in 47.0.2526.73:
 
   * CVE-2015-6765: Use-after-free in AppCache
+
   * CVE-2015-6766: Use-after-free in AppCache
+
   * CVE-2015-6767: Use-after-free in AppCache
+
   * CVE-2015-6768: Cross-origin bypass in DOM
+
   * CVE-2015-6769: Cross-origin bypass in core
+
   * CVE-2015-6770: Cross-origin bypass in DOM
+
   * CVE-2015-6771: Out of bounds access in v8
+
   * CVE-2015-6772: Cross-origin bypass in DOM
+
   * CVE-2015-6764: Out of bounds access in v8
+
   * CVE-2015-6773: Out of bounds access in Skia
+
   * CVE-2015-6774: Use-after-free in Extensions
+
   * CVE-2015-6775: Type confusion in PDFium
+
   * CVE-2015-6776: Out of bounds access in PDFium
+
   * CVE-2015-6777: Use-after-free in DOM
+
   * CVE-2015-6778: Out of bounds access in PDFium
+
   * CVE-2015-6779: Scheme bypass in PDFium
+
   * CVE-2015-6780: Use-after-free in Infobars
+
   * CVE-2015-6781: Integer overflow in Sfntly
+
   * CVE-2015-6782: Content spoofing in Omnibox
+
   * CVE-2015-6783: Signature validation issue in Android Crazy Linker.
+
   * CVE-2015-6784: Escaping issue in saved pages
+
   * CVE-2015-6785: Wildcard matching issue in CSP
+
   * CVE-2015-6786: Scheme bypass in CSP
+
   * CVE-2015-6787: Various fixes from internal audits, fuzzing  and other
   initiatives.
+
   * Multiple vulnerabilities in V8 fixed at the tip of the 4.7 branch
   (currently 4.7.80.23)");
-  script_tag(name: "affected", value: "Chromium on openSUSE 13.2, openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:2290_1");
+  script_tag(name:"affected", value:"Chromium on openSUSE 13.2, openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:2290_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE13\.2|openSUSE13\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -162,7 +185,7 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -224,6 +247,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

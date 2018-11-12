@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asustor_adm_auth_bypass_vuln.nasl 11660 2018-09-28 03:54:58Z ckuersteiner $
+# $Id: gb_asustor_adm_auth_bypass_vuln.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # ASUSTOR ADM Authentication Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:asustor:adm_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141533");
-  script_version("$Revision: 11660 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:54:58 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 10:15:18 +0700 (Fri, 28 Sep 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"insight", value:"The vulnerability lies in the web interface of ASUSTOR NAS, in the file
 located in /initial/index.cgi, which responsible for initializing the device with your ASUSTOR ID. By abusing
-/initial/index.cgi?act=register, it is possilbe to log in with the administrator privileges without any kind of
+/initial/index.cgi?act=register, it is possible to log in with the administrator privileges without any kind of
 authentication.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");

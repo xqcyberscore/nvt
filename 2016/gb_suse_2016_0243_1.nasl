@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0243_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0243_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for ffmpeg openSUSE-SU-2016:0243-1 (ffmpeg)
 #
@@ -27,46 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851193");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:40 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2016-1897", "CVE-2016-1898");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ffmpeg openSUSE-SU-2016:0243-1 (ffmpeg)");
-  script_tag(name: "summary", value: "Check the version of ffmpeg");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update to ffmpeg 2.8.5 fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of ffmpeg");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update to ffmpeg 2.8.5 fixes the following issues:
 
   * CVE-2016-1897: Cross-origin issue in URL processing (concat) - local
   file disclosure (boo#961937)
+
   * CVE-2016-1898: Cross-origin issue in URL processing (subfile) - local
   file disclosure (boo#961937)");
-  script_tag(name: "affected", value: "ffmpeg on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ffmpeg on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0243_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0243_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -365,6 +361,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

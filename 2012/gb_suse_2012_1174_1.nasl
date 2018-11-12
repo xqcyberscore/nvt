@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1174_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_1174_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2012:1174-1 (Security)
 #
@@ -24,24 +24,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Security Update for Xen
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850334");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-12-13 17:01:40 +0530 (Thu, 13 Dec 2012)");
+  script_cve_id("CVE-2012-2625", "CVE-2012-3432", "CVE-2012-3433", "CVE-2012-3494",
+                "CVE-2012-3496", "CVE-2012-3515");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"openSUSE-SU", value:"2012:1174_1");
+  script_name("SuSE Update for Security openSUSE-SU-2012:1174-1 (Security)");
+
+  script_tag(name:"summary", value:"Check for the Version of Security");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+  script_tag(name:"affected", value:"Security on openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Security Update for Xen
 
   Following fixes were done:
+
   - bnc#776995 - attaching scsi control luns with pvscsi
+
   - xend/pvscsi: fix passing of SCSI control LUNs
   xen-bug776995-pvscsi-no-devname.patch
+
   - xend/pvscsi: fix usage of persistent device names for
   SCSI devices xen-bug776995-pvscsi-persistent-names.patch
+
   - xend/pvscsi: update sysfs parser for Linux 3.0
   xen-bug776995-pvscsi-sysfs-parser.patch
 
   - bnc#777090 - VUL-0: CVE-2012-3494: xen: hypercall
   set_debugreg vulnerability (XSA-12)
   CVE-2012-3494-xsa12.patch
+
   - bnc#777091 - VUL-0: CVE-2012-3496: xen:
   XENMEM_populate_physmap DoS vulnerability (XSA-14)
   CVE-2012-3496-xsa14.patch
+
   - bnc#777084 - VUL-0: CVE-2012-3515: xen: Qemu VT100
   emulation vulnerability (XSA-17) CVE-2012-3515-xsa17.patch
 
@@ -61,6 +87,7 @@ tag_insight = "Security Update for Xen
   - bnc#773393 - VUL-0: CVE-2012-3433: xen: HVM guest destroy
   p2m teardown host DoS vulnerability
   CVE-2012-3433-xsa11.patch
+
   - bnc#773401 - VUL-1: CVE-2012-3432: xen: HVM guest user
   mode MMIO emulation DoS
   25682-x86-inconsistent-io-state.patch
@@ -68,49 +95,20 @@ tag_insight = "Security Update for Xen
   - bnc#762484 - VUL-1: CVE-2012-2625: xen: pv bootloader
   doesn't check the size of the bzip2 or lzma compressed
   kernel, leading to denial of service
-  25589-pygrub-size-limits.patch";
+  25589-pygrub-size-limits.patch");
 
-tag_affected = "Security on openSUSE 11.4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850334");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-12-13 17:01:40 +0530 (Thu, 13 Dec 2012)");
-  script_cve_id("CVE-2012-2625", "CVE-2012-3432", "CVE-2012-3433", "CVE-2012-3494",
-                "CVE-2012-3496", "CVE-2012-3515");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1174_1");
-  script_name("SuSE Update for Security openSUSE-SU-2012:1174-1 (Security)");
-
-  script_tag(name: "summary" , value: "Check for the Version of Security");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -217,6 +215,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2674_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_suse_2018_2674_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2018:2674-1 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851887");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-09 07:12:12 +0200 (Sun, 09 Sep 2018)");
   script_cve_id("CVE-2017-16541", "CVE-2018-12376", "CVE-2018-12377", "CVE-2018-12378");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,14 +38,16 @@ if(description)
   script_tag(name:"summary", value:"Check the version of MozillaFirefox");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update to Mozilla Firefox 60.2.0esr fixes the following issues:
+  script_tag(name:"insight", value:"This update to Mozilla Firefox 60.2.0esr fixes the following issues:
 
   Security issues fixed (MFSA 2018-21, boo#1107343):
 
   - CVE-2018-12377: Use-after-free in refresh driver timers
+
   - CVE-2018-12378: Use-after-free in IndexedDB
+
   - CVE-2017-16541: Proxy bypass using automount and autofs (boo#1066489)
+
   - CVE-2018-12376: Memory safety bugs fixed in Firefox 62 and Firefox ESR
   60.2
 
@@ -75,19 +77,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

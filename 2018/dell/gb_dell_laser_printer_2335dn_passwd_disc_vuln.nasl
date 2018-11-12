@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_laser_printer_2335dn_passwd_disc_vuln.nasl 11508 2018-09-20 13:44:58Z cfischer $
+# $Id: gb_dell_laser_printer_2335dn_passwd_disc_vuln.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Dell Laser MFP 2335dn Printer Password Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:dell:2335dn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814218");
-  script_version("$Revision: 11508 $");
+  script_version("$Revision: 12308 $");
   script_cve_id("CVE-2018-15748");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:44:58 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-19 16:18:38 +0530 (Wed, 19 Sep 2018)");
   script_name("Dell Laser MFP 2335dn Printer Password Disclosure Vulnerability");
 

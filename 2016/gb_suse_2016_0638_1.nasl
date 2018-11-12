@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0638_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0638_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2016:0638-1 (openssl)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851221");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-08 12:37:56 +0530 (Tue, 08 Mar 2016)");
-  script_cve_id("CVE-2016-0800", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797", 
-                "CVE-2016-0798", "CVE-2016-0799", "CVE-2015-3197", "CVE-2015-0293", 
+  script_cve_id("CVE-2016-0800", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797",
+                "CVE-2016-0798", "CVE-2016-0799", "CVE-2015-3197", "CVE-2015-0293",
                 "CVE-2016-0703", "CVE-2016-0704");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2016:0638-1 (openssl)");
-  script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for openssl fixes various security issues:
+  script_tag(name:"summary", value:"Check the version of openssl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for openssl fixes various security issues:
 
   Security issues fixed:
+
   - CVE-2016-0800 aka the 'DROWN' attack (bsc#968046): OpenSSL was
   vulnerable to a cross-protocol attack that could lead to decryption of
   TLS sessions by using a server supporting SSLv2 and EXPORT cipher suites
@@ -60,7 +59,7 @@ of detect NVT and check if the version is vulnerable or not.");
   Note that various services and clients had already disabled SSL
   protocol 2 by default previously.
 
-  * Disable all weak EXPORT ciphers by default. These can be reenabled if
+  * Disable all weak EXPORT ciphers by default. These can be re-enabled if
   required by old legacy software using the environment variable
   'OPENSSL_ALLOW_EXPORT'.
 
@@ -95,31 +94,28 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2016-0799 (bnc#968374) On many 64 bit systems, the internal fmtstr()
   and doapr_outch() functions could miscalculate the length of a string
   and attempt to access out-of-bounds memory locations. These problems
-  could have enabled  ... 
+  could have enabled  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openssl on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"openssl on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0638_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0638_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -184,6 +180,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

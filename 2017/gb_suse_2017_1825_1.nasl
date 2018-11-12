@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1825_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_1825_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2017:1825-1 (Kernel)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851578");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:29 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-1000365", "CVE-2017-7518");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2017:1825-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated
   to 4.4.74 to receive various security and bugfixes.
 
@@ -47,6 +46,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - CVE-2017-7518: A KVM debug exception in the syscall handling was fixed
   which might have been used for local privilege escalation. (bnc#1045922).
+
   - CVE-2017-1000365: The Linux Kernel imposes a size restriction on the
   arguments and environmental strings passed through
   RLIMIT_STACK/RLIM_INFINITY (1/4 of the size), but did not take the
@@ -57,60 +57,83 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - bluetooth: hidp: fix possible might sleep error in hidp_session_thread
   (bsc#1031784).
+
   - btrfs: disable possible cause of premature ENOSPC (bsc#1040182)
+
   - btrfs: Manually implement device_total_bytes getter/setter (bsc#1043912).
+
   - btrfs: Round down values which are written for total_bytes_size
   (bsc#1043912).
+
   - drm/i915: Serialize GTT/Aperture accesses on BXT (bsc#1046821).
+
   - Fix kABI breakage by KVM CVE fix (bsc#1045922).
+
   - hpsa: limit transfer length to 1MB (bsc#1025461).
+
   - hwpoison, memcg: forcibly uncharge LRU pages (bnc#1046105).
+
   - ibmvnic: Fix assignment of RX/TX IRQ's (bsc#1046589).
+
   - iw_cxgb4: Fix error return code in c4iw_rdev_open() (bsc#1026570).
+
   - iwlwifi: 8000: fix MODULE_FIRMWARE input (FATE#321353, FATE#323335).
+
   - iwlwifi: 9000: increase the number of queues (FATE#321353, FATE#323335).
+
   - iwlwifi: add device ID for 8265 (FATE#321353, FATE#323335).
+
   - iwlwifi: add device IDs for the 8265 device (FATE#321353, FATE#323335).
+
   - iwlwifi: add disable_11ac module param (FATE#321353, FATE#323335).
+
   - iwlwifi: add new 3168 series devices support (FATE#321353, FATE#323335).
+
   - iwlwifi: add new 8260 PCI IDs (FATE#321353, FATE#323335).
+
   - iwlwifi: add new 8265 (FATE#321353, FATE#323335).
+
   - iwlwifi: add new 8265 series PCI ID (FATE#321353, FATE#323335).
+
   - iwlwifi: Add new PCI IDs for 9260 and 5165 series (FATE#321353,
   FATE#323335).
+
   - iwlwifi: Add PCI IDs for the new 3168 series (FATE#321353, FATE#323335).
+
   - iwlwifi: Add PCI IDs for the new series 8165 (FATE#321353, FATE#323335).
+
   - iwlwifi: add support for 12K Receive Buffers (FATE#321353, FATE#323335).
+
   - iwlwifi: add support for getting HW address from CSR (FATE#321353,
   FATE#323335).
+
   - iwlwifi: avoid d0i3 commands when no/init ucode is loaded (FATE#321353,
   FATE#323335).
+
   - iwlwifi: bail out in case of bad trans state (FATE#321353, FATE#323335).
+
   - iwlwifi: block the queues when we send A ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1825_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1825_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -295,6 +318,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

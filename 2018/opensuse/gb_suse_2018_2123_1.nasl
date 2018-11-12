@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2123_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2123_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:2123-1 (ImageMagick)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852044");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-10805", "CVE-2018-11624", "CVE-2018-11625", "CVE-2018-12599", "CVE-2018-12600");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:37:21 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:2123-1 (ImageMagick)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2123_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00040.html");
@@ -50,21 +50,24 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   The following security vulnerabilities were fixed:
 
   - CVE-2018-11625: Fixed heap-based buffer over-read in SetGrayscaleImage
   in the quantize.c file, which allowed remote attackers to cause buffer
   over-read via a crafted file. (bsc#1096200)
+
   - CVE-2018-11624: Fixed a use-after-free issue in the ReadMATImage
   function in coders/mat.c. (bsc#1096203)
+
   - CVE-2018-10805: Fixed several memory leaks in bgr.c, rgb.c, cmyk.c,
   gray.c, and ycbcr.c (bsc#1095812)
+
   - CVE-2018-12600: The ReadDIBImage and WriteDIBImage functions allowed
   attackers to cause an out of bounds write via a crafted file
   (bsc#1098545).
+
   - CVE-2018-12599: The ReadBMPImage and WriteBMPImage functions allowed
   attackers to cause an out of bounds write via a crafted file
   (bsc#1098546).

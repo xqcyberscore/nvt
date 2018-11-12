@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1860_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1860_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:1860-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851807");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-01 05:47:24 +0200 (Sun, 01 Jul 2018)");
   script_cve_id("CVE-2017-10928", "CVE-2017-13758", "CVE-2017-18271", "CVE-2018-10804",
                 "CVE-2018-10805", "CVE-2018-11251", "CVE-2018-11655", "CVE-2018-9133");
@@ -45,22 +45,29 @@ the target host.");
 
   - CVE-2017-13758: Prevent heap-based buffer overflow in the TracePoint()
   function (bsc#1056277).
+
   - CVE-2017-10928: Prevent heap-based buffer over-read in the GetNextToken
   function that allowed remote attackers to obtain sensitive information
   from process memory or possibly have unspecified other impact via a
   crafted SVG document (bsc#1047356).
+
   - CVE-2018-9133: Long compute times in the tiff decoder have been fixed
   (bsc#1087820).
+
   - CVE-2018-11251: Heap-based buffer over-read in ReadSUNImage in
   coders/sun.c, which allows attackers to cause denial of service
   (bsc#1094237).
+
   - CVE-2017-18271: Infinite loop in the function ReadMIFFImage in
   coders/miff.c, which allows attackers to cause a denial of service
   (bsc#1094204).
+
   - CVE-2018-11655: Memory leak in the GetImagePixelCache in
   MagickCore/cache.c was fixed (bsc#1095730)
+
   - CVE-2018-10804: Memory leak in WriteTIFFImage in coders/tiff.c was fixed
   (bsc#1095813)
+
   - CVE-2018-10805: Fixed memory leaks in bgr.c, rgb.c, cmyk.c, gray.c,
   ycbcr.c (bsc#1095812)
 
@@ -88,19 +95,16 @@ the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

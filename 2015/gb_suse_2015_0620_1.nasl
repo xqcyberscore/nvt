@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0620_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0620_1.nasl 12288 2018-11-09 14:02:45Z cfischer $
 #
 # SuSE Update for MySQL SUSE-SU-2015:0620-1 (MySQL)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850760");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:02:45 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:08:44 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2012-5615", "CVE-2014-0224", "CVE-2014-4274", "CVE-2014-4287",
                 "CVE-2014-6463", "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6474",
@@ -43,68 +43,36 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MySQL SUSE-SU-2015:0620-1 (MySQL)");
-  script_tag(name: "summary", value: "Check the version of MySQL");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The MySQL datebase server was updated to 5.5.42, fixing various bugs and
+  script_tag(name:"summary", value:"Check the version of MySQL");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The MySQL datebase server was updated to 5.5.42, fixing various bugs and
   security issues.
 
-  More information can be found on:
-
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-42.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-42.html 
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-41.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-41.html 
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-40.html
-http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-40.html 
-
   Also various issues with the mysql start script were fixed.
-  (bsc#868673,bsc#878779)
+  (bsc#868673, bsc#878779)");
 
-  Security Issues:
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-42.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-41.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-40.html");
 
-  * CVE-2015-0411
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0411 
-  * CVE-2015-0382
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0382 
-  * CVE-2015-0381
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0381 
-  * CVE-2015-0391
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0391 
-  * CVE-2015-0432
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0432 
-  * CVE-2015-0409
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0409 
-  * CVE-2014-6568
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6568 
-  * CVE-2015-0385
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0385 
-  * CVE-2015-0374
-http://cve.mitre.org/cgi-bin/cvename. ... 
-
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "MySQL on SUSE Linux Enterprise Server 11 SP3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0620_1");
+  script_tag(name:"affected", value:"MySQL on SUSE Linux Enterprise Server 11 SP3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0620_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP3")
 {
@@ -175,6 +143,6 @@ if(release == "SLES11.0SP3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1568_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1568_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for ntp SUSE-SU-2016:1568-1 (ntp)
 #
@@ -27,49 +27,62 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851336");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 05:21:21 +0200 (Wed, 15 Jun 2016)");
-  script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547", 
-                "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551", 
-                "CVE-2016-2516", "CVE-2016-2517", "CVE-2016-2518", "CVE-2016-2519", 
-                "CVE-2016-4953", "CVE-2016-4954", "CVE-2016-4955", "CVE-2016-4956", 
+  script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547",
+                "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551",
+                "CVE-2016-2516", "CVE-2016-2517", "CVE-2016-2518", "CVE-2016-2519",
+                "CVE-2016-4953", "CVE-2016-4954", "CVE-2016-4955", "CVE-2016-4956",
                 "CVE-2016-4957");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ntp SUSE-SU-2016:1568-1 (ntp)");
-  script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  ntp was updated to version 4.2.8p8 to fix 17 security issues.
+  script_tag(name:"summary", value:"Check the version of ntp");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"ntp was updated to version 4.2.8p8 to fix 17 security issues.
 
   These security issues were fixed:
+
   - CVE-2016-4956: Broadcast interleave (bsc#982068).
+
   - CVE-2016-2518: Crafted addpeer with hmode   7 causes array wraparound
   with MATCH_ASSOC (bsc#977457).
+
   - CVE-2016-2519: ctl_getitem() return value not always checked
   (bsc#977458).
+
   - CVE-2016-4954: Processing spoofed server packets (bsc#982066).
+
   - CVE-2016-4955: Autokey association reset (bsc#982067).
+
   - CVE-2015-7974: NTP did not verify peer associations of symmetric keys
   when authenticating packets, which might allowed remote attackers to
   conduct impersonation attacks via an arbitrary trusted key, aka a
   'skeleton key (bsc#962960).
+
   - CVE-2016-4957: CRYPTO_NAK crash (bsc#982064).
+
   - CVE-2016-2516: Duplicate IPs on unconfig directives will cause an
   assertion botch (bsc#977452).
+
   - CVE-2016-2517: Remote configuration trustedkey/requestkey values are not
   properly validated (bsc#977455).
+
   - CVE-2016-4953: Bad authentication demobilizes ephemeral associations
   (bsc#982065).
+
   - CVE-2016-1547: CRYPTO-NAK DoS (bsc#977459).
+
   - CVE-2016-1551: Refclock impersonation vulnerability, AKA:
   refclock-peering (bsc#977450).
+
   - CVE-2016-1550: Improve NTP security against buffer comparison timing
   attacks, authdecrypt-timing, AKA: authdecrypt-timing (bsc#977464).
+
   - CVE-2016-1548: Interleave-pivot - MITIGATION ONLY (bsc#977461).
+
   - CVE-2016-1549: Sybil vulnerability: ephemeral association attack, AKA:
   ntp-sybil - MITIGATION ONLY (bsc#977451).
 
@@ -77,38 +90,40 @@ of detect NVT and check if the version is vulnerable or not.");
   CVE-2015-7705, CVE-2015-7974.
 
   These non-security issues were fixed:
+
   - bsc#979302: Change the process name of the forking DNS worker process to
   avoid the impression that ntpd is started twice.
+
   - bsc#981422: Don't ignore SIGCHILD because it breaks wait().
+
   - bsc#979981: ntp-wait does not accept fractional seconds, so use 1
   instead of 0.2 in ntp-wait.service.
+
   - Separate the creation of ntp.keys and key #1 in it to avoid problems
   when upgrading installations that have the file, but no key #1, which is
   needed e.g. by 'rcntp addserver'.
-  - bsc#957226: Restrict the parser in the startup script to the first
-  occurrance of 'keys' and 'controlkey' in ntp.conf.");
-  script_tag(name: "affected", value: "ntp on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:1568_1");
+  - bsc#957226: Restrict the parser in the startup script to the first
+  occurrence of 'keys' and 'controlkey' in ntp.conf.");
+  script_tag(name:"affected", value:"ntp on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"SUSE-SU", value:"2016:1568_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -137,7 +152,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -169,6 +184,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

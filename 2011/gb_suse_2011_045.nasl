@@ -23,8 +23,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "When 802.11X authentication is used (ie WPA Enterprise)
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850172");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-12-05 12:16:08 +0530 (Mon, 05 Dec 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"SUSE-SA", value:"2011-045");
+  script_cve_id("CVE-2006-7246");
+  script_name("SuSE Update for NetworkManager, wpa_supplicant, NetworkManager-gnome SUSE-SA:2011:045");
+
+  script_tag(name:"summary", value:"Check for the Version of NetworkManager, wpa_supplicant, NetworkManager-gnome");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE11\.3)");
+  script_tag(name:"impact", value:"man in the middle");
+  script_tag(name:"affected", value:"NetworkManager, wpa_supplicant, NetworkManager-gnome on openSUSE 11.3, openSUSE 11.4");
+  script_tag(name:"insight", value:"When 802.11X authentication is used (ie WPA Enterprise)
   NetworkManager did not pin a certificate's subject to an ESSID. A
   rogue access point could therefore be used to conduct MITM attacks
   by using any other valid certificate issued by the same CA as used
@@ -46,50 +65,21 @@ tag_insight = "When 802.11X authentication is used (ie WPA Enterprise)
   problem in general. Administrators are advised to take the
   opportunity to review security of their wireless networks if 802.11X
   authentication is used.
-  http://www.suse.de/~lnussel/The_Evil_Twin_problem_with_WPA2-Enterprise_v1.1.pdf";
-tag_solution = "Please Install the Updated Packages.";
+  http://www.suse.de/~lnussel/The_Evil_Twin_problem_with_WPA2-Enterprise_v1.1.pdf");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "man in the middle";
-tag_affected = "NetworkManager, wpa_supplicant, NetworkManager-gnome on openSUSE 11.3, openSUSE 11.4";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850172");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-12-05 12:16:08 +0530 (Mon, 05 Dec 2011)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "SUSE-SA", value: "2011-045");
-  script_cve_id("CVE-2006-7246");
-  script_name("SuSE Update for NetworkManager, wpa_supplicant, NetworkManager-gnome SUSE-SA:2011:045");
-
-  script_tag(name:"summary", value:"Check for the Version of NetworkManager, wpa_supplicant, NetworkManager-gnome");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -136,7 +126,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -186,6 +176,6 @@ if(release == "openSUSE11.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2942_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_2942_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for mgetty openSUSE-SU-2018:2942-1 (mgetty)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852064");
-  script_version("$Revision: 12236 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-16741", "CVE-2018-16742", "CVE-2018-16743", "CVE-2018-16744", "CVE-2018-16745");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:40:40 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for mgetty openSUSE-SU-2018:2942-1 (mgetty)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2942_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00085.html");
@@ -50,18 +50,21 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for mgetty fixes the following issues:
+  script_tag(name:"insight", value:"This update for mgetty fixes the following issues:
 
   - CVE-2018-16741: The function do_activate() did not properly sanitize
   shell metacharacters to prevent command injection (bsc#1108752).
+
   - CVE-2018-16745: The mail_to parameter was not sanitized, leading to a
   buffer
   overflow if long untrusted input reached it (bsc#1108756).
+
   - CVE-2018-16744: The mail_to parameter was not sanitized, leading to
   command injection if untrusted input reached reach it (bsc#1108757).
+
   - CVE-2018-16742: Prevent stack-based buffer overflow that could have been
   triggered via a command-line parameter (bsc#1108762).
+
   - CVE-2018-16743: The command-line parameter username wsa passed
   unsanitized to strcpy(), which could have caused a stack-based buffer
   overflow (bsc#1108761).

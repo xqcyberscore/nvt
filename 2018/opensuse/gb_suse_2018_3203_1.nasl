@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3203_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_3203_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3203-1 (ImageMagick)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851939");
-  script_version("$Revision: 12164 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:29:50 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2017-11532", "CVE-2018-16413", "CVE-2018-16640", "CVE-2018-16642", "CVE-2018-16643", "CVE-2018-16644", "CVE-2018-16645", "CVE-2018-16749", "CVE-2018-16750");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,33 +37,40 @@ if(description)
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3203-1 (ImageMagick)");
   script_tag(name:"summary", value:"Check the version of ImageMagick");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ImageMagick fixes the following security issues:
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following security issues:
 
   - CVE-2017-11532: Prevent a memory leak vulnerability in the
   WriteMPCImage() function in coders/mpc.c via a crafted file allowing for
   DoS (bsc#1050129)
+
   - CVE-2018-16750: Prevent memory leak in the formatIPTCfromBuffer function
   (bsc#1108283)
+
   - CVE-2018-16749: Added missing NULL check in ReadOneJNGImage that allowed
   an attacker to cause a denial of service (WriteBlob assertion failure
   and application exit) via a crafted file (bsc#1108282)
+
   - CVE-2018-16642: The function InsertRow allowed remote attackers to cause
   a denial of service via a crafted image file due to an out-of-bounds
   write (bsc#1107616)
+
   - CVE-2018-16640: Prevent memory leak in the function ReadOneJNGImage
   (bsc#1107619)
+
   - CVE-2018-16643: The functions ReadDCMImage, ReadPWPImage, ReadCALSImage,
   and ReadPICTImage did check the return value of the fputc function,
   which allowed remote attackers to cause a denial of service via a
   crafted image file (bsc#1107612)
+
   - CVE-2018-16644: Added missing check for length in the functions
   ReadDCMImage and ReadPICTImage, which allowed remote attackers to cause
   a denial of service via a crafted image (bsc#1107609)
+
   - CVE-2018-16645: Prevent excessive memory allocation issue in the
   functions ReadBMPImage and ReadDIBImage, which allowed remote attackers
   to cause a denial
   of service via a crafted image file (bsc#1107604)
+
   - CVE-2018-16413: Prevent heap-based buffer over-read in the
   PushShortPixel function leading to DoS (bsc#1106989)
 
@@ -94,19 +101,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1858_1.nasl 11561 2018-09-24 06:20:05Z cfischer $
+# $Id: gb_suse_2018_1858_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for mailman openSUSE-SU-2018:1858-1 (mailman)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851805");
-  script_version("$Revision: 11561 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-01 05:47:18 +0200 (Sun, 01 Jul 2018)");
   script_cve_id("CVE-2018-0618");
   script_tag(name:"cvss_base", value:"3.5");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mailman openSUSE-SU-2018:1858-1 (mailman)");
   script_tag(name:"summary", value:"Check the version of mailman");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for mailman to version 2.1.27 fixes the following issues:
+  script_tag(name:"insight", value:"This update for mailman to version 2.1.27 fixes the following issues:
 
   This security issue was fixed:
 
@@ -51,25 +50,30 @@ on the target host.");
   - The hash generated when SUBSCRIBE_FORM_SECRET is set could have been the
   same as one generated at the same time for a different list and IP
   address.
+
   - An option has been added to bin/add_members to issue invitations instead
   of immediately adding members.
+
   - A new BLOCK_SPAMHAUS_LISTED_IP_SUBSCRIBE setting has been added to
   enable blocking web subscribes from IPv4 addresses listed in Spamhaus
   SBL, CSS or XBL.  It will work with IPv6 addresses if Python's
   py2-ipaddress module is installed.  The module can be installed via pip
   if not included in your Python.
+
   - Mailman has a new 'security' log and logs authentication failures to the
   various web CGI functions.  The logged data include the remote IP and
   can be used to automate blocking of IPs with something like fail2ban.
   Since Mailman 2.1.14, these have returned an http 401 status and the
   information should be logged by the web server, but this new log makes
   that more convenient.  Also, the 'mischief' log entries for 'hostile
-  listname' noe include the remote IP if available.
+  listname' not include the remote IP if available.
+
   - admin notices of (un)subscribes now may give the source of the action.
   This consists of a %(whence)s replacement that has been added to the
   admin(un)subscribeack.txt templates.  Thanks to Yasuhito FUTATSUKI for
   updating the non-English templates and help with internationalizing the
   reasons.
+
   - there is a new BLOCK_SPAMHAUS_LISTED_DBL_SUBSCRIBE setting to enable
   blocking web subscribes for addresses in domains listed in the Spamhaus
   DBL.
@@ -77,7 +81,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -100,19 +104,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

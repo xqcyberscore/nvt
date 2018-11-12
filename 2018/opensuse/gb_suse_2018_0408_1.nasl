@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0408_1.nasl 8840 2018-02-16 08:25:58Z santu $
+# $Id: gb_suse_2018_0408_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0408-1 (Linux Kernel)
 #
@@ -27,22 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851698");
-  script_version("$Revision: 8840 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 09:25:58 +0100 (Fri, 16 Feb 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-10 07:54:04 +0100 (Sat, 10 Feb 2018)");
-  script_cve_id("CVE-2017-15129", "CVE-2017-17712", "CVE-2017-17862", "CVE-2017-17864", 
-                "CVE-2017-18017", "CVE-2017-5715", "CVE-2018-1000004", "CVE-2018-5332", 
+  script_cve_id("CVE-2017-15129", "CVE-2017-17712", "CVE-2017-17862", "CVE-2017-17864",
+                "CVE-2017-18017", "CVE-2017-5715", "CVE-2018-1000004", "CVE-2018-5332",
                 "CVE-2018-5333");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0408-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.114 to receive various
+  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.114 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -60,23 +57,28 @@ of detect NVT and check if the version is vulnerable or not.");
   net/rds/rdma.c mishandled cases where page pinning fails or an invalid
   address is supplied, leading to an rds_atomic_free_op NULL pointer
   dereference (bnc#1075617).
+
   - CVE-2018-5332: In the Linux kernel the rds_message_alloc_sgs() function
   did not validate a value that is used during DMA page allocation,
   leading to a heap-based out-of-bounds write (related to the
   rds_rdma_extra_size function in net/rds/rdma.c) (bnc#1075621).
+
   - CVE-2017-17862: kernel/bpf/verifier.c in the Linux kernel ignores
   unreachable code, even though it would still be processed by JIT
   compilers. This behavior, also considered an improper branch-pruning
   logic issue, could possibly be used by local users for denial of service
   (bnc#1073928).
+
   - CVE-2017-17864: kernel/bpf/verifier.c in the Linux kernel mishandled
   states_equal comparisons between the pointer data type and the
   UNKNOWN_VALUE data type, which allowed local users to obtain potentially
   sensitive address information, aka a 'pointer leak (bnc#1073928).
+
   - CVE-2017-17712: The raw_sendmsg() function in net/ipv4/raw.c in the
   Linux kernel had a race condition in inet- hdrincl that lead to
   uninitialized stack pointer usage  this allowed a local user to execute
   code and gain privileges (bnc#1073229 1073230).
+
   - CVE-2017-15129: A use-after-free vulnerability was found in network
   namespaces code affecting the Linux kernel The function
   get_net_ns_by_id() in net/core/net_namespace.c did not check for the
@@ -86,34 +88,32 @@ of detect NVT and check if the version is vulnerable or not.");
   memory corruption on the system, leading to a crash. Due to the nature
   of the flaw, privilege escalation cannot be fully ruled out, although it
   is thought to be unlikely (bnc#1074839).
+
   - CVE-2017-18017: The tcpmss_mangle_packet function in
   net/netfilter/xt_TCPMSS.c in the Linux kernel allowed remote attackers
-  to cause a denial of s ... 
+  to cause a denial of s ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0408_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00013.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0408_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -334,6 +334,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

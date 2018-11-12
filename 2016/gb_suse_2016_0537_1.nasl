@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0537_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_0537_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:0537-1 (Kernel)
 #
@@ -27,28 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851215");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:50 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2016-0723", "CVE-2016-2069");
   script_tag(name:"cvss_base", value:"5.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:0537-1 the (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive security and bugfixes.
 
   It also fixes a regression that caused the Chromium sandbox to no longer
   work (bsc#965356).
 
   Following security bugs were fixed:
+
   - CVE-2016-2069: A flaw was discovered in a way the Linux deals with
   paging structures. When Linux invalidates a paging structure that is not
   in use locally, it could, in principle, race against another CPU that is
   switching to a process that uses the paging structure in question,
   causing a local denial service (machine crash). (bnc#963767).
+
   - CVE-2016-0723: Race condition in the tty_ioctl function in
   drivers/tty/tty_io.c in the Linux kernel allowed local users to obtain
   sensitive information from kernel memory or cause a denial of service
@@ -56,38 +57,40 @@ of detect NVT and check if the version is vulnerable or not.");
   processing of a TIOCSETD ioctl call (bnc#961500).
 
   The following non-security bugs were fixed:
+
   - Bluetooth: ath3k: workaround the compatibility issue with xHCI
   controller (bnc#907378).
+
   - kABI fix for addition of user_namespace.flags field (bnc#965308,
   bnc#965356).
+
   - userns: Add a knob to disable setgroups on a per user namespace basis
   (bnc#965308, bnc#965356).
+
   - userns: Allow setting gid_maps without privilege when setgroups is
   disabled (bnc#965308, bnc#965356).
+
   - userns: Rename id_map_mutex to userns_state_mutex (bnc#965308,
   bnc#965356).");
-  script_tag(name: "affected", value: "Kernel on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0537_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0537_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -1202,6 +1205,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2957_1.nasl 11801 2018-10-10 03:24:32Z ckuersteiner $
+# $Id: gb_suse_2018_2957_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2018:2957-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851920");
-  script_version("$Revision: 11801 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 05:24:32 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-01 06:53:01 +0200 (Mon, 01 Oct 2018)");
   script_cve_id("CVE-2018-0737");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,13 +37,13 @@ if(description)
   script_name("SuSE Update for openssl openSUSE-SU-2018:2957-1 (openssl)");
   script_tag(name:"summary", value:"Check the version of openssl");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for openssl fixes the following issues:
+  script_tag(name:"insight", value:"This update for openssl fixes the following issues:
 
   These security issues were fixed:
 
   - Prevent One&amp Done side-channel attack on RSA that allowed physically near
   attackers to use EM emanations to recover information (bsc#1104789)
+
   - CVE-2018-0737: The RSA Key generation algorithm has been shown to be
   vulnerable to a cache timing side channel attack. An attacker with
   sufficient access to mount cache timing attacks during the RSA key
@@ -53,6 +53,7 @@ if(description)
 
   - Add openssl(cli) Provide so the packages that require the openssl binary
   can require this instead of the new openssl meta package (bsc#1101470)
+
   - Fixed path to the engines which are under /lib64 on SLE-12 (bsc#1101246,
   bsc#997043)
 
@@ -80,19 +81,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

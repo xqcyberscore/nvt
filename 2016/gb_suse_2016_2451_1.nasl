@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2451_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2451_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:2451-1 (php5)
 #
@@ -27,83 +27,100 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851401");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 05:44:05 +0200 (Wed, 05 Oct 2016)");
-  script_cve_id("CVE-2014-3587", "CVE-2016-3587", "CVE-2016-5399", "CVE-2016-6128", 
-                "CVE-2016-6161", "CVE-2016-6207", "CVE-2016-6288", "CVE-2016-6289", 
-                "CVE-2016-6290", "CVE-2016-6291", "CVE-2016-6292", "CVE-2016-6295", 
-                "CVE-2016-6296", "CVE-2016-6297", "CVE-2016-7124", "CVE-2016-7125", 
-                "CVE-2016-7126", "CVE-2016-7127", "CVE-2016-7128", "CVE-2016-7129", 
+  script_cve_id("CVE-2014-3587", "CVE-2016-3587", "CVE-2016-5399", "CVE-2016-6128",
+                "CVE-2016-6161", "CVE-2016-6207", "CVE-2016-6288", "CVE-2016-6289",
+                "CVE-2016-6290", "CVE-2016-6291", "CVE-2016-6292", "CVE-2016-6295",
+                "CVE-2016-6296", "CVE-2016-6297", "CVE-2016-7124", "CVE-2016-7125",
+                "CVE-2016-7126", "CVE-2016-7127", "CVE-2016-7128", "CVE-2016-7129",
                 "CVE-2016-7130", "CVE-2016-7131", "CVE-2016-7132", "CVE-2016-7134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:2451-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for php5 fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for php5 fixes the following security issues:
 
   * CVE-2016-6128: Invalid color index not properly handled [bsc#987580]
+
   * CVE-2016-6161: global out of bounds read when encoding gif from
   malformed input withgd2togif [bsc#988032]
+
   * CVE-2016-6292: Null pointer dereference in exif_process_user_comment
   [bsc#991422]
+
   * CVE-2016-6295: Use after free in SNMP with GC and unserialize()
   [bsc#991424]
+
   * CVE-2016-6297: Stack-based buffer overflow vulnerability in
   php_stream_zip_opener [bsc#991426]
+
   * CVE-2016-6291: Out-of-bounds access in exif_process_IFD_in_MAKERNOTE
   [bsc#991427]
+
   * CVE-2016-6289: Integer overflow leads to buffer overflow in
   virtual_file_ex [bsc#991428]
+
   * CVE-2016-6290: Use after free in unserialize() with Unexpected Session
   Deserialization [bsc#991429]
+
   * CVE-2016-5399: Improper error handling in bzread() [bsc#991430]
+
   * CVE-2016-6296: Heap buffer overflow vulnerability in simplestring_addn
   in simplestring.c [bsc#991437]
+
   * CVE-2016-6207: Integer overflow error within _gdContributionsAlloc()
   [bsc#991434]
+
   * CVE-2014-3587: Integer overflow in the cdf_read_property_info affecting
   SLES11 SP3 [bsc#987530]
+
   * CVE-2016-6288: Buffer over-read in php_url_parse_ex [bsc#991433]
+
   * CVE-2016-7124: Create an Unexpected Object and Don't Invoke __wakeup()
   in Deserialization
+
   * CVE-2016-7125: PHP Session Data Injection Vulnerability
+
   * CVE-2016-7126: select_colors write out-of-bounds
+
   * CVE-2016-7127: imagegammacorrect allowed arbitrary write access
+
   * CVE-2016-7128: Memory Leakage In exif_process_IFD_in_TIFF
+
   * CVE-2016-7129: wddx_deserialize allowed illegal memory access
+
   * CVE-2016-7130: wddx_deserialize null dereference
+
   * CVE-2016-7131: wddx_deserialize null dereference with invalid xml
+
   * CVE-2016-7132: wddx_deserialize null dereference in php_wddx_pop_element
+
   * CVE-2016-7134: Heap overflow in the function curl_escape
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "php5 on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php5 on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2451_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2451_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -798,6 +815,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

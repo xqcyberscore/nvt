@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3258_1.nasl 12105 2018-10-26 05:54:03Z cfischer $
+# $Id: gb_suse_2018_3258_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for icinga openSUSE-SU-2018:3258-1 (icinga)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851944");
-  script_version("$Revision: 12105 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 07:54:03 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-20 07:33:47 +0200 (Sat, 20 Oct 2018)");
   script_cve_id("CVE-2015-8010", "CVE-2016-0726", "CVE-2016-10089", "CVE-2016-8641");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,14 +37,15 @@ if(description)
   script_name("SuSE Update for icinga openSUSE-SU-2018:3258-1 (icinga)");
   script_tag(name:"summary", value:"Check the version of icinga");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for icinga fixes the following issues:
+  script_tag(name:"insight", value:"This update for icinga fixes the following issues:
 
   Update to 1.14.0
 
   - CVE-2015-8010: Fixed XSS in the icinga classic UI (boo#952777)
+
   - CVE-2016-8641 / CVE-2016-10089: fixed a possible symlink attack for
   files/dirs created by root (boo#1011630 and boo#1018047)
+
   - CVE-2016-0726: removed the pre-configured administrative account with
   fixed password for the WebUI - (boo#961115)
 
@@ -70,19 +71,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

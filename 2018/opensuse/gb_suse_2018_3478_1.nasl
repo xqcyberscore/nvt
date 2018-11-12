@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3478_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_3478_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2018:3478-1 (mysql-community-server)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851985");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2016-9843", "CVE-2018-3133", "CVE-2018-3143", "CVE-2018-3156", "CVE-2018-3174", "CVE-2018-3247", "CVE-2018-3251", "CVE-2018-3276", "CVE-2018-3278", "CVE-2018-3282");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:26:39 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2018:3478-1 (mysql-community-server)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
 
   script_xref(name:"openSUSE-SU", value:"2018:3478_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00072.html");
@@ -50,17 +50,19 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-
-  MySQL Community Server was updated to 5.6.42, fixing bugs and security
+  script_tag(name:"insight", value:"MySQL Community Server was updated to 5.6.42, fixing bugs and security
   issues:
 
   Fixed CVEs:
 
   - CVE-2016-9843 [boo#1013882], CVE-2018-3143 [boo#1112421],
+
   - CVE-2018-3156 [boo#1112417], CVE-2018-3251 [boo#1112397],
+
   - CVE-2018-3133 [boo#1112369], CVE-2018-3247 [boo#1112398],
+
   - CVE-2018-3174 [boo#1112368], CVE-2018-3276 [boo#1112393],
+
   - CVE-2018-3278 [boo#1112390], CVE-2018-3282 [boo#1112432],
 
 

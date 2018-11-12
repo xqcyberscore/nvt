@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2292_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2292_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for cups openSUSE-SU-2018:2292-1 (cups)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851972");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-4180", "CVE-2018-4181", "CVE-2018-4182", "CVE-2018-4183");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:24:12 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for cups openSUSE-SU-2018:2292-1 (cups)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2292_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00038.html");
@@ -56,12 +56,16 @@ if(description)
 
   - Fixed a local privilege escalation to root and sandbox bypasses in the
   scheduler
+
   - CVE-2018-4180: Fixed a local privilege escalation to root in dnssd
   backend (bsc#1096405)
+
   - CVE-2018-4181: Limited local file reads as root via cupsd.conf include
   directive (bsc#1096406)
+
   - CVE-2018-4182: Fixed a sandbox bypass due to insecure error handling
   (bsc#1096407)
+
   - CVE-2018-4183: Fixed a sandbox bypass due to profile misconfiguration
   (bsc#1096408)
 

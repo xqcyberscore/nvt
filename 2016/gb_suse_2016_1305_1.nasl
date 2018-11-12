@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1305_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1305_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2016:1305-1 (flash-player)
 #
@@ -27,33 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851312");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:40:35 +0200 (Tue, 17 May 2016)");
-  script_cve_id("CVE-2016-1006", "CVE-2016-1011", "CVE-2016-1012", "CVE-2016-1013", 
-                "CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017", 
-                "CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021", 
-                "CVE-2016-1022", "CVE-2016-1023", "CVE-2016-1024", "CVE-2016-1025", 
-                "CVE-2016-1026", "CVE-2016-1027", "CVE-2016-1028", "CVE-2016-1029", 
-                "CVE-2016-1030", "CVE-2016-1031", "CVE-2016-1032", "CVE-2016-1033", 
-                "CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099", 
-                "CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103", 
-                "CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107", 
-                "CVE-2016-1108", "CVE-2016-1109", "CVE-2016-1110", "CVE-2016-4108", 
-                "CVE-2016-4109", "CVE-2016-4110", "CVE-2016-4111", "CVE-2016-4112", 
-                "CVE-2016-4113", "CVE-2016-4114", "CVE-2016-4115", "CVE-2016-4116", 
+  script_cve_id("CVE-2016-1006", "CVE-2016-1011", "CVE-2016-1012", "CVE-2016-1013",
+                "CVE-2016-1014", "CVE-2016-1015", "CVE-2016-1016", "CVE-2016-1017",
+                "CVE-2016-1018", "CVE-2016-1019", "CVE-2016-1020", "CVE-2016-1021",
+                "CVE-2016-1022", "CVE-2016-1023", "CVE-2016-1024", "CVE-2016-1025",
+                "CVE-2016-1026", "CVE-2016-1027", "CVE-2016-1028", "CVE-2016-1029",
+                "CVE-2016-1030", "CVE-2016-1031", "CVE-2016-1032", "CVE-2016-1033",
+                "CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
+                "CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
+                "CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
+                "CVE-2016-1108", "CVE-2016-1109", "CVE-2016-1110", "CVE-2016-4108",
+                "CVE-2016-4109", "CVE-2016-4110", "CVE-2016-4111", "CVE-2016-4112",
+                "CVE-2016-4113", "CVE-2016-4114", "CVE-2016-4115", "CVE-2016-4116",
                 "CVE-2016-4117");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for flash-player SUSE-SU-2016:1305-1 (flash-player)");
-  script_tag(name: "summary", value: "Check the version of flash-player");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for flash-player fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of flash-player");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for flash-player fixes the following issues:
 
   - Security update to 11.2.202.621 (bsc#979422):
+
   * APSA16-02, APSB16-15, CVE-2016-1096, CVE-2016-1097, CVE-2016-1098,
   CVE-2016-1099, CVE-2016-1100, CVE-2016-1101, CVE-2016-1102,
   CVE-2016-1103, CVE-2016-1104, CVE-2016-1105, CVE-2016-1106,
@@ -64,6 +63,7 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - The following CVEs got fixed during the previous release, but got
   published afterwards:
+
   * APSA16-01, APSB16-10, CVE-2016-1006, CVE-2016-1011, CVE-2016-1012,
   CVE-2016-1013, CVE-2016-1014, CVE-2016-1015, CVE-2016-1016,
   CVE-2016-1017, CVE-2016-1018, CVE-2016-1019, CVE-2016-1020,
@@ -71,28 +71,25 @@ of detect NVT and check if the version is vulnerable or not.");
   CVE-2016-1025, CVE-2016-1026, CVE-2016-1027, CVE-2016-1028,
   CVE-2016-1029, CVE-2016-1030, CVE-2016-1031, CVE-2016-1032,
   CVE-2016-1033");
-  script_tag(name: "affected", value: "flash-player on SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:1305_1");
+  script_xref(name:"SUSE-SU", value:"2016:1305_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLED12\.0SP0");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -109,6 +106,6 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

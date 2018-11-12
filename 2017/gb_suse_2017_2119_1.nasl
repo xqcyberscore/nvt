@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2119_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2119_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2017:2119-1 (mariadb)
 #
@@ -27,42 +27,45 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851587");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 07:29:53 +0200 (Thu, 10 Aug 2017)");
-  script_cve_id("CVE-2017-3308", "CVE-2017-3309", "CVE-2017-3453", "CVE-2017-3456", 
+  script_cve_id("CVE-2017-3308", "CVE-2017-3309", "CVE-2017-3453", "CVE-2017-3456",
                 "CVE-2017-3464");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2017:2119-1 (mariadb)");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This MariaDB update to version 10.0.31 GA fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This MariaDB update to version 10.0.31 GA fixes the following issues:
 
   Security issues fixed:
+
   - CVE-2017-3308: Subcomponent: Server: DML: Easily 'exploitable'
   vulnerability allows low privileged attacker with network access via
   multiple protocols to compromise MariaDB Server. Successful attacks of
   this vulnerability can result in unauthorized ability to cause a hang or
   frequently repeatable crash (complete DOS). (bsc#1048715)
+
   - CVE-2017-3309: Subcomponent: Server: Optimizer: Easily 'exploitable'
   vulnerability allows low privileged attacker with network access via
   multiple protocols to compromise MariaDB Server. Successful attacks of
   this vulnerability can result in unauthorized ability to cause a hang or
   frequently repeatable crash (complete DOS). (bsc#1048715)
+
   - CVE-2017-3453: Subcomponent: Server: Optimizer: Easily 'exploitable'
   vulnerability allows low privileged attacker with network access via
   multiple protocols to compromise MariaDB Server. Successful attacks of
   this vulnerability can result in unauthorized ability to cause a hang or
   frequently repeatable crash (complete DOS). (bsc#1048715)
+
   - CVE-2017-3456: Subcomponent: Server: DML: Easily 'exploitable'
   vulnerability allows low privileged attacker with network access via
   multiple protocols to compromise MariaDB Server. Successful attacks of
   this vulnerability can result in unauthorized ability to cause a hang or
   frequently repeatable crash (complete DOS). (bsc#1048715)
+
   - CVE-2017-3464: Subcomponent: Server: DDL: Easily 'exploitable'
   vulnerability allows low privileged attacker with network access via
   multiple protocols to compromise MariaDB Server. Successful attacks of
@@ -70,42 +73,46 @@ of detect NVT and check if the version is vulnerable or not.");
   frequently repeatable crash (complete DOS). (bsc#1048715)
 
   Bug fixes:
+
   - switch from 'Restart=on-failure' to 'Restart=on-abort' in mysql.service
   in order to follow the upstream. It also fixes hanging
   mysql-systemd-helper when mariadb fails (e.g. because of the
   misconfiguration) (bsc#963041)
+
   - XtraDB updated to 5.6.36-82.0
+
   - TokuDB updated to 5.6.36-82.0
+
   - Innodb updated to 5.6.36
+
   - Performance Schema updated to 5.6.36
 
   Release notes and changelog:
+
   - 'https://kb.askmonty.org/en/mariadb-10031-release-notes'
+
   - 'https://kb.askmonty.org/en/mariadb-10031-changelog'
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
-  script_tag(name: "affected", value: "mariadb on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"mariadb on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2119_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2119_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -242,6 +249,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

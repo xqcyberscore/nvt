@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1956_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_1956_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2018:1956-1 (tiff)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851955");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2017-11613", "CVE-2017-18013", "CVE-2018-10963", "CVE-2018-7456", "CVE-2018-8905");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:22:31 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for tiff openSUSE-SU-2018:1956-1 (tiff)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:1956_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00017.html");
@@ -50,21 +50,23 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for tiff fixes the following security issues:
+  script_tag(name:"insight", value:"This update for tiff fixes the following security issues:
 
   These security issues were fixed:
 
   - CVE-2017-18013: Fixed a NULL pointer dereference in the
   tif_print.cTIFFPrintDirectory function that could have lead to denial of
   service (bsc#1074317).
+
   - CVE-2018-10963: Fixed an assertion failure in the
   TIFFWriteDirectorySec() function in tif_dirwrite.c, which allowed remote
   attackers to cause a denial
   of service via a crafted file (bsc#1092949).
+
   - CVE-2018-7456: Prevent a NULL Pointer dereference in the function
   TIFFPrintDirectory when using the tiffinfo tool to print crafted TIFF
   information, a different vulnerability than CVE-2017-18013 (bsc#1082825).
+
   - CVE-2017-11613: Prevent denial of service in the TIFFOpen function.
   During the TIFFOpen process, td_imagelength is not checked. The value of
   td_imagelength can be directly controlled by an input file. In the
@@ -72,6 +74,7 @@ if(description)
   called based on td_imagelength. If the value of td_imagelength is set
   close to the amount of system memory, it will hang the system or trigger
   the OOM killer (bsc#1082332).
+
   - CVE-2018-8905: Prevent heap-based buffer overflow in the function
   LZWDecodeCompat via a crafted TIFF file (bsc#1086408).
 

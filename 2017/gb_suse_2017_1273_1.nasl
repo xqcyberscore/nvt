@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1273_1.nasl 10909 2018-08-10 15:03:01Z cfischer $
+# $Id: gb_suse_2017_1273_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for graphite2 openSUSE-SU-2017:1273-1 (graphite2)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851552");
-  script_version("$Revision: 10909 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 06:53:08 +0200 (Tue, 16 May 2017)");
   script_cve_id("CVE-2017-5436");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for graphite2 openSUSE-SU-2017:1273-1 (graphite2)");
-  script_tag(name: "summary", value: "Check the version of graphite2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for graphite2 fixes one issue.
+  script_tag(name:"summary", value:"Check the version of graphite2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for graphite2 fixes one issue.
 
   This security issues was fixed:
 
@@ -48,28 +46,25 @@ if(description)
   execution (bsc#1035204).
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "graphite2 on openSUSE Leap 42.2, openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"graphite2 on openSUSE Leap 42.2, openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1273_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1273_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -122,7 +117,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -178,6 +173,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0287_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_0287_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for systemd openSUSE-SU-2017:0287-1 (systemd)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851504");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:16:08 +0100 (Wed, 22 Feb 2017)");
   script_cve_id("CVE-2016-10156");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for systemd openSUSE-SU-2017:0287-1 (systemd)");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of systemd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for systemd fixes the following issues:
 
   This security issue was fixed:
@@ -49,37 +48,40 @@ of detect NVT and check if the version is vulnerable or not.");
   These non-security issues were fixed:
 
   - Fix permission set on /var/lib/systemd/linger/*
+
   - install: follow config_path symlink (#3362)
+
   - install: fix disable when /etc/systemd/system is a symlink (bsc#1014560)
+
   - run: make --slice= work in conjunction with --scope (bsc#1014566)
+
   - core: don't dispatch load queue when setting Slice= for transient units
+
   - systemctl: remove duplicate entries showed by list-dependencies (#5049)
   (bsc#1012266)
+
   - rule: don't automatically online standby memory on s390x (bsc#997682)
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
-  script_tag(name: "affected", value: "systemd on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"systemd on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0287_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0287_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -318,6 +320,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0406_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_0406_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for docker, openSUSE-SU-2018:0406-1 (docker,)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851696");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-10 07:53:50 +0100 (Sat, 10 Feb 2018)");
   script_cve_id("CVE-2017-14992", "CVE-2017-16539");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for docker, openSUSE-SU-2018:0406-1 (docker,)");
-  script_tag(name: "summary", value: "Check the version of docker,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for docker, openSUSE-SU-2018:0406-1 (docker, )");
+  script_tag(name:"summary", value:"Check the version of docker.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for docker, docker-runc, containerd,
   golang-github-docker-libnetwork fixes several issues.
 
@@ -59,26 +58,39 @@ of detect NVT and check if the version is vulnerable or not.");
   seconds to start the daemon, which is insufficient in cases where the
   daemon takes longer to start. Instead, set the service type from
   'simple' to 'notify' and remove the now superfluous helper script.
+
   - bsc#1057743: New requirement with new version of docker-libnetwork.
+
   - bsc#1032287: Missing docker systemd configuration.
+
   - bsc#1057743: New 'symbol' for libnetwork requirement.
+
   - bsc#1057743: Update secrets patch to handle 'old' containers that have
   orphaned secret data no longer available on the host.
+
   - bsc#1055676: Update patches to correctly handle volumes and mounts when
   Docker is running with user namespaces enabled.
+
   - bsc#1045628:: Add patch to make the dm storage driver remove a
   container's rootfs mountpoint before attempting to do libdm operations
   on it. This helps avoid complications when live mounts will leak into
   containers.
+
   - bsc#1069758: Upgrade Docker to v17.09.1_ce (and obsolete
   docker-image-migrator).
+
   - bsc#1021227: bsc#1029320 bsc#1058173 -- Enable docker devicemapper
   support for deferred removal/deletion within Containers module.
+
   - bsc#1046024: Correct interaction between Docker and SuSEFirewall2, to
   avoid breaking Docker networking after boot.
+
   - bsc#1048046: Build with -buildmode=pie to make all binaries PIC.
+
   - bsc#1072798: Remove dependency on obsolete bridge-utils.
+
   - bsc#1064926: Set --start-timeout=2m by default to match upstream.
+
   - bsc#1065109, bsc#1053532: Use the upstream makefile so that Docker can
   get the commit ID in `docker info`.
 
@@ -86,29 +98,26 @@ of detect NVT and check if the version is vulnerable or not.");
   'runc' package to match that we now ship the Docker fork of runc.
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "docker, on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"docker, on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0406_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00012.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0406_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00012.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -239,6 +248,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

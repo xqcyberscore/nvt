@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1561_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_suse_2018_1561_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ocaml openSUSE-SU-2018:1561-1 (ocaml)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851777");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 05:47:55 +0200 (Thu, 07 Jun 2018)");
   script_cve_id("CVE-2018-9838");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of ocaml");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ocaml fixes the following issues:
+  script_tag(name:"insight", value:"This update for ocaml fixes the following issues:
 
   - CVE-2018-9838: The caml_ba_deserialize function in byterun/bigarray.c in
   the standard library had an integer overflow which, in situations where
@@ -71,19 +70,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2723_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_2723_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ffmpeg-4 openSUSE-SU-2018:2723-1 (ffmpeg-4)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851894");
-  script_version("$Revision: 12236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-16 07:52:45 +0200 (Sun, 16 Sep 2018)");
   script_cve_id("CVE-2018-13300", "CVE-2018-15822");
   script_tag(name:"cvss_base", value:"5.8");
@@ -37,13 +37,13 @@ if(description)
   script_name("SuSE Update for ffmpeg-4 openSUSE-SU-2018:2723-1 (ffmpeg-4)");
   script_tag(name:"summary", value:"Check the version of ffmpeg-4");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ffmpeg-4 to version 4.0.2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for ffmpeg-4 to version 4.0.2 fixes the following issues:
 
   These security issues were fixed:
 
   - CVE-2018-15822: The flv_write_packet function did not check for an empty
   audio packet, leading to an assertion failure and DoS (bsc#1105869).
+
   - CVE-2018-13300: An improper argument passed to the avpriv_request_sample
   function may have triggered an out-of-array read while converting a
   crafted AVI file to MPEG4, leading to a denial of service and possibly
@@ -52,8 +52,10 @@ if(description)
   These non-security issues were fixed:
 
   - Enable webvtt encoders and decoders (boo#1092241).
+
   - Build codec2 encoder and decoder, add libcodec2 to enable_decoders and
   enable_encoders.
+
   - Enable mpeg 1 and 2 encoders.
 
 
@@ -82,19 +84,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

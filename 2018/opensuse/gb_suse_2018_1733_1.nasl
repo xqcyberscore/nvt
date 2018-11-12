@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1733_1.nasl 10292 2018-06-22 03:53:38Z cfischer $
+# $Id: gb_suse_2018_1733_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for aubio openSUSE-SU-2018:1733-1 (aubio)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851793");
-  script_version("$Revision: 10292 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 05:53:38 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:06:10 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2017-17554");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for aubio openSUSE-SU-2018:1733-1 (aubio)");
   script_tag(name:"summary", value:"Check the version of aubio");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for aubio fixes the following security issue:
+  script_tag(name:"insight", value:"This update for aubio fixes the following security issue:
 
   - CVE-2017-17554: Prevent NULL pointer dereference in the function
   aubio_source_avcodec_readframe which may have lead to DoS when playing a
@@ -47,7 +46,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -66,19 +65,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

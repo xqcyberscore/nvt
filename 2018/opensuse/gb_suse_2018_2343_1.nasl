@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2343_1.nasl 11444 2018-09-18 07:17:07Z cfischer $
+# $Id: gb_suse_2018_2343_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for aubio openSUSE-SU-2018:2343-1 (aubio)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851857");
-  script_version("$Revision: 11444 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 05:57:40 +0200 (Fri, 17 Aug 2018)");
   script_cve_id("CVE-2018-14522", "CVE-2018-14523");
   script_tag(name:"cvss_base", value:"6.8");
@@ -37,10 +37,10 @@ if(description)
   script_name("SuSE Update for aubio openSUSE-SU-2018:2343-1 (aubio)");
   script_tag(name:"summary", value:"Check the version of aubio");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for aubio fixes the following issues:
+  script_tag(name:"insight", value:"This update for aubio fixes the following issues:
 
   - CVE-2018-14522: Fixed a crash in aubio_pitch_set_unit (bsc#1102359)
+
   - CVE-2018-14523: Fixed a buffer overrread resulting in crash or
   information leakage in new_aubio_pitchyinfft (bsc#1102364)
 
@@ -70,19 +70,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2642_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_2642_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for qemu openSUSE-SU-2016:2642-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851423");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 05:40:10 +0200 (Thu, 27 Oct 2016)");
   script_cve_id("CVE-2016-2391", "CVE-2016-2392", "CVE-2016-4453", "CVE-2016-4454",
                 "CVE-2016-5105", "CVE-2016-5106", "CVE-2016-5107", "CVE-2016-5126",
@@ -39,76 +39,81 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2016:2642-1 (qemu)");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"qemu was updated to fix 19 security issues.
 
   These security issues were fixed:
+
   - CVE-2016-2392: The is_rndis function in the USB Net device emulator
   (hw/usb/dev-network.c) in QEMU did not properly validate USB
   configuration descriptor objects, which allowed local guest OS
   administrators to cause a denial of service (NULL pointer dereference
   and QEMU process crash) via vectors involving a remote NDIS control
   message packet (bsc#967012)
+
   - CVE-2016-2391: The ohci_bus_start function in the USB OHCI emulation
   support (hw/usb/hcd-ohci.c) in QEMU allowed local guest OS
   administrators to cause a denial of service (NULL pointer dereference
   and QEMU process crash) via vectors related to multiple eof_timers
   (bsc#967013)
+
   - CVE-2016-5106: The megasas_dcmd_set_properties function in
   hw/scsi/megasas.c in QEMU, when built with MegaRAID SAS 8708EM2 Host Bus
   Adapter emulation support, allowed local guest administrators to cause a
   denial of service (out-of-bounds write access) via vectors involving a
   MegaRAID Firmware Interface (MFI) command (bsc#982018)
+
   - CVE-2016-5105: The megasas_dcmd_cfg_read function in hw/scsi/megasas.c
   in QEMU, when built with MegaRAID SAS 8708EM2 Host Bus Adapter emulation
   support, used an uninitialized variable, which allowed local guest
   administrators to read host memory via vectors involving a MegaRAID
   Firmware Interface (MFI) command (bsc#982017)
+
   - CVE-2016-5107: The megasas_lookup_frame function in QEMU, when built
   with MegaRAID SAS 8708EM2 Host Bus Adapter emulation support, allowed
   local guest OS administrators to cause a denial of service
   (out-of-bounds read and crash) via unspecified vectors (bsc#982019)
+
   - CVE-2016-5126: Heap-based buffer overflow in the iscsi_aio_ioctl
   function in block/iscsi.c in QEMU allowed local guest OS users to cause
   a denial of service (QEMU process crash) or possibly execute arbitrary
   code via a crafted iSCSI asynchronous I/O ioctl call (bsc#982285)
+
   - CVE-2016-4454: The vmsvga_fifo_read_raw function in
   hw/display/vmware_vga.c in QEMU allowed local guest OS administrators to
   obtain sensitive host memory information or cause a denial of service
   (QEMU process crash) by changing FIFO registers and issuing a VGA
   command, which triggers an out-of-bounds read (bsc#982222)
+
   - CVE-2016-4453: The vmsvga_fifo_run function in hw/display/vmware_vga.c
   in QEMU allowed local guest OS administrators to cause a denial of
   service (infinite loop and QEMU process crash) via a VGA command
   (bsc#982223)
+
   - CVE-2016-5338: The (1) esp_reg_read and (2) esp_reg_write functions in
   hw/scsi/esp.c i ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "qemu on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"qemu on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2642_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2642_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -293,6 +298,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

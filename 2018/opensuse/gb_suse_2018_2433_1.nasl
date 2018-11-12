@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2433_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2433_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for apache2 openSUSE-SU-2018:2433-1 (apache2)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852034");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-1333", "CVE-2018-8011");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:36:01 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for apache2 openSUSE-SU-2018:2433-1 (apache2)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2433_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00066.html");
@@ -50,13 +50,13 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for apache2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for apache2 fixes the following issues:
 
   The following security vulnerabilities were fixed:
 
   - CVE-2018-1333: Fixed a worker exhaustion that could have lead to a denial
   of service via specially crafted HTTP/2 requests (bsc#1101689).
+
   - CVE-2018-8011: Fixed a null pointer dereference in mod_md, which could
   have lead to a denial of service via specially crafted HTTP requests
   (bsc#1101688). Note: We are currently not shipping this modules, since

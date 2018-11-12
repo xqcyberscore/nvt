@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1834_1.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_suse_2018_1834_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2018:1834-1 (tiff)
 #
@@ -27,33 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851801");
-  script_version("$Revision: 10374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-29 05:47:21 +0200 (Fri, 29 Jun 2018)");
-  script_cve_id("CVE-2016-3632", "CVE-2016-8331", "CVE-2017-11613", "CVE-2017-13726", 
+  script_cve_id("CVE-2016-3632", "CVE-2016-8331", "CVE-2017-11613", "CVE-2017-13726",
                 "CVE-2017-18013", "CVE-2018-10963", "CVE-2018-7456", "CVE-2018-8905");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tiff openSUSE-SU-2018:1834-1 (tiff)");
   script_tag(name:"summary", value:"Check the version of tiff");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for tiff fixes the following issues:
+  script_tag(name:"insight", value:"This update for tiff fixes the following issues:
 
   These security issues were fixed:
 
   - CVE-2017-18013: There was a Null-Pointer Dereference in the tif_print.c
   TIFFPrintDirectory function, as demonstrated by a tiffinfo crash.
   (bsc#1074317)
+
   - CVE-2018-10963: The TIFFWriteDirectorySec() function in tif_dirwrite.c
   allowed remote attackers to cause a denial of service (assertion failure
   and application crash) via a crafted file, a different vulnerability
   than CVE-2017-13726.  (bsc#1092949)
+
   - CVE-2018-7456: Prevent a NULL Pointer dereference in the function
   TIFFPrintDirectory when using the tiffinfo tool to print crafted TIFF
   information, a different vulnerability than CVE-2017-18013 (bsc#1082825)
+
   - CVE-2017-11613: Prevent denial of service in the TIFFOpen function.
   During the TIFFOpen process, td_imagelength is not checked. The value of
   td_imagelength can be directly controlled by an input file. In the
@@ -61,13 +63,16 @@ on the target host.");
   called based on td_imagelength. If the value of td_imagelength is set
   close to the amount of system memory, it will hang the system or trigger
   the OOM killer (bsc#1082332)
+
   - CVE-2018-8905: Prevent heap-based buffer overflow in the function
   LZWDecodeCompat via a crafted TIFF file (bsc#1086408)
+
   - CVE-2016-8331: Prevent remote code execution because of incorrect
   handling of TIFF images. A crafted TIFF document could have lead to a
   type confusion vulnerability resulting in remote code execution. This
   vulnerability could have been be triggered via a TIFF file delivered to
   the application using LibTIFF's tag extension functionality (bsc#1007276)
+
   - CVE-2016-3632: The _TIFFVGetField function allowed remote attackers to
   cause a denial of service (out-of-bounds write) or execute arbitrary
   code via a crafted TIFF image (bsc#974621)
@@ -77,7 +82,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -96,19 +101,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

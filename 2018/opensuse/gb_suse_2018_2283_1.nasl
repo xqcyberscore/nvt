@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2283_1.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
+# $Id: gb_suse_2018_2283_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ceph openSUSE-SU-2018:2283-1 (ceph)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851846");
-  script_version("$Revision: 11416 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:01:00 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-10861", "CVE-2018-1128", "CVE-2018-1129");
   script_tag(name:"cvss_base", value:"5.5");
@@ -37,21 +37,24 @@ if(description)
   script_name("SuSE Update for ceph openSUSE-SU-2018:2283-1 (ceph)");
   script_tag(name:"summary", value:"Check the version of ceph");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for ceph fixes the following issues:
+  script_tag(name:"insight", value:"This update for ceph fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-10861: Ensure that ceph-mon does perform authorization on all
   OSD pool ops (bsc#1099162)
+
   - CVE-2018-1129: cephx signature check bypass (bsc#1096748)
+
   - CVE-2018-1128: cephx protocol was vulnerable to replay attack
   (bsc#1096748)
 
   Bugs fixed in 12.2.7-420-gc0ef85b854:
 
   - luminous: osd: eternal stuck PG in 'unfound_recovery' (bsc#1094932)
+
   - bluestore: db.slow used when db is not full (bsc#1092874)
+
   - Upstream fixes and improvements, see
   <a  rel='nofollow' href='https://ceph.com/releases/12-2-7-luminous-released/'>https://ceph.com/releases/12-2-7-luminous-released/
 
@@ -79,19 +82,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

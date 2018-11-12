@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2242_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2242_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2242-1 (the)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852048");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2017-18344", "CVE-2018-5390");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:37:54 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:2242-1 (the)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2242_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00024.html");
@@ -59,6 +59,7 @@ if(description)
   low bandwidth could have caused lots of CPU usage by triggering the
   worst case scenario during IP and/or TCP fragment reassembly
   (bsc#1102340)
+
   - CVE-2017-18344: The timer_create syscall implementation in
   kernel/time/posix-timers.c in the Linux kernel doesn't properly validate
   the sigevent- sigev_notify field, which leads to out-of-bounds access in
@@ -71,35 +72,58 @@ if(description)
 
   - acpi, APEI, EINJ: Subtract any matching Register Region from Trigger
   resources (bsc#1051510).
+
   - acpi/nfit: fix cmd_rc for acpi_nfit_ctl to always return a value
   (bsc#1051510).
+
   - acpi, nfit: Fix scrub idle detection (bsc#1094119).
+
   - acpi / processor: Finish making acpi_processor_ppc_has_changed() void
   (bsc#1051510).
+
   - ahci: Disable LPM on Lenovo 50 series laptops with a too old BIOS
   (bsc#1051510).
+
   - alsa: emu10k1: add error handling for snd_ctl_add (bsc#1051510).
+
   - alsa: emu10k1: Rate-limit error messages about page errors (bsc#1051510).
+
   - alsa: fm801: add error handling for snd_ctl_add (bsc#1051510).
+
   - alsa: hda: add mute led support for HP ProBook 455 G5 (bsc#1051510).
+
   - alsa: hda - Handle pm failure during hotplug (bsc#1051510).
+
   - alsa: hda/realtek - Add Panasonic CF-SZ6 headset jack quirk
   (bsc#1051510).
+
   - alsa: hda/realtek - two more lenovo models need fixup of MIC_LOCATION
   (bsc#1051510).
+
   - alsa: hda/realtek - Yet another Clevo P950 quirk entry (bsc#1101143).
+
   - alsa: rawmidi: Change resized buffers atomically (bsc#1051510).
+
   - alsa: usb-audio: Apply rate limit to warning messages in URB complete
   callback (bsc#1051510).
+
   - alx: take rtnl before calling __alx_open from resume (bsc#1051510).
+
   - arm64: Correct type for PUD macros (bsc#1103723).
+
   - arm64: Disable unhandled signal log messages by default (bsc#1103724).
+
   - arm64: kpti: Use early_param for kpti= command-line option (bsc#1103220).
+
   - arm64: KVM: fix VTTBR_BADDR_MASK BUG_ON off-by-one (bsc#1103725).
+
   - arm64: mm: Fix set_memory_valid() declaration (bsc#1103726).
+
   - arm64: perf: correct PMUVer probing (bsc#1103727).
+
   - arm64: ptrace: Avoid setting compat FPR to garbage if get_user fails
   (bsc#1103728).
+
   - arm64: spinlock: Fix theoretical tryl ...
 
   Description truncated, for more information please check the Reference URL");

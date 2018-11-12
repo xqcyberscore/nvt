@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1384_1.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
+# $Id: gb_suse_2018_1384_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for pdns openSUSE-SU-2018:1384-1 (pdns)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851757");
-  script_version("$Revision: 11513 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:47:44 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-1046");
   script_tag(name:"cvss_base", value:"9.3");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for pdns openSUSE-SU-2018:1384-1 (pdns)");
   script_tag(name:"summary", value:"Check the version of pdns");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for pdns fixes the following issue:
+  script_tag(name:"insight", value:"This update for pdns fixes the following issue:
 
   - CVE-2018-1046: An issue has been found in the dnsreplay tool provided
   with PowerDNS Authoritative, where replaying a specially crafted PCAP
@@ -51,7 +50,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -70,19 +69,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

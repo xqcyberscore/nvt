@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2587_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_suse_2018_2587_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:2587-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851874");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-02 07:21:04 +0200 (Sun, 02 Sep 2018)");
   script_cve_id("CVE-2018-16056", "CVE-2018-16057", "CVE-2018-16058");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,14 +38,15 @@ if(description)
   script_tag(name:"summary", value:"Check the version of wireshark");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update for wireshark to version 2.2.17 fixes the following issues:
+  script_tag(name:"insight", value:"This update for wireshark to version 2.2.17 fixes the following issues:
 
   Security issues fixed (boo#1106514):
 
   - CVE-2018-16058: Bluetooth AVDTP dissector crash (wnpa-sec-2018-44)
+
   - CVE-2018-16056: Bluetooth Attribute Protocol dissector crash
   (wnpa-sec-2018-45)
+
   - CVE-2018-16057: Radiotap dissector crash (wnpa-sec-2018-46)
 
   Further bug fixes and updated protocol support as listed in:
@@ -73,19 +74,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

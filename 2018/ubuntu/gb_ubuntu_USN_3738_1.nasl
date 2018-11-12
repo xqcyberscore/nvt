@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3738_1.nasl 11043 2018-08-18 15:09:49Z cfischer $
+# $Id: gb_ubuntu_USN_3738_1.nasl 12296 2018-11-09 15:51:28Z mmartin $
 #
 # Ubuntu Update for samba USN-3738-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843615");
-  script_version("$Revision: 11043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:09:49 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:51:28 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:19:51 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-10858", "CVE-2018-10918", "CVE-2018-10919", "CVE-2018-1139");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for samba USN-3738-1");
   script_tag(name:"summary", value:"Check the version of samba");

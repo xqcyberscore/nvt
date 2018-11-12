@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0944_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_0944_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2017:0944-1 (samba)
 #
@@ -27,56 +27,59 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851533");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-06 06:33:25 +0200 (Thu, 06 Apr 2017)");
   script_cve_id("CVE-2017-2619");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2017:0944-1 (samba)");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   Security issues fixed:
+
   - CVE-2017-2619: Symlink race permits opening files outside share
   directory (bsc#1027147).
 
   Bugfixes:
+
   - Force usage of ncurses6-config through NCURSES_CONFIG env var (bsc#1023847).
+
   - Add missing ldb module directory (bsc#1012092).
+
   - Don't package man pages for VFS modules that aren't built (bsc#993707).
+
   - sync_req: make async_connect_send() 'reentrant'  (bso#12105)
   (bsc#1024416).
+
   - Document 'winbind: ignore domains' parameter  (bsc#1019416).
+
   - Prevent core, make sure response- extra_data.data is always cleared out
   (bsc#993692).
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.");
-  script_tag(name: "affected", value: "samba on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"samba on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0944_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0944_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -831,6 +834,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

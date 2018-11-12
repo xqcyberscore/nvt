@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2590_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2590_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for cobbler openSUSE-SU-2018:2590-1 (cobbler)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851877");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:38 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-1000225", "CVE-2018-1000226", "CVE-2018-10931");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,6 +44,7 @@ if(description)
 
   - Forbid exposure of private methods in the API (CVE-2018-10931,
   CVE-2018-1000225, bsc#1104287, bsc#1104189, bsc#1105442)
+
   - Check access token when calling 'modify_setting' API endpoint
   (bsc#1104190, bsc#1105440, CVE-2018-1000226)
 
@@ -51,6 +52,7 @@ if(description)
 
   - Do not try to hardlink to a symlink. The result will be a dangling
   symlink in the general case. (bsc#1097733)
+
   - fix kernel options when generating bootiso (bsc#1101670)
 
   This update was imported from the SUSE:SLE-12:Update update project.
@@ -77,19 +79,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

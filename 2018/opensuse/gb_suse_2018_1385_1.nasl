@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1385_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1385_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for opencv openSUSE-SU-2018:1385-1 (opencv)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851755");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:46:28 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2016-1516", "CVE-2017-12597", "CVE-2017-12598", "CVE-2017-12599",
                 "CVE-2017-12600", "CVE-2017-12601", "CVE-2017-12602", "CVE-2017-12603",
@@ -47,43 +47,55 @@ on the target host.");
 
   - CVE-2016-1516: OpenCV had a double free issue that allowed attackers to
   execute arbitrary code. (boo#1033152)
+
   - CVE-2017-14136: OpenCV had an out-of-bounds write error in the function
   FillColorRow1 in utils.cpp when reading an image file by using
   cv::imread. NOTE: this vulnerability exists because of an incomplete fix
   for CVE-2017-12597. (boo#1057146)
+
   - CVE-2017-12606: OpenCV had an out-of-bounds write error in the function
   FillColorRow4 in utils.cpp when reading an image file by using
   cv::imread. (boo#1052451)
+
   - CVE-2017-12604: OpenCV had an out-of-bounds write error in the
   FillUniColor function in utils.cpp when reading an image file by using
   cv::imread. (boo#1052454)
+
   - CVE-2017-12603: OpenCV had an invalid write in the
   cv::RLByteStream::getBytes function in modules/imgcodecs/src/bitstrm.cpp
   when reading an image file by using cv::imread, as demonstrated by the
   2-opencv-heapoverflow-fseek test case. (boo#1052455)
+
   - CVE-2017-12602: OpenCV had a denial of service (memory consumption)
   issue, as demonstrated by the 10-opencv-dos-memory-exhaust test case.
   (boo#1052456)
+
   - CVE-2017-12601: OpenCV had a buffer overflow in the
   cv::BmpDecoder::readData function in modules/imgcodecs/src/grfmt_bmp.cpp
   when reading an image file by using cv::imread, as demonstrated by the
   4-buf-overflow-readData-memcpy test case. (boo#1052457)
+
   - CVE-2017-12600: OpenCV had a denial of service (CPU consumption) issue,
   as demonstrated by the 11-opencv-dos-cpu-exhaust test case. (boo#1052459)
+
   - CVE-2017-12599: OpenCV had an out-of-bounds read error in the function
   icvCvt_BGRA2BGR_8u_C4C3R when reading an image file by using cv::imread.
   (boo#1052461)
+
   - CVE-2017-12598: OpenCV had an out-of-bounds read error in the
   cv::RBaseStream::readBlock function in modules/imgcodecs/src/bitstrm.cpp
   when reading an image file by using cv::imread, as demonstrated by the
   8-opencv-invalid-read-fread test case. (boo#1052462)
+
   - CVE-2017-12597: OpenCV had an out-of-bounds write error in the function
   FillColorRow1 in utils.cpp when reading an image file by using
   cv::imread. (boo#1052465)
+
   - CVE-2017-12864: In opencv/modules/imgcodecs/src/grfmt_pxm.cpp, function
   ReadNumber did not checkout the input length, which lead to integer
   overflow. If the image is from remote, may lead to remote code execution
   or denial of service. (boo#1054019)
+
   - CVE-2017-12863: In opencv/modules/imgcodecs/src/grfmt_pxm.cpp, function
   PxMDecoder::readData has an integer overflow when calculate src_pitch.
   If ...
@@ -99,19 +111,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

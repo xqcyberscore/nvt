@@ -23,14 +23,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Mozilla released a round of security updates.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850171");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"SUSE-SA", value:"2011-037");
+  script_cve_id("CVE-2011-0084", "CVE-2011-2378", "CVE-2011-2980", "CVE-2011-2981", "CVE-2011-2982", "CVE-2011-2983", "CVE-2011-2984", "CVE-2011-2985", "CVE-2011-2986", "CVE-2011-2987", "CVE-2011-2988", "CVE-2011-2989", "CVE-2011-2990", "CVE-2011-2991", "CVE-2011-2992", "CVE-2011-2993");
+  script_name("SuSE Update for MozillaFirefox, MozillaThunderbird, seamonkey SUSE-SA:2011:037");
+
+  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox, MozillaThunderbird, seamonkey");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE11\.3)");
+  script_tag(name:"impact", value:"remote code execution");
+  script_tag(name:"affected", value:"MozillaFirefox, MozillaThunderbird, seamonkey on openSUSE 11.3, openSUSE 11.4");
+  script_tag(name:"insight", value:"Mozilla released a round of security updates.
 
   Mozilla Firefox was updated to version 6 on openSUSE 11.4,
   Mozilla Firefox was updated to version 3.6.20 on openSUSE 11.3 and
   SUSE Linux Enterprise 10 and 11.
-  Seamonkey was updated to 2.3 on openSUSE 11.3,11.4
-  Mozilla Thunderbird was updated to 3.1.2 on openSUSE 11.3,11.4.
+  Seamonkey was updated to 2.3 on openSUSE 11.3, 11.4
+  Mozilla Thunderbird was updated to 3.1.2 on openSUSE 11.3, 11.4.
   Mozilla XULRunner was updated to 1.9.2.20.
 
   The updates bring new features, fix bugs and security issues.
@@ -88,52 +107,23 @@ tag_insight = "Mozilla released a round of security updates.
   * Heap overflow in ANGLE library
 
   Michael Jordon of Context IS reported a potentially exploitable heap
-  overf ... 
+  overf ...
 
-  Description truncated, for more information please check the Reference URL";
-tag_solution = "Please Install the Updated Packages.";
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-tag_impact = "remote code execution";
-tag_affected = "MozillaFirefox,MozillaThunderbird,seamonkey on openSUSE 11.3, openSUSE 11.4";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.850171");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2011-09-07 08:58:04 +0200 (Wed, 07 Sep 2011)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "SUSE-SA", value: "2011-037");
-  script_cve_id("CVE-2011-0084", "CVE-2011-2378", "CVE-2011-2980", "CVE-2011-2981", "CVE-2011-2982", "CVE-2011-2983", "CVE-2011-2984", "CVE-2011-2985", "CVE-2011-2986", "CVE-2011-2987", "CVE-2011-2988", "CVE-2011-2989", "CVE-2011-2990", "CVE-2011-2991", "CVE-2011-2992", "CVE-2011-2993");
-  script_name("SuSE Update for MozillaFirefox,MozillaThunderbird,seamonkey SUSE-SA:2011:037");
-
-  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox,MozillaThunderbird,seamonkey");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -408,7 +398,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -668,6 +658,6 @@ if(release == "openSUSE11.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

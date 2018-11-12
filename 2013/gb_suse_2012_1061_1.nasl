@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1061_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2012_1061_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for calligra openSUSE-SU-2012:1061-1 (calligra)
 #
@@ -24,59 +24,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Fix buffer overflow in MS Word ODF filter among other
+if(description)
+{
+  script_tag(name:"affected", value:"calligra on openSUSE 12.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Fix buffer overflow in MS Word ODF filter among other
   non-security related bugs.
 
   Also a version update to 2.4.3 happened:
+
   * Words:
+
   - Always show vertical scroll bar to avoid race
   condition (kde#301076)
-  - Do not save with an attribue that makes LibreOffice
+
+  - Do not save with an attribute that makes LibreOffice
   and OpenOffice crash (kde#298689 )
+
   * Kexi:
+
   - Fixed import from csv when Start at Line value
   changed (kde#302209)
+
   - Set limit to 255 characters for Text type (VARCHAR)
   (kde#301277 and 301136)
   +    - Remove limits for Text data type, leave as option
   (kde#301277)
+
   - Fixed data saving when focus policy for one of
   widgets is NoFocus (kde#301109)
+
   * Krita:
+
   - Read and set the resolution for psd images
+
   * Charts:
+
   - Fix load/save styles of all shapes
-  (title,subtitle,axistitles,footer,etc.)
+  (title, subtitle, axistitles, footer, etc.)
+
   - Lines in the chart should be displayed (kde#271771)
+
   - Combined Bar and Line Charts only show bars
   (Trendlines not supported) (kde#288537)
+
   - Load/save chart type for each dataset (kde#271771 and
-  288537)";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "calligra on openSUSE 12.2";
-
-
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00026.html");
+  288537)");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00026.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850417");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:18 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-3456");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2012:1061_1");
+  script_xref(name:"openSUSE-SU", value:"2012:1061_1");
   script_name("SuSE Update for calligra openSUSE-SU-2012:1061-1 (calligra)");
 
   script_tag(name:"summary", value:"Check for the Version of calligra");
@@ -84,19 +88,17 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -323,6 +325,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1573_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2012_1573_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for XEN openSUSE-SU-2012:1573-1 (XEN)
 #
@@ -24,21 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "XEN on openSUSE 12.2";
-tag_insight = "This security update of XEN fixes various bugs and security
-  issues.";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-11/msg00018.html");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-11/msg00018.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850433");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:43 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2007-0998", "CVE-2012-2625", "CVE-2012-2934", "CVE-2012-3494",
                 "CVE-2012-3495", "CVE-2012-3496", "CVE-2012-3497", "CVE-2012-3498",
@@ -46,7 +37,7 @@ if(description)
                 "CVE-2012-4537", "CVE-2012-4538", "CVE-2012-4539", "CVE-2012-4544");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1573_1");
+  script_xref(name:"openSUSE-SU", value:"2012:1573_1");
   script_name("SuSE Update for XEN openSUSE-SU-2012:1573-1 (XEN)");
 
   script_tag(name:"summary", value:"Check for the Version of XEN");
@@ -54,24 +45,24 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+  script_tag(name:"affected", value:"XEN on openSUSE 12.2");
+  script_tag(name:"insight", value:"This security update of XEN fixes various bugs and security
+  issues.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -190,6 +181,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

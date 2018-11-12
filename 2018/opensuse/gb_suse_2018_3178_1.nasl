@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3178_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3178_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for git openSUSE-SU-2018:3178-1 (git)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852092");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-17456");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:47:19 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for git openSUSE-SU-2018:3178-1 (git)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3178_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00030.html");
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for git fixes the following issues:
+  script_tag(name:"insight", value:"This update for git fixes the following issues:
 
   - CVE-2018-17456: Git allowed remote code execution during processing of a
   recursive 'git clone' of a superproject if a .gitmodules file has a URL

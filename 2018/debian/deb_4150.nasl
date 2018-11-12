@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4150.nasl 9201 2018-03-26 07:40:05Z cfischer $
+# $Id: deb_4150.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4150-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704150");
-  script_version("$Revision: 9201 $");
+  script_version("$Revision: 12308 $");
   script_cve_id("CVE-2017-15422");
   script_name("Debian Security Advisory DSA 4150-1 (icu - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-26 09:40:05 +0200 (Mon, 26 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 00:00:00 +0100 (Fri, 23 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

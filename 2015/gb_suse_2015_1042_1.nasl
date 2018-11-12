@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1042_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_1042_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for xen SUSE-SU-2015:1042-1 (xen)
 #
@@ -27,59 +27,62 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851017");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:52:52 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-3209", "CVE-2015-4103", "CVE-2015-4104", "CVE-2015-4105", "CVE-2015-4106", "CVE-2015-4163", "CVE-2015-4164");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen SUSE-SU-2015:1042-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Xen was updated to fix seven security issues and one non-security bug.
 
   The following vulnerabilities were fixed:
 
   * CVE-2015-4103: Potential unintended writes to host MSI message data
   field via qemu (XSA-128) (bnc#931625)
+
   * CVE-2015-4104: PCI MSI mask bits inadvertently exposed to guests
   (XSA-129) (bnc#931626)
+
   * CVE-2015-4105: Guest triggerable qemu MSI-X pass-through error messages
   (XSA-130) (bnc#931627)
+
   * CVE-2015-4106: Unmediated PCI register access in qemu (XSA-131)
   (bnc#931628)
+
   * CVE-2015-4163: GNTTABOP_swap_grant_ref operation misbehavior (XSA-134)
   (bnc#932790)
+
   * CVE-2015-3209: heap overflow in qemu pcnet controller allowing guest to
   host escape (XSA-135) (bnc#932770)
+
   * CVE-2015-4164: DoS through iret hypercall handler (XSA-136) (bnc#932996)
 
   The following non-security bug was fixed:
 
   * bnc#906689: let systemd schedule xencommons after network-online.target
   and remote-fs.target so that xendomains has access to remote shares");
-  script_tag(name: "affected", value: "xen on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:1042_1");
+  script_tag(name:"affected", value:"xen on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:1042_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -132,7 +135,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -218,6 +221,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

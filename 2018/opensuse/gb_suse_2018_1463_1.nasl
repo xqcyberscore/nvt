@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1463_1.nasl 10046 2018-06-01 02:46:35Z ckuersteiner $
+# $Id: gb_suse_2018_1463_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for perl-DBD-mysql openSUSE-SU-2018:1463-1 (perl-DBD-mysql)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851770");
-  script_version("$Revision: 10046 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 04:46:35 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 05:47:42 +0200 (Wed, 30 May 2018)");
   script_cve_id("CVE-2017-10788", "CVE-2017-10789", "CVE-2015-3152");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"Check the version of perl-DBD-mysql");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for perl-DBD-mysql fixes the following issues:
+  script_tag(name:"insight", value:"This update for perl-DBD-mysql fixes the following issues:
 
   - CVE-2017-10789: The DBD::mysql module when with mysql_ssl is 1 setting
   enabled, means that SSL is optional (even though this setting's
@@ -47,6 +46,7 @@ on the target host.");
   encrypted' statement), which could lead man-in-the-middle attackers to
   spoof servers via a cleartext-downgrade attack, a related issue to
   CVE-2015-3152. (bsc#1047059)
+
   - CVE-2017-10788: The DBD::mysql module through 4.043 for Perl allows
   remote attackers to cause a denial of service (use-after-free and
   application crash) or possibly have unspecified other impact by
@@ -79,19 +79,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

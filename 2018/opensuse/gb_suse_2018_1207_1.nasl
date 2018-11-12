@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1207_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1207_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for php7 openSUSE-SU-2018:1207-1 (php7)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851741");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 05:36:04 +0200 (Fri, 11 May 2018)");
   script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547", "CVE-2018-10548");
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,10 +43,13 @@ on the target host.");
   Security issues fixed:
 
   - CVE-2018-10545: Fix access controls in FPM child processes (bsc#1091367).
+
   - CVE-2018-10547: Fix Reflected XSS on the PHAR 403 and 404 error pages
   (bsc#1091362).
+
   - CVE-2018-10546: Fix an infinite loop exists in ext/iconv/iconv.c
   (bsc#1091363).
+
   - CVE-2018-10548: Fix remote denial of service in ext/ldap/ldap.c
   (bsc#1091355).
 
@@ -74,19 +77,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

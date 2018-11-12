@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2015_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2015_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # SuSE Update for libopenmpt openSUSE-SU-2018:2015-1 (libopenmpt)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852066");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12291 $");
   script_cve_id("CVE-2018-10017", "CVE-2018-11710");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:40:57 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for libopenmpt openSUSE-SU-2018:2015-1 (libopenmpt)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2015_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00027.html");
@@ -50,32 +50,42 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for libopenmpt to version 0.3.9 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libopenmpt to version 0.3.9 fixes the following issues:
 
   These security issues were fixed:
 
   - CVE-2018-11710: Prevent write near address 0 in out-of-memory situations
   when reading AMS files (bsc#1095644)
-  - CVE-2018-10017: Preven out-of-bounds memory read with IT/ITP/MO3 files
+
+  - CVE-2018-10017: Prevent out-of-bounds memory read with IT/ITP/MO3 files
   containing pattern loops (bsc#1089080)
 
   These non-security issues were fixed:
 
   - [Bug] openmpt123: Fixed build failure in C++17 due to use of removed
   feature std::random_shuffle.
+
   - STM: Having both Bxx and Cxx commands in a pattern imported the Bxx
   command incorrectly.
+
   - STM: Last character of sample name was missing.
+
   - Speed up reading of truncated ULT files.
+
   - ULT: Portamento import was sometimes broken.
+
   - The resonant filter was sometimes unstable when combining low-volume
   samples, low cutoff and high mixing rates.
+
   - Keep track of active SFx macro during seeking.
+
   - The 'note cut' duplicate note action did not volume-ramp the previously
   playing sample.
+
   - A song starting with non-existing patterns could not be played.
+
   - DSM: Support restart position and 16-bit samples.
+
   - DTM: Import global volume.
 
   This update was imported from the SUSE:SLE-15:Update update project.

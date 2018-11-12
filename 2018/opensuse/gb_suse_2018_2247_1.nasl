@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2247_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2247_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for java-11-openjdk openSUSE-SU-2018:2247-1 (java-11-openjdk)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851989");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-2940", "CVE-2018-2952", "CVE-2018-2972", "CVE-2018-2973");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:29:25 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for java-11-openjdk openSUSE-SU-2018:2247-1 (java-11-openjdk)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2247_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00025.html");
@@ -50,18 +50,20 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This java-11-openjdk update to version jdk-11+24 fixes the following
+  script_tag(name:"insight", value:"This java-11-openjdk update to version jdk-11+24 fixes the following
   issues:
 
   Security issues fixed:
 
   - CVE-2018-2940: Fix unspecified vulnerability in subcomponent Libraries
   (bsc#1101645).
+
   - CVE-2018-2952: Fix unspecified vulnerability in subcomponent Concurrency
   (bsc#1101651).
+
   - CVE-2018-2972: Fix unspecified vulnerability in subcomponent Security
   (bsc#1101655).
+
   - CVE-2018-2973: Fix unspecified vulnerability in subcomponent JSSE
   (bsc#1101656).
 

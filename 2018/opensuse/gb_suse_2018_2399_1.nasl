@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2399_1.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
+# $Id: gb_suse_2018_2399_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2018:2399-1 (Security)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851858");
-  script_version("$Revision: 11099 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:32:49 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2018-3640", "CVE-2018-3646");
   script_tag(name:"cvss_base", value:"4.9");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for Security openSUSE-SU-2018:2399-1 (Security)");
   script_tag(name:"summary", value:"Check the version of Security");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  ucode-intel was updated to the 20180807 release.
+  script_tag(name:"insight", value:"ucode-intel was updated to the 20180807 release.
 
   For the listed CPU chipsets this fixes CVE-2018-3640 (Spectre v3a) and is
   part of the mitigations for CVE-2018-3639 (Spectre v4) and CVE-2018-3646
@@ -48,13 +47,14 @@ if(description)
 
   Model        Stepping F-MO-S/PI      Old- New
 
-  ---- new platforms ---------------------------------------- WSM-EP/WS
+  - --- new platforms ---------------------------------------- WSM-EP/WS
   U1       6-2c-2/03           0000001f Xeon E/L/X56xx, W36xx NHM-EX
   D0       6-2e-6/04           0000000d Xeon E/L/X65xx/75xx BXT
   C0       6-5c-2/01           00000014 Atom T5500/5700 APL
   E0       6-5c-a/03           0000000c Atom x5-E39xx DVN
   B0       6-5f-1/01           00000024 Atom C3xxx
-  ---- updated platforms ------------------------------------ NHM-EP/WS
+
+  - --- updated platforms ------------------------------------ NHM-EP/WS
   D0       6-1a-5/03 00000019- 0000001d Xeon E/L/X/W55xx NHM
   B1       6-1e-5/13 00000007- 0000000a Core i7-8xx, i5-7xx  Xeon L3426,
   X24xx WSM          B1       6-25-2/12 0000000e- 00000011 Core i7-6xx,
@@ -64,7 +64,7 @@ if(description)
   P4xxx/U3xxx SNB          D2       6-2a-7/12 0000002d- 0000002e Core
   Gen2  Xeon E3 WSM-EX       A2       6-2f-2/05 00000037- 0000003b Xeon E7
   IVB          E2       6-3a-9/12 0000001f- 00000020 Core Gen3 Mobile
-  HSW-H/S/E3   Cx/Dx    6-3c-3/32 00000024- 00000025 Core Gen4 Desktop 
+  HSW-H/S/E3   Cx/Dx    6-3c-3/32 00000024- 00000025 Core Gen4 Desktop
   Xeon E3 v3 BDW-U/Y      E/F      6-3d-4/c0 0000002a- 0000002b Core Gen5
   Mobile HSW-ULT      Cx/Dx    6-45-1/72 00000023- 00000024 Core Gen4
   Mobile and derived Pentium/Celeron HSW-H        Cx       6-46-1/32
@@ -84,9 +84,9 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
-  like YaST online_update or 'zypper patch ... 
+  like YaST online_update or 'zypper patch ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"Security on openSUSE Leap 42.3");
@@ -99,19 +99,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0386_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0386_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Samba SUSE-SU-2015:0386-1 (Samba)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851034");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 18:36:46 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0240");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Samba SUSE-SU-2015:0386-1 (Samba)");
-  script_tag(name: "summary", value: "Check the version of Samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Samba has been updated to fix one security issue:
 
   * CVE-2015-0240: Don't call talloc_free on an uninitialized pointer
@@ -46,44 +46,51 @@ if(description)
 
   * Realign the winbind request structure following
   require_membership_of field expansion (bnc#913001).
+
   * Reuse connections derived from DFS referrals (bso#10123,
   fate#316512).
+
   * Set domain/workgroup based on authentication callback value
   (bso#11059).
+
   * Fix spoolss error response marshalling (bso#10984).
+
   * Fix spoolss EnumJobs and GetJob responses (bso#10905, bnc#898031).
+
   * Fix handling of bad EnumJobs levels (bso#10898).
+
   * Fix small memory-leak in the background print process (bnc#899558).
+
   * Prune idle or hung connections older than 'winbind request timeout'
   (bso#3204, bnc#872912).
+
   * Build: disable mmap on s390 systems (bnc#886193, bnc#882356).
+
   * Only update the printer share inventory when needed (bnc#883870).
+
   * Avoid double-free in get_print_db_byname (bso#10699).
 
   Security Issues:
 
   * CVE-2015-0240");
-  script_tag(name: "affected", value: "Samba on SUSE Linux Enterprise Server 11 SP2 LTSS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0386_1");
+  script_tag(name:"affected", value:"Samba on SUSE Linux Enterprise Server 11 SP2 LTSS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0386_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP2")
 {
@@ -220,6 +227,6 @@ if(release == "SLES11.0SP2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

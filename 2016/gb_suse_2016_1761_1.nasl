@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1761_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1761_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:1761-1 (php5)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851364");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 05:26:30 +0200 (Fri, 08 Jul 2016)");
   script_cve_id("CVE-2015-8935", "CVE-2016-5766", "CVE-2016-5767", "CVE-2016-5768",
                 "CVE-2016-5769", "CVE-2016-5770", "CVE-2016-5771", "CVE-2016-5772",
@@ -37,49 +37,54 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:1761-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"php5 was updated to fix nine security issues.
 
   These security issues were fixed:
+
   - CVE-2016-5773: ZipArchive class Use After Free Vulnerability in PHP's GC
   algorithm and unserialize (bsc#986247).
+
   - CVE-2016-5772: Double Free Courruption in wddx_deserialize (bsc#986244).
+
   - CVE-2016-5771: Use After Free Vulnerability in PHP's GC algorithm and
   unserialize (bsc#986391).
+
   - CVE-2016-5770: int/size_t confusion in SplFileObject::fread (bsc#986392).
+
   - CVE-2016-5768: Double free in _php_mb_regex_ereg_replace_exec -
   (bsc#986246).
+
   - CVE-2016-5769: mcrypt: Heap Overflow due to integer overflows
   (bsc#986388).
+
   - CVE-2015-8935: XSS in header() with Internet Explorer (bsc#986004).
+
   - CVE-2016-5767: Integer Overflow in gdImagePaletteToTrueColor() resulting
   in heap overflow (bsc#986393).
+
   - CVE-2016-5766: Integer Overflow in _gd2GetHeader() resulting in heap
   overflow (bsc#986386).");
-  script_tag(name: "affected", value: "php5 on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php5 on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1761_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1761_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -774,6 +779,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

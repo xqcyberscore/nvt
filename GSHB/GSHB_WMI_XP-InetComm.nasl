@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_XP-InetComm.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_WMI_XP-InetComm.nasl 12297 2018-11-09 16:00:07Z cfischer $
 #
 # Checks XP Internetcommunication of some Programs (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96038");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 12297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:00:07 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,29 +42,29 @@ if(description)
 
   script_tag(name:"summary", value:"The script Checks XP Internetcommunication of some Programs:
 
-    * Internet Explorer
+  * Internet Explorer
 
-    * Windows Media Player
+  * Windows Media Player
 
-    * Windows Messenger
+  * Windows Messenger
 
-    * Windows Zeitdienst
+  * Windows Zeitdienst
 
-    * Hilfe- und Supportcenter
+  * Hilfe- und Supportcenter
 
-    * Windows Update
+  * Windows Update
 
-    * Gerätemanager
+  * Gerätemanager
 
-    * Windows Aktivierung und Registrierung
+  * Windows Aktivierung und Registrierung
 
-    * Aktualisierung der Stammzertifikate
+  * Aktualisierung der Stammzertifikate
 
-    * Ereignisanzeige
+  * Ereignisanzeige
 
-    * Webdienst Assoziation
+  * Webdienst Assoziation
 
-    * Fehlerberichterstattung");
+  * Fehlerberichterstattung");
 
   exit(0);
 }

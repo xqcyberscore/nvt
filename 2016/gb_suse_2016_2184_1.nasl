@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2184_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2184_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:2184-1 (kernel)
 #
@@ -27,36 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851388");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-30 05:44:46 +0200 (Tue, 30 Aug 2016)");
-  script_cve_id("CVE-2014-9904", "CVE-2015-7833", "CVE-2015-8551", "CVE-2015-8552", 
-                "CVE-2015-8845", "CVE-2016-0758", "CVE-2016-1583", "CVE-2016-2053", 
-                "CVE-2016-3672", "CVE-2016-4470", "CVE-2016-4482", "CVE-2016-4486", 
-                "CVE-2016-4565", "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4805", 
-                "CVE-2016-4997", "CVE-2016-4998", "CVE-2016-5244", "CVE-2016-5828", 
+  script_cve_id("CVE-2014-9904", "CVE-2015-7833", "CVE-2015-8551", "CVE-2015-8552",
+                "CVE-2015-8845", "CVE-2016-0758", "CVE-2016-1583", "CVE-2016-2053",
+                "CVE-2016-3672", "CVE-2016-4470", "CVE-2016-4482", "CVE-2016-4486",
+                "CVE-2016-4565", "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4805",
+                "CVE-2016-4997", "CVE-2016-4998", "CVE-2016-5244", "CVE-2016-5828",
                 "CVE-2016-5829");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:2184-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.1 kernel was updated to 3.12.62 to receive various
+  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.1 kernel was updated to 3.12.62 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
+
   - CVE-2014-9904: The snd_compress_check_input function in
   sound/core/compress_offload.c in the ALSA subsystem in the Linux kernel
   did not properly check for an integer overflow, which allowed local
   users to cause a denial of service (insufficient memory allocation) or
   possibly have unspecified other impact via a crafted
   SNDRV_COMPRESS_SET_PARAMS ioctl call (bnc#986811).
+
   - CVE-2015-7833: The usbvision driver in the Linux kernel allowed
   physically proximate attackers to cause a denial of service (panic) via
   a nonzero bInterfaceNumber value in a USB device descriptor (bnc#950998).
+
   - CVE-2015-8551: The PCI backend driver in Xen, when running on an x86
   system and using Linux 3.1.x through 4.3.x as the driver domain, allowed
   local guest administrators to hit BUG conditions and cause a denial of
@@ -64,6 +65,7 @@ of detect NVT and check if the version is vulnerable or not.");
   system with access to a passed-through MSI or MSI-X capable physical PCI
   device and a crafted sequence of XEN_PCI_OP_* operations, aka 'Linux
   pciback missing sanity checks (bnc#957990).
+
   - CVE-2015-8552: The PCI backend driver in Xen, when running on an x86
   system and using Linux 3.1.x through 4.3.x as the driver domain, allowed
   local guest administrators to generate a continuous stream of WARN
@@ -71,46 +73,47 @@ of detect NVT and check if the version is vulnerable or not.");
   a system with access to a passed-through MSI or MSI-X capable physical
   PCI device and XEN_PCI_OP_enable_msi operations, aka 'Linux pciback
   missing sanity checks (bnc#957990).
+
   - CVE-2015-8845: The tm_reclaim_thread function in
   arch/powerpc/kernel/process.c in the Linux kernel on powerpc platforms
   did not ensure that TM suspend mode exists before proceeding with a
   tm_reclaim call, which allowed local users to cause a denial of service
   (TM Bad Thing exception and panic) via a crafted application (bnc#975531
   bsc#975533).
+
   - CVE-2016-0758: Integer overflow in lib/asn1_decoder.c in the Linux
   kernel allowed local users to gain privileges via crafted ASN.1 data
   (bnc#979867).
+
   - CVE-2016-1583: The ecryptfs_privileged_open function in
   fs/ecryptfs/kthread.c in the Linux kernel allowed local users to gain
   privileges or cause a denial of service (stack memory consumption) via
   vectors involving crafted mmap calls for /proc pathnames, leading to
   recursive pagefault handling. (bsc#983143)
+
   - CVE-2016-2053: The asn1_ber_decoder function in lib/asn1_decoder.c in
-  the Linux kernel allowed attac ... 
+  the Linux kernel allowed attac ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kernel on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2184_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2184_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -1429,6 +1432,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

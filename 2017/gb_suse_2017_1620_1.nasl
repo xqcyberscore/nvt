@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1620_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_1620_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:1620-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851568");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 07:03:19 +0200 (Tue, 20 Jun 2017)");
   script_cve_id("CVE-2017-5470", "CVE-2017-5472", "CVE-2017-7749", "CVE-2017-7750",
                 "CVE-2017-7751", "CVE-2017-7752", "CVE-2017-7754", "CVE-2017-7755",
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:1620-1 (Mozilla)");
-  script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Mozilla");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for Mozilla Firefox, Thunderbird, and NSS fixes the following
   issues:
 
@@ -51,72 +50,90 @@ of detect NVT and check if the version is vulnerable or not.");
 
   * CVE-2017-5472 (bmo#1365602) Use-after-free using destroyed node when
   regenerating trees
+
   * CVE-2017-7749 (bmo#1355039) Use-after-free during docshell reloading
+
   * CVE-2017-7750 (bmo#1356558) Use-after-free with track elements
+
   * CVE-2017-7751 (bmo#1363396) Use-after-free with content viewer listeners
+
   * CVE-2017-7752 (bmo#1359547) Use-after-free with IME input
+
   * CVE-2017-7754 (bmo#1357090) Out-of-bounds read in WebGL with ImageInfo
   object
+
   * CVE-2017-7755 (bmo#1361326) Privilege escalation through Firefox
   Installer with same directory DLL files (Windows only)
+
   * CVE-2017-7756 (bmo#1366595) Use-after-free and use-after-scope logging
   XHR header errors
+
   * CVE-2017-7757 (bmo#1356824) Use-after-free in IndexedDB
+
   * CVE-2017-7778, CVE-2017-7778, CVE-2017-7771, CVE-2017-7772,
   CVE-2017-7773, CVE-2017-7774, CVE-2017-7775, CVE-2017-7776,
   CVE-2017-7777 Vulnerabilities in the Graphite 2 library
+
   * CVE-2017-7758 (bmo#1368490) Out-of-bounds read in Opus encoder
+
   * CVE-2017-7760 (bmo#1348645) File manipulation and privilege escalation
   via callback parameter in Mozilla Windows Updater and Maintenance
   Service (Windows only)
+
   * CVE-2017-7761 (bmo#1215648) File deletion and privilege escalation
   through Mozilla Maintenance Service helper.exe application (Windows only)
+
   * CVE-2017-7764 (bmo#1364283) Domain spoofing with combination of Canadian
   Syllabics and other unicode blocks
+
   * CVE-2017-7765 (bmo#1273265) Mark of the Web bypass when saving
   executable files (Windows only)
+
   * CVE-2017-7766 (bmo#1342742) File execution and privilege escalation
   through updater.ini, Mozilla Windows Updater, and Mozilla Maintenance
   Service (Windows only)
+
   * CVE-2017-7767 (bmo#1336964) Privilege escalation and arbitrary file
   overwrites through Mozilla Windows Updater and Mozilla Maintenance
   Service (Windows only)
+
   * CVE-2017-7768 (bmo#1336979) 32 byte arbitrary file read through Mozilla
   Maintenance Service (Windows only)
+
   * CVE-2017-5470 Memory safety bugs fixed in Firefox 54 and Firefox ESR 52.2
 
   - remove -fno-inline-small-functions and explicitly optimize with
-  -O2 for openSUSE   13.2/Leap 42 to work with gcc7 (boo#1040105)
+
+  - O2 for openSUSE   13.2/Leap 42 to work with gcc7 (boo#1040105)
 
   Mozilla NSS was updated to NSS 3.28.5
+
   * Implemented domain name constraints for CA: TUBITAK Kamu SM SSL Kok
   Sertifikasi - Surum 1. (bmo#1350859)
+
   * March 2017 batch of root CA changes (bmo#1350859) (version 2.14) CA
   certificates removed: O = Japanese Government, OU = ApplicationCA CN ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Mozilla on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Mozilla on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1620_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1620_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -427,6 +444,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

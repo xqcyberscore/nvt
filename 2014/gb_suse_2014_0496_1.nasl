@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0496_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0496_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for lighttpd openSUSE-SU-2014:0496-1 (lighttpd)
 #
@@ -24,21 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850583");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 13:36:04 +0530 (Thu, 10 Apr 2014)");
   script_cve_id("CVE-2014-2323", "CVE-2014-2324");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("SuSE Update for lighttpd openSUSE-SU-2014:0496-1 (lighttpd)");
-
-  tag_insight = "
-  lighttpd was updated to version 1.4.35, fixing bugs and
+  script_tag(name:"affected", value:"lighttpd on openSUSE 11.4");
+  script_tag(name:"insight", value:"lighttpd was updated to version 1.4.35, fixing bugs and
   security issues:
 
   CVE-2014-2323: SQL injection vulnerability in
@@ -58,64 +55,72 @@ if(description)
   014_01.txt
 
   Other changes:
+
   * [network/ssl] fix build error if TLSEXT is disabled
+
   * [mod_fastcgi] fix use after free (only triggered if
   fastcgi debug is active)
+
   * [mod_rrdtool] fix invalid read (string not null
   terminated)
+
   * [mod_dirlisting] fix memory leak if pcre fails
-  * [mod_fastcgi,mod_scgi] fix resource leaks on spawning
+
+  * [mod_fastcgi, mod_scgi] fix resource leaks on spawning
   backends
+
   * [mod_magnet] fix memory leak
+
   * add comments for switch fall throughs
+
   * remove logical dead code
+
   * [buffer] fix length check in buffer_is_equal_right_len
+
   * fix resource leaks in error cases on config parsing and
   other initializations
+
   * add force_assert() to enforce assertions as simple
   assert()s are disabled by -DNDEBUG (fixes #2546)
+
   * [mod_cml_lua] fix null pointer dereference
+
   * force assertion: setting FD_CLOEXEC must work (if
   available)
+
   * [network] check return value of lseek()
+
   * fix unchecked return values from
   stream_open/stat_cache_get_entry
+
   * [mod_webdav] fix logic error in handling file creation
   error
+
   * check length of unix domain socket filenames
+
   * fix SQL injection / host name validation (thx Jann
   Horn)for all the changes see
-  /usr/share/doc/packages/lighttpd/NEWS";
-
-  tag_affected = "lighttpd on openSUSE 11.4";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  /usr/share/doc/packages/lighttpd/NEWS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0496_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0496_1");
   script_tag(name:"summary", value:"Check for the Version of lighttpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -222,6 +227,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

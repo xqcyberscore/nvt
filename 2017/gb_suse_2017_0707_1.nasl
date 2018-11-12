@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0707_1.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_suse_2017_0707_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for qemu openSUSE-SU-2017:0707-1 (qemu)
 #
@@ -27,88 +27,94 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851524");
-  script_version("$Revision: 11317 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 06:32:47 +0100 (Fri, 17 Mar 2017)");
-  script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-10155", "CVE-2016-9921", 
-                "CVE-2016-9922", "CVE-2017-2615", "CVE-2017-2620", "CVE-2017-5525", 
-                "CVE-2017-5526", "CVE-2017-5552", "CVE-2017-5578", "CVE-2017-5667", 
+  script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-10155", "CVE-2016-9921",
+                "CVE-2016-9922", "CVE-2017-2615", "CVE-2017-2620", "CVE-2017-5525",
+                "CVE-2017-5526", "CVE-2017-5552", "CVE-2017-5578", "CVE-2017-5667",
                 "CVE-2017-5856", "CVE-2017-5857", "CVE-2017-5898");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2017:0707-1 (qemu)");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for qemu fixes several issues.
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for qemu fixes several issues.
 
   These security issues were fixed:
 
   - CVE-2017-5898: The CCID Card device emulator support was vulnerable to
   an integer overflow flaw allowing a privileged user to crash the Qemu
   process on the host resulting in DoS (bsc#1023907).
+
   - CVE-2017-5857: The Virtio GPU Device emulator support was vulnerable to
   a host memory leakage issue allowing a guest user to leak host memory
   resulting in DoS (bsc#1023073).
+
   - CVE-2017-2620: In CIRRUS_BLTMODE_MEMSYSSRC mode the bitblit copy routine
   cirrus_bitblt_cputovideo failed to check the memory region, allowing for
   an out-of-bounds write that allows for privilege escalation (bsc#1024972)
+
   - CVE-2017-2615: An error in the bitblt copy operation could have allowed
   a malicious guest administrator to cause an out of bounds memory access,
   possibly leading to information disclosure
   or privilege escalation (bsc#1023004)
+
   - CVE-2017-5856: The MegaRAID SAS 8708EM2 Host Bus Adapter emulation
   support was vulnerable to a memory leakage issue allowing a privileged
   user to leak host memory resulting in DoS (bsc#1023053)
+
   - CVE-2016-9921: The Cirrus CLGD 54xx VGA Emulator support was vulnerable
   to a divide by zero issue while copying VGA data. A privileged user
   inside guest could have used this flaw to crash the process instance on
   the host, resulting in DoS (bsc#1014702)
+
   - CVE-2016-9922: The Cirrus CLGD 54xx VGA Emulator support was vulnerable
   to a divide by zero issue while copying VGA data. A privileged user
   inside guest could have used this flaw to crash the process instance on
   the host, resulting in DoS (bsc#1014702)
+
   - CVE-2016-10029: The Virtio GPU Device emulator support was vulnerable to
   an OOB read issue allowing a guest user to crash the Qemu process
   instance resulting in Dos (bsc#1017081).
+
   - CVE-2016-10028: The Virtio GPU Device emulator support was vulnerable to
   an out of bounds memory access issue allowing a guest user to crash the
   Qemu process instance on a host, resulting in DoS (bsc#1017084).
+
   - CVE-2016-10155: The virtual hardware watchdog 'wdt_i6300esb' was
   vulnerable to a memory leakage issue allowing a privileged user to cause
   a DoS and/or potentially crash the Qemu process on the host (bsc#1021129)
+
   - CVE-2017-5552: The Virtio GPU Device emulator support was vulnerable to
   a memory leakage issue allowing a guest user to leak host memory
   resulting in DoS (bsc#1021195).
+
   - CVE-2017-5578: The Virtio GPU Device emulator support was vulnerable to
   a memory leakage issue allowing a guest user to leak host memory
-  resulting in DoS (bsc#1021481 ... 
+  resulting in DoS (bsc#1021481 ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "qemu on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"qemu on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0707_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0707_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -329,6 +335,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

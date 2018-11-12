@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0025_1.nasl 8337 2018-01-09 07:04:57Z teissa $
+# $Id: gb_suse_2018_0025_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:0025-1 (ImageMagick)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851675");
-  script_version("$Revision: 8337 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 08:04:57 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-05 23:56:32 +0100 (Fri, 05 Jan 2018)");
-  script_cve_id("CVE-2017-12563", "CVE-2017-12691", "CVE-2017-13061", "CVE-2017-13062", 
-                "CVE-2017-14042", "CVE-2017-14174", "CVE-2017-14343", "CVE-2017-15277", 
+  script_cve_id("CVE-2017-12563", "CVE-2017-12691", "CVE-2017-13061", "CVE-2017-13062",
+                "CVE-2017-14042", "CVE-2017-14174", "CVE-2017-14343", "CVE-2017-15277",
                 "CVE-2017-15281");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:0025-1 (ImageMagick)");
-  script_tag(name: "summary", value: "Check the version of ImageMagick");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for ImageMagick fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of ImageMagick");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for ImageMagick fixes the following issues:
 
   - security update (xcf.c):
+
   * CVE-2017-14343: Memory leak vulnerability in ReadXCFImage could lead
   to denial of service via a crafted file. CVE-2017-12691: The
   ReadOneLayer function in coders/xcf.c allows remote attackers to cause
@@ -51,21 +50,26 @@ of detect NVT and check if the version is vulnerable or not.");
   [bsc#1058422]
 
   - security update (pnm.c):
+
   * CVE-2017-14042: A memory allocation failure was discovered in the
   ReadPNMImage function in coders/pnm.c and could lead to remote denial
   of service [bsc#1056550]
 
   - security update (psd.c):
+
   * CVE-2017-15281: ReadPSDImage allows remote attackers to cause a denial
   of service (application crash) or possibly have unspecified other
   impact via a crafted file [bsc#1063049]
+
   * CVE-2017-13061: A length-validation vulnerability was found in the
   function ReadPSDLayersInternal in coders/psd.c, which allows attackers
   to cause a denial of service (ReadPSDImage memory exhaustion) via a
   crafted file. [bsc#1055063]
+
   * CVE-2017-12563: A Memory exhaustion vulnerability was found in the
   function ReadPSDImage in coders/psd.c, which allows attackers to cause
   a denial of service. [bsc#1052460]
+
   * CVE-2017-14174: Due to a lack of an EOF check (End of File) in
   ReadPSDLayersInternal could cause huge CPU consumption, when a crafted
   PSD file, which claims a large 'length' field in the header but does
@@ -74,12 +78,14 @@ of detect NVT and check if the version is vulnerable or not.");
   check inside the loop.[bsc#1057723]
 
   - security update (meta.c):
+
   * CVE-2017-13062: Amemory leak vulnerability was found in the function
   formatIPTC in coders/meta.c, which allows attackers to cause a denial
   of service (WriteMETAImage memory consumption) via a crafted file
   [bsc#1055053]
 
   - security update (gif.c):
+
   * CVE-2017-15277: ReadGIFImage in coders/gif.c leaves the palette
   uninitialized when processing a GIF file that has neither a global nor
   local palette. If the affected product is used as a library loaded
@@ -87,29 +93,26 @@ of detect NVT and check if the version is vulnerable or not.");
   can be leaked via the uninitialized palette.[bsc#1063050]
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "ImageMagick on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ImageMagick on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0025_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-01/msg00017.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0025_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-01/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -258,7 +261,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -410,6 +413,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

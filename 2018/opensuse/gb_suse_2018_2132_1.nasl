@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2132_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2132_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for mercurial openSUSE-SU-2018:2132-1 (mercurial)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852072");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-13346", "CVE-2018-13347", "CVE-2018-13348");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:37 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for mercurial openSUSE-SU-2018:2132-1 (mercurial)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2132_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00049.html");
@@ -57,8 +57,10 @@ if(description)
   - CVE-2018-13346: Fix mpatch_apply function in mpatch.c that incorrectly
   proceeds in cases where the fragment start is past the end of the
   original data (bsc#1100354).
+
   - CVE-2018-13347: Fix mpatch.c that mishandles integer addition and
   subtraction (bsc#1100355).
+
   - CVE-2018-13348: Fix the mpatch_decode function in mpatch.c that
   mishandles certain situations where there should be at least 12 bytes
   remaining after thecurrent position in the patch data (bsc#1100353).

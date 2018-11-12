@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0781_1.nasl 9478 2018-04-13 13:28:27Z cfischer $
+# $Id: gb_suse_2018_0781_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0781-1 (Linux Kernel)
 #
@@ -27,22 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851723");
-  script_version("$Revision: 9478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-25 08:21:54 +0200 (Sun, 25 Mar 2018)");
-  script_cve_id("CVE-2017-13166", "CVE-2017-15951", "CVE-2017-16644", "CVE-2017-16912", 
-                "CVE-2017-16913", "CVE-2017-17975", "CVE-2017-18174", "CVE-2017-18208", 
+  script_cve_id("CVE-2017-13166", "CVE-2017-15951", "CVE-2017-16644", "CVE-2017-16912",
+                "CVE-2017-16913", "CVE-2017-17975", "CVE-2017-18174", "CVE-2017-18208",
                 "CVE-2018-1000026", "CVE-2018-1068", "CVE-2018-8087");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0781-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.120 to receive various
+  script_tag(name:"summary", value:"Check the version of the Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.120 to receive various
   security and bugfixes.
 
 
@@ -52,12 +49,15 @@ of detect NVT and check if the version is vulnerable or not.");
   drivers/net/wireless/mac80211_hwsim.c allowed local users to cause a
   denial of service (memory consumption) by triggering an out-of-array
   error case (bnc#1085053).
+
   - CVE-2017-13166: An elevation of privilege vulnerability in the v4l2
   video driver was fixed. (bnc#1072865).
+
   - CVE-2017-18208: The madvise_willneed function in mm/madvise.c in the
   Linux kernel allowed local users to cause a denial of service (infinite
   loop) by triggering use of MADVISE_WILLNEED for a DAX mapping
   (bnc#1083494).
+
   - CVE-2017-17975: Use-after-free in the usbtv_probe function in
   drivers/media/usb/usbtv/usbtv-core.c allowed attackers to cause a denial
   of service (system crash) or possibly have unspecified other impact by
@@ -65,53 +65,56 @@ of detect NVT and check if the version is vulnerable or not.");
   data structure occurs during a usbtv_video_free call, but the
   usbtv_video_fail label's code attempts to both access and free this data
   structure (bnc#1074426).
+
   - CVE-2017-16644: The hdpvr_probe function in
   drivers/media/usb/hdpvr/hdpvr-core.c allowed local users to cause a
   denial of service (improper error handling and system crash) or possibly
   have unspecified other impact via a crafted USB device (bnc#1067118).
+
   - CVE-2017-15951: The KEYS subsystem in did not correctly synchronize the
   actions of updating versus finding a key in the 'negative' state to
   avoid a race condition, which allowed local users to cause a denial of
   service or possibly have unspecified other impact via crafted system
   calls (bnc#1062840 bnc#1065615).
+
   - CVE-2018-1000026: An insufficient input validation vulnerability in the
   bnx2x network card driver could result in DoS: Network card firmware
   assertion takes card off-line. This attack appears to be exploitable via
   an attacker that must pass a very large, specially crafted packet to the
   bnx2x card. This could be done from an untrusted guest VM. (bnc#1079384).
+
   - CVE-2017-18174: In the amd_gpio_remove function in
   drivers/pinctrl/pinctrl-amd.c calls the pinctrl_unregister function,
   which could lead to a double free (bnc#1080533).
+
   - CVE-2017-16912: The 'get_pipe()' function (drivers/usb/usbip/stub_rx.c)
   allowed attackers to cause a denial of service (out-of-bounds read) via
   a specially crafted USB over IP packet (bnc#1078673).
+
   - CVE-2017-16913: The 'stub_recv_cmd_submit()' function
   (drivers/usb/usbip/stub_rx.c) when handling CMD_SUBMIT.
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0781_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-03/msg00054.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0781_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-03/msg00054.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -332,6 +335,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

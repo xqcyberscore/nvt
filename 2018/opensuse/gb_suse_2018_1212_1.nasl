@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1212_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1212_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:1212-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851740");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 05:35:43 +0200 (Fri, 11 May 2018)");
   script_cve_id("CVE-2018-5150", "CVE-2018-5154", "CVE-2018-5155", "CVE-2018-5157",
                 "CVE-2018-5158", "CVE-2018-5159", "CVE-2018-5168", "CVE-2018-5178",
@@ -45,22 +45,31 @@ on the target host.");
   Security issssue fixed: (bsc#1092548, MFSA 2018-12):
 
   - CVE-2018-5183: Backport critical security fixes in Skia
+
   - CVE-2018-5154: Use-after-free with SVG animations and clip paths
+
   - CVE-2018-5155: Use-after-free with SVG animations and text paths
+
   - CVE-2018-5157: Same-origin bypass of PDF Viewer to view protected PDF
   files
+
   - CVE-2018-5158: Malicious PDF can inject JavaScript into PDF Viewer
+
   - CVE-2018-5159: Integer overflow and out-of-bounds write in Skia
+
   - CVE-2018-5168: Lightweight themes can be installed without user
   interaction
+
   - CVE-2018-5178: Buffer overflow during UTF-8 to Unicode string conversion
   through legacy extension
+
   - CVE-2018-5150: Memory safety bugs fixed in Firefox 60 and Firefox ESR
   52.8
 
   The following non-security changes are included:
 
   - Various stability and regression fixes
+
   - Performance improvements to the Safe Browsing service to avoid slowdowns
   while updating site classification data
 
@@ -86,19 +95,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

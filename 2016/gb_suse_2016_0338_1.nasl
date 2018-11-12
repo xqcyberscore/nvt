@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0338_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0338_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2016:0338-1 (MozillaFirefox,)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851198");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-05 06:11:58 +0100 (Fri, 05 Feb 2016)");
   script_cve_id("CVE-2016-1930", "CVE-2016-1935", "CVE-2016-1938");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2016:0338-1 (MozillaFirefox,)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for MozillaFirefox, MozillaFirefox-branding-SLE, mozilla-nss
+  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2016:0338-1 (MozillaFirefox, )");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for MozillaFirefox, MozillaFirefox-branding-SLE, mozilla-nss
   fixes the following issues: (bsc#963520)
 
   Mozilla Firefox was updated to 38.6.0 ESR. Mozilla NSS was updated to
@@ -48,38 +46,39 @@ of detect NVT and check if the version is vulnerable or not.");
   The following vulnerabilities were fixed:
 
   - CVE-2016-1930: Memory safety bugs fixed in Firefox ESR 38.6 (bsc#963632)
+
   - CVE-2016-1935: Buffer overflow in WebGL after out of memory allocation
   (bsc#963635)
+
   - CVE-2016-1938: Calculations with mp_div and mp_exptmod in Network
   Security Services (NSS) canproduce wrong results (bsc#963731)
 
   The following improvements were added:
 
   - bsc#954447: Mozilla NSS now supports a number of new DHE ciphersuites
-  - Tracking protection is now enabled by default
-  - bsc#964332: Fixed leaking file descriptors inside FIPS selfcheck code");
-  script_tag(name: "affected", value: "MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "SUSE-SU", value: "2016:0338_1");
+  - Tracking protection is now enabled by default
+
+  - bsc#964332: Fixed leaking file descriptors inside FIPS selfcheck code");
+  script_tag(name:"affected", value:"MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"SUSE-SU", value:"2016:0338_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -252,7 +251,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -452,6 +451,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

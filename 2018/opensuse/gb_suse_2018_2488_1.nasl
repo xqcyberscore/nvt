@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2488_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2488_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for python-Django openSUSE-SU-2018:2488-1 (python-Django)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852077");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-14574");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:42:09 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for python-Django openSUSE-SU-2018:2488-1 (python-Django)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2488_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00073.html");
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for python-Django to version 2.08 fixes the following issues:
+  script_tag(name:"insight", value:"This update for python-Django to version 2.08 fixes the following issues:
 
   The following security vulnerability was fixed:
 
@@ -61,25 +60,37 @@ if(description)
   The following other bugs were fixed:
 
   - Fixed a regression in Django 2.0.7 that broke the regex lookup on MariaDB
+
   - Fixed a regression where django.template.Template crashed if the
   template_string argument is lazy
+
   - Fixed __regex and __iregex lookups with MySQL
+
   - Fixed admin check crash when using a query expression in
   ModelAdmin.ordering
+
   - Fixed admin changelist crash when using a query expression without asc()
   or desc() in the page's ordering
+
   - Fixed a regression that broke custom template filters that use decorators
+
   - Fixed detection of custom URL converters in included pattern
+
   - Fixed a regression that added an unnecessary subquery to the GROUP BY
   clause
   on MySQL when using a RawSQL annotation
+
   - Fixed WKBWriter.write() and write_hex() for empty polygons on GEOS 3.6.1+
+
   - Fixed a regression in Django 1.10 that could result in large memory
   usage when making edits using ModelAdmin.list_editable
+
   - Corrected the import paths that inspectdb generates for
   django.contrib.postgres fields
+
   - Fixed crashes in django.contrib.admindocs when a view is a callable
   object, such as django.contrib.syndication.views.Feed
+
   - Fixed a regression in Django 1.11.12 where QuerySet.values() or
   values_list() after combining an annotated and unannotated queryset with
   union(), difference(), or intersection() crashed due to mismatching

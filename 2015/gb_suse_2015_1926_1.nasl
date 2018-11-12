@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1926_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_1926_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2015:1926-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851131");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-07 05:31:46 +0100 (Sat, 07 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183",
                 "CVE-2015-7188", "CVE-2015-7189", "CVE-2015-7193", "CVE-2015-7194",
@@ -37,62 +37,71 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2015:1926-1 (MozillaFirefox,)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for MozillaFirefox, SUSE-SU-2015:1926-1 (MozillaFirefox, )");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This Mozilla Firefox, NSS and NSPR update fixes the following security and
   non security issues.
 
   - mozilla-nspr was updated to version 4.10.10 (bsc#952810)
+
   * MFSA 2015-133/CVE-2015-7183 (bmo#1205157) NSPR memory corruption issues
 
   - mozilla-nss was updated to 3.19.2.1 (bsc#952810)
+
   * MFSA 2015-133/CVE-2015-7181/CVE-2015-7182 (bmo#1192028, bmo#1202868)
   NSS and NSPR memory corruption issues
 
   - MozillaFirefox was updated to 38.4.0 ESR (bsc#952810)
+
   * MFSA 2015-116/CVE-2015-4513 (bmo#1107011, bmo#1191942, bmo#1193038,
   bmo#1204580, bmo#1204669, bmo#1204700, bmo#1205707, bmo#1206564,
   bmo#1208665, bmo#1209471, bmo#1213979) Miscellaneous memory safety
   hazards (rv:42.0 / rv:38.4)
+
   * MFSA 2015-122/CVE-2015-7188 (bmo#1199430) Trailing whitespace in IP
   address hostnames can bypass same-origin policy
+
   * MFSA 2015-123/CVE-2015-7189 (bmo#1205900) Buffer overflow during image
   interactions in canvas
+
   * MFSA 2015-127/CVE-2015-7193 (bmo#1210302) CORS preflight is bypassed
   when non-standard Content-Type headers are received
+
   * MFSA 2015-128/CVE-2015-7194 (bmo#1211262) Memory corruption in libjar
   through zip files
+
   * MFSA 2015-130/CVE-2015-7196 (bmo#1140616) JavaScript garbage
   collection crash with Java applet
+
   * MFSA 2015-131/CVE-2015-7198/CVE-2015-7199/CVE-2015-7200 (bmo#1204061,
   bmo#1188010, bmo#1204155) Vulnerabilities found through code inspection
+
   * MFSA 2015-132/CVE-2015-7197 (bmo#1204269) Mixed content WebSocket
   policy bypass through workers
+
   * MFSA 2015-133/CVE-2015-7181/CVE-2015-7182/CVE-2015-7183 (bmo#1202868,
   bmo#1192028, bmo#1205157) NSS and NSPR memory corruption issues
+
   - fix printing on landscape media (bsc#908275)");
-  script_tag(name: "affected", value: "MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:1926_1");
+  script_tag(name:"affected", value:"MozillaFirefox, on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:1926_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -271,7 +280,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -477,6 +486,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

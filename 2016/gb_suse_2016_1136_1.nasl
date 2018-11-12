@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1136_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1136_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2016:1136-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851284");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 05:00:59 +0200 (Mon, 25 Apr 2016)");
   script_cve_id("CVE-2016-1651", "CVE-2016-1652", "CVE-2016-1653", "CVE-2016-1654",
                 "CVE-2016-1655", "CVE-2016-1656", "CVE-2016-1657", "CVE-2016-1658",
@@ -37,44 +37,48 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2016:1136-1 (Chromium)");
-  script_tag(name: "summary", value: "Check the version of Chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Chromium was updated to 50.0.2661.75 to fix the following vulnerabilities:
 
   - CVE-2016-1651: Out-of-bounds read in Pdfium JPEG2000 decoding
+
   - CVE-2016-1652: Universal XSS in extension bindings
+
   - CVE-2016-1653: Out-of-bounds write in V8
+
   - CVE-2016-1654: Uninitialized memory read in media
+
   - CVE-2016-1655: Use-after-free related to extensions
+
   - CVE-2016-1656: Android downloaded file path restriction bypass
+
   - CVE-2016-1657: Address bar spoofing
+
   - CVE-2016-1658: Potential leak of sensitive information to malicious
   extensions
+
   - CVE-2016-1659: Various fixes from internal audits, fuzzing and other
   initiatives");
-  script_tag(name: "affected", value: "Chromium on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Chromium on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1136_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1136_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -133,6 +137,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

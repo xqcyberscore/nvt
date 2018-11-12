@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2642_1.nasl 11359 2018-09-12 12:40:08Z asteins $
+# $Id: gb_suse_2018_2642_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for dovecot22 openSUSE-SU-2018:2642-1 (dovecot22)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851881");
-  script_version("$Revision: 11359 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 14:40:08 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 07:16:47 +0200 (Fri, 07 Sep 2018)");
   script_cve_id("CVE-2017-15130");
   script_tag(name:"cvss_base", value:"4.3");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for dovecot22 openSUSE-SU-2018:2642-1 (dovecot22)");
   script_tag(name:"summary", value:"Check the version of dovecot22");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for dovecot22 fixes the following issues:
+  script_tag(name:"insight", value:"This update for dovecot22 fixes the following issues:
 
   Security issue fixed:
 
@@ -70,19 +69,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

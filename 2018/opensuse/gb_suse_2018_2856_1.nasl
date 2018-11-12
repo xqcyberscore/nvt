@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2856_1.nasl 12033 2018-10-23 11:14:43Z asteins $
+# $Id: gb_suse_2018_2856_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for apache2 openSUSE-SU-2018:2856-1 (apache2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851910");
-  script_version("$Revision: 12033 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 13:14:43 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-26 08:20:10 +0200 (Wed, 26 Sep 2018)");
   script_cve_id("CVE-2016-4975", "CVE-2016-8743");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for apache2 openSUSE-SU-2018:2856-1 (apache2)");
   script_tag(name:"summary", value:"Check the version of apache2");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for apache2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for apache2 fixes the following issues:
 
   Security issues fixed:
 
@@ -49,6 +48,7 @@ if(description)
   application servers, either through mod_proxy or using conventional CGI
   mechanisms, and may result in request smuggling, response splitting and
   cache pollution. (bsc#1016715)
+
   - CVE-2016-4975: Fixed possible CRLF injection allowing HTTP response
   splitting attacks for sites which use mod_userdir. This issue was
   mitigated by changes which prohibit CR or LF injection into the
@@ -78,19 +78,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

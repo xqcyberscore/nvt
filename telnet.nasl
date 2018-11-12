@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: telnet.nasl 10381 2018-07-03 08:49:51Z cfischer $
+# $Id: telnet.nasl 12297 2018-11-09 16:00:07Z cfischer $
 #
 # Check for Telnet Server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100074");
-  script_version("$Revision: 10381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-03 10:49:51 +0200 (Tue, 03 Jul 2018) $");
+  script_version("$Revision: 12297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:00:07 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,19 +48,19 @@ if(description)
    logins should be discontinued under all normal circumstances, for the following
    reasons:
 
-   * Telnet, by default, does not encrypt any data sent over the connection
+  * Telnet, by default, does not encrypt any data sent over the connection
      (including passwords), and so it is often practical to eavesdrop on the
-     communications and use the password later for malicious purposes; anybody who
+     communications and use the password later for malicious purposes. Anybody who
      has access to a router, switch, hub or gateway located on the network between
      the two hosts where Telnet is being used can intercept the packets passing by
      and obtain login and password information (and whatever else is typed) with any
      of several common utilities like tcpdump and Wireshark.
 
-   * Most implementations of Telnet have no authentication that would ensure
+  * Most implementations of Telnet have no authentication that would ensure
      communication is carried out between the two desired hosts and not intercepted
      in the middle.
 
-   * Commonly used Telnet daemons have several vulnerabilities discovered over
+  * Commonly used Telnet daemons have several vulnerabilities discovered over
      the years.");
 
   script_tag(name:"qod_type", value:"remote_banner");

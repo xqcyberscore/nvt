@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1345_1.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_suse_2012_1345_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:1345-1 (MozillaFirefox)
 #
@@ -24,58 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The Mozilla suite received following security updates
-  (bnc#783533):
-
-  Mozilla Firefox was updated to 16.0.1. Mozilla Seamonkey
-  was updated to 2.13.1. Mozilla Thunderbird was updated to
-  16.0.1. Mozilla XULRunner was updated to 16.0.1.
-
-  * MFSA 2012-88/CVE-2012-4191 (bmo#798045) Miscellaneous
-  memory safety hazards
-  * MFSA 2012-89/CVE-2012-4192/CVE-2012-4193 (bmo#799952,
-  bmo#720619) defaultValue security checks not applied
-  * MFSA 2012-74/CVE-2012-3982/CVE-2012-3983 Miscellaneous
-  memory safety hazards
-  * MFSA 2012-75/CVE-2012-3984 (bmo#575294) select element
-  persistence allows for attacks
-  * MFSA 2012-76/CVE-2012-3985 (bmo#655649) Continued
-  access to initial origin after setting document.domain
-  * MFSA 2012-77/CVE-2012-3986 (bmo#775868) Some
-  DOMWindowUtils methods bypass security checks
-  * MFSA 2012-79/CVE-2012-3988 (bmo#725770) DOS and crash
-  with full screen and history navigation
-  * MFSA 2012-80/CVE-2012-3989 (bmo#783867) Crash with
-  invalid cast when using instanceof operator
-  * MFSA 2012-81/CVE-2012-3991 (bmo#783260) GetProperty
-  function can bypass security checks
-  * MFSA 2012-82/CVE-2012-3994 (bmo#765527) top object and
-  location property accessible by plugins
-  * MFSA 2012-83/CVE-2012-3993/CVE-2012-4184 (bmo#768101,
-  bmo#780370) Chrome Object Wrapper (COW) does not
-  disallow access to privileged functions or properties
-  * MFSA 2012-84/CVE-2012-3992 (bmo#775009) Spoofing and
-  script injection through location.hash
-  * MFSA 2012-85/CVE-2012-3995/CVE-2012-4179/CVE-2012-4180/
-  CVE-2012-4181/CVE-2012-4182/CVE-2012-4183
-  Use-after-free, buffer overflow, and out of bounds read
-  issues found using Address Sanitizer
-  * MFSA 2012-86/CVE-2012-4185/CVE-2012-4186/CVE-2012-4187/
-  CVE-2012-4188 Heap memory corruption issues found using
-  Address Sanitizer
-  * MFSA 2012-87/CVE-2012-3990 (bmo#787704)";
-
-tag_affected = "MozillaFirefox on openSUSE 12.1, openSUSE 11.4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850348");
-  script_version("$Revision: 9352 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:32 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-3982", "CVE-2012-3983", "CVE-2012-3984", "CVE-2012-3985",
                 "CVE-2012-3986", "CVE-2012-3988", "CVE-2012-3989", "CVE-2012-3990",
@@ -86,32 +39,84 @@ if(description)
                 "CVE-2012-4193", "CVE-2012-4181");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1345_1");
+  script_xref(name:"openSUSE-SU", value:"2012:1345_1");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2012:1345-1 (MozillaFirefox)");
 
-  script_tag(name: "summary" , value: "Check for the Version of MozillaFirefox");
+  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE11\.4|openSUSE12\.1)");
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE 12.1, openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The Mozilla suite received following security updates
+  (bnc#783533):
+
+  Mozilla Firefox was updated to 16.0.1. Mozilla Seamonkey
+  was updated to 2.13.1. Mozilla Thunderbird was updated to
+  16.0.1. Mozilla XULRunner was updated to 16.0.1.
+
+  * MFSA 2012-88/CVE-2012-4191 (bmo#798045) Miscellaneous
+  memory safety hazards
+
+  * MFSA 2012-89/CVE-2012-4192/CVE-2012-4193 (bmo#799952,
+  bmo#720619) defaultValue security checks not applied
+
+  * MFSA 2012-74/CVE-2012-3982/CVE-2012-3983 Miscellaneous
+  memory safety hazards
+
+  * MFSA 2012-75/CVE-2012-3984 (bmo#575294) select element
+  persistence allows for attacks
+
+  * MFSA 2012-76/CVE-2012-3985 (bmo#655649) Continued
+  access to initial origin after setting document.domain
+
+  * MFSA 2012-77/CVE-2012-3986 (bmo#775868) Some
+  DOMWindowUtils methods bypass security checks
+
+  * MFSA 2012-79/CVE-2012-3988 (bmo#725770) DOS and crash
+  with full screen and history navigation
+
+  * MFSA 2012-80/CVE-2012-3989 (bmo#783867) Crash with
+  invalid cast when using instanceof operator
+
+  * MFSA 2012-81/CVE-2012-3991 (bmo#783260) GetProperty
+  function can bypass security checks
+
+  * MFSA 2012-82/CVE-2012-3994 (bmo#765527) top object and
+  location property accessible by plugins
+
+  * MFSA 2012-83/CVE-2012-3993/CVE-2012-4184 (bmo#768101,
+  bmo#780370) Chrome Object Wrapper (COW) does not
+  disallow access to privileged functions or properties
+
+  * MFSA 2012-84/CVE-2012-3992 (bmo#775009) Spoofing and
+  script injection through location.hash
+
+  * MFSA 2012-85/CVE-2012-3995/CVE-2012-4179/CVE-2012-4180/
+  CVE-2012-4181/CVE-2012-4182/CVE-2012-4183
+  Use-after-free, buffer overflow, and out of bounds read
+  issues found using Address Sanitizer
+
+  * MFSA 2012-86/CVE-2012-4185/CVE-2012-4186/CVE-2012-4187/
+  CVE-2012-4188 Heap memory corruption issues found using
+  Address Sanitizer
+
+  * MFSA 2012-87/CVE-2012-3990 (bmo#787704)");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -290,7 +295,7 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -568,6 +573,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

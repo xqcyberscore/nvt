@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1310_1.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_suse_2018_1310_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for librsvg openSUSE-SU-2018:1310-1 (librsvg)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851747");
-  script_version("$Revision: 9903 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:37:19 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-1000041");
   script_tag(name:"cvss_base", value:"4.3");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for librsvg openSUSE-SU-2018:1310-1 (librsvg)");
   script_tag(name:"summary", value:"Check the version of librsvg");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update for librsvg fixes the following issues:
+  script_tag(name:"insight", value:"This update for librsvg fixes the following issues:
 
   - CVE-2018-1000041: Input validation issue could lead to credentials leak.
   (bsc#1083232)
@@ -71,7 +70,7 @@ if(description)
   + bgo#777833 - Fix memory leaks when an RsvgHandle is disposed before
   being closed (Philip Withnall).
   + bgo#782098 - Don't pass deprecated options to gtk-doc (Ting-Wei Lan).
-  + bgo#786372 - Fix the default for the 'type' attribute of the  style 
+  + bgo#786372 - Fix the default for the 'type' attribute of the  style
   element.
   + bgo#785276 - Don't crash on single-byte files.
   + bgo#634514: Don't render unknown elements and their sub-elements.
@@ -91,7 +90,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -110,19 +109,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

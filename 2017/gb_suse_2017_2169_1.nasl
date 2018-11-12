@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2169_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2169_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2169-1 (Linux Kernel)
 #
@@ -27,28 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851594");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 07:33:43 +0200 (Wed, 16 Aug 2017)");
   script_cve_id("CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-8831");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2169-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE Leap 42.2 kernel was updated to receive various security and
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to receive various security and
   bugfixes.
 
   The following security bugs were fixed:
 
   - CVE-2017-1000111: Fixed a race condition in net-packet code that could
   be exploited to cause out-of-bounds memory access (bsc#1052365).
+
   - CVE-2017-1000112: Fixed a race condition in net-packet code that could
   have been exploited by unprivileged users to gain root access.
   (bsc#1052311).
+
   - CVE-2017-8831: The saa7164_bus_get function in
   drivers/media/pci/saa7164/saa7164-bus.c in the Linux kernel allowed
   local users to cause a denial of service (out-of-bounds array access) or
@@ -58,46 +58,57 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - IB/hfi1: Wait for QSFP modules to initialize (bsc#1019151).
+
   - bcache: force trigger gc (bsc#1038078).
+
   - bcache: only recovery I/O error for writethrough mode (bsc#1043652).
+
   - block: do not allow updates through sysfs until registration completes
   (bsc#1047027).
+
   - ibmvnic: Check for transport event on driver resume (bsc#1051556,
   bsc#1052709).
+
   - ibmvnic: Initialize SCRQ's during login renegotiation (bsc#1052223).
+
   - ibmvnic: Report rx buffer return codes as netdev_dbg (bsc#1052794).
+
   - iommu/amd: Fix schedule-while-atomic BUG in initialization code
   (bsc1052533).
+
   - libnvdimm, pmem: fix a NULL pointer BUG in nd_pmem_notify (bsc#1023175).
+
   - libnvdimm: fix badblock range handling of ARS range (bsc#1023175).
+
   - qeth: fix L3 next-hop im xmit qeth hdr (bnc#1052773, LTC#157374).
+
   - scsi_devinfo: fixup string compare (bsc#1037404).
+
   - scsi_dh_alua: suppress errors from unsupported devices (bsc#1038792).
+
   - vfs: fix missing inode_get_dev sites (bsc#1052049).
+
   - x86/dmi: Switch dmi_remap() from ioremap() to ioremap_cache()
   (bsc#1051399).");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2169_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2169_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -282,6 +293,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

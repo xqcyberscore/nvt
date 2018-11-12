@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3316_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3316_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for singularity openSUSE-SU-2018:3316-1 (singularity)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852060");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-12021");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:40:23 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for singularity openSUSE-SU-2018:3316-1 (singularity)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3316_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00048.html");
@@ -62,32 +62,45 @@ if(description)
 
   - Allow admin to specify a non-standard location for mksquashfs binary at
   build time with '--with-mksquashfs' option.
+
   - '--nv' can be made default with all action commands in singularity.conf
+
   - '--nv' can be controlled by env vars '$SINGULARITY_NV' and
   '$SINGULARITY_NV_OFF'
+
   - Restore shim init process for proper signal handling and child reaping
     when container is initiated in its own PID namespace
+
   - Add '-i' option to image.create to specify the inode ratio.
+
   - Bind '/dev/nvidia*' into the container when the '--nv' flag is used in
   conjunction with the '--contain' flag
+
   - Add '--no-home' option to not mount user $HOME if it is not the $CWD and
   'mount home = yes' is set.
+
   - Added support for OAUTH2 Docker registries like Azure Container Registry
 
   Highlights of 2.5.2:
 
   - a new `build` command was added to replace `create` + `bootstrap`
+
   - default image format is squashfs, eliminating the need to specify a size
+
   - a `localimage` can be used as a build base, including ext3, sandbox, and
   other squashfs images
+
   - singularity hub can now be used as a base with the uri
+
   - Restore docker-extract aufs whiteout handling that implements correct
   extraction of docker container layers.
 
   Bug fixes:
 
   - Fix 404 when using Arch Linux bootstrap
+
   - Fix environment variables clearing while starting instances
+
   - several more bug fixes, see CHANGELOG.md for details
 
 

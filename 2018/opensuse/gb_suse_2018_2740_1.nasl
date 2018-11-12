@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2740_1.nasl 11933 2018-10-17 07:09:44Z asteins $
+# $Id: gb_suse_2018_2740_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for tomcat openSUSE-SU-2018:2740-1 (tomcat)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851897");
-  script_version("$Revision: 11933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-17 09:09:44 +0200 (Wed, 17 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 08:13:15 +0200 (Tue, 18 Sep 2018)");
   script_cve_id("CVE-2018-1336", "CVE-2018-8014", "CVE-2018-8034", "CVE-2018-8037");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,16 +37,17 @@ if(description)
   script_name("SuSE Update for tomcat openSUSE-SU-2018:2740-1 (tomcat)");
   script_tag(name:"summary", value:"Check the version of tomcat");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for tomcat to 8.0.53 fixes the following issues:
+  script_tag(name:"insight", value:"This update for tomcat to 8.0.53 fixes the following issues:
 
   Security issue fixed:
 
   - CVE-2018-1336: An improper handing of overflow in the UTF-8 decoder with
   supplementary characters could have lead to an infinite loop in the
   decoder causing a Denial of Service (bsc#1102400).
+
   - CVE-2018-8034: The host name verification when using TLS with the
   WebSocket client was missing. It is now enabled by default (bsc#1102379).
+
   - CVE-2018-8037: If an async request was completed by the application at
   the same time as the container triggered the async timeout, a race
   condition existed that could have resulted in a user seeing a response
@@ -56,11 +57,13 @@ if(description)
   timed out by the container at the same time. This could also have
   resulted in a user seeing a response intended for another user
   (bsc#1102410).
+
   - CVE-2018-8014: Fix insecure default CORS filter settings (bsc#1093697).
 
   Bug fixes:
 
   - bsc#1067720: Avoid overwriting of customer's configuration during update.
+
   - bsc#1095472: Add Obsoletes for tomcat6 packages.
 
   This update was imported from the SUSE:SLE-12-SP2:Update update project.
@@ -87,19 +90,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

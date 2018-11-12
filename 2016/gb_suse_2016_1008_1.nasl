@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1008_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1008_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:1008-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851273");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:17:40 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2015-1339", "CVE-2015-7799", "CVE-2015-7872", "CVE-2015-7884",
                 "CVE-2015-8104", "CVE-2015-8709", "CVE-2015-8767", "CVE-2015-8785",
@@ -38,9 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:1008-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.1 kernel was updated to 4.1.20 to receive various
   security and bugfixes.
 
@@ -48,68 +47,74 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - CVE-2015-1339: A memory leak in cuse could be used to exhaust kernel
   memory. (bsc#969356).
+
   - CVE-2015-7799: The slhc_init function in drivers/net/slip/slhc.c in the
   Linux kernel did not ensure that certain slot numbers are valid, which
   allowed local users to cause a denial of service (NULL pointer
   dereference and system crash) via a crafted PPPIOCSMAXCID ioctl call
   (bnc#949936 951638).
+
   - CVE-2015-7872: The key_gc_unused_keys function in security/keys/gc.c in
   the Linux kernel allowed local users to cause a denial of service (OOPS)
   via crafted keyctl commands (bnc#951440).
+
   - CVE-2015-7884: The vivid_fb_ioctl function in
   drivers/media/platform/vivid/vivid-osd.c in the Linux kernel did not
   initialize a certain structure member, which allowed local users to
   obtain sensitive information from kernel memory via a crafted
   application (bnc#951626).
+
   - CVE-2015-8104: The KVM subsystem in the Linux kernel allowed guest OS
   users to cause a denial of service (host OS panic or hang) by triggering
   many #DB (aka Debug) exceptions, related to svm.c (bnc#954404).
+
   - CVE-2015-8709: kernel/ptrace.c in the Linux kernel mishandled uid and
   gid mappings, which allowed local users to gain privileges by
   establishing a user namespace, waiting for a root process to enter that
   namespace with an unsafe uid or gid, and then using the ptrace system
   call.  NOTE: the vendor states 'there is no kernel bug here (bnc#959709).
+
   - CVE-2015-8767: net/sctp/sm_sideeffect.c in the Linux kernel did not
   properly manage the relationship between a lock and a socket, which
   allowed local users to cause a denial of service (deadlock) via a
   crafted sctp_accept call. (bsc#961509)
+
   - CVE-2015-8785: The fuse_fill_write_pages function in fs/fuse/file.c in
   the Linux kernel allowed local users to cause a denial of service
   (infinite loop) via a writev system call that triggers a zero length for
   the first segment of an iov (bnc#963765).
+
   - CVE-2015-8787: The nf_nat_redirect_ipv4 function in
   net/netfilter/nf_nat_redirect.c in the Linux kernel allowed remote
   attackers to cause a denial of service (NULL pointer dereference and
   system crash) or possibly have unspecified other impact by sending
   certain IPv4 packets to an incompletely configured interface, a related
   issue to CVE-2003-1604 (bnc#963931).
+
   - CVE-2015-8812: A flaw was found in the CXGB3 kernel driver when the
   network was considered congested.  The kernel would incorrectly
   misin ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1008_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1008_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -432,6 +437,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

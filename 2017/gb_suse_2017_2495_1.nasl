@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2495_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2495_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2495-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851618");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:27:49 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-1000251", "CVE-2017-11472", "CVE-2017-12134", "CVE-2017-14051",
                 "CVE-2017-14106");
@@ -36,9 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2495-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated
   to 4.4.87 to receive various security and bugfixes.
 
@@ -49,22 +48,26 @@ of detect NVT and check if the version is vulnerable or not.");
   was vulnerable to a stack overflow vulnerability in the processing of
   L2CAP configuration responses resulting in Remote code execution in
   kernel space (bnc#1057389).
+
   - CVE-2017-14106: The tcp_disconnect function in net/ipv4/tcp.c in the
   Linux kernel allowed local users to cause a denial of service
   (__tcp_select_window divide-by-zero error and system crash) by
   triggering a disconnect within a certain tcp_recvmsg code path
   (bnc#1056982).
+
   - CVE-2017-11472: The acpi_ns_terminate() function in
   drivers/acpi/acpica/nsutils.c in the Linux kernel did not flush the
   operand cache and causes a kernel stack dump, which allowed local users
   to obtain sensitive information from kernel memory and bypass the KASLR
   protection mechanism (in the kernel through 4.9) via a crafted ACPI
   table (bnc#1049580).
+
   - CVE-2017-14051: An integer overflow in the
   qla2x00_sysfs_write_optrom_ctl function in
   drivers/scsi/qla2xxx/qla_attr.c in the Linux kernel allowed local users
   to cause a denial of service (memory corruption and system crash) by
   leveraging root access (bnc#1056588).
+
   - CVE-2017-12134: The xen_biovec_phys_mergeable function in
   drivers/xen/biomerge.c in Xen might allow local OS guest users to
   corrupt block device data streams and consequently obtain sensitive
@@ -75,47 +78,55 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - acpi / scan: Prefer devices without _HID for _ADR matching (git-fixes).
+
   - alsa: hda - Add stereo mic quirk for Lenovo G50-70 (17aa:3978)
   (bsc#1020657).
+
   - alsa: hda - Implement mic-mute LED mode enum (bsc#1055013).
+
   - alsa: hda/realtek - Add support headphone Mic for ALC221 of HP platform
   (bsc#1024405).
+
   - alsa: ice1712: Add support for STAudio ADCIII (bsc#1048934).
+
   - alsa: usb-audio: Apply sample rate quirk to Sennheiser headset
   (bsc#1052580).
+
   - Add 'shutdown' to 'struct class' (bsc#1053117).
+
   - bluetooth: bnep: fix possible might sleep error in bnep_session
   (bsc#1031784).
+
   - bluetooth: cmtp: fix possible might sleep error in cmtp_session
   (bsc#1031784).
+
   - btrfs: fix early ENOSPC due to delalloc (bsc#1049226).
+
   - nfs: flush data when locking a file to ensure cache coherence for mmap
   (bsc#981309).
+
   - Revert '/proc/iomem: only expose physical resource addresses to ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2495_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2495_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -300,6 +311,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

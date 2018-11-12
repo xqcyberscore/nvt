@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0507_1.nasl 9657 2018-04-27 10:38:29Z cfischer $
+# $Id: gb_suse_2012_0507_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0507-1 (update)
 #
@@ -24,31 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850203");
-  script_version("$Revision: 9657 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:59 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-0870", "CVE-2012-1182");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:0507_1");
+  script_xref(name:"openSUSE-SU", value:"2012:0507_1");
   script_name("SuSE Update for update openSUSE-SU-2012:0507-1 (update)");
 
-  script_tag(name: "summary" , value: "Check for the Version of update");
+  script_tag(name:"summary", value:"Check for the Version of update");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : "update on openSUSE 12.1");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "- Add the ldapsmb sources as else patches against them have
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+  script_tag(name:"affected", value:"update on openSUSE 12.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"- Add the ldapsmb sources as else patches against them have
   no chance to apply.
 
   - Samba pre-3.6.4 are affected by a vulnerability that
@@ -58,23 +54,31 @@ if(description)
 
   - s3-winbindd: Only use SamLogonEx when we can get
   unencrypted session keys; (bso#8599).
+
   - Correctly handle DENY ACEs when privileges apply;
   (bso#8797).
 
   - s3:smb2_server: fix a logic error, we should sign non
   guest sessions; (bso8749).
+
   - Allow vfs_aio_pthread to build as a static module;
   (bso#8723).
+
   - s3:dbwrap_ctdb: return the number of records in
   db_ctdb_traverse() for persistent dbs; (#bso8527).
+
   - s3: segfault in dom_sid_compare(bso#8567).
+
   - Honor SeTakeOwnershiPrivilege when client asks for
   SEC_STD_WRITE_OWNER; (bso#8768).
+
   - s3-winbindd: Close netlogon connection if the status
   returned by the NetrSamLogonEx call is timeout in the
   pam_auth_crap path; (bso#8771).
+
   - s3-winbindd: set the can_do_validation6 also for trusted
   domain; (bso#8599).
+
   - Fix problem when calculating the share security mask,
   take privileges into account for the connecting user;
   (bso#8784).
@@ -86,11 +90,15 @@ if(description)
   post-11.2 systems.
 
   - Make ldapsmb build with Fedora 15 and 16; (bso#8783).
+
   - BuildRequire libuuid-devel for post-11.0 and other
   systems.
+
   - Define missing python macros for non SUSE systems.
+
   - PreReq to fillup_prereq and insserv_prereq only on SUSE
   systems.
+
   - Always use cifstab instead of smbfstab on non SUSE
   systems.
 
@@ -102,20 +110,19 @@ if(description)
 
   - s3-printing: fix crash in printer_list_set_printer();
   (bso#8762); (bnc#746825).");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {

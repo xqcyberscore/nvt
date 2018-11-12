@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2055_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2055_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2018:2055-1 (Chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851821");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 06:00:59 +0200 (Thu, 26 Jul 2018)");
   script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126",
                 "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130",
@@ -49,30 +49,54 @@ on the target host.");
   Security issues fixed (bsc#1095163):
 
   - CVE-2018-6123: Use after free in Blink
+
   - CVE-2018-6124: Type confusion in Blink
+
   - CVE-2018-6125: Overly permissive policy in WebUSB
+
   - CVE-2018-6126: Heap buffer overflow in Skia
+
   - CVE-2018-6127: Use after free in indexedDB
+
   - CVE-2018-6129: Out of bounds memory access in WebRTC
+
   - CVE-2018-6130: Out of bounds memory access in WebRTC
+
   - CVE-2018-6131: Incorrect mutability protection in WebAssembly
+
   - CVE-2018-6132: Use of uninitialized memory in WebRTC
+
   - CVE-2018-6133: URL spoof in Omnibox
+
   - CVE-2018-6134: Referrer Policy bypass in Blink
+
   - CVE-2018-6135: UI spoofing in Blink
+
   - CVE-2018-6136: Out of bounds memory access in V8
+
   - CVE-2018-6137: Leak of visited status of page in Blink
+
   - CVE-2018-6138: Overly permissive policy in Extensions
+
   - CVE-2018-6139: Restrictions bypass in the debugger extension API
+
   - CVE-2018-6140: Restrictions bypass in the debugger extension API
+
   - CVE-2018-6141: Heap buffer overflow in Skia
+
   - CVE-2018-6142: Out of bounds memory access in V8
+
   - CVE-2018-6143: Out of bounds memory access in V8
+
   - CVE-2018-6144: Out of bounds memory access in PDFium
+
   - CVE-2018-6145: Incorrect escaping of MathML in Blink
+
   - CVE-2018-6147: Password fields not taking advantage of OS protections in
   Views
+
   - CVE-2018-6148: Incorrect handling of CSP header (boo#1096508)
+
   - CVE-2018-6149: Out of bounds write in V8 (boo#1097452)
 
   The following tracked packaging changes are included:
@@ -105,19 +129,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

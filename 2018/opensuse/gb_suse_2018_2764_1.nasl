@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2764_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2764_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for exempi openSUSE-SU-2018:2764-1 (exempi)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851899");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-21 08:10:35 +0200 (Fri, 21 Sep 2018)");
   script_cve_id("CVE-2017-18233", "CVE-2017-18236", "CVE-2017-18238");
   script_tag(name:"cvss_base", value:"4.3");
@@ -42,9 +42,11 @@ if(description)
   - CVE-2017-18236: The ASF_Support::ReadHeaderObject function allowed
   remote attackers to cause a denial of service (infinite loop) via a
   crafted .asf file (bsc#1085589)
+
   - CVE-2017-18233: Prevent integer overflow in the Chunk class that allowed
   remote attackers to cause a denial of service (infinite loop) via
   crafted XMP data in a .avi file (bsc#1085584)
+
   - CVE-2017-18238: The TradQT_Manager::ParseCachedBoxes function allowed
   remote attackers to cause a denial of service (infinite loop) via
   crafted XMP data in a .qt file (bsc#1085583)
@@ -71,19 +73,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

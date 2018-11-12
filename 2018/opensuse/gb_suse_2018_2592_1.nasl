@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2592_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2592_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libressl openSUSE-SU-2018:2592-1 (libressl)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852047");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-12434");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:37:51 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for libressl openSUSE-SU-2018:2592-1 (libressl)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2592_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00003.html");
@@ -50,36 +50,48 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for libressl to version 2.8.0 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libressl to version 2.8.0 fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-12434: Avoid a timing side-channel leak when generating DSA and
   ECDSA signatures. (boo#1097779)
+
   - Reject excessively large primes in DH key generation.
 
   Other bugs fixed:
 
   - Fixed a pair of 20+ year-old bugs in X509_NAME_add_entry.
+
   - Tighten up checks for various X509_VERIFY_PARAM functions, 'poisoning'
   parameters so that an unverified certificate cannot be used if it fails
   verification.
+
   - Fixed a potential memory leak on failure in ASN1_item_digest.
+
   - Fixed a potential memory alignment crash in asn1_item_combine_free.
+
   - Removed unused SSL3_FLAGS_DELAY_CLIENT_FINISHED and
   SSL3_FLAGS_POP_BUFFER flags in write path, simplifying IO paths.
+
   - Removed SSL_OP_TLS_ROLLBACK_BUG buggy client workarounds.
+
   - Added const annotations to many existing APIs from OpenSSL, making
   interoperability easier for downstream applications.
+
   - Added a missing bounds check in c2i_ASN1_BIT_STRING.
+
   - Removed three remaining single DES cipher suites.
+
   - Fixed a potential leak/incorrect return value in DSA signature
   generation.
+
   - Added a blinding value when generating DSA and ECDSA signatures, in
   order to reduce the possibility of a side-channel attack leaking the
   private key.
+
   - Added ECC constant time scalar multiplication support.
+
   - Revised the implementation of RSASSA-PKCS1-v1_5 to match the
   specification in RFC 8017.
 

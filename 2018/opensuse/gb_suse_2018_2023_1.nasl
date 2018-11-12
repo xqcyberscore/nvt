@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2023_1.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_suse_2018_2023_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for mercurial openSUSE-SU-2018:2023-1 (mercurial)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851819");
-  script_version("$Revision: 11388 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 05:54:46 +0200 (Fri, 20 Jul 2018)");
   script_cve_id("CVE-2018-13346", "CVE-2018-13347", "CVE-2018-13348");
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,16 +37,17 @@ if(description)
   script_name("SuSE Update for mercurial openSUSE-SU-2018:2023-1 (mercurial)");
   script_tag(name:"summary", value:"Check the version of mercurial");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for mercurial fixes the following issues:
+  script_tag(name:"insight", value:"This update for mercurial fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-13348: Fix the mpatch_decode function in mpatch.c that
   mishandles certain situations where there should be at least 12 bytes
   remaining after thecurrent position in the patch data (boo#1100353).
+
   - CVE-2018-13347: Fix mpatch.c that mishandles integer addition and
   subtraction (boo#1100355).
+
   - CVE-2018-13346: Fix the mpatch_apply function in mpatch.c that
   incorrectly proceeds in cases where the fragment start is past the end
   of the original data (boo#1100354).
@@ -54,7 +55,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -73,19 +74,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

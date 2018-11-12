@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_3027_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_3027_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2017:3027-1 (MozillaFirefox)
 #
@@ -27,25 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851648");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-18 07:33:53 +0100 (Sat, 18 Nov 2017)");
   script_cve_id("CVE-2017-7826", "CVE-2017-7828", "CVE-2017-7830");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2017:3027-1 (MozillaFirefox)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox was updated to 52.5.0esr (boo#1068101)
 
   MFSA 2017-25
 
   * CVE-2017-7828: Fixed a use-after-free of PressShell while restyling
   layout
+
   * CVE-2017-7830: Cross-origin URL information leak through Resource Timing
   API
+
   * CVE-2017-7826: Memory safety bugs fixed in Firefox 57 and Firefox ESR
   52.5
 
@@ -54,28 +55,25 @@ of detect NVT and check if the version is vulnerable or not.");
   - Correct plugin directory for aarch64 (boo#1061207). The wrapper script
   was not detecting aarch64 as a 64 bit architecture, thus used
   /usr/lib/browser-plugins/.");
-  script_tag(name: "affected", value: "MozillaFirefox on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:3027_1");
+  script_xref(name:"openSUSE-SU", value:"2017:3027_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -128,7 +126,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -184,6 +182,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

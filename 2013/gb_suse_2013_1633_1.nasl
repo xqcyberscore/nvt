@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_1633_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2013_1633_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla Suite openSUSE-SU-2013:1633-1 (Mozilla Suite)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850541");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:42 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-1705", "CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725",
                 "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735", "CVE-2013-1736",
@@ -41,102 +39,118 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Mozilla Suite openSUSE-SU-2013:1633-1 (Mozilla Suite)");
-
-  tag_insight = "
-  MozillaFirefox was updated to Firefox 25.0.
+  script_tag(name:"affected", value:"Mozilla Suite on openSUSE 12.2");
+  script_tag(name:"insight", value:"MozillaFirefox was updated to Firefox 25.0.
   MozillaThunderbird was updated to Thunderbird 24.1.0.
   Mozilla XULRunner was updated to 17.0.10esr. Mozilla NSPR
   was updated to 4.10.1.
 
   Changes in MozillaFirefox:
+
   * requires NSS 3.15.2 or above
+
   * MFSA 2013-93/CVE-2013-5590/CVE-2013-5591/CVE-2013-5592
   Miscellaneous memory safety hazards
+
   * MFSA 2013-94/CVE-2013-5593 (bmo#868327) Spoofing
   addressbar through SELECT element
+
   * MFSA 2013-95/CVE-2013-5604 (bmo#914017) Access
   violation with XSLT and uninitialized data
+
   * MFSA 2013-96/CVE-2013-5595 (bmo#916580) Improperly
   initialized memory and overflows in some JavaScript
   functions
+
   * MFSA 2013-97/CVE-2013-5596 (bmo#910881) Writing to
   cycle collected object during image decoding
+
   * MFSA 2013-98/CVE-2013-5597 (bmo#918864) Use-after-free
   when updating offline cache
+
   * MFSA 2013-99/CVE-2013-5598 (bmo#920515) Security bypass
   of PDF.js checks using iframes
+
   * MFSA 2013-100/CVE-2013-5599/CVE-2013-5600/CVE-2013-5601
   (bmo#915210, bmo#915576, bmo#916685) Miscellaneous
   use-after-free issues found through ASAN fuzzing
+
   * MFSA 2013-101/CVE-2013-5602 (bmo#897678) Memory
   corruption in workers
+
   * MFSA 2013-102/CVE-2013-5603 (bmo#916404) Use-after-free
   in HTML document templates
 
   Changes in MozillaThunderbird:
+
   * requires NSS 3.15.2 or above
+
   * MFSA 2013-93/CVE-2013-5590/CVE-2013-5591/CVE-2013-5592
   Miscellaneous memory safety hazards
+
   * MFSA 2013-94/CVE-2013-5593 (bmo#868327) Spoofing
   addressbar through SELECT element
+
   * MFSA 2013-95/CVE-2013-5604 (bmo#914017) Access
   violation with XSLT and uninitialized data
+
   * MFSA 2013-96/CVE-2013-5595 (bmo#916580) Improperly
   initialized memory and overflows in some JavaScript
   functions
+
   * MFSA 2013-97/CVE-2013-5596 (bmo#910881) Writing to
   cycle collected object during image decoding
+
   * MFSA 2013-98/CVE-2013-5597 (bmo#918864) Use-after-free
   when updating offline cache
+
   * MFSA 2013-100/CVE-2013-5599/CVE-2013-5600/CVE-2013-5601
   (bmo#915210, bmo#915576, bmo#916685) Miscellaneous
   use-after-free issues found through ASAN fuzzing
+
   * MFSA 2013-101/CVE-2013-5602 (bmo#897678) Memory
   corruption in workers
+
   * MFSA 2013-102/CVE-2013-5603 (bmo#916404) Use-after-free
   in HTML document templates
 
   - update to Thunderbird 24.0.1
+
   * fqdn for smtp server name was not accepted (bmo#913785)
+
   * fixed crash in PL_strncasecmp (bmo#917955)
+
   - update Enigmail to 1.6
+
   * The passphrase timeout configuration in Enigmail is now
   read and written from/to gpg-agent.
+
   * New dialog to change the expiry date of keys
+
   * New function to search for the OpenPGP keys of all
   Add ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "Mozilla Suite on openSUSE 12.2";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2013:1633_1");
+  script_xref(name:"openSUSE-SU", value:"2013:1633_1");
   script_tag(name:"summary", value:"Check for the Version of Mozilla Suite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -345,6 +359,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

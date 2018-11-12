@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0847_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0847_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2013:0847-1 (kernel)
 #
@@ -24,22 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850480");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 14:05:32 +0530 (Tue, 19 Nov 2013)");
   script_cve_id("CVE-2013-0913", "CVE-2013-1767", "CVE-2013-1774", "CVE-2013-1796",
                 "CVE-2013-1797", "CVE-2013-1798", "CVE-2013-2094", "CVE-2013-1928");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for kernel openSUSE-SU-2013:0847-1 (kernel)");
-
-  tag_insight = "
-  The openSUSE 12.1 kernel was updated to fix a severe
+  script_tag(name:"affected", value:"kernel on openSUSE 12.1");
+  script_tag(name:"insight", value:"The openSUSE 12.1 kernel was updated to fix a severe
   secrutiy issue and various bugs.
 
   Security issues fixed: CVE-2013-2094: The perf_swevent_init
@@ -97,38 +94,28 @@ if(description)
   drivers/gpu/drm/i915/i915_gem_execbuffer.c in the i915
   driver in the Direct Rendering Manager (DRM) subsystem in
   the Linux kernel allowed local users to cause a denial of
-  service (heap-based buffer overflow) or possibly ... ";
-
-  tag_affected = "kernel on openSUSE 12.1";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  service (heap-based buffer overflow) or possibly ... ");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "openSUSE-SU", value: "2013:0847_1");
-  script_tag(name: "summary" , value: "Check for the Version of kernel");
+  script_xref(name:"openSUSE-SU", value:"2013:0847_1");
+  script_tag(name:"summary", value:"Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {
@@ -511,6 +498,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

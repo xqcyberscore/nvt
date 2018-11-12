@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3373_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3373_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for rpm openSUSE-SU-2018:3373-1 (rpm)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851947");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:00:31 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2017-7500", "CVE-2017-7501");
   script_tag(name:"cvss_base", value:"7.2");
@@ -45,6 +45,7 @@ if(description)
   destination path was a symbolic link to a directory, possibly changing
   ownership and permissions of an arbitrary directory, and RPM files being
   placed in an arbitrary destination (bsc#943457).
+
   - CVE-2017-7501: rpm used temporary files with predictable names when
   installing an RPM. An attacker with ability to write in a directory
   where files will be installed could create symbolic links to an
@@ -80,19 +81,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

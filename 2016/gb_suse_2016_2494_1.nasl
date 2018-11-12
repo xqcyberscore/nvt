@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2494_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_2494_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2016:2494-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851407");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 05:46:28 +0200 (Wed, 12 Oct 2016)");
   script_cve_id("CVE-2014-3615", "CVE-2014-3672", "CVE-2015-7512", "CVE-2015-8504",
                 "CVE-2015-8558", "CVE-2015-8568", "CVE-2015-8613", "CVE-2015-8743",
@@ -46,75 +46,83 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:2494-1 (xen)");
-  script_tag(name: "summary", value: "Check the version of xen");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   These security issues were fixed:
+
   - CVE-2016-7092: The get_page_from_l3e function in arch/x86/mm.c in Xen
   allowed local 32-bit PV guest OS administrators to gain host OS
   privileges via vectors related to L3 recursive pagetables (bsc#995785)
+
   - CVE-2016-7093: Xen allowed local HVM guest OS administrators to
   overwrite hypervisor memory and consequently gain host OS privileges by
   leveraging mishandling of instruction pointer truncation during
   emulation (bsc#995789)
+
   - CVE-2016-7094: Buffer overflow in Xen allowed local x86 HVM guest OS
   administrators on guests running with shadow paging to cause a denial of
   service via a pagetable update (bsc#995792)
+
   - CVE-2016-6836: VMWARE VMXNET3 NIC device support was leaging information
   leakage. A privileged user inside guest could have used this to leak
   host memory bytes to a guest (boo#994761)
+
   - CVE-2016-6888: Integer overflow in packet initialisation in VMXNET3
   device driver. A privileged user inside guest could have used this flaw
   to crash the Qemu instance resulting in DoS (bsc#994772)
+
   - CVE-2016-6833: Use-after-free issue in the VMWARE VMXNET3 NIC device
   support. A privileged user inside guest could have used this issue to
   crash the Qemu instance resulting in DoS (boo#994775)
+
   - CVE-2016-6835: Buffer overflow in the VMWARE VMXNET3 NIC device support,
   causing an OOB read access (bsc#994625)
+
   - CVE-2016-6834: A infinite loop during packet fragmentation in the VMWARE
   VMXNET3 NIC device support allowed privileged user inside guest to crash
   the Qemu instance resulting in DoS (bsc#994421)
+
   - CVE-2016-6258: The PV pagetable code in arch/x86/mm.c in Xen allowed
   local 32-bit PV guest OS administrators to gain host OS privileges by
   leveraging fast-paths for updating pagetable entries (bsc#988675)
+
   - CVE-2016-6259: Xen did not implement Supervisor Mode Access Prevention
   (SMAP) whitelisting in 32-bit exception and event delivery, which
   allowed local 32-bit PV guest OS kernels to cause a denial of service
   (hypervisor and VM crash) by triggering a safety check (bsc#988676)
+
   - CVE-2016-5403: The virtqueue_pop function in hw/virtio/virtio.c in QEMU
   allowed local guest OS administrators to cause a denial of service
   (memory consumption and QEMU process crash) by submitting requests
   without waiting for completion (boo#990923)
+
   - CVE-2016-6351: The esp_do_dma function in hw/scsi/esp.c, when built with
   ESP/NCR53C9x controller emulation support, allowed local guest OS
   administrators to cause a denial of service (out-of-bounds write and
   QEMU process c ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "xen on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"xen on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2494_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2494_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -203,6 +211,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3235_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3235_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for java-11-openjdk openSUSE-SU-2018:3235-1 (java-11-openjdk)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851996");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3150", "CVE-2018-3157", "CVE-2018-3169", "CVE-2018-3180", "CVE-2018-3183");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:32:43 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for java-11-openjdk openSUSE-SU-2018:3235-1 (java-11-openjdk)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3235_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00041.html");
@@ -57,40 +57,63 @@ if(description)
   Security fixes:
 
   - S8202936, CVE-2018-3183, bsc#1112148: Improve script engine support
+
   - S8199226, CVE-2018-3169, bsc#1112146: Improve field accesses
+
   - S8199177, CVE-2018-3149, bsc#1112144: Enhance JNDI lookups
+
   - S8202613, CVE-2018-3180, bsc#1112147: Improve TLS connections stability
+
   - S8208209, CVE-2018-3180, bsc#1112147: Improve TLS connection stability
   again
+
   - S8199172, CVE-2018-3150, bsc#1112145: Improve jar attribute checks
+
   - S8200648, CVE-2018-3157, bsc#1112149: Make midi code more sound
+
   - S8194534, CVE-2018-3136, bsc#1112142: Manifest better support
+
   - S8208754, CVE-2018-3136, bsc#1112142: The fix for JDK-8194534 needs
   updates
+
   - S8196902, CVE-2018-3139, bsc#1112143: Better HTTP Redirection
 
   Security-In-Depth fixes:
 
   - S8194546: Choosier FileManagers
+
   - S8195874: Improve jar specification adherence
+
   - S8196897: Improve PRNG support
+
   - S8197881: Better StringBuilder support
+
   - S8201756: Improve cipher inputs
+
   - S8203654: Improve cypher state updates
+
   - S8204497: Better formatting of decimals
+
   - S8200666: Improve LDAP support
+
   - S8199110: Address Internet Addresses
 
   Update to upstream tag jdk-11+28 (OpenJDK 11 rc1)
 
   - S8207317: SSLEngine negotiation fail exception behavior changed from
   fail-fast to fail-lazy
+
   - S8207838: AArch64: Float registers incorrectly restored in JNI call
+
   - S8209637: [s390x] Interpreter doesn't call result handler after native
   calls
+
   - S8209670: CompilerThread releasing code buffer in destructor is unsafe
+
   - S8209735: Disable avx512 by default
+
   - S8209806: API docs should be updated to refer to javase11
+
   - Report version without the '-internal' postfix
 
   - Don't build against gdk making the accessibility depend on a particular
@@ -99,17 +122,25 @@ if(description)
   Update to upstream tag jdk-11+27
 
   - S8031761: [TESTBUG] Add a regression test for JDK-8026328
+
   - S8151259: [TESTBUG] nsk/jvmti/RedefineClasses/redefclass030 fails with
   'unexpected values of outer fields of the class' when running with -Xcomp
+
   - S8164639: Configure PKCS11 tests to use user-supplied NSS libraries
+
   - S8189667: Desktop#moveToTrash expects incorrect '  ALL FILES  '
   FilePermission
+
   - S8194949: [Graal] gc/TestNUMAPageSize.java fail with OOM in
-  -Xcomp
+
+  - Xcomp
+
   - S8195156: [Graal] serviceability/jvmti/GetModulesInfo/
   /JvmtiGetAllModulesTest.java fails with Graal in Xcomp mode
+
   - S8199081: [Testbug] compiler/linkage/LinkageErrors.java fails if run
   twice
+
   - S8201394: Update java.se module summary to reflect remov ...
 
   Description truncated, for more information please check the Reference URL");

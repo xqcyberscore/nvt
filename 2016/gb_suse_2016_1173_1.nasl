@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1173_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1173_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:1173-1 (php5)
 #
@@ -27,63 +27,64 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851286");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-29 05:17:53 +0200 (Fri, 29 Apr 2016)");
-  script_cve_id("CVE-2014-9767", "CVE-2015-8835", "CVE-2015-8838", "CVE-2016-2554", 
+  script_cve_id("CVE-2014-9767", "CVE-2015-8835", "CVE-2015-8838", "CVE-2016-2554",
                 "CVE-2016-3141", "CVE-2016-3142", "CVE-2016-3185");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:1173-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for php5 fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for php5 fixes the following security issues:
 
   - CVE-2015-8838: mysqlnd was vulnerable to BACKRONYM (bnc#973792).
+
   - CVE-2015-8835: SoapClient s_call method suffered from a type confusion
   issue that could have lead to crashes [bsc#973351]
+
   - CVE-2016-2554: A NULL pointer dereference in phar_get_fp_offset could
   lead to crashes. [bsc#968284] Note: we do not ship the phar extension
   currently, so we are not affected.
+
   - CVE-2016-3141: A use-after-free / double-free in the WDDX
   deserialization could lead to crashes or potential code execution.
   [bsc#969821]
+
   - CVE-2016-3142: An Out-of-bounds read in phar_parse_zipfile() could lead
   to crashes. [bsc#971912] Note: we do not ship the phar extension
   currently, so we are not affected.
+
   - CVE-2014-9767: A directory traversal when extracting zip files was fixed
   that could lead to
   overwritten files. [bsc#971612]
+
   - CVE-2016-3185: A type confusion vulnerability in
   make_http_soap_request() could lead to crashes or potentially code
   execution. [bsc#971611]
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "php5 on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php5 on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1173_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1173_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -778,6 +779,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

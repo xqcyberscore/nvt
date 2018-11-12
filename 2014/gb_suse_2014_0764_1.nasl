@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0764_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0764_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2014:0764-1 (openssl)
 #
@@ -24,66 +24,57 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850591");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:02:21 +0530 (Mon, 09 Jun 2014)");
   script_cve_id("CVE-2014-0195", "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-3470");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("SuSE Update for openssl openSUSE-SU-2014:0764-1 (openssl)");
-
-  tag_insight = "
-  The openssl library was updated to version 1.0.1h fixing various security
+  script_tag(name:"affected", value:"openssl on openSUSE 13.1, openSUSE 12.3");
+  script_tag(name:"insight", value:"The openssl library was updated to version 1.0.1h fixing various security
   issues and bugs:
 
   Security issues fixed:
+
   - CVE-2014-0224: Fix for SSL/TLS MITM flaw. An attacker using a carefully
   crafted handshake can force the use of weak keying material in OpenSSL
   SSL/TLS clients and servers.
+
   - CVE-2014-0221: Fix DTLS recursion flaw. By sending an invalid DTLS
   handshake to an OpenSSL DTLS client the code can be made to recurse
   eventually crashing in a DoS attack.
+
   - CVE-2014-0195: Fix DTLS invalid fragment vulnerability. A buffer
   overrun attack can be triggered by sending invalid DTLS fragments to an
   OpenSSL DTLS client or server. This is potentially exploitable to run
   arbitrary code on a vulnerable client or server.
+
   - CVE-2014-3470: Fix bug in TLS code where clients enable anonymous ECDH
-  ciphersuites are subject to a denial of service attack.";
-
-  tag_affected = "openssl on openSUSE 13.1, openSUSE 12.3";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  ciphersuites are subject to a denial of service attack.");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0764_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0764_1");
   script_tag(name:"summary", value:"Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.3|openSUSE13\.1)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -148,7 +139,7 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -216,6 +207,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

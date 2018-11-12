@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0312_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0312_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2013:0312-1 (java-1_6_0-openjdk)
 #
@@ -24,66 +24,84 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "OpenJDK (java-1_6_0-openjdk) was updated to 1.12.1 to fix
+if(description)
+{
+  script_tag(name:"affected", value:"java-1_6_0-openjdk on openSUSE 11.4");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"OpenJDK (java-1_6_0-openjdk) was updated to 1.12.1 to fix
   bugs and security issues (bnc#801972)
 
   * Security fixes (on top of 1.12.0)
+
   - S6563318, CVE-2013-0424: RMI data sanitization
+
   - S6664509, CVE-2013-0425: Add logging context
+
   - S6664528, CVE-2013-0426: Find log level matching its
   name or value given at construction time
+
   - S6776941: CVE-2013-0427: Improve thread pool shutdown
+
   - S7141694, CVE-2013-0429: Improving CORBA internals
+
   - S7173145: Improve in-memory representation of
   splashscreens
+
   - S7186945: Unpack200 improvement
+
   - S7186946: Refine unpacker resource usage
+
   - S7186948: Improve Swing data validation
+
   - S7186952, CVE-2013-0432: Improve clipboard access
+
   - S7186954: Improve connection performance
+
   - S7186957: Improve Pack200 data validation
+
   - S7192392, CVE-2013-0443: Better validation of client
   keys
+
   - S7192393, CVE-2013-0440: Better Checking of order of
   TLS Messages
+
   - S7192977, CVE-2013-0442: Issue in toolkit thread
+
   - S7197546, CVE-2013-0428: (proxy) Reflect about creating
   reflective proxies
+
   - S7200491: Tighten up JTable layout code
+
   - S7200500: Launcher better input validation
+
   - S7201064: Better dialogue checking
+
   - S7201066, CVE-2013-0441: Change modifiers on unused
   fields
+
   - S7201068, CVE-2013-0435: Better handling of UI elements
+
   - S7201070: Serialization to conform to protocol
+
   - S7201071, CVE-2013-0433: InetSocketAddress
   serialization issue
+
   - S8000210: Improve JarFile code quality
+
   - S8000537, CVE-2013-0450: Contextualize
   RequiredModelMBean class
+
   - S8000540, CVE-2013-1475: Improve IIOP type reuse
   management
+
   - S8000631, CVE-2013-1476: Restrict access to class
   constructor
-  - S8001235, CVE-2013-0434: Improve JAXP HTTP handling";
 
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "java-1_6_0-openjdk on openSUSE 11.4";
-
-
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00014.html");
+  - S8001235, CVE-2013-0434: Improve JAXP HTTP handling");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00014.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850401");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:21 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0428", "CVE-2013-0429", "CVE-2013-0432", "CVE-2013-0433",
@@ -94,27 +112,25 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2013:0312_1");
+  script_xref(name:"openSUSE-SU", value:"2013:0312_1");
   script_name("SuSE Update for java-1_6_0-openjdk openSUSE-SU-2013:0312-1 (java-1_6_0-openjdk)");
 
-  script_tag(name: "summary" , value: "Check for the Version of java-1_6_0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1_6_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -173,6 +189,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

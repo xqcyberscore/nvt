@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1806_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1806_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2018:1806-1 (phpMyAdmin)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851799");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 05:45:58 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-12581", "CVE-2018-12613");
   script_tag(name:"cvss_base", value:"6.5");
@@ -44,6 +44,7 @@ on the target host.");
 
   * CVE-2018-12613: File inclusion and remote code execution attack
   (boo#1098751)
+
   * CVE-2018-12581: XSS in Designer feature (boo#1098752)
 
   This update to version 4.8.2 also contains number of upstream bug fixes
@@ -75,19 +76,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

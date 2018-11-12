@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1961_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1961_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852088");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2017-11337", "CVE-2017-11338", "CVE-2017-11339", "CVE-2017-11340", "CVE-2017-11553", "CVE-2017-11591", "CVE-2017-11592", "CVE-2017-11683", "CVE-2017-12955", "CVE-2017-12956", "CVE-2017-12957", "CVE-2017-14859", "CVE-2017-14860", "CVE-2017-14862", "CVE-2017-14864");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:43:16 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:1961_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00019.html");
@@ -55,43 +55,56 @@ if(description)
   - CVE-2017-14864: Prevent invalid memory address dereference in
   Exiv2::getULong that could have caused a segmentation fault and
   application crash, which leads to denial of service (bsc#1060995).
+
   - CVE-2017-14862: Prevent invalid memory address dereference in
   Exiv2::DataValue::read that could have caused a segmentation fault and
   application crash, which leads to denial of service (bsc#1060996).
+
   - CVE-2017-14859: Prevent invalid memory address dereference in
   Exiv2::StringValueBase::read that could have caused a segmentation fault
   and application crash, which leads to denial of service (bsc#1061000).
+
   - CVE-2017-14860: Prevent heap-based buffer over-read in the
   Exiv2::Jp2Image::readMetadata function via a crafted input that could
   have lead to a denial of service attack (bsc#1061023).
+
   - CVE-2017-11337: Prevent invalid free in the Action::TaskFactory::cleanup
   function via a crafted input that could have lead to a remote denial of
   service attack (bsc#1048883).
+
   - CVE-2017-11338: Prevent infinite loop in the
   Exiv2::Image::printIFDStructure function via a crafted input that could
   have lead to a remote denial of service attack (bsc#1048883).
+
   - CVE-2017-11339: Prevent heap-based buffer overflow in the
   Image::printIFDStructure function via a crafted input that could have
   lead to a remote denial of service attack (bsc#1048883).
+
   - CVE-2017-11340: Prevent Segmentation fault in the XmpParser::terminate()
   function via a crafted input that could have lead to a remote denial of
   service attack (bsc#1048883).
+
   - CVE-2017-12955: Prevent heap-based buffer overflow. The vulnerability
   caused an out-of-bounds write in Exiv2::Image::printIFDStructure(),
   which may lead to remote denial of service or possibly unspecified other
   impact (bsc#1054593).
+
   - CVE-2017-12956: Preventn illegal address access in
   Exiv2::FileIo::path[abi:cxx11]() that could have lead to remote denial
   of service (bsc#1054592).
+
   - CVE-2017-12957: Prevent heap-based buffer over-read that was triggered
   in the Exiv2::Image::io function and could have lead to remote denial of
   service (bsc#1054590).
+
   - CVE-2017-11683: Prevent reachable assertion in the
   Internal::TiffReader::visitDirectory function that could have lead to a
   remote denial of service attack via crafted input (bsc#1051188).
+
   - CVE-2017-11591: Prevent Floating point exception in the Exiv2::ValueType
   function that could have lead to a remote denial of service attack via
   crafted input (bsc#1050257).
+
   - CVE-2017-11553: Prevent illegal address access i ...
 
   Description truncated, for more information please check the Reference URL");

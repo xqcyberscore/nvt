@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1138_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2014_1138_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2014:1138-1 (kernel)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850975");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:20:35 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-1860", "CVE-2013-4162", "CVE-2013-7266", "CVE-2013-7267", "CVE-2013-7268", "CVE-2013-7269", "CVE-2013-7270", "CVE-2013-7271", "CVE-2014-0203", "CVE-2014-3144", "CVE-2014-3145", "CVE-2014-3917", "CVE-2014-4508", "CVE-2014-4652", "CVE-2014-4653", "CVE-2014-4654", "CVE-2014-4655", "CVE-2014-4656", "CVE-2014-4667", "CVE-2014-4699", "CVE-2014-4943", "CVE-2014-5077");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2014:1138-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise Server 11 SP1 LTSS received a roll up update to
   fix several security and non-security issues.
 
@@ -47,17 +47,20 @@ if(description)
   3.8.4 allows physically proximate attackers to cause a denial of
   service (system crash) or possibly execute arbitrary code via a
   crafted cdc-wdm USB device. (bnc#806431)
+
   * CVE-2013-4162: The udp_v6_push_pending_frames function in
   net/ipv6/udp.c in the IPv6 implementation in the Linux kernel
   through 3.10.3 makes an incorrect function call for pending data,
   which allows local users to cause a denial of service (BUG and
   system crash) via a crafted application that uses the UDP_CORK
   option in a setsockopt system call. (bnc#831058)
+
   * CVE-2014-0203: The __do_follow_link function in fs/namei.c in the
   Linux kernel before 2.6.33 does not properly handle the last
   pathname component during use of certain filesystems, which allows
   local users to cause a denial of service (incorrect free operations
   and system crash) via an open system call. (bnc#883526)
+
   * CVE-2014-3144: The (1) BPF_S_ANC_NLATTR and (2)
   BPF_S_ANC_NLATTR_NEST extension implementations in the sk_run_filter
   function in net/core/filter.c in the Linux kernel through 3.14.3 do
@@ -67,6 +70,7 @@ if(description)
   affected code was moved to the __skb_get_nlattr and
   __skb_get_nlattr_nest functions before the vulnerability was
   announced. (bnc#877257)
+
   * CVE-2014-3145: The BPF_S_ANC_NLATTR_NEST extension implementation in
   the sk_run_filter function in net/core/filter.c in the Linux kernel
   through 3.14.3 uses the reverse order in a certain subtraction,
@@ -74,36 +78,35 @@ if(description)
   system crash) via crafted BPF instructions. NOTE: the affected code
   was moved to the __skb_get_nlattr_nest function before the
   vulnerability was announced. (bnc#877257)
+
   * CVE-2014-3917: kernel/auditsc.c in the Linux kernel through 3.14.5,
   when CONFIG_AUDITSYSCALL is enabled with certain syscall rules,
   allows local users to obtain potentially sensitive single-bit values
   from kernel memory or cause a denial of service (OOPS) via a large
   value of a syscall number. (bnc#880484)
+
   * CVE-2014-4508: arch/x86/kernel/entry_32.S in the Linux kernel
-  through 3.15.1 on 32-bit x86 platforms,  ...
+  through 3.15.1 on 32-bit x86 platforms, ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 11 SP1 LTSS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:1138_1");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 11 SP1 LTSS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:1138_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP1")
 {
@@ -234,6 +237,6 @@ if(release == "SLES11.0SP1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

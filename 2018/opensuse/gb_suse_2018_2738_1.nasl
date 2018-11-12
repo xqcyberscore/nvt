@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2738_1.nasl 11565 2018-09-24 08:00:39Z santu $
+# $Id: gb_suse_2018_2738_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2738-1 (the)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851895");
-  script_version("$Revision: 11565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 10:00:39 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 08:04:12 +0200 (Mon, 17 Sep 2018)");
   script_cve_id("CVE-2018-10902", "CVE-2018-10938", "CVE-2018-10940", "CVE-2018-1128",
   "CVE-2018-1129", "CVE-2018-12896", "CVE-2018-13093", "CVE-2018-13094", "CVE-2018-13095",
@@ -39,8 +39,7 @@ if(description)
   script_name("SuSE Update for the openSUSE-SU-2018:2738-1 (the)");
   script_tag(name:"summary", value:"Check the version of the kernel modules");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  The openSUSE Leap 42.3 kernel was updated to 4.4.155 to receive various
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.155 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -50,12 +49,15 @@ if(description)
   on a NULL inode- i_ops pointer when doing pathwalks on a corrupted xfs
   image. This occurred because of a lack of proper validation that cached
   inodes are free during allocation (bnc#1100001).
+
   - CVE-2018-13095: Prevent denial of service (memory corruption and BUG)
   that could have occurred for a corrupted xfs image upon encountering an
   inode that is in extent format, but has more extents than fit in the
   inode fork (bnc#1099999).
+
   - CVE-2018-13094: Prevent OOPS that might have occurred for a corrupted xfs
   image after xfs_da_shrink_inode() is called with a NULL bp (bnc#1100000).
+
   - CVE-2018-12896: Prevent integer overflow in the POSIX timer code is
   caused by the way the overrun accounting works. Depending on interval
   and expiry time values, the overrun could have been larger than INT_MAX,
@@ -64,24 +66,30 @@ if(description)
   siginfo::si_overrun, random. For example, a local user could have caused
   a denial of service (signed integer overflow) via crafted mmap, futex,
   timer_create, and timer_settime system calls (bnc#1099922).
+
   - CVE-2018-16658: Prevent information leak in cdrom_ioctl_drive_status
   that could have been used by local attackers to read kernel memory
   because a cast from unsigned long to int interferes with bounds checking
   (bnc#1107689).
+
   - CVE-2018-10940: The cdrom_ioctl_media_changed function allowed local
   attackers to use a incorrect bounds check in the CDROM driver
   CDROM_MEDIA_CHANGED ioctl to read out kernel memory (bsc#1092903).
+
   - CVE-2018-6555: The irda_setsockopt function allowed local users to cause
   a denial of service (ias_object use-after-free and system crash) or
   possibly have unspecified other impact via an AF_IRDA socket
   (bnc#1106511).
+
   - CVE-2018-6554: Prevent memory leak in the irda_bind function that
   allowed local users to cause a denial of service (memory consumption) by
   repeatedly binding an AF_IRDA socket (bnc#1106509).
+
   - CVE-2018-1129: A flaw was found in the way signature calculation was
   handled by cephx authentication protocol. An attacker having access to
   ceph cluster network who is able to alter the message payload was able
   to bypass signature checks done by cephx protocol (bnc#1096748).
+
   - CVE-2018-1128: It was found that cephx authentication protocol did not
   verify ceph clien ...
 
@@ -96,19 +104,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1616_1.nasl 10199 2018-06-14 13:09:24Z santu $
+# $Id: gb_suse_2018_1616_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2018:1616-1 (MozillaFirefox,)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851779");
-  script_version("$Revision: 10199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 15:09:24 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-09 05:49:12 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2018-6126");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2018:1616-1 (MozillaFirefox,)");
-  script_tag(name:"summary", value:"Check the version of MozillaFirefox,");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2018:1616-1 (MozillaFirefox, )");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for MozillaFirefox, mozilla-nss fixes the following issues:
+  script_tag(name:"insight", value:"This update for MozillaFirefox, mozilla-nss fixes the following issues:
 
   Security issue fixed in Mozilla Firefox 60.0.2 ESR:
 
@@ -50,6 +49,7 @@ on the target host.");
 
   - In KDE Open with option in download dialog has no effect with
   kmozillahelper (boo#1094747)
+
   - Startup crashes on aarch64 (boo#1093059)
 
   Mozilla Firefox now requires NSS 3.36.4 (boo#1096515). The following
@@ -57,13 +57,15 @@ on the target host.");
 
   - Fix issues connecting to servers recently upgraded to TLS 1.3
   (SSL_RX_MALFORMED_SERVER_HELLO error)
+
   - Fix a rare bug with PKCS#12 files
+
   - Apply additional harding (relro linker option)
 
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -86,19 +88,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

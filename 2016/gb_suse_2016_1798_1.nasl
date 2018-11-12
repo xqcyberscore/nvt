@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1798_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1798_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2016:1798-1 (kernel)
 #
@@ -27,75 +27,84 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851367");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-15 05:27:52 +0200 (Fri, 15 Jul 2016)");
   script_cve_id("CVE-2016-4470", "CVE-2016-4794", "CVE-2016-4997", "CVE-2016-5829");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kernel openSUSE-SU-2016:1798-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE Leap 42.1 was updated to 4.1.27 to receive various security
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.1 was updated to 4.1.27 to receive various security
   and bugfixes.
 
   The following security bugs were fixed:
+
   - CVE-2016-4997: A buffer overflow in 32bit compat_setsockopt iptables
   handling could lead to a local privilege escalation. (bsc#986362)
+
   - CVE-2016-5829: Multiple heap-based buffer overflows in the
   hiddev_ioctl_usage function in drivers/hid/usbhid/hiddev.c in the Linux
   kernel allow local users to cause a denial of service or possibly have
   unspecified other impact via a crafted (1) HIDIOCGUSAGES or (2)
   HIDIOCSUSAGES ioctl call (bnc#986572).
+
   - CVE-2016-4470: The key_reject_and_link function in security/keys/key.c
   in the Linux kernel did not ensure that a certain data structure is
   initialized, which allowed local users to cause a denial of service
   (system crash) via vectors involving a crafted keyctl request2 command
   (bnc#984755).
+
   - CVE-2016-4794: Use-after-free vulnerability in mm/percpu.c in the Linux
   kernel allowed local users to cause a denial of service (BUG)
   or possibly have unspecified other impact via crafted use of the mmap
   and bpf system calls (bnc#980265).
 
   The following non-security bugs were fixed:
+
   - Refresh patches.xen/xen-netback-coalesce: Restore copying of SKBs with
   head exceeding page size (bsc#978469).
+
   - Refresh patches.xen/xen3-patch-2.6.26 (fix PAT initialization).
+
   - Refresh patches.xen/xen3-patch-2.6.39 (fix ia32_compat inheritance).
+
   - Refresh patches.xen/xen3-patch-3.14: Suppress atomic file position
   updates for /proc/xen/xenbus (bsc#970275).
+
   - Refresh patches.xen/xen3-patch-3.16 (drop redundant addition of a
   comment).
-  - Refresh patches.xen/xen3-patch-4.1.7-8.
-  - base: make module_create_drivers_dir race-free (bnc#983977).
-  - ipvs: count pre-established TCP states as active (bsc#970114).
-  - net: thunderx: Fix TL4 configuration for secondary Qsets (bsc#986530).
-  - net: thunderx: Fix link status reporting (bsc#986530).");
-  script_tag(name: "affected", value: "kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1798_1");
+  - Refresh patches.xen/xen3-patch-4.1.7-8.
+
+  - base: make module_create_drivers_dir race-free (bnc#983977).
+
+  - ipvs: count pre-established TCP states as active (bsc#970114).
+
+  - net: thunderx: Fix TL4 configuration for secondary Qsets (bsc#986530).
+
+  - net: thunderx: Fix link status reporting (bsc#986530).");
+  script_tag(name:"affected", value:"kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2016:1798_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -418,6 +427,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3368_1.nasl 12162 2018-10-30 07:02:33Z santu $
+# $Id: gb_suse_2018_3368_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:3368-1 (wireshark)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851997");
-  script_version("$Revision: 12162 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-12086", "CVE-2018-18227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 08:02:33 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:33:08 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for wireshark openSUSE-SU-2018:3368-1 (wireshark)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3368_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00053.html");
@@ -50,14 +50,14 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for wireshark fixes the following issues:
+  script_tag(name:"insight", value:"This update for wireshark fixes the following issues:
 
   Wireshark was updated to 2.4.10 (bsc#1111647).
 
   Following security issues were fixed:
 
   - CVE-2018-18227: MS-WSP dissector crash (wnpa-sec-2018-47)
+
   - CVE-2018-12086: OpcUA dissector crash (wnpa-sec-2018-50)
 
   This update was imported from the SUSE:SLE-15:Update update project.

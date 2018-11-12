@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1360_1.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
+# $Id: gb_suse_2018_1360_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for lilypond openSUSE-SU-2018:1360-1 (lilypond)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851752");
-  script_version("$Revision: 10231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-21 05:00:51 +0200 (Mon, 21 May 2018)");
   script_cve_id("CVE-2018-10992");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,21 +36,21 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for lilypond openSUSE-SU-2018:1360-1 (lilypond)");
   script_tag(name:"summary", value:"Check the version of lilypond");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for lilypond fixes the following issues:
+  script_tag(name:"insight", value:"This update for lilypond fixes the following issues:
 
   - CVE-2018-10992: lilypond: Does not validate strings before launching
   the program specified by the BROWSER environment variable, which
   allows remote attackers to conduct argument-injection attacks
   (bsc#1093056)
+
   - packages do not build reproducibly from unsorted input (bsc#1041090)
 
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -69,19 +69,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

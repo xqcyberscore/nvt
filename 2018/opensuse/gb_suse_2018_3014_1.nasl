@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3014_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3014_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3014-1 (ImageMagick)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851974");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-16323", "CVE-2018-16328", "CVE-2018-16329", "CVE-2018-16413", "CVE-2018-16640", "CVE-2018-16641", "CVE-2018-16642", "CVE-2018-16643", "CVE-2018-16644", "CVE-2018-16645");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:24:24 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3014-1 (ImageMagick)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3014_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00008.html");
@@ -54,28 +54,37 @@ if(description)
 
   - CVE-2018-16413: Prevent heap-based buffer over-read in the
   PushShortPixel function leading to DoS (bsc#1106989)
+
   - CVE-2018-16329: Prevent NULL pointer dereference in the
   GetMagickProperty function leading to DoS (bsc#1106858).
+
   - CVE-2018-16328: Prevent NULL pointer dereference exists in the
   CheckEventLogging function leading to DoS (bsc#1106857).
+
   - CVE-2018-16323: ReadXBMImage left data uninitialized when processing an
   XBM file that has a negative pixel value. If the affected code was used
   as a library loaded into a process that includes sensitive information,
   that information sometimes can be leaked via the image data (bsc#1106855)
+
   - CVE-2018-16642: The function InsertRow allowed remote attackers to cause
   a denial of service via a crafted image file due to an out-of-bounds
   write (bsc#1107616)
+
   - CVE-2018-16640: Prevent memory leak in the function ReadOneJNGImage
   (bsc#1107619)
+
   - CVE-2018-16641: Prevent memory leak in the TIFFWritePhotoshopLayers
   function (bsc#1107618).
+
   - CVE-2018-16643: The functions ReadDCMImage, ReadPWPImage, ReadCALSImage,
   and ReadPICTImage did check the return value of the fputc function,
   which allowed remote attackers to cause a denial of service via a
   crafted image file (bsc#1107612)
+
   - CVE-2018-16644: Added missing check for length in the functions
   ReadDCMImage and ReadPICTImage, which allowed remote attackers to cause
   a denial of service via a crafted image (bsc#1107609)
+
   - CVE-2018-16645: Prevent excessive memory allocation issue in the
   functions ReadBMPImage and ReadDIBImage, which allowed remote attackers
   to cause a denial

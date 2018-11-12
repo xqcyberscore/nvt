@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1484_1.nasl 10076 2018-06-05 08:44:03Z santu $
+# $Id: gb_suse_2018_1484_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2018:1484-1 (chromium)
 #
@@ -27,51 +27,73 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851772");
-  script_version("$Revision: 10076 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 10:44:03 +0200 (Tue, 05 Jun 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:22 +0530 (Tue, 05 Jun 2018)");
-  script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126", 
-                "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130", 
-                "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134", 
-                "CVE-2018-6135", "CVE-2018-6136", "CVE-2018-6137", "CVE-2018-6138", 
-                "CVE-2018-6139", "CVE-2018-6140", "CVE-2018-6141", "CVE-2018-6142", 
+  script_cve_id("CVE-2018-6123", "CVE-2018-6124", "CVE-2018-6125", "CVE-2018-6126",
+                "CVE-2018-6127", "CVE-2018-6128", "CVE-2018-6129", "CVE-2018-6130",
+                "CVE-2018-6131", "CVE-2018-6132", "CVE-2018-6133", "CVE-2018-6134",
+                "CVE-2018-6135", "CVE-2018-6136", "CVE-2018-6137", "CVE-2018-6138",
+                "CVE-2018-6139", "CVE-2018-6140", "CVE-2018-6141", "CVE-2018-6142",
                 "CVE-2018-6143", "CVE-2018-6144", "CVE-2018-6145", "CVE-2018-6147");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2018:1484-1 (chromium)");
   script_tag(name:"summary", value:"Check the version of chromium");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for chromium to version 66.0.3359.181 fixes the following
+  script_tag(name:"insight", value:"This update for chromium to version 66.0.3359.181 fixes the following
   issues:
 
   The following security issues were fixed (boo#1095163):
 
   * CVE-2018-6123: Use after free in Blink.
+
   * CVE-2018-6124: Type confusion in Blink.
+
   * CVE-2018-6125: Overly permissive policy in WebUSB.
+
   * CVE-2018-6126: Heap buffer overflow in Skia.
+
   * CVE-2018-6127: Use after free in indexedDB.
+
   * CVE-2018-6128: uXSS in Chrome on iOS.
+
   * CVE-2018-6129: Out of bounds memory access in WebRTC.
+
   * CVE-2018-6130: Out of bounds memory access in WebRTC.
+
   * CVE-2018-6131: Incorrect mutability protection in WebAssembly.
+
   * CVE-2018-6132: Use of uninitialized memory in WebRTC.
+
   * CVE-2018-6133: URL spoof in Omnibox.
+
   * CVE-2018-6134: Referrer Policy bypass in Blink.
+
   * CVE-2018-6135: UI spoofing in Blink.
+
   * CVE-2018-6136: Out of bounds memory access in V8.
+
   * CVE-2018-6137: Leak of visited status of page in Blink.
+
   * CVE-2018-6138: Overly permissive policy in Extensions.
+
   * CVE-2018-6139: Restrictions bypass in the debugger extension API.
+
   * CVE-2018-6140: Restrictions bypass in the debugger extension API.
+
   * CVE-2018-6141: Heap buffer overflow in Skia.
+
   * CVE-2018-6142: Out of bounds memory access in V8.
+
   * CVE-2018-6143: Out of bounds memory access in V8.
+
   * CVE-2018-6144: Out of bounds memory access in PDFium.
+
   * CVE-2018-6145: Incorrect escaping of MathML in Blink.
+
   * CVE-2018-6147: Password fields not taking advantage of OS protections in
   Views.
 
@@ -88,7 +110,7 @@ on the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -111,19 +133,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

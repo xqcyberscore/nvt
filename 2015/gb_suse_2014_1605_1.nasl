@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1605_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_1605_1.nasl 12288 2018-11-09 14:02:45Z cfischer $
 #
 # SuSE Update for OpenVPN SUSE-SU-2014:1605-1 (OpenVPN)
 #
@@ -27,50 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850808");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:02:45 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-8104");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for OpenVPN SUSE-SU-2014:1605-1 (OpenVPN)");
-  script_tag(name: "summary", value: "Check the version of OpenVPN");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update fixes a critical denial of service vulnerability in OpenVPN:
+  script_tag(name:"summary", value:"Check the version of OpenVPN");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update fixes a critical denial of service vulnerability in OpenVPN:
 
   * CVE-2014-8104: Critical denial of service vulnerability in OpenVPN
   servers that can be triggered by authenticated attackers.
 
   Also an incompatibility with OpenVPN and OpenSSL in FIPS mode has been
-  fixed. (bnc#895882)
+  fixed. (bnc#895882)");
 
-  Security Issues:
-
-  * CVE-2014-8104
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-8104");
-  script_tag(name: "affected", value: "OpenVPN on SUSE Linux Enterprise Server 11 SP3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:1605_1");
+  script_tag(name:"affected", value:"OpenVPN on SUSE Linux Enterprise Server 11 SP3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:1605_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP3")
 {
@@ -87,6 +79,6 @@ if(release == "SLES11.0SP3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

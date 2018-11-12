@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1098_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_1098_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2014:1098-1 (MozillaThunderbird)
 #
@@ -27,58 +27,63 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850608");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:18:00 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-1553", "CVE-2014-1562", "CVE-2014-1563", "CVE-2014-1564",
                 "CVE-2014-1565", "CVE-2014-1567");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for MozillaThunderbird openSUSE-SU-2014:1098-1 (MozillaThunderbird)");
-  script_tag(name: "insight", value: "
-  MozillaThunderbird was updated to Thunderbird 31.1.0 (bnc#894370), fixing
+  script_tag(name:"insight", value:"MozillaThunderbird was updated to Thunderbird 31.1.0 (bnc#894370), fixing
   security issues:
+
   * MFSA 2014-67/CVE-2014-1553/CVE-2014-1562 Miscellaneous memory safety
   hazards
+
   * MFSA 2014-68/CVE-2014-1563 (bmo#1018524) Use-after-free during DOM
   interactions with SVG
+
   * MFSA 2014-69/CVE-2014-1564 (bmo#1045977) Uninitialized memory use
   during GIF rendering
+
   * MFSA 2014-70/CVE-2014-1565 (bmo#1047831) Out-of-bounds read in Web
   Audio audio timeline
+
   * MFSA 2014-72/CVE-2014-1567 (bmo#1037641) Use-after-free setting text
   directionality
 
   - update to Thunderbird 31.0
+
   * based on Gecko 31
+
   * Autocompleting email addresses now matches against any part of the
   name or email
+
   * Composing a mail to a newsgroup will now autocomplete newsgroup names
+
   * Insecure NTLM (pre-NTLMv2) authentication disabled");
-  script_tag(name: "affected", value: "MozillaThunderbird on openSUSE 13.1, openSUSE 12.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaThunderbird on openSUSE 13.1, openSUSE 12.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "openSUSE-SU", value: "2014:1098_1");
+  script_xref(name:"openSUSE-SU", value:"2014:1098_1");
   script_tag(name:"summary", value:"Check for the Version of MozillaThunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-exit(0);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.3|openSUSE13\.1)");
+  exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -125,7 +130,7 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -175,6 +180,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

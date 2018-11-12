@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0194_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_0194_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for qemu openSUSE-SU-2017:0194-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851499");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:15:38 +0100 (Wed, 22 Feb 2017)");
   script_cve_id("CVE-2016-9102", "CVE-2016-9103", "CVE-2016-9381", "CVE-2016-9776",
                 "CVE-2016-9845", "CVE-2016-9846", "CVE-2016-9907", "CVE-2016-9908",
@@ -38,9 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2017:0194-1 (qemu)");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"qemu was updated to fix several issues.
 
   These security issues were fixed:
@@ -49,64 +48,70 @@ of detect NVT and check if the version is vulnerable or not.");
   hw/9pfs/9p.c in allowed local guest OS administrators to cause a denial
   of service (memory consumption and QEMU process crash) via a large
   number of Txattrcreate messages with the same fid number (bsc#1014256).
+
   - CVE-2016-9103: The v9fs_xattrcreate function in hw/9pfs/9p.c in allowed
   local guest OS administrators to obtain sensitive host heap memory
   information by reading xattribute values writing to them (bsc#1007454).
+
   - CVE-2016-9381: Improper processing of shared rings allowing guest
   administrators take over the qemu process, elevating their privilege to
   that of the qemu process (bsc#1009109)
+
   - CVE-2016-9776: The ColdFire Fast Ethernet Controller emulator support
   was vulnerable to an infinite loop issue while receiving packets in
   'mcf_fec_receive'. A privileged user/process inside guest could have
   used this issue to crash the Qemu process on the host leading to DoS
   (bsc#1013285).
+
   - CVE-2016-9845: The Virtio GPU Device emulator support as vulnerable to
   an information leakage issue while processing the
   'VIRTIO_GPU_CMD_GET_CAPSET_INFO' command. A guest user/process could
   have used this flaw to leak contents of the host memory (bsc#1013767).
+
   - CVE-2016-9846: The Virtio GPU Device emulator support was vulnerable to
   a memory leakage issue while updating the cursor data in
   update_cursor_data_virgl. A guest user/process could have used this flaw
   to leak host memory bytes, resulting in DoS for the host (bsc#1013764).
+
   - CVE-2016-9907: The USB redirector usb-guest support was vulnerable to a
   memory leakage flaw when destroying the USB redirector in
   'usbredir_handle_destroy'.  A guest user/process could have used this
   issue to leak host memory, resulting in DoS for a host (bsc#1014109).
+
   - CVE-2016-9908: The Virtio GPU Device emulator support was vulnerable to
   an information leakage issue while processing the
   'VIRTIO_GPU_CMD_GET_CAPSET' command. A guest user/process could have
   used this flaw to leak contents of the host memory (bsc#1014514).
+
   - CVE-2016-9911: The USB EHCI Emulation support was vulnerable to a memory
   leakage issue while processing packet data in 'ehci_init_transfer'. A
   guest user/process could have used this issue to leak host memory,
   resulting in DoS for the host (bsc#1014111).
+
   - CVE-2016-9912: The Virtio GPU Device emulator support was vulnerable to
   a memory leakage issue while destroying gpu resource object in
   'virtio_gpu_resource_destroy'. A guest user/process co ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "qemu on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"qemu on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0194_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0194_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -327,6 +332,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

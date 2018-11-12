@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1719_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1719_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2018:1719-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851789");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-17 05:52:46 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796",
                 "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800",
@@ -46,24 +46,43 @@ on the target host.");
   These security issues were fixed:
 
   - S8180881: Better packaging of deserialization
+
   - S8182362: Update CipherOutputStream Usage
+
   - S8183032: Upgrade to LittleCMS 2.9
+
   - S8189123: More consistent classloading
+
   - S8189969, CVE-2018-2790, bsc#1090023: Manifest better manifest entries
+
   - S8189977, CVE-2018-2795, bsc#1090025: Improve permission portability
+
   - S8189981, CVE-2018-2796, bsc#1090026: Improve queuing portability
+
   - S8189985, CVE-2018-2797, bsc#1090027: Improve tabular data portability
+
   - S8189989, CVE-2018-2798, bsc#1090028: Improve container portability
+
   - S8189993, CVE-2018-2799, bsc#1090029: Improve document portability
+
   - S8189997, CVE-2018-2794, bsc#1090024: Enhance keystore mechanisms
+
   - S8190478: Improved interface method selection
+
   - S8190877: Better handling of abstract classes
+
   - S8191696: Better mouse positioning
+
   - S8192025, CVE-2018-2814, bsc#1090032: Less referential references
+
   - S8192030: Better MTSchema support
+
   - S8192757, CVE-2018-2815, bsc#1090033: Improve stub classes implementation
+
   - S8193409: Improve AES supporting classes
+
   - S8193414: Improvements in MethodType lookups
+
   - S8193833, CVE-2018-2800, bsc#1090030: Better RMI connection support
 
   For other changes please consult the changelog.
@@ -87,19 +106,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

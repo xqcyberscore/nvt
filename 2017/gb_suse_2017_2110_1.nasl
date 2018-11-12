@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2110_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2110_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2110-1 (Linux Kernel)
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851586");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 07:29:40 +0200 (Thu, 10 Aug 2017)");
   script_cve_id("CVE-2017-10810", "CVE-2017-11473", "CVE-2017-7533", "CVE-2017-7541", "CVE-2017-7542");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2110-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.2 kernel was updated to 4.4.79 to receive various
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.79 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -49,16 +46,20 @@ of detect NVT and check if the version is vulnerable or not.");
   net/ipv6/output_core.c in the Linux kernel allowed local users to cause
   a denial of service (integer overflow and infinite loop) by leveraging
   the ability to open a raw socket (bnc#1049882).
+
   - CVE-2017-11473: Buffer overflow in the mp_override_legacy_irq() function
   in arch/x86/kernel/acpi/boot.c in the Linux kernel allowed local users
   to gain privileges via a crafted ACPI table (bnc#1049603).
+
   - CVE-2017-7533: A bug in inotify code allowed local users to escalate
   privilege (bnc#1049483).
+
   - CVE-2017-7541: The brcmf_cfg80211_mgmt_tx function in
   drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c in the Linux
   kernel allowed local users to cause a denial of service (buffer overflow
   and system crash) or possibly gain privileges via a crafted
   NL80211_CMD_FRAME Netlink packet (bnc#1049645).
+
   - CVE-2017-10810: Memory leak in the virtio_gpu_object_create function in
   drivers/gpu/drm/virtio/virtgpu_object.c in the Linux kernel allowed
   attackers to cause a denial of service (memory consumption) by
@@ -67,52 +68,67 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - acpi / processor: Avoid reserving IO regions too early (bsc#1051478).
+
   - af_key: Add lock to key dump (bsc#1047653).
+
   - af_key: Fix slab-out-of-bounds in pfkey_compile_policy (bsc#1047354).
+
   - alsa: fm801: Initialize chip after IRQ handler is registered
   (bsc#1031717).
+
   - alsa: hda - Fix endless loop of codec configure (bsc#1031717).
+
   - alsa: hda - set input_path bitmap to zero after moving it to new place
   (bsc#1031717).
+
   - b43: Add missing MODULE_FIRMWARE() (bsc#1037344).
+
   - bcache: force trigger gc (bsc#1038078).
+
   - bcache: only recovery I/O error for writethrough mode (bsc#1043652).
+
   - bdi: Fix use-after-free in wb_congested_put() (bsc#1040307).
+
   - blacklist 2400fd822f46 powerpc/asm: Mark cr0 as clobbered in mftb()
+
   - blacklist.conf:
+
   - blacklist.conf: 1151f838cb62 is high-risk and we're not aware of any
   systems that might need it in SP2.
+
   - blacklist.conf: 8b8642af15ed not a supported driver
+
   - blacklist.conf: 9eeacd3a2f17 not a bug fix (bnc#1050061)
+
   - blacklist.conf: add inapplicable commits for wifi (bsc#1031717)
+
   - blacklist.conf: add unapplicable/cosmetic iwlwifi fixes (bsc#1031717).
+
   - blacklist.conf: add unapplicable drm fixes (bsc#1031717).
+
   - blacklist.conf: Blacklist 4e201566402c ('genirq/msi: Drop artificial PCI
-  dependency') (bs ... 
+  dependency') (bs ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2110_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2110_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -297,6 +313,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 12065 2018-10-25 06:59:36Z cfischer $
+# $Id: gather-package-list-docker-container.inc 12304 2018-11-10 12:18:34Z cfischer $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,16 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 12065 $
+# $Revision: 12304 $
 #
 ###############################################################################
 
 OS_CPE = make_array(
 
     # OpenSUSE
-    "openSUSELeap42.3", "cpe:/o:opensuse_project:leap:42.3",
-    "openSUSELeap42.2", "cpe:/o:opensuse_project:leap:42.2", # Starting with 42.2 the correct one is used by the NVD
-    "openSUSELeap42.1", "cpe:/o:novell:leap:42.1", # NVD is currently using a wrong vendor here
+    "openSUSELeap15.0", "cpe:/o:opensuse:leap:15.0",
+    "openSUSELeap42.3", "cpe:/o:opensuse:leap:42.3",
+    "openSUSELeap42.2", "cpe:/o:opensuse:leap:42.2",
+    "openSUSELeap42.1", "cpe:/o:opensuse:leap:42.1",
+    "openSUSELeap42.0", "cpe:/o:opensuse:leap:42.0",
     "openSUSE13.2", "cpe:/o:novell:opensuse:13.2",
     "openSUSE13.1", "cpe:/o:novell:opensuse:13.1",
     "openSUSE12.3", "cpe:/o:novell:opensuse:12.3",
@@ -60,6 +62,7 @@ OS_CPE = make_array(
     "SUSE8.0",  "cpe:/o:novell:suse_linux:8.0",
     "SUSE7.3",  "cpe:/o:novell:suse_linux:7.3",
 
+    # Univention Corporate Server (http://wiki.univention.de/index.php?title=Maintenance_Cycle_for_UCS)
     "UCS4.2", "cpe:/o:univention:univention_corporate_server:4.2",
     "UCS4.1", "cpe:/o:univention:univention_corporate_server:4.1",
     "UCS4.0", "cpe:/o:univention:univention_corporate_server:4.0",
@@ -149,6 +152,7 @@ OS_CPE = make_array(
 
     # Debian
     "DEB10.0", "cpe:/o:debian:debian_linux:10.0",
+    "DEB9.6", "cpe:/o:debian:debian_linux:9.6",
     "DEB9.5", "cpe:/o:debian:debian_linux:9.5",
     "DEB9.4", "cpe:/o:debian:debian_linux:9.4",
     "DEB9.3", "cpe:/o:debian:debian_linux:9.3",
@@ -1320,6 +1324,12 @@ function get_container_os( container_id, soc ) {
   # https://en.wikipedia.org/wiki/SUSE_Linux_distributions
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/os-release");
 
+  if("openSUSE Leap 15.0" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 15.0", oskey:"openSUSELeap15.0");
+    return ret;
+  }
   if("openSUSE Leap 42.3" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
@@ -1336,6 +1346,12 @@ function get_container_os( container_id, soc ) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.1", oskey:"openSUSELeap42.1");
+    return ret;
+  }
+  if("openSUSE Leap 42.0" >< rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:"openSUSE Leap 42.0", oskey:"openSUSELeap42.0");
     return ret;
   }
 

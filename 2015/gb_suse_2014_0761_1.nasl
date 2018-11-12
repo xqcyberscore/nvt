@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0761_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2014_0761_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for OpenSSL SUSE-SU-2014:0761-1 (OpenSSL)
 #
@@ -27,28 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850981");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:03:30 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-0076", "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-3470");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for OpenSSL SUSE-SU-2014:0761-1 (OpenSSL)");
-  script_tag(name: "summary", value: "Check the version of OpenSSL");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  OpenSSL was updated to fix several vulnerabilities:
+  script_tag(name:"summary", value:"Check the version of OpenSSL");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSL was updated to fix several vulnerabilities:
 
   * SSL/TLS MITM vulnerability. (CVE-2014-0224)
+
   * DTLS recursion flaw. (CVE-2014-0221)
+
   * Anonymous ECDH denial of service. (CVE-2014-3470)
+
   * Using the FLUSH+RELOAD Cache Side-channel Attack the nonces could
   have been recovered. (CVE-2014-0076)
-
-  Further information can be found at
-  http://www.openssl.org/news/secadv_20140605.txt
-  http://www.openssl.org/news/secadv_20140605.txt  .
 
   Additionally, the following non-security fixes and enhancements have been
   included in this release:
@@ -56,51 +54,45 @@ if(description)
   * Ensure that the stack is marked non-executable on x86 32bit. On
   other processor platforms it was already marked as non-executable
   before. (bnc#870192)
+
   * IPv6 support was added to the openssl s_client and s_server command
   line tool. (bnc#859228)
+
   * The openssl command line tool now checks certificates by default
   against /etc/ssl/certs (this can be changed via the -CApath option).
   (bnc#860332)
+
   * The Elliptic Curve Diffie-Hellman key exchange selector was enabled
   and can be selected by kECDHE, kECDH, ECDH tags in the SSL cipher
   string. (bnc#859924)
+
   * If an optional openssl1 command line tool is installed in parallel,
   c_rehash uses it to generate certificate hashes in both OpenSSL 0
   and OpenSSL 1 style. This allows parallel usage of OpenSSL 0.9.8j
   and OpenSSL 1.x client libraries with a shared certificate store.
-  (bnc#862181)
+  (bnc#862181)");
 
-  Security Issues references:
-
-  * CVE-2014-0224
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224 
-  * CVE-2014-0221
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0221 
-  * CVE-2014-3470
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3470 
-  * CVE-2014-0076
-   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0076");
-  script_tag(name: "affected", value: "OpenSSL on SUSE Linux Enterprise Server 11 SP2 LTSS, SUSE Linux Enterprise Server 11 SP1 LTSS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:0761_1");
+  script_tag(name:"affected", value:"OpenSSL on SUSE Linux Enterprise Server 11 SP2 LTSS, SUSE Linux Enterprise Server 11 SP1 LTSS");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:0761_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLES11\.0SP2|SLES11\.0SP1)");
+
+  script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20140605.txt");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP2")
 {
@@ -141,7 +133,7 @@ if(release == "SLES11.0SP2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -185,6 +177,6 @@ if(release == "SLES11.0SP1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

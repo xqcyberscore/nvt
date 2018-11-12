@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-022.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_ms17-022.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # MS Windows XML Core Services Information Disclosure Vulnerability (4010321)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810623");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12291 $");
   script_cve_id("CVE-2017-0022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:03:11 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows XML Core Services Information Disclosure Vulnerability (4010321)");
@@ -47,14 +47,23 @@ if(description)
   attackers to test for the presence of files on disk.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64
+
   Microsoft Windows Server 2016 x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -117,7 +126,7 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && msdllVer)
   }
 }
 
-## Win 8.1 and win2012R2, Taking Windows.data.pdf.dll file as update is cummulative
+## Win 8.1 and win2012R2, Taking Windows.data.pdf.dll file as update is cumulative
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && pdfVer)
 {
   if(version_is_less(version:pdfVer, test_version:"6.3.9600.18569"))

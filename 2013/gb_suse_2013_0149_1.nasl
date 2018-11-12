@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0149_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0149_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:0149-1 (Mozilla)
 #
@@ -24,8 +24,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The Mozilla January 8th 2013 security release contains
+if(description)
+{
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00017.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.850391");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-03-11 18:29:16 +0530 (Mon, 11 Mar 2013)");
+  script_cve_id("CVE-2012-5829", "CVE-2013-0744", "CVE-2013-0745",
+                "CVE-2013-0746", "CVE-2013-0747", "CVE-2013-0748", "CVE-2013-0749",
+                "CVE-2013-0750", "CVE-2013-0751", "CVE-2013-0752", "CVE-2013-0753",
+                "CVE-2013-0754", "CVE-2013-0755", "CVE-2013-0756", "CVE-2013-0757",
+                "CVE-2013-0758", "CVE-2013-0759", "CVE-2013-0760", "CVE-2013-0761",
+                "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0764", "CVE-2013-0766",
+                "CVE-2013-0767", "CVE-2013-0768", "CVE-2013-0769", "CVE-2013-0770",
+                "CVE-2013-0771", "CVE-2012-0759");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"openSUSE-SU", value:"2013:0149_1");
+  script_name("SuSE Update for Mozilla openSUSE-SU-2013:0149-1 (Mozilla)");
+
+  script_tag(name:"summary", value:"Check for the Version of Mozilla");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+  script_tag(name:"affected", value:"Mozilla on openSUSE 12.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"The Mozilla January 8th 2013 security release contains
   updates:
 
   Mozilla Firefox was updated to version 18.0. Mozilla
@@ -35,46 +62,64 @@ tag_insight = "The Mozilla January 8th 2013 security release contains
 
   * MFSA 2013-01/CVE-2013-0749/CVE-2013-0769/CVE-2013-0770
   Miscellaneous memory safety hazards
+
   * MFSA
   2013-02/CVE-2013-0760/CVE-2013-0762/CVE-2013-0766/CVE-2013-0
   767
   CVE-2013-0761/CVE-2013-0763/CVE-2013-0771/CVE-2012-5829
   Use-after-free and buffer overflow issues found using
   Address Sanitizer
+
   * MFSA 2013-03/CVE-2013-0768 (bmo#815795) Buffer Overflow
   in Canvas
+
   * MFSA 2013-04/CVE-2012-0759 (bmo#802026) URL spoofing in
   addressbar during page loads
+
   * MFSA 2013-05/CVE-2013-0744 (bmo#814713) Use-after-free
   when displaying table with many columns and column groups
+
   * MFSA 2013-06/CVE-2013-0751 (bmo#790454) Touch events are
   shared across iframes
+
   * MFSA 2013-07/CVE-2013-0764 (bmo#804237) Crash due to
   handling of SSL on threads
+
   * MFSA 2013-08/CVE-2013-0745 (bmo#794158)
   AutoWrapperChanger fails to keep objects alive during
   garbage collection
+
   * MFSA 2013-09/CVE-2013-0746 (bmo#816842) Compartment
   mismatch with quickstubs returned values
+
   * MFSA 2013-10/CVE-2013-0747 (bmo#733305) Event
   manipulation in plugin handler to bypass same-origin
   policy
+
   * MFSA 2013-11/CVE-2013-0748 (bmo#806031) Address space
   layout leaked in XBL objects
+
   * MFSA 2013-12/CVE-2013-0750 (bmo#805121) Buffer overflow
   in Javascript string concatenation
+
   * MFSA 2013-13/CVE-2013-0752 (bmo#805024) Memory corruption
   in XBL with XML bindings containing SVG
+
   * MFSA 2013-14/CVE-2013-0757 (bmo#813901) Chrome Object
   Wrapper (COW) bypass through changing prototype
+
   * MFSA 2013-15/CVE-2013-0758 (bmo#813906) Privilege
   escalation through plugin objects
+
   * MFSA 2013-16/CVE-2013-0753 (bmo#814001) Use-after-free in
   serializeToStream
+
   * MFSA 2013-17/CVE-2013-0754 (bmo#814026) Use-after-free in
   ListenerManager
+
   * MFSA 2013-18/CVE-2013-0755 (bmo#814027) Use-after-free in
   Vibrate
+
   * MFSA 2013-19/CVE-2013-0756 (bmo#814029) Use-after-free in
   Javascript Proxy objects
 
@@ -88,62 +133,28 @@ tag_insight = "The Mozilla January 8th 2013 security release contains
   revoke mis-issued intermediate certificates from TURKTRUST
 
   Cryptographic changes done:
+
   * Support for TLS 1.1 (RFC 4346)
+
   * Experimental support for DTLS 1.0 (RFC 4347) and
   DTLS-SRTP (RFC 5764)
-  * Support  ... 
 
-  Description truncated, for more information please check the Reference URL";
+  * Support  ...
 
+  Description truncated, for more information please check the Reference URL");
 
-tag_affected = "Mozilla on openSUSE 12.1";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00017.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.850391");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2013-03-11 18:29:16 +0530 (Mon, 11 Mar 2013)");
-  script_cve_id("CVE-2012-5829", "CVE-2013-0744", "CVE-2013-0745",
-                "CVE-2013-0746", "CVE-2013-0747", "CVE-2013-0748", "CVE-2013-0749",
-                "CVE-2013-0750", "CVE-2013-0751", "CVE-2013-0752", "CVE-2013-0753",
-                "CVE-2013-0754", "CVE-2013-0755", "CVE-2013-0756", "CVE-2013-0757",
-                "CVE-2013-0758", "CVE-2013-0759", "CVE-2013-0760", "CVE-2013-0761",
-                "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0764", "CVE-2013-0766",
-                "CVE-2013-0767", "CVE-2013-0768", "CVE-2013-0769", "CVE-2013-0770",
-                "CVE-2013-0771", "CVE-2012-0759");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2013:0149_1");
-  script_name("SuSE Update for Mozilla openSUSE-SU-2013:0149-1 (Mozilla)");
-
-  script_tag(name: "summary" , value: "Check for the Version of Mozilla");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("SuSE Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.1")
 {
@@ -652,6 +663,6 @@ if(release == "openSUSE12.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

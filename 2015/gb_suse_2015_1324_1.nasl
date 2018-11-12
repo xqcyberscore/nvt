@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1324_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_1324_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2015:1324-1 (kernel)
 #
@@ -27,92 +27,111 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851080");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:38:43 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-9728", "CVE-2014-9729", "CVE-2014-9730", "CVE-2014-9731", "CVE-2015-1805", "CVE-2015-3212", "CVE-2015-4036", "CVE-2015-4167", "CVE-2015-4692", "CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2015:1324-1 (kernel)");
-  script_tag(name: "summary", value: "Check the version of the kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.44 to receive
   various security and bugfixes.
 
   These features were added:
+
   - mpt2sas: Added Reply Descriptor Post Queue (RDPQ) Array support
   (bsc#854824).
+
   - mpt3sas: Bump mpt3sas driver version to 04.100.00.00 (bsc#854817).
 
   Following security bugs were fixed:
+
   - CVE-2015-1805: iov overrun for failed atomic copy could have lead to DoS
   or privilege escalation (bsc#933429).
+
   - CVE-2015-3212: A race condition in the way the Linux kernel handled
   lists of associations in SCTP sockets could have lead to list corruption
   and kernel panics (bsc#936502).
+
   - CVE-2015-4036: DoS via memory corruption in vhost/scsi driver
   (bsc#931988).
+
   - CVE-2015-4167: Linux kernel built with the UDF file
   system(CONFIG_UDF_FS) support was vulnerable to a crash. It occurred
   while fetching inode information from a corrupted/malicious udf file
   system image (bsc#933907).
+
   - CVE-2015-4692: DoS via NULL pointer dereference in kvm_apic_has_events
   function (bsc#935542).
+
   - CVE-2015-5364: Remote DoS via flood of UDP packets with invalid
   checksums (bsc#936831).
+
   - CVE-2015-5366: Remote DoS of EPOLLET epoll applications via flood of UDP
   packets with invalid checksums (bsc#936831).
 
   Security issues already fixed in the previous update but not referenced by
   CVE:
+
   - CVE-2014-9728: Kernel built with the UDF file system(CONFIG_UDF_FS)
   support were vulnerable to a crash (bsc#933904).
+
   - CVE-2014-9729: Kernel built with the UDF file system(CONFIG_UDF_FS)
   support were vulnerable to a crash (bsc#933904).
+
   - CVE-2014-9730: Kernel built with the UDF file system(CONFIG_UDF_FS)
   support were vulnerable to a crash (bsc#933904).
+
   - CVE-2014-9731: Kernel built with the UDF file system(CONFIG_UDF_FS)
   support were vulnerable to information leakage (bsc#933896).
 
   The following non-security bugs were fixed:
+
   - ALSA: hda - add codec ID for Skylake display audio codec (bsc#936556).
+
   - ALSA: hda/hdmi - apply Haswell fix-ups to Skylake display codec
   (bsc#936556).
+
   - ALSA: hda_controller: Separate stream_tag for input and output streams
   (bsc#936556).
+
   - ALSA: hda_intel: add AZX_DCAPS_I915_POWERWELL for SKL and BSW
   (bsc#936556).
+
   - ALSA: hda_intel: apply the Separate stream_tag for Skylake (bsc#936556).
+
   - ALSA: hda_intel: apply the Separate stream_tag for Sunrise Point
   (bsc#936556).
+
   - Btrfs: Handle unaligned length in extent_same (bsc#937609).
+
   - Btrfs: add missing inode item update in fallocate() (bsc#938023).
+
   - Btrfs: check pending chunks when shrinking fs to avoid corruption
   ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:1324_1");
+  script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:1324_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -201,7 +220,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -311,6 +330,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

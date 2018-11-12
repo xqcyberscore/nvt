@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 12291 2018-11-09 14:55:44Z cfischer $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 12291 $");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/19525");
@@ -81,7 +81,7 @@ if(!iisVer){
 }
 
 ## List of all possible letters a folder/file name may have
-possilbe_letters = make_list('0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+possible_letters = make_list('0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                      'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
                      'y', 'z');
@@ -117,7 +117,7 @@ foreach file (files)
     ## Now iterate over all possible letters to find the file or folders names
     while (count < 4)
     {
-      foreach letter (possilbe_letters)
+      foreach letter (possible_letters)
       {
         url3 = "/%2F" + valid_letter + letter + "*~1*%2F" +file+ "?aspxerrorpath=/";
 

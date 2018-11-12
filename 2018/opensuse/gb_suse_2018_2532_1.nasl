@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2532_1.nasl 11163 2018-08-30 09:09:48Z santu $
+# $Id: gb_suse_2018_2532_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libreoffice openSUSE-SU-2018:2532-1 (libreoffice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851872");
-  script_version("$Revision: 11163 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 11:09:48 +0200 (Thu, 30 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 07:20:19 +0200 (Tue, 28 Aug 2018)");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for libreoffice openSUSE-SU-2018:2532-1 (libreoffice)");
   script_tag(name:"summary", value:"Check the version of libreoffice");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libreoffice to 6.0.5.2 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libreoffice to 6.0.5.2 fixes the following issues:
 
   Security issues fixed:
 
@@ -52,18 +51,27 @@ if(description)
 
   - Bugfix: Table borders appear black in LibreOffice (while white in
   PowerPoint) (bsc#1088262)
+
   - Bugfix: LibreOffice extension 'Language Tool' fails after Tumbleweed
   update (bsc#1050305)
+
   - Bugfix: libreoffice-gnome can no longer be installed in parallel to
   libreoffice-gtk3 as there is a potential file conflict (bsc#1096673)
+
   - Bugfix: LibreOffice Writer: Text in boxes were not visible (bsc#1094359)
+
   - Use libreoffice-gtk3 if xfce is present (bsc#1092699)
+
   - Various other bug fixes
+
   - Exporting to PPTX results in vertical labels being shown horizontally
   (bsc#1095639)
+
   - Table in PPTX misplaced and partly blue (bsc#1098891)
+
   - Labels in chart change (from white and other colors) to black when
   saving as PPTX (bsc#1088263)
+
   - Exporting to PPTX shifts arrow shapes quite a bit bsc#1095601
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
@@ -90,19 +98,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

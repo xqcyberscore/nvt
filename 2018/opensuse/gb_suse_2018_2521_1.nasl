@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2521_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2521_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for nextcloud openSUSE-SU-2018:2521-1 (nextcloud)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851868");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 07:20:43 +0200 (Mon, 27 Aug 2018)");
   script_cve_id("CVE-2018-3780");
   script_tag(name:"cvss_base", value:"3.5");
@@ -51,35 +51,64 @@ if(description)
   Other bugs fixed:
 
   - Fix highlighting of the upload drop zone
+
   - Apply ldapUserFilter on members of group
+
   - Make the DELETION of groups match greedy on the groupID
+
   - Add parent index to share table
+
   - Log full exception in cron instead of only the message
+
   - Properly lock the target file on dav upload when not using part files
+
   - LDAP backup server should not be queried when auth fails
+
   - Fix filenames in sharing integration tests
+
   - Lower log level for quota manipulation cases
+
   - Let user set avatar in nextcloud if LDAP provides invalid image data
+
   - Improved logging of smb connection errors
+
   - Allow admin to disable fetching of avatars as well as a specific
   attribute
+
   - Allow to disable encryption
+
   - Update message shown when unsharing a file
+
   - Fixed English grammatical error on Settings page.
+
   - Request a valid property for DAV opendir
+
   - Allow updating the token on session regeneration
+
   - Prevent lock values from going negative with memcache backend
+
   - Correctly handle users with numeric user ids
+
   - Correctly parse the subject parameters for link (un)shares of calendars
+
   - Fix 'parsing' of email-addresses in comments and chat messages
+
   - Sanitize parameters in createSessionToken() while logging
+
   - Also retry rename operation on InvalidArgumentException
+
   - Improve url detection in comments
+
   - Only bind to ldap if configuration for the first server is set
+
   - Use download manager from PDF.js to download the file
+
   - Fix trying to load removed scripts
+
   - Only pull for new messages if the session is allowed to be kept alive
+
   - Always push object data
+
   - Add prioritization for Talk
 
 
@@ -108,19 +137,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

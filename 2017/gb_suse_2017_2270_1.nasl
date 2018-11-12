@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2270_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2270_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for freeradius-server openSUSE-SU-2017:2270-1 (freeradius-server)
 #
@@ -27,79 +27,98 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851600");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 08:06:49 +0200 (Tue, 29 Aug 2017)");
-  script_cve_id("CVE-2017-10978", "CVE-2017-10983", "CVE-2017-10984", "CVE-2017-10985", 
+  script_cve_id("CVE-2017-10978", "CVE-2017-10983", "CVE-2017-10984", "CVE-2017-10985",
                 "CVE-2017-10986", "CVE-2017-10987", "CVE-2017-10988");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for freeradius-server openSUSE-SU-2017:2270-1 (freeradius-server)");
-  script_tag(name: "summary", value: "Check the version of freeradius-server");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for freeradius-server fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of freeradius-server");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for freeradius-server fixes the following issues:
 
   - update to 3.0.15 (bsc#1049086)
+
   * Bind the lifetime of program name and python path to the module
+
   * CVE-2017-10978: FR-GV-201: Check input / output length in
   make_secret() (bsc#1049086)
+
   * CVE-2017-10983: FR-GV-206: Fix read overflow when decoding DHCP option
   63 (bsc#1049086)
+
   * CVE-2017-10984: FR-GV-301: Fix write overflow in data2vp_wimax()
   (bsc#1049086)
+
   * CVE-2017-10985: FR-GV-302: Fix infinite loop and memory exhaustion
   with 'concat' attributes (bsc#1049086)
+
   * CVE-2017-10986: FR-GV-303: Fix infinite read in dhcp_attr2vp()
   (bsc#1049086)
+
   * CVE-2017-10987: FR-GV-304: Fix buffer over-read in
   fr_dhcp_decode_suboptions() (bsc#1049086)
+
   * CVE-2017-10988: FR-GV-305: Decode 'signed' attributes correctly.
   (bsc#1049086)
+
   * FR-AD-001: use strncmp() instead of memcmp() for bounded data
+
   * Print messages when we see deprecated configuration items
+
   * Show reasons why we couldn't parse a certificate expiry time
+
   * Be more accepting about truncated ASN1 times.
+
   * Fix OpenSSL API issue which could leak small amounts of memory.
+
   * For Access-Reject, call rad_authlog() after running the post-auth
   section, just like for Access-Accept.
+
   * Don't crash when reading corrupted data from session resumption cache.
+
   * Parse port in dhcpclient.
+
   * Don't leak memory for OpenSSL.
+
   * Portability fixes taken from OpenBSD port collection.
+
   * run rad_authlog after post-auth for Access-Reject.
+
   * Don't process VMPS packets twice.
+
   * Fix attribute truncation in rlm_perl
+
   * Fix bug when processing huntgroups.
+
   * FR-AD-002 - Bind the lifetime of program name and python path to the
   module
+
   * FR-AD-003 - Pass correct statement length into sqlite3_prepare[_v2]
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.");
-  script_tag(name: "affected", value: "freeradius-server on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"freeradius-server on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2270_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2270_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -242,6 +261,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

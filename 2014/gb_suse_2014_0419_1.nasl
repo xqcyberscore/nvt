@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0419_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0419_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2014:0419-1 (Mozilla)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850577");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 10:20:06 +0530 (Tue, 25 Mar 2014)");
   script_cve_id("CVE-2014-1477", "CVE-2014-1478", "CVE-2014-1479", "CVE-2014-1480",
                 "CVE-2014-1481", "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1485",
@@ -43,9 +41,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for Mozilla openSUSE-SU-2014:0419-1 (Mozilla)");
-
-  tag_insight = "
-  This patch contains a collection of security relevant
+  script_tag(name:"affected", value:"Mozilla on openSUSE 11.4");
+  script_tag(name:"insight", value:"This patch contains a collection of security relevant
   updates for Mozilla applications.
 
   Update Firefox to 24.4.0 (bnc#868603) Update Thunderbird to
@@ -53,53 +50,51 @@ if(description)
 
   * MFSA 2014-15/CVE-2014-1493/CVE-2014-1494 Miscellaneous
   memory safety hazards
+
   * MFSA 2014-17/CVE-2014-1497 (bmo#966311) Out of bounds
   read during WAV file decoding
+
   * MFSA 2014-26/CVE-2014-1508 (bmo#963198) Information
   disclosure through polygon rendering in MathML
+
   * MFSA 2014-27/CVE-2014-1509 (bmo#966021) Memory
   corruption in Cairo during PDF font rendering
+
   * MFSA 2014-28/CVE-2014-1505 (bmo#941887) SVG filters
   information disclosure through feDisplacementMap
+
   * MFSA 2014-29/CVE-2014-1510/CVE-2014-1511 (bmo#982906,
   bmo#982909) Privilege escalation using
   WebIDL-implemented APIs
+
   * MFSA 2014-30/CVE-2014-1512 (bmo#982957) Use-after-free
   in TypeObject
+
   * MFSA 2014-31/CVE-2014-1513 (bmo#982974) Out-of-bounds
   read/write through neutering ArrayBuffer objects
+
   * MFSA 2014-32/CVE-2014-1514 (bmo#983344) Out-of-bounds
-  write through TypedArrayObject after neutering";
-
-  tag_affected = "Mozilla on openSUSE 11.4";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  write through TypedArrayObject after neutering");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0419_1");
+  script_xref(name:"openSUSE-SU", value:"2014:0419_1");
   script_tag(name:"summary", value:"Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE11\.4");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE11.4")
 {
@@ -452,6 +447,6 @@ if(release == "openSUSE11.4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

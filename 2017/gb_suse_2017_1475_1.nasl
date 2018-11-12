@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1475_1.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_suse_2017_1475_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2017:1475-1 (mariadb)
 #
@@ -27,58 +27,56 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851562");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-03 06:54:23 +0200 (Sat, 03 Jun 2017)");
   script_cve_id("CVE-2017-3302", "CVE-2017-3313");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2017:1475-1 (mariadb)");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value:"This update for mariadb fixes the following 
-  issues: - update to MariaDB 10.0.30 GA * notable changes: * XtraDB updated to 
-  5.6.35-80.0 * TokuDB updated to 5.6.35-80.0 * PCRE updated to 8.40 * MDEV-11027: 
-  better InnoDB crash recovery progress reporting * MDEV-11520: improvements to 
-  how InnoDB data files are extended * Improvements to InnoDB startup/shutdown to 
-  make it more robust * MDEV-11233: fix for FULLTEXT index crash * MDEV-6143: 
-  MariaDB Linux binary tarballs will now always untar to directories that match 
-  their filename * release notes and changelog: * <a rel='nofollow' 
-  href='https://kb.askmonty.org/en/mariadb-10030-release-notes'>https://kb.askmonty.org/en/mariadb-10030-release-notes 
-  * <a rel='nofollow' 
-  href='https://kb.askmonty.org/en/mariadb-10030-changelog'>https://kb.askmonty.org/en/mariadb-10030-changelog 
-  * fixes the following CVEs: CVE-2017-3313: unspecified vulnerability affecting 
-  the MyISAM component [bsc#1020890] CVE-2017-3302: Use after free in 
-  libmysqlclient.so [bsc#1022428] - set the default umask to 077 in 
-  mysql-systemd-helper [bsc#1020976] - [bsc#1034911] - tracker bug * fixes also 
-  [bsc#1020868] This update for mariadb fixes permissions for /var/run/mysql in 
-  mysql-systemd-helper that were incorrectly set to 700 instead of 755 due to 
-  umask. This prevented non-root users from connecting to the database. This 
-  update was imported from the SUSE:SLE-12-SP1:Update update project."); 
-  script_tag(name: "affected", value: "mariadb on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for mariadb fixes the following
+  issues: - update to MariaDB 10.0.30 GA * notable changes: * XtraDB updated to
+  5.6.35-80.0 * TokuDB updated to 5.6.35-80.0 * PCRE updated to 8.40 * MDEV-11027:
+  better InnoDB crash recovery progress reporting * MDEV-11520: improvements to
+  how InnoDB data files are extended * Improvements to InnoDB startup/shutdown to
+  make it more robust * MDEV-11233: fix for FULLTEXT index crash * MDEV-6143:
+  MariaDB Linux binary tarballs will now always untar to directories that match
+  their filename * release notes and changelog: * <a rel='nofollow'
+  href='https://kb.askmonty.org/en/mariadb-10030-release-notes'>https://kb.askmonty.org/en/mariadb-10030-release-notes
 
-  script_xref(name: "openSUSE-SU", value: "2017:1475_1");
+  * <a rel='nofollow'
+  href='https://kb.askmonty.org/en/mariadb-10030-changelog'>https://kb.askmonty.org/en/mariadb-10030-changelog
+
+  * fixes the following CVEs: CVE-2017-3313: unspecified vulnerability affecting
+  the MyISAM component [bsc#1020890] CVE-2017-3302: Use after free in
+  libmysqlclient.so [bsc#1022428] - set the default umask to 077 in
+  mysql-systemd-helper [bsc#1020976] - [bsc#1034911] - tracker bug * fixes also
+  [bsc#1020868] This update for mariadb fixes permissions for /var/run/mysql in
+  mysql-systemd-helper that were incorrectly set to 700 instead of 755 due to
+  umask. This prevented non-root users from connecting to the database. This
+  update was imported from the SUSE:SLE-12-SP1:Update update project.");
+  script_tag(name:"affected", value:"mariadb on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2017:1475_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -215,6 +213,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0967_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2014_0967_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2014:0967-1 (apache2)
 #
@@ -27,26 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850761");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-6438", "CVE-2014-0098", "CVE-2014-0226", "CVE-2014-0231");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2014:0967-1 (apache2)");
-  script_tag(name: "summary", value: "Check the version of the apache2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the apache2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for the Apache Web Server provides the following fixes:
 
   * Fixed a heap-based buffer overflow on apache module mod_status.
   (bnc#887765, CVE-2014-0226)
+
   * Properly remove whitespace characters from CDATA sections to avoid
   remote denial of service by crashing the Apache Server process.
   (bnc#869105, CVE-2013-6438)
+
   * Correction to parsing of cookie content  this can lead to a crash
   with a specially designed cookie sent to the server. (bnc#869106,
   CVE-2014-0098)
+
   * ECC support should not be missing. (bnc#859916)
 
   This update also introduces a new configuration parameter
@@ -60,30 +63,30 @@ if(description)
   Security Issues references:
 
   * CVE-2014-0226
+
   * CVE-2013-6438
+
   * CVE-2014-0098
+
   * CVE-2014-0231");
-  script_tag(name: "affected", value: "apache2 on SUSE Linux Enterprise Server 11 SP3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2014:0967_1");
+  script_tag(name:"affected", value:"apache2 on SUSE Linux Enterprise Server 11 SP3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2014:0967_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLES11.0SP3")
 {
@@ -124,6 +127,6 @@ if(release == "SLES11.0SP3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

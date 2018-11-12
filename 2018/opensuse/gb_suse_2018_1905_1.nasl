@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1905_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1905_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2018:1905-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851814");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 05:54:04 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-12362", "CVE-2018-12363",
                 "CVE-2018-12364", "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12372",
@@ -47,12 +47,19 @@ on the target host.");
   2018-16, bsc#1098998):
 
   - CVE-2018-12359: Buffer overflow using computed size of canvas element
+
   - CVE-2018-12360: Use-after-free when using focus()
+
   - CVE-2018-12362: Integer overflow in SSSE3 scaler
+
   - CVE-2018-12363: Use-after-free when appending DOM nodes
+
   - CVE-2018-12364: CSRF attacks through 307 redirects and NPAPI plugins
+
   - CVE-2018-12365: Compromised IPC child process can list local filenames
+
   - CVE-2018-12366: Invalid data handling during QCMS transformations
+
   - CVE-2018-5188: Memory safety bugs fixed in Thunderbird 52.9.0
 
   Security issues fixed that affect e-mail privacy and integrity (including
@@ -60,8 +67,10 @@ on the target host.");
 
   - CVE-2018-12372: S/MIME and PGP decryption oracles can be built with HTML
   emails (bsc#1100082)
+
   - CVE-2018-12373: S/MIME plaintext can be leaked through HTML
   reply/forward (bsc#1100079)
+
   - CVE-2018-12374: Using form to exfiltrate encrypted mail part by pressing
   enter in form field (bsc#1100081)
 
@@ -77,14 +86,17 @@ on the target host.");
 
   - Thunderbird will now prompt to compact IMAP folders even if the account
   is online
+
   - Fix various problems when forwarding messages inline when using 'simple'
   HTML view
 
   The following tracked packaging changes are included:
 
   - correct requires and provides handling (boo#1076907)
+
   - reduce memory footprint with %ix86 at linking time via additional
   compiler flags (boo#1091376)
+
   - Build from upstream source archive and verify source signature
   (boo#1085780)
 
@@ -114,19 +126,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

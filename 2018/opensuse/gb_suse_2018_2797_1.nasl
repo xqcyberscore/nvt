@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2797_1.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_suse_2018_2797_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for hylafax+ openSUSE-SU-2018:2797-1 (hylafax+)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851901");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-22 07:44:07 +0200 (Sat, 22 Sep 2018)");
   script_cve_id("CVE-2018-17141");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,8 +37,7 @@ if(description)
   script_name("SuSE Update for hylafax+ openSUSE-SU-2018:2797-1 (hylafax+)");
   script_tag(name:"summary", value:"Check the version of hylafax+");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for hylafax+ fixes the following issues:
+  script_tag(name:"insight", value:"This update for hylafax+ fixes the following issues:
 
   Security issues fixed in 5.6.1:
 
@@ -50,14 +49,23 @@ if(description)
   bugfixes in the 5.6.1 version, including:
 
   - fix RFC2047 encoding by notify
+
   - add jobcontrol PageSize feature
+
   - don't wait forever after +FRH:3
+
   - fix faxmail transition between a message and external types
+
   - avoid pagehandling from introducing some unnecessary EOM signals
+
   - improve proxy connection error handling and logging
+
   - add initial ModemGroup limits feature
+
   - pass the user's uid onto the session log file for sent faxes
+
   - improve job waits to minimize triggers
+
   - add ProxyTaglineFormat and ProxyTSI features
 
 
@@ -86,19 +94,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

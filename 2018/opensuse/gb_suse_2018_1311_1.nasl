@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1311_1.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_suse_2018_1311_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libreoffice openSUSE-SU-2018:1311-1 (libreoffice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851746");
-  script_version("$Revision: 9974 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:37:12 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2018-10119", "CVE-2018-10120");
   script_tag(name:"cvss_base", value:"6.8");
@@ -36,10 +36,9 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libreoffice openSUSE-SU-2018:1311-1 (libreoffice)");
   script_tag(name:"summary", value:"Check the version of libreoffice");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
 the target host.");
-  script_tag(name:"insight", value:"
-  This update for libreoffice to 6.0.4.2 fixes lots of bugs and also the
+  script_tag(name:"insight", value:"This update for libreoffice to 6.0.4.2 fixes lots of bugs and also the
   following issues:
 
   Security issues fixed:
@@ -50,6 +49,7 @@ the target host.");
   (heap-based buffer overflow with write access) or possibly have
   unspecified other impact via a crafted document that contains a certain
   Microsoft Word record. (bsc#1089706)
+
   - CVE-2018-10119: sot/source/sdstor/stgstrms.cxx used an incorrect integer
   data type in the StgSmallStrm class, which allowed remote attackers to
   cause a denial of service (use-after-free with write access) or possibly
@@ -59,6 +59,7 @@ the target host.");
   Other issues fixed:
 
   - DOCX import: missing table background color
+
   - Bring back offline help per popular demand as lto saves space we could
   use with it bsc#915996
 
@@ -67,7 +68,7 @@ the target host.");
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -86,19 +87,16 @@ the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

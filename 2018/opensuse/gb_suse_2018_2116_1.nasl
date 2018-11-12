@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2116_1.nasl 12164 2018-10-30 09:02:07Z asteins $
+# $Id: gb_suse_2018_2116_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2018:2116-1 (xen)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851969");
-  script_version("$Revision: 12164 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-12891", "CVE-2018-12892", "CVE-2018-12893", "CVE-2018-3665");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 10:02:07 +0100 (Tue, 30 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:23:55 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for xen openSUSE-SU-2018:2116-1 (xen)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2116_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-07/msg00033.html");
@@ -50,25 +50,29 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
 
-  script_tag(name:"insight", value:"
-  This update for xen fixes the following issues:
+  script_tag(name:"insight", value:"This update for xen fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-3665: Fix Lazy FP Save/Restore issue (XSA-267) (bsc#1095242).
+
   - CVE-2018-12891: Fix possible Denial of Service (DoS) via certain PV MMU
   operations that affect the entire host (XSA-264) (bsc#1097521).
+
   - CVE-2018-12892: Fix libxl to honour the readonly flag on HVM emulated
   SCSI disks (XSA-266) (bsc#1097523).
+
   - CVE-2018-12893: Fix crash/Denial of Service (DoS) via safety check
   (XSA-265) (bsc#1097522).
 
   Bug fixes:
 
   - bsc#1027519: Add upstream patches from January.
+
   - bsc#1098403: Fix regression introduced by changes for bsc#1079730. A PV
   domU without qcow2 and/or vfb has no qemu attached. Ignore QMP errors
   for PV domUs to handle PV domUs with and without an attached qemu-xen.
+
   - bsc#1087289: Fix xen scheduler crash.
 
   This update was imported from the SUSE:SLE-15:Update update project.

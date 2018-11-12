@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_aug18_02_win.nasl 11134 2018-08-27 12:42:27Z asteins $
+# $Id: gb_nodejs_aug18_02_win.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # Node.js 10.x < 10.9.0 Unintentional Exposure of Uninitialized Memory (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112363");
-  script_version("$Revision: 11134 $");
+  script_version("$Revision: 12308 $");
   script_cve_id("CVE-2018-7166");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 14:42:27 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 14:37:00 +0200 (Mon, 27 Aug 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js 10.x < 10.9.0 Unintentional Exposure of Uninitialized Memory (Windows)");

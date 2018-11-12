@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:095");
   script_oid("1.3.6.1.4.1.25623.1.0.831669");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:00:07 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:59:45 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1713", "CVE-2012-1716", "CVE-2012-1717",
                 "CVE-2012-1718", "CVE-2012-1719", "CVE-2012-1723", "CVE-2012-1724",
@@ -52,18 +52,29 @@ if(description)
   (icedtea6):
 
   * S7079902, CVE-2012-1711: Refine CORBA data models
+
   * S7143617, CVE-2012-1713: Improve fontmanager layout lookup operations
+
   * S7143614, CVE-2012-1716: SynthLookAndFeel stability improvement
+
   * S7143606, CVE-2012-1717: File.createTempFile should be improved
   for temporary files created by the platform.
+
   * S7143872, CVE-2012-1718: Improve certificate extension processing
+
   * S7143851, CVE-2012-1719: Improve IIOP stub and tie generation in RMIC
+
   * S7152811, CVE-2012-1723: Issues in client compiler
+
   * S7157609, CVE-2012-1724: Issues with loop
+
   * S7160757, CVE-2012-1725: Problem with hotspot/runtime_classfile
+
   * S7110720: Issue with vm config file loadingIssue with vm config
   file loading
+
   * S7145239: Finetune package definition restriction
+
   * S7160677: missing else in fix for 7152811
 
   The updated packages provides icedtea6-1.11.3 which is not vulnerable

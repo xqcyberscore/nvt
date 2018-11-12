@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3371_1.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_suse_2018_3371_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2018:3371-1 (tiff)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851949");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-25 06:01:19 +0200 (Thu, 25 Oct 2018)");
   script_cve_id("CVE-2017-11613", "CVE-2017-9935", "CVE-2018-16335", "CVE-2018-17100", "CVE-2018-17101", "CVE-2018-17795", "CVE-2018-15209");
   script_tag(name:"cvss_base", value:"5.0");
@@ -37,21 +37,23 @@ if(description)
   script_name("SuSE Update for tiff openSUSE-SU-2018:3371-1 (tiff)");
   script_tag(name:"summary", value:"Check the version of tiff");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for tiff fixes the following issues:
+  script_tag(name:"insight", value:"This update for tiff fixes the following issues:
 
   - CVE-2018-17100: There is a int32 overflow in multiply_ms in
   tools/ppm2tiff.c, which can cause a denial of service (crash) or
   possibly have unspecified other impact via a crafted image file.
   (bsc#1108637)
+
   - CVE-2018-17101: There are two out-of-bounds writes in cpTags in
   tools/tiff2bw.c and tools/pal2rgb.c, which can cause a denial of service
   (application crash) or possibly have unspecified other impact via a
   crafted image file. (bsc#1108627)
+
   - CVE-2018-17795: The function t2p_write_pdf in tiff2pdf.c allowed remote
   attackers to cause a denial of service (heap-based buffer overflow and
   application crash) or possibly have unspecified other impact via a
   crafted TIFF file, a similar issue to CVE-2017-9935. (bsc#1110358)
+
   - CVE-2018-16335: newoffsets handling in ChopUpSingleUncompressedStrip in
   tif_dirread.c allowed remote attackers to cause a denial of service
   (heap-based buffer overflow and application crash) or possibly have
@@ -83,19 +85,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

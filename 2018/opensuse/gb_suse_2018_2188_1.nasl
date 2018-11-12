@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2188_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2188_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:2188-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851832");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 05:46:51 +0200 (Sat, 04 Aug 2018)");
   script_cve_id("CVE-2018-14339", "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342",
                 "CVE-2018-14343", "CVE-2018-14344", "CVE-2018-14368", "CVE-2018-14369",
@@ -44,16 +44,24 @@ if(description)
   Security issues fixed:
 
   - CVE-2018-7325: RPKI-Router infinite loop (boo#1082692)
+
   - CVE-2018-14342: BGP dissector large loop (wnpa-sec-2018-34, boo#1101777)
+
   - CVE-2018-14344: ISMP dissector crash (wnpa-sec-2018-35, boo#1101788)
+
   - CVE-2018-14340: Multiple dissectors could crash (wnpa-sec-2018-36,
   boo#1101804)
+
   - CVE-2018-14343: ASN.1 BER dissector crash (wnpa-sec-2018-37, boo#1101786)
+
   - CVE-2018-14339: MMSE dissector infinite loop (wnpa-sec-2018-38,
   boo#1101810)
+
   - CVE-2018-14341: DICOM dissector crash (wnpa-sec-2018-39, boo#1101776)
+
   - CVE-2018-14368: Bazaar dissector infinite loop (wnpa-sec-2018-40,
   boo#1101794)
+
   - CVE-2018-14369: HTTP2 dissector crash (wnpa-sec-2018-41, boo#1101800)
 
   Bug fixes:
@@ -81,19 +89,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

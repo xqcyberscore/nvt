@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1065_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2012_1065_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2012:1065-1 (MozillaFirefox)
 #
@@ -24,60 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
-tag_affected = "MozillaFirefox on openSUSE 12.2";
-tag_insight = "Mozilla Firefox, Thunderbird, xulrunner, seamonkey 15.0
-  update (bnc#777588)
-  * MFSA 2012-57/CVE-2012-1970 Miscellaneous memory safety
-  hazards
-  * MFSA
-  2012-58/CVE-2012-1972/CVE-2012-1973/CVE-2012-1974/CVE-2012-1
-  975
-  CVE-2012-1976/CVE-2012-3956/CVE-2012-3957/CVE-2012-3958/CVE-
-  2012-3959
-  CVE-2012-3960/CVE-2012-3961/CVE-2012-3962/CVE-2012-3963/CVE-
-  2012-3964 Use-after-free issues found using Address
-  Sanitizer
-  * MFSA 2012-59/CVE-2012-1956 (bmo#756719) Location object
-  can be shadowed using Object.defineProperty
-  * MFSA 2012-60/CVE-2012-3965 (bmo#769108) Escalation of
-  privilege through about:newtab
-  * MFSA 2012-61/CVE-2012-3966 (bmo#775794, bmo#775793)
-  Memory corruption with bitmap format images with
-  negative height
-  * MFSA 2012-62/CVE-2012-3967/CVE-2012-3968 WebGL
-  use-after-free and memory corruption
-  * MFSA 2012-63/CVE-2012-3969/CVE-2012-3970 SVG buffer
-  overflow and use-after-free issues
-  * MFSA 2012-64/CVE-2012-3971 Graphite 2 memory corruption
-  * MFSA 2012-65/CVE-2012-3972 (bmo#746855) Out-of-bounds
-  read in format-number in XSLT
-  * MFSA 2012-66/CVE-2012-3973 (bmo#757128) HTTPMonitor
-  extension allows for remote debugging without explicit
-  activation
-  * MFSA 2012-68/CVE-2012-3975 (bmo#770684) DOMParser loads
-  linked resources in extensions when parsing text/html
-  * MFSA 2012-69/CVE-2012-3976 (bmo#768568) Incorrect site
-  SSL certificate data display
-  * MFSA 2012-70/CVE-2012-3978 (bmo#770429) Location object
-  security checks bypassed by chrome code
-  * MFSA 2012-72/CVE-2012-3980 (bmo#771859) Web console
-  eval capable of executing chrome-privileged code
-  - fix HTML5 video crash with GStreamer enabled (bmo#761030)
-  - GStreamer is only used for MP4 (no WebM, OGG)
-  - updated filelist
-  - moved browser specific preferences to correct location";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00028.html");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-08/msg00028.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850431");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:26 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-1956", "CVE-2012-1970", "CVE-2012-1972", "CVE-2012-1973",
                 "CVE-2012-1974", "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956",
@@ -89,7 +41,7 @@ if(description)
                 "CVE-2012-3980");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1065_1");
+  script_xref(name:"openSUSE-SU", value:"2012:1065_1");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2012:1065-1 (MozillaFirefox)");
 
   script_tag(name:"summary", value:"Check for the Version of MozillaFirefox");
@@ -97,24 +49,81 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+  script_tag(name:"affected", value:"MozillaFirefox on openSUSE 12.2");
+  script_tag(name:"insight", value:"Mozilla Firefox, Thunderbird, xulrunner, seamonkey 15.0
+  update (bnc#777588)
+
+  * MFSA 2012-57/CVE-2012-1970 Miscellaneous memory safety
+  hazards
+
+  * MFSA
+  2012-58/CVE-2012-1972/CVE-2012-1973/CVE-2012-1974/CVE-2012-1
+  975
+  CVE-2012-1976/CVE-2012-3956/CVE-2012-3957/CVE-2012-3958/CVE-
+  2012-3959
+  CVE-2012-3960/CVE-2012-3961/CVE-2012-3962/CVE-2012-3963/CVE-
+  2012-3964 Use-after-free issues found using Address
+  Sanitizer
+
+  * MFSA 2012-59/CVE-2012-1956 (bmo#756719) Location object
+  can be shadowed using Object.defineProperty
+
+  * MFSA 2012-60/CVE-2012-3965 (bmo#769108) Escalation of
+  privilege through about:newtab
+
+  * MFSA 2012-61/CVE-2012-3966 (bmo#775794, bmo#775793)
+  Memory corruption with bitmap format images with
+  negative height
+
+  * MFSA 2012-62/CVE-2012-3967/CVE-2012-3968 WebGL
+  use-after-free and memory corruption
+
+  * MFSA 2012-63/CVE-2012-3969/CVE-2012-3970 SVG buffer
+  overflow and use-after-free issues
+
+  * MFSA 2012-64/CVE-2012-3971 Graphite 2 memory corruption
+
+  * MFSA 2012-65/CVE-2012-3972 (bmo#746855) Out-of-bounds
+  read in format-number in XSLT
+
+  * MFSA 2012-66/CVE-2012-3973 (bmo#757128) HTTPMonitor
+  extension allows for remote debugging without explicit
+  activation
+
+  * MFSA 2012-68/CVE-2012-3975 (bmo#770684) DOMParser loads
+  linked resources in extensions when parsing text/html
+
+  * MFSA 2012-69/CVE-2012-3976 (bmo#768568) Incorrect site
+  SSL certificate data display
+
+  * MFSA 2012-70/CVE-2012-3978 (bmo#770429) Location object
+  security checks bypassed by chrome code
+
+  * MFSA 2012-72/CVE-2012-3980 (bmo#771859) Web console
+  eval capable of executing chrome-privileged code
+
+  - fix HTML5 video crash with GStreamer enabled (bmo#761030)
+
+  - GStreamer is only used for MP4 (no WebM, OGG)
+
+  - updated filelist
+
+  - moved browser specific preferences to correct location");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -491,6 +500,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0429_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_suse_2018_0429_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for leptonica openSUSE-SU-2018:0429-1 (leptonica)
 #
@@ -27,44 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851699");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 08:41:12 +0100 (Wed, 14 Feb 2018)");
   script_cve_id("CVE-2018-3836");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for leptonica openSUSE-SU-2018:0429-1 (leptonica)");
-  script_tag(name: "summary", value: "Check the version of leptonica");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "
-  This update for leptonica fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of leptonica");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for leptonica fixes the following issues:
 
   - CVE-2018-3836: Fixes a command injection vulnerability (boo#1079358
   TALOS-2018-0516)");
-  script_tag(name: "affected", value: "leptonica on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"leptonica on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0429_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00018.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0429_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-02/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

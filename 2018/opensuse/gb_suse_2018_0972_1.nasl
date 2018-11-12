@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0972_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_0972_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851731");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-18 08:43:06 +0200 (Wed, 18 Apr 2018)");
   script_cve_id("CVE-2018-1091", "CVE-2018-7740", "CVE-2018-8043");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:0972-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was
   updated to 4.4.126 to receive various security and bugfixes.
 
@@ -49,10 +48,12 @@ of detect NVT and check if the version is vulnerable or not.");
   missing processor feature check and an erroneous use of transactional
   memory (TM) instructions in the core dump path, leading to a denial of
   service (bnc#1087231).
+
   - CVE-2018-8043: The unimac_mdio_probe function in
   drivers/net/phy/mdio-bcm-unimac.c did not validate certain resource
   availability, which allowed local users to cause a denial of service
   (NULL pointer dereference) (bnc#1084829).
+
   - CVE-2018-7740: The resv_map_release function in mm/hugetlb.c allowed
   local users to cause a denial of service (BUG) via a crafted application
   that made mmap system calls and has a large pgoff argument to the
@@ -62,59 +63,76 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - acpica: Add header support for TPM2 table changes (bsc#1084452).
+
   - acpica: Add support for new SRAT subtable (bsc#1085981).
+
   - acpica: iasl: Update to IORT SMMUv3 disassembling (bsc#1085981).
+
   - acpi/IORT: numa: Add numa node mapping for smmuv3 devices (bsc#1085981).
+
   - acpi, numa: fix pxm to online numa node associations (bnc#1012382).
+
   - acpi / PMIC: xpower: Fix power_table addresses (bnc#1012382).
+
   - acpi/processor: Fix error handling in __acpi_processor_start()
   (bnc#1012382).
+
   - acpi/processor: Replace racy task affinity logic (bnc#1012382).
+
   - agp/intel: Flush all chipset writes after updating the GGTT
   (bnc#1012382).
+
   - ahci: Add pci-id for the Highpoint Rocketraid 644L card (bnc#1012382).
+
   - alsa: aloop: Fix access to not-yet-ready substream via cable
   (bnc#1012382).
+
   - alsa: aloop: Sync stale timer before release (bnc#1012382).
+
   - alsa: firewire-digi00x: handle all MIDI messages on streaming packets
   (bnc#1012382).
+
   - alsa: hda: Add a power_save blacklist (bnc#1012382).
+
   - alsa: hda: add dock and led support for HP EliteBook 820 G3
   (bnc#1012382).
+
   - alsa: hda: add dock and led support for HP ProBook 640 G2 (bnc#1012382).
+
   - alsa: hda/realtek - Always immediately update mute LED with pin VREF
   (bnc#1012382).
+
   - alsa: hda/realtek - Fix dock line-out volume on Dell Precision 7520
   (bnc#1012382).
+
   - alsa: hda/realtek - Fix speaker no sound after system resume
   (bsc#1031717).
+
   - alsa: hda - Revert power_save option default value (git-fixes).
+
   - alsa: pcm: Fix UAF in snd_pcm_oss_get_formats() (bnc#1012382) ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0972_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-04/msg00012.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0972_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-04/msg00012.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -335,6 +353,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

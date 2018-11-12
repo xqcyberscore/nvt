@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1685_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_1685_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Kernel openSUSE-SU-2017:1685-1 (Kernel)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851573");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-26 18:54:49 +0200 (Mon, 26 Jun 2017)");
   script_cve_id("CVE-2017-1000364");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2017:1685-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE Leap 42.2 kernel was updated to 4.4.73 to receive security
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.73 to receive security
   and bugfixes.
 
 
@@ -57,68 +55,91 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - md: fix a null dereference (bsc#1040351).
+
   - net/mlx5e: Fix timestamping capabilities reporting (bsc#966170,
   bsc#1015342)
+
   - reiserfs: don't preallocate blocks for extended attributes (bsc#990682)
+
   - ibmvnic: Fix error handling when registering long-term-mapped  buffers
   (bsc#1045568).
+
   - Fix kabi after adding new field to struct mddev (bsc#1040351).
+
   - Fix soft lockup in svc_rdma_send (bsc#729329).
+
   - IB/addr: Fix setting source address in addr6_resolve() (bsc#1044082).
+
   - IB/ipoib: Fix memory leak in create child syscall (bsc#1022595
   FATE#322350).
+
   - IB/mlx5: Assign DSCP for R-RoCE QPs Address Path (bsc#966170 bsc#966172
   bsc#966191).
+
   - IB/mlx5: Check supported flow table size (bsc#966170 bsc#966172
   bsc#966191).
+
   - IB/mlx5: Enlarge autogroup flow table (bsc#966170 bsc#966172 bsc#966191).
+
   - IB/mlx5: Fix kernel to user leak prevention logic (bsc#966170 bsc#966172
   bsc#966191).
+
   - NFSv4: do not let hanging mounts block other mounts (bsc#1040364).
+
   - [v2, 2/3] powerpc/fadump: avoid holes in boot memory area when fadump is
   registered (bsc#1037669).
-  - [v2,1/3] powerpc/fadump: avoid duplicates in crash memory ranges
+
+  - [v2, 1/3] powerpc/fadump: avoid duplicates in crash memory ranges
   (bsc#1037669).
-  - [v2,3/3] powerpc/fadump: provide a helpful error message (bsc#1037669).
+
+  - [v2, 3/3] powerpc/fadump: provide a helpful error message (bsc#1037669).
+
   - dm: remove dummy dm_table definition (bsc#1045307)
+
   - ibmvnic: Activate disabled RX buffer pools on reset (bsc#1044767).
+
   - ibmvnic: Client-initiated failover (bsc#1043990).
+
   - ibmvnic: Correct return code checking for ibmvnic_init during probe
   (bsc#1045286).
+
   - ibmvnic: Ensure that TX queues are disabled in __ibmvnic_close
   (bsc#1044767).
+
   - ibmvnic: Exit polling routine correctly during adapter reset
   (bsc#1044767).
+
   - ibmvnic: Fix incorrectly defined ibmvnic_request_map_rsp structure
   (bsc#1045568).
+
   - ibmvnic: Remove VNIC_CLOSING check from pending_scrq (bsc#1044767).
+
   - ibmvnic: Remove module author mailing address (bsc#1045467).
+
   - ibmvnic: Remove netdev notify for failover resets (bsc#1044120).
-  - ibmvnic: Return from ibmvn ... 
+
+  - ibmvnic: Return from ibmvn ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1685_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1685_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -303,6 +324,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

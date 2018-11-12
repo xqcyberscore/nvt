@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2112_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_2112_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2112-1 (Linux Kernel)
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851592");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-12 07:31:10 +0200 (Sat, 12 Aug 2017)");
   script_cve_id("CVE-2017-11473", "CVE-2017-7533", "CVE-2017-7541", "CVE-2017-7542");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2112-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.79 to receive various
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.79 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -49,11 +46,14 @@ of detect NVT and check if the version is vulnerable or not.");
   net/ipv6/output_core.c in the Linux kernel allowed local users to cause
   a denial of service (integer overflow and infinite loop) by leveraging
   the ability to open a raw socket (bnc#1049882).
+
   - CVE-2017-11473: Buffer overflow in the mp_override_legacy_irq() function
   in arch/x86/kernel/acpi/boot.c in the Linux kernel allowed local users
   to gain privileges via a crafted ACPI table (bnc#1049603).
+
   - CVE-2017-7533: A bug in inotify code allowed local users to escalate
   privilege (bnc#1049483).
+
   - CVE-2017-7541: The brcmf_cfg80211_mgmt_tx function in
   drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c in the Linux
   kernel allowed local users to cause a denial of service (buffer overflow
@@ -63,60 +63,75 @@ of detect NVT and check if the version is vulnerable or not.");
   The following non-security bugs were fixed:
 
   - ACPI / processor: Avoid reserving IO regions too early (bsc#1051478).
+
   - ALSA: fm801: Initialize chip after IRQ handler is registered
   (bsc#1031717).
+
   - Added sbitmap patch to blacklist.conf Add a patch 'sbitmap: fix wakeup
   hang after sbq resize' to the blacklist.conf file because it is not
   needed in SLE 12 SP2.
+
   - Btrfs: incremental send, fix invalid path for link commands
   (bsc#1051479).
+
   - Btrfs: incremental send, fix invalid path for unlink commands
   (bsc#1051479).
+
   - Btrfs: send, fix invalid path after renaming and linking file
   (bsc#1051479).
+
   - Delete
   patches.drivers/0004-iommu-amd-reduce-delay-waiting-for-command-buffer-spac
   e. Remove the patch because it caused problems for users. See
   bsc#1048348.
+
   - Drop patches  obsoleted by 'scsi: Add STARGET_CREATE_REMOVE state'
+
   - Fix kABI breakage by KVM CVE fix (bsc#1045922).
+
   - IB/rxe: Fix kernel panic from skb destructor (bsc#1049361).
+
   - KVM: nVMX: Fix nested VPID vmx exec control (bsc#1051478).
+
   - KVM: nVMX: fix msr bitmaps to prevent L2 from accessing L0 x2APIC
   (bsc#1051478).
+
   - KVM: x86: avoid simultaneous queueing of both IRQ and SMI (bsc#1051478).
+
   - NFS: Cache aggressively when file is open for writing (bsc#1033587).
+
   - NFS: Do not flush caches for a getattr that races with writeback
   (bsc#1033587).
+
   - NFS: invalidate file size when taking a lock (git-fixes).
+
   - PCI / PM: Fix native PME handling during system suspend/resume
   (bsc#1051478).
+
   - PCI: Add Mellanox device IDs (bsc#1051478).
-  - PCI: Convert Mellanox broken INTx quirks to be for  ... 
+
+  - PCI: Convert Mellanox broken INTx quirks to be for  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2112_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2112_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -301,6 +316,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2386_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_2386_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2386-1 (MozillaFirefox, mozilla-nss)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851396");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 05:48:14 +0200 (Tue, 27 Sep 2016)");
   script_cve_id("CVE-2016-2827", "CVE-2016-5256", "CVE-2016-5257", "CVE-2016-5270",
                 "CVE-2016-5271", "CVE-2016-5272", "CVE-2016-5273", "CVE-2016-5274",
@@ -39,21 +39,28 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2386-1 (MozillaFirefox, mozilla-nss)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox, mozilla-nss");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox, mozilla-nss");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox was updated to version 49.0 (boo#999701)
+
   - New features
+
   * Updated Firefox Login Manager to allow HTTPS pages to use saved
   HTTP logins.
+
   * Added features to Reader Mode that make it easier on the eyes and
   the ears
+
   * Improved video performance for users on systems that support SSE3
   without hardware acceleration
+
   * Added context menu controls to HTML5 audio and video that let users
   loops files or play files at 1.25x speed
+
   * Improvements in about:memory reports for tracking font memory usage
+
   - Security related fixes
+
   * MFSA 2016-85 CVE-2016-2827 (bmo#1289085) - Out-of-bounds read in
   mozilla::net::IsValidReferrerPolicy CVE-2016-5270 (bmo#1291016) -
   Heap-buffer-overflow in nsCaseTransformTextRunFactory::TransformString
@@ -72,47 +79,51 @@ of detect NVT and check if the version is vulnerable or not.");
   pages after drag and drop CVE-2016-5280 (bmo#1289970) - Use-after-free in
   mozilla::nsTextNodeDirectionalityMap::RemoveElementFromMap CVE-2016-5281
   (bmo#1284690) - use-after-free in DOMSVGLength CVE-2016-5282 (bmo#932335)
+
   - Don't allow content to request favicons from non-whitelisted schemes
   CVE-2016-5283 (bmo#928187) -  iframe src  fragment timing attack can
   reveal cross-origin data CVE-2016-5284 (bmo#1303127) - Add-on update site
   certificate pin expiration CVE-2016-5256 - Memory safety bugs fixed in
   Firefox 49 CVE-2016-5257 - Memory safety bugs fixed in Firefox 49 and
   Firefox ESR 45.4
+
   - requires NSS 3.25
 
   - Mozilla Firefox 48.0.2:
+
   * Mitigate a startup crash issue caused on Windows (bmo#1291738)
 
   mozilla-nss was updated to NSS 3.25. New functionality:
+
   * Implemented DHE key agreement for TLS 1.3
+
   * Added support for ChaCha with TLS 1.3
+
   * Added support for TLS 1.2 ciphersuites that use SHA384 as the PRF
+
   * In previous versions, when using client authentication with TLS
-  1.2, NSS only supported certificate_verify messag ...
+  1.2, NSS only supported certificate_verify message ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "MozillaFirefox, mozilla-nss on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaFirefox, mozilla-nss on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2386_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2386_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -309,6 +320,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

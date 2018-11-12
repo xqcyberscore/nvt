@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2846_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2846_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2846-1 (Linux Kernel)
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851632");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 18:05:41 +0530 (Thu, 02 Nov 2017)");
   script_cve_id("CVE-2017-13080", "CVE-2017-15265", "CVE-2017-15649", "CVE-2017-6346");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2846-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.3  kernel was updated
   to 4.4.92 to receive various security and bugfixes.
 
@@ -48,11 +47,13 @@ of detect NVT and check if the version is vulnerable or not.");
   reinstallation of the Group Temporal Key (GTK) during the group key
   handshake, allowing an attacker within radio range to replay frames from
   access points to clients (bnc#1063667).
+
   - CVE-2017-15265: Race condition in the ALSA subsystem in the Linux kernel
   allowed local users to cause a denial of service (use-after-free) or
   possibly have unspecified other impact via crafted /dev/snd/seq ioctl
   calls, related to sound/core/seq/seq_clientmgr.c and
   sound/core/seq/seq_ports.c (bnc#1062520).
+
   - CVE-2017-15649: net/packet/af_packet.c in the Linux kernel allowed local
   users to gain privileges via crafted system calls that trigger
   mishandling of packet_fanout data structures, because of a race
@@ -64,57 +65,75 @@ of detect NVT and check if the version is vulnerable or not.");
 
   - acpi/processor: Check for duplicate processor ids at hotplug time
   (bnc#1056230).
+
   - acpi/processor: Implement DEVICE operator for processor enumeration
   (bnc#1056230).
+
   - add mainline tags to hyperv patches
+
   - alsa: au88x0: avoid theoretical uninitialized access (bnc#1012382).
+
   - alsa: compress: Remove unused variable (bnc#1012382).
+
   - alsa: usb-audio: Check out-of-bounds access by corrupted buffer
   descriptor (bnc#1012382).
+
   - alsa: usx2y: Suppress kernel warning at page allocation failures
   (bnc#1012382).
+
   - arm64: add function to get a cpu's MADT GICC table (bsc#1062279).
+
   - arm64: dts: Add Broadcom Vulcan PMU in dts (fate#319481).
+
   - arm64/perf: Access pmu register using  read/write gt _sys_reg
   (bsc#1062279).
+
   - arm64/perf: Add Broadcom Vulcan PMU support (fate#319481).
+
   - arm64/perf: Changed events naming as per the ARM ARM (fate#319481).
+
   - arm64/perf: Define complete ARMv8 recommended implementation defined
   events (fate#319481).
+
   - arm64: perf: do not expose CHAIN event in sysfs (bsc#1062279).
+
   - arm64: perf: Extend event config for ARMv8.1 (bsc#1062279).
+
   - arm64/perf: Filter common events based on PMCEIDn_EL0 (fate#319481).
+
   - arm64: perf: Ignore exclude_hv when kernel is running in HYP
   (bsc#1062279).
+
   - arm64: perf: move to common attr_group fields (bsc#1062279).
+
   - arm64: perf: Use the builtin_platform_driver (bsc#1062279).
+
   - arm64: pmu: add fallback probe table (bsc#1062279).
+
   - arm64: pmu: Hoist pmu platform device name (bsc#1062279).
+
   - a ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2846_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2846_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -299,6 +318,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

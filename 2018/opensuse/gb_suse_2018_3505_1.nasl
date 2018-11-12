@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3505_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3505_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for clamav openSUSE-SU-2018:3505-1 (clamav)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852099");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682", "CVE-2018-15378");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-27 06:24:47 +0200 (Sat, 27 Oct 2018)");
   script_name("SuSE Update for clamav openSUSE-SU-2018:3505-1 (clamav)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
 
   script_xref(name:"openSUSE-SU", value:"2018:3505_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-10/msg00075.html");
@@ -57,10 +57,12 @@ if(description)
   - CVE-2018-15378: Vulnerability in ClamAV's MEW unpacking feature that
   could allow an unauthenticated, remote attacker to cause a denial of
   service (DoS) condition on an affected device. (bsc#1110723)
+
   - CVE-2018-14680, CVE-2018-14681, CVE-2018-14682: more fixes for embedded
   libmspack. (bsc#1103040)
 
   - Make freshclam more robust against lagging signature mirrors.
+
   - On-Access 'Extra Scanning', an opt-in minor feature of OnAccess scanning
   on Linux systems, has been disabled due to a known issue with resource
   cleanup OnAccessExtraScanning will be re-enabled in a future release

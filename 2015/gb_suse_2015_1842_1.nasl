@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1842_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_1842_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2015:1842-1 (bbswitch)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851121");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-30 07:57:50 +0100 (Fri, 30 Oct 2015)");
   script_cve_id("CVE-2015-0272", "CVE-2015-1333", "CVE-2015-2925", "CVE-2015-3290",
                 "CVE-2015-5283", "CVE-2015-5707", "CVE-2015-7872");
@@ -36,80 +36,92 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2015:1842-1 (bbswitch)");
-  script_tag(name: "summary", value: "Check the version of the bbswitch");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the bbswitch");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
 
   Following security bugs were fixed:
+
   * CVE-2015-3290: arch/x86/entry/entry_64.S in the Linux kernel on the
   x86_64 platform improperly relied on espfix64 during nested NMI
   processing, which allowed local users to gain privileges by triggering
   an NMI within a certain instruction window (bnc#937969)
+
   * CVE-2015-0272: It was reported that it's possible to craft a Router
   Advertisement message which will bring the receiver in a state where new
   IPv6 connections will not be accepted until correct Router Advertisement
   message received. (bsc#944296).
+
   * CVE-2015-5283: The sctp_init function in net/sctp/protocol.c in the
   Linux kernel had an incorrect sequence of protocol-initialization steps,
   which allowed local users to cause a denial of service (panic or memory
   corruption) by creating SCTP sockets before all of the steps have
   finished (bnc#947155).
+
   * CVE-2015-1333: Memory leak in the __key_link_end function in
   security/keys/keyring.c in the Linux kernel allowed local users to cause
   a denial of service (memory consumption) via many add_key system calls
   that refer to existing keys. (bsc#938645)
+
   * CVE-2015-5707: Integer overflow in the sg_start_req function in
   drivers/scsi/sg.c in the Linux kernel allowed local users to cause a
   denial of service or possibly have unspecified other impact via a large
   iov_count value in a write request. (bsc#940338)
+
   * CVE-2015-2925: An attacker could potentially break out of a namespace
   or container, depending on if he had specific rights in these
   containers. (bsc#926238).
+
   * CVE-2015-7872: A vulnerability in keyrings garbage collector allowed a
   local user to trigger an oops was found, caused by using request_key()
   or keyctl request2. (bsc#951440)
 
 
   The following non-security bugs were fixed:
+
   - input: evdev - do not report errors form flush() (bsc#939834).
+
   - NFSv4: Recovery of recalled read delegations is broken (bsc#942178).
+
   - apparmor: temporary work around for bug while unloading policy
   (boo#941867).
+
   - config/x86_64/ec2: Align CONFIG_STRICT_DEVMEM CONFIG_STRICT_DEVMEM is
   enabled in every other kernel flavor, so enable it for x86_64/ec2 as
   well.
+
   - kernel-obs-build: add btrfs to initrd This is needed for kiwi builds.
+
   - mmc: card: Do not access RPMB partitions for normal read/write
   (bnc#941104).
+
   - netback: coalesce (guest) RX SKBs as needed (bsc#919154).
+
   - rpm/kernel-obs-build.spec.in: Add virtio_rng to the initrd. This allows
   to feed some randomness to the OBS workers.
+
   - xfs: Fix file type directory corruption f ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "bbswitch on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:1842_1");
+  script_tag(name:"affected", value:"bbswitch on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:1842_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -1056,6 +1068,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

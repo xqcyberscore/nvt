@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2625_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2625_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2016:2625-1 (Linux Kernel)
 #
@@ -27,21 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851420");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-26 05:01:03 +0200 (Wed, 26 Oct 2016)");
-  script_cve_id("CVE-2015-7513", "CVE-2015-8956", "CVE-2016-0823", "CVE-2016-1237", 
-                "CVE-2016-5195", "CVE-2016-5696", "CVE-2016-6327", "CVE-2016-6480", 
+  script_cve_id("CVE-2015-7513", "CVE-2015-8956", "CVE-2016-0823", "CVE-2016-1237",
+                "CVE-2016-5195", "CVE-2016-5696", "CVE-2016-6327", "CVE-2016-6480",
                 "CVE-2016-6828", "CVE-2016-7117", "CVE-2016-7425", "CVE-2016-8658");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2016:2625-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE 13.2 kernel was updated to receive various security and
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
 
   The following security bugs were fixed:
@@ -51,64 +49,69 @@ of detect NVT and check if the version is vulnerable or not.");
   obtain sensitive information or cause a denial of service (NULL pointer
   dereference) via vectors involving a bind system call on a Bluetooth
   RFCOMM socket (bnc#1003925).
+
   - CVE-2016-5195: A local privilege escalation using MAP_PRIVATE was fixed,
   which is reportedly exploited in the wild (bsc#1004418).
+
   - CVE-2016-8658: Stack-based buffer overflow in the
   brcmf_cfg80211_start_ap function in
   drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c in the Linux
   kernel allowed local users to cause a denial of service (system crash)
   or possibly have unspecified other impact via a long SSID Information
   Element in a command to a Netlink socket (bnc#1004462).
+
   - CVE-2016-7117: Use-after-free vulnerability in the __sys_recvmmsg
   function in net/socket.c in the Linux kernel allowed remote attackers to
   execute arbitrary code via vectors involving a recvmmsg system call that
   is mishandled during error processing (bnc#1003077).
+
   - CVE-2016-0823: The pagemap_open function in fs/proc/task_mmu.c in the
   Linux kernel before 3.19.3, as used in Android 6.0.1 before 2016-03-01,
   allowed local users to obtain sensitive physical-address information by
   reading a pagemap file, aka Android internal bug 25739721 (bnc#994759).
+
   - CVE-2016-7425: The arcmsr_iop_message_xfer function in
   drivers/scsi/arcmsr/arcmsr_hba.c in the Linux kernel did not restrict a
   certain length field, which allowed local users to gain privileges
   or cause a denial of service (heap-based buffer overflow) via an
   ARCMSR_MESSAGE_WRITE_WQBUFFER control code (bnc#999932).
+
   - CVE-2016-6327: drivers/infiniband/ulp/srpt/ib_srpt.c in the Linux kernel
   allowed local users to cause a denial of service (NULL pointer
   dereference and system crash) by using an ABORT_TASK command to abort a
   device write operation (bnc#994748).
+
   - CVE-2016-6828: The tcp_check_send_head function in include/net/tcp.h in
   the Linux kernel did not properly maintain certain SACK state after a
   failed data copy, which allowed local users to cause a denial of service
   (tcp_xmit_retransmit_queue use-after-free and system crash) via a
   crafted SACK option (bnc#994296).
+
   - CVE-2016-5696: net/ipv4/tcp_input.c in the Linux kernel did not properly
   determine the rate of challenge ACK segments, which made it easier for
   man-in-the-middle attackers to hijack TCP sessions via a blind in-window
-  ... 
+  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2625_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2625_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -1223,6 +1226,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

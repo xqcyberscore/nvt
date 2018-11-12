@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0280_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_0280_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the Linux Kernel openSUSE-SU-2016:0280-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851179");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:15:24 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2015-7550", "CVE-2015-8539", "CVE-2015-8543", "CVE-2015-8550",
                 "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", "CVE-2015-8575",
@@ -37,18 +37,20 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the Linux Kernel openSUSE-SU-2016:0280-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of the Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The Linux kernel for openSUSE Leap 42.1 was updated to the 4.1.15 stable
   release, and also includes security and bugfixes.
 
   Following security bugs were fixed:
+
   - CVE-2016-0728: A reference leak in keyring handling with
   join_session_keyring() could lead to local attackers gain root
   privileges. (bsc#962075).
+
   - CVE-2015-7550: A local user could have triggered a race between read and
   revoke in keyctl (bnc#958951).
+
   - CVE-2015-8767: A case can occur when sctp_accept() is called by the user
   during a heartbeat timeout event after the 4-way handshake. Since
   sctp_assoc_migrate() changes both assoc- base.sk and assoc- ep, the
@@ -56,61 +58,70 @@ of detect NVT and check if the version is vulnerable or not.");
   listening socket but released with the new association socket. The
   result is a deadlock on any future attempts to take the listening socket
   lock. (bsc#961509)
+
   - CVE-2015-8539: A negatively instantiated user key could have been used
   by a local user to leverage privileges (bnc#958463).
+
   - CVE-2015-8569: The (1) pptp_bind and (2) pptp_connect functions in
   drivers/net/ppp/pptp.c in the Linux kernel did not verify an address
   length, which allowed local users to obtain sensitive information from
   kernel memory and bypass the KASLR protection mechanism via a crafted
   application (bnc#959190).
+
   - CVE-2015-8543: The networking implementation in the Linux kernel did not
   validate protocol identifiers for certain protocol families, which
   allowed local users to cause a denial of service (NULL function pointer
   dereference and system crash) or possibly gain privileges by leveraging
   CLONE_NEWUSER support to execute a crafted SOCK_RAW application
   (bnc#958886).
+
   - CVE-2015-8575: Validate socket address length in sco_sock_bind() to
   prevent information leak (bsc#959399).
+
   - CVE-2015-8551, CVE-2015-8552: xen/pciback: For
   XEN_PCI_OP_disable_msi[x] only disable if device has MSI(X) enabled
   (bsc#957990).
+
   - CVE-2015-8550: Compiler optimizations in the XEN PV backend drivers
   could have lead to double fetch vulnerabilities, causing denial of
   service or arbitrary code execution (depending on the configuration)
   (bsc#957988).
 
   The following non-security bugs were fixed:
+
   - ALSA: hda - Add a fixup for Thinkpad X1 Carbon 2nd (bsc#958439).
+
   - ALSA: hda - Apply click noise workaround for Thinkpads generically
   (bsc#958439).
+
   - ALSA: hda - Fix noise problems on Thinkpad T440s (boo#958504).
+
   - ALSA: hda - Flush the pending probe work at remove (boo#960710).
+
   - ALSA: hda - Set codec to D3 at reboot/shutdown on Thinkpads (bsc#958439).
+
   - Add Cavium Thunderx network enha ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:0280_1");
+  script_xref(name:"openSUSE-SU", value:"2016:0280_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -433,6 +444,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

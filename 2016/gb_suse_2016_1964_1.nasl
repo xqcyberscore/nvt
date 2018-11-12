@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1964_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1964_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:1964-1 (MozillaFirefox, mozilla-nss)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851375");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:12:01 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2016-0718", "CVE-2016-2830", "CVE-2016-2835", "CVE-2016-2836",
                 "CVE-2016-2837", "CVE-2016-2838", "CVE-2016-2839", "CVE-2016-5250",
@@ -40,86 +40,112 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:1964-1 (MozillaFirefox, mozilla-nss)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mozilla Firefox was updated to 48.0 to fix security issues, bugs, and
   deliver various improvements.
 
   The following major changes are included:
 
   - Process separation (e10s) is enabled for some users
+
   - Add-ons that have not been verified and signed by Mozilla will not load
+
   - WebRTC enhancements
+
   - The media parser has been redeveloped using the Rust programming language
+
   - better Canvas performance with speedy Skia support
+
   - Now requires NSS 3.24
 
   The following security issues were fixed: (boo#991809)
 
   - CVE-2016-2835/CVE-2016-2836: Miscellaneous memory safety hazards
+
   - CVE-2016-2830: Favicon network connection can persist when page is closed
+
   - CVE-2016-2838: Buffer overflow rendering SVG with bidirectional content
+
   - CVE-2016-2839: Cairo rendering crash due to memory allocation issue with
   FFmpeg 0.10
+
   - CVE-2016-5251: Location bar spoofing via data URLs with
   malformed/invalid mediatypes
+
   - CVE-2016-5252: Stack underflow during 2D graphics rendering
+
   - CVE-2016-0718: Out-of-bounds read during XML parsing in Expat library
+
   - CVE-2016-5254: Use-after-free when using alt key and toplevel menus
+
   - CVE-2016-5255: Crash in incremental garbage collection in JavaScript
+
   - CVE-2016-5258: Use-after-free in DTLS during WebRTC session shutdown
+
   - CVE-2016-5259: Use-after-free in service workers with nested sync events
+
   - CVE-2016-5260: Form input type change from password to text can store
   plain text password in session restore file
+
   - CVE-2016-5261: Integer overflow in WebSockets during data buffering
+
   - CVE-2016-5262: Scripts on marquee tag can execute in sandboxed iframes
+
   - CVE-2016-2837: Buffer overflow in ClearKey Content Decryption Module
   (CDM) during video playback
+
   - CVE-2016-5263: Type confusion in display transformation
+
   - CVE-2016-5264: Use-after-free when applying SVG effects
+
   - CVE-2016-5265: Same-origin policy violation using local HTML file and
   saved shortcut file
+
   - CVE-2016-5266: Information disclosure and local file manipulation
   through drag and drop
+
   - CVE-2016-5268: Spoofing attack through text injection into internal
   error pages
+
   - CVE-2016-5250: Information disclosure through Resource Timing API during
   page navigation
 
   The following non-security changes are included:
 
   - The AppData description and screenshots were updated.
+
   - Fix Firefox crash on startup on i586 (boo#986541)
+
   - The Selenium WebDriver may have caused Firefox to crash at startup
+
   - fix build issues with gcc/binutils combination used in Leap 42.2
   (boo#984637)
+
   - Fix running on 48bit va aarch64 (boo#984126)
+
   - fix XUL dialo ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "MozillaFirefox, mozilla-nss on openSUSE Leap 42.1, openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"MozillaFirefox, mozilla-nss on openSUSE Leap 42.1, openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1964_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1964_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -316,6 +342,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

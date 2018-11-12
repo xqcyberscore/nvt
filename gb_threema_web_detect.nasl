@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_threema_web_detect.nasl 10774 2018-08-04 21:34:13Z cfischer $
+# $Id: gb_threema_web_detect.nasl 12304 2018-11-10 12:18:34Z cfischer $
 #
 # Threema Web Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108453");
-  script_version("$Revision: 10774 $");
+  script_version("$Revision: 12304 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 23:34:13 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-10 13:18:34 +0100 (Sat, 10 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 11:09:44 +0200 (Sat, 04 Aug 2018)");
   script_name("Threema Web Detection");
   script_category(ACT_GATHER_INFO);
@@ -77,7 +77,30 @@ if( buf =~ "^HTTP/1\.[01] 200" &&
   # Used from the public release 1.0.1 up to the latest 1.8.2 of the 1.x release:
   # <li>Version 1.8.2-gh</li>
   vers = eregmatch( string:buf, pattern:"(showVersionInfo\('|>Version )([0-9.]+)[^/]+" );
-  if( vers[2] ) version = vers[2];
+  if( vers[2] )
+    version = vers[2];
+
+  # Has only one line:
+  # 2.1.1-gh
+  # The file itself is available since around 1.4.0 (or a little bit earlier)
+  # and is only used as a fallback additional to the check above.
+  if( version == "unknown" ) {
+
+    url = "/version.txt";
+    req = http_get( port:port, item:url );
+    res = http_keepalive_send_recv( port:port, data:req );
+
+    # nb: The file is only shipped in the "pre-built version" so we're checking
+    # first if it exists before trying to get the version from it.
+    if( res =~ "^HTTP/1\.[01] 200" ) {
+      res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+      vers = eregmatch( string:res, pattern:"^([0-9.]+)(-gh)?" );
+      if( vers[1] ) {
+        version = vers[1];
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+      }
+    }
+  }
 
   # CPEs not registered yet
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:threema:threema_web:" );
@@ -89,7 +112,8 @@ if( buf =~ "^HTTP/1\.[01] 200" &&
                                             version:version,
                                             install:install,
                                             cpe:cpe,
-                                            concluded:vers[0] ),
+                                            concluded:vers[0],
+                                            concludedUrl:conclUrl ),
                                             port:port );
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0353_1.nasl 8046 2017-12-08 08:48:56Z santu $
+# $Id: gb_suse_2015_0353_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for samba SUSE-SU-2015:0353-1 (samba)
 #
@@ -27,94 +27,121 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850934");
-  script_version("$Revision: 8046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:48:56 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:40:29 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-0240");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba SUSE-SU-2015:0353-1 (samba)");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  samba was updated to fix one security issue.
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"samba was updated to fix one security issue.
 
   This security issue was fixed:
+
   - CVE-2015-0240: Don't call talloc_free on an uninitialized pointer
   (bnc#917376).
 
   These non-security issues were fixed:
+
   - Fix vfs_snapper DBus string handling (bso#11055, bnc#913238).
+
   - Fix libsmbclient DFS referral handling.
   + Reuse connections derived from DFS referrals (bso#10123).
   + Set domain/workgroup based on authentication callback value
   (bso#11059).
+
   - pam_winbind: Fix warn_pwd_expire implementation (bso#9056).
+
   - nsswitch: Fix soname of linux nss_*.so.2 modules (bso#9299).
+
   - Fix profiles tool (bso#9629).
+
   - s3-lib: Do not require a password with --use-ccache (bso#10279).
+
   - s4:dsdb/rootdse: Expand extended dn values with the AS_SYSTEM control
   (bso#10949).
+
   - s4-rpc: dnsserver: Fix enumeration of IPv4 and IPv6 addresses
   (bso#10952).
+
   - s3:smb2_server: Allow reauthentication without signing (bso#10958).
+
   - s3-smbclient: Return success if we listed the shares (bso#10960).
+
   - s3-smbstatus: Fix exit code of profile output (bso#10961).
+
   - libcli: SMB2: Pure SMB2-only negprot fix to make us behave as a Windows
   client does (bso#10966).
+
   - s3: smbd/modules: Fix *allocate* calls to follow POSIX error return
   convention (bso#10982).
+
   - Fix 'domain join' by adding 'drsuapi.DsBindInfoFallBack' attribute
   'supported_extensions' (bso#11006).
+
   - idl:drsuapi: Manage all possible lengths of drsuapi_DsBindInfo
   (bso#11006).
+
   - winbind: Retry LogonControl RPC in ping-dc after session expiration
   (bso#11034).
+
   - yast2-samba-client should be able to specify osName and osVer on AD
   domain join (bnc#873922).
+
   - Lookup FSRVP share snums at runtime rather than storing them
   persistently (bnc#908627).
+
   - Specify soft dependency for network-online.target in Winbind systemd
   service file (bnc#889175).
+
   - Fix spoolss error response marshalling  (bso#10984).
+
   - pidl/wscript: Remove --with-perl-* options  revert buildtools/wafadmin/
   Tools/perl.py back to upstream state (bso#10472).
+
   - s4-dns: Add support for BIND 9.10 (bso#10620).
+
   - nmbd fails to accept '--piddir' option  (bso#10711).
+
   - S3: source3/smbd/process.c::srv_send_smb() returns true on the error
   path (bso#10880).
+
   - vfs_glusterfs: Remove 'integer fd' code and store the glfs pointers
   (bso#10889).
+
   - s3-nmbd: Fix netbios name truncation (bso#10896).
+
   - spoolss: Fix handling of bad EnumJobs levels (bso#10898).
+
   - spoolss: Fix jobid in level 3 EnumJobs response  (bso#10905).
-  - s3: nmbd: Ensure NetBIOS names are only 15 characters stored 
+
+  - s3: nmbd: Ensure NetBIOS names are only 15 characters stored
   (bso#10920).
-  - s3:smb ... 
+
+  - s3:smb ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "samba on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "SUSE-SU", value: "2015:0353_1");
+  script_tag(name:"affected", value:"samba on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"SUSE-SU", value:"2015:0353_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(SLED12\.0SP0|SLES12\.0SP0)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "SLED12.0SP0")
 {
@@ -695,7 +722,7 @@ if(release == "SLED12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -1279,6 +1306,6 @@ if(release == "SLES12.0SP0")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

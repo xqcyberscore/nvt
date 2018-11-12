@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1154_1.nasl 9372 2018-04-06 08:56:37Z cfischer $
+# $Id: gb_suse_2012_1154_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2012:1154-1 (java-1_7_0-openjdk)
 #
@@ -24,105 +24,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Java-1_7_0-openjdk was updated to fix a remote exploit
-  (CVE-2012-4681).
-
-  Also bugfixes were done:
-  - fix build on ARM and i586
-  - remove files that are no longer used
-
-
-  - zero build can be enabled using rpmbuild (osc build)
-  --with zero
-  - add hotspot 2.1 needed for zero
-  - fix filelist on %{ix86}
-
-  * Security fixes
-  - S7162476, CVE-2012-1682: XMLDecoder security issue via
-  ClassFinder
-  - S7194567, CVE-2012-3136: Improve long term persistence
-  of java.beans objects
-  - S7163201, CVE-2012-0547: Simplify toolkit internals
-  references
-  - RH852051, CVE-2012-4681, S7162473: Reintroduce
-  PackageAccessible checks removed in  6788531.
-  * OpenJDK
-  - Fix Zero FTBFS issues with 2.3
-  - S7180036: Build failure in Mac platform caused by fix #
-  7163201
-  - S7182135: Impossible to use some editors directly
-  - S7183701: [TEST]
-  closed/java/beans/security/TestClassFinder.java 
-  compilation failed
-  - S7185678:
-  java/awt/Menu/NullMenuLabelTest/NullMenuLabelTest.java
-  failed with NPE
-  * Bug fixes
-  - PR1149: Zero-specific patch files not being packaged
-  - use icedtea tarball for build again, this led into
-  following dropped files because the are already in the
-  tarball and simplified %prep and %build
-  - drop class-rewriter.tar.gz
-  - drop systemtap-tapset.tar.gz
-  - drop desktop-files.tar.gz
-  - drop nss.cfg
-  - drop pulseaudio.tar.gz
-  - drop remove-intree-libraries.sh
-  - add archives from icedtea7-forest-2.3 for openjdk,
-  corba, jaxp, jaxws, jdk, langtools and hotspot
-  - drop rhino.patch, pulse-soundproperties and systemtap
-  patch
-  - move gnome bridge patches before make as it's irritating
-  to have the patch fail after openjdk is built
-  - use explicit file attributes in %files sections to
-  prevent the file permissions problems in a future (like
-  bnc#770040)
-  - changed version scheme, so it now matches Oracle Java
-  1.7.0.6 == Java7 u 6
-
-  - update to icedtea-2.3.1 / OpenJDK7 u6 (bnc#777499)
-  * Security fixes
-  - RH852051, CVE-2012-4681: Reintroduce PackageAccessible
-  checks removed in  6788531.
-  * Bug fixes
-  - PR902: PulseAudioClip getMicrosecondsLength() returns
-  length in milliseconds, not microseconds
-  - PR986: IcedTea7 fails to build with IcedTea6 CACAO due
-  to low max heapsize
-  - PR1050: Stream objects not garbage collected
-  - PR1119: Only add classes to rt-source-files.txt if the
-  class (or one or more of its methods/fields) are
-  actually missing from the boot JDK
-  - PR1137: Allow JARs to be optionally compressed by
-  setting COMPRESS_JARS
-  * OpenJDK
-  - Make dynamic support for GConf work again.
-  - PR1095: Add configure option for -Werror
-  - PR1101: Undefined symbols on GNU/Linux SPARC
-  - PR1140: Unnecessary diz files should not be installed
-  - S7192804, PR1138: Build should not install jvisualvm
-  man page for OpenJDK
-
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "java-1_7_0-openjdk on openSUSE 12.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00008.html");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-09/msg00008.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850432");
-  script_version("$Revision: 9372 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:56:37 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:23 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-0547", "CVE-2012-1682", "CVE-2012-3136", "CVE-2012-4681");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2012:1154_1");
+  script_xref(name:"openSUSE-SU", value:"2012:1154_1");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2012:1154-1 (java-1_7_0-openjdk)");
 
   script_tag(name:"summary", value:"Check for the Version of java-1_7_0-openjdk");
@@ -130,24 +42,145 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+  script_tag(name:"affected", value:"java-1_7_0-openjdk on openSUSE 12.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"Java-1_7_0-openjdk was updated to fix a remote exploit
+  (CVE-2012-4681).
+
+  Also bugfixes were done:
+
+  - fix build on ARM and i586
+
+  - remove files that are no longer used
+
+
+  - zero build can be enabled using rpmbuild (osc build)
+
+  - -with zero
+
+  - add hotspot 2.1 needed for zero
+
+  - fix filelist on %{ix86}
+
+  * Security fixes
+
+  - S7162476, CVE-2012-1682: XMLDecoder security issue via
+  ClassFinder
+
+  - S7194567, CVE-2012-3136: Improve long term persistence
+  of java.beans objects
+
+  - S7163201, CVE-2012-0547: Simplify toolkit internals
+  references
+
+  - RH852051, CVE-2012-4681, S7162473: Reintroduce
+  PackageAccessible checks removed in  6788531.
+
+  * OpenJDK
+
+  - Fix Zero FTBFS issues with 2.3
+
+  - S7180036: Build failure in Mac platform caused by fix #
+  7163201
+
+  - S7182135: Impossible to use some editors directly
+
+  - S7183701: [TEST]
+  closed/java/beans/security/TestClassFinder.java
+  compilation failed
+
+  - S7185678:
+  java/awt/Menu/NullMenuLabelTest/NullMenuLabelTest.java
+  failed with NPE
+
+  * Bug fixes
+
+  - PR1149: Zero-specific patch files not being packaged
+
+  - use icedtea tarball for build again, this led into
+  following dropped files because the are already in the
+  tarball and simplified %prep and %build
+
+  - drop class-rewriter.tar.gz
+
+  - drop systemtap-tapset.tar.gz
+
+  - drop desktop-files.tar.gz
+
+  - drop nss.cfg
+
+  - drop pulseaudio.tar.gz
+
+  - drop remove-intree-libraries.sh
+
+  - add archives from icedtea7-forest-2.3 for openjdk,
+  corba, jaxp, jaxws, jdk, langtools and hotspot
+
+  - drop rhino.patch, pulse-soundproperties and systemtap
+  patch
+
+  - move gnome bridge patches before make as it's irritating
+  to have the patch fail after openjdk is built
+
+  - use explicit file attributes in %files sections to
+  prevent the file permissions problems in a future (like
+  bnc#770040)
+
+  - changed version scheme, so it now matches Oracle Java
+  1.7.0.6 == Java7 u 6
+
+  - update to icedtea-2.3.1 / OpenJDK7 u6 (bnc#777499)
+
+  * Security fixes
+
+  - RH852051, CVE-2012-4681: Reintroduce PackageAccessible
+  checks removed in  6788531.
+
+  * Bug fixes
+
+  - PR902: PulseAudioClip getMicrosecondsLength() returns
+  length in milliseconds, not microseconds
+
+  - PR986: IcedTea7 fails to build with IcedTea6 CACAO due
+  to low max heapsize
+
+  - PR1050: Stream objects not garbage collected
+
+  - PR1119: Only add classes to rt-source-files.txt if the
+  class (or one or more of its methods/fields) are
+  actually missing from the boot JDK
+
+  - PR1137: Allow JARs to be optionally compressed by
+  setting COMPRESS_JARS
+
+  * OpenJDK
+
+  - Make dynamic support for GConf work again.
+
+  - PR1095: Add configure option for -Werror
+
+  - PR1101: Undefined symbols on GNU/Linux SPARC
+
+  - PR1140: Unnecessary diz files should not be installed
+
+  - S7192804, PR1138: Build should not install jvisualvm
+  man page for OpenJDK
+
+  Description truncated, for more information please check the Reference URL");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -206,6 +239,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

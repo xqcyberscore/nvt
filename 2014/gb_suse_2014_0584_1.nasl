@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0584_1.nasl 9373 2018-04-06 08:57:18Z cfischer $
+# $Id: gb_suse_2014_0584_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for MozillaThunderbird,seamonkey openSUSE-SU-2014:0584-1 (MozillaThunderbird,seamonkey)
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850585");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 11:21:20 +0530 (Mon, 05 May 2014)");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1497", "CVE-2014-1498",
                 "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502", "CVE-2014-1504",
@@ -38,72 +36,74 @@ if(description)
                 "CVE-2014-1511", "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("SuSE Update for MozillaThunderbird,seamonkey openSUSE-SU-2014:0584-1 (MozillaThunderbird,seamonkey)");
-
-  tag_insight = "
-  Mozilla Thunderbird was updated to 24.4.0. Mozilla
+  script_name("SuSE Update for MozillaThunderbird, seamonkey openSUSE-SU-2014:0584-1 (MozillaThunderbird, seamonkey)");
+  script_tag(name:"affected", value:"MozillaThunderbird, seamonkey on openSUSE 13.1, openSUSE 12.3");
+  script_tag(name:"insight", value:"Mozilla Thunderbird was updated to 24.4.0. Mozilla
   SeaMonkey was updated to 2.25.
 
   * MFSA 2014-15/CVE-2014-1493/CVE-2014-1494 Miscellaneous
   memory safety hazards
+
   * MFSA 2014-17/CVE-2014-1497 (bmo#966311) Out of bounds
   read during WAV file decoding
+
   * MFSA 2014-18/CVE-2014-1498 (bmo#935618)
   crypto.generateCRMFRequest does not validate type of key
+
   * MFSA 2014-19/CVE-2014-1499 (bmo#961512) Spoofing attack
   on WebRTC permission prompt
+
   * MFSA 2014-20/CVE-2014-1500 (bmo#956524) onbeforeunload
   and Javascript navigation DOS
+
   * MFSA 2014-22/CVE-2014-1502 (bmo#972622) WebGL content
   injection from one domain to rendering in another
+
   * MFSA 2014-23/CVE-2014-1504 (bmo#911547) Content
   Security Policy for data: documents not preserved by
   session restore
+
   * MFSA 2014-26/CVE-2014-1508 (bmo#963198) Information
   disclosure through polygon rendering in MathML
+
   * MFSA 2014-27/CVE-2014-1509 (bmo#966021) Memory
   corruption in Cairo during PDF font rendering
+
   * MFSA 2014-28/CVE-2014-1505 (bmo#941887) SVG filters
   information disclosure through feDisplacementMap
+
   * MFSA 2014-29/CVE-2014-1510/CVE-2014-1511 (bmo#982906,
   bmo#982909) Privilege escalation using
   WebIDL-implemented APIs
+
   * MFSA 2014-30/CVE-2014-1512 (bmo#982957) Use-after-free
   in TypeObject
+
   * MFSA 2014-31/CVE-2014-1513 (bmo#982974) Out-of-bounds
   read/write through neutering ArrayBuffer objects
+
   * MFSA 2014-32/CVE-2014-1514 (bmo#983344) Out-of-bounds
-  write through TypedArrayObject after neutering";
-
-  tag_affected = "MozillaThunderbird,seamonkey on openSUSE 13.1, openSUSE 12.3";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  write through TypedArrayObject after neutering");
+  script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "openSUSE-SU", value: "2014:0584_1");
-  script_tag(name:"summary", value:"Check for the Version of MozillaThunderbird,seamonkey");
+  script_xref(name:"openSUSE-SU", value:"2014:0584_1");
+  script_tag(name:"summary", value:"Check for the Version of MozillaThunderbird, seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSE12\.3|openSUSE13\.1)");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.3")
 {
@@ -210,7 +210,7 @@ if(release == "openSUSE12.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -320,6 +320,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_d_link_dcs_auth_bypass.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_d_link_dcs_auth_bypass.nasl 12297 2018-11-09 16:00:07Z cfischer $
 #
 # D-Link DCS Authentication Bypass Vulnerability
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103647");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12297 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("D-Link DCS Authentication Bypass Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/119902/D-Link-DCS-Cameras-Authentication-Bypass-Command-Execution.html");
   script_xref(name:"URL", value:"http://www.d-link.com");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:00:07 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-01-30 11:53:42 +0100 (Wed, 30 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,8 +52,9 @@ due to a remote information disclosure of the configuration.
 
 Affected devices:
 
-* D-Link DCS-930L, firmware version 1.04
-* D-Link DCS-932L, firmware version 1.02");
+  * D-Link DCS-930L, firmware version 1.04
+
+  * D-Link DCS-932L, firmware version 1.02");
   exit(0);
 }
 

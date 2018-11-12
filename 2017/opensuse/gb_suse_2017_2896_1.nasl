@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2896_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2896_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851636");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:24:40 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2015-1863", "CVE-2015-4141", "CVE-2015-4142", "CVE-2015-4143",
                 "CVE-2015-4144", "CVE-2015-4145", "CVE-2015-5314", "CVE-2016-4476",
@@ -38,9 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)");
-  script_tag(name: "summary", value: "Check the version of hostapd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of hostapd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for hostapd fixes the
   following issues:
 
@@ -51,72 +50,101 @@ of detect NVT and check if the version is vulnerable or not.");
   Hostap was updated to upstream release 2.6
 
   * fixed WPS configuration update vulnerability with malformed passphrase
+
   * extended channel switch support for VHT bandwidth changes
+
   * added support for configuring new ANQP-elements with
   anqp_elem= InfoID : hexdump of payload
+
   * fixed Suite B 192-bit AKM to use proper PMK length (note: this makes old
   releases incompatible with the fixed behavior)
+
   * added no_probe_resp_if_max_sta=1 parameter to disable Probe Response
   frame sending for not-associated STAs if max_num_sta limit has been
   reached
+
   * added option (-S as command line argument) to request all interfaces to
   be started at the same time
+
   * modified rts_threshold and fragm_threshold configuration parameters to
   allow -1 to be used to disable RTS/fragmentation
+
   * EAP-pwd: added support for Brainpool Elliptic Curves (with OpenSSL 1.0.2
   and newer)
+
   * fixed EAPOL reauthentication after FT protocol run
+
   * fixed FTIE generation for 4-way handshake after FT protocol run
+
   * fixed and improved various FST operations
+
   * TLS server
+
   - support SHA384 and SHA512 hashes
+
   - support TLS v1.2 signature algorithm with SHA384 and SHA512
+
   - support PKCS #5 v2.0 PBES2
+
   - support PKCS #5 with PKCS #12 style key decryption
+
   - minimal support for PKCS #12
+
   - support OCSP stapling (including ocsp_multi)
+
   * added support for OpenSSL 1.1 API changes
+
   - drop support for OpenSSL 0.9.8
+
   - drop support for OpenSSL 1.0.0
+
   * EAP-PEAP: support fast-connect crypto binding
+
   * RADIUS
+
   - fix Called-Station-Id to not escape SSID
+
   - add Event-Timestamp to all Accounting-Request packets
+
   - add Acct-Session-Id to Accounting-On/Off
+
   - add Acct-Multi-Session-Id  ton Access-Request packets
+
   - add Service-Type (= Frames)
+
   - allow server to provide PSK instead of passphrase for WPA-PSK
   Tunnel_password case
+
   - update full message for interim accounting updates
+
   - add Acct-Delay-Time into Accounting messages
+
   - add require_message_authenticator configuration option to require
   CoA/Disconnect-Request packets to be authenticated
+
   * started to postpone WNM-Notification frame sending by 100 ms so that the
   ST ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "hostapd on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"hostapd on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2896_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2896_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -139,7 +167,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -165,6 +193,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

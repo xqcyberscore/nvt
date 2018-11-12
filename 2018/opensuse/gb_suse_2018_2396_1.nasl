@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2396_1.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_suse_2018_2396_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2018:2396-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851862");
-  script_version("$Revision: 12236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:33:39 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2018-10858");
   script_tag(name:"cvss_base", value:"6.5");
@@ -37,21 +37,24 @@ if(description)
   script_name("SuSE Update for samba openSUSE-SU-2018:2396-1 (samba)");
   script_tag(name:"summary", value:"Check the version of samba");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"
-  This update for samba fixes the following issues:
+  script_tag(name:"insight", value:"This update for samba fixes the following issues:
 
   The following security vulnerability was fixed:
 
   - CVE-2018-10858: Fixed insufficient input validation on client directory
-  listing in libsmbclient  (bsc#1103411) 
+  listing in libsmbclient  (bsc#1103411)
 
   The following other change was made:
 
-  - s3: winbind: Fix 'winbind normalize names' in wb_getpwsid() 
+  - s3: winbind: Fix 'winbind normalize names' in wb_getpwsid()
+
   - winbind: honor 'winbind use default domain' with empty domain
   (bsc#1087303)
+
   - winbind: do not modify credentials in NTLM passthru (bsc#1068059)
+
   - net: fix net ads keytab handling (bsc#1067700)
+
   - fix vfs_ceph flock stub
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
@@ -59,7 +62,7 @@ if(description)
 
   Patch Instructions:
 
-  To install this openSUSE Security Update use the SUSE recommended 
+  To install this openSUSE Security Update use the SUSE recommended
   installation methods
   like YaST online_update or 'zypper patch'.
 
@@ -78,19 +81,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

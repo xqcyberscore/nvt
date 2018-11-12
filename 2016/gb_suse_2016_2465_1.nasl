@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2465_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2465_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for python-Jinja2 openSUSE-SU-2016:2465-1 (python-Jinja2)
 #
@@ -27,74 +27,87 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851405");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-07 05:44:06 +0200 (Fri, 07 Oct 2016)");
   script_cve_id("CVE-2014-0012");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for python-Jinja2 openSUSE-SU-2016:2465-1 (python-Jinja2)");
-  script_tag(name: "summary", value: "Check the version of python-Jinja2");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for python-Jinja2 fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of python-Jinja2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for python-Jinja2 fixes the following issues:
 
   Update to version 2.8:
+
   - Added `target` parameter to urlize function.
+
   - Added support for `followsymlinks` to the file system loader.
+
   - The truncate filter now counts the length.
+
   - Added equalto filter that helps with select filters.
+
   - Changed cache keys to use absolute file names if available instead of
   load names.
+
   - Fixed loop length calculation for some iterators.
+
   - Changed how Jinja2 enforces strings to be native strings in Python 2 to
   work when people break their default encoding.
+
   - Added :func:`make_logging_undefined` which returns an undefined
   object that logs failures into a logger.
+
   - If unmarshalling of cached data fails the template will be reloaded now.
+
   - Implemented a block ``set`` tag.
+
   - Default cache size was incrased to 400 from a low 50.
+
   - Fixed ``is number`` test to accept long integers in all Python versions.
+
   - Changed ``is number`` to accept Decimal as a number.
+
   - Added a check for default arguments followed by non-default arguments.
   This change makes ``{% macro m(x, y=1, z) %}...{% endmacro %}`` a syntax
   error. The previous behavior for this code was broken anyway (resulting
   in the default value being applied to `y`).
+
   - Add ability to use custom subclasses of
   ``jinja2.compiler.CodeGenerator`` and ``jinja2.runtime.Context`` by
   adding two new attributes to the environment (`code_generator_class` and
   `context_class`) (pull request ``#404``).
+
   - added support for context/environment/evalctx decorator functions on the
   finalize callback of the environment.
+
   - escape query strings for urlencode properly.  Previously slashes were
   not escaped in that place.
+
   - Add 'base' parameter to 'int' filter.
 
   - Update to 2.7.3 (boo#858239, CVE-2014-0012)");
-  script_tag(name: "affected", value: "python-Jinja2 on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"python-Jinja2 on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2465_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2465_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -117,6 +130,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

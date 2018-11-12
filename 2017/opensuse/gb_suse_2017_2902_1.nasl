@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2902_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2902_1.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
 #
 # SuSE Update for chromium openSUSE-SU-2017:2902-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851634");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12308 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:23:49 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2017-15386", "CVE-2017-15387", "CVE-2017-15388", "CVE-2017-15389",
                 "CVE-2017-15390", "CVE-2017-15391", "CVE-2017-15392", "CVE-2017-15393",
@@ -36,58 +36,74 @@ if(description)
                 "CVE-2017-5125", "CVE-2017-5126", "CVE-2017-5127", "CVE-2017-5128",
                 "CVE-2017-5129", "CVE-2017-5130", "CVE-2017-5131", "CVE-2017-5132",
                 "CVE-2017-5133");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:2902-1 (chromium)");
-  script_tag(name: "summary", value: "Check the version of chromium");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update to Chromium 62.0.3202.75 fixes the following security issues:
 
   - CVE-2017-5124: UXSS with MHTML
-  - CVE-2017-5125: Heap overflow in Skia
-  - CVE-2017-5126: Use after free in PDFium
-  - CVE-2017-5127: Use after free in PDFium
-  - CVE-2017-5128: Heap overflow in WebGL
-  - CVE-2017-5129: Use after free in WebAudio
-  - CVE-2017-5132: Incorrect stack manipulation in WebAssembly.
-  - CVE-2017-5130: Heap overflow in libxml2
-  - CVE-2017-5131: Out of bounds write in Skia
-  - CVE-2017-5133: Out of bounds write in Skia
-  - CVE-2017-15386: UI spoofing in Blink
-  - CVE-2017-15387: Content security bypass
-  - CVE-2017-15388: Out of bounds read in Skia
-  - CVE-2017-15389: URL spoofing in OmniBox
-  - CVE-2017-15390: URL spoofing in OmniBox
-  - CVE-2017-15391: Extension limitation bypass in Extensions.
-  - CVE-2017-15392: Incorrect registry key handling in PlatformIntegration
-  - CVE-2017-15393: Referrer leak in Devtools
-  - CVE-2017-15394: URL spoofing in extensions UI
-  - CVE-2017-15395: Null pointer dereference in ImageCapture
-  - CVE-2017-15396: Stack overflow in V8");
-  script_tag(name: "affected", value: "chromium on openSUSE Leap 42.3, openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2902_1");
+  - CVE-2017-5125: Heap overflow in Skia
+
+  - CVE-2017-5126: Use after free in PDFium
+
+  - CVE-2017-5127: Use after free in PDFium
+
+  - CVE-2017-5128: Heap overflow in WebGL
+
+  - CVE-2017-5129: Use after free in WebAudio
+
+  - CVE-2017-5132: Incorrect stack manipulation in WebAssembly.
+
+  - CVE-2017-5130: Heap overflow in libxml2
+
+  - CVE-2017-5131: Out of bounds write in Skia
+
+  - CVE-2017-5133: Out of bounds write in Skia
+
+  - CVE-2017-15386: UI spoofing in Blink
+
+  - CVE-2017-15387: Content security bypass
+
+  - CVE-2017-15388: Out of bounds read in Skia
+
+  - CVE-2017-15389: URL spoofing in OmniBox
+
+  - CVE-2017-15390: URL spoofing in OmniBox
+
+  - CVE-2017-15391: Extension limitation bypass in Extensions.
+
+  - CVE-2017-15392: Incorrect registry key handling in PlatformIntegration
+
+  - CVE-2017-15393: Referrer leak in Devtools
+
+  - CVE-2017-15394: URL spoofing in extensions UI
+
+  - CVE-2017-15395: Null pointer dereference in ImageCapture
+
+  - CVE-2017-15396: Stack overflow in V8");
+  script_tag(name:"affected", value:"chromium on openSUSE Leap 42.3, openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2017:2902_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.3)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -122,7 +138,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -160,6 +176,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

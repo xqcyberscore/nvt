@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1099_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_1099_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2017:1099-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851540");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-25 06:34:14 +0200 (Tue, 25 Apr 2017)");
   script_cve_id("CVE-2017-5429", "CVE-2017-5443", "CVE-2017-5444", "CVE-2017-5446",
                 "CVE-2017-5447", "CVE-2017-5448", "CVE-2017-5449", "CVE-2017-5460",
@@ -38,60 +38,73 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2017:1099-1 (Mozilla)");
-  script_tag(name: "summary", value: "Check the version of Mozilla");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Mozilla");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mozilla Firefox was updated to Firefox 52.1.0esr.
 
   The following vulnerabilities were fixed (bsc#1035082):
 
   - CVE-2017-5443: Out-of-bounds write during BinHex decoding
+
   - CVE-2017-5429: Memory safety bugs fixed in Firefox 53, Firefox ESR 45.9,
   and Firefox ESR 52.1
+
   - CVE-2017-5464: Memory corruption with accessibility and DOM manipulation
+
   - CVE-2017-5465: Out-of-bounds read in ConvolvePixel
+
   - CVE-2017-5466: Origin confusion when reloading isolated data:text/html
   URL
+
   - CVE-2017-5467: Memory corruption when drawing Skia content
+
   - CVE-2017-5460: Use-after-free in frame selection
+
   - CVE-2017-5461: Out-of-bounds write in Base64 encoding in NSS
+
   - CVE-2017-5448: Out-of-bounds write in ClearKeyDecryptor
+
   - CVE-2017-5449: Crash during bidirectional unicode manipulation with
   animation
+
   - CVE-2017-5446: Out-of-bounds read when HTTP/2 DATA frames are sent with
   incorrect data
+
   - CVE-2017-5447: Out-of-bounds read during glyph processing
+
   - CVE-2017-5444: Buffer overflow while parsing
   application/http-index-format content
 
   The package is now following the ESR 52 branch:
 
   - Enable plugin support by default
-  - service workers are disabled by default
-  - push notifications are disabled by default
-  - WebAssembly (wasm) is disabled
-  - Less use of multiprocess architecture Electrolysis (e10s)");
-  script_tag(name: "affected", value: "Mozilla on openSUSE Leap 42.2, openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1099_1");
+  - service workers are disabled by default
+
+  - push notifications are disabled by default
+
+  - WebAssembly (wasm) is disabled
+
+  - Less use of multiprocess architecture Electrolysis (e10s)");
+  script_tag(name:"affected", value:"Mozilla on openSUSE Leap 42.2, openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"openSUSE-SU", value:"2017:1099_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -144,7 +157,7 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -200,6 +213,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

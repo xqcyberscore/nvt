@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1329_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2016_1329_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for ntp openSUSE-SU-2016:1329-1 (ntp)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851318");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:22:13 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7974", "CVE-2016-1547",
                 "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551",
@@ -37,55 +37,61 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ntp openSUSE-SU-2016:1329-1 (ntp)");
-  script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of ntp");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for ntp to 4.2.8p7 fixes the following issues:
 
   * CVE-2016-1547, bsc#977459: Validate crypto-NAKs, AKA: CRYPTO-NAK DoS.
+
   * CVE-2016-1548, bsc#977461: Interleave-pivot
+
   * CVE-2016-1549, bsc#977451: Sybil vulnerability: ephemeral association
   attack.
+
   * CVE-2016-1550, bsc#977464: Improve NTP security against buffer
   comparison timing attacks.
+
   * CVE-2016-1551, bsc#977450: Refclock impersonation vulnerability
+
   * CVE-2016-2516, bsc#977452: Duplicate IPs on unconfig directives will
   cause an assertion botch in ntpd.
+
   * CVE-2016-2517, bsc#977455: remote configuration trustedkey/
   requestkey/controlkey values are not properly validated.
+
   * CVE-2016-2518, bsc#977457: Crafted addpeer with hmode   7 causes array
   wraparound with MATCH_ASSOC.
+
   * CVE-2016-2519, bsc#977458: ctl_getitem() return value not always checked.
+
   * This update also improves the fixes for: CVE-2015-7704, CVE-2015-7705,
   CVE-2015-7974
 
   Bugs fixed:
+
   - Restrict the parser in the startup script to the first
   occurrence of 'keys' and 'controlkey' in ntp.conf (bsc#957226).
 
   This update was imported from the SUSE:SLE-12-SP1:Update update project.");
-  script_tag(name: "affected", value: "ntp on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ntp on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1329_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1329_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -114,6 +120,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2597_1.nasl 11359 2018-09-12 12:40:08Z asteins $
+# $Id: gb_suse_2018_2597_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for libressl openSUSE-SU-2018:2597-1 (libressl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851876");
-  script_version("$Revision: 11359 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 14:40:08 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:19 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-12434", "CVE-2018-8970");
   script_tag(name:"cvss_base", value:"5.8");
@@ -38,17 +38,19 @@ if(description)
   script_tag(name:"summary", value:"Check the version of libressl");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
-  script_tag(name:"insight", value:"
-  This update for libressl to version 2.8.0 fixes the following issues:
+  script_tag(name:"insight", value:"This update for libressl to version 2.8.0 fixes the following issues:
 
   Security issues fixed:
 
   - CVE-2018-12434: Avoid a timing side-channel leak when generating DSA and
   ECDSA signatures. (boo#1097779)
+
   - Reject excessively large primes in DH key generation.
+
   - CVE-2018-8970: Fixed a bug in int_x509_param_set_hosts, calling strlen()
   if name length provided is 0 to match the OpenSSL behaviour.
   (boo#1086778)
+
   - Fixed an out-of-bounds read and crash in DES-fcrypt (boo#1065363)
 
   You can find a detailed list of changes
@@ -76,19 +78,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

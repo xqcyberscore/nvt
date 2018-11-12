@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0377_1.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_suse_2013_0377_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2013:0377-1 (java-1_7_0-openjdk)
 #
@@ -24,85 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "java-1_7_0-openjdk was updated to icedtea-2.3.6
-  (bnc#803379) containing various security and bugfixes:
-
-  * Security fixes
-  - S6563318, CVE-2013-0424: RMI data sanitization
-  - S6664509, CVE-2013-0425: Add logging context
-  - S6664528, CVE-2013-0426: Find log level matching its
-  name or value given at construction time
-  - S6776941: CVE-2013-0427: Improve thread pool shutdown
-  - S7141694, CVE-2013-0429: Improving CORBA internals
-  - S7173145: Improve in-memory representation of
-  splashscreens
-  - S7186945: Unpack200 improvement
-  - S7186946: Refine unpacker resource usage
-  - S7186948: Improve Swing data validation
-  - S7186952, CVE-2013-0432: Improve clipboard access
-  - S7186954: Improve connection performance
-  - S7186957: Improve Pack200 data validation
-  - S7192392, CVE-2013-0443: Better validation of client
-  keys
-  - S7192393, CVE-2013-0440: Better Checking of order of
-  TLS Messages
-  - S7192977, CVE-2013-0442: Issue in toolkit thread
-  - S7197546, CVE-2013-0428: (proxy) Reflect about creating
-  reflective proxies
-  - S7200491: Tighten up JTable layout code
-  - S7200493, CVE-2013-0444: Improve cache handling
-  - S7200499: Better data validation for options
-  - S7200500: Launcher better input validation
-  - S7201064: Better dialogue checking
-  - S7201066, CVE-2013-0441: Change modifiers on unused
-  fields
-  - S7201068, CVE-2013-0435: Better handling of UI elements
-  - S7201070: Serialization to conform to protocol
-  - S7201071, CVE-2013-0433: InetSocketAddress
-  serialization issue
-  - S8000210: Improve JarFile code quality
-  - S8000537, CVE-2013-0450: Contextualize
-  RequiredModelMBean class
-  - S8000539, CVE-2013-0431: Introspect JMX data handling
-  - S8000540, CVE-2013-1475: Improve IIOP type reuse
-  management
-  - S8000631, CVE-2013-1476: Restrict access to class
-  constructor
-  - S8001235, CVE-2013-0434: Improve JAXP HTTP handling
-  - S8001242: Improve RMI HTTP conformance
-  - S8001307: Modify ACC_SUPER behavior
-  - S8001972, CVE-2013-1478: Improve image processing
-  - S8002325, CVE-2013-1480: Improve management of images
-  * Backports
-  - S7057320:
-  test/java/util/concurrent/Executors/AutoShutdown.java
-  failing intermittently
-  - S7083664: TEST_BUG: test hard code of using c:/temp but
-  this dir might not exist
-  - S7107613: scalability blocker in
-  javax.crypto.CryptoPermissions
-  - S7107616: scalability blocker in
-  javax.crypto.JceSecurityManager
-  - S7146424: Wildcard expansion for single entry classpath
-  - S7160609: [macosx] JDK crash in libjvm.dylib ( C
-  [GeForceGLDriver+0x675a] gldAttachDrawable+0x941)
-  - S7160951: [macosx] ActionListener called t ... 
-
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "java-1_7_0-openjdk on openSUSE 12.2";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00001.html");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00001.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850419");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:35 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0428", "CVE-2013-0429", "CVE-2013-0431", "CVE-2013-0432",
@@ -112,32 +39,138 @@ if(description)
                 "CVE-2013-1480");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "openSUSE-SU", value: "2013:0377_1");
+  script_xref(name:"openSUSE-SU", value:"2013:0377_1");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2013:0377-1 (java-1_7_0-openjdk)");
 
-  script_tag(name: "summary" , value: "Check for the Version of java-1_7_0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1_7_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.2");
+  script_tag(name:"affected", value:"java-1_7_0-openjdk on openSUSE 12.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_tag(name:"insight", value:"java-1_7_0-openjdk was updated to icedtea-2.3.6
+  (bnc#803379) containing various security and bugfixes:
+
+  * Security fixes
+
+  - S6563318, CVE-2013-0424: RMI data sanitization
+
+  - S6664509, CVE-2013-0425: Add logging context
+
+  - S6664528, CVE-2013-0426: Find log level matching its
+  name or value given at construction time
+
+  - S6776941: CVE-2013-0427: Improve thread pool shutdown
+
+  - S7141694, CVE-2013-0429: Improving CORBA internals
+
+  - S7173145: Improve in-memory representation of
+  splashscreens
+
+  - S7186945: Unpack200 improvement
+
+  - S7186946: Refine unpacker resource usage
+
+  - S7186948: Improve Swing data validation
+
+  - S7186952, CVE-2013-0432: Improve clipboard access
+
+  - S7186954: Improve connection performance
+
+  - S7186957: Improve Pack200 data validation
+
+  - S7192392, CVE-2013-0443: Better validation of client
+  keys
+
+  - S7192393, CVE-2013-0440: Better Checking of order of
+  TLS Messages
+
+  - S7192977, CVE-2013-0442: Issue in toolkit thread
+
+  - S7197546, CVE-2013-0428: (proxy) Reflect about creating
+  reflective proxies
+
+  - S7200491: Tighten up JTable layout code
+
+  - S7200493, CVE-2013-0444: Improve cache handling
+
+  - S7200499: Better data validation for options
+
+  - S7200500: Launcher better input validation
+
+  - S7201064: Better dialogue checking
+
+  - S7201066, CVE-2013-0441: Change modifiers on unused
+  fields
+
+  - S7201068, CVE-2013-0435: Better handling of UI elements
+
+  - S7201070: Serialization to conform to protocol
+
+  - S7201071, CVE-2013-0433: InetSocketAddress
+  serialization issue
+
+  - S8000210: Improve JarFile code quality
+
+  - S8000537, CVE-2013-0450: Contextualize
+  RequiredModelMBean class
+
+  - S8000539, CVE-2013-0431: Introspect JMX data handling
+
+  - S8000540, CVE-2013-1475: Improve IIOP type reuse
+  management
+
+  - S8000631, CVE-2013-1476: Restrict access to class
+  constructor
+
+  - S8001235, CVE-2013-0434: Improve JAXP HTTP handling
+
+  - S8001242: Improve RMI HTTP conformance
+
+  - S8001307: Modify ACC_SUPER behavior
+
+  - S8001972, CVE-2013-1478: Improve image processing
+
+  - S8002325, CVE-2013-1480: Improve management of images
+
+  * Backports
+
+  - S7057320:
+  test/java/util/concurrent/Executors/AutoShutdown.java
+  failing intermittently
+
+  - S7083664: TEST_BUG: test hard code of using c:/temp but
+  this dir might not exist
+
+  - S7107613: scalability blocker in
+  javax.crypto.CryptoPermissions
+
+  - S7107616: scalability blocker in
+  javax.crypto.JceSecurityManager
+
+  - S7146424: Wildcard expansion for single entry classpath
+
+  - S7160609: [macosx] JDK crash in libjvm.dylib ( C
+  [GeForceGLDriver+0x675a] gldAttachDrawable+0x941)
+
+  - S7160951: [macosx] ActionListener called t ...
+
+  Description truncated, for more information please check the Reference URL");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE12.2")
 {
@@ -196,6 +229,6 @@ if(release == "openSUSE12.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

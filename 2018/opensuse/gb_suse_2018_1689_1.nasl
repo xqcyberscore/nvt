@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1689_1.nasl 10565 2018-07-23 05:20:18Z asteins $
+# $Id: gb_suse_2018_1689_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851785");
-  script_version("$Revision: 10565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 07:20:18 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:48:03 +0200 (Fri, 15 Jun 2018)");
-  script_cve_id("CVE-2016-1000338", "CVE-2016-1000339", "CVE-2016-1000340", "CVE-2016-1000341", 
-                "CVE-2016-1000342", "CVE-2016-1000343", "CVE-2016-1000344", "CVE-2016-1000345", 
+  script_cve_id("CVE-2016-1000338", "CVE-2016-1000339", "CVE-2016-1000340", "CVE-2016-1000341",
+                "CVE-2016-1000342", "CVE-2016-1000343", "CVE-2016-1000344", "CVE-2016-1000345",
                 "CVE-2016-1000346", "CVE-2016-1000352", "CVE-2017-13098");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)");
   script_tag(name:"summary", value:"Check the version of bouncycastle");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-  This update for bouncycastle to version 1.59 fixes the following issues:
+  script_tag(name:"insight", value:"This update for bouncycastle to version 1.59 fixes the following issues:
 
   These security issues were fixed:
 
@@ -51,46 +50,57 @@ on the target host.");
   was negotiated. An attacker can recover the private key from a
   vulnerable application. This vulnerability is referred to as 'ROBOT'
   (bsc#1072697).
+
   - CVE-2016-1000338: Ensure full validation of ASN.1 encoding of signature
   on verification. It was possible to inject extra elements in the
   sequence making up the signature and still have it validate, which in
   some cases may have allowed the introduction of 'invisible' data into a
   signed structure (bsc#1095722).
+
   - CVE-2016-1000339: Prevent AESEngine key information leak via lookup
   table accesses (boo#1095853).
+
   - CVE-2016-1000340: Preventcarry propagation bugs in the implementation of
   squaring for several raw math classes (boo#1095854).
+
   - CVE-2016-1000341: Fix DSA signature generation vulnerability to timing
   attack (boo#1095852).
+
   - CVE-2016-1000341: DSA signature generation was vulnerable to timing
   attack. Where timings can be closely observed for the generation of
   signatures may have allowed an attacker to gain information about the
   signature's k value and ultimately the private value as well
   (bsc#1095852).
+
   - CVE-2016-1000342: Ensure that ECDSA does fully validate ASN.1 encoding
   of signature on verification. It was possible to inject extra elements
   in the sequence making up the signature and still have it validate,
   which in some cases may have allowed the introduction of 'invisible'
   data into a signed structure (bsc#1095850).
+
   - CVE-2016-1000343: Prevent weak default settings for private DSA key pair
   generation (boo#1095849).
+
   - CVE-2016-1000344: Removed DHIES from the provider to disable the unsafe
   usage
   of ECB mode (boo#1096026).
+
   - CVE-2016-1000345: The DHIES/ECIES CBC mode was vulnerable to padding
   oracle attack. In an environment where timings can be easily observed,
   it was possible with enough observations to identify when the decryption
   is failing due to padding (bsc#1096025).
+
   - CVE-2016-1000346: The other party DH public key was not fully validated.
   This could have caused issues as invalid keys could be used to reveal
   details about the other party's private key where static Diffie-Hellman
   is in use (bsc#1096024).
+
   - CVE-2016-1000352: Remove ECIES from the provider to disable the unsafe
   usage
   of ECB mode (boo#1096022).
 
 
-  Patch Instr ... 
+  Patch Instr ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"bouncycastle on openSUSE Leap 42.3");
@@ -103,19 +113,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

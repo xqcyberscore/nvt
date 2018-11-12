@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1418_1.nasl 10932 2018-08-13 02:58:36Z ckuersteiner $
+# $Id: gb_suse_2018_1418_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:1418-1 (Linux Kernel)
 #
@@ -27,22 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851762");
-  script_version("$Revision: 10932 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 04:58:36 +0200 (Mon, 13 Aug 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 05:47:55 +0200 (Fri, 25 May 2018)");
-  script_cve_id("CVE-2017-18257", "CVE-2018-1000199", "CVE-2018-10087", "CVE-2018-10124", 
-                "CVE-2018-1065", "CVE-2018-1130", "CVE-2018-3639", "CVE-2018-5803", 
+  script_cve_id("CVE-2017-18257", "CVE-2018-1000199", "CVE-2018-10087", "CVE-2018-10124",
+                "CVE-2018-1065", "CVE-2018-1130", "CVE-2018-3639", "CVE-2018-5803",
                 "CVE-2018-7492", "CVE-2018-8781", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:1418-1 (Linux Kernel)");
   script_tag(name:"summary", value:"Check the version of Linux Kernel");
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present 
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
-  script_tag(name:"insight", value:"
-
-  The openSUSE Leap 42.3 kernel was updated to 4.4.132 to receive various
+  script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.132 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
@@ -55,11 +53,15 @@ on the target host.");
 
   - auto: Kernel detects whether your CPU model contains an implementation
   of Speculative Store Bypass and picks the most appropriate mitigation.
+
   - on: disable Speculative Store Bypass
+
   - off: enable Speculative Store Bypass
+
   - prctl: Control Speculative Store Bypass per thread via prctl.
   Speculative Store Bypass is enabled for a process by default. The
   state of the control is inherited on fork.
+
   - seccomp: Same as 'prctl' above, but all seccomp threads will disable
   SSB unless they explicitly opt out.
 
@@ -70,21 +72,27 @@ on the target host.");
   /sys/devices/system/cpu/vulnerabilities/spec_store_bypass file, containing:
 
   - 'Vulnerable'
+
   - 'Mitigation: Speculative Store Bypass disabled'
+
   - 'Mitigation: Speculative Store Bypass disabled via prctl'
+
   - 'Mitigation: Speculative Store Bypass disabled via prctl and seccomp'
 
   - CVE-2017-18257: The __get_data_block function in fs/f2fs/data.c allowed
   local users to cause a denial of service (integer overflow and loop) via
   crafted use of the open and fallocate system calls with an FS_IOC_FIEMAP
   ioctl. (bnc#1088241)
+
   - CVE-2018-1130: Linux kernel was vulnerable to a null pointer dereference
   in dccp_write_xmit() function in net/dccp/output.c in that allowed a
   local user to cause a denial of service by a number of certain crafted
   system calls (bnc#1092904).
+
   - CVE-2018-5803: An error in the _sctp_make_chunk() function when handling
   SCTP, packet length could have been exploited by a malicious local user
   to cause a kernel crash and a DoS. (bnc#1083900).
+
   - CVE-2018-1065: The netfilter subsystem mishandled the case of a rule
   blob that contains a jump but lacks a user-defined chain, which allowed
   local users to cause a denial of service (NULL pointer dereference) by
@@ -92,9 +100,10 @@ on the target host.");
   arpt_do_table in net/ipv4/netfilter/arp_tables.c, ipt_do_table in
   net/ipv4/netfilter/ip_tables.c, and ip6t_do_table in
   net/ipv6/netfilter/ip6_tables.c (bnc#1083650).
+
   - CVE-2018-7492: A NULL pointer dereference was found in the
   net/rds/rdma.c __rds_rdma_map() function that allowed local attackers to
-  ... 
+  ...
 
   Description truncated, for more information please check the Reference URL");
   script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
@@ -107,19 +116,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

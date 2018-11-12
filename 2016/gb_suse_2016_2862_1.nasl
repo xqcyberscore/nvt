@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2862_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2862_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2862-1 (java-1_8_0-openjdk)
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851436");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:48 +0100 (Sun, 20 Nov 2016)");
-  script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5556", "CVE-2016-5568", 
+  script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5556", "CVE-2016-5568",
                 "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2862-1 (java-1_8_0-openjdk)");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  OpenJDK java-1_8_0-openjdk was updated to jdk8u111 (icedtea 3.2.0) to fix
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenJDK java-1_8_0-openjdk was updated to jdk8u111 (icedtea 3.2.0) to fix
   the following issues:
 
   * Security fixes
@@ -70,6 +68,7 @@ of detect NVT and check if the version is vulnerable or not.");
   + S8160838, CVE-2016-5597: Better HTTP service (boo#1005528)
   + PR3206, RH1367357: lcms2: Out-of-bounds read in Type_MLU_Read()
   + CVE-2016-5556 (boo#1005524)
+
   * New features
   + PR1370: Provide option to build without debugging
   + PR1375: Provide option to strip and link debugging info after build
@@ -79,6 +78,7 @@ of detect NVT and check if the version is vulnerable or not.");
   + PR3182: Support building without pre-compiled headers
   + PR3183: Support Fedora/RHEL system crypto policy
   + PR3221: Use pkgconfig to detect Kerberos CFLAGS and libraries
+
   * Import of OpenJDK 8 u102 build 14
   + S4515292: ReferenceType.isStatic() returns true for arrays
   + S4858370: JDWP: Memory Leak: GlobalRefs never deleted when
@@ -95,32 +95,29 @@ of detect NVT and check if the version is vulnerable or not.");
   algorithms
   + S8043836: Need new tests for AES cipher
   + S8044199: Tests for RSA keys and key specifications
-  +  ... 
+  +  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java-1_8_0-openjdk on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2862_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2862_1");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name: "summary" , value: "Check for the Version of java-1_8_0-openjdk");
+  script_tag(name:"summary", value:"Check for the Version of java-1_8_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -197,6 +194,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

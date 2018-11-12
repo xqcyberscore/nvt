@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2694_1.nasl 11771 2018-10-08 05:52:02Z asteins $
+# $Id: gb_suse_2018_2694_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2018:2694-1 (php5)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851889");
-  script_version("$Revision: 11771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-13 07:21:29 +0200 (Thu, 13 Sep 2018)");
   script_cve_id("CVE-2017-9118", "CVE-2018-10360", "CVE-2018-12882", "CVE-2018-14851");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,20 +38,22 @@ if(description)
   script_tag(name:"summary", value:"Check the version of php5");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
  on the target host.");
-  script_tag(name:"insight", value:"
-  This update for php5 fixes the following issues:
+  script_tag(name:"insight", value:"This update for php5 fixes the following issues:
 
   The following security issues were fixed:
 
   - CVE-2018-10360: Fixed an out-of-bounds read in the do_core_note function
   in readelf.c in libmagic.a, which allowed remote attackers to cause a
   denial of service via a crafted ELF file (bsc#1096984)
+
   - CVE-2018-14851: Fixed an out-of-bound read in
   exif_process_IFD_in_MAKERNOTE, which could be exploited by an attacker
   via crafted JPG files, and could result in an application crash.
   (bsc#1103659)
+
   - CVE-2018-12882: Fixed an use-after-free in exif_read_from_impl in
   ext/exif/exif.c (bsc#1099098)
+
   - CVE-2017-9118: Fixed an out of bounds access in php_pcre_replace_impl
   via a crafted preg_replace call (bsc#1105466)
 
@@ -79,19 +81,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

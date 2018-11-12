@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2599_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_2599_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for postgresql10 openSUSE-SU-2018:2599-1 (postgresql10)
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851957");
-  script_version("$Revision: 12257 $");
+  script_version("$Revision: 12283 $");
   script_cve_id("CVE-2018-10915", "CVE-2018-10925", "CVE-2018-1115");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:22:52 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for postgresql10 openSUSE-SU-2018:2599-1 (postgresql10)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2599_1");
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00006.html");
@@ -70,6 +70,7 @@ if(description)
   security issue. After installing this update, administrators should
   update adminpack by performing ALTER EXTENSION adminpack UPDATE in each
   database in which adminpack is installed (bsc#1091610).
+
   - CVE-2018-10915: libpq failed to properly reset its internal state
   between connections. If an affected version of libpq was used with
   'host' or 'hostaddr' connection parameters from untrusted input,
@@ -77,6 +78,7 @@ if(description)
   obtain access to higher privileged connections or potentially cause
   other impact SQL injection, by causing the PQescape() functions to
   malfunction (bsc#1104199)
+
   - CVE-2018-10925: Add missing authorization check on certain statements
   involved with 'INSERT ... ON CONFLICT DO UPDATE'. An attacker with
   'CREATE TABLE' privileges could have exploited this to read arbitrary

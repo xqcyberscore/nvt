@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1373_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1373_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for php5 openSUSE-SU-2016:1373-1 (php5)
 #
@@ -27,59 +27,58 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851319");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-21 05:21:12 +0200 (Sat, 21 May 2016)");
-  script_cve_id("CVE-2015-8866", "CVE-2015-8867", "CVE-2016-4070", "CVE-2016-4071", 
+  script_cve_id("CVE-2015-8866", "CVE-2015-8867", "CVE-2016-4070", "CVE-2016-4071",
                 "CVE-2016-4073");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2016:1373-1 (php5)");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for php5 fixes the following security issues:
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for php5 fixes the following security issues:
 
   - CVE-2016-4073: A remote attacker could have caused denial of service, or
   possibly execute arbitrary code, due to incorrect handling of string
   length calculations in mb_strcut() (bsc#977003)
+
   - CVE-2015-8867: The PHP function openssl_random_pseudo_bytes() did not
   return cryptographically secure random bytes (bsc#977005)
+
   - CVE-2016-4070: The libxml_disable_entity_loader() setting was shared
   between threads, which could have resulted in XML external entity
   injection and entity expansion issues (bsc#976997)
+
   - CVE-2015-8866: A remote attacker could have caused denial of service due
   to incorrect handling of large strings in php_raw_url_encode()
   (bsc#976996)
+
   - CVE-2016-4071: A remote attacker could have caused denial of service, or
   possibly execute arbitrary code, due to incorrect handling of string
   formatting in php_snmp_error() (bsc#977000)
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "php5 on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"php5 on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1373_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1373_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -774,6 +773,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

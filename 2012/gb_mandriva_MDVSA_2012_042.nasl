@@ -28,8 +28,8 @@ if(description)
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:042");
   script_oid("1.3.6.1.4.1.25623.1.0.831652");
   script_cve_id("CVE-2012-2392", "CVE-2012-2393", "CVE-2012-2394");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12297 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 17:00:07 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:58:42 +0530 (Fri, 03 Aug 2012)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,9 +47,12 @@ if(description)
   script_tag(name:"insight", value:"Multiple vulnerabilities was found and corrected in Wireshark:
 
   * The ANSI A dissector could dereference a NULL pointer and crash.
+
   * The IEEE 802.11 dissector could go into an infinite loop.
+
   * The pcap and pcap-ng file parsers could crash trying to read
   ERF data.
+
   * The MP2T dissector could try to allocate too much memory and crash.
 
   This advisory provides the latest version of Wireshark (1.6.6) which

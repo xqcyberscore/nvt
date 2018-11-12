@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0730_1.nasl 9141 2018-03-20 06:46:48Z cfischer $
+# $Id: gb_suse_2018_0730_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2018:0730-1 (mariadb)
 #
@@ -27,20 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851719");
-  script_version("$Revision: 9141 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 07:46:48 +0100 (Tue, 20 Mar 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-18 08:38:43 +0100 (Sun, 18 Mar 2018)");
-  script_cve_id("CVE-2018-2562", "CVE-2018-2612", "CVE-2018-2622", "CVE-2018-2640", 
+  script_cve_id("CVE-2018-2562", "CVE-2018-2612", "CVE-2018-2622", "CVE-2018-2640",
                 "CVE-2018-2665", "CVE-2018-2668");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2018:0730-1 (mariadb)");
-  script_tag(name: "summary", value: "Check the version of mariadb");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for mariadb fixes the following issues:
+  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for mariadb fixes the following issues:
 
   MariaDB was updated to 10.0.34 (bsc#1078431)
 
@@ -53,28 +51,33 @@ of detect NVT and check if the version is vulnerable or not.");
   unauthorized ability to cause a hang or frequently repeatable crash
   (complete DOS) of MySQL Server as well as unauthorized update, insert or
   delete access to some of MySQL Server accessible data.
+
   - CVE-2018-2622: Vulnerability in the MySQL Server subcomponent: Server:
   DDL. Easily exploitable vulnerability allowed low privileged attacker
   with network access via multiple protocols to compromise MySQL Server.
   Successful attacks of this vulnerability can result in unauthorized
   ability to cause a hang or frequently repeatable crash (complete DOS) of
   MySQL Server.
+
   - CVE-2018-2640: Vulnerability in the MySQL Server subcomponent: Server:
   Optimizer. Successful attacks of this vulnerability can result in
   unauthorized ability to cause a hang or frequently repeatable crash
   (complete DOS) of MySQL Server.
+
   - CVE-2018-2665: Vulnerability in the MySQL Server subcomponent: Server:
   Optimizer. Easily exploitable vulnerability allowed low privileged
   attacker with network access via multiple protocols to compromise MySQL
   Server. Successful attacks of this vulnerability can result in
   unauthorized ability to cause a hang or frequently repeatable crash
   (complete DOS) of MySQL Server.
+
   - CVE-2018-2668: Vulnerability in the MySQL Server subcomponent: Server:
   Optimizer. Easily exploitable vulnerability allowed low privileged
   attacker with network access via multiple protocols to compromise MySQL
   Server. Successful attacks of this vulnerability can result in
   unauthorized ability to cause a hang or frequently repeatable crash
   (complete DOS) of MySQL Server.
+
   - CVE-2018-2612: Vulnerability in the MySQL Server subcomponent: InnoDB.
   Easily exploitable vulnerability allowed high privileged attacker with
   network access via multiple protocols to compromise MySQL Server.
@@ -86,32 +89,29 @@ of detect NVT and check if the version is vulnerable or not.");
 
   The MariaDB external release notes and changelog for this release:
 
-  * <a  rel='nofollow' hr ... 
+  * <a  rel='nofollow' hr ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "mariadb on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"mariadb on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2018:0730_1");
-  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2018-03/msg00046.html");
+  script_xref(name:"openSUSE-SU", value:"2018:0730_1");
+  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-03/msg00046.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -248,6 +248,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

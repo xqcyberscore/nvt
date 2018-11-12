@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0404_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2015_0404_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2015:0404-1 (MozillaFirefox,)
 #
@@ -27,79 +27,98 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850638");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 05:55:07 +0100 (Mon, 02 Mar 2015)");
   script_cve_id("CVE-2014-1569", "CVE-2015-0819", "CVE-2015-0820", "CVE-2015-0821", "CVE-2015-0822", "CVE-2015-0823", "CVE-2015-0824", "CVE-2015-0825", "CVE-2015-0826", "CVE-2015-0827", "CVE-2015-0828", "CVE-2015-0829", "CVE-2015-0830", "CVE-2015-0831", "CVE-2015-0832", "CVE-2015-0834", "CVE-2015-0835", "CVE-2015-0836");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2015:0404-1 (MozillaFirefox,)");
-  script_tag(name: "summary", value: "Check the version of MozillaFirefox,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2015:0404-1 (MozillaFirefox, )");
+  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox, mozilla-nss were updated to fix 18 security issues.
 
   MozillaFirefox was updated to version 36.0. These security issues were
   fixed:
+
   - CVE-2015-0835, CVE-2015-0836: Miscellaneous memory safety hazards
+
   - CVE-2015-0832: Appended period to hostnames can bypass HPKP and HSTS
   protections
+
   - CVE-2015-0830: Malicious WebGL content crash when writing strings
+
   - CVE-2015-0834: TLS TURN and STUN connections silently fail to simple TCP
   connections
+
   - CVE-2015-0831: Use-after-free in IndexedDB
+
   - CVE-2015-0829: Buffer overflow in libstagefright during MP4 video
   playback
+
   - CVE-2015-0828: Double-free when using non-default memory allocators with
   a zero-length XHR
+
   - CVE-2015-0827: Out-of-bounds read and write while rendering SVG content
+
   - CVE-2015-0826: Buffer overflow during CSS restyling
+
   - CVE-2015-0825: Buffer underflow during MP3 playback
+
   - CVE-2015-0824: Crash using DrawTarget in Cairo graphics library
+
   - CVE-2015-0823: Use-after-free in Developer Console date with OpenType
   Sanitiser
+
   - CVE-2015-0822: Reading of local files through manipulation of form
   autocomplete
+
   - CVE-2015-0821: Local files or privileged URLs in pages can be opened
   into new tabs
+
   - CVE-2015-0819: UI Tour whitelisted sites in background tab can spoof
   foreground tabs
+
   - CVE-2015-0820: Caja Compiler JavaScript sandbox bypass
 
   mozilla-nss was updated to version 3.17.4 to fix the following issues:
+
   - CVE-2014-1569: QuickDER decoder length issue (bnc#910647).
+
   - bmo#1084986: If an SSL/TLS connection fails, because client and server
   don't have any common protocol version enabled, NSS has been changed to
   report error code SSL_ERROR_UNSUPPORTED_VERSION (instead of reporting
   SSL_ERROR_NO_CYPHER_OVERLAP).
+
   - bmo#1112461: libpkix was fixed to prefer the newest certificate, if
   multiple certificates match.
+
   - bmo#1094492: fixed a memory corruption issue during failure of keypair
   generation.
+
   - bmo#1113632: fixed a failure to reload a PKCS#11 module in FIPS mode.
+
   - bmo#1119983: fixed interoperability of NSS server code with a LibreSSL
   client.");
-  script_tag(name: "affected", value: "MozillaFirefox, on openSUSE 13.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "openSUSE-SU", value: "2015:0404_1");
+  script_tag(name:"affected", value:"MozillaFirefox, on openSUSE 13.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
+  script_xref(name:"openSUSE-SU", value:"2015:0404_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.1")
 {
@@ -296,6 +315,6 @@ if(release == "openSUSE13.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

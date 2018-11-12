@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1101_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1101_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for systemd openSUSE-SU-2016:1101-1 (systemd)
 #
@@ -27,25 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851281");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-20 05:19:14 +0200 (Wed, 20 Apr 2016)");
   script_cve_id("CVE-2014-9770", "CVE-2015-8842");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for systemd openSUSE-SU-2016:1101-1 (systemd)");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This update for systemd fixes several issues.
+  script_tag(name:"summary", value:"Check the version of systemd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for systemd fixes several issues.
 
   These security issues were fixed:
+
   - CVE-2014-9770, CVE-2015-8842: Don't allow read access to journal files
   to users (boo#972612)
 
   These non-security issues were fixed:
+
   - Import commit 523777609a04fe9e590420e89f94ef07e3719baa: e5e362a udev:
   exclude MD from block device ownership event locking 8839413 udev:
   really exclude device-mapper from block device ownership event locking
@@ -57,7 +57,8 @@ of detect NVT and check if the version is vulnerable or not.");
   tmpfiles: add ability to mask access mode by pre-existing access mode on
   files/directories 07e2d60 tmpfiles: get rid of 'm' lines d504e28
   tmpfiles: various modernizations f97250d systemctl: no need to pass
-  --all if inactive is explicitly requested in list-units (boo#967122)
+
+  - -all if inactive is explicitly requested in list-units (boo#967122)
   2686573 fstab-generator: fix automount option and don't start associated
   mount unit at boot (boo#970423) 5c1637d login: support more than just
   power-gpio-key (fate#318444) (boo#970860) 2c95ecd logind: add standard
@@ -70,31 +71,29 @@ of detect NVT and check if the version is vulnerable or not.");
   parameter from emergency, rescue and console-shell.service (boo#959886)
   1d6d840 Fix wrong substitution variable name in
   systemd-udev-root-symlink.service.in (boo#964355)
+
   - Don't ship boot.udev and systemd-journald.init anymore. It was used
   during the systemd transition when both sysvinit and systemd could be
   used on the same system");
-  script_tag(name: "affected", value: "systemd on openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"systemd on openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1101_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1101_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -327,6 +326,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

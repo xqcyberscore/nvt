@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0456_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_0456_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:0456-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851506");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:16:41 +0100 (Wed, 22 Feb 2017)");
   script_cve_id("CVE-2015-8709", "CVE-2016-7117", "CVE-2016-8645", "CVE-2016-9793",
                 "CVE-2016-9806", "CVE-2016-9919", "CVE-2017-2583", "CVE-2017-2584",
@@ -37,9 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2017:0456-1 (Linux Kernel)");
-  script_tag(name: "summary", value: "Check the version of Linux Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 42.2 kernel was updated to
   4.4.42 stable release.
 
@@ -49,65 +48,70 @@ of detect NVT and check if the version is vulnerable or not.");
   function in net/socket.c in the Linux kernel allowed remote attackers to
   execute arbitrary code via vectors involving a recvmmsg system call that
   is mishandled during error processing (bnc#1003077 1003253).
+
   - CVE-2017-5576, CVE-2017-5577: A buffer overflow in the VC4_SUBMIT_CL
   IOCTL in the VideoCore DRM driver for Raspberry Pi was fixed.
   (bsc#1021294)
+
   - CVE-2017-5551: tmpfs: Fixed a bug that could have allowed users to set
   setgid bits on files they don't down. (bsc#1021258).
+
   - CVE-2017-2583: A Linux kernel built with the Kernel-based Virtual
   Machine (CONFIG_KVM) support was vulnerable to an incorrect segment
   selector(SS) value error. A user/process inside guest could have used
   this flaw to crash the guest resulting in DoS or potentially escalate
   their privileges inside guest. (bsc#1020602).
+
   - CVE-2017-2584: arch/x86/kvm/emulate.c in the Linux kernel allowed local
   users to obtain sensitive information from kernel memory or cause a
   denial of service (use-after-free) via a crafted application that
   leverages instruction emulation for fxrstor, fxsave, sgdt, and sidt
   (bnc#1019851).
+
   - CVE-2015-8709: ** DISPUTED ** kernel/ptrace.c in the Linux kernel
   mishandled uid and gid mappings, which allowed local users to gain
   privileges by establishing a user namespace, waiting for a root process
   to enter that namespace with an unsafe uid or gid, and then using the
   ptrace system call.  NOTE: the vendor states 'there is no kernel bug
   here (bnc#959709 bsc#960561).
+
   - CVE-2016-9806: Race condition in the netlink_dump function in
   net/netlink/af_netlink.c in the Linux kernel allowed local users to
   cause a denial of service (double free) or possibly have unspecified
   other impact via a crafted application that made sendmsg system calls,
   leading to a free operation associated with a new dump that started
   earlier than anticipated (bnc#1013540 1017589).
+
   - CVE-2016-8645: The TCP stack in the Linux kernel mishandled skb
   truncation, which allowed local users to cause a denial of service
   (system crash) via a crafted application that made sendto system calls,
   related to net/ipv4/tcp_ipv4.c and net/ipv6/tcp_ipv6.c (bnc#1009969).
+
   - CVE-2016-9793: The sock_setsockopt function in net/core/sock.c in the
   Linux kernel mishandled negative values of sk_sndbuf and sk_rcvbuf,
   which allowed local users to cause a denial of service (memory
   corruption and system crash) or possibly hav ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Linux Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0456_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0456_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -292,6 +296,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

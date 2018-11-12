@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2290_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2290_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2016:2290-1 (Kernel)
 #
@@ -27,89 +27,93 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851390");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-13 05:46:53 +0200 (Tue, 13 Sep 2016)");
-  script_cve_id("CVE-2015-8787", "CVE-2016-1237", "CVE-2016-2847", "CVE-2016-3134", 
-                "CVE-2016-3156", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4557", 
-                "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4580", "CVE-2016-4805", 
-                "CVE-2016-4951", "CVE-2016-4998", "CVE-2016-5696", "CVE-2016-6480", 
+  script_cve_id("CVE-2015-8787", "CVE-2016-1237", "CVE-2016-2847", "CVE-2016-3134",
+                "CVE-2016-3156", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4557",
+                "CVE-2016-4569", "CVE-2016-4578", "CVE-2016-4580", "CVE-2016-4805",
+                "CVE-2016-4951", "CVE-2016-4998", "CVE-2016-5696", "CVE-2016-6480",
                 "CVE-2016-6828", "CVE-2003-1604");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:2290-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  The openSUSE Leap 42.1 kernel was updated to 4.1.31 to receive various
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.1 kernel was updated to 4.1.31 to receive various
   security and bugfixes.
 
   The following security bugs were fixed:
+
   - CVE-2016-2847: fs/pipe.c in the Linux kernel did not limit the amount of
   unread data in pipes, which allowed local users to cause a denial of
   service (memory consumption) by creating many pipes with non-default
   sizes (bnc#970948).
+
   - CVE-2016-3134: The netfilter subsystem in the Linux kernel did not
   validate certain offset fields, which allowed local users to gain
   privileges or cause a denial of service (heap memory corruption) via an
   IPT_SO_SET_REPLACE setsockopt call (bnc#971126).
+
   - CVE-2016-3156: The IPv4 implementation in the Linux kernel mishandled
   destruction of device objects, which allowed guest OS users to cause a
   denial of service (host OS networking outage) by arranging for a large
   number of IP addresses (bnc#971360).
+
   - CVE-2016-4485: The llc_cmsg_rcv function in net/llc/af_llc.c in the
   Linux kernel did not initialize a certain data structure, which allowed
   attackers to obtain sensitive information from kernel stack memory by
   reading a message (bnc#978821).
+
   - CVE-2016-4486: The rtnl_fill_link_ifmap function in net/core/rtnetlink.c
   in the Linux kernel did not initialize a certain data structure, which
   allowed local users to obtain sensitive information from kernel stack
   memory by reading a Netlink message (bnc#978822).
+
   - CVE-2016-4557: The replace_map_fd_with_map_ptr function in
   kernel/bpf/verifier.c in the Linux kernel did not properly maintain an
   fd data structure, which allowed local users to gain privileges or cause
   a denial of service (use-after-free) via crafted BPF instructions that
   reference an incorrect file descriptor (bnc#979018).
+
   - CVE-2016-4580: The x25_negotiate_facilities function in
   net/x25/x25_facilities.c in the Linux kernel did not properly initialize
   a certain data structure, which allowed attackers to obtain sensitive
   information from kernel stack memory via an X.25 Call Request
   (bnc#981267).
+
   - CVE-2016-4805: Use-after-free vulnerability in
   drivers/net/ppp/ppp_generic.c in the Linux kernel allowed local users to
   cause a denial of service (memory corruption and system crash, or
   spinlock) or possibly have unspecified other impact by removing a
   network namespace, related to the ppp_register_net_channel and
   ppp_unregister_channel functions (bnc#980371).
+
   - CVE-2016-4951: The tipc_nl_publ_dump function in net/tipc/socket.c in
   the Linux kernel did not verify socket existence, which allowed local
-  users to cause a denial of service (NULL pointer derefe ... 
+  users to cause a denial of service (NULL pointer derefe ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:2290_1");
+  script_xref(name:"openSUSE-SU", value:"2016:2290_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.1");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.1")
 {
@@ -762,6 +766,6 @@ if(release == "openSUSELeap42.1")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

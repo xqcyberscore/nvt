@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1137_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_1137_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for patch openSUSE-SU-2018:1137-1 (patch)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851739");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 05:36:45 +0200 (Fri, 04 May 2018)");
   script_cve_id("CVE-2016-10713", "CVE-2018-1000156", "CVE-2018-6951");
   script_tag(name:"cvss_base", value:"6.8");
@@ -44,8 +44,10 @@ on the target host.");
 
   - CVE-2018-1000156: Malicious patch files cause ed to execute arbitrary
   commands (bsc#1088420).
+
   - CVE-2018-6951: Fixed NULL pointer dereference in the intuit_diff_type
   function in pch.c (bsc#1080918).
+
   - CVE-2016-10713: Fixed out-of-bounds access within pch_write_line() in
   pch.c (bsc#1080918).
 
@@ -73,19 +75,16 @@ on the target host.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

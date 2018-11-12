@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2502_1.nasl 12259 2018-11-08 12:33:31Z santu $
+# $Id: gb_suse_2017_2502_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for ffmpeg, openSUSE-SU-2017:2502-1 (ffmpeg,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851617");
-  script_version("$Revision: 12259 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 13:33:31 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:27:03 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2016-10190", "CVE-2016-10191", "CVE-2016-10192", "CVE-2016-9561",
                 "CVE-2017-11399", "CVE-2017-14054", "CVE-2017-14055", "CVE-2017-14056",
@@ -38,10 +38,9 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
-  script_name("SuSE Update for ffmpeg, openSUSE-SU-2017:2502-1 (ffmpeg,)");
-  script_tag(name: "summary", value: "Check the version of ffmpeg,");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
+  script_name("SuSE Update for ffmpeg, openSUSE-SU-2017:2502-1 (ffmpeg, )");
+  script_tag(name:"summary", value:"Check the version of ffmpeg.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update introduces lame and twolame.
 
   For ffmpeg2 it updates to version 2.8.13 and fixes several issues.
@@ -51,64 +50,69 @@ of detect NVT and check if the version is vulnerable or not.");
   - CVE-2017-14058: The read_data function in libavformat/hls.c did not
   restrict reload attempts for an insufficient list, which allowed remote
   attackers to cause a denial of service (infinite loop) (bsc#1056762).
+
   - CVE-2017-14057: In asf_read_marker() due to lack of an EOF (End of File)
   check might have caused huge CPU and memory consumption. When a crafted
   ASF file, which claims a large 'name_len' or 'count' field in the header
   but did not contain sufficient backing data, was provided, the loops
   over the name and markers would consume huge CPU and memory resources,
   since there is no EOF check inside these loops (bsc#1056761).
+
   - CVE-2017-14059: A DoS in cine_read_header() due to lack of an EOF check
   might have caused huge CPU and memory consumption. When a crafted CINE
   file, which claims a large 'duration' field in the header but did not
   contain sufficient backing data, was provided, the image-offset parsing
   loop would consume huge CPU and memory resources, since there is no EOF
   check inside the loop (bsc#1056763).
+
   - CVE-2017-14056: A DoS in rl2_read_header() due to lack of an EOF (End of
   File) check might have caused huge CPU and memory consumption. When a
   crafted RL2 file, which claims a large 'frame_count' field in the header
   but did not contain sufficient backing data, was provided, the loops
   (for offset and size tables) would consume huge CPU and memory
   resources, since there is no EOF check inside these loops (bsc#1056760).
+
   - CVE-2017-14055: a DoS in mv_read_header() due to lack of an EOF (End of
   File) check might have caused huge CPU and memory consumption. When a
   crafted MV file, which claims a large 'nb_frames' field in the header
   but did not contain sufficient backing data, was provided, the loop over
   the frames would consume huge CPU and memory resources, since there is
   no EOF check inside the loop (bsc#1056766).
+
   - boo#1046211: Lots of integer overflow fixes
+
   - CVE-2016-9561: The che_configure function in
   libavcodec/aacdec_template.c in FFmpeg allowed remote attackers to cause
   a denial of service (allocation of huge memory, and being killed by the
   OS) via a crafted MOV file (boo#1015120)
+
   - CVE-2017-7863: FFmpeg had an out-of-bounds write caused by a heap-based
   buffer overflow related to the decode_frame_common function in
   libavcodec/pngdec.c (boo#1034179)
+
   - CVE-2017-7865: FFmpeg had an out-of-bounds write caused by a heap-based
   buffer overflow related to t ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "ffmpeg, on openSUSE Leap 42.3");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ffmpeg, on openSUSE Leap 42.3");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:2502_1");
+  script_xref(name:"openSUSE-SU", value:"2017:2502_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {
@@ -743,6 +747,6 @@ if(release == "openSUSELeap42.3")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

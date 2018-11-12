@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3211_1.nasl 12257 2018-11-08 10:34:56Z santu $
+# $Id: gb_suse_2018_3211_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2018:3211-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851940");
-  script_version("$Revision: 12257 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 11:34:56 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:30:24 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-10919");
   script_tag(name:"cvss_base", value:"4.0");
@@ -48,9 +48,12 @@ if(description)
   Non-security bugs fixed:
 
   - Fix ctdb_mutex_ceph_rados_helper deadlock (bsc#1102230).
+
   - Allow idmap_rid to have primary group other than 'Domain Users'
   (bsc#1087931).
+
   - winbind: avoid using fstrcpy in _dual_init_connection.
+
   - Fix ntlm authentications with 'winbind use default domain = yes'
   (bsc#1068059).
 
@@ -78,19 +81,16 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.3");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.3")
 {

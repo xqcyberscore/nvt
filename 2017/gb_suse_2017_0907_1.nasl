@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0907_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0907_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for Kernel openSUSE-SU-2017:0907-1 (Kernel)
 #
@@ -27,22 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851530");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-02 06:32:15 +0200 (Sun, 02 Apr 2017)");
-  script_cve_id("CVE-2016-10200", "CVE-2016-2117", "CVE-2016-9191", "CVE-2017-2596", 
-                "CVE-2017-2636", "CVE-2017-6214", "CVE-2017-6345", "CVE-2017-6346", 
+  script_cve_id("CVE-2016-10200", "CVE-2016-2117", "CVE-2016-9191", "CVE-2017-2596",
+                "CVE-2017-2636", "CVE-2017-6214", "CVE-2017-6345", "CVE-2017-6346",
                 "CVE-2017-6347", "CVE-2017-6353", "CVE-2017-7184", "CVE-2017-5986");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2017:0907-1 (Kernel)");
-  script_tag(name: "summary", value: "Check the version of the Kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-
-  The openSUSE Leap 42.2 kernel was updated to 4.4.56 fix various security
+  script_tag(name:"summary", value:"Check the version of the Kernel");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated to 4.4.56 fix various security
   issues and bugs.
 
   The following security bugs were fixed:
@@ -54,62 +51,66 @@ of detect NVT and check if the version is vulnerable or not.");
   access) by leveraging the CAP_NET_ADMIN capability, as demonstrated
   during a Pwn2Own competition at CanSecWest 2017 for the Ubuntu 16.10
   linux-image-* package 4.8.0.41.52 (bnc#1030573).
+
   - CVE-2016-10200: Race condition in the L2TPv3 IP Encapsulation feature in
   the Linux kernel allowed local users to gain privileges or cause a
   denial of service (use-after-free) by making multiple bind system calls
   without properly ascertaining whether a socket has the SOCK_ZAPPED
   status, related to net/l2tp/l2tp_ip.c and net/l2tp/l2tp_ip6.c
   (bnc#1028415).
+
   - CVE-2017-2636: Race condition in drivers/tty/n_hdlc.c in the Linux
   kernel allowed local users to gain privileges or cause a denial of
   service (double free) by setting the HDLC line discipline (bnc#1027565).
+
   - CVE-2017-6345: The LLC subsystem in the Linux kernel did not ensure that
   a certain destructor exists in required circumstances, which allowed
   local users to cause a denial of service (BUG_ON) or possibly have
   unspecified other impact via crafted system calls (bnc#1027190).
+
   - CVE-2017-6346: Race condition in net/packet/af_packet.c in the Linux
   kernel allowed local users to cause a denial of service (use-after-free)
   or possibly have unspecified other impact via a multithreaded
   application that made PACKET_FANOUT setsockopt system calls
   (bnc#1027189).
+
   - CVE-2017-6353: net/sctp/socket.c in the Linux kernel did not properly
   restrict association peel-off operations during certain wait states,
   which allowed local users to cause a denial of service (invalid unlock
   and double free) via a multithreaded application.  NOTE: this
   vulnerability exists because of an incorrect fix for CVE-2017-5986
   (bnc#1025235).
+
   - CVE-2017-6214: The tcp_splice_read function in net/ipv4/tcp.c in the
   Linux kernel allowed remote attackers to cause a denial of service
   (infinite loop and soft lockup) via vectors involving a TCP packet with
   the URG flag (bnc#1026722).
+
   - CVE-2016-2117: The atl2_probe function in
   drivers/net/ethernet/atheros/atlx/atl2.c in the Linux kernel incorrectly
   enables scatter/gather I/O, which allowed remote attackers to obtain
-  sensitive information from kernel memory by reading packet ... 
+  sensitive information from kernel memory by reading packet ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "Kernel on openSUSE Leap 42.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:0907_1");
+  script_xref(name:"openSUSE-SU", value:"2017:0907_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap42\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {
@@ -294,6 +295,6 @@ if(release == "openSUSELeap42.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

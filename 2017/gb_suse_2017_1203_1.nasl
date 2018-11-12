@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1203_1.nasl 10012 2018-05-30 03:37:26Z ckuersteiner $
+# $Id: gb_suse_2017_1203_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
 #
 # SuSE Update for ghostscript openSUSE-SU-2017:1203-1 (ghostscript)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851550");
-  script_version("$Revision: 10012 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 05:37:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12284 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-09 06:51:10 +0200 (Tue, 09 May 2017)");
   script_cve_id("CVE-2016-10220", "CVE-2016-9601", "CVE-2017-5951", "CVE-2017-7207", "CVE-2017-8291");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ghostscript openSUSE-SU-2017:1203-1 (ghostscript)");
-  script_tag(name: "summary", value: "Check the version of ghostscript");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "
-  This update for ghostscript fixes the following security vulnerabilities:
+  script_tag(name:"summary", value:"Check the version of ghostscript");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This update for ghostscript fixes the following security vulnerabilities:
 
 
   CVE-2017-8291: A remote command execution and a -dSAFER bypass via a
@@ -62,28 +61,25 @@ if(description)
   cause a denial of service via a crafted PostScript document. (bsc#1030263)
 
   This update was imported from the SUSE:SLE-12:Update update project.");
-  script_tag(name: "affected", value: "ghostscript on openSUSE Leap 42.2, openSUSE Leap 42.1");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"ghostscript on openSUSE Leap 42.2, openSUSE Leap 42.1");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2017:1203_1");
+  script_xref(name:"openSUSE-SU", value:"2017:1203_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=(openSUSELeap42\.2|openSUSELeap42\.1)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSELeap42.2")
 {

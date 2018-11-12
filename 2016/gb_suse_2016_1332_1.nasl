@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1332_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_1332_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2016:1332-1 (mysql-community-server)
 #
@@ -27,68 +27,69 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851316");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 12294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:21:43 +0200 (Thu, 19 May 2016)");
-  script_cve_id("CVE-2015-3194", "CVE-2016-0639", "CVE-2016-0640", "CVE-2016-0641", 
-                "CVE-2016-0642", "CVE-2016-0643", "CVE-2016-0644", "CVE-2016-0646", 
-                "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649", "CVE-2016-0650", 
-                "CVE-2016-0655", "CVE-2016-0661", "CVE-2016-0665", "CVE-2016-0666", 
+  script_cve_id("CVE-2015-3194", "CVE-2016-0639", "CVE-2016-0640", "CVE-2016-0641",
+                "CVE-2016-0642", "CVE-2016-0643", "CVE-2016-0644", "CVE-2016-0646",
+                "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649", "CVE-2016-0650",
+                "CVE-2016-0655", "CVE-2016-0661", "CVE-2016-0665", "CVE-2016-0666",
                 "CVE-2016-0668", "CVE-2016-0705", "CVE-2016-2047");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2016:1332-1 (mysql-community-server)");
-  script_tag(name: "summary", value: "Check the version of mysql-community-server");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help 
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "
-  This mysql-community-server version update to 5.6.30 fixes the following
+  script_tag(name:"summary", value:"Check the version of mysql-community-server");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"This mysql-community-server version update to 5.6.30 fixes the following
   issues:
 
   Security issues fixed:
+
   - fixed CVEs (boo#962779, boo#959724): CVE-2016-0705, CVE-2016-0639,
   CVE-2015-3194, CVE-2016-0640, CVE-2016-2047, CVE-2016-0644,
   CVE-2016-0646, CVE-2016-0647, CVE-2016-0648, CVE-2016-0649,
   CVE-2016-0650, CVE-2016-0665, CVE-2016-0666, CVE-2016-0641,
   CVE-2016-0642, CVE-2016-0655, CVE-2016-0661, CVE-2016-0668, CVE-2016-0643
+
   - changes 'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-30.html'
             'http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-29.html'
 
   Bugs fixed:
+
   - don't delete the log data when migration fails
+
   - add 'log-error' and 'secure-file-priv' configuration options (added via
   configuration-tweaks.tar.bz2) [boo#963810]
+
   * add '/etc/my.cnf.d/error_log.conf' that specifies 'log-error =
   /var/log/mysql/mysqld.log'. If no path is set, the error log is
   written to '/var/lib/mysql/$HOSTNAME.err', which is not picked up by
   logrotate.
+
   * add '/etc/my.cnf.d/secure_file_priv.conf' which specifies that 'LOAD
   DATA', 'SELECT ... INTO' and 'LOAD FILE()' will only work with files
   in the directory specified by 'secure-file-priv' option
   (='/var/lib/mysql-files').");
-  script_tag(name: "affected", value: "mysql-community-server on openSUSE Leap 42.1, openSUSE 13.2");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"mysql-community-server on openSUSE Leap 42.1, openSUSE 13.2");
+  script_tag(name:"solution", value:"Please install the updated packages.");
 
-  script_xref(name: "openSUSE-SU", value: "2016:1332_1");
+  script_xref(name:"openSUSE-SU", value:"2016:1332_1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE13\.2");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "openSUSE13.2")
 {
@@ -201,6 +202,6 @@ if(release == "openSUSE13.2")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
