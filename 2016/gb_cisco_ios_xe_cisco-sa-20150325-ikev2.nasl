@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150325-ikev2.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150325-ikev2.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS Software and IOS XE Software Internet Key Exchange Version 2 Denial of Service Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-0643", "CVE-2015-0642");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco IOS Software and IOS XE Software Internet Key Exchange Version 2 Denial of Service Vulnerabilities");
 
@@ -49,7 +49,7 @@ if (description)
   script_xref(name:"URL", value:"2016/gb_cisco_ios_xe_cisco-sa-20150325-ikev2.nasl");
 
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"Devices running Cisco IOS Software or IOS XE Software contain vulnerabilities within
@@ -69,14 +69,14 @@ Semiannual Cisco IOS & XE Software Security Advisory Bundled Publication at the 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 10:42:54 +0200 (Tue, 10 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ios_xe_version.nasl");
   script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

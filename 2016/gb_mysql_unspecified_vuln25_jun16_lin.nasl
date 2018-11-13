@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln25_jun16_lin.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_mysql_unspecified_vuln25_jun16_lin.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Oracle MySQL Server Component 'Optimizer' Unspecified Vulnerability Jun16 (Linux)
 #
@@ -29,23 +29,21 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808137");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2013-3839");
   script_bugtraq_id(63109);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:44 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Server Component 'Optimizer' Unspecified Vulnerability Jun16 (Linux)");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL
   and is prone to unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of MySQL
-  with the help of detect NVT and check it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"insight", value:"Unspecified error in the MySQL Server
   component via unknown vectors related to Optimizer.");

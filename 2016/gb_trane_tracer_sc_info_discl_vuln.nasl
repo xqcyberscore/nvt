@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trane_tracer_sc_info_discl_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_trane_tracer_sc_info_discl_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Trane Tracer SC Information Exposure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:trane:tracer_sc";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106273");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-20 17:00:53 +0700 (Tue, 20 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Trane Tracer SC is prone to a information exposure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability allows an unauthorized party to obtain sensitive
 information from the contents of configuration files not protected by the web server.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_cobra_idl_dissector_dos_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_wireshark_cobra_idl_dissector_dos_vuln_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Wireshark CORBA IDL Dissector Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808284");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-6503");
   script_bugtraq_id(92162);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:31:32 +0530 (Tue, 09 Aug 2016)");
   script_name("Wireshark CORBA IDL Dissector Denial of Service Vulnerability (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   on 64-bit Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.0.5 or
-  later.
-  For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

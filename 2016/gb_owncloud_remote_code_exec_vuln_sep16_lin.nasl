@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_remote_code_exec_vuln_sep16_lin.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_owncloud_remote_code_exec_vuln_sep16_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # ownCloud Remote Code Execution Vulnerability Sep16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809285");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-7699");
   script_bugtraq_id(77329);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-23 13:05:18 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Remote Code Execution Vulnerability Sep16 (Linux)");
 
@@ -55,8 +55,7 @@ if(description)
   before 8.0.7, and 8.1.x before 8.1.2 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to ownCloud Server 7.0.9 or 8.0.7
-  or 8.1.2 or later.
-  For updates refer to http://owncloud.org");
+  or 8.1.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

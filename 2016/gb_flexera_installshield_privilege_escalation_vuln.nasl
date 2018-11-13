@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Flexera InstallShield Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:flexerasoftware:installshield:2015";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809006");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-2542");
   script_bugtraq_id(84213);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 19:16:31 +0530 (Fri, 19 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Flexera InstallShield Privilege Escalation Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Flexera InstallShield through 2015 SP1.");
 
   script_tag(name:"solution", value:"Apply the patch from the link mentioned in
-  reference.
-  For updates refer to http://www.flexerasoftware.com");
+  reference.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_flexera_installshield_detect_win.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Flexera/InstallShield/Win/Ver");
+  script_xref(name:"URL", value:"http://www.flexerasoftware.com");
   exit(0);
 }
 
@@ -92,7 +92,7 @@ if(!sysPath)
   }
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"Redist\0409\i386\dotnetfx.exe");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"Redist\0409\i386\dotnetfx.exe");
 if(!sysVer){
   exit(0);
 }

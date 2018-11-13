@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_cache_poisoning_vuln01_may16_win.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_squid_cache_poisoning_vuln01_may16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Squid Cache Poisoning Vulnerability-01 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808050");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-4553");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 19:24:19 +0530 (Thu, 19 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Cache Poisoning Vulnerability-01 May16 (Windows)");
@@ -53,7 +53,7 @@ if(description)
   4.x before 4.0.10 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Squid version 3.5.18 or 4.0.10 or
-  later. For updates refer to http://www.squid-cache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

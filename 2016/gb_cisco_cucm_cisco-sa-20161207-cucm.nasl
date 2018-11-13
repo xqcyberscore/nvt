@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20161207-cucm.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_cucm_cisco-sa-20161207-cucm.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Unified Communications Manager Administration Page Cross-Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106441");
-  script_version("$Revision: 11772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 13:24:06 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -67,7 +67,7 @@ vulnerability by persuading a targeted user to follow a malicious link.");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-cucm");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

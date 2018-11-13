@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_privilege_escalation_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_java_privilege_escalation_vuln.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Oracle Java SE Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807248");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2016-0603");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 10:43:38 +0530 (Fri, 12 Feb 2016)");
   script_name("Oracle Java SE Privilege Escalation Vulnerability (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   7 update 95 and prior, 8 update 71 and prior, and 8 update 72 and prior
   on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/alert-cve-2016-0603-2874360.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

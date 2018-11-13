@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20161207-ise1.nasl 6721 2017-07-14 01:48:00Z ckuersteiner $
+# $Id: gb_cisco_ise_cisco-sa-20161207-ise1.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Identity Services Engine Cross-Site Scripting Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:cisco:identity_services_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106452");
-  script_version("$Revision: 6721 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-14 03:48:00 +0200 (Fri, 14 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-08 15:34:12 +0700 (Thu, 08 Dec 2016)");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-08 15:34:12 +0700 (Thu, 08 Dec 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-9214");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco Identity Services Engine Cross-Site Scripting Vulnerability");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_cisco_ise_version.nasl");
   script_mandatory_keys("cisco_ise/version");
 
-  script_tag(name: "summary", value: "Cisco Identity Services Engine (ISE) contains a vulnerability that could
+  script_tag(name:"summary", value:"Cisco Identity Services Engine (ISE) contains a vulnerability that could
 allow an unauthenticated, remote attacker to conduct a cross-site scripting (XSS) attack against the user of the
 web interface of the affected system.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of some
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of some
 parameters passed via HTTP GET or POST methods.");
 
-  script_tag(name: "impact", value: "An attacker may be able to exploit this vulnerability by intercepting the
+  script_tag(name:"impact", value:"An attacker may be able to exploit this vulnerability by intercepting the
 user packets and injecting the malicious code.");
 
-  script_tag(name: "affected", value: "Cisco Identity Services Engine software release 2.0(1.130)");
+  script_tag(name:"affected", value:"Cisco Identity Services Engine software release 2.0(1.130)");
 
-  script_tag(name: "solution", value: "See the vendors advisory for solutions.");
+  script_tag(name:"solution", value:"See the vendors advisory for solutions.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-ise1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-ise1");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

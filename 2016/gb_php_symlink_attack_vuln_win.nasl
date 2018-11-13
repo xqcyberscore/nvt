@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_symlink_attack_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_php_symlink_attack_vuln_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # PHP Symlink Attack Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809735");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2014-3981");
   script_bugtraq_id(67837);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 17:38:59 +0530 (Thu, 01 Dec 2016)");
   script_name("PHP Symlink Attack Vulnerability (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   before 5.4.30, 5.3.x before 5.3.29 on Windows");
 
   script_tag(name:"solution", value:"Update to PHP version 5.5.14 or 5.4.30
-  or 5.3.29 or later. For updates refer to http://www.php.net");
+  or 5.3.29 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -69,6 +69,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

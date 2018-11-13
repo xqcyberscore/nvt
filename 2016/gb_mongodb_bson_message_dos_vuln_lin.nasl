@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808147");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-1609");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)");
 
@@ -52,7 +52,7 @@ if(description)
   2.6.7 and earlier, and 3.0.0-rc8 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to MongoDB version 2.4.13 or
-  2.6.8 or 3.0.0-rc9 or later. For updates refer to http://www.mongodb.org");
+  2.6.8 or 3.0.0-rc9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -65,6 +65,7 @@ if(description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
 

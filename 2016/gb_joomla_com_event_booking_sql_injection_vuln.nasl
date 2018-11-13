@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807368");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 10:23:31 +0530 (Tue, 27 Sep 2016)");
 
   script_name("Joomla! Component Event Booking SQL Injection Vulnerability");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Event Booking Component version 2.10.1");
 
-  script_tag(name:"solution", value:"Update to version 2.10.4.For updates refer to http://extensions.joomla.org/extension/event-booking");
+  script_tag(name:"solution", value:"Update to version 2.10.4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extension/event-booking");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_xee_inj_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_oracle_bi_publisher_xee_inj_vuln.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Oracle BI Publisher XML External Entity Injection Vulnerability
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:business_intelligence_publisher";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809733");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2016-3473");
   script_bugtraq_id(93719);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 17:10:49 +0530 (Fri, 25 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher XML External Entity Injection Vulnerability");
@@ -53,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle BI Publisher versions 11.1.1.7.0,
   11.1.1.9.0, 12.2.1.0.0");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_tag(name:"solution", value:"Apply the update from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,7 +69,6 @@ if(description)
   script_require_ports("Services/www", 9704);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

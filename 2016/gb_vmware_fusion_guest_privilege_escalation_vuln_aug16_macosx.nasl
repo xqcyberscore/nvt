@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_guest_privilege_escalation_vuln_aug16_macosx.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_vmware_fusion_guest_privilege_escalation_vuln_aug16_macosx.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # VMware Fusion Guest Privilege Escalation Vulnerability Aug16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809004");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-6933");
   script_bugtraq_id(79958);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 11:02:52 +0530 (Fri, 19 Aug 2016)");
   script_name("VMware Fusion Guest Privilege Escalation Vulnerability Aug16 (Mac OS X)");
 
@@ -55,7 +55,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Fusion version
-  7.1.2 or later, For updates refer to http://www.vmware.com");
+  7.1.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

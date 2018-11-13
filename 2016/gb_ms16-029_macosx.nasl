@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-029_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_ms16-029_macosx.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability-3141806(Mac OS X)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807892");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 14:26:23 +0530 (Wed, 05 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability-3141806(Mac OS X)");
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X
   Microsoft Office 2016 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://technet.microsoft.com/en-us/library/security/ms16-029");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

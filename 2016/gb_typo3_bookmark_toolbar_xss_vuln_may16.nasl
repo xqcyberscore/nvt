@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_bookmark_toolbar_xss_vuln_may16.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_typo3_bookmark_toolbar_xss_vuln_may16.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # TYPO3 Bookmark Toolbar Cross-Site Scripting Vulnerability May16 (SA-2016-006)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807828");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-4056");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 18:03:53 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Bookmark Toolbar Cross-Site Scripting Vulnerability May16 (SA-2016-006)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"TYPO3 versions 6.2.0 through 6.2.18");
 
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.19 or later.
-  For updates refer to https://typo3.org/typo3-cms");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.19 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

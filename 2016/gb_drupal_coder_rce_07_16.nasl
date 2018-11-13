@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_coder_rce_07_16.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_drupal_coder_rce_07_16.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Drupal Coder Remote Code Execution
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:drupal:drupal";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105818");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,7 +46,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-20 12:15:23 +0200 (Wed, 20 Jul 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -55,7 +55,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("drupal/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

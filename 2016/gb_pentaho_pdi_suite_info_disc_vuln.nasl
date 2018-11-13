@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pentaho_pdi_suite_info_disc_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_pentaho_pdi_suite_info_disc_vuln.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Pentaho Data Integration (PDI) Suite Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:pentaho:data_integration";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808206");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2015-6940");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-24 10:37:42 +0530 (Tue, 24 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pentaho Data Integration (PDI) Suite Information Disclosure Vulnerability");
@@ -60,9 +60,7 @@ if(description)
   5.1.x GA PDI - Suite
   5.2.x GA PDI - Suite.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://support.pentaho.com/hc/en-us/articles/205782329-Security-Vulnerability-Announcement-Feb-2015
-  For updates refer to http://www.pentaho.com");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133601");
@@ -74,6 +72,8 @@ if(description)
   script_dependencies("gb_pentaho_ga_pdi_suite_remote_detect.nasl");
   script_mandatory_keys("Pentaho/PDI/Suite/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://support.pentaho.com/hc/en-us/articles/205782329-Security-Vulnerability-Announcement-Feb-2015");
+  script_xref(name:"URL", value:"http://www.pentaho.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160224-fmc.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160224-fmc.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco FirePOWER Management Center Unauthenticated Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6411");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco FirePOWER Management Center Unauthenticated Information Disclosure Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by reading the information disclosed in the help files to conduct further attacks.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to verbose output returned when HTML files are retrieved from the affected system.");
 
@@ -52,14 +52,14 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 14:00:27 +0100 (Mon, 21 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_firepower_management_center_version.nasl");
   script_mandatory_keys("cisco_firepower_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

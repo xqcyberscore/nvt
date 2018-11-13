@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_multiple_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_gogs_multiple_vuln.nasl 12326 2018-11-13 05:25:34Z ckuersteiner $
 #
 # Gogs Multiple Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:gogits:gogs';
+CPE = 'cpe:/a:gogs:gogs';
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105952");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12326 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 06:25:34 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,7 @@ if(description)
   script_family("Web application abuses");
 
   script_dependencies("gb_gogs_detect.nasl");
-  script_mandatory_keys("gogs/installed");
+  script_mandatory_keys("gogs/detected");
 
   script_tag(name:"summary", value:"Gogs (Go Git Service) is prone to multiple vulnerabilities.");
 
@@ -85,17 +85,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe:CPE))
+if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe:CPE, port:port))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version != "unknown") {
-  if (version_is_less(version:version, test_version:"0.5.8")) {
-    security_message(port:port);
-    exit(0);
-  }
+if (version_is_less(version: version, test_version: "0.5.8")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "0.5.8");
+  security_message(port: port, data: report);
+  exit(0);
 }
 
 exit(99);

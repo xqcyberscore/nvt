@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_rtp_dos_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_asterisk_rtp_dos_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Asterisk RTP Resource Exhaustion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106239");
-  script_version("$Revision: 11772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 12:33:46 +0700 (Mon, 12 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Asterisk is prone to a RTP resource exhaustion vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The overlap dialing feature in chan_sip allows chan_sip to report to
 a device that the number that has been dialed is incomplete and more digits are required. If this functionality

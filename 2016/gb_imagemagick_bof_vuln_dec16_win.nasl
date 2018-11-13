@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_bof_vuln_dec16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_imagemagick_bof_vuln_dec16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # ImageMagick 'Get8BIMProperty' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810249");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-6491");
   script_bugtraq_id(92186);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'Get8BIMProperty' Buffer Overflow Vulnerability (Windows)");
@@ -54,7 +54,7 @@ if(description)
   before 7.0.2-6 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to ImageMagick version
-  6.9.5-4 or 7.0.2-6 or later. For updates refer to http://www.imagemagick.org");
+  6.9.5-4 or 7.0.2-6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

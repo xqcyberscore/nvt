@@ -1,6 +1,6 @@
 ###################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Perl 'XSLoader Method' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809819");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-6185");
   script_bugtraq_id(91685);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-24 21:21:51 +0530 (Thu, 24 Nov 2016)");
   script_name("Perl 'XSLoader Method' Code Execution Vulnerability (Windows)");
 
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Perl 5.24.0.24 and before on Windows");
 
-  script_tag(name:"solution", value:"Update Perl to version 5.24.1.2402 or later.
-  For updates refer to https://www.perl.org");
+  script_tag(name:"solution", value:"Update Perl to version 5.24.1.2402 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_perl_detect_win.nasl");
   script_mandatory_keys("Perl/Strawberry_or_Active/Installed");
+  script_xref(name:"URL", value:"https://www.perl.org");
   exit(0);
 }
 

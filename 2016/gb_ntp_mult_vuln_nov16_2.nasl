@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16_2.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_ntp_mult_vuln_nov16_2.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # NTP.org 'ntp' Zero Origin Timestamp Regression Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106406");
-  script_version("$Revision: 11772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -52,7 +52,7 @@ if (description)
 
   script_tag(name:"summary", value:"ntpd is prone to a zero origin timestamp regression vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Zero Origin timestamp problems were fixed in ntp-4.2.8p6. However,
 subsequent timestamp validation checks introduced a regression in the handling of some Zero origin timestamp

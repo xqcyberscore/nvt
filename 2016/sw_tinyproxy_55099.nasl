@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tinyproxy_55099.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: sw_tinyproxy_55099.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:banu:tinyproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111081");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2012-3505");
   script_bugtraq_id(55099);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-01 11:00:00 +0100 (Mon, 01 Feb 2016)");
   script_name("Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"impact", value:"Successful attacks will cause the application to consume
   excessive memory, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Tinyproxy versions before 1.8.4");
-  script_tag(name:"solution", value:"Upgrade to Tinyproxy 1.8.4. For updates refer to https://tinyproxy.github.io/");
+  script_tag(name:"solution", value:"Upgrade to Tinyproxy 1.8.4.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55099");
   script_xref(name:"URL", value:"https://tinyproxy.github.io/");

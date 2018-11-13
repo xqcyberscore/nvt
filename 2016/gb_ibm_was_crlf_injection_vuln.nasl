@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_crlf_injection_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_ibm_was_crlf_injection_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # IBM Websphere Application Server CRLF Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807853");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-0359");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:50:52 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server CRLF Injection Vulnerability");
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) to 7.0.0.43 or 8.0.0.13 or 8.5.5.10 or Liberty Fix 16.0.0.2
-  or later. For updates refer to
-  http://www-03.ibm.com/software/products/en/appserv-was");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

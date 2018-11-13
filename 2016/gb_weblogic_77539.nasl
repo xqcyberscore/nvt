@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weblogic_77539.nasl 9402 2018-04-09 07:20:26Z cfischer $
+# $Id: gb_weblogic_77539.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Oracle WebLogic Server Java Deserialization Vulnerability
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:bea:weblogic_server";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105829");
- script_cve_id("CVE-2015-4852");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9402 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105829");
+  script_cve_id("CVE-2015-4852");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12313 $");
 
- script_name("Oracle WebLogic Server Java Deserialization Vulnerability");
+  script_name("Oracle WebLogic Server Java Deserialization Vulnerability");
 
- script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/");
- script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/alert-cve-2015-4852-2763333.html");
+  script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/alert-cve-2015-4852-2763333.html");
 
- script_tag(name: "impact" , value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
- script_tag(name: "vuldetect" , value:"Send a serialized java object which try to open a ssh connection to a random port on the scanner and then check for the tcp-syn packet from this connection.");
- script_tag(name: "insight" , value:"Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the Jboss server.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"Oracle WebLogic Server is prone to a remote code-execution vulnerability.");
- script_tag(name:"affected", value:"Oracle WebLogic Server, versions 10.3.6.0, 12.1.2.0, 12.1.3.0, 12.2.1.0 are affected.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
+  script_tag(name:"vuldetect", value:"Send a serialized java object which try to open a ssh connection to a random port on the scanner and then check for the tcp-syn packet from this connection.");
+  script_tag(name:"insight", value:"Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the Jboss server.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Oracle WebLogic Server is prone to a remote code-execution vulnerability.");
+  script_tag(name:"affected", value:"Oracle WebLogic Server, versions 10.3.6.0, 12.1.2.0, 12.1.3.0, 12.2.1.0 are affected.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:20:26 +0200 (Mon, 09 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-27 14:18:32 +0200 (Wed, 27 Jul 2016)");
- script_category(ACT_ATTACK);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("oracle_webLogic_server_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 7001);
- script_mandatory_keys("OracleWebLogicServer/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-27 14:18:32 +0200 (Wed, 27 Jul 2016)");
+  script_category(ACT_ATTACK);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("oracle_webLogic_server_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 7001);
+  script_mandatory_keys("OracleWebLogicServer/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

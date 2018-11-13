@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_83105.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_cisco_apic_em_83105.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Application Policy Infrastructure Controller Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-1318");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco Application Policy Infrastructure Controller  Cross Site Scripting Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-apic");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code in the browser of an unsuspecting user in the context of the affected site. This can allow the attacker to steal cookie-based authentication credentials and launch other attacks.");
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of user-submitted content.");
   script_tag(name:"solution", value:"See vendor advisory");
   script_tag(name:"summary", value:"Cisco Application Policy Infrastructure Controller is prone to a cross-site scripting vulnerability.");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # advisory is very vague about effected versions
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:46:59 +0100 (Thu, 11 Feb 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -60,7 +60,7 @@ if (description)
   script_require_ports("Services/www", 80, 443);
   script_mandatory_keys("cisco/apic_em/version");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

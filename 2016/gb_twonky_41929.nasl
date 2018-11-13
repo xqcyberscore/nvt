@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_41929.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_twonky_41929.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Twonky Server Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108004");
-  script_version("$Revision: 5598 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:00:00 +0200 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,8 +54,7 @@ if(description)
   browser, potentially allowing the attacker to steal cookie-based authentication credentials or to control how the
   site is rendered to the user. Other attacks are also possible.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect
-  NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Versions prior to Twonky Server 4.4.18, 5.0.66, and 5.1 are vulnerable.");
 

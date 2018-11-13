@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:dboss:diskboss_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107103");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 16:11:25 +0530 (Tue, 06 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with DiskBoss Enterprise
   and is prone to a buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the
-  detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper validation of
   web requests passed via GET parameter.");

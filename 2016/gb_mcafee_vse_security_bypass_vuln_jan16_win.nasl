@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_security_bypass_vuln_jan16_win.nasl 11545 2018-09-21 20:43:34Z cfischer $
+# $Id: gb_mcafee_vse_security_bypass_vuln_jan16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # McAfee VirusScan Enterprise Security Bypass Vulnerability Jan16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806964");
-  script_version("$Revision: 11545 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-8577");
   script_bugtraq_id(78810);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:28:24 +0530 (Mon, 18 Jan 2016)");
   script_name("McAfee VirusScan Enterprise Security Bypass Vulnerability Jan16 (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   8.8 Patch 6 on Windows 32-bit platforms.");
 
   script_tag(name:"solution", value:"Upgrade to McAfee VirusScan Enterprise
-  version 8.8 Patch 6 or later. For updates refer to http://www.mcafee.com");
+  version 8.8 Patch 6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_dependencies("gb_mcafee_virusscan_enterprise_detect_win.nasl");
   script_mandatory_keys("McAfee/VirusScan/Win/Ver");
 
+  script_xref(name:"URL", value:"http://www.mcafee.com");
   exit(0);
 }
 

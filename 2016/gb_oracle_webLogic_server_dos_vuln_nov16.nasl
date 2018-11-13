@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_dos_vuln_nov16.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_oracle_webLogic_server_dos_vuln_nov16.nasl 12323 2018-11-12 15:36:30Z cfischer $
 #
 # Oracle WebLogic Server Denial of Service Vulnerability - Nov16
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:bea:weblogic_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809713");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12323 $");
   script_cve_id("CVE-2016-5488");
   script_bugtraq_id(93627);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 16:36:30 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 17:11:57 +0530 (Wed, 02 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Denial of Service Vulnerability - Nov16");
@@ -52,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle WebLogic Server versions 10.3.6.0
   and 12.1.3.0 are affected.");
 
-  script_tag(name:"solution", value:"Apply update from the link mentioned below,
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_tag(name:"solution", value:"Apply the update from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

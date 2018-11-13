@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-39_macosx.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-39_macosx.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-39 )-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808694");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-2807", "CVE-2016-2806", "CVE-2016-2804", "CVE-2016-2805",
  		"CVE-2016-1979");
   script_bugtraq_id(88100);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 11:35:44 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-39 )-MAC OS X");
 
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.8 on MAC OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.8
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.8");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

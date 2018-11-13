@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_cisco-sa-20151008-pcp.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_cisco_pcp_cisco-sa-20151008-pcp.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Prime Collaboration Provisioning SQL Injection Vulnerability
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105739");
- script_bugtraq_id(77050);
- script_cve_id("CVE-2015-6329");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 5759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105739");
+  script_bugtraq_id(77050);
+  script_cve_id("CVE-2015-6329");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 12313 $");
 
- script_name("Cisco Prime Collaboration Provisioning SQL Injection Vulnerability");
+  script_name("Cisco Prime Collaboration Provisioning SQL Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77050");
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151008-pcp");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77050");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151008-pcp");
 
- script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by sending a crafted SQL statement to an affected system. Successful exploitation could allow the attacker to read, modify, or delete entries in some database tables.");
- script_tag(name: "vuldetect" , value:"");
- script_tag(name: "insight" , value:"The vulnerability is due to a failure to validate user-supplied input used in SQL queries.");
- script_tag(name: "solution" , value:"Update to 11.0.0.582 or later");
- script_tag(name: "summary" , value:"A vulnerability in web framework of Cisco Prime Collaboration Provisioning (PCP) could allow an authenticated, remote attacker to execute unauthorized SQL queries.");
- script_tag(name: "affected" , value:"Cisco Prime Collaboration Provisioning versions 10.6 and 11.0 are vulnerable.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending a crafted SQL statement to an affected system. Successful exploitation could allow the attacker to read, modify, or delete entries in some database tables.");
+  script_tag(name:"vuldetect", value:"");
+  script_tag(name:"insight", value:"The vulnerability is due to a failure to validate user-supplied input used in SQL queries.");
+  script_tag(name:"solution", value:"Update to 11.0.0.582 or later");
+  script_tag(name:"summary", value:"A vulnerability in web framework of Cisco Prime Collaboration Provisioning (PCP) could allow an authenticated, remote attacker to execute unauthorized SQL queries.");
+  script_tag(name:"affected", value:"Cisco Prime Collaboration Provisioning versions 10.6 and 11.0 are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-30 15:41:14 +0200 (Mon, 30 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_pcp_version.nasl");
- script_mandatory_keys("cisco_pcp/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-30 15:41:14 +0200 (Mon, 30 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_pcp_version.nasl");
+  script_mandatory_keys("cisco_pcp/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

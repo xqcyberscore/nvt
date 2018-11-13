@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netman_204_default_ssh_credentials.nasl 11650 2018-09-27 10:32:13Z jschulte $
+# $Id: gb_netman_204_default_ssh_credentials.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # NetMan 204 Default SSH Login
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140001");
-  script_version("$Revision: 11650 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("NetMan 204 Default SSH Login");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 15:56:01 +0200 (Wed, 28 Sep 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -49,7 +49,7 @@ if (description)
   script_require_keys("Host/runs_unixoide");
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

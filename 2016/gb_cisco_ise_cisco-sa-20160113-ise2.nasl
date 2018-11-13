@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Identity Services Engine Unauthorized Access Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-6317");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:N");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco Identity Services Engine Unauthorized Access Vulnerability ");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160113-ise2");
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by authenticating at a low-privileged account and then accessing the web resources directly. An exploit could allow the attacker to access web pages that are reserved for higher-privileged administrative users.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability occurs because specific types of web resources are not correctly filtered for administrative users with different privileges.");
   script_tag(name:"solution", value:"Cisco has released software updates that address these vulnerabilities.");
   script_tag(name:"summary", value:"Cisco Identity Services Engine versions prior to 2.0 contain a vulnerability that could allow a low-privileged authenticated, remote attacker to access specific web resources that are designed to be accessed only by higher-privileged administrative users.");
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 12:43:15 +0100 (Wed, 20 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_cisco_ise_version.nasl");
   script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

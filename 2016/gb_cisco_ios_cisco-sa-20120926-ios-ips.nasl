@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2012-3950");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20120926-bundle");
   script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep12.html");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"Cisco IOS Software contains a vulnerability in the Intrusion Prevention System (IPS)
@@ -60,14 +60,14 @@ Individual publication links are in `Cisco Event Response: Semi-Annual Cisco IOS
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 14:09:55 +0200 (Fri, 06 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
   script_mandatory_keys("cisco_ios/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

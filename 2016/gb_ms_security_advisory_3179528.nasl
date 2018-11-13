@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_advisory_3179528.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_ms_security_advisory_3179528.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808655");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 11:46:52 +0530 (Wed, 17 Aug 2016)");
   script_name("Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)");
 
@@ -49,10 +49,7 @@ if(description)
   Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-in/kb/3176492
-  https://support.microsoft.com/en-in/kb/3176493");
+  listed hotfixes or download and update mentioned hotfixes in the advisory at the references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +65,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3176492");
   exit(0);
 }
 
@@ -86,7 +84,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgedllVer = fetch_file_version(sysPath, file_name:"system32\edgehtml.dll");
+edgedllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\edgehtml.dll");
 if(!edgedllVer){
   exit(0);
 }

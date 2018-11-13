@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Advantech WebAccess Multiple Vulnerabilities Jan16
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807033");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-3948", "CVE-2015-3943", "CVE-2015-3946", "CVE-2015-3947",
                 "CVE-2015-6467", "CVE-2016-0851", "CVE-2016-0852", "CVE-2016-0853",
                 "CVE-2016-0854", "CVE-2016-0855", "CVE-2016-0856", "CVE-2016-0857",
                 "CVE-2016-0858", "CVE-2016-0859", "CVE-2016-0860");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 10:47:51 +0530 (Fri, 22 Jan 2016)");
   script_name("Advantech WebAccess Multiple Vulnerabilities Jan16");
 
@@ -83,8 +83,7 @@ if(description)
   script_tag(name:"affected", value:"Advantech WebAccess versions before 8.1");
 
   script_tag(name:"solution", value:"Upgrade to Advantech WebAccess version
-  8.1 or later,
-  For updates refer to http://www.advantech.com/industrial-automation/webaccess");
+  8.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -97,6 +96,7 @@ if(description)
   script_dependencies("gb_advantech_webaccess_detect.nasl");
   script_mandatory_keys("Advantech/WebAccess/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.advantech.com/industrial-automation/webaccess");
   exit(0);
 }
 

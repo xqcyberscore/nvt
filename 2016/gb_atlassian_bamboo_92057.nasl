@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-5229");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Atlassian Bamboo  Remote Code Execution Vulnerability");
 
@@ -59,7 +59,7 @@ Bamboo 5.12.x versions prior to 5.12.3.1");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 17:57:26 +0200 (Wed, 27 Jul 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -68,7 +68,7 @@ Bamboo 5.12.x versions prior to 5.12.3.1");
   script_require_ports("Services/www", 80, 8085);
   script_mandatory_keys("AtlassianBamboo/Installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

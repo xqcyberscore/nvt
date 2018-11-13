@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_views_mod_access_bypass_vuln_lin.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_drupal_views_mod_access_bypass_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Drupal 'Views' Module Access Bypass Vulnerability (Linux)
 #
@@ -28,12 +28,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807887");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-6212");
   script_bugtraq_id(91230);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 10:06:16 +0530 (Tue, 27 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal 'Views' Module Access Bypass Vulnerability (Linux)");
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Drupal core 8.x versions prior to 8.1.3");
 
-  script_tag(name:"solution", value:"Upgrade to version 8.1.3 or newer.For updates
-  refer to https://www.drupal.org");
+  script_tag(name:"solution", value:"Upgrade to version 8.1.3 or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

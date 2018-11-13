@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyze_cve_2016_3195.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_fortianalyze_cve_2016_3195.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # FortiAnalyzer Multiple XSS Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-3195", "CVE-2016-3194", "CVE-2016-3193");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
 
   script_name("FortiAnalyzer Multiple XSS Vulnerabilities");
 
@@ -60,7 +60,7 @@ in the Web-UI.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 13:24:19 +0200 (Fri, 12 Aug 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -68,7 +68,7 @@ in the Web-UI.");
   script_dependencies("gb_fortianalyzer_version.nasl");
   script_mandatory_keys("fortianalyzer/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

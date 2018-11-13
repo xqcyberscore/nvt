@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20161207-iosxr.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_cisco_ios_xr_cisco-sa-20161207-iosxr.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS XR Software Default Credentials Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-9215");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco IOS XR Software Default Credentials Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-iosxr");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
@@ -57,14 +57,14 @@ allowing the attacker to gain complete control of the underlying operating syste
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 15:09:24 +0700 (Thu, 08 Dec 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ios_xr_version.nasl");
   script_mandatory_keys("cisco/ios_xr/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

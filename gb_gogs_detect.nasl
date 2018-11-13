@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_gogs_detect.nasl 12326 2018-11-13 05:25:34Z ckuersteiner $
 #
 # Gogs (Go Git Service) Detection
 #
@@ -28,12 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105951");
-  script_version("$Revision: 10901 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12326 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 06:25:34 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:41 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   script_name("Gogs (Go Git Service) Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -41,10 +45,10 @@ if(description)
   script_require_ports("Services/www", 3000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"The script sends a connection request to the server and
-  attempts to detect Gogs (Go Git Service) and extract the version number from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to detect
+Gogs and to extract its version.");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_xref(name:"URL", value:"https://gogs.io/");
 
   exit(0);
 }
@@ -63,31 +67,29 @@ foreach dir( make_list_unique( "/", "/gogs", cgi_dirs( port:port ) ) ) {
   if( dir == "/" ) dir = "";
 
   url = dir + "/user/login";
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req );
+  res = http_get_cache( item:url, port:port );
 
   if( res !~ 'HTTP/1.. 200' ) continue;
 
-  if( "Gogs - Go Git Service" >< res ) {
+  if( "Gogs" >< res && "i_like_gogits" >< res) {
 
     version = "unknown";
 
     ver = eregmatch( string:res, pattern:"GoGits.*Version: ([0-9.]+)" );
     if ( ! isnull( ver[1] ) ) {
-      version = chomp( ver[1] );
+      version = ver[1];
     } else {
       ver = eregmatch( string:res, pattern:"Gogs Version: ([0-9.]+)" );
       if( ! isnull( ver[1] ) ) {
-        version = chomp( ver[1] );
+        version = ver[1];
       }
     }
 
-    set_kb_item( name:"www/" + port + "/gogs", value:version );
-    set_kb_item( name:"gogs/installed", value:TRUE );
+    set_kb_item( name:"gogs/detected", value:TRUE );
 
-    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base: "cpe:/a:gogits:gogs:" );
-    if( isnull( cpe ) )
-      cpe = 'cpe:/a:gogits:gogs';
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base: "cpe:/a:gogs:gogs:" );
+    if(!cpe)
+      cpe = 'cpe:/a:gogs:gogs';
 
     register_product( cpe:cpe, location:install, port:port );
 
@@ -101,10 +103,10 @@ foreach dir( make_list_unique( "/", "/gogs", cgi_dirs( port:port ) ) ) {
     goVersion = "unknown";
 
     goVer = eregmatch( string:res, pattern:'version">Go([0-9.]+)' );
-    if( goVer[1] ) goVersion = goVer[1];
+    if (!isnull(goVer[1])) goVersion = goVer[1];
 
     cpe = build_cpe( value:goVersion, exp:"^([0-9.]+)", base: "cpe:/a:golang:go:" );
-    if( isnull( cpe ) )
+    if(!cpe)
       cpe = 'cpe:/a:golang:go';
 
     register_product( cpe:cpe, location:install, port:port );

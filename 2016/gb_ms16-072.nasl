@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-072.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-072.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808162");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-3223");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:50:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)");
 
@@ -91,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Gpapi.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Gpapi.dll");
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visio_ms16-004.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_ms_visio_ms16-004.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Visio Remote Code Execution Vulnerability (3124585)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806190");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-0012");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 11:57:20 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Visio Remote Code Execution Vulnerability (3124585)");
@@ -54,8 +54,7 @@ if(description)
   Microsoft Visio 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/security/bulletin/ms16-004");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms16-004");
   exit(0);
 }
 
@@ -85,7 +85,7 @@ if(!sysPath){
   exit(0);
 }
 
-excelVer = fetch_file_version(sysPath, file_name:"visio.exe");
+excelVer = fetch_file_version(sysPath:sysPath, file_name:"visio.exe");
 if(excelVer =~ "^(12|14|15|16)\..*")
 {
   if(excelVer =~ "^12"){

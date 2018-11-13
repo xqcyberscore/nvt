@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Wordpress IBS Mappro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808201");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-5472");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:09:30 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress IBS Mappro Directory Traversal Vulnerability");
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress IBS Mappro version 0.6 and previous");
 
-  script_tag(name:"solution", value:"Upgrade to IBS Mappro version 1.0 or later.
-  For updates refer to https://wordpress.org/plugins/ibs-mappro");
+  script_tag(name:"solution", value:"Upgrade to IBS Mappro version 1.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/ibs-mappro");
   exit(0);
 }
 

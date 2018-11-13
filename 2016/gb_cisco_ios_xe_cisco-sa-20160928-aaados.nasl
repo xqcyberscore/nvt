@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-aaados.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-aaados.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IOS XE Software AAA Login Denial of Service Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106317");
- script_cve_id("CVE-2016-6393");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5745 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106317");
+  script_cve_id("CVE-2016-6393");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12313 $");
 
- script_name("Cisco IOS XE Software AAA Login Denial of Service Vulnerability");
+  script_name("Cisco IOS XE Software AAA Login Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aaados");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aaados");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Authentication, Authorization, and Accounting (AAA)
+  script_tag(name:"summary", value:"A vulnerability in the Authentication, Authorization, and Accounting (AAA)
 service for remote Secure Shell Host (SSH) connections to the device for Cisco IOS XE Software could allow an
 unauthenticated, remote attacker to cause the vulnerable device to reload.");
 
- script_tag(name: "insight", value: "The vulnerability is due to an error log message when a remote SSH
+  script_tag(name:"insight", value:"The vulnerability is due to an error log message when a remote SSH
 connection to the device fails AAA authentication. An attacker could exploit this vulnerability by attempting
 to authenticate to the targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a denial of service (DoS)
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a denial of service (DoS)
 condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 16:00:26 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 16:00:26 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'16.2.1',
 		'3.18.0aS',
 		'3.18.0S',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc1.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc1.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Firepower Management Center Console Authentication Bypass Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2016-6434");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco Firepower Management Center Console Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-ftmc1");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -59,14 +59,14 @@ local shell.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 11:03:55 +0700 (Thu, 06 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_firepower_management_center_version.nasl");
   script_mandatory_keys("cisco_firepower_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

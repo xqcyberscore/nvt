@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808112");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2014-0892");
   script_bugtraq_id(67014);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-02 18:14:09 +0530 (Thu, 02 Jun 2016)");
   script_name("IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16");
 
@@ -54,8 +54,7 @@ if(description)
   FP6 IF3 and 9.x before 9.0.1 FP1");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.3 FP6 IF3,
-  or 9.0.1 FP1, or later.
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21670264");
+  or 9.0.1 FP1, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

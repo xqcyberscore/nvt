@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160928-aos.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20160928-aos.nasl 12318 2018-11-12 10:35:08Z cfischer $
 #
 # Cisco Email Security Appliance File Transfer Protocol Denial of Service Vulnerability
 #
@@ -33,15 +33,15 @@ if (description)
   script_cve_id("CVE-2016-6416");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12318 $");
 
   script_name("Cisco Email Security Appliance File Transfer Protocol Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aos");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"The vulnerability is fixed, refer to https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aos for more details");
+  script_tag(name:"solution", value:"The vulnerability is fixed, please see the referenced advisory for more details.");
 
   script_tag(name:"summary", value:"A vulnerability in the local File Transfer Protocol (FTP) service on the
 Cisco AsyncOS for Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to cause a
@@ -56,14 +56,15 @@ targeted device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 11:35:08 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aos");
+  exit(0);
 }
 
 include("host_details.inc");

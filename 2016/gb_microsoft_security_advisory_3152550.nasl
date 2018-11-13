@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3152550.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_microsoft_security_advisory_3152550.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807544");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-14 14:33:32 +0530 (Thu, 14 Apr 2016)");
   script_name("Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)");
 
@@ -54,9 +54,7 @@ if(description)
   Microsoft Windows 7 x32/x64 Edition Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/en-us/library/security/3152550");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   ##qod is executable_version_unreliable as only Microsoft wireless devices are affected
   script_tag(name:"qod_type", value:"executable_version_unreliable");
@@ -91,8 +89,8 @@ if(!sysPath){
 }
 
 ## The vulnerable files are not found in the system.So developed taking the default location on assumption
-sysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\Wirelesskeyboardfilter.sys");
-dllVer1 = fetch_file_version(sysPath, file_name:"system32\Wirelessdevice.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Drivers\Wirelesskeyboardfilter.sys");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\Wirelessdevice.dll");
 
 if(!sysVer && !dllVer1){
   exit(0);

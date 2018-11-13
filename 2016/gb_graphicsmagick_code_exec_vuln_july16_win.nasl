@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_code_exec_vuln_july16_win.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_graphicsmagick_code_exec_vuln_july16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # GraphicsMagick Code Execution And Denial of Service Vulnerabilities July16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:graphicsmagick:graphicsmagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808248");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-5118", "CVE-2016-5241", "CVE-2016-5240");
   script_bugtraq_id(90938, 89348);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-07 14:17:08 +0530 (Thu, 07 Jul 2016)");
   script_name("GraphicsMagick Code Execution And Denial of Service Vulnerabilities July16 (Windows)");
 
@@ -61,7 +61,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to GraphicsMagick version 1.3.24
-  or later. For updates refer to http://www.graphicsmagick.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -78,6 +78,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_graphicsmagick_detect_win.nasl");
   script_mandatory_keys("GraphicsMagick/Win/Installed");
+  script_xref(name:"URL", value:"http://www.graphicsmagick.org");
   exit(0);
 }
 

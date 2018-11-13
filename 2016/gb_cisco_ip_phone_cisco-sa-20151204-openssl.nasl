@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20151204-openssl.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_ip_phone_cisco-sa-20151204-openssl.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco IP Phone 8800 Series Multiple Vulnerabilities in OpenSSL
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106286");
-  script_version("$Revision: 11772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ detailing five vulnerabilities. Cisco IP Phone 8800 Series incorporate a version
 by one or more vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service
 (DoS) condition.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple OpenSSL vulnerabilities affecting Cisco IP Phone 8800 Series:
 

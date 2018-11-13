@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-058.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-058.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807323");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-0152");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:16 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)");
 
@@ -90,7 +90,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\inetsrv\Aspnetca.exe");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\inetsrv\Aspnetca.exe");
 if(!dllVer){
   exit(0);
 }

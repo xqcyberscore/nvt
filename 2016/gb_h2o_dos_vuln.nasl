@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_dos_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_h2o_dos_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # H2O HTTP Server DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:h2o_project:h2o';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106488");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 14:52:16 +0700 (Fri, 23 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"H2O HTTP Server is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A use-after-free vulnerability exists in H2O that can be used by a remote
 attacker to execute DoS attacks or information theft");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808501");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-8131");
   script_bugtraq_id(77657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 16:01:44 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)");
 
@@ -55,8 +55,7 @@ if(description)
   4.2.x before 4.2.1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version 4.1.3,
-  or 4.2.1 or later.
-  For updates refer to https://www.elastic.co");
+  or 4.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpython_mima_nd_code_exec_vuln_lin.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cpython_mima_nd_code_exec_vuln_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cpython Man in Middle Attack and Code Execution Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809217");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-5636", "CVE-2016-0772");
   script_bugtraq_id(91247, 91225);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 14:47:20 +0530 (Mon, 12 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cpython Man in Middle Attack and Code Execution Vulnerabilities (Linux)");
@@ -56,7 +56,7 @@ if(description)
   and 3.5.x before 3.5.2 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version Cpython 2.7.12, or
-  3.4.5, or 3.5.2 or later. For updates refer to https://hg.python.org/cpython");
+  3.4.5, or 3.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

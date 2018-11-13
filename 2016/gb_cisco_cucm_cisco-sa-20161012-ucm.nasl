@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20161012-ucm.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_cisco_cucm_cisco-sa-20161012-ucm.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Unified Communications Manager iFrame Data Clickjacking Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2016-6440");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco Unified Communications Manager iFrame Data Clickjacking Vulnerability");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161012-ucm");
 
   script_tag(name:"impact", value:"An exploit could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link. Protection mechanisms should be used to prevent this type of attack.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input sanitization of iframe data within the HTTP requests sent to the device. An attacker could exploit this vulnerability by sending crafted HTTP packets with malicious iframe data. ");
   script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
   script_tag(name:"summary", value:"could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link.");
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-14 14:48:29 +0100 (Fri, 14 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -58,7 +58,7 @@ if (description)
   script_dependencies("gb_cisco_cucm_version.nasl");
   script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

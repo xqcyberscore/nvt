@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-112.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-112.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Microsoft Windows Lock Screen Elevation of Privilege Vulnerability (3178469)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809308");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-3302");
   script_bugtraq_id(92853);
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 07:48:12 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Lock Screen Elevation of Privilege Vulnerability (3178469)");
 
@@ -88,7 +88,7 @@ if(!sysPath ){
   exit(0);
 }
 
-PniVer = fetch_file_version(sysPath, file_name:"System32\Pnidui.dll");
+PniVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Pnidui.dll");
 if(!PniVer){
   exit(0);
 }

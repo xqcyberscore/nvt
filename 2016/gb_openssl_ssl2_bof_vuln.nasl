@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ssl2_bof_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_openssl_ssl2_bof_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # OpenSSL SSL2 'KEY_ARG' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810215");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2002-0656");
   script_bugtraq_id(5363);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-26 18:50:26 +0530 (Sat, 26 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL SSL2 'KEY_ARG' Buffer Overflow Vulnerability");
@@ -56,8 +56,7 @@ if(description)
   0.9.7-beta2 and earlier on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL version 0.9.6e or later
-  or apply the patch provided by vendor.
-  For updates refer to https://www.openssl.org");
+  or apply the patch provided by vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.openssl.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cisco-sa-20140507-webex-arf.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_cisco-sa-20140507-webex-arf.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco WebEx Advanced Recording Format (ARF) Player Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:webex_arf_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107077");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2014-2132", "CVE-2014-2133", "CVE-2014-2134", "CVE-2014-2135", "CVE-2014-2136");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
 
   script_name("Cisco WebEx Advanced Recording Format (ARF) Player Multiple Vulnerabilities (Windows)");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Cisco WebEx Advanced Recording Format (ARF)
 Player and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Exploitation of these vulnerabilities could allow a remote attacker to cause
 an affected player to crash and, in some cases, could allow a remote attacker to execute arbitrary code on the

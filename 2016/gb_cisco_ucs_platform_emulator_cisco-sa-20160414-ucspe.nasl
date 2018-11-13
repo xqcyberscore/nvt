@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_platform_emulator_cisco-sa-20160414-ucspe.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_cisco_ucs_platform_emulator_cisco-sa-20160414-ucspe.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco Unified Computing System Platform Emulator Command Injection/Buffer Overflow Vulnerability
 #
@@ -33,8 +33,8 @@ if (description)
   script_cve_id("CVE-2016-1340", "CVE-2016-1339");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11772 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-07 11:28:50 +0200 (Thu, 07 Jul 2016)");
   script_name("Cisco Unified Computing System Platform Emulator Command Injection/Buffer Overflow Vulnerability");
 
@@ -50,7 +50,7 @@ The vulnerability occurs because the affected system improperly handles ucspe-co
 A vulnerability in Cisco Unified Computing System (UCS) Platform Emulator could allow an authenticated, local attacker to trigger a heap-based buffer overflow on a targeted system.
 
 The vulnerability occurs because the affected system improperly handles libclimeta.so filename arguments. An attacker could exploit this vulnerability by sending crafted filename arguments to the system. An exploit could allow the attacker to execute code on the system or cause a denial of service (DoS) condition.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"affected", value:"Cisco Unified Computing System Platform Emulator < 3.1(1ePE1)");
 
@@ -62,7 +62,7 @@ The vulnerability occurs because the affected system improperly handles libclime
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ucs_platform_emulator_web_detect.nasl");
   script_mandatory_keys("cisco_ucs_plattform_emulator/installed");
- exit(0);
+  exit(0);
 }
 
 

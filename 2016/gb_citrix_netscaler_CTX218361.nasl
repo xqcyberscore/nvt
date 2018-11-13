@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX218361.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_citrix_netscaler_CTX218361.nasl 12318 2018-11-12 10:35:08Z cfischer $
 #
 # Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2016-9028");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12318 $");
 
   script_name("Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack (CTX218361)");
 
   script_xref(name:"URL", value:"https://support.citrix.com/article/CTX218361");
 
-  script_tag(name:"vuldetect", value:"Check the version");
-  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Updates are available, please see the referenced advisory for more details.");
 
   script_tag(name:"summary", value:"An unauthorized redirect vulnerability has been identified in Citrix NetScaler ADC that could allow a remote attacker to obtain session cookies of a redirected AAA user.");
 
@@ -53,7 +53,7 @@ Version 10.1 earlier than 10.1 Build 135.8");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 11:35:08 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-28 12:53:02 +0200 (Fri, 28 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -61,7 +61,7 @@ Version 10.1 earlier than 10.1 Build 135.8");
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

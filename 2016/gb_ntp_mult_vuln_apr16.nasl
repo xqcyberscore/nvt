@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_apr16.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_ntp_mult_vuln_apr16.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # NTP.org 'ntpd' Multiple Vulnerabilities
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807567");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2015-7973", "CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976",
                 "CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979", "CVE-2015-8138",
                 "CVE-2015-8139", "CVE-2015-8140", "CVE-2015-8158", "CVE-2016-1547",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2015-7704");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-28 15:41:24 +0530 (Thu, 28 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP.org 'ntpd' Multiple Vulnerabilities");
@@ -89,8 +89,7 @@ if(description)
 
   script_tag(name:"affected", value:"NTP version before 4.2.8p7");
 
-  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p7 or later.
-  For updates refer to http://www.ntp.org");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -102,6 +101,7 @@ if(description)
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
+  script_xref(name:"URL", value:"http://www.ntp.org");
   exit(0);
 }
 

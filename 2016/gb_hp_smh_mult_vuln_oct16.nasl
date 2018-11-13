@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_oct16.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_hp_smh_mult_vuln_oct16.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # HP System Management Homepage Multiple Vulnerabilities (Oct-2016)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106390");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12313 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-15 10:22:35 +0700 (Tue, 15 Nov 2016)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
@@ -57,7 +57,7 @@ if (description)
 
   script_tag(name:"summary", value:"HP System Management Homepage is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple potential security vulnerabilities have been identified in HPE
 System Management Homepage (SMH) on Windows and Linux.");

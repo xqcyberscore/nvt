@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln03_may16_lin.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_drupal_mult_vuln03_may16_lin.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Drupal Multiple Vulnerabilities03- May16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808047");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-3170", "CVE-2016-3162");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 16:31:32 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities03- May16 (Linux)");
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Drupal 7.x before 7.43 and 8.x before
   8.0.4 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to version 7.43 or 8.0.4 or later.
-  For updates refer to https://www.drupal.org");
+  script_tag(name:"solution", value:"Upgrade to version 7.43 or 8.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

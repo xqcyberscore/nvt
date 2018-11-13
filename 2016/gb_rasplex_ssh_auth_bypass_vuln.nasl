@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_rasplex_ssh_auth_bypass_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_rasplex_ssh_auth_bypass_vuln.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Rasplex Authentication Bypass Vulnerability
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807609");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-2230");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-11 15:05:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Rasplex Authentication Bypass Vulnerability");
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"solution", value:"Information is available about a
   configuration or deployment scenario that helps to reduce the risk of the
-  vulnerability.
-  For updates refer to http://openelec.tv");
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/ssh", 22);
+  script_xref(name:"URL", value:"http://openelec.tv");
   exit(0);
 }
 

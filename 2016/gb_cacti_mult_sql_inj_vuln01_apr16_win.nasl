@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807557");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-3172", "CVE-2016-3659");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 18:08:07 +0530 (Mon, 25 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Windows)");
@@ -56,8 +56,7 @@ commands.");
 
   script_tag(name:"affected", value:"Cacti versions 0.8.8g and earlier on Windows.");
 
-  script_tag(name:"solution", value:"Update to 0.8.8h or a higher version. For updates refer to,
-http://www.cacti.net");
+  script_tag(name:"solution", value:"Update to 0.8.8h or a higher version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ http://www.cacti.net");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("cacti/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.cacti.net");
   exit(0);
 }
 

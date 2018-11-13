@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160127-rv220.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_cisco_sb_cisco-sa-20160127-rv220.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # Cisco RV220W Management Authentication Bypass Vulnerability
 #
@@ -33,36 +33,34 @@ if (description)
   script_cve_id("CVE-2015-6319");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
 
   script_name("Cisco RV220W Management Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160127-rv220");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco RV220W Wireless Network Security
-Firewall devices could allow an unauthenticated, remote attacker to bypass authentication and gain
-administrative privileges on a targeted device.
+  Firewall devices could allow an unauthenticated, remote attacker to bypass authentication and gain
+  administrative privileges on a targeted device.
 
-The vulnerability is due to insufficient input validation of HTTP request headers that are sent to
-the web-based management interface of an affected device. An unauthenticated, remote attacker could
-exploit this vulnerability by sending a crafted HTTP request that contains malicious SQL statements
-to the management interface of a targeted device. Depending on whether remote management is
-configured for the device, the management interface may use the SQL code in the HTTP request header
-to determine user privileges for the device. A successful exploit could allow the attacker to bypass
-authentication on the management interface and gain administrative privileges on the device.
+  The vulnerability is due to insufficient input validation of HTTP request headers that are sent to
+  the web-based management interface of an affected device. An unauthenticated, remote attacker could
+  exploit this vulnerability by sending a crafted HTTP request that contains malicious SQL statements
+  to the management interface of a targeted device. Depending on whether remote management is
+  configured for the device, the management interface may use the SQL code in the HTTP request header
+  to determine user privileges for the device. A successful exploit could allow the attacker to bypass
+  authentication on the management interface and gain administrative privileges on the device.
 
-Cisco released a firmware update that addresses this vulnerability. There are workarounds that
-address this vulnerability.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160127-rv220");
+  Cisco released a firmware update that addresses this vulnerability. There are workarounds that
+  address this vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 13:49:18 +0200 (Tue, 05 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -70,7 +68,7 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
   script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
   script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

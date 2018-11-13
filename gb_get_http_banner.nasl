@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 12248 2018-11-07 15:25:41Z cfischer $
+# $Id: gb_get_http_banner.nasl 12328 2018-11-13 07:27:47Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 12248 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:25:41 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 08:27:47 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -377,5 +377,6 @@ set_mandatory_key( key:"monit", regex: "Server: monit", banner:banner );
 set_mandatory_key( key:"CirCarLife", regex: "Server: CirCarLife Scada", banner:banner );
 set_mandatory_key( key:"mt-daapd", regex: "Server: mt-daapd", banner:banner );
 set_mandatory_key( key:"Promotic", regex: "Server: pm", banner:banner );
+set_mandatory_key( key:"ServersCheck_Monitoring_Server", regex: "Server: ServersCheck_Monitoring_Server", banner:banner );
 
 exit( 0 );

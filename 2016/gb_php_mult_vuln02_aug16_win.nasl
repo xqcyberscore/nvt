@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln02_aug16_win.nasl 11725 2018-10-02 10:50:50Z asteins $
+# $Id: gb_php_mult_vuln02_aug16_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # PHP Multiple Vulnerabilities - 02 - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808789");
-  script_version("$Revision: 11725 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-5771", "CVE-2016-5770");
   script_bugtraq_id(91401, 91403);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 12:19:56 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Multiple Vulnerabilities - 02 - Aug16 (Windows)");
 
@@ -60,7 +60,7 @@ if(description)
   before 5.6.23 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.37, or 5.6.23,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

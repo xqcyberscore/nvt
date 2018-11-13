@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_win.nasl 11772 2018-10-08 07:20:02Z asteins $
+# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_win.nasl 12313 2018-11-12 08:53:51Z asteins $
 #
 # ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807375");
-  script_version("$Revision: 11772 $");
+  script_version("$Revision: 12313 $");
   script_cve_id("CVE-2016-1372", "CVE-2016-1371");
   script_bugtraq_id(93221, 93222);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:53:51 +0100 (Mon, 12 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 13:09:56 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Windows)");
@@ -57,8 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"ClamAV versions before 0.99.2 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to ClamAV version 0.99.2 or later.
-  For updates refer http://www.clamav.net");
+  script_tag(name:"solution", value:"Upgrade to ClamAV version 0.99.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ClamAV/remote/Ver", "Host/runs_windows");
   script_require_ports(3310);
+  script_xref(name:"URL", value:"http://www.clamav.net");
   exit(0);
 }
 
