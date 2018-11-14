@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20151214-ios.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20151214-ios.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS XE Software IPv6 Neighbor Discovery Denial of Service Vulnerability
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105676");
- script_cve_id("CVE-2015-6359");
- script_tag(name:"cvss_base", value:"6.1");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105676");
+  script_cve_id("CVE-2015-6359");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco IOS XE Software IPv6 Neighbor Discovery Denial of Service Vulnerability");
+  script_name("Cisco IOS XE Software IPv6 Neighbor Discovery Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151214-ios");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151214-ios");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the IPv6 neighbor discovery (ND) handling of Cisco IOS XE Software on ASR platforms could allow an unauthenticated, adjacent attacker to cause an affected device to crash.
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the IPv6 neighbor discovery (ND) handling of Cisco IOS XE Software on ASR platforms could allow an unauthenticated, adjacent attacker to cause an affected device to crash.
 
 The vulnerability is due to insufficient bounds on internal tables. An attacker could exploit this vulnerability by flooding an adjacent IOS XE device with specific ND messages. An exploit could allow the attacker to deplete the available memory, possibly causing an affected device to crash.
 
 Cisco has released software updates that address these vulnerabilities. Workarounds that mitigate these vulnerabilities are available.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 10:49:56 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 10:49:56 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -70,7 +70,7 @@ if( ! model = get_kb_item("cisco_ios_xe/model") ) exit( 0 );
 
 if( model !~ '^ASR' ) exit( 99 );
 
-affected = make_list( 
+affected = make_list(
 		'3.14.0S',
 		'3.14.1S',
 		'3.14.2S',

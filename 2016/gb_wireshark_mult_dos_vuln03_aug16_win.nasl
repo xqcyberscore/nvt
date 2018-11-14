@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_aug16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln03_aug16_win.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-03 August16 (Windows)
 #
@@ -29,38 +29,36 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808289");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-6507", "CVE-2016-6504");
   script_bugtraq_id(92167, 92164);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:31:32 +0530 (Tue, 09 Aug 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-03 August16 (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - An error in 'epan/dissectors/packet-mmse.c' script could cause the 
+
+  - An error in 'epan/dissectors/packet-mmse.c' script could cause the
     MMSE dissector to go into a long loop.
+
   - The 'epan/dissectors/packet-ncp2222.inc' script in the NDS dissector
     does not properly maintain a ptvc data structure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
+  attackers to conduct denial of service attack.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.13 
+  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.13
   on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.13 
-  or later.
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.13
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,15 +79,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.12.x before 1.12.13
 if(version_in_range(version:wirversion, test_version:"1.12.0", test_version2:"1.12.12"))
 {
   report = report_fixed_ver(installed_version:wirversion, fixed_version:"1.12.13");

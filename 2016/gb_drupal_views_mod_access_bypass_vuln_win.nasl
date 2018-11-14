@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_views_mod_access_bypass_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_drupal_views_mod_access_bypass_vuln_win.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Drupal 'Views' Module Access Bypass Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807886");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-6212");
   script_bugtraq_id(91230);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-26 16:51:13 +0530 (Mon, 26 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal 'Views' Module Access Bypass Vulnerability (Windows)");
@@ -41,22 +41,18 @@ if(description)
   script_tag(name:"summary", value:"This host is running Drupal and is prone
   to access bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw exists due to error within the 'Views'
   module, where users without the 'View content count' permission can see the
   number of hits collected by the Statistics module for results in the view.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass access restrictions and see statistics information.
-
-  Impact Level: Application");
+  attackers to bypass access restrictions and see statistics information.");
 
   script_tag(name:"affected", value:"Drupal core 8.x versions prior to 8.1.3");
 
-  script_tag(name:"solution", value:"Upgrade to version 8.1.3 or newer.For updates
-  refer to https://www.drupal.org");
+  script_tag(name:"solution", value:"Upgrade to version 8.1.3 or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,16 +70,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-drupalPort= 0;
-drupalVer = "";
-
-## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!drupalVer = get_app_version(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9]+")){
   exit(0);
 }

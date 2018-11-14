@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dwr_detect.nasl 12267 2018-11-08 16:40:29Z jschulte $
+# $Id: gb_dlink_dwr_detect.nasl 12336 2018-11-13 13:56:12Z jschulte $
 #
 # D-Link DWR Devices Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113293");
-  script_version("$Revision: 12267 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 17:40:29 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 14:56:12 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-08 16:44:00 +0100 (Thu, 08 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,24 +67,33 @@ add_headers = make_array( 'cmdnum', '1', 'command1', 'wrt -x get wrt.system.vers
 req = http_get_req( port: port, url: url, add_headers: add_headers, accept_header: '*/*', host_header_use_ip: TRUE );
 res = http_keepalive_send_recv( port: port, data: req );
 
+infos = "";
+model = "";
 info = eregmatch( string: res, pattern: 'value="([^"]+)"', icase: TRUE );
-if( isnull( info[1] ) ) exit( 0 );
+if( ! isnull( info[1] ) ) {
 
-infos = info[1];
+  infos = info[1];
 
-mod = eregmatch( string: infos, pattern: '(DWR-[0-9]+)', icase: TRUE );
-if( isnull( mod[1] ) ) exit( 0 );
-
+  mod = eregmatch( string: infos, pattern: '(DWR-[0-9]+)', icase: TRUE );
+  if( isnull( mod[1] ) ) exit( 0 );
+  model = mod[1];
+}
+else {
+  res = http_get_cache( port: port, item: "/js/func.js" );
+  mod = eregmatch( string: res, pattern: 'model_name="(DWR-[0-9]+)"', icase: TRUE);
+  if( isnull( mod[1] ) ) exit( 0 );
+  model = mod[1];
+  infos = mod[0];
+}
 
 set_kb_item( name: "Host/is_dlink_device", value: TRUE );
 set_kb_item( name: "Host/is_dlink_dwr_device", value: TRUE );
 
-model = mod[1];
 set_kb_item( name: "d-link/dwr/model", value: model );
 
 version = "unknown";
 
-vers = eregmatch( string: infos, pattern: 'FW([0-9.]+)', icase: TRUE );
+ver = eregmatch( string: infos, pattern: 'FW([0-9.]+)', icase: TRUE );
 if( ! isnull( ver[1] ) ) {
   version = ver[1];
   set_kb_item( name: "d-link/dwr/fw_version", value: version );

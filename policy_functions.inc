@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 11843 2018-10-11 14:33:21Z emoss $
+# $Id: policy_functions.inc 12340 2018-11-13 15:26:08Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -207,4 +207,50 @@ function win32_useraccount(select,name){
   wmi_close(wmi_handle:handle);
 
 	return(res);
+}
+
+# @brief Checks for a package whether it is installed and if so, which version
+#
+# @param package The package to check the existence / version
+#        maintainer The package maintainer (RPM or DEB)
+#
+# @return A string with the version or NULL if not installed on host
+#
+function get_package_version(package, maintainer){
+	local_var package, maintainer;
+	if(!package){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#package" );
+		return;
+	}
+	if(!maintainer){
+		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#package_version#-#maintainer" );
+		return;
+	}
+	if(maintainer == 'RPM'){
+		packages_string = get_kb_item("ssh/login/rpms");
+		packages_list = split(packages_string, sep:';', keep:FALSE);
+		foreach pak (packages_list){
+			package_split = split(pak, sep:'~', keep:FALSE);
+			name = package_split[0];
+			version = package_split[1];
+			if(name == package){
+				return version;
+			}
+		}
+	}else if(maintainer == 'DEB'){
+		packages_string = get_kb_item("ssh/login/packages");
+		packages_list = split(packages_string, keep:FALSE);
+		foreach line (packages_list){
+			if(line =~ "^ii"){
+				line_split = ereg_replace(string:line, pattern:'\\s+', replace:'|');
+				packages_info = split(line_split, sep:'|', keep:FALSE);
+				name = packages_info[1];
+				version = packages_info[2];
+				if(name == package){
+					return version;
+				}
+			}
+		}
+	}
+	return;
 }

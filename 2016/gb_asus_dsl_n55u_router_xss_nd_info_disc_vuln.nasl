@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_dsl_n55u_router_xss_nd_info_disc_vuln.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_asus_dsl_n55u_router_xss_nd_info_disc_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # ASUS DSL-N55U Router Cross Site Scripting And Information Disclosure Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808240");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 12338 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-29 17:04:23 +0530 (Wed, 29 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS DSL-N55U Router Cross Site Scripting And Information Disclosure Vulnerabilities");
@@ -60,7 +60,7 @@ if(description)
   version 3.0.0.4.376_2736");
 
   script_tag(name:"solution", value:"Upgrade to ASUS DSL-N55U router firmware
-  version 3.0.0.4_380_3679 or later. For updates refer to https://www.asus.com");
+  version 3.0.0.4_380_3679 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +74,7 @@ if(description)
   script_mandatory_keys("DSL-N55U/banner");
   script_require_ports("Services/www", 8080);
 
+  script_xref(name:"URL", value:"https://www.asus.com");
   exit(0);
 }
 

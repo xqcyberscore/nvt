@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_cisco-sa-20160302-netstack.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_nx_os_cisco-sa-20160302-netstack.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco NX-OS Software TCP Netstack Denial of Service Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = 'cpe:/o:cisco:nx-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105645");
- script_cve_id("CVE-2015-0718");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5712 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105645");
+  script_cve_id("CVE-2015-0718");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco NX-OS Software TCP Netstack Denial of Service Vulnerability");
+  script_name("Cisco NX-OS Software TCP Netstack Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160302-netstack");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-04 14:16:24 +0200 (Wed, 04 May 2016)");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160302-netstack");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-04 14:16:24 +0200 (Wed, 04 May 2016)");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by sending a specific TCP packet to an affected device on a TCP session that is already in a TIME_WAIT state. An exploit could allow the attacker to cause a reload of the TCP stack on the affected device, resulting in a DoS condition.
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending a specific TCP packet to an affected device on a TCP session that is already in a TIME_WAIT state. An exploit could allow the attacker to cause a reload of the TCP stack on the affected device, resulting in a DoS condition.
 This vulnerability can be exploited using either IPv4 or IPv6 packets. The vulnerability can be triggered by a crafted sequence of TCP packets destined for TCP ports listening on the device. The packets may use the IPv4 or IPv6 unicast address of any interface configured on the device.
 This vulnerability can be triggered only by traffic destined to an affected device and cannot be exploited using traffic that transits an affected device.");
 
- script_tag(name: "vuldetect", value:"Check the NX OS version.");
- script_tag(name: "insight", value: "The vulnerability is due to improper processing of certain TCP packets in the closing sequence of a TCP session while the affected device is in a TIME_WAIT state.");
- script_tag(name: "solution", value: "See the vendor advisory for a solution");
- script_tag(name: "summary", value: "A vulnerability in the TCP stack of Cisco NX-OS Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
- exit(0);
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"The vulnerability is due to improper processing of certain TCP packets in the closing sequence of a TCP session while the affected device is in a TIME_WAIT state.");
+  script_tag(name:"solution", value:"See the vendor advisory for a solution");
+  script_tag(name:"summary", value:"A vulnerability in the TCP stack of Cisco NX-OS Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
+  exit(0);
 }
 
 include("host_details.inc");

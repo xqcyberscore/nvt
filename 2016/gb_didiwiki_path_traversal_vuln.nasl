@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_didiwiki_path_traversal_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_didiwiki_path_traversal_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # DidiWiki Path Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:didiwiki_project:didiwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807528");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2013-7448");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 10:34:57 +0530 (Tue, 12 Apr 2016)");
   script_name("DidiWiki Path Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,18 +55,16 @@ if(description)
   validation via 'page' parameter to api/page/get in 'wiki.c' script");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to read arbitrary files and to obtain sensitive information.
-
-  Impact Level: Application");
+  attackers to read arbitrary files and to obtain sensitive information.");
 
   script_tag(name:"affected", value:"didiwiki versions 3.5.4 and prior");
 
-  script_tag(name:"solution", value:"Apply the patch from advisory.
-  For updates refer to http://didiwiki.wikidot.com");
+  script_tag(name:"solution", value:"Apply the patch from advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://didiwiki.wikidot.com");
   exit(0);
 }
 

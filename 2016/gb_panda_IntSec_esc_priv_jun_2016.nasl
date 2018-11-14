@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 9188 2018-03-23 11:52:59Z jschulte $
+# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Panda Internet Security - Privilege Escalation June 2016 (Windows)
 #
@@ -26,44 +26,32 @@
 
 CPE = "cpe:/a:pandasecurity:panda_internet_security_2014:";
 
-tag_impact = "Successful exploitation will let the attacker replace the affected binary file
-with a malicious binary which will be executed with SYSTEM privileges.
-
-Impact level: System.";
-
-tag_affected = "Panda Internet Security (16.1.2)";
-
-tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe
-process is located, it is possible to execute malicious code as Local System.";
-
-tag_solution = "Install Panda Hotfix for this vulnerability:
-http://www.pandasecurity.com/uk/support/card?id=100053";
-
-tag_summary = "This host is running Panda Internet Security and is prone to a Privilege
-Escalation Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107090");
-  script_version("$Revision: 9188 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 12:52:59 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Panda Internet Security - Privilege Escalation June 2016 (Windows)");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40020/");
+  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40020/");
+  script_xref(name:"URL" , value:"http://www.pandasecurity.com/uk/support/card?id=100053");
   script_tag(name:"qod", value:"30");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_panda_prdts_detect.nasl");
   script_mandatory_keys("Panda/InternetSecurity/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Panda Internet Security (16.1.2)");
+  script_tag(name:"insight", value:"As the USERS group has write permissions over the folder where the PSEvents.exe
+  process is located, it is possible to execute malicious code as Local System.");
+  script_tag(name:"solution", value:"Install Panda Hotfix for this vulnerability via the references.");
+  script_tag(name:"summary", value:"This host is running Panda Internet Security and is prone to a Privilege
+  Escalation Vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker replace the affected binary file
+  with a malicious binary which will be executed with SYSTEM privileges.");
+  script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 

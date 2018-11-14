@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpipam_xss_vuln.nasl 9116 2018-03-16 13:04:55Z cfischer $
+# $Id: gb_phpipam_xss_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # phpIPAM <= 1.2.1 Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:phpipam:phpipam";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106700");
-  script_version("$Revision: 9116 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-16 14:04:55 +0100 (Fri, 16 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-6481");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("phpIPAM <= 1.2.1 Multiple XSS Vulnerabilities");
 
@@ -51,24 +51,25 @@ if (description)
   script_dependencies("gb_ipam_detect.nasl");
   script_mandatory_keys("phpipam/installed");
 
-  script_tag(name: "summary", value: "phpIPAM is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"phpIPAM is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The vulnerabilities exist due to insufficient filtration of user-supplied
-data passed to several pages (instructions in app/admin/instructions/preview.php; subnetId in
-app/admin/powerDNS/refresh-ptr-records.php).");
+  script_tag(name:"insight", value:"The vulnerabilities exist due to insufficient filtration of user-supplied
+  data passed to several pages (instructions in app/admin/instructions/preview.php subnetId in
+  app/admin/powerDNS/refresh-ptr-records.php).");
 
-  script_tag(name: "impact", value: "An attacker could execute arbitrary HTML and script code in a browser in the
-context of the vulnerable website.");
+  script_tag(name:"impact", value:"An attacker could execute arbitrary HTML and script code in a browser in the
+  context of the vulnerable website.");
 
-  script_tag(name: "affected", value: "phpIPAM 1.2.1 and prior.");
+  script_tag(name:"affected", value:"phpIPAM 1.2.1 and prior.");
 
-  script_tag(name: "solution", value: "Update to phpIPAM 1.3 or later, see http://phpipam.net for more information.");
+  script_tag(name:"solution", value:"Update to phpIPAM 1.3 or later.");
 
-  script_xref(name: "URL", value: "https://phpipam.net/documents/changelog/");
-  script_xref(name: "URL", value: "https://github.com/phpipam/phpipam/issues/992");
+  script_xref(name:"URL", value:"https://phpipam.net/documents/changelog/");
+  script_xref(name:"URL", value:"https://github.com/phpipam/phpipam/issues/992");
 
+  script_xref(name:"URL", value:"http://phpipam.net");
   exit(0);
 }
 

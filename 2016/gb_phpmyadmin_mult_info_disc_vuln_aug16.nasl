@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_info_disc_vuln_aug16.nasl 7160 2017-09-18 07:39:22Z cfischer $
+# $Id: gb_phpmyadmin_mult_info_disc_vuln_aug16.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # phpMyAdmin Multiple Information Disclosure Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808252");
-  script_version("$Revision: 7160 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-5098", "CVE-2016-5097");
   script_bugtraq_id(90878, 90881);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:01:28 +0530 (Thu, 04 Aug 2016)");
   script_name("phpMyAdmin Multiple Information Disclosure Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -55,23 +55,22 @@ if(description)
   check whether it is able to obtain sensitive information or not.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - A directory traversal vulnerability in 'libraries/error_report.lib.php' 
+
+  - A directory traversal vulnerability in 'libraries/error_report.lib.php'
     script.
-  - The tokens are placed in query strings and does not arrange for them to be 
+
+  - The tokens are placed in query strings and does not arrange for them to be
     stripped before external navigation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to determine the existence of arbitrary files by triggering an error
-  and also to obtain sensitive information by reading (1) HTTP requests or (2) 
-  server logs.
-
-  Impact Level: Application");
+  and also to obtain sensitive information by reading (1) HTTP requests or (2)
+  server logs.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions before 4.6.2");
 
-  script_tag(name: "solution" , value:"Upgrade to phpMyAdmin version 4.6.2 or
-  later.
-  For updates refer to https://www.phpmyadmin.net");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.6.2 or
+  later.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -83,27 +82,16 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-report = "";
-http_port = 0;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/libraries/error_report.lib.php';
 
-## Try attack and check the response to confirm vulnerability
-## Check whether it is able to trigger an error message causing information disclosure
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"Fatal error.*libraries/Util.class.php' \(include_path=.*/libraries/error_report.lib.php"))
 {

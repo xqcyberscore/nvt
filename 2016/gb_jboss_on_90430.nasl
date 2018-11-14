@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_90430.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_jboss_on_90430.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Red Hat JBoss Operations Network Deserialization Remote Code Execution Vulnerability
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:redhat:jboss_operations_network";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105832");
- script_bugtraq_id(90430);
- script_cve_id("CVE-2016-3737");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 9437 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105832");
+  script_bugtraq_id(90430);
+  script_cve_id("CVE-2016-3737");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Red Hat JBoss Operations Network  Deserialization Remote Code Execution Vulnerability");
+  script_name("Red Hat JBoss Operations Network  Deserialization Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/90430");
- script_xref(name:"URL", value:"https://access.redhat.com/security/cve/cve-2016-3737");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/90430");
+  script_xref(name:"URL", value:"https://access.redhat.com/security/cve/cve-2016-3737");
 
- script_tag(name: "impact" , value:"Exploiting this issue will allow attackers to execute arbitrary code within the context of the affected application.");
- script_tag(name: "vuldetect" , value:"Send a special crafted java object via a HTTP POST request and check the response.");
- script_tag(name: "insight" , value:"It was discovered that sending specially crafted HTTP request to the JON server would allow deserialization of that message without authentication. An attacker could use this flaw to cause remote code execution.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.
-");
- script_tag(name: "summary" , value:"Red Hat JBoss Operations Network is prone to a remote-code execution vulnerability.");
- script_tag(name: "affected" , value:"");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"Exploiting this issue will allow attackers to execute arbitrary code within the context of the affected application.");
+  script_tag(name:"vuldetect", value:"Send a special crafted java object via a HTTP POST request and check the response.");
+  script_tag(name:"insight", value:"It was discovered that sending specially crafted HTTP request to the JON server would allow deserialization of that message without authentication. An attacker could use this flaw to cause remote code execution.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Red Hat JBoss Operations Network is prone to a remote-code execution vulnerability.");
+  script_tag(name:"affected", value:"");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-28 15:24:48 +0200 (Thu, 28 Jul 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_jboss_on_detect.nasl");
- script_require_ports("Services/www", 7080);
- script_mandatory_keys("jboss_on/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-28 15:24:48 +0200 (Thu, 28 Jul 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_jboss_on_detect.nasl");
+  script_require_ports("Services/www", 7080);
+  script_mandatory_keys("jboss_on/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

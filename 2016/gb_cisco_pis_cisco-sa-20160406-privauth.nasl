@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160406-privauth.nasl 8372 2018-01-11 10:19:36Z cfischer $
+# $Id: gb_cisco_pis_cisco-sa-20160406-privauth.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
-# Cisco Prime Infrastructure Privilege Escalation API Vulnerability 
+# Cisco Prime Infrastructure Privilege Escalation API Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,35 +29,35 @@ CPE = "cpe:/a:cisco:prime_infrastructure";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105616");
- script_cve_id("CVE-2016-1290");
- script_tag(name:"cvss_base", value:"5.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 8372 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105616");
+  script_cve_id("CVE-2016-1290");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco Prime Infrastructure Privilege Escalation API Vulnerability");
+  script_name("Cisco Prime Infrastructure Privilege Escalation API Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-privauth");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-privauth");
 
- script_tag(name: "impact" , value:"n attacker could exploit this vulnerability by sending a crafted HTTP request with a modified URL to bypass RBAC settings. An exploit could allow the attacker to gain elevated privileges for the application and gain unauthorized access to data.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to improper role-based access control (RBAC) when an unexpected HTTP URL request is received that does not match an expected pattern filter.");
- script_tag(name: "solution" , value:"Update to Cisco Prime Infrastructure 3.0.3 or newer");
- script_tag(name: "summary" , value:"A vulnerability in the web application programming interface (API) of Cisco Prime Infrastructure and Cisco Evolved Programmable Network Manager (EPNM) could allow an authenticated, remote attacker to gain elevated privileges.");
- script_tag(name: "affected" , value:"Cisco Prime Infrastructure prior to 2.2.3 Update 3/3.0.3");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"n attacker could exploit this vulnerability by sending a crafted HTTP request with a modified URL to bypass RBAC settings. An exploit could allow the attacker to gain elevated privileges for the application and gain unauthorized access to data.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The vulnerability is due to improper role-based access control (RBAC) when an unexpected HTTP URL request is received that does not match an expected pattern filter.");
+  script_tag(name:"solution", value:"Update to Cisco Prime Infrastructure 3.0.3 or newer");
+  script_tag(name:"summary", value:"A vulnerability in the web application programming interface (API) of Cisco Prime Infrastructure and Cisco Evolved Programmable Network Manager (EPNM) could allow an authenticated, remote attacker to gain elevated privileges.");
+  script_tag(name:"affected", value:"Cisco Prime Infrastructure prior to 2.2.3 Update 3/3.0.3");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
- script_tag(name:"creation_date", value:"2016-04-21 12:49:04 +0200 (Thu, 21 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_pis_version.nasl");
- script_mandatory_keys("cisco_pis/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-21 12:49:04 +0200 (Thu, 21 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_pis_version.nasl");
+  script_mandatory_keys("cisco_pis/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

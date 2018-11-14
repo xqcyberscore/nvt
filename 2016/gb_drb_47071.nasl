@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drb_47071.nasl 4387 2016-10-31 09:50:40Z cfi $
+# $Id: gb_drb_47071.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Distributed Ruby (dRuby/DRb) Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,18 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108010");
-  script_version("$Revision: 4387 $");
+  script_version("$Revision: 12338 $");
   script_bugtraq_id(47071);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-31 10:50:40 +0100 (Mon, 31 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-28 11:47:00 +0200 (Fri, 28 Oct 2016)");
   script_name("Distributed Ruby (dRuby/DRb) Multiple Remote Code Execution Vulnerabilities");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
-  script_family("Gain a shell remotely"); 
+  script_family("Gain a shell remotely");
   script_dependencies("find_service1.nasl");
-  script_require_ports("Services/drb", 8787 );
+  script_require_ports("Services/drb", 8787);
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=22750");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/47071");

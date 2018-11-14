@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_cisco-sa-20160323-lisp.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_nx_os_cisco-sa-20160323-lisp.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco NX-OS Software Locator/ID Separation Protocol Packet Denial of Service Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/o:cisco:nx-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105644");
- script_cve_id("CVE-2016-1351");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5745 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105644");
+  script_cve_id("CVE-2016-1351");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco NX-OS Software Locator/ID Separation Protocol Packet Denial of Service Vulnerability");
+  script_name("Cisco NX-OS Software Locator/ID Separation Protocol Packet Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160323-lisp");
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-04 14:06:24 +0200 (Wed, 04 May 2016)");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160323-lisp");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-04 14:06:24 +0200 (Wed, 04 May 2016)");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by sending a malformed LISP packet on UDP port 4341. An exploit could allow the attacker to cause a denial of service (DoS) condition.");
- script_tag(name: "vuldetect", value:"Check the NX OS version.");
- script_tag(name: "insight", value: "The vulnerability is due to a lack of proper input validation when a malformed LISP packet header is received. ");
- script_tag(name: "solution", value: "See the vendor advisory for a solution");
- script_tag(name: "summary", value: "A vulnerability in the Locator/ID Separation Protocol (LISP) of Cisco NX-OS Software running on the Cisco Nexus 7000 and Nexus 7700 Series Switches with an M1 Series Gigabit Ethernet Module could allow an unauthenticated, remote attacker to cause a reload of the vulnerable device.");
- exit(0);
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending a malformed LISP packet on UDP port 4341. An exploit could allow the attacker to cause a denial of service (DoS) condition.");
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input validation when a malformed LISP packet header is received. ");
+  script_tag(name:"solution", value:"See the vendor advisory for a solution");
+  script_tag(name:"summary", value:"A vulnerability in the Locator/ID Separation Protocol (LISP) of Cisco NX-OS Software running on the Cisco Nexus 7000 and Nexus 7700 Series Switches with an M1 Series Gigabit Ethernet Module could allow an unauthenticated, remote attacker to cause a reload of the vulnerable device.");
+  exit(0);
 }
 
 include("host_details.inc");

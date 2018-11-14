@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_path_disclosure_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_owncloud_path_disclosure_vuln_lin.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # ownCloud Path Disclosure Vulnerability Feb16 (Linux)
 #
@@ -29,72 +29,62 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807401");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-1501");
   script_bugtraq_id(80382);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-02 15:04:46 +0530 (Wed, 02 Mar 2016)");
   script_name("ownCloud Path Disclosure Vulnerability Feb16 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with ownCloud and
+  script_tag(name:"summary", value:"The host is installed with ownCloud and
   is prone to path disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an owncloud return
+  script_tag(name:"insight", value:"The flaw exists due to an owncloud return
   exception error messages.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated adversary to gain information about the installation path of
-  the ownCloud instance.
+  the ownCloud instance.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ownCloud Server 8.x before 8.0.9 and 8.1.x
+  script_tag(name:"affected", value:"ownCloud Server 8.x before 8.0.9 and 8.1.x
   before 8.1.4 on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to ownCloud Server 8.0.9 or 8.1.4
-  or later.
-  For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud Server 8.0.9 or 8.1.4
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2016-004");
+  script_xref(name:"URL" , value:"https://owncloud.org/security/advisory/?id=oc-sa-2016-004");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("owncloud/installed","Host/runs_unixoide");
+  script_mandatory_keys("owncloud/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ownPort = "";
-ownVer = "";
-
-## get the port
 if(!ownPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
    exit(0);
 }
 
 if(ownVer =~ "^8")
 {
- ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"8.0.0", test_version2:"8.0.8"))
   {
     fix = "8.0.9";

@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807504");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-1903");
   script_bugtraq_id(79916);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 16:56:54 +0530 (Tue, 01 Mar 2016)");
   script_name("PHP Out of Bounds Read Memory Corruption Vulnerability - 01 - Mar16 (Linux)");
 
@@ -49,16 +49,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to obtain sensitive information or cause a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"PHP versions before 5.5.31, 5.6.x before
   5.6.17, and 7.x before 7.0.2 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.31, or 5.6.17 or
-  7.0.2 or later.
-  For updates refer to http://www.php.net");
+  7.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -72,6 +69,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-108_exchange_server_info_disc_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-108_exchange_server_info_disc_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Microsoft Exchange Server Information Disclosure Vulnerabilities (3185883)
 #
@@ -28,53 +28,56 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809314");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-0138");
   script_bugtraq_id(92806);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 10:21:52 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Information Disclosure Vulnerabilities (3185883)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-108.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to the way that Microsoft
+  script_tag(name:"insight", value:"The flaw exists due to the way that Microsoft
   Exchange Server parses email messages.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   an attacker to discover confidential user information that is contained in
-  Microsoft Outlook applications.
+  Microsoft Outlook applications.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
 
-  script_tag(name:"affected", value:"
-  Microsoft Exchange Server 2007 Service Pack 3
   Microsoft Exchange Server 2010 Service Pack 3
+
   Microsoft Exchange Server 2013 Service Pack 1
+
   Microsoft Exchange Server 2013 Cumulative Update 12
+
   Microsoft Exchange Server 2013 Cumulative Update 13
+
   Microsoft Exchange Server 2016 Cumulative Update 1
+
   Microsoft Exchange Server 2016 Cumulative Update 2");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/MS16-108");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3184736");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-108");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3184736");
+  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-108");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_exchange_server_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Exchange/Server/Ver");
   exit(0);
 }
@@ -84,12 +87,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ExVer = "";
-dllVer = "";
-path = "";
-
-## Get the installed path
 exchangePath = get_app_location(cpe:CPE);
 if(!exchangePath || "Could not find the install location" >< exchangePath){
   exit(0);
@@ -97,7 +94,6 @@ if(!exchangePath || "Could not find the install location" >< exchangePath){
 
 cum_update = get_kb_item("MS/Exchange/Cumulative/Update/no");
 
-## Get Version from ExSetup.exe file version
 exeVer = fetch_file_version(sysPath:exchangePath, file_name:"Bin\ExSetup.exe");
 if(exeVer)
 {
@@ -151,7 +147,7 @@ if(exeVer)
       VULN = TRUE ;
     }
   }
- 
+
   ##Exchange Server 2016 CU 2
   else if(exeVer =~ "^(15.1)" && "Cumulative Update 2" >< cum_update)
   {

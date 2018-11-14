@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_25100b492c_php_fc27.nasl 11601 2018-09-25 11:44:21Z santu $
+# $Id: gb_fedora_2018_25100b492c_php_fc27.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Fedora Update for php FEDORA-2018-25100b492c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875097");
-  script_version("$Revision: 11601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 13:44:21 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-24 08:21:58 +0200 (Mon, 24 Sep 2018)");
   script_cve_id("CVE-2018-17082");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php FEDORA-2018-25100b492c");
   script_tag(name:"summary", value:"Check the version of php");

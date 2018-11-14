@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160928-ipdr.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160928-ipdr.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS Software IP Detail Record Denial of Service Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106309");
- script_cve_id("CVE-2016-6379");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106309");
+  script_cve_id("CVE-2016-6379");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco IOS Software IP Detail Record Denial of Service Vulnerability");
+  script_name("Cisco IOS Software IP Detail Record Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-ipdr");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-ipdr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the IP Detail Record (IPDR) code of Cisco IOS Software
+  script_tag(name:"summary", value:"A vulnerability in the IP Detail Record (IPDR) code of Cisco IOS Software
 could allow an unauthenticated, remote attacker to cause an affected system to reload.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper handling of IPDR packets. An
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of IPDR packets. An
 attacker could exploit this vulnerability by sending crafted IPDR packets to an affected system.");
 
- script_tag(name: "impact", value: "A successful exploit could cause the device to reload, resulting in a
+  script_tag(name:"impact", value:"A successful exploit could cause the device to reload, resulting in a
 denial of service (DoS) condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 15:18:08 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 15:18:08 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -70,7 +70,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.2(33)CX',
 		'12.2(33)CY',
 		'12.2(33)CY1',

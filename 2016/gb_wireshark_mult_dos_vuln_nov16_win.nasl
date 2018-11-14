@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_nov16_win.nasl 4573 2016-11-18 13:29:14Z antu123 $
+# $Id: gb_wireshark_mult_dos_vuln_nov16_win.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities Nov16 (Windows)
 #
@@ -29,41 +29,42 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809803");
-  script_version("$Revision: 4573 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-9374", "CVE-2016-9376", "CVE-2016-9373", "CVE-2016-9375");
   script_bugtraq_id(94369);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:29:14 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 12:48:21 +0530 (Fri, 18 Nov 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities Nov16 (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The AllJoyn dissector could crash with a buffer over-read, triggered by
     network traffic or a capture file.
+
   - The DCERPC dissector could crash with a use-after-free, triggered by network
     traffic or a capture file.
+
   - The DTN dissector could go into an infinite loop, triggered by network
     traffic or a capture file.
+
   - The OpenFlow dissector could crash with memory exhaustion, triggered by network
     traffic or a capture file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 2.2.0 to 2.2.1 and
   2.0.0 to 2.0.7 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.2 or
-  or 2.0.8 later. For updates refer to https://www.wireshark.org");
+  or 2.0.8 later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -84,22 +85,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 2.0.x before 2.0.8
 if(version_in_range(version:wirversion, test_version:"2.0.0", test_version2:"2.0.7"))
 {
   fix = "2.0.8";
   VULN = TRUE;
 }
 
-## Check the vulnerable version is 2.2.0 before 2.2.2
 else if(version_in_range(version:wirversion, test_version:"2.2.0", test_version2:"2.2.1"))
 {
   fix = "2.2.2";

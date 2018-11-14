@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2739_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_2739_1.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # SuSE Update for libzypp, openSUSE-SU-2018:2739-1 (libzypp,)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852022");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12343 $");
   script_cve_id("CVE-2017-9269", "CVE-2018-7685");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:35:05 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for libzypp, openSUSE-SU-2018:2739-1 (libzypp, )");
   script_category(ACT_GATHER_INFO);

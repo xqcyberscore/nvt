@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_bakergiga_root_login.nasl 4509 2016-11-15 07:51:06Z mime $
+# $Id: gb_default_bakergiga_root_login.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Default password `bakergiga` for root account
 #
@@ -27,28 +27,28 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140055");
- script_version("$Revision: 4509 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Default password `bakergiga` for root account");
- script_tag(name:"last_modification", value:"$Date: 2016-11-15 08:51:06 +0100 (Tue, 15 Nov 2016) $");
- script_tag(name:"creation_date", value:"2016-11-15 08:49:09 +0100 (Tue, 15 Nov 2016)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_require_ports("Services/ssh", 22);
+  script_oid("1.3.6.1.4.1.25623.1.0.140055");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Default password `bakergiga` for root account");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-15 08:49:09 +0100 (Tue, 15 Nov 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_require_ports("Services/ssh", 22);
 
- script_tag(name: "summary" , value: 'The remote device is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:'The remote device is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login as root with password `bakergiga`.');
- script_tag(name: "solution" , value: 'Change the password');
- script_tag(name:"solution_type", value:"Workaround");
- script_dependencies("ssh_detect.nasl");
- script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  script_tag(name:"vuldetect", value:'Try to login as root with password `bakergiga`.');
+  script_tag(name:"solution", value:'Change the password');
+  script_tag(name:"solution_type", value:"Workaround");
+  script_dependencies("ssh_detect.nasl");
+  script_tag(name:"qod_type", value:"exploit");
+  exit(0);
 }
 
 include("ssh_func.inc");

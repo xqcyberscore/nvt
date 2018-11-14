@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_openelec_ssh_auth_bypass_vuln.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_openelec_ssh_auth_bypass_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # OpenELEC Authentication Bypass Vulnerability
 #
@@ -26,37 +26,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807608");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-2230");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-11 15:05:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("OpenELEC Authentication Bypass Vulnerability");
-  
-  script_tag(name:"summary" , value:"This host is installed with OpenELEC device
+
+  script_tag(name:"summary", value:"This host is installed with OpenELEC device
   and is prone authentication bypass vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Check if it is possible to login into
+  script_tag(name:"vuldetect", value:"Check if it is possible to login into
   the remote OpenELEC device.");
 
-  script_tag(name:"insight" , value:"The flaw is due to
+  script_tag(name:"insight", value:"The flaw is due to
+
   - The 'root' account has a password of 'openelec', which is
     publicly known and documented.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain unauthorized root access to affected devices and completely
-  compromise the devices..
+  compromise the devices..");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"OpenELEC Devices.");
 
-  script_tag(name:"affected" , value:"OpenELEC Devices.");
-
-  script_tag(name:"solution" , value:"Information is available about a 
-  configuration or deployment scenario that helps to reduce the risk of the 
-  vulnerability.
-  For updates refer to http://openelec.tv");
+  script_tag(name:"solution", value:"Information is available about a
+  configuration or deployment scenario that helps to reduce the risk of the
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -68,6 +66,7 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/ssh", 22);
+  script_xref(name:"URL", value:"http://openelec.tv");
   exit(0);
 }
 

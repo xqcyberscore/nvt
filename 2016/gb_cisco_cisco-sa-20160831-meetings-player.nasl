@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cisco-sa-20160831-meetings-player.nasl 9030 2018-03-06 07:03:50Z ckuersteiner $
+# $Id: gb_cisco_cisco-sa-20160831-meetings-player.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco WebEx Meetings Player Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:cisco:webex_wrf_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107067");
-  script_version("$Revision: 9030 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-1464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-06 08:03:50 +0100 (Tue, 06 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
 
   script_name("Cisco WebEx Meetings Player Arbitrary Code Execution Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Cisco WebEx Meetings Player and is prone to
+  script_tag(name:"summary", value:"This host is installed with Cisco WebEx Meetings Player and is prone to
 Arbitrary Code Execution Vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The vulnerability is due to improper handling of user-supplied files. An
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of user-supplied files. An
 attacker could exploit this vulnerability by persuading a user to open a malicious file by using the affected
 software.");
 
-  script_tag(name: "impact" , value: "A successful exploit could allow the attacker to execute arbitrary code on
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary code on
 the system with the privileges of the user.");
 
-  script_tag(name: "affected" , value: "Cisco WebEx WRF Player T29 SP10 Base Windows.");
+  script_tag(name:"affected", value:"Cisco WebEx WRF Player T29 SP10 Base Windows.");
 
-  script_tag(name: "solution" , value: "Updates are available from the Cisco WebEx Meetings Server where the
+  script_tag(name:"solution", value:"Updates are available from the Cisco WebEx Meetings Server where the
 player was installed from, see advisory.");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name: "qod_type", value: "registry");
+  script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-meetings-player");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-meetings-player");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

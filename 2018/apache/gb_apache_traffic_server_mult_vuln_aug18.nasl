@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_server_mult_vuln_aug18.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_traffic_server_mult_vuln_aug18.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Apache Traffic Server (ATS) Multiple Vulnerabilities (Aug18)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:traffic_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141411");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-30 11:03:19 +0700 (Thu, 30 Aug 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2018-1318", "CVE-2018-8004", "CVE-2018-8005", "CVE-2018-8040");
 

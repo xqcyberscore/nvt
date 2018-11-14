@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serverscheck_monitoring_detect_win.nasl 12316 2018-11-12 09:31:52Z mmartin $
+# $Id: gb_serverscheck_monitoring_detect_win.nasl 12334 2018-11-13 11:57:29Z mmartin $
 #
 # ServersCheck Monitoring Software Version Detection (Windows)
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107365");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 12316 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 10:31:52 +0100 (Mon, 12 Nov 2018) $");
+  script_version("$Revision: 12334 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 12:57:29 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-10 14:45:11 +0100 (Sat, 10 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ServersCheck Monitoring Software Version Detection (Windows)");
@@ -65,6 +65,7 @@ foreach key(make_list_unique("",
   vers = Ver[1];
   Concluded = appName;
   set_kb_item(name:"ServersCheck/Monitoring_Software/Win/detected", value:TRUE);
+  set_kb_item( name: "ServersCheck/Monitoring_Software_or_Server/detected", value: TRUE );
   set_kb_item(name:"ServersCheck/Monitoring_Software/Win/Ver", value:Ver);
 
   register_and_report_cpe(app:"ServersCheck Monitoring Software" , ver:vers, concluded: appName,

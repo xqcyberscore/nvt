@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160525-ipv6.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160525-ipv6.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Products IPv6 Neighbor Discovery Crafted Packet Denial of Service Vulnerability
 #
@@ -29,46 +29,44 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105735");
- script_cve_id("CVE-2016-1409");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105735");
+  script_cve_id("CVE-2016-1409");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco Products IPv6 Neighbor Discovery Crafted Packet Denial of Service Vulnerability (IOS XE)");
+  script_name("Cisco Products IPv6 Neighbor Discovery Crafted Packet Denial of Service Vulnerability (IOS XE)");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160525-ipv6");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160525-ipv6");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the IP Version 6 (IPv6) packet processing functions of Cisco IOS XR Software,
-Cisco IOS XE Software, and Cisco NX-OS Software could allow an unauthenticated, remote attacker to
-cause an affected device to stop processing IPv6 traffic, leading to a denial of service (DoS)
-condition on the device.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the IP Version 6 (IPv6) packet processing functions of Cisco IOS XR Software,
+  Cisco IOS XE Software, and Cisco NX-OS Software could allow an unauthenticated, remote attacker to
+  cause an affected device to stop processing IPv6 traffic, leading to a denial of service (DoS)
+  condition on the device.
 
-The vulnerability is due to insufficient processing logic for crafted IPv6 packets that are sent
-to an affected device. An attacker could exploit this vulnerability by sending crafted IPv6
-Neighbor Discovery packets to an affected device for processing. A successful exploit could allow
-the attacker to cause the device to stop processing IPv6 traffic, leading to a DoS condition on
-the device.
+  The vulnerability is due to insufficient processing logic for crafted IPv6 packets that are sent
+  to an affected device. An attacker could exploit this vulnerability by sending crafted IPv6
+  Neighbor Discovery packets to an affected device for processing. A successful exploit could allow
+  the attacker to cause the device to stop processing IPv6 traffic, leading to a DoS condition on
+  the device.
 
-Cisco will release software updates that address this vulnerability. There are no workarounds that
-address this vulnerability.
+  Cisco will release software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160525-ipv6");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-30 11:05:22 +0200 (Mon, 30 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-30 11:05:22 +0200 (Mon, 30 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -76,7 +74,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'16.2.1',
 		'16.3.1',
 		'16.4.1',

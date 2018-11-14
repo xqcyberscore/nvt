@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln01_oct16.nasl 9993 2018-05-29 06:02:50Z cfischer $
+# $Id: gb_oracle_glassfish_unspecified_vuln01_oct16.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Oracle GlassFish Server Unspecified Vulnerability-01 Oct16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809709");
-  script_version("$Revision: 9993 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-1950");
   script_bugtraq_id(84223);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:02:50 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:53:33 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle GlassFish Server Unspecified Vulnerability-01 Oct16");
 
@@ -48,21 +48,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attackers to affect confidentiality, integrity and availability via unknown
-  vectors.
-
-  Impact Level: Application");
+  vectors.");
 
   script_tag(name:"affected", value:"Oracle GlassFish Server version 2.1.1");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_tag(name:"solution", value:"Apply the patches from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -88,3 +84,5 @@ if(version_is_equal(version:serVer, test_version:"2.1.1"))
   security_message(data:report, port:serPort);
   exit(0);
 }
+
+exit(99);

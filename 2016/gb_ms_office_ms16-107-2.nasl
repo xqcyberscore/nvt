@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-107-2.nasl 6970 2017-08-21 06:22:17Z asteins $
+# $Id: gb_ms_office_ms16-107-2.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Microsoft Office 2013 APP-V ASLR Bypass Vulnerability (3118268)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112000");
-  script_version("$Revision: 6970 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-0137");
   script_bugtraq_id(92785);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-21 08:22:17 +0200 (Mon, 21 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 14:45:19 +0200 (Fri, 18 Aug 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office 2013 APP-V ASLR Bypass Vulnerability (3118268)");
@@ -50,21 +50,17 @@ if(description)
   which could lead to an Address Space Layout Randomization (ASLR) bypass.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  remote code execution if a user opens a specially crafted Microsoft Office file.
-
-  Impact Level: System/Application");
+  remote code execution if a user opens a specially crafted Microsoft Office file.");
 
   script_tag(name:"affected", value:"Microsoft Office 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-107");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "https://support.microsoft.com/en-us/help/3118268");
-  script_xref(name: "URL", value: "https://technet.microsoft.com/library/security/MS16-107");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3118268");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-107");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -83,36 +79,27 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offVer = "";
-offPath = "";
-offexeVer = "";
-
 ## MS Office
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get Office File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                        item:"CommonFilesDir");
 if(!path){
   exit(0);
 }
 
-##Check for vuln version
 if(offVer =~ "^15\..*")
 {
-  ## Get Version from Mso.dll
   offPath = path + "\Microsoft Shared\Office15";
   offexeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
   if(offexeVer)
   {
-    if(offexeVer =~ "^(15)"){
+    if(offexeVer =~ "^15"){
       Vulnerable_range3  =  "15 - 15.0.4859.0999";
     }
-    ## Check for mso.dll version
     if(version_in_range(version:offexeVer, test_version:"15.0", test_version2:"15.0.4859.0999"))
     {
       report = 'File checked:     ' + offPath + "\Mso.dll" + '\n' +

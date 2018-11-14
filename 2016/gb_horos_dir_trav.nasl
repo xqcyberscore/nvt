@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horos_dir_trav.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_horos_dir_trav.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Horos Web Portal Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:horos:horos";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107115");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 12338 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
-  script_tag(name:"creation_date", value: "2016-12-28 13:26:09 +0700 (Wed, 28 Dec 2016)");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-28 13:26:09 +0700 (Wed, 28 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Horos Web Portal Directory Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   URL path is not properly verified before being used to read files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
-  to read arbitrary files.
-
-  Impact Level: System/Application");
+  to read arbitrary files.");
 
   script_tag(name:"affected", value:"Horos Web Portal version 2.1.0");
 

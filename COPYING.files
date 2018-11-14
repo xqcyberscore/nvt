@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 13 Nov 2018 09:37:39 +0100
+# Automatically created on:  Wed, 14 Nov 2018 11:12:19 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39910,12 +39910,16 @@
 2018/eclipse/gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl: GPLv2+
 2018/eclipse/gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_CVE-2015-4165.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_CVE-2018-17244_lin.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_CVE-2018-17244_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_eol.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2016-1000218.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-1001002_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-11499_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2017-11499_win.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-17246_lin.nasl: GPLv2+
+2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-17246_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3818_lin.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3818_win.nasl: GPLv2+
 2018/elasticsearch/gb_elasticsearch_kibana_CVE-2018-3819_lin.nasl: GPLv2+
@@ -42548,6 +42552,8 @@
 2018/owncloud/gb_owncloud_xss_n_csrf_vuln_mar18_lin.nasl: GPLv2+
 2018/owncloud/gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_cmd_inj_vuln.nasl: GPLv2+
+2018/paessler/gb_prtg_netmon_dos_vuln_nov18.nasl: GPLv2+
+2018/paessler/gb_prtg_netmon_rce_vuln_nov18.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_stack_overflow_vuln.nasl: GPLv2+
 2018/panasonic/gb_panasonic_ip_camera_default_credentials.nasl: GPLv2+
 2018/pandasecurity/gb_panda_global_protection_mult_vuln.nasl: GPLv2+
@@ -42640,6 +42646,7 @@
 2018/powerdns/gb_pdns_powerdns-advisory-2018-05.nasl: GPLv2+
 2018/powerdns/gb_pdns_powerdns-advisory-2018-06-7.nasl: GPLv2+
 2018/prestashop/gb_prestashop_mult_vuln.nasl: GPLv2+
+2018/prestashop/gb_prestashop_rce_vuln.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_macosx.nasl: GPLv2+
 2018/python/gb_python_elementtree_dos_vuln_win.nasl: GPLv2+
 2018/python/gb_python_heap_buffer_overflow_vuln_aug18_macosx.nasl: GPLv2+
@@ -43209,6 +43216,7 @@
 2018/webmin/gb_webmin_xss_vuln1_win.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln_mar18_lin.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln_mar18_win.nasl: GPLv2+
+2018/western_digital/gb_wd_nas_rce_vuln.nasl: GPLv2+
 2018/western_digital/gb_wd_wdtv_rce_vuln.nasl: GPLv2+
 2018/wireshark/gb_wireshark_coap_n_steam_ihs_disc_diss_dos_vuln_macosx.nasl: GPLv2+
 2018/wireshark/gb_wireshark_coap_n_steam_ihs_disc_diss_dos_vuln_win.nasl: GPLv2+
@@ -43241,6 +43249,7 @@
 2018/wordpress/gb_wordpress_add-link-to-facebook_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_arbitrary_file_del_vuln_june18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_banner-management-for-woocommerce_unauth_set_change_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_bookly_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_disable_comments_plugin_csfr_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_download_manager_xss_vuln.nasl: GPLv2+
@@ -43264,6 +43273,7 @@
 2018/wordpress/gb_wordpress_php_file_upload_vuln_aug18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_php_file_upload_vuln_aug18_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_pixelyoursite_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_sagepay-server-gateway-for-woocommerce_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_simple-download-monitor_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_tabs-responsive_xss_vuln.nasl: GPLv2+
@@ -43273,6 +43283,10 @@
 2018/wordpress/gb_wordpress_wonderm00ns-simple-facebook-open-graph-tags_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_woocommerce-products-filter_mult_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_woocommerce_rce_vuln_lin.nasl: GPLv2+
+2018/wordpress/gb_wordpress_woocommerce_rce_vuln_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_woo-order-export-lite_csv_inj_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wordfence_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp-google-map-plugin_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp-inject_mult_vuln.nasl: GPLv2+
@@ -44821,6 +44835,9 @@ gb_simatic_cp_consolidation.nasl: GPLv2+
 gb_simatic_cp_ftp_detect.nasl: GPLv2+
 gb_simatic_cp_http_detect.nasl: GPLv2+
 gb_simatic_cp_snmp_detect.nasl: GPLv2+
+gb_simatic_hmi_consolidation.nasl: GPLv2+
+gb_simatic_hmi_http_detect.nasl: GPLv2+
+gb_simatic_hmi_snmp_detect.nasl: GPLv2+
 gb_simatic_S7_1200_plc_detect.nasl: GPLv2+
 gb_simatic_s7_cotp_detect.nasl: GPLv2+
 gb_simatic_s7_http_detect.nasl: GPLv2+
@@ -45082,6 +45099,7 @@ gb_v-webmail_detect.nasl: GPLv2+
 gb_vx_search_enterprise_detect.nasl: GPLv2+
 gb_wampserver_detect.nasl: GPLv2+
 gb_watchguard_fireware_detect.nasl: GPLv2+
+gb_wd_mybook_live_detect.nasl: GPLv2+
 gb_wd_mycloud_web_detect.nasl: GPLv2+
 gb_wd_sharespace_web_detect.nasl: GPLv2+
 gb_wd_wdtv_detect.nasl: GPLv2+
@@ -60771,6 +60789,7 @@ gsf/2018/f5/gb_f5_big_ip_K13540723.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15217245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16248201.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K16347.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16674.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16845.nasl: GPLv2+
@@ -61652,6 +61671,7 @@ gsf/2018/vmware/gb_vmware_esxi_mult_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_vuln_VMSA-2018-0016.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_rpc_handler_dos_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_svga_heap_bof_vuln.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_esxi_vmxnet3_stack_memory_usage_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_3D_accel_dos_vuln_vmsa-2018-0025_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_code_exec_vuln_VMSA-2018-0022_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_guest_access_control_vuln_macosx.nasl: GPLv2+
@@ -61659,6 +61679,7 @@ gsf/2018/vmware/gb_vmware_fusion_l1_ter_fault_side_channel_vuln_macosx.nasl: GPL
 gsf/2018/vmware/gb_vmware_fusion_mult_vuln_VMSA-2018-0013_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_nat_service_mult_code_exec_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_svga_heap_bof_vuln_macosx.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_fusion_vmxnet3_stack_memory_usage_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_vnc_dos_vuln_VMSA-2018-0008.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_horizon_client_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_v4pa_desktop_agent_priv_esca_vuln_win.nasl: GPLv2+
@@ -61681,6 +61702,8 @@ gsf/2018/vmware/gb_vmware_workstation_nat_service_mult_code_exec_vuln_win.nasl: 
 gsf/2018/vmware/gb_vmware_workstation_svga_heap_bof_vuln_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_svga_heap_bof_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_virtua_printing_out_of_bounds_read_vuln_win.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_vmxnet3_stack_memory_usage_vuln_lin.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_vmxnet3_stack_memory_usage_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_l1_ter_fault_side_channel_vuln.nasl: GPLv2+

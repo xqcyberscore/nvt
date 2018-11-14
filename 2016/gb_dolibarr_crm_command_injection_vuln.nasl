@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Dolibarr CRM Command Injection Vulnerability
 #
@@ -28,33 +28,29 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807851");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 12338 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-30 11:22:02 +0530 (Thu, 30 Jun 2016)");
   script_name("Dolibarr CRM Command Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Dolibarr CRM
   and is prone to command injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due as Dolibarr is open to
   command injection via the backup tool available.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to execute arbitrary commands on the affected system.
-
-  Impact Level: Application");
+  attackers to execute arbitrary commands on the affected system.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"affected", value:"Dolibarr CRM versions less than 3.9.1");
 
-  script_tag(name:"solution", value:"Upgrade to Dolibarr CRM version 3.9.1 or later.
-  For updates refer to https://www.dolibarr.org");
+  script_tag(name:"solution", value:"Upgrade to Dolibarr CRM version 3.9.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,22 +62,17 @@ if(description)
   script_dependencies("gb_dolibarr_detect.nasl");
   script_mandatory_keys("Dolibarr/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.dolibarr.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialization
-dolPort = "";
-dolVer = "";
-
-# Get Port
 if(!dolPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!dolVer = get_app_version(cpe:CPE, port:dolPort)){
   exit(0);
 }

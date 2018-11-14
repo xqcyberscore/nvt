@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_nodebb_71824.nasl 7336 2017-10-04 05:42:02Z asteins $
+# $Id: sw_nodebb_71824.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # NodeBB 'markdown' Plugin Stored Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nodebb:nodebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111101");
-  script_version("$Revision: 7336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 07:42:02 +0200 (Wed, 04 Oct 2017) $");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-07 16:00:00 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -51,8 +51,7 @@ if(description)
   vulnerability.");
   script_tag(name:"impact", value:"Exploiting this vulnerability may allow an attacker to perform cross-site scripting attacks on unsuspecting users
   in the context of the affected website. As a result, the attacker may be able to steal cookie-based authentication credentials and to launch other attacks.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"NodeBB version prior to 0.7.0");
   script_tag(name:"solution", value:"Update your NodeBB to a non-affected version.");
 

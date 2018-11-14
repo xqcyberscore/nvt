@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuy25163.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_asa_CSCuy25163.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Adaptive Security Appliance Access Control List ICMP Echo Request Code Filtering Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106130");
- script_cve_id("CVE-2016-1445");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106130");
+  script_cve_id("CVE-2016-1445");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco Adaptive Security Appliance Access Control List ICMP Echo Request Code Filtering Vulnerability");
+  script_name("Cisco Adaptive Security Appliance Access Control List ICMP Echo Request Code Filtering Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160711-asa");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160711-asa");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the Cisco Adaptive Security Appliance (ASA) Software
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the Cisco Adaptive Security Appliance (ASA) Software
 implementation of access control list (ACL) permit and deny filters for ICMP Echo Reply messages could allow
 an unauthenticated, remote attacker to bypass ACL configurations for an affected device. ICMP traffic that
 should be denied may instead be allowed through an affected device.
@@ -56,17 +56,17 @@ device, which could allow traffic that should be denied to instead be allowed th
 Cisco has released software updates that address this vulnerability. There are no workarounds that address
 this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-07-13 11:31:06 +0700 (Wed, 13 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-13 11:31:06 +0700 (Wed, 13 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -75,7 +75,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'8.2.0.45',
 		'8.2.1',
 		'8.2.1.11',

@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-5738");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 12338 $");
 
   script_name("FortiGate: RSA-CRT key leak under certain conditions");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"Man in the middle");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to FortiOS 5.0.13 / 5.2.6 / 5.4.0 or newer");
 
   script_tag(name:"summary", value:"FortiOS now includes for all SSL libraries a countermeasure against Lenstra's fault attack on RSA-CRT optimization when a RSA signature is corrupted.");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 13:18:29 +0200 (Wed, 18 May 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_fortigate_version.nasl");
   script_mandatory_keys("fortigate/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

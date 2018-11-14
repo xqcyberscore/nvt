@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ec9bc84fda_zypper_fc27.nasl 11471 2018-09-19 11:17:08Z santu $
+# $Id: gb_fedora_2018_ec9bc84fda_zypper_fc27.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Fedora Update for zypper FEDORA-2018-ec9bc84fda
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875078");
-  script_version("$Revision: 11471 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:17:08 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 08:23:41 +0200 (Mon, 17 Sep 2018)");
   script_cve_id("CVE-2018-7685");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for zypper FEDORA-2018-ec9bc84fda");
   script_tag(name:"summary", value:"Check the version of zypper");

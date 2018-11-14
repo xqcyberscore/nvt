@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-014.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-014.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Microsoft Windows Multiple Vulnerabilities (3134228)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807065");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-0040", "CVE-2016-0041", "CVE-2016-0042", "CVE-2016-0044",
                 "CVE-2016-0049");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 14:13:40 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Multiple Vulnerabilities (3134228)");
 
@@ -116,10 +116,10 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Winsync.dll");
-dllVer2 = fetch_file_version(sysPath, file_name:"System32\Ntdll.dll");
-dllVer3 = fetch_file_version(sysPath, file_name:"System32\Mtxoci.dll");
-dllVer4 = fetch_file_version(sysPath, file_name:"System32\Msorcl32.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Winsync.dll");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Ntdll.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"System32\Mtxoci.dll");
+dllVer4 = fetch_file_version(sysPath:sysPath, file_name:"System32\Msorcl32.dll");
 
 if(!dllVer1 && !dllVer2 && !dllVer3 && !dllVer4){
   exit(0);

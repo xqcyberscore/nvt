@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160714-ios-xr.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160714-ios-xr.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS XR Software Command Injection Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106140");
- script_cve_id("CVE-2016-1456");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106140");
+  script_cve_id("CVE-2016-1456");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco IOS XR Software Command Injection Vulnerability");
+  script_name("Cisco IOS XR Software Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160714-ios-xr");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160714-ios-xr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the command-line utility of Cisco IOS XR Software
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the command-line utility of Cisco IOS XR Software
 could allow an authenticated, local attacker to execute arbitrary commands on the host operating system with
 elevated privileges.
 
@@ -54,17 +54,17 @@ to execute arbitrary commands on the affected system with root privileges.
 Cisco has not released software updates that address this vulnerability. There are no workarounds that address
 this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-07-15 12:21:53 +0700 (Fri, 15 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-15 12:21:53 +0700 (Fri, 15 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
+  exit(0);
 }
 
 include("host_details.inc");

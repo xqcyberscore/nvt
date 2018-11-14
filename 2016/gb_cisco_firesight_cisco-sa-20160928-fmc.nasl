@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20160928-fmc.nasl 7360 2017-10-06 07:41:52Z teissa $
+# $Id: gb_cisco_firesight_cisco-sa-20160928-fmc.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco FireSIGHT System Software Cross-Site Request Forgery Vulnerability
 #
@@ -29,40 +29,42 @@ CPE = "cpe:/a:cisco:firesight_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106300");
- script_cve_id("CVE-2016-6417");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 7360 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106300");
+  script_cve_id("CVE-2016-6417");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco FireSIGHT System Software Cross-Site Request Forgery Vulnerability");
+  script_name("Cisco FireSIGHT System Software Cross-Site Request Forgery Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-fmc");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-fmc");
 
- script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "summary" , value:"A cross-site request forgery (CSRF) vulnerability for Cisco FireSIGHT System
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"A cross-site request forgery (CSRF) vulnerability for Cisco FireSIGHT System
 Software could allow an unauthenticated, remote attacker to execute unwanted actions.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a lack of CSRF protections by an affected device.
+  script_tag(name:"insight", value:"The vulnerability is due to a lack of CSRF protections by an affected device.
 An attacker could exploit this vulnerability by convincing a user to follow a malicious link.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to submit arbitrary requests
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to submit arbitrary requests
 to the affected device via the web browser with the privileges of the user.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-06 09:41:52 +0200 (Fri, 06 Oct 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 14:22:04 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firesight_management_center_version.nasl", "gb_cisco_firesight_management_center_http_detect.nasl");
- script_mandatory_keys("cisco_firesight_management_center/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 14:22:04 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firesight_management_center_version.nasl", "gb_cisco_firesight_management_center_http_detect.nasl");
+  script_mandatory_keys("cisco_firesight_management_center/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -70,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'4.10.2',
 		'4.10.3',
 		'4.10.2.1',

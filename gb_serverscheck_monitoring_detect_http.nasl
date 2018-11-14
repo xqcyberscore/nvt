@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serverscheck_monitoring_detect_http.nasl 12328 2018-11-13 07:27:47Z cfischer $
+# $Id: gb_serverscheck_monitoring_detect_http.nasl 12341 2018-11-13 15:56:43Z mmartin $
 #
 # ServersCheck Monitoring Server Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107366");
-  script_version("$Revision: 12328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 08:27:47 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12341 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 16:56:43 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-12 16:31:12 +0100 (Mon, 12 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,6 +65,7 @@ if( ! banner || banner !~ "Server: ServersCheck_Monitoring_Server" )
 
 version = "unknown";
 set_kb_item( name: "ServersCheck/Monitoring_Server/http/detected", value: TRUE );
+set_kb_item( name: "ServersCheck/Monitoring_Software_or_Server/detected", value: TRUE );
 set_kb_item( name: "ServersCheck/Monitoring_Server/http/port", value: port );
 
 # Server: ServersCheck_Monitoring_Server/1.1

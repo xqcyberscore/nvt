@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_sinema_priv_esc_vuln.nasl 3945 2016-09-02 10:23:52Z ckuerste $
+# $Id: gb_siemens_sinema_priv_esc_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Siemens SINEMA Server Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:siemens:sinema_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106221");
-  script_version("$Revision: 3945 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-02 12:23:52 +0200 (Fri, 02 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-02 14:50:41 +0700 (Fri, 02 Sep 2016)");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-02 14:50:41 +0700 (Fri, 02 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6486");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("Siemens SINEMA Server Privilege Escalation Vulnerability");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_siemens_sinema_server_detect.nasl");
   script_mandatory_keys("sinema_server/installed", "sinema_server/version");
 
-  script_tag(name: "summary", value: "SINEMA Server is affected by a vulnerability that could allow
+  script_tag(name:"summary", value:"SINEMA Server is affected by a vulnerability that could allow
 authenticated operating system users to escalate their privileges.");
 
-  script_tag(name: "insight", value: "The file permissions set for the SINEMA Server application folder could
+  script_tag(name:"insight", value:"The file permissions set for the SINEMA Server application folder could
 allow users, authenticated via the operating system, to escalate their privileges.");
 
-  script_tag(name: "impact", value: "Successful exploitation of this vulnerability could allow users,
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability could allow users,
 authenticated via the operating system, to escalate their privileges under certain conditions.");
 
-  script_tag(name: "affected", value: "SINEMA Server V13 and prior.");
+  script_tag(name:"affected", value:"SINEMA Server V13 and prior.");
 
-  script_tag(name: "solution", value: "Siemens provides a temporary fix for existing installations through
+  script_tag(name:"solution", value:"Siemens provides a temporary fix for existing installations through
 its local service organization.");
 
-  script_xref(name: "URL", value: "http://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-321174.pdf");
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-215-02");
+  script_xref(name:"URL", value:"http://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-321174.pdf");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-215-02");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

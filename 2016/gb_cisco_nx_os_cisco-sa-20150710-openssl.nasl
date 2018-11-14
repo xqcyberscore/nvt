@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20150710-openssl.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20150710-openssl.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # OpenSSL Alternative Chains Certificate Forgery Vulnerability (July 2015) Affecting Cisco Products
 #
@@ -29,52 +29,48 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105691");
- script_cve_id("CVE-2015-1793");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5745 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105691");
+  script_cve_id("CVE-2015-1793");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco NX-OS: OpenSSL Alternative Chains Certificate Forgery Vulnerability (July 2015) Affecting Cisco Products");
+  script_name("Cisco NX-OS: OpenSSL Alternative Chains Certificate Forgery Vulnerability (July 2015) Affecting Cisco Products");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150710-openssl");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39851");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39851");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150710-openssl");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39851");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"On July 9, 2015, the OpenSSL Project released a security advisory detailing a vulnerability
-affecting applications that verify certificates, including SSL/Transport Layer Security
-(TLS)/Datagram Transport Layer Security (DTLS) clients and SSL/TLS/DTLS servers using client
-authentication.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"On July 9, 2015, the OpenSSL Project released a security advisory detailing a vulnerability
+  affecting applications that verify certificates, including SSL/Transport Layer Security
+  (TLS)/Datagram Transport Layer Security (DTLS) clients and SSL/TLS/DTLS servers using client
+  authentication.
 
-Multiple Cisco products incorporate a version of the OpenSSL package affected by this vulnerability
-that could allow an unauthenticated, remote attacker to cause certain checks on untrusted
-certificates to be bypassed, enabling the attacker to forge `trusted` certificates that could be
-used to conduct man-in-the-middle attacks.
+  Multiple Cisco products incorporate a version of the OpenSSL package affected by this vulnerability
+  that could allow an unauthenticated, remote attacker to cause certain checks on untrusted
+  certificates to be bypassed, enabling the attacker to forge `trusted` certificates that could be
+  used to conduct man-in-the-middle attacks.
 
-This advisory will be updated as additional information becomes available.
+  This advisory will be updated as additional information becomes available.
 
-Cisco will release free software updates that address this vulnerability.
+  Cisco will release free software updates that address this vulnerability.
 
-Workarounds that mitigate this vulnerability may be available.
+  Workarounds that mitigate this vulnerability may be available.");
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150710-openssl");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-12 14:26:49 +0200 (Thu, 12 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-12 14:26:49 +0200 (Thu, 12 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
-
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

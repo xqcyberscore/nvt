@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_cve_2016_3195.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_fortimanager_cve_2016_3195.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # FortiManager Multiple XSS Vulnerabilities
 #
@@ -29,41 +29,44 @@ CPE = "cpe:/h:fortinet:fortimanager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105865");
- script_cve_id("CVE-2016-3195","CVE-2016-3194","CVE-2016-3193");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105865");
+  script_cve_id("CVE-2016-3195", "CVE-2016-3194", "CVE-2016-3193");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 12338 $");
 
- script_name("FortiManager Multiple XSS Vulnerabilities");
+  script_name("FortiManager Multiple XSS Vulnerabilities");
 
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-client-side-xss-vulnerability");
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-xss-vulnerability");
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-persistent-xss-vulnerability-1");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-client-side-xss-vulnerability");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-xss-vulnerability");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-persistent-xss-vulnerability-1");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiManager 5.4.0 and above or 5.2.6 and above or 5.0.12 and above");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to FortiManager 5.4.0 and above or 5.2.6 and above or 5.0.12 and above");
 
- script_tag(name: "summary" , value:"FortiManager is prone to multiple XSS vulnerabilities.
+  script_tag(name:"summary", value:"FortiManager is prone to multiple XSS vulnerabilities.
 
-1 An XSS vulnerablity in FortiManager/FortiAnalyzer could allow privileged guest user accounts and restricted user accounts to inject malicious script to the application-side or client-side of the appliance web-application; this potentially enables XSS attacks.
-2 A vulnerablity in FortiManager/FortiAnalyzer address added page could allow malicious script being injected in the input field; this potentially enables XSS attacks.
-3 A client side XSS vulnerablity in FortiManager/FortiAnalyzer could allow malicious script being injected in the Web-UI; this potentially enables XSS attacks.");
+  - An XSS vulnerablity in FortiManager/FortiAnalyzer could allow privileged guest user accounts and restricted user accounts
+  to inject malicious script to the application-side or client-side of the appliance web-application. This potentially enables XSS attacks.
 
- script_tag(name: "affected" , value:"FortiManager: 5.0.0 - 5.0.11, 5.2.0 - 5.2.5, 5.4.0");
- script_tag(name:"solution_type", value: "VendorFix");
+  - A vulnerablity in FortiManager/FortiAnalyzer address added page could allow malicious script being injected in the input field. This potentially enables XSS attacks.
 
- script_tag(name:"qod_type", value:"package");
+  - A client side XSS vulnerablity in FortiManager/FortiAnalyzer could allow malicious script being injected in the Web-UI. This potentially enables XSS attacks.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-12 12:59:41 +0200 (Fri, 12 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_fortimanager_version.nasl");
- script_mandatory_keys("fortimanager/version");
+  script_tag(name:"affected", value:"FortiManager: 5.0.0 - 5.0.11, 5.2.0 - 5.2.5, 5.4.0");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  script_tag(name:"qod_type", value:"package");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-12 12:59:41 +0200 (Fri, 12 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_fortimanager_version.nasl");
+  script_mandatory_keys("fortimanager/version");
+
+  exit(0);
 }
 
 include("host_details.inc");

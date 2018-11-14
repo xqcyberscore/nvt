@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150923-fhs.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150923-fhs.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco IOS and IOS XE Software IPv6 First Hop Security Denial of Service Vulnerabilities
 #
@@ -29,48 +29,43 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105669");
- script_cve_id("CVE-2015-6278","CVE-2015-6279");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105669");
+  script_cve_id("CVE-2015-6278", "CVE-2015-6279");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco IOS and IOS XE Software IPv6 First Hop Security Denial of Service Vulnerabilities");
+  script_name("Cisco IOS and IOS XE Software IPv6 First Hop Security Denial of Service Vulnerabilities");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-fhs");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40940");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40941");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40940");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40941");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-fhs");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40940");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40941");
+  script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Two vulnerabilities in the IPv6 first hop security feature of Cisco IOS and IOS XE Software could allow an unauthenticated, remote attacker to cause an affected device to reload.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Two vulnerabilities in the IPv6 first hop security feature of Cisco IOS and IOS XE Software could allow an unauthenticated, remote attacker to cause an affected device to reload.
 
-Cisco has released software updates that address these vulnerabilities. There are no workarounds to mitigate these vulnerabilities.
-This advisory is available at the following link:
+  Cisco has released software updates that address these vulnerabilities. There are no workarounds to mitigate these vulnerabilities.
+  This advisory is available at the references.
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-fhs
+  Note: The September 23, 2015, release of the Cisco IOS and IOS XE Software Security Advisory bundled publication includes three Cisco Security Advisories.
+  All the advisories address vulnerabilities in Cisco IOS Software and Cisco IOS XE Software. Individual publication links are in Cisco Event Response:
+  September 2015 Semiannual Cisco IOS and IOS XE Software Security Advisory Bundled Publication at the references.");
 
-Note: The September 23, 2015, release of the Cisco IOS and IOS XE Software Security Advisory bundled publication includes three Cisco Security Advisories. All the advisories address vulnerabilities in Cisco IOS Software and Cisco IOS XE Software. Individual publication links are in Cisco Event Response: September 2015 Semiannual Cisco IOS and IOS XE Software Security Advisory Bundled Publication at the following link:
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html
-");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-09 18:25:53 +0200 (Mon, 09 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-09 18:25:53 +0200 (Mon, 09 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -78,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.2.0SE',
 		'3.2.1SE',
 		'3.2.2SE',

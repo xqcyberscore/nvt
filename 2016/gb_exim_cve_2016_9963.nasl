@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exim_cve_2016_9963.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_exim_cve_2016_9963.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Exim Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:exim:exim';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106485");
-  script_version("$Revision: 11607 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 10:52:32 +0700 (Fri, 23 Dec 2016)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"summary", value:"Exim is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"If several conditions are met, Exim leaks private information to a remote
 attacker.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_var_unserializer_dos_vuln_win.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_var_unserializer_dos_vuln_win.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # PHP 'var_unserializer' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809322");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-7411");
   script_bugtraq_id(93009);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 18:19:30 +0530 (Mon, 12 Sep 2016)");
   script_name("PHP 'var_unserializer' Denial of Service Vulnerability (Windows)");
 
@@ -47,14 +47,11 @@ if(description)
   object-deserialization failures in 'ext/standard/var_unserializer.re' script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to cause a denial of service.
-
-  Impact Level: Application");
+  remote attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.6.26 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.26, or later.
-  For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.26, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

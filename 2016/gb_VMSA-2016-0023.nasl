@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0023.nasl 6518 2017-07-04 13:49:06Z cfischer $
+# $Id: gb_VMSA-2016-0023.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # VMSA-2016-0023: VMware ESXi updates address a cross-site scripting issue
 #
@@ -27,30 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140100");
- script_cve_id("CVE-2016-7463");
- script_tag(name:"cvss_base", value:"3.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 6518 $");
- script_name("VMSA-2016-0023: VMware ESXi updates address a cross-site scripting issue");
+  script_oid("1.3.6.1.4.1.25623.1.0.140100");
+  script_cve_id("CVE-2016-7463");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 12338 $");
+  script_name("VMSA-2016-0023: VMware ESXi updates address a cross-site scripting issue");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0023.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0023.html");
 
- script_tag(name: "vuldetect" , value:"Checks for missing patches.");
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
 
- script_tag(name: "solution" , value:"Apply the missing patch(es).");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
- script_tag(name: "summary" , value:"The ESXi Host Client contains a vulnerability that may allow for stored cross-site scripting (XSS). The issue can be introduced by an attacker that has permission to manage virtual machines through ESXi Host Client or by tricking the vSphere administrator to import a specially crafted VM. The issue may be triggered on the system from where ESXi Host Client is used to manage the specially crafted VM.");
+  script_tag(name:"summary", value:"The ESXi Host Client contains a vulnerability that may allow for stored cross-site scripting (XSS). The issue can be introduced by an attacker that has permission to manage virtual machines through ESXi Host Client or by tricking the vSphere administrator to import a specially crafted VM. The issue may be triggered on the system from where ESXi Host Client is used to manage the specially crafted VM.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 15:49:06 +0200 (Tue, 04 Jul 2017) $");
- script_tag(name:"creation_date", value:"2016-12-21 15:46:45 +0100 (Wed, 21 Dec 2016)");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-21 15:46:45 +0100 (Wed, 21 Dec 2016)");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
  exit(0);
 

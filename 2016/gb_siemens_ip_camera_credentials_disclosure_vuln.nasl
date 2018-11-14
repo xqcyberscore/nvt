@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 11409 2018-09-15 12:30:12Z cfischer $
+# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # SIEMENS IP-Camera Credentials Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807879");
-  script_version("$Revision: 11409 $");
+  script_version("$Revision: 12338 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 14:30:12 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 11:01:49 +0530 (Thu, 18 Aug 2016)");
   script_name("SIEMENS IP-Camera Credentials Disclosure Vulnerability");
 
@@ -78,8 +78,7 @@ if(description)
 
      CCMW1025:  All  versions  <  v2635.");
 
-  script_tag(name:"solution", value:"Updates were issued to solve this vulnerability.
-  For updates refer to https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-284765.pdf");
+  script_tag(name:"solution", value:"Updates were issued to solve this vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
@@ -93,6 +92,7 @@ if(description)
   script_mandatory_keys("Boa/banner");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-284765.pdf");
   exit(0);
 }
 

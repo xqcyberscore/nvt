@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-134.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-134.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)
 #
@@ -27,34 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809801");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-0026", "CVE-2016-3332", "CVE-2016-3333", "CVE-2016-3334",
 		"CVE-2016-3335", "CVE-2016-3338", "CVE-2016-3340", "CVE-2016-3342",
 		"CVE-2016-3343", "CVE-2016-7184");
   script_bugtraq_id(93998, 94008, 94009, 94012, 94011, 94014, 94010, 94013, 94007, 94015);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:58:28 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-134.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to windows common log file
+  script_tag(name:"insight", value:"The flaw exists due to windows common log file
   system (CLFS) driver improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to run processes in an elevated context.
+  attacker to run processes in an elevated context.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
@@ -65,20 +61,20 @@ if(description)
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-0134");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3193706");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-134");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3193706");
+  script_xref(name:"URL" , value:"https://technet.microsoft.com/en-us/library/security/MS16-134");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-0134");
   exit(0);
 }
 
@@ -87,34 +83,25 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3,
                    win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
                    win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Fetch the version of 'Clfs.sys'
-clfVer = fetch_file_version(sysPath, file_name:"System32\clfs.sys");
-edgeVer = fetch_file_version(sysPath, file_name:"system32\Edgehtml.dll");
+clfVer = fetch_file_version(sysPath:sysPath, file_name:"System32\clfs.sys");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
 if(!clfVer && !edgeVer){
   exit(0);
 }
 
-## Windows 8.1 and Windows Server 2012 R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Clfs.sys version
   if(version_is_less(version:clfVer, test_version:"6.3.9600.18514"))
   {
     Vulnerable_range = "Less than 6.3.9600.18514";
@@ -122,10 +109,8 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Clfs.sys version
   if(version_is_less(version:clfVer, test_version:"6.1.7601.23572"))
   {
     Vulnerable_range = "Less than 6.1.7601.23572";
@@ -133,10 +118,8 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Clfs.sys version
   if(version_is_less(version:clfVer, test_version:"6.2.9200.22007"))
   {
     Vulnerable_range = "Less than 6.2.9200.22007";
@@ -144,10 +127,8 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-## Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  ## Check for Clfs.sys version
   if(version_is_less(version:clfVer, test_version:"6.0.6002.19703"))
   {
     Vulnerable_range = "Less than 6.0.6002.19703";
@@ -160,22 +141,18 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17184"))
   {
     Vulnerable_range1 = "Less than 11.0.10240.17184";
     VULN1 = TRUE ;
   }
-  ## Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.671"))
   {
     Vulnerable_range1 = "11.0.10586.0 - 11.0.10586.671";
     VULN1 = TRUE ;
   }
-  ## Windows 10 version 1607
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.446"))
   {
     Vulnerable_range1 = "11.0.14393.0 - 11.0.14393.446";
@@ -191,7 +168,7 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
     exit(0);
   }
 }
-     
+
 if(VULN)
 {
   report = 'File checked:     ' + sysPath + "\System32\Clfs.sys" + '\n' +

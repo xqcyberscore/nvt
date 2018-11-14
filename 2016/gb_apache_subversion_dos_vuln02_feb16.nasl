@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln02_feb16.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_apache_subversion_dos_vuln02_feb16.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Apache Subversion 'URIs' Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806860");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2014-3580");
   script_bugtraq_id(71726);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-08 18:19:08 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion 'URIs' Denial Of Service Vulnerability");
@@ -42,26 +42,23 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Subversion
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper validation
   of formatted special URIs in mod_dav_svn Apache HTTPD server module.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to cause a denial of service.
-
-  Impact Level: Application");
+  attacker to cause a denial of service.");
 
   script_tag(name:"affected", value:"Apache Subversion 1.x before 1.7.19
   and 1.8.x before 1.8.11");
 
   script_tag(name:"solution", value:"Upgrade to version 1.7.19, or 1.8.11,
-  or later, For updates refer to https://subversion.apache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2014-3580-advisory.txt");
+  script_xref(name:"URL" , value:"https://subversion.apache.org/security/CVE-2014-3580-advisory.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -76,21 +73,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-subver = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!subver = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-# Checking for Vulnerable version
 if(subver =~ "^(1\.8)")
 {
   if(version_is_less(version:subver, test_version:"1.8.11"))

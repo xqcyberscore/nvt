@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_rce_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_hp_service_manager_rce_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # HP Service Manager Remote Command Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106144");
-  script_version("$Revision: 8596 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-18 11:48:16 +0700 (Mon, 18 Jul 2016)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-18 11:48:16 +0700 (Mon, 18 Jul 2016)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-1998");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HP Service Manager Remote Command Execution Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_hp_service_manager_detect.nasl");
   script_mandatory_keys("hp_service_manager/installed");
 
-  script_tag(name: "summary", value: "HP Service Manager is prone to a remote command execution vulnerability.");
+  script_tag(name:"summary", value:"HP Service Manager is prone to a remote command execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "A remote attacker may execute arbitrary commands via a crafted serialized
+  script_tag(name:"insight", value:"A remote attacker may execute arbitrary commands via a crafted serialized
 Java object, related to the Apache Commons Collections library.");
 
-  script_tag(name: "impact", value: "A remote attacker may execute arbitrary commands.");
+  script_tag(name:"impact", value:"A remote attacker may execute arbitrary commands.");
 
-  script_tag(name: "affected", value: "Versions 9.30, 9.31, 9.32, 9.33, 9.34, 9.35, 9.40, and 9.41");
+  script_tag(name:"affected", value:"Versions 9.30, 9.31, 9.32, 9.33, 9.34, 9.35, 9.40, and 9.41");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05054565");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05054565");
 
 
   exit(0);

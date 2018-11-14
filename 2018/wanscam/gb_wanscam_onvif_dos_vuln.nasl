@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_onvif_dos_vuln.nasl 11470 2018-09-19 09:45:56Z cfischer $
+# $Id: gb_wanscam_onvif_dos_vuln.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Wanscam HW0021 ONVIF Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113222");
-  script_version("$Revision: 11470 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:45:56 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-03 11:23:57 +0200 (Tue, 03 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"exploit");
 

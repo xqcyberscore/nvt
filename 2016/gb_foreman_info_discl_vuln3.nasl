@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_discl_vuln3.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_foreman_info_discl_vuln3.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Foreman Information Disclosure Vulnerability-03
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106424");
-  script_version("$Revision: 11607 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12338 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Foreman is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A provisioning template containing inspect will expose sensitive
 information about the Rails controller and application when rendered when using Safemode rendering (the default

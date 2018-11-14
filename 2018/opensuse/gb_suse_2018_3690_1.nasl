@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3690_1.nasl 12329 2018-11-13 08:26:34Z santu $
+# $Id: gb_suse_2018_3690_1.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # SuSE Update for libarchive openSUSE-SU-2018:3690-1 (libarchive)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852113");
-  script_version("$Revision: 12329 $");
+  script_version("$Revision: 12343 $");
   script_cve_id("CVE-2017-14501", "CVE-2017-14502", "CVE-2017-14503");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 09:26:34 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-10 05:58:04 +0100 (Sat, 10 Nov 2018)");
   script_name("SuSE Update for libarchive openSUSE-SU-2018:3690-1 (libarchive)");
   script_category(ACT_GATHER_INFO);

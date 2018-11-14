@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln01_july16.nasl 9993 2018-05-29 06:02:50Z cfischer $
+# $Id: gb_oracle_glassfish_unspecified_vuln01_july16.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Oracle GlassFish Server Unspecified Vulnerability -01 July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808705");
-  script_version("$Revision: 9993 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-3608");
   script_bugtraq_id(92031);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:02:50 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-22 12:15:22 +0530 (Fri, 22 Jul 2016)");
   script_name("Oracle GlassFish Server Unspecified Vulnerability -01 July16");
 
@@ -47,21 +47,17 @@ if(description)
   the Administration sub-component.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
-  authenticated attackers to affect confidentiality via unknown vectors.
-
-  Impact Level: Application");
+  authenticated attackers to affect confidentiality via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle GlassFish Server version 3.0.1");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-
-  http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_tag(name:"solution", value:"Apply the patches from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

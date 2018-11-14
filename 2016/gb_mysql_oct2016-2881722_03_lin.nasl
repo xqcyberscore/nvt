@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_03_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mysql_oct2016-2881722_03_lin.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 03 - Linux
 #
 # Authors:
-# Kashinath T <tkashinath@secpod.com> 
+# Kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,46 +29,42 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809375");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-5612");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:48:51 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 03 - Linux");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified
   error in Server: DML component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow a remote authenticated user to cause denial of
-  service conditions.
+  service conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle Mysql version 5.5.50 and earlier,
+  script_tag(name:"affected", value:"Oracle Mysql version 5.5.50 and earlier,
   5.6.31 and earlier, and 5.7.13 and earlier on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
   script_require_ports("Services/mysql", 3306);
   exit(0);
 }
@@ -76,11 +72,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   CPE = "cpe:/a:mysql:mysql";
   if(!sqlPort = get_app_port(cpe:CPE)){
@@ -88,7 +79,6 @@ if(!sqlPort = get_app_port(cpe:CPE)){
   }
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

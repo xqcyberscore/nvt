@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160615-rv.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_cisco_sb_cisco-sa-20160615-rv.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers Arbitrary Code Execution Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/h:cisco:small_business";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105768");
- script_cve_id("CVE-2016-1395");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105768");
+  script_cve_id("CVE-2016-1395");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco RV110W, RV130W, and RV215W Routers Arbitrary Code Execution Vulnerability");
+  script_name("Cisco RV110W, RV130W, and RV215W Routers Arbitrary Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160615-rv");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160615-rv");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the web interface of the Cisco RV110W Wireless-N VPN Firewall, Cisco RV130W Wireless-
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the web interface of the Cisco RV110W Wireless-N VPN Firewall, Cisco RV130W Wireless-
 N Multifunction VPN Router, and the Cisco RV215W Wireless-N VPN Router could allow an
 unauthenticated, remote attacker to execute arbitrary code as root on a targeted system.
 
@@ -51,18 +51,18 @@ exploit this vulnerability by sending a crafted HTTP request with custom user da
 allow the attacker to execute arbitrary code with root-level privileges on the affected system,
 which could be leveraged to conduct further attacks.");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-06-16 09:53:40 +0200 (Thu, 16 Jun 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
- script_mandatory_keys("cisco/small_business/model","cisco/small_business/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-16 09:53:40 +0200 (Thu, 16 Jun 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
+  script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_info_disclosure_vuln_sept18.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_trend_micro_officescan_info_disclosure_vuln_sept18.nasl 12343 2018-11-14 02:59:57Z ckuersteiner $
 #
 # Trend Micro OfficeScan Information Disclosure Vulnerability Sep18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813924");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12343 $");
   script_cve_id("CVE-2018-15364");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-14 03:59:57 +0100 (Wed, 14 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 16:54:20 +0530 (Tue, 04 Sep 2018)");
   script_name("Trend Micro OfficeScan Information Disclosure Vulnerability Sep18");
 

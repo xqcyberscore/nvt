@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-120.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_dotnet_framework_ms16-120.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3192884)
 #
@@ -27,28 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809706");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 12338 $");
   script_cve_id("CVE-2016-3209");
   script_bugtraq_id(93385);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 13:56:09 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3192884)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-120.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to error in the way that the
   Windows Graphics Device Interface (GDI) handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 Service Pack 2
 
@@ -61,20 +58,17 @@ if(description)
   Microsoft .NET Framework 3.5");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/library/security/MS16-120");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3192884");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-120");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-in/kb/3192884");
+  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-120");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
@@ -192,8 +186,7 @@ if(registry_key_exists(key:key))
 ##Can lead to FP not covering
 
 
-##Windows 10 Update is commulative so checking for edgehtml.dll
-edgeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
 if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 {
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17146"))
@@ -201,13 +194,11 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
     vulnerable_range4 = "Less than 11.0.10240.17146";
     VULN4 = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
   {
     vulnerable_range4 = "11.0.10586.0 - 11.0.10586.632";
     VULN4 = TRUE ;
   }
-  ## Windows 10 version 1607
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.320"))
   {
     vulnerable_range4 = "11.0.14393.0 - 11.0.14393.320";

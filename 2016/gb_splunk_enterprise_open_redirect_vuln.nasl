@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
+# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Splunk Enterprise Open Redirection Vulnerability
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809013");
-  script_version("$Revision: 10149 $");
+  script_version("$Revision: 12338 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Splunk Enterprise Open Redirection Vulnerability");
 
   script_cve_id("CVE-2016-4859");
 
-  script_tag(name: "summary" , value:"This host is installed with Splunk
+  script_tag(name:"summary", value:"This host is installed with Splunk
   Enterprise and is prone to an open redirection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an unspecified input
+  script_tag(name:"insight", value:"The flaw is due to an unspecified input
   validation error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  could permit an attacker to redirect a user to an attacker controlled website.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  could permit an attacker to redirect a user to an attacker controlled website.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Splunk Enterprise versions 6.4.x before
+  script_tag(name:"affected", value:"Splunk Enterprise versions 6.4.x before
   6.4.3, 6.3.x before 6.3.6, 6.2.x before 6.2.10, 6.1.x before 6.1.11, 6.0.x
   before 6.0.12, 5.0.x before 5.0.16");
 
-  script_tag(name: "solution" , value:"Upgrade to Splunk Enterprise version 6.4.3
-  or 6.3.6 or 6.2.10 or 6.1.11 or 6.0.12 or 5.0.16 or later.
-  For updates refer to http://www.splunk.com");
+  script_tag(name:"solution", value:"Upgrade to Splunk Enterprise version 6.4.3
+  or 6.3.6 or 6.2.10 or 6.1.11 or 6.0.12 or 5.0.16 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAPQ6");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAPQ6");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

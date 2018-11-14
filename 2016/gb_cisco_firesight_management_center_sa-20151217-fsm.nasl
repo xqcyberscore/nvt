@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6427");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 12338 $");
 
   script_name("Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by embedding crafted HTTP packets in an encrypted SSL connection that could be flagged as an HTTP attack. An exploit could allow the attacker to bypass HTTP attack rules for SSL connections.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is due to improper HTTP attack detection of decrypted SSL connections.");
 
@@ -53,7 +53,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-06 13:43:05 +0100 (Wed, 06 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -62,7 +62,7 @@ General solution options are to upgrade to a newer release, disable respective f
                      "gb_cisco_firesight_management_center_http_detect.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

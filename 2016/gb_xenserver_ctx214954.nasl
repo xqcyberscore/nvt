@@ -29,34 +29,34 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105833");
- script_cve_id("CVE-2016-6258","CVE-2016-6259");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5689 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105833");
+  script_cve_id("CVE-2016-6258", "CVE-2016-6259");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12338 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX214954)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX214954)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/CTX214954");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX214954");
 
- script_tag(name: "vuldetect" , value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a PV guest VM to compromise or crash the host.");
- script_tag(name: "affected" , value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a PV guest VM to compromise or crash the host.");
+  script_tag(name:"affected", value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-07-28 18:00:20 +0200 (Thu, 28 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-28 18:00:20 +0200 (Thu, 28 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 6034 2017-04-27 05:46:15Z teissa $
+# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 12338 2018-11-13 14:51:17Z asteins $
 #
 # Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability
 #
@@ -29,41 +29,42 @@ CPE = "cpe:/h:cisco:content_security_management_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106295");
- script_cve_id("CVE-2016-6416");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6034 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106295");
+  script_cve_id("CVE-2016-6416");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 12338 $");
 
- script_name("Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability");
+  script_name("Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aos");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aos");
 
- script_tag(name: "solution" , value:"Download the last release from Cisco Content Security Management Appliance. Refer to : https://software.cisco.com/download/navigator.html?mdfid=282509131.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "summary" , value:"A vulnerability in the local File Transfer Protocol (FTP) service on the
+  script_tag(name:"solution", value:"Download the last release from Cisco Content Security Management Appliance.");
+
+  script_tag(name:"summary", value:"A vulnerability in the local File Transfer Protocol (FTP) service on the
 Cisco AsyncOS for Content Security Management Appliance (SMA) could allow an unauthenticated, remote attacker
 to cause a denial of service (DoS) condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to lack of throttling of FTP connections. An
+  script_tag(name:"insight", value:"The vulnerability is due to lack of throttling of FTP connections. An
 attacker could exploit this vulnerability by sending a flood of FTP traffic to the local FTP service on the
 targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 07:46:15 +0200 (Thu, 27 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_csma_version.nasl");
- script_mandatory_keys("cisco_csm/installed");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_csma_version.nasl");
+  script_mandatory_keys("cisco_csm/installed");
+  script_xref(name:"URL", value:"https://software.cisco.com/download/navigator.html?mdfid=282509131.");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -71,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'9.1.0',
 		'9.1.0-004',
 		'9.1.0-033',
