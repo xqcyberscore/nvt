@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_elementtree_dos_vuln_win.nasl 12191 2018-11-01 15:41:33Z mmartin $
+# $Id: gb_python_elementtree_dos_vuln_win.nasl 12358 2018-11-15 07:57:20Z cfischer $
 #
 # Python Elementtree Denial of Service Vulnerability (Windows)
 #
@@ -30,13 +30,23 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814304");
-  script_version("$Revision: 12191 $");
+  script_version("$Revision: 12358 $");
   script_cve_id("CVE-2018-14647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 16:41:33 +0100 (Thu, 01 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 08:57:20 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:15 +0530 (Wed, 03 Oct 2018)");
   script_name("Python Elementtree Denial of Service Vulnerability (Windows)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Denial of Service");
+  script_dependencies("gb_python_detect_win.nasl");
+  script_mandatory_keys("python6432/win/detected");
+
+  script_xref(name:"URL", value:"https://bugs.python.org/issue34623");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2018-14647");
+  script_xref(name:"URL", value:"https://www.python.org");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/105396/info");
 
   script_tag(name:"summary", value:"This host is running Python and is prone
   to denial of service vulnerability.");
@@ -60,31 +70,20 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name:"URL", value:"https://bugs.python.org/issue34623");
-  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2018-14647");
-  script_xref(name:"URL", value:"https://www.python.org");
-  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/105396/info");
 
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Denial of Service");
-  script_dependencies("gb_python_detect_win.nasl");
-  script_mandatory_keys("Python/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
 pyVer = infos['version'];
 pypath = infos['location'];
 
-if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)")
-{
-  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None available", install_path: pypath);
+if(pyVer =~ "^(2.7|3.4|3.5|3.6|3.7|3.8)"){
+  report = report_fixed_ver(installed_version:pyVer, fixed_version:"None available", install_path:pypath);
   security_message(data:report);
-  exit(0);
 }
+
 exit(0);

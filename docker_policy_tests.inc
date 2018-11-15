@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Include File
 #
-# $Id: docker_policy_tests.inc 5107 2017-01-25 17:31:44Z mime $
+# $Id: docker_policy_tests.inc 12361 2018-11-15 08:43:40Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -26,7 +26,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5107 $
+# $Revision: 12361 $
 #
 ###############################################################################
 
@@ -99,7 +99,7 @@ docker_test['2.5']  = make_array( 'title',     '2.5 Disable legacy registry v1.'
                                   'solution',  'Use "--disable-legacy-registry" on the Docker daemon command line.' );
 
 docker_test['2.6']  = make_array( 'title',     '2.6 Enable live restore.',
-                                  'desc',      'You should use the "--live-restore" option to get spport for daemon-less containers in docker.',
+                                  'desc',      'You should use the "--live-restore" option to get support for daemon-less containers in docker.',
                                   'solution',  'Use "--live-restore" on the Docker daemon command line.' );
 
 docker_test['2.7']  = make_array( 'title',     '2.7 Do not use Userland Proxy',
@@ -228,7 +228,7 @@ docker_test['5.7']  = make_array( 'title',     '5.7 Avoid image sprawl.',
 
 docker_test['5.8']  = make_array( 'title',     '5.8 Avoid container sprawl.',
                                   'desc',      'The number of containers on the same host should not be to large.',
-                                  'solution',  'Clean up the containers that are not neede.' );
+                                  'solution',  'Clean up the containers that are not needed.' );
 
 # 1.0 Use a separate partition for containers
 function docker_test_1_0( )
@@ -449,7 +449,7 @@ function docker_test_1_9( )
     if( "tlsverify" >!< docker_cmd || "tlskey" >!< docker_cmd )
       docker_test_set_failed( id:id, reason:'According to the Docker command line, the Docker daemon is missing "--tlsverify" and/or "--tlskey".\n' );
     else
-      docker_test_set_success( id:id, reason:'According to the Docker command line, the Docker daemon is usinng TLS authentication' );
+      docker_test_set_success( id:id, reason:'According to the Docker command line, the Docker daemon is using TLS authentication' );
   }
   else
     docker_test_set_success( id:id, reason:'According to the Docker command line, the Docker daemon did not bind to another IP/Port or a Unix socket.' );

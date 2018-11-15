@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_privilege_escalation_vuln_feb14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_java_privilege_escalation_vuln_feb14_lin.nasl 12359 2018-11-15 08:13:22Z cfischer $
 #
 # Oracle Java SE Privilege Escalation Vulnerability Feb 2014 (Linux)
 #
@@ -29,14 +29,22 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108424");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 12359 $");
   script_cve_id("CVE-2014-1876");
   script_bugtraq_id(65568);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 09:13:22 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 12:54:10 +0530 (Thu, 13 Feb 2014)");
   script_name("Oracle Java SE Privilege Escalation Vulnerability Feb 2014 (Linux)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_java_prdts_detect_lin.nasl");
+  script_mandatory_keys("Sun/Java/JRE/Linux/Ver");
+
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q1/242");
+  script_xref(name:"URL", value:"http://www.oracle.com/index.html");
 
   script_tag(name:"summary", value:"This host is installed with Oracle Java
   SE and is prone to privilege escalation vulnerability.");
@@ -54,35 +62,25 @@ if(description)
   Linux");
 
   script_tag(name:"solution", value:"Upgrade to version 8 update 5 or 7 update 55,
-  or higher, For updates refer to www.oracle.com/index.html");
+  or later.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q1/242");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("gb_java_prdts_detect_lin.nasl");
-  script_mandatory_keys("Sun/Java/JRE/Linux/Ver");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!jreVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit(0);
+jreVer = infos['version'];
+jrePath = infos['location'];
 
-if(jreVer =~ "^(1\.7)")
-{
-  if(version_in_range(version:jreVer, test_version:"1.7", test_version2:"1.7.0.51"))
-  {
-    report = report_fixed_ver(installed_version:jreVer, fixed_version: "8 update 5 or 7 update 55");
-    security_message(data:report);
-    exit(0);
-  }
+if(jreVer =~ "^1\.7" && version_in_range(version:jreVer, test_version:"1.7", test_version2:"1.7.0.51")){
+  report = report_fixed_ver(installed_version:jreVer, fixed_version: "8 update 5 or 7 update 55", install_path:jrePath);
+  security_message(data:report);
+  exit(0);
 }
 
 exit(99);

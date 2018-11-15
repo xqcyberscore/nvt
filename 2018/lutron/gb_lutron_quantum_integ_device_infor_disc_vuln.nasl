@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lutron_quantum_integ_device_infor_disc_vuln.nasl 11367 2018-09-13 07:22:06Z ckuersteiner $
+# $Id: gb_lutron_quantum_integ_device_infor_disc_vuln.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
 #
 # Lutron Quantum BACnet Integration Devices Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:lutron:device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812953");
-  script_version("$Revision: 11367 $");
+  script_version("$Revision: 12356 $");
   script_cve_id("CVE-2018-7276", "CVE-2018-8880");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 09:22:06 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 17:23:35 +0530 (Tue, 27 Feb 2018)");
 
   script_name("Lutron Quantum BACnet Integration Devices Information Disclosure Vulnerability");
@@ -50,8 +50,8 @@ if(description)
 
   script_tag(name:"affected", value:"Lutron Quantum BACnet Integration 2.0 devices with firmware 3.2.243.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"exploit");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_dvr_auth_bypass.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_mult_dvr_auth_bypass.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
 #
 # Multiple DVR Products Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141061");
-  script_version("$Revision: 11022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 13:51:37 +0700 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,8 +55,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 28th May, 2018. Information regarding
-  this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018.
+Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://misteralfa-hack.blogspot.cl/2018/04/tbk-vision-dvr-login-bypass.html");
 

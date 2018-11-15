@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_server_mult_vuln_active.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_twonky_server_mult_vuln_active.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
 #
 # Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)
 #
@@ -30,13 +30,15 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108436");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 12:17:00 +0200 (Sat, 07 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2018-7171", "CVE-2018-7203");
+
   script_name("Twonky Server <= 8.5 Multiple Vulnerabilities (Active Check)");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -47,6 +49,7 @@ if(description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/146939/TwonkyMedia-Server-7.0.11-8.5-Cross-Site-Scripting.html");
   script_xref(name:"URL", value:"https://github.com/mechanico/sharingIsCaring/blob/master/twonky.py");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44350/");
+  script_xref(name:"URL", value:"http://docs.twonky.com/display/TRN/Twonky+Server+8.5.1");
 
   script_tag(name:"summary", value:"Twonky Server is prone to multiple vulnerabilities.");
 
@@ -64,13 +67,12 @@ if(description)
 
   script_tag(name:"affected", value:"Twonky Server versions 7.0.11 through 8.5.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 22nd May, 2018. Information regarding
-this issue will be updated once solution details are available.
+  script_tag(name:"solution", value:"Update to version 8.5.1 or later.
 
   As a workaround set a strong password for the WebGUI which blocks access to the affected RCP calls.");
 
   script_tag(name:"qod_type", value:"remote_app");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

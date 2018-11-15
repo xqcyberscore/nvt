@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 14 Nov 2018 11:12:19 +0100
+# Automatically created on:  Thu, 15 Nov 2018 10:47:52 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38519,6 +38519,9 @@
 2018/adobe/gb_adobe_flash_player_apsb18-31_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-31_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-31_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-39_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-39_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-39_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_win.nasl: GPLv2+
@@ -38546,6 +38549,9 @@
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-31_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-31_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-31_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_win.nasl: GPLv2+
 2018/adobe/gb_adobe_framemaker_priv_escal_vuln_win.nasl: GPLv2+
 2018/adobe/gb_adobe_illustrator_code_exec_vuln_apsa08-07_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_illustrator_dll_hijacking_vuln_apsb10-29_win.nasl: GPLv2+
@@ -38588,6 +38594,7 @@
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-19.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-24.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-31.nasl: GPLv2+
+2018/adobe/gb_flash_player_for_ie_edge_apsb18-39.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_jan17.nasl: GPLv2+
 2018/anydesk/gb_anydesk_dll_preloading_vuln.nasl: GPLv2+
 2018/apache/gb_apache_activemq_info_disc_vuln_lin.nasl: GPLv2+
@@ -38609,6 +38616,7 @@
 2018/apache/gb_apache_hadoop_inf_disc_vuln.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_priv_esc_vuln_may18.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl: GPLv2+
+2018/apache/gb_apache_hadoop_zip_slip_vuln.nasl: GPLv2+
 2018/apache/gb_apache_http2_conn_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_http2_settings_data_proc_dos_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_http2_settings_data_proc_dos_vuln_win.nasl: GPLv2+
@@ -39198,6 +39206,7 @@
 2018/debian/deb_4336.nasl: GPLv2+
 2018/debian/deb_4337.nasl: GPLv2+
 2018/debian/deb_4338.nasl: GPLv2+
+2018/debian/deb_4339.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39672,6 +39681,7 @@
 2018/debian/deb_dla_1575.nasl: GPLv2+
 2018/debian/deb_dla_1576.nasl: GPLv2+
 2018/debian/deb_dla_1577.nasl: GPLv2+
+2018/debian/deb_dla_1578.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39859,6 +39869,7 @@
 2018/digium/gb_asterisk_AST-2018-007.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2018-008.nasl: GPLv2+
 2018/digium/gb_asterisk_AST-2018-009.nasl: GPLv2+
+2018/digium/gb_asterisk_AST-2018-010.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
 2018/discourse/gb_discourse_stored_xss_vuln.nasl: GPLv2+
@@ -41428,12 +41439,14 @@
 2018/microsoft/gb_ms_ie_mult_vuln_kb4056568.nasl: GPLv2+
 2018/microsoft/gb_ms_kb2899590.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3114416.nasl: GPLv2+
+2018/microsoft/gb_ms_kb3114565.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3114874.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3115248.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3141547.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3162075.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3172436.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3172459.nasl: GPLv2+
+2018/microsoft/gb_ms_kb3177467.nasl: GPLv2+
 2018/microsoft/gb_ms_kb3213636.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011143.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4011186.nasl: GPLv2+
@@ -41541,9 +41554,12 @@
 2018/microsoft/gb_ms_kb4022209.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4022218.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4022224.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022232.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4022237.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032212.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032213.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032214.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4032218.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032222.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032223.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4032229.nasl: GPLv2+
@@ -41678,6 +41694,17 @@
 2018/microsoft/gb_ms_kb4461457.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4461460.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4461466.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461485.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461486.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461488.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461503.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461504.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461506.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461518.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461519.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461526.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461529.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4461530.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4462917.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4462918.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4462919.nasl: GPLv2+
@@ -41686,10 +41713,19 @@
 2018/microsoft/gb_ms_kb4462926.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4462937.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4464330.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467107.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467680.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467686.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467691.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467696.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467697.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467702.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4467708.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_aug18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_july18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_june18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_may18.nasl: GPLv2+
+2018/microsoft/gb_ms_office_click2run_mult_vuln_nov18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_oct18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_sep18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_rce_vuln_mar18.nasl: GPLv2+
@@ -41700,6 +41736,7 @@
 2018/microsoft/gb_ms_office_mult_rce_vuln_jan17_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_office_mult_rce_vuln_july18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_office_mult_rce_vuln_may18_macosx.nasl: GPLv2+
+2018/microsoft/gb_ms_office_mult_vuln_nov18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_office_mult_vuln_oct18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_office_mult_vuln_sep18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_office_n_excel_click2run_mult_vuln_apr18.nasl: GPLv2+
@@ -41871,6 +41908,7 @@
 2018/mybb/gb_mybb_xss_vuln_aug18.nasl: GPLv2+
 2018/mybb/gb_mybb_xss_vuln.nasl: GPLv2+
 2018/nagios/gb_nagios_core_unix_socket_mult_dos_vuln.nasl: GPLv2+
+2018/nagios/gb_nagiosxi_mult_vuln_nov18.nasl: GPLv2+
 2018/nagiosxi/gb_nagios_fusion_mult_xss_vuln.nasl: GPLv2+
 2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
 2018/nagiosxi/gb_nagios_xi_mult_vuln.nasl: GPLv2+
@@ -42631,6 +42669,8 @@
 2018/postgresql/gb_postgresql_logrotate_vuln_may18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_rce_vuln_feb18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_rce_vuln_feb18_win.nasl: GPLv2+
+2018/postgresql/gb_postgresql_sql_inj_vuln_oct18_lin.nasl: GPLv2+
+2018/postgresql/gb_postgresql_sql_inj_vuln_oct18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_untrusted_search_path_vuln_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_untrusted_search_path_vuln_win.nasl: GPLv2+
 2018/powerdns/gb_pdns_dnssec_vuln.nasl: GPLv2+
@@ -43253,6 +43293,7 @@
 2018/wordpress/gb_wordpress_bookly_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_disable_comments_plugin_csfr_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_download_manager_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_duplicator_rce_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_email_subs_n_news_info_disc_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_events-manager_xss_vuln.nasl: GPLv2+
@@ -60404,6 +60445,7 @@ gsf/2018/ca/gb_ca_priviliged_access_manager_rce_vuln1.nasl: GPLv2+
 gsf/2018/ca/gb_ca_priviliged_access_manager_rce_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_ca_priviliged_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_uim_mult_vuln.nasl: GPLv2+
+gsf/2018/centreon/gb_centreon_mult_vuln_oct18.nasl: GPLv2+
 gsf/2018/circontrol/gb_circarlife_scada_mult_vuln.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180307-acs2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180502-acs1.nasl: GPLv2+
@@ -61038,6 +61080,7 @@ gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729521.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729547.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729563.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729571.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10730703.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
@@ -61052,6 +61095,7 @@ gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mitm_vuln_swg22016346_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mult_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_mult_vuln_nov18_1.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_lin.nasl: GPLv2+
@@ -61164,6 +61208,7 @@ gsf/2018/microsoft/gb_ms_ie_kb4343205.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114889.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3114998.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb3115197.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4011190.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011579.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011586.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4011599.nasl: GPLv2+
@@ -61253,6 +61298,7 @@ gsf/2018/microsoft/gb_ms_kb4091756.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4092041.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4092459.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4092470.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4092473.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4092481.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4093123.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4093223.nasl: GPLv2+
@@ -61318,8 +61364,15 @@ gsf/2018/microsoft/gb_ms_kb4458321.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4459266.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4461447.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4461450.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4461483.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4461501.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4461511.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4461520.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4461527.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4462929.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4463097.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4467701.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4467706.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_excel_services_kb4018343.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
@@ -61623,11 +61676,15 @@ gsf/2018/schneider/gb_schneider_intoch_rce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_struxureon_file_upload_vuln.nasl: GPLv2+
 gsf/2018/sentrifugo/gb_sentrifugo_sql_inj_vuln.nasl: GPLv2+
+gsf/2018/serverscheck/gb_serverscheck_monitoring_default_credentials.nasl: GPLv2+
+gsf/2018/serverscheck/gb_serverscheck_monitoring_mult_vuln.nasl: GPLv2+
 gsf/2018/severalnines/gb_severalnines_clustercontrol_xss_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_desigo_auth_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_ruggedcom_rce_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_scalance_mult_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_scalance_rce_vuln.nasl: GPLv2+
+gsf/2018/siemens/gb_siemens_scalance_ssa-242982.nasl: GPLv2+
+gsf/2018/siemens/gb_siemens_simatic_hmi_ssa-944083.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_44x_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_mult_vuln1.nasl: GPLv2+
@@ -61635,8 +61692,10 @@ gsf/2018/siemens/gb_simatic_cp_mult_vuln2.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_mult_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7-1200_csrf_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7-1500_dos_vuln.nasl: GPLv2+
+gsf/2018/siemens/gb_simatic_s7_400_ssa-113131.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7_dos_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7_openssl_vuln.nasl: GPLv2+
+gsf/2018/siemens/gb_simatic_s7_ssa-584286.nasl: GPLv2+
 gsf/2018/silverpeak/gb_silverpeak_edgeconnect_mult_vuln.nasl: GPLv2+
 gsf/2018/softnas/gb_softnas_rce_vuln.nasl: GPLv2+
 gsf/2018/softneta/gb_meddream_pacs_mult_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_detect_win.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_python_detect_win.nasl 12358 2018-11-15 07:57:20Z cfischer $
 #
 # Python Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801795");
-  script_version("$Revision: 11734 $");
+  script_version("$Revision: 12358 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 08:57:20 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Python Version Detection (Windows)");
@@ -79,13 +79,14 @@ if(!registry_key_exists(key:"SOFTWARE\Python")){
   }
 }
 
-foreach key (key_list)
-{
-  foreach item (registry_enum_keys(key:key))
-  {
+foreach key (key_list) {
+  foreach item (registry_enum_keys(key:key)) {
     pyName = registry_get_sz(key:key + item, item:"DisplayName");
-    if("Python" >< pyName)
-    {
+
+    #The launcher is not tied to a specific version of Python
+    if("Python Launcher" >< pyName) continue;
+
+    if(pyName =~ "Python [0-9.]+ (Executables |)\([0-9]+-bit\)") {
       pyPath = registry_get_sz(key:key + item, item:"DisplayIcon");
       if(!pyPath)
         pyPath = "Could not find the install location from registry";
@@ -93,16 +94,22 @@ foreach key (key_list)
         pyPath = pyPath - "python.exe";
 
       pyVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+
       if(pyVer) {
-        set_kb_item(name:"Python/Win/Ver", value:pyVer);
-        register_and_report_cpe( app:"Python", ver:pyVer, base:"cpe:/a:python:python:", expr:"^([0-9.]+)", insloc:pyPath );
-        set_kb_item(name:"Python6432/Win/Installed", value:TRUE);
-        if("x64" >< os_arch && "Wow6432Node" >!< key)
-        {
-          set_kb_item(name:"Python64/Win/Ver", value:pyVer);
-          register_and_report_cpe( app:"Python", ver:pyVer, base:"cpe:/a:python:python:x64:", expr:"^([0-9.]+)", insloc:pyPath );
+
+        set_kb_item(name:"python6432/win/detected", value:TRUE);
+
+        if("x64" >< os_arch && "Wow6432Node" >!< key){
+          set_kb_item(name:"python64/win/detected", value:TRUE);
+          base = "cpe:/a:python:python:x64:";
+        } else {
+          set_kb_item(name:"python32/win/detected", value:TRUE);
+          base = "cpe:/a:python:python:";
         }
+        register_and_report_cpe(app:"Python", ver:pyVer, concluded:pyVer, base:base, expr:"^([0-9.]+)", insloc:pyPath);
       }
     }
   }
 }
+
+exit(0);

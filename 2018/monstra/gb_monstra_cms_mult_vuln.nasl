@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_mult_vuln.nasl 12068 2018-10-25 07:21:15Z mmartin $
+# $Id: gb_monstra_cms_mult_vuln.nasl 12356 2018-11-15 06:27:24Z ckuersteiner $
 #
 # Monstra CMS <= 3.0.4 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113204");
-  script_version("$Revision: 12068 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:21:15 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 07:27:24 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 16:04:31 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -87,7 +87,8 @@ if( description )
 
   - plugins/box/users/users.plugin.php allows Login Rate Limiting Bypass via manipulation of the login_attempts cookie.");
   script_tag(name:"affected", value:"Monstra CMS through version 3.0.4.");
-  script_tag(name:"solution", value:"No known solution is available as of 29th May, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 15th November, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/monstra-cms/monstra/issues/443");

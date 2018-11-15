@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_dotnetnuke_xss_vuln.nasl 12359 2018-11-15 08:13:22Z cfischer $
 #
 # DotNetNuke (DNN) Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,22 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809281");
-  script_version("$Revision: 11640 $");
+  script_version("$Revision: 12359 $");
   script_cve_id("CVE-2016-7119");
   script_bugtraq_id(92719);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 09:13:22 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 12:36:34 +0530 (Thu, 22 Sep 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("DotNetNuke (DNN) Cross Site Scripting Vulnerability");
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_dotnetnuke_detect.nasl");
+  script_mandatory_keys("dotnetnuke/installed");
+  script_require_ports("Services/www", 80);
+
+  script_xref(name:"URL", value:"http://www.dnnsoftware.com/community/security/security-center");
 
   script_tag(name:"summary", value:"This host is installed with DotNetNuke
   and is prone to cross-site scripting vulnerability.");
@@ -52,19 +59,11 @@ if(description)
 
   script_tag(name:"affected", value:"DotNetNuke (DNN) versions before 8.0.1.");
 
-  script_tag(name:"solution", value:"Upgrade to DotNetNuke 8.0.1 or later.
-  For updates refer to www.dnnsoftware.com");
+  script_tag(name:"solution", value:"Upgrade to DotNetNuke 8.0.1 or later.");
 
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.dnnsoftware.com/community/security/security-center");
-
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_dotnetnuke_detect.nasl");
-  script_mandatory_keys("dotnetnuke/installed");
-  script_require_ports("Services/www", 80);
   exit(0);
 }
 
@@ -79,9 +78,9 @@ if(!dnnVer = get_app_version(cpe:CPE, port:dnnPort)){
   exit(0);
 }
 
-if(version_is_less(version:dnnVer, test_version:"8.0.1"))
-{
+if(version_is_less(version:dnnVer, test_version:"8.0.1")){
   report = report_fixed_ver(installed_version:dnnVer, fixed_version:"8.0.1");
   security_message(data:report, port:dnnPort);
-  exit(0);
 }
+
+exit(0);
