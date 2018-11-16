@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:solarwinds:storage_resource_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809427");
-  script_version("$Revision: 11026 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-4350");
   script_bugtraq_id(89557);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:36:59 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities");
 
@@ -49,17 +49,13 @@ if(description)
   Refer to reference links for more information.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary SQL commands.
-
-  Impact Level: Application");
+  attackers to execute arbitrary SQL commands.");
 
   script_tag(name:"affected", value:"SolarWinds Storage Resource Monitor
   before 6.2.3");
 
   script_tag(name:"solution", value:"Upgrade to SolarWinds Storage Resource
-  Monitor 6.2.3 or later.
-
-  For updates refer to http://www.solarwinds.com");
+  Monitor 6.2.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +72,7 @@ if(description)
   script_mandatory_keys("storage_manager/Installed");
   script_require_ports("Services/www", 9000);
 
+  script_xref(name:"URL", value:"http://www.solarwinds.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_view_xss_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_ruby_on_rails_action_view_xss_vuln_lin.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Ruby on Rails Action View Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807380");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-6316");
   script_bugtraq_id(92430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 14:29:55 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Action View Cross Site Scripting Vulnerability (Linux)");
@@ -42,63 +42,49 @@ if(description)
   script_tag(name:"summary", value:"This host is running Ruby on Rails and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the Text declared as
   'HTML safe' when passed as an attribute value to a tag helper will not have
   quotes escaped which can lead to an XSS attack.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to inject arbitrary web script or HTML via crafted parameters.
+  attacker to inject arbitrary web script or HTML via crafted parameters.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Ruby on Rails 3.x before 3.2.22.3, 
+  script_tag(name:"affected", value:"Ruby on Rails 3.x before 3.2.22.3,
   Ruby on Rails 4.x before 4.2.7.1 and
   Ruby on Rails 5.x before 5.0.0.1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Ruby on Rails 3.2.22.3 or 4.2.7.1 or
-  5.0.0.1 or later. For updates refer to http://rubyonrails.org");
+  5.0.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2016/q3/260");
-  script_xref(name : "URL" , value : "https://groups.google.com/forum/#!msg/rubyonrails-security/I-VWr034ouk/gGu2FrCwDAAJ");
-  script_xref(name : "URL" , value : "http://weblog.rubyonrails.org/2016/8/11/Rails-5-0-0-1-4-2-7-2-and-3-2-22-3-have-been-released");
+  script_xref(name:"URL" , value:"http://seclists.org/oss-sec/2016/q3/260");
+  script_xref(name:"URL" , value:"https://groups.google.com/forum/#!msg/rubyonrails-security/I-VWr034ouk/gGu2FrCwDAAJ");
+  script_xref(name:"URL" , value:"http://weblog.rubyonrails.org/2016/8/11/Rails-5-0-0-1-4-2-7-2-and-3-2-22-3-have-been-released");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 3000);
+  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
 
-
-##
-### Code Starts Here
-##
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-RubyonRailPort = "";
-RubyonRailVer = "";
-
-## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!RubyonRailVer = get_app_version(cpe:CPE, port:RubyonRailPort)){
   exit(0);
 }
 
-##Check for version 3.0 before 3.2.22.3
 if(RubyonRailVer =~ "^(3\.0)")
 {
   if(version_is_less(version:RubyonRailVer, test_version:"3.2.22.3"))
@@ -108,7 +94,6 @@ if(RubyonRailVer =~ "^(3\.0)")
   }
 }
 
-## Check for version 4.0 before 4.2.7.1
 else if(RubyonRailVer =~ "^(4\.0)")
 {
   if(version_is_less(version:RubyonRailVer, test_version:"4.2.7.1"))
@@ -118,7 +103,6 @@ else if(RubyonRailVer =~ "^(4\.0)")
   }
 }
 
-## Check for version 5.0 before 5.0.0.1
 else if(RubyonRailVer =~ "^(5\.0)")
 {
   if(version_is_less(version:RubyonRailVer, test_version:"5.0.0.1"))

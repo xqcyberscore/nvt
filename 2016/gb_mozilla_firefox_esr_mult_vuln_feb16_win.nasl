@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_feb16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_feb16_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Feb16 (Windows)
 #
@@ -29,41 +29,43 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807070");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-1521", "CVE-2016-1522", "CVE-2016-1523", "CVE-2016-1526");
   script_bugtraq_id(82991);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:34:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Feb16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Insufficient validation of size value by 'TtfUtil:LocaLookup' function in
     'TtfUtil.cpp' script in Libgraphite in Graphite.
+
   - Mishandling of a return value by 'SillMap::readFace' function in
    'FeatureMap.cpp' script in Libgraphite in Graphite.
+
   - 'Code.cpp' script in Libgraphite in Graphite does not consider recursive load
     calls during a size check.
+
   - Insufficient validation of a certain skip operation by 'directrun' function in
     'directmachine.cpp' script in Libgraphite in Graphite.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, or cause a
-  denial of service.
+  denial of service.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x
   before 38.6.1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
-  38.6.1 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
+  38.6.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +78,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 
@@ -86,7 +89,7 @@ if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-if(ffVer =~ "^(38)")
+if(ffVer =~ "^38")
 {
   if(version_is_less(version:ffVer, test_version:"38.6.1"))
   {

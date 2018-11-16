@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2831-01_firefox.nasl 7345 2017-10-05 06:16:00Z santu $
+# $Id: gb_RHSA-2017_2831-01_firefox.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for firefox RHSA-2017:2831-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812009");
-  script_version("$Revision: 7345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 08:16:00 +0200 (Thu, 05 Oct 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 11:54:55 +0530 (Thu, 05 Oct 2017)");
   script_cve_id("CVE-2017-7793", "CVE-2017-7810", "CVE-2017-7814", "CVE-2017-7818",
                 "CVE-2017-7819", "CVE-2017-7823", "CVE-2017-7824");
@@ -71,19 +71,18 @@ reporters.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

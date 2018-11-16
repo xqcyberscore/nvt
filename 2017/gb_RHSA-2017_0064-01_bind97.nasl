@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871744");
-  script_version("$Revision: 6691 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 17:10:29 +0100 (Mon, 16 Jan 2017)");
   script_cve_id("CVE-2016-9147");
   script_tag(name:"cvss_base", value:"5.0");
@@ -62,19 +62,18 @@ Red Hat would like to thank ISC for reporting this issue.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_5")
 {

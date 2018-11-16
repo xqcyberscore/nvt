@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln02_aug16_lin.nasl 9300 2018-04-04 11:55:01Z cfischer $
+# $Id: gb_cloudbees_jenkins_mult_vuln02_aug16_lin.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # CloudBees Jenkins Multiple Vulnerabilities -02 August16 (Linux)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808268");
-  script_version("$Revision: 9300 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2014-3680", "CVE-2014-3667", "CVE-2014-3666", "CVE-2014-3663",
                 "CVE-2014-3662", "CVE-2014-3661");
   script_bugtraq_id(77953, 77963, 88193, 77977, 77955, 77961);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-05 09:47:29 +0530 (Fri, 05 Aug 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities -02 August16 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
   Jenkins and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -59,27 +58,26 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to obtain sensitive information, to bypass bypass intended access
-  restrictions and execute arbitrary code.
-
-  Impact Level: Application");
+  restrictions and execute arbitrary code.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.565.3
   on Linux");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.565.3
-  or later. For more updates refer to https://www.cloudbees.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_xref(name : "URL" , value : "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2014-10-01");
+  script_xref(name:"URL" , value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2014-10-01");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed","Host/runs_unixoide");
+  script_mandatory_keys("jenkins/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

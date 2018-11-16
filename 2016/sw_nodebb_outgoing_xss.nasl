@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_nodebb_outgoing_xss.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: sw_nodebb_outgoing_xss.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # NodeBB 'outgoing' Controller Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nodebb:nodebb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111102");
-  script_version("$Revision: 5568 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-07 16:00:00 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -64,7 +64,7 @@ include("http_keepalive.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-if( dir == "/" ) dir = ""; 
+if( dir == "/" ) dir = "";
 
 url = dir + "/outgoing?url=<script>alert('XSS')</script>";
 

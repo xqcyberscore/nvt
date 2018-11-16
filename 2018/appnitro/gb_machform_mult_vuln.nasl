@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_machform_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_machform_mult_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
-# Appnitro MachForm Multiple Vulnerabilities
+# Appnitro MachForm < 4.2.3 Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = "cpe:/a:appnitro:machform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141126");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12368 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 09:43:14 +0700 (Thu, 31 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,9 +40,9 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Appnitro MachForm Multiple Vulnerabilities");
+  script_name("Appnitro MachForm < 4.2.3 Multiple Vulnerabilities");
 
   script_category(ACT_ATTACK);
 
@@ -63,10 +63,10 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 30th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"Update to version 4.2.3 or later");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44794/");
+  script_xref(name:"URL", value:"https://metalamin.github.io/MachForm-not-0-day-EN/");
 
   exit(0);
 }

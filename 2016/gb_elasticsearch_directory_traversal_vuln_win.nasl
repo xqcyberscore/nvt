@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_directory_traversal_vuln_win.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: gb_elasticsearch_directory_traversal_vuln_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Elasticsearch < 1.6.1 Multiple Vulnerabilities (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808091");
-  script_version("$Revision: 9296 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-5531", "CVE-2015-5377");
   script_bugtraq_id(75935);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-23 16:03:36 +0530 (Thu, 23 Jun 2016)");
   script_name("Elasticsearch < 1.6.1 Multiple Vulnerabilities (Windows)");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw is due to:
 
@@ -51,9 +50,7 @@ if(description)
   - an attack that can result in remote code execution (CVE-2015-5377).");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute code or read arbitrary files.
-
-  Impact Level: Application/System");
+  attackers to execute code or read arbitrary files.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,9 +58,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch version 1.6.1,
-  or later.
-
-  For updates refer to https://www.elastic.co");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,7 +69,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("elasticsearch/installed","Host/runs_windows");
+  script_mandatory_keys("elasticsearch/installed", "Host/runs_windows");
   script_require_ports("Services/www", 9200);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3260-01_samba.nasl 8247 2017-12-26 13:32:16Z cfischer $
+# $Id: gb_RHSA-2017_3260-01_samba.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for samba RHSA-2017:3260-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812301");
-  script_version("$Revision: 8247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 14:32:16 +0100 (Tue, 26 Dec 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 07:37:11 +0100 (Mon, 27 Nov 2017)");
   script_cve_id("CVE-2017-14746", "CVE-2017-15275");
   script_tag(name:"cvss_base", value:"7.5");
@@ -69,19 +69,18 @@ Samba Team) as the original reporter of CVE-2017-15275.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

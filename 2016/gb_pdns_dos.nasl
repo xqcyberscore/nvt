@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dos.nasl 4464 2016-11-10 08:08:58Z cfi $
+# $Id: gb_pdns_dos.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # PowerDNS Authoritative Server DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106094");
-  script_version("$Revision: 4464 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:08:58 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 11:23:10 +0700 (Wed, 08 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"summary", value:"PowerDNS Authoritative Server is prone to a denial of service
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A bug was found in the packet parsing code. This bug, when exploited,
   causes an assertion error and consequent termination of the the pdns_server process, causing a Denial of Service.

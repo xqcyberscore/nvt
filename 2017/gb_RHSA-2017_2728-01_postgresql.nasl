@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2728-01_postgresql.nasl 7237 2017-09-22 15:00:35Z cfischer $
+# $Id: gb_RHSA-2017_2728-01_postgresql.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for postgresql RHSA-2017:2728-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811781");
-  script_version("$Revision: 7237 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 17:00:35 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-15 07:07:56 +0200 (Fri, 15 Sep 2017)");
   script_cve_id("CVE-2017-7546", "CVE-2017-7547");
   script_tag(name:"cvss_base", value:"7.5");
@@ -72,19 +72,18 @@ original reporter of CVE-2017-7547.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

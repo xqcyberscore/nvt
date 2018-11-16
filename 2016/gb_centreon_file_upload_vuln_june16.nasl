@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_file_upload_vuln_june16.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: gb_centreon_file_upload_vuln_june16.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Centreon 'POST' Parameter File Upload Vulnerability
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808216");
-  script_version("$Revision: 8680 $");
+  script_version("$Revision: 12363 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:51 +0530 (Tue, 07 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Centreon 'POST' Parameter File Upload Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Centreon
+  script_tag(name:"summary", value:"The host is installed with Centreon
   and is prone to file upload vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to the POST parameter 'persistant' which serves for making a
+  script_tag(name:"insight", value:"The flaw is due to the POST parameter 'persistant' which serves for making a
 new service run  in the background is not properly sanitised before being used to execute commands.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary PHP code by
@@ -51,13 +50,12 @@ uploading a malicious PHP script file.");
 
   script_tag(name:"affected", value:"Centreon version 2.6.1");
 
-  script_tag(name:"solution", value:"Upgrad to Centreon version 2.6.2 or later. 
-  For updates refer to https://www.centreon.com ");
+  script_tag(name:"solution", value:"Upgrad to Centreon version 2.6.2 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/38339");
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2015-5265.php"); 
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38339");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2015-5265.php");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -65,6 +63,7 @@ uploading a malicious PHP script file.");
   script_dependencies("centreon_detect.nasl");
   script_mandatory_keys("centreon/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.centreon.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_openid_xss_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_ibm_was_openid_xss_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # IBM Websphere Application Server 'Openid' Cross Site Scripting Vulnerability
 #
@@ -29,38 +29,36 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809340");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-3042", "CVE-2016-0378");
   script_bugtraq_id(92985, 93143);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 13:28:39 +0530 (Mon, 03 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'Openid' Cross Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An improper santization of input to vectors involving
     'OpenID' Connect clients.
+
   - An improper handling of exceptions when a default error page does not exist.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  authenticated users to inject arbitrary web script.
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  authenticated users to inject arbitrary web script.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   Liberty before 16.0.0.3");
 
-  script_tag(name:"solution" , value:"Upgrade to IBM WebSphere Application
-  Server (WAS) Liberty Fix 16.0.0.3 or later.
-  For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
+  Server (WAS) Liberty Fix 16.0.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +69,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed", "ibm_websphere_application_server/liberty/profile/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
   exit(0);
 }
 

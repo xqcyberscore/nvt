@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2015-116_2015-133_macosx.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_mozilla_thunderbird_mfsa_2015-116_2015-133_macosx.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2015-116_2015-133 )-MAC OS X
 #
@@ -29,50 +29,57 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807636");
-  script_version("$Revision: 5836 $");
-  script_cve_id("CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7197", 
-		"CVE-2015-7198", "CVE-2015-7199", "CVE-2015-7200", "CVE-2015-7194", 
-	        "CVE-2015-7193", "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-4513", 
-		"CVE-2015-4514" );
+  script_version("$Revision: 12363 $");
+  script_cve_id("CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183", "CVE-2015-7197",
+		"CVE-2015-7198", "CVE-2015-7199", "CVE-2015-7200", "CVE-2015-7194",
+	        "CVE-2015-7193", "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-4513",
+		"CVE-2015-4514");
   script_bugtraq_id(77416, 77415, 77411);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:49 +0530 (Wed, 06 Apr 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2015-116_2015-133 )-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exist due to,
-  - An improper handling of the CORS cross-origin request algorithm when 
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
+
+  - An improper handling of the CORS cross-origin request algorithm when
     non-standard Content-Type headers are received.
+
   - A heap Buffer Overflow in nsJPEGEncoder during image interactions in canvas.
+
   - An insufficient validation of IP address string.
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - A buffer overflow vulnerability in the rx::TextureStorage11 class in ANGLE.
-  - Lack of status checking in 'AddWeightedPathSegLists' and 
+
+  - Lack of status checking in 'AddWeightedPathSegLists' and
     'SVGPathSegListSMILType::Interpolate' functions.
+
   - Missing status check in CryptoKey interface implementation.
+
   - A memory corruption vulnerability in libjar through zip files.
+
   - Memory corruption issues in NSS and NSPR.
+
   - A heap-based buffer overflow in the ASN.1 decoder in Mozilla (NSS).
+
   - An integer overflow in the PL_ARENA_ALLOCATE implementation in Mozilla (NSS)");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to bypass security restrictions,
-  to execute arbitrary code and to cause denial of service.
+  to execute arbitrary code and to cause denial of service.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.4 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 38.4
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.4");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -92,6 +99,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 
@@ -99,15 +107,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"38.4"))
 {
   report = report_fixed_ver(installed_version:tbVer, fixed_version:"38.4");

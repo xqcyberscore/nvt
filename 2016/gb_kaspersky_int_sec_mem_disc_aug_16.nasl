@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_int_sec_mem_disc_aug_16.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_kaspersky_int_sec_mem_disc_aug_16.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Kaspersky Internet Security KLDISK Driver Multiple Kernel Memory Disclosure Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107095");
-  script_version("$Revision: 9600 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-24 13:17:56 +0100 (Thu, 24 Nov 2016)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("Kaspersky/TotNetSec/Ver");
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to leak sensitive information such as privileged tokens or kernel memory addresses that may
-  be useful in bypassing kernel mitigations. An unprivileged user can run a program from user mode to trigger this vulnerability.
-
-  Impact Level: System/Application");
+  be useful in bypassing kernel mitigations. An unprivileged user can run a program from user mode to trigger this vulnerability.");
   script_tag(name:"affected", value:"Kaspersky Internet Security 16.0.0.614");
   script_tag(name:"insight", value:"This flaws occurs due to the specially crafted IOCTL requests that can cause the driver to return out of bounds kernel memory.");
   script_tag(name:"solution", value:"Apply the patch from the advisory.");

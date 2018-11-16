@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsmc.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsmc.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Firepower Management Center Session Fixation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6394");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12363 $");
 
   script_name("Cisco Firepower Management Center Session Fixation Vulnerability");
 
@@ -47,7 +47,7 @@ if (description)
 web-based management interface for Cisco FireSIGHT System Software could allow an unauthenticated, remote
 attacker to hijack a valid user session.");
 
-  script_tag(name: "insight", value: "The vulnerability exists because the affected application does not assign
+  script_tag(name:"insight", value:"The vulnerability exists because the affected application does not assign
 a new session identifier to a user session when a user authenticates to the application. An attacker could
 exploit this vulnerability by using a hijacked session identifier to connect to the application through the
 web-based management interface.");
@@ -59,7 +59,7 @@ user's browser session.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

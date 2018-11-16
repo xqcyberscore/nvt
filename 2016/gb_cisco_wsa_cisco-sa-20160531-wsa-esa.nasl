@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160531-wsa-esa.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_wsa_cisco-sa-20160531-wsa-esa.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
-# Cisco WSA AMP ClamAV Denial of Service Vulnerability 
+# Cisco WSA AMP ClamAV Denial of Service Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -31,21 +31,21 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105744");
   script_cve_id("CVE-2016-1405");
-  script_version ("$Revision: 5557 $");
+  script_version("$Revision: 12363 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-01 12:15:36 +0200 (Wed, 01 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco WSA AMP ClamAV Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"A vulnerability in the Clam AntiVirus (ClamAV) software that is used by Cisco Advance Malware Protection (AMP) for Cisco Email Security Appliances (ESAs) and Cisco Web Security Appliances (WSAs) could allow an unauthenticated, remote attacker to cause the AMP process to restart.");
 
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"See advisory");
 
-  script_tag(name: "solution" , value:"This vulnerability is addressed in the following Cisco AsyncOS Software releases: 9.0.1-135 and later / 9.1.1-041 and later");
+  script_tag(name:"solution", value:"This vulnerability is addressed in the following Cisco AsyncOS Software releases: 9.0.1-135 and later / 9.1.1-041 and later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

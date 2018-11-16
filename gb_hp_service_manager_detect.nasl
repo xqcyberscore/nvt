@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_hp_service_manager_detect.nasl 12365 2018-11-15 10:30:55Z ckuersteiner $
 #
-# HP Service Manager Detection
+# HP / Micro Focus Service Manager Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,20 +28,20 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106125");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 11:30:55 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-11 12:33:22 +0700 (Mon, 11 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("HP Service Manager Detection");
+  script_name("HP / Micro Focus Service Manager Detection");
 
-  script_tag(name:"summary", value:"Detection of HP Service Manager
+  script_tag(name:"summary", value:"Detection of HP / Micro Focus Service Manager
 
-The script sends a connection request to the server and attempts to detect the presence of HP Service Manager
-and to extract its version.");
+The script sends a connection request to the server and attempts to detect the presence of HP / Micro Focus
+Service Manager and to extract its version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -73,7 +73,8 @@ foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port
   res = http_get_cache(port: port, item: url);
 
   if (res =~ "<title>(HP )?Service Manager: Login</title>" &&
-      "Hewlett-Packard Development Company, L.P." >< res && 'id="old.password"  name="old.password"/>' >< res) {
+      ("Hewlett-Packard Development Company, L.P." >< res || "Micro Focus" >< res) &&
+      'id="old.password"  name="old.password"/>' >< res) {
     version = "unknown";
 
     ver = eregmatch(pattern: '<script type="text/javascript" src="([/a-z]+)([0-9.]+).*login.js"></script>',
@@ -86,20 +87,17 @@ foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port
         version = ver[2];
     }
 
+    set_kb_item(name: "hp_service_manager/detected", value: TRUE);
 
-
-    set_kb_item(name: "hp_service_manager/installed", value: TRUE);
-    if (version != "unknown")
-      set_kb_item(name: "www/" + port + "/hp_service_manager", value: version);
-
+    # Might has to be changed later on to microfocus
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:hp:service_manager:");
     if (isnull(cpe))
       cpe = "cpe:/a:hp:service_manager";
 
     register_product(cpe: cpe, location: install, port: port);
 
-    log_message(data: build_detection_report(app: "HP Service Manager", version: version, install: install,
-                                             cpe: cpe, concluded: ver[0]),
+    log_message(data: build_detection_report(app: "HP/MicroFocus Service Manager", version: version,
+                                             install: install, cpe: cpe, concluded: ver[0]),
                 port: port);
 
     exit(0);

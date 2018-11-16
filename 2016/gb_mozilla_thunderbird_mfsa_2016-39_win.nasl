@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-39_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-39_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-39 )-Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808693");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-2807", "CVE-2016-2806", "CVE-2016-2804", "CVE-2016-2805",
  		"CVE-2016-1979");
   script_bugtraq_id(88100);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 11:32:29 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-39 )-Windows");
 
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.8 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.8
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.8");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   exit(0);
 }
 

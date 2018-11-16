@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln04_jan16_win.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_wireshark_dos_vuln04_jan16_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Wireshark Denial-of-Service Vulnerability January16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806949");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-3182");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Denial-of-Service Vulnerability January16 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
   DECnet NSP/RT dissector mishandles a certain strdup return value.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 1.10.12 through 1.10.14 on Windows");
 

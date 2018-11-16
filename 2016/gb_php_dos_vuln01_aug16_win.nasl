@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln01_aug16_win.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_dos_vuln01_aug16_win.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # PHP Denial of Service Vulnerability - 01 - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808797");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-3078");
   script_bugtraq_id(88765);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 15:06:19 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Denial of Service Vulnerability - 01 - Aug16 (Windows)");
 
@@ -48,14 +48,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (heap-based buffer overflow
-  and application crash) or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  and application crash) or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"PHP 7.x versions prior to 7.0.6 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 7.0.6 or later.
-  For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP version 7.0.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

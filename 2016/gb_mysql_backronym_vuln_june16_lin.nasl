@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_backronym_vuln_june16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mysql_backronym_vuln_june16_lin.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Oracle MySQL Backronym Vulnerability June16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808064");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-3152");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-02 17:05:55 +0530 (Thu, 02 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Backronym Vulnerability June16 (Linux)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to an Backronym vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to improper validation
   of MySQL client library when establishing a secure connection to a MySQL
@@ -50,27 +49,26 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   man-in-the-middle attackers to spoof servers via a cleartext-downgrade
-  attack.
-
-  Impact Level: Application");
+  attack.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.7.2 and earlier
   on Linux");
 
   script_tag(name:"solution", value:"Upgrade to version Oracle MySQL Server 5.7.3 or
-  later. For updates refer to http://www.oracle.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.ocert.org/advisories/ocert-2015-003.html");
-  script_xref(name : "URL" , value : "https://duo.com/blog/backronym-mysql-vulnerability");
+  script_xref(name:"URL" , value:"http://www.ocert.org/advisories/ocert-2015-003.html");
+  script_xref(name:"URL" , value:"https://duo.com/blog/backronym-mysql-vulnerability");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_unixoide");
+  script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"http://www.oracle.com");
   exit(0);
 }
 
@@ -78,16 +76,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort))
 {
   CPE = "cpe:/a:mysql:mysql";

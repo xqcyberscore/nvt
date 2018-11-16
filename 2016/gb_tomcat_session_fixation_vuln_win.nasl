@@ -29,36 +29,32 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807409");
-  script_version("$Revision: 8957 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-5346");
   script_bugtraq_id(83323);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 11:25:47 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Session Fixation Vulnerability - Feb16 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to a Session Fixation Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to insufficient recycling of the
   requestedSessionSSL field.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to hijack web sessions by leveraging use of a requestedSessionSSL
-  field for an unintended request.
-
-  Impact Level: Application");
+  field for an unintended request.");
 
   script_tag(name:"affected", value:"Apache Tomcat 7.0.5 before 7.0.66,
   8.0.0.RC1 before 8.0.31, and 9.0.0.M1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 7.0.66 or
-  8.0.32 or 9.0.0.M3 or later.
-  For updates refer to http://tomcat.apache.org");
+  8.0.32 or 9.0.0.M3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -70,7 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_windows");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
   exit(0);
 }
@@ -78,23 +74,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appPort = "";
-appVer = "";
-
-## get the port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
 if(appVer =~ "^(7|8|9)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:appVer, test_version:"7.0.5", test_version2:"7.0.65"))
   {
     fix = "7.0.66";
@@ -119,4 +108,4 @@ if(appVer =~ "^(7|8|9)")
     security_message(data:report, port:appPort);
     exit(0);
   }
-}      
+}

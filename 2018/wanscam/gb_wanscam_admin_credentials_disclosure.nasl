@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_admin_credentials_disclosure.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_wanscam_admin_credentials_disclosure.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # Wanscam HW0021 Administrator Credentials Disclosure
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113147");
-  script_version("$Revision: 11408 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 12368 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 12:20:00 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,8 +61,8 @@ if(description)
 
   script_tag(name:"affected", value:"Wanscam HW0021.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-  this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.tenable.com/security/research/tra-2017-33");
 

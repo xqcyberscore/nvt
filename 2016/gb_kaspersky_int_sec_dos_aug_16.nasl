@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_int_sec_dos_aug_16.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_kaspersky_int_sec_dos_aug_16.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Kaspersky Internet Security Multiple DOS Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107094");
-  script_version("$Revision: 9600 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 13:17:56 +0100 (Tue, 22 Nov 2016)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,9 +47,7 @@ if(description)
   script_dependencies("gb_kaspersky_av_detect.nasl");
   script_mandatory_keys("Kaspersky/IntNetSec/Ver");
 
-  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to cause a local denial of service attacks on any machine running Kaspersky Internet Security software.
-
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to cause a local denial of service attacks on any machine running Kaspersky Internet Security software.");
   script_tag(name:"affected", value:"Kaspersky Internet Security 16.0.0.");
   script_tag(name:"insight", value:"This flaw occurs due to a specially crafted native API call which can cause an access violation in KLIF kernel driver.");
   script_tag(name:"solution", value:"Apply the patch from the advisory.");

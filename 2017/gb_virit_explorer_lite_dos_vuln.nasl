@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 12368 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
@@ -50,10 +50,11 @@ Denial Of Service vulnerability.");
 
   script_tag(name:"affected", value:"TG Soft Vir.IT eXplorer Lite 8.5.42");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
+a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln01.nasl 4429 2016-11-07 13:14:21Z cfi $
+# $Id: gb_isc_bind_dos_vuln01.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # ISC BIND Denial of Service Vulnerability - 01 - Jan16
 #
@@ -29,42 +29,40 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806995");
-  script_version("$Revision: 4429 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-8705");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 14:14:21 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 15:07:28 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Denial of Service Vulnerability - 01 - Jan16");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to remote denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in 'buffer.c'
+  script_tag(name:"insight", value:"The flaw is due to an error in 'buffer.c'
   script in ISC BIND when debug logging is enabled.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker
-  to cause denial of service.
-
-  Impact Level: Application");
+  to cause denial of service.");
   script_tag(name:"affected", value:"ISC BIND version 9.10.x before 9.10.3-P3.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.10.3-P3 or
-  later.  For updates refer to https://www.isc.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-01336");
+  script_xref(name:"URL" , value:"https://kb.isc.org/article/AA-01336");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 
@@ -77,7 +75,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.10.0", test_version2:"9.10.3.P2"))
 {
   report = report_fixed_ver(installed_version:bindVer, fixed_version:"9.10.3-P3");

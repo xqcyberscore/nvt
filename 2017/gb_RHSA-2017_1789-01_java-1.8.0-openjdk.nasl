@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1789-01_java-1.8.0-openjdk.nasl 6981 2017-08-22 06:39:29Z asteins $
+# $Id: gb_RHSA-2017_1789-01_java-1.8.0-openjdk.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for java-1.8.0-openjdk RHSA-2017:1789-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871845");
-  script_version("$Revision: 6981 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-22 08:39:29 +0200 (Tue, 22 Aug 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-21 07:15:28 +0200 (Fri, 21 Jul 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078",
                 "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090",
@@ -108,19 +108,18 @@ instances from a serialized form. A specially crafted seri ...
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

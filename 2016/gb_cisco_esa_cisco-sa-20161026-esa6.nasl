@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa6.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esa6.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Email Security Appliance FTP Denial of Service Vulnerability
 #
@@ -29,45 +29,43 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140024");
- script_cve_id("CVE-2016-6358");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5650 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140024");
+  script_cve_id("CVE-2016-6358");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 12363 $");
 
- script_name("Cisco Email Security Appliance FTP Denial of Service Vulnerability");
+  script_name("Cisco Email Security Appliance FTP Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa6");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa6");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in local FTP to the Cisco Email Security Appliance (ESA) could allow an
-unauthenticated, remote attacker to cause a partial denial of service (DoS) condition when the FTP
-application unexpectedly quits.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in local FTP to the Cisco Email Security Appliance (ESA) could allow an
+  unauthenticated, remote attacker to cause a partial denial of service (DoS) condition when the FTP
+  application unexpectedly quits.
 
-The vulnerability is due to improper input validation of user-supplied fields when logging in using
-FTP. An attacker could exploit this vulnerability by opening an FTP connection to the targeted
-device and crafting user-supplied parameters. An exploit could allow the attacker to cause a
-partial DoS condition when the FTP process unexpectedly quits. This vulnerability does not impact
-other user traffic.
+  The vulnerability is due to improper input validation of user-supplied fields when logging in using
+  FTP. An attacker could exploit this vulnerability by opening an FTP connection to the targeted
+  device and crafting user-supplied parameters. An exploit could allow the attacker to cause a
+  partial DoS condition when the FTP process unexpectedly quits. This vulnerability does not impact
+  other user traffic.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability.
+  Cisco has released software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa6");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-27 14:08:43 +0200 (Thu, 27 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-27 14:08:43 +0200 (Thu, 27 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -75,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'9.9.0',
 		'9.9.6-026',
 		'9.7.1-066',

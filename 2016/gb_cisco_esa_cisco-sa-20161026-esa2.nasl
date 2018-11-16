@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa2.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esa2.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco Email Security Appliance Advanced Malware Protection Attachment Scanning Denial of Service Vulnerability
 #
@@ -29,48 +29,46 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140028");
- script_cve_id("CVE-2016-1486");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140028");
+  script_cve_id("CVE-2016-1486");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12363 $");
 
- script_name("Cisco Email Security Appliance Advanced Malware Protection Attachment Scanning Denial of Service Vulnerability");
+  script_name("Cisco Email Security Appliance Advanced Malware Protection Attachment Scanning Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa2");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa2");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the email attachment scanning functionality of the Advanced Malware Protection
-(AMP) feature of Cisco AsyncOS Software for Cisco Email Security Appliances could allow an
-unauthenticated, remote attacker to cause an affected device to stop scanning and forwarding email
-messages due to a denial of service (DoS) condition.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the email attachment scanning functionality of the Advanced Malware Protection
+  (AMP) feature of Cisco AsyncOS Software for Cisco Email Security Appliances could allow an
+  unauthenticated, remote attacker to cause an affected device to stop scanning and forwarding email
+  messages due to a denial of service (DoS) condition.
 
-The vulnerability is due to improper handling of UU-encoded files that are attached to an email
-message. An attacker could exploit this vulnerability by sending a crafted email message with a UU-
-encoded file attachment through an affected device. The scanning of the attachment could cause the
-mail handling process of the affected software to restart, resulting in a DoS condition. After the
-mail handling process restarts, the software resumes scanning for the same attachment, which could
-cause the mail handling process to restart again. A successful exploit could allow the attacker to
-cause a repeated DoS condition.
+  The vulnerability is due to improper handling of UU-encoded files that are attached to an email
+  message. An attacker could exploit this vulnerability by sending a crafted email message with a UU-
+  encoded file attachment through an affected device. The scanning of the attachment could cause the
+  mail handling process of the affected software to restart, resulting in a DoS condition. After the
+  mail handling process restarts, the software resumes scanning for the same attachment, which could
+  cause the mail handling process to restart again. A successful exploit could allow the attacker to
+  cause a repeated DoS condition.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability. http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-
-esa2");
+  Cisco has released software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-27 14:13:14 +0200 (Thu, 27 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-27 14:13:14 +0200 (Thu, 27 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -78,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'8.5.0-000',
 		'8.5.0-ER1-198',
 		'8.5.6-052',

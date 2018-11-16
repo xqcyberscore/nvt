@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_onenote_ms16-099.nasl 6412 2017-06-23 09:05:07Z cfischer $
+# $Id: gb_ms_onenote_ms16-099.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Microsoft OneNote Information Disclosure Vulnerability (3177451)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807871");
-  script_version("$Revision: 6412 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-3315");
   script_bugtraq_id(92294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:05:07 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 10:27:21 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote Information Disclosure Vulnerability (3177451)");
@@ -42,39 +42,39 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-099.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exist as Microsoft OneNote improperly
   discloses its memory contents.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
+  attackers to gain access to potentially sensitive information.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft OneNote 2007 Service Pack 3
 
-  script_tag(name:"affected", value:"
-  Microsoft OneNote 2007 Service Pack 3
   Microsoft OneNote 2010 Service Pack 2
+
   Microsoft OneNote 2013 Service Pack 1
+
   Microsoft OneNote 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from
-  https://technet.microsoft.com/library/security/MS16-099");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114456");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114885");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115256");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115419");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-099");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3114456");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3114885");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3115256");
+  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3115419");
+  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_onenote_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/OneNote/Ver");
   exit(0);
 }
@@ -84,7 +84,6 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Get 'OneNote.exe' Version and location
 if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 
 notePath = infos['location'];
@@ -92,20 +91,19 @@ if( ! notePath || "Could not find the install location" >< notePath ) {
   exit( 0 );
 }
 
-##Check for onmain.dll file
 noteVer = fetch_file_version(sysPath:notePath, file_name:"onmain.dll");
 if(noteVer) {
   if(noteVer =~ "^(12|14|15|16).*") {
-    if(noteVer =~ "^(12)"){
+    if(noteVer =~ "^12"){
       Vulnerable_range  =  "12 - 12.0.6753.4999";
     }
-    else if(noteVer =~ "^(14)"){
+    else if(noteVer =~ "^14"){
       Vulnerable_range  =  "14 - 14.0.7172.4999";
     }
-    else if(noteVer =~ "^(15)"){
+    else if(noteVer =~ "^15"){
       Vulnerable_range  =  "15 - 15.0.4849.0999";
     }
-    else if(noteVer =~ "^(16)"){
+    else if(noteVer =~ "^16"){
       Vulnerable_range  =  "16 - 16.0.4417.0999";
     }
   }

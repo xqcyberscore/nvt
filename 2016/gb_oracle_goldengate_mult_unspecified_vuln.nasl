@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 8199 2017-12-20 13:37:22Z cfischer $
+# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)
 #
@@ -29,39 +29,35 @@ CPE = "cpe:/a:oracle:goldengate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807249");
-  script_version("$Revision: 8199 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-0452", "CVE-2016-0451", "CVE-2016-0450");
   script_bugtraq_id(81122, 81125, 81117);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 13:49:29 +0530 (Fri, 12 Feb 2016)");
   script_name("Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle GoldenGate
+  script_tag(name:"summary", value:"The host is installed with Oracle GoldenGate
   and is prone to multiple unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaw exists due to unspecified errors.");
+  script_tag(name:"insight", value:"Multiple flaw exists due to unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to have an impact on confidentiality, integrity and availability
-  via unknown vectors.
+  via unknown vectors.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Oracle GoldenGate 11.2 and 12.1.2 on Windows.");
 
-  script_tag(name: "affected" , value:"Oracle GoldenGate 11.2 and 12.1.2 on Windows.");
+  script_tag(name:"solution", value:"Apply the patch");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
-  
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -74,15 +70,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-golVer = "";
-
-## Get version
 if(!golVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_equal(version:golVer, test_version:"11.2")||
    version_is_equal(version:golVer, test_version:"12.1.2"))
 {

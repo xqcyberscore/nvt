@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_opencart_mult_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # Opencart <= 3.0.2.0 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113202");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12368 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 11:47:28 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -50,7 +50,9 @@ if( description )
   script_mandatory_keys("OpenCart/installed");
 
   script_tag(name:"summary", value:"Opencart is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Following vulnerabilities exist:
 
   - OpenCart allows Directory Traversal in the editDownload function in admin\model\catalog\download.php
@@ -59,9 +61,12 @@ if( description )
   - The 'program extension upload' feature in OpenCart has a six-step process (upload, install, unzip, move, xml, remove)
     that allows attacker to execute arbitrary code if the remove step is skipped, because the attacker can discover
     a secret temporary directory name (containing 10 random digits) via the previously described Directory Traversal attack.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over the target system.");
+
   script_tag(name:"affected", value:"OpenCart through version 3.0.2.0.");
-  script_tag(name:"solution", value:"No known solution is available as of 29th May, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"http://www.bigdiao.cc/2018/05/24/Opencart-v3-0-2-0/");
@@ -78,7 +83,7 @@ if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "3.0.2.0" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "None" );
   security_message( data: report, port: port );
   exit( 0 );
 }

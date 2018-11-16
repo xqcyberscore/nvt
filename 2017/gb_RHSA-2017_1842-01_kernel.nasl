@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1842-01_kernel.nasl 11388 2018-09-14 13:45:12Z cfischer $
+# $Id: gb_RHSA-2017_1842-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:1842-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871855");
-  script_version("$Revision: 11388 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:47:14 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2014-7970", "CVE-2014-7975", "CVE-2015-8839", "CVE-2015-8970", 
                 "CVE-2016-10088", "CVE-2016-10147", "CVE-2016-10200", "CVE-2016-6213", 
@@ -86,19 +86,18 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

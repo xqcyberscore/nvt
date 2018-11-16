@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_antivirus_sym16_010.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_symantec_norton_antivirus_sym16_010.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Symantec Norton AntiVirus Decomposer Engine Multiple Parsing Vulnerabilities
-# 
+#
 # Authors:
 # Tushar Khelge <tushar.khelge@secpod.com>
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:symantec:norton_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808511");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-2207", "CVE-2016-2209", "CVE-2016-2210", "CVE-2016-2211",
                 "CVE-2016-3644", "CVE-2016-3645", "CVE-2016-3646");
   script_bugtraq_id(91434, 91436, 91437, 91438, 91431, 91439, 91435);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 16:11:01 +0530 (Mon, 04 Jul 2016)");
   script_name("Symantec Norton AntiVirus Decomposer Engine Multiple Parsing Vulnerabilities");
 
-  script_tag(name: "summary" , value: "This host is installed with Symantec
+  script_tag(name:"summary", value:"This host is installed with Symantec
   Norton AntiVirus and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to an error in
+  script_tag(name:"insight", value:"Multiple flaws are due to an error in
   Parsing of maliciously-formatted container files in Symantecs Decomposer engine.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause memory corruption, integer overflow or buffer overflow results in an
-  application-level denial of service.
+  application-level denial of service.");
 
-  Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Symantec Norton AntiVirus NGC 22.7 and prior.");
 
-  script_tag(name: "affected" , value:"Symantec Norton AntiVirus NGC 22.7 and prior.");
-
-  script_tag(name: "solution" , value:"Update Symantec Norton AntiVirus
+  script_tag(name:"solution", value:"Update Symantec Norton AntiVirus
   through LiveUpdate.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160628_00");
+  script_xref(name:"URL" , value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160628_00");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -74,10 +71,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sepVer= "";
-
-## Get version
 if(!sepVer = get_app_version(cpe:CPE)){
   exit(0);
 }

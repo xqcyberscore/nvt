@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2930-01_kernel.nasl 11700 2018-10-01 04:58:46Z ckuersteiner $
+# $Id: gb_RHSA-2017_2930-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:2930-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812046");
-  script_version("$Revision: 11700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 06:58:46 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 08:39:36 +0200 (Fri, 20 Oct 2017)");
   script_cve_id("CVE-2016-8399", "CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-11176",
                 "CVE-2017-14106", "CVE-2017-7184", "CVE-2017-7541", "CVE-2017-7542",
@@ -102,19 +102,18 @@ slab data could be leaked to a userspace. (CVE-2017-7558, Moderate)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

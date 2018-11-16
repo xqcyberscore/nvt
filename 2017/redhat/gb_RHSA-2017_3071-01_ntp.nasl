@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3071-01_ntp.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_RHSA-2017_3071-01_ntp.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for ntp RHSA-2017:3071-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812055");
-  script_version("$Revision: 7604 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-27 14:30:25 +0200 (Fri, 27 Oct 2017)");
   script_cve_id("CVE-2017-6462", "CVE-2017-6463", "CVE-2017-6464");
   script_tag(name:"cvss_base", value:"4.6");
@@ -69,19 +69,18 @@ Upstream acknowledges Cure53 as the original reporter of these issues.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_6")
 {

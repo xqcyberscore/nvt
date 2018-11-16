@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871719");
-  script_version("$Revision: 10778 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 12373 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 09:22:36 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-17 05:00:27 +0100 (Thu, 17 Nov 2016)");
   script_cve_id("CVE-2016-5290", "CVE-2016-5291", "CVE-2016-5296", "CVE-2016-5297", "CVE-2016-9064", "CVE-2016-9066");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,7 @@ A Man-in-the-Middle attacker could use this flaw to install a malicious
 signed add-on update. (CVE-2016-9064)
 
 Red Hat would like to thank the Mozilla project for reporting these issues.
-Upstream acknowledges Abhishek Arya, André Bargull, Samuel Groß, Yuyang
+Upstream acknowledges Abhishek Arya, Andre Bargull, Samuel Gross, Yuyang
 Zhou, Olli Pettay, Christian Holler, Ehsan Akhgari, Jon Coppeard, Gary
 Kwong, Tooru Fujisawa, Philipp, and Randell Jesup as the original
 reporters.
@@ -72,19 +72,18 @@ reporters.
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6|5)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

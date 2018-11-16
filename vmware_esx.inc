@@ -432,7 +432,7 @@ function parse_esxi_4_x_response(recv) {
 
   if(isnull(bulletins[1])) {
      set_kb_item(name:'VMware/ESXi/' + esxi_version  + '/unpatched', value:TRUE);
-     log_message(data:'Could not found a single bulletin installed on this host. Assuming this\nis a completly unpatched system. \nRECV:\n' + recv + '\n');
+     log_message(data:'Could not found a single bulletin installed on this host. Assuming this\nis a completely unpatched system. \nRECV:\n' + recv + '\n');
      return TRUE;
   }   
 

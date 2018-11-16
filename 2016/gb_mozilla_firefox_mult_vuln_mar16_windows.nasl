@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807520");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-1954", "CVE-2016-1955", "CVE-2016-1957", "CVE-2016-1958",
                 "CVE-2016-1959", "CVE-2016-1960", "CVE-2016-1950", "CVE-2016-1952",
                 "CVE-2016-1953", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1963",
@@ -42,49 +42,61 @@ if(description)
                 "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-14 16:41:40 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The 'nsCSPContext::SendReports' function in 'dom/security/nsCSPContext.cpp'
     script does not prevent use of a non-HTTP report-uri for a CSP violation
     report.
+
   - The CSP violation reports contained full path information for cross-origin
     iframe navigations in violation of the CSP specification.
+
   - A memory leak in the libstagefright library when array destruction occurs
     during MPEG4 video file processing.
+
   - An error in 'browser/base/content/browser.js' script.
+
   - Multiple use-after-free issues.
+
   - Multiple out-of-bounds read errors
+
   - A memory corruption vulnerability in the FileReader class.
+
   - The mishandling of a navigation sequence that returns to the original page.
+
   - Improper restriction of the availability of IFRAME Resource Timing API times.
+
   - Integer underflow in Brotli library's decompression.
+
   - A memory corruption issue in NPAPI plugin in 'nsNPObjWrapper::GetNewOrUsed'
     function in 'dom/plugins/base/nsJSNPRuntime.cpp' script.
+
   - A race condition in the 'GetStaticInstance' function in the WebRTC
     implementation.
+
   - Multiple Heap-based buffer overflow vulnerabilities.
+
   - The multiple unspecified vulnerabilities in the browser engine.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code or to cause a denial of service,
   possibly gain privileges, to bypass the Same Origin Policy, to obtain
-  sensitive information and to do spoofing attacks.
+  sensitive information and to do spoofing attacks.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 45.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 45.0 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 45.0
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 45.0
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -99,6 +111,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_phpmyadmin_vuln_march15.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: sw_phpmyadmin_vuln_march15.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # phpMyAdmin 'libraries/select_lang.lib.php' Information-Disclosure Vulnerability March15
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111075");
-  script_version("$Revision: 7585 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-2206");
   script_bugtraq_id(72949);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-16 07:00:00 +0100 (Sat, 16 Jan 2016)");
   script_name("phpMyAdmin 'libraries/select_lang.lib.php' Information-Disclosure Vulnerability March15");
 
   script_tag(name:"summary", value:"This host is installed with phpMyAdmin and
   is prone to an information-disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"libraries/select_lang.lib.php includes invalid
   language values in unknown-language error responses that contain a CSRF token and
@@ -50,15 +49,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue makes it easier
   for remote attackers to conduct a BREACH attack and determine this token via a series
-  of crafted requests.
-
-  Impact Level: Application");
+  of crafted requests.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions  4.0.x before 4.0.10.9,
   4.2.x before 4.2.13.2, and 4.3.x before 4.3.11.1");
 
   script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.0.10.9 or newer,
-  or 4.2.13.2 or newer, or 4.3.11.1 or newer. For updates refer http://www.phpmyadmin.net");
+  or 4.2.13.2 or newer, or 4.3.11.1 or newer.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -71,33 +68,25 @@ if(description)
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_mandatory_keys("phpMyAdmin/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-phpPort = "";
-phpVer = "";
-
-## get the port
 if( ! phpPort = get_app_port( cpe:CPE ) ) exit( 0 );
 
-## Get the version
 if( ! phpVer = get_app_version( cpe:CPE, port:phpPort ) ) exit( 0 );
 
-##Check for version 4.0.x before 4.0.10.9
 if( version_in_range( version:phpVer, test_version:"4.0.0", test_version2:"4.0.10.8" ) ) {
   fix = "4.0.10.9";
   VULN = TRUE;
 }
-##Check for version 4.2.x before 4.2.13.2
 if( version_in_range( version:phpVer, test_version:"4.2.0", test_version2:"4.2.13.1" ) ) {
   fix = "4.2.13.2";
   VULN = TRUE;
 }
-##Check for version 4.3.x before 4.3.11.1
 if( version_in_range( version:phpVer, test_version:"4.3.0", test_version2:"4.3.11.0" ) ) {
   fix = "4.3.11.1";
   VULN = TRUE;

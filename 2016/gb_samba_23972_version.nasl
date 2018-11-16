@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_23972_version.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_23972_version.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108012");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2007-2447");
   script_bugtraq_id(23972);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-31 12:47:00 +0200 (Mon, 31 Oct 2016)");
   script_name("Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"summary", value:"Samba is prone to a vulnerability that allows attackers to execute arbitrary shell
   commands because the software fails to sanitize user-supplied input.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the Detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary shell commands on an affected
   system with the privileges of the application.");

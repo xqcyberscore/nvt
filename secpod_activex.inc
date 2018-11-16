@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_activex.inc 64 2013-11-13 15:57:06Z veerendragg $
+# $Id: secpod_activex.inc 12369 2018-11-16 07:00:32Z cfischer $
 #
 # ActiveX Control functions
 #
@@ -31,7 +31,7 @@
 ## i.e 0x400 == 1024 and 0x4000400 == 67109888
 ## In the MS13-090 workaround also they have to set it as dword:04000400 == 67109888
 ## After applying the patch killbit registry value is updating to 0x4000400 == 67109888
-## Hence addded int(killBit) == 67109888 check condition
+## Hence added int(killBit) == 67109888 check condition
 
 function is_killbit_set(clsid)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20161207-ios.nasl 4710 2016-12-08 09:46:58Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20161207-ios.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Cisco IOS Frame Forwarding Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106446");
- script_cve_id("CVE-2016-6473");
- script_tag(name:"cvss_base", value:"6.1");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4710 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106446");
+  script_cve_id("CVE-2016-6473");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12363 $");
 
- script_name("Cisco IOS Frame Forwarding Denial of Service Vulnerability");
+  script_name("Cisco IOS Frame Forwarding Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-ios");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-ios");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in Cisco IOS on Catalysts Switches and Nexus 9300 Series
+  script_tag(name:"summary", value:"A vulnerability in Cisco IOS on Catalysts Switches and Nexus 9300 Series
 Switches could allow an unauthenticated, adjacent attacker to cause a Layer 2 network storm.");
 
- script_tag(name: "insight", value: "The vulnerability occurs because the software forwards Layer 2 frames that
+  script_tag(name:"insight", value:"The vulnerability occurs because the software forwards Layer 2 frames that
 should be consumed by the first hop. An attacker could exploit this vulnerability by injecting the Layer 2 frame
 into the network segment.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a Layer 2 network storm and
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a Layer 2 network storm and
 impact the availability of the switches.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:46:58 +0100 (Thu, 08 Dec 2016) $");
- script_tag(name:"creation_date", value:"2016-12-08 14:16:20 +0700 (Thu, 08 Dec 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-08 14:16:20 +0700 (Thu, 08 Dec 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.0(2)SE8',
 		'15.2(3)E',
 		'15.2(2)E1',

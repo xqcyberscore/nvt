@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10759.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_juniper_screenos_JSA10759.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # ScreenOS OpenSSL Security Updates
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/o:juniper:screenos";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140020");
- script_cve_id("CVE-2016-0703","CVE-2016-0800","CVE-2016-2108","CVE-2015-3195","CVE-2016-0704","CVE-2016-6305","CVE-2016-0797","CVE-2016-2105","CVE-2016-2106","CVE-2016-2182","CVE-2016-6306");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140020");
+  script_cve_id("CVE-2016-0703", "CVE-2016-0800", "CVE-2016-2108", "CVE-2015-3195", "CVE-2016-0704", "CVE-2016-6305", "CVE-2016-0797", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2182", "CVE-2016-6306");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12363 $");
 
- script_name("ScreenOS OpenSSL Security Updates");
+  script_name("ScreenOS OpenSSL Security Updates");
 
- script_xref(name:"URL", value:"https://kb.juniper.net/InfoCenter/index?page=content&id=JSA10759");
+  script_xref(name:"URL", value:"https://kb.juniper.net/InfoCenter/index?page=content&id=JSA10759");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name:  "solution" , value:"Update to ScreenOS 6.3.0r23 or newer.");
+  script_tag(name:"solution", value:"Update to ScreenOS 6.3.0r23 or newer.");
 
- script_tag(name: "summary" , value:"The OpenSSL project has published a set of security advisories for vulnerabilities resolved in the OpenSSL library in December 2015, March, May, June, August and September 2016. ScreenOS is potentially affected by many of these issues.");
- script_tag(name: "affected" , value:"ScreenOS < 6.3.0r23.");
+  script_tag(name:"summary", value:"The OpenSSL project has published a set of security advisories for vulnerabilities resolved in the OpenSSL library in December 2015, March, May, June, August and September 2016. ScreenOS is potentially affected by many of these issues.");
+  script_tag(name:"affected", value:"ScreenOS < 6.3.0r23.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-26 15:11:39 +0200 (Wed, 26 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_screenos_version.nasl");
- script_mandatory_keys("ScreenOS/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-26 15:11:39 +0200 (Wed, 26 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_screenos_version.nasl");
+  script_mandatory_keys("ScreenOS/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_rce_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_hp_service_manager_rce_vuln.nasl 12365 2018-11-15 10:30:55Z ckuersteiner $
 #
 # HP Service Manager Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106144");
-  script_version("$Revision: 12338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 11:30:55 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-18 11:48:16 +0700 (Mon, 18 Jul 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_hp_service_manager_detect.nasl");
-  script_mandatory_keys("hp_service_manager/installed");
+  script_mandatory_keys("hp_service_manager/detected");
 
   script_tag(name:"summary", value:"HP Service Manager is prone to a remote command execution vulnerability.");
 

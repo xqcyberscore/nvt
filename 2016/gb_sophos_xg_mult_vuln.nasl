@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_xg_mult_vuln.nasl 4785 2016-12-16 11:11:45Z ckuerste $
+# $Id: gb_sophos_xg_mult_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Sophos XG Firewall Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:sophos:xg';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106477");
-  script_version("$Revision: 4785 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-16 12:11:45 +0100 (Fri, 16 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-12-16 17:02:59 +0700 (Fri, 16 Dec 2016)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-16 17:02:59 +0700 (Fri, 16 Dec 2016)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
 
   script_cve_id("CVE-2016-5696");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Sophos XG Firewall Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_sophos_xg_detect.nasl", "gb_sophos_xg_detect_userportal.nasl");
   script_mandatory_keys("sophos/xg/installed");
 
-  script_tag(name: "summary", value: "Sophos XG Firewall is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Sophos XG Firewall is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Sophos XG Firewall is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Sophos XG Firewall is prone to multiple vulnerabilities:
 
-- Linux Kernel vulnerability (CVE-2016-5696)
+  - Linux Kernel vulnerability (CVE-2016-5696)
 
-- SQL Injection vulnerability in User Portal");
+  - SQL Injection vulnerability in User Portal");
 
-  script_tag(name: "affected", value: "Sophos XG Firewall before version 16.01.0");
+  script_tag(name:"affected", value:"Sophos XG Firewall before version 16.01.0");
 
-  script_tag(name: "solution", value: "Update to version 16.01.0 or later.");
+  script_tag(name:"solution", value:"Update to version 16.01.0 or later.");
 
-  script_xref(name: "URL", value: "https://community.sophos.com/products/xg-firewall/b/xg-blog/posts/sfos-16-01-0-released-1523397409");
-  script_xref(name: "URL", value: "http://zerodayinitiative.com/advisories/ZDI-16-671/");
+  script_xref(name:"URL", value:"https://community.sophos.com/products/xg-firewall/b/xg-blog/posts/sfos-16-01-0-released-1523397409");
+  script_xref(name:"URL", value:"http://zerodayinitiative.com/advisories/ZDI-16-671/");
 
   exit(0);
 }

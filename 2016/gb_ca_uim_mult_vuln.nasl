@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_uim_mult_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ca_uim_mult_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # CA Unified Infrastructure Management (UIM) Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ca:unified_infrastructure_management";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106386");
-  script_version("$Revision: 11596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 11:33:27 +0700 (Fri, 11 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"CA UIM is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"CA UIM is prone to multiple vulnerabilities:
 

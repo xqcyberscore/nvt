@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_lfi_vuln.nasl 11335 2018-09-11 14:12:03Z cfischer $
+# $Id: gb_videoiq_camera_lfi_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # VideoIQ Camera Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videoiq:videoiq_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807356");
-  script_version("$Revision: 11335 $");
+  script_version("$Revision: 12363 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:12:03 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Local File Inclusion Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
   sanitization of user supplied input for file requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read any file system including file configurations.
-
-  Impact Level: Application");
+  attacker to read any file system including file configurations.");
 
   script_tag(name:"affected", value:"VideoIQ Camera all Versions.");
 

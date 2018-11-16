@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # NUUO NVRmini 2 File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nuuo:nuuo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141124");
-  script_version("$Revision: 11022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12368 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 13:34:16 +0700 (Wed, 30 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,8 +56,8 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 30th May, 2018. Information regarding
-  this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44794/");
 
@@ -75,9 +75,10 @@ if (!port = get_app_port(cpe: CPE, service: "www"))
 if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
   exit(0);
 
-file = 'OpenVAS_' + rand() + '.php';
+vt_strings = get_vt_strings();
+file = vt_strings["default_rand"] + '.php';
 
-bound = '---------------------------OpenVAS_' + rand();
+bound = '---------------------------' + vt_strings["default"];
 
 data = '--' + bound + '\r\n' +
        'Content-Disposition: form-data; name="userfile"; filename="' + file + '"\r\n\r\n' +

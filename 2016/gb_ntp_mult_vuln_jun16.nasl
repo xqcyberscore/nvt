@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_jun16.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_ntp_mult_vuln_jun16.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # NTP.org 'ntp' Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106092");
-  script_version("$Revision: 5557 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-4953", "CVE-2016-4954", "CVE-2016-4955", "CVE-2016-4956", "CVE-2016-4957");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("NTP.org 'ntp' Multiple Vulnerabilities");
 
@@ -50,32 +50,32 @@ if (description)
   script_mandatory_keys("NTP/Installed", "NTP/Linux/Ver");
   script_require_udp_ports(123);
 
-  script_tag(name: "summary", value: "NTP.org's reference implementation of NTP server, ntpd, contains
+  script_tag(name:"summary", value:"NTP.org's reference implementation of NTP server, ntpd, contains
 multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "ntpd contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"ntpd contains multiple vulnerabilities:
 
-- CRYPTO-NAK denial of service (CVE-2016-4957).
+  - CRYPTO-NAK denial of service (CVE-2016-4957).
 
-- Bad authentication demobilizes ephemeral associations (CVE-2016-4953).
+  - Bad authentication demobilizes ephemeral associations (CVE-2016-4953).
 
-- Processing of spoofed server packets affects peer variables (CVE-2016-4954).
+  - Processing of spoofed server packets affects peer variables (CVE-2016-4954).
 
-- Autokey associations may be reset when repeatedly receiving spoofed packets (CVE-2016-4955).
+  - Autokey associations may be reset when repeatedly receiving spoofed packets (CVE-2016-4955).
 
-- Broadcast associations are not covered in Sec 2978 patch, which may be leveraged to flip broadcast
+  - Broadcast associations are not covered in Sec 2978 patch, which may be leveraged to flip broadcast
 clients into interleave mode (CVE-2016-4956).");
 
-  script_tag(name: "impact", value: "Unauthenticated, remote attackers may be able to spoof or send
+  script_tag(name:"impact", value:"Unauthenticated, remote attackers may be able to spoof or send
 specially crafted packets to create denial of service conditions.");
 
-  script_tag(name: "affected", value: "Version 4.2.8p7 and prior");
+  script_tag(name:"affected", value:"Version 4.2.8p7 and prior");
 
-  script_tag(name: "solution", value: "Upgrade to NTP version 4.2.8p8 or later.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p8 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/321640");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/321640");
 
   exit(0);
 }

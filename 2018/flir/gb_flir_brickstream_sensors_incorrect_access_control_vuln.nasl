@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_flir_brickstream_sensors_incorrect_access_control_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # Flir Brickstream Sensors Incorrect Access Control Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:flir:brickstream_sensor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812370");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12368 $");
   script_cve_id("CVE-2018-3813");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-02 17:29:37 +0530 (Tue, 02 Jan 2018)");
   script_name("Flir Brickstream Sensors Incorrect Access Control Vulnerability");
 
@@ -51,8 +51,8 @@ if(description)
 
   script_tag(name:"affected", value:"FLIR Brickstream 2300 devices");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 16th November, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-048.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-048.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Microsoft Windows CSRSS Feature Bypass Vulnerability (3148528)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807790");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2016-0151");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 08:06:29 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows CSRSS Feature Bypass Vulnerability (3148528)");
 
@@ -88,7 +88,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Ntoskrnl.exe");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Ntoskrnl.exe");
 if(!sysVer){
   exit(0);
 }

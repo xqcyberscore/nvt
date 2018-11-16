@@ -1,6 +1,6 @@
 ###############################################################################
 # Functions for Moxa
-# $Id: moxa.inc 7254 2017-09-25 15:54:28Z cfischer $
+# $Id: moxa.inc 12369 2018-11-16 07:00:32Z cfischer $
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -23,11 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 7254 $
+# $Revision: 12369 $
 #
 ###############################################################################
 
-# from dsci.dll in NPort Adminstration Suite
+# from dsci.dll in NPort Administration Suite
 moxa_models = make_array("105100801051", "NPort 5110",
                          "005101801a51", "NPort 5110A",
                          "005100803051", "NPort 5130",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 11909 2018-10-15 14:42:32Z cfischer $
+# $Id: ftp_func.inc 12369 2018-11-16 07:00:32Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11909 $
+# $Revision: 12369 $
 #
 ###############################################################################
 
@@ -74,7 +74,7 @@ function get_ftp_banner( port ) {
   # Some servers like Serv-U implement this and report the Server-Type and Version even if the Banner is changed to something generic
   # Example Client Request: CSID Name=FTP Voyager; Version=15.0.0.2;
   # Example Server Response: 200 Name=Serv-U; Version=7.0.0.5; OS=Windows XP; OSVer=5.1.2600; CaseSensitive=0; DirSep=/;
-  # Example Server Reponse when not logged in: 530 Not logged in.
+  # Example Server Response when not logged in: 530 Not logged in.
   cmd = "CSID Name=OpenVAS; Version=" + OPENVAS_VERSION + ";";
   csid_banner = get_ftp_cmd_banner( port:port, cmd:cmd );
   if( egrep( pattern:"^200 .*", string:csid_banner ) ) {

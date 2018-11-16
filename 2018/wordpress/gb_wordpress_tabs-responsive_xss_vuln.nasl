@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tabs-responsive_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
+# $Id: gb_wordpress_tabs-responsive_xss_vuln.nasl 12368 2018-11-16 03:53:29Z ckuersteiner $
 #
 # WordPress Tabs Plugin XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112187");
-  script_version("$Revision: 11156 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 12368 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 04:53:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 12:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -56,8 +56,8 @@ if (description)
 
   script_tag(name:"affected", value:"WordPress Tabs plugin up to and including version 1.8.0.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 18th November, 2018.
+  Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/d4wner/Vulnerabilities-Report/blob/master/tabs-responsive.md");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3392-01_java-1.7.0-openjdk.nasl 8118 2017-12-14 08:01:12Z asteins $
+# $Id: gb_RHSA-2017_3392-01_java-1.7.0-openjdk.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for java-1.7.0-openjdk RHSA-2017:3392-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812340");
-  script_version("$Revision: 8118 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 09:01:12 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 07:36:42 +0100 (Thu, 07 Dec 2017)");
   script_cve_id("CVE-2017-10193", "CVE-2017-10198", "CVE-2017-10274", "CVE-2017-10281",
                 "CVE-2017-10285", "CVE-2017-10295", "CVE-2017-10345", "CVE-2017-10346",
@@ -105,19 +105,18 @@ specially-crafted input could cause a Java application to use ...
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

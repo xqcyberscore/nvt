@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln02_mar16.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln02_mar16.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities-02 Mar16
 #
@@ -29,51 +29,48 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806890");
-  script_version("$Revision: 8596 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2014-4770", "CVE-2014-4816");
   script_bugtraq_id(69980, 69981);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:50 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-02 Mar16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   apllication server and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The multiple flaws are due to improper
+  script_tag(name:"insight", value:"The multiple flaws are due to improper
   validation of input in the Administrative Console.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to obtain sensitive information, perform cross-site scripting attacks,
   perform session injection and other malicious activities, also to inject script
-  into a victim's Web browser within the security context of the hosting Web site. 
-  
-  Impact Level: Application");
+  into a victim's Web browser within the security context of the hosting Web site.");
 
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   6.x through 6.1.0.47, 7.0 before 7.0.0.35, 8.0 before 8.0.0.10,
   and 8.5 before 8.5.5.4");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) version 7.0.0.35, or 8.0.0.10, or 8.5.5.4, or later.
-  For version 6.1.0.47 and earlier 'Apply Interim Fix PI23055'
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21671835");
+  For version 6.1.0.47 and earlier 'Apply Interim Fix PI23055'");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21682767");
-  
+  script_xref(name:"URL" , value:"http://www-01.ibm.com/support/docview.wss?uid=swg21682767");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21671835");
   exit(0);
 }
 
@@ -97,7 +94,7 @@ if(version_in_range(version:wasVer, test_version:"6", test_version2:"6.1.0.47"))
 else if(version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.34"))
 {
   fix = "7.0.0.35";
-  VULN = TRUE;  
+  VULN = TRUE;
 }
 
 else if(version_in_range(version:wasVer, test_version:"8.0", test_version2:"8.0.0.9"))

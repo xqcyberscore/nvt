@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_1_4_33.nasl 8974 2018-02-28 09:53:03Z cfischer $
+# $Id: gb_memcached_1_4_33.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Memcached < 1.4.33 Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140042");
-  script_version("$Revision: 8974 $");
-  script_cve_id("CVE-2016-8704","CVE-2016-8705","CVE-2016-8706");
+  script_version("$Revision: 12363 $");
+  script_cve_id("CVE-2016-8704", "CVE-2016-8705", "CVE-2016-8706");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-28 10:53:03 +0100 (Wed, 28 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 14:57:47 +0100 (Wed, 02 Nov 2016)");
   script_name("Memcached < 1.4.33 Multiple Remote Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"https://github.com/memcached/memcached/wiki/ReleaseNotes1433");

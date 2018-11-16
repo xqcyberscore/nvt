@@ -198,7 +198,7 @@ access_mask_or = [
  "SEC_RIGHTS_DIR_ALL", "SEC_RIGHTS_FILE_ALL"];
 
 
-# Returns WMI Query by spliting its properties.
+# Returns WMI Query by splitting its properties.
 
 function wmi_misc_split_res(List)
 {

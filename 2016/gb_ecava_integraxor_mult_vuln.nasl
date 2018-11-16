@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_mult_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_ecava_integraxor_mult_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # ECAVA IntegraXor Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106115");
-  script_version("$Revision: 5650 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-04 14:17:56 +0700 (Mon, 04 Jul 2016)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 12363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-04 14:17:56 +0700 (Mon, 04 Jul 2016)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
   script_cve_id("CVE-2016-2299", "CVE-2016-2300", "CVE-2016-2301", "CVE-2016-2302", "CVE-2016-2303",
                 "CVE-2016-2304", "CVE-2016-2305", "CVE-2016-2306");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ECAVA IntegraXor Multiple Vulnerabilities");
 
@@ -52,11 +52,11 @@ if (description)
   script_dependencies("gb_ecava_integraxor_detect.nasl");
   script_mandatory_keys("EcavaIntegraXor/Installed");
 
-  script_tag(name: "summary", value: "ECAVA IntegraXor is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ECAVA IntegraXor is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "ECAVA IntegraXor is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ECAVA IntegraXor is prone to multiple vulnerabilities:
 
 SQL injection vulnerability allows remote attackers to execute arbitrary SQL commands via unspecified vectors.
 (CVE-2016-2299)
@@ -81,14 +81,14 @@ crafted URL. (CVE-2016-2305)
 The HMI web server allows remote attackers to obtain sensitive cleartext information by sniffing the network.
 (CVE-2016-2306)");
 
-  script_tag(name: "impact", value: "The impact ranges from bypassing authentication to execute arbitrary
+  script_tag(name:"impact", value:"The impact ranges from bypassing authentication to execute arbitrary
 SQL commands.");
 
-  script_tag(name: "affected", value: "Version 4.2.4502 and previous");
+  script_tag(name:"affected", value:"Version 4.2.4502 and previous");
 
-  script_tag(name: "solution", value: "Update to 5.0.4522 or later versions.");
+  script_tag(name:"solution", value:"Update to 5.0.4522 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2016/Jan/9");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Jan/9");
 
   exit(0);
 }

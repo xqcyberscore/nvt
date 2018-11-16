@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871390");
-  script_version("$Revision: 6851 $");
+  script_version("$Revision: 12370 $");
   script_cve_id("CVE-2015-2590", "CVE-2015-2601", "CVE-2015-2621", "CVE-2015-2625",
                 "CVE-2015-2628", "CVE-2015-2632", "CVE-2015-2659", "CVE-2015-2808",
                 "CVE-2015-3149", "CVE-2015-4000", "CVE-2015-4731", "CVE-2015-4732",
@@ -34,7 +34,7 @@ if(description)
                 "CVE-2015-0383");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-16 06:15:27 +0200 (Thu, 16 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.8.0-openjdk RHSA-2015:1228-01");
@@ -104,19 +104,18 @@ resolutions correctly. An attacker able to t ...
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0093-01_microcode_ctl.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_RHSA-2018_0093-01_microcode_ctl.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for microcode_ctl RHSA-2018:0093-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.910000");
-  script_version("$Revision: 8493 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 07:35:10 +0100 (Wed, 17 Jan 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
@@ -70,19 +70,18 @@ kernel from Red Hat and updated microcode from your hardware vendor.
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(7|6)");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {

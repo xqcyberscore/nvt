@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_dire_trav_vuln_lin.nasl 9000 2018-03-01 13:59:11Z cfischer $
+# $Id: gb_elasticsearch_logstash_dire_trav_vuln_lin.nasl 12363 2018-11-15 09:51:15Z asteins $
 #
 # Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808504");
-  script_version("$Revision: 9000 $");
+  script_version("$Revision: 12363 $");
   script_cve_id("CVE-2015-4152");
   script_bugtraq_id(75112);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:59:11 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:29:19 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability (Linux)");
 
@@ -44,16 +44,13 @@ if(description)
   This script has been merged into the NVT 'Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability'
   (OID: 1.3.6.1.4.1.25623.1.0.808094)");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw is due to improper validation of
   path option in file output plugin.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to write to arbitrary files.
-
-  Impact Level: Application");
+  attackers to write to arbitrary files.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -61,9 +58,7 @@ if(description)
   1.4.3 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Logstash version 1.4.3,
-  or later.
-
-  For updates refer to https://www.elastic.co");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

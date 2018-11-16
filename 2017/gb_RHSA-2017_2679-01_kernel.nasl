@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2679-01_kernel.nasl 7335 2017-10-02 11:53:53Z teissa $
+# $Id: gb_RHSA-2017_2679-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:2679-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811766");
-  script_version("$Revision: 7335 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-02 13:53:53 +0200 (Mon, 02 Oct 2017) $");
+  script_version("$Revision: 12370 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 07:15:46 +0200 (Wed, 13 Sep 2017)");
   script_cve_id("CVE-2017-1000251");
   script_tag(name:"cvss_base", value:"8.3");
@@ -69,19 +69,18 @@ Red Hat would like to thank Armis Labs for reporting this issue.
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
-release = get_kb_item("ssh/login/release");
+release = rpm_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "RHENT_7")
 {
