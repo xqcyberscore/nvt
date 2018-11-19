@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-02/msg00014.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831332");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-02-22 06:09:45 +0100 (Tue, 22 Feb 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2010-4647");
   script_name("Mandriva Update for eclipse MDVSA-2011:032 (eclipse)");
 
-  script_tag(name:"summary", value:"Check for the Version of eclipse");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'eclipse'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

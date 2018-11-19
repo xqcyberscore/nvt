@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_048.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_048.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.048
 #
@@ -27,22 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94204");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.048: Passwortschutz unter Windows-Systemen");
-  script_xref(name:"URL", value:" http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04048.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04048.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_PasswdPolicie.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name:"summary", value:"IT-Grundschutz M4.048: Passwortschutz unter Windows-Systemen
 
-Stand: 14. Erg‰nzungslieferung (14. EL).");
+  script_tag(name:"summary", value:"IT-Grundschutz M4.048: Passwortschutz unter Windows-Systemen.
+
+  Stand: 14. Erg‰nzungslieferung (14. EL).");
 
   exit(0);
 }

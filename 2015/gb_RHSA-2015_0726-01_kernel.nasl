@@ -26,27 +26,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871343");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 06:53:37 +0100 (Fri, 27 Mar 2015)");
   script_cve_id("CVE-2014-8159", "CVE-2015-1421");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2015:0726-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* It was found that the Linux kernel's Infiniband subsystem did not
+  * It was found that the Linux kernel's Infiniband subsystem did not
 properly sanitize input parameters while registering memory regions from
 user space via the (u)verbs API. A local user with access to a
 /dev/infiniband/uverbsX device could use this flaw to crash the system or,
 potentially, escalate their privileges on the system. (CVE-2014-8159,
 Important)
 
-* A use-after-free flaw was found in the way the Linux kernel's SCTP
+  * A use-after-free flaw was found in the way the Linux kernel's SCTP
 implementation handled authentication key reference counting during INIT
 collisions. A remote attacker could use this flaw to crash the system or,
 potentially, escalate their privileges on the system. (CVE-2015-1421,
@@ -57,20 +58,20 @@ The CVE-2015-1421 issue was discovered by Sun Baoliang of Red Hat.
 
 This update also fixes the following bugs:
 
-* In certain systems with multiple CPUs, when a crash was triggered on one
+  * In certain systems with multiple CPUs, when a crash was triggered on one
 CPU with an interrupt handler and this CPU sent Non-Maskable Interrupt
 (NMI) to another CPU, and, at the same time, ioapic_lock had already been
 acquired, a deadlock occurred in ioapic_lock. As a consequence, the kdump
 service could become unresponsive. This bug has been fixed and kdump now
 works as expected. (BZ#1197742)
 
-* On Lenovo X1 Carbon 3rd Gen, X250, and T550 laptops, the thinkpad_acpi
+  * On Lenovo X1 Carbon 3rd Gen, X250, and T550 laptops, the thinkpad_acpi
 module was not properly loaded, and thus the function keys and radio
 switches did not work. This update applies a new string pattern of BIOS
 version, which fixes this bug, and function keys and radio switches now
 work as intended. (BZ#1197743)
 
-* During a heavy file system load involving many worker threads, all worker
+  * During a heavy file system load involving many worker threads, all worker
 threads in the pool became blocked on a resource, and no manager thread
 existed to create more workers. As a consequence, the running processes
 became unresponsive. With this update, the logic around manager creation
@@ -79,19 +80,19 @@ thread and does not start executing work items. Now, a manager thread
 exists, spawns new workers as needed, and processes no longer hang.
 (BZ#1197744)
 
-* If a thin-pool's metadata enters read-only or fail mode, for example, due
+  * If a thin-pool's metadata enters read-only or fail mode, for example, due
 to thin-pool running out of metadata or data space, any attempt to make
 metadata changes such as creating a thin device or snapshot thin device
 should error out cleanly. However, previously, the kernel code returned
 verbose and alarming error messages to the user. With this update, due to
 early trapping of attempt to make metadata changes, informative errors are
-dis ... 
+dis ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0726-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00050.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0726-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00050.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -209,6 +210,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0720_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_0720_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for openssl openSUSE-SU-2016:0720-1 (openssl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851228");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-12 06:13:13 +0100 (Sat, 12 Mar 2016)");
   script_cve_id("CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0703", "CVE-2016-0704",
                 "CVE-2016-0797", "CVE-2016-0799", "CVE-2016-0800", "CVE-2015-0293");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2016:0720-1 (openssl)");
-  script_tag(name:"summary", value:"Check the version of openssl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for compat-openssl098 fixes various security issues and bugs:
 
@@ -94,7 +95,7 @@ if(description)
   - CVE-2016-0703 (bsc#968051): This issue only affected versions of OpenSSL
   prior to March 19th 2015 at which time the code was refactor ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"openssl on openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

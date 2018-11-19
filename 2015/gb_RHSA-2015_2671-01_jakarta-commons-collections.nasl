@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871529");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-22 05:42:26 +0100 (Tue, 22 Dec 2015)");
   script_cve_id("CVE-2015-7501");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for jakarta-commons-collections RHSA-2015:2671-01");
-  script_tag(name: "summary", value: "Check the version of jakarta-commons-collections");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Jakarta/Apache Commons Collections library
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jakarta-commons-collections'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The Jakarta/Apache Commons Collections library
 provides new interfaces,
 implementations, and utilities to extend the features of the Java
 Collections Framework.
@@ -54,24 +54,24 @@ those classes to be deserialized can use the system property
 'org.apache.commons.collections.enableUnsafeSerialization' to re-enable
 their deserialization.
 
-Further information about this security flaw may be found at:
-https://access.redhat.com/solutions/2045023
+Further information about this security flaw may be found at the linked references.
 
 All users of jakarta-commons-collections are advised to upgrade to these
 updated packages, which contain a backported patch to correct this issue.
 All running applications using the commons-collections library must be
-restarted for the update to take effect.
-");
-  script_tag(name: "affected", value: "jakarta-commons-collections on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2671-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-December/msg00052.html");
+restarted for the update to take effect.");
+  script_tag(name:"affected", value:"jakarta-commons-collections on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2671-01");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-December/msg00052.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/solutions/2045023");
 
   exit(0);
 }
@@ -123,6 +123,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

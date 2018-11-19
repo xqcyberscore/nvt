@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1625_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_1625_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for exim openSUSE-SU-2017:1625-1 (exim)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851569");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 17:22:14 +0200 (Tue, 20 Jun 2017)");
   script_cve_id("CVE-2017-1000369");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for exim openSUSE-SU-2017:1625-1 (exim)");
-  script_tag(name:"summary", value:"Check the version of exim");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'exim'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for exim fixes the following issues:
 

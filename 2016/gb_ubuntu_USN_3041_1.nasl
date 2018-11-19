@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842848");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-06 05:37:10 +0200 (Sat, 06 Aug 2016)");
   script_cve_id("CVE-2016-1705", "CVE-2016-1706", "CVE-2016-1710", "CVE-2016-1711",
 		"CVE-2016-5127", "CVE-2016-5128", "CVE-2016-5129", "CVE-2016-5130",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-3041-1");
-  script_tag(name:"summary", value:"Check the version of oxide-qt");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'oxide-qt'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple security issues were discovered
   in Chromium. If a user were tricked in to opening a specially crafted website,
@@ -95,7 +96,7 @@ to spoof a proxy authentication login prompt. (CVE-2016-5133)
 It was discovered that the Proxy Auto-Config (PAC) feature in Chromium
 does  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"oxide-qt on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

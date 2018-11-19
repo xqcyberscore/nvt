@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Ruby is an extensible, interpreted, object-oriented, scripting language. It
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-June/msg00025.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870672");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-06 10:45:17 +0530 (Wed, 06 Jun 2012)");
+  script_cve_id("CVE-2011-0188", "CVE-2011-1004", "CVE-2011-1005");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name:"RHSA", value:"2011:0910-01");
+  script_name("RedHat Update for ruby RHSA-2011:0910-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ruby'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"ruby on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Ruby is an extensible, interpreted, object-oriented, scripting language. It
   has features to process text files and to do system management tasks.
 
   A flaw was found in the way large amounts of memory were allocated on
@@ -48,37 +72,7 @@ tag_insight = "Ruby is an extensible, interpreted, object-oriented, scripting la
   reporting the CVE-2011-0188 issue.
 
   All Ruby users should upgrade to these updated packages, which contain
-  backported patches to resolve these issues.";
-
-tag_affected = "ruby on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-June/msg00025.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870672");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-06 10:45:17 +0530 (Wed, 06 Jun 2012)");
-  script_cve_id("CVE-2011-0188", "CVE-2011-1004", "CVE-2011-1005");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "RHSA", value: "2011:0910-01");
-  script_name("RedHat Update for ruby RHSA-2011:0910-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of ruby");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  backported patches to resolve these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -120,6 +114,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

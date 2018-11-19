@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3768_1.nasl 11507 2018-09-20 13:34:54Z cfischer $
+# $Id: gb_ubuntu_USN_3768_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for ghostscript USN-3768-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843638");
-  script_version("$Revision: 11507 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:34:54 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 07:34:01 +0200 (Thu, 20 Sep 2018)");
   script_cve_id("CVE-2018-11645", "CVE-2018-15908", "CVE-2018-15909",
                   "CVE-2018-15910", "CVE-2018-15911", "CVE-2018-16509", "CVE-2018-16510",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ghostscript USN-3768-1");
-  script_tag(name:"summary", value:"Check the version of ghostscript");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ghostscript'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Tavis Ormandy discovered multiple security issues in Ghostscript. If a user
 or automated system were tricked into processing a specially crafted file,

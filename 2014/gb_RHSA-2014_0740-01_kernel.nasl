@@ -23,28 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871180");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:07:11 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2013-7339", "CVE-2014-1737", "CVE-2014-1738");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for kernel RHSA-2014:0740-01");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A flaw was found in the way the Linux kernel's floppy driver handled user
+  * A flaw was found in the way the Linux kernel's floppy driver handled user
 space provided data in certain error code paths while processing FDRAWCMD
 IOCTL commands. A local user with write access to /dev/fdX could use this
 flaw to free (using the kfree() function) arbitrary kernel memory.
 (CVE-2014-1737, Important)
 
-* It was found that the Linux kernel's floppy driver leaked internal kernel
+  * It was found that the Linux kernel's floppy driver leaked internal kernel
 memory addresses to user space during the processing of the FDRAWCMD IOCTL
 command. A local user with write access to /dev/fdX could use this flaw to
 obtain information about the kernel heap arrangement. (CVE-2014-1738, Low)
@@ -53,7 +54,7 @@ Note: A local user with write access to /dev/fdX could use these two flaws
 (CVE-2014-1737 in combination with CVE-2014-1738) to escalate their
 privileges on the system.
 
-* A NULL pointer dereference flaw was found in the rds_ib_laddr_check()
+  * A NULL pointer dereference flaw was found in the rds_ib_laddr_check()
 function in the Linux kernel's implementation of Reliable Datagram Sockets
 (RDS). A local, unprivileged user could use this flaw to crash the system.
 (CVE-2013-7339, Moderate)
@@ -63,13 +64,13 @@ CVE-2014-1738.
 
 This update also fixes the following bugs:
 
-* A bug in the futex system call could result in an overflow when passing
+  * A bug in the futex system call could result in an overflow when passing
 a very large positive timeout. As a consequence, the FUTEX_WAIT operation
 did not work as intended and the system call was timing out immediately.
 A backported patch fixes this bug by limiting very large positive timeouts
 to the maximal supported value. (BZ#1091832)
 
-* A new Linux Security Module (LSM) functionality related to the setrlimit
+  * A new Linux Security Module (LSM) functionality related to the setrlimit
 hooks should produce a warning message when used by a third party module
 that could not cope with it. However, due to a programming error, the
 kernel could print this warning message when a process was setting rlimits
@@ -78,31 +79,24 @@ main thread even though there was no incompatible third party module. This
 update fixes the relevant code and ensures that the kernel handles this
 warning message correctly. (BZ#1092869)
 
-* Previously, the kernel was unable to detect KVM on system boot if the
+  * Previously, the kernel was unable to detect KVM on system boot if the
 Hyper-V emulation was enabled. A patch has been applied to ensure that
 both KVM and Hyper-V hypervisors are now correctly detected during system
 boot. (BZ#1094152)
 
-* A function in the RPC code responsible for verifying whether cached
+  * A function in the RPC code responsible for verifying whether cached
 credentials match the current process did not perform the check correctly.
 The code checked only whether the groups in the current process
 credentials ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0740-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-June/msg00029.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"RHSA", value:"2014:0740-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-June/msg00029.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -213,6 +207,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

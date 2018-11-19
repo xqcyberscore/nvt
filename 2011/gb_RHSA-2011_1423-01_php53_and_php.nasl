@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "PHP is an HTML-embedded scripting language commonly used with the Apache
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-November/msg00003.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870510");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"RHSA", value:"2011:1423-01");
+  script_cve_id("CVE-2011-0708", "CVE-2011-1148", "CVE-2011-1466", "CVE-2011-1468",
+                "CVE-2011-1469", "CVE-2011-1471", "CVE-2011-1938", "CVE-2011-2202",
+                "CVE-2011-2483");
+  script_name("RedHat Update for php53 and php RHSA-2011:1423-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php53 and php'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"php53 and php on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
   HTTP Server.
 
   A signedness issue was found in the way the PHP crypt() function handled
@@ -32,76 +56,47 @@ tag_insight = "PHP is an HTML-embedded scripting language commonly used with the
   bit set) had no effect on the hash result, thus shortening the effective
   password length. This made brute-force guessing more efficient as several
   different passwords were hashed to the same value. (CVE-2011-2483)
-  
+
   Note: Due to the CVE-2011-2483 fix, after installing this update some users
   may not be able to log in to PHP applications that hash passwords with
   Blowfish using the PHP crypt() function. Refer to the upstream
   &quot;CRYPT_BLOWFISH security fix details&quot; document, linked to in the
   References, for details.
-  
+
   An insufficient input validation flaw, leading to a buffer over-read, was
   found in the PHP exif extension. A specially-crafted image file could cause
   the PHP interpreter to crash when a PHP script tries to extract
   Exchangeable image file format (Exif) metadata from the image file.
   (CVE-2011-0708)
-  
+
   An integer overflow flaw was found in the PHP calendar extension. A remote
   attacker able to make a PHP script call SdnToJulian() with a large value
   could cause the PHP interpreter to crash. (CVE-2011-1466)
-  
+
   Multiple memory leak flaws were found in the PHP OpenSSL extension. A
   remote attacker able to make a PHP script use openssl_encrypt() or
   openssl_decrypt() repeatedly could cause the PHP interpreter to use an
   excessive amount of memory. (CVE-2011-1468)
-  
+
   A use-after-free flaw was found in the PHP substr_replace() function. If a
   PHP script used the same variable as multiple function arguments, a remote
   attacker could possibly use this to crash the PHP interpreter or, possibly,
   execute arbitrary code. (CVE-2011-1148)
-  
+
   A bug in the PHP Streams component caused the PHP interpreter to crash if
   an FTP wrapper connection was made through an HTTP proxy. A remote attacker
   could possibly trigger this issue if a PHP script accepted an untrusted URL
   to connect to. (CVE-2011-1469)
-  
+
   An integer signedness issue was found in the PHP zip extension. An attacker
   could use a specially-crafted ZIP archive to cause the PHP interpreter to
   use an excessive amount of CPU time until the script execution time limit
   is reached. (CVE-2011-1471)
-  
+
   A stack-based buffer overflow flaw was found in the way the PHP socket
-  extension handled long AF_UNIX socket addresses. An attacker able to mak ... 
+  extension handled long AF_UNIX socket addresses. An attacker able to mak ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "php53 and php on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-November/msg00003.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870510");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "RHSA", value: "2011:1423-01");
-  script_cve_id("CVE-2011-0708", "CVE-2011-1148", "CVE-2011-1466", "CVE-2011-1468",
-                "CVE-2011-1469", "CVE-2011-1471", "CVE-2011-1938", "CVE-2011-2202",
-                "CVE-2011-2483");
-  script_name("RedHat Update for php53 and php RHSA-2011:1423-01");
-
-  script_tag(name:"summary", value:"Check for the Version of php53 and php");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -251,6 +246,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

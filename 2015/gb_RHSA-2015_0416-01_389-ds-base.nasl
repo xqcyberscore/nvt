@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871323");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:49:04 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-8105", "CVE-2014-8112");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for 389-ds-base RHSA-2015:0416-01");
-  script_tag(name: "summary", value: "Check the version of 389-ds-base");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The 389 Directory Server is an LDAPv3 compliant server. The base packages
+  script_tag(name:"summary", value:"The remote host is missing an update for the '389-ds-base'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The 389 Directory Server is an LDAPv3 compliant server. The base packages
 include the Lightweight Directory Access Protocol (LDAP) server and
 command-line utilities for server administration.
 
@@ -60,45 +61,45 @@ Engineering Team.
 
 Enhancements:
 
-* Added new WinSync configuration parameters: winSyncSubtreePair for
+  * Added new WinSync configuration parameters: winSyncSubtreePair for
 synchronizing multiple subtrees, as well as winSyncWindowsFilter and
 winSyncDirectoryFilter for synchronizing restricted sets by filters.
 (BZ#746646)
 
-* It is now possible to stop, start, or configure plug-ins without the need
+  * It is now possible to stop, start, or configure plug-ins without the need
 to restart the server for the change to take effect. (BZ#994690)
 
-* Access control related to the MODDN and MODRDN operations has been
+  * Access control related to the MODDN and MODRDN operations has been
 updated: the source and destination targets can be specified in the same
 access control instruction. (BZ#1118014)
 
-* The nsDS5ReplicaBindDNGroup attribute for using a group distinguished
+  * The nsDS5ReplicaBindDNGroup attribute for using a group distinguished
 name in binding to replicas has been added. (BZ#1052754)
 
-* WinSync now supports range retrieval. If more than the MaxValRange number
+  * WinSync now supports range retrieval. If more than the MaxValRange number
 of attribute values exist per attribute, WinSync synchronizes all the
 attributes to the directory server using the range retrieval. (BZ#1044149)
 
-* Support for the RFC 4527 Read Entry Controls and RFC 4533 Content
+  * Support for the RFC 4527 Read Entry Controls and RFC 4533 Content
 Synchronization Operation LDAP standards has been added. (BZ#1044139,
 BZ#1044159)
 
-* The Referential Integrity (referint) plug-in can now use an alternate
+  * The Referential Integrity (referint) plug-in can now use an alternate
 configuration area. The PlugInArg plug-in configuration now uses unique
 configuration attributes. Configuration changes no longer require a server
 restart. (BZ#1044203)
 
-* The logconv.pl log analysis tool now supports gzip, bzip2, and xz
+  * The logconv.pl log analysis tool now supports gzip, bzip2, and xz
 compressed files and also TAR archives and compressed TAR archives of these
 files. (BZ#1044188)
 
-* Only the Directory Manager could add encoded password ... 
+  * Only the Directory Manager could add encoded password ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "389-ds-base on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0416-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00015.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"389-ds-base on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0416-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -138,6 +139,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

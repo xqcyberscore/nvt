@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842098");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-25 05:42:58 +0100 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2015-0247", "CVE-2015-1572");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for e2fsprogs USN-2507-1");
-  script_tag(name:"summary", value:"Check the version of e2fsprogs");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'e2fsprogs'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Jose Duart discovered that e2fsprogs
 incorrectly handled invalid block group descriptor data. A local attacker

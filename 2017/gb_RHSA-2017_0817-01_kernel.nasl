@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871783");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 05:48:26 +0100 (Wed, 22 Mar 2017)");
   script_cve_id("CVE-2016-10088", "CVE-2016-10142", "CVE-2016-2069", "CVE-2016-2384",
                 "CVE-2016-6480", "CVE-2016-7042", "CVE-2016-7097", "CVE-2016-8399",
@@ -36,22 +36,22 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:0817-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* It was discovered that a remote attacker could leverage the generation of
+  * It was discovered that a remote attacker could leverage the generation of
 IPv6 atomic fragments to trigger the use of fragmentation in an arbitrary
 IPv6 flow (in scenarios in which actual fragmentation of packets is not
 needed) and could subsequently perform any type of a fragmentation-based
 attack against legacy IPv6 nodes that do not implement RFC6946.
 (CVE-2016-10142, Moderate)
 
-* A flaw was discovered in the way the Linux kernel dealt with paging
+  * A flaw was discovered in the way the Linux kernel dealt with paging
 structures. When the kernel invalidated a paging structure that was not in
 use locally, it could, in principle, race against another CPU that is
 switching to a process that uses the paging structure in question. A local
@@ -60,40 +60,40 @@ translation to potentially escalate their privileges if the translation in
 question were writable and the physical page got reused for something
 critical (for example, a page table). (CVE-2016-2069, Moderate)
 
-* A race condition flaw was found in the ioctl_send_fib() function in the
+  * A race condition flaw was found in the ioctl_send_fib() function in the
 Linux kernel's aacraid implementation. A local attacker could use this flaw
 to cause a denial of service (out-of-bounds access or system crash) by
 changing a certain size value. (CVE-2016-6480, Moderate)
 
-* It was found that when the gcc stack protector was enabled, reading the
+  * It was found that when the gcc stack protector was enabled, reading the
 /proc/keys file could cause a panic in the Linux kernel due to stack
 corruption. This happened because an incorrect buffer size was used to hold
 a 64-bit timeout value rendered as weeks. (CVE-2016-7042, Moderate)
 
-* It was found that when file permissions were modified via chmod and the
+  * It was found that when file permissions were modified via chmod and the
 user modifying them was not in the owning group or capable of CAP_FSETID,
 the setgid bit would be cleared. Setting a POSIX ACL via setxattr sets the
 file permissions as well as the new ACL, but doesn't clear the setgid bit
 in a similar way. This could allow a local user to gain group privileges
 via certain setgid applications. (CVE-2016-7097, Moderate)
 
-* A flaw was found in the Linux networking subsystem where a local attacker
+  * A flaw was found in the Linux networking subsystem where a local attacker
 with CAP_NET_ADMIN capabilities could cause an out-of-bounds memory access
 by creating a smaller-than-expected ICMP header and sending to its
 destination via sendto(). (CVE-2016-8399, Moderate)
 
-* It was found that the blk_rq_map_user_iov() function in the Linux
+  * It was found that the blk_rq_map_user_iov() function in the Linux
 kernel's block device implementation did not properly restrict the type of
-iterator, which could allow a local attacker to re ... 
+iterator, which could allow a local attacker to re ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:0817-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-March/msg00055.html");
+  script_xref(name:"RHSA", value:"2017:0817-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-March/msg00055.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -205,6 +205,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

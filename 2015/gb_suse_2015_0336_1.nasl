@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0336_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2015_0336_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk SUSE-SU-2015:0336-1 (java-1_7_0-openjdk)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850910");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:05:27 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6549", "CVE-2014-6585", "CVE-2014-6587", "CVE-2014-6591", "CVE-2014-6593", "CVE-2014-6601", "CVE-2015-0383", "CVE-2015-0395", "CVE-2015-0400", "CVE-2015-0403", "CVE-2015-0406", "CVE-2015-0407", "CVE-2015-0408", "CVE-2015-0410", "CVE-2015-0412", "CVE-2015-0413", "CVE-2015-0421", "CVE-2015-0437");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_0-openjdk SUSE-SU-2015:0336-1 (java-1_7_0-openjdk)");
-  script_tag(name:"summary", value:"Check the version of java-1_7_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_7_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"java-1_7_0-openjdk was updated to fix 19 security issues.
 
@@ -67,7 +68,7 @@ if(description)
 
   * CVE-2015-0410
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"java-1_7_0-openjdk on SUSE Linux Enterprise Desktop 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:0336_1");

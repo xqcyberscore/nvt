@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2258-01_gtk-vnc.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2258-01_gtk-vnc.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for gtk-vnc RHSA-2017:2258-01
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871869");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:47:57 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2017-5884", "CVE-2017-5885");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for gtk-vnc RHSA-2017:2258-01");
-  script_tag(name: "summary", value: "Check the version of gtk-vnc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "The gtk-vnc packages provide a VNC viewer 
-  widget for GTK. The gtk-vnc widget is built by using co-routines, which allows 
-  the widget to be completely asynchronous while remaining single-threaded. The 
-  following packages have been upgraded to a later upstream version: gtk-vnc 
-  (0.7.0). (BZ#1416783) Security Fix(es): * It was found that gtk-vnc lacked 
-  proper bounds checking while processing messages using RRE, hextile, or copyrect 
-  encodings. A remote malicious VNC server could use this flaw to crash VNC 
-  viewers which are based on the gtk-vnc library. (CVE-2017-5884) * An integer 
-  overflow flaw was found in gtk-vnc. A remote malicious VNC server could use this 
-  flaw to crash VNC viewers which are based on the gtk-vnc library. 
-  (CVE-2017-5885) Additional Changes: For detailed information on changes in this 
-  release, see the Red Hat Enterprise Linux 7.4 Release Notes linked from the 
-  References section. "); 
-  script_tag(name: "affected", value: "gtk-vnc on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gtk-vnc'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The gtk-vnc packages provide a VNC viewer
+  widget for GTK. The gtk-vnc widget is built by using co-routines, which allows
+  the widget to be completely asynchronous while remaining single-threaded. The
+  following packages have been upgraded to a later upstream version: gtk-vnc
+  (0.7.0). (BZ#1416783) Security Fix(es): * It was found that gtk-vnc lacked
+  proper bounds checking while processing messages using RRE, hextile, or copyrect
+  encodings. A remote malicious VNC server could use this flaw to crash VNC
+  viewers which are based on the gtk-vnc library. (CVE-2017-5884) * An integer
+  overflow flaw was found in gtk-vnc. A remote malicious VNC server could use this
+  flaw to crash VNC viewers which are based on the gtk-vnc library.
+  (CVE-2017-5885) Additional Changes: For detailed information on changes in this
+  release, see the Red Hat Enterprise Linux 7.4 Release Notes linked from the
+  References section. ");
+  script_tag(name:"affected", value:"gtk-vnc on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2258-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00016.html");
+  script_xref(name:"RHSA", value:"2017:2258-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00016.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -95,6 +95,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

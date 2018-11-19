@@ -26,47 +26,46 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871818");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 07:02:44 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2016-2125", "CVE-2016-2126", "CVE-2017-2619");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for samba RHSA-2017:1265-01");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Samba is an open-source implementation of
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Samba is an open-source implementation of
 the Server Message Block (SMB) protocol and the related Common Internet File
 System (CIFS) protocol, which allow PC-compatible machines to share files,
 printers, and various information.
 
 Security Fix(es):
 
-* It was found that Samba always requested forwardable tickets when using
+  * It was found that Samba always requested forwardable tickets when using
 Kerberos authentication. A service to which Samba authenticated using
 Kerberos could subsequently use the ticket to impersonate Samba to other
 services or domain users. (CVE-2016-2125)
 
-* A flaw was found in the way Samba handled PAC (Privilege Attribute
+  * A flaw was found in the way Samba handled PAC (Privilege Attribute
 Certificate) checksums. A remote, authenticated attacker could use this
 flaw to crash the winbindd process. (CVE-2016-2126)
 
-* A race condition was found in samba server. A malicious samba client
+  * A race condition was found in samba server. A malicious samba client
 could use this flaw to access files and directories, in areas of the server
 file system not exported under the share definitions. (CVE-2017-2619)
 
 Red Hat would like to thank the Samba project for reporting CVE-2017-2619.
 Upstream acknowledges Jann Horn (Google) as the original reporter of
-CVE-2017-2619.
-");
-  script_tag(name: "affected", value: "samba on
+CVE-2017-2619.");
+  script_tag(name:"affected", value:"samba on
   Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:1265-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-May/msg00031.html");
+  script_xref(name:"RHSA", value:"2017:1265-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-May/msg00031.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -178,6 +177,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

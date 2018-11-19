@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871325");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:49:36 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-8136", "CVE-2015-0236");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for libvirt RHSA-2015:0323-01");
-  script_tag(name: "summary", value: "Check the version of libvirt");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The libvirt library is a C API for managing and interacting with the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libvirt'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The libvirt library is a C API for managing and interacting with the
 virtualization capabilities of Linux and other operating systems.
 
 It was found that QEMU's qemuDomainMigratePerform() and
@@ -56,7 +57,7 @@ The CVE-2015-0236 issue was found by Luyao Huang of Red Hat.
 
 Bug fixes:
 
-* The libvirtd daemon previously attempted to search for SELinux contexts
+  * The libvirtd daemon previously attempted to search for SELinux contexts
 even when SELinux was disabled on the host. Consequently, libvirtd logged
 'Unable to lookup SELinux process context' error messages every time a
 client connected to libvirtd and SELinux was disabled. libvirtd now
@@ -64,34 +65,34 @@ verifies whether SELinux is enabled before searching for SELinux contexts,
 and no longer logs the error messages on a host with SELinux disabled.
 (BZ#1135155)
 
-* The libvirt utility passed incomplete PCI addresses to QEMU.
+  * The libvirt utility passed incomplete PCI addresses to QEMU.
 Consequently, assigning a PCI device that had a PCI address with a non-zero
 domain to a guest failed. Now, libvirt properly passes PCI domain to QEMU
 when assigning PCI devices, which prevents the described problem.
 (BZ#1127080)
 
-* Because the virDomainSetMaxMemory API did not allow changing the current
+  * Because the virDomainSetMaxMemory API did not allow changing the current
 memory in the LXC driver, the 'virsh setmaxmem' command failed when
 attempting to set the maximum memory to be lower than the current memory.
 Now, 'virsh setmaxmem' sets the current memory to the intended value of the
 maximum memory, which avoids the mentioned problem. (BZ#1091132)
 
-* Attempting to start a non-existent domain caused network filters to stay
+  * Attempting to start a non-existent domain caused network filters to stay
 locked for read-only access. Because of this, subsequent attempts to gain
 read-write access to network filters triggered a deadlock. Network filters
 are now properly unlocked in the described scenario, and the deadlock no
 longer occurs. (BZ#1088864)
 
-* If a guest configuration had an active nwfilter using the DHCP snooping
+  * If a guest configuration had an active nwfilter using the DHCP snooping
 feature and an attempt was made to terminate libvirtd before the associated
 nwfilter rule snooped the guest IP address from DHCP packets, libvirtd
 became unresponsive. This problem has been fixed by se ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "libvirt on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0323-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00023.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"libvirt on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0323-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00023.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -215,6 +216,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

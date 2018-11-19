@@ -23,26 +23,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-September/msg00003.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870482");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-09-12 16:29:49 +0200 (Mon, 12 Sep 2011)");
+  script_xref(name:"RHSA", value:"2011:1212-01");
+  script_cve_id("CVE-2011-2482", "CVE-2011-2491", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2519", "CVE-2011-2901");
+  script_name("RedHat Update for kernel RHSA-2011:1212-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   This update fixes the following security issues:
-  
+
   * A NULL pointer dereference flaw was found in the Linux kernel's Stream
   Control Transmission Protocol (SCTP) implementation. A remote attacker
   could send a specially-crafted SCTP packet to a target system, resulting in
   a denial of service. (CVE-2011-2482, Important)
-  
+
   * A flaw in the Linux kernel's client-side NFS Lock Manager (NLM)
   implementation could allow a local, unprivileged user to cause a denial of
   service. (CVE-2011-2491, Important)
-  
+
   * Buffer overflow flaws in the Linux kernel's netlink-based wireless
   configuration interface implementation could allow a local user, who has
   the CAP_NET_ADMIN capability, to cause a denial of service or escalate
   their privileges on systems that have an active wireless interface.
   (CVE-2011-2517, Important)
-  
+
   * A flaw was found in the way the Linux kernel's Xen hypervisor
   implementation emulated the SAHF instruction. When using a
   fully-virtualized guest on a host that does not use hardware assisted
@@ -51,55 +73,28 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   Virtualization (AMD-V) Rapid Virtualization Indexing (RVI), a privileged
   guest user could trigger this flaw to cause the hypervisor to crash.
   (CVE-2011-2519, Moderate)
-  
+
   * An off-by-one flaw was found in the __addr_ok() macro in the Linux
   kernel's Xen hypervisor implementation when running on 64-bit systems. A
   privileged guest user could trigger this flaw to cause the hypervisor to
   crash. (CVE-2011-2901, Moderate)
-  
+
   * /proc/[PID]/io is world-readable by default. Previously, these files
   could be read without any further restrictions. A local, unprivileged user
   could read these files, belonging to other, possibly privileged processes
   to gather confidential information, such as the length of a password used
   in a process. (CVE-2011-2495, Low)
-  
+
   Red Hat would like to thank Vasily Averin for reporting CVE-2011-2491, and
   Vasiliy Kulikov of Openwall for reporting CVE-2011-2495.
-  
+
   This update also fixes several bugs. Documentation for these bug fixes will
   be available shortly from the Technical Notes document linked to in the
   References section.
-  
+
   Users should upgrade to these updated packages, which contain backported
   patches to correct these issues, and fix the bugs noted in the Technical
-  Notes. The system must be rebooted for this update to take effect.";
-
-tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-September/msg00003.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870482");
-  script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2011-09-12 16:29:49 +0200 (Mon, 12 Sep 2011)");
-  script_xref(name: "RHSA", value: "2011:1212-01");
-  script_cve_id("CVE-2011-2482", "CVE-2011-2491", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2519", "CVE-2011-2901");
-  script_name("RedHat Update for kernel RHSA-2011:1212-01");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Notes. The system must be rebooted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -207,6 +202,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

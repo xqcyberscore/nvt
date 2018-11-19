@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3762_2.nasl 11361 2018-09-12 13:16:00Z cfischer $
+# $Id: gb_ubuntu_USN_3762_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3762-2
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843633");
-  script_version("$Revision: 11361 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:16:00 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 07:08:25 +0200 (Tue, 11 Sep 2018)");
   script_cve_id("CVE-2018-1118", "CVE-2017-13695");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-azure USN-3762-2");
-  script_tag(name:"summary", value:"Check the version of linux-azure");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-azure'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"USN-3762-1 fixed vulnerabilities in the

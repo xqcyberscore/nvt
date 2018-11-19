@@ -1,6 +1,6 @@
  ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0690_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2017_0690_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2017:0690-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851523");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 18:29:26 +0100 (Tue, 14 Mar 2017)");
   script_cve_id("CVE-2017-5398", "CVE-2017-5399", "CVE-2017-5400", "CVE-2017-5401",
                 "CVE-2017-5402", "CVE-2017-5403", "CVE-2017-5404", "CVE-2017-5405",
@@ -41,7 +41,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2017:0690-1 (MozillaFirefox, )");
-  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox.'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for MozillaFirefox and mozilla-nss fixes the following issues:
 
@@ -92,7 +93,7 @@ if(description)
   repeatedly in one hyperlink (bmo#1295002) CVE-2017-5399: Memory safety
   bugs fixed in Firefox 52 CVE-2017-5398 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"MozillaFirefox, on openSUSE Leap 42.2, openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

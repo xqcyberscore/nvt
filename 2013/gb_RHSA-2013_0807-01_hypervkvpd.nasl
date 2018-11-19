@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The hypervkvpd package contains hypervkvpd, the guest Microsoft Hyper-V
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.870992");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-05-13 12:42:38 +0530 (Mon, 13 May 2013)");
+  script_cve_id("CVE-2012-5532");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_name("RedHat Update for hypervkvpd RHSA-2013:0807-01");
+
+  script_xref(name:"RHSA", value:"2013:0807-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-May/msg00005.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'hypervkvpd'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"hypervkvpd on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The hypervkvpd package contains hypervkvpd, the guest Microsoft Hyper-V
   Key-Value Pair (KVP) daemon. The daemon passes basic information to the
   host through VMBus, such as the guest IP address, fully qualified domain
   name, operating system name, and operating system release number.
@@ -46,34 +68,7 @@ tag_insight = "The hypervkvpd package contains hypervkvpd, the guest Microsoft H
 
   Users of hypervkvpd are advised to upgrade to this updated package, which
   contains backported patches to correct these issues. After installing the
-  update, it is recommended to reboot all guest machines.";
-
-
-tag_affected = "hypervkvpd on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.870992");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2013-05-13 12:42:38 +0530 (Mon, 13 May 2013)");
-  script_cve_id("CVE-2012-5532");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_name("RedHat Update for hypervkvpd RHSA-2013:0807-01");
-
-  script_xref(name: "RHSA", value: "2013:0807-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-May/msg00005.html");
-  script_tag(name: "summary" , value: "Check for the Version of hypervkvpd");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  update, it is recommended to reboot all guest machines.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -103,6 +98,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

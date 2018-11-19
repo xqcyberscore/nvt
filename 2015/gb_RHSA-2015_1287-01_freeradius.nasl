@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871397");
-  script_version("$Revision: 12370 $");
+  script_version("$Revision: 12380 $");
   script_cve_id("CVE-2014-2015");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:24:54 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for freeradius RHSA-2015:1287-01");
-  script_tag(name: "summary", value: "Check the version of freeradius");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "FreeRADIUS is a high-performance and highly configurable free Remote
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'freeradius'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"FreeRADIUS is a high-performance and highly configurable free Remote
 Authentication Dial In User Service (RADIUS) server, designed to allow
 centralized authentication and authorization for a network.
 
@@ -49,23 +50,23 @@ The freeradius packages have been upgraded to upstream version 2.2.6, which
 provides a number of bug fixes and enhancements over the previous version,
 including:
 
-* The number of dictionaries have been updated.
+  * The number of dictionaries have been updated.
 
-* This update implements several Extensible Authentication Protocol
+  * This update implements several Extensible Authentication Protocol
 (EAP) improvements.
 
-* A number of new expansions have been added, including: %{randstr:...},
+  * A number of new expansions have been added, including: %{randstr:...},
 %{hex:...}, %{sha1:...}, %{base64:...}, %{tobase64:...}, and
 %{base64tohex:...}.
 
-* Hexadecimal numbers (0x...) are now supported in %{expr:...} expansions.
+  * Hexadecimal numbers (0x...) are now supported in %{expr:...} expansions.
 
-* This update adds operator support to the rlm_python module.
+  * This update adds operator support to the rlm_python module.
 
-* The Dynamic Host Configuration Protocol (DHCP) and DHCP relay code have
+  * The Dynamic Host Configuration Protocol (DHCP) and DHCP relay code have
 been finalized.
 
-* This update adds the rlm_cache module to cache arbitrary attributes.
+  * This update adds the rlm_cache module to cache arbitrary attributes.
 
 For a complete list of bug fixes and enhancements provided by this rebase,
 see the freeradius changelog linked to in the References section.
@@ -74,35 +75,35 @@ see the freeradius changelog linked to in the References section.
 
 This update also fixes the following bugs:
 
-* The /var/log/radius/radutmp file was configured to rotate at one-month
+  * The /var/log/radius/radutmp file was configured to rotate at one-month
 intervals, even though this was unnecessary. This update removes
 /var/log/radius/radutmp from the installed logrotate utility configuration
 in the /etc/logrotate.d/radiusd file, and /var/log/radius/radutmp is no
 longer rotated. (BZ#904578)
 
-* The radiusd service could not write the output file created by the
+  * The radiusd service could not write the output file created by the
 raddebug utility. The raddebug utility now sets appropriate ownership to
 the output file, allowing radiusd to write the output. (BZ#921563)
 
-* After starting raddebug using the 'raddebug -t 0' command, raddebug
+  * After starting raddebug using the 'raddebug -t 0' command, raddebug
 exited immediately. A typo in the special case comparison has been fixed,
 and raddebug now runs for 11.5 days in this situation. (BZ#921567)
 
-* MS-CHAP authentication failed when the User-Name and MS-CHAP-User-Name
+  * MS-CHAP authentication failed when the User-Name and MS-CHAP-User-Name
 attributes used different encodings, even when the user provided correct
 credentials. Now, MS-CHAP authentication properly handles mismatching
 character encodings. Authentication with correct credentials no longer
 fails in this situation. (BZ#1060319)
 
-* Automatically generated default certificates used the SHA-1 algorithm
-message digest, which is considered insecu ... 
+  * Automatically generated default certificates used the SHA-1 algorithm
+message digest, which is considered insecu ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "freeradius on Red Hat Enterprise Linux Server (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"freeradius on Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1287-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00021.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1287-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-July/msg00021.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -136,6 +137,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

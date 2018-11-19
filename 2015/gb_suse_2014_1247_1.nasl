@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1247_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_1247_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for bash SUSE-SU-2014:1247-1 (bash)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850778");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-7169", "CVE-2014-7186", "CVE-2014-7187", "CVE-2014-6271");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bash SUSE-SU-2014:1247-1 (bash)");
-  script_tag(name:"summary", value:"Check the version of bash");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bash'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The command-line shell 'bash' evaluates environment variables, which
   allows the injection of characters and might be used to access files on

@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00001.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870605");
+  script_tag(name:"cvss_base", value:"7.4");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-06 10:33:11 +0530 (Wed, 06 Jun 2012)");
+  script_cve_id("CVE-2011-2212", "CVE-2011-2512");
+  script_xref(name:"RHSA", value:"2011:0919-01");
+  script_name("RedHat Update for qemu-kvm RHSA-2011:0919-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
   Linux on AMD64 and Intel 64 systems. qemu-kvm is the user-space component
   for running virtual machines using KVM.
 
@@ -53,37 +77,7 @@ tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solut
   All users of qemu-kvm should upgrade to these updated packages, which
   contain backported patches to resolve these issues. After installing this
   update, shut down all running virtual machines. Once all virtual machines
-  have shut down, start them again for this update to take effect.";
-
-tag_affected = "qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-July/msg00001.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870605");
-  script_tag(name:"cvss_base", value:"7.4");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-06 10:33:11 +0530 (Wed, 06 Jun 2012)");
-  script_cve_id("CVE-2011-2212", "CVE-2011-2512");
-  script_xref(name: "RHSA", value: "2011:0919-01");
-  script_name("RedHat Update for qemu-kvm RHSA-2011:0919-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of qemu-kvm");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  have shut down, start them again for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -125,6 +119,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

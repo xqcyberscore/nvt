@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-035.nasl 8314 2018-01-08 08:01:01Z teissa $
+# $Id: secpod_ms10-035.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (982381)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902191");
-  script_version("$Revision: 8314 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 09:01:01 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-0255", "CVE-2010-1257", "CVE-2010-1259", "CVE-2010-1260",
                 "CVE-2010-1261", "CVE-2010-1262");
@@ -39,9 +39,9 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (982381)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/982381");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/1392");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-035.mspx");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/982381");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1392");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS10-035.mspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -50,22 +50,23 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
 
-  script_tag(name : "impact" , value : "Successful exploitation will let remote attackers to bypass security
+  script_tag(name:"impact", value:"Successful exploitation will let remote attackers to bypass security
   restrictions, gain knowledge of sensitive information or compromise a
-  vulnerable system.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Microsoft Internet Explorer version 5.x/6.x/7.x/8.x");
-  script_tag(name : "insight" , value : "Multiple flaws are due to:
+  vulnerable system.");
+  script_tag(name:"affected", value:"Microsoft Internet Explorer version 5.x/6.x/7.x/8.x");
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - An error in the way the browser handles content using specific strings when
     sanitizing HTML via the 'toStaticHTML' API.
+
   - An uninitialized memory error when processing certain HTML data, which could
     be exploited by attackers to execute arbitrary code via a malicious web page.
-  - Caching data and incorrectly allowing the cached content to be rendered as 
+
+  - Caching data and incorrectly allowing the cached content to be rendered as
     HTML, which could allow attackers to bypass domain restrictions.");
-  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS10-035.mspx");
-  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-035.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -94,19 +95,17 @@ if(hotfix_missing(name:"982381") == 0){
   exit(0);
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"Iepeers.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"Iepeers.dll");
   if(dllVer)
   {
     if(hotfix_check_sp(win2k:5) > 0)
     {
-      ## Check for Iepeers.dll version 5.0 < 5.0.3888.1400 or 6.0 < 6.0.2800.1649
       if(version_in_range(version: dllVer, test_version:"5.0.0000.0000", test_version2:"5.0.3888.1399")||
          version_in_range(version: dllVer, test_version:"6.0.0000.0000", test_version2:"6.0.2800.1648")){
-         security_message(0);
+         security_message( port: 0, data: "The target host was found to be vulnerable" );
       }
       exit(0);
     }
@@ -116,30 +115,28 @@ if(sysPath)
       SP = get_kb_item("SMB/WinXP/ServicePack");
       if("Service Pack 2" >< SP)
       {
-        ## Check for Iepeers.dll version 6.0 < 6.0.2900.3698
         if(version_in_range(version: dllVer, test_version:"6.0.0000.0000", test_version2:"6.0.2900.3697")||
            version_in_range(version: dllVer, test_version:"7.0.0000.00000", test_version2:"7.0.6000.17054")||
            version_in_range(version: dllVer, test_version:"7.0.6000.21000", test_version2:"7.0.6000.21255")||
            version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18922")||
            version_in_range(version: dllVer, test_version:"8.0.6001.23000", test_version2:"8.0.6001.23013")){
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
       else if("Service Pack 3" >< SP)
       {
-        ## Check for Iepeers.dll version 7 < 6.0.2900.5969, 7 < 7.0.6000.17055,
         ## 8.0 < 8.0.6001.18923
         if(version_in_range(version: dllVer, test_version:"6.0.0000.0000", test_version2:"6.0.2900.5968")||
            version_in_range(version: dllVer, test_version:"7.0.0000.00000", test_version2:"7.0.6000.17054")||
            version_in_range(version: dllVer, test_version:"7.0.6000.21000", test_version2:"7.0.6000.21255")||
            version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18922")||
            version_in_range(version: dllVer, test_version:"8.0.6001.23000", test_version2:"8.0.6001.23013")){
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
 
     else if(hotfix_check_sp(win2003:3) > 0)
@@ -147,39 +144,35 @@ if(sysPath)
       SP = get_kb_item("SMB/Win2003/ServicePack");
       if("Service Pack 2" >< SP)
       {
-        ## Check for Iepeers.dll version 6.0 < 6.0.3790.4696 , 7.0 < 7.0.6000.17055
         ## 8.0 < 8.0.6001.18923
         if(version_in_range(version: dllVer, test_version:"6.0.0000.0000", test_version2:"6.0.3790.4695") ||
            version_in_range(version: dllVer, test_version:"7.0.0000.00000", test_version2:"7.0.6000.17054")||
            version_in_range(version: dllVer, test_version:"7.0.6000.21000", test_version2:"7.0.6000.21255")||
            version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18922")||
            version_in_range(version: dllVer, test_version:"8.0.6001.23000", test_version2:"8.0.6001.23013")){
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"Ieframe.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"Ieframe.dll");
   if(!dllVer){
     exit(0);
   }
 }
 
-# Windows 7
 if(hotfix_check_sp(win7:1) > 0)
 {
-  # Grep for Ieframe.dll version 
   if(version_in_range(version:dllVer, test_version:"8.0.7600.16000", test_version2:"8.0.7600.16587")||
      version_in_range(version:dllVer, test_version:"8.0.7600.20000", test_version2:"8.0.7600.20707")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }
 

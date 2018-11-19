@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0640_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_0640_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libopenssl0_9_8 openSUSE-SU-2016:0640-1 (libopenssl0_9_8)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851223");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-04 06:42:46 +0100 (Fri, 04 Mar 2016)");
   script_cve_id("CVE-2013-0166", "CVE-2013-0169", "CVE-2014-0076", "CVE-2014-0195",
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-3470", "CVE-2014-3505",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libopenssl0_9_8 openSUSE-SU-2016:0640-1 (libopenssl0_9_8)");
-  script_tag(name:"summary", value:"Check the version of libopenssl0_9_8");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libopenssl0_9_8'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for libopenssl0_9_8 fixes the following issues:
 
@@ -100,7 +101,7 @@ if(description)
   CVE-2014-3571, CVE-2014-3569, CVE-2014-3572, CVE-2015-0204,
   CVE-2014-8 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"libopenssl0_9_8 on openSUSE Leap 42.1, openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

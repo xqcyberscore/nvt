@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 12197 2018-11-02 08:48:38Z emoss $
+# $Id: GSHB_M4_344.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 4.344
 #
@@ -27,23 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94248");
-  script_version("$Revision: 12197 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 09:48:38 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
-  script_xref(name:"URL", value:" http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "win_AdvancedPolicySettings.nasl");
   script_require_keys("WMI/ELCP/GENERAL");
+
   script_tag(name:"summary", value:"IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008
 
-Stand: 15. Erg‰nzungslieferung (15. EL).");
+  Stand: 15. Erg‰nzungslieferung (15. EL).");
 
   exit(0);
 }

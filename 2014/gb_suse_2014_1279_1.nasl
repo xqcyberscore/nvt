@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1279_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_1279_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2014:1279-1 (xen)
 #
@@ -27,14 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850619");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-10 06:07:56 +0200 (Fri, 10 Oct 2014)");
   script_cve_id("CVE-2013-4344", "CVE-2013-4540", "CVE-2014-2599", "CVE-2014-3967", "CVE-2014-3968", "CVE-2014-4021", "CVE-2014-7154", "CVE-2014-7155", "CVE-2014-7156", "CVE-2014-7188");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for xen openSUSE-SU-2014:1279-1 (xen)");
-  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xen'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"XEN was updated to fix various bugs and security issues.
 

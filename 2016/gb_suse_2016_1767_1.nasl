@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1767_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_1767_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Mozilla Thunderbird openSUSE-SU-2016:1767-1 (Mozilla Thunderbird)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851365");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-11 05:25:35 +0200 (Mon, 11 Jul 2016)");
   script_cve_id("CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954", "CVE-2016-1955",
                 "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1960", "CVE-2016-1961",
@@ -41,7 +41,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla Thunderbird openSUSE-SU-2016:1767-1 (Mozilla Thunderbird)");
-  script_tag(name:"summary", value:"Check the version of Mozilla Thunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Mozilla Thunderbird'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update contains Mozilla Thunderbird 45.2. (boo#983549)
 

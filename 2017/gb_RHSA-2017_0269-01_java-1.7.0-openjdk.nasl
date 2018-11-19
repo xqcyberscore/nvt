@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871758");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 05:55:23 +0100 (Tue, 14 Feb 2017)");
   script_cve_id("CVE-2016-5546", "CVE-2016-5547", "CVE-2016-5548", "CVE-2016-5552",
                 "CVE-2017-3231", "CVE-2017-3241", "CVE-2017-3252", "CVE-2017-3253",
@@ -36,15 +36,15 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2017:0269-01");
-  script_tag(name: "summary", value: "Check the version of java-1.7.0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The java-1.7.0-openjdk packages provide the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.7.0-openjdk'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The java-1.7.0-openjdk packages provide the
 OpenJDK 7 Java Runtime Environment and the OpenJDK 7 Java Software Development Kit.
 
 Security Fix(es):
 
-* It was discovered that the RMI registry and DCG implementations in the
+  * It was discovered that the RMI registry and DCG implementations in the
 RMI component of OpenJDK performed deserialization of untrusted inputs. A
 remote attacker could possibly use this flaw to execute arbitrary code with
 the privileges of RMI registry or a Java RMI application. (CVE-2017-3241)
@@ -54,50 +54,50 @@ deserialized by RMI registry or DCG. These whitelists can be customized
 using the newly introduced sun.rmi.registry.registryFilter and
 sun.rmi.transport.dgcFilter security properties.
 
-* Multiple flaws were discovered in the Libraries and Hotspot components in
+  * Multiple flaws were discovered in the Libraries and Hotspot components in
 OpenJDK. An untrusted Java application or applet could use these flaws to
 completely bypass Java sandbox restrictions. (CVE-2017-3272, CVE-2017-3289)
 
-* A covert timing channel flaw was found in the DSA implementation in the
+  * A covert timing channel flaw was found in the DSA implementation in the
 Libraries component of OpenJDK. A remote attacker could possibly use this
 flaw to extract certain information about the used key via a timing side
 channel. (CVE-2016-5548)
 
-* It was discovered that the Libraries component of OpenJDK accepted ECSDA
+  * It was discovered that the Libraries component of OpenJDK accepted ECSDA
 signatures using non-canonical DER encoding. This could cause a Java
 application to accept signature in an incorrect format not accepted by
 other cryptographic tools. (CVE-2016-5546)
 
-* It was discovered that the 2D component of OpenJDK performed parsing of
+  * It was discovered that the 2D component of OpenJDK performed parsing of
 iTXt and zTXt PNG image chunks even when configured to ignore metadata. An
 attacker able to make a Java application parse a specially crafted PNG
 image could cause the application to consume an excessive amount of memory.
 (CVE-2017-3253)
 
-* It was discovered that the Libraries component of OpenJDK did not
+  * It was discovered that the Libraries component of OpenJDK did not
 validate the length of the object identifier read from the DER input before
 allocating memory to store the OID. An attacker able to make a Java
 application decode a specially crafted DER input could cause the
 application to consume an excessive amount of memory. (CVE-2016-5547)
 
-* It was discovered that the JAAS component of OpenJDK did not use the
+  * It was discovered that the JAAS component of OpenJDK did not use the
 correct way to extract user DN from the result of the user search LDAP
 query. A specially crafted user LDAP entry could cause the application to
 use an incorrect DN. (CVE-2017-3252)
 
-* It was discovered that the Networking component of OpenJDK failed to
+  * It was discovered that the Networking component of OpenJDK failed to
 prop ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "java-1.7.0-openjdk on
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"java-1.7.0-openjdk on
   Red Hat Enterprise Linux (v. 5 server),
   Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Server (v. 7),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2017:0269-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-February/msg00018.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2017:0269-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-February/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -143,7 +143,7 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -169,7 +169,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -213,7 +213,7 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 

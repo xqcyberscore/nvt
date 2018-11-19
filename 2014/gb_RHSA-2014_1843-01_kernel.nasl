@@ -26,30 +26,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871288");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 06:23:33 +0100 (Wed, 12 Nov 2014)");
   script_cve_id("CVE-2014-3185", "CVE-2014-3611", "CVE-2014-3645", "CVE-2014-3646");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for kernel RHSA-2014:1843-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A race condition flaw was found in the way the Linux kernel's KVM
+  * A race condition flaw was found in the way the Linux kernel's KVM
 subsystem handled PIT (Programmable Interval Timer) emulation. A guest user
 who has access to the PIT I/O ports could use this flaw to crash the host.
 (CVE-2014-3611, Important)
 
-* A memory corruption flaw was found in the way the USB ConnectTech
+  * A memory corruption flaw was found in the way the USB ConnectTech
 WhiteHEAT serial driver processed completion commands sent via USB Request
 Blocks buffers. An attacker with physical access to the system could use
 this flaw to crash the system or, potentially, escalate their privileges on
 the system. (CVE-2014-3185, Moderate)
 
-* It was found that the Linux kernel's KVM subsystem did not handle the VM
+  * It was found that the Linux kernel's KVM subsystem did not handle the VM
 exits gracefully for the invept (Invalidate Translations Derived from EPT)
 and invvpid (Invalidate Translations Based on VPID) instructions. On hosts
 with an Intel processor and invept/invppid VM exit support, an unprivileged
@@ -62,40 +63,40 @@ reporting CVE-2014-3645 and CVE-2014-3646.
 
 This update also fixes the following bugs:
 
-* This update fixes several race conditions between PCI error recovery
+  * This update fixes several race conditions between PCI error recovery
 callbacks and potential calls of the ifup and ifdown commands in the tg3
 driver. When triggered, these race conditions could cause a kernel crash.
 (BZ#1142570)
 
-* Previously, GFS2 failed to unmount a sub-mounted GFS2 file system if its
+  * Previously, GFS2 failed to unmount a sub-mounted GFS2 file system if its
 parent was also a GFS2 file system. This problem has been fixed by adding
 the appropriate d_op- d_hash() routine call for the last component of the
 mount point path in the path name lookup mechanism code (namei).
 (BZ#1145193)
 
-* Due to previous changes in the virtio-net driver, a Red Hat Enterprise
+  * Due to previous changes in the virtio-net driver, a Red Hat Enterprise
 Linux 6.6 guest was unable to boot with the 'mgr_rxbuf=off' option
 specified. This was caused by providing the page_to_skb() function with an
 incorrect packet length in the driver's Rx path. This problem has been
 fixed and the guest in the described scenario can now boot successfully.
 (BZ#1148693)
 
-* When using one of the newer IPSec Authentication Header (AH) algorithms
+  * When using one of the newer IPSec Authentication Header (AH) algorithms
 with Openswan, a kernel panic could occur. This happened because the
 maximum truncated ICV length was too small. To fix this problem, the
 MAX_AH_AUTH_LEN parameter has been set to 64. (BZ#1149083)
 
-* A bug in the IPMI driver caused the kernel to pani ... 
+  * A bug in the IPMI driver caused the kernel to pani ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:1843-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-November/msg00026.html");
+  script_xref(name:"RHSA", value:"2014:1843-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-November/msg00026.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -206,6 +207,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

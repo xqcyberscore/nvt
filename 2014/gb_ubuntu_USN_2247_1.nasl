@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2247_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2247_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for nova USN-2247-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841862");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 16:37:31 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2013-1068", "CVE-2013-4463", "CVE-2013-4469", "CVE-2013-6491",
                 "CVE-2013-7130", "CVE-2014-0134", "CVE-2014-0167");
@@ -81,7 +81,8 @@ only affected Ubuntu 13.10. (CVE-2014-0167)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2247-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2247-1/");
-  script_tag(name:"summary", value:"Check for the Version of nova");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nova'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

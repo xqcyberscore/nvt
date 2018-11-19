@@ -23,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871210");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:45:49 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4149", "CVE-2013-4150", "CVE-2013-4151",
                 "CVE-2013-4527", "CVE-2013-4529", "CVE-2013-4535", "CVE-2013-4536",
@@ -38,7 +37,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for qemu-kvm RHSA-2014:0927-01");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems. The qemu-kvm package provides the
 user-space component for running virtual machines using KVM.
 
@@ -68,41 +69,34 @@ CVE-2014-3461.
 
 This update also fixes the following bugs:
 
-* Previously, QEMU did not free pre-allocated zero clusters correctly and
+  * Previously, QEMU did not free pre-allocated zero clusters correctly and
 the clusters under some circumstances leaked. With this update,
 pre-allocated zero clusters are freed appropriately and the cluster leaks
 no longer occur. (BZ#1110188)
 
-* Prior to this update, the QEMU command interface did not properly handle
+  * Prior to this update, the QEMU command interface did not properly handle
 resizing of cache memory during guest migration, causing QEMU to terminate
 unexpectedly with a segmentation fault and QEMU to fail. This update fixes
 the related code and QEMU no longer crashes in the described situation.
 (BZ#1110191)
 
-* Previously, when a guest device was hot unplugged, QEMU correctly removed
+  * Previously, when a guest device was hot unplugged, QEMU correctly removed
 the corresponding file descriptor watch but did not re-create it after the
 device was re-connected. As a consequence, the guest became unable to
 receive any data from the host over this device. With this update, the file
 descriptor's watch is re-created and the guest in the above scenario can
 communicate with the host as expected. (BZ#1110219)
 
-* Previously, the Q ...
+  * Previously, the Q ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "qemu-kvm on Red Hat Enterprise Linux Server (v. 7)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0927-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-July/msg00053.html");
-  script_tag(name:"summary", value:"Check for the Version of qemu-kvm");
+  script_xref(name:"RHSA", value:"2014:0927-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-July/msg00053.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -165,6 +159,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

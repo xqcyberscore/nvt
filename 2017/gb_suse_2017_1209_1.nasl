@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1209_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_1209_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2017:1209-1 (mysql-community-server)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851549");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-09 06:50:33 +0200 (Tue, 09 May 2017)");
   script_cve_id("CVE-2016-5483", "CVE-2017-3302", "CVE-2017-3305", "CVE-2017-3308",
                 "CVE-2017-3309", "CVE-2017-3329", "CVE-2017-3450", "CVE-2017-3452",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2017:1209-1 (mysql-community-server)");
-  script_tag(name:"summary", value:"Check the version of mysql-community-server");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql-community-server'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for mysql-community-server to version 5.6.36 fixes the
   following issues:

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1560_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_1560_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for qemu SUSE-SU-2016:1560-1 (qemu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851335");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-14 05:25:47 +0200 (Tue, 14 Jun 2016)");
   script_cve_id("CVE-2014-3615", "CVE-2014-3689", "CVE-2014-9718", "CVE-2015-3214",
                 "CVE-2015-5239", "CVE-2015-5745", "CVE-2015-7295", "CVE-2015-7549",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu SUSE-SU-2016:1560-1 (qemu)");
-  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"qemu was updated to fix 37 security issues.
 
@@ -123,7 +124,7 @@ if(description)
 
   - CVE-2015-8568: A guest repe ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"qemu on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

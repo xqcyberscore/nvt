@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871073");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:43:53 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-4344");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:C/I:C/A:C");
   script_name("RedHat Update for qemu-kvm RHSA-2013:1553-02");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems that is built into the standard Red Hat
 Enterprise Linux kernel. The qemu-kvm packages form the user-space
 component for running virtual machines using KVM.
@@ -67,10 +70,9 @@ Before applying this update, make sure all previously-released errata
 relevant to your system have been applied.
 
 This update is available via the Red Hat Network. Details on how to
-use the Red Hat Network to apply this update are available at
-https://access.redhat.com/site/articles/11258
+use the Red Hat Network to apply this update are available at the references.
 
-5. Bugs fixed (https://bugzilla.redhat.com):
+5. Bugs fixed:
 
 670162 - [RFE] Removing the backing file using qemu-img re-base
 796011 - Prompt error of trigger blkdebug: BLKDBG_CLUSTER_FREE event is not the same as expected
@@ -81,30 +83,23 @@ https://access.redhat.com/site/articles/11258
 856505 - Missing error message in bdrv_commit to read-only backing file
 864378 - qemu-img convert fails with Floating Point Exception with zero length source image
 869496 - screendump won't save PPM image file if qemu-kvm booted with '-S'
-869586 - core dump happens when quitt ...
+869586 - core dump happens when quitting ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1553-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00021.html");
-  script_tag(name: "summary" , value: "Check for the Version of qemu-kvm");
+  script_xref(name:"RHSA", value:"2013:1553-02");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00021.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/site/articles/11258");
 
   exit(0);
 }
@@ -150,6 +145,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

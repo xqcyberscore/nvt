@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0298_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2015_0298_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for clamav SUSE-SU-2015:0298-1 (clamav)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850824");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2014-9328", "CVE-2015-1461", "CVE-2015-1462", "CVE-2015-1463");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for clamav SUSE-SU-2015:0298-1 (clamav)");
-  script_tag(name:"summary", value:"Check the version of clamav");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'clamav'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"clamav was updated to version 0.98.6 to fix four security issues.
 

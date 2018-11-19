@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842560");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 05:50:34 +0100 (Wed, 16 Dec 2015)");
   script_cve_id("CVE-2015-7201", "CVE-2015-7202", "CVE-2015-7203", "CVE-2015-7220",
                 "CVE-2015-7221", "CVE-2015-7204", "CVE-2015-7205", "CVE-2015-7207",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2833-1");
-  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Andrei Vaida, Jesse Ruderman, Bob Clary,
 Christian Holler, Jesse Ruderman, Eric Rahm, Robert Kaiser, Harald Kirschner, and
@@ -90,7 +91,7 @@ conduct URL spoofing attacks. (CVE-2015-7211)
 Abhishek Arya discovered an integer overflow when allocating large
 textures. If a user ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"firefox on Ubuntu 15.10,
   Ubuntu 15.04,
   Ubuntu 14.04 LTS,

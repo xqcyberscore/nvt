@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1911_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_1911_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for bouncycastle openSUSE-SU-2015:1911-1 (bouncycastle)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851127");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:19:57 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-7940");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bouncycastle openSUSE-SU-2015:1911-1 (bouncycastle)");
-  script_tag(name:"summary", value:"Check the version of bouncycastle");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bouncycastle'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"bouncycastle was updated to version 1.53 to fix one security issue.
 

@@ -23,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871201");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 18:52:17 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-2483", "CVE-2014-2490", "CVE-2014-4209", "CVE-2014-4216",
                 "CVE-2014-4218", "CVE-2014-4219", "CVE-2014-4221", "CVE-2014-4223",
@@ -38,7 +37,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2014:0890-01");
 
-  tag_insight = "The java-1.7.0-openjdk packages provide the OpenJDK 7 Java Runtime
+
+  script_tag(name:"affected", value:"java-1.7.0-openjdk on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"The java-1.7.0-openjdk packages provide the OpenJDK 7 Java Runtime
 Environment and the OpenJDK 7 Java Software Development Kit.
 
 It was discovered that the Hotspot component in OpenJDK did not properly
@@ -77,22 +78,14 @@ Product Security.
 
 All users of java-1.7.0-openjdk are advised to upgrade to these updated
 packages, which resolve these issues. All running instances of OpenJDK Java
-must be restarted for the update to take effect.
-";
-
-  tag_affected = "java-1.7.0-openjdk on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+must be restarted for the update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0890-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-July/msg00027.html");
-  script_tag(name:"summary", value:"Check for the Version of java-1.7.0-openjdk");
+  script_xref(name:"RHSA", value:"2014:0890-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-July/msg00027.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.7.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -149,6 +142,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

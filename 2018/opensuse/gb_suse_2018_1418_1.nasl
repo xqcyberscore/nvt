@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1418_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1418_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2018:1418-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851762");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 05:47:55 +0200 (Fri, 25 May 2018)");
   script_cve_id("CVE-2017-18257", "CVE-2018-1000199", "CVE-2018-10087", "CVE-2018-10124",
                 "CVE-2018-1065", "CVE-2018-1130", "CVE-2018-3639", "CVE-2018-5803",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2018:1418-1 (Linux Kernel)");
-  script_tag(name:"summary", value:"Check the version of Linux Kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux Kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.3 kernel was updated to 4.4.132 to receive various
@@ -105,7 +106,7 @@ on the target host.");
   net/rds/rdma.c __rds_rdma_map() function that allowed local attackers to
   ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3038_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_3038_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # SuSE Update for ghostscript openSUSE-SU-2018:3038-1 (ghostscript)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851986");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12379 $");
   script_cve_id("CVE-2018-15908", "CVE-2018-15909", "CVE-2018-15910", "CVE-2018-15911", "CVE-2018-16509", "CVE-2018-16510", "CVE-2018-16511", "CVE-2018-16513", "CVE-2018-16539", "CVE-2018-16540", "CVE-2018-16541", "CVE-2018-16542", "CVE-2018-16543", "CVE-2018-16585", "CVE-2018-16802", "CVE-2018-17183");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:27:07 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for ghostscript openSUSE-SU-2018:3038-1 (ghostscript)");
   script_category(ACT_GATHER_INFO);
@@ -111,7 +111,7 @@ if(description)
 
   - CVE-2018-16511: A type confusion in 'zty ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"ghostscript on openSUSE Leap 15.0.");
 

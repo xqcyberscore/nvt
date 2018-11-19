@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871019");
-  script_version("$Revision: 12375 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 09:32:22 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-20 12:45:11 +0530 (Tue, 20 May 2014)");
   script_cve_id("CVE-2013-2231");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for qemu-kvm RHSA-2013:1100-01");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems. qemu-kvm is the user-space component
 for running virtual machines using KVM.
 
@@ -50,24 +53,14 @@ This issue was discovered by Lev Veyde of Red Hat.
 All users of qemu-kvm should upgrade to these updated packages, which
 contain backported patches to correct this issue. After installing this
 update, shut down all running virtual machines. Once all virtual machines
-have shut down, start them again for this update to take effect.
-";
-
-  tag_affected = "qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+have shut down, start them again for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1100-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-July/msg00029.html");
-  script_tag(name:"summary", value:"Check for the Version of qemu-kvm");
+  script_xref(name:"RHSA", value:"2013:1100-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-July/msg00029.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -118,6 +111,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

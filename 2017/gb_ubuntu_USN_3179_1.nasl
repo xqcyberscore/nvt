@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843026");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-26 05:43:44 +0100 (Thu, 26 Jan 2017)");
   script_cve_id("CVE-2016-2183", "CVE-2016-5546", "CVE-2016-5547", "CVE-2016-5548",
 		"CVE-2016-5549", "CVE-2016-5552", "CVE-2017-3231", "CVE-2017-3241",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-8 USN-3179-1");
-  script_tag(name:"summary", value:"Check the version of openjdk-8");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openjdk-8'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Karthik Bhargavan and Gaetan Leurent discovered that the DES and
 Triple DES ciphers were vulnerable to birthday attacks. A remote
@@ -95,7 +96,7 @@ restrict access to protected field members. An attacker could use
 this to specially craft a Java application or applet that could bypass
 Java sandbox restrict ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"openjdk-8 on Ubuntu 16.10,
   Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3367_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3367_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for gdb USN-3367-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843257");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-27 07:15:47 +0200 (Thu, 27 Jul 2017)");
   script_cve_id("CVE-2014-8501", "CVE-2014-9939", "CVE-2016-2226", "CVE-2016-4487",
                 "CVE-2016-4488", "CVE-2016-4489", "CVE-2016-4490", "CVE-2016-4492",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for gdb USN-3367-1");
-  script_tag(name:"summary", value:"Check the version of gdb");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gdb'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Hanno Bck discovered that gdb
   incorrectly handled certain malformed AOUT headers in PE executables. If a user

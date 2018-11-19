@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842460");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-25 07:19:25 +0200 (Fri, 25 Sep 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4501", "CVE-2015-4502", "CVE-2015-4504", "CVE-2015-4506", "CVE-2015-4507", "CVE-2015-4508", "CVE-2015-4509", "CVE-2015-4510", "CVE-2015-4512", "CVE-2015-4516", "CVE-2015-4517", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174", "CVE-2015-7175", "CVE-2015-7176", "CVE-2015-7177", "CVE-2015-7180", "CVE-2015-4519", "CVE-2015-4520");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for unity-firefox-extension USN-2743-3");
-  script_tag(name:"summary", value:"Check the version of unity-firefox-extension");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'unity-firefox-extension'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-2743-1 fixed vulnerabilities in Firefox. Future Firefox updates will
 require all addons be signed and unity-firefox-extension, webapps-greasemonkey
@@ -87,7 +88,7 @@ A use-after-free was discovered when manipulating HTML media content in
 some circumstances. If a user were tricked in to opening a specially
 crafted website, an attacker could potentially exploit this t ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"unity-firefox-extension on Ubuntu 15.04,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

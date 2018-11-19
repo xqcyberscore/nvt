@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0743_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_0743_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850960");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:04:16 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2010-5298", "CVE-2012-5615", "CVE-2014-0195", "CVE-2014-0198",
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-2494", "CVE-2014-3470",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb SUSE-SU-2015:0743-1 (mariadb)");
-  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mariadb'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"mariadb was updated to version 10.0.16 to fix 40 security issues.
 
@@ -99,7 +100,7 @@ if(description)
   - CVE-2014-6469: Unspecified vulnerability in Oracle MySQL Server 5.5.39
   ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"mariadb on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2015:0743_1");

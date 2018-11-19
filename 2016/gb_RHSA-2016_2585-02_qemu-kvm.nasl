@@ -26,30 +26,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871694");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:59 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-1981", "CVE-2016-3712");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for qemu-kvm RHSA-2016:2585-02");
-  script_tag(name: "summary", value: "Check the version of qemu-kvm");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Kernel-based Virtual Machine (KVM) is a
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Kernel-based Virtual Machine (KVM) is a
 full virtualization solution for Linux on AMD64 and Intel 64 systems. The
 qemu-kvm packages provide the user-space component for running virtual machines
 using KVM.
 
 Security Fix(es):
 
-* An integer overflow flaw and an out-of-bounds read flaw were found in the
+  * An integer overflow flaw and an out-of-bounds read flaw were found in the
 way QEMU's VGA emulator set certain VGA registers while in VBE mode. A
 privileged guest user could use this flaw to crash the QEMU process
 instance. (CVE-2016-3712)
 
-* An infinite loop flaw was found in the way QEMU's e1000 NIC emulation
+  * An infinite loop flaw was found in the way QEMU's e1000 NIC emulation
 implementation processed data using transmit or receive descriptors under
 certain conditions. A privileged user inside a guest could use this flaw to
 crash the QEMU instance. (CVE-2016-1981)
@@ -60,13 +60,12 @@ CVE-2016-3712.
 Additional Changes:
 
 For detailed information on changes in this release, see the Red Hat
-Enterprise Linux 7.3 Release Notes linked from the References section.
-");
-  script_tag(name: "affected", value: "qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Enterprise Linux 7.3 Release Notes linked from the References section.");
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2585-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00021.html");
+  script_xref(name:"RHSA", value:"2016:2585-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00021.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -118,6 +117,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871121");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:50:58 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2013-1881");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_name("RedHat Update for librsvg2 RHSA-2014:0127-01");
 
-  tag_insight = "The librsvg2 packages provide an SVG (Scalable Vector Graphics) library
+
+  script_tag(name:"affected", value:"librsvg2 on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"The librsvg2 packages provide an SVG (Scalable Vector Graphics) library
 based on libart.
 
 An XML External Entity expansion flaw was found in the way librsvg2
@@ -45,24 +48,14 @@ had access to. (CVE-2013-1881)
 
 All librsvg2 users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. All running applications
-that use librsvg2 must be restarted for this update to take effect.
-";
-
-  tag_affected = "librsvg2 on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+that use librsvg2 must be restarted for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0127-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-February/msg00001.html");
-  script_tag(name:"summary", value:"Check for the Version of librsvg2");
+  script_xref(name:"RHSA", value:"2014:0127-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-February/msg00001.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'librsvg2'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -101,6 +94,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

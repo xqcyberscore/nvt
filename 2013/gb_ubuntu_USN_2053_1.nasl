@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2053_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2053_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-2053-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841653");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:07:42 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-5609", "CVE-2013-5616", "CVE-2013-5618", "CVE-2013-6671",
                 "CVE-2013-6673", "CVE-2013-5613", "CVE-2013-5615", "CVE-2013-6629",
@@ -92,7 +92,8 @@ attacker could potentially exploit these to obtain sensitive information.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2053-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2053-1/");
-  script_tag(name:"summary", value:"Check for the Version of thunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'thunderbird'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-06/msg00004.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831417");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-06-20 08:37:08 +0200 (Mon, 20 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2009-2625");
   script_name("Mandriva Update for xerces-j2 MDVSA-2011:108 (xerces-j2)");
 
-  script_tag(name:"summary", value:"Check for the Version of xerces-j2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xerces-j2'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

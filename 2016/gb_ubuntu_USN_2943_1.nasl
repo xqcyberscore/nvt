@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842704");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-11 12:47:23 +0530 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2014-9769", "CVE-2015-2325", "CVE-2015-2326", "CVE-2015-2327", "CVE-2015-2328", "CVE-2015-3210", "CVE-2015-5073", "CVE-2015-8380", "CVE-2015-8381", "CVE-2015-8382", "CVE-2015-8383", "CVE-2015-8384", "CVE-2015-8385", "CVE-2015-8386", "CVE-2015-8387", "CVE-2015-8388", "CVE-2015-8389", "CVE-2015-8390", "CVE-2015-8391", "CVE-2015-8392", "CVE-2015-8393", "CVE-2015-8394", "CVE-2015-8395", "CVE-2016-1283", "CVE-2016-3191");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for pcre3 USN-2943-1");
-  script_tag(name:"summary", value:"Check the version of pcre3");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'pcre3'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that PCRE incorrectly handled certain regular
 expressions. A remote attacker could use this issue to cause applications

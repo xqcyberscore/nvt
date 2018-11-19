@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.3.nasl 10624 2018-07-25 15:18:47Z cfischer $
+# $Id: GSHB_SYS.1.3.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.1.3 Server unter Unix
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109036");
-  script_version("$Revision: 10624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('SYS.1.3 Server unter Unix');
 
-  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_3_Server_unter_Unix.html ");
+  script_xref(name:"URL", value:"https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_3_Server_unter_Unix.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");

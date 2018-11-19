@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3347_1.nasl 11768 2018-10-05 14:07:38Z cfischer $
+# $Id: gb_ubuntu_USN_3347_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for libgcrypt20 USN-3347-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843235");
-  script_version("$Revision: 11768 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:04 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-7526", "CVE-2017-9526");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libgcrypt20 USN-3347-1");
-  script_tag(name:"summary", value:"Check the version of libgcrypt20");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libgcrypt20'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Daniel J. Bernstein, Joachim Breitner,
   Daniel Genkin, Leon Groot Bruinderink, Nadia Heninger, Tanja Lange, Christine

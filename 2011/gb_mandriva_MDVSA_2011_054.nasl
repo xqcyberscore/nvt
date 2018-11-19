@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00013.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831354");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-01 15:34:04 +0200 (Fri, 01 Apr 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2010-4351", "CVE-2010-4448", "CVE-2010-4450", "CVE-2010-4465", "CVE-2010-4469", "CVE-2010-4470", "CVE-2010-4471", "CVE-2010-4472", "CVE-2010-4476", "CVE-2011-0025", "CVE-2011-0706");
   script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2011:054 (java-1.6.0-openjdk)");
 
-  script_tag(name:"summary", value:"Check for the Version of java-1.6.0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.6.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
@@ -93,7 +94,7 @@ if(description)
   Unspecified vulnerability in the Java Runtime Environment (JRE)
   in Oracle Java  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

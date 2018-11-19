@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871581");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-23 06:16:59 +0100 (Wed, 23 Mar 2016)");
   script_cve_id("CVE-2014-7810");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for tomcat6 RHSA-2016:0492-01");
-  script_tag(name: "summary", value: "Check the version of tomcat6");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Apache Tomcat is a servlet container for
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tomcat6'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for
 the Java Servlet and JavaServer Pages (JSP) technologies.
 
 It was found that the expression language resolver evaluated expressions
@@ -46,20 +46,19 @@ this flaw to bypass security manager protections. (CVE-2014-7810)
 
 This update also fixes the following bug:
 
-* Previously, using a New I/O (NIO) connector in the Apache Tomcat 6
+  * Previously, using a New I/O (NIO) connector in the Apache Tomcat 6
 servlet resulted in a large memory leak. An upstream patch has been applied
 to fix this bug, and the memory leak no longer occurs. (BZ#1301646)
 
 All Tomcat 6 users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. Tomcat must be
-restarted for this update to take effect.
-");
-  script_tag(name: "affected", value: "tomcat6 on Red Hat Enterprise Linux Server (v. 6),
+restarted for this update to take effect.");
+  script_tag(name:"affected", value:"tomcat6 on Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:0492-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00057.html");
+  script_xref(name:"RHSA", value:"2016:0492-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-March/msg00057.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -117,6 +116,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

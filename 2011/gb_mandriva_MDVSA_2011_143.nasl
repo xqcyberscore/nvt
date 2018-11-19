@@ -29,14 +29,15 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.831463");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-10-10 16:05:48 +0200 (Mon, 10 Oct 2011)");
   script_xref(name:"MDVSA", value:"2011:143");
   script_cve_id("CVE-2011-3378");
   script_name("Mandriva Update for rpm MDVSA-2011:143 (rpm)");
 
-  script_tag(name:"summary", value:"Check for the Version of rpm");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'rpm'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

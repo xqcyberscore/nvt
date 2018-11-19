@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1289_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2015_1289_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2015:1289-1 (java-1_8_0-openjdk)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850672");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:28:17 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2015-2590", "CVE-2015-2597", "CVE-2015-2601", "CVE-2015-2613", "CVE-2015-2619", "CVE-2015-2621", "CVE-2015-2625", "CVE-2015-2627", "CVE-2015-2628", "CVE-2015-2632", "CVE-2015-2637", "CVE-2015-2638", "CVE-2015-2659", "CVE-2015-2664", "CVE-2015-2808", "CVE-2015-4000", "CVE-2015-4729", "CVE-2015-4731", "CVE-2015-4732", "CVE-2015-4733", "CVE-2015-4736", "CVE-2015-4748", "CVE-2015-4749", "CVE-2015-4760");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2015:1289-1 (java-1_8_0-openjdk)");
-  script_tag(name:"summary", value:"Check the version of java-1_8_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_8_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"OpenJDK was updated to 2.6.1 - OpenJDK 8u51 to fix security issues and
   bugs.
@@ -89,7 +90,7 @@ if(description)
   protocols. Successful attack of this vulnerability could have resulted
   in unauthorized Opera ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1289_1");

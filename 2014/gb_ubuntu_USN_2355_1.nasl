@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2355_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2355_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-ec2 USN-2355-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841979");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-24 06:03:20 +0200 (Wed, 24 Sep 2014)");
   script_cve_id("CVE-2014-5471", "CVE-2014-5472");
   script_tag(name:"cvss_base", value:"4.0");
@@ -51,7 +51,8 @@ process). (CVE-2014-5472)");
 
   script_xref(name:"USN", value:"2355-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2355-1/");
-  script_tag(name:"summary", value:"Check for the Version of linux-ec2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-ec2'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

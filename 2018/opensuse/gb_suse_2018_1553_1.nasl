@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1553_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2018_1553_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for git openSUSE-SU-2018:1553-1 (git)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851774");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:47:36 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2018-11233", "CVE-2018-11235");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for git openSUSE-SU-2018:1553-1 (git)");
-  script_tag(name:"summary", value:"Check the version of git");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'git'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"This update for fixes the following security issues:

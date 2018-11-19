@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0022_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_0022_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libgme openSUSE-SU-2017:0022-1 (libgme)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851468");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-05 05:43:08 +0100 (Thu, 05 Jan 2017)");
   script_cve_id("CVE-2016-9957", "CVE-2016-9958", "CVE-2016-9959", "CVE-2016-9960",
                 "CVE-2016-9961");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libgme openSUSE-SU-2017:0022-1 (libgme)");
-  script_tag(name:"summary", value:"Check the version of libgme");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libgme'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for libgme fixes the following issues:
 

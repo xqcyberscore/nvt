@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-062_900052.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: secpod_ms08-062_900052.nasl 12404 2018-11-19 08:40:38Z cfischer $
 # Description: Windows Internet Printing Service Allow Remote Code Execution Vulnerability (953155)
 #
 # Authors:
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900052");
-  script_version("$Revision: 10121 $");
+  script_version("$Revision: 12404 $");
   script_bugtraq_id(31682);
   script_cve_id("CVE-2008-1446");
   script_copyright("Copyright (C) 2008 SecPod");
@@ -35,7 +35,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_name("Windows Internet Printing Service Allow Remote Code Execution Vulnerability (953155)");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_iis_detect_win.nasl");
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation result in execution of arbitrary code by
   tricking Web Server into visiting to a malicious IPP server via a specially
-  crafted HTTP POST request.
-
-  Impact Level: System/Application");
+  crafted HTTP POST request.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior
 
@@ -65,9 +63,7 @@ if(description)
   specially crafted IPP responses.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms08-062.mspx");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-062.");
@@ -97,21 +93,19 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Win32spl.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32spl.dll");
 if(!sysVer){
   exit(0);
 }
 
-# Windows 2K
 if(hotfix_check_sp(win2k:5) > 0)
 {
   if(version_is_less(version:sysVer, test_version:"5.0.2195.7188")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
    exit(0);
 }
 
-# Windows XP
 if(hotfix_check_sp(xp:4) > 0)
 {
   SP = get_kb_item("SMB/WinXP/ServicePack");
@@ -119,21 +113,20 @@ if(hotfix_check_sp(xp:4) > 0)
   if("Service Pack 2" >< SP)
   {
     if(version_is_less(version:sysVer, test_version:"5.1.2600.3435")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
   else if("Service Pack 3" >< SP)
   {
     if(version_is_less(version:sysVer, test_version:"5.1.2600.5664")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
 
-# Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
 {
   SP = get_kb_item("SMB/Win2003/ServicePack");
@@ -149,27 +142,26 @@ if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
   if("Service Pack 1" >< SP)
   {
     if(version_is_less(version:sysVer, test_version:"5.2.3790.3208")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
   else if("Service Pack 2" >< SP)
   {
     if(version_is_less(version:sysVer, test_version:"5.2.3790.4371")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
 
-## Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:2, win2008:2) > 0)
 {
   if(version_is_less(version:sysVer, test_version:"6.0.6000.16728") ||
      version_in_range(version:sysVer, test_version:"6.0.6000.20000", test_version2:"6.0.6000.20892") ||
      version_in_range(version:sysVer, test_version:"6.0.6001.18000", test_version2:"6.0.6001.18118") ||
      version_in_range(version:sysVer, test_version:"6.0.6001.22000", test_version2:"6.0.6001.22240")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

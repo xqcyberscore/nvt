@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-055.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-055.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3156754)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807691");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12404 $");
   script_cve_id("CVE-2016-0168", "CVE-2016-0169", "CVE-2016-0170", "CVE-2016-0184",
                 "CVE-2016-0195");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:48:17 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3156754)");
 
@@ -105,10 +105,10 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Windowscodecs.dll");
-dllVer2 = fetch_file_version(sysPath, file_name:"System32\D3d10level9.dll");
-dllVer3 = fetch_file_version(sysPath, file_name:"SysWOW64\Gdi32.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Gdi32.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Windowscodecs.dll");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\D3d10level9.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"SysWOW64\Gdi32.dll");
 
 if(dllVer3){
   GdiPath64 = sysPath + "\SysWOW64\Gdi32.dll";

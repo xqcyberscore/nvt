@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2356_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_2356_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for samba, openSUSE-SU-2015:2356-1 (samba,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851148");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-25 05:47:42 +0100 (Fri, 25 Dec 2015)");
   script_cve_id("CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299",
                 "CVE-2015-5330", "CVE-2015-7540", "CVE-2015-8467");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba, openSUSE-SU-2015:2356-1 (samba, )");
-  script_tag(name:"summary", value:"Check the version of samba.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba.'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for ldb, samba, talloc, tdb, tevent fixes the following issues:
 
@@ -95,7 +96,7 @@ if(description)
   + Provide tests access to talloc_magic.
   + Test magic protecti .
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"samba, on openSUSE 13.2, openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:2356_1");

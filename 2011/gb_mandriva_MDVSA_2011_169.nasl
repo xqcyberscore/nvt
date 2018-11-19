@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00011.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831490");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-11-11 10:00:56 +0530 (Fri, 11 Nov 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,7 +38,8 @@ if(description)
                 "CVE-2011-3647");
   script_name("Mandriva Update for mozilla MDVSA-2011:169 (mozilla)");
 
-  script_tag(name:"summary", value:"Check for the Version of mozilla");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mozilla'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
@@ -98,7 +99,7 @@ if(description)
   Mozilla Firefox 4.x through 7.0 and Thunderbird 5.0 through 7.0 perform
   access control without ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

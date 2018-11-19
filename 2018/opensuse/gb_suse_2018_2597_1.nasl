@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2597_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_2597_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libressl openSUSE-SU-2018:2597-1 (libressl)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851876");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:19 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-12434", "CVE-2018-8970");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libressl openSUSE-SU-2018:2597-1 (libressl)");
-  script_tag(name:"summary", value:"Check the version of libressl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libressl'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
   script_tag(name:"insight", value:"This update for libressl to version 2.8.0 fixes the following issues:

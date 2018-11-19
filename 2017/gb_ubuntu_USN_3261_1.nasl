@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843132");
-  script_version("$Revision: 11661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 06:43:11 +0200 (Fri, 21 Apr 2017)");
   script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-10155", "CVE-2016-7907",
                 "CVE-2016-8667", "CVE-2016-8669", "CVE-2016-9381", "CVE-2016-9602",
@@ -43,7 +43,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3261-1");
-  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Zhenhao Hong discovered that QEMU
 incorrectly handled the Virtio GPU device. An attacker inside the guest could use
@@ -93,7 +94,7 @@ cause QEMU to crash, resulting in a denial of service. (CVE-2016-9776)
 Li Qiang discovered that QEMU incorrectly handled the Virtio GPU device. An
 attacker inside the guest could use this iss ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"qemu on Ubuntu 16.10,
   Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");

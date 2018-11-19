@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842115");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-05 05:43:34 +0100 (Thu, 05 Mar 2015)");
   script_cve_id("CVE-2015-0239", "CVE-2014-8133", "CVE-2014-8160", "CVE-2014-8559",
                 "CVE-2014-8989", "CVE-2014-9419", "CVE-2014-9420", "CVE-2014-9428",
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2516-3");
-  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-2516-1 fixed vulnerabilities in the
 Linux kernel, and the fix in USN-2516-2 was incomplete. There was an unrelated
@@ -94,7 +95,7 @@ possibly have unspecified impact via the keyctl commands. (CVE-2014-9529)
 
 A memory leak was discovered in t ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"linux on Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"USN", value:"2516-3");

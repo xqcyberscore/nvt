@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2667_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_2667_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for nodejs4 openSUSE-SU-2018:2667-1 (nodejs4)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851885");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-09 07:09:46 +0200 (Sun, 09 Sep 2018)");
   script_cve_id("CVE-2018-0732", "CVE-2018-12115");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for nodejs4 openSUSE-SU-2018:2667-1 (nodejs4)");
-  script_tag(name:"summary", value:"Check the version of nodejs4");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nodejs4'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
   script_tag(name:"insight", value:"This update for nodejs4 fixes the following issues:

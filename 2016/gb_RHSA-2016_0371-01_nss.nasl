@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871570");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:14:35 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2016-1950");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for nss RHSA-2016:0371-01");
-  script_tag(name: "summary", value: "Check the version of nss");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Network Security Services (NSS) is a set
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nss'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Network Security Services (NSS) is a set
   of libraries designed to support the cross-platform development of
   security-enabled client and server applications.
 
@@ -55,11 +55,11 @@ if(description)
   effect, all applications linked to the nss library must be restarted, or
   the system rebooted.");
 
-  script_tag(name: "affected", value: "nss on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"nss on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:0371-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00027.html");
+  script_xref(name:"RHSA", value:"2016:0371-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-March/msg00027.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -111,6 +111,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

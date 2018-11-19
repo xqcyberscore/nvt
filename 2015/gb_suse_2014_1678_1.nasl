@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1678_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_1678_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Linux openSUSE-SU-2014:1678-1 (Linux)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850682");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:38:58 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-3673", "CVE-2014-3687", "CVE-2014-3688", "CVE-2014-7826", "CVE-2014-7841", "CVE-2014-8133", "CVE-2014-9090", "CVE-2014-9322");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux openSUSE-SU-2014:1678-1 (Linux)");
-  script_tag(name:"summary", value:"Check the version of Linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to version 3.16.7.
 
@@ -94,7 +95,7 @@ if(description)
   - ahci_xgene: Skip the PHY and clock initialization if already configured
  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Linux on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2014:1678_1");

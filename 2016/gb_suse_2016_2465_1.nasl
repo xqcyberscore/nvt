@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2465_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_2465_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for python-Jinja2 openSUSE-SU-2016:2465-1 (python-Jinja2)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851405");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-07 05:44:06 +0200 (Fri, 07 Oct 2016)");
   script_cve_id("CVE-2014-0012");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for python-Jinja2 openSUSE-SU-2016:2465-1 (python-Jinja2)");
-  script_tag(name:"summary", value:"Check the version of python-Jinja2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python-Jinja2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for python-Jinja2 fixes the following issues:
 

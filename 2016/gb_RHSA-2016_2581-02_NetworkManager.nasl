@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871693");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:58 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-0764");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for NetworkManager RHSA-2016:2581-02");
-  script_tag(name: "summary", value: "Check the version of NetworkManager");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "NetworkManager is a system network service
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'NetworkManager'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"NetworkManager is a system network service
 that manages network devices and connections, attempting to keep active network
 connectivity when available. Its capabilities include managing Ethernet, wireless,
 mobile broadband (WWAN), and PPPoE devices, as well as providing VPN integration
@@ -50,7 +50,7 @@ BZ#1032717, BZ#1271581)
 
 Security Fix(es):
 
-* A race condition vulnerability was discovered in NetworkManager.
+  * A race condition vulnerability was discovered in NetworkManager.
 Temporary files were created insecurely when saving or updating connection
 settings, which could allow local users to read connection secrets such as
 VPN passwords or WiFi keys. (CVE-2016-0764)
@@ -58,13 +58,12 @@ VPN passwords or WiFi keys. (CVE-2016-0764)
 Additional Changes:
 
 For detailed information on changes in this release, see the Red Hat
-Enterprise Linux 7.3 Release Notes linked from the References section.
-");
-  script_tag(name: "affected", value: "NetworkManager on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Enterprise Linux 7.3 Release Notes linked from the References section.");
+  script_tag(name:"affected", value:"NetworkManager on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2581-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00017.html");
+  script_xref(name:"RHSA", value:"2016:2581-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -212,6 +211,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

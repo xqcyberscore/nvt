@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843051");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-15 05:49:31 +0100 (Wed, 15 Feb 2017)");
   script_cve_id("CVE-2014-9912", "CVE-2016-7478", "CVE-2016-7479", "CVE-2016-9137",
 		"CVE-2016-9934", "CVE-2016-9935", "CVE-2016-10158", "CVE-2016-10159",
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-3196-1");
-  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php5'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that PHP incorrectly
   handled certain arguments to the locale_get_display_name function. A remote

@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842180");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-04-28 05:17:08 +0200 (Tue, 28 Apr 2015)");
   script_cve_id("CVE-2014-9093", "CVE-2015-1774");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libreoffice USN-2578-1");
-  script_tag(name:"summary", value:"Check the version of libreoffice");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libreoffice'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Alexander Cherepanov discovered that
 LibreOffice incorrectly handled certain RTF files. If a user were tricked into

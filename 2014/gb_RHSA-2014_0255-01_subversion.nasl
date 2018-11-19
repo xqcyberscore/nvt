@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871135");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:45:08 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2013-1968", "CVE-2013-2112", "CVE-2014-0032");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("RedHat Update for subversion RHSA-2014:0255-01");
 
-  tag_insight = "Subversion (SVN) is a concurrent version control system which enables one
+
+  script_tag(name:"affected", value:"subversion on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Subversion (SVN) is a concurrent version control system which enables one
 or more users to collaborate in developing and maintaining a hierarchy of
 files and directories while keeping a history of all changes. The
 mod_dav_svn module is used with the Apache HTTP Server to allow access to
@@ -60,24 +63,14 @@ All subversion users should upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
 updated packages, for the update to take effect, you must restart the httpd
 daemon, if you are using mod_dav_svn, and the svnserve daemon, if you are
-serving Subversion repositories via the svn:// protocol.
-";
-
-  tag_affected = "subversion on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+serving Subversion repositories via the svn:// protocol.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0255-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-March/msg00012.html");
-  script_tag(name:"summary", value:"Check for the Version of subversion");
+  script_xref(name:"RHSA", value:"2014:0255-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-March/msg00012.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'subversion'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -122,7 +115,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -172,6 +165,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

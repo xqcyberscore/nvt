@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0983_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_0983_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0983-1 (java-1_8_0-openjdk)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851267");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-09 05:00:59 +0200 (Sat, 09 Apr 2016)");
   script_cve_id("CVE-2016-0636");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:0983-1 (java-1_8_0-openjdk)");
-  script_tag(name:"summary", value:"Check the version of java-1_8_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_8_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update of java-1_8_0-openjdk to jdk8u77-b03 fixes the following
   issues:

@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842456");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-24 07:26:56 +0200 (Thu, 24 Sep 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4501", "CVE-2015-4502", "CVE-2015-4504", "CVE-2015-4506", "CVE-2015-4507", "CVE-2015-4508", "CVE-2015-4509", "CVE-2015-4510", "CVE-2015-4512", "CVE-2015-4516", "CVE-2015-4517", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174", "CVE-2015-7175", "CVE-2015-7176", "CVE-2015-7177", "CVE-2015-7180", "CVE-2015-4519", "CVE-2015-4520");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2743-1");
-  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Andrew Osmond, Olli Pettay, Andrew Sutherland, Christian Holler, David
 Major, Andrew McCreight, Cameron McCormack, Bob Clary and Randell Jesup
@@ -84,7 +85,7 @@ specially crafted website, an attacker could potentially exploit this to
 cause a denial of service via application crash, or execute arbitrary code
 with the pr ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"firefox on Ubuntu 15.04,
   Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");

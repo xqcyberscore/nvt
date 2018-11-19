@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3405_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3405_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux USN-3405-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843294");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 08:05:05 +0200 (Tue, 29 Aug 2017)");
   script_cve_id("CVE-2017-11176", "CVE-2017-7495", "CVE-2017-7541", "CVE-2015-7837");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3405-1");
-  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that a use-after-free
   vulnerability existed in the POSIX message queue implementation in the Linux

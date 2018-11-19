@@ -23,22 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871102");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:36:16 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-4299");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_name("RedHat Update for kernel RHSA-2013:1860-01");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* An information leak flaw was found in the way the Linux kernel's device
+  * An information leak flaw was found in the way the Linux kernel's device
 mapper subsystem, under certain conditions, interpreted data written to
 snapshot block devices. An attacker could use this flaw to read data from
 disk blocks in free space, which are normally inaccessible. (CVE-2013-4299,
@@ -48,7 +49,7 @@ Red Hat would like to thank Fujitsu for reporting this issue.
 
 This update also fixes the following bugs:
 
-* A previous fix to the kernel did not contain a memory barrier in the
+  * A previous fix to the kernel did not contain a memory barrier in the
 percpu_up_write() function. Consequently, under certain circumstances, a
 race condition could occur, leading to memory corruption and a subsequent
 kernel panic. This update introduces a new memory barrier pair, light_mb()
@@ -57,7 +58,7 @@ and heavy_mb(), for per-CPU basis read and write semaphores
 occur. In addition, the read path performance of 'percpu-rw-semaphores' has
 been improved. (BZ#884735)
 
-* Due to several related bugs in the be2net driver, the driver did not
+  * Due to several related bugs in the be2net driver, the driver did not
 handle firmware manipulation of the network cards using the Emulex XE201
 I/O controller properly. As a consequence, these NICs could not recover
 from an error successfully. A series of patches has been applied that fix
@@ -65,14 +66,14 @@ the initialization sequence, and firmware download and activation for the
 XE201 controller. Error recovery now works as expected for the be2net NICs
 using the Emulex XE201 I/O controller. (BZ#1019892)
 
-* A bug in the be2net driver could cause packet corruption when handling
+  * A bug in the be2net driver could cause packet corruption when handling
 VLAN-tagged packets with no assigned VLAN group. This happened because the
 be2net driver called a function responsible for VLAN tag reinsertion in a
 wrong order in the code. The code has been restructured and the be2net
 driver now calls the __vlan_put_tag() function correctly, thus avoiding the
 packet corruption. (BZ#1019893)
 
-* A previous patch to the kernel introduced the 'VLAN tag re-insertion'
+  * A previous patch to the kernel introduced the 'VLAN tag re-insertion'
 workaround to resolve a problem with incorrectly handled VLAN-tagged
 packets with no assigned VLAN group while the be2net driver was in
 promiscuous mode. However, this solution led to packet corruption and a
@@ -83,22 +84,14 @@ with no assigned VLAN group correctly in this situation. (BZ#1023347)
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-";
-
-  tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+rebooted for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1860-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-December/msg00036.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"RHSA", value:"2013:1860-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-December/msg00036.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -209,6 +202,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

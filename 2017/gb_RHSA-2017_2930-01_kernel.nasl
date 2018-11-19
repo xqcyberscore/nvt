@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2930-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2930-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:2930-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812046");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 08:39:36 +0200 (Fri, 20 Oct 2017)");
   script_cve_id("CVE-2016-8399", "CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-11176",
                 "CVE-2017-14106", "CVE-2017-7184", "CVE-2017-7541", "CVE-2017-7542",
@@ -37,37 +37,37 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:2930-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel,
   the core of any Linux operating system.
 
 Security Fix(es):
 
-* Out-of-bounds kernel heap access vulnerability was found in xfrm,
+  * Out-of-bounds kernel heap access vulnerability was found in xfrm,
 kernel's IP framework for transforming packets. An error dealing with
 netlink messages from an unprivileged user leads to arbitrary read/write
 and privilege escalation. (CVE-2017-7184, Important)
 
-* A race condition issue leading to a use-after-free flaw was found in the
+  * A race condition issue leading to a use-after-free flaw was found in the
 way the raw packet sockets are implemented in the Linux kernel networking
 subsystem handling synchronization. A local user able to open a raw packet
 socket (requires the CAP_NET_RAW capability) could use this flaw to elevate
 their privileges on the system. (CVE-2017-1000111, Important)
 
-* An exploitable memory corruption flaw was found in the Linux kernel. The
+  * An exploitable memory corruption flaw was found in the Linux kernel. The
 append path can be erroneously switched from UFO to non-UFO in
 ip_ufo_append_data() when building an UFO packet with MSG_MORE option. If
 unprivileged user namespaces are available, this flaw can be exploited to
 gain root privileges. (CVE-2017-1000112, Important)
 
-* A flaw was found in the Linux networking subsystem where a local attacker
+  * A flaw was found in the Linux networking subsystem where a local attacker
 with CAP_NET_ADMIN capabilities could cause an out-of-bounds memory access
 by creating a smaller-than-expected ICMP header and sending to its
 destination via sendto(). (CVE-2016-8399, Moderate)
 
-* Kernel memory corruption due to a buffer overflow was found in
+  * Kernel memory corruption due to a buffer overflow was found in
 brcmf_cfg80211_mgmt_tx() function in Linux kernels from v3.9-rc1 to
 v4.13-rc1. The vulnerability can be triggered by sending a crafted
 NL80211_CMD_FRAME packet via netlink. This flaw is unlikely to be triggered
@@ -77,26 +77,26 @@ system, leading to a crash. Due to the nature of the flaw, privilege
 escalation cannot be fully ruled out, although it is unlikely.
 (CVE-2017-7541, Moderate)
 
-* An integer overflow vulnerability in ip6_find_1stfragopt() function was
+  * An integer overflow vulnerability in ip6_find_1stfragopt() function was
 found. A local attacker that has privileges (of CAP_NET_RAW) to open raw
 socket can cause an infinite loop inside the ip6_find_1stfragopt()
 function. (CVE-2017-7542, Moderate)
 
-* A kernel data leak due to an out-of-bound read was found in the Linux
-kernel in inet_diag_msg_sctp{,l}addr_fill() and sctp_get_sctp_info()
+  * A kernel data leak due to an out-of-bound read was found in the Linux
+kernel in inet_diag_msg_sctp{, l}addr_fill() and sctp_get_sctp_info()
 functions present since version 4.7-rc1 through version 4.13. A data leak
 happens when these functions fill in sockaddr data structures used to
 export socket's diagnostic information. As a result, up to 100 bytes of the
 slab data could be leaked to a userspace. (CVE-2017-7558, Moderate)
 
-* The mq_n ... 
+  * The mq_n ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2930-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-October/msg00025.html");
+  script_xref(name:"RHSA", value:"2017:2930-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-October/msg00025.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -220,6 +220,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

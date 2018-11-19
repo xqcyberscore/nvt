@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0373_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_0373_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Xen SUSE-SU-2014:0373-1 (Xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850773");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-2212", "CVE-2013-6400", "CVE-2013-6885", "CVE-2014-1642",
                 "CVE-2014-1666", "CVE-2014-1891", "CVE-2014-1892", "CVE-2014-1893",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Xen SUSE-SU-2014:0373-1 (Xen)");
-  script_tag(name:"summary", value:"Check the version of Xen");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Xen'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise Server 11 Service Pack 3 Xen
   hypervisor and  toolset has been updated to 4.2.4 to fix
@@ -114,7 +115,7 @@ if(description)
 
   XSA-85: CVE-2014-1895: The FLASK_AVC_CACHE ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Xen on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:0373_1");

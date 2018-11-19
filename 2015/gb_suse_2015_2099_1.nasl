@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2099_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_2099_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libpng12 openSUSE-SU-2015:2099-1 (libpng12)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851136");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-29 17:30:29 +0530 (Tue, 29 Dec 2015)");
   script_cve_id("CVE-2015-7981", "CVE-2015-8126");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libpng12 openSUSE-SU-2015:2099-1 (libpng12)");
-  script_tag(name:"summary", value:"Check the version of libpng12");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libpng12'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The libpng12 package was updated to fix the following security issues:
 

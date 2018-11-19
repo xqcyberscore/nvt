@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0969_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_suse_2017_0969_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for apparmor openSUSE-SU-2017:0969-1 (apparmor)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851534");
-  script_version("$Revision: 12291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 06:34:37 +0200 (Tue, 11 Apr 2017)");
   script_cve_id("CVE-2017-6507");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for apparmor openSUSE-SU-2017:0969-1 (apparmor)");
-  script_tag(name:"summary", value:"Check the version of apparmor");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'apparmor'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for apparmor fixes the following issues:
 

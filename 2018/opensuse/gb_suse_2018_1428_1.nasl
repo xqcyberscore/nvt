@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1428_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1428_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for wireshark openSUSE-SU-2018:1428-1 (wireshark)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851764");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:44:58 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2018-11356", "CVE-2018-11357", "CVE-2018-11358", "CVE-2018-11359",
                 "CVE-2018-11360", "CVE-2018-11362");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for wireshark openSUSE-SU-2018:1428-1 (wireshark)");
-  script_tag(name:"summary", value:"Check the version of wireshark");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'wireshark'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"This update for wireshark fixes the following issues:

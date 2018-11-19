@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3688_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_ubuntu_USN_3688_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for mozjs52 USN-3688-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843566");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:05:50 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2017-7810", "CVE-2017-7826", "CVE-2018-5089", "CVE-2018-5125", "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mozjs52 USN-3688-1");
-  script_tag(name:"summary", value:"Check the version of mozjs52");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mozjs52'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple memory safety issues were fixed in Spidermonkey. An attacker
 could potentially exploit these to cause a denial of service, or execute

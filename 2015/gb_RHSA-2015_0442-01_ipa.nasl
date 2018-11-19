@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871321");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:48:59 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2010-5312", "CVE-2012-6662");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ipa RHSA-2015:0442-01");
-  script_tag(name: "summary", value: "Check the version of ipa");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Red Hat Identity Management (IdM) is a centralized authentication, identity
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ipa'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Red Hat Identity Management (IdM) is a centralized authentication, identity
 management, and authorization solution for both traditional and cloud-based
 enterprise environments.
 
@@ -51,57 +52,57 @@ This update adds several enhancements that are described in more detail in
 the Red Hat Enterprise Linux 7.1 Release Notes, linked to in the References
 section, including:
 
-* Added the 'ipa-cacert-manage' command, which renews the Certification
+  * Added the 'ipa-cacert-manage' command, which renews the Certification
 Authority (CA) file. (BZ#886645)
 
-* Added the ID Views feature. (BZ#891984)
+  * Added the ID Views feature. (BZ#891984)
 
-* IdM now supports using one-time password (OTP) authentication and allows
+  * IdM now supports using one-time password (OTP) authentication and allows
 gradual migration from proprietary OTP solutions to the IdM OTP solution.
 (BZ#919228)
 
-* Added the 'ipa-backup' and 'ipa-restore' commands to allow manual
+  * Added the 'ipa-backup' and 'ipa-restore' commands to allow manual
 backups. (BZ#951581)
 
-* Added a solution for regulating access permissions to specific sections
+  * Added a solution for regulating access permissions to specific sections
 of the IdM server. (BZ#976382)
 
 This update also fixes several bugs, including:
 
-* Previously, when IdM servers were configured to require the Transport
+  * Previously, when IdM servers were configured to require the Transport
 Layer Security protocol version 1.1 (TLSv1.1) or later in the httpd server,
 the 'ipa' command-line utility failed. With this update, running 'ipa'
 works as expected with TLSv1.1 or later. (BZ#1156466)
 
 In addition, this update adds multiple enhancements, including:
 
-* The 'ipa-getkeytab' utility can now optionally fetch existing keytabs
+  * The 'ipa-getkeytab' utility can now optionally fetch existing keytabs
 from the KDC. Previously, retrieving an existing keytab was not supported,
 as the only option was to generate a new key. (BZ#1007367)
 
-* You can now create and manage a '.' root zone on IdM servers. DNS queries
+  * You can now create and manage a '.' root zone on IdM servers. DNS queries
 sent to the IdM DNS server use this configured zone instead of the public
 zone. (BZ#1056202)
 
-* The IdM server web UI has been updated and is now based on the Patternfly
+  * The IdM server web UI has been updated and is now based on the Patternfly
 framework, offering better responsiveness. (BZ#1108212)
 
-* A new user attribute now enables provisioning systems to add custom tags
+  * A new user attribute now enables provisioning systems to add custom tags
 for user objects. The tags can be used for automember rules or for
 additional local interpretation. (BZ#1108229)
 
-* This update adds a new DNS zone type to ensure that forward and master
+  * This update adds a new DNS zone type to ensure that forward and master
 zones are better separated. As a result, the IdM DNS interface complies
 with the forward zone semantics in BIND. (BZ#1114013)
 
-* This update adds a set of Apache modules that external applications can
+  * This update adds a set of Apache modules that external applications can
 use to achieve tighter interaction with IdM beyond simple authentication ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "ipa on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0442-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00011.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"ipa on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0442-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00011.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -159,6 +160,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

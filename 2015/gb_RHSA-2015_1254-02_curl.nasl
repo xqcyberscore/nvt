@@ -26,18 +26,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871401");
-  script_version("$Revision: 12370 $");
+  script_version("$Revision: 12380 $");
   script_cve_id("CVE-2014-3613", "CVE-2014-3707", "CVE-2014-8150",
                 "CVE-2015-3143", "CVE-2015-3148");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:25:30 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for curl RHSA-2015:1254-02");
-  script_tag(name: "summary", value: "Check the version of curl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The curl packages provide the libcurl library and the curl utility for
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'curl'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The curl packages provide the libcurl library and the curl utility for
 downloading files from servers using various protocols, including HTTP,
 FTP, and LDAP.
 
@@ -60,7 +61,7 @@ construct additional requests. (CVE-2014-8150)
 
 It was discovered that libcurl implemented aspects of the NTLM and
 Negotatiate authentication incorrectly. If an application uses libcurl
-and the affected mechanisms in a specifc way, certain requests to a
+and the affected mechanisms in a specific way, certain requests to a
 previously NTLM-authenticated server could appears as sent by the wrong
 authenticated user. Additionally, the initial set of credentials for HTTP
 Negotiate-authenticated requests could be reused in subsequent requests,
@@ -71,30 +72,30 @@ Red Hat would like to thank the cURL project for reporting these issues.
 
 Bug fixes:
 
-* An out-of-protocol fallback to SSL version 3.0 (SSLv3.0) was available
+  * An out-of-protocol fallback to SSL version 3.0 (SSLv3.0) was available
 with libcurl. Attackers could abuse the fallback to force downgrade of the
 SSL version. The fallback has been removed from libcurl. Users requiring
 this functionality can explicitly enable SSLv3.0 through the libcurl API.
 (BZ#1154059)
 
-* A single upload transfer through the FILE protocol opened the destination
+  * A single upload transfer through the FILE protocol opened the destination
 file twice. If the inotify kernel subsystem monitored the file, two events
 were produced unnecessarily. The file is now opened only once per upload.
 (BZ#883002)
 
-* Utilities using libcurl for SCP/SFTP transfers could terminate
+  * Utilities using libcurl for SCP/SFTP transfers could terminate
 unexpectedly when the system was running in FIPS mode. (BZ#1008178)
 
-* Using the '--retry' option with the curl utility could cause curl to
-terminate unexpectedly with a segmentation fault. Now, adding ... 
+  * Using the '--retry' option with the curl utility could cause curl to
+terminate unexpectedly with a segmentation fault. Now, adding ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "curl on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"curl on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1254-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00019.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1254-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-July/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -140,6 +141,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

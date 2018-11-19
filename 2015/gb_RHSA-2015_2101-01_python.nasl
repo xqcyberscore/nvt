@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871501");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:24:47 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2013-1752", "CVE-2013-1753", "CVE-2014-4616", "CVE-2014-4650",
                 "CVE-2014-7185", "CVE-2014-9365");
@@ -35,10 +35,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for python RHSA-2015:2101-01");
-  script_tag(name: "summary", value: "Check the version of python");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Python is an interpreted, interactive,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'python'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Python is an interpreted, interactive,
 object-oriented programming language often compared to Tcl, Perl, Scheme, or
 Java. Python includes modules, classes, exceptions, very high level dynamic
 data types and dynamic typing. Python supports interfaces to many system calls
@@ -85,15 +85,15 @@ References section for further details about this change. (BZ#1219108)
 
 This update also fixes the following bugs:
 
-* Subprocesses used with the Eventlet library or regular threads previously
+  * Subprocesses used with the Eventlet library or regular threads previously
 tried to close epoll file descriptors twice, which led to an 'Invalid
-argument' error. Subprocesses h ... 
+argument' error. Subprocesses h ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "python on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2101-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00019.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"python on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2101-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -139,6 +139,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

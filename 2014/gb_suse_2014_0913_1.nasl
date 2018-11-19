@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0913_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_0913_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for flash-player openSUSE-SU-2014:0913-1 (flash-player)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850596");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 16:18:04 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-0537", "CVE-2014-0539", "CVE-2014-4671");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"openSUSE-SU", value:"2014:0913_1");
-  script_tag(name:"summary", value:"Check for the Version of flash-player");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'flash-player'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

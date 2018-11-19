@@ -23,7 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Apache Axis is an implementation of SOAP (Simple Object Access Protocol).
+if(description)
+{
+  script_tag(name:"affected", value:"axis on Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Apache Axis is an implementation of SOAP (Simple Object Access Protocol).
   It can be used to build both web service clients and servers.
 
   Apache Axis did not verify that the server hostname matched the domain name
@@ -34,25 +39,11 @@ tag_insight = "Apache Axis is an implementation of SOAP (Simple Object Access Pr
 
   All users of axis are advised to upgrade to these updated packages, which
   correct this issue. Applications using Apache Axis must be restarted for
-  this update to take effect.";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "axis on Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00030.html");
+  this update to take effect.");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00030.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870933");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:02:17 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-5784");
   script_bugtraq_id(56408);
@@ -60,10 +51,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:0269-01");
+  script_xref(name:"RHSA", value:"2013:0269-01");
   script_name("RedHat Update for axis RHSA-2013:0269-01");
 
-  script_tag(name:"summary", value:"Check for the Version of axis");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'axis'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -90,6 +82,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3772_1.nasl 11715 2018-10-01 15:34:24Z cfischer $
+# $Id: gb_ubuntu_USN_3772_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for udisks2 USN-3772-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843641");
-  script_version("$Revision: 11715 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 17:34:24 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-27 08:10:59 +0200 (Thu, 27 Sep 2018)");
   script_cve_id("CVE-2018-17336");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for udisks2 USN-3772-1");
-  script_tag(name:"summary", value:"Check the version of udisks2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'udisks2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that UDisks incorrectly handled format strings when
 logging. A local attacker could possibly use this issue to cause a denial

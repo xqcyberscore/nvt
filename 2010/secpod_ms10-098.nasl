@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-098.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: secpod_ms10-098.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2436673)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902275");
-  script_version("$Revision: 10639 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_cve_id("CVE-2010-3939", "CVE-2010-3940", "CVE-2010-3941", "CVE-2010-3942",
-                "CVE-2010-3943","CVE-2010-3944");
+                "CVE-2010-3943", "CVE-2010-3944");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2436673)");
@@ -40,15 +40,13 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2436673");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS10-098.mspx");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to run arbitrary
-  code in the kernel mode.
-
-  Impact Level: System/Application");
+  code in the kernel mode.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7
 
@@ -71,9 +69,7 @@ if(description)
   - validate input passed from user mode.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/MS10-098.mspx");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-098.");
@@ -101,7 +97,7 @@ file_name = "Win32k.sys";
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = fetch_file_version(sysPath, file_name:file_name);
+  sysVer = fetch_file_version(sysPath:sysPath, file_name:file_name);
   if(sysVer)
   {
     if(hotfix_check_sp(xp:4) > 0)
@@ -138,7 +134,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:file_name);
+sysVer = fetch_file_version(sysPath:sysPath, file_name:file_name);
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-075.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms08-075.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Windows Search Remote Code Execution Vulnerability (959349)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801483");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-14 06:32:32 +0100 (Tue, 14 Dec 2010)");
   script_cve_id("CVE-2008-4268", "CVE-2008-4269");
   script_bugtraq_id(32651, 32652);
@@ -45,21 +45,21 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers attackers to execute
-  arbitrary code.
-  Impact Level: System/Application");
+  arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 1 and prior.
   Microsoft Windows Server 2008 Service Pack 1 and prior.");
   script_tag(name:"insight", value:"The flaws are due to
+
   - an error in Windows Explorer that does not correctly free memory when
     saving Windows Search files.
+
   - an error in Windows Explorer that does not correctly interpret
     parameters when parsing the search-ms protocol.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-075.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-075.");
@@ -83,7 +83,7 @@ if(hotfix_missing(name:"958624") == 1)
   sysPath = smb_get_system32root();
   if(sysPath)
   {
-    dllVer = fetch_file_version(sysPath, file_name:"shell32.dll");
+    dllVer = fetch_file_version(sysPath:sysPath, file_name:"shell32.dll");
     if(dllVer)
     {
       if(hotfix_check_sp(winVista:2) > 0)

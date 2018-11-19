@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1064_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_suse_2016_1064_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for samba openSUSE-SU-2016:1064-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851279");
-  script_version("$Revision: 12291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 05:21:37 +0200 (Mon, 18 Apr 2016)");
   script_cve_id("CVE-2014-8143", "CVE-2015-0240", "CVE-2015-3223", "CVE-2015-5252",
                 "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-5370",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba openSUSE-SU-2016:1064-1 (samba)");
-  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"samba was updated to version 4.2.4 to fix 14 security issues.
 
@@ -119,7 +120,7 @@ if(description)
 
   - Obsolete libsmbclient from libsmbcl ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"samba on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

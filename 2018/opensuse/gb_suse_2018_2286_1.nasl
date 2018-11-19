@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2286_1.nasl 12280 2018-11-09 10:01:52Z cfischer $
+# $Id: gb_suse_2018_2286_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libraw openSUSE-SU-2018:2286-1 (libraw)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851848");
-  script_version("$Revision: 12280 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 11:01:52 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:01:09 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-5807", "CVE-2018-5810", "CVE-2018-5811", "CVE-2018-5812", "CVE-2018-5813", "CVE-2018-5815");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libraw openSUSE-SU-2018:2286-1 (libraw)");
-  script_tag(name:"summary", value:"Check the version of libraw");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libraw'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for libraw fixes the following issues:
 

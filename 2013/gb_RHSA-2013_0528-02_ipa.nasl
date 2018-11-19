@@ -23,7 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Red Hat Identity Management is a centralized authentication, identity
+if(description)
+{
+  script_tag(name:"affected", value:"ipa on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Red Hat Identity Management is a centralized authentication, identity
   management and authorization solution for both traditional and cloud-based
   enterprise environments. It integrates components of the Red Hat Directory
   Server, MIT Kerberos, Red Hat Certificate System, NTP, and DNS. It provides
@@ -55,11 +61,9 @@ tag_insight = "Red Hat Identity Management is a centralized authentication, iden
   relevant to your system have been applied.
 
   This update is available via the Red Hat Network. Details on how to
-  use the Red Hat Network to apply this update are available at
-  https://access.redhat.com/knowledge/articles/11258
-  https://access.redhat.com/knowledge/articles/11258
+  use the Red Hat Network to apply this update are available at the references.
 
-  5. Bugs fixed ( http://bugzilla.redhat.com/ &qt >http://bugzilla.redhat.com ):
+  5. Bugs fixed:
 
   748987 - If  master has leftover replica agreement from a previous failed
            attempt, next replica install can fail
@@ -70,26 +74,11 @@ tag_insight = "Red Hat Identity Management is a centralized authentication, iden
   781208 - ipa user-find --manager does not find matches
   782847 - ipa permission- ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "ipa on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00065.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00065.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870938");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 10:03:01 +0530 (Fri, 22 Feb 2013)");
   script_cve_id("CVE-2012-4546");
   script_bugtraq_id(58083);
@@ -97,15 +86,18 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:0528-02");
+  script_xref(name:"RHSA", value:"2013:0528-02");
   script_name("RedHat Update for ipa RHSA-2013:0528-02");
 
-  script_tag(name: "summary" , value: "Check for the Version of ipa");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ipa'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
 
   exit(0);
 }
@@ -163,6 +155,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

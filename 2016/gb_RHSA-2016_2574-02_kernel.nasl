@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871708");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:42:52 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2013-4312", "CVE-2015-8374", "CVE-2015-8543", "CVE-2015-8746",
                 "CVE-2015-8812", "CVE-2015-8844", "CVE-2015-8845", "CVE-2015-8956",
@@ -40,21 +40,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2016:2574-02");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel,
   the core of any Linux operating system.
 
 Security Fix(es):
 
-* It was found that the Linux kernel's IPv6 implementation mishandled
+  * It was found that the Linux kernel's IPv6 implementation mishandled
 socket options. A local attacker could abuse concurrent access to the
 socket options to escalate their privileges, or cause a denial of service
 (use-after-free and system crash) via a crafted sendmsg system call.
 (CVE-2016-3841, Important)
 
-* Several Moderate and Low impact security issues were found in the Linux
+  * Several Moderate and Low impact security issues were found in the Linux
 kernel. Space precludes documenting each of these issues in this advisory.
 Refer to the CVE links in the References section for a description of each
 of these vulnerabilities. (CVE-2013-4312, CVE-2015-8374, CVE-2015-8543,
@@ -66,7 +66,7 @@ CVE-2016-3070, CVE-2016-3699, CVE-2016-4569, CVE-2016-4578)
 
 Red Hat would like to thank Philip Pettersson (Samsung) for reporting
 CVE-2016-2053  Tetsuo Handa for reporting CVE-2016-2847  the Virtuozzo
-kernel team and Solar Designer (Openwall) for reporting CVE-2016-3156 
+kernel team and Solar Designer (Openwall) for reporting CVE-2016-3156
 Justin Yackoski (Cryptonite) for reporting CVE-2016-2117  and Linn Crosetto
 (HP) for reporting CVE-2016-3699. The CVE-2015-8812 issue was discovered by
 Venkatesh Pottem (Red Hat Engineering)  the CVE-2015-8844 and CVE-2015-8845
@@ -78,13 +78,12 @@ CVE-2016-3070 issue was discovered by Jan Stancek (Red Hat).
 Additional Changes:
 
 For detailed information on changes in this release, see the Red Hat
-Enterprise Linux 7.3 Release Notes linked from the References section.
-");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Enterprise Linux 7.3 Release Notes linked from the References section.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2574-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00010.html");
+  script_xref(name:"RHSA", value:"2016:2574-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -208,6 +207,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

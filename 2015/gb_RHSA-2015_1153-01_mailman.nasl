@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871378");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 06:12:54 +0200 (Wed, 24 Jun 2015)");
   script_cve_id("CVE-2015-2775");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for mailman RHSA-2015:1153-01");
-  script_tag(name: "summary", value: "Check the version of mailman");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Mailman is a program used to help manage email discussion lists.
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mailman'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mailman is a program used to help manage email discussion lists.
 
 It was found that mailman did not sanitize the list name before passing it
 to certain MTAs. A local attacker could use this flaw to execute arbitrary
@@ -44,7 +45,7 @@ code as the user running mailman. (CVE-2015-2775)
 
 This update also fixes the following bugs:
 
-* Previously, it was impossible to configure Mailman in a way that
+  * Previously, it was impossible to configure Mailman in a way that
 Domain-based Message Authentication, Reporting &amp  Conformance (DMARC) would
 recognize Sender alignment for Domain Key Identified Mail (DKIM)
 signatures. Consequently, Mailman list subscribers that belonged to a mail
@@ -56,13 +57,13 @@ administrators are able to configure the way these messages are handled. As
 a result, after a proper configuration, subscribers now correctly receive
 Mailman forwarded messages in this scenario. (BZ#1229288)
 
-* Previously, the /etc/mailman file had incorrectly set permissions, which
+  * Previously, the /etc/mailman file had incorrectly set permissions, which
 in some cases caused removing Mailman lists to fail with a ''NoneType'
 object has no attribute 'close'' message. With this update, the permissions
 value for /etc/mailman is correctly set to 2775 instead of 0755, and
 removing Mailman lists now works as expected. (BZ#1229307)
 
-* Prior to this update, the mailman utility incorrectly installed the
+  * Prior to this update, the mailman utility incorrectly installed the
 tmpfiles configuration in the /etc/tmpfiles.d/ directory. As a consequence,
 changes made to mailman tmpfiles configuration were overwritten if the
 mailman packages were reinstalled or updated. The mailman utility now
@@ -71,12 +72,11 @@ and changes made to them by the user are preserved on reinstall or update.
 (BZ#1229306)
 
 All mailman users are advised to upgrade to these updated packages, which
-contain backported patches to correct these issues.
-");
-  script_tag(name: "affected", value: "mailman on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1153-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-June/msg00027.html");
+contain backported patches to correct these issues.");
+  script_tag(name:"affected", value:"mailman on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1153-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-June/msg00027.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -110,6 +110,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

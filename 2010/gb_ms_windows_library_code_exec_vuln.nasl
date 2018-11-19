@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_library_code_exec_vuln.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms_windows_library_code_exec_vuln.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # MS Windows Insecure Library Loading Remote Code Execution Vulnerabilities (2269637)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801399");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("MS Windows Insecure Library Loading Remote Code Execution Vulnerabilities (2269637)");
   script_xref(name:"URL", value:"http://secunia.com/blog/120/");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/advisory/2269637.mspx");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2010/2269637");
   script_xref(name:"URL", value:"http://www.network-box.com/aboutus/news/microsoft-advises-insecure-library-loading-vulnerability");
 
   script_tag(name:"qod_type", value:"executable_version");
@@ -43,7 +43,7 @@ if(description)
   script_family("Windows");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"insight", value:"The flaws are due to:
 
@@ -55,16 +55,17 @@ if(description)
    'binary planting' or 'DLL preloading attacks', which allows the attacker to
     execute arbitrary code in the context of the user running the vulnerable
     application when the user opens a file from an untrusted location.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
+  update mentioned hotfixes in the referenced advisory.");
 
-  htttp://www.microsoft.com/technet/security/advisory/2269637.mspx");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"This host is prone to Remote Code Execution vulnerabilities.");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or to
-  elevate privileges.
 
-  Impact Level: Application.");
+  script_tag(name:"summary", value:"This host is prone to Remote Code Execution vulnerabilities.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or to
+  elevate privileges.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7
 
   Microsoft Windows XP Service Pack 3 and prior
@@ -74,9 +75,9 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior.
 
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -87,7 +88,6 @@ if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:1) <= 0){
   exit(0);
 }
 
-## Hotfix check
 if(hotfix_missing(name:"2264107") == 0){
   exit(0);
 }
@@ -95,7 +95,7 @@ if(hotfix_missing(name:"2264107") == 0){
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = fetch_file_version(sysPath, file_name:"Ntdll.dll");
+  sysVer = fetch_file_version(sysPath:sysPath, file_name:"Ntdll.dll");
   if(sysVer)
   {
     if(hotfix_check_sp(xp:4) > 0)
@@ -131,7 +131,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"Ntdll.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"Ntdll.dll");
 if(!sysVer){
   exit(0);
 }

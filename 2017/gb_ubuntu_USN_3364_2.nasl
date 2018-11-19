@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3364_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3364_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-lts-xenial USN-3364-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843254");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-25 07:24:47 +0200 (Tue, 25 Jul 2017)");
   script_cve_id("CVE-2014-9900", "CVE-2015-8944", "CVE-2017-1000380", "CVE-2017-7346",
                 "CVE-2017-9150", "CVE-2017-9605");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-xenial USN-3364-2");
-  script_tag(name:"summary", value:"Check the version of linux-lts-xenial");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-lts-xenial'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3364-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding

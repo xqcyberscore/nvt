@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1124_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_1124_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for flash-player SUSE-SU-2014:1124-1 (flash-player)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850970");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:15:38 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-0547", "CVE-2014-0548", "CVE-2014-0549", "CVE-2014-0550", "CVE-2014-0551", "CVE-2014-0552", "CVE-2014-0553", "CVE-2014-0554", "CVE-2014-0555", "CVE-2014-0556", "CVE-2014-0557", "CVE-2014-0559");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for flash-player SUSE-SU-2014:1124-1 (flash-player)");
-  script_tag(name:"summary", value:"Check the version of flash-player");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'flash-player'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Adobe Flash Player has been updated to 11.2.202.406 which fixes various
   security issues.
@@ -79,7 +80,7 @@ if(description)
   * CVE-2014-0554
 
   * CVE-2014-0555
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"flash-player on SUSE Linux Enterprise Desktop 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:1124_1");

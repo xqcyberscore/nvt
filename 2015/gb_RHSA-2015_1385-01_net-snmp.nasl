@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871407");
-  script_version("$Revision: 12370 $");
+  script_version("$Revision: 12380 $");
   script_cve_id("CVE-2014-3565");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:26:21 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for net-snmp RHSA-2015:1385-01");
-  script_tag(name: "summary", value: "Check the version of net-snmp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The net-snmp packages provide various libraries and tools for the Simple
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'net-snmp'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The net-snmp packages provide various libraries and tools for the Simple
 Network Management Protocol (SNMP), including an SNMP library, an
 extensible agent, tools for requesting or setting information from SNMP
 agents, tools for generating and handling SNMP traps, a version of the
@@ -51,45 +51,45 @@ was expected, it would cause snmptrapd to crash. (CVE-2014-3565)
 
 This update also fixes the following bugs:
 
-* The HOST-RESOURCES-MIB::hrSystemProcesses object was not implemented
+  * The HOST-RESOURCES-MIB::hrSystemProcesses object was not implemented
 because parts of the HOST-RESOURCES-MIB module were rewritten in an earlier
 version of net-snmp. Consequently, HOST-RESOURCES-MIB::hrSystemProcesses
 did not provide information on the number of currently loaded or running
 processes. With this update, HOST-RESOURCES-MIB::hrSystemProcesses has been
 implemented, and the net-snmp daemon reports as expected. (BZ#1134335)
 
-* The Net-SNMP agent daemon, snmpd, reloaded the system ARP table every 60
+  * The Net-SNMP agent daemon, snmpd, reloaded the system ARP table every 60
 seconds. As a consequence, snmpd could cause a short CPU usage spike on
 busy systems with a large APR table. With this update, snmpd does not
 reload the full ARP table periodically, but monitors the table changes
 using a netlink socket. (BZ#789500)
 
-* Previously, snmpd used an invalid pointer to the current time when
+  * Previously, snmpd used an invalid pointer to the current time when
 periodically checking certain conditions specified by the 'monitor' option
 in the /etc/snmpd/snmpd.conf file. Consequently, snmpd terminated
 unexpectedly on start with a segmentation fault if a certain entry with the
 'monitor' option was used. Now, snmpd initializes the correct pointer
 to the current time, and snmpd no longer crashes on start. (BZ#1050970)
 
-* Previously, snmpd expected 8-bit network interface indices when
+  * Previously, snmpd expected 8-bit network interface indices when
 processing HOST-RESOURCES-MIB::hrDeviceTable. If an interface index of a
-local network interface was larger than 30,000 items, snmpd could terminate
+local network interface was larger than 30, 000 items, snmpd could terminate
 unexpectedly due to accessing invalid memory. Now, processing of all
 network sizes is enabled, and snmpd no longer crashes in the described
 situation. (BZ#1195547)
 
-* The snmpdtrapd service incorrectly checked for errors when forwarding a
+  * The snmpdtrapd service incorrectly checked for errors when forwarding a
 trap with a RequestID value of 0, and logged 'Forward failed' even though
 the trap was successfully forwarded. This update fixes snmptrapd checks and
-the aforementioned ... 
+the aforementioned ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "net-snmp on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"net-snmp on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1385-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00027.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1385-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-July/msg00027.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -153,6 +153,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

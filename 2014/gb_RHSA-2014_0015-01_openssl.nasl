@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871109");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:22:31 +0530 (Tue, 21 Jan 2014)");
   script_cve_id("CVE-2013-4353", "CVE-2013-6449", "CVE-2013-6450");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_name("RedHat Update for openssl RHSA-2014:0015-01");
 
-  tag_insight = "OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
+
+  script_tag(name:"affected", value:"openssl on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
 and Transport Layer Security (TLS v1) protocols, as well as a
 full-strength, general purpose cryptography library.
 
@@ -57,24 +60,14 @@ could cause a TLS/SSL client using OpenSSL to crash. (CVE-2013-4353)
 All OpenSSL users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. For the update to take
 effect, all services linked to the OpenSSL library must be restarted, or
-the system rebooted.
-";
-
-  tag_affected = "openssl on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+the system rebooted.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0015-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-January/msg00004.html");
-  script_tag(name:"summary", value:"Check for the Version of openssl");
+  script_xref(name:"RHSA", value:"2014:0015-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-January/msg00004.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -113,6 +106,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

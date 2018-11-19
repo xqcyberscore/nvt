@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3570_1.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3570_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for advancecomp USN-3570-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843450");
-  script_version("$Revision: 11610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 08:45:10 +0100 (Thu, 15 Feb 2018)");
   script_cve_id("CVE-2018-1056");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for advancecomp USN-3570-1");
-  script_tag(name:"summary", value:"Check the version of advancecomp");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'advancecomp'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Joonun Jang discovered that AdvanceCOMP
   incorrectly handled certain malformed zip files. If a user or automated system

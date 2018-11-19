@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842655");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-23 06:26:00 +0100 (Tue, 23 Feb 2016)");
   script_cve_id("CVE-2016-1576", "CVE-2016-1575", "CVE-2013-4312", "CVE-2015-8785",
                 "CVE-2016-2069");
@@ -35,7 +35,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-raspi2 USN-2908-3");
-  script_tag(name:"summary", value:"Check the version of linux-raspi2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-raspi2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"halfdog discovered that OverlayFS, when
   mounting on top of a FUSE mount, incorrectly propagated file attributes,

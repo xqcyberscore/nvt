@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871509");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 08:26:57 +0100 (Tue, 24 Nov 2015)");
   script_cve_id("CVE-2015-5273", "CVE-2015-5287", "CVE-2015-5302");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for abrt and libreport RHSA-2015:2505-01");
-  script_tag(name: "summary", value: "Check the version of abrt and libreport");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "ABRT (Automatic Bug Reporting Tool) is a
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'abrt and libreport'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"ABRT (Automatic Bug Reporting Tool) is a
 tool to help users to detect defects in applications and to create a bug report
 with all the information needed by a maintainer to fix it. It uses a plug-in
 system to extend its functionality. libreport provides an API for reporting
@@ -75,12 +75,11 @@ CVE-2015-5273 and CVE-2015-5287 issues. The CVE-2015-5302 issue was
 discovered by Bastien Nocera of Red Hat.
 
 All users of abrt and libreport are advised to upgrade to these updated
-packages, which contain backported patches to correct these issues.
-");
-  script_tag(name: "affected", value: "abrt and libreport on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2505-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00059.html");
+packages, which contain backported patches to correct these issues.");
+  script_tag(name:"affected", value:"abrt and libreport on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2505-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -294,6 +293,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

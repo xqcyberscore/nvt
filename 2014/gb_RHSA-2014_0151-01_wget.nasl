@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871122");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:51:02 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2010-2252");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for wget RHSA-2014:0151-01");
 
-  tag_insight = "The wget package provides the GNU Wget file retrieval utility for HTTP,
+
+  script_tag(name:"affected", value:"wget on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"The wget package provides the GNU Wget file retrieval utility for HTTP,
 HTTPS, and FTP protocols. Wget provides various useful features, such as
 the ability to work in the background while the user is logged out,
 recursive retrieval of directories, file name wildcard matching or updating
@@ -55,31 +58,21 @@ start-up file.
 
 This update also fixes the following bugs:
 
-* Prior to this update, the wget package did not recognize HTTPS SSL
+  * Prior to this update, the wget package did not recognize HTTPS SSL
 certificates with alternative names (subjectAltName) specified in the
 certificate as valid. As a consequence, running the wget command failed
 with a certificate error. This update fixes wget to recognize such
 certificates as valid. (BZ#1060113)
 
 All users of wget are advised to upgrade to this updated package, which
-contain backported patches to correct these issues.
-";
-
-  tag_affected = "wget on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+contain backported patches to correct these issues.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0151-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-February/msg00014.html");
-  script_tag(name:"summary", value:"Check for the Version of wget");
+  script_xref(name:"RHSA", value:"2014:0151-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-February/msg00014.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'wget'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -112,6 +105,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

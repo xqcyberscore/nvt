@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2026_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_2026_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2026-1 (MozillaFirefox, mozilla-nss)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851377");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-11 05:38:10 +0200 (Thu, 11 Aug 2016)");
   script_cve_id("CVE-2016-0718", "CVE-2016-2830", "CVE-2016-2835", "CVE-2016-2836",
                 "CVE-2016-2837", "CVE-2016-2838", "CVE-2016-2839", "CVE-2016-5250",
@@ -40,7 +40,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, mozilla-nss openSUSE-SU-2016:2026-1 (MozillaFirefox, mozilla-nss)");
-  script_tag(name:"summary", value:"Check the version of MozillaFirefox, mozilla-nss");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox, mozilla-nss'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mozilla Firefox was updated to 48.0 to fix security issues, bugs, and
   deliver various improvements.
@@ -126,7 +127,7 @@ if(description)
 
   - fix XUL dialog button order under ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"MozillaFirefox, mozilla-nss on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

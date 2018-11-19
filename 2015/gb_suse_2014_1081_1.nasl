@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1081_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_1081_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for apache2 SUSE-SU-2014:1081-1 (apache2)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851022");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 17:22:49 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-6438", "CVE-2014-0098", "CVE-2014-0226", "CVE-2014-0231");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for apache2 SUSE-SU-2014:1081-1 (apache2)");
-  script_tag(name:"summary", value:"Check the version of apache2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'apache2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This apache2 update fixes the following security and non-security issues:
 

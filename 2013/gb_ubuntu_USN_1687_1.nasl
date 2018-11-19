@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1687_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1687_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for nss USN-1687-1
 #
@@ -32,8 +32,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1687-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841278");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 18:08:00 +0530 (Tue, 15 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -41,7 +41,8 @@ if(description)
   script_xref(name:"USN", value:"1687-1");
   script_name("Ubuntu Update for nss USN-1687-1");
 
-  script_tag(name:"summary", value:"Check for the Version of nss");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nss'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

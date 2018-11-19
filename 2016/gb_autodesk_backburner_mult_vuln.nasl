@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autodesk_backburner_mult_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_autodesk_backburner_mult_vuln.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Autodesk Backburner Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:autodesk:autodesk_backburner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808172");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2016-2344");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 18:29:15 +0530 (Tue, 21 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Autodesk Backburner Multiple Vulnerabilities");
@@ -64,7 +64,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_autodesk_backburner_detect.nasl");
   script_mandatory_keys("Autodesk/Backburner/detected");
-  script_xref(name:"URL", value:"https://knowledge.autodesk.com.");
+  script_xref(name:"URL", value:"https://knowledge.autodesk.com");
+
   exit(0);
 }
 

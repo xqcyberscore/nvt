@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3200-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_3200-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:3200-01
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812095");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 07:27:48 +0100 (Thu, 16 Nov 2017)");
   script_cve_id("CVE-2017-14106", "CVE-2017-1000111", "CVE-2017-1000112");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:3200-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the
-help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* A race condition issue leading to a use-after-free flaw was found in the
+  * A race condition issue leading to a use-after-free flaw was found in the
 way the raw packet sockets are implemented in the Linux kernel networking
 subsystem handling synchronization. A local user able to open a raw packet
 socket (requires the CAP_NET_RAW capability) could use this flaw to elevate
 their privileges on the system. (CVE-2017-1000111, Important)
 
-* An exploitable memory corruption flaw was found in the Linux kernel. The
+  * An exploitable memory corruption flaw was found in the Linux kernel. The
 append path can be erroneously switched from UFO to non-UFO in
 ip_ufo_append_data() when building an UFO packet with MSG_MORE option. If
 unprivileged user namespaces are available, this flaw can be exploited to
 gain root privileges. (CVE-2017-1000112, Important)
 
-* A divide-by-zero vulnerability was found in the __tcp_select_window
+  * A divide-by-zero vulnerability was found in the __tcp_select_window
 function in the Linux kernel. This can result in a kernel panic causing a
 local denial of service. (CVE-2017-14106, Moderate)
 
@@ -64,14 +64,14 @@ and Andrey Konovalov for reporting CVE-2017-1000112.
 
 Bug Fix(es):
 
-* When the operating system was booted with Red Hat Enterprise
+  * When the operating system was booted with Red Hat Enterprise
 Virtualization, and the eh_deadline sysfs parameter was set to 10s, the
 Storage Area Network (SAN) issues caused eh_deadline to trigger with no
 handler. Consequently, a kernel panic occurred. This update fixes the lpfc
 driver, thus preventing the kernel panic under described circumstances.
 (BZ#1487220)
 
-* When an NFS server returned the NFS4ERR_BAD_SEQID error to an OPEN
+  * When an NFS server returned the NFS4ERR_BAD_SEQID error to an OPEN
 request, the open-owner was removed from the state_owners rbtree.
 Consequently, NFS4 client infinite loop that required a reboot to recover
 occurred. This update changes NFS4ERR_BAD_SEQID handling to leave the
@@ -80,23 +80,23 @@ so that it looks like a new open-owner. As a result, an NFS4 client is now
 able to recover without falling into the infinite recovery loop after
 receiving NFS4ERR_BAD_SEQID. (BZ#1491123)
 
-* If an NFS client attempted to mount NFSv3 shares from an NFS server
+  * If an NFS client attempted to mount NFSv3 shares from an NFS server
 exported directly to the client's IP address, and this NFS client had
 already mounted other shares that originated from the same server but were
 exported to the subnetwork which this client was part of, the auth.unix.ip
 cache expiration was not handled correctly. Consequently, the client
 received the 'stale file handle' errors when trying to mount the share.
-This update fixes handling of the ... 
+This update fixes handling of the ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on
   Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:3200-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-November/msg00020.html");
+  script_xref(name:"RHSA", value:"2017:3200-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00020.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -208,6 +208,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

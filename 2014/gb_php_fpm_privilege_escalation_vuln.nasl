@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_privilege_escalation_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_php_fpm_privilege_escalation_vuln.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # PHP 'FastCGI Process Manager' Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804290");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2014-0185");
   script_bugtraq_id(67118);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 14:42:30 +0530 (Thu, 08 May 2014)");
   script_name("PHP 'FastCGI Process Manager' Privilege Escalation Vulnerability");
 
@@ -66,7 +66,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://php.net.");
+  script_xref(name:"URL", value:"http://php.net");
   exit(0);
 }
 

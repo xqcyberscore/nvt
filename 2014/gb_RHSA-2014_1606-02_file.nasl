@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871263");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 06:05:21 +0200 (Wed, 15 Oct 2014)");
   script_cve_id("CVE-2012-1571", "CVE-2014-0237", "CVE-2014-0238", "CVE-2014-1943",
                 "CVE-2014-2270", "CVE-2014-3479", "CVE-2014-3480");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("RedHat Update for file RHSA-2014:1606-02");
-  script_tag(name: "summary", value: "Check the version of file");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The 'file' command is used to identify a particular file according to the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'file'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The 'file' command is used to identify a particular file according to the
 type of data contained in the file. The command can identify various file
 types, including ELF binaries, system libraries, RPM packages, and
 different graphics formats.
@@ -54,48 +55,48 @@ of CPU. (CVE-2014-1943, CVE-2014-2270)
 
 This update also fixes the following bugs:
 
-* Previously, the output of the 'file' command contained redundant white
+  * Previously, the output of the 'file' command contained redundant white
 spaces. With this update, the new STRING_TRIM flag has been introduced to
 remove the unnecessary white spaces. (BZ#664513)
 
-* Due to a bug, the 'file' command could incorrectly identify an XML
+  * Due to a bug, the 'file' command could incorrectly identify an XML
 document as a LaTex document. The underlying source code has been modified
 to fix this bug and the command now works as expected. (BZ#849621)
 
-* Previously, the 'file' command could not recognize .JPG files and
+  * Previously, the 'file' command could not recognize .JPG files and
 incorrectly labeled them as 'Minix filesystem'. This bug has been fixed and
 the command now properly detects .JPG files. (BZ#873997)
 
-* Under certain circumstances, the 'file' command incorrectly detected
+  * Under certain circumstances, the 'file' command incorrectly detected
 NETpbm files as 'x86 boot sector'. This update applies a patch to fix this
 bug and the command now detects NETpbm files as expected. (BZ#884396)
 
-* Previously, the 'file' command incorrectly identified ASCII text files as
+  * Previously, the 'file' command incorrectly identified ASCII text files as
 a .PIC image file. With this update, a patch has been provided to address
 this bug and the command now correctly recognizes ASCII text files.
 (BZ#980941)
 
-* On 32-bit PowerPC systems, the 'from' field was missing from the output
+  * On 32-bit PowerPC systems, the 'from' field was missing from the output
 of the 'file' command. The underlying source code has been modified to fix
 this bug and 'file' output now contains the 'from' field as expected.
 (BZ#1037279)
 
-* The 'file' command incorrectly detected text files as 'RRDTool DB version
+  * The 'file' command incorrectly detected text files as 'RRDTool DB version
 ool - Round Robin Database Tool'. This update applies a patch to fix this
 bug and the command now correctly detects text files. (BZ#1064463)
 
-* Previously, the 'file' command supported only version 1 and 2 of the QCOW
+  * Previously, the 'file' command supported only version 1 and 2 of the QCOW
 format. As a consequence, file was unable to detect a 'qcow2 compat ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "file on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"file on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:1606-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-October/msg00021.html");
+  script_xref(name:"RHSA", value:"2014:1606-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-October/msg00021.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -146,6 +147,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

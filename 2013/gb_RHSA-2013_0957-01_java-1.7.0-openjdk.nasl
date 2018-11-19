@@ -23,7 +23,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "These packages provide the OpenJDK 7 Java Runtime Environment and the
+if(description)
+{
+  script_tag(name:"affected", value:"java-1.7.0-openjdk on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"These packages provide the OpenJDK 7 Java Runtime Environment and the
   OpenJDK 7 Software Development Kit.
 
   Multiple flaws were discovered in the ImagingLib and the image attribute,
@@ -71,23 +77,10 @@ tag_insight = "These packages provide the OpenJDK 7 Java Runtime Environment and
 
   It was discovered that GnomeFi ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_solution = "Please Install the Updated Packages.";
-tag_affected = "java-1.7.0-openjdk on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-
-if(description)
-{
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_oid("1.3.6.1.4.1.25623.1.0.871010");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:55:53 +0530 (Mon, 24 Jun 2013)");
   script_cve_id("CVE-2013-1500", "CVE-2013-1571", "CVE-2013-2407", "CVE-2013-2412",
                 "CVE-2013-2443", "CVE-2013-2444", "CVE-2013-2445", "CVE-2013-2446",
@@ -103,9 +96,10 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2013:0957-01");
 
-  script_xref(name: "RHSA", value: "2013:0957-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-June/msg00017.html");
-  script_tag(name: "summary" , value: "Check for the Version of java-1.7.0-openjdk");
+  script_xref(name:"RHSA", value:"2013:0957-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-June/msg00017.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.7.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -144,6 +138,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

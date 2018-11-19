@@ -26,27 +26,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871575");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 06:09:14 +0100 (Wed, 16 Mar 2016)");
   script_cve_id("CVE-2013-2596", "CVE-2015-2151");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2016:0450-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
-* An integer overflow flaw was found in the way the Linux kernel's Frame
+  * An integer overflow flaw was found in the way the Linux kernel's Frame
 Buffer device implementation mapped kernel memory to user space via the
 mmap syscall. A local user able to access a frame buffer device file
 (/dev/fb*) could possibly use this flaw to escalate their privileges on the
 system. (CVE-2013-2596, Important)
 
-* It was found that the Xen hypervisor x86 CPU emulator implementation did
+  * It was found that the Xen hypervisor x86 CPU emulator implementation did
 not correctly handle certain instructions with segment overrides,
 potentially resulting in a memory corruption. A malicious guest user could
 use this flaw to read arbitrary data relating to other guests, cause a
@@ -55,13 +55,13 @@ the host. (CVE-2015-2151, Important)
 
 This update also fixes the following bugs:
 
-* Previously, the CPU power of a CPU group could be zero. As a consequence,
+  * Previously, the CPU power of a CPU group could be zero. As a consequence,
 a kernel panic occurred at 'find_busiest_group+570' with do_divide_error.
 The provided patch ensures that the division is only performed if the CPU
 power is not zero, and the aforementioned panic no longer occurs.
 (BZ#1209728)
 
-* Prior to this update, a bug occurred when performing an online resize of
+  * Prior to this update, a bug occurred when performing an online resize of
 an ext4 file system which had been previously converted from ext3. As a
 consequence, the kernel crashed. The provided patch fixes online resizing
 for such file systems by limiting the blockgroup search loop for non-extent
@@ -69,13 +69,12 @@ files, and the mentioned kernel crash no longer occurs. (BZ#1301100)
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+rebooted for this update to take effect.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:0450-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00044.html");
+  script_xref(name:"RHSA", value:"2016:0450-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-March/msg00044.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -187,6 +186,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

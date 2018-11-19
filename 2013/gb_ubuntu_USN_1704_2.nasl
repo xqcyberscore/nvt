@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1704_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1704_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-1704-2
 #
@@ -32,8 +32,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1704-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.841304");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:57:45 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-0957", "CVE-2012-4461", "CVE-2012-4508", "CVE-2012-4530",
                 "CVE-2012-4565", "CVE-2012-5517", "CVE-2012-5532");
@@ -42,7 +42,8 @@ if(description)
   script_xref(name:"USN", value:"1704-2");
   script_name("Ubuntu Update for linux-lts-quantal USN-1704-2");
 
-  script_tag(name:"summary", value:"Check for the Version of linux-lts-quantal");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-lts-quantal'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

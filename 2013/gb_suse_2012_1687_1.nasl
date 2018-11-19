@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1687_1.nasl 12290 2018-11-09 14:21:13Z cfischer $
+# $Id: gb_suse_2012_1687_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00019.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850386");
-  script_version("$Revision: 12290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:54 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5510", "CVE-2012-5511", "CVE-2012-5512", "CVE-2012-5513",
                 "CVE-2012-5514", "CVE-2012-5515", "CVE-2012-4535", "CVE-2012-4537",
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:1687_1");
   script_name("SuSE Update for xen openSUSE-SU-2012:1687-1 (xen)");
 
-  script_tag(name:"summary", value:"Check for the Version of xen");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xen'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

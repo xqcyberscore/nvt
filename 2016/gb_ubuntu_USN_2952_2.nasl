@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842722");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:38 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2014-9767", "CVE-2015-8835", "CVE-2016-3185", "CVE-2015-8838",
 		"CVE-2016-1903", "CVE-2016-2554", "CVE-2016-3141", "CVE-2016-3142");
@@ -35,7 +35,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-2952-2");
-  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php5'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-2952-1 fixed vulnerabilities in PHP.
   One of the backported patches caused a regression in the PHP Soap client.
@@ -84,7 +85,7 @@ if(description)
   code. (CVE number pending)
   It was disc ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"php5 on Ubuntu 15.10");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

@@ -23,7 +23,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Ruby is an extensible, interpreted, object-oriented, scripting language. It
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-January/msg00026.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870534");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-01 11:35:50 +0530 (Wed, 01 Feb 2012)");
+  script_cve_id("CVE-2011-3009", "CVE-2011-4815", "CVE-2011-2686", "CVE-2011-2705");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_xref(name:"RHSA", value:"2012:0070-01");
+  script_name("RedHat Update for ruby RHSA-2012:0070-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ruby'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(5|4)");
+  script_tag(name:"affected", value:"ruby on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux AS version 4,
+  Red Hat Enterprise Linux ES version 4,
+  Red Hat Enterprise Linux WS version 4");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Ruby is an extensible, interpreted, object-oriented, scripting language. It
   has features to process text files and to do system management tasks.
 
   A denial of service flaw was found in the implementation of associative
@@ -34,51 +59,20 @@ tag_insight = "Ruby is an extensible, interpreted, object-oriented, scripting la
   take an excessive amount of CPU time. To mitigate this issue, randomization
   has been added to the hash function to reduce the chance of an attacker
   successfully causing intentional collisions. (CVE-2011-4815)
-  
+
   It was found that Ruby did not reinitialize the PRNG (pseudorandom number
   generator) after forking a child process. This could eventually lead to the
   PRNG returning the same result twice. An attacker keeping track of the
   values returned by one child process could use this flaw to predict the
   values the PRNG would return in other child processes (as long as the
   parent process persisted). (CVE-2011-3009)
-  
+
   Red Hat would like to thank oCERT for reporting CVE-2011-4815. oCERT
   acknowledges Julian Waelde and Alexander Klink as the original reporters of
   CVE-2011-4815.
-  
+
   All users of ruby are advised to upgrade to these updated packages, which
-  contain backported patches to resolve these issues.";
-
-tag_affected = "ruby on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux AS version 4,
-  Red Hat Enterprise Linux ES version 4,
-  Red Hat Enterprise Linux WS version 4";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-January/msg00026.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870534");
-  script_version("$Revision: 12373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 09:22:36 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-01 11:35:50 +0530 (Wed, 01 Feb 2012)");
-  script_cve_id("CVE-2011-3009", "CVE-2011-4815", "CVE-2011-2686", "CVE-2011-2705");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "RHSA", value: "2012:0070-01");
-  script_name("RedHat Update for ruby RHSA-2012:0070-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of ruby");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(5|4)");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  contain backported patches to resolve these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -156,7 +150,7 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -212,6 +206,6 @@ if(release == "RHENT_4")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

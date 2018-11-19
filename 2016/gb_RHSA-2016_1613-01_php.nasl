@@ -26,23 +26,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871650");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:47:04 +0200 (Fri, 12 Aug 2016)");
   script_cve_id("CVE-2016-5385");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for php RHSA-2016:1613-01");
-  script_tag(name: "summary", value: "Check the version of php");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "PHP is an HTML-embedded scripting language
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language
 commonly used with the Apache HTTP Server.
 
 Security Fix(es):
 
-* It was discovered that PHP did not properly protect against the
+  * It was discovered that PHP did not properly protect against the
 HTTP_PROXY variable name clash. A remote attacker could possibly use this
 flaw to redirect HTTP requests performed by a PHP script to an
 attacker-controlled proxy via a malicious HTTP request. (CVE-2016-5385)
@@ -51,18 +51,17 @@ Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
 
 Bug Fix(es):
 
-* Previously, an incorrect logic in the SAPI header callback routine caused
+  * Previously, an incorrect logic in the SAPI header callback routine caused
 that the callback counter was not incremented. Consequently, when a script
 included a header callback, it could terminate unexpectedly with a
 segmentation fault. With this update, the callback counter is properly
 managed, and scripts with a header callback implementation work as
-expected. (BZ#1346758)
-");
-  script_tag(name: "affected", value: "php on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+expected. (BZ#1346758)");
+  script_tag(name:"affected", value:"php on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:1613-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00033.html");
+  script_xref(name:"RHSA", value:"2016:1613-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-August/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -174,6 +173,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

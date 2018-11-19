@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843167");
-  script_version("$Revision: 11610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 06:53:04 +0200 (Wed, 17 May 2017)");
   script_cve_id("CVE-2016-6252", "CVE-2017-2616");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for shadow USN-3276-2");
-  script_tag(name:"summary", value:"Check the version of shadow");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'shadow'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3276-1 intended to fix a vulnerability
   in su. The solution introduced a regression in su signal handling. This update

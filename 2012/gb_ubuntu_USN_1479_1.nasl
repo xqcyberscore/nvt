@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1479_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1479_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # Ubuntu Update for ffmpeg USN-1479-1
 #
@@ -34,8 +34,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.841048");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12379 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 09:42:08 +0530 (Tue, 19 Jun 2012)");
   script_cve_id("CVE-2011-3929", "CVE-2011-3936", "CVE-2011-3940", "CVE-2011-3947",
                 "CVE-2011-3951", "CVE-2011-3952", "CVE-2012-0851", "CVE-2012-0852",
@@ -97,7 +97,7 @@ if(description)
   files. If a user were tricked into opening a crafted Atrac 3 file, an
   attacker could cause a denial of service via application crash, ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

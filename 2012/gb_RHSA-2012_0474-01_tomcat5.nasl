@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and JavaServer
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-April/msg00007.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870585");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-13 10:32:45 +0530 (Fri, 13 Apr 2012)");
+  script_cve_id("CVE-2011-4858", "CVE-2012-0022");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name:"RHSA", value:"2012:0474-01");
+  script_name("RedHat Update for tomcat5 RHSA-2012:0474-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tomcat5'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"tomcat5 on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for the Java Servlet and JavaServer
   Pages (JSP) technologies.
 
   It was found that the Java hashCode() method implementation was susceptible
@@ -52,35 +74,7 @@ tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and Jav
   CVE-2011-4858.
 
   Users of Tomcat should upgrade to these updated packages, which correct
-  these issues. Tomcat must be restarted for this update to take effect.";
-
-tag_affected = "tomcat5 on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-April/msg00007.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870585");
-  script_version("$Revision: 12373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 09:22:36 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-04-13 10:32:45 +0530 (Fri, 13 Apr 2012)");
-  script_cve_id("CVE-2011-4858", "CVE-2012-0022");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_xref(name: "RHSA", value: "2012:0474-01");
-  script_name("RedHat Update for tomcat5 RHSA-2012:0474-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of tomcat5");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  these issues. Tomcat must be restarted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -170,6 +164,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

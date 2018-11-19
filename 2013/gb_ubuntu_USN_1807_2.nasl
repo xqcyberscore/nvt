@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1807_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1807_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-1807-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841410");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-06-14 12:49:04 +0530 (Fri, 14 Jun 2013)");
   script_cve_id("CVE-2012-0553", "CVE-2013-1492", "CVE-2013-1502", "CVE-2013-1506",
                 "CVE-2013-1511", "CVE-2013-1512", "CVE-2013-1521", "CVE-2013-1523",
@@ -43,7 +43,8 @@ if(description)
 
   script_xref(name:"USN", value:"1807-2");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1807-2/");
-  script_tag(name:"summary", value:"Check for the Version of mysql-5.5");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql-5.5'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843203");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-08 06:04:44 +0200 (Thu, 08 Jun 2017)");
   script_cve_id("CVE-2017-9148");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for freeradius USN-3316-1");
-  script_tag(name:"summary", value:"Check the version of freeradius");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'freeradius'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Stefan Winter and Lubo&#353 Pavl&#237 &#269
   ek discovered that FreeRADIUS incorrectly handled the TLS session cache. A

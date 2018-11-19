@@ -26,37 +26,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871720");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 05:36:49 +0100 (Tue, 22 Nov 2016)");
   script_cve_id("CVE-2016-8638");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ipsilon RHSA-2016:2809-01");
-  script_tag(name: "summary", value: "Check the version of ipsilon");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The ipsilon packages provide the Ipsilon
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ipsilon'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The ipsilon packages provide the Ipsilon
 identity provider service for federated single sign-on (SSO). Ipsilon links
 authentication providers and applications or utilities to allow for SSO. It includes
 a server and utilities to configure Apache-based service providers.
 
 Security Fix(es):
 
-* A vulnerability was found in ipsilon in the SAML2 provider's handling of
+  * A vulnerability was found in ipsilon in the SAML2 provider's handling of
 sessions. An attacker able to hit the logout URL could determine what
 service providers other users are logged in to and terminate their
 sessions. (CVE-2016-8638)
 
 This issue was discovered by Patrick Uiterwijk (Red Hat) and Howard
-Johnson.
-");
-  script_tag(name: "affected", value: "ipsilon on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Johnson.");
+  script_tag(name:"affected", value:"ipsilon on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2809-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00078.html");
+  script_xref(name:"RHSA", value:"2016:2809-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00078.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -150,6 +149,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0589_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_0589_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for util-linux openSUSE-SU-2017:0589-1 (util-linux)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851518");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:51:00 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2017-2616");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for util-linux openSUSE-SU-2017:0589-1 (util-linux)");
-  script_tag(name:"summary", value:"Check the version of util-linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'util-linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for util-linux fixes the following issues:
 

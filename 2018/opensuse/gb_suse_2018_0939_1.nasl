@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0939_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2018_0939_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libvirt openSUSE-SU-2018:0939-1 (libvirt)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851730");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-13 07:59:09 +0200 (Fri, 13 Apr 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2018-1064", "CVE-2018-6764");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libvirt openSUSE-SU-2018:0939-1 (libvirt)");
-  script_tag(name:"summary", value:"Check the version of libvirt");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libvirt'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for libvirt and virt-manager fixes the following issues:
 

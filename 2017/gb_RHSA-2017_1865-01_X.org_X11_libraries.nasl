@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1865-01_X.org_X11_libraries.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_1865-01_X.org_X11_libraries.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for X.org X11 libraries RHSA-2017:1865-01
 #
@@ -27,49 +27,49 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871852");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:22 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2016-10164", "CVE-2017-2625", "CVE-2017-2626");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for X.org X11 libraries RHSA-2017:1865-01");
-  script_tag(name: "summary", value: "Check the version of X.org X11 libraries");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "The X11 (Xorg) libraries provide library 
-  routines that are used within all X Window applications. The following packages 
-  have been upgraded to a later upstream version: libX11 (1.6.5), libXaw (1.0.13), 
-  libXdmcp (1.1.2), libXfixes (5.0.3), libXfont (1.5.2), libXi (1.7.9), libXpm 
-  (3.5.12), libXrandr (1.5.1), libXrender (0.9.10), libXt (1.1.5), libXtst 
-  (1.2.3), libXv (1.0.11), libXvMC (1.0.10), libXxf86vm (1.1.4), libdrm (2.4.74), 
-  libepoxy (1.3.1), libevdev (1.5.6), libfontenc (1.1.3), libvdpau (1.1.1), 
-  libwacom (0.24), libxcb (1.12), libxkbfile (1.0.9), mesa (17.0.1), 
-  mesa-private-llvm (3.9.1), xcb-proto (1.12), xkeyboard-config (2.20), 
-  xorg-x11-proto-devel (7.7). (BZ#1401667, BZ#1401668, BZ#1401669, BZ#1401670, 
-  BZ#1401671, BZ#1401672, BZ#1401673, BZ#1401675, BZ#1401676, BZ#1401677, 
-  BZ#1401678, BZ#1401679, BZ#1401680, BZ#1401681, BZ#1401682, BZ#1401683, 
-  BZ#1401685, BZ#1401690, BZ#1401752, BZ#1401753, BZ#1401754, BZ#1402560, 
-  BZ#1410477, BZ#1411390, BZ#1411392, BZ#1411393, BZ#1411452, BZ#1420224) Security 
-  Fix(es): * An integer overflow flaw leading to a heap-based buffer overflow was 
-  found in libXpm. An attacker could use this flaw to crash an application using 
-  libXpm via a specially crafted XPM file. (CVE-2016-10164) * It was discovered 
-  that libXdmcp used weak entropy to generate session keys. On a multi-user system 
-  using xdmcp, a local attacker could potentially use information available from 
-  the process list to brute force the key, allowing them to hijack other users' 
-  sessions. (CVE-2017-2625) * It was discovered that libICE used a weak entropy to 
-  generate keys. A local attacker could potentially use this flaw for session 
-  hijacking using the information available from the process list. (CVE-2017-2626) 
-  Red Hat would like to thank Eric Sesterhenn (X41 D-Sec GmbH) for reporting 
-  CVE-2017-2625 and CVE-2017-2626. Additional Changes: For detailed information on 
-  changes in this release, see the Red Hat Enterprise Linux 7.4 Release Notes 
-  linked from the References section. "); 
-  script_tag(name: "affected", value: "X.org X11 libraries on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'X.org X11 libraries'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The X11 (Xorg) libraries provide library
+  routines that are used within all X Window applications. The following packages
+  have been upgraded to a later upstream version: libX11 (1.6.5), libXaw (1.0.13),
+  libXdmcp (1.1.2), libXfixes (5.0.3), libXfont (1.5.2), libXi (1.7.9), libXpm
+  (3.5.12), libXrandr (1.5.1), libXrender (0.9.10), libXt (1.1.5), libXtst
+  (1.2.3), libXv (1.0.11), libXvMC (1.0.10), libXxf86vm (1.1.4), libdrm (2.4.74),
+  libepoxy (1.3.1), libevdev (1.5.6), libfontenc (1.1.3), libvdpau (1.1.1),
+  libwacom (0.24), libxcb (1.12), libxkbfile (1.0.9), mesa (17.0.1),
+  mesa-private-llvm (3.9.1), xcb-proto (1.12), xkeyboard-config (2.20),
+  xorg-x11-proto-devel (7.7). (BZ#1401667, BZ#1401668, BZ#1401669, BZ#1401670,
+  BZ#1401671, BZ#1401672, BZ#1401673, BZ#1401675, BZ#1401676, BZ#1401677,
+  BZ#1401678, BZ#1401679, BZ#1401680, BZ#1401681, BZ#1401682, BZ#1401683,
+  BZ#1401685, BZ#1401690, BZ#1401752, BZ#1401753, BZ#1401754, BZ#1402560,
+  BZ#1410477, BZ#1411390, BZ#1411392, BZ#1411393, BZ#1411452, BZ#1420224) Security
+  Fix(es): * An integer overflow flaw leading to a heap-based buffer overflow was
+  found in libXpm. An attacker could use this flaw to crash an application using
+  libXpm via a specially crafted XPM file. (CVE-2016-10164) * It was discovered
+  that libXdmcp used weak entropy to generate session keys. On a multi-user system
+  using xdmcp, a local attacker could potentially use information available from
+  the process list to brute force the key, allowing them to hijack other users'
+  sessions. (CVE-2017-2625) * It was discovered that libICE used a weak entropy to
+  generate keys. A local attacker could potentially use this flaw for session
+  hijacking using the information available from the process list. (CVE-2017-2626)
+  Red Hat would like to thank Eric Sesterhenn (X41 D-Sec GmbH) for reporting
+  CVE-2017-2625 and CVE-2017-2626. Additional Changes: For detailed information on
+  changes in this release, see the Red Hat Enterprise Linux 7.4 Release Notes
+  linked from the References section. ");
+  script_tag(name:"affected", value:"X.org X11 libraries on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:1865-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00008.html");
+  script_xref(name:"RHSA", value:"2017:1865-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00008.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -625,6 +625,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0824_2.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_0824_2.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # SuSE Update for MozillaFirefox SUSE-SU-2014:0824-2 (MozillaFirefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851066");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 19:19:54 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1533", "CVE-2014-1534", "CVE-2014-1536", "CVE-2014-1537",
                 "CVE-2014-1538", "CVE-2014-1541", "CVE-2014-1545");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox SUSE-SU-2014:0824-2 (MozillaFirefox)");
-  script_tag(name:"summary", value:"Check the version of MozillaFirefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox was updated to version 24.6.0 to fix six security issues:
 
@@ -55,7 +56,7 @@ if(description)
 
   Please reboot the system after installing this update.");
 
-  script_xref(name:"URL", value:"  https://www.mozilla.org/security/announce/");
+  script_xref(name:"URL", value:"https://www.mozilla.org/security/announce/");
 
   script_tag(name:"affected", value:"MozillaFirefox on SUSE Linux Enterprise Server 11 SP1 LTSS");
   script_tag(name:"solution", value:"Please install the updated packages.");
@@ -66,6 +67,7 @@ if(description)
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=SLES11\.0SP1");
+
   exit(0);
 }
 

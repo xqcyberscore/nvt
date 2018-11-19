@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843229");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-30 05:12:56 +0200 (Fri, 30 Jun 2017)");
   script_cve_id("CVE-2017-7374", "CVE-2017-1000363", "CVE-2017-5577", "CVE-2017-7294",
                   "CVE-2017-8890", "CVE-2017-9074", "CVE-2017-9075", "CVE-2017-9076", "CVE-2017-9077",
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-hwe USN-3342-2");
-  script_tag(name:"summary", value:"Check the version of linux-hwe");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-hwe'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3342-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.10. This update provides the corresponding updates

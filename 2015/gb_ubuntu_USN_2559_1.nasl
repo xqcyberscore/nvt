@@ -26,15 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842162");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 07:09:25 +0200 (Thu, 09 Apr 2015)");
   script_cve_id("CVE-2015-2806");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libtasn1-6 USN-2559-1");
-  script_tag(name:"summary", value:"Check the version of libtasn1-6");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libtasn1-6'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Hanno B&#246 ck discovered that Libtasn1
 incorrectly handled certain ASN.1 data. A remote attacker could possibly exploit

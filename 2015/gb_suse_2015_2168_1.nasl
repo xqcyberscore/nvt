@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_2168_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_2168_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_7_1-ibm SUSE-SU-2015:2168-1 (java-1_7_1-ibm)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851137");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 06:33:09 +0100 (Thu, 03 Dec 2015)");
   script_cve_id("CVE-2015-0204", "CVE-2015-0458", "CVE-2015-0459", "CVE-2015-0469",
                 "CVE-2015-0477", "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488",
@@ -42,7 +42,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_7_1-ibm SUSE-SU-2015:2168-1 (java-1_7_1-ibm)");
-  script_tag(name:"summary", value:"Check the version of java-1_7_1-ibm");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_7_1-ibm'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The java-1_7_1-ibm package was updated to versioin 7.1-3.20 to fix several
   security and non security issues:

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_memory_corruption_vuln_nov17_win.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_adobe_dng_converter_memory_corruption_vuln_nov17_win.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Adobe DNG Converter Memory Corruption Vulnerability Nov17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:dng_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812211");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-11295");
   script_bugtraq_id(101828);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 16:38:07 +0530 (Thu, 16 Nov 2017)");
   script_name("Adobe DNG Converter Memory Corruption Vulnerability Nov17 (Windows)");
 
@@ -64,16 +64,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_dng_converter_detect_win.nasl");
   script_mandatory_keys("Adobe/DNG/Converter/Win/Version");
-  script_xref(name:"URL", value:"http://supportdownloads.adobe.com.");
+  script_xref(name:"URL", value:"http://supportdownloads.adobe.com");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-adVer = "";
-path = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 adVer = infos['version'];

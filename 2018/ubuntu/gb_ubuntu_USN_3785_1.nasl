@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3785_1.nasl 12193 2018-11-02 03:47:13Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3785_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for imagemagick USN-3785-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843653");
-  script_version("$Revision: 12193 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 04:47:13 +0100 (Fri, 02 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 08:17:46 +0200 (Fri, 05 Oct 2018)");
   script_cve_id("CVE-2018-14434", "CVE-2018-14435", "CVE-2018-14436", "CVE-2018-14437",
                 "CVE-2018-16640", "CVE-2018-16750", "CVE-2018-14551", "CVE-2018-16323",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3785-1");
-  script_tag(name:"summary", value:"Check the version of imagemagick");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'imagemagick'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is
 present on the target host.");
   script_tag(name:"insight", value:"Due to a large number of issues discovered

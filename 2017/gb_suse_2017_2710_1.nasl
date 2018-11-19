@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2710_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2017_2710_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaThunderbird openSUSE-SU-2017:2710-1 (MozillaThunderbird)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851626");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 10:28:21 +0200 (Thu, 12 Oct 2017)");
   script_cve_id("CVE-2017-7793", "CVE-2017-7805", "CVE-2017-7810", "CVE-2017-7814",
                 "CVE-2017-7818", "CVE-2017-7819", "CVE-2017-7823", "CVE-2017-7824",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaThunderbird openSUSE-SU-2017:2710-1 (MozillaThunderbird)");
-  script_tag(name:"summary", value:"Check the version of MozillaThunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaThunderbird'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Mozilla Thunderbird was updated to 52.4.0 (boo#1060445)
 

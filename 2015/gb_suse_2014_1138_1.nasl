@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1138_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_1138_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2014:1138-1 (kernel)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850975");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:20:35 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-1860", "CVE-2013-4162", "CVE-2013-7266", "CVE-2013-7267", "CVE-2013-7268", "CVE-2013-7269", "CVE-2013-7270", "CVE-2013-7271", "CVE-2014-0203", "CVE-2014-3144", "CVE-2014-3145", "CVE-2014-3917", "CVE-2014-4508", "CVE-2014-4652", "CVE-2014-4653", "CVE-2014-4654", "CVE-2014-4655", "CVE-2014-4656", "CVE-2014-4667", "CVE-2014-4699", "CVE-2014-4943", "CVE-2014-5077");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2014:1138-1 (kernel)");
-  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise Server 11 SP1 LTSS received a roll up update to
   fix several security and non-security issues.
@@ -88,7 +89,7 @@ if(description)
   * CVE-2014-4508: arch/x86/kernel/entry_32.S in the Linux kernel
   through 3.15.1 on 32-bit x86 platforms, ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 11 SP1 LTSS");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:1138_1");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.2.nasl 10647 2018-07-27 07:07:45Z cfischer $
+# $Id: GSHB_SYS.2.2.2.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.2 Clients unter Windows 8.1
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109037");
-  script_version("$Revision: 10647 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:07:45 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 07:42:28 +0200 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('SYS.2.2.2 Clients unter Windows 8.1');
-  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_2_Clients_unter_Windows_8_1.html ");
+  script_xref(name:"URL", value:"https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_2_Clients_unter_Windows_8_1.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");

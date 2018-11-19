@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842762");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 16:25:21 +0200 (Tue, 17 May 2016)");
   script_cve_id("CVE-2016-4557", "CVE-2016-2184", "CVE-2016-2185", "CVE-2016-2186",
                 "CVE-2016-2188", "CVE-2016-3136", "CVE-2016-3137", "CVE-2016-3138",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2965-1");
-  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Jann Horn discovered that the extended
   Berkeley Packet Filter (eBPF) implementation in the Linux kernel did not
@@ -89,7 +90,7 @@ if(description)
   perform the destruction of inet device objects properly. An attacker in a
   guest OS could use this to cause a denial of service (networking outage) ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"linux on Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 

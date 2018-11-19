@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2384_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2384_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-2384-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842009");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:46 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2012-5615", "CVE-2014-4274", "CVE-2014-4287", "CVE-2014-6463",
                 "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6478", "CVE-2014-6484",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
   script_name("Ubuntu Update for mysql-5.5 USN-2384-1");
 
-  script_tag(name:"summary", value:"Check the version of mysql-5.5");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql-5.5'
+  package(s) announced via the referenced advisory.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

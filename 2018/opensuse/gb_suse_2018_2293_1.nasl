@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2293_1.nasl 12280 2018-11-09 10:01:52Z cfischer $
+# $Id: gb_suse_2018_2293_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2018:2293-1 (mysql-community-server)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851845");
-  script_version("$Revision: 12280 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 11:01:52 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:00:24 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-0739", "CVE-2018-2767", "CVE-2018-3058", "CVE-2018-3062", "CVE-2018-3064", "CVE-2018-3066", "CVE-2018-3070", "CVE-2018-3081");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mysql-community-server openSUSE-SU-2018:2293-1 (mysql-community-server)");
-  script_tag(name:"summary", value:"Check the version of mysql-community-server");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mysql-community-server'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for mysql-community-server to version 5.6.41 fixes the
   following issues:
@@ -88,7 +89,7 @@ if(description)
 
   - CVE-2018-2767: Fixed a difficult to exploit  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"mysql-community-server on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871506");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:27:06 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-5600", "CVE-2015-6563", "CVE-2015-6564");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for openssh RHSA-2015:2088-06");
-  script_tag(name: "summary", value: "Check the version of openssh");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "OpenSSH is OpenBSD's SSH (Secure Shell)
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssh'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSH is OpenBSD's SSH (Secure Shell)
 protocol implementation. These packages include the core files necessary for both
 the OpenSSH client and server.
 
@@ -64,18 +64,18 @@ conduct a brute-force attack to unlock keys in the ssh-agent. (BZ#1238238)
 
 This update fixes the following bugs:
 
-* Previously, the sshd_config(5) man page was misleading and could thus
+  * Previously, the sshd_config(5) man page was misleading and could thus
 confuse the user. This update improves the man page text to clearly
 describe the AllowGroups feature. (BZ#1150007)
 
-* The limit for the function for restricting the number of files listed
+  * The limit for the function for restricting the number of files listed
 using the wildcard character (*) that prevents the Denial of Service (DoS)
 for both server and client was previously set too low. Consequently, the
 user reaching the limit was prevented from listing a directory with a large
 number of files over Secure File Transfer Protocol (SFTP). This update
 increases the aforementioned limit, thus fixing this bug. (BZ#1160377)
 
-* When the ForceCommand option with a pseudoterminal was used and the
+  * When the ForceCommand option with a pseudoterminal was used and the
 MaxSession option was set to '2', multiplexed SSH connections did not work
 as expected. After the user attempted to open a second multiplexed
 connection, the attempt failed if the first connection was still open. This
@@ -83,15 +83,15 @@ update modifies OpenSSH to issue only one audit message per session, and
 the user is thus able to open two multiplexed connections in this
 situation. (BZ#1199112)
 
-* The ssh-copy-id utility failed if the account on the remote server did
+  * The ssh-copy-id utility failed if the account on the remote server did
 not use an sh-like shell. Remote commands have been modified to run in an
-sh-like shell, and ssh-copy-id now works also with non-sh-like she ... 
+sh-like shell, and ssh-copy-id now works also with non-sh-like she ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openssh on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2088-06");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00018.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"openssh on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2088-06");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -149,6 +149,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

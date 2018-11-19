@@ -23,19 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871054");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-10-18 09:13:58 +0530 (Fri, 18 Oct 2013)");
   script_cve_id("CVE-2013-4396");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_name("RedHat Update for xorg-x11-server RHSA-2013:1426-01");
 
-  tag_insight = "X.Org is an open source implementation of the X Window System. It provides
+
+  script_tag(name:"affected", value:"xorg-x11-server on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"X.Org is an open source implementation of the X Window System. It provides
 the basic low-level functionality that full-fledged graphical user
 interfaces are designed upon.
 
@@ -48,25 +52,14 @@ Red Hat would like to thank the X.Org security team for reporting this
 issue. Upstream acknowledges Pedro Ribeiro as the original reporter.
 
 All xorg-x11-server users are advised to upgrade to these updated packages,
-which contain a backported patch to correct this issue.
-";
-
-  tag_affected = "xorg-x11-server on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+which contain a backported patch to correct this issue.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1426-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00008.html");
-  script_tag(name: "summary" , value: "Check for the Version of xorg-x11-server");
+  script_xref(name:"RHSA", value:"2013:1426-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-October/msg00008.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xorg-x11-server'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -111,7 +104,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -167,6 +160,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

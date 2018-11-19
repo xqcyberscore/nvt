@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3315-01_kernel.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_3315-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:3315-01
 #
@@ -27,40 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812318");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-01 12:17:14 +0100 (Fri, 01 Dec 2017)");
   script_cve_id("CVE-2017-1000380");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:3315-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "The kernel packages contain the Linux 
-  kernel, the core of any Linux operating system. These updated kernel packages 
-  include several security issues and numerous bug fixes, some of which you can 
-  see below. Space precludes documenting all of these bug fixes in this advisory. 
-  To see the complete list of bug fixes, users are directed to the related 
-  Knowledge Article: https://access.redhat.com/articles/3253081
-  Security Fix(es): * It was found that the timer functionality in the Linux 
-  kernel ALSA subsystem is prone to a race condition between read and ioctl system 
-  call handlers, resulting in an uninitialized memory disclosure to user space. A 
-  local user could use this flaw to read information belonging to other users. 
-  (CVE-2017-1000380, Moderate) Red Hat would like to thank Alexander Potapenko 
-  (Google) for reporting this issue. "); 
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
+  kernel, the core of any Linux operating system. These updated kernel packages
+  include several security issues and numerous bug fixes, some of which you can
+  see below. Space precludes documenting all of these bug fixes in this advisory.
+  To see the complete list of bug fixes, users are directed to the related
+  Knowledge Article.
+  Security Fix(es): * It was found that the timer functionality in the Linux
+  kernel ALSA subsystem is prone to a race condition between read and ioctl system
+  call handlers, resulting in an uninitialized memory disclosure to user space. A
+  local user could use this flaw to read information belonging to other users.
+  (CVE-2017-1000380, Moderate) Red Hat would like to thank Alexander Potapenko
+  (Google) for reporting this issue. ");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:3315-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-November/msg00048.html");
+  script_xref(name:"RHSA", value:"2017:3315-01");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00048.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/3253081");
 
   exit(0);
 }
@@ -178,6 +180,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

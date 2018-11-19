@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1885_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_suse_2017_1885_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xorg-x11-server openSUSE-SU-2017:1885-1 (xorg-x11-server)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851581");
-  script_version("$Revision: 12291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-16 07:24:07 +0200 (Sun, 16 Jul 2017)");
   script_cve_id("CVE-2017-10971", "CVE-2017-10972");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xorg-x11-server openSUSE-SU-2017:1885-1 (xorg-x11-server)");
-  script_tag(name:"summary", value:"Check the version of xorg-x11-server");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xorg-x11-server'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for xorg-x11-server fixes the following issues:
 

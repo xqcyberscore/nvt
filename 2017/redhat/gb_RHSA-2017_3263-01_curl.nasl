@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3263-01_curl.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_3263-01_curl.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for curl RHSA-2017:3263-01
 #
@@ -27,37 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812308");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 07:18:38 +0100 (Tue, 28 Nov 2017)");
   script_cve_id("CVE-2017-1000257");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for curl RHSA-2017:3263-01");
-  script_tag(name: "summary", value: "Check the version of curl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The curl packages provide the libcurl
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'curl'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The curl packages provide the libcurl
 library and the curl utility for downloading files from servers using various
 protocols, including HTTP, FTP, and LDAP.
 
 Security Fix(es):
 
-* A buffer overrun flaw was found in the IMAP handler of libcurl. By
+  * A buffer overrun flaw was found in the IMAP handler of libcurl. By
 tricking an unsuspecting user into connecting to a malicious IMAP server,
 an attacker could exploit this flaw to potentially cause information
 disclosure or crash the application. (CVE-2017-1000257)
 
 Red Hat would like to thank the Curl project for reporting this issue.
 Upstream acknowledges Brian Carpenter and the OSS-Fuzz project as the
-original reporters.
-");
-  script_tag(name: "affected", value: "curl on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+original reporters.");
+  script_tag(name:"affected", value:"curl on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:3263-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-November/msg00031.html");
+  script_xref(name:"RHSA", value:"2017:3263-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00031.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -103,6 +102,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

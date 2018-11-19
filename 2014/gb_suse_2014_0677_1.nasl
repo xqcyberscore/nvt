@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0677_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_0677_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for kernel openSUSE-SU-2014:0677-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850586");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 14:37:15 +0530 (Mon, 26 May 2014)");
   script_cve_id("CVE-2013-4254", "CVE-2013-4579", "CVE-2013-6885", "CVE-2014-0101",
                 "CVE-2014-0196", "CVE-2014-0691", "CVE-2014-1438", "CVE-2014-1444",
@@ -108,12 +108,13 @@ if(description)
   - Revert 'Delete
   patches.fixes/xfs-fix-xfs_buf_find-oops-on-blocks-beyond-the-filesyst ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"openSUSE-SU", value:"2014:0677_1");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

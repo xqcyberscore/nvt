@@ -26,16 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871285");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-11-05 06:22:00 +0100 (Wed, 05 Nov 2014)");
   script_cve_id("CVE-2014-3675", "CVE-2014-3676", "CVE-2014-3677");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for shim RHSA-2014:1801-01");
-  script_tag(name: "summary", value: "Check the version of shim");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Shim is the initial UEFI bootloader that handles chaining to a trusted full
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'shim'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Shim is the initial UEFI bootloader that handles chaining to a trusted full
 bootloader under secure boot environments.
 
 A heap-based buffer overflow flaw was found the way shim parsed certain
@@ -57,14 +58,13 @@ issues.
 
 All shim users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-");
-  script_tag(name: "affected", value: "shim on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+rebooted for this update to take effect.");
+  script_tag(name:"affected", value:"shim on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:1801-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-November/msg00012.html");
+  script_xref(name:"RHSA", value:"2014:1801-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-November/msg00012.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -109,6 +109,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

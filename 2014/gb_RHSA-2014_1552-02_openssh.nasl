@@ -26,16 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871266");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 06:06:53 +0200 (Wed, 15 Oct 2014)");
   script_cve_id("CVE-2014-2532", "CVE-2014-2653");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("RedHat Update for openssh RHSA-2014:1552-02");
-  script_tag(name: "summary", value: "Check the version of openssh");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "OpenSSH is OpenBSD's SSH (Secure Shell) protocol implementation.
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssh'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSH is OpenBSD's SSH (Secure Shell) protocol implementation.
 These packages include the core files necessary for both the OpenSSH client
 and server.
 
@@ -50,7 +51,7 @@ flaw to bypass intended environment variable restrictions. (CVE-2014-2532)
 
 This update also fixes the following bugs:
 
-* Based on the SP800-131A information security standard, the generation of
+  * Based on the SP800-131A information security standard, the generation of
 a digital signature using the Digital Signature Algorithm (DSA) with the
 key size of 1024 bits and RSA with the key size of less than 2048 bits is
 disallowed after the year 2013. After this update, ssh-keygen no longer
@@ -58,13 +59,13 @@ generates keys with less than 2048 bits in FIPS mode. However, the sshd
 service accepts keys of size 1024 bits as well as larger keys for
 compatibility reasons. (BZ#993580)
 
-* Previously, the openssh utility incorrectly set the oom_adj value to -17
+  * Previously, the openssh utility incorrectly set the oom_adj value to -17
 for all of its children processes. This behavior was incorrect because the
 children processes were supposed to have this value set to 0. This update
 applies a patch to fix this bug and oom_adj is now properly set to 0 for
 all children processes as expected. (BZ#1010429)
 
-* Previously, if the sshd service failed to verify the checksum of an
+  * Previously, if the sshd service failed to verify the checksum of an
 installed FIPS module using the fipscheck library, the information about
 this failure was only provided at the standard error output of sshd. As a
 consequence, the user could not notice this message and be uninformed when
@@ -72,26 +73,26 @@ a system had not been properly configured for FIPS mode. To fix this bug,
 this behavior has been changed and sshd now sends such messages via the
 syslog service. (BZ#1020803)
 
-* When keys provided by the pkcs11 library were removed from the ssh agent
+  * When keys provided by the pkcs11 library were removed from the ssh agent
 using the 'ssh-add -e' command, the user was prompted to enter a PIN.
 With this update, a patch has been applied to allow the user to remove the
 keys provided by pkcs11 without the PIN. (BZ#1042519)
 
 In addition, this update adds the following enhancements:
 
-* With this update, ControlPersist has been added to OpenSSH. The option in
+  * With this update, ControlPersist has been added to OpenSSH. The option in
 conjunction with the ControlMaster configuration directive specifies that
-the master connection remains open in the background  ... 
+the master connection remains open in the background  ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openssh on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"openssh on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:1552-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-October/msg00020.html");
+  script_xref(name:"RHSA", value:"2014:1552-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-October/msg00020.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -142,6 +143,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

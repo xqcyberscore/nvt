@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1669_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_1669_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2014:1669-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850626");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-12-20 05:55:16 +0100 (Sat, 20 Dec 2014)");
   script_cve_id("CVE-2013-2889", "CVE-2013-2891", "CVE-2014-3181", "CVE-2014-3182",
                 "CVE-2014-3184", "CVE-2014-3185", "CVE-2014-3186", "CVE-2014-4171",
@@ -42,7 +42,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SuSE Update for the openSUSE-SU-2014:1669-1 (kernel)");
-  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 12.3 kernel was updated to fix security issues:
 
@@ -98,7 +99,7 @@ if(description)
 
   CVE-2014-3185:  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"kernel on openSUSE 12.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2014:1669_1");

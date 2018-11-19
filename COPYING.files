@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 16 Nov 2018 09:57:19 +0100
+# Automatically created on:  Mon, 19 Nov 2018 10:25:46 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39221,6 +39221,7 @@
 2018/debian/deb_4337.nasl: GPLv2+
 2018/debian/deb_4338.nasl: GPLv2+
 2018/debian/deb_4339.nasl: GPLv2+
+2018/debian/deb_4340.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39974,6 +39975,7 @@
 2018/enalean/gb_tuleap_sql_injection.nasl: GPLv2+
 2018/epignosis/gb_efront_cms_mult_vuln.nasl: GPLv2+
 2018/eq-3/gb_homematic_mult_vuln.nasl: GPLv2+
+2018/evernote/gb_evernote_for_windows_xss_vuln.nasl: GPLv2+
 2018/exim/gb_exim_CVE-2018-6789_ver.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_01ad8b3946_heketi_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2017_0ad0e2f390_webkitgtk4_fc26.nasl: GPLv2+
@@ -41444,9 +41446,11 @@
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_info_disc_vuln_oct18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_multiple_vuln.nasl: GPLv2+
+2018/microsoft/gb_asp_dotnet_core_tampering_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_sec_bypass_vuln_july18.nasl: GPLv2+
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_sep18_win.nasl: GPLv2+
+2018/microsoft/gb_dotnet_core_sdk_tampering_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_flash_player_for_ie_edge_apsb18-05.nasl: GPLv2+
 2018/microsoft/gb_lync_security_bypass_vuln_macosx.nasl: GPLv2+
 2018/microsoft/gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl: GPLv2+
@@ -41644,6 +41648,7 @@
 2018/microsoft/gb_ms_kb4093118.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4093119.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4093227.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4093430.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4095872.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4095873.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4095874.nasl: GPLv2+
@@ -41735,6 +41740,10 @@
 2018/microsoft/gb_ms_kb4462926.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4462937.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4464330.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4465659.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4465660.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4465661.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4465663.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467107.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467680.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467686.nasl: GPLv2+
@@ -42659,6 +42668,7 @@
 2018/phpmailer_project/gb_phpmailer_eol.nasl: GPLv2+
 2018/phpmailer_project/gb_phpmailer_html2text_lib_rce.nasl: GPLv2+
 2018/phpmailer_project/gb_phpmailer_long_header_dos.nasl: GPLv2+
+2018/phpmailer_project/gb_phpmailer_object_injection_vuln.nasl: GPLv2+
 2018/phpmailer_project/gb_phpmailer_sendmailsend_cmd_rce.nasl: GPLv2+
 2018/phpmailer_project/gb_phpmailer_smtp_crlf_inj.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_csrf_vuln_PMASA-2017-9_lin.nasl: GPLv2+
@@ -43263,6 +43273,7 @@
 2018/ubuntu/gb_ubuntu_USN_3821_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3821_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3822_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3824_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_543_open_redirect_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
@@ -44017,6 +44028,7 @@ gb_etcd_detect.nasl: GPLv2+
 gb_ethernetip_detect.nasl: GPLv2+
 gb_eureka_email_detect.nasl: GPLv2+
 gb_evalsmsi_detect.nasl: GPLv2+
+gb_evernote_for_windows_detect.nasl: GPLv2+
 gb_evolution_data_server_detect.nasl: GPLv2+
 gb_evolution_script_detect.nasl: GPLv2+
 gb_exim_detect.nasl: GPLv2+
@@ -60418,6 +60430,7 @@ gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_sep18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln_active.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_sql_inj_vuln.nasl: GPLv2+
+gsf/2018/arcserve/gb_arcserve_mult_vuln.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0029.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0030.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0032.nasl: GPLv2+
@@ -60961,6 +60974,7 @@ gsf/2018/f5/gb_f5_big_ip_K55129614.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K55225440.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62201098.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K62201745.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62750376.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K64208870.nasl: GPLv2+
@@ -60998,6 +61012,7 @@ gsf/2018/fortinet/gb_fortianalyzer_FG-IR-17-019.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-17-305.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-014.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-022.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-121.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-17-305.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-006.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-014.nasl: GPLv2+
@@ -61011,6 +61026,8 @@ gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-262.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-302.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-027.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-085.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-101.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-157.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
 gsf/2018/harmonic/gb_harmonic_nsg_9000_devices_mult_vuln.nasl: GPLv2+

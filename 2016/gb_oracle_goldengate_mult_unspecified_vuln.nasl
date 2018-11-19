@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 12383 2018-11-16 12:41:42Z cfischer $
 #
 # Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:goldengate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807249");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12383 $");
   script_cve_id("CVE-2016-0452", "CVE-2016-0451", "CVE-2016-0450");
   script_bugtraq_id(81122, 81125, 81117);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 13:41:42 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 13:49:29 +0530 (Fri, 12 Feb 2016)");
   script_name("Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)");
 
@@ -51,7 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle GoldenGate 11.2 and 12.1.2 on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

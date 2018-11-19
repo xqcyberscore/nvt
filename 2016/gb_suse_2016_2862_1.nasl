@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2862_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_2862_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2862-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851436");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:48 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5556", "CVE-2016-5568",
                 "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
@@ -97,13 +97,14 @@ if(description)
   + S8044199: Tests for RSA keys and key specifications
   +  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2016:2862_1");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"Check for the Version of java-1_8_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_8_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2985_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_2985_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2985-1 (java-1_8_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851438");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-03 05:43:39 +0100 (Sat, 03 Dec 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5556", "CVE-2016-5568",
                 "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for java-1_8_0-openjdk openSUSE-SU-2016:2985-1 (java-1_8_0-openjdk)");
-  script_tag(name:"summary", value:"Check the version of java-1_8_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_8_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"OpenJDK Java was updated to jdk8u111 (icedtea 3.2.0) to fix the following
   issues:
@@ -98,7 +99,7 @@ if(description)
   + S8044199: Tests for RSA keys and key specifications
   + S8044772: ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"java-1_8_0-openjdk on openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1463_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1463_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for perl-DBD-mysql openSUSE-SU-2018:1463-1 (perl-DBD-mysql)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851770");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-30 05:47:42 +0200 (Wed, 30 May 2018)");
   script_cve_id("CVE-2017-10788", "CVE-2017-10789", "CVE-2015-3152");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for perl-DBD-mysql openSUSE-SU-2018:1463-1 (perl-DBD-mysql)");
-  script_tag(name:"summary", value:"Check the version of perl-DBD-mysql");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'perl-DBD-mysql'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"This update for perl-DBD-mysql fixes the following issues:

@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Kexec allows for booting a Linux kernel from the context of an already
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-December/msg00007.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870730");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-07-09 10:56:37 +0530 (Mon, 09 Jul 2012)");
+  script_cve_id("CVE-2011-3588", "CVE-2011-3589", "CVE-2011-3590");
+  script_tag(name:"cvss_base", value:"5.7");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:N/A:N");
+  script_xref(name:"RHSA", value:"2011:1532-03");
+  script_name("RedHat Update for kexec-tools RHSA-2011:1532-03");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kexec-tools'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"kexec-tools on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Kexec allows for booting a Linux kernel from the context of an already
   running kernel.
 
   Kdump used the SSH (Secure Shell) &quot;StrictHostKeyChecking=no&quot; option when
@@ -58,37 +82,7 @@ tag_insight = "Kexec allows for booting a Linux kernel from the context of an al
 
   All kexec-tools users should upgrade to this updated package, which
   contains backported patches to resolve these issues and add these
-  enhancements.";
-
-tag_affected = "kexec-tools on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-December/msg00007.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870730");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-07-09 10:56:37 +0530 (Mon, 09 Jul 2012)");
-  script_cve_id("CVE-2011-3588", "CVE-2011-3589", "CVE-2011-3590");
-  script_tag(name:"cvss_base", value:"5.7");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:N/A:N");
-  script_xref(name: "RHSA", value: "2011:1532-03");
-  script_name("RedHat Update for kexec-tools RHSA-2011:1532-03");
-
-  script_tag(name: "summary" , value: "Check for the Version of kexec-tools");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  enhancements.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -118,6 +112,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

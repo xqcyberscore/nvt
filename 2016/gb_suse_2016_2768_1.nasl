@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2768_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_2768_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for curl openSUSE-SU-2016:2768-1 (curl)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851432");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 05:47:41 +0100 (Fri, 11 Nov 2016)");
   script_cve_id("CVE-2016-7167", "CVE-2016-8615", "CVE-2016-8616", "CVE-2016-8617",
                 "CVE-2016-8618", "CVE-2016-8619", "CVE-2016-8620", "CVE-2016-8621",
@@ -69,7 +69,8 @@ if(description)
 
   script_xref(name:"openSUSE-SU", value:"2016:2768_1");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"Check for the Version of curl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'curl'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3761_2.nasl 11391 2018-09-14 14:27:38Z cfischer $
+# $Id: gb_ubuntu_USN_3761_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for firefox USN-3761-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843635");
-  script_version("$Revision: 11391 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 16:27:38 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-14 07:35:24 +0200 (Fri, 14 Sep 2018)");
   script_cve_id("CVE-2018-12375", "CVE-2018-12376", "CVE-2018-12377", "CVE-2018-12378",
                 "CVE-2018-12383");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3761-2");
-  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"USN-3761-1 fixed vulnerabilities in Firefox.

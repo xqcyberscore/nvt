@@ -29,14 +29,15 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.831559");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:21:06 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2012-0866", "CVE-2012-0868");
   script_xref(name:"MDVSA", value:"2012:027");
   script_name("Mandriva Update for postgresql8.3 MDVSA-2012:027 (postgresql8.3)");
 
-  script_tag(name:"summary", value:"Check for the Version of postgresql8.3");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql8.3'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

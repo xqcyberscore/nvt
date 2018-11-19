@@ -23,34 +23,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871165");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 09:14:06 +0530 (Mon, 12 May 2014)");
   script_cve_id("CVE-2013-6383", "CVE-2014-0077", "CVE-2014-2523");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for kernel RHSA-2014:0475-01");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A flaw was found in the way the Linux kernel's netfilter connection
+  * A flaw was found in the way the Linux kernel's netfilter connection
 tracking implementation for Datagram Congestion Control Protocol (DCCP)
 packets used the skb_header_pointer() function. A remote attacker could use
 this flaw to send a specially crafted DCCP packet to crash the system or,
 potentially, escalate their privileges on the system. (CVE-2014-2523,
 Important)
 
-* A flaw was found in the way the Linux kernel's Adaptec RAID controller
+  * A flaw was found in the way the Linux kernel's Adaptec RAID controller
 (aacraid) checked permissions of compat IOCTLs. A local attacker could use
 this flaw to bypass intended security restrictions. (CVE-2013-6383,
 Moderate)
 
-* A flaw was found in the way the handle_rx() function handled large
+  * A flaw was found in the way the handle_rx() function handled large
 network packets when mergeable buffers were disabled. A privileged guest
 user could use this flaw to crash the host or corrupt QEMU process memory
 on the host, which could potentially result in arbitrary code execution on
@@ -64,24 +67,14 @@ References section.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-";
-
-  tag_affected = "kernel on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+rebooted for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0475-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-May/msg00006.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"RHSA", value:"2014:0475-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-May/msg00006.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -192,6 +185,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

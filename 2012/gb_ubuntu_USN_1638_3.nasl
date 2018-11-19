@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1638_3.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1638_3.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # Ubuntu Update for firefox USN-1638-3
 #
@@ -32,8 +32,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1638-3/");
   script_oid("1.3.6.1.4.1.25623.1.0.841230");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12379 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 09:45:28 +0530 (Tue, 04 Dec 2012)");
   script_cve_id("CVE-2012-5842", "CVE-2012-5843", "CVE-2012-4202", "CVE-2012-4201",
                 "CVE-2012-5836", "CVE-2012-4203", "CVE-2012-4204", "CVE-2012-4205",
@@ -105,7 +105,7 @@ if(description)
 
   Gabor Krizsanits discovered that XMLHttpRequest objects created w ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

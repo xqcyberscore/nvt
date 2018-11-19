@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3350_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3350_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for poppler USN-3350-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843239");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:54:55 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-2820", "CVE-2017-7511", "CVE-2017-7515", "CVE-2017-9083",
                 "CVE-2017-9406", "CVE-2017-9408", "CVE-2017-9775");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for poppler USN-3350-1");
-  script_tag(name:"summary", value:"Check the version of poppler");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'poppler'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Aleksandar Nikolic discovered that poppler
   incorrectly handled JPEG 2000 images. If a user or automated system were tricked

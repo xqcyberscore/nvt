@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4055001.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4055001.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Microsoft .NET Framework DoS And Security Feature Bypass Vulnerability (KB4055001)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812724");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework DoS And Security Feature Bypass Vulnerability (KB4055001)");
 
@@ -71,20 +71,14 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4055001.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-key = "";
-item = "";
-path = "";
-dllVer = "";
 
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) <= 0){
   exit(0);

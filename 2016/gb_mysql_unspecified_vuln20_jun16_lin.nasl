@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808132");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12383 $");
   script_cve_id("CVE-2014-0386", "CVE-2014-0393", "CVE-2014-0402");
   script_bugtraq_id(64904, 64877, 64908);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 13:41:42 +0100 (Fri, 16 Nov 2018) $");
 
   script_tag(name:"creation_date", value:"2016-06-03 13:42:33 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities - 20 Jun16 (Linux)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL version 5.1.71 and
   earlier, 5.5.33 and earlier, and 5.6.13 and earlier on Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL" , value:"http://secunia.com/advisories/56491");
   script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");

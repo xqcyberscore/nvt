@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_0620_1.nasl 12288 2018-11-09 14:02:45Z cfischer $
+# $Id: gb_suse_2015_0620_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MySQL SUSE-SU-2015:0620-1 (MySQL)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850760");
-  script_version("$Revision: 12288 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:02:45 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:08:44 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2012-5615", "CVE-2014-0224", "CVE-2014-4274", "CVE-2014-4287",
                 "CVE-2014-6463", "CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6474",
@@ -43,7 +43,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MySQL SUSE-SU-2015:0620-1 (MySQL)");
-  script_tag(name:"summary", value:"Check the version of MySQL");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MySQL'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The MySQL datebase server was updated to 5.5.42, fixing various bugs and
   security issues.

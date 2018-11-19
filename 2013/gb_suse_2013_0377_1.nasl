@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0377_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2013_0377_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_7_0-openjdk openSUSE-SU-2013:0377-1 (java-1_7_0-openjdk)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-03/msg00001.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850419");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:35 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0424", "CVE-2013-0425", "CVE-2013-0426", "CVE-2013-0427",
                 "CVE-2013-0428", "CVE-2013-0429", "CVE-2013-0431", "CVE-2013-0432",
@@ -42,7 +42,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2013:0377_1");
   script_name("SuSE Update for java-1_7_0-openjdk openSUSE-SU-2013:0377-1 (java-1_7_0-openjdk)");
 
-  script_tag(name:"summary", value:"Check for the Version of java-1_7_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_7_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -157,7 +158,7 @@ if(description)
 
   - S7160951: [macosx] ActionListener called t ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

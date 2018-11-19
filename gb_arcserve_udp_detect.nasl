@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: gb_arcserve_udp_detect.nasl 12398 2018-11-19 07:18:06Z ckuersteiner $
 #
 # Arcserve UDP Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105294");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 12398 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 08:18:06 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 17:49:06 +0200 (Wed, 10 Jun 2015)");
   script_name("Arcserve UDP Detection");
 
@@ -44,15 +44,17 @@ if(description)
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8014);
+  script_require_ports("Services/www", 8014, 8015, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
+include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 cpe = 'cpe:/a:arcserve:arcserve_unified_data_protection';
 
@@ -95,7 +97,7 @@ function check_win()
 
   if( "arcserve" >!< buf || "getVersionInfoResponse" >!< buf || "buildNumber" >!< buf || "majorVersion>" >!< buf  ) return;
 
-  set_kb_item( name:"arcserve_udp/installed", value:TRUE );
+  set_kb_item( name:"arcserve_udp/detected", value:TRUE );
   set_kb_item( name:"arcserve_udp/soap_typ", value:'windows' );
   set_kb_item( name:"arcserve_udp/soap_raw_response", value:buf );
 
@@ -214,7 +216,7 @@ function check_lin()
 
   if( "arcserve" >!< buf || "getVersionInfoResponse" >!< buf || "buildNumber" >!< buf || "version>" >!< buf  ) return;
 
-  set_kb_item( name:"arcserve_udp/installed", value:TRUE );
+  set_kb_item( name:"arcserve_udp/detected", value:TRUE );
   set_kb_item( name:"arcserve_udp/soap_typ", value:'linux' );
   set_kb_item( name:"arcserve_udp/soap_raw_response", value:buf );
 
@@ -271,11 +273,79 @@ function check_lin()
 
 }
 
-url = "/";
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+res = http_get_cache(port: port, item: "/management/");
 
-if( "arcserve" >!< tolower( buf ) ) exit( 0 );
+if (res =~ "^HTTP/1\.[01] 302" && "/samlsso?SAMLRequest=" >< res) {
+  # 1st redirect to /samlsso\?SAMLRequest=...
+  url = eregmatch(pattern: "(/samlsso\?SAMLRequest=.*%3D)", string: res);
+  if (isnull(url[1]))
+    exit(0);
+  req = http_get(port: port, item: url[1]);
+  res = http_keepalive_send_recv(port: port, data: req);
 
-check_win();
-check_lin();
+  # Now this is the cookie we need
+  if (!cookie = get_cookie_from_header(buf: res, pattern: "(JSESSIONID=[^;]+)"))
+    exit(0);
+
+  # 2nd redirect to /commonauth\?sessionDataKey=...
+  url = eregmatch(pattern: "(/commonauth\?sessionDataKey=.*samlsso)", string: res);
+  if (isnull(url[1]))
+    exit(0);
+
+  headers = make_array("Cookie", cookie);
+  req = http_get_req(port: port, url: url[1], add_headers: headers);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  # 3rd redirect to /authenticationendpoint...
+  url = eregmatch(pattern: '(/authenticationendpoint[^\r\n]+)', string: res);
+  if (isnull(url[1]))
+    exit(0);
+
+  req = http_get_req(port: port, url: url[1], add_headers: headers);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  if ("<title>Arcserve Unified Data Protection</title>" >!< res)
+    exit(0);
+
+  version = "unknown";
+  set_kb_item(name: "arcserve_udp/detected", value: TRUE);
+
+  # <label class="login_copyright" style="margin-bottom:-5px">version 6.5.4175</label>
+  vers = eregmatch(pattern: '<label class="login_copyright"[^>]+>version ([0-9.]+)<', string: res);
+  if (!isnull(vers[1]))
+    version = vers[1];
+
+  # <label class="login_copyright">update 2 build 667</label>
+  update = eregmatch(pattern: '<label class="login_copyright">update ([0-9]+) build ([0-9]+)<', string: res);
+  if (!isnull(update[1])) {
+    set_kb_item(name: "arcserve_udp/update", value: update[1]);
+    extra += "Update:   " + update[1] + '\n';
+  }
+  if (!isnull(update[2])) {
+    set_kb_item(name: "arcserve_udp/build", value: update[2]);
+    extra += "Build:    " + update[2] + '\n';
+  }
+
+  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:arcserve:arcserve_unified_data_protection:");
+  if (!cpe)
+    cpe = 'cpe:/a:arcserve:arcserve_unified_data_protection';
+
+  register_product(cpe: cpe, location: "/", port: port, service: "www");
+
+  log_message(data: build_detection_report(app: "Arcserve UDP", version: version, install: "/", cpe: cpe,
+                                           concluded: vers[0], extra: extra),
+              port: port);
+  exit(0);
+}
+# for older versions (5.x and below)
+else {
+  url = "/";
+  buf = http_get_cache( item:url, port:port );
+
+  if( "arcserve" >!< tolower( buf ) ) exit( 0 );
+
+  check_win();
+  check_lin();
+}
+
+exit(0);

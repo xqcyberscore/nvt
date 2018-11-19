@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1690_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_1690_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for the SUSE-SU-2016:1690-1 (kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851358");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:27:13 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2014-9717", "CVE-2015-8816", "CVE-2015-8845", "CVE-2016-0758",
                 "CVE-2016-2053", "CVE-2016-2143", "CVE-2016-2184", "CVE-2016-2185",
@@ -42,7 +42,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the SUSE-SU-2016:1690-1 (kernel)");
-  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The SUSE Linux Enterprise 12 kernel was updated to 3.12.60 to receive
   various security and bugfixes.
@@ -96,7 +97,7 @@ if(description)
   dereference and system crash) via a crafted endpoints value in a USB
   device descriptor (bnc#9711 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"kernel on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

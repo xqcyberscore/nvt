@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1287_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2015_1287_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2015:1287-1 (Chromium)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850665");
-  script_version("$Revision: 12294 $");
+  script_version("$Revision: 12381 $");
   script_cve_id("CVE-2015-1270", "CVE-2015-1271", "CVE-2015-1272", "CVE-2015-1273",
                 "CVE-2015-1274", "CVE-2015-1275", "CVE-2015-1276", "CVE-2015-1277",
                 "CVE-2015-1278", "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281",
@@ -36,11 +36,12 @@ if(description)
                 "CVE-2015-5605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-11 11:55:23 +0530 (Tue, 11 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2015:1287-1 (Chromium)");
-  script_tag(name:"summary", value:"Check the version of Chromium");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Chromium'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Chromium was updated to 44.0.2403.89 to fix multiple security issues.
 

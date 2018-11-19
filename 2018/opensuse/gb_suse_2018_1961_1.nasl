@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1961_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1961_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852088");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12379 $");
   script_cve_id("CVE-2017-11337", "CVE-2017-11338", "CVE-2017-11339", "CVE-2017-11340", "CVE-2017-11553", "CVE-2017-11591", "CVE-2017-11592", "CVE-2017-11683", "CVE-2017-12955", "CVE-2017-12956", "CVE-2017-12957", "CVE-2017-14859", "CVE-2017-14860", "CVE-2017-14862", "CVE-2017-14864");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:43:16 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for exiv2 openSUSE-SU-2018:1961-1 (exiv2)");
   script_category(ACT_GATHER_INFO);
@@ -107,7 +107,7 @@ if(description)
 
   - CVE-2017-11553: Prevent illegal address access i ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"exiv2 on openSUSE Leap 15.0.");
 

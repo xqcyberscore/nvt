@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-049.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms09-049.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Wireless LAN AutoConfig Service Remote Code Execution Vulnerability (970710)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801481");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-06 10:44:13 +0100 (Mon, 06 Dec 2010)");
   script_cve_id("CVE-2009-1132");
   script_bugtraq_id(36223);
@@ -45,18 +45,16 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers attackers to crash an
-  affected system or execute arbitrary code via a malicious wireless transmitter.
-  Impact Level: System/Application");
+  affected system or execute arbitrary code via a malicious wireless transmitter.");
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 1/2 and prior.
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name:"insight", value:"The flaw is caused by a heap overflow error in the Windows Wireless LAN
   AutoConfig Service (wlansvc) when processing malformed frames.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms09-049.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-049.");
@@ -82,7 +80,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\L2sechc.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\L2sechc.dll");
 if(!sysVer){
   exit(0);
 }

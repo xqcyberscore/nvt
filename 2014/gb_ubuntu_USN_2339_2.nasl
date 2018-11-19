@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2339_2.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ubuntu_USN_2339_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for libgcrypt11 USN-2339-2
 #
@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841958");
-  script_version("$Revision: 11867 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-04 05:58:16 +0200 (Thu, 04 Sep 2014)");
   script_cve_id("CVE-2014-5270");
   script_tag(name:"cvss_base", value:"2.1");
@@ -48,7 +48,8 @@ recover private keys.");
 
   script_xref(name:"USN", value:"2339-2");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2339-2/");
-  script_tag(name:"summary", value:"Check for the Version of libgcrypt11");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libgcrypt11'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

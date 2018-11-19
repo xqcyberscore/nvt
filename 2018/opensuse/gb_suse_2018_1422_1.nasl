@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1422_1.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
+# $Id: gb_suse_2018_1422_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for icu openSUSE-SU-2018:1422-1 (icu)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851765");
-  script_version("$Revision: 12308 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-26 05:45:12 +0200 (Sat, 26 May 2018)");
   script_cve_id("CVE-2014-8146", "CVE-2014-8147", "CVE-2016-6293", "CVE-2017-14952",
                 "CVE-2017-15422", "CVE-2017-17484", "CVE-2017-7867", "CVE-2017-7868");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for icu openSUSE-SU-2018:1422-1 (icu)");
-  script_tag(name:"summary", value:"Check the version of icu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'icu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"icu was updated to fix two security issues.
@@ -89,7 +90,7 @@ on the target host.");
   - CVE-2017-15422: An integer overflow in icu during persian calendar date
   processing could ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"icu on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

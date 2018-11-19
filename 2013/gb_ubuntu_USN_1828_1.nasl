@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1828_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1828_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-lts-quantal USN-1828-1
 #
@@ -34,8 +34,8 @@ if(description)
   script_tag(name:"insight", value:"An flaw was discovered in the Linux kernel's perf_events interface. A local
   user could exploit this flaw to escalate privileges on the system.");
   script_oid("1.3.6.1.4.1.25623.1.0.841425");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 09:54:35 +0530 (Fri, 17 May 2013)");
   script_cve_id("CVE-2013-2094");
   script_tag(name:"cvss_base", value:"7.2");
@@ -46,7 +46,8 @@ if(description)
 
   script_xref(name:"USN", value:"1828-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1828-1/");
-  script_tag(name:"summary", value:"Check for the Version of linux-lts-quantal");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-lts-quantal'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

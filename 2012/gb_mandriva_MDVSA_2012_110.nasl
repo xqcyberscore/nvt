@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:110");
   script_oid("1.3.6.1.4.1.25623.1.0.831700");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-07-26 11:14:21 +0530 (Thu, 26 Jul 2012)");
   script_cve_id("CVE-2012-1949", "CVE-2012-1948", "CVE-2012-1950", "CVE-2012-1951",
                 "CVE-2012-1954", "CVE-2012-1953", "CVE-2012-1952", "CVE-2012-1955",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2012:110");
   script_name("Mandriva Update for mozilla MDVSA-2012:110 (mozilla)");
 
-  script_tag(name:"summary", value:"Check for the Version of mozilla");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mozilla'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
@@ -95,7 +96,7 @@ if(description)
   frame, and View background image) are disallowed in a javascript:
   URL but allowed in a data: URL, a ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

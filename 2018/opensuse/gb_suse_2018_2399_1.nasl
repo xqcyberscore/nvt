@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2399_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_2399_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2018:2399-1 (Security)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851858");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:32:49 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2018-3639", "CVE-2018-3640", "CVE-2018-3646");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Security openSUSE-SU-2018:2399-1 (Security)");
-  script_tag(name:"summary", value:"Check the version of Security");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Security'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"ucode-intel was updated to the 20180807 release.
 
@@ -88,7 +89,7 @@ if(description)
   installation methods
   like YaST online_update or 'zypper patch ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Security on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

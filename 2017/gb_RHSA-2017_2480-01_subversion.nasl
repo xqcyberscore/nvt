@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2480-01_subversion.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2480-01_subversion.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for subversion RHSA-2017:2480-01
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871883");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 07:29:34 +0200 (Wed, 16 Aug 2017)");
   script_cve_id("CVE-2017-9800");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for subversion RHSA-2017:2480-01");
-  script_tag(name: "summary", value: "Check the version of subversion");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "Subversion (SVN) is a concurrent version 
-  control system which enables one or more users to collaborate in developing and 
-  maintaining a hierarchy of files and directories while keeping a history of all 
-  changes. Security Fix(es): * A shell command injection flaw related to the 
-  handling of 'svn+ssh' URLs has been discovered in Subversion. An attacker could 
-  use this flaw to execute shell commands with the privileges of the user running 
-  the Subversion client, for example when performing a 'checkout' or 'update' 
-  action on a malicious repository, or a legitimate repository containing a 
-  malicious commit. (CVE-2017-9800) Red Hat would like to thank the Subversion 
-  Team for reporting this issue. "); 
-  script_tag(name: "affected", value: "subversion on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'subversion'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Subversion (SVN) is a concurrent version
+  control system which enables one or more users to collaborate in developing and
+  maintaining a hierarchy of files and directories while keeping a history of all
+  changes. Security Fix(es): * A shell command injection flaw related to the
+  handling of 'svn+ssh' URLs has been discovered in Subversion. An attacker could
+  use this flaw to execute shell commands with the privileges of the user running
+  the Subversion client, for example when performing a 'checkout' or 'update'
+  action on a malicious repository, or a legitimate repository containing a
+  malicious commit. (CVE-2017-9800) Red Hat would like to thank the Subversion
+  Team for reporting this issue. ");
+  script_tag(name:"affected", value:"subversion on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2480-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00064.html");
+  script_xref(name:"RHSA", value:"2017:2480-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00064.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -104,6 +104,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

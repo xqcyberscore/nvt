@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3742_1.nasl 11043 2018-08-18 15:09:49Z cfischer $
+# $Id: gb_ubuntu_USN_3742_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux USN-3742-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843616");
-  script_version("$Revision: 11043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:09:49 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:20:00 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-3646", "CVE-2018-3620", "CVE-2017-18344", "CVE-2018-5390",
                 "CVE-2018-5391");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3742-1");
-  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that memory present in the L1 data cache of an Intel CPU
 core may be exposed to a malicious process that is executing on the CPU

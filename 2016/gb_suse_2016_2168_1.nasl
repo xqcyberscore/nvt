@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2168_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_2168_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2016:2168-1 (phpMyAdmin)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851387");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-30 05:44:06 +0200 (Tue, 30 Aug 2016)");
   script_cve_id("CVE-2016-6606", "CVE-2016-6607", "CVE-2016-6608", "CVE-2016-6609",
                 "CVE-2016-6610", "CVE-2016-6611", "CVE-2016-6612", "CVE-2016-6613",
@@ -41,7 +41,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2016:2168-1 (phpMyAdmin)");
-  script_tag(name:"summary", value:"Check the version of phpMyAdmin");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'phpMyAdmin'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"phpMyAdmin was updated to version 4.4.15.8 (2016-08-16) to fix the
   following issues:
@@ -124,7 +125,7 @@ if(description)
 
   * Referrer leak see PMASA-2016-50 (CVE-201 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"phpMyAdmin on openSUSE Leap 42.1, openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

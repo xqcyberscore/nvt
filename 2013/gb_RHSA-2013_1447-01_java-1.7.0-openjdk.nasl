@@ -23,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871060");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 14:10:18 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-4002", "CVE-2013-5772", "CVE-2013-5774",
                 "CVE-2013-5778", "CVE-2013-5780", "CVE-2013-5782", "CVE-2013-5783",
@@ -42,7 +41,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for java-1.7.0-openjdk RHSA-2013:1447-01");
 
-  tag_insight = "These packages provide the OpenJDK 7 Java Runtime Environment and the
+
+  script_tag(name:"affected", value:"java-1.7.0-openjdk on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"These packages provide the OpenJDK 7 Java Runtime Environment and the
 OpenJDK 7 Software Development Kit.
 
 Multiple input checking flaws were found in the 2D component native image
@@ -93,21 +94,14 @@ Multiple input sanitization flaws were discovered in javadoc. When javadoc
 documentation was generated from an untrusted Java source code and hosted
 on a d ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "java-1.7.0-openjdk on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1447-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00018.html");
-  script_tag(name: "summary" , value: "Check for the Version of java-1.7.0-openjdk");
+  script_xref(name:"RHSA", value:"2013:1447-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-October/msg00018.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.7.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -164,6 +158,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

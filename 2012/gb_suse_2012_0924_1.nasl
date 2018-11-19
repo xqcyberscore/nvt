@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0924_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2012_0924_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xulrunner openSUSE-SU-2012:0924-1 (xulrunner)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850250");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:28 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1949", "CVE-2012-1950", "CVE-2012-1951",
                 "CVE-2012-1952", "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0924_1");
   script_name("SuSE Update for xulrunner openSUSE-SU-2012:0924-1 (xulrunner)");
 
-  script_tag(name:"summary", value:"Check for the Version of xulrunner");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xulrunner'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -109,7 +110,7 @@ if(description)
   Mlynski reported an issue with spoofing of the location
   property. In this issue, calls to history.forward  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

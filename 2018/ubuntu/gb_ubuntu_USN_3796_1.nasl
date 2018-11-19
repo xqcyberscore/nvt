@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3796_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3796_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for paramiko USN-3796-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843661");
-  script_version("$Revision: 12126 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-18 06:28:40 +0200 (Thu, 18 Oct 2018)");
   script_cve_id("CVE-2018-1000805");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for paramiko USN-3796-1");
-  script_tag(name:"summary", value:"Check the version of paramiko");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'paramiko'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Daniel Hoffman discovered that Paramiko incorrectly handled authentication
 when being used as a server. A remote attacker could use this issue to

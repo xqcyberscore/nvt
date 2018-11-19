@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3221-01_php.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_3221-01_php.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for php RHSA-2017:3221-01
 #
@@ -27,37 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812096");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 07:29:20 +0100 (Wed, 15 Nov 2017)");
   script_cve_id("CVE-2016-10167", "CVE-2016-10168");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for php RHSA-2017:3221-01");
-  script_tag(name: "summary", value: "Check the version of php");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "PHP is an HTML-embedded scripting language
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language
 commonly used with the Apache HTTP Server.
 
 Security Fix(es):
 
-* A null pointer dereference flaw was found in libgd. An attacker could use
+  * A null pointer dereference flaw was found in libgd. An attacker could use
 a specially-crafted .gd2 file to cause an application linked with libgd to
 crash, leading to denial of service. (CVE-2016-10167)
 
-* An integer overflow flaw, leading to a heap-based buffer overflow was
+  * An integer overflow flaw, leading to a heap-based buffer overflow was
 found in the way libgd read some specially-crafted gd2 files. A remote
 attacker could use this flaw to crash an application compiled with libgd or
 in certain cases execute arbitrary code with the privileges of the user
-running that application. (CVE-2016-10168)
-");
-  script_tag(name: "affected", value: "php on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+running that application. (CVE-2016-10168)");
+  script_tag(name:"affected", value:"php on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:3221-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-November/msg00019.html");
+  script_xref(name:"RHSA", value:"2017:3221-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -169,6 +168,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

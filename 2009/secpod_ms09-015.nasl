@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-015.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms09-015.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Blended Threat Vulnerability in SearchPath Could Allow Elevation of Privilege (959426)
 #
@@ -29,39 +29,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900533");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-04-15 18:21:29 +0200 (Wed, 15 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-2540");
   script_bugtraq_id(29445);
   script_name("Blended Threat Vulnerability in SearchPath Could Allow Elevation of Privilege (959426)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/959426");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms09-015");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/959426");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms09-015");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : "Remote attackers could execute arbitrary code by convincing a user to
+  script_tag(name:"impact", value:"Remote attackers could execute arbitrary code by convincing a user to
   download a crafted file to a specific location, and then open an
-  application that loads the file.
-  Impact Level: System");
-  script_tag(name : "affected" , value : "Microsoft Windows 2K Service Pack 4 and prior.
+  application that loads the file.");
+  script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior.
   Microsoft Windows XP Service Pack 3 and prior.
   Microsoft Windows 2003 Service Pack 2 and prior.
   Microsoft Windows Vista Service Pack 1 and prior.
   Microsoft Windows Server 2008 Service Pack 1 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to an error in the way SearchPath function in
+  script_tag(name:"insight", value:"The flaw is due to an error in the way SearchPath function in
   Windows locates and opens files on the system.");
-  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://technet.microsoft.com/en-us/security/bulletin/ms09-015");
-  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-015.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -78,23 +76,20 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:2, win2008:2) <= 0){
   exit(0);
 }
 
-# Check for Hotfix 959426 (MS09-015).
 if(hotfix_missing(name:"959426") == 0){
   exit(0);
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"secur32.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"secur32.dll");
   if(dllVer)
   {
     if(hotfix_check_sp(win2k:5) > 0)
     {
-      # Check for secur32.dll version < 5.0.2195.7244
       if(version_is_less(version:dllVer, test_version:"5.0.2195.7244")){
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
       }
       exit(0);
     }
@@ -104,21 +99,19 @@ if(sysPath)
       SP = get_kb_item("SMB/WinXP/ServicePack");
       if("Service Pack 2" >< SP)
       {
-        # Check for secur32.dll version < 5.1.2600.3518
         if(version_is_less(version:dllVer, test_version:"5.1.2600.3518")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
       else if("Service Pack 3" >< SP)
       {
-        # Check for secur32.dll version < 5.1.2600.5753
         if(version_is_less(version:dllVer, test_version:"5.1.2600.5753")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
 
     else if(hotfix_check_sp(win2003:3) > 0)
@@ -126,43 +119,38 @@ if(sysPath)
       SP = get_kb_item("SMB/Win2003/ServicePack");
       if("Service Pack 1" >< SP)
       {
-         # Check for secur32.dll version < 5.2.3790.3290
          if(version_is_less(version:dllVer, test_version:"5.2.3790.3290")){
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
          }
          exit(0);
       }
       else if("Service Pack 2" >< SP)
       {
-        # Check for secur32.dll version < 5.2.3790.4455
         if(version_is_less(version:dllVer, test_version:"5.2.3790.4455")){
-         security_message(0);
+         security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
       }
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"secur32.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"secur32.dll");
   if(!dllVer){
     exit(0);
   }
 }
 
-# Windows Vista
 if(hotfix_check_sp(winVista:2, win2008:2) > 0)
 {
-  ## Check for the Vista and server 2008 without SP
   if(version_in_range(version:dllVer, test_version:"6.0.6000.16000", test_version2:"6.0.6000.16819") ||
      version_in_range(version:dllVer, test_version:"6.0.6000.20000", test_version2:"6.0.6000.21009"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 
@@ -173,10 +161,9 @@ if(hotfix_check_sp(winVista:2, win2008:2) > 0)
 
   if("Service Pack 1" >< SP)
   {
-    # Grep for secur32.dll version < 6.0.6001.18214,6.0.6001.22376
     if(version_in_range(version:dllVer, test_version:"6.0.6001.18000", test_version2:"6.0.6001.18214") ||
        version_in_range(version:dllVer, test_version:"6.0.6001.22000", test_version2:"6.0.6001.22375")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

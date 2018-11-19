@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-021.nasl 11810 2018-10-10 09:49:51Z jschulte $
+# $Id: secpod_ms10-021.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Windows Kernel Could Allow Elevation of Privilege (979683)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900236");
-  script_version("$Revision: 11810 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:49:51 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
   script_bugtraq_id(39297, 39309, 39323, 39324, 39318, 39319, 39320, 39322);
   script_tag(name:"cvss_base", value:"7.2");
@@ -52,6 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow local users to cause a Denial of Service
   or gain escalated privileges.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7
 
   Microsoft Windows 2K  Service Pack 4 and prior.
@@ -63,6 +64,7 @@ if(description)
   Microsoft Windows Vista Service Pack 1/2 and prior.
 
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
+
   script_tag(name:"insight", value:"Multiple error exists in the Windows kernel due to,
 
   - the way that the kernel handles certain exceptions
@@ -82,16 +84,18 @@ if(description)
 
   - not properly restricting symbolic link creation between untrusted and
     trusted registry hives");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  update mentioned hotfixes in the advisory.");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS10-021.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS10-021.mspx");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -110,7 +114,7 @@ if(hotfix_missing(name:"979683") == 0){
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  exeVer = fetch_file_version(sysPath, file_name:"ntoskrnl.exe");
+  exeVer = fetch_file_version(sysPath:sysPath, file_name:"ntoskrnl.exe");
   if(!exeVer){
     exit(0);
   }
@@ -159,7 +163,7 @@ else if(hotfix_check_sp(win2003:3) > 0)
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  exeVer = fetch_file_version(sysPath, file_name:"ntoskrnl.exe");
+  exeVer = fetch_file_version(sysPath:sysPath, file_name:"ntoskrnl.exe");
   if(!exeVer){
     exit(0);
   }

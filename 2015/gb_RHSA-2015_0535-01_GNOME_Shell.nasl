@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871322");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:49:02 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-7300");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for GNOME Shell RHSA-2015:0535-01");
-  script_tag(name: "summary", value: "Check the version of GNOME Shell");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "GNOME Shell and the packages it depends upon provide the core user
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'GNOME Shell'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"GNOME Shell and the packages it depends upon provide the core user
 interface of the Red Hat Enterprise Linux desktop, including functions such
 as navigating between windows and launching applications.
 
@@ -47,50 +48,50 @@ creating a large amount of screenshots. (CVE-2014-7300)
 
 This update also fixes the following bugs:
 
-* The Timed Login feature, which automatically logs in a specified user
+  * The Timed Login feature, which automatically logs in a specified user
 after a specified period of time, stopped working after the first user of
 the GUI logged out. This has been fixed, and the specified user is always
 logged in if no one else logs in. (BZ#1043571)
 
-* If two monitors were arranged vertically with the secondary monitor above
+  * If two monitors were arranged vertically with the secondary monitor above
 the primary monitor, it was impossible to move windows onto the secondary
 monitor. With this update, windows can be moved through the upper edge of
 the first monitor to the secondary monitor. (BZ#1075240)
 
-* If the Gnome Display Manager (GDM) user list was disabled and a user
+  * If the Gnome Display Manager (GDM) user list was disabled and a user
 entered the user name, the password prompt did not appear. Instead, the
 user had to enter the user name one more time. The GDM code that contained
 this error has been fixed, and users can enter their user names and
 passwords as expected. (BZ#1109530)
 
-* Prior to this update, only a small area was available on the GDM login
+  * Prior to this update, only a small area was available on the GDM login
 screen for a custom text banner. As a consequence, when a long banner was
 used, it did not fit into the area, and the person reading the banner had
 to use scrollbars to view the whole text. With this update, more space is
 used for the banner if necessary, which allows the user to read the message
 conveniently. (BZ#1110036)
 
-* When the Cancel button was pressed while an LDAP user name and password
+  * When the Cancel button was pressed while an LDAP user name and password
 was being validated, the GDM code did not handle the situation correctly.
 As a consequence, GDM became unresponsive, and it was impossible to return
 to the login screen. The affected code has been fixed, and LDAP user
 validation can be canceled, allowing another user to log in instead.
 (BZ#1137041)
 
-* If the window focus mode in GNOME was set to 'mouse' or 'sloppy',
+  * If the window focus mode in GNOME was set to 'mouse' or 'sloppy',
 navigating through areas of a pop-up menu displayed outside its parent
 window caused the window to lose its focus. Consequently, the menu was not
 usable. This has been fixed, and the window focus is kept in under this
 scenario. (BZ#1149585)
 
-* If user authentication is configured to require a smart card to log in,
+  * If user authentication is configured to require a smart card to log in,
 user names are obtained from the smart card. The a ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "GNOME Shell on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0535-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00009.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"GNOME Shell on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0535-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00009.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -160,6 +161,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

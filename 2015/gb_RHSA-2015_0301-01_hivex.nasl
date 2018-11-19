@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871334");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:50:58 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-9273");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for hivex RHSA-2015:0301-01");
-  script_tag(name: "summary", value: "Check the version of hivex");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Hive files are undocumented binary files that Windows uses to store the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'hivex'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Hive files are undocumented binary files that Windows uses to store the
 Windows Registry on disk. Hivex is a library that can read and write to
 these files.
 
@@ -56,22 +57,21 @@ provides a number of bug fixes and enhancements over the previous version.
 
 This update also fixes the following bugs:
 
-* Due to an error in the hivex_value_data_cell_offset() function, the hivex
+  * Due to an error in the hivex_value_data_cell_offset() function, the hivex
 utility could, in some cases, print an 'Argument list is too long' message
 and terminate unexpectedly when processing hive files from the Windows
 Registry. This update fixes the underlying code and hivex now processes
 hive files as expected. (BZ#1145056)
 
-* A typographical error in the Win::Hivex.3pm manual page has been
+  * A typographical error in the Win::Hivex.3pm manual page has been
 corrected. (BZ#1099286)
 
 Users of hivex are advised to upgrade to these updated packages, which
-correct these issues and adds these enhancements.
-");
-  script_tag(name: "affected", value: "hivex on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0301-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00024.html");
+correct these issues and adds these enhancements.");
+  script_tag(name:"affected", value:"hivex on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0301-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00024.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -111,6 +111,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

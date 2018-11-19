@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871244");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-17 05:57:45 +0200 (Wed, 17 Sep 2014)");
   script_cve_id("CVE-2013-1740", "CVE-2014-1490", "CVE-2014-1491", "CVE-2014-1492", "CVE-2014-1545");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for nss and nspr RHSA-2014:1246-01");
-  script_tag(name: "insight", value: "Network Security Services (NSS) is a set of libraries designed to support
+  script_tag(name:"insight", value:"Network Security Services (NSS) is a set of libraries designed to support
 the cross-platform development of security-enabled client and server
 applications.
 
@@ -73,25 +73,26 @@ over the previous versions. (BZ#1110857, BZ#1110860)
 
 This update also fixes the following bugs:
 
-* Previously, when the output.log file was not present on the system, the
+  * Previously, when the output.log file was not present on the system, the
 shell in the Network Security Services (NSS) specification handled test
 failures incorrectly as false positive test results. Consequently, certain
 utilities, such as 'grep', could not handle failures properly. This update
 improves error detection in the specification file, and 'grep' and other
 utilities now handle missing files or crashes as intended. (BZ#1035281)
 
-* Prior to this update, a subordinate Certificate Authority (CA) of the
-ANSSI agency incorrectly issued an intermediate c ... 
+  * Prior to this update, a subordinate Certificate Authority (CA) of the
+ANSSI agency incorrectly issued an intermediate c ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "nss and nspr on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"nss and nspr on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "RHSA", value: "2014:1246-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-September/msg00033.html");
-  script_tag(name:"summary", value:"Check for the Version of nss and nspr");
+  script_xref(name:"RHSA", value:"2014:1246-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-September/msg00033.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'nss and nspr'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -142,6 +143,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

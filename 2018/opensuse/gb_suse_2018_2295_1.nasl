@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2295_1.nasl 12277 2018-11-09 09:04:58Z cfischer $
+# $Id: gb_suse_2018_2295_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # SuSE Update for virtualbox openSUSE-SU-2018:2295-1 (virtualbox)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852054");
-  script_version("$Revision: 12277 $");
+  script_version("$Revision: 12379 $");
   script_cve_id("CVE-2018-3005", "CVE-2018-3055", "CVE-2018-3085", "CVE-2018-3086", "CVE-2018-3087", "CVE-2018-3088", "CVE-2018-3089", "CVE-2018-3090", "CVE-2018-3091");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 10:04:58 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:39:29 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for virtualbox openSUSE-SU-2018:2295-1 (virtualbox)");
   script_category(ACT_GATHER_INFO);
@@ -97,7 +97,7 @@ if(description)
   unauthenticated attacker with logon to the infrastructure where Oracle
   VM VirtualBox execu ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"virtualbox on openSUSE Leap 15.0.");
 

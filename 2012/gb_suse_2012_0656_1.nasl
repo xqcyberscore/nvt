@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0656_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2012_0656_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for update openSUSE-SU-2012:0656-1 (update)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850270");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:53 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3083", "CVE-2011-3084", "CVE-2011-3085", "CVE-2011-3086",
                "CVE-2011-3087", "CVE-2011-3088", "CVE-2011-3089", "CVE-2011-3090",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0656_1");
   script_name("SuSE Update for update openSUSE-SU-2012:0656-1 (update)");
 
-  script_tag(name:"summary", value:"Check for the Version of update");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'update'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

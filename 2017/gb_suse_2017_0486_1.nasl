@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0486_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2017_0486_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2017:0486-1 (mariadb)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851490");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-17 05:51:43 +0100 (Fri, 17 Feb 2017)");
   script_cve_id("CVE-2016-6664", "CVE-2017-3238", "CVE-2017-3243", "CVE-2017-3244",
                 "CVE-2017-3257", "CVE-2017-3258", "CVE-2017-3265", "CVE-2017-3291",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mariadb openSUSE-SU-2017:0486-1 (mariadb)");
-  script_tag(name:"summary", value:"Check the version of mariadb");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mariadb'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This mariadb version update to 10.0.29 fixes the following issues:
 

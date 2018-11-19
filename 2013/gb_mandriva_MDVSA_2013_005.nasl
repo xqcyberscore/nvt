@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2013:005");
   script_oid("1.3.6.1.4.1.25623.1.0.831763");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:26:07 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2012-5195");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2013:005");
   script_name("Mandriva Update for perl MDVSA-2013:005 (perl)");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"summary", value:"Check for the Version of perl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'perl'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

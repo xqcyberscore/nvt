@@ -23,82 +23,77 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
-  operating system.
-
-  This update fixes the following security issues:
-  
-  * A missing boundary check was found in the dvb_ca_ioctl() function in the
-  Linux kernel's av7110 module. On systems that use old DVB cards that
-  require the av7110 module, a local, unprivileged user could use this flaw
-  to cause a denial of service or escalate their privileges. (CVE-2011-0521,
-  Important)
-  
-  * An inconsistency was found in the interaction between the Linux kernel's
-  method for allocating NFSv4 (Network File System version 4) ACL data and
-  the method by which it was freed. This inconsistency led to a kernel panic
-  which could be triggered by a local, unprivileged user with files owned by
-  said user on an NFSv4 share. (CVE-2011-1090, Moderate)
-  
-  * A NULL pointer dereference flaw was found in the Generic Receive Offload
-  (GRO) functionality in the Linux kernel's networking implementation. If
-  both GRO and promiscuous mode were enabled on an interface in a virtual LAN
-  (VLAN), it could result in a denial of service when a malformed VLAN frame
-  is received on that interface. (CVE-2011-1478, Moderate)
-  
-  * A missing security check in the Linux kernel's implementation of the
-  install_special_mapping() function could allow a local, unprivileged user
-  to bypass the mmap_min_addr protection mechanism. (CVE-2010-4346, Low)
-  
-  * An information leak was found in the Linux kernel's task_show_regs()
-  implementation. On IBM S/390 systems, a local, unprivileged user could use
-  this flaw to read /proc/[PID]/status files, allowing them to discover the
-  CPU register values of processes. (CVE-2011-0710, Low)
-  
-  * A missing validation check was found in the Linux kernel's
-  mac_partition() implementation, used for supporting file systems created
-  on Mac OS operating systems. A local attacker could use this flaw to cause
-  a denial of service by mounting a disk that contains specially-crafted
-  partitions. (CVE-2011-1010, Low)
-  
-  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478; Tavis
-  Ormandy for reporting CVE-2010-4346; and Timo Warns for reporting
-  CVE-2011-1010.
-  
-  This update also fixes several bugs. Documentation for these bug fixes will
-  be available shortly from the Technical Notes document linked to in the
-  References section.
-  
-  Users should upgrade to these updated packages, which contain backported
-  patches to correct these issues, and fix the bugs noted in the Technical
-  Notes. The system must be rebooted for this update to take effect.";
-
-tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-April/msg00012.html");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-April/msg00012.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870423");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-19 07:58:39 +0200 (Tue, 19 Apr 2011)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "RHSA", value: "2011:0429-01");
+  script_xref(name:"RHSA", value:"2011:0429-01");
   script_cve_id("CVE-2010-4346", "CVE-2011-0521", "CVE-2011-0710", "CVE-2011-1010", "CVE-2011-1090", "CVE-2011-1478");
   script_name("RedHat Update for kernel RHSA-2011:0429-01");
 
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
+  operating system.
+
+  This update fixes the following security issues:
+
+  * A missing boundary check was found in the dvb_ca_ioctl() function in the
+  Linux kernel's av7110 module. On systems that use old DVB cards that
+  require the av7110 module, a local, unprivileged user could use this flaw
+  to cause a denial of service or escalate their privileges. (CVE-2011-0521,
+  Important)
+
+  * An inconsistency was found in the interaction between the Linux kernel's
+  method for allocating NFSv4 (Network File System version 4) ACL data and
+  the method by which it was freed. This inconsistency led to a kernel panic
+  which could be triggered by a local, unprivileged user with files owned by
+  said user on an NFSv4 share. (CVE-2011-1090, Moderate)
+
+  * A NULL pointer dereference flaw was found in the Generic Receive Offload
+  (GRO) functionality in the Linux kernel's networking implementation. If
+  both GRO and promiscuous mode were enabled on an interface in a virtual LAN
+  (VLAN), it could result in a denial of service when a malformed VLAN frame
+  is received on that interface. (CVE-2011-1478, Moderate)
+
+  * A missing security check in the Linux kernel's implementation of the
+  install_special_mapping() function could allow a local, unprivileged user
+  to bypass the mmap_min_addr protection mechanism. (CVE-2010-4346, Low)
+
+  * An information leak was found in the Linux kernel's task_show_regs()
+  implementation. On IBM S/390 systems, a local, unprivileged user could use
+  this flaw to read /proc/[PID]/status files, allowing them to discover the
+  CPU register values of processes. (CVE-2011-0710, Low)
+
+  * A missing validation check was found in the Linux kernel's
+  mac_partition() implementation, used for supporting file systems created
+  on Mac OS operating systems. A local attacker could use this flaw to cause
+  a denial of service by mounting a disk that contains specially-crafted
+  partitions. (CVE-2011-1010, Low)
+
+  Red Hat would like to thank Ryan Sweat for reporting CVE-2011-1478; Tavis
+  Ormandy for reporting CVE-2010-4346; and Timo Warns for reporting
+  CVE-2011-1010.
+
+  This update also fixes several bugs. Documentation for these bug fixes will
+  be available shortly from the Technical Notes document linked to in the
+  References section.
+
+  Users should upgrade to these updated packages, which contain backported
+  patches to correct these issues, and fix the bugs noted in the Technical
+  Notes. The system must be rebooted for this update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -206,6 +201,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

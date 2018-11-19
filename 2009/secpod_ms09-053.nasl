@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-053.nasl 9528 2018-04-19 07:31:17Z cfischer $
+# $Id: secpod_ms09-053.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft IIS FTP Service Remote Code Execution Vulnerabilities (975254)
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900874");
-  script_version("$Revision: 9528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/975254");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2542");
@@ -55,9 +55,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS09-053");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code with
-  SYSTEM privileges which may result Denial of Service on the affected server.
-
-  Impact Level: System/Application.");
+  SYSTEM privileges which may result Denial of Service on the affected server.");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Server (IIS) 5.0/5/1/6.0.");
 
@@ -98,15 +96,13 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\inetsrv\ftpsvc2.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\inetsrv\ftpsvc2.dll");
 if(!dllVer){
   exit(0);
 }
 
-# Windows 2K
 if(hotfix_check_sp(win2k:5) > 0)
 {
-  # Grep for ftpsvc2.dll version < 5.0.2195.7336
   if(version_is_less(version:dllVer, test_version:"5.0.2195.7336"))
   {
     security_message(21);
@@ -114,13 +110,11 @@ if(hotfix_check_sp(win2k:5) > 0)
   }
 }
 
-# Windows XP
 if(hotfix_check_sp(xp:4) > 0)
 {
   SP = get_kb_item("SMB/WinXP/ServicePack");
   if("Service Pack 2" >< SP)
   {
-    # Grep for ftpsvc2.dll < 6.0.2600.3624
     if(version_is_less(version:dllVer, test_version:"6.0.2600.3624")){
       security_message(21);
     }
@@ -128,7 +122,6 @@ if(hotfix_check_sp(xp:4) > 0)
   }
   else if("Service Pack 3" >< SP)
   {
-    # Grep for ftpsvc2.dll < 6.0.2600.5875
     if(version_is_less(version:dllVer, test_version:"6.0.2600.5875")){
      security_message(21);
     }
@@ -137,13 +130,11 @@ if(hotfix_check_sp(xp:4) > 0)
   security_message(21);
 }
 
-# Windows 2003
 else if(hotfix_check_sp(win2003:3) > 0)
 {
   SP = get_kb_item("SMB/Win2003/ServicePack");
   if("Service Pack 2" >< SP)
   {
-    # Grep for ftpsvc2.dll version < 6.0.3790.4584
     if(version_is_less(version:dllVer, test_version:"6.0.3790.4584")){
       security_message(21);
     }
@@ -152,14 +143,12 @@ else if(hotfix_check_sp(win2003:3) > 0)
   security_message(21);
 }
 
-# Windows Vista
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for the Vista and server 2008 without SP
   if(version_in_range(version:dllVer, test_version:"7.0.6000.16000", test_version2:"7.0.6000.16922") ||
      version_in_range(version:dllVer, test_version:"7.0.6000.20000", test_version2:"7.0.6000.21122"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 
@@ -173,7 +162,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
     if(version_in_range(version:dllVer, test_version:"7.0.6001.18000", test_version2:"7.0.6001.18326") ||
        version_in_range(version:dllVer, test_version:"7.0.6001.22000", test_version2:"7.0.6001.22515"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -183,7 +172,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
     if(version_in_range(version:dllVer, test_version:"7.0.6002.18000", test_version2:"7.0.6002.18106") ||
        version_in_range(version:dllVer, test_version:"7.0.6002.22000", test_version2:"7.0.6002.22218"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

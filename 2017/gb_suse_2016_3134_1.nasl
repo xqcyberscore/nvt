@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3134_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_suse_2016_3134_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for xen openSUSE-SU-2016:3134-1 (xen)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851495");
-  script_version("$Revision: 12291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 15:15:10 +0100 (Wed, 22 Feb 2017)");
   script_cve_id("CVE-2016-7777", "CVE-2016-7908", "CVE-2016-7909", "CVE-2016-8667",
                 "CVE-2016-8669", "CVE-2016-8910", "CVE-2016-9377", "CVE-2016-9378",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for xen openSUSE-SU-2016:3134-1 (xen)");
-  script_tag(name:"summary", value:"Check the version of xen");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xen'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"xen was updated to version 4.7.1 to fix 17 security issues.
 
@@ -99,7 +100,7 @@ if(description)
   (infinite loop and CPU consumption) by leveraging failure to limit the
   ring descripto ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"xen on openSUSE Leap 42.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

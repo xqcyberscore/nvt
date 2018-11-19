@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_stack_buffer_overflow_vuln_mar18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_php_stack_buffer_overflow_vuln_mar18_lin.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # PHP Stack Buffer Overflow Vulnerability Mar18 (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812821");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2018-7584");
   script_bugtraq_id(103204);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-12 17:24:20 +0530 (Mon, 12 Mar 2018)");
   script_name("PHP Stack Buffer Overflow Vulnerability Mar18 (Linux)");
 
@@ -72,7 +72,7 @@ if (description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"http://www.php.net.");
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

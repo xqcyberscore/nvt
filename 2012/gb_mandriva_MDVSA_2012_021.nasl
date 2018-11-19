@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:021");
   script_oid("1.3.6.1.4.1.25623.1.0.831544");
-  script_version("$Revision: 11986 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:54:21 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:55 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
                 "CVE-2012-0498", "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501",
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2012:021");
   script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2012:021 (java-1.6.0-openjdk)");
 
-  script_tag(name:"summary", value:"Check for the Version of java-1.6.0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.6.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

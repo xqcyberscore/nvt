@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_2018_1_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_squid_2018_1_lin.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Squid Proxy Cache Security Update Advisory SQUID-2018:1 (Linux)
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107293");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2018-1000024");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-07 13:28:30 +0100 (Wed, 07 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -67,14 +67,13 @@ if (description)
 
   script_tag(name:"affected", value:"Squid 3.x -> 3.5.27, Squid 4.x -> 4.0.22.");
 
-  script_tag(name:"solution", value:"Upgrade to 4.0.23 or later. Patches are available. For
-  details.");
+  script_tag(name:"solution", value:"Upgrade to 4.0.23 or later. Patches are available, please
+  see the references for details.");
 
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2018_1.txt");
 
   script_tag(name:"deprecated", value:TRUE);
 
-  script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2018_1.txt.");
   exit(0);
 }
 

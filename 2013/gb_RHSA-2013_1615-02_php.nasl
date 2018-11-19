@@ -23,19 +23,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871084");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:44:22 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2006-7243", "CVE-2013-1643", "CVE-2013-4248");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("RedHat Update for php RHSA-2013:1615-02");
 
-  tag_insight = "PHP is an HTML-embedded scripting language commonly used with the Apache
+
+  script_tag(name:"affected", value:"php on Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
 HTTP Server.
 
 It was found that PHP did not properly handle file names with a NULL
@@ -56,19 +58,19 @@ using a SOAP extension. (CVE-2013-1643)
 
 This update fixes the following bugs:
 
-* Previously, when the allow_call_time_pass_reference setting was disabled,
+  * Previously, when the allow_call_time_pass_reference setting was disabled,
 a virtual host on the Apache server could terminate with a segmentation
 fault when attempting to process certain PHP content. This bug has been
 fixed and virtual hosts no longer crash when allow_call_time_pass_reference
 is off. (BZ#892158, BZ#910466)
 
-* Prior to this update, if an error occurred during the operation of the
+  * Prior to this update, if an error occurred during the operation of the
 fclose(), file_put_contents(), or copy() function, the function did not
 report it. This could have led to data loss. With this update, the
 aforementioned functions have been modified to properly report any errors.
 (BZ#947429)
 
-* The internal buffer for the SQLSTATE error code can store maximum of 5
+  * The internal buffer for the SQLSTATE error code can store maximum of 5
 characters. Previously, when certain calls exceeded this limit, a buffer
 overflow occurred. With this update, messages longer than 5 characters are
 automatically replaced with the default 'HY000' string, thus preventing the
@@ -76,28 +78,19 @@ overflow. (BZ#969110)
 
 In addition, this update adds the following enhancement:
 
-* This update adds the following rpm macros to the php package: %__php,
+  * This update adds the following rpm macros to the php package: %__php,
 %php_inidir, %php_incldir. (BZ#953814)
 
 Users of php are advised to upgrade to these updated packages, which fix
 these bugs and add this enhancement. After installing the updated packages,
-the httpd daemon must be restarted for the update to take effect.
-";
-
-  tag_affected = "php on Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+the httpd daemon must be restarted for the update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1615-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00027.html");
-  script_tag(name: "summary" , value: "Check for the Version of php");
+  script_xref(name:"RHSA", value:"2013:1615-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00027.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -196,6 +189,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

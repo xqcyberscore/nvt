@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3656_1.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_ubuntu_USN_3656_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-raspi2 USN-3656-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843535");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 05:41:11 +0200 (Wed, 23 May 2018)");
   script_cve_id("CVE-2017-17975", "CVE-2017-18193", "CVE-2017-18222", "CVE-2018-1065", "CVE-2018-1068", "CVE-2018-1130", "CVE-2018-5803", "CVE-2018-7480", "CVE-2018-7757", "CVE-2018-7995", "CVE-2018-8781", "CVE-2018-8822");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-raspi2 USN-3656-1");
-  script_tag(name:"summary", value:"Check the version of linux-raspi2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-raspi2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Tuba Yavuz discovered that a double-free error existed in the USBTV007
 driver of the Linux kernel. A local attacker could use this to cause a
@@ -91,7 +92,7 @@ memory) or possibly execute arbitrary code. (CVE-2018-8781)
 
 Si ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"linux-raspi2 on Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

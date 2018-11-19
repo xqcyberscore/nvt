@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3719_3.nasl 11715 2018-10-01 15:34:24Z cfischer $
+# $Id: gb_ubuntu_USN_3719_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for mutt USN-3719-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843642");
-  script_version("$Revision: 11715 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 17:34:24 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 08:19:24 +0200 (Fri, 28 Sep 2018)");
   script_cve_id("CVE-2018-14350", "CVE-2018-14352", "CVE-2018-14354", "CVE-2018-14359",
                 "CVE-2018-14358", "CVE-2018-14353", "CVE-2018-14357", "CVE-2018-14355",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mutt USN-3719-3");
-  script_tag(name:"summary", value:"Check the version of mutt");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mutt'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"USN-3719-1 fixed vulnerabilities in Mutt.

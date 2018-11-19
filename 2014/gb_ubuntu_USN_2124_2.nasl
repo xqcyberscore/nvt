@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2124_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2124_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for openjdk-6 USN-2124-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841768");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 11:46:00 +0530 (Tue, 08 Apr 2014)");
   script_cve_id("CVE-2014-0411", "CVE-2013-5878", "CVE-2013-5907", "CVE-2014-0373",
                 "CVE-2014-0422", "CVE-2014-0428", "CVE-2013-5884", "CVE-2014-0368",
@@ -86,7 +86,8 @@ update fixes the problem. We apologize for the inconvenience.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2124-2");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2124-2/");
-  script_tag(name:"summary", value:"Check for the Version of openjdk-6");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openjdk-6'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

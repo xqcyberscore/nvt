@@ -27,15 +27,16 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:148");
   script_oid("1.3.6.1.4.1.25623.1.0.831732");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 11:40:00 +0530 (Tue, 04 Sep 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_xref(name:"MDVSA", value:"2012:148");
   script_name("Mandriva Update for ffmpeg MDVSA-2012:148 (ffmpeg)");
 
-  script_tag(name:"summary", value:"Check for the Version of ffmpeg");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ffmpeg'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3575_2.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3575_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for qemu USN-3575-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843466");
-  script_version("$Revision: 11661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 08:39:40 +0100 (Tue, 06 Mar 2018)");
   script_cve_id("CVE-2017-11334", "CVE-2017-13672", "CVE-2017-14167", "CVE-2017-15038",
                 "CVE-2017-15118", "CVE-2017-15119", "CVE-2017-15124", "CVE-2017-15268",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3575-2");
-  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3575-1 fixed vulnerabilities in QEMU.
   The fix for CVE-2017-11334 caused a regression in Xen environments. This update

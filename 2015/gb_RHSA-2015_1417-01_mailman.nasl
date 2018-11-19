@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871400");
-  script_version("$Revision: 12370 $");
+  script_version("$Revision: 12380 $");
   script_cve_id("CVE-2002-0389", "CVE-2015-2775");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:25:14 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for mailman RHSA-2015:1417-01");
-  script_tag(name: "summary", value: "Check the version of mailman");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Mailman is a program used to help manage e-mail discussion lists.
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mailman'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mailman is a program used to help manage e-mail discussion lists.
 
 It was found that mailman did not sanitize the list name before passing it
 to certain MTAs. A local attacker could use this flaw to execute arbitrary
@@ -48,7 +49,7 @@ archives. (CVE-2002-0389)
 
 This update also fixes the following bugs:
 
-* Previously, it was impossible to configure Mailman in a way that
+  * Previously, it was impossible to configure Mailman in a way that
 Domain-based Message Authentication, Reporting &amp  Conformance (DMARC) would
 recognize Sender alignment for Domain Key Identified Mail (DKIM)
 signatures. Consequently, Mailman list subscribers that belonged to a mail
@@ -60,7 +61,7 @@ administrators are able to configure the way these messages are handled.
 As a result, after a proper configuration, subscribers now correctly
 receive Mailman forwarded messages in this scenario. (BZ#1095359)
 
-* Mailman used a console encoding when generating a subject for a 'welcome
+  * Mailman used a console encoding when generating a subject for a 'welcome
 email' when new mailing lists were created by the 'newlist' command.
 Consequently, when the console encoding did not match the encoding used by
 Mailman for that particular language, characters in the 'welcome email'
@@ -68,28 +69,28 @@ could be displayed incorrectly. Mailman has been fixed to use the correct
 encoding, and characters in the 'welcome email' are now displayed properly.
 (BZ#1056366)
 
-* The 'rmlist' command used a hardcoded path to list data based on the
+  * The 'rmlist' command used a hardcoded path to list data based on the
 VAR_PREFIX configuration variable. As a consequence, when the list was
 created outside of VAR_PREFIX, it was impossible to remove it using the
 'rmlist' command. With this update, the 'rmlist' command uses the correct
 LIST_DATA_DIR value instead of VAR_PREFIX, and it is now possible to remove
 the list in described situation. (BZ#1008139)
 
-* Due to an incompatibility between Python and Mailman in Red Hat
+  * Due to an incompatibility between Python and Mailman in Red Hat
 Enterprise Linux 6, when moderators were approving a moderated message to a
 mailing list and checked the 'Preserve messages for the site administrator'
 checkbox, Mailman failed to approve the message and returned an error.
 This incompatibility has been fixed, and Mailman now approves messages as
 expected in this scenario. (BZ#765807)
 
-* When Mailman was set to no ... 
+  * When Mailman was set to no ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "mailman on Red Hat Enterprise Linux Server (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"mailman on Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1417-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00029.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1417-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-July/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -123,6 +124,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

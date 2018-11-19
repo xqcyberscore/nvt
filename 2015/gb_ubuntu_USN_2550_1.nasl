@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842152");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-04-02 07:13:05 +0200 (Thu, 02 Apr 2015)");
   script_cve_id("CVE-2015-0801", "CVE-2015-0802", "CVE-2015-0803", "CVE-2015-0804",
                 "CVE-2015-0805", "CVE-2015-0806", "CVE-2015-0807", "CVE-2015-0808",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2550-1");
-  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Olli Pettay and Boris Zbarsky discovered an
 issue during anchor navigations in some circumstances. If a user were tricked in
@@ -88,7 +89,7 @@ the Fluendo MP3 GStreamer plugin in certain circumstances. If a user were
 tricked in to opening a specially crafted website, an attacker could
 potentially exploit this to cause a denial of service via applicatio ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"firefox on Ubuntu 14.10,
   Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1277_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_1277_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libressl openSUSE-SU-2015:1277-1 (libressl)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850678");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:33:35 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-3570", "CVE-2014-3572", "CVE-2014-8176", "CVE-2014-8275", "CVE-2015-0205", "CVE-2015-0206", "CVE-2015-0209", "CVE-2015-0286", "CVE-2015-0287", "CVE-2015-0288", "CVE-2015-0289", "CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1792", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libressl openSUSE-SU-2015:1277-1 (libressl)");
-  script_tag(name:"summary", value:"Check the version of libressl");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libressl'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"libressl was updated to version 2.2.1 to fix 16 security issues.
 
@@ -87,7 +88,7 @@ if(description)
   field in ASN1_TIME data, as demonstrated by an attack against a server
   that supports client authentication with a custom verific ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"libressl on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1277_1");

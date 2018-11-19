@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kmccontrols_bac_mult_vuln.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_kmccontrols_bac_mult_vuln.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # KMC Controls BAC-5051E Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:kmc_controls:bac-5051e";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106129");
-  script_version("$Revision: 12096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 14:08:41 +0700 (Tue, 12 Jul 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -57,20 +57,18 @@ if (description)
 
   script_tag(name:"insight", value:"KMC Controls BAC-5051E is prone to multiple vulnerabilities:
 
-An unauthorized user can use a CSRF attack to read configuration data from a file. (CVE-2016-4494)
+  An unauthorized user can use a CSRF attack to read configuration data from a file. (CVE-2016-4494)
 
-A missing authorization check allows an unauthorized user to read configuration data from a file.
-(CVE-2016-4495)");
+  A missing authorization check allows an unauthorized user to read configuration data from a file. (CVE-2016-4495)");
 
   script_tag(name:"impact", value:"An unauthorized user can exploit these vulnerabilities to read the
-configuration of the target device.");
+  configuration of the target device.");
 
   script_tag(name:"affected", value:"Firmware versions prior to E0.2.0.2");
 
   script_tag(name:"solution", value:"Upgrade to firmware version E0.2.0.2 or later");
 
-  script_xref(name:"URL", value:" https://ics-cert.us-cert.gov/advisories/ICSA-16-126-01");
-
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-126-01");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0769_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_0769_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MySQL SUSE-SU-2014:0769-1 (MySQL)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850784");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-4316", "CVE-2013-5860", "CVE-2013-5881", "CVE-2013-5882",
                 "CVE-2013-5891", "CVE-2013-5894", "CVE-2013-5908", "CVE-2014-0001",
@@ -43,7 +43,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MySQL SUSE-SU-2014:0769-1 (MySQL)");
-  script_tag(name:"summary", value:"Check the version of MySQL");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MySQL'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MySQL was updated to version 5.5.37 to address various security issues.
 
@@ -68,7 +69,7 @@ if(description)
   * CVE-2014-0384
 
   * CVE-2014-2430
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"MySQL on SUSE Linux Enterprise Server 11 SP3");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"SUSE-SU", value:"2014:0769_1");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0323_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2013_0323_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2013:0323-1 (Mozilla)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-02/msg00017.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850405");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:28 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
                 "CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0777", "CVE-2013-0778",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2013:0323_1");
   script_name("SuSE Update for Mozilla openSUSE-SU-2013:0323-1 (Mozilla)");
 
-  script_tag(name:"summary", value:"Check for the Version of Mozilla");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Mozilla'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -150,7 +151,7 @@ if(description)
 
   * MFSA 2013-24/CVE- ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

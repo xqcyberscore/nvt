@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smarterstats_xss.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_smarterstats_xss.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # SmarterStats Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:smartertools:smarterstats";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107190");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-14620");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-18 10:31:53 +0200 (Wed, 18 Oct 2017)");
 
   script_name("SmarterStats Cross-Site Scripting Vulnerability");
@@ -61,7 +61,7 @@ if(description)
   script_dependencies("gb_smarterstats_detect.nasl");
   script_mandatory_keys("smarterstats/installed");
   script_require_ports("Services/www", 8080);
-  script_xref(name:"URL", value:"https://www.smartertools.com/smarterstats/downloads.");
+  script_xref(name:"URL", value:"https://www.smartertools.com/smarterstats/downloads");
   exit(0);
 }
 

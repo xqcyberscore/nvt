@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.3.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_SYS.2.3.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.3 Clients unter Unix
 #
@@ -27,22 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109038");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 15:30:28 +0100 (Tue, 19 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('SYS.2.3 Clients unter Unix');
-  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_3_Clients_unter_Unix.html ");
+  script_xref(name:"URL", value:"https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_3_Clients_unter_Unix.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("GSHB/GSHB_SSH_AppArmor_SeLinux.nasl",
-      "GSHB/GSHB_SSH_quota.nasl");
+  script_dependencies("GSHB/GSHB_SSH_AppArmor_SeLinux.nasl", "GSHB/GSHB_SSH_quota.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
+
   script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen,
-      die auf Unix-Clients erstellt, bearbeitet, gespeichert oder versendet werden");
+  die auf Unix-Clients erstellt, bearbeitet, gespeichert oder versendet werden");
+
   exit(0);
 }
 

@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871485");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:20:12 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-3258", "CVE-2015-3279");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for cups-filters RHSA-2015:2360-01");
-  script_tag(name: "summary", value: "Check the version of cups-filters");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The cups-filters packages contain back ends,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cups-filters'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The cups-filters packages contain back ends,
 filters, and other software that was once part of the core Common UNIX Printing
 System (CUPS) distribution but is now maintained independently.
 
@@ -52,7 +52,7 @@ The CVE-2015-3258 issue was discovered by Petr Sklenar of Red Hat.
 
 Notably, this update also fixes the following bug:
 
-* Previously, when polling CUPS printers from a CUPS server, when a printer
+  * Previously, when polling CUPS printers from a CUPS server, when a printer
 name contained an underscore (_), the client displayed the name containing
 a hyphen (-) instead. This made the print queue unavailable. With this
 update, CUPS allows the underscore character in printer names, and printers
@@ -60,17 +60,16 @@ appear as shown on the CUPS server as expected. (BZ#1167408)
 
 In addition, this update adds the following enhancement:
 
-* Now, the information from local and remote CUPS servers is cached during
+  * Now, the information from local and remote CUPS servers is cached during
 each poll, and the CUPS server load is reduced. (BZ#1191691)
 
 All cups-filters users are advised to upgrade to these updated packages,
 which contain backported patches to correct these issues and add this
-enhancement.
-");
-  script_tag(name: "affected", value: "cups-filters on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2360-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00041.html");
+enhancement.");
+  script_tag(name:"affected", value:"cups-filters on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2360-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00041.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -110,6 +109,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

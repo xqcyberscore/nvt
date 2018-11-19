@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3610_1.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3610_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for icu USN-3610-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843486");
-  script_version("$Revision: 12308 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-29 08:43:34 +0200 (Thu, 29 Mar 2018)");
   script_cve_id("CVE-2017-15422");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for icu USN-3610-1");
-  script_tag(name:"summary", value:"Check the version of icu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'icu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that ICU incorrectly
   handled certain calendars. If an application using ICU processed crafted data, a

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6416");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12391 $");
 
   script_name("Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability");
 
@@ -56,14 +56,16 @@ targeted device.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_csma_version.nasl");
   script_mandatory_keys("cisco_csm/installed");
-  script_xref(name:"URL", value:"https://software.cisco.com/download/navigator.html?mdfid=282509131.");
+
+  script_xref(name:"URL", value:"https://software.cisco.com/download/navigator.html?mdfid=282509131");
+
   exit(0);
 }
 

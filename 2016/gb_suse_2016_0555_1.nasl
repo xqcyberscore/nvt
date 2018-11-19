@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0555_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_0555_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for postgresql94 SUSE-SU-2016:0555-1 (postgresql94)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851217");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 06:25:12 +0100 (Thu, 25 Feb 2016)");
   script_cve_id("CVE-2007-4772", "CVE-2016-0766", "CVE-2016-0773");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql94 SUSE-SU-2016:0555-1 (postgresql94)");
-  script_tag(name:"summary", value:"Check the version of postgresql94");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql94'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for postgresql94 fixes the following issues:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_exif_dos_vuln_may18.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_php_exif_dos_vuln_may18.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # PHP 'ext/exif/exif.c' Denial of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:php:php";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813625");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2018-12882");
   script_bugtraq_id(104551);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-28 14:52:09 +0530 (Thu, 28 Jun 2018)");
   script_name("PHP 'ext/exif/exif.c' Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##It can result in FP for patched versions
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=76409");
   script_xref(name:"URL", value:"http://sg2.php.net/downloads.php");
-  script_xref(name:"URL", value:"https://bugs.php.net/patch-display.php?bug=76409&patch=avoid-double-free.patch&revision=1528027735.");
+  script_xref(name:"URL", value:"https://bugs.php.net/patch-display.php?bug=76409&patch=avoid-double-free.patch&revision=1528027735");
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3362_1.nasl 11768 2018-10-05 14:07:38Z cfischer $
+# $Id: gb_ubuntu_USN_3362_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for xorg-server USN-3362-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843253");
-  script_version("$Revision: 11768 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-25 07:24:40 +0200 (Tue, 25 Jul 2017)");
   script_cve_id("CVE-2017-10971", "CVE-2017-10972", "CVE-2017-2624");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for xorg-server USN-3362-1");
-  script_tag(name:"summary", value:"Check the version of xorg-server");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'xorg-server'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that the X.Org X server
   incorrectly handled endianness conversion of certain X events. An attacker able

@@ -26,23 +26,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871618");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:19 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2016-0758");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2016:1033-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* A flaw was found in the way the Linux kernel's ASN.1 DER decoder
+  * A flaw was found in the way the Linux kernel's ASN.1 DER decoder
 processed certain certificate files with tags of indefinite length. A
 local, unprivileged user could use a specially crafted X.509 certificate
 DER file to crash the system or, potentially, escalate their privileges on
@@ -53,53 +53,53 @@ issue.
 
 Bug Fix(es):
 
-* Under certain conditions, the migration threads could race with the CPU
+  * Under certain conditions, the migration threads could race with the CPU
 hotplug, which could cause a deadlock. A set of patches has been provided
 to fix this bug, and the deadlock no longer occurs in the system.
 (BZ#1299338)
 
-* A bug in the code that cleans up revoked delegations could previously
+  * A bug in the code that cleans up revoked delegations could previously
 cause a soft lockup in the NFS server. This patch fixes the underlying
 source code, so the lockup no longer occurs. (BZ#1311582)
 
-* The second attempt to reload Common Application Programming Interface
+  * The second attempt to reload Common Application Programming Interface
 (CAPI) devices on the little-endian variant of IBM Power Systems previously
 failed. The provided set of patches fixes this bug, and reloading works as
 intended. (BZ#1312396)
 
-* Due to inconsistencies in page size of IOMMU, the NVMe device, and the
+  * Due to inconsistencies in page size of IOMMU, the NVMe device, and the
 kernel, the BUG_ON signal previously occurred in the nvme_setup_prps()
 function, leading to the system crash while setting up the DMA transfer.
 The provided patch sets the default NVMe page size to 4k, thus preventing
 the system crash. (BZ#1312399)
 
-* Previously, on a system using the Infiniband mlx5 driver used for the SRP
+  * Previously, on a system using the Infiniband mlx5 driver used for the SRP
 stack, a hard lockup previously occurred after the kernel exceeded time
 with lock held with interrupts blocked. As a consequence, the system
 panicked. This update fixes this bug, and the system no longer panics in
 this situation. (BZ#1313814)
 
-* On the little-endian variant of IBM Power Systems, the kernel previously
+  * On the little-endian variant of IBM Power Systems, the kernel previously
 crashed in the bitmap_weight() function while running the memory affinity
 script. The provided patch fortifies the topology setup and prevents
 sd- child from being set to NULL when it is already NULL. As a result, the
 memory affinity script runs successfully. (BZ#1316158)
 
-* When a KVM guest wrote random values to the special-purpose registers
+  * When a KVM guest wrote random values to the special-purpose registers
 (SPR) Instruction Authority Mask Register (IAMR), the guest and the
 corresponding QEMU process previously hung. This update adds the code which
 sets SPRs to a suitable neutral value on guest exit, thus fixing this bug.
 (BZ#1316636)
 
-* Under heavy iSCSI traffic load, the system previously panicked due to a
-race in the locking code leading to a ... 
+  * Under heavy iSCSI traffic load, the system previously panicked due to a
+race in the locking code leading to a ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:1033-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-May/msg00031.html");
+  script_xref(name:"RHSA", value:"2016:1033-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-May/msg00031.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -223,6 +223,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

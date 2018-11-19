@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871395");
-  script_version("$Revision: 12370 $");
+  script_version("$Revision: 12380 $");
   script_cve_id("CVE-2012-5667", "CVE-2015-1345");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:24:50 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for grep RHSA-2015:1447-01");
-  script_tag(name: "summary", value: "Check the version of grep");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The grep utility searches through textual input for lines that contain a
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'grep'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The grep utility searches through textual input for lines that contain a
 match to a specified pattern and then prints the matching lines. The GNU
 grep utilities include grep, egrep, and fgrep.
 
@@ -62,33 +63,33 @@ BZ#1064668, BZ#1126757, BZ#1167766, BZ#1171806)
 
 This update also fixes the following bugs:
 
-* Prior to this update, the \w and \W symbols were inconsistently matched
+  * Prior to this update, the \w and \W symbols were inconsistently matched
 to the [:alnum:] character class. Consequently, regular expressions that
 used \w and \W in some cases had incorrect results. An upstream patch which
 fixes the matching problem has been applied, and \w is now matched to the
 [_[:alnum:]] character and \W to the [^_[:alnum:]] character consistently.
 (BZ#799863)
 
-* Previously, the '--fixed-regexp' command-line option was not included in
+  * Previously, the '--fixed-regexp' command-line option was not included in
 the grep(1) manual page. Consequently, the manual page was inconsistent
 with the built-in help of the grep utility. To fix this bug, grep(1) has
 been updated to include a note informing the user that '--fixed-regexp' is
 an obsolete option. Now, the built-in help and manual page are consistent
 regarding the '--fixed-regexp' option. (BZ#1103270)
 
-* Previously, the Perl Compatible Regular Expression (PCRE) library did not
+  * Previously, the Perl Compatible Regular Expression (PCRE) library did not
 work correctly when matching non-UTF-8 text in UTF-8 mode. Consequently, an
 error message about invalid UTF-8 byte sequence characters was returned.
 To fix this bug, patches from upstream have been applied to the PCRE
-l ... 
+l ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "grep on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"grep on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:1447-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00033.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:1447-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-July/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -122,6 +123,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

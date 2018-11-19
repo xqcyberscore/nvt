@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1497_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_1497_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for deluge openSUSE-SU-2017:1497-1 (deluge)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851563");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-07 06:48:00 +0200 (Wed, 07 Jun 2017)");
   script_cve_id("CVE-2017-7178", "CVE-2017-9031");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for deluge openSUSE-SU-2017:1497-1 (deluge)");
-  script_tag(name:"summary", value:"Check the version of deluge");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'deluge'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for deluge fixes two security
   issues: - CVE-2017-9031: A remote attacker may have used a directory traversal

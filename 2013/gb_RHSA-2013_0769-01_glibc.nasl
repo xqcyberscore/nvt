@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The glibc packages provide the standard C libraries (libc), POSIX thread
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.870985");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-25 10:17:44 +0530 (Thu, 25 Apr 2013)");
+  script_cve_id("CVE-2013-0242", "CVE-2013-1914");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_name("RedHat Update for glibc RHSA-2013:0769-01");
+
+  script_xref(name:"RHSA", value:"2013:0769-01");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-April/msg00034.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"glibc on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The glibc packages provide the standard C libraries (libc), POSIX thread
   libraries (libpthread), standard math libraries (libm), and the Name Server
   Caching Daemon (nscd) used by multiple programs on the system. Without
   these libraries, the Linux system cannot function correctly.
@@ -62,10 +84,9 @@ tag_insight = "The glibc packages provide the standard C libraries (libc), POSIX
   relevant to your system have been applied.
 
   This update is available via the Red Hat Network. Details on how to
-  use the Red Hat Network to apply this update are available at
-  https://access.redhat.com/knowledge/articles/11258
+  use the Red Hat Network to apply this update are available at the references.
 
-  5. Bugs fixed (http://bugzilla.redhat.com):
+  5. Bugs fixed:
 
   905874 - CVE-2013-0242 glibc: Buffer overrun (DoS) in regexp matcher by
            processing multibyte characters
@@ -76,36 +97,11 @@ tag_insight = "The glibc packages provide the standard C libraries (libc), POSIX
 
   Red Hat Enterprise Linux Deskt ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "glibc on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.870985");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2013-04-25 10:17:44 +0530 (Thu, 25 Apr 2013)");
-  script_cve_id("CVE-2013-0242", "CVE-2013-1914");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_name("RedHat Update for glibc RHSA-2013:0769-01");
-
-  script_xref(name: "RHSA", value: "2013:0769-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-April/msg00034.html");
-  script_tag(name:"summary", value:"Check for the Version of glibc");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/articles/11258");
 
   exit(0);
 }
@@ -169,6 +165,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

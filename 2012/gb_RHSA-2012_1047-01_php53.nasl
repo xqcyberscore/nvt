@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "PHP is an HTML-embedded scripting language commonly used with the Apache
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00057.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870782");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-28 10:36:19 +0530 (Thu, 28 Jun 2012)");
+  script_cve_id("CVE-2010-2950", "CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789",
+                "CVE-2012-1172", "CVE-2012-2143", "CVE-2012-2336", "CVE-2012-2386",
+                "CVE-2012-1823");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"RHSA", value:"2012:1047-01");
+  script_name("RedHat Update for php53 RHSA-2012:1047-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php53'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"php53 on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
   HTTP Server.
 
   It was discovered that the PHP XSL extension did not restrict the file
@@ -70,39 +94,9 @@ tag_insight = "PHP is an HTML-embedded scripting language commonly used with the
   RHSA-2012:0547, did not properly filter all php-cgi command line arguments.
   A specially-crafted request to a PHP script could cause the PHP interpreter
   to execute the script in a loop, or output usage information that triggers
-  an In ... 
+  an In ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "php53 on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-June/msg00057.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870782");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-28 10:36:19 +0530 (Thu, 28 Jun 2012)");
-  script_cve_id("CVE-2010-2950", "CVE-2011-4153", "CVE-2012-0057", "CVE-2012-0789",
-                "CVE-2012-1172", "CVE-2012-2143", "CVE-2012-2336", "CVE-2012-2386",
-                "CVE-2012-1823");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "RHSA", value: "2012:1047-01");
-  script_name("RedHat Update for php53 RHSA-2012:1047-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of php53");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -252,6 +246,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

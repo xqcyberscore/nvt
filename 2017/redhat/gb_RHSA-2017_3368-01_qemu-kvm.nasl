@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3368-01_qemu-kvm.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_3368-01_qemu-kvm.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for qemu-kvm RHSA-2017:3368-01
 #
@@ -27,17 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812317");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-01 12:17:09 +0100 (Fri, 01 Dec 2017)");
   script_cve_id("CVE-2017-14167", "CVE-2017-15289");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for qemu-kvm RHSA-2017:3368-01");
-  script_tag(name: "summary", value: "Check the version of qemu-kvm");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Kernel-based Virtual Machine (KVM) is a full
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Kernel-based Virtual Machine (KVM) is a full
   virtualization solution for Linux on a variety of architectures. The qemu-kvm
   package provides the user-space component for running virtual machines that use
   KVM. Security Fix(es): * Quick Emulator (QEMU), compiled with the PC System
@@ -52,11 +53,11 @@ if(description)
   (CVE-2017-15289) Red Hat would like to thank Thomas Garnier (Google.com) for
   reporting CVE-2017-14167 and Guoxiang Niu (Huawei.com) for reporting
   CVE-2017-15289. ");
-  script_tag(name: "affected", value: "qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:3368-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-November/msg00047.html");
+  script_xref(name:"RHSA", value:"2017:3368-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00047.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

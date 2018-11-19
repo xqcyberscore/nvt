@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0760_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2012_0760_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850247");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:01:39 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2011-3101", "CVE-2012-0441", "CVE-2012-1937", "CVE-2012-1938",
                 "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1944", "CVE-2012-1945",
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0760_1");
   script_name("SuSE Update for MozillaFirefox, openSUSE-SU-2012:0760-1 (MozillaFirefox, )");
 
-  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox.'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -145,7 +146,7 @@ if(description)
   * MFSA 2012-38/CVE-2012-1946 (bmo#750109) Use-after-free
   while replacing/insert ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

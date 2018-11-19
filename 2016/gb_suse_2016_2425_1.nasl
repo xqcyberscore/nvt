@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2425_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_2425_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for postgresql93 openSUSE-SU-2016:2425-1 (postgresql93)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851400");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 15:43:12 +0530 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for postgresql93 openSUSE-SU-2016:2425-1 (postgresql93)");
-  script_tag(name:"summary", value:"Check the version of postgresql93");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql93'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The postgresql server postgresql93 was updated to 9.3.14 fixes the
   following issues:
@@ -108,7 +109,7 @@ if(description)
 
   - Avoid dat ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"postgresql93 on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

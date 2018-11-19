@@ -26,41 +26,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871768");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:49:38 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2016-8630", "CVE-2016-8655", "CVE-2016-9083", "CVE-2016-9084");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:0386-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* Linux kernel built with the Kernel-based Virtual Machine (CONFIG_KVM)
+  * Linux kernel built with the Kernel-based Virtual Machine (CONFIG_KVM)
 support is vulnerable to a null pointer dereference flaw. It could occur on
 x86 platform, when emulating an undefined instruction. An attacker could
 use this flaw to crash the host kernel resulting in DoS. (CVE-2016-8630,
 Important)
 
-* A race condition issue leading to a use-after-free flaw was found in the
+  * A race condition issue leading to a use-after-free flaw was found in the
 way the raw packet sockets implementation in the Linux kernel networking
 subsystem handled synchronization while creating the TPACKET_V3 ring
 buffer. A local user able to open a raw packet socket (requires the
 CAP_NET_RAW capability) could use this flaw to elevate their privileges on
 the system. (CVE-2016-8655, Important)
 
-* A flaw was discovered in the Linux kernel's implementation of VFIO. An
+  * A flaw was discovered in the Linux kernel's implementation of VFIO. An
 attacker issuing an ioctl can create a situation where memory is corrupted
 and modify memory outside of the expected area. This may overwrite kernel
 memory and subvert kernel execution. (CVE-2016-9083, Important)
 
-* The use of a kzalloc with an integer multiplication allowed an integer
+  * The use of a kzalloc with an integer multiplication allowed an integer
 overflow condition to be reached in vfio_pci_intrs.c. This combined with
 CVE-2016-9083 may allow an attacker to craft an attack and use unallocated
 memory, potentially crashing the machine. (CVE-2016-9084, Moderate)
@@ -71,14 +71,16 @@ Additional Changes:
 
 Space precludes documenting all of the bug fixes and enhancements included
 in this advisory. To see the complete list of bug fixes and enhancements,
-refer to the following KnowledgeBase article:
-https://access.redhat.com/articles/2940041");
-  script_tag(name: "affected", value: "kernel on
-  Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+refer to the linked KnowledgeBase article.");
 
-  script_xref(name: "RHSA", value: "2017:0386-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-March/msg00008.html");
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/2940041");
+
+  script_tag(name:"affected", value:"kernel on
+  Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+
+  script_xref(name:"RHSA", value:"2017:0386-01");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-March/msg00008.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -202,6 +204,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

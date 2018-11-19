@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2591_1.nasl 12280 2018-11-09 10:01:52Z cfischer $
+# $Id: gb_suse_2018_2591_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for zutils openSUSE-SU-2018:2591-1 (zutils)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851875");
-  script_version("$Revision: 12280 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 11:01:52 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-04 07:03:10 +0200 (Tue, 04 Sep 2018)");
   script_cve_id("CVE-2018-1000637");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for zutils openSUSE-SU-2018:2591-1 (zutils)");
-  script_tag(name:"summary", value:"Check the version of zutils");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'zutils'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
   script_tag(name:"insight", value:"This update for zutils to version 1.7 fixes one security issue:

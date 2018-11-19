@@ -26,29 +26,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871677");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 15:52:41 +0530 (Tue, 08 Nov 2016)");
   script_cve_id("CVE-2016-1583", "CVE-2016-5195");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2016:2124-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux
 kernel, the core of any Linux operating system.
 
 Security Fix(es):
 
-* A race condition was found in the way the Linux kernel's memory subsystem
+  * A race condition was found in the way the Linux kernel's memory subsystem
 handled the copy-on-write (COW) breakage of private read-only memory
 mappings. An unprivileged, local user could use this flaw to gain write
 access to otherwise read-only memory mappings and thus increase their
 privileges on the system. (CVE-2016-5195, Important)
 
-* It was found that stacking a file system over procfs in the Linux kernel
+  * It was found that stacking a file system over procfs in the Linux kernel
 could lead to a kernel stack overflow due to deep nesting, as demonstrated
 by mounting ecryptfs over procfs and creating a recursion by mapping
 /proc/environ. An unprivileged, local user could potentially use this flaw
@@ -58,7 +58,7 @@ Red Hat would like to thank Phil Oester for reporting CVE-2016-5195.
 
 Bug Fix(es):
 
-* In some cases, a kernel crash or file system corruption occurred when
+  * In some cases, a kernel crash or file system corruption occurred when
 running journal mode 'ordered'. The kernel crash was caused by a null
 pointer dereference due to a race condition between two journal functions.
 The file system corruption occurred due to a race condition between the
@@ -66,7 +66,7 @@ do_get_write_access() function and buffer writeout. This update fixes both
 race conditions. As a result, neither the kernel crash, nor the file system
 corruption now occur. (BZ#1067708)
 
-* Prior to this update, some Global File System 2 (GFS2) files had
+  * Prior to this update, some Global File System 2 (GFS2) files had
 incorrect time stamp values due to two problems with handling time stamps
 of such files. The first problem concerned the atime time stamp, which
 ended up with an arbitrary value ahead of the actual value, when a GFS2
@@ -74,13 +74,12 @@ file was accessed. The second problem was related to the mtime and ctime
 time stamp updates, which got lost when a GFS2 file was written to from one
 node and read from or written to from another node. With this update, a set
 of patches has been applied that fix these problems. As a result, the time
-stamps of GFS2 files are now handled correctly. (BZ#1374861)
-");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+stamps of GFS2 files are now handled correctly. (BZ#1374861)");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2124-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-October/msg00062.html");
+  script_xref(name:"RHSA", value:"2016:2124-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-October/msg00062.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -192,6 +191,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

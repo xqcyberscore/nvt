@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1637_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2012_1637_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2012-12/msg00011.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850385");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:42 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5130", "CVE-2012-5131", "CVE-2012-5132", "CVE-2012-5133",
                 "CVE-2012-5134", "CVE-2012-5135", "CVE-2012-5136", "CVE-2012-5137",
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:1637_1");
   script_name("SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)");
 
-  script_tag(name:"summary", value:"Check for the Version of Chromium");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Chromium'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

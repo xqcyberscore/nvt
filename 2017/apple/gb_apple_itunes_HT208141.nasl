@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208141.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_apple_itunes_HT208141.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple iTunes Security Updates (HT208141)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811879");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-7081", "CVE-2017-7087", "CVE-2017-7091", "CVE-2017-7092",
                 "CVE-2017-7093", "CVE-2017-7094", "CVE-2017-7095", "CVE-2017-7096",
                 "CVE-2017-7098", "CVE-2017-7099", "CVE-2017-7100", "CVE-2017-7102",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(100985, 100995, 100994, 101006, 100998, 100986, 101005);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 11:53:06 +0530 (Wed, 25 Oct 2017)");
   script_name("Apple iTunes Security Updates (HT208141)");
 
@@ -71,7 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
-  script_xref(name:"URL", value:"http://www.apple.com/support.");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

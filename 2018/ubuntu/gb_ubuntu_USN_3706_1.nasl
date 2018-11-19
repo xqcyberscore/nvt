@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3706_1.nasl 11044 2018-08-18 15:12:40Z cfischer $
+# $Id: gb_ubuntu_USN_3706_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for libjpeg-turbo USN-3706-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843584");
-  script_version("$Revision: 11044 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 05:55:48 +0200 (Tue, 10 Jul 2018)");
   script_cve_id("CVE-2014-9092", "CVE-2016-3616", "CVE-2017-15232", "CVE-2018-11212",
                 "CVE-2018-11213", "CVE-2018-11214", "CVE-2018-1152");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libjpeg-turbo USN-3706-1");
-  script_tag(name:"summary", value:"Check the version of libjpeg-turbo");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libjpeg-turbo'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that libjpeg-turbo incorrectly handled certain malformed
 JPEG images. If a user or automated system were tricked into opening a

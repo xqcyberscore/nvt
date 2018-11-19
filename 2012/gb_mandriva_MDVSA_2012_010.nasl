@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2012-01/msg00014.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831531");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 11:31:36 +0530 (Mon, 23 Jan 2012)");
   script_cve_id("CVE-2011-4824");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2012:010");
   script_name("Mandriva Update for cacti MDVSA-2012:010 (cacti)");
 
-  script_tag(name:"summary", value:"Check for the Version of cacti");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cacti'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2495_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_2495_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Linux Kernel openSUSE-SU-2017:2495-1 (Linux Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851618");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-16 07:27:49 +0200 (Sat, 16 Sep 2017)");
   script_cve_id("CVE-2017-1000251", "CVE-2017-11472", "CVE-2017-12134", "CVE-2017-14051",
                 "CVE-2017-14106");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:2495-1 (Linux Kernel)");
-  script_tag(name:"summary", value:"Check the version of the");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.2 kernel was updated
   to 4.4.87 to receive various security and bugfixes.
@@ -107,7 +108,7 @@ if(description)
 
   - Revert '/proc/iomem: only expose physical resource addresses to ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Linux Kernel on openSUSE Leap 42.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2728-01_postgresql.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2728-01_postgresql.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for postgresql RHSA-2017:2728-01
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811781");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-15 07:07:56 +0200 (Fri, 15 Sep 2017)");
   script_cve_id("CVE-2017-7546", "CVE-2017-7547");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for postgresql RHSA-2017:2728-01");
-  script_tag(name: "summary", value: "Check the version of postgresql");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "PostgreSQL is an advanced object-relational
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"PostgreSQL is an advanced object-relational
 database management system (DBMS).
 
 The following packages have been upgraded to a later upstream version:
@@ -46,12 +46,12 @@ postgresql (9.2.23). (BZ#1484639, BZ#1484647)
 
 Security Fix(es):
 
-* It was found that authenticating to a PostgreSQL database account with an
+  * It was found that authenticating to a PostgreSQL database account with an
 empty password was possible despite libpq's refusal to send an empty
 password. A remote attacker could potentially use this flaw to gain access
 to database accounts with empty passwords. (CVE-2017-7546)
 
-* An authorization flaw was found in the way PostgreSQL handled access to
+  * An authorization flaw was found in the way PostgreSQL handled access to
 the pg_user_mappings view on foreign servers. A remote, authenticated
 attacker could potentially use this flaw to retrieve passwords from the
 user mappings defined by the foreign server owners without actually having
@@ -60,13 +60,12 @@ the privileges to do so. (CVE-2017-7547)
 Red Hat would like to thank the PostgreSQL project for reporting these
 issues. Upstream acknowledges Ben de Graaff, Jelte Fennema, and Jeroen van
 der Ham as the original reporters of CVE-2017-7546  and Jeff Janes as the
-original reporter of CVE-2017-7547.
-");
-  script_tag(name: "affected", value: "postgresql on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+original reporter of CVE-2017-7547.");
+  script_tag(name:"affected", value:"postgresql on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2728-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-September/msg00039.html");
+  script_xref(name:"RHSA", value:"2017:2728-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-September/msg00039.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -154,6 +153,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

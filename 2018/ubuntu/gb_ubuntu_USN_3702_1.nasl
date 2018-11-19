@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3702_1.nasl 11180 2018-08-31 14:10:20Z mmartin $
+# $Id: gb_ubuntu_USN_3702_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for php7.2 USN-3702-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843580");
-  script_version("$Revision: 11180 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 16:10:20 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-05 05:59:36 +0200 (Thu, 05 Jul 2018)");
   script_cve_id("CVE-2018-12882");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.2 USN-3702-1");
-  script_tag(name:"summary", value:"Check the version of php7.2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php7.2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"It was discovered that PHP incorrectly handled

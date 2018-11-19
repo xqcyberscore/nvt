@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2070_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2070_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-lts-saucy USN-2070-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841679");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 16:06:10 +0530 (Mon, 06 Jan 2014)");
   script_cve_id("CVE-2013-2929", "CVE-2013-2930", "CVE-2013-4345", "CVE-2013-4348",
                 "CVE-2013-4511", "CVE-2013-4513", "CVE-2013-4514", "CVE-2013-4515",
@@ -94,13 +94,14 @@ A flaw was discovered in the Linux kernel's compat ioctls for Adaptec
 AACRAID scsi raid devices. An unprivileged local user could send
 administrative commands to these devices potentia ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2070-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2070-1/");
-  script_tag(name:"summary", value:"Check for the Version of linux-lts-saucy");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-lts-saucy'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

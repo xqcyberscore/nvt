@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871703");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:42:44 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-7795");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for systemd RHSA-2016:2610-01");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The systemd packages contain systemd,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'systemd'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The systemd packages contain systemd,
 a system and service manager for Linux, compatible with the SysV and LSB
 init scripts. It provides aggressive parallelism capabilities, uses socket
 and D-Bus activation for starting services, offers on-demand starting of daemons,
@@ -47,25 +48,24 @@ logic. It can also work as a drop-in replacement for sysvinit.
 
 Security Fix(es):
 
-* A flaw was found in the way systemd handled empty notification messages.
+  * A flaw was found in the way systemd handled empty notification messages.
 A local attacker could use this flaw to make systemd freeze its execution,
 preventing further management of system services, system shutdown, or
 zombie process collection via systemd. (CVE-2016-7795)
 
 Bug Fix(es):
 
-* Previously, the udev device manager automatically enabled all memory
+  * Previously, the udev device manager automatically enabled all memory
 banks on IBM z System installations. As a consequence, hot plug memory was
 enabled automatically, which was incorrect. With this update, system
 architecture checks have been added to the udev rules to address the
 problem. As a result, hot plug memory is no longer automatically enabled.
-(BZ#1381123)
-");
-  script_tag(name: "affected", value: "systemd on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+(BZ#1381123)");
+  script_tag(name:"affected", value:"systemd on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2610-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00044.html");
+  script_xref(name:"RHSA", value:"2016:2610-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00044.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -135,6 +135,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

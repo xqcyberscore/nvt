@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1042_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2018_1042_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2018:1042-1 (chromium)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851732");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-21 08:59:09 +0200 (Sat, 21 Apr 2018)");
   script_cve_id("CVE-2018-6085", "CVE-2018-6086", "CVE-2018-6087", "CVE-2018-6088",
                 "CVE-2018-6089", "CVE-2018-6090", "CVE-2018-6091", "CVE-2018-6092",
@@ -43,7 +43,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2018:1042-1 (chromium)");
-  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'chromium'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for Chromium to version 66.0.3359.117 fixes the following
   issues:
@@ -143,7 +144,7 @@ if(description)
 
   To install this openSUSE Security Update use the S ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"chromium on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

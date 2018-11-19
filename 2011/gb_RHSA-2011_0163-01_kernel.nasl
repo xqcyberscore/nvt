@@ -23,30 +23,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00016.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870382");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-21 14:59:01 +0100 (Fri, 21 Jan 2011)");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_xref(name:"RHSA", value:"2011:0163-01");
+  script_cve_id("CVE-2010-4526");
+  script_name("RedHat Update for kernel RHSA-2011:0163-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
   operating system.
 
   This update fixes the following security issue:
-  
+
   * A flaw was found in the sctp_icmp_proto_unreachable() function in the
   Linux kernel's Stream Control Transmission Protocol (SCTP) implementation.
   A remote attacker could use this flaw to cause a denial of service.
   (CVE-2010-4526, Important)
-  
+
   This update also fixes the following bugs:
-  
+
   * Due to an off-by-one error, gfs2_grow failed to take the very last &quot;rgrp&quot;
   parameter into account when adding up the new free space. With this update,
   the GFS2 kernel properly counts all the new resource groups and fixes the
   &quot;statfs&quot; file correctly. (BZ#666792)
-  
+
   * Prior to this update, a multi-threaded application, which invoked
   popen(3) internally, could cause a thread stall by FILE lock corruption.
   The application program waited for a FILE lock in glibc, but the lock
   seemed to be corrupted, which was caused by a race condition in the COW
   (Copy On Write) logic. With this update, the race condition was corrected
   and FILE lock corruption no longer occurs. (BZ#667050)
-  
+
   * If an error occurred during I/O, the SCSI driver reset the &quot;megaraid_sas&quot;
   controller to restore it to normal state. However, on Red Hat Enterprise
   Linux 5, the waiting time to allow a full reset completion for the
@@ -54,37 +76,10 @@ tag_insight = "The kernel packages contain the Linux kernel, the core of any Lin
   the controller as stalled, and, as a result, the system stalled as well.
   With this update, more time is given to the controller to properly restart,
   thus, the controller operates as expected after being reset. (BZ#667141)
-  
+
   Users should upgrade to these updated packages, which contain backported
   patches to correct these issues. The system must be rebooted for this
-  update to take effect.";
-
-tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-January/msg00016.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870382");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2011-01-21 14:59:01 +0100 (Fri, 21 Jan 2011)");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_xref(name: "RHSA", value: "2011:0163-01");
-  script_cve_id("CVE-2010-4526");
-  script_name("RedHat Update for kernel RHSA-2011:0163-01");
-
-  script_tag(name:"summary", value:"Check for the Version of kernel");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -192,6 +187,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

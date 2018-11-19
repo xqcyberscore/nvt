@@ -26,23 +26,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871638");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-19 05:26:27 +0200 (Tue, 19 Jul 2016)");
   script_cve_id("CVE-2016-5387");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for httpd RHSA-2016:1422-01");
-  script_tag(name: "summary", value: "Check the version of httpd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The httpd packages provide the Apache HTTP
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'httpd'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The httpd packages provide the Apache HTTP
 Server, a powerful, efficient, and extensible web server.
 
 Security Fix(es):
 
-* It was discovered that httpd used the value of the Proxy header from HTTP
+  * It was discovered that httpd used the value of the Proxy header from HTTP
 requests to initialize the HTTP_PROXY environment variable for CGI scripts,
 which in turn was incorrectly used by certain HTTP client implementations
 to configure the proxy for outgoing HTTP requests. A remote attacker could
@@ -57,7 +57,7 @@ Red Hat would like to thank Scott Geary (VendHQ) for reporting this issue.
 
 Bug Fix(es):
 
-* In a caching proxy configuration, the mod_cache module would treat
+  * In a caching proxy configuration, the mod_cache module would treat
 content as stale if the Expires header changed when refreshing a cached
 response. As a consequence, an origin server returning content without a
 fixed Expires header would not be treated as cacheable. The mod_cache
@@ -65,18 +65,17 @@ module has been fixed to ignore changes in the Expires header when
 refreshing content. As a result, such content is now cacheable, improving
 performance and reducing load at the origin server. (BZ#1347648)
 
-* The HTTP status code 451 'Unavailable For Legal Reasons' was not usable
+  * The HTTP status code 451 'Unavailable For Legal Reasons' was not usable
 in the httpd configuration. As a consequence, modules such as mod_rewrite
 could not be configured to return a 451 error if required for legal
 purposes. The 451 status code has been added to the list of available error
 codes, and modules can now be configured to return a 451 error if required.
-(BZ#1353269)
-");
-  script_tag(name: "affected", value: "httpd on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+(BZ#1353269)");
+  script_tag(name:"affected", value:"httpd on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:1422-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-July/msg00017.html");
+  script_xref(name:"RHSA", value:"2016:1422-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-July/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -134,6 +133,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

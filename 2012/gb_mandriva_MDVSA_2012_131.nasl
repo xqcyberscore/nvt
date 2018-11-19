@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:131");
   script_oid("1.3.6.1.4.1.25623.1.0.831719");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:41:59 +0530 (Tue, 14 Aug 2012)");
   script_cve_id("CVE-2012-3461");
   script_tag(name:"cvss_base", value:"4.3");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2012:131");
   script_name("Mandriva Update for libotr MDVSA-2012:131 (libotr)");
 
-  script_tag(name:"summary", value:"Check for the Version of libotr");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libotr'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3619_2.nasl 11897 2018-10-15 05:26:22Z cfischer $
+# $Id: gb_ubuntu_USN_3619_2.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3619-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843497");
-  script_version("$Revision: 11897 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-06 09:55:27 +0200 (Fri, 06 Apr 2018)");
   script_cve_id("CVE-2017-16995", "CVE-2017-0861", "CVE-2017-1000407", "CVE-2018-8043",
                 "CVE-2017-11472", "CVE-2017-15129", "CVE-2017-16528", "CVE-2017-16532",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3619-2");
-  script_tag(name:"summary", value:"Check the version of linux-aws");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-aws'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3619-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding

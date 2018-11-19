@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1022_1.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_suse_2016_1022_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for samba SUSE-SU-2016:1022-1 (samba)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851274");
-  script_version("$Revision: 12291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:17:58 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2015-5370", "CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112",
                 "CVE-2016-2113", "CVE-2016-2115", "CVE-2016-2118");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for samba SUSE-SU-2016:1022-1 (samba)");
-  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Samba was updated to the 4.2.x codestream, bringing some new features and
   security fixes (bsc#973832, FATE#320709).
@@ -117,7 +118,7 @@ if(description)
 
   - s3:smbd/oplock: Obey kernel oplock setting when rele ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"samba on SUSE Linux Enterprise Server 12, SUSE Linux Enterprise Desktop 12");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

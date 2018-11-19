@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_mem_crptn_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms_ie_mem_crptn_vuln.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Vulnerability in Internet Explorer Could Allow Remote Code Execution (960714)
 #
@@ -29,37 +29,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900066");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-4844");
   script_bugtraq_id(32721);
   script_name("Vulnerability in Internet Explorer Could Allow Remote Code Execution (960714)");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS08-078");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS08-078");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : "Successful exploitation could result in memory corruption via a specially
-  crafted HTML document.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Internet Explorer 5.01 & 6 on MS Windows 2000
+  script_tag(name:"impact", value:"Successful exploitation could result in memory corruption via a specially
+  crafted HTML document.");
+  script_tag(name:"affected", value:"Internet Explorer 5.01 & 6 on MS Windows 2000
   Internet Explorer 6 on MS Windows 2003 and XP
   Internet Explorer 7 on MS Windows 2003 and XP
   Internet Explorer 7 on MS Windows vista
   Internet Explorer 7 on MS Windows 2008 server");
-  script_tag(name : "insight" , value : "The flaw is due to a use-after-free error when HTML elements
+  script_tag(name:"insight", value:"The flaw is due to a use-after-free error when HTML elements
   are bound to the same data source.");
-  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS08-078");
-  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-078.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -94,20 +92,18 @@ if(hotfix_missing(name:"960714") == 0){
   exit(0);
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = fetch_file_version(sysPath, file_name:"mshtml.dll");
+  vers = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
   if(vers)
   {
     if(hotfix_check_sp(win2k:5, xp:4) > 0)
     {
-      # Check for IE version 5 < 5.0.3872.1000
       if(version_in_range(version:vers, test_version:"5.0", test_version2:"5.0.3872.999")||
          version_in_range(version:vers, test_version:"6.0", test_version2:"6.0.2800.1618"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -117,24 +113,22 @@ if(sysPath)
       SP = get_kb_item("SMB/WinXP/ServicePack");
       if("Service Pack 2" >< SP)
       {
-        # Check for IE version 6 < 6.0.2900.3492
         if(version_in_range(version:vers, test_version:"6.0.2900.0000", test_version2:"6.0.2900.3491")||
            version_in_range(version:vers, test_version:"7.0.0000.00000", test_version2:"7.0.6000.16787")||
            version_in_range(version:vers, test_version:"7.0.6000.20000", test_version2:"7.0.6000.20972")||
            version_in_range(version:vers, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18246")||
            version_in_range(version:vers, test_version:"8.0.6001.20000", test_version2:"8.0.6001.22341")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
       else if("Service Pack 3" >< SP)
       {
-        # Check for IE version 6 < 6.0.2900.5726
         if(version_in_range(version:vers, test_version:"6.0.2900.0000", test_version2:"6.0.2900.5725")||
            version_in_range(version:vers, test_version:"7.0.0000.00000", test_version2:"7.0.6000.16787")||
            version_in_range(version:vers, test_version:"7.0.6000.20000", test_version2:"7.0.6000.20972")||
            version_in_range(version:vers, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18246")||
            version_in_range(version:vers, test_version:"8.0.6001.20000", test_version2:"8.0.6001.22341")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
       exit(0);
@@ -145,22 +139,20 @@ if(sysPath)
       SP = get_kb_item("SMB/Win2003/ServicePack");
       if("Service Pack 1" >< SP)
       {
-        # Check for IE version 6 < 6.0.3790.3261
         if(version_in_range(version:vers, test_version:"6.0.3790.0000", test_version2:"6.0.3790.3260")||
            version_in_range(version:vers, test_version:"7.0.0000.00000", test_version2:"7.0.6000.16787")||
            version_in_range(version:vers, test_version:"7.0.6000.20000", test_version2:"7.0.6000.20972")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
       else if("Service Pack 2" >< SP)
       {
-        # Check for IE version 6 < 6.0.3790.4426
         if(version_in_range(version:vers, test_version:"6.0.3790.0000", test_version2:"6.0.3790.4425")||
            version_in_range(version:vers, test_version:"7.0.0000.00000", test_version2:"7.0.6000.16787")||
            version_in_range(version:vers, test_version:"7.0.6000.20000", test_version2:"7.0.6000.20972")||
            version_in_range(version:vers, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18246")||
            version_in_range(version:vers, test_version:"8.0.6001.20000", test_version2:"8.0.6001.22341")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
       exit(0);
@@ -168,23 +160,20 @@ if(sysPath)
   }
 }
 
-## Get System32 path
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
   if(dllVer)
   {
-    # Windows Vista
     if(hotfix_check_sp(winVista:2, win2008:2) > 0)
     {
-      ## Check for the Vista and server 2008 without SP
       if(version_in_range(version: dllVer, test_version:"7.0.6000.16000", test_version2:"7.0.6000.16787")||
          version_in_range(version: dllVer, test_version:"7.0.6000.20000", test_version2:"7.0.6000.20972")||
          version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18246")||
          version_in_range(version: dllVer, test_version:"8.0.6001.22000", test_version2:"8.0.6001.22341"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -196,11 +185,10 @@ if(sysPath)
 
       if("Service Pack 1" >< SP)
       {
-        # Grep for mshtml.dll version 
         if(version_in_range(version: dllVer, test_version:"7.0.6001.16000", test_version2:"7.0.6001.18182")||
            version_in_range(version: dllVer, test_version:"7.0.6001.22000", test_version2:"7.0.6001.22327"))
         {
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
            exit(0);
         }
       }

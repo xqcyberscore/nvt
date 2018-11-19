@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871813");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:49:13 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2015-5203", "CVE-2015-5221", "CVE-2016-10248", "CVE-2016-10249",
                 "CVE-2016-10251", "CVE-2016-1577", "CVE-2016-1867", "CVE-2016-2089",
@@ -41,10 +41,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for jasper RHSA-2017:1208-01");
-  script_tag(name: "summary", value: "Check the version of jasper");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "JasPer is an implementation of Part 1 of the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'jasper'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"JasPer is an implementation of Part 1 of the
   JPEG 2000 image compression standard.
 
 Security Fix(es):
@@ -65,17 +65,16 @@ CVE-2016-9600, CVE-2016-10248, CVE-2016-10251)
 Red Hat would like to thank Liu Bingchang (IIE) for reporting
 CVE-2016-8654, CVE-2016-9583, CVE-2016-9591, and CVE-2016-9600  Gustavo
 Grieco for reporting CVE-2015-5203  and Josselin Feist for reporting
-CVE-2015-5221.
-");
-  script_tag(name: "affected", value: "jasper on
+CVE-2015-5221.");
+  script_tag(name:"affected", value:"jasper on
   Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Server (v. 7),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:1208-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-May/msg00010.html");
+  script_xref(name:"RHSA", value:"2017:1208-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-May/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -109,7 +108,7 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -135,6 +134,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

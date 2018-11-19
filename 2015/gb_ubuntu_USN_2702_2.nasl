@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842407");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 05:10:04 +0200 (Wed, 12 Aug 2015)");
   script_cve_id("CVE-2015-4473", "CVE-2015-4474", "CVE-2015-4475", "CVE-2015-4477",
                 "CVE-2015-4478", "CVE-2015-4479", "CVE-2015-4480", "CVE-2015-4493",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ubufox USN-2702-2");
-  script_tag(name:"summary", value:"Check the version of ubufox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ubufox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-2702-1 fixed vulnerabilities in Firefox.
 This update provides the corresponding updates for Ubufox.
@@ -91,7 +92,7 @@ execute arbitrary code with the privileges of the user invoking Firefox.
 
 Ronald Cran ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"ubufox on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");

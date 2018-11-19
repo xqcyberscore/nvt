@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2036_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_2036_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libarchive openSUSE-SU-2016:2036-1 (libarchive)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851382");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:49:33 +0200 (Fri, 12 Aug 2016)");
   script_cve_id("CVE-2015-8918", "CVE-2015-8919", "CVE-2015-8920", "CVE-2015-8921",
                 "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924", "CVE-2015-8925",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libarchive openSUSE-SU-2016:2036-1 (libarchive)");
-  script_tag(name:"summary", value:"Check the version of libarchive");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libarchive'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"libarchive was updated to fix 20 security issues.
 

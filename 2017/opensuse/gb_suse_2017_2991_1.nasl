@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2991_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_2991_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851645");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-11 07:31:25 +0100 (Sat, 11 Nov 2017)");
   script_cve_id("CVE-2016-7586", "CVE-2016-7589", "CVE-2016-7592", "CVE-2016-7599",
                 "CVE-2016-7623", "CVE-2016-7632", "CVE-2016-7635", "CVE-2016-7639",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for webkit2gtk3 openSUSE-SU-2017:2991-1 (webkit2gtk3)");
-  script_tag(name:"summary", value:"Check the version of webkit2gtk3");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'webkit2gtk3'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for webkit2gtk3 to version 2.18.0 fixes the following issues:
 
@@ -100,7 +101,7 @@ if(description)
   - CVE-2017-2496: An issue was fixed that allowed remote attackers to
  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"webkit2gtk3 on openSUSE Leap 42.3, openSUSE Leap 42.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

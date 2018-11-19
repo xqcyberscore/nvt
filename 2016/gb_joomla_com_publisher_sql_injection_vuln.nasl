@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808236");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12391 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:52:23 +0530 (Mon, 27 Jun 2016)");
 
   script_name("Joomla Publisher component SQL Injection Vulnerability");
@@ -67,7 +67,8 @@ if(description)
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
 
-  script_xref(name:"URL", value:"https://publisher.ijoomla.com/.");
+  script_xref(name:"URL", value:"https://publisher.ijoomla.com/");
+
   exit(0);
 }
 

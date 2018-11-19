@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-11/msg00029.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831494");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 09:47:30 +0530 (Fri, 18 Nov 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -40,7 +40,8 @@ if(description)
                 "CVE-2009-3609", "CVE-2009-3938");
   script_name("Mandriva Update for poppler MDVSA-2011:175 (poppler)");
 
-  script_tag(name:"summary", value:"Check for the Version of poppler");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'poppler'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
@@ -101,7 +102,7 @@ if(description)
   ArthurOutputDev.cc, (3) CairoOutputDev.cc, (4) GfxState.cc, (5)
   JBIG2Stream.cc, (6) PSO ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

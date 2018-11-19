@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1216_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_1216_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MariaDB openSUSE-SU-2015:1216-1 (MariaDB)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850663");
-  script_version("$Revision: 12284 $");
+  script_version("$Revision: 12381 $");
   script_cve_id("CVE-2014-6464", "CVE-2014-6469", "CVE-2014-6491", "CVE-2014-6494",
                 "CVE-2014-6496", "CVE-2014-6500", "CVE-2014-6507", "CVE-2014-6555",
                 "CVE-2014-6559", "CVE-2014-6568", "CVE-2014-8964", "CVE-2015-0374",
@@ -37,11 +37,12 @@ if(description)
                 "CVE-2015-2571", "CVE-2015-2573", "CVE-2015-3152", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-10 06:06:08 +0200 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MariaDB openSUSE-SU-2015:1216-1 (MariaDB)");
-  script_tag(name:"summary", value:"Check the version of MariaDB");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MariaDB'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MariaDB was updated to its current minor version,
   fixing bugs and security issues.

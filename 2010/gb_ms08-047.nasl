@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-047.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms08-047.nasl 12404 2018-11-19 08:40:38Z cfischer $
 #
 # Microsoft Windows IPsec Policy Processing Information Disclosure Vulnerability (953733)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801484");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-21 15:57:21 +0100 (Tue, 21 Dec 2010)");
   script_cve_id("CVE-2008-2246");
   script_bugtraq_id(30634);
@@ -45,11 +45,10 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will result in systems ignoring IPsec policies and
-  thus transmit data otherwise intended to be encrypted in clear text.
-  Impact Level: System/Application");
+  thus transmit data otherwise intended to be encrypted in clear text.");
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 1 and prior.
   Microsoft Windows Server 2008 Service Pack 1 and prior.");
   script_tag(name:"insight", value:"The flaw is caused by an error when the default IPsec policy is imported from
@@ -57,8 +56,7 @@ if(description)
   cause all IPsec rules to be ignored and network traffic to be transmitted
   in clear text.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-047.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-047.");
@@ -84,7 +82,7 @@ if(hotfix_missing(name:"953733") == 0){
 sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = fetch_file_version(sysPath, file_name:"Ipsecsvc.dll");
+  dllVer = fetch_file_version(sysPath:sysPath, file_name:"Ipsecsvc.dll");
   if(dllVer)
   {
     if(hotfix_check_sp(winVista:2) > 0)

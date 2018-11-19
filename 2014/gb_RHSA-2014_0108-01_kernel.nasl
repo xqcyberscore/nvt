@@ -23,22 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871116");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 10:46:13 +0530 (Thu, 30 Jan 2014)");
   script_cve_id("CVE-2013-4494");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:N/I:N/A:C");
   script_name("RedHat Update for kernel RHSA-2014:0108-01");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* It was found that the Xen hypervisor did not always lock
+  * It was found that the Xen hypervisor did not always lock
 'page_alloc_lock' and 'grant_table.lock' in the same order. This could
 potentially lead to a deadlock. A malicious guest administrator could use
 this flaw to cause a denial of service on the host. (CVE-2013-4494,
@@ -48,7 +49,7 @@ Red Hat would like to thank the Xen project for reporting this issue.
 
 This update also fixes the following bugs:
 
-* A recent patch to the CIFS code that introduced the NTLMSSP
+  * A recent patch to the CIFS code that introduced the NTLMSSP
 (NT LAN Manager Security Support Provider) authentication mechanism caused
 a regression in CIFS behavior. As a result of the regression, an encryption
 key that is returned during the SMB negotiation protocol response was only
@@ -60,13 +61,13 @@ the same server. A patch has been applied to correct this problem so that
 an encryption key or a server challenge is now provided for every SMB
 session during the SMB negotiation protocol response. (BZ#1029865)
 
-* The igb driver previously used a 16-bit mask when writing values of the
+  * The igb driver previously used a 16-bit mask when writing values of the
 flow control high-water mark to hardware registers on a network device.
 Consequently, the values were truncated on some network devices, disrupting
 the flow control. A patch has been applied to the igb driver so that it now
 uses a 32-bit mask as expected. (BZ#1041694)
 
-* The IPMI driver did not properly handle kernel panic messages.
+  * The IPMI driver did not properly handle kernel panic messages.
 Consequently, when a kernel panic occurred on a system that was utilizing
 IPMI without Kdump being set up, a second kernel panic could be triggered.
 A patch has been applied to the IPMI driver to fix this problem, and a
@@ -75,22 +76,14 @@ message handler now properly waits for a response to panic event messages.
 
 All kernel users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. The system must be
-rebooted for this update to take effect.
-";
-
-  tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+rebooted for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0108-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-January/msg00025.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"RHSA", value:"2014:0108-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-January/msg00025.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -201,6 +194,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

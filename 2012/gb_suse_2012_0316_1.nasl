@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0316_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2012_0316_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for libpng12 openSUSE-SU-2012:0316-1 (libpng12)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850244");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 22:38:33 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3026");
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0316_1");
   script_name("SuSE Update for libpng12 openSUSE-SU-2012:0316-1 (libpng12)");
 
-  script_tag(name:"summary", value:"Check for the Version of libpng12");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libpng12'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

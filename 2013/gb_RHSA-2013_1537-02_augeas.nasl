@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871079");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:44:11 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2012-0786", "CVE-2012-0787");
   script_tag(name:"cvss_base", value:"3.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for augeas RHSA-2013:1537-02");
 
-  tag_insight = "Augeas is a utility for editing configuration. Augeas parses configuration
+
+  script_tag(name:"affected", value:"augeas on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Augeas is a utility for editing configuration. Augeas parses configuration
 files in their native formats and transforms them into a tree.
 Configuration changes are made by manipulating this tree and saving it back
 into native configuration files. Augeas also uses 'lenses' as basic
@@ -56,44 +59,34 @@ provides a number of bug fixes and enhancements over the previous version.
 
 This update also fixes the following bugs:
 
-* Previously, when single quotes were used in an XML attribute, Augeas was
+  * Previously, when single quotes were used in an XML attribute, Augeas was
 unable to parse the file with the XML lens. An upstream patch has been
 provided ensuring that single quotes are handled as valid characters and
 parsing no longer fails. (BZ#799885)
 
-* Prior to this update, Augeas was unable to set up the 'require_ssl_reuse'
+  * Prior to this update, Augeas was unable to set up the 'require_ssl_reuse'
 option in the vsftpd.conf file. The updated patch fixes the vsftpd lens to
 properly recognize this option, thus fixing this bug. (BZ#855022)
 
-* Previously, the XML lens did not support non-Unix line endings.
+  * Previously, the XML lens did not support non-Unix line endings.
 Consequently, Augeas was unable to load any files containing such line
 endings. The XML lens has been fixed to handle files with CRLF line
 endings, thus fixing this bug. (BZ#799879)
 
-* Previously, Augeas was unable to parse modprobe.conf files with spaces
+  * Previously, Augeas was unable to parse modprobe.conf files with spaces
 around '=' characters in option directives. The modprobe lens has been
 updated and parsing no longer fails. (BZ#826752)
 
 All Augeas users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add these
-enhancements.
-";
-
-  tag_affected = "augeas on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+enhancements.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1537-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00017.html");
-  script_tag(name: "summary" , value: "Check for the Version of augeas");
+  script_xref(name:"RHSA", value:"2013:1537-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00017.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'augeas'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -126,6 +119,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

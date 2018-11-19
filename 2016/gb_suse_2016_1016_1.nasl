@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1016_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_1016_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for mercurial openSUSE-SU-2016:1016-1 (mercurial)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851272");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:17:37 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2016-3068", "CVE-2016-3069", "CVE-2016-3630");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mercurial openSUSE-SU-2016:1016-1 (mercurial)");
-  script_tag(name:"summary", value:"Check the version of mercurial");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mercurial'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"mercurial was updated to fix three security issues.
 

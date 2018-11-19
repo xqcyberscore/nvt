@@ -26,37 +26,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871817");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-23 07:02:41 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-8422");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kdelibs RHSA-2017:1264-01");
-  script_tag(name: "summary", value: "Check the version of kdelibs");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The K Desktop Environment (KDE) is a
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kdelibs'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The K Desktop Environment (KDE) is a
 graphical desktop environment for the X Window System. The kdelibs packages include
 core libraries for the K Desktop Environment.
 
 Security Fix(es):
 
-* A privilege escalation flaw was found in the way kdelibs handled D-Bus
+  * A privilege escalation flaw was found in the way kdelibs handled D-Bus
 messages. A local user could potentially use this flaw to gain root
 privileges by spoofing a callerID and leveraging a privileged helper
 application. (CVE-2017-8422)
 
 Red Hat would like to thank Sebastian Krahmer (SUSE) for reporting this
-issue.
-");
-  script_tag(name: "affected", value: "kdelibs on
+issue.");
+  script_tag(name:"affected", value:"kdelibs on
   Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:1264-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-May/msg00030.html");
+  script_xref(name:"RHSA", value:"2017:1264-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-May/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -108,6 +107,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln02.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_dokuwiki_xss_vuln02.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # DokuWiki Stored XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:dokuwiki:dokuwiki';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112025");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12391 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-22 10:27:42 +0200 (Tue, 22 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_dokuwiki_detect.nasl");
   script_mandatory_keys("dokuwiki/installed");
 
-  script_tag(name:"summary", value:"DokuWiki has stored XSS when rendering a malicious RSS or Atom feed or language name in a code element, in /inc/parser/xhtml.php. An attacker can create or edit a wiki with this element to trigger JavaScript execution.");
+  script_tag(name:"summary", value:"DokuWiki has stored XSS when rendering a malicious RSS or Atom feed or language name in a code element, in /inc/parser/xhtml.php. An attacker can create or edit a wiki with this element to trigger   JavaScript execution.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -62,7 +62,7 @@ if (description)
   script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2080");
   script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2081");
 
-  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki.");
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki");
   exit(0);
 }
 

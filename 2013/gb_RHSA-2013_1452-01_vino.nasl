@@ -23,19 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871055");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-10-23 11:18:03 +0530 (Wed, 23 Oct 2013)");
   script_cve_id("CVE-2013-5745");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_name("RedHat Update for vino RHSA-2013:1452-01");
 
-  tag_insight = "Vino is a Virtual Network Computing (VNC) server for GNOME. It allows
+
+  script_tag(name:"affected", value:"vino on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Vino is a Virtual Network Computing (VNC) server for GNOME. It allows
 remote users to connect to a running GNOME session using VNC.
 
 A denial of service flaw was found in the way Vino handled certain
@@ -45,25 +49,14 @@ an infinite loop when processing those incoming requests. (CVE-2013-5745)
 
 All vino users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. The GNOME session must be
-restarted (log out, then log back in) for this update to take effect.
-";
-
-  tag_affected = "vino on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+restarted (log out, then log back in) for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1452-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00023.html");
-  script_tag(name: "summary" , value: "Check for the Version of vino");
+  script_xref(name:"RHSA", value:"2013:1452-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-October/msg00023.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'vino'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -96,7 +89,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -116,6 +109,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

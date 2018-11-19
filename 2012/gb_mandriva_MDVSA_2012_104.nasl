@@ -29,14 +29,15 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.831698");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-07-16 11:57:55 +0530 (Mon, 16 Jul 2012)");
   script_cve_id("CVE-2009-5030", "CVE-2012-3358");
   script_xref(name:"MDVSA", value:"2012:104");
   script_name("Mandriva Update for openjpeg MDVSA-2012:104 (openjpeg)");
 
-  script_tag(name:"summary", value:"Check for the Version of openjpeg");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openjpeg'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

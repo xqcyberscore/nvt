@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871069");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:42:42 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-1813");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for busybox RHSA-2013:1732-02");
 
-  tag_insight = "BusyBox provides a single binary that includes versions of a large number
+
+  script_tag(name:"affected", value:"busybox on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"BusyBox provides a single binary that includes versions of a large number
 of system commands, including a shell. This can be very useful for
 recovering from certain types of system failures, particularly those
 involving broken shared libraries.
@@ -47,7 +50,7 @@ could use this flaw to manipulate portions of the /dev directory tree.
 
 This update also fixes the following bugs:
 
-* Previously, due to a too eager string size optimization on the IBM System
+  * Previously, due to a too eager string size optimization on the IBM System
 z architecture, the 'wc' BusyBox command failed after processing standard
 input with the following error:
 
@@ -56,37 +59,27 @@ input with the following error:
 This bug was fixed by disabling the string size optimization and the 'wc'
 command works properly on IBM System z architectures. (BZ#820097)
 
-* Prior to this update, the 'mknod' command was unable to create device
+  * Prior to this update, the 'mknod' command was unable to create device
 nodes with a major or minor number larger than 255. Consequently, the kdump
 utility failed to handle such a device. The underlying source code has been
 modified, and it is now possible to use the 'mknod' command to create
 device nodes with a major or minor number larger than 255. (BZ#859817)
 
-* If a network installation from an NFS server was selected, the 'mount'
+  * If a network installation from an NFS server was selected, the 'mount'
 command used the UDP protocol by default. If only TCP mounts were supported
 by the server, this led to a failure of the mount command. As a result,
 Anaconda could not continue with the installation. This bug is now fixed
 and NFS mount operations default to the TCP protocol. (BZ#855832)
 
 All busybox users are advised to upgrade to these updated packages, which
-contain backported patches to correct these issues.
-";
-
-  tag_affected = "busybox on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+contain backported patches to correct these issues.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1732-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00035.html");
-  script_tag(name:"summary", value:"Check for the Version of busybox");
+  script_xref(name:"RHSA", value:"2013:1732-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00035.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'busybox'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -113,6 +106,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

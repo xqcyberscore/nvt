@@ -26,16 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871314");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 05:39:21 +0100 (Wed, 11 Feb 2015)");
   script_cve_id("CVE-2014-3528", "CVE-2014-3580");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("RedHat Update for subversion RHSA-2015:0165-01");
-  script_tag(name: "summary", value: "Check the version of subversion");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Subversion (SVN) is a concurrent version control system which enables one
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'subversion'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Subversion (SVN) is a concurrent version control system which enables one
 or more users to collaborate in developing and maintaining a hierarchy of
 files and directories while keeping a history of all changes. The
 mod_dav_svn module is used with the Apache HTTP Server to allow access
@@ -59,13 +60,12 @@ All subversion users should upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
 updated packages, for the update to take effect, you must restart the httpd
 daemon, if you are using mod_dav_svn, and the svnserve daemon, if you are
-serving Subversion repositories via the svn:// protocol.
-");
-  script_tag(name: "affected", value: "subversion on Red Hat Enterprise Linux Server (v. 6),
+serving Subversion repositories via the svn:// protocol.");
+  script_tag(name:"affected", value:"subversion on Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0165-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-February/msg00017.html");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0165-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-February/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -112,6 +112,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

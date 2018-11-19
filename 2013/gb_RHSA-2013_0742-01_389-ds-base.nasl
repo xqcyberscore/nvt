@@ -23,7 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The 389 Directory Server is an LDAPv3 compliant server. The base packages
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.870983");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-19 09:57:26 +0530 (Fri, 19 Apr 2013)");
+  script_cve_id("CVE-2013-1897");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_name("RedHat Update for 389-ds-base RHSA-2013:0742-01");
+
+  script_xref(name:"RHSA", value:"2013:0742-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-April/msg00019.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the '389-ds-base'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"389-ds-base on Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The 389 Directory Server is an LDAPv3 compliant server. The base packages
   include the Lightweight Directory Access Protocol (LDAP) server and
   command-line utilities for server administration.
 
@@ -70,35 +93,7 @@ tag_insight = "The 389 Directory Server is an LDAPv3 compliant server. The base 
   DNA operation was executed with other plug-ins. This update moves the
   release timing of the problematic lock, and the DNA plug-in does n ...
 
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_affected = "389-ds-base on Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.870983");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2013-04-19 09:57:26 +0530 (Fri, 19 Apr 2013)");
-  script_cve_id("CVE-2013-1897");
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_name("RedHat Update for 389-ds-base RHSA-2013:0742-01");
-
-  script_xref(name: "RHSA", value: "2013:0742-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-April/msg00019.html");
-  script_tag(name:"summary", value:"Check for the Version of 389-ds-base");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -134,6 +129,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2953_1.nasl 12308 2018-11-12 03:41:06Z ckuersteiner $
+# $Id: gb_suse_2017_2953_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for chromium openSUSE-SU-2017:2953-1 (chromium)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851643");
-  script_version("$Revision: 12308 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 04:41:06 +0100 (Mon, 12 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 07:28:39 +0100 (Thu, 09 Nov 2017)");
   script_cve_id("CVE-2017-15398", "CVE-2017-15399");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for chromium openSUSE-SU-2017:2953-1 (chromium)");
-  script_tag(name:"summary", value:"Check the version of chromium");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'chromium'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for Chromium to version 62.0.3202.89 fixes the following
   vulnerabilities (boo#1066851):

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1269_1.nasl 12295 2018-11-09 15:39:49Z cfischer $
+# $Id: gb_suse_2015_1269_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for MozillaFirefox, SUSE-SU-2015:1269-1 (MozillaFirefox,)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851042");
-  script_version("$Revision: 12295 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:39:49 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 18:46:38 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2725", "CVE-2015-2726", "CVE-2015-2728", "CVE-2015-2730", "CVE-2015-2733", "CVE-2015-2734", "CVE-2015-2735", "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738", "CVE-2015-2739", "CVE-2015-2740", "CVE-2015-2743", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox, SUSE-SU-2015:1269-1 (MozillaFirefox, )");
-  script_tag(name:"summary", value:"Check the version of MozillaFirefox.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox.'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"MozillaFirefox, mozilla-nspr and  mozilla-nss were updated to fix 17
   security issues.

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871243");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-17 05:57:43 +0200 (Wed, 17 Sep 2014)");
   script_cve_id("CVE-2014-0591");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
   script_name("RedHat Update for bind97 RHSA-2014:1244-01");
-  script_tag(name: "insight", value: "The Berkeley Internet Name Domain (BIND) is an implementation of the Domain
+  script_tag(name:"insight", value:"The Berkeley Internet Name Domain (BIND) is an implementation of the Domain
 Name System (DNS) protocols. It contains a DNS server (named), a resolver
 library with routines for applications to use when interfacing with DNS,
 and tools for verifying that the DNS server is operating correctly.
@@ -52,7 +52,7 @@ built with a different compiler or C library optimization).
 
 This update also fixes the following bug:
 
-* Previously, the bind97 initscript did not check for the existence of the
+  * Previously, the bind97 initscript did not check for the existence of the
 ROOTDIR variable when shutting down the named daemon. As a consequence,
 some parts of the file system that are mounted when using bind97 in a
 chroot environment were unmounted on daemon shut down, even if bind97 was
@@ -64,16 +64,16 @@ parts of the file system are unmounted. (BZ#1059118)
 
 All bind97 users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing the
-update, the BIND daemon (named) will be restarted automatically.
-");
-  script_tag(name: "affected", value: "bind97 on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+update, the BIND daemon (named) will be restarted automatically.");
+  script_tag(name:"affected", value:"bind97 on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "RHSA", value: "2014:1244-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-September/msg00031.html");
-  script_tag(name:"summary", value:"Check for the Version of bind97");
+  script_xref(name:"RHSA", value:"2014:1244-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-September/msg00031.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bind97'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -130,6 +130,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

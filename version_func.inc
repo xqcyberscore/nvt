@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 11845 2018-10-11 14:57:09Z cfischer $
+# $Id: version_func.inc 12405 2018-11-19 08:42:37Z cfischer $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11845 $
+# $Revision: 12405 $
 #
 ###############################################################################
 
@@ -280,8 +280,8 @@ function get_samba_version() {
 ## nb: If you use this you need to include secpod_smb_func.inc
 function fetch_file_version( sysPath, file_name ) {
 
-  local_var file_name, kbsysPath, kb_proxy_file, kb_proxy, share, file, sysVer;
-  # nb: Don't add sysPath to local_var as quite a lot LSCs are calling fetch_file_version(sysPath)
+  local_var sysPath, file_name;
+  local_var kbsysPath, kb_proxy_file, kb_proxy, share, file, sysVer;
 
   if( ! sysPath )   set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sysPath#-#fetch_file_version" );
   if( ! file_name ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file_name#-#fetch_file_version" );

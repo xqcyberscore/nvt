@@ -23,7 +23,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The GNU Debugger (GDB) allows debugging of programs written in C, C++,
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00061.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870923");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-02-22 10:01:47 +0530 (Fri, 22 Feb 2013)");
+  script_cve_id("CVE-2011-4355");
+  script_bugtraq_id(50829);
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"RHSA", value:"2013:0522-02");
+  script_name("RedHat Update for gdb RHSA-2013:0522-02");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gdb'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"gdb on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The GNU Debugger (GDB) allows debugging of programs written in C, C++,
   Java, and other languages by executing them in a controlled fashion and
   then printing out their data.
 
@@ -58,39 +83,7 @@ tag_insight = "The GNU Debugger (GDB) allows debugging of programs written in C,
   now more user-friendly. (BZ#836966)
 
   All users of gdb are advised to upgrade to these updated packages, which
-  contain backported patches to correct these issues.";
-
-
-tag_affected = "gdb on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00061.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870923");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2013-02-22 10:01:47 +0530 (Fri, 22 Feb 2013)");
-  script_cve_id("CVE-2011-4355");
-  script_bugtraq_id(50829);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "RHSA", value: "2013:0522-02");
-  script_name("RedHat Update for gdb RHSA-2013:0522-02");
-
-  script_tag(name: "summary" , value: "Check for the Version of gdb");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  contain backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -126,6 +119,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

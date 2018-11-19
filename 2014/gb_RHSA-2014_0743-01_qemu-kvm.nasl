@@ -23,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871177");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-17 10:06:35 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4151", "CVE-2013-4535", "CVE-2013-4536",
                 "CVE-2013-4541", "CVE-2013-4542", "CVE-2013-6399", "CVE-2014-0182",
@@ -37,7 +36,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RedHat Update for qemu-kvm RHSA-2014:0743-01");
 
-  tag_insight = "KVM (Kernel-based Virtual Machine) is a full virtualization solution for
+
+  script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"KVM (Kernel-based Virtual Machine) is a full virtualization solution for
 Linux on AMD64 and Intel 64 systems. The qemu-kvm package provides the
 user-space component for running virtual machines using KVM.
 
@@ -64,7 +67,7 @@ Anthony Liguori, and Michael Roth.
 
 This update also fixes the following bugs:
 
-* Previously, under certain circumstances, libvirt failed to start guests
+  * Previously, under certain circumstances, libvirt failed to start guests
 which used a non-zero PCI domain and SR-IOV Virtual Functions (VFs), and
 returned the following error message:
 
@@ -74,7 +77,7 @@ support it.
 This update fixes this issue and guests using the aforementioned
 configuration no longer fail to start. (BZ#1099941)
 
-* Due to an incorrect initialization of the cpus_sts bitmap, which holds
+  * Due to an incorrect initialization of the cpus_sts bitmap, which holds
 the enablement status of a vCPU, libvirt could fail to start a guest with
 an unusual vCPU topology (for example, a guest with three cores and two
 sockets). With this update, the initialization of cpus_sts has been
@@ -84,24 +87,14 @@ corrected, and libvirt no longer fails to start the aforementioned guests.
 All qemu-kvm users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
 update, shut down all running virtual machines. Once all virtual machines
-have shut down, start them again for this update to take effect.
-";
-
-  tag_affected = "qemu-kvm on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+have shut down, start them again for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0743-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-June/msg00032.html");
-  script_tag(name:"summary", value:"Check for the Version of qemu-kvm");
+  script_xref(name:"RHSA", value:"2014:0743-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-June/msg00032.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu-kvm'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -152,6 +145,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

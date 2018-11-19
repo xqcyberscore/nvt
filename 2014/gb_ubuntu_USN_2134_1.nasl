@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2134_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2134_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-2134-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841738");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:31:51 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2013-4579", "CVE-2013-6368", "CVE-2014-1438", "CVE-2014-1446",
                 "CVE-2014-1874");
@@ -70,7 +70,8 @@ mode) could exploit this flaw to cause a denial of service (kernel crash).
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2134-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2134-1/");
-  script_tag(name:"summary", value:"Check for the Version of linux-ti-omap4");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-ti-omap4'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

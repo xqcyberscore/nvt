@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_efront_rfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_efront_rfi_vuln.nasl 12392 2018-11-16 19:26:25Z cfischer $
 #
 # eFront 'database.php' Remote File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:efrontlearning:efront';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901045");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 12392 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 20:26:25 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-31 09:54:01 +0100 (Sat, 31 Oct 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,24 +42,23 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_efront_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("efront/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code on the
-  vulnerable Web server.
+  vulnerable Web server.");
 
-  Impact level: Application.");
   script_tag(name:"affected", value:"eFront version 3.5.4 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied data and can be
   exploited via 'path' parameter in 'libraries/database.php' to include and
   execute remote files on the affected system.");
-  script_tag(name:"solution", value: "Apply the patch from below link.
-  http://svn.efrontlearning.net/repos/efront/trunc/libraries/database.php
 
-  *****
-  NOTE: Please ignore this warning if the patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the patch from the referenced link.");
+
   script_tag(name:"summary", value:"This host is running eFront and is prone to Remote File Inclusion
   vulnerability.");
 
+  script_xref(name:"URL", value:"http://svn.efrontlearning.net/repos/efront/trunc/libraries/database.php");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36411");
   script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2009090034");
   script_xref(name:"URL", value:"http://forum.efrontlearning.net/viewtopic.php?f=1&t=1354&p=7174#p7174");

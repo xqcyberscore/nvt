@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871331");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:50:44 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-6040", "CVE-2014-8121");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for glibc RHSA-2015:0327-01");
-  script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The glibc packages provide the standard C libraries (libc), POSIX thread
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The glibc packages provide the standard C libraries (libc), POSIX thread
 libraries (libpthread), standard math libraries (libm), and the Name Server
 Caching Daemon (nscd) used by multiple programs on the system. Without
 these libraries, the Linux system cannot function correctly.
@@ -54,19 +55,19 @@ could enter an infinite loop, leading to a denial of service.
 
 This update also fixes the following bugs:
 
-* Due to problems with buffer extension and reallocation, the nscd daemon
+  * Due to problems with buffer extension and reallocation, the nscd daemon
 terminated unexpectedly with a segmentation fault when processing long
 netgroup entries. With this update, the handling of long netgroup entries
 has been corrected and nscd no longer crashes in the described scenario.
 (BZ#1138520)
 
-* If a file opened in append mode was truncated with the ftruncate()
+  * If a file opened in append mode was truncated with the ftruncate()
 function, a subsequent ftell() call could incorrectly modify the file
 offset. This update ensures that ftell() modifies the stream state only
 when it is in append mode and the buffer for the stream is not empty.
 (BZ#1156331)
 
-* A defect in the C library headers caused builds with older compilers to
+  * A defect in the C library headers caused builds with older compilers to
 generate incorrect code for the btowc() function in the older compatibility
 C++ standard library. Applications calling btowc() in the compatibility C++
 standard library became unresponsive. With this update, the C library
@@ -75,18 +76,17 @@ shipped with Red Hat Enterprise Linux has been rebuilt. Applications that
 rely on the compatibility C++ standard library no longer hang when calling
 btowc(). (BZ#1120490)
 
-* Previously, when using netgroups and the nscd daemon was set up to cache
+  * Previously, when using netgroups and the nscd daemon was set up to cache
 netgroup information, the sudo utility denied access to valid users. The
 bug in nscd has been fixed, and sudo now works in netgroups as
 expected. (BZ#1080766)
 
 Users of glibc are advised to upgrade to these updated packages, which fix
-these issues.
-");
-  script_tag(name: "affected", value: "glibc on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0327-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00021.html");
+these issues.");
+  script_tag(name:"affected", value:"glibc on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0327-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00021.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -156,6 +156,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

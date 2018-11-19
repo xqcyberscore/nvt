@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_mult_vuln_dec16.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_apple_macosx_server_mult_vuln_dec16.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple OS X Server Multiple Vulnerabilities Dec16
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810232");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2013-3919", "CVE-2013-4854", "CVE-2014-0591", "CVE-2014-4424",
                 "CVE-2014-4406", "CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062",
                 "CVE-2014-0063", "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(90690, 90689);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 14:52:33 +0530 (Mon, 05 Dec 2016)");
   script_name("Apple OS X Server Multiple Vulnerabilities Dec16");
 
@@ -85,10 +85,10 @@ if(description)
   script_family("General");
   script_dependencies("gb_apple_macosx_server_detect.nasl");
   script_mandatory_keys("Apple/OSX/Server/Version");
-  script_xref(name:"URL", value:"http://www.apple.com.");
+  script_xref(name:"URL", value:"http://www.apple.com");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");

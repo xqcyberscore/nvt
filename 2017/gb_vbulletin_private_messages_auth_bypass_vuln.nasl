@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 11989 2018-10-19 11:25:26Z cfischer $
+# $Id: gb_vbulletin_private_messages_auth_bypass_vuln.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # vBulletin 'Private Messages' Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811796");
-  script_version("$Revision: 11989 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2015-3419");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:11 +0530 (Wed, 04 Oct 2017)");
   script_name("vBulletin 'Private Messages' Authentication Bypass Vulnerability");
 
@@ -62,10 +62,9 @@ if(description)
   script_dependencies("vbulletin_detect.nasl");
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://members.vbulletin.com/patches.php.");
+  script_xref(name:"URL", value:"http://members.vbulletin.com/patches.php");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

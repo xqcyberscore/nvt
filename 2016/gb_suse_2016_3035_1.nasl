@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3035_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_3035_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for tiff openSUSE-SU-2016:3035-1 (tiff)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851447");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-08 05:33:44 +0100 (Thu, 08 Dec 2016)");
   script_cve_id("CVE-2014-8127", "CVE-2015-7554", "CVE-2015-8665", "CVE-2015-8683",
                 "CVE-2016-3622", "CVE-2016-3658", "CVE-2016-5321", "CVE-2016-5323",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tiff openSUSE-SU-2016:3035-1 (tiff)");
-  script_tag(name:"summary", value:"Check the version of tiff");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tiff'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Tiff was updated to version 4.0.7. This update fixes the following issues:
 
@@ -89,7 +90,7 @@ if(description)
   case in OJPEG case. Fixes (CVE-2014-8127, boo#914890, duplicate:
   CVE-2016-3658, ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"tiff on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

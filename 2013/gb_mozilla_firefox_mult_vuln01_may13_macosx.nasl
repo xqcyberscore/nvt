@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_may13_macosx.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 May13 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803606");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12387 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1673", "CVE-2013-1672", "CVE-2013-1671", "CVE-2013-1670",
@@ -36,10 +36,10 @@ if(description)
                     59872, 59869, 59865, 59870, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 12:23:01 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 May13 (Mac OS X)");
-  script_xref(name:"URL", value:" http://secunia.com/advisories/53400");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53400");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028555");
   script_xref(name:"URL", value:"http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
   script_category(ACT_GATHER_INFO);
@@ -47,10 +47,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-  memory corruption, bypass certain security restrictions and compromise
-  a user's system.");
+  memory corruption, bypass certain security restrictions and compromise a user's system.");
+
   script_tag(name:"affected", value:"Mozilla Firefox version before 21.0 on Mac OS X");
+
   script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine.
 
   - The Chrome Object Wrapper (COW) implementation does not prevent
@@ -70,15 +72,19 @@ if(description)
   - Use-after-free vulnerabilities in following functions,
     'nsContentUtils::RemoveScriptBlocker', 'nsFrameList::FirstChild', and
     'mozilla::plugins::child::_geturlnotify'.");
+
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 21.0 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

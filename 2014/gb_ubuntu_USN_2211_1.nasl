@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2211_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2211_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for libxfont USN-2211-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841825");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-19 11:24:57 +0530 (Mon, 19 May 2014)");
   script_cve_id("CVE-2014-0209", "CVE-2014-0210", "CVE-2014-0211");
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,8 @@ and Ubuntu 13.10. (CVE-2014-0210, CVE-2014-0211)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2211-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2211-1/");
-  script_tag(name:"summary", value:"Check for the Version of libxfont");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libxfont'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

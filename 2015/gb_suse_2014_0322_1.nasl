@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_0322_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2014_0322_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for gnutls SUSE-SU-2014:0322-1 (gnutls)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850991");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:15:41 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2009-5138", "CVE-2013-1619", "CVE-2013-2116", "CVE-2014-0092");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for gnutls SUSE-SU-2014:0322-1 (gnutls)");
-  script_tag(name:"summary", value:"Check the version of gnutls");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gnutls'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The GnuTLS library received a critical security fix and
   other updates:

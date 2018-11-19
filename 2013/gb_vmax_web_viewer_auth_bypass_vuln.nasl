@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmax_web_viewer_auth_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_vmax_web_viewer_auth_bypass_vuln.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # VMAX Web Viewer Default Credentials Authentication Bypass Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803198");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 12387 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 16:41:18 +0530 (Tue, 14 May 2013)");
   script_name("VMAX Web Viewer Default Credentials Authentication Bypass Vulnerability");
 
-  script_xref(name:"URL", value:" http://dariusfreamon.wordpress.com/2013/05/12/sunday-shodan-defaults/");
+  script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/05/12/sunday-shodan-defaults/");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,18 +48,23 @@ if(description)
   user credentials (username/password combination). The 'admin' account has no
   password, which is publicly known and documented. This allows remote attackers
   to trivially access the program or system and gain privileged access.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running VMAX Web Viewer and prone to authentication
   bypass vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain administrative
   access, circumventing existing authentication mechanisms.");
+
   script_tag(name:"affected", value:"Digital Watchdog VMAX Viewer");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

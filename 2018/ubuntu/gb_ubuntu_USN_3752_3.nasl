@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3752_3.nasl 11236 2018-09-05 09:02:10Z cfischer $
+# $Id: gb_ubuntu_USN_3752_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3752-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843630");
-  script_version("$Revision: 11236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 07:13:34 +0200 (Wed, 29 Aug 2018)");
   script_cve_id("CVE-2018-1000200", "CVE-2018-10323", "CVE-2018-10840", "CVE-2018-10881",
                 "CVE-2018-1093", "CVE-2018-1108", "CVE-2018-1120", "CVE-2018-11412",
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-azure USN-3752-3");
-  script_tag(name:"summary", value:"Check the version of linux-azure");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-azure'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on
 the target host.");
   script_tag(name:"insight", value:"It was discovered that, when attempting to handle an
@@ -92,7 +93,7 @@ possibly execute arbitrary code. (CVE-2018-11506)
 
 Shankara Pailoor discovered that a race condition existed in the  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"linux-azure on Ubuntu 18.04 LTS,
   Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");

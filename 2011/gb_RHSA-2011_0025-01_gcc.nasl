@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The gcc packages include C, C++, Java, Fortran, Objective C, and Ada 95 GNU
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-January/msg00007.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870375");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_xref(name:"RHSA", value:"2011:0025-01");
+  script_cve_id("CVE-2010-0831", "CVE-2010-2322");
+  script_name("RedHat Update for gcc RHSA-2011:0025-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'gcc'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"gcc on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The gcc packages include C, C++, Java, Fortran, Objective C, and Ada 95 GNU
   compilers, along with related support libraries. The libgcj package
   provides fastjar, an archive tool for Java Archive (JAR) files.
 
@@ -31,71 +53,44 @@ tag_insight = "The gcc packages include C, C++, Java, Fortran, Objective C, and 
   archive files. If a local, unsuspecting user extracted a specially-crafted
   JAR file, it could cause fastjar to overwrite arbitrary files writable by
   the user running fastjar. (CVE-2010-0831, CVE-2010-2322)
-  
+
   This update also fixes the following bugs:
-  
+
   * The option -print-multi-os-directory in the gcc --help output is not in
   the gcc(1) man page. This update applies an upstream patch to amend this.
   (BZ#529659)
-  
+
   * An internal assertion in the compiler tried to check that a C++ static
   data member is external which resulted in errors. This was because when the
   compiler optimizes C++ anonymous namespaces the declarations were no longer
   marked external as everything on anonymous namespaces is local to the
   current translation. This update corrects the assertion to resolve this
   issue. (BZ#503565, BZ#508735, BZ#582682)
-  
+
   * Attempting to compile certain .cpp files could have resulted in an
   internal compiler error. This update resolves this issue. (BZ#527510)
-  
+
   * PrintServiceLookup.lookupPrintServices with an appropriate DocFlavor
   failed to return a list of printers under gcj. This update includes a
   backported patch to correct this bug in the printer lookup service.
   (BZ#578382)
-  
+
   * GCC would not build against xulrunner-devel-1.9.2. This update removes
   gcjwebplugin from the GCC RPM. (BZ#596097)
-  
+
   * When a SystemTap generated kernel module was compiled, gcc reported an
   internal compiler error and gets a segmentation fault. This update applies
   a patch that, instead of crashing, assumes it can point to anything.
   (BZ#605803)
-  
+
   * There was a performance issue with libstdc++ regarding all objects
   derived from or using std::streambuf because of lock contention between
   threads. This patch ensures reload uses the same value from _S_global for
   the comparison, _M_add_reference () and _M_impl member of the class.
   (BZ#635708)
-  
+
   All gcc users should upgrade to these updated packages, which contain
-  backported patches to correct these issues.";
-
-tag_affected = "gcc on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-January/msg00007.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870375");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_xref(name: "RHSA", value: "2011:0025-01");
-  script_cve_id("CVE-2010-0831", "CVE-2010-2322");
-  script_name("RedHat Update for gcc RHSA-2011:0025-01");
-
-  script_tag(name:"summary", value:"Check for the Version of gcc");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -233,6 +228,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

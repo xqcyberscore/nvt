@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1595_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1595_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2018:1595-1 (mariadb)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852040");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12379 $");
   script_cve_id("CVE-2018-2755", "CVE-2018-2759", "CVE-2018-2761", "CVE-2018-2766", "CVE-2018-2767", "CVE-2018-2771", "CVE-2018-2777", "CVE-2018-2781", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2786", "CVE-2018-2787", "CVE-2018-2810", "CVE-2018-2813", "CVE-2018-2817", "CVE-2018-2819");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:36:20 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for mariadb openSUSE-SU-2018:1595-1 (mariadb)");
   script_category(ACT_GATHER_INFO);
@@ -98,7 +98,7 @@ if(description)
   MySQL (subcomponent: InnoDB). Easily exploitable vulnerability allowed
   low privileged attacker with network access via multiple p ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"mariadb on openSUSE Leap 15.0.");
 

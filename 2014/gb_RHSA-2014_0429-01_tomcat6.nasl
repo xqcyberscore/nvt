@@ -23,19 +23,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871159");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 10:15:43 +0530 (Fri, 02 May 2014)");
   script_cve_id("CVE-2013-4286", "CVE-2013-4322", "CVE-2014-0050", "CVE-2012-3544");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for tomcat6 RHSA-2014:0429-01");
 
-  tag_insight = "Apache Tomcat is a servlet container for the Java Servlet and JavaServer
+
+  script_tag(name:"affected", value:"tomcat6 on Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Apache Tomcat is a servlet container for the Java Servlet and JavaServer
 Pages (JSP) technologies.
 
 It was found that when Tomcat processed a series of HTTP requests in which
@@ -60,23 +62,14 @@ processing such an incoming request. (CVE-2014-0050)
 
 All Tomcat users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. Tomcat must be
-restarted for this update to take effect.
-";
-
-  tag_affected = "tomcat6 on Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+restarted for this update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0429-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-April/msg00041.html");
-  script_tag(name:"summary", value:"Check for the Version of tomcat6");
+  script_xref(name:"RHSA", value:"2014:0429-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-April/msg00041.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tomcat6'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -127,6 +120,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

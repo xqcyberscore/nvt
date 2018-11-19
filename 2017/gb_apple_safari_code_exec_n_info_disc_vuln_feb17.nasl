@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_code_exec_n_info_disc_vuln_feb17.nasl 11959 2018-10-18 10:33:40Z mmartin $
+# $Id: gb_apple_safari_code_exec_n_info_disc_vuln_feb17.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple Safari Code Execution And Information Disclosure Vulnerabilities Feb17
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810566");
-  script_version("$Revision: 11959 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2016-4613", "CVE-2016-4666", "CVE-2016-4677", "CVE-2016-7578");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:33:40 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 14:46:57 +0530 (Wed, 22 Feb 2017)");
   script_name("Apple Safari Code Execution And Information Disclosure Vulnerabilities Feb17");
 
@@ -65,7 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.apple.com/support.");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

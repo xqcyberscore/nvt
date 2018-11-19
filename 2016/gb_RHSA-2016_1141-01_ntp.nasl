@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871622");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:11 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2015-7979", "CVE-2016-1547", "CVE-2016-1548", "CVE-2016-1550",
                 "CVE-2016-2518");
@@ -35,54 +35,53 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ntp RHSA-2016:1141-01");
-  script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Network Time Protocol (NTP) is used to
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ntp'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The Network Time Protocol (NTP) is used to
 synchronize a computer's time with another referenced time source. These packages
 include the ntpd service which continuously adjusts system time and utilities used
 to query and configure the ntpd service.
 
 Security Fix(es):
 
-* It was found that when NTP was configured in broadcast mode, a remote
+  * It was found that when NTP was configured in broadcast mode, a remote
 attacker could broadcast packets with bad authentication to all clients.
 The clients, upon receiving the malformed packets, would break the
 association with the broadcast server, causing them to become out of sync
 over a longer period of time. (CVE-2015-7979)
 
-* A denial of service flaw was found in the way NTP handled preemptable
+  * A denial of service flaw was found in the way NTP handled preemptable
 client associations. A remote attacker could send several crypto NAK
 packets to a victim client, each with a spoofed source address of an
 existing associated peer, preventing that client from synchronizing its
 time. (CVE-2016-1547)
 
-* It was found that an ntpd client could be forced to change from basic
+  * It was found that an ntpd client could be forced to change from basic
 client/server mode to the interleaved symmetric mode. A remote attacker
 could use a spoofed packet that, when processed by an ntpd client, would
 cause that client to reject all future legitimate server responses,
 effectively disabling time synchronization on that client. (CVE-2016-1548)
 
-* A flaw was found in the way NTP's libntp performed message
+  * A flaw was found in the way NTP's libntp performed message
 authentication. An attacker able to observe the timing of the comparison
 function used in packet authentication could potentially use this flaw to
 recover the message digest. (CVE-2016-1550)
 
-* An out-of-bounds access flaw was found in the way ntpd processed certain
+  * An out-of-bounds access flaw was found in the way ntpd processed certain
 packets. An authenticated attacker could use a crafted packet to create a
 peer association with hmode of 7 and larger, which could potentially
 (although highly unlikely) cause ntpd to crash. (CVE-2016-2518)
 
-The CVE-2016-1548 issue was discovered by Miroslav Lichvar (Red Hat).
-");
-  script_tag(name: "affected", value: "ntp on Red Hat Enterprise Linux Desktop (v. 6),
+The CVE-2016-1548 issue was discovered by Miroslav Lichvar (Red Hat).");
+  script_tag(name:"affected", value:"ntp on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Server (v. 7),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:1141-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-May/msg00055.html");
+  script_xref(name:"RHSA", value:"2016:1141-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-May/msg00055.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -122,7 +121,7 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -148,6 +147,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

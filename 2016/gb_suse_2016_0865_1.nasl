@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0865_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_0865_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for tomcat openSUSE-SU-2016:0865-1 (tomcat)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851257");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:25 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351",
                 "CVE-2016-0706", "CVE-2016-0714", "CVE-2016-0763");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for tomcat openSUSE-SU-2016:0865-1 (tomcat)");
-  script_tag(name:"summary", value:"Check the version of tomcat");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'tomcat'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for tomcat fixes the following issues:
 
@@ -90,7 +91,7 @@ if(description)
   data, or cause a denial of service (application disruption), via a web
   app ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"tomcat on openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -23,7 +23,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "These packages provide the OpenJDK 6 Java Runtime Environment and the
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-October/msg00026.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870852");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-19 09:48:55 +0530 (Fri, 19 Oct 2012)");
+  script_cve_id("CVE-2012-3216", "CVE-2012-4416", "CVE-2012-5068", "CVE-2012-5069",
+                "CVE-2012-5071", "CVE-2012-5072", "CVE-2012-5073", "CVE-2012-5075",
+                "CVE-2012-5077", "CVE-2012-5079", "CVE-2012-5081", "CVE-2012-5084",
+                "CVE-2012-5085", "CVE-2012-5086", "CVE-2012-5089");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"RHSA", value:"2012:1385-01");
+  script_name("RedHat Update for java-1.6.0-openjdk RHSA-2012:1385-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.6.0-openjdk'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"java-1.6.0-openjdk on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"These packages provide the OpenJDK 6 Java Runtime Environment and the
   OpenJDK 6 Software Development Kit.
 
   Multiple improper permission check issues were discovered in the Beans,
@@ -42,38 +67,7 @@ tag_insight = "These packages provide the OpenJDK 6 Java Runtime Environment and
   application or applet could use this flaw to bypass certain Java sandbox
   restrictions. (CVE-2012-5079)
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "java-1.6.0-openjdk on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-October/msg00026.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870852");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-10-19 09:48:55 +0530 (Fri, 19 Oct 2012)");
-  script_cve_id("CVE-2012-3216", "CVE-2012-4416", "CVE-2012-5068", "CVE-2012-5069",
-                "CVE-2012-5071", "CVE-2012-5072", "CVE-2012-5073", "CVE-2012-5075",
-                "CVE-2012-5077", "CVE-2012-5079", "CVE-2012-5081", "CVE-2012-5084",
-                "CVE-2012-5085", "CVE-2012-5086", "CVE-2012-5089");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "RHSA", value: "2012:1385-01");
-  script_name("RedHat Update for java-1.6.0-openjdk RHSA-2012:1385-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of java-1.6.0-openjdk");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -127,6 +121,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

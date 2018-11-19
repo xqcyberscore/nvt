@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_norton_rnr_dll_loading_code_exec_vuln.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_norton_rnr_dll_loading_code_exec_vuln.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Norton Remove & Reinstall DLL Preloading Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:norton:remove_%26_reinstall";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812214");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-13676");
   script_bugtraq_id(100939);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 14:00:28 +0530 (Tue, 07 Nov 2017)");
   script_name("Norton Remove & Reinstall DLL Preloading Code Execution Vulnerability");
 
@@ -69,16 +69,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_norton_remove_n_reinstall_detect.nasl");
   script_mandatory_keys("Norton/Remove/Reinstall/Win/Ver");
-  script_xref(name:"URL", value:"https://www.symantec.com.");
+  script_xref(name:"URL", value:"https://www.symantec.com");
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-nrnPath = "";
-nrnrVer = "";
 
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 

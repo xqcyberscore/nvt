@@ -26,30 +26,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871765");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 10:39:53 +0530 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2017-2634", "CVE-2017-6074");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:0323-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel,
 the core of any Linux operating system.
 
 Security Fix(es):
 
-* A use-after-free flaw was found in the way the Linux kernel's Datagram
+  * A use-after-free flaw was found in the way the Linux kernel's Datagram
 Congestion Control Protocol (DCCP) implementation freed SKB (socket buffer)
 resources for a DCCP_PKT_REQUEST packet when the IPV6_RECVPKTINFO option is
 set on the socket. A local, unprivileged user could use this flaw to alter
 the kernel memory, allowing them to escalate their privileges on the
 system. (CVE-2017-6074, Important)
 
-* It was found that the Linux kernel's Datagram Congestion Control Protocol
+  * It was found that the Linux kernel's Datagram Congestion Control Protocol
 (DCCP) implementation used the IPv4-only inet_sk_rebuild_header() function
 for both IPv4 and IPv6 DCCP connections, which could result in memory
 corruptions. A remote attacker could use this flaw to crash the system.
@@ -62,13 +62,12 @@ Bugzilla (BZ#1425177) for additional information.
 
 Red Hat would like to thank Andrey Konovalov (Google) for reporting
 CVE-2017-6074. The CVE-2017-2634 issue was discovered by Wade Mealing (Red
-Hat Product Security).
-");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux (v. 5 server)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+Hat Product Security).");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:0323-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-February/msg00032.html");
+  script_xref(name:"RHSA", value:"2017:0323-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-February/msg00032.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -180,6 +179,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -26,35 +26,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871672");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-20 05:00:28 +0200 (Thu, 20 Oct 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.8.0-openjdk RHSA-2016:2079-01");
-  script_tag(name: "summary", value: "Check the version of java-1.8.0-openjdk");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The java-1.8.0-openjdk packages provide the
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.8.0-openjdk'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The java-1.8.0-openjdk packages provide the
 OpenJDK 8 Java Runtime Environment and the OpenJDK 8 Java Software Development Kit.
 
 Security Fix(es):
 
-* It was discovered that the Hotspot component of OpenJDK did not properly
+  * It was discovered that the Hotspot component of OpenJDK did not properly
 check arguments of the System.arraycopy() function in certain cases. An
 untrusted Java application or applet could use this flaw to corrupt virtual
 machine's memory and completely bypass Java sandbox restrictions.
 (CVE-2016-5582)
 
-* It was discovered that the Hotspot component of OpenJDK did not properly
+  * It was discovered that the Hotspot component of OpenJDK did not properly
 check received Java Debug Wire Protocol (JDWP) packets. An attacker could
 possibly use this flaw to send debugging commands to a Java program running
 with debugging enabled if they could make victim's browser send HTTP
 requests to the JDWP port of the debugged application. (CVE-2016-5573)
 
-* It was discovered that the Libraries component of OpenJDK did not
+  * It was discovered that the Libraries component of OpenJDK did not
 restrict the set of algorithms used for Jar integrity verification. This
 flaw could allow an attacker to modify content of the Jar file that used
 weak signing key or hash algorithm. (CVE-2016-5542)
@@ -66,11 +66,11 @@ future updates. A newly introduced security property
 jdk.jar.disabledAlgorithms can be used to control the set of disabled
 algorithms.
 
-* A flaw was found in the way the JMX component of OpenJDK handled
+  * A flaw was found in the way the JMX component of OpenJDK handled
 classloaders. An untrusted Java application or applet could use this flaw
 to bypass certain Java sandbox restrictions. (CVE-2016-5554)
 
-* A flaw was found in the way the Networking component of OpenJDK handled
+  * A flaw was found in the way the Networking component of OpenJDK handled
 HTTP proxy authentication. A Java application could possibly expose HTTPS
 server authentication credentials via a plain text network connection to an
 HTTP proxy if proxy asked for authentication. (CVE-2016-5597)
@@ -84,16 +84,15 @@ and HTTPS connections respectively.
 
 Note: If the web browser plug-in provided by the icedtea-web package was
 installed, the issues exposed via Java applets could have been exploited
-without user interaction if a user visited a malicious website.
-");
-  script_tag(name: "affected", value: "java-1.8.0-openjdk on Red Hat Enterprise Linux Desktop (v. 6),
+without user interaction if a user visited a malicious website.");
+  script_tag(name:"affected", value:"java-1.8.0-openjdk on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Server (v. 7),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2079-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-October/msg00041.html");
+  script_xref(name:"RHSA", value:"2016:2079-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-October/msg00041.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -139,7 +138,7 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -171,6 +170,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871241");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-16 06:03:13 +0200 (Tue, 16 Sep 2014)");
   script_cve_id("CVE-2014-3596", "CVE-2012-5784");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("RedHat Update for axis RHSA-2014:1193-01");
-  script_tag(name: "insight", value: "Apache Axis is an implementation of SOAP
+  script_tag(name:"insight", value:"Apache Axis is an implementation of SOAP
 (Simple Object Access Protocol). It can be used to build both web service clients
 and servers.
 
@@ -50,18 +50,18 @@ Product Security.
 
 All axis users are advised to upgrade to these updated packages, which
 contain a backported patch to correct this issue. Applications using Apache
-Axis must be restarted for this update to take effect.
-");
-  script_tag(name: "affected", value: "axis on Red Hat Enterprise Linux (v. 5 server),
+Axis must be restarted for this update to take effect.");
+  script_tag(name:"affected", value:"axis on Red Hat Enterprise Linux (v. 5 server),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "RHSA", value: "2014:1193-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-September/msg00028.html");
-  script_tag(name:"summary", value:"Check for the Version of axis");
+  script_xref(name:"RHSA", value:"2014:1193-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-September/msg00028.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'axis'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -88,7 +88,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -120,6 +120,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

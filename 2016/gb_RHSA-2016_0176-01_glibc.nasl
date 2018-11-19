@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871555");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-17 06:25:51 +0100 (Wed, 17 Feb 2016)");
   script_cve_id("CVE-2015-5229", "CVE-2015-7547");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for glibc RHSA-2016:0176-01");
-  script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The glibc packages provide the standard C
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The glibc packages provide the standard C
 libraries (libc), POSIX  thread libraries (libpthread), standard math libraries
 (libm), and the name service cache daemon (nscd) used by multiple programs on the
 system. Without these libraries, the Linux system cannot function correctly.
@@ -59,7 +59,7 @@ CVE-2015-5229 issue.
 
 This update also fixes the following bugs:
 
-* The existing implementation of the 'free' function causes all memory
+  * The existing implementation of the 'free' function causes all memory
 pools beyond the first to return freed memory directly to the operating
 system as quickly as possible. This can result in performance degradation
 when the rate of free calls is very high. The first memory pool (the main
@@ -76,20 +76,19 @@ To return to the previous behavior, you can either set M_TRIM_THRESHOLD
 using the 'mallopt' function, or set the MALLOC_TRIM_THRESHOLD environment
 variable to 0. (BZ#1298930)
 
-* On the little-endian variant of 64-bit IBM Power Systems (ppc64le), a bug
+  * On the little-endian variant of 64-bit IBM Power Systems (ppc64le), a bug
 in the dynamic loader could cause applications compiled with profiling
 enabled to fail to start with the error 'monstartup: out of memory'.
 The bug has been corrected and applications compiled for profiling now
 start correctly. (BZ#1298956)
 
 All glibc users are advised to upgrade to these updated packages, which
-contain backported patches to correct these issues.
-");
-  script_tag(name: "affected", value: "glibc on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+contain backported patches to correct these issues.");
+  script_tag(name:"affected", value:"glibc on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:0176-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-February/msg00033.html");
+  script_xref(name:"RHSA", value:"2016:0176-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-February/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -159,6 +158,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843104");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 05:49:09 +0100 (Wed, 22 Mar 2017)");
   script_cve_id("CVE-2015-5180", "CVE-2015-8982", "CVE-2015-8983", "CVE-2015-8984",
                 "CVE-2016-1234", "CVE-2016-3706", "CVE-2016-4429", "CVE-2016-5417",
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for glibc USN-3239-2");
-  script_tag(name:"summary", value:"Check the version of glibc");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"USN-3239-1 fixed vulnerabilities in the GNU
   C Library. Unfortunately, the fix for CVE-2015-5180 introduced an internal ABI

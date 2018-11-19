@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850158");
-  script_version("$Revision: 12290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-11 16:07:49 +0100 (Tue, 11 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -35,7 +35,8 @@ if(description)
   script_cve_id("CVE-2010-0179", "CVE-2010-3766", "CVE-2010-3767", "CVE-2010-3768", "CVE-2010-3769", "CVE-2010-3770", "CVE-2010-3771", "CVE-2010-3772", "CVE-2010-3773", "CVE-2010-3774", "CVE-2010-3775", "CVE-2010-3776", "CVE-2010-3777", "CVE-2010-3778");
   script_name("SuSE Update for MozillaFirefox, MozillaThunderbird, Seamonkey SUSE-SA:2011:003");
 
-  script_tag(name:"summary", value:"Check for the Version of MozillaFirefox, MozillaThunderbird, Seamonkey");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'MozillaFirefox, MozillaThunderbird, Seamonkey'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
@@ -93,7 +94,7 @@ if(description)
 
   CVE-2010-3768: Mozilla ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_tag(name:"qod_type", value:"package");

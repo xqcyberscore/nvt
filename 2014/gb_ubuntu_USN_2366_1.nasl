@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2366_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2366_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for libvirt USN-2366-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841990");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:59:44 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-0179", "CVE-2014-5177", "CVE-2014-3633");
   script_tag(name:"cvss_base", value:"5.8");
@@ -54,7 +54,8 @@ LTS and Ubuntu 14.04 LTS. (CVE-2014-3633)");
 
   script_xref(name:"USN", value:"2366-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2366-1/");
-  script_tag(name:"summary", value:"Check for the Version of libvirt");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libvirt'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

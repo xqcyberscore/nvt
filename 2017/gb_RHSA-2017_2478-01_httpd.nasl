@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2478-01_httpd.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2478-01_httpd.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for httpd RHSA-2017:2478-01
 #
@@ -27,42 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871885");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 07:29:41 +0200 (Wed, 16 Aug 2017)");
   script_cve_id("CVE-2017-3167", "CVE-2017-3169", "CVE-2017-7679", "CVE-2017-9788");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for httpd RHSA-2017:2478-01");
-  script_tag(name: "summary", value: "Check the version of httpd");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "The httpd packages provide the Apache HTTP 
-  Server, a powerful, efficient, and extensible web server. Security Fix(es): * It 
-  was discovered that the httpd's mod_auth_digest module did not properly 
-  initialize memory before using it when processing certain headers related to 
-  digest authentication. A remote attacker could possibly use this flaw to 
-  disclose potentially sensitive information or cause httpd child process to crash 
-  by sending specially crafted requests to a server. (CVE-2017-9788) * It was 
-  discovered that the use of httpd's ap_get_basic_auth_pw() API function outside 
-  of the authentication phase could lead to authentication bypass. A remote 
-  attacker could possibly use this flaw to bypass required authentication if the 
-  API was used incorrectly by one of the modules used by httpd. (CVE-2017-3167) * 
-  A NULL pointer dereference flaw was found in the httpd's mod_ssl module. A 
-  remote attacker could use this flaw to cause an httpd child process to crash if 
-  another module used by httpd called a certain API function during the processing 
-  of an HTTPS request. (CVE-2017-3169) * A buffer over-read flaw was found in the 
-  httpd's mod_mime module. A user permitted to modify httpd's MIME configuration 
-  could use this flaw to cause httpd child process to crash. (CVE-2017-7679) "); 
-  script_tag(name: "affected", value: "httpd on
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'httpd'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The httpd packages provide the Apache HTTP
+  Server, a powerful, efficient, and extensible web server. Security Fix(es): * It
+  was discovered that the httpd's mod_auth_digest module did not properly
+  initialize memory before using it when processing certain headers related to
+  digest authentication. A remote attacker could possibly use this flaw to
+  disclose potentially sensitive information or cause httpd child process to crash
+  by sending specially crafted requests to a server. (CVE-2017-9788) * It was
+  discovered that the use of httpd's ap_get_basic_auth_pw() API function outside
+  of the authentication phase could lead to authentication bypass. A remote
+  attacker could possibly use this flaw to bypass required authentication if the
+  API was used incorrectly by one of the modules used by httpd. (CVE-2017-3167) *
+  A NULL pointer dereference flaw was found in the httpd's mod_ssl module. A
+  remote attacker could use this flaw to cause an httpd child process to crash if
+  another module used by httpd called a certain API function during the processing
+  of an HTTPS request. (CVE-2017-3169) * A buffer over-read flaw was found in the
+  httpd's mod_mime module. A user permitted to modify httpd's MIME configuration
+  could use this flaw to cause httpd child process to crash. (CVE-2017-7679) ");
+  script_tag(name:"affected", value:"httpd on
   Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2478-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00061.html");
+  script_xref(name:"RHSA", value:"2017:2478-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00061.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -120,6 +120,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

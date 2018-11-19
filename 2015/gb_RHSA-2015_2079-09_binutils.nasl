@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871504");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:26:23 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-8484", "CVE-2014-8485", "CVE-2014-8501", "CVE-2014-8502",
                 "CVE-2014-8503", "CVE-2014-8504", "CVE-2014-8737", "CVE-2014-8738");
@@ -35,10 +35,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for binutils RHSA-2015:2079-09");
-  script_tag(name: "summary", value: "Check the version of binutils");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The binutils packages provide a set of
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'binutils'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The binutils packages provide a set of
 binary utilities.
 
 Multiple buffer overflow flaws were found in the libbdf library used by
@@ -60,42 +60,41 @@ arbitrary file writable by the user running either of these utilities.
 
 This update fixes the following bugs:
 
-* Binary files started by the system loader could lack the Relocation
+  * Binary files started by the system loader could lack the Relocation
 Read-Only (RELRO) protection even though it was explicitly requested when
 the application was built. This bug has been fixed on multiple
 architectures. Applications and all dependent object files, archives, and
 libraries built with an alpha or beta version of binutils should be rebuilt
 to correct this defect. (BZ#1200138, BZ#1175624)
 
-* The ld linker on 64-bit PowerPC now correctly checks the output format
+  * The ld linker on 64-bit PowerPC now correctly checks the output format
 when asked to produce a binary in another format than PowerPC. (BZ#1226864)
 
-* An important variable that holds the symbol table for the binary being
+  * An important variable that holds the symbol table for the binary being
 debugged has been made persistent, and the objdump utility on 64-bit
 PowerPC is now able to access the needed information without reading an
 invalid memory region. (BZ#1172766)
 
-* Undesirable runtime relocations described in RHBA-2015:0974. (BZ#872148)
+  * Undesirable runtime relocations described in RHBA-2015:0974. (BZ#872148)
 
 The update adds these enhancements:
 
-* New hardware instructions of the IBM z Systems z13 are now supported by
+  * New hardware instructions of the IBM z Systems z13 are now supported by
 assembler, disassembler, and linker, as well as Single Instruction,
 Multiple Data (SIMD) instructions. (BZ#1182153)
 
-* Expressions of the form: 'FUNC localentry' to refer to the local entry
+  * Expressions of the form:'FUNC localentry' to refer to the local entry
 point for the FUNC function (if defined) are now supported by the PowerPC
 assembler. These are required by the ELFv2 ABI on the little-endian variant
 of IBM Power Systems. (BZ#1194164)
 
 All binutils users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add these
-enhancements.
-");
-  script_tag(name: "affected", value: "binutils on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2079-09");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00017.html");
+enhancements.");
+  script_tag(name:"affected", value:"binutils on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2079-09");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -135,6 +134,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

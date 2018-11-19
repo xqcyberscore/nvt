@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-08/msg00008.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831439");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2011-0865", "CVE-2011-0862", "CVE-2011-0867", "CVE-2011-0869", "CVE-2011-0868", "CVE-2011-0864", "CVE-2011-0871");
   script_name("Mandriva Update for java-1.6.0-openjdk MDVSA-2011:126 (java-1.6.0-openjdk)");
 
-  script_tag(name:"summary", value:"Check for the Version of java-1.6.0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1.6.0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");
@@ -97,7 +98,7 @@ if(description)
   Packages for 2009.0 are provided as of the Extended Maintenance
   Program. Please visit this link to ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0207_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2017_0207_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for openjpeg2 openSUSE-SU-2017:0207-1 (openjpeg2)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851480");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 05:40:23 +0100 (Fri, 20 Jan 2017)");
   script_cve_id("CVE-2016-7445", "CVE-2016-8332", "CVE-2016-9112", "CVE-2016-9113",
                 "CVE-2016-9114", "CVE-2016-9115", "CVE-2016-9116", "CVE-2016-9117",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openjpeg2 openSUSE-SU-2017:0207-1 (openjpeg2)");
-  script_tag(name:"summary", value:"Check the version of openjpeg2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openjpeg2'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for openjpeg2 fixes the following issues:
 

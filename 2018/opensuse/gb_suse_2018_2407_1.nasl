@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2407_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_2407_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2018:2407-1 (the)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851952");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12379 $");
   script_cve_id("CVE-2018-10853", "CVE-2018-10876", "CVE-2018-10877", "CVE-2018-10878", "CVE-2018-10879", "CVE-2018-10880", "CVE-2018-10881", "CVE-2018-10882", "CVE-2018-10883", "CVE-2018-3620", "CVE-2018-3646", "CVE-2018-5391");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:21:47 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for the openSUSE-SU-2018:2407-1 (the)");
   script_category(ACT_GATHER_INFO);
@@ -104,7 +104,7 @@ if(description)
   information residing in the L1 data cache to an attacker with local user
   access  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
 
   script_tag(name:"affected", value:"the on openSUSE Leap 15.0.");
 

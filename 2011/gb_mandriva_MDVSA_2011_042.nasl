@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2011-03/msg00004.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831346");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-03-15 14:58:18 +0100 (Tue, 15 Mar 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -36,7 +36,8 @@ if(description)
   script_cve_id("CVE-2011-0053", "CVE-2011-0061", "CVE-2011-0062", "CVE-2010-1585");
   script_name("Mandriva Update for mozilla-thunderbird MDVSA-2011:042 (mozilla-thunderbird)");
 
-  script_tag(name:"summary", value:"Check for the Version of mozilla-thunderbird");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'mozilla-thunderbird'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

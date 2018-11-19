@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2014_1126_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2014_1126_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for LibreOffice openSUSE-SU-2014:1126-1 (LibreOffice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850612");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-16 06:02:46 +0200 (Tue, 16 Sep 2014)");
   script_cve_id("CVE-2013-4156", "CVE-2014-3575");
   script_tag(name:"cvss_base", value:"6.8");
@@ -42,7 +42,8 @@ vulnerability in DOCM import and data exposure using crafted OLE objects.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"openSUSE-SU", value:"2014:1126_1");
-  script_tag(name:"summary", value:"Check for the Version of LibreOffice");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'LibreOffice'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1689_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_1689_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851785");
-  script_version("$Revision: 12283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:48:03 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2016-1000338", "CVE-2016-1000339", "CVE-2016-1000340", "CVE-2016-1000341",
                 "CVE-2016-1000342", "CVE-2016-1000343", "CVE-2016-1000344", "CVE-2016-1000345",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for bouncycastle openSUSE-SU-2018:1689-1 (bouncycastle)");
-  script_tag(name:"summary", value:"Check the version of bouncycastle");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'bouncycastle'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
 on the target host.");
   script_tag(name:"insight", value:"This update for bouncycastle to version 1.59 fixes the following issues:
@@ -102,7 +103,7 @@ on the target host.");
 
   Patch Instr ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"bouncycastle on openSUSE Leap 42.3");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

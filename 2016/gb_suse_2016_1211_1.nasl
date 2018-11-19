@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_1211_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_1211_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Security openSUSE-SU-2016:1211-1 (Security)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851290");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:22 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-2804", "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2808",
                 "CVE-2016-2811", "CVE-2016-2812", "CVE-2016-2814", "CVE-2016-2816",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Security openSUSE-SU-2016:1211-1 (Security)");
-  script_tag(name:"summary", value:"Check the version of Security");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Security'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update to Mozilla Firefox 46.0 fixes several security issues and bugs
   (boo#977333).
@@ -124,7 +125,7 @@ if(description)
 
   - Increase compatibility of TLS  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Security on openSUSE Leap 42.1, openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

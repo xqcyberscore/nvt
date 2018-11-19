@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805976");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2014-9272");
   script_bugtraq_id(71375);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 18:15:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)");
@@ -69,10 +69,10 @@ if(description)
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
-  script_xref(name:"URL", value:"http://www.mantisbt.org.");
+  script_xref(name:"URL", value:"http://www.mantisbt.org");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

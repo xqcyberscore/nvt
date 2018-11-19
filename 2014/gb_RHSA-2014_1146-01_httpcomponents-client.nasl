@@ -23,18 +23,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871237");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-04 05:57:20 +0200 (Thu, 04 Sep 2014)");
   script_cve_id("CVE-2014-3577", "CVE-2012-6153");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("RedHat Update for httpcomponents-client RHSA-2014:1146-01");
-  script_tag(name: "insight", value: "HttpClient is an HTTP/1.1 compliant HTTP agent implementation based on
+  script_tag(name:"insight", value:"HttpClient is an HTTP/1.1 compliant HTTP agent implementation based on
 httpcomponents HttpCore.
 
 It was discovered that the HttpClient incorrectly extracted host name from
@@ -47,14 +46,15 @@ article in the References section.
 
 All httpcomponents-client users are advised to upgrade to these updated
 packages, which contain a backported patch to correct this issue.");
-  script_tag(name: "affected", value: "httpcomponents-client on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"httpcomponents-client on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "RHSA", value: "2014:1146-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-September/msg00009.html");
-  script_tag(name:"summary", value:"Check for the Version of httpcomponents-client");
+  script_xref(name:"RHSA", value:"2014:1146-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-September/msg00009.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'httpcomponents-client'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -81,6 +81,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

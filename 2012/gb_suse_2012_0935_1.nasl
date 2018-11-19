@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0935_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2012_0935_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for seamonkey openSUSE-SU-2012:0935-1 (seamonkey)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850240");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-13 17:02:05 +0530 (Thu, 13 Dec 2012)");
   script_cve_id("CVE-2012-1948", "CVE-2012-1949", "CVE-2012-1951", "CVE-2012-1952",
                 "CVE-2012-1953", "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957",
@@ -39,7 +39,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0935_1");
   script_name("SuSE Update for seamonkey openSUSE-SU-2012:0935-1 (seamonkey)");
 
-  script_tag(name:"summary", value:"Check for the Version of seamonkey");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'seamonkey'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

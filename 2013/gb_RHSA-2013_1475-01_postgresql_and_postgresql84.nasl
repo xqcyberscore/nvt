@@ -23,19 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871065");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 10:41:41 +0530 (Fri, 08 Nov 2013)");
   script_cve_id("CVE-2013-0255", "CVE-2013-1900");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_name("RedHat Update for postgresql and postgresql84 RHSA-2013:1475-01");
 
-  tag_insight = "PostgreSQL is an advanced object-relational database management system
+
+  script_tag(name:"affected", value:"postgresql and postgresql84 on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"PostgreSQL is an advanced object-relational database management system
 (DBMS).
 
 An array index error, leading to a heap-based out-of-bounds buffer read
@@ -58,48 +62,37 @@ CVE-2013-1900.
 
 These updated packages upgrade PostgreSQL to version 8.4.18, which fixes
 these issues as well as several non-security issues. Refer to the
-PostgreSQL Release Notes for a full list of changes:
-
-http://www.postgresql.org/docs/8.4/static/release-8-4-18.html
+PostgreSQL Release Notes for a full list of changes.
 
 After installing this update, it is advisable to rebuild, using the REINDEX
 command, Generalized Search Tree (GiST) indexes that meet one or more of
 the following conditions:
 
-- - GiST indexes on box, polygon, circle, or point columns
+  - - GiST indexes on box, polygon, circle, or point columns
 
-- - GiST indexes for variable-width data types, that is text, bytea, bit, and
+  - - GiST indexes for variable-width data types, that is text, bytea, bit, and
 numeric
 
-- - GiST multi-column indexes
+  - - GiST multi-column indexes
 
 All PostgreSQL users are advised to upgrade to these updated packages,
 which contain backported patches to correct these issues. If the postgresql
 service is running, it will be automatically restarted after installing
-this update.
-";
-
-  tag_affected = "postgresql and postgresql84 on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+this update.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1475-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-October/msg00032.html");
-  script_tag(name:"summary", value:"Check for the Version of postgresql and postgresql84");
+  script_xref(name:"RHSA", value:"2013:1475-01");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-October/msg00032.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'postgresql and postgresql84'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(6|5)");
+
+  script_xref(name:"URL", value:"http://www.postgresql.org/docs/8.4/static/release-8-4-18.html");
 
   exit(0);
 }
@@ -181,7 +174,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -267,6 +260,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

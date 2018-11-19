@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0272_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_0272_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Java7 openSUSE-SU-2016:0272-1 (Java7)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851171");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-28 06:33:35 +0100 (Thu, 28 Jan 2016)");
   script_cve_id("CVE-2015-4871", "CVE-2015-7575", "CVE-2015-8126", "CVE-2015-8472",
                 "CVE-2016-0402", "CVE-2016-0448", "CVE-2016-0466", "CVE-2016-0483",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Java7 openSUSE-SU-2016:0272-1 (Java7)");
-  script_tag(name:"summary", value:"Check the version of Java7");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Java7'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Update OpenJDK to 7u95 / IcedTea 2.6.4 including the following fixes:
 

@@ -23,27 +23,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871211");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 16:46:25 +0530 (Mon, 28 Jul 2014)");
   script_cve_id("CVE-2014-2678", "CVE-2014-4021");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_name("RedHat Update for kernel RHSA-2014:0926-01");
 
-  tag_insight = "The kernel packages contain the Linux kernel, the core of any Linux
+
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
-* A NULL pointer dereference flaw was found in the rds_iw_laddr_check()
+  * A NULL pointer dereference flaw was found in the rds_iw_laddr_check()
 function in the Linux kernel's implementation of Reliable Datagram Sockets
 (RDS). A local, unprivileged user could use this flaw to crash the system.
 (CVE-2014-2678, Moderate)
 
-* It was found that the Xen hypervisor implementation did not properly
+  * It was found that the Xen hypervisor implementation did not properly
 clean memory pages previously allocated by the hypervisor. A privileged
 guest user could potentially use this flaw to read data relating to other
 guests or the hypervisor itself. (CVE-2014-4021, Moderate)
@@ -53,7 +54,7 @@ Upstream acknowledges Jan Beulich as the original reporter.
 
 This update also fixes the following bugs:
 
-* A bug in the journaling block device (jbd and jbd2) code could, under
+  * A bug in the journaling block device (jbd and jbd2) code could, under
 certain circumstances, trigger a BUG_ON() assertion and result in a kernel
 oops. This happened when an application performed an extensive number of
 commits to the journal of the ext3 file system and there was no currently
@@ -61,20 +62,20 @@ active transaction while synchronizing the file's in-core state. This
 problem has been resolved by correcting respective test conditions in the
 jbd and jbd2 code. (BZ#1097528)
 
-* After a statically defined gateway became unreachable and its
+  * After a statically defined gateway became unreachable and its
 corresponding neighbor entry entered a FAILED state, the gateway stayed in
 the FAILED state even after it became reachable again. As a consequence,
 traffic was not routed through that gateway. This update allows probing
 such a gateway automatically so that the traffic can be routed through
 this gateway again once it becomes reachable. (BZ#1106354)
 
-* Due to an incorrect condition check in the IPv6 code, the ipv6 driver
+  * Due to an incorrect condition check in the IPv6 code, the ipv6 driver
 was unable to correctly assemble incoming packet fragments, which resulted
 in a high IPv6 packet loss rate. This update fixes the said check for a
 fragment overlap and ensures that incoming IPv6 packet fragments are now
 processed as expected. (BZ#1107932)
 
-* Recent changes in the d_splice_alias() function introduced a bug that
+  * Recent changes in the d_splice_alias() function introduced a bug that
 allowed d_splice_alias() to return a dentry from a different directory
 than the directory being looked up. As a consequence in cluster
 environment, a kernel panic could be triggered when a directory was being
@@ -84,23 +85,16 @@ this situation by correcting the search logic in the d_splice_alias()
 function so that the function can no longer return a dentry from an
 incorrect directory. (BZ#1109720)
 
-* The ... 
+  * The ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "kernel on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:0926-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-July/msg00052.html");
-  script_tag(name:"summary", value:"Check for the Version of kernel");
+  script_xref(name:"RHSA", value:"2014:0926-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-July/msg00052.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -211,6 +205,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

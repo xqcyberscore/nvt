@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871074");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:43:56 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-4166");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for evolution RHSA-2013:1540-02");
 
-  tag_insight = "Evolution is the integrated collection of email, calendaring, contact
+
+  script_tag(name:"affected", value:"evolution on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Evolution is the integrated collection of email, calendaring, contact
 management, communications, and personal information management (PIM) tools
 for the GNOME desktop environment.
 
@@ -62,7 +65,7 @@ provides a number of bug fixes and enhancements over the previous version.
 
 This update also fixes the following bug:
 
-* The Exchange Calendar could not fetch the 'Free' and 'Busy' information
+  * The Exchange Calendar could not fetch the 'Free' and 'Busy' information
 for meeting attendees when using Microsoft Exchange 2010 servers, and this
 information thus could not be displayed. This happened because Microsoft
 Exchange 2010 servers use more strict rules for 'Free' and 'Busy'
@@ -75,24 +78,14 @@ in the Exchange Calendar. (BZ#665967)
 All Evolution users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add these
 enhancements. All running instances of Evolution must be restarted for this
-update to take effect.
-";
-
-  tag_affected = "evolution on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+update to take effect.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1540-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00018.html");
-  script_tag(name: "summary" , value: "Check for the Version of evolution");
+  script_xref(name:"RHSA", value:"2013:1540-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00018.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'evolution'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -401,6 +394,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

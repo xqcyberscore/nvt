@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842844");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:52 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2015-4116", "CVE-2015-8873", "CVE-2015-8876", "CVE-2015-8935",
 		"CVE-2016-5093", "CVE-2016-5094", "CVE-2016-5095", "CVE-2016-5096",
@@ -40,7 +40,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.0 USN-3045-1");
-  script_tag(name:"summary", value:"Check the version of php7.0");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php7.0'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that PHP incorrectly
   handled certain SplMinHeap::compare operations. A remote attacker could use
@@ -91,7 +92,7 @@ the HTTP_PROXY environment variable when based on the contents of the Proxy
 header from HTTP requests. A remote attacker could possibly use this issue
 in combination with scripts that honour the HT ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"php7.0 on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");

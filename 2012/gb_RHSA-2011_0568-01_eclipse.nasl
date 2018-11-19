@@ -23,7 +23,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The Eclipse software development environment provides a set of tools for
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00019.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870642");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-06 10:38:49 +0530 (Wed, 06 Jun 2012)");
+  script_cve_id("CVE-2010-4647");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_xref(name:"RHSA", value:"2011:0568-01");
+  script_name("RedHat Update for eclipse RHSA-2011:0568-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'eclipse'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"eclipse on Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The Eclipse software development environment provides a set of tools for
   C/C++ and Java development.
 
   A cross-site scripting (XSS) flaw was found in the Eclipse Help Contents
@@ -36,25 +59,40 @@ tag_insight = "The Eclipse software development environment provides a set of to
   bug fixes and enhancements over the previous versions:
 
   * eclipse to 3.6.1. (BZ#656329)
+
   * eclipse-cdt to 7.0.1. (BZ#656333)
+
   * eclipse-birt to 2.6.0. (BZ#656391)
+
   * eclipse-emf to 2.6.0. (BZ#656344)
+
   * eclipse-gef to 3.6.1. (BZ#656347)
+
   * eclipse-mylyn to 3.4.2. (BZ#656337)
+
   * eclipse-rse to 3.2. (BZ#656338)
+
   * eclipse-dtp to 1.8.1. (BZ#656397)
+
   * eclipse-changelog to 2.7.0. (BZ#669499)
+
   * eclipse-valgrind to 0.6.1. (BZ#669460)
+
   * eclipse-callgraph to 0.6.1. (BZ#669462)
+
   * eclipse-oprofile to 0.6.1. (BZ#670228)
+
   * eclipse-linuxprofilingframework to 0.6.1. (BZ#669461)
 
   In addition, the following updates were made to the dependencies of the
   Eclipse packages above:
 
   * icu4j to 4.2.1. (BZ#656342)
+
   * sat4j to 2.2.0. (BZ#661842)
+
   * objectweb-asm to 3.2. (BZ#664019)
+
   * jetty-eclipse to 6.1.24. (BZ#661845)
 
   This update includes numerous upstream bug fixes and enhancements, such as:
@@ -62,20 +100,31 @@ tag_insight = "The Eclipse software development environment provides a set of to
   * The Eclipse IDE and Java Development Tools (JDT):
 
   - - projects and folders can filter out resources in the workspace.
+
   - - new virtual folder and linked files support.
+
   - - the full set of UNIX file permissions is now supported.
+
   - - addition of the stop button to cancel long-running wizard tasks.
+
   - - Java editor now shows multiple quick-fixes via problem hover.
+
   - - new support for running JUnit version 4 tests.
+
   - - over 200 upstream bug fixes.
 
   * The Eclipse C/C++ Development Tooling (CDT):
 
   - - new Codan framework has been added for static code analysis.
+
   - - refactoring improvements such as stored refactoring history.
+
   - - compile and build errors now highlighted in the build console.
+
   - - switch to the new DSF debugger framework.
+
   - - new template view support.
+
   - - over 600 upstream bug fixes.
 
   This update also fixes the following bugs:
@@ -84,38 +133,9 @@ tag_insight = "The Eclipse software development environment provides a set of to
   fixed. (BZ#622713)
 
   * The profiling of binaries did not work if an Eclipse project was not in
-  an Eclipse workspace. This up ... 
+  an Eclipse workspace. This up ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "eclipse on Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-May/msg00019.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870642");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-06 10:38:49 +0530 (Wed, 06 Jun 2012)");
-  script_cve_id("CVE-2010-4647");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_xref(name: "RHSA", value: "2011:0568-01");
-  script_name("RedHat Update for eclipse RHSA-2011:0568-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of eclipse");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -307,6 +327,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

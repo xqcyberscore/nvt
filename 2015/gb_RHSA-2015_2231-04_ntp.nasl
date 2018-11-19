@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871492");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:22:17 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-9297", "CVE-2014-9298", "CVE-2014-9750", "CVE-2014-9751",
                 "CVE-2015-1798", "CVE-2015-1799", "CVE-2015-3405");
@@ -35,10 +35,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ntp RHSA-2015:2231-04");
-  script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The Network Time Protocol (NTP) is used to
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ntp'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The Network Time Protocol (NTP) is used to
 synchronize a computer's time with another referenced time source. These packages
 include the ntpd service which continuously adjusts system time and utilities
 used to query and configure the ntpd service.
@@ -74,27 +74,27 @@ Lichvar of Red Hat.
 
 Bug fixes:
 
-* The ntpd service truncated symmetric keys specified in the key file to 20
+  * The ntpd service truncated symmetric keys specified in the key file to 20
 bytes. As a consequence, it was impossible to configure NTP authentication
 to work with peers that use longer keys. With this update, the maximum key
 length has been changed to 32 bytes. (BZ#1191111)
 
-* The ntpd service could previously join multicast groups only when
+  * The ntpd service could previously join multicast groups only when
 starting, which caused problems if ntpd was started during system boot
 before network was configured. With this update, ntpd attempts to join
 multicast groups every time network configuration is changed. (BZ#1207014)
 
-* Previously, the ntp-keygen utility used the exponent of 3 when generating
+  * Previously, the ntp-keygen utility used the exponent of 3 when generating
 RSA keys. Consequently, generating RSA keys failed when FIPS mode was
 enabled. With this update, ntp-keygen has been modified to use the exponent
 of 65537, and generating keys in FIPS mode now works as expected.
-(BZ#11 ... 
+(BZ#11 ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "ntp on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2231-04");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00032.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"ntp on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2231-04");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00032.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -134,6 +134,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

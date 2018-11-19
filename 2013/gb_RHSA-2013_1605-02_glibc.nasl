@@ -23,19 +23,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871075");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:43:57 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-0242", "CVE-2013-1914", "CVE-2013-4332");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("RedHat Update for glibc RHSA-2013:1605-02");
 
-  tag_insight = "The glibc packages provide the standard C libraries (libc), POSIX thread
+
+  script_tag(name:"affected", value:"glibc on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"The glibc packages provide the standard C libraries (libc), POSIX thread
 libraries (libpthread), standard math libraries (libm), and the Name Server
 Caching Daemon (nscd) used by multiple programs on the system. Without
 these libraries, the Linux system cannot function correctly.
@@ -60,7 +63,7 @@ the application to exhaust all stack memory and crash. (CVE-2013-1914)
 Among other changes, this update includes an important fix for the
 following bug:
 
-* Due to a defect in the initial release of the getaddrinfo() system call
+  * Due to a defect in the initial release of the getaddrinfo() system call
 in Red Hat enterprise Linux 6.0, AF_INET and AF_INET6 queries resolved from
 the /etc/hosts file returned queried names as canonical names. This
 incorrect behavior is, however, still considered to be the expected
@@ -77,25 +80,16 @@ suggests the first entry in the /etc/hosts file, that applies for the IP
 address being resolved, to be considered the canonical entry. (BZ#1022022)
 
 These updated glibc packages also include additional bug fixes and
-various enhancements. Space precludes documenting all of thes ...
+various enhancements. Space precludes documenting all of these ...
 
-  Description truncated, for more information please check the Reference URL";
-
-  tag_affected = "glibc on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1605-02");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-November/msg00026.html");
-  script_tag(name: "summary" , value: "Check for the Version of glibc");
+  script_xref(name:"RHSA", value:"2013:1605-02");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00026.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -164,6 +158,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

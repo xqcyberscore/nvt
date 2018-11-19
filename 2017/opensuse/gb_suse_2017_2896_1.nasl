@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_2896_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2017_2896_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851636");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-30 09:24:40 +0100 (Mon, 30 Oct 2017)");
   script_cve_id("CVE-2015-1863", "CVE-2015-4141", "CVE-2015-4142", "CVE-2015-4143",
                 "CVE-2015-4144", "CVE-2015-4145", "CVE-2015-5314", "CVE-2016-4476",
@@ -38,7 +38,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hostapd openSUSE-SU-2017:2896-1 (hostapd)");
-  script_tag(name:"summary", value:"Check the version of hostapd");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'hostapd'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for hostapd fixes the
   following issues:
@@ -125,7 +126,7 @@ if(description)
   * started to postpone WNM-Notification frame sending by 100 ms so that the
   ST ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"hostapd on openSUSE Leap 42.3, openSUSE Leap 42.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

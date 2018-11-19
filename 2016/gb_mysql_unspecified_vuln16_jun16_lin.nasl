@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln16_jun16_lin.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_mysql_unspecified_vuln16_jun16_lin.nasl 12383 2018-11-16 12:41:42Z cfischer $
 #
 # Oracle MySQL Server Component 'Replication' Unspecified Vulnerability Jun-16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808128");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12383 $");
   script_cve_id("CVE-2013-5807");
   script_bugtraq_id(63105);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 13:41:42 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:37 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Server Component 'Replication' Unspecified Vulnerability Jun-16 (Linux)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"insight", value:"Unspecified error in the MySQL Server
   component via unknown vectors related to Replication.");

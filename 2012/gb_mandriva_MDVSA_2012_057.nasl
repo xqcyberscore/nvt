@@ -27,8 +27,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2012:057");
   script_oid("1.3.6.1.4.1.25623.1.0.831659");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-03 09:59:00 +0530 (Fri, 03 Aug 2012)");
   script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129",
                 "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133",
@@ -40,7 +40,8 @@ if(description)
   script_xref(name:"MDVSA", value:"2012:057");
   script_name("Mandriva Update for freetype2 MDVSA-2012:057 (freetype2)");
 
-  script_tag(name:"summary", value:"Check for the Version of freetype2");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'freetype2'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

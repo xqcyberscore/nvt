@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871253");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 17:00:34 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-2497", "CVE-2014-3587", "CVE-2014-3597", "CVE-2014-4670",
                 "CVE-2014-4698", "CVE-2012-1571");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for php53 and php RHSA-2014:1326-01");
-  script_tag(name: "insight", value: "PHP is an HTML-embedded scripting language commonly used with the Apache
+  script_tag(name:"insight", value:"PHP is an HTML-embedded scripting language commonly used with the Apache
 HTTP Server. PHP's fileinfo module provides functions used to identify a
 particular file according to the type of data contained by the file.
 
@@ -66,18 +66,18 @@ BaseOS QE.
 All php53 and php users are advised to upgrade to these updated packages,
 which contain backported patches to correct these issues. After installing
 the updated packages, the httpd daemon must be restarted for the update to
-take effect.
-");
-  script_tag(name: "affected", value: "php53 and php on Red Hat Enterprise Linux (v. 5 server),
+take effect.");
+  script_tag(name:"affected", value:"php53 and php on Red Hat Enterprise Linux (v. 5 server),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "RHSA", value: "2014:1326-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-September/msg00063.html");
-  script_tag(name:"summary", value:"Check for the Version of php53 and php");
+  script_xref(name:"RHSA", value:"2014:1326-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-September/msg00063.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'php53 and php'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -176,7 +176,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -316,6 +316,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

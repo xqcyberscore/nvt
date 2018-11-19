@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871624");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:17 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2016-4051", "CVE-2016-4052", "CVE-2016-4053", "CVE-2016-4054",
                 "CVE-2016-4554", "CVE-2016-4556");
@@ -35,27 +35,27 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for squid RHSA-2016:1138-01");
-  script_tag(name: "summary", value: "Check the version of squid");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Squid is a high-performance proxy caching
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'squid'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Squid is a high-performance proxy caching
 server for web clients, supporting FTP, Gopher, and HTTP data objects.
 
 Security Fix(es):
 
-* A buffer overflow flaw was found in the way the Squid cachemgr.cgi
+  * A buffer overflow flaw was found in the way the Squid cachemgr.cgi
 utility processed remotely relayed Squid input. When the CGI interface
 utility is used, a remote attacker could possibly use this flaw to execute
 arbitrary code. (CVE-2016-4051)
 
-* Buffer overflow and input validation flaws were found in the way Squid
+  * Buffer overflow and input validation flaws were found in the way Squid
 processed ESI responses. If Squid was used as a reverse proxy, or for
 TLS/HTTPS interception, a remote attacker able to control ESI components on
 an HTTP server could use these flaws to crash Squid, disclose parts of the
 stack memory, or possibly execute arbitrary code as the user running Squid.
 (CVE-2016-4052, CVE-2016-4053, CVE-2016-4054)
 
-* An input validation flaw was found in Squid's mime_get_header_field()
+  * An input validation flaw was found in Squid's mime_get_header_field()
 function, which is used to search for headers within HTTP requests. An
 attacker could send an HTTP request from the client side with specially
 crafted header Host header that bypasses same-origin security protections,
@@ -63,17 +63,16 @@ causing Squid operating as interception or reverse-proxy to contact the
 wrong origin server. It could also be used for cache poisoning for client
 not following RFC 7230. (CVE-2016-4554)
 
-* An incorrect reference counting flaw was found in the way Squid processes
+  * An incorrect reference counting flaw was found in the way Squid processes
 ESI responses. If Squid is configured as reverse-proxy, for TLS/HTTPS
 interception, an attacker controlling a server accessed by Squid, could
-crash the squid worker, causing a Denial of Service attack. (CVE-2016-4556)
-");
-  script_tag(name: "affected", value: "squid on Red Hat Enterprise Linux Server (v. 6),
+crash the squid worker, causing a Denial of Service attack. (CVE-2016-4556)");
+  script_tag(name:"affected", value:"squid on Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:1138-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-May/msg00052.html");
+  script_xref(name:"RHSA", value:"2016:1138-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-May/msg00052.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -107,6 +106,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

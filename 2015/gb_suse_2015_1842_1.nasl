@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1842_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2015_1842_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2015:1842-1 (bbswitch)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851121");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-10-30 07:57:50 +0100 (Fri, 30 Oct 2015)");
   script_cve_id("CVE-2015-0272", "CVE-2015-1333", "CVE-2015-2925", "CVE-2015-3290",
                 "CVE-2015-5283", "CVE-2015-5707", "CVE-2015-7872");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2015:1842-1 (bbswitch)");
-  script_tag(name:"summary", value:"Check the version of the bbswitch");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the bbswitch'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
@@ -103,7 +104,7 @@ if(description)
 
   - xfs: Fix file type directory corruption f ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"bbswitch on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1842_1");

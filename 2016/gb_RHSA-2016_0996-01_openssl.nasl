@@ -26,49 +26,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871614");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 05:23:21 +0200 (Wed, 11 May 2016)");
   script_cve_id("CVE-2016-0799", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2107", "CVE-2016-2108", "CVE-2016-2109", "CVE-2016-2842");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for openssl RHSA-2016:0996-01");
-  script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL) and
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL) and
 Transport Layer Security (TLS) protocols, as well as a full-strength
 general-purpose cryptography library.
 
 Security Fix(es):
 
-* A flaw was found in the way OpenSSL encoded certain ASN.1 data
+  * A flaw was found in the way OpenSSL encoded certain ASN.1 data
 structures. An attacker could use this flaw to create a specially crafted
 certificate which, when verified or re-encoded by OpenSSL, could cause it
 to crash, or execute arbitrary code using the permissions of the user
 running an application compiled against the OpenSSL library.
 (CVE-2016-2108)
 
-* Two integer overflow flaws, leading to buffer overflows, were found in
+  * Two integer overflow flaws, leading to buffer overflows, were found in
 the way the EVP_EncodeUpdate() and EVP_EncryptUpdate() functions of OpenSSL
 parsed very large amounts of input data. A remote attacker could use these
 flaws to crash an application using OpenSSL or, possibly, execute arbitrary
 code with the permissions of the user running that application.
 (CVE-2016-2105, CVE-2016-2106)
 
-* It was discovered that OpenSSL leaked timing information when decrypting
+  * It was discovered that OpenSSL leaked timing information when decrypting
 TLS/SSL and DTLS protocol encrypted records when the connection used the
 AES CBC cipher suite and the server supported AES-NI. A remote attacker
 could possibly use this flaw to retrieve plain text from encrypted packets
 by using a TLS/SSL or DTLS server as a padding oracle. (CVE-2016-2107)
 
-* Several flaws were found in the way BIO_*printf functions were
+  * Several flaws were found in the way BIO_*printf functions were
 implemented in OpenSSL. Applications which passed large amounts of
 untrusted data through these functions could crash or potentially execute
 code with the permissions of the user running such an application.
 (CVE-2016-0799, CVE-2016-2842)
 
-* A denial of service flaw was found in the way OpenSSL parsed certain
+  * A denial of service flaw was found in the way OpenSSL parsed certain
 ASN.1-encoded data from BIO (OpenSSL's I/O abstraction) inputs. An
 application using OpenSSL that accepts untrusted ASN.1 BIO input could be
 forced to allocate an excessive amount of data. (CVE-2016-2109)
@@ -79,15 +80,14 @@ and CVE-2016-0799. Upstream acknowledges Huzaifa Sidhpurwala (Red Hat),
 Hanno Bock, and David Benjamin (Google) as the original reporters of
 CVE-2016-2108  Guido Vranken as the original reporter of CVE-2016-2842,
 CVE-2016-2105, CVE-2016-2106, and CVE-2016-0799  and Juraj Somorovsky as
-the original reporter of CVE-2016-2107.
-");
-  script_tag(name: "affected", value: "openssl on Red Hat Enterprise Linux Desktop (v. 6),
+the original reporter of CVE-2016-2107.");
+  script_tag(name:"affected", value:"openssl on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:0996-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-May/msg00017.html");
+  script_xref(name:"RHSA", value:"2016:0996-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-May/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -127,6 +127,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

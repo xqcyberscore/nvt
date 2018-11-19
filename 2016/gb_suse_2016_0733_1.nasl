@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0733_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2016_0733_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Firefox openSUSE-SU-2016:0733-1 (Firefox)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851234");
-  script_version("$Revision: 12294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-13 06:16:27 +0100 (Sun, 13 Mar 2016)");
   script_cve_id("CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954",
                 "CVE-2016-1955", "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1958",
@@ -44,7 +44,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Firefox openSUSE-SU-2016:0733-1 (Firefox)");
-  script_tag(name:"summary", value:"Check the version of Firefox");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Firefox'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for MozillaFirefox, mozilla-nspr, mozilla-nss fixes the
   following issues:
@@ -126,7 +127,7 @@ if(description)
 
   * MFSA 2016-35/CVE-2016-1950 (bmo#1245528) Buffer overflow  ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Firefox on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

@@ -23,19 +23,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871042");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 10:16:53 +0530 (Thu, 03 Oct 2013)");
   script_cve_id("CVE-2013-0213", "CVE-2013-0214", "CVE-2013-4124");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for samba3x RHSA-2013:1310-01");
 
-  tag_insight = "Samba is an open-source implementation of the Server Message Block (SMB) or
+
+  script_tag(name:"affected", value:"samba3x on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"insight", value:"Samba is an open-source implementation of the Server Message Block (SMB) or
 Common Internet File System (CIFS) protocol, which allows PC-compatible
 machines to share files, printers, and other information.
 
@@ -69,22 +70,14 @@ the References, for information on the most significant of these changes.
 
 All samba3x users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues. After installing this
-update, the smb service will be restarted automatically.
-";
-
-  tag_affected = "samba3x on Red Hat Enterprise Linux (v. 5 server)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+update, the smb service will be restarted automatically.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1310-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-September/msg00051.html");
-  script_tag(name:"summary", value:"Check for the Version of samba3x");
+  script_xref(name:"RHSA", value:"2013:1310-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-September/msg00051.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba3x'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -159,6 +152,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

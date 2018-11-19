@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2471-01_spice.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2471-01_spice.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for spice RHSA-2017:2471-01
 #
@@ -27,33 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871881");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 07:28:08 +0200 (Tue, 15 Aug 2017)");
   script_cve_id("CVE-2017-7506");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for spice RHSA-2017:2471-01");
-  script_tag(name: "summary", value: "Check the version of spice");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "The Simple Protocol for Independent 
-  Computing Environments (SPICE) is a remote display system built for virtual 
-  environments which allows the user to view a computing 'desktop' environment not 
-  only on the machine where it is running, but from anywhere on the Internet and 
-  from a wide variety of machine architectures. Security Fix(es): * A 
-  vulnerability was discovered in spice server's protocol handling. An 
-  authenticated attacker could send specially crafted messages to the spice 
-  server, causing out-of-bounds memory accesses, leading to parts of server memory 
-  being leaked or a crash. (CVE-2017-7506) This issue was discovered by Frediano 
-  Ziglio (Red Hat). "); 
-  script_tag(name: "affected", value: "spice on
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'spice'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The Simple Protocol for Independent
+  Computing Environments (SPICE) is a remote display system built for virtual
+  environments which allows the user to view a computing 'desktop' environment not
+  only on the machine where it is running, but from anywhere on the Internet and
+  from a wide variety of machine architectures. Security Fix(es): * A
+  vulnerability was discovered in spice server's protocol handling. An
+  authenticated attacker could send specially crafted messages to the spice
+  server, causing out-of-bounds memory accesses, leading to parts of server memory
+  being leaked or a crash. (CVE-2017-7506) This issue was discovered by Frediano
+  Ziglio (Red Hat). ");
+  script_tag(name:"affected", value:"spice on
   Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2471-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00057.html");
+  script_xref(name:"RHSA", value:"2017:2471-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00057.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -87,6 +87,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

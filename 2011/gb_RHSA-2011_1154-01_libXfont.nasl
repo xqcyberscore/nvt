@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The libXfont packages provide the X.Org libXfont runtime library. X.Org is
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-August/msg00007.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870465");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2011-08-12 15:49:01 +0200 (Fri, 12 Aug 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_xref(name:"RHSA", value:"2011:1154-01");
+  script_cve_id("CVE-2011-2895");
+  script_name("RedHat Update for libXfont RHSA-2011:1154-01");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'libXfont'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"libXfont on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The libXfont packages provide the X.Org libXfont runtime library. X.Org is
   an open source implementation of the X Window System.
 
   A buffer overflow flaw was found in the way the libXfont library, used by
@@ -31,37 +53,10 @@ tag_insight = "The libXfont packages provide the X.Org libXfont runtime library.
   compress. A malicious, local user could exploit this issue to potentially
   execute arbitrary code with the privileges of the X.Org server.
   (CVE-2011-2895)
-  
+
   Users of libXfont should upgrade to these updated packages, which contain a
   backported patch to resolve this issue. All running X.Org server instances
-  must be restarted for the update to take effect.";
-
-tag_affected = "libXfont on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2011-August/msg00007.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870465");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2011-08-12 15:49:01 +0200 (Fri, 12 Aug 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_xref(name: "RHSA", value: "2011:1154-01");
-  script_cve_id("CVE-2011-2895");
-  script_name("RedHat Update for libXfont RHSA-2011:1154-01");
-
-  script_tag(name:"summary", value:"Check for the Version of libXfont");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  must be restarted for the update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -97,6 +92,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

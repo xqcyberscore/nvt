@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0734_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2018_0734_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2,)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851720");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-19 08:26:15 +0100 (Mon, 19 Mar 2018)");
   script_cve_id("CVE-2017-12122", "CVE-2017-14440", "CVE-2017-14441", "CVE-2017-14442",
                 "CVE-2017-14448", "CVE-2017-14449", "CVE-2017-14450");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for SDL2, openSUSE-SU-2018:0734-1 (SDL2, )");
-  script_tag(name:"summary", value:"Check the version of SDL2.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'SDL2.'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update for SDL2 and SDL2_image fixes the following issues:
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_74838.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_arcserve_udp_74838.nasl 12398 2018-11-19 07:18:06Z ckuersteiner $
 #
 # Arcserve Unified Data Protection Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4069", "CVE-2015-4068");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
-  script_version("$Revision: 12106 $");
+  script_version("$Revision: 12398 $");
 
   script_name("Arcserve Unified Data Protection Multiple Vulnerabilities");
 
@@ -53,14 +53,14 @@ disclosure vulnerabilities and multiple directory traversal vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 08:18:06 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 17:46:01 +0200 (Thu, 11 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_arcserve_udp_detect.nasl");
   script_require_ports("Services/www", 8014);
-  script_mandatory_keys("arcserve_udp/installed");
+  script_mandatory_keys("arcserve_udp/detected");
 
   exit(0);
 }

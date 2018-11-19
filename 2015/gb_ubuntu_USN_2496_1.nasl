@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842088");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-10 05:30:54 +0100 (Tue, 10 Feb 2015)");
   script_cve_id("CVE-2014-8485", "CVE-2014-8501", "CVE-2014-8502", "CVE-2014-8737",
                 "CVE-2014-8738", "CVE-2014-8503", "CVE-2014-8504", "CVE-2014-8484",
@@ -35,7 +35,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for binutils USN-2496-1");
-  script_tag(name:"summary", value:"Check the version of binutils");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'binutils'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Michal Zalewski discovered that the
 setup_group function in libbfd in GNU binutils did not properly check group
@@ -90,7 +91,7 @@ crash). This issue only affected Ubuntu 12.04 LTS and Ubuntu 10.04 LTS.
 Alexander Cherepanov and Hanno B&#246 ck discovered multiple additional
 out-of-bounds reads and w ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"binutils on Ubuntu 14.10,
   Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS,

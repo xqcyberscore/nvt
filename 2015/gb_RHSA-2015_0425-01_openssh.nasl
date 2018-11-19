@@ -26,17 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871328");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:50:21 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-2653", "CVE-2014-9278");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for openssh RHSA-2015:0425-01");
-  script_tag(name: "summary", value: "Check the version of openssh");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "OpenSSH is OpenBSD's SSH (Secure Shell) protocol implementation. These
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'openssh'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"OpenSSH is OpenBSD's SSH (Secure Shell) protocol implementation. These
 packages include the core files necessary for both the OpenSSH client and
 server.
 
@@ -56,7 +57,7 @@ provides a number of bug fixes and enhancements over the previous version.
 
 Bug fixes:
 
-* An existing /dev/log socket is needed when logging using the syslog
+  * An existing /dev/log socket is needed when logging using the syslog
 utility, which is not possible for all chroot environments based on the
 user's home directories. As a consequence, the sftp commands were not
 logged in the chroot setup without /dev/log in the internal sftp subsystem.
@@ -64,33 +65,33 @@ With this update, openssh has been enhanced to detect whether /dev/log
 exists. If /dev/log does not exist, processes in the chroot environment use
 their master processes for logging. (BZ#1083482)
 
-* The buffer size for a host name was limited to 64 bytes. As a
+  * The buffer size for a host name was limited to 64 bytes. As a
 consequence, when a host name was 64 bytes long or longer, the ssh-keygen
 utility failed. The buffer size has been increased to fix this bug, and
 ssh-keygen no longer fails in the described situation. (BZ#1097665)
 
-* Non-ASCII characters have been replaced by their octal representations in
+  * Non-ASCII characters have been replaced by their octal representations in
 banner messages in order to prevent terminal re-programming attacks.
 Consequently, banners containing UTF-8 strings were not correctly displayed
 in a client. With this update, banner messages are processed according to
 RFC 3454, control characters have been removed, and banners containing
 UTF-8 strings are now displayed correctly. (BZ#1104662)
 
-* Red Hat Enterprise Linux uses persistent Kerberos credential caches,
+  * Red Hat Enterprise Linux uses persistent Kerberos credential caches,
 which are shared between sessions. Previously, the GSSAPICleanupCredentials
 option was set to 'yes' by default. Consequently, removing a Kerberos cache
 on logout could remove unrelated credentials of other sessions, which could
 make the system unusable. To fix this bug, GSSAPICleanupCredentials is set
 by default to 'no'. (BZ#1134447)
 
-* Access permissions for the /etc/ssh/moduli file were set to 0600, which
-was unnecessarily strict. With this update, the permissions  ... 
+  * Access permissions for the /etc/ssh/moduli file were set to 0600, which
+was unnecessarily strict. With this update, the permissions  ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openssh on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:0425-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-March/msg00014.html");
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"openssh on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:0425-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-March/msg00014.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -148,6 +149,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

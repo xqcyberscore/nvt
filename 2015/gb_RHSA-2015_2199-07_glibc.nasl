@@ -26,18 +26,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871503");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:26:16 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2013-7423", "CVE-2015-1472", "CVE-2015-1473", "CVE-2015-1781");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for glibc RHSA-2015:2199-07");
-  script_tag(name: "summary", value: "Check the version of glibc");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The glibc packages provide the standard C
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'glibc'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The glibc packages provide the standard C
 libraries (libc), POSIX thread libraries (libpthread), standard math libraries
 (libm), and the Name Server Caching Daemon (nscd) used by multiple programs on
 the system. Without these libraries, the Linux system cannot function correctly.
@@ -76,24 +76,23 @@ The CVE-2015-1781 issue was discovered by Arjun Shankar of Red Hat.
 These updated glibc packages also include numerous bug fixes and one
 enhancement. Space precludes documenting all of these changes in this
 advisory. For information on the most significant of these changes, users
-are directed to the following article on the Red Hat Customer Portal:
-
-https://access.redhat.com/articles/2050743
+are directed to the linked article on the Red Hat Customer Portal.
 
 All glibc users are advised to upgrade to these updated packages, which
 contain backported patches to correct these issues and add these
-enhancements.
-");
-  script_tag(name: "affected", value: "glibc on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "RHSA", value: "2015:2199-07");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00031.html");
+enhancements.");
+  script_tag(name:"affected", value:"glibc on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"RHSA", value:"2015:2199-07");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00031.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_7");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/articles/2050743");
 
   exit(0);
 }
@@ -157,6 +156,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

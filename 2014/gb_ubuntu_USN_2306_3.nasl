@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2306_3.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ubuntu_USN_2306_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for eglibc USN-2306-3
 #
@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841961");
-  script_version("$Revision: 11867 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:13 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2013-4357", "CVE-2013-4458", "CVE-2014-0475", "CVE-2014-4043");
   script_tag(name:"cvss_base", value:"6.8");
@@ -66,7 +66,8 @@ arguments. An attacker could use this issue to cause a denial of service.
 
   script_xref(name:"USN", value:"2306-3");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2306-3/");
-  script_tag(name:"summary", value:"Check for the Version of eglibc");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'eglibc'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

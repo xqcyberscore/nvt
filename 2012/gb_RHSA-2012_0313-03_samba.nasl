@@ -23,7 +23,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Samba is an open-source implementation of the Server Message Block (SMB) or
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-February/msg00042.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870551");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-21 18:56:40 +0530 (Tue, 21 Feb 2012)");
+  script_cve_id("CVE-2010-0926");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
+  script_xref(name:"RHSA", value:"2012:0313-03");
+  script_name("RedHat Update for samba RHSA-2012:0313-03");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'samba'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
+  script_tag(name:"affected", value:"samba on Red Hat Enterprise Linux (v. 5 server)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Samba is an open-source implementation of the Server Message Block (SMB) or
   Common Internet File System (CIFS) protocol, which allows PC-compatible
   machines to share files, printers, and other information.
 
@@ -60,35 +82,7 @@ tag_insight = "Samba is an open-source implementation of the Server Message Bloc
 
   Users are advised to upgrade to these updated samba packages, which correct
   these issues and add this enhancement. After installing this update, the
-  smb service will be restarted automatically.";
-
-tag_affected = "samba on Red Hat Enterprise Linux (v. 5 server)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-February/msg00042.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870551");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-02-21 18:56:40 +0530 (Tue, 21 Feb 2012)");
-  script_cve_id("CVE-2010-0926");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_xref(name: "RHSA", value: "2012:0313-03");
-  script_name("RedHat Update for samba RHSA-2012:0313-03");
-
-  script_tag(name: "summary" , value: "Check for the Version of samba");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_5");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  smb service will be restarted automatically.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -148,6 +142,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

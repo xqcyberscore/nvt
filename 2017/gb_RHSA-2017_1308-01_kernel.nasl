@@ -26,43 +26,43 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871823");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-26 06:31:20 +0200 (Fri, 26 May 2017)");
   script_cve_id("CVE-2016-10208", "CVE-2016-7910", "CVE-2016-8646", "CVE-2017-5986", "CVE-2017-7308");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:1308-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help
-of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel,
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel,
 the core of any Linux operating system.
 
 Security Fix(es):
 
-* It was found that the packet_set_ring() function of the Linux kernel's
+  * It was found that the packet_set_ring() function of the Linux kernel's
 networking implementation did not properly validate certain block-size
 data. A local attacker with CAP_NET_RAW capability could use this flaw to
 trigger a buffer overflow, resulting in the crash of the system. Due to the
 nature of the flaw, privilege escalation cannot be fully ruled out.
 (CVE-2017-7308, Important)
 
-* Mounting a crafted EXT4 image read-only leads to an attacker controlled
+  * Mounting a crafted EXT4 image read-only leads to an attacker controlled
 memory corruption and SLAB-Out-of-Bounds reads. (CVE-2016-10208, Moderate)
 
-* A flaw was found in the Linux kernel's implementation of seq_file where a
+  * A flaw was found in the Linux kernel's implementation of seq_file where a
 local attacker could manipulate memory in the put() function pointer. This
 could lead to memory corruption and possible privileged escalation.
 (CVE-2016-7910, Moderate)
 
-* A vulnerability was found in the Linux kernel. An unprivileged local user
+  * A vulnerability was found in the Linux kernel. An unprivileged local user
 could trigger oops in shash_async_export() by attempting to force the
 in-kernel hashing algorithms into decrypting an empty data set.
 (CVE-2016-8646, Moderate)
 
-* It was reported that with Linux kernel, earlier than version v4.10-rc8,
+  * It was reported that with Linux kernel, earlier than version v4.10-rc8,
 an application may trigger a BUG_ON in sctp_wait_for_sndbuf if the socket
 tx buffer is full, a thread is waiting on it to queue more data, and
 meanwhile another thread peels off the association being used by the first
@@ -75,13 +75,12 @@ Additional Changes:
 
 This update also fixes several bugs and adds various enhancements.
 Documentation for these changes is available from the Technical Notes
-document linked to in the References section.
-");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+document linked to in the References section.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:1308-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-May/msg00039.html");
+  script_xref(name:"RHSA", value:"2017:1308-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-May/msg00039.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -205,6 +204,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

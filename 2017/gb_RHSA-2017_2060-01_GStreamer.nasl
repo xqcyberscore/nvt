@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2060-01_GStreamer.nasl 12370 2018-11-16 07:56:29Z cfischer $
+# $Id: gb_RHSA-2017_2060-01_GStreamer.nasl 12380 2018-11-16 11:03:48Z cfischer $
 #
 # RedHat Update for GStreamer RHSA-2017:2060-01
 #
@@ -27,39 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871858");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:48:01 +0530 (Fri, 04 Aug 2017)");
-  script_cve_id("CVE-2016-10198", "CVE-2016-10199", "CVE-2016-9446", "CVE-2016-9810", 
+  script_cve_id("CVE-2016-10198", "CVE-2016-10199", "CVE-2016-9446", "CVE-2016-9810",
                 "CVE-2016-9811", "CVE-2017-5837", "CVE-2017-5838", "CVE-2017-5839",
                 "CVE-2017-5840", "CVE-2017-5841", "CVE-2017-5842", "CVE-2017-5843",
-                "CVE-2017-5844", "CVE-2017-5845", "CVE-2017-5848"); 
+                "CVE-2017-5844", "CVE-2017-5845", "CVE-2017-5848");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for GStreamer RHSA-2017:2060-01");
-  script_tag(name: "summary", value: "Check the version of GStreamer");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of 
-  detect NVT and check if the version is vulnerable or not."); 
-  script_tag(name: "insight", value: "GStreamer is a streaming media framework 
-  based on graphs of filters which operate on media data. The following packages 
-  have been upgraded to a later upstream version: clutter-gst2 (2.0.18), 
-  gnome-video-effects (0.4.3), gstreamer1 (1.10.4), gstreamer1-plugins-bad-free 
-  (1.10.4), gstreamer1-plugins-base (1.10.4), gstreamer1-plugins-good (1.10.4), 
-  orc (0.4.26). Security Fix(es): * Multiple flaws were found in gstreamer1, 
-  gstreamer1-plugins-base, gstreamer1-plugins-good, and 
-  gstreamer1-plugins-bad-free packages. An attacker could potentially use these 
-  flaws to crash applications which use the GStreamer framework. (CVE-2016-9446, 
-  CVE-2016-9810, CVE-2016-9811, CVE-2016-10198, CVE-2016-10199, CVE-2017-5837, 
-  CVE-2017-5838, CVE-2017-5839, CVE-2017-5840, CVE-2017-5841, CVE-2017-5842, 
-  CVE-2017-5843, CVE-2017-5844, CVE-2017-5845, CVE-2017-5848) Additional Changes: 
-  For detailed information on changes in this release, see the Red Hat Enterprise 
-  Linux 7.4 Release Notes linked from the References section. "); 
-  script_tag(name: "affected", value: "GStreamer on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'GStreamer'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"GStreamer is a streaming media framework
+  based on graphs of filters which operate on media data. The following packages
+  have been upgraded to a later upstream version: clutter-gst2 (2.0.18),
+  gnome-video-effects (0.4.3), gstreamer1 (1.10.4), gstreamer1-plugins-bad-free
+  (1.10.4), gstreamer1-plugins-base (1.10.4), gstreamer1-plugins-good (1.10.4),
+  orc (0.4.26). Security Fix(es): * Multiple flaws were found in gstreamer1,
+  gstreamer1-plugins-base, gstreamer1-plugins-good, and
+  gstreamer1-plugins-bad-free packages. An attacker could potentially use these
+  flaws to crash applications which use the GStreamer framework. (CVE-2016-9446,
+  CVE-2016-9810, CVE-2016-9811, CVE-2016-10198, CVE-2016-10199, CVE-2017-5837,
+  CVE-2017-5838, CVE-2017-5839, CVE-2017-5840, CVE-2017-5841, CVE-2017-5842,
+  CVE-2017-5843, CVE-2017-5844, CVE-2017-5845, CVE-2017-5848) Additional Changes:
+  For detailed information on changes in this release, see the Red Hat Enterprise
+  Linux 7.4 Release Notes linked from the References section. ");
+  script_tag(name:"affected", value:"GStreamer on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2017:2060-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2017-August/msg00026.html");
+  script_xref(name:"RHSA", value:"2017:2060-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00026.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -195,6 +195,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

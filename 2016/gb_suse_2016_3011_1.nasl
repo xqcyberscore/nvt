@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_3011_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2016_3011_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Mozilla openSUSE-SU-2016:3011-1 (Mozilla)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851442");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 05:39:57 +0100 (Tue, 06 Dec 2016)");
   script_cve_id("CVE-2016-5289", "CVE-2016-5290", "CVE-2016-5291", "CVE-2016-5292",
                 "CVE-2016-5293", "CVE-2016-5294", "CVE-2016-5295", "CVE-2016-5296",
@@ -42,7 +42,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla openSUSE-SU-2016:3011-1 (Mozilla)");
-  script_tag(name:"summary", value:"Check the version of Mozilla");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Mozilla'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"This update to Mozilla Firefox 50.0.2, Thunderbird 45.5.1 and NSS 3.16.2
   fixes a number of security issues.
@@ -126,7 +127,7 @@ if(description)
 
   - additional loc ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Mozilla on openSUSE 13.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

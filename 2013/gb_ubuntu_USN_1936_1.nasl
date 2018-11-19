@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1936_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1936_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-lts-raring USN-1936-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841535");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-08-27 10:00:42 +0530 (Tue, 27 Aug 2013)");
   script_cve_id("CVE-2013-1059", "CVE-2013-2148", "CVE-2013-2164", "CVE-2013-2851",
                 "CVE-2013-2852", "CVE-2013-4125", "CVE-2013-4127", "CVE-2013-4247");
@@ -78,7 +78,8 @@ exploit this to crash the system, leading to a denial of service.
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"1936-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1936-1/");
-  script_tag(name:"summary", value:"Check for the Version of linux-lts-raring");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-lts-raring'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

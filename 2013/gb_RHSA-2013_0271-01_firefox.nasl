@@ -23,16 +23,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Before applying this update, make sure all previously-released errata
-  relevant to your system have been applied.
+if(description)
+{
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-February/msg00032.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870911");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2013-02-22 10:00:42 +0530 (Fri, 22 Feb 2013)");
+  script_cve_id("CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0780", "CVE-2013-0782",
+                "CVE-2013-0783");
+  script_bugtraq_id(58042, 58044, 58043, 58047, 58037);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name:"RHSA", value:"2013:0271-01");
+  script_name("RedHat Update for firefox RHSA-2013:0271-01");
 
-  This update is available via the Red Hat Network. Details on how to
-  use the Red Hat Network to apply this upda ...
-
-  Description truncated, for more information please check the Reference URL";
-
-
-tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides the XUL
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'firefox'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(6|5)");
+  script_tag(name:"affected", value:"firefox on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Mozilla Firefox is an open source web browser. XULRunner provides the XUL
   Runtime environment for Mozilla Firefox.
 
   Several flaws were found in the processing of malformed web content. A
@@ -55,11 +72,9 @@ tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides
   advisories for Firefox 17.0.3 ESR. You can find a link to the Mozilla
   advisories in the References section of this erratum.
 
-  Note that due to a Kerberos credentials change, the following configuration
-  steps may be required when using Firefox 17.0.3 ESR with the Enterprise
-  Identity Management (IPA) web interface:
-
-  https://access.redhat.com/knowledge/solutions/294303 &qt >https://access.redhat.com/knowledge/solutions/294303
+  Note that due to a Kerberos credentials change, the configuration
+  steps in the linked references may be required when using Firefox 17.0.3 ESR
+  with the Enterprise Identity Management (IPA) web interface.
 
   Important: Firefox 17 is not completely backwards-compatible with all
   Mozilla add-ons and Firefox plug-ins that worked with Firefox 10.0.
@@ -70,41 +85,18 @@ tag_insight = "Mozilla Firefox is an open source web browser. XULRunner provides
 
   All Firefox users should upgrade to these updated packages, which contain
   Firefox version 17.0.3 ESR, which corrects these issues. After installing
-  the update, Firefox must be restarted for the changes to take effect.";
+  the update, Firefox must be restarted for the changes to take effect.");
+  script_tag(name:"solution", value:"Before applying this update, make sure all previously-released errata
+  relevant to your system have been applied.
 
+  This update is available via the Red Hat Network. Details on how to
+  use the Red Hat Network to apply this upda ...
 
-tag_affected = "firefox on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-February/msg00032.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870911");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2013-02-22 10:00:42 +0530 (Fri, 22 Feb 2013)");
-  script_cve_id("CVE-2013-0775", "CVE-2013-0776", "CVE-2013-0780", "CVE-2013-0782",
-                "CVE-2013-0783");
-  script_bugtraq_id(58042, 58044, 58043, 58047, 58037);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "RHSA", value: "2013:0271-01");
-  script_name("RedHat Update for firefox RHSA-2013:0271-01");
-
-  script_tag(name: "summary" , value: "Check for the Version of firefox");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_(6|5)");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"https://access.redhat.com/knowledge/solutions/294303");
 
   exit(0);
 }
@@ -180,7 +172,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -248,6 +240,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

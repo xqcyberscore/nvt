@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3468_3.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3468_3.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for linux-gcp USN-3468-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843356");
-  script_version("$Revision: 11228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-01 05:03:27 +0100 (Wed, 01 Nov 2017)");
   script_cve_id("CVE-2017-1000252", "CVE-2017-10663", "CVE-2017-10911",
                 "CVE-2017-11176", "CVE-2017-14340");
@@ -36,7 +36,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-gcp USN-3468-3");
-  script_tag(name:"summary", value:"Check the version of linux-gcp");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'linux-gcp'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"It was discovered that the KVM subsystem in
   the Linux kernel did not properly bound guest IRQs. A local attacker in a guest

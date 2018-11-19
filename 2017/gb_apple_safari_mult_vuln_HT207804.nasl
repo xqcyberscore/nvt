@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_HT207804.nasl 11982 2018-10-19 08:49:21Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_HT207804.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities-HT207804
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810988");
-  script_version("$Revision: 11982 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-2495", "CVE-2017-2500", "CVE-2017-2511", "CVE-2017-2496",
                 "CVE-2017-2505", "CVE-2017-2506", "CVE-2017-2514", "CVE-2017-2515",
                 "CVE-2017-2521", "CVE-2017-2525", "CVE-2017-2526", "CVE-2017-2530",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2017-2549", "CVE-2017-2499");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 10:49:21 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 12:56:34 +0530 (Tue, 16 May 2017)");
   script_name("Apple Safari Multiple Vulnerabilities-HT207804");
 
@@ -82,7 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
-  script_xref(name:"URL", value:"http://www.apple.com/support.");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

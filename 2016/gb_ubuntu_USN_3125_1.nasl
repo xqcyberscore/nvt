@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842944");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:01:13 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-5403", "CVE-2016-6833", "CVE-2016-6834", "CVE-2016-6888",
 		"CVE-2016-6835", "CVE-2016-6836", "CVE-2016-7116", "CVE-2016-7155",
@@ -41,7 +41,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3125-1");
-  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'qemu'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Zhenhao Hong discovered that QEMU
   incorrectly handled the Virtio module. A privileged attacker inside the guest
@@ -92,7 +93,7 @@ This issue only affected Ubuntu 16.10. (CVE-2016-7157)
 Hu Chaojian discovered that QEMU incorrectly handled xlnx.xps-ethernetlite
 emulation support. A privileged attacker in ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"qemu on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS,
   Ubuntu 16.10,

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oprofile_mult_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_oprofile_mult_vuln.nasl 12387 2018-11-16 14:06:23Z cfischer $
 #
 # OProfile Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802108");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 15:06:23 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_cve_id("CVE-2011-1760", "CVE-2011-2471", "CVE-2011-2472", "CVE-2011-2473");
   script_bugtraq_id(47652);
@@ -64,9 +64,9 @@ if(description)
   *****
   NOTE: Ignore this warning if above mentioned patch is already applied.
   *****");
-  script_xref(name:"URL", value:" https://bugzilla.redhat.com/attachment.cgi?id=499233");
-  script_xref(name:"URL", value:"  https://bugzilla.redhat.com/attachment.cgi?id=499234");
-  script_xref(name:"URL", value:"  https://bugzilla.redhat.com/attachment.cgi?id=499235");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/attachment.cgi?id=499233");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/attachment.cgi?id=499234");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/attachment.cgi?id=499235");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local users to run arbitrary commands with
   super-user privileges.");

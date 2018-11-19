@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0458_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2017_0458_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for Kernel openSUSE-SU-2017:0458-1 (Kernel)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851489");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 05:57:00 +0100 (Tue, 14 Feb 2017)");
   script_cve_id("CVE-2016-10088", "CVE-2016-10147", "CVE-2016-7117", "CVE-2016-7917",
                 "CVE-2016-8645", "CVE-2016-9793", "CVE-2016-9806", "CVE-2017-5551",
@@ -37,7 +37,8 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Kernel openSUSE-SU-2017:0458-1 (Kernel)");
-  script_tag(name:"summary", value:"Check the version of kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE Leap 42.1 kernel to 4.1.38 to receive various security and
   bugfixes.
@@ -90,7 +91,7 @@ if(description)
   corruption and system crash) or possibly have unspecified other impact
   by leveraging th ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"Kernel on openSUSE Leap 42.1");
   script_tag(name:"solution", value:"Please install the updated packages.");
 

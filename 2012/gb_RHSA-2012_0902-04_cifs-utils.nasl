@@ -23,7 +23,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The cifs-utils package contains tools for mounting and managing shares on
+if(description)
+{
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2012-June/msg00035.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.870774");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-22 10:26:27 +0530 (Fri, 22 Jun 2012)");
+  script_cve_id("CVE-2012-1586");
+  script_xref(name:"RHSA", value:"2012:0902-04");
+  script_name("RedHat Update for cifs-utils RHSA-2012:0902-04");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cifs-utils'
+  package(s) announced via the referenced advisory.");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
+  script_tag(name:"affected", value:"cifs-utils on Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"The cifs-utils package contains tools for mounting and managing shares on
   Linux using the SMB/CIFS protocol. The CIFS shares can be used as standard
   Linux file systems.
 
@@ -70,39 +94,9 @@ tag_insight = "The cifs-utils package contains tools for mounting and managing s
 
   In addition, this update adds the following enhancements:
 
-  * The cifs.upcall util ... 
+  * The cifs.upcall util ...
 
-  Description truncated, for more information please check the Reference URL";
-
-tag_affected = "cifs-utils on Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-tag_solution = "Please Install the Updated Packages.";
-
-
-
-if(description)
-{
-  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2012-June/msg00035.html");
-  script_oid("1.3.6.1.4.1.25623.1.0.870774");
-  script_tag(name:"cvss_base", value:"2.1");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2012-06-22 10:26:27 +0530 (Fri, 22 Jun 2012)");
-  script_cve_id("CVE-2012-1586");
-  script_xref(name: "RHSA", value: "2012:0902-04");
-  script_name("RedHat Update for cifs-utils RHSA-2012:0902-04");
-
-  script_tag(name: "summary" , value: "Check for the Version of cifs-utils");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("Red Hat Local Security Checks");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -132,6 +126,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

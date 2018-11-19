@@ -26,28 +26,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871717");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 05:07:05 +0100 (Wed, 16 Nov 2016)");
   script_cve_id("CVE-2016-1583", "CVE-2016-2143");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2016:2766-01");
-  script_tag(name: "summary", value: "Check the version of kernel");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The kernel packages contain the Linux kernel, the core of any Linux
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The kernel packages contain the Linux kernel, the core of any Linux
 operating system.
 
 Security Fix(es):
 
-* It was found that stacking a file system over procfs in the Linux kernel
+  * It was found that stacking a file system over procfs in the Linux kernel
 could lead to a kernel stack overflow due to deep nesting, as demonstrated
 by mounting ecryptfs over procfs and creating a recursion by mapping
 /proc/environ. An unprivileged, local user could potentially use this flaw
 to escalate their privileges on the system. (CVE-2016-1583, Important)
 
-* It was reported that on s390x, the fork of a process with four page table
+  * It was reported that on s390x, the fork of a process with four page table
 levels will cause memory corruption with a variety of symptoms. All
 processes are created with three level page table and a limit of 4TB for
 the address space. If the parent process has four page table levels with a
@@ -57,24 +58,24 @@ copy memory areas outside of the address space limit for the child process.
 
 Bug Fix(es):
 
-* Use of a multi-threaded workload with high memory mappings sometiems
+  * Use of a multi-threaded workload with high memory mappings sometimes
 caused a kernel panic, due to a race condition between the context switch
 and the pagetable upgrade. This update fixes the switch_mm() by using the
 complete asce parameter instead of the asce_bits parameter. As a result,
 the kernel no longer panics in the described scenario. (BZ#1377472)
 
-* When iptables created the Transmission Control Protocol (TCP) reset
+  * When iptables created the Transmission Control Protocol (TCP) reset
 packet, a kernel crash could occur due to uninitialized pointer to the TCP
 header within the Socket Buffer (SKB). This update fixes the transport
 header pointer in TCP reset for both IPv4 and IPv6, and the kernel no
 longer crashes in the described situation.(BZ#1372266)
 
-* Previously, when the Enhanced Error Handling (EEH) mechanism did not
+  * Previously, when the Enhanced Error Handling (EEH) mechanism did not
 block the PCI configuration space access and an error was detected, a
 kernel panic occurred. This update fixes EEH to fix this problem. As a
 result, the kernel no longer panics in the described scenario. (BZ#1379596)
 
-* When the lockd service failed to start up completely, the notifier blocks
+  * When the lockd service failed to start up completely, the notifier blocks
 were in some cases registered on a notification chain multiple times, which
 caused the occurrence of a circular list on the notification chain.
 Consequently, a soft lock-up or a kernel oops occurred. With this update,
@@ -82,17 +83,17 @@ the notifier blocks are unregistered if lockd fails to start up completely,
 and the soft lock-ups or the kernel oopses no longer occur under the
 described circumstances. (BZ#1375637)
 
-* When the Fibre Channel over Ethernet (FCoE) was configured, the FCoE
-MaxFrameSize parameter was in ... 
+  * When the Fibre Channel over Ethernet (FCoE) was configured, the FCoE
+MaxFrameSize parameter was in ...
 
-  Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "kernel on Red Hat Enterprise Linux Desktop (v. 6),
+  Description truncated, please see the referenced URL(s) for more information.");
+  script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "RHSA", value: "2016:2766-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00072.html");
+  script_xref(name:"RHSA", value:"2016:2766-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-November/msg00072.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -204,6 +205,6 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

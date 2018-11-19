@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2100_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2100_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for pidgin USN-2100-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841705");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:44:51 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2012-6152", "CVE-2013-6477", "CVE-2013-6478", "CVE-2013-6479",
                 "CVE-2013-6481", "CVE-2013-6482", "CVE-2013-6483", "CVE-2013-6484",
@@ -97,13 +97,14 @@ Yves Younan discovered that Pidgin incorrectly handled SIMPLE headers. A
 remote attacker could use this issue to cause Pidgin to crash, resulting in
 a denial of service, or possibly execute arbitrary code. (CVE ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"USN", value:"2100-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2100-1/");
-  script_tag(name:"summary", value:"Check for the Version of pidgin");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'pidgin'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

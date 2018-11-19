@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208224.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_apple_itunes_HT208224.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple iTunes Security Updates( HT208224 )
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811957");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2017-13784", "CVE-2017-13785", "CVE-2017-13783", "CVE-2017-13788",
 		"CVE-2017-13795", "CVE-2017-13802", "CVE-2017-13792", "CVE-2017-13791",
 		"CVE-2017-13798", "CVE-2017-13796", "CVE-2017-13793", "CVE-2017-13794",
 		"CVE-2017-13803");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:19:55 +0530 (Thu, 02 Nov 2017)");
   script_name("Apple iTunes Security Updates( HT208224 )");
 
@@ -63,7 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
-  script_xref(name:"URL", value:"http://www.apple.com/support.");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

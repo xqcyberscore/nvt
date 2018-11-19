@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850151");
-  script_version("$Revision: 12290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -35,7 +35,8 @@ if(description)
   script_cve_id("CVE-2010-3654", "CVE-2010-4091");
   script_name("SuSE Update for acoread SUSE-SA:2010:058");
 
-  script_tag(name:"summary", value:"Check for the Version of acoread");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'acoread'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

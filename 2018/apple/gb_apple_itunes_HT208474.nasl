@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_HT208474.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apple_itunes_HT208474.nasl 12391 2018-11-16 16:12:15Z cfischer $
 #
 # Apple iTunes Security Updates( HT208474 )
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812666");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12391 $");
   script_cve_id("CVE-2018-4088", "CVE-2018-4096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 17:12:15 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-24 12:06:17 +0530 (Wed, 24 Jan 2018)");
   script_name("Apple iTunes Security Updates( HT208474 )");
 
@@ -61,7 +61,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Ver");
-  script_xref(name:"URL", value:"http://www.apple.com/support.");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

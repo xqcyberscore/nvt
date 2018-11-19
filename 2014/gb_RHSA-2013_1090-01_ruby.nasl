@@ -23,19 +23,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871023");
-  script_version("$Revision: 12375 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 09:32:22 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-05-20 12:45:12 +0530 (Tue, 20 May 2014)");
   script_cve_id("CVE-2013-4073");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for ruby RHSA-2013:1090-01");
 
-  tag_insight = "Ruby is an extensible, interpreted, object-oriented, scripting language.
+
+  script_tag(name:"affected", value:"ruby on Red Hat Enterprise Linux (v. 5 server),
+  Red Hat Enterprise Linux Desktop (v. 6),
+  Red Hat Enterprise Linux Server (v. 6),
+  Red Hat Enterprise Linux Workstation (v. 6)");
+  script_tag(name:"insight", value:"Ruby is an extensible, interpreted, object-oriented, scripting language.
 It has features to process text files and to do system management tasks.
 
 A flaw was found in Ruby's SSL client's hostname identity check when
@@ -46,25 +50,14 @@ to obtain a carefully-crafted certificate signed by an authority that the
 client trusts. (CVE-2013-4073)
 
 All users of Ruby are advised to upgrade to these updated packages, which
-contain backported patches to resolve this issue.
-";
-
-  tag_affected = "ruby on Red Hat Enterprise Linux (v. 5 server),
-  Red Hat Enterprise Linux Desktop (v. 6),
-  Red Hat Enterprise Linux Server (v. 6),
-  Red Hat Enterprise Linux Workstation (v. 6)";
-
-  tag_solution = "Please Install the Updated Packages.";
-
-
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+contain backported patches to resolve this issue.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2013:1090-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2013-July/msg00028.html");
-  script_tag(name:"summary", value:"Check for the Version of ruby");
+  script_xref(name:"RHSA", value:"2013:1090-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-July/msg00028.html");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'ruby'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -121,7 +114,7 @@ if(release == "RHENT_6")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }
 
@@ -189,6 +182,6 @@ if(release == "RHENT_5")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

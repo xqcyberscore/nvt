@@ -27,15 +27,16 @@ if(description)
 {
   script_xref(name:"URL", value:"http://lists.mandriva.com/security-announce/2012-02/msg00036.php");
   script_oid("1.3.6.1.4.1.25623.1.0.831560");
-  script_version("$Revision: 11985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:24:37 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:21:08 +0530 (Wed, 07 Mar 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_xref(name:"MDVA", value:"2012:024");
   script_name("Mandriva Update for rpm-mandriva-setup MDVA-2012:024 (rpm-mandriva-setup)");
 
-  script_tag(name:"summary", value:"Check for the Version of rpm-mandriva-setup");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'rpm-mandriva-setup'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Mandrake Local Security Checks");

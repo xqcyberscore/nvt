@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850152");
-  script_version("$Revision: 12290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:21:13 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-04 09:11:34 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -35,7 +35,8 @@ if(description)
   script_cve_id("CVE-2010-4344", "CVE-2010-4345");
   script_name("SuSE Update for exim SUSE-SA:2010:059");
 
-  script_tag(name:"summary", value:"Check for the Version of exim");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'exim'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

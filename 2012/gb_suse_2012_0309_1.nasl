@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_0309_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2012_0309_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0309-1 (java-1_6_0-openjdk)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850255");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 23:00:08 +0530 (Thu, 02 Aug 2012)");
   script_cve_id("CVE-2011-3563", "CVE-2011-3571", "CVE-2011-5035", "CVE-2012-0497",
                 "CVE-2012-0501", "CVE-2012-0502", "CVE-2012-0503", "CVE-2012-0505",
@@ -38,7 +38,8 @@ if(description)
   script_xref(name:"openSUSE-SU", value:"2012:0309_1");
   script_name("SuSE Update for java-1_6_0-openjdk openSUSE-SU-2012:0309-1 (java-1_6_0-openjdk)");
 
-  script_tag(name:"summary", value:"Check for the Version of java-1_6_0-openjdk");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'java-1_6_0-openjdk'
+  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

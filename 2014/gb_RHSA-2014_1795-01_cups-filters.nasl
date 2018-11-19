@@ -26,16 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871284");
-  script_version("$Revision: 12370 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 08:56:29 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12380 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-11-04 06:12:03 +0100 (Tue, 04 Nov 2014)");
   script_cve_id("CVE-2014-4337", "CVE-2014-4338");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_name("RedHat Update for cups-filters RHSA-2014:1795-01");
-  script_tag(name: "summary", value: "Check the version of cups-filters");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The cups-filters package contains backends, filters, and other software
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'cups-filters'
+  package(s) announced via the referenced advisory.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The cups-filters package contains backends, filters, and other software
 that was once part of the core CUPS distribution but is now maintained
 independently.
 
@@ -51,14 +52,13 @@ use this flaw to bypass intended access restrictions. (CVE-2014-4338)
 
 All cups-filters users are advised to upgrade to these updated packages,
 which contain backported patches to correct these issues. After installing
-this update, the cups-browsed daemon will be restarted automatically.
-");
-  script_tag(name: "affected", value: "cups-filters on Red Hat Enterprise Linux Server (v. 7)");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+this update, the cups-browsed daemon will be restarted automatically.");
+  script_tag(name:"affected", value:"cups-filters on Red Hat Enterprise Linux Server (v. 7)");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "RHSA", value: "2014:1795-01");
-  script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2014-November/msg00010.html");
+  script_xref(name:"RHSA", value:"2014:1795-01");
+  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-November/msg00010.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
@@ -97,6 +97,6 @@ if(release == "RHENT_7")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3448_1.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3448_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # Ubuntu Update for keystone USN-3448-1
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843339");
-  script_version("$Revision: 11513 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 10:28:03 +0200 (Thu, 12 Oct 2017)");
   script_cve_id("CVE-2017-2673");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for keystone USN-3448-1");
-  script_tag(name:"summary", value:"Check the version of keystone");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'keystone'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Boris Bobrov discovered that OpenStack
   Keystone incorrectly handled federation mapping when there are rules in which

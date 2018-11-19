@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2015_1382_1.nasl 12284 2018-11-09 12:37:21Z cfischer $
+# $Id: gb_suse_2015_1382_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
 #
 # SuSE Update for the openSUSE-SU-2015:1382-1 (kernel)
 #
@@ -27,15 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850675");
-  script_version("$Revision: 12284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 13:37:21 +0100 (Fri, 09 Nov 2018) $");
+  script_version("$Revision: 12381 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:30:19 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2014-9728", "CVE-2014-9729", "CVE-2014-9730", "CVE-2014-9731", "CVE-2015-1420", "CVE-2015-1465", "CVE-2015-2041", "CVE-2015-2922", "CVE-2015-3212", "CVE-2015-3290", "CVE-2015-3339", "CVE-2015-3636", "CVE-2015-4001", "CVE-2015-4002", "CVE-2015-4003", "CVE-2015-4036", "CVE-2015-4167", "CVE-2015-4692", "CVE-2015-4700", "CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2015:1382-1 (kernel)");
-  script_tag(name:"summary", value:"Check the version of the kernel");
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'the kernel'
+  package(s) announced via the referenced advisory.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The openSUSE 13.2 kernel was updated to receive various security and
   bugfixes.
@@ -91,7 +92,7 @@ if(description)
   (divide-by-zero error and system crash) via a crafted packet
   (bnc#9339 ...
 
-  Description truncated, for more information please check the Reference URL");
+  Description truncated, please see the referenced URL(s) for more information.");
   script_tag(name:"affected", value:"kernel on openSUSE 13.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_xref(name:"openSUSE-SU", value:"2015:1382_1");
