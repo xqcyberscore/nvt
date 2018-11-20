@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsa18-01_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_adobe_flash_player_within_chrome_apsa18-01_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities(apsa18-01)-Windows
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812686");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-4878", "CVE-2018-4877");
   script_bugtraq_id(102893, 102930);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-02 11:08:19 +0530 (Fri, 02 Feb 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities(apsa18-01)-Windows");
 
@@ -67,11 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-playerVer = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];

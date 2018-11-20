@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_detection_linux_900037.nasl 10917 2018-08-10 16:48:12Z cfischer $
+# $Id: secpod_opera_detection_linux_900037.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Opera Version Detection for Linux
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900037");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10917 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:48:12 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -49,8 +49,9 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of Opera.
 
-The script logs in via ssh, searches for executable 'opera' and
-greps the version executable found.");
+  The script logs in via ssh, searches for executable 'opera' and
+  greps the version executable found.");
+
   exit(0);
 }
 
@@ -73,7 +74,7 @@ garg[2] = "-a";
 garg[3] = string("Opera [0-9]\\+\\.[0-9]\\+");
 garg[5] = string("Internal\\ build\\ [0-9]\\+");
 garg[6] = string("Build\\ number:.*");
-checkdupOpera = "";
+checkdupOpera = ""; # nb: To make openvas-nasl-lint happy...
 
 operaName = find_file(file_name:"opera", file_path:"/", useregex:TRUE,
                       regexpar:"$", sock:sock);

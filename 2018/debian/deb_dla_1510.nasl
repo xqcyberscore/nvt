@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1510.nasl 11500 2018-09-20 12:11:02Z cfischer $
+# $Id: deb_dla_1510.nasl 12408 2018-11-19 09:34:54Z asteins $
 #
 # Auto-generated from advisory DLA 1510-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891510");
-  script_version("$Revision: 11500 $");
+  script_version("$Revision: 12408 $");
   script_cve_id("CVE-2018-10904", "CVE-2018-10907", "CVE-2018-10911", "CVE-2018-10913", "CVE-2018-10914",
                 "CVE-2018-10923", "CVE-2018-10926", "CVE-2018-10927", "CVE-2018-10928", "CVE-2018-10929",
                 "CVE-2018-10930");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1510-1] glusterfs security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:11:02 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:34:54 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 00:00:00 +0200 (Thu, 20 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

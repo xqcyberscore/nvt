@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_desktop_board_bios_info_detect_win.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_desktop_board_bios_info_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Desktop Boards BIOS Information Detection for Windows
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96197");
-  script_version("$Revision: 10901 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-04-16 10:59:11 +0100 (Thu, 16 Apr 2015)");
   script_name("Desktop Boards BIOS Information Detection for Windows");
 
@@ -62,7 +62,7 @@ bios_vendor = registry_get_sz(item:"BIOSVendor", key:"HARDWARE\DESCRIPTION\Syste
 base_board_ver = registry_get_sz(item:"BaseBoardVersion", key:"HARDWARE\DESCRIPTION\System\BIOS");
 base_board_manu = registry_get_sz(item:"BaseBoardManufacturer", key:"HARDWARE\DESCRIPTION\System\BIOS");
 base_board_prod_name = registry_get_sz(item:"BaseBoardProduct", key:"HARDWARE\DESCRIPTION\System\BIOS");
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 if(bios_ver != NULL)
 {

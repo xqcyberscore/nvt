@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_xss_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_activemq_xss_lin.nasl 12419 2018-11-19 13:45:13Z cfischer $
 #
 # Apache Active MQ 5.14.1 XSS Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113081");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12419 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:45:13 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 12:46:47 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2016-6810");
 
-  script_name("Apache Active MQ 5.14.1 XSS Vulnerability");
+  script_name("Apache Active MQ 5.14.1 XSS Vulnerability (Linux)");
 
   script_category(ACT_GATHER_INFO);
 

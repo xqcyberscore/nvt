@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Apache Tomcat JK Connector Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:mod_jk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812787");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2016-6808");
   script_bugtraq_id(93429);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 10:49:53 +0530 (Tue, 27 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat JK Connector Buffer Overflow Vulnerability (Linux)");
@@ -77,9 +77,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-tomPort = "";
-appVer = "";
 
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: stun_detection.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: stun_detection.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Detect STUN Server
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11986");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detect STUN Server");
@@ -40,6 +40,7 @@ if(description)
 
   script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic
   to this port.");
+
   script_tag(name:"summary", value:"A VPN server is listening on the remote port.
 
   Description :

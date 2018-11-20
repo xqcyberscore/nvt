@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serverscheck_monitoring_detect_http.nasl 12341 2018-11-13 15:56:43Z mmartin $
+# $Id: gb_serverscheck_monitoring_detect_http.nasl 12425 2018-11-19 16:08:13Z cfischer $
 #
 # ServersCheck Monitoring Server Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107366");
-  script_version("$Revision: 12341 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 16:56:43 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12425 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 17:08:13 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-12 16:31:12 +0100 (Mon, 12 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,6 @@ if( description )
 include( "cpe.inc" );
 include( "host_details.inc" );
 include( "http_func.inc" );
-include( "http_keepalive.inc" );
 
 port = get_http_port( default: 80 );
 banner = get_http_banner( port: port );
@@ -64,9 +63,9 @@ if( ! banner || banner !~ "Server: ServersCheck_Monitoring_Server" )
   exit( 0 );
 
 version = "unknown";
-set_kb_item( name: "ServersCheck/Monitoring_Server/http/detected", value: TRUE );
-set_kb_item( name: "ServersCheck/Monitoring_Software_or_Server/detected", value: TRUE );
-set_kb_item( name: "ServersCheck/Monitoring_Server/http/port", value: port );
+set_kb_item( name: "serverscheck/monitoring_server/http/detected", value: TRUE );
+set_kb_item( name: "serverscheck/monitoring_software_or_server/detected", value: TRUE );
+set_kb_item( name: "serverscheck/monitoring_server/http/port", value: port );
 
 # Server: ServersCheck_Monitoring_Server/1.1
 # Server: ServersCheck_Monitoring_Server/14.0
@@ -75,8 +74,8 @@ set_kb_item( name: "ServersCheck/Monitoring_Server/http/port", value: port );
 vers = eregmatch( pattern: "ServersCheck_Monitoring_Server/([0-9.]+)", string: banner, icase: TRUE );
 if( ! isnull( vers[1] ) ) {
   version = vers[1];
-  set_kb_item( name: "ServersCheck/Monitoring_Server/http/version", value: version );
-  set_kb_item( name: "ServersCheck/Monitoring_Server/http/concluded", value: vers[0] );
+  set_kb_item( name: "serverscheck/monitoring_server/http/version", value: version );
+  set_kb_item( name: "serverscheck/monitoring_server/http/concluded", value: vers[0] );
 }
 
 register_and_report_cpe( app: "ServersCheck Monitoring Server", ver: version, base: "cpe:/a:serverscheck:monitoring_server:", expr: "^([0-9.]+)", insloc: "/", regPort: port, concluded: vers[0], regService: "www" );

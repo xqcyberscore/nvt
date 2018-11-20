@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_version_get.nasl 8232 2017-12-22 09:19:30Z cfischer $
+# $Id: gb_tls_version_get.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # SSL/TLS: Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105782");
-  script_version("$Revision: 8232 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:19:30 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-29 10:54:20 +0200 (Wed, 29 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,7 @@ if( ! port || ! get_port_state( port ) ) exit( 0 );
 # ports gets excluded here.
 if( get_kb_item( "fragile_port/exclude_tls/" + port ) ) exit( 0 );
 
-sup_tls = '';
+sup_tls = ''; # nb: To make openvas-nasl-lint happy...
 
 foreach vers( make_list( TLS_10, TLS_11, TLS_12, SSL_v2, SSL_v3 ) )
 {

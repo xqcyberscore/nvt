@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_devices_default_credentials.nasl 12122 2018-10-26 11:51:06Z tpassfeld $
+# $Id: gb_dahua_devices_default_credentials.nasl 12426 2018-11-19 17:35:36Z tpassfeld $
 #
 # Dahua Devices Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114040");
-  script_version("$Revision: 12122 $");
+  script_version("$Revision: 12426 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:51:06 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 18:35:36 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-15 21:06:41 +0200 (Mon, 15 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -121,7 +121,6 @@ foreach cred(keys(creds)) {
 
   #According to function "get_Auth" in file /js/index.js:
   if(encryptionType == "Basic") {
-    #case "Basic": return Base64.encode(username + ":" + password);
     pass = base64(str: username + ":" + password);
   }
   else if(encryptionType == "Default") {
@@ -140,7 +139,6 @@ foreach cred(keys(creds)) {
     else break;
   }
   else {
-    #default: return password;
     pass = password;
   }
 

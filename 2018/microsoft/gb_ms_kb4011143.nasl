@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011143.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011143.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Office 2016 Information Disclosure Vulnerability (KB4011143)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812907");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0853");
   script_bugtraq_id(102868);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 10:24:15 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Office 2016 Information Disclosure Vulnerability (KB4011143)");
 
@@ -62,6 +62,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -69,10 +70,6 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-officeVer = "";
-offPath = "";
-offdllVer = "";
 
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer || !(officeVer =~ "^(16\.)")){

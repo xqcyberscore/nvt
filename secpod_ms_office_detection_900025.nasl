@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_ms_office_detection_900025.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -68,7 +68,7 @@ TMP_OFFICE_LIST = make_list( "^(9\..*)",  "cpe:/a:microsoft:office:2000:",
                              "^(15\..*)", "cpe:/a:microsoft:office:2013:",
                              "^(16\..*)", "cpe:/a:microsoft:office:2016:");
 MAX = max_index(TMP_OFFICE_LIST);
-checkdupOffc = "";
+checkdupOffc = ""; # nb: To make openvas-nasl-lint happy...
 
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {

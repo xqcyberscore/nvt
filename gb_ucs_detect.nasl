@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ucs_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_ucs_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Univention Corporate Server (UCS) and Management Console Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103979");
-  script_version("$Revision: 8142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-08-01 14:27:02 +0200 (Mon, 01 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -55,7 +55,7 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 install = "/";
 
 url = "/ucs-overview/";

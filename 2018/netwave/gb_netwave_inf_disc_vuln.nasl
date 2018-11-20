@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netwave_inf_disc_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_netwave_inf_disc_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Netwave IP Camera Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113254");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12410 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 12:50:00 +0200 (Tue, 28 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -78,7 +78,7 @@ if( ! location = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
 if( location == "/" )
   location = "";
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 attack_url = location + '//etc/RT2870STA.dat';
 req = http_get_req( port: port, url: attack_url, accept_header: '*/*', host_header_use_ip: TRUE,

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monit_csrf_vuln.nasl 11310 2018-09-11 04:42:07Z ckuersteiner $
+# $Id: gb_monit_csrf_vuln.nasl 12408 2018-11-19 09:34:54Z asteins $
 #
 # Monit < 5.20.0 CSRF Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:tildeslash:monit";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141468");
-  script_version("$Revision: 11310 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 06:42:07 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12408 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:34:54 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 11:29:46 +0700 (Tue, 11 Sep 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-7067");
 

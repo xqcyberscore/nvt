@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_apsb18-05.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_flash_player_for_ie_edge_apsb18-05.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple RCE Vulnerabilities (apsb18-05)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813030");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-4920", "CVE-2018-4919");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple RCE Vulnerabilities (apsb18-05)");
 
@@ -87,10 +87,6 @@ if(description)
 include("host_details.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
-
-infos = "";
-flashVer = "";
-flashPath = "";
 
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1, win2016:1) <= 0){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_mar18_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_google_chrome_mult_vuln_mar18_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Google Chrome Multiple Security Vulnerabilities Mar18 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812819");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-6057", "CVE-2018-6058", "CVE-2018-6059", "CVE-2018-6060",
                 "CVE-2018-6061", "CVE-2018-6062", "CVE-2018-6063", "CVE-2018-6064",
                 "CVE-2018-6065", "CVE-2018-6066", "CVE-2018-6067", "CVE-2018-6068",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2018-6081", "CVE-2018-6082", "CVE-2018-6083");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 11:13:56 +0530 (Wed, 07 Mar 2018)");
   script_name("Google Chrome Multiple Security Vulnerabilities Mar18 (Windows)");
 
@@ -108,8 +108,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-vers = "";
 
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];

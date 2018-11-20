@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_priv_escal_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_hp_support_assistant_priv_escal_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # HP Support Assistant Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:support_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812945");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2017-2744");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 11:48:49 +0530 (Fri, 23 Feb 2018)");
   script_name("HP Support Assistant Privilege Escalation Vulnerability (Windows)");
 
@@ -68,8 +68,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-hpvers = "";
 
 if(!frameVer = get_app_version(cpe:"cpe:/a:hp:support_solution_framework")){
   exit(0);

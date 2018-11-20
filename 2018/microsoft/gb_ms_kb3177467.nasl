@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3177467.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_ms_kb3177467.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB3177467)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814270");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 12410 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 08:55:34 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Windows Latest Servicing Stack Updates-Defense in Depth (KB3177467)");
 
@@ -61,9 +61,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
+  script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
 
-  script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
 
@@ -89,8 +89,7 @@ if( ! fileList|| ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
-max_version = 0;
+max_version = 0; # Avoid passing null to the version function below
 foreach filePath( keys( fileList ) )
 {
   vers = fileList[filePath];
@@ -99,8 +98,8 @@ foreach filePath( keys( fileList ) )
     if(version_is_less_equal(version:version[1], test_version:max_version)){
       continue;
     } else {
-      max_version = version[1] ;
-      path = filePath ;
+      max_version = version[1];
+      path = filePath;
     }
   }
 }

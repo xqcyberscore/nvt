@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_lin.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_adobe_flash_player_within_chrome_apsb18-05_lin.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Linux
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:adobe:flash_player_chrome";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813029");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-4920", "CVE-2018-4919");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Adobe Flash Player Within Google Chrome Multiple RCE Vulnerabilities - Linux");
 
@@ -66,11 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-playerVer = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];

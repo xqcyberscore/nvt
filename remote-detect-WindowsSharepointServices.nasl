@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-WindowsSharepointServices.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: remote-detect-WindowsSharepointServices.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # This script ensure that Windows SharePointServices is installed and running
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101018");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,10 +60,8 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
-report = '';
-
 # req a non existent random page
-page = rand() + "openvas.aspx";
+page = "vt-test" + rand() + ".aspx";
 
 req = http_get( item:"/" + page, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

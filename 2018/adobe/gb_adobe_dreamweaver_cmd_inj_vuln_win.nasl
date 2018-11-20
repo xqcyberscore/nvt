@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Adobe Dreamweaver Command Injection Vulnerability Mar18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:dreamweaver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813039");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-4924");
   script_bugtraq_id(103395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:20:29 +0530 (Thu, 15 Mar 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Command Injection Vulnerability Mar18 (Windows)");
@@ -69,9 +69,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-drPath = "";
-drVer = "";
 
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 drVer = infos['version'];

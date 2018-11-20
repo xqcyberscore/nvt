@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_editor_services_rce_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_powershell_editor_services_rce_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft PowerShell Editor Services Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813676");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-8327");
   script_bugtraq_id(104649);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 14:49:04 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft PowerShell Editor Services Remote Code Execution Vulnerability");
 
@@ -84,7 +84,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach filePath( keys( fileList ) ) {
 

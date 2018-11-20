@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_znc_40982.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: gb_znc_40982.nasl 12419 2018-11-19 13:45:13Z cfischer $
 #
-# ZNC NULL Pointer Dereference Denial Of Service Vulnerability
+# ZNC 'CVE-2010-2448' NULL Pointer Dereference Denial Of Service Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100683");
-  script_version("$Revision: 8882 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 12419 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:45:13 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 20:36:15 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2010-2448");
   script_bugtraq_id(40982);
-  script_name("ZNC NULL Pointer Dereference Denial Of Service Vulnerability");
+  script_name("ZNC 'CVE-2010-2448' NULL Pointer Dereference Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"summary", value:"ZNC is prone to a remote denial-of-service vulnerability caused by a
   NULL-pointer dereference.");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"An attacker may exploit this issue to crash the application, resulting
   in denial-of-service conditions. Given the nature of this issue, the attacker may also be able to run arbitrary
@@ -77,6 +77,6 @@ if( version_is_less( version:vers, test_version:"0.092" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"0.092" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

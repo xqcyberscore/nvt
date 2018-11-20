@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813674");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-8171");
   script_bugtraq_id(104659);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 15:50:36 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18");
 
@@ -88,7 +88,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
+report = "";  # nb: To make openvas-nasl-lint happy...
 
 foreach filePath( keys( fileList ) ) {
 

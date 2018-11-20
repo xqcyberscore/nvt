@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 11794 2018-10-09 11:48:44Z cfischer $
+# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810612");
-  script_version("$Revision: 11794 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 13:48:44 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 12:06:29 +0530 (Mon, 13 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Windows)");
@@ -69,7 +69,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-checkduplicate = "";
+checkduplicate = ""; # nb: To make openvas-nasl-lint happy...
 checkduplicate_path = "";
 
 foreach filePath( keys( fileList ) ) {

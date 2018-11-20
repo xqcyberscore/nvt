@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dwr_detect.nasl 12336 2018-11-13 13:56:12Z jschulte $
+# $Id: gb_dlink_dwr_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # D-Link DWR Devices Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113293");
-  script_version("$Revision: 12336 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 14:56:12 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-08 16:44:00 +0100 (Thu, 08 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,8 +67,8 @@ add_headers = make_array( 'cmdnum', '1', 'command1', 'wrt -x get wrt.system.vers
 req = http_get_req( port: port, url: url, add_headers: add_headers, accept_header: '*/*', host_header_use_ip: TRUE );
 res = http_keepalive_send_recv( port: port, data: req );
 
-infos = "";
-model = "";
+model = "unknown";
+
 info = eregmatch( string: res, pattern: 'value="([^"]+)"', icase: TRUE );
 if( ! isnull( info[1] ) ) {
 

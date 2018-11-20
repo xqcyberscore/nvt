@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 19 Nov 2018 10:25:46 +0100
+# Automatically created on:  Tue, 20 Nov 2018 08:43:27 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39697,6 +39697,7 @@
 2018/debian/deb_dla_1576.nasl: GPLv2+
 2018/debian/deb_dla_1577.nasl: GPLv2+
 2018/debian/deb_dla_1578.nasl: GPLv2+
+2018/debian/deb_dla_1580.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41744,6 +41745,7 @@
 2018/microsoft/gb_ms_kb4465660.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4465661.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4465663.nasl: GPLv2+
+2018/microsoft/gb_ms_kb4465664.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467107.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467680.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4467686.nasl: GPLv2+
@@ -41987,6 +41989,7 @@
 2018/nodejs/gb_nodejs_http_content_length_spaces_vuln_win.nasl: GPLv2+
 2018/nodejs/gb_nodejs_path_mod_regex_dos_vuln_macosx.nasl: GPLv2+
 2018/nodejs/gb_nodejs_path_mod_regex_dos_vuln_win.nasl: GPLv2+
+2018/nomachine/gb_nomachine_for_windows_rce_vuln.nasl: GPLv2+
 2018/norton/gb_norton_utilities_dll_preloading_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_auth_symmetric_passv_peering_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_ctl_getitem_buf_read_overrun_vuln.nasl: GPLv2+
@@ -42773,6 +42776,7 @@
 2018/reservo/gb_reservo_image_hosting_xss_vuln.nasl: GPLv2+
 2018/roundcube/gb_roundcube_efail_vuln.nasl: GPLv2+
 2018/roundcube/gb_roundcube_mx_inj_vuln.nasl: GPLv2+
+2018/roundcube/gb_roundcube_xss_vuln.nasl: GPLv2+
 2018/rsa/gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl: GPLv2+
 2018/samba/gb_samba_ad_ldap_info_disc_vuln_aug18.nasl: GPLv2+
 2018/samba/gb_samba_dns_ldap_dos_vuln_aug18.nasl: GPLv2+
@@ -42781,6 +42785,7 @@
 2018/samba/gb_samba_mult_vuln.nasl: GPLv2+
 2018/samba/gb_samba_priv_delegation_vuln_nov18.nasl: GPLv2+
 2018/samba/gb_samba_priv_esc_vuln_nov18.nasl: GPLv2+
+2018/samsung/gb_samsung_printer_snmp_pw_discl_vuln.nasl: GPLv2+
 2018/samsung/gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl: GPLv2+
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/sanyo/gb_sanyo_network_camera_default_credentials.nasl: GPLv2+
@@ -42838,6 +42843,7 @@
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_lin.nasl: GPLv2+
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl: GPLv2+
 2018/tp-link/gb_tp_link_file_discl_vuln.nasl: GPLv2+
+2018/tp-link/gb_tp_link_tl_r600vpn_mult_vuln.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_3_2_mult_vuln.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_antivirus_plus_mult_vuln_may18_win.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_imsva_auth_bypass.nasl: GPLv2+
@@ -43333,6 +43339,7 @@
 2018/wireshark/gb_wireshark_wnpa-sec-2018-42_wnpa-sec-2018-43_win.nasl: GPLv2+
 2018/wireshark/gb_wireshark_wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45_macosx.nasl: GPLv2+
 2018/wireshark/gb_wireshark_wnpa-sec-2018-44_wnpa-sec-2018-46_wnpa-sec-2018-45_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_accelerated-mobile-pages_code_injection_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_add-link-to-facebook_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_arbitrary_file_del_vuln_june18_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_arbitrary_file_del_vuln_june18_win.nasl: GPLv2+
@@ -44618,6 +44625,7 @@ gb_nmap_os_detection.nasl: GPLv2+
 gb_nntp_os_detection.nasl: GPLv2+
 gb_nodejs_detect_macosx.nasl: GPLv2+
 gb_nodejs_detect_win.nasl: GPLv2+
+gb_nomachine_for_windows_detect.nasl: GPLv2+
 gb_norman_security_suite_detect.nasl: GPLv2+
 gb_northernep_inverter_monitor_detect.nasl: GPLv2+
 gb_norton_remove_n_reinstall_detect.nasl: GPLv2+
@@ -44810,6 +44818,7 @@ gb_python_detect_macosx.nasl: GPLv2+
 gb_python_detect_win.nasl: GPLv2+
 gb_qip_detect.nasl: GPLv2+
 gb_qlogic_qconvergeconsolex64_win_detect.nasl: GPLv2+
+gb_qlogic_switch_module_snmp_detect.nasl: GPLv2+
 gb_qmtp_relay.nasl: GPLv2+
 gb_qnap_nas_detect.nasl: GPLv2+
 gb_qnap_nas_musicstation_detect.nasl: GPLv2+
@@ -44868,6 +44877,7 @@ gb_samba_detect.nasl: GPLv2+
 gb_samsung_iPOLis_manager_detect.nasl: GPLv2+
 gb_samsung_syncthru_web_service_detect.nasl: GPLv2+
 gb_samsung_web_viewer_detect.nasl: GPLv2+
+gb_samsung_web_viewer_dvr_detect.nasl: GPLv2+
 gb_sangoma_nsc_detect.nasl: GPLv2+
 gb_sanyo_network_camera_detect.nasl: GPLv2+
 gb_sap_diag_service_detect.nasl: GPLv2+
@@ -61131,6 +61141,7 @@ gsf/2018/ibm/gb_ibm_websphere_app_server_spoofing_vuln_ibm10716523.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_spoofing_vuln_swg22012341.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22013601.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_swg22016821.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10716857.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729521.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729547.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729563.nasl: GPLv2+
@@ -61528,6 +61539,7 @@ gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6512.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6513.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_mult_xss_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_rce_vuln.nasl: GPLv2+
+gsf/2018/qlogic/gb_qlogic_switch_module_default_pw_vuln.nasl: GPLv2+
 gsf/2018/qnap/gb_qnap_qcenter_nas-201807-10.nasl: GPLv2+
 gsf/2018/quest/gb_netvault_backup_mult_vuln.nasl: GPLv2+
 gsf/2018/quest/gb_quest_kace_sma_mult_vuln.nasl: GPLv2+

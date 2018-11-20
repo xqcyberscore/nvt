@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_znc_66926.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: sw_znc_66926.nasl 12419 2018-11-19 13:45:13Z cfischer $
 #
-# ZNC NULL Pointer Dereference Denial Of Service Vulnerability
+# ZNC 'CVE-2014-9403' NULL Pointer Dereference Denial Of Service Vulnerability
 #
 # Authors:
 # Christian Fischer <info@schutzwerk.com>
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111033");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12419 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:45:13 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-29 12:00:00 +0200 (Sat, 29 Aug 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2014-9403");
   script_bugtraq_id(66926);
-  script_name("ZNC NULL Pointer Dereference Denial Of Service Vulnerability");
+  script_name("ZNC 'CVE-2014-9403' NULL Pointer Dereference Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

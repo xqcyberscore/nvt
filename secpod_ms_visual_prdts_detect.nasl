@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_prdts_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: secpod_ms_visual_prdts_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Microsoft Visual Product(s) Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900808");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Products Version Detection");
@@ -46,6 +46,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -61,8 +62,7 @@ include("version_func.inc");
 ##  basic version installed but not latest version after we have applied Service Pack
 ##  or Update.
 
-# Keep in here to make openvas-nasl-lint happy...
-checkduplicate = "";
+checkduplicate = ""; # nb: To make openvas-nasl-lint happy...
 
 NET_LIST = make_list("^(7\..*)", "cpe:/a:microsoft:visual_studio_.net:2003:",
                      "^(8\..*)", "cpe:/a:microsoft:visual_studio_.net:2005:",

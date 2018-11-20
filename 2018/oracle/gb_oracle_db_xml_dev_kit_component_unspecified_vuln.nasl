@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_xml_dev_kit_component_unspecified_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_db_xml_dev_kit_component_unspecified_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle Database Server XML Developer Kit Component Unspecified Vulnerability
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:database_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813002");
-  script_version("$Revision: 12047 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2011-2232");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 15:14:30 +0530 (Wed, 07 Mar 2018)");
   script_name("Oracle Database Server XML Developer Kit Component Unspecified Vulnerability");
 
@@ -65,12 +66,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-dbport = "";
-dbVer = "";
 
 if(!dbport = get_app_port(cpe:CPE)){
   exit(0);

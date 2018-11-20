@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 11028 2018-08-17 09:26:08Z cfischer $#
+# $Id: secpod_office_products_version_900032.nasl 12413 2018-11-19 11:11:31Z cfischer $#
 #
 # MS Office Products Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -339,9 +339,6 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
   }
 }
 
-visiovVer = "";
-visioPath = "";
-exePath = "";
 # Office Visio Viewer
 visioPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 visioPath1 = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");

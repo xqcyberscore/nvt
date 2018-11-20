@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812784");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-1305", "CVE-2018-1304");
   script_bugtraq_id(103144, 103170);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 18:10:55 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Security Constraint Incorrect Handling Access Bypass Vulnerabilities (Windows)");
@@ -59,8 +59,11 @@ if(description)
   resources on the target system.");
 
   script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M1 to 9.0.4
+
   Apache Tomcat versions 8.5.0 to 8.5.27
+
   Apache Tomcat versions 8.0.0.RC1 to 8.0.49
+
   Apache Tomcat versions 7.0.0 to 7.0.84 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Tomcat version 9.0.5,
@@ -84,9 +87,6 @@ if(description)
 include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
-
-tomPort = "";
-appVer = "";
 
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);

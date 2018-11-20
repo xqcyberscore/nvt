@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_detect_snmp.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_cisco_telepresence_detect_snmp.nasl 12420 2018-11-19 13:50:15Z cfischer $
 #
-# Cisco TelePresence Detection
+# Cisco TelePresence Detection (SNMP)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -25,18 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103890");
+  script_version("$Revision: 12420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:50:15 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 13:32:54 +0100 (Mon, 27 Jan 2014)");
-  script_name("Cisco TelePresence Detection");
-  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
- to extract the version number from the reply.");
-
+  script_name("Cisco TelePresence Detection (SNMP)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -44,7 +41,11 @@ if (description)
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/sysdesc/available");
 
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
+  to extract the version number from the reply.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -53,9 +54,7 @@ include("snmp_func.inc");
 
 port    = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:port);
-if(!sysdesc) exit(0);
-
-if( sysdesc !~ '(Cisco|TANDBERG) Codec' || "MCU:" >!< sysdesc || "SoftW:" >!< sysdesc ) exit (0);
+if( !sysdesc || sysdesc !~ '(Cisco|TANDBERG) Codec' || "MCU:" >!< sysdesc || "SoftW:" >!< sysdesc ) exit (0);
 
 typ = 'unknown';
 version = 'unknown';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_consolidation.nasl 10337 2018-06-27 06:24:34Z cfischer $
+# $Id: gb_symfony_consolidation.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Sensiolabs Symfony Detection Consolidation
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107325");
-  script_version("$Revision: 10337 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 08:24:34 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ include("cpe.inc");
 
 if( ! get_kb_item( "symfony/detected" ) ) exit( 0 );
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach source( make_list( "ssh-login", "http" ) ) {
 

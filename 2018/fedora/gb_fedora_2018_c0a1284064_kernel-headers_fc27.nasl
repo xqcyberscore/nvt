@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c0a1284064_kernel-headers_fc27.nasl 11764 2018-10-05 12:21:04Z santu $
+# $Id: gb_fedora_2018_c0a1284064_kernel-headers_fc27.nasl 12408 2018-11-19 09:34:54Z asteins $
 #
 # Fedora Update for kernel-headers FEDORA-2018-c0a1284064
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875132");
-  script_version("$Revision: 11764 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 14:21:04 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12408 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:34:54 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-02 08:50:35 +0200 (Tue, 02 Oct 2018)");
   script_cve_id("CVE-2018-14633");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel-headers FEDORA-2018-c0a1284064");
   script_tag(name:"summary", value:"Check the version of kernel-headers");

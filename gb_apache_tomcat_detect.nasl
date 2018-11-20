@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
+# $Id: gb_apache_tomcat_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 11020 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ host = http_host_name( dont_add_port:TRUE );
 
 identified = FALSE;
 verFound = FALSE;
-conclUrl = "";
+conclUrl = ""; # nb: To make openvas-nasl-lint happy...
 extraUrls = "";
 
 foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-NOTES.txt", "/docs/RELEASE-NOTES.txt" ) ) {
@@ -86,7 +86,7 @@ foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-
 
 if( ! verFound ) {
 
-  foreach file( make_list( "/i_dont_exist", "/openvas/i_dont_exist" ) ) {
+  foreach file( make_list( "/i_dont_exist", "/vt-test/i_dont_exist" ) ) {
 
     req = http_get( item:file, port:port );
     res = http_keepalive_send_recv( port:port, data:req, fetch404:TRUE, bodyonly:FALSE );

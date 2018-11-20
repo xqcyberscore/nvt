@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_detection.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_apache_struts2_detection.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Apache Struts2 Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107006");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-01 06:40:16 +0200 (Wed, 01 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,8 +69,7 @@ if( "Coyote" >!< banner && "tomcat" >!< banner ) {
 tmpVer = eregmatch( pattern:"Server: Apache-Coyote/([0-9]+\.[0-9]+?)", string:banner );
 if( tmpVer[0] ) apacheVer = tmpVer[0];
 
-foundapp = "";
-app_report = "";
+app_report = ""; # nb: To make openvas-nasl-lint happy...
 version = "unknown";
 
 #finding web apps

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yealink_ip_phone_detect.nasl 12169 2018-10-30 13:54:05Z jschulte $
+# $Id: gb_yealink_ip_phone_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Yealink IP Phone Detection
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113281");
-  script_version("$Revision: 12169 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-30 14:54:05 +0100 (Tue, 30 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-30 13:19:10 +0100 (Tue, 30 Oct 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ include( "cpe.inc" );
 include( "host_details.inc" );
 
 version = "unknown";
-extra = "";
+extra = ""; # nb: To make openvas-nasl-lint happy...
 model = "";
 concluded = "";
 

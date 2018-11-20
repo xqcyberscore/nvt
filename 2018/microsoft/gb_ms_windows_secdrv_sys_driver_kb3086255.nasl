@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_secdrv_sys_driver_kb3086255.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_windows_secdrv_sys_driver_kb3086255.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Information Disclosure and Code Execution Vulnerabilities (KB3086255)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812958");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-7249", "CVE-2018-7250");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 14:37:31 +0530 (Wed, 28 Feb 2018)");
   script_name("Microsoft Windows Information Disclosure and Code Execution Vulnerabilities (KB3086255)");
 
@@ -69,18 +69,14 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/help/3086255");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-dllVer = "";
 
 if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win8:1, win8x64:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);

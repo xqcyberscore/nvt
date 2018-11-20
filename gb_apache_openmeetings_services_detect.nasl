@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_services_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_apache_openmeetings_services_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Apache OpenMeetings Web Services Detection
 #
@@ -26,18 +26,15 @@
 
 CPE = 'cpe:/a:apache:openmeetings';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112074");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-09 11:54:21 +0200 (Mon, 09 Oct 2017)");
-
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-
   script_name("Apache OpenMeetings Web Services Detection");
-
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
@@ -46,7 +43,8 @@ if (description)
   script_mandatory_keys("Apache/Openmeetings/Installed");
 
   script_tag(name:"summary", value:"This host is running Apache OpenMeetings, a software used for presenting, online training,
-     web conferencing, collaborative whiteboard drawing and document editing, and user desktop sharing.");
+  web conferencing, collaborative whiteboard drawing and document editing, and user desktop sharing.");
+
   script_xref(name:"URL", value:"https://openmeetings.apache.org/");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -65,7 +63,7 @@ if(!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
 
 if(dir == "/")
-dir = "";
+  dir = "";
 
 url = dir + "/services/services";
 

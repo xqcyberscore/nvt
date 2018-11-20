@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_desktop_board_bios_info_detect_lin.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: gb_desktop_board_bios_info_detect_lin.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Desktop Boards BIOS Information Detection for Linux
 #
@@ -29,19 +29,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800163");
-  script_version("$Revision: 10913 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_name("Desktop Boards BIOS Information Detection for Linux");
 
-  script_tag(name:"summary", value:
-"Detects the installed version of Desktop Boards BIOS.
+  script_tag(name:"summary", value:"Detects the installed version of Desktop Boards BIOS.
 
-The script logs in via ssh and queries for the version using the command
-line tool 'dmidecode'. Usually this command requires root privileges to
-execute.");
+  The script logs in via ssh and queries for the version using the command
+  line tool 'dmidecode'. Usually this command requires root privileges to
+  execute.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -81,7 +80,7 @@ base_board_ver = ssh_cmd(socket:sock, cmd:base_board_ver_cmd, timeout:120);
 base_board_manu = ssh_cmd(socket:sock, cmd:base_board_manu_cmd, timeout:120);
 base_board_prod_name = ssh_cmd(socket:sock, cmd:base_board_prod_cmd, timeout:120);
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 if(bios_ver != NULL && !(bios_ver =~ "command not found|dmidecode:|(p|P)ermission denied"))
 {

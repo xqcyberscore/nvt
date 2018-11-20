@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
+# $Id: secpod_sun_virtualbox_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Sun VirtualBox Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901053");
-  script_version("$Revision: 11420 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_name("Sun VirtualBox Version Detection (Windows)");
   script_tag(name:"summary", value:"Detects the installed version of Sun/Oracle VirtualBox.
@@ -97,8 +97,7 @@ function building_cpe(version, insPath)
   }
 }
 
-# nb: Keep to make openvas-nasl-lint happy...
-checkdupvmVer = "";
+checkdupvmVer = ""; # nb: To make openvas-nasl-lint happy...
 
 if(!registry_key_exists(key:"SOFTWARE\Sun\VirtualBox") &&
    !registry_key_exists(key:"SOFTWARE\Sun\xVM VirtualBox") &&

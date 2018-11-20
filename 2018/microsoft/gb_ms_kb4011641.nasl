@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011641.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011641.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Office Word Viewer Memory Corruption Vulnerability (KB4011641)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812723");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0797");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 19:53:05 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office Word Viewer Memory Corruption Vulnerability (KB4011641)");
 
@@ -65,16 +65,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-wordviewVer = "";
-offPath = "";
-dllVer = "";
-exeVer = "";
 
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 if(!wordviewVer){
@@ -86,7 +80,7 @@ if(!wordviewPath){
   wordviewPath = "Unable to fetch the install path";
 }
 
-if(wordviewVer =~ "^(11\.)" && version_is_less(version:wordviewVer, test_version:"11.0.8446"))
+if(wordviewVer =~ "^11\." && version_is_less(version:wordviewVer, test_version:"11.0.8446"))
 {
   report = report_fixed_ver(file_checked:wordviewPath + "wordview.exe",
                             file_version:wordviewVer, vulnerable_range:"11.0 - 11.0.8445");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecessa_shieldlink_consolidation.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_ecessa_shieldlink_consolidation.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Ecessa ShieldLink Detection (Consolidation)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113225");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 10:41:45 +0200 (Fri, 06 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ else {
 
 version = "unknown";
 extra = 'Detection methods:\r\n';
-concluded = "";
+concluded = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach proto ( make_list( "snmp", "telnet" ) ) {
 

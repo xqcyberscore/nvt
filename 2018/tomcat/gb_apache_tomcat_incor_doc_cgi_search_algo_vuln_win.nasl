@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812694");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2017-15706");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 11:43:37 +0530 (Tue, 06 Feb 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat Incorrectly documented CGI search algorithm Vulnerability (Windows)");
@@ -78,10 +78,6 @@ if(description)
 include("host_details.inc");
 include("revisions-lib.inc");
 include("version_func.inc");
-
-
-tomPort = "";
-appVer = "";
 
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);

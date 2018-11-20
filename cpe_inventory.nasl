@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe_inventory.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: cpe_inventory.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # CPE Inventory
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810002");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-11-18 11:43:05 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -50,7 +50,7 @@ include("host_details.inc");
 
 ip = get_host_ip();
 
-report = '';
+report = ''; # nb: To make openvas-nasl-lint happy...
 cpes = host_details_cpes();
 
 # Sort to not report changes on delta reports if just the order is different

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dovecot_consolidation.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_dovecot_consolidation.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Dovecot Detection (Consolidation)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113212");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 11:11:11 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,7 +59,7 @@ include("host_details.inc");
 if( ! get_kb_item( "dovecot/detected" ) ) exit( 0 );
 
 base_cpe = "cpe:/a:dovecot:dovecot";
-report   = "";
+report   = ""; # nb: To make openvas-nasl-lint happy...
 
 info_list = get_kb_list( "dovecot/detection-info" );
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2018-06-7.nasl 12235 2018-11-07 03:08:45Z ckuersteiner $
+# $Id: gb_pdns_powerdns-advisory-2018-06-7.nasl 12416 2018-11-19 13:04:44Z cfischer $
 #
 # PowerDNS Recursor Multiple DoS Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141656");
-  script_version("$Revision: 12235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 04:08:45 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:04:44 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-07 09:59:29 +0700 (Wed, 07 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,11 +51,11 @@ if(description)
   script_dependencies("pdns_version.nasl");
   script_mandatory_keys("powerdns/recursor/installed");
 
-  script_tag(name:"summary", value:"PowerDNS Recursor is prone to multiple denial of service vulnerabilites.");
+  script_tag(name:"summary", value:"PowerDNS Recursor is prone to multiple denial of service vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"PowerDNS Recursor is prone to multiple denial of service vulnerabilites:
+  script_tag(name:"insight", value:"PowerDNS Recursor is prone to multiple denial of service vulnerabilities:
 
   - Packet cache pollution via crafted query (CVE-2018-14626)
 

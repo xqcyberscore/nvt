@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4088876.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4088876.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4088876)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812827");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0811", "CVE-2018-0813", "CVE-2018-0814", "CVE-2018-0886",
                 "CVE-2018-0888", "CVE-2018-0889", "CVE-2018-0891", "CVE-2018-0894",
                 "CVE-2018-0895", "CVE-2018-0896", "CVE-2018-0897", "CVE-2018-0898",
@@ -41,7 +41,7 @@ if(description)
                     103230, 103256, 103259, 103261);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:46:08 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4088876)");
 
@@ -83,7 +83,7 @@ if(description)
     (XXE).
 
   - The way that the Windows Graphics Device Interface (GDI) handles objects in
-    memory. ");
+    memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to gain access to information, crash server and run arbitrary code in system
@@ -108,14 +108,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-fileVer = "";
 
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) <= 0){
   exit(0);

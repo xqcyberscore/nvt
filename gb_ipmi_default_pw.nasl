@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_default_pw.nasl 11404 2018-09-15 09:17:49Z cfischer $
+# $Id: gb_ipmi_default_pw.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # IPMI Default Password Vulnerability
 #
@@ -25,30 +25,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105923");
-  script_version("$Revision: 11404 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)");
   script_name("IPMI Default Password Vulnerability");
 
   script_tag(name:"summary", value:"It was possible to find default password/username
-combinations for the IPMI protocol.");
+  combinations for the IPMI protocol.");
 
   script_tag(name:"vuldetect", value:"Tries to get a RAKP Message 2 (IPMI v2.0) to check the password hash
-or activate a session (IPMI v1.5).");
+  or activate a session (IPMI v1.5).");
 
   script_tag(name:"insight", value:"Many IPMI enabled devices have set default username/password
-combinations. If these are not changed or disabled if opens up an easy exploitable vulnerability.");
+  combinations. If these are not changed or disabled if opens up an easy exploitable vulnerability.");
 
   script_tag(name:"impact", value:"An attacker can log into the IPMI enabled device often with
-privileged permissions and gain access to the host operating system.");
+  privileged permissions and gain access to the host operating system.");
 
   script_tag(name:"solution", value:"Change the default passwords or disable the default accounts
-if possible. Filter traffic to UDP port 623.");
+  if possible. Filter traffic to UDP port 623.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/105730/Supermicro-IPMI-Default-Accounts.html");
 
@@ -104,7 +104,7 @@ if(!soc) {
   exit(0);
 }
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 # IPMI v2.0
 if (get_kb_item("ipmi/version/2.0")) {

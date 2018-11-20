@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_543_open_redirect_vuln.nasl 12254 2018-11-08 08:16:03Z asteins $
+# $Id: gb_vbulletin_543_open_redirect_vuln.nasl 12423 2018-11-19 15:20:08Z cfischer $
 #
-# vBulletin 5.4.3 Open Redirect Vulnerability
+# vBulletin 5.x < 5.4.4 Open Redirect Vulnerability
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -27,24 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112418");
-  script_version("$Revision: 12254 $");
+  script_version("$Revision: 12423 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 09:16:03 +0100 (Thu, 08 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 16:20:08 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-08 09:07:22 +0100 (Thu, 08 Nov 2018)");
 
   script_cve_id("CVE-2018-15493");
 
-  script_name("vBulletin 5.4.3 Open Redirect Vulnerability");
+  script_name("vBulletin 5.x < 5.4.4 Open Redirect Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with vBulletin and is
   prone to open-redirect vulnerability.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Any value of the GET parameter 'url' is accepted as the target of a
   redirection. This can make phishing attacks much more credible.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to redirect users to arbitrary web sites and conduct phishing attacks.");
-  script_tag(name:"affected", value:"vBulletin version 5.4.3.");
+  script_tag(name:"affected", value:"vBulletin versions 5.x before 5.4.4.");
+
   script_tag(name:"solution", value:"Update vBulletin to version 5.4.4.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -71,7 +75,7 @@ include("version_func.inc");
 if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!vers = get_app_version(cpe:CPE, port:port)) exit(0);
 
-if(version_is_equal(version:vers, test_version:"5.4.3")) {
+if(vers =~ "^5\.[0-4]\." && version_is_less(version:vers, test_version:"5.4.4")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"5.4.4");
   security_message(port:port, data:report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-MDNS.nasl 9977 2018-05-28 08:02:51Z cfischer $
+# $Id: remote-detect-MDNS.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # MDNS Service Detection
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101013");
-  script_version("$Revision: 9977 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:02:51 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-16 00:46:49 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -135,7 +135,6 @@ if( ! get_udp_port_state( port ) ) exit( 0 );
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );
 
-version = "";
 qry1 = make_list( '_daap', '_tcp', 'local' );
 qry2 = make_list( '_workstation', '_tcp', 'local' );
 

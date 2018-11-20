@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 12265 2018-11-08 15:57:01Z cfischer $
+# $Id: os_detection.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 12265 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-08 16:57:01 +0100 (Thu, 08 Nov 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -106,7 +106,7 @@ if(description)
 include("host_details.inc");
 
 found_best = FALSE;
-found_os = "";
+found_os = ""; # nb: To make openvas-nasl-lint happy...
 
 # nb: We only want to check the CPE entries
 foreach oid( OS_CPE_SRC ) {

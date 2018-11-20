@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011727.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011727.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Excel 2016 Security Feature Bypass Vulnerability (KB4011727)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812979");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0907");
   script_bugtraq_id(103325);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:06:17 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Excel 2016 Security Feature Bypass Vulnerability (KB4011727)");
 
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
-  Office software which do not enforce macro settings on an Excel document. ");
+  Office software which do not enforce macro settings on an Excel document.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to bypass security feature and conduct further attacks.");
@@ -64,14 +64,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-
-excelVer = "";
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){
@@ -83,7 +79,7 @@ if(!excelPath){
   excelPath = "Unable to fetch the install path";
 }
 
-if(excelVer =~ "^(16\.)" && version_is_less(version:excelVer, test_version:"16.0.4666.1000"))
+if(excelVer =~ "^16\." && version_is_less(version:excelVer, test_version:"16.0.4666.1000"))
 {
   report = report_fixed_ver(file_checked:excelPath + "Excel.exe",
                             file_version:excelVer, vulnerable_range:"16.0 - 16.0.4666.0999");

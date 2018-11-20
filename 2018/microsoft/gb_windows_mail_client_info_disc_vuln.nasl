@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_mail_client_info_disc_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_windows_mail_client_info_disc_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Mail Client Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813701");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-8305");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 18:16:53 +0530 (Mon, 16 Jul 2018)");
   script_name("Microsoft Windows Mail Client Information Disclosure Vulnerability");
 
@@ -90,7 +90,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach filePath( keys( fileList ) ) {
 

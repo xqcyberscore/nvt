@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_ssh_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_riverbed_steelcentral_ssh_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Riverbed SteelCentral Detection (SSH Banner)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105788");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-30 13:36:05 +0200 (Thu, 30 Jun 2016)");
   script_name("Riverbed SteelCentral Detection (SSH)");
 
@@ -45,6 +45,7 @@ if (description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
+
   exit(0);
 }
 
@@ -66,7 +67,7 @@ cpe = 'cpe:/a:riverbed:steelcentral';
 vers = 'unknown';
 
 report_app = 'Riverbed SteelCentral';
-report_version = '';
+report_version = 'unknown';
 
 version = eregmatch( pattern:' ([0-9.]+[^ )\r\n]+) \\(release', string:banner );
 if( ! isnull( version[1] ) )

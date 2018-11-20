@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_compromised_webapp_detect.nasl 11267 2018-09-06 12:27:41Z cfischer $
+# $Id: gb_compromised_webapp_detect.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Compromised Web Application Detection (HTTP)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108459");
-  script_version("$Revision: 11267 $");
+  script_version("$Revision: 12410 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 14:27:41 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 13:30:22 +0200 (Thu, 06 Sep 2018)");
   script_name("Compromised Web Application Detection (HTTP)");
   script_category(ACT_GATHER_INFO);
@@ -79,8 +79,7 @@ if( ! compromisedList || ! is_array( compromisedList ) ) exit( 99 );
 # Sort to not report changes on delta reports if just the order is different
 compromisedList = sort( compromisedList );
 
-# nb: To make openvas-nasl-lint happy...
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach compromisedItem( compromisedList ) {
 

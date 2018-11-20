@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: secpod_wordpress_detect_900182.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # WordPress Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,7 @@ include("cpe.inc");
 include("host_details.inc");
 
 rootInstalled  = FALSE;
-checkduplicate = "";
+checkduplicate = ""; # nb: To make openvas-nasl-lint happy...
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit(0);

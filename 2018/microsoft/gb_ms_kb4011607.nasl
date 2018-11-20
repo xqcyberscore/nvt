@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011607.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011607.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Multiple RCE Vulnerabilities (KB4011607)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812614");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0793", "CVE-2018-0794", "CVE-2018-0797", "CVE-2018-0798",
                 "CVE-2018-0801", "CVE-2018-0802", "CVE-2018-0804", "CVE-2018-0805",
                 "CVE-2018-0806", "CVE-2018-0807", "CVE-2018-0812", "CVE-2018-0845",
                 "CVE-2018-0848", "CVE-2018-0849", "CVE-2018-0862");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:40:59 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Multiple RCE Vulnerabilities (KB4011607)");
 
@@ -52,7 +52,7 @@ if(description)
     properly handle objects in memory.
 
   - An error in Microsoft Office software when the Office software fails to
-    properly handle RTF files. ");
+    properly handle RTF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");
@@ -72,19 +72,14 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-wordcnvVer = "";
-path = "";
-sysVer = "";
-offpath = "";
 
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");
@@ -92,10 +87,12 @@ if(!path){
   exit(0);
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
+comptpckVer = get_kb_item("SMB/Office/ComptPack/Version");
+
+if(comptpckVer && comptpckVer =~ "^12\.")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^(12\.)")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
 

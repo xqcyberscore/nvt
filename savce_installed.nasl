@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: savce_installed.nasl 11964 2018-10-18 12:44:10Z cfischer $
+# $Id: savce_installed.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Symantec Anti Virus Corporate Edition Check
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80040");
-  script_version("$Revision: 11964 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 14:44:10 +0200 (Thu, 18 Oct 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -182,8 +182,6 @@ function check_product_version ()
 #-------------------------------------------------------------#
 # Checks if Symantec AntiVirus Corp is installed              #
 #-------------------------------------------------------------#
-
-value = NULL;
 
 key = "SOFTWARE\Wow6432Node\Symantec\InstalledApps\";
 item = "SAVCE";

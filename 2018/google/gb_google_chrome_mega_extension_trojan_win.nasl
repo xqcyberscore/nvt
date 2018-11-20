@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 11782 2018-10-08 14:01:44Z cfischer $
+# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Google Chrome MEGA Extension Trojan-Windows
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813789");
-  script_version("$Revision: 11782 $");
+  script_version("$Revision: 12410 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Windows");
 
@@ -89,7 +89,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
+report = "";  # nb: To make openvas-nasl-lint happy...
 
 foreach filePath( fileList ) {
 

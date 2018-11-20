@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_searchfor_param_xss_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_livezilla_searchfor_param_xss_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # LiveZilla 'knowledgebase.php' Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812760");
-  script_version("$Revision: 12116 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2017-15869");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 13:29:54 +0530 (Mon, 12 Feb 2018)");
   script_name("LiveZilla 'knowledgebase.php' Cross Site Scripting Vulnerability");
 
@@ -67,12 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-livPort = "";
-livVer = "";
 
 if(!livPort = get_app_port(cpe:CPE)){
   exit(0);

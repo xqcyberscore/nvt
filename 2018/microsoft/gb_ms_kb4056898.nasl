@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4056898.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4056898.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4056898)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812386");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715", "CVE-2017-5754", "CVE-2018-0744",
                 "CVE-2018-0753", "CVE-2018-0754", "CVE-2018-0788", "CVE-2018-0752",
                 "CVE-2018-0751", "CVE-2018-0749", "CVE-2018-0747", "CVE-2018-0748",
                 "CVE-2018-0746");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 16:27:57 +0530 (Thu, 04 Jan 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4056898)");
 
@@ -87,6 +87,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -94,9 +95,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-fileVer = "";
 
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) <= 0){
   exit(0);

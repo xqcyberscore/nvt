@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jan2018-3236628_01_win.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_java_jan2018-3236628_01_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle Java SE Security Updates (jan2018-3236628) 01 - Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812637");
-  script_version("$Revision: 12047 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-2657");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 11:38:48 +0530 (Wed, 17 Jan 2018)");
   script_name("Oracle Java SE Security Updates (jan2018-3236628) 01 - Windows");
 
@@ -65,11 +65,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-jreVer = "";
 
 infos = get_app_version_and_location( cpe:CPE );
 jreVer = infos['version'];

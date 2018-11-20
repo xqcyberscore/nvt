@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_ms_win_live_messenger_detect.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
 
   script_tag(name:"summary", value:"Detects the installed version of Microsoft Windows Live Messenger.
 
-The script logs in via smb, searches for Microsoft Windows Live Messenger
-in the registry and gets the version from registry.");
+  The script logs in via smb, searches for Microsoft Windows Live Messenger
+  in the registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -46,6 +46,7 @@ in the registry and gets the version from registry.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -74,7 +75,7 @@ else if("x64" >< osArch){
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-checkduplicate = "";
+checkduplicate = ""; # nb: To make openvas-nasl-lint happy...
 checkduplicate_path = "";
 
 foreach key (key_list)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011720.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011720.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB4011720)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812984");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0922");
   script_bugtraq_id(103314);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 10:06:49 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB4011720)");
 
@@ -63,6 +63,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -71,12 +72,6 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-
-wordcnvVer = "";
-path = "";
-sysVer = "";
-offpath = "";
 
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");

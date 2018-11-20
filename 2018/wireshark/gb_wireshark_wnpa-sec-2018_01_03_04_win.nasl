@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018_01_03_04_win.nasl 12026 2018-10-23 08:22:54Z mmartin $
+# $Id: gb_wireshark_wnpa-sec-2018_01_03_04_win.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Wireshark Security Updates (wnpa-sec-2018-04_wnpa-sec-2018-03_wnpa-sec-2018-01) Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812632");
-  script_version("$Revision: 12026 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-5335", "CVE-2018-5334", "CVE-2018-5336");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:22:54 +0200 (Tue, 23 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-16 13:14:57 +0530 (Tue, 16 Jan 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-04_wnpa-sec-2018-03_wnpa-sec-2018-01) Windows");
 
@@ -74,11 +74,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-wirversion = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 wirversion = infos['version'];

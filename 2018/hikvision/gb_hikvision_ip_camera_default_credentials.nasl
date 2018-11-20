@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hikvision_ip_camera_default_credentials.nasl 12204 2018-11-02 15:03:50Z tpassfeld $
+# $Id: gb_hikvision_ip_camera_default_credentials.nasl 12426 2018-11-19 17:35:36Z tpassfeld $
 #
 # Hikvision IP Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114041");
-  script_version("$Revision: 12204 $");
+  script_version("$Revision: 12426 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-02 16:03:50 +0100 (Fri, 02 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 18:35:36 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 15:43:28 +0200 (Fri, 26 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -106,16 +106,6 @@ foreach cred(keys(creds)) {
 
       salt = infoSalt[2];
 
-      #Password encrypted according to the following source code snippet:
-      #var i = "";
-      #if (n) {
-      #  i = SHA256(t.userName + t.salt + e), i = SHA256(i + t.challenge);
-      #  for (var a = 2; t.iIterate > a; a++) i = SHA256(i)
-      #} else {
-      #  i = SHA256(e) + t.challenge;
-      #  for (var a = 1; t.iIterate > a; a++) i = SHA256(i)
-      #}
-
       if(isIrreversible) {
         pass = hexstr(SHA256(cred + salt + creds[cred]));
         pass = hexstr(SHA256(pass + challenge));
@@ -128,8 +118,7 @@ foreach cred(keys(creds)) {
     }
     #Unsalted challenge response:
     else {
-      #Password encrypted according to the following source code snippet:
-      #for (var s = o.nodeValue(n, "sessionID"), a = o.nodeValue(n, "challenge"), r = o.nodeValue(n, "iterations", "i"), c = SHA256(i) + a, m = 1; r > m; m++) c = SHA256(c);
+      #Encrypt the password with itself "iterations"-times, after encrypting it for the first time and appending the challenge hash
       pass = hexstr(SHA256(creds[cred])) + challenge;
       for(m = 1; iterations > m; m++) pass = hexstr(SHA256(pass));
     }
@@ -180,7 +169,7 @@ foreach cred(keys(creds)) {
                                                                        "Authorization", auth));
 
   }
-  else break; #Not challenge-response or digest authentication(is usually never the case)
+  else exit(99); #Not challenge-response or digest authentication(is usually never the case)
 
   res2 = http_keepalive_send_recv(port: port, data: req2);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_adobe_prdts_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900319");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
 
   script_tag(name:"summary", value:"Detects the installed version of Adobe Products.
 
-The script logs in via smb, searches for Adobe Products in the registry
-and gets the version from 'DisplayVersion' string in registry.");
+  The script logs in via smb, searches for Adobe Products in the registry
+  and gets the version from 'DisplayVersion' string in registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -55,7 +55,7 @@ include("host_details.inc");
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
-# Keep in here to make openvas-nasl-lint happy...
+# nb: To make openvas-nasl-lint happy...
 checkdupAcrbt = "";
 checkdupAud = "";
 checkdupRdr = "";

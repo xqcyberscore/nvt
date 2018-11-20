@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 11624 2018-09-26 12:00:34Z santu $
+# $Id: gb_adobe_flash_player_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 11624 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:00:34 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
 
   script_tag(name:"summary", value:"Detects the installed version of Adobe Flash Player/Flash CS/AIR/Flex
-on Windows.
+  on Windows.
 
-The script logs in via smb, searches for Adobe Products in the registry
-and gets the version from 'DisplayVersion' string in registry.");
+  The script logs in via smb, searches for Adobe Products in the registry
+  and gets the version from 'DisplayVersion' string in registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -47,9 +47,9 @@ and gets the version from 'DisplayVersion' string in registry.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("host_details.inc");
@@ -61,7 +61,7 @@ if(!os_arch){
   exit(0);
 }
 
-# nb: To make lint happy
+# nb: To make openvas-nasl-lint happy...
 checkduplicate = "";
 checkduplicate_path = "";
 airFlag = 0;

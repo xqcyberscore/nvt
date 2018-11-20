@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_java_vm_component_unspecified_vuln.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_db_java_vm_component_unspecified_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle Database Server 'Java VM' Component Unspecified Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812736");
-  script_version("$Revision: 12047 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-2680");
   script_bugtraq_id(102571);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-19 16:41:33 +0530 (Fri, 19 Jan 2018)");
   script_name("Oracle Database Server 'Java VM' Component Unspecified Vulnerability");
 
@@ -67,12 +67,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-dbport = "";
-dbVer = "";
 
 if(!dbport = get_app_port(cpe:CPE)){
   exit(0);

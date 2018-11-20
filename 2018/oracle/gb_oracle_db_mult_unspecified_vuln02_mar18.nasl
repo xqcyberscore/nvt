@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln02_mar18.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_db_mult_unspecified_vuln02_mar18.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities-02 March18
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:database_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812796");
-  script_version("$Revision: 12047 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2011-0870", "CVE-2011-0848", "CVE-2011-0831", "CVE-2011-0816",
                 "CVE-2011-0876", "CVE-2011-0879", "CVE-2011-2244", "CVE-2011-2257");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 15:14:30 +0530 (Wed, 07 Mar 2018)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities-02 March18");
 
@@ -69,12 +70,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
-dbport = "";
-dbVer = "";
 
 if(!dbport = get_app_port(cpe:CPE)){
   exit(0);

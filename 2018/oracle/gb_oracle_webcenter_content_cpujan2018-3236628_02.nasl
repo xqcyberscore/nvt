@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl 12047 2018-10-24 07:38:41Z cfischer $
+# $Id: gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Oracle WebCenter Content Unspecified Vulnerability-02 (cpujan2018-3236628)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:webcenter_content";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812960");
-  script_version("$Revision: 12047 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-2596");
   script_bugtraq_id(102545);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 09:38:41 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 12:17:44 +0530 (Tue, 06 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##Patch is available as solution
   script_name("Oracle WebCenter Content Unspecified Vulnerability-02 (cpujan2018-3236628)");
@@ -72,11 +72,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-webPort = "";
-infos = "";
-webVer = "";
-path = "";
 
 if(!webPort = get_app_port(cpe:CPE)){
   exit(0);

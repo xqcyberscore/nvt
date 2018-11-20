@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # ASP.NET Core Multiple Vulnerabilities (Windows)
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##########################################################################
+
 CPE = "cpe:/a:microsoft:asp.net_core";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812950");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0785", "CVE-2018-0784");
   script_bugtraq_id(102379, 102377);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 12:03:33 +0530 (Tue, 27 Feb 2018)");
   script_name("ASP.NET Core Multiple Vulnerabilities (Windows)");
 
@@ -71,14 +72,12 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_asp_dotnet_core_detect_win.nasl");
   script_mandatory_keys("ASP.NET/Core/Ver", ".NET/Core/SDK/Ver");
-  script_xref(name:"URL", value:"https://github.com/aspnet/Announcements/issues/284");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-coreVers = "";
 
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 coreVers = infos['version'];

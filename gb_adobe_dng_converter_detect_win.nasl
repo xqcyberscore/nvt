@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_detect_win.nasl 11784 2018-10-09 05:19:41Z asteins $
+# $Id: gb_adobe_dng_converter_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Adobe DNG Converter Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809761");
-  script_version("$Revision: 11784 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 07:19:41 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 15:01:50 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe DNG Converter Detection (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -69,7 +69,7 @@ if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );
 }
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach filePath( keys( fileList ) ) {
 

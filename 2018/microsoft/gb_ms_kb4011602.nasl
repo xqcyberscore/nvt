@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011602.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011602.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011602)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812612");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0796");
   script_bugtraq_id(102372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:12:54 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011602)");
 
@@ -47,7 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");
 
-  script_tag(name:"affected", value:"Microsoft Excel 2007 Service Pack 3 ");
+  script_tag(name:"affected", value:"Microsoft Excel 2007 Service Pack 3");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory");
@@ -65,13 +65,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-excelVer = "";
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){

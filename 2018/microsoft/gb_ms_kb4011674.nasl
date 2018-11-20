@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011674.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4011674.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Word 2010 Service Pack 2 Multiple Vulnerabilities (KB4011674)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812975");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0919", "CVE-2018-0922");
   script_bugtraq_id(103311, 103314);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 08:25:47 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Word 2010 Service Pack 2 Multiple Vulnerabilities (KB4011674)");
 
@@ -70,14 +70,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-exeVer = "";
-exePath = "";
 
 exeVer = get_kb_item("SMB/Office/Word/Version");
 if(!exeVer){
@@ -89,7 +85,7 @@ if(!exePath){
   exePath = "Unable to fetch the install path";
 }
 
-if(exeVer =~ "^(14\.)" && version_is_less(version:exeVer, test_version:"14.0.7195.5000"))
+if(exeVer =~ "^14\." && version_is_less(version:exeVer, test_version:"14.0.7195.5000"))
 {
   report = report_fixed_ver(file_checked:exePath + "winword.exe",
                             file_version:exeVer, vulnerable_range:"14.0 - 14.0.7195.4999");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_mult_vuln_nov18.nasl 12354 2018-11-15 03:47:04Z ckuersteiner $
+# $Id: gb_nagiosxi_mult_vuln_nov18.nasl 12416 2018-11-19 13:04:44Z cfischer $
 #
 # Nagios XI < 5.5.7 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141686");
-  script_version("$Revision: 12354 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 04:47:04 +0100 (Thu, 15 Nov 2018) $");
+  script_version("$Revision: 12416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 14:04:44 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 09:20:47 +0700 (Thu, 15 Nov 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -88,7 +88,7 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version_is_less(version: version, test_version: "5.5.7")) {

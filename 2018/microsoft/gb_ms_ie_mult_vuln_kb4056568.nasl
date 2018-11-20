@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_mult_vuln_kb4056568.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_ie_mult_vuln_kb4056568.nasl 12410 2018-11-19 10:06:05Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4056568)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812289");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12410 $");
   script_cve_id("CVE-2018-0762", "CVE-2018-0772", "CVE-2017-5753", "CVE-2017-5715",
                 "CVE-2017-5754");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 13:38:43 +0530 (Thu, 04 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4056568)");
@@ -74,6 +74,7 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   exit(0);
 }
 
@@ -82,9 +83,6 @@ include("secpod_reg.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-iePath = "";
-iedllVer  = NULL;
 
 if(hotfix_check_sp(win2008:3, win2008x64:3, win7:2, win7x64:2, win2008r2:2, win2012:1,  win2012R2:1,
                    win8_1:1, win8_1x64:1) <= 0){

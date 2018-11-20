@@ -29,16 +29,16 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809862");
-  script_version("$Revision: 11836 $");
+  script_version("$Revision: 12408 $");
   script_cve_id("CVE-2016-2365", "CVE-2016-2366", "CVE-2016-2367", "CVE-2016-2368",
  		"CVE-2016-2369", "CVE-2016-2370", "CVE-2016-2371", "CVE-2016-2372",
 		"CVE-2016-2373", "CVE-2016-2374", "CVE-2016-2375", "CVE-2016-2376",
 		"CVE-2016-2377", "CVE-2016-2378", "CVE-2016-2380", "CVE-2016-4323",
                 "CVE-2016-1000030");
   script_bugtraq_id(91335);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:34:54 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-18 13:03:03 +0530 (Wed, 18 Jan 2017)");
   script_name("Pidgin Multiple Vulnerabilities Jan 2017 (Windows)");
 

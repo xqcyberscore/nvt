@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_open_tcp_ports.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: secpod_open_tcp_ports.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # Checks for open TCP ports
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12413 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Checks for open TCP ports");
@@ -51,7 +51,7 @@ if(description)
 include("host_details.inc");
 include("misc_func.inc");
 
-opened_tcp_ports = "";
+opened_tcp_ports = ""; # nb: To make openvas-nasl-lint happy...
 
 silent = script_get_preference( "Silent" );
 if( silent == 'yes' ) {

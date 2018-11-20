@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_install_manager_detect_win.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_ibm_install_manager_detect_win.nasl 12413 2018-11-19 11:11:31Z cfischer $
 #
 # IBM Installation Manager Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801010");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 12413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-19 12:11:31 +0100 (Mon, 19 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-12 07:28:01 +0200 (Mon, 12 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("IBM Installation Manager Version Detection (Windows)");
@@ -57,8 +57,7 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-# Keep in here to make openvas-nasl-lint happy...
-checkduplicate = "";
+checkduplicate = ""; # nb: To make openvas-nasl-lint happy...
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
