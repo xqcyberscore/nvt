@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_lin.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_clamav_7z_nd_mew_packer_parsing_dos_vuln_lin.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807376");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-1372", "CVE-2016-1371");
   script_bugtraq_id(93221, 93222);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 13:09:56 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ClamAV Crafted '7z' And 'Mew Packer' Parsing Denial of Service Vulnerabilities (Linux)");
@@ -61,7 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"http://blog.clamav.net/2016/05/clamav-0992-has-been-released.html");
+  script_xref(name:"URL", value:"http://blog.clamav.net/2016/05/clamav-0992-has-been-released.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

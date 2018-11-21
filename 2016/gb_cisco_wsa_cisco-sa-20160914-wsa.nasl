@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:cisco:web_security_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106255");
-  script_version("$Revision: 11596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -69,7 +69,7 @@ server.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wsa");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

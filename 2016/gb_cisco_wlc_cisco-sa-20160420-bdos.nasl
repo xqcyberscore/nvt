@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160420-bdos.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_cisco_wlc_cisco-sa-20160420-bdos.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco Wireless LAN Controller Denial of Service Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2016-1364");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11607 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-01 11:50:17 +0200 (Wed, 01 Jun 2016)");
   script_name("Cisco Wireless LAN Controller Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"summary", value:"A vulnerability in the Bonjour task manager of Cisco Wireless LAN Controller (WLC) Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition on an affected device.");
   script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending crafted Bonjour traffic to an affected device. A successful exploit could allow the attacker to cause the device to reload, resulting in a DoS condition.");
-  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"affected", value:"All 7.4 releases prior to 7.4.130.0(MD)
 All 7.5 releases
@@ -55,7 +55,7 @@ All 8.0 releases prior to 8.0.110.0(ED)");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wlc_version.nasl");
   script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  exit(0);
 }
 
 

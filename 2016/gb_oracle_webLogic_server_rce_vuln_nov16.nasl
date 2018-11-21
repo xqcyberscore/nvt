@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_rce_vuln_nov16.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_oracle_webLogic_server_rce_vuln_nov16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Oracle WebLogic Server Multiple Remote Code Execution Vulnerabilities - Nov16
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809711");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-5535", "CVE-2017-3248");
   script_bugtraq_id(93692, 95465);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 16:24:01 +0530 (Wed, 02 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle WebLogic Server Remote Code Execution Vulnerability - Nov16");
@@ -55,8 +55,8 @@ if(description)
 
   script_tag(name:"solution", value:"Apply the updates from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

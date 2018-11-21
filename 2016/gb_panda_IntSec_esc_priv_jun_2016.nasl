@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_panda_IntSec_esc_priv_jun_2016.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Panda Internet Security - Privilege Escalation June 2016 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:pandasecurity:panda_internet_security_2014:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107090");
-  script_version("$Revision: 12338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12455 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Panda Internet Security - Privilege Escalation June 2016 (Windows)");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40020/");
-  script_xref(name:"URL" , value:"http://www.pandasecurity.com/uk/support/card?id=100053");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40020/");
+  script_xref(name:"URL", value:"http://www.pandasecurity.com/uk/support/card?id=100053");
   script_tag(name:"qod", value:"30");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

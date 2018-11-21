@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_server_login_bof_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_dup_scount_enterprise_server_login_bof_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Dup Scout Enterprise Server 'Login' Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:dup:dup_scout_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809487");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 12:30:49 +0530 (Fri, 02 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dup Scout Enterprise Server 'Login' Buffer Overflow Vulnerability");
@@ -57,8 +57,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL" , value:"http://www.dupscout.com");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40832/");
+  script_xref(name:"URL", value:"http://www.dupscout.com");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40832/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3370_1.nasl 12283 2018-11-09 11:21:17Z cfischer $
+# $Id: gb_suse_2018_3370_1.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # SuSE Update for tiff openSUSE-SU-2018:3370-1 (tiff)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852073");
-  script_version("$Revision: 12283 $");
+  script_version("$Revision: 12447 $");
   script_cve_id("CVE-2018-10779", "CVE-2018-16335", "CVE-2018-17100", "CVE-2018-17101", "CVE-2018-17795", "CVE-2017-9935", "CVE-2018-15209");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 12:21:17 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:45 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for tiff openSUSE-SU-2018:3370-1 (tiff)");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 12065 2018-10-25 06:59:36Z cfischer $
+# $Id: sw_http_os_detection.nasl 12434 2018-11-20 11:03:44Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 12065 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 08:59:36 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12434 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 12:03:44 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,6 +104,7 @@ function check_http_banner( port, banner ) {
     if( banner == "Server:" ||
         banner == "Server: " ||
         banner == "Server: Undefined" || # Unknown
+        banner == "Server: WebServer" || # e.g. D-Link DIR- devices
         banner == "Server: squid" ||
         banner == "Server: nginx" ||
         banner == "Server: Apache" ||
@@ -305,6 +306,13 @@ function check_http_banner( port, banner ) {
     # e.g. Server: GoTTY/0.0.12
     # Server: Boa/0.94.14rc21
     if( "Server: GoTTY" >< banner || "Server: Boa" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+
+    # "Mathopd is a very small, yet very fast HTTP server for UN*X systems."
+    # e.g. Server: Mathopd/1.5p6
+    if( "Server: Mathopd" >< banner ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_multiple_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_spip_multiple_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # SPIP Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809305");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-7998", "CVE-2016-7999", "CVE-2016-7982", "CVE-2016-7980",
  		"CVE-2016-7981");
   script_bugtraq_id(93451);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 15:15:46 +0530 (Tue, 08 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("SPIP Multiple Vulnerabilities");
@@ -65,11 +65,11 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40595");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40596");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40597");
-  script_xref(name:"URL" , value:"http://seclists.org/fulldisclosure/2016/Oct/78");
-  script_xref(name:"URL" , value:"http://osdir.com/ml/opensource-software-security/2016-10/msg00108.html");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40595");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40596");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40597");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Oct/78");
+  script_xref(name:"URL", value:"http://osdir.com/ml/opensource-software-security/2016-10/msg00108.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_ddi_auth_bypass_n_xss_vuln.nasl 11668 2018-09-28 08:33:11Z ckuersteiner $
+# $Id: gb_trend_micro_ddi_auth_bypass_n_xss_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Trend Micro Deep Discovery Inspector Authentication Bypass and XSS Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:trend_micro:deep_discovery_inspector";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807355");
-  script_version("$Revision: 11668 $");
+  script_version("$Revision: 12431 $");
   script_cve_id("CVE-2015-2873", "CVE-2015-2872");
   script_bugtraq_id(76396, 76397);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:33:11 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 17:14:20 +0530 (Fri, 19 Aug 2016)");
 
   script_name("Trend Micro Deep Discovery Inspector Authentication Bypass and XSS Vulnerabilities");
@@ -61,8 +61,7 @@ if (description)
   script_tag(name:"affected", value:"Trend Micro Deep Discovery Inspector with
   software before 3.5, 3.6, 3.7 and 3.8");
 
-  script_tag(name:"solution", value:"Install the vendor patch.
-  For updates refer to http://esupport.trendmicro.com/solution/en-US/1112206.aspx");
+  script_tag(name:"solution", value:"Install the vendor patch.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

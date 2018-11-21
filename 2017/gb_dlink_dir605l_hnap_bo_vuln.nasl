@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir605l_hnap_bo_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_dlink_dir605l_hnap_bo_vuln.nasl 12444 2018-11-20 14:49:48Z cfischer $
 #
 # D-Link DIR-605L HNAP Buffer Overflow Vulnerability
 #
@@ -25,32 +25,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+OS_CPE = "cpe:/o:d-link:dir-605l_firmware";
+HW_CPE = "cpe:/h:d-link:dir-605l";
+
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112145");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12444 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:49:48 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-04 13:02:20 +0100 (Mon, 04 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-
   script_cve_id("CVE-2017-17065");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
   script_name("D-Link DIR-605L HNAP Buffer Overflow Vulnerability");
-
   script_category(ACT_GATHER_INFO);
-
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dlink_dir_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dir", "dlink_hw_version");
+  script_mandatory_keys("Host/is_dlink_dir_device", "d-link/dir/hw_version");
+
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-605L/REVB/DIR-605L_REVB_FIRMWARE_PATCH_NOTES_2.11betaB06_HBRF_EN.pdf");
 
   script_tag(name:"summary", value:"On D-Link DIR-605L devices, firmware before 2.11betaB01_hbrf it is possible to cause the router to crash and reboot when
-      sending large buffers in the HTTP Basic Authentication password field.");
+  sending large buffers in the HTTP Basic Authentication password field.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -62,35 +59,31 @@ if (description)
 
   script_tag(name:"solution", value:"Upgrade to version 2.11betaB06_hbrf or later.");
 
-  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/SECURITY_ADVISEMENTS/DIR-605L/REVB/DIR-605L_REVB_FIRMWARE_PATCH_NOTES_2.11betaB06_HBRF_EN.pdf");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
 include("version_func.inc");
+include("host_details.inc");
 
-port = get_kb_item("dlink_dir_port");
-if (!port)
+if (!port = get_app_port(cpe: OS_CPE))
   exit(0);
 
-typ = get_kb_item("dlink_typ");
-if (!typ)
+# cpe:/o:d-link:dir-605l_firmware:2.06
+if (!fw_ver = get_app_version(cpe: OS_CPE, port: port))
   exit(0);
 
-version = get_kb_item("dlink_fw_version");
-if (!version)
+# cpe:/h:d-link:dir-605l:b1
+if (!hw_ver = get_app_version(cpe: HW_CPE, port: port))
   exit(0);
 
-hw_version = get_kb_item("dlink_hw_version");
-if (!hw_version)
-  exit(0);
+hw_ver = toupper(hw_ver);
 
-if (typ == "DIR-605L") {
-  if (hw_version =~ "^B" && version_is_less(version: version, test_version: "2.11")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.11betaB06_hbrf");
-    security_message(port: port, data: report);
-  }
-  exit(0);
+if (hw_ver =~ "^B" && version_is_less(version: fw_ver, test_version: "2.11")) {
+  report = report_fixed_ver(installed_version: fw_ver, fixed_version: "2.11betaB06_hbrf", extra: "Hardware revision: " + hw_ver);
+  security_message(port: port, data: report);
 }
 
 exit(0);

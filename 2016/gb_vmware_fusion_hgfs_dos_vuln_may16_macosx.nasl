@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_hgfs_dos_vuln_may16_macosx.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_vmware_fusion_hgfs_dos_vuln_may16_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # VMware Fusion HGFS Denial of Service Vulnerability May16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806756");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2015-1043");
   script_bugtraq_id(72337);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_name("VMware Fusion HGFS Denial of Service Vulnerability May16 (Mac OS X)");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name:"URL" , value:"http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

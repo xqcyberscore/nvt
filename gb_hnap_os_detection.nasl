@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hnap_os_detection.nasl 7591 2017-10-27 09:24:32Z cfischer $
+# $Id: gb_hnap_os_detection.nasl 12432 2018-11-20 09:58:47Z cfischer $
 #
-# HNAP OS Identification
+# Home Network Administration Protocol (HNAP) OS Identification
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -28,19 +28,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108284");
-  script_version("$Revision: 7591 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 11:24:32 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 12432 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:58:47 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-27 07:13:48 +0200 (Fri, 27 Oct 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("HNAP OS Identification");
+  script_name("Home Network Administration Protocol (HNAP) OS Identification");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hnap_detect.nasl");
   script_mandatory_keys("HNAP/port");
 
-  script_tag(name:"summary", value:"This script performs HNAP device info based OS detection.");
+  script_tag(name:"summary", value:"This script performs Home Network Administration Protocol (HNAP) based OS detection.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -62,6 +62,12 @@ banner = vendor + " " + model;
 if( ! banner || strlen( banner ) <= 1 )  exit( 0 );
 
 if( "SMC Inc. SMCWBR14S" >< banner || "Linksys E1200" >< banner ) {
+  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+# e.g. D-Link DIR-868L
+if( banner =~ "^D-Link (DAP|DIR|DNS|DSL|DWR)" ) {
   register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
 }

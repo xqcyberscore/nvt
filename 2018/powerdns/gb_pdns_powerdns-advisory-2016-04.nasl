@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2016-04.nasl 12175 2018-10-31 06:20:00Z ckuersteiner $
+# $Id: gb_pdns_powerdns-advisory-2016-04.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # PowerDNS Security Advisory 2016-04: Insufficient validation of TSIG signatures
 #
@@ -31,11 +31,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112374");
-  script_version("$Revision: 12175 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-31 07:20:00 +0100 (Wed, 31 Oct 2018) $");
+  script_version("$Revision: 12447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 16:54:11 +0200 (Wed, 12 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-7073", "CVE-2016-7074");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807469");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities March16 (Windows)");
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://helpx.adobe.com/security/products/acrobat/apsb16-09.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-09.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-134.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_ms16-134.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809801");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0026", "CVE-2016-3332", "CVE-2016-3333", "CVE-2016-3334",
 		"CVE-2016-3335", "CVE-2016-3338", "CVE-2016-3340", "CVE-2016-3342",
 		"CVE-2016-3343", "CVE-2016-7184");
   script_bugtraq_id(93998, 94008, 94009, 94012, 94011, 94014, 94010, 94013, 94007, 94015);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:58:28 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Common Log File System Driver Elevation of Privilege Vulnerability (3193706)");
@@ -65,8 +65,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3193706");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/en-us/library/security/MS16-134");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3193706");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-134");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

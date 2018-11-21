@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # PFSense Wizard XML Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806806");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 12431 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 18:46:02 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PFSense Wizard XML Directory Traversal Vulnerability");
@@ -53,18 +53,16 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to obtain access by leveraging knowledge of the credentials and
-  launch further attacks including XML External Entity Injection.
-
-  Impact Level: Application");
+  launch further attacks including XML External Entity Injection.");
 
   script_tag(name:"affected", value:"pfsense 2.2.5 and earlier");
 
-  script_tag(name:"solution", value:"Apply the fix provided by the vendor
-  https://github.com/pfsense/pfsense/commit/3ac0284805ce357552c3ccaeff0a9aadd0c6ea13.");
+  script_tag(name:"solution", value:"Apply the fix provided by the vendor via the references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Dec/78");
+  script_xref(name:"URL", value:"https://github.com/pfsense/pfsense/commit/3ac0284805ce357552c3ccaeff0a9aadd0c6ea13");
 
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

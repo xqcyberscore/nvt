@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-020.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms08-020.nasl 12437 2018-11-20 12:21:11Z santu $
 #
 # Microsoft Windows DNS Client Service Response Spoofing Vulnerability (945553)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801701");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12437 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:21:11 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
@@ -76,62 +76,53 @@ if(hotfix_missing(name:"945553") == 0){
 }
 
 sysPath = smb_get_system32root();
-if(sysPath)
+if(!sysPath){
+  exit(0);
+}
+
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"dnsapi.dll");
+if(dllVer)
 {
-  dllVer = fetch_file_version(sysPath:sysPath, file_name:"dnsapi.dll");
-  if(dllVer)
+  if(hotfix_check_sp(win2k:5) > 0)
   {
-    if(hotfix_check_sp(win2k:5) > 0)
+    if(version_is_less(version:dllVer, test_version:"5.0.2195.7151")){
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
+    }
+  }
+
+  else if(hotfix_check_sp(xp:4) > 0)
+  {
+    SP = get_kb_item("SMB/WinXP/ServicePack");
+    if("Service Pack 2" >< SP)
     {
-      if(version_is_less(version:dllVer, test_version:"5.0.2195.7151")){
+      if(version_is_less(version:dllVer, test_version:"5.1.2600.3316")){
         security_message( port: 0, data: "The target host was found to be vulnerable" );
       }
     }
-
-    else if(hotfix_check_sp(xp:4) > 0)
-    {
-      SP = get_kb_item("SMB/WinXP/ServicePack");
-      if("Service Pack 2" >< SP)
-      {
-        if(version_is_less(version:dllVer, test_version:"5.1.2600.3316")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-      }
-    }
-
-    else if(hotfix_check_sp(win2003:3) > 0)
-    {
-      SP = get_kb_item("SMB/Win2003/ServicePack");
-      if("Service Pack 1" >< SP)
-      {
-        if(version_is_less(version:dllVer, test_version:"5.2.3790.3092")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-      }
-      else if("Service Pack 2" >< SP)
-      {
-        if(version_is_less(version:dllVer, test_version:"5.2.3790.4238")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-      }
-      else security_message( port: 0, data: "The target host was found to be vulnerable" );
-    }
   }
-}
 
-sysPath = smb_get_system32root();
-if(sysPath)
-{
-  dllVer = fetch_file_version(sysPath:sysPath, file_name:"dnsapi.dll");
-  if(dllVer)
+  else if(hotfix_check_sp(win2003:3) > 0)
   {
-    if(hotfix_check_sp(winVista:2) > 0)
+    SP = get_kb_item("SMB/Win2003/ServicePack");
+    if("Service Pack 1" >< SP)
     {
-      if(version_is_less(version:dllVer, test_version:"6.0.6000.16615")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-         exit(0);
+      if(version_is_less(version:dllVer, test_version:"5.2.3790.3092")){
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
+      }
     }
+    else if("Service Pack 2" >< SP)
+    {
+      if(version_is_less(version:dllVer, test_version:"5.2.3790.4238")){
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
+      }
+    }
+    else security_message( port: 0, data: "The target host was found to be vulnerable" );
+  }
+  else if(hotfix_check_sp(winVista:2) > 0)
+  {
+    if(version_is_less(version:dllVer, test_version:"6.0.6000.16615")){
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
+    }
+    exit(0);
   }
 }
-

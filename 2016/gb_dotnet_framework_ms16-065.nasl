@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-065.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_dotnet_framework_ms16-065.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3156757)
 #
@@ -27,28 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807818");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0149");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:22:52 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3156757)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-065.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to some unspecified
   error in the TLS/SSL protocol, implemented in the encryption component of
   Microsoft .NET Framework.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 2.0 Service Pack 2
 
@@ -61,20 +58,18 @@ if(description)
   Microsoft .NET Framework 4.6/4.6.1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-065");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3156757");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-065");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3156757");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-065");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
@@ -151,7 +146,6 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##.NET Framework 4.5.2 in Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
-      ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1
       else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0)
       {
         ## https://support.microsoft.com/en-us/kb/3142033

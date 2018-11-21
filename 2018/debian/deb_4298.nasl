@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4298.nasl 11515 2018-09-21 08:49:04Z cfischer $
+# $Id: deb_4298.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4298-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704298");
-  script_version("$Revision: 11515 $");
+  script_version("$Revision: 12447 $");
   script_cve_id("CVE-2018-17141");
   script_name("Debian Security Advisory DSA 4298-1 (hylafax - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 10:49:04 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 00:00:00 +0200 (Thu, 20 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

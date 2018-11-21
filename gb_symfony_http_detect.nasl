@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_http_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_symfony_http_detect.nasl 12442 2018-11-20 14:05:57Z asteins $
 #
 # Sensiolabs Symfony Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107323");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12442 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:05:57 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_family("Product detection");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8000);
+  script_require_ports("Services/www", 8000, 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script sends a HTTP request to the remote host and attempts
@@ -53,6 +53,24 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:8000 );
+
+# Some installations aren't fully configured and only show a welcome message including the version
+buf = http_get_cache( item:"/", port:port );
+
+if( buf =~ "^HTTP/1\.[01] 200" && buf =~ "<h1><span>Welcome to</span> Symfony [0-9.]+</h1>" ) {
+
+  install = "/";
+  version = "unknown";
+  found = TRUE;
+
+  vers = eregmatch( pattern:'Symfony ([0-9.]+)</h1>', string:buf );
+  if( vers[1] ) {
+    version = vers[1];
+  }
+  conclUrl = report_vuln_url( port:port, url:"/", url_only:TRUE );
+  set_kb_item( name:"symfony/http/" + port + "/installs", value:port + "#-#" + install + "#-#" + version + "#-#" + vers[0] + "#-#" + conclUrl );
+}
+
 # nb: This is only available at /_profiler
 buf = http_get_cache( item:"/_profiler/latest", port:port );
 

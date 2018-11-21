@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_hpsbhf03613.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_hp_comware_platform_hpsbhf03613.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # HPE Network Products Remote Denial of Service (DoS), Unauthorized Access
 #
@@ -33,8 +33,8 @@ if (description)
   script_cve_id("CVE-2014-8176", "CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-1792", "CVE-2015-1793");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11837 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 12:05:47 +0200 (Wed, 06 Jul 2016)");
   script_name("HPE Network Products Remote Denial of Service (DoS), Unauthorized Access");
 
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_hp_comware_platform_detect_snmp.nasl");
   script_mandatory_keys("hp/comware_device");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

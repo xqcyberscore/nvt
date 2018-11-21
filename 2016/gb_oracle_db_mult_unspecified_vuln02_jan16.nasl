@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln02_jan16.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_oracle_db_mult_unspecified_vuln02_jan16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities -02 Jan16
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807036");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2015-4857", "CVE-2015-2595", "CVE-2016-0677", "CVE-2015-0204");
   script_bugtraq_id(77180, 75879, 71936);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 13:02:26 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities -02 Jan16");
 
@@ -61,8 +61,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

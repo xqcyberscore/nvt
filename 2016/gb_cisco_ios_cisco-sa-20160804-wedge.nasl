@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160804-wedge.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160804-wedge.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco IOS Software Crafted Network Time Protocol Packets Denial of Service Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106170");
- script_cve_id("CVE-2016-1478");
- script_tag(name: "cvss_base", value: "7.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106170");
+  script_cve_id("CVE-2016-1478");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 12431 $");
 
- script_name("Cisco IOS Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
+  script_name("Cisco IOS Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160804-wedge");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160804-wedge");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the processing of Network Time Protocol (NTP)
-packets by Cisco IOS could allow an unauthenticated, remote attacker to cause an interface wedge and an
-eventual denial of service (DoS) condition on the affected device.
+  script_tag(name:"summary", value:"A vulnerability in the processing of Network Time Protocol (NTP)
+  packets by Cisco IOS could allow an unauthenticated, remote attacker to cause an interface wedge and an
+  eventual denial of service (DoS) condition on the affected device.
 
-The vulnerability is due to insufficient checks on clearing the invalid NTP packets from the
-interface queue. An attacker could exploit this vulnerability by sending a number of crafted NTP
-packets to be processed by an affected device. An exploit could allow the attacker to cause an
-interface wedge and an eventual denial of service (DoS) condition on the affected device.
+  The vulnerability is due to insufficient checks on clearing the invalid NTP packets from the
+  interface queue. An attacker could exploit this vulnerability by sending a number of crafted NTP
+  packets to be processed by an affected device. An exploit could allow the attacker to cause an
+  interface wedge and an eventual denial of service (DoS) condition on the affected device.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability; however, there is a mitigation for this vulnerability.");
+  Cisco has released software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability. However, there is a mitigation for this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-05 11:15:33 +0700 (Fri, 05 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-05 11:15:33 +0700 (Fri, 05 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -73,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.5(3)S3',
 		'15.6(1)S2',
 		'15.6(2)S1',

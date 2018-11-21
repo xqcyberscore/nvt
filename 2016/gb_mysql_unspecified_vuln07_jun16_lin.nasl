@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808119");
-  script_version("$Revision: 12383 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2014-2434", "CVE-2014-2442", "CVE-2014-2444",
                 "CVE-2014-2450", "CVE-2014-2451");
   script_bugtraq_id(66872, 66823, 66885, 66863, 66828);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 13:41:42 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:24 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-07 Jun16 (Linux)");
 
@@ -56,9 +56,9 @@ if(description)
 
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
-  script_xref(name:"URL" , value:"http://secunia.com/advisories/57940");
-  script_xref(name:"URL" , value:"http://www.scaprepo.com/view.jsp?id=oval:org.secpod.oval:def:701638");
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57940");
+  script_xref(name:"URL", value:"http://www.scaprepo.com/view.jsp?id=oval:org.secpod.oval:def:701638");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_unspecified_vuln01_oct16.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_oracle_glassfish_unspecified_vuln01_oct16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Oracle GlassFish Server Unspecified Vulnerability-01 Oct16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809709");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-1950");
   script_bugtraq_id(84223);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:53:33 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle GlassFish Server Unspecified Vulnerability-01 Oct16");
 
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name:"URL" , value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

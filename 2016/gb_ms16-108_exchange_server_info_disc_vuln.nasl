@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-108_exchange_server_info_disc_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_ms16-108_exchange_server_info_disc_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Exchange Server Information Disclosure Vulnerabilities (3185883)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809314");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0138");
   script_bugtraq_id(92806);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 10:21:52 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Information Disclosure Vulnerabilities (3185883)");
@@ -70,8 +70,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3184736");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-108");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3184736");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-108");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

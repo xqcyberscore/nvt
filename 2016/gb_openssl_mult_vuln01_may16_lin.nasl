@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_may16_lin.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_openssl_mult_vuln01_may16_lin.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -01 May16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807570");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-2176", "CVE-2016-2109", "CVE-2016-2106", "CVE-2016-2107",
                 "CVE-2016-2105");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 12:46:24 +0530 (Mon, 02 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -01 May16 (Linux)");
@@ -72,8 +72,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://www.openssl.org/news/secadv/20160503.txt");
-  script_xref(name:"URL" , value:"https://mta.openssl.org/pipermail/openssl-announce/2016-April/000069.html");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160503.txt");
+  script_xref(name:"URL", value:"https://mta.openssl.org/pipermail/openssl-announce/2016-April/000069.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

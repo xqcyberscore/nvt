@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swiftmailer_remote_code_execution_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_swiftmailer_remote_code_execution_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # SwiftMailer Remote Code Execution Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:swiftmailer:swiftmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809773");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-10074");
   script_bugtraq_id(95140);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-29 19:37:23 +0530 (Thu, 29 Dec 2016)");
   script_name("SwiftMailer Remote Code Execution Vulnerability");
 
@@ -59,10 +59,10 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL" , value:"http://seclists.org/oss-sec/2016/q4/774");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40972");
-  script_xref(name:"URL" , value:"https://legalhackers.com/advisories/SwiftMailer-Exploit-Remote-Code-Exec-CVE-2016-10074-Vuln.html");
-  script_xref(name:"URL" , value:"https://github.com/swiftmailer/swiftmailer/releases/tag/v5.4.5");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q4/774");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40972");
+  script_xref(name:"URL", value:"https://legalhackers.com/advisories/SwiftMailer-Exploit-Remote-Code-Exec-CVE-2016-10074-Vuln.html");
+  script_xref(name:"URL", value:"https://github.com/swiftmailer/swiftmailer/releases/tag/v5.4.5");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuv70576.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_asa_CSCuv70576.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco Adaptive Security Appliance VPN Memory Block Exhaustion Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106081");
- script_cve_id("CVE-2016-1379");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106081");
+  script_cve_id("CVE-2016-1379");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 12431 $");
 
- script_name("Cisco Adaptive Security Appliance VPN Memory Block Exhaustion Vulnerability");
+  script_name("Cisco Adaptive Security Appliance VPN Memory Block Exhaustion Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-asa-vpn");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-asa-vpn");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the IPsec code of Cisco Adaptive Security Appliance
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the IPsec code of Cisco Adaptive Security Appliance
 (ASA) Software could allow an authenticated, remote attacker to cause the depletion of a memory block, which
 may cause the system to stop forwarding traffic and result in a denial of service (DoS) condition.
 
@@ -55,17 +55,17 @@ system instability or cause the system to stop forwarding traffic.
 Cisco has released software updates that address this vulnerability. There are no workarounds that address
 this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-19 11:12:00 +0700 (Thu, 19 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-19 11:12:00 +0700 (Thu, 19 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
+  exit(0);
 }
 
 include("host_details.inc");
@@ -74,7 +74,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'9.0.1',
 		'9.0.2',
 		'9.0.2.10',

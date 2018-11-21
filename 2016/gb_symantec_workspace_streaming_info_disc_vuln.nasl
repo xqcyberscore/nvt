@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_symantec_workspace_streaming_info_disc_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Symantec Workspace Streaming Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:workspace_streaming";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808586");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2014-1649");
   script_bugtraq_id(67189);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-18 17:09:19 +0530 (Mon, 18 Jul 2016)");
   script_name("Symantec Workspace Streaming Information Disclosure Vulnerability");
 
@@ -59,7 +59,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name:"URL" , value:"http://zerodayinitiative.com/advisories/ZDI-14-127");
+  script_xref(name:"URL", value:"http://zerodayinitiative.com/advisories/ZDI-14-127");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

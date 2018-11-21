@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-013.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_ms16-013.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3134811)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807243");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0038");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 11:09:38 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3134811)");
 
@@ -69,8 +69,8 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3134811");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-013");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3134811");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-013");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

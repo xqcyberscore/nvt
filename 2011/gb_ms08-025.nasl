@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-025.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms08-025.nasl 12437 2018-11-20 12:21:11Z santu $
 #
 # Microsoft Windows Kernel Usermode Callback Local Privilege Elevation Vulnerability (941693)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801487");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12437 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:21:11 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_cve_id("CVE-2008-1084");
   script_bugtraq_id(28554);
@@ -69,8 +69,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
-
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:2, win2008:2) <= 0){
   exit(0);
 }
@@ -80,83 +78,73 @@ if(hotfix_missing(name:"941693") == 0){
 }
 
 sysPath = smb_get_system32root();
-if(sysPath)
+if(!sysPath){
+  exit(0);
+}
+
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"Win32k.sys");
+if(!sysVer){
+  exit(0);
+}
+
+if(hotfix_check_sp(win2k:5) > 0)
 {
-  sysVer = fetch_file_version(sysPath:sysPath, file_name:"Win32k.sys");
-  if(sysVer)
+  if(version_is_less(version:sysVer, test_version:"5.0.2195.7154")){
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+  }
+  exit(0);
+}
+else if(hotfix_check_sp(xp:4) > 0)
+{
+  SP = get_kb_item("SMB/WinXP/ServicePack");
+  if("Service Pack 2" >< SP)
   {
-    if(hotfix_check_sp(win2k:5) > 0)
-    {
-      if(version_is_less(version:sysVer, test_version:"5.0.2195.7154")){
-        security_message( port: 0, data: "The target host was found to be vulnerable" );
-      }
-      exit(0);
+    if(version_is_less(version:sysVer, test_version:"5.1.2600.3335")){
+       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
+    exit(0);
+  }
+}
 
-    if(hotfix_check_sp(xp:4) > 0)
-    {
-      SP = get_kb_item("SMB/WinXP/ServicePack");
-      if("Service Pack 2" >< SP)
-      {
-        if(version_is_less(version:sysVer, test_version:"5.1.2600.3335")){
-           security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-        exit(0);
-      }
+else if(hotfix_check_sp(win2003:3) > 0)
+{
+  SP = get_kb_item("SMB/Win2003/ServicePack");
+  if("Service Pack 1" >< SP)
+  {
+    if(version_is_less(version:sysVer, test_version:"5.2.3790.3106")){
+       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
+    exit(0);
+  }
 
-    else if(hotfix_check_sp(win2003:3) > 0)
-    {
-      SP = get_kb_item("SMB/Win2003/ServicePack");
-      if("Service Pack 1" >< SP)
-      {
-        if(version_is_less(version:sysVer, test_version:"5.2.3790.3106")){
-           security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-        exit(0);
-      }
-
-      if("Service Pack 2" >< SP)
-      {
-        if(version_is_less(version:sysVer, test_version:"5.2.3790.4256")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-        exit(0);
-      }
+  if("Service Pack 2" >< SP)
+  {
+    if(version_is_less(version:sysVer, test_version:"5.2.3790.4256")){
       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
+    exit(0);
   }
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
-
-sysPath = smb_get_system32root();
-if(sysPath)
+else if(hotfix_check_sp(winVista:2) > 0)
 {
-  sysVer = fetch_file_version(sysPath:sysPath, file_name:"Win32k.sys");
-  if(sysVer)
+  SP = get_kb_item("SMB/WinVista/ServicePack");
+  if("Service Pack 1" >< SP)
   {
-    if(hotfix_check_sp(winVista:2) > 0)
-    {
-      SP = get_kb_item("SMB/WinVista/ServicePack");
-      if("Service Pack 1" >< SP)
-      {
-        if(version_is_less(version:sysVer, test_version:"6.0.6001.18027")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-         exit(0);
-      }
+    if(version_is_less(version:sysVer, test_version:"6.0.6001.18027")){
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
-
-    else if(hotfix_check_sp(win2008:2) > 0)
-    {
-      SP = get_kb_item("SMB/Win2008/ServicePack");
-      if("Service Pack 1" >< SP)
-      {
-        if(version_is_less(version:sysVer, test_version:"6.0.6001.18027")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
-        }
-         exit(0);
-      }
-    }
+     exit(0);
   }
 }
-
+else if(hotfix_check_sp(win2008:2) > 0)
+{
+  SP = get_kb_item("SMB/Win2008/ServicePack");
+  if("Service Pack 1" >< SP)
+  {
+    if(version_is_less(version:sysVer, test_version:"6.0.6001.18027")){
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
+    }
+     exit(0);
+  }
+}

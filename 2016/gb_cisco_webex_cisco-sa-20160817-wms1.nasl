@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_cisco-sa-20160817-wms1.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_webex_cisco-sa-20160817-wms1.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco WebEx Meetings Server Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106192");
-  script_version("$Revision: 3859 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
-  script_tag(name: "creation_date", value: "2016-08-19 12:02:46 +0700 (Fri, 19 Aug 2016)");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-19 12:02:46 +0700 (Fri, 19 Aug 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-1484");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco WebEx Meetings Server Information Disclosure Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
 
-  script_tag(name: "summary", value: "A vulnerability in Cisco WebEx Meetings Server could allow an
+  script_tag(name:"summary", value:"A vulnerability in Cisco WebEx Meetings Server could allow an
 unauthenticated, remote attacker to access sensitive data.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to lack of proper authentication controls.");
+  script_tag(name:"insight", value:"The vulnerability is due to lack of proper authentication controls.");
 
-  script_tag(name: "impact", value: "An attacker could exploit this vulnerability to learn sensitive information
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability to learn sensitive information
 about the application.");
 
-  script_tag(name: "affected", value: "Cisco WebEx Meetings Server version 2.6");
+  script_tag(name:"affected", value:"Cisco WebEx Meetings Server version 2.6");
 
-  script_tag(name: "solution", value: "See the vendors advisory for solutions.");
+  script_tag(name:"solution", value:"See the vendors advisory for solutions.");
 
-  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-wms1");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-wms1");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   exit(0);
 }

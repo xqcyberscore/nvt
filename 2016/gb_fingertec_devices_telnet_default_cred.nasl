@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_fingertec_devices_telnet_default_cred.nasl 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: gb_fingertec_devices_telnet_default_cred.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # FingerTec Devices Telnet Default Credentials Vulnerability
 #
@@ -26,37 +26,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807525");
-  script_version("$Revision: 7252 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 15:57:40 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FingerTec Devices Telnet Default Credentials Vulnerability");
 
-  script_tag(name:"summary" , value:"This host is installed with FingerTec
+  script_tag(name:"summary", value:"This host is installed with FingerTec
   device and is prone to default credentials vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Check if it is possible to do telnet
+  script_tag(name:"vuldetect", value:"Check if it is possible to do telnet
   login into the FingerTec device.");
 
-  script_tag(name:"insight" , value:"The flaw is due to default user:passwords
+  script_tag(name:"insight", value:"The flaw is due to default user:passwords
   which is publicly known and documented.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain unauthorized root access to affected devices and completely
-  compromise the devices.
+  compromise the devices.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"FingerTec Devices.");
 
-  script_tag(name:"affected" , value:"FingerTec Devices.");
-
-  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL" , value:"https://digital-panther.com");
-  script_xref(name:"URL" , value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
+  script_xref(name:"URL", value:"https://digital-panther.com");
+  script_xref(name:"URL", value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -72,12 +72,10 @@ include("telnet_func.inc");
 fingport = get_kb_item("Services/telnet");
 if(!fingport) fingport = 23;
 
-##checking port state
 if(!get_port_state(fingport)) exit(0);
 
 if(!banner = get_telnet_banner(port:fingport)) exit(0);
 
-##Confirm application
 if("ZEM" >!< banner) exit(0);
 
 soc = open_sock_tcp(fingport);
@@ -96,7 +94,6 @@ creds = make_array("root", "founder88",
                    "root", "root",
                    "admin","1234");
 
-##Try to login with default credentials
 foreach cred ( keys( creds ) )
 {
   recv = recv( socket:soc, length:2048 );
@@ -109,7 +106,6 @@ foreach cred ( keys( creds ) )
       send(socket:soc, data: creds[cred] + '\r\n');
       recv = recv(socket:soc, length:1024);
 
-      ##Confirm exploit
       if(recv =~ "BusyBox v([0-9.]+)")
       {
         report += "\n\n" + cred + ":" + creds[cred] + "\n";

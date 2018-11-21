@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_eol.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_ms_ie_eol.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Internet Explorer End Of Life Detection
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806657");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-12 15:30:21 +0530 (Tue, 12 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer End Of Life Detection");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/lifecycle#gp/Microsoft-Internet-Explorer");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/lifecycle#gp/Microsoft-Internet-Explorer");
 
   script_tag(name:"summary", value:"Check for Internet Explorer version and determine if it has reached end of life");
   script_category(ACT_GATHER_INFO);

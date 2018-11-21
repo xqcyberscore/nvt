@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln03_may16.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_typo3_mult_vuln03_may16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities-03 May16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807826");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 17:17:16 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-03 May16");
 
@@ -65,9 +65,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL" , value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-012");
-  script_xref(name:"URL" , value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-011");
-  script_xref(name:"URL" , value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-009");
+  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-012");
+  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-011");
+  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-009");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol39508724.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_f5_big_ip_sol39508724.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # F5 BIG-IP - SOL39508724 - TMM SSL/TLS virtual server vulnerability CVE-2016-6907
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140005");
- script_cve_id("CVE-2016-6907");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5836 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140005");
+  script_cve_id("CVE-2016-6907");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12431 $");
 
- script_name("F5 BIG-IP - SOL39508724 - TMM SSL/TLS virtual server vulnerability CVE-2016-6907");
+  script_name("F5 BIG-IP - SOL39508724 - TMM SSL/TLS virtual server vulnerability CVE-2016-6907");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/39/sol39508724.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/39/sol39508724.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"TMM SSL/TLS virtual server using CBC cipher may be vulnerable to a 'Vaudenay timing attack' aka 'Padding oracle attack.'");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"TMM SSL/TLS virtual server using CBC cipher may be vulnerable to a 'Vaudenay timing attack' aka 'Padding oracle attack.'");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-09-30 18:57:51 +0200 (Fri, 30 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-30 18:57:51 +0200 (Fri, 30 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

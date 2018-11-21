@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-140.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_ms16-140.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Boot Manager Security Feature Bypass Vulnerability (3193479)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809802");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-7247");
   script_bugtraq_id(94058);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:16:52 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Boot Manager Security Feature Bypass Vulnerability (3193479)");
@@ -60,8 +60,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3193479");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/en-us/library/security/MS16-140");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3193479");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-140");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

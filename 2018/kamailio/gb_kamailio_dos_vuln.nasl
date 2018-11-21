@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_dos_vuln.nasl 11294 2018-09-10 08:13:29Z asteins $
+# $Id: gb_kamailio_dos_vuln.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:kamailio:kamailio";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112340");
-  script_version("$Revision: 11294 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 10:13:29 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 12447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-14767", "CVE-2018-16657");
 

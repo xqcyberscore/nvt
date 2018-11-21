@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_jul16_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln01_jul16_lin.nasl 12448 2018-11-21 06:40:12Z cfischer $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities-01 July 2016 (Linux)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108384");
-  script_version("$Revision: 9064 $");
+  script_version("$Revision: 12448 $");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3500", "CVE-2016-3503",
                 "CVE-2016-3508", "CVE-2016-3550");
   script_bugtraq_id(91945, 91996, 91972, 91951);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 07:40:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-01 July 2016 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - A flaw in the Hotspot component.
 
@@ -57,32 +56,29 @@ if(description)
 
   - A flaw in the Networking component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote user
+  script_tag(name:"impact", value:"Successful exploitation will allow remote user
   to access and modify data on the target system, can cause denial of service
   conditions on the target system, a remote or local user can obtain elevated
   privileges on the  target system, also a local user can modify data on the
-  target system.
+  target system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 115 and prior, 
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 115 and prior,
   7 update 101 and prior, and 8 update 92 and prior on Linux.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_lin.nasl");
   script_mandatory_keys("Sun/Java/JRE/Linux/Ver");
+
   exit(0);
 }
 

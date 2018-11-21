@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms16-088.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: gb_ms_powerpoint_ms16-088.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Office PowerPoint Security Bypass Vulnerability (3170008)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807863");
-  script_version("$Revision: 6523 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-3279");
   script_bugtraq_id(91587);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 14:01:15 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Security Bypass Vulnerability (3170008)");
@@ -40,37 +40,32 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-088.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as Office software improperly
   handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions and perform actions in the
-  security context of the current user.
+  security context of the current user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft PowerPoint 2010 Service Pack 2 and prior,
+  script_tag(name:"affected", value:"Microsoft PowerPoint 2010 Service Pack 2 and prior,
   Microsoft PowerPoint 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/MS16-088");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115118");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115254");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-088");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115118");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115254");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-088");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
   exit(0);
 }
@@ -81,13 +76,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offPath = "";
-pptVer = "";
-dllVer = "";
-path = "";
-
-## Get Powerpoint Version
 pptVer = get_kb_item("SMB/Office/PowerPnt/Version");
 if(!pptVer){
   exit(0);
@@ -102,16 +90,15 @@ if(!path){
 
 foreach ver (make_list("OFFICE14", "OFFICE15"))
 {
-  ## Get Version from Ppcore.dll
   offPath = path + "\Microsoft Office\" + ver ;
 
   exeVer  = fetch_file_version(sysPath:offPath, file_name:"ppcore.dll");
   if(exeVer && exeVer =~ "^(14|15).*")
   {
-    if(exeVer =~ "^(14)"){
+    if(exeVer =~ "^14"){
       Vulnerable_range  =  "14 - 14.0.7171.4999";
     }
-    else if(exeVer =~ "^(15)"){
+    else if(exeVer =~ "^15"){
       Vulnerable_range  =  "15 - 15.0.4841.0999";
     }
 

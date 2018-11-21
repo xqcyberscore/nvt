@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_win.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)
 #
@@ -29,33 +29,31 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807068");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 12431 $");
   script_cve_id("CVE-2016-1949");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:34:52 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Feb16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to same-origin policy bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to improper restriction of
+  script_tag(name:"insight", value:"The flaw is due to improper restriction of
   the interaction between Service Workers and plugins.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to bypass the Same Origin Policy via a crafted web site that
-  triggers spoofed responses to requests that use NPAPI.
+  triggers spoofed responses to requests that use NPAPI.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 44.0.2 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 44.0.2 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 44.0.2
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 44.0.2
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

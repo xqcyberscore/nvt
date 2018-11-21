@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Freeproxy Internet Suite Denial of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:freeproxy_internet_suite:freeproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806895");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 12431 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:03:06 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Freeproxy Internet Suite Denial of Service Vulnerability");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Freeproxy Internet Suite 4.10.1751");
 

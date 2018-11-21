@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_dc_cont_apsb18-40_macosx.nasl 12362 2018-11-15 09:45:28Z santu $
+# $Id: gb_adobe_reader_dc_cont_apsb18-40_macosx.nasl 12449 2018-11-21 07:50:18Z cfischer $
 #
 # Adobe Reader DC Information Disclosure Vulnerability(apsb18-40)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814191");
-  script_version("$Revision: 12362 $");
+  script_version("$Revision: 12449 $");
   script_cve_id("CVE-2018-15979");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:45:28 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:50:18 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 12:20:16 +0530 (Thu, 15 Nov 2018)");
   script_name("Adobe Reader DC Information Disclosure Vulnerability(apsb18-40)-MAC OS X");
 
@@ -43,21 +43,21 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in handing
+  script_tag(name:"insight", value:"The flaw exists due to an error in handing
   the feature of Portable Document Files (PDFs).That leaks NT LAN Manager (NTLM)
   credentials.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inadvertent leak of the users hashed NTLM password.");
 
-  script_tag(name: "affected" , value:"Adobe Reader DC version 2019.x before 2019.008.20081 on MAC OS X.");
+  script_tag(name:"affected", value:"Adobe Reader DC version 2019.x before 2019.008.20081 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader DC version
   2019.008.20081 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb18-40.html");
+  script_xref(name:"URL" , value:"https://helpx.adobe.com/security/products/acrobat/apsb18-40.html");
   script_xref(name:"URL", value:"https://helpx.adobe.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

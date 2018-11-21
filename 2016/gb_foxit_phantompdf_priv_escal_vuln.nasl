@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_priv_escal_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_priv_escal_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Foxit PhantomPDF Local Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807561");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 12431 $");
   script_cve_id("CVE-2015-8843");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 16:44:43 +0530 (Mon, 25 Apr 2016)");
   script_name("Foxit PhantomPDF Local Privilege Escalation Vulnerability");
 
@@ -47,15 +47,13 @@ if(description)
   by writing certain data to a shared memory region.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute code under the context of system.
-
-  Impact Level: System/Application");
+  to execute code under the context of system.");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF version 7.2.0.722
   and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version
-  7.2.2 or later, For updates refer to http://www.foxitsoftware.com");
+  7.2.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
   script_mandatory_keys("foxit/phantompdf/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

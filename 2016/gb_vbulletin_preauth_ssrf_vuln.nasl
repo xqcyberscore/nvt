@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_preauth_ssrf_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_vbulletin_preauth_ssrf_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability
 #
@@ -29,42 +29,38 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809158");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-6483");
   script_bugtraq_id(92350);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-29 14:43:57 +0530 (Mon, 29 Aug 2016)");
   script_name("vBulletin Preauth Server Side Request Forgery (SSRF) Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with vBulletin and is prone
   to server side request forgery vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a codebase accepts HTTP
   redirects from the target server specified in a user-provided link.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   unauthenticated remote attackers to bypass certain security restrictions to
-  perform unauthorized actions. This may aid in further attacks. 
-
-  Impact Level: Application");
+  perform unauthorized actions. This may aid in further attacks.");
 
   script_tag(name:"affected", value:"vBulletin versions 5.0 through 5.2.2,
   and 4.0 through 4.2.3, and 3.0 through 3.8.9");
 
   script_tag(name:"solution", value:"Upgrade to vBulletin version 5.2.3,
-  or 4.2.4 Beta, or 3.8.10 Beta, or later.
-  For updates refer to http://www.vbulletin.com");
+  or 4.2.4 Beta, or 3.8.10 Beta, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2016/Aug/68");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Aug/68");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -72,27 +68,21 @@ if(description)
   script_dependencies("vbulletin_detect.nasl");
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.vbulletin.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-vPort = "";
-vVer = "";
-
-## get the port
 if(!vPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!vVer = get_app_version(cpe:CPE, port:vPort)){
   exit(0);
 }
 
-## Check for version
 if(version_in_range(version:vVer, test_version:"5.0.0", test_version2:"5.2.2"))
 {
   fix = '5.2.3';

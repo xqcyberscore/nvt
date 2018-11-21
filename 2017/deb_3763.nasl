@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3763.nasl 9356 2018-04-06 07:17:02Z cfischer $
+# $Id: deb_3763.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 # Auto-generated from advisory DSA 3763-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703763");
-    script_version("$Revision: 9356 $");
+    script_version("$Revision: 12447 $");
     script_cve_id("CVE-2016-7068");
     script_name("Debian Security Advisory DSA 3763-1 (pdns-recursor - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:17:02 +0200 (Fri, 06 Apr 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
     script_tag(name: "creation_date", value: "2017-01-13 00:00:00 +0100 (Fri, 13 Jan 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.8");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

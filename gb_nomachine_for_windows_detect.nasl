@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nomachine_for_windows_detect.nasl 12430 2018-11-20 07:03:47Z cfischer $
+# $Id: gb_nomachine_for_windows_detect.nasl 12452 2018-11-21 08:24:42Z mmartin $
 #
 # NoMachine Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107371");
-  script_version("$Revision: 12430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 08:03:47 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 12452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 09:24:42 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-19 14:27:32 +0100 (Mon, 19 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"This script detects the installed version
@@ -52,29 +52,43 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
+include("version_func.inc");
 
-foreach key(registry_enum_keys(key:"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall")){
+os_arch = get_kb_item("SMB/Windows/Arch");
+if (!os_arch)
+  exit(0);
 
-  key = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" + key;
-  if(!registry_key_exists(key:key)) continue;
+if ("x86" >< os_arch) {
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+} else if ("x64" >< os_arch) {
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+}
+
+if (isnull(key_list)) exit(0);
+
+foreach key (key_list) {
+  foreach item (registry_enum_keys(key:key)) {
 
   # "NoMachine" without any version
-  appName = registry_get_sz(key:key, item:"DisplayName");
-  if(!appName || appName !~ "NoMachine") continue;
+    appName = registry_get_sz(key:key + item, item:"DisplayName");
+    version = "unknown";
+    location = "unknown";
 
-  version = "unknown";
-  concluded = appName;
-  location = "unknown";
+    if(!appName || appName !~ "NoMachine") continue;
+    version = "unknown";
+    concluded = appName;
+    location = "unknown";
 
-  loc = registry_get_sz(key:key, item:"InstallLocation");
-  if(loc) location = loc;
+    loc = registry_get_sz(key:key + item, item:"InstallLocation");
+    if(loc) location = loc;
 
   # 5.3.12
-  vers = registry_get_sz(key:key, item:"DisplayVersion");
-  if(vers){
-    version = vers;
-    concluded += " " + vers;
-  }
+    vers = registry_get_sz(key:key + item, item:"DisplayVersion");
+      if(vers){
+        version = vers;
+        concluded += " " + vers;
+      }
 
   set_kb_item(name:"nomachine/win/detected", value:TRUE);
   set_kb_item(name:"nomachine/win/ver", value:version);
@@ -82,6 +96,6 @@ foreach key(registry_enum_keys(key:"SOFTWARE\WOW6432Node\Microsoft\Windows\Curre
   register_and_report_cpe(app:"NoMachine for Windows" , ver:version, concluded:concluded,
                           base:"cpe:/a:nomachine:nomachine:", expr:"^([0-9.]+)", insloc:location);
   exit(0);
+  }
 }
-
 exit(0);

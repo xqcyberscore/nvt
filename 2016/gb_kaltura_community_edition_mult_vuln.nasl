@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaltura_community_edition_mult_vuln.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_kaltura_community_edition_mult_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Kaltura Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:kaltura:kaltura";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807700");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-18 12:26:14 +0530 (Fri, 18 Mar 2016)");
   script_name("Kaltura Multiple Vulnerabilities");
 
@@ -64,9 +64,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39563/");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40404/");
-  script_xref(name:"URL" , value:"http://www.security-assessment.com/files/documents/advisory/Kaltura-Multiple-Vulns.pdf");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39563/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40404/");
+  script_xref(name:"URL", value:"http://www.security-assessment.com/files/documents/advisory/Kaltura-Multiple-Vulns.pdf");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

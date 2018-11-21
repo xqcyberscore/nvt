@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serverscheck_monitoring_detect_win.nasl 12430 2018-11-20 07:03:47Z cfischer $
+# $Id: gb_serverscheck_monitoring_detect_win.nasl 12452 2018-11-21 08:24:42Z mmartin $
 #
 # ServersCheck Monitoring Software Version Detection (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107365");
-  script_version("$Revision: 12430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 08:03:47 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 12452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 09:24:42 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-10 14:45:11 +0100 (Sat, 10 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"This script detects the installed version
@@ -52,20 +52,31 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
+include("version_func.inc");
 
-foreach key(registry_enum_keys(key:"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall")){
+os_arch = get_kb_item("SMB/Windows/Arch");
+if (!os_arch)
+  exit(0);
 
-  key = "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" + key;
-  if(!registry_key_exists(key:key)) continue;
+if ("x86" >< os_arch) {
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+} else if ("x64" >< os_arch) {
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
+}
+
+if (isnull(key_list)) exit(0);
+
+foreach key (key_list) {
+  foreach item (registry_enum_keys(key:key)) {
 
   # ServersCheck Monitoring Software 14.3.2
-  appName = registry_get_sz(key:key, item:"DisplayName");
-  if(!appName || appName !~ "ServersCheck Monitoring Software") continue;
-
+  appName = registry_get_sz(key:key + item, item:"DisplayName");
   version = "unknown";
   location = "unknown";
 
-  loc = registry_get_sz(key:key, item:"InstallLocation");
+  if(!appName || appName !~ "ServersCheck Monitoring Software") continue;
+  loc = registry_get_sz(key:key + item, item:"InstallLocation");
   if(loc) location = loc;
 
   ver = eregmatch(string:appName, pattern:"([0-9]+\.[0-9]+\.[0-9])$" );
@@ -78,6 +89,6 @@ foreach key(registry_enum_keys(key:"SOFTWARE\WOW6432Node\Microsoft\Windows\Curre
   register_and_report_cpe(app:"ServersCheck Monitoring Software", ver:version, concluded:appName,
                           base:"cpe:/a:serverscheck:monitoring_software:", expr:"^([0-9.]+)", insloc:location);
   exit(0);
+  }
 }
-
 exit(0);

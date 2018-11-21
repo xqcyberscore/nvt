@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160916-ikev1.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160916-ikev1.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6415");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 12431 $");
 
   script_name("Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb29204");
   script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb36055");
 
-  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution", value:"The vendor has released updates, please see the referenced vendor advisory for more information on the fixed versions.");
 
@@ -59,14 +59,14 @@ which could lead to the disclosure of confidential information.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-19 09:23:33 +0700 (Mon, 19 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_ios_xr_version.nasl");
   script_mandatory_keys("cisco/ios_xr/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

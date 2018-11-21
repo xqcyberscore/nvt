@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-068.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms07-068.nasl 12437 2018-11-20 12:21:11Z santu $
 #
 # Vulnerability in Windows Media File Format Could Allow Remote Code Execution
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801708");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12437 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:21:11 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 07:39:17 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -120,20 +120,8 @@ if(dllVer)
       }
       security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
-  }
-}
 
-dllPath = smb_get_system32root();
-if(!dllPath){
-   exit(0);
-}
-
-dllVer = fetch_file_version(sysPath:dllPath, file_name:"wmasf.dll");
-if(dllVer)
-{
-  if(hotfix_missing(name:"941569") == 1)
-  {
-    if(hotfix_check_sp(winVista:2) > 0)
+    else if(hotfix_check_sp(winVista:2) > 0)
     {
       SP = get_kb_item("SMB/WinVista/ServicePack");
       if("Service Pack 1" >< SP)
@@ -144,31 +132,27 @@ if(dllVer)
          exit(0);
       }
     }
-  }
-}
-
-if(hotfix_missing(name:"944275") == 1)
-{
-  if(hotfix_check_sp(win2003:3) > 0)
-  {
-    dllVer = fetch_file_version(sysPath:sysPath, file_name:"windows media\server\Wmsserver.dll");
-
-    if(dllVer != NULL)
+    else if(hotfix_check_sp(win2003:3) > 0)
     {
-      SP = get_kb_item("SMB/Win2003/ServicePack");
-      if("Service Pack 1" >< SP)
+      dllVer = fetch_file_version(sysPath:sysPath, file_name:"windows media\server\Wmsserver.dll");
+
+      if(dllVer != NULL)
       {
-        if(version_is_less(version:dllVer, test_version:"9.1.1.3843")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
+        SP = get_kb_item("SMB/Win2003/ServicePack");
+        if("Service Pack 1" >< SP)
+        {
+          if(version_is_less(version:dllVer, test_version:"9.1.1.3843")){
+            security_message( port: 0, data: "The target host was found to be vulnerable" );
+          }
         }
-      }
-      else if("Service Pack 2" >< SP)
-      {
-        if(version_is_less(version:dllVer, test_version:"9.1.1.3861")){
-          security_message( port: 0, data: "The target host was found to be vulnerable" );
+        else if("Service Pack 2" >< SP)
+        {
+          if(version_is_less(version:dllVer, test_version:"9.1.1.3861")){
+            security_message( port: 0, data: "The target host was found to be vulnerable" );
+          }
         }
+        else security_message( port: 0, data: "The target host was found to be vulnerable" );
       }
-      else security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

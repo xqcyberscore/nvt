@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12265 2018-11-08 15:57:01Z cfischer $
+# $Id: host_details.inc 12435 2018-11-20 11:07:28Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12265 $
+# $Revision: 12435 $
 #
 ###############################################################################
 
@@ -126,6 +126,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -219,6 +220,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.810234", # gb_dlink_dap_detect.nasl
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl

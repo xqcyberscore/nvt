@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_37a27807e0_hylafax+_fc28.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_fedora_2018_37a27807e0_hylafax+_fc28.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # Fedora Update for hylafax+ FEDORA-2018-37a27807e0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875110");
-  script_version("$Revision: 11698 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_version("$Revision: 12447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 13:35:07 +0200 (Fri, 28 Sep 2018)");
   script_cve_id("CVE-2018-17141");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for hylafax+ FEDORA-2018-37a27807e0");
   script_tag(name:"summary", value:"Check the version of hylafax+");

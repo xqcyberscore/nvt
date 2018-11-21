@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_joomdoc_path_disc_vuln.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
+# $Id: gb_joomla_com_joomdoc_path_disc_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Joomla Joomdoc Extension Path Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808230");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 12431 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-20 16:50:11 +0530 (Mon, 20 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
 
@@ -53,8 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Joomdoc component version 4.0.3");
 
-  script_tag(name:"solution", value:"Update to version 4.0.4 or later.
-  For updates refer to http://extensions.joomla.org/extension/joomdoc");
+  script_tag(name:"solution", value:"Update to version 4.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extension/joomdoc");
   exit(0);
 }
 

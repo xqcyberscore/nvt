@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_mult_vuln01_oct16_win.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_ruby_on_rails_mult_vuln01_oct16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809356");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0752", "CVE-2016-0751", "CVE-2015-7576");
   script_bugtraq_id(81801, 81800, 81803);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-17 18:48:40 +0530 (Mon, 17 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Windows)");
@@ -68,7 +68,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"http://www.openwall.com/lists/oss-security/2016/01/25/10");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/01/25/10");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

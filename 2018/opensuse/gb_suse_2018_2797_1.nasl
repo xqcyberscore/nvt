@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2797_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2018_2797_1.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # SuSE Update for hylafax+ openSUSE-SU-2018:2797-1 (hylafax+)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851901");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12447 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-22 07:44:07 +0200 (Sat, 22 Sep 2018)");
   script_cve_id("CVE-2018-17141");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for hylafax+ openSUSE-SU-2018:2797-1 (hylafax+)");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'hylafax+'

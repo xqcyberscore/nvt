@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_free_anti_buffer_overflow_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_avast_free_anti_buffer_overflow_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Avast Free Antivirus Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808058");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:38:44 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Free Antivirus Heap-Based Buffer Overflow Vulnerability");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name:"URL" , value:"http://seclists.org/fulldisclosure/2016/Feb/94");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/94");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");

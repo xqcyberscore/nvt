@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_ts_security_bypass_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_kaspersky_ts_security_bypass_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Kaspersky Total Security Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:kaspersky:total_security_2015";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806854");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2015-8579");
   script_bugtraq_id(78815);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 10:20:32 +0530 (Thu, 04 Feb 2016)");
   script_name("Kaspersky Total Security Security Bypass Vulnerability");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name:"URL" , value:"http://blog.ensilo.com/the-av-vulnerability-that-bypasses-mitigations");
+  script_xref(name:"URL", value:"http://blog.ensilo.com/the-av-vulnerability-that-bypasses-mitigations");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

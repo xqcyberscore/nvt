@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_crlf_vuln01_feb16.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_ibm_websphere_crlf_vuln01_feb16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # IBM Websphere Apllication Server CRLF Injection Vulnerability Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806883");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2015-2017");
   script_bugtraq_id(78457);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:31 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server CRLF Injection Vulnerability Feb16");
@@ -62,7 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"http://www-01.ibm.com/support/docview.wss?uid=swg21966837");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21966837");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink-dir815_mult_vuln_2.nasl 10535 2018-07-18 06:44:49Z asteins $
+# $Id: gb_dlink-dir815_mult_vuln_2.nasl 12444 2018-11-20 14:49:48Z cfischer $
 #
 # D-Link DIR-815 Rev.B Multiple Vulnerabilities
 #
@@ -25,62 +25,66 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+OS_CPE = "cpe:/o:d-link:dir-815_firmware";
+HW_CPE = "cpe:/h:d-link:dir-815";
+
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112258");
-  script_version("$Revision: 10535 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 08:44:49 +0200 (Wed, 18 Jul 2018) $");
+  script_version("$Revision: 12444 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:49:48 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 10:05:29 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
   script_cve_id("CVE-2018-10106", "CVE-2018-10107", "CVE-2018-10108");
-
   script_name("D-Link DIR-815 Rev.B Multiple Vulnerabilities");
-
   script_category(ACT_GATHER_INFO);
-
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dlink_dir_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dir", "dlink_hw_version");
+  script_mandatory_keys("Host/is_dlink_dir_device", "d-link/dir/hw_version");
+
+  script_xref(name:"URL", value:"https://github.com/iceMatcha/Some-Vulnerabilities-of-D-link-Dir815/blob/master/Vulnerabilities_Summary.md");
 
   script_tag(name:"summary", value:"D-Link Router DIR-815 Rev.B is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"The script checks if the target is an affected device running a vulnerable firmware version.");
+
   script_tag(name:"insight", value:"The following vulnerabilities exist:
 
   - It is possible for a remote attacker to bypass access restrictions and obtain important information. (CVE-2018-10106)
 
   - An attacker can use the XSS to target which is an authenticated user in order to steal the authentication cookies. (CVE-2018-10107, CVE-2018-10108)");
-  script_tag(name:"affected", value:"D-Link DIR-815 Rev.B up to and including version 2.07.B01");
-  script_tag(name:"solution", value:"No known solution is available as of 18th July, 2018. Information regarding this issue will be updated once solution details are available.");
 
-  script_xref(name:"URL", value:"https://github.com/iceMatcha/Some-Vulnerabilities-of-D-link-Dir815/blob/master/Vulnerabilities_Summary.md");
+  script_tag(name:"affected", value:"D-Link DIR-815 Rev.B up to and including version 2.07.B01");
+
+  script_tag(name:"solution", value:"No known solution is available as of 20th November, 2018. Information regarding this issue will be updated once solution details are available.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "version_func.inc" );
+include("version_func.inc");
+include("host_details.inc");
 
-cpe = "cpe:/o:d-link:dir-815_firmware";
-
-if (!port = get_app_port(cpe:cpe))
+if (!port = get_app_port(cpe: OS_CPE))
   exit(0);
 
-if (!version = get_app_version(cpe:cpe, port:port))
+# cpe:/o:d-link:dir-815_firmware:2.06
+if (!fw_ver = get_app_version(cpe: OS_CPE, port: port))
   exit(0);
 
-if (get_kb_item("dlink_hw_version") !~ "^B")
+# cpe:/h:d-link:dir-815:b1
+if (!hw_ver = get_app_version(cpe: HW_CPE, port: port))
   exit(0);
 
-if (version_is_less_equal(version:version, test_version:"2.07")) {
-  report = report_fixed_ver(installed_version:version, fixed_version:"None Available");
-  security_message(data:report, port:port);
+hw_ver = toupper(hw_ver);
+
+if (hw_ver =~ "^B" && version_is_less_equal(version: fw_ver, test_version: "2.07")) {
+  report = report_fixed_ver(installed_version: fw_ver, fixed_version: "None Available", extra: "Hardware revision: " + hw_ver);
+  security_message(data: report, port: port);
   exit(0);
 }
 

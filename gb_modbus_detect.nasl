@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_modbus_detect.nasl 12438 2018-11-20 12:47:19Z cfischer $
 #
 # Modbus Detection
 #
@@ -29,8 +29,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106522");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12438 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 13:47:19 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,7 +93,7 @@ for (i=0; i<3; i++) {
                         0x2B,           # Function Code (Read Device Identification)
                         0x0E,           # MEI Type: (Read Device Identification)
                         0x01,           # Object ID (0x01: Basic, 0x02: Regular, 0x03: Extended)
-                                        # some devices do not responde properly for regular and extended requests
+                                        # some devices do not response properly for regular and extended requests
                         0x00);          # Vendor ID
 
   send(socket: sock, data: req_info, length:strlen(req_info));

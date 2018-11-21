@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4292.nasl 11342 2018-09-12 06:02:53Z cfischer $
+# $Id: deb_4292.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4292-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704292");
-  script_version("$Revision: 11342 $");
+  script_version("$Revision: 12447 $");
   script_cve_id("CVE-2018-16657");
   script_name("Debian Security Advisory DSA 4292-1 (kamailio - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:02:53 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 00:00:00 +0200 (Tue, 11 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

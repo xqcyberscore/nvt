@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_onenote_ms16-099.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_ms_onenote_ms16-099.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft OneNote Information Disclosure Vulnerability (3177451)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807871");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-3315");
   script_bugtraq_id(92294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 10:27:21 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote Information Disclosure Vulnerability (3177451)");
@@ -64,11 +64,11 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3114456");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3114885");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3115256");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3115419");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-099");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114456");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114885");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115256");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115419");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_devices_mult_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_avtech_devices_mult_vuln.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # AVTECH Devices Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:avtech:avtech_device";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809067");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 12431 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("AVTECH Devices Multiple Vulnerabilities");
@@ -78,22 +78,20 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary system commands with root privileges, to bypass
-  authentication, to access sensitive information and to conduct MITM attack.
-
-  Impact Level: Application");
+  authentication, to access sensitive information and to conduct MITM attack.");
 
   script_tag(name:"affected", value:"Avtech device (IP camera, NVR, DVR) with
-  firmware version as mentioned in the following link,
-  http://www.search-lab.hu/media/vulnerability_matrix.txt.");
+  firmware version as mentioned in the referenced links.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40500");
   script_xref(name:"URL", value:"https://github.com/Trietptm-on-Security/AVTECH");
   script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+  script_xref(name:"URL", value:"http://www.search-lab.hu/media/vulnerability_matrix.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

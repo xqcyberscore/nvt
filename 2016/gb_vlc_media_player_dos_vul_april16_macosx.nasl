@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vul_april16_macosx.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_vlc_media_player_dos_vul_april16_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # VLC Media Player Denial of Service Vulnerability April-16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807931");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-3941");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 11:38:23 +0530 (Tue, 26 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player Denial of Service Vulnerability April-16 (Mac OS X)");
@@ -58,9 +58,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"http://www.securitytracker.com/id/1035456");
-  script_xref(name:"URL" , value:"https://bugs.launchpad.net/ubuntu/+source/vlc/+bug/1533633");
-  script_xref(name:"URL" , value:"https://security-tracker.debian.org/tracker/CVE-2016-3941");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1035456");
+  script_xref(name:"URL", value:"https://bugs.launchpad.net/ubuntu/+source/vlc/+bug/1533633");
+  script_xref(name:"URL", value:"https://security-tracker.debian.org/tracker/CVE-2016-3941");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

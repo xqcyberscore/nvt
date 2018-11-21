@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_apsb18-34_win.nasl 11505 2018-09-20 13:03:00Z santu $
+# $Id: gb_adobe_acrobat_dc_cont_apsb18-34_win.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
 #
 # Adobe Acrobat DC (Continuous Track) Security Updates(apsb18-34)-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_dc_continuous";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814027");
-  script_version("$Revision: 11505 $");
+  script_version("$Revision: 12447 $");
   script_cve_id("CVE-2018-12848", "CVE-2018-12849", "CVE-2018-12850", "CVE-2018-12801",
                 "CVE-2018-12840", "CVE-2018-12778", "CVE-2018-12775");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:03:00 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 10:19:20 +0530 (Thu, 20 Sep 2018)");
   script_name("Adobe Acrobat DC (Continuous Track) Security Updates(apsb18-34)-Windows");
 

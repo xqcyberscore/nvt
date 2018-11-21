@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_mult_vuln2.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_splunk_enterprise_mult_vuln2.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Splunk Enterprise Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106471");
-  script_version("$Revision: 11607 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if (description)
 
   script_tag(name:"summary", value:"Splunk Enterprise is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Splunk Enterprise is prone to multiple Vulnerabilities in Python
 (CVE-2016-5636, CVE-2016-5699, CVE-2016-0772)");

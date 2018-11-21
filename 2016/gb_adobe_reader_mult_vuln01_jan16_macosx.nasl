@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_jan16_macosx.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_adobe_reader_mult_vuln01_jan16_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 January16 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806821");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934",
 		"CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938",
 		"CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942",
@@ -37,7 +37,7 @@ if(description)
 		"CVE-2016-0947", "CVE-2016-1111");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:04:08 +0530 (Mon, 18 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 January16 (Mac OS X)");
@@ -73,7 +73,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://helpx.adobe.com/security/products/acrobat/apsb16-02.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-02.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

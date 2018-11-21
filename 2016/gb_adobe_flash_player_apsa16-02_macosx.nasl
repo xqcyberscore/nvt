@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsa16-02_macosx.nasl 12363 2018-11-15 09:51:15Z asteins $
+# $Id: gb_adobe_flash_player_apsa16-02_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Adobe Flash Player Security Updates( apsa16-02 )-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807699");
-  script_version("$Revision: 12363 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
 		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
 		"CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
@@ -40,7 +40,7 @@ if(description)
         "CVE-2016-4161", "CVE-2016-4162", "CVE-2016-4163");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:51:15 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 15:58:15 +0530 (Thu, 12 May 2016)");
   script_name("Adobe Flash Player Security Updates( apsa16-02 )-MAC OS X");
 
@@ -75,8 +75,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL" , value:"https://helpx.adobe.com/security/products/flash-player/apsa16-02.html");
-  script_xref(name:"URL" , value:"https://helpx.adobe.com/security/products/flash-player/apsb16-15.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsa16-02.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb16-15.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

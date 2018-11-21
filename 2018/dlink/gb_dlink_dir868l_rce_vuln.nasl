@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir868l_rce_vuln.nasl 12116 2018-10-26 10:01:35Z mmartin $
+# $Id: gb_dlink_dir868l_rce_vuln.nasl 12444 2018-11-20 14:49:48Z cfischer $
 #
 # D-Link DIR-868L StarHub Firmware Remote Code Execution Vulnerability
 #
@@ -28,26 +28,21 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112252");
-  script_version("$Revision: 12116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 12:01:35 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12444 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 15:49:48 +0100 (Tue, 20 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-09 12:25:00 +0200 (Mon, 09 Apr 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
   script_cve_id("CVE-2018-9284");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
   script_name("D-Link DIR-868L StarHub Firmware Remote Code Execution Vulnerability");
-
   script_category(ACT_GATHER_INFO);
-
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dlink_dir_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dir", "dlink_fw_version");
+  script_mandatory_keys("Host/is_dlink_dir_device", "d-link/dir/hw_version");
+
+  script_xref(name:"URL", value:"http://www.dlink.com.sg/dir-868l/#firmware");
+  script_xref(name:"URL", value:"https://www.fortinet.com/blog/threat-research/fortiguard-labs-discovers-vulnerability-in--d-link-router-dir868.html");
 
   script_tag(name:"summary", value:"D-Link DIR-868L devices are prone to a pre-authenticated remote code execution vulnerability.");
 
@@ -61,8 +56,8 @@ if (description)
 
   script_tag(name:"solution", value:"Upgrade to version 1.21SHCb03 or later.");
 
-  script_xref(name:"URL", value:"http://www.dlink.com.sg/dir-868l/#firmware");
-  script_xref(name:"URL", value:"https://www.fortinet.com/blog/threat-research/fortiguard-labs-discovers-vulnerability-in--d-link-router-dir868.html");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

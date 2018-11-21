@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_jan16_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln01_jan16_lin.nasl 12448 2018-11-21 06:40:12Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jan 2016 (Linux)
 #
@@ -29,48 +29,44 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108393");
-  script_version("$Revision: 9064 $");
+  script_version("$Revision: 12448 $");
   script_cve_id("CVE-2016-0494", "CVE-2015-8126", "CVE-2016-0483", "CVE-2016-0402",
                 "CVE-2016-0466", "CVE-2016-0448", "CVE-2015-7575");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 07:40:12 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:01:36 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jan 2016 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   JRE and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple
   unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to have an impact on confidentiality, integrity, and availability via unknown
-  vectors.
+  vectors.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 105, 7 update 91,
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 105, 7 update 91,
   8 update 66 and prior on Linux.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_lin.nasl");
   script_mandatory_keys("Sun/Java/JRE/Linux/Ver");
+
   exit(0);
 }
 

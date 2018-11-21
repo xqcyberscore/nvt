@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_cache_poisoning_vuln_may16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_squid_cache_poisoning_vuln_may16_win.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Squid Cache Poisoning Vulnerability May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808040");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-4554");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 11:31:11 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Cache Poisoning Vulnerability May16 (Windows)");
@@ -41,32 +41,28 @@ if(description)
   script_tag(name:"summary", value:"This host is running Squid and is prone
   to cache poisoning vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an incorrect input
   validation in HTTP Request processing.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
   attackers to cause cache poisoning and to bypass of same-origin security
-  policy. 
+  policy.");
 
-  Impact Level: Application");
- 
   script_tag(name:"affected", value:"Squid version prior to 3.5.18 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Squid version 3.5.18 or later.
-  For updates refer to http://www.squid-cache.org");
+  script_tag(name:"solution", value:"Upgrade to Squid version 3.5.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2016_8.txt");
-  
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2016_8.txt");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_squid_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("squid_proxy_server/installed","Host/runs_windows");
+  script_mandatory_keys("squid_proxy_server/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3128, 8080);
   exit(0);
 }
@@ -74,16 +70,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-squidPort = "";
-squidVer = "";
-
-## Get HTTP Port
 if(!squidPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!squidVer = get_app_version(cpe:CPE, port:squidPort)){
   exit(0);
 }
@@ -93,4 +83,4 @@ if(version_is_less(version:squidVer, test_version:"3.5.18"))
   report = report_fixed_ver(installed_version:squidVer, fixed_version:"3.5.18");
   security_message(data:report, port:squidPort);
   exit(0);
-} 
+}

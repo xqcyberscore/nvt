@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nbox_mult_vuln_oct16.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_nbox_mult_vuln_oct16.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # NBOX Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ntop:nbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809083");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 18:01:01 +0530 (Thu, 03 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NBOX Multiple Vulnerabilities");
@@ -62,9 +62,9 @@ if(description)
   script_tag(name:"solution", value:"Patches are available to fix these vulnerabilities, please contact the vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/40201");
-  script_xref(name:"URL" , value:"http://carnal0wnage.attackresearch.com/2016/08/got-any-rces.html");
-  script_xref(name:"URL" , value:"https://github.com/javuto/nbox-pwnage/issues/1");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40201");
+  script_xref(name:"URL", value:"http://carnal0wnage.attackresearch.com/2016/08/got-any-rces.html");
+  script_xref(name:"URL", value:"https://github.com/javuto/nbox-pwnage/issues/1");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-054_macosx.nasl 12383 2018-11-16 12:41:42Z cfischer $
+# $Id: gb_ms16-054_macosx.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability-3155544(Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807328");
-  script_version("$Revision: 12383 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-0198");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 13:41:42 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 16:02:03 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability-3155544(Mac OS X)");
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-in/kb/3155777");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-054");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3155777");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-054");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-113.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: gb_ms16-113.nasl 12455 2018-11-21 09:17:27Z cfischer $
 #
 # Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3185876)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809311");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12455 $");
   script_cve_id("CVE-2016-3344");
   script_bugtraq_id(92855);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:50:02 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secure Kernel Mode Information Disclosure Vulnerability (3185876)");
@@ -56,9 +56,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3185611");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/kb/3185614");
-  script_xref(name:"URL" , value:"https://technet.microsoft.com/library/security/MS16-113");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3185611");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3185614");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-113");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

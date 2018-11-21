@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160420-htrd.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_wlc_cisco-sa-20160420-htrd.nasl 12431 2018-11-20 09:21:00Z asteins $
 #
 # Cisco Wireless LAN Controller HTTP Parsing Denial of Service Vulnerability
 #
@@ -27,37 +27,37 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105740");
- script_cve_id("CVE-2016-1363");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5580 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-06-01 11:04:39 +0200 (Wed, 01 Jun 2016)");
- script_name("Cisco Wireless LAN Controller HTTP Parsing Denial of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.105740");
+  script_cve_id("CVE-2016-1363");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 12431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-20 10:21:00 +0100 (Tue, 20 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-01 11:04:39 +0200 (Wed, 01 Jun 2016)");
+  script_name("Cisco Wireless LAN Controller HTTP Parsing Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-htrd");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-htrd");
 
- script_tag(name: "summary" , value: "A vulnerability in the HTTP URL redirect feature of Cisco Wireless LAN Controller (WLC) Software could allow an unauthenticated, remote attacker to cause a buffer overflow condition on an affected device, resulting in a denial of service (DoS) condition.");
- script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to cause a buffer overflow condition on the device, which could allow the attacker to cause the device to reload, resulting in a DoS condition, or execute arbitrary code on the device.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available");
- script_tag(name: "affected" , value:"All 7.2 releases
+  script_tag(name:"summary", value:"A vulnerability in the HTTP URL redirect feature of Cisco Wireless LAN Controller (WLC) Software could allow an unauthenticated, remote attacker to cause a buffer overflow condition on an affected device, resulting in a denial of service (DoS) condition.");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to cause a buffer overflow condition on the device, which could allow the attacker to cause the device to reload, resulting in a DoS condition, or execute arbitrary code on the device.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"affected", value:"All 7.2 releases
 All 7.3 releases
 All 7.4 releases prior to 7.4.140.0(MD)
 All 7.5 releases
 All 7.6 releases
 All 8.0 releases prior to 8.0.115.0(ED)");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version");
+  exit(0);
 }
 
 
