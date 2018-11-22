@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_secadv_20181030_lin.nasl 12181 2018-11-01 09:23:46Z asteins $
+# $Id: gb_openssl_secadv_20181030_lin.nasl 12475 2018-11-22 07:07:07Z cfischer $
 #
-# Timing vulnerability in DSA signature generation (CVE-2018-0734) (Linux)
+# OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734) (Linux)
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112411");
-  script_version("$Revision: 12181 $");
+  script_version("$Revision: 12475 $");
   script_cve_id("CVE-2018-0734");
   script_bugtraq_id(105758);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-01 10:23:46 +0100 (Thu, 01 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:07:07 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-01 10:16:23 +0100 (Thu, 01 Nov 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("Timing vulnerability in DSA signature generation (CVE-2018-0734) (Linux)");
+  script_name("OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734) (Linux)");
 
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to an information disclosure vulnerability.");
@@ -73,7 +73,7 @@ CPE = "cpe:/a:openssl:openssl";
 include("host_details.inc");
 include("version_func.inc");
 
-if(!port = get_app_port(cpe:CPE)) exit(0);
+if(isnull(port = get_app_port(cpe:CPE))) exit(0);
 if(!infos = get_app_version_and_location(cpe:CPE, port:port, exit_no_version:TRUE)) exit(0);
 
 vers = infos['version'];

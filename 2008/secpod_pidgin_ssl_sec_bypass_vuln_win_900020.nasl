@@ -1,7 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_ssl_sec_bypass_vuln_win_900020.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Windows)
+# $Id: secpod_pidgin_ssl_sec_bypass_vuln_win_900020.nasl 12460 2018-11-21 10:47:35Z cfischer $
+#
+# Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Windows)
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -23,58 +24,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Man-in-the-middle attacks or identity impersonation attacks are possible.
- Impact Level : Network";
-
-tag_solution = "Apply the patch from,
- http://developer.pidgin.im/attachment/ticket/6500/nss-cert-verify.patc h";
-
-
-tag_summary = "The host is running Pidgin, which is prone to Security Bypass
- Vulnerability";
-
-tag_affected = "Pidgin Version 2.4.3 and prior on Windows (All).";
-tag_insight = "The application fails to properly validate SSL (Secure Sockets Layer) 
-        certificate from a server.";
-
+CPE = "cpe:/a:pidgin:pidgin";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.900020");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
- script_cve_id("CVE-2008-3532");
- script_bugtraq_id(30553);
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.900020");
+  script_version("$Revision: 12460 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:47:35 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
+  script_cve_id("CVE-2008-3532");
+  script_bugtraq_id(30553);
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_name("Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Windows)");
+  script_dependencies("secpod_pidgin_detect_win.nasl");
+  script_mandatory_keys("Pidgin/Win/Ver");
+
+  script_xref(name:"URL", value:"http://developer.pidgin.im/ticket/6500");
+  script_xref(name:"URL", value:"http://developer.pidgin.im/attachment/ticket/6500/nss-cert-verify.patch");
+
+  script_tag(name:"affected", value:"Pidgin Version 2.4.3 and prior on Windows (All).");
+
+  script_tag(name:"insight", value:"The application fails to properly validate SSL (Secure Sockets Layer)
+  certificate from a server.");
+
+  script_tag(name:"summary", value:"The host is running Pidgin, which is prone to a Security Bypass
+  Vulnerability");
+
+  script_tag(name:"solution", value:"Apply the patch linked in the references.");
+
+  script_tag(name:"impact", value:"Man-in-the-middle attacks or identity impersonation attacks are possible.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
- script_family("General");
- script_name("Pidgin NSS plugin SSL Certificate Validation Security Bypass Vulnerability (Windows)");
- script_dependencies("secpod_reg_enum.nasl");
- script_mandatory_keys("SMB/WindowsVersion");
- script_require_ports(139, 445);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "impact" , value : tag_impact);
- script_xref(name : "URL" , value : "http://developer.pidgin.im/ticket/6500 ");
- exit(0);
+
+  exit(0);
 }
 
+include("host_details.inc");
+include("version_func.inc");
 
- include("smb_nt.inc");
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+vers = infos['version'];
+path = infos['location'];
 
- if(!get_kb_item("SMB/WindowsVersion")){
-        exit(0);
- }
+if( egrep( pattern:"^([01]\..*|2\.([0-3](\..*)?|4(\.[0-3])?))$", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  security_message( port:0, data:report );
+}
 
- pidginVer = registry_get_sz(item:"DisplayVersion",
-	     key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Pidgin");
-
- if(egrep(pattern:"^([01]\..*|2\.([0-3](\..*)?|4(\.[0-3])?))$", string:pidginVer)){
- 	security_message(0);
- }
+exit( 0 );

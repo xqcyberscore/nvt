@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807967");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2016-0667", "CVE-2016-0662", "CVE-2016-0659", "CVE-2016-0657",
                 "CVE-2016-3440");
   script_bugtraq_id(91910, 86484, 86506, 86493, 86433);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-05 10:30:32 +0530 (Thu, 05 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-03 May16 (Linux)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL Server 5.7.11 and earlier
   on Linux");
 
-  script_tag(name:"solution", value:"Apply the patches from the referenced advisories. ");
+  script_tag(name:"solution", value:"Apply the patches from the referenced advisories.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+
   exit(0);
 }
 

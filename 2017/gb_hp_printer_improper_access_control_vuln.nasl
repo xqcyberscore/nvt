@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_improper_access_control_vuln.nasl 11919 2018-10-16 09:49:19Z mmartin $
+# $Id: gb_hp_printer_improper_access_control_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # HP Printer Wi-Fi Direct Improper Access Control Vulnerability
 #
@@ -27,12 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807397");
-  script_version("$Revision: 11919 $");
+  script_version("$Revision: 12467 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 11:49:19 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 12:24:12 +0530 (Tue, 14 Feb 2017)");
   script_name("HP Printer Wi-Fi Direct Improper Access Control Vulnerability");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_hp_printer_detect.nasl");
+  script_mandatory_keys("hp_printer/installed", "target_is_printer");
+  script_require_ports("Services/www", 80);
+
+  script_xref(name:"URL", value:"http://neseso.com/advisories/NESESO-2017-0111.pdf");
+  script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2017020027");
+  script_xref(name:"URL", value:"http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04577030");
+  script_xref(name:"URL", value:"http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04090221");
+  script_xref(name:"URL", value:"http://007software.net/hp-printers-wi-fi-direct-improper-access-control");
 
   script_tag(name:"summary", value:"This host is running HP Printer and is
   prone to improper access control vulnerability.");
@@ -52,26 +64,16 @@ if(description)
   not intended to be shared with them.");
 
   script_tag(name:"affected", value:"HP OfficeJet Pro 8710 firmware version WBP2CN1619BR
+
   HP OfficeJet Pro 8620 firmware version FDP1CN1547AR");
 
   script_tag(name:"solution", value:"Apply the some mitigation actions:
   Disable Wi-Fi Direct functionality to protect your device.
   Enable Password Settings on the Embedded Web Server.");
 
-  script_xref(name:"URL", value:"http://neseso.com/advisories/NESESO-2017-0111.pdf");
-  script_xref(name:"URL", value:"https://cxsecurity.com/issue/WLB-2017020027");
-  script_xref(name:"URL", value:"http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04577030");
-  script_xref(name:"URL", value:"http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04090221");
-  script_xref(name:"URL", value:"http://007software.net/hp-printers-wi-fi-direct-improper-access-control");
-
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"exploit");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_hp_printer_detect.nasl");
-  script_mandatory_keys("hp_printer/installed", "target_is_printer");
-  script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -79,10 +81,6 @@ include("version_func.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-hpPort = "";
-fw_ver = "";
-model = "";
 
 hpPort = get_kb_item("hp_printer/port");
 if(!hpPort){

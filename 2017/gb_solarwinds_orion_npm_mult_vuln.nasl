@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_orion_npm_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_solarwinds_orion_npm_mult_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # SolarWinds Orion NPM Multiple Vulnerabilities
 #
@@ -29,14 +29,24 @@ CPE = "cpe:/a:solarwinds:orion_network_performance_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812219");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2017-9538", "CVE-2017-9537", "CVE-2017-9539");
   script_bugtraq_id(101066, 101071);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 11:43:13 +0530 (Tue, 21 Nov 2017)");
   script_name("SolarWinds Orion NPM Multiple Vulnerabilities");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_orion_npm_detect.nasl");
+  script_mandatory_keys("orion_npm/installed");
+  script_require_ports("Services/www", 8787);
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/541263/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/541262/100/0/threaded");
+  script_xref(name:"URL", value:"https://support.solarwinds.com/Success_Center/Orion_Platform/Orion_Documentation/Orion_Platform_2017.3_Hotfix_1");
 
   script_tag(name:"summary", value:"This host is installed with SolarWinds Orion NPM
   and is prone to multiple vulnerabilities.");
@@ -65,24 +75,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/541263/100/0/threaded");
-  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/541262/100/0/threaded");
-  script_xref(name:"URL", value:"https://support.solarwinds.com/Success_Center/Orion_Platform/Orion_Documentation/Orion_Platform_2017.3_Hotfix_1");
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_orion_npm_detect.nasl");
-  script_mandatory_keys("orion_npm/installed");
-  script_require_ports("Services/www", 8787);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-npmPort = "";
-npmVer = "";
-npmPath = "";
 
 if(!npmPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -92,10 +90,9 @@ if(!infos = get_app_version_and_location(cpe:CPE, port:npmPort, exit_no_version:
 npmVer = infos['version'];
 npmPath = infos['location'];
 
-if(version_is_equal(version:npmVer, test_version:"12.0.15300.90"))
-{
+if(version_is_equal(version:npmVer, test_version:"12.0.15300.90")){
   report = report_fixed_ver(installed_version:npmVer, fixed_version:"Apply SolarWinds Orion Platform 2017.3 Hotfix 1", install_path:npmPath);
   security_message(port:npmPort, data:report);
-  exit(0);
 }
+
 exit(0);

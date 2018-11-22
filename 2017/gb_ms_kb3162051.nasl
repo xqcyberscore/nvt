@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3162051.nasl 11977 2018-10-19 07:28:56Z mmartin $
+# $Id: gb_ms_kb3162051.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (KB3162051)
 #
@@ -27,14 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811089");
-  script_version("$Revision: 11977 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 09:28:56 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:13:26 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (KB3162051)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_office_products_version_900032.nasl");
+  script_mandatory_keys("MS/Office/Ver");
+  script_require_ports(139, 445);
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3162051");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3162051");
@@ -57,13 +65,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3162051");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_office_products_version_900032.nasl");
-  script_mandatory_keys("MS/Office/Ver");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -72,23 +74,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-path = "";
-dllVer = "";
-offPath = "";
-offVer = "";
-
 offVer = get_kb_item("MS/Office/Ver");
-if(!offVer || !(offVer =~ "^15\.")){
+if(!offVer || offVer !~ "^15\."){
   exit(0);
 }
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"ProgramFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-## Path for Office.dll
 offPath = path + "\Microsoft Office\OFFICE15\DCF";
 
 dllVer = fetch_file_version(sysPath:offPath, file_name:"Office.dll");

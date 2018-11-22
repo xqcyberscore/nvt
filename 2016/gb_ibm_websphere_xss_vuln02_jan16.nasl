@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_xss_vuln02_jan16.nasl 11922 2018-10-16 10:24:25Z asteins $
+# $Id: gb_ibm_websphere_xss_vuln02_jan16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Cross Site Scripting Vulnerability -02 Jan16
+# IBM Websphere Application Cross Site Scripting Vulnerability -02 Jan16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806841");
-  script_version("$Revision: 11922 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2013-0597");
   script_bugtraq_id(60724);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-16 12:24:25 +0200 (Tue, 16 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 13:18:52 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Cross Site Scripting Vulnerability -02 Jan16");
+  script_name("IBM Websphere Application Cross Site Scripting Vulnerability -02 Jan16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to cross site scripting vulnerability.");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln03_jan16.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ibm_websphere_mult_vuln03_jan16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Server Multiple Vulnerabilities-03 Jan16
+# IBM Websphere Application Server Multiple Vulnerabilities-03 Jan16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,18 +29,18 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806825");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2012-4850", "CVE-2012-4851");
   script_bugtraq_id(56460, 56423);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:46:38 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-03 Jan16");
+  script_name("IBM Websphere Application Server Multiple Vulnerabilities-03 Jan16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
-  apllication server and is prone to multiple vulnerabilities.");
+  application server and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -48,17 +48,17 @@ if(description)
 
   - when JAX-RS is used, does not properly validate requests
 
-  - improper validation of the URI ");
+  - improper validation of the URI");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   A remote attacker to gain cross-site scripting attack, and eleveated privileges
   on the server caused by incorrect request validation.");
 
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
-  8.5 Liberty Profile before 8.5.0.1 ");
+  8.5 Liberty Profile before 8.5.0.1.");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) version 8.5.0.1 or later");
+  Server (WAS) version 8.5.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +71,7 @@ if(description)
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
   script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/appserv-was");
+
   exit(0);
 }
 

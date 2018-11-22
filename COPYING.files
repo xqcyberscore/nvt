@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 21 Nov 2018 10:39:43 +0100
+# Automatically created on:  Thu, 22 Nov 2018 08:18:20 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39702,6 +39702,9 @@
 2018/debian/deb_dla_1580.nasl: GPLv2+
 2018/debian/deb_dla_1581.nasl: GPLv2+
 2018/debian/deb_dla_1582.nasl: GPLv2+
+2018/debian/deb_dla_1583.nasl: GPLv2+
+2018/debian/deb_dla_1584.nasl: GPLv2+
+2018/debian/deb_dla_1585.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42046,6 +42049,8 @@
 2018/openssl/gb_openssl_secadv_20181029_win.nasl: GPLv2+
 2018/openssl/gb_openssl_secadv_20181030_lin.nasl: GPLv2+
 2018/openssl/gb_openssl_secadv_20181030_win.nasl: GPLv2+
+2018/openssl/gb_openssl_secadv_20181112_lin.nasl: GPLv2+
+2018/openssl/gb_openssl_secadv_20181112_win.nasl: GPLv2+
 2018/opensuse/gb_suse_2017_3434_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2017_3448_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_0013_1.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_mult_vuln_jan17_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_openssh_mult_vuln_jan17_lin.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # OpenSSH Multiple Vulnerabilities Jan17 (Linux)
 #
@@ -29,15 +29,27 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.8103256");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2016-10009", "CVE-2016-10010", "CVE-2016-10011", "CVE-2016-10012",
                 "CVE-2016-10708");
   script_bugtraq_id(94968, 94972, 94977, 94975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-06 11:19:51 +0530 (Fri, 06 Jan 2017)");
   script_name("OpenSSH Multiple Vulnerabilities Jan17 (Linux)");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_dependencies("ssh_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("openssh/detected", "Host/runs_unixoide");
+
+  script_xref(name:"URL", value:"http://www.openssh.com");
+  script_xref(name:"URL", value:"https://www.openssh.com/txt/release-7.4");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/12/19/2");
+  script_xref(name:"URL", value:"http://blog.swiecki.net/2018/01/fuzzing-tcp-servers.html");
+  script_xref(name:"URL", value:"https://anongit.mindrot.org/openssh.git/commit/?id=28652bca29046f62c7045e933e6b931de1d16737");
 
   script_tag(name:"summary", value:"This host is installed with openssh and
   is prone to multiple vulnerabilities.");
@@ -69,30 +81,13 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL", value:"https://www.openssh.com/txt/release-7.4");
-  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/12/19/2");
-  script_xref(name:"URL", value:"http://blog.swiecki.net/2018/01/fuzzing-tcp-servers.html");
-  script_xref(name:"URL", value:"https://anongit.mindrot.org/openssh.git/commit/?id=28652bca29046f62c7045e933e6b931de1d16737");
-
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("General");
-  script_dependencies("ssh_detect.nasl", "os_detection.nasl");
-  script_require_ports("Services/ssh", 22);
-  script_mandatory_keys("openssh/detected", "Host/runs_unixoide");
-  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
-
-
-sshPort = "";
-sshVer = "";
 
 if(!sshPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -102,8 +97,7 @@ if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
   exit(0);
 }
 
-if(version_is_less(version:sshVer, test_version:"7.4"))
-{
+if(version_is_less(version:sshVer, test_version:"7.4")){
   report = report_fixed_ver(installed_version:sshVer, fixed_version:'7.4');
   security_message(port:sshPort, data:report);
   exit(0);

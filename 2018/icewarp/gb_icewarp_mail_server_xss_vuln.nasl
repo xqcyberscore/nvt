@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_mail_server_xss_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_icewarp_mail_server_xss_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
 #
 # IceWarp Mail Server Cross Site Scripting Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813464");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12474 $");
   script_cve_id("CVE-2018-7475");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 15:17:55 +0530 (Wed, 04 Jul 2018)");
   script_name("IceWarp Mail Server Cross Site Scripting Vulnerability");
 
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"IceWarp Mail Server version 12.0.3");
 
   script_tag(name:"solution", value:"No known solution is available as
-  of 04th June, 2018. Information regarding this issue will be updated once
+  of 22nd November, 2018. Information regarding this issue will be updated once
   solution details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

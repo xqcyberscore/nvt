@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_openssl_info_disc_vuln_sep18_lin.nasl 12475 2018-11-22 07:07:07Z cfischer $
 #
-# OpenSSL Information Disclosure Vulnerability-Sep 2018 (Linux)
+# OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813794");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12475 $");
   script_cve_id("CVE-2016-7056");
   script_bugtraq_id(95375);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:07:07 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 11:57:47 +0530 (Tue, 11 Sep 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_name("OpenSSL Information Disclosure Vulnerability-Sep 2018 (Linux)");
+  script_name("OpenSSL: Information Disclosure Vulnerability (CVE-2016-7056) (Linux)");
 
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to an information disclosure vulnerability.");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"affected", value:"OpenSSL versions 1.0.1u and prior.");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0 or 1.0.2
-  or later. For updates refer to Reference links.");
+  or later. See the references for more details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,24 +71,25 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(!sslPort = get_app_port(cpe:CPE)){
+if(isnull(sslPort = get_app_port(cpe:CPE)))
   exit(0);
-}
 
-infos = get_app_version_and_location( cpe:CPE, port:sslPort, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location(cpe:CPE, port:sslPort, exit_no_version:TRUE))
+  exit(0);
+
 sslVer = infos['version'];
 sslPath = infos['location'];
 
-if(version_is_less_equal(version:sslVer, test_version:"1.0.1u"))
-{
+if(version_is_less_equal(version:sslVer, test_version:"1.0.1u")){
   report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.1.0 or 1.0.2", install_path:sslPath);
   security_message(data:report, port:sslPort);
-  exit(0);
 }
+
 exit(0);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_security_bypass_vuln_jan16.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ibm_websphere_security_bypass_vuln_jan16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Server Security Bypass Vulnerability Jan16
+# IBM Websphere Application Server Security Bypass Vulnerability Jan16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806844");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2013-0462");
   script_bugtraq_id(57513);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 17:51:20 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Security Bypass Vulnerability Jan16");
+  script_name("IBM Websphere Application Server Security Bypass Vulnerability Jan16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to security bypass vulnerability.");

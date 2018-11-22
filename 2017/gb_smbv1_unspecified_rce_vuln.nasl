@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_unspecified_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_smbv1_unspecified_rce_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # SMBv1 enabled
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810554");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12467 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-15 13:56:01 +0530 (Wed, 15 Feb 2017)");
   script_name("SMBv1 enabled.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -75,15 +75,10 @@ if(description)
 
 exit(66);
 
-report = "";
-
 if( get_kb_item( "smb_v1/enabled" ) ) {
-
   report = 'The Windows host is prone to an unspecified remote code execution vulnerability in the SMBv1 protocol:\n';
-
   if( get_kb_item( "smb_v1_server/enabled" ) ) report += '\n- SMBv1 is enabled for the SMB Server';
   if( get_kb_item( "smb_v1_client/enabled" ) ) report += '\n- SMBv1 is enabled for the SMB Client';
-
   log_message( port:0, data:report );
   exit( 0 );
 }

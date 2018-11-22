@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dvr_webgui_auth_bypass_vuln.nasl 12338 2018-11-13 14:51:17Z asteins $
+# $Id: sw_dvr_webgui_auth_bypass_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Multiple DVR Devices Authentication Bypass And Remote Code Execution Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111088");
-  script_version("$Revision: 12338 $");
+  script_version("$Revision: 12465 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 15:51:17 +0100 (Tue, 13 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-22 08:00:0 +0100 (Mon, 22 Feb 2016)");
   script_name("Multiple DVR Devices Authentication Bypass And Remote Code Execution Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -41,6 +41,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://www.pentestpartners.com/blog/pwning-cctv-cameras/");
+  script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+
   script_tag(name:"summary", value:"This host is running a Digital Video Recorder (DVR)
   device and is prone to authentication bypass and remote code execution vulnerabilities.
 
@@ -48,23 +51,23 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET method
   and check whether it is able to access admin panel of the device or execute remote commands.");
+
   script_tag(name:"insight", value:"The flaw is due to the device:
 
   - accepting access to the files /view2.html or /main.html if the two cookies 'dvr_usr'
   and 'dvr_pwd' have any value and the cookie 'dvr_camcnt' a value of 2, 4, 8 or 24.
 
   - providing an unauthenticated access to a web shell");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to:
 
   - gain access to the administration interface of the device and manipulate the device's settings
 
   - execute remote commands on the base system.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-
-  script_xref(name:"URL", value:"https://www.pentestpartners.com/blog/pwning-cctv-cameras/");
-  script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -72,11 +75,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 port = get_http_port( default:80 );
 

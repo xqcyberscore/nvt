@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # TallSoft SNMP TFTP Server Denial Of Service Vulnerability
 #
@@ -27,12 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806694");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12465 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:27 +0530 (Fri, 01 Apr 2016)");
   script_name("TallSoft SNMP TFTP Server Denial Of Service Vulnerability");
+  script_category(ACT_DENIAL);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Denial of Service");
+  script_dependencies("tftpd_detect.nasl");
+  script_require_udp_ports("Services/udp/tftp", 69);
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39627");
 
   script_tag(name:"summary", value:"This host is running TallSoft SNMP TFTP
   Server and is prone to denial of service vulnerability.");
@@ -46,30 +53,19 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause denial of service attacks.");
 
-  script_tag(name:"affected", value:"TallSoft SNMP TFTP Server 1.0.0");
+  script_tag(name:"affected", value:"TallSoft SNMP TFTP Server 1.0.0.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39627");
-  script_category(ACT_DENIAL);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Denial of Service");
-  script_dependencies("tftpd_detect.nasl");
-  script_require_udp_ports("Services/udp/tftp", 69);
   exit(0);
 }
 
-
 include("tftp.inc");
-
-serPort = "";
-soc = "";
 
 serPort = get_kb_item("Services/udp/tftp");
 if(!serPort){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nomachine_for_windows_rce_vuln.nasl 12424 2018-11-19 15:26:23Z mmartin $
+# $Id: gb_nomachine_for_windows_rce_vuln.nasl 12470 2018-11-21 14:47:25Z mmartin $
 #
 # NoMachine for Windows Trojan File Remote Code Execution Vulnerability (Windows)
 #
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107372");
-  script_version("$Revision: 12424 $");
+  script_version("$Revision: 12470 $");
   script_cve_id("CVE-2018-17890");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 16:26:23 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:47:25 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-19 15:08:42 +0100 (Mon, 19 Nov 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_name("Evernote for Windows Stored Cross-Site Scripting Vulnerability (Windows)");
+  script_name("NoMachine for Windows Trojan File Remote Code Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -81,7 +81,7 @@ if (version_is_less (version:vers, test_version:"5.3.27")){
   security_message(port:0, data:report);
   exit(0);
 }
-if (version_is_less (version:vers, test_version:"6.3.6")){
+if (version_in_range (version:vers, test_version: "6.0.0", test_version2: "6.3.5")){
   report = report_fixed_ver(installed_version:vers, fixed_version:"6.3.6", install_path:path);
   security_message(port:0, data:report);
   exit(0);

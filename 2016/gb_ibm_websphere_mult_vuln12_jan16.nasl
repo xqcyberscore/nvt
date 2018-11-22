@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln12_jan16.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln12_jan16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Server Multiple Vulnerabilities -12 Jan16
+# IBM Websphere Application Server Multiple Vulnerabilities -12 Jan16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806847");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2013-0544", "CVE-2013-0543", "CVE-2013-0542", "CVE-2013-0541");
   script_bugtraq_id(59250, 59249, 59248, 59247);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 15:32:25 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Multiple Vulnerabilities -12 Jan16");
+  script_name("IBM Websphere Application Server Multiple Vulnerabilities -12 Jan16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to multiple vulnerabilities.");
@@ -51,7 +51,7 @@ if(description)
   - An improper validation of input by the Administrative console.
 
   - The buffer overflow vulnerability when a local OS registry is used in
-    conjunction with WebSphere Identity Manger.
+    conjunction with WebSphere Identity Manager.
 
   - The directory traversal vulnerability in the Administrative Console");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_malicious_npm_packages.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_malicious_npm_packages.nasl 12468 2018-11-21 14:11:54Z cfischer $
 #
 # Malicious npm package detection
 #
@@ -25,34 +25,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113208");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12468 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:11:54 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 13:13:13 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
-  script_tag(name:"qod_type", value:"package");
-
-  script_tag(name:"solution_type", value:"Mitigation");
-
-  script_cve_id("CVE-2017-16044", "CVE-2017-16045", "CVE-2017-16046", "CVE-2017-16047",
-  "CVE-2017-16048", "CVE-2017-16049", "CVE-2017-16050", "CVE-2017-16051",
-  "CVE-2017-16052", "CVE-2017-16053", "CVE-2017-16054", "CVE-2017-16055",
-  "CVE-2017-16056", "CVE-2017-16057", "CVE-2017-16058", "CVE-2017-16059",
-  "CVE-2017-16060", "CVE-2017-16061", "CVE-2017-16062", "CVE-2017-16063",
-  "CVE-2017-16064", "CVE-2017-16065", "CVE-2017-16066", "CVE-2017-16067",
-  "CVE-2017-16068", "CVE-2017-16069", "CVE-2017-16070", "CVE-2017-16071",
-  "CVE-2017-16072", "CVE-2017-16073", "CVE-2017-16074", "CVE-2017-16075",
-  "CVE-2017-16076", "CVE-2017-16077", "CVE-2017-16078", "CVE-2017-16079",
-  "CVE-2017-16080", "CVE-2017-16081");
-
+  script_cve_id("CVE-2017-16044", "CVE-2017-16045", "CVE-2017-16046", "CVE-2017-16047", "CVE-2017-16048",
+                "CVE-2017-16049", "CVE-2017-16050", "CVE-2017-16051", "CVE-2017-16052", "CVE-2017-16053",
+                "CVE-2017-16054", "CVE-2017-16055", "CVE-2017-16056", "CVE-2017-16057", "CVE-2017-16058",
+                "CVE-2017-16059", "CVE-2017-16060", "CVE-2017-16061", "CVE-2017-16062", "CVE-2017-16063",
+                "CVE-2017-16064", "CVE-2017-16065", "CVE-2017-16066", "CVE-2017-16067", "CVE-2017-16068",
+                "CVE-2017-16069", "CVE-2017-16070", "CVE-2017-16071", "CVE-2017-16072", "CVE-2017-16073",
+                "CVE-2017-16074", "CVE-2017-16075", "CVE-2017-16076", "CVE-2017-16077", "CVE-2017-16078",
+                "CVE-2017-16079", "CVE-2017-16080", "CVE-2017-16081");
   script_name("Malicious npm package detection");
-
   script_category(ACT_GATHER_INFO);
-
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_npm_packages_detect_ssh.nasl");
@@ -60,9 +50,12 @@ if( description )
 
   script_tag(name:"summary", value:"Several npm packages were of malicious nature. npm has since removed them from their registry,
   but the packages could still be installed on a host.");
+
   script_tag(name:"vuldetect", value:"Checks if a malicious npm package is present on the target host.");
+
   script_tag(name:"impact", value:"The packages mostly extract information from environment variables,
   while some create a remote shell or a command-and-control infrastructure, completely comprising the target host.");
+
   script_tag(name:"affected", value:"Following packages are affected:
 
   - npm-script-demo
@@ -197,6 +190,9 @@ if( description )
   script_xref(name:"URL", value:"https://nodesecurity.io/advisories/519");
   script_xref(name:"URL", value:"https://nodesecurity.io/advisories/520");
 
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"Mitigation");
+
   exit(0);
 }
 
@@ -212,15 +208,14 @@ malicious_packages = make_list( 'd3.js', 'jquery.js', 'mariadb', 'mysqljs', 'nod
                                 'smb', 'nodesass', 'cross-env.js', 'npm-script-demo', 'pandora-doomsday',
                                 'botbait' );
 
-vuln_text = NULL;
+vuln_text = NULL; # nb: To make openvas-nasl-lint happy...
 
 foreach pkg ( malicious_packages ) {
   matches = eregmatch( pattern: ' (' + pkg + ')@[0-9.]+', string: npms );
   if( ! isnull( matches[1] ) ) {
     if( isnull( vuln_text ) ) {
       vuln_text = '  - ' + pkg;
-    }
-    else {
+    } else {
       vuln_text += '\r\n  - ' + pkg;
     }
   }

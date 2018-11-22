@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 12434 2018-11-20 11:03:44Z cfischer $
+# $Id: gb_dlink_dir_detect.nasl 12462 2018-11-21 12:31:36Z cfischer $
 #
 # D-Link DIR Devices Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("$Revision: 12434 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 12:03:44 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 12462 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 13:31:36 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -104,7 +104,7 @@ if( _banner = egrep( string:banner, pattern:"Server: Linux, (HTTP/1\.1|WEBACCESS
   }
 
   # nb: The "Firmware/Hardware Version" texts are sometimes translated into local languages. Few of the source code pattern has tabs in front as well.
-  # 
+  #
   # DIR-600:
   # <span class="version">Firmware Version : 2.17</span>
   # <span class="version">Hardware Version : Bx</span>

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms16-029.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_office_suite_ms16-029.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
 # Microsoft Office Security Feature Bypass Vulnerabilities (3141806)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807602");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2016-0057", "CVE-2016-0021", "CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 15:29:29 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Office Security Feature Bypass Vulnerabilities (3141806)");
 
@@ -50,7 +50,7 @@ if(description)
   attackers to reliably predict the memory offsets of specific instructions
   which may allow arbitrary code execution.");
 
-  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior. ");
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory");
@@ -71,21 +71,17 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms16-029");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-path = "";
-dllVer = "";
-offPath = "";
-
 ## MS Office 2007/2010/2013
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14|15].*"){
+if(!get_kb_item("MS/Office/Ver") =~ "^1[245].*"){
   exit(0);
 }
 

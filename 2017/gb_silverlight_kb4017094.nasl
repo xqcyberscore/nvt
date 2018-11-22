@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_kb4017094.nasl 11874 2018-10-12 11:28:04Z mmartin $
+# $Id: gb_silverlight_kb4017094.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (KB4017094)
 #
@@ -29,14 +29,21 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810742");
-  script_version("$Revision: 11874 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2013-6629");
   script_bugtraq_id(63676);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:56:42 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (KB4017094)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("gb_ms_silverlight_detect.nasl");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4017094");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft security update KB4017094.");
@@ -59,19 +66,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4017094");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight/Installed");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-msl_ver = "";
 
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
@@ -81,9 +81,9 @@ if(msl_ver=~ "^5\.")
 {
   if(version_is_less(version:msl_ver, test_version:"5.1.50906.0"))
   {
-    report = 'Silverlight version:  ' + msl_ver  + '\n' +
-             'Vulnerable range:  5.0 - 5.1.50905.0' + '\n' ;
-    security_message(data:report);
+    report = 'Silverlight version: ' + msl_ver  + '\n' +
+             'Vulnerable range:    5.0 - 5.1.50905.0';
+    security_message(port:0, data:report);
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_sa_17_35_photo_station_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_synology_sa_17_35_photo_station_mult_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # Synology Photo Station Multiple Vulnerabilities (SA_17_35)
 #
@@ -29,14 +29,20 @@ CPE = "cpe:/a:synology:synology_photo_station";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812224");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2017-11161", "CVE-2017-11162", "CVE-2017-12071");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-23 13:23:39 +0530 (Thu, 23 Nov 2017)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("Synology Photo Station Multiple Vulnerabilities (SA_17_35)");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_dependencies("gb_synology_photo_station_detect.nasl");
+  script_mandatory_keys("synology_photo_station/installed", "synology_photo_station/psv");
+
+  script_xref(name:"URL", value:"https://www.synology.com/en-global/support/security/Synology_SA_17_35_PhotoStation");
 
   script_tag(name:"summary", value:"The host is installed with Synology
   Photo Station and is prone to multiple vulnerabilities.");
@@ -59,27 +65,16 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Photo Station to 6.7.4-3433
   or (6.3-2968 for DSM 5.2 users).");
 
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://www.synology.com/en-global/support/security/Synology_SA_17_35_PhotoStation");
-
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("Web application abuses");
-  script_dependencies("gb_synology_photo_station_detect.nasl");
-  script_mandatory_keys("synology_photo_station/installed", "synology_photo_station/psv");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-synport = "";
-synVer = "";
-synpath = "";
-
-if (!synport = get_app_port(cpe: CPE))
+if(!synport = get_app_port(cpe: CPE))
   exit(0);
 
 if(!infos = get_app_version_and_location( cpe:CPE, port:synport, exit_no_version:TRUE)) exit(0);
@@ -97,10 +92,9 @@ else if(version_in_range(version:synVer, test_version:"6.7", test_version2:"6.7.
   fix = "6.7.3-3433";
 }
 
-if(fix)
-{
+if(fix){
   report = report_fixed_ver(installed_version:synVer, fixed_version:fix, install_path:synpath);
   security_message(port:synport, data: report);
-  exit(0);
 }
+
 exit(0);

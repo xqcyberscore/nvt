@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_session_hijack_vuln_apr16.nasl 12096 2018-10-25 12:26:02Z asteins $
+# $Id: gb_ibm_websphere_session_hijack_vuln_apr16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Server Session Hijack Vulnerability Apr16
+# IBM Websphere Application Server Session Hijack Vulnerability Apr16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807651");
-  script_version("$Revision: 12096 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2015-1936");
   script_bugtraq_id(75480);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 14:26:02 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:51 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Session Hijack Vulnerability Apr16");
+  script_name("IBM Websphere Application Server Session Hijack Vulnerability Apr16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to session hijack vulnerability.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_smi_enabled.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_cisco_smi_enabled.nasl 12458 2018-11-21 10:18:26Z cfischer $
 #
 # Cisco Smart Install Protocol Misuse
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140162");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 12458 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:18:26 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 11:39:34 +0100 (Thu, 16 Feb 2017)");
   script_name("Cisco Smart Install Protocol Misuse");
   script_category(ACT_ATTACK);
@@ -39,26 +39,26 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(4786);
 
-  script_tag(name:"summary", value:"Several researchers have reported on the use of Smart Install (SMI) protocol messages toward Smart Install clients,
-also known as integrated branch clients (IBC), allowing an unauthenticated, remote attacker to change the startup-config file and force a reload of the
-device, load a new IOS image on the device, and execute high-privilege CLI commands on switches running Cisco IOS and IOS XE Software.
-
-Cisco does not consider this a vulnerability in Cisco IOS, IOS XE, or the Smart Install feature itself but a misuse of the Smart Install protocol, which
-does not require authentication by design. Customers who are seeking more than zero-touch deployment should consider deploying the Cisco Network Plug and
-Play solution instead.");
-
-  script_tag(name:"solution", value:"Cisco has updated the Smart Install Configuration Guide to include security best practices regarding the deployment of
-the Cisco Smart Install feature within customer infrastructures.");
-
-  # it seems we are not able to distinguish between Director and Client. As director is not affected,
-  # use a lower QOd but high enough so it's shown by default.
-  script_tag(name:"qod", value:"76");
-  script_tag(name:"solution_type", value:"Workaround");
-
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityResponse/cisco-sr-20170214-smi");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/540130");
   script_xref(name:"URL", value:"https://2016.zeronights.ru/wp-content/uploads/2016/12/CiscoSmartInstall.v3.pdf");
   script_xref(name:"URL", value:"http://www.cisco.com/c/en/us/td/docs/switches/lan/smart_install/configuration/guide/smart_install/concepts.html#23355");
+
+  script_tag(name:"summary", value:"Several researchers have reported on the use of Smart Install (SMI) protocol messages toward Smart Install clients,
+  also known as integrated branch clients (IBC), allowing an unauthenticated, remote attacker to change the startup-config file and force a reload of the
+  device, load a new IOS image on the device, and execute high-privilege CLI commands on switches running Cisco IOS and IOS XE Software.
+
+  Cisco does not consider this a vulnerability in Cisco IOS, IOS XE, or the Smart Install feature itself but a misuse of the Smart Install protocol, which
+  does not require authentication by design. Customers who are seeking more than zero-touch deployment should consider deploying the Cisco Network Plug and
+  Play solution instead.");
+
+  script_tag(name:"solution", value:"Cisco has updated the Smart Install Configuration Guide to include security best practices regarding the deployment of
+  the Cisco Smart Install feature within customer infrastructures.");
+
+  # it seems we are not able to distinguish between Director and Client. As director is not affected,
+  # use a lower QOd but high enough so it's shown by default.
+  script_tag(name:"qod", value:"75");
+  script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
@@ -77,17 +77,15 @@ req =  raw_string( 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
 
 send( socket:soc, data:req );
 recv = recv( socket:soc, length:20, timeout:30 );
-
 close( soc );
 
 if( ! recv || strlen( recv ) != 20 ) exit( 0 );
 
 if( hexstr( recv ) =~ "^0000000400000000000000040000000400000001$" )
 {
-  register_service( port:port, proto:'cisco_smi' );
+  register_service( port:port, proto:"cisco_smi" );
   security_message( port:port );
   exit( 0 );
 }
 
 exit( 99 );
-

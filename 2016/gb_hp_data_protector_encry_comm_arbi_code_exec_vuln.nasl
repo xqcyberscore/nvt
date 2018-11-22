@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_encry_comm_arbi_code_exec_vuln.nasl 11989 2018-10-19 11:25:26Z cfischer $
+# $Id: gb_hp_data_protector_encry_comm_arbi_code_exec_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # HP Data Protector Encrypted Communications Arbitrary Command Execution Vulnerability
 #
@@ -30,15 +30,26 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808540");
-  script_version("$Revision: 11989 $");
+  script_version("$Revision: 12465 $");
   script_cve_id("CVE-2016-2004");
   script_bugtraq_id(87053);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 13:25:26 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 13:00:46 +0530 (Fri, 08 Jul 2016)");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("HP Data Protector Encrypted Communications Arbitrary Command Execution Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("hp_data_protector_installed.nasl");
+  script_require_ports("Services/hp_dataprotector", 5555);
+  script_mandatory_keys("hp_data_protector/installed");
+
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/267328");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39858");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137341");
+  script_xref(name:"URL", value:"https://dl.packetstormsecurity.net/1605-exploits/hpdataprotectora0900-exec.txt");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");
 
   script_tag(name:"summary", value:"This host is installed HP Data Protector
   and is prone to Arbitrary Command Execution vulnerability.");
@@ -57,21 +68,9 @@ if(description)
 
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/267328");
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39858");
-  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137341");
-  script_xref(name:"URL", value:"https://dl.packetstormsecurity.net/1605-exploits/hpdataprotectora0900-exec.txt");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("hp_data_protector_installed.nasl");
-  script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("hp_data_protector/installed");
-
-  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");
   exit(0);
 }
 
@@ -103,11 +102,11 @@ res = recv( socket:soc, length:4096 );
 len = strlen( res );
 if( ! len ) exit( 0 );
 
-data = "";
+data = ""; # nb: To make openvas-nasl-lint happy...
 
 for( i = 0; i < len; i = i + 1 ) {
   if( ( ord( res[i] ) >= 61 ) ) {
-    data = data + res[i];
+    data += res[i];
   }
 }
 

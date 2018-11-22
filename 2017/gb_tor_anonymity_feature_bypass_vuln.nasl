@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: gb_tor_anonymity_feature_bypass_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
+# $Id: gb_tor_anonymity_feature_bypass_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # Tor Browser Anonymity Feature Bypass Vulnerability
 #
@@ -28,14 +28,21 @@ CPE = "cpe:/a:tor:tor_browser";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811988");
-  script_version("$Revision: 11863 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2017-16541");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 16:08:09 +0530 (Thu, 09 Nov 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Tor Browser Anonymity Feature Bypass Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_tor_browser_detect_lin.nasl");
+  script_mandatory_keys("TorBrowser/Linux/Ver");
+
+  script_xref(name:"URL", value:"https://www.bleepingcomputer.com/news/security/tormoil-vulnerability-leaks-real-ip-address-from-tor-browser-users");
+  script_xref(name:"URL", value:"https://www.torproject.org/download/download-easy.html.en");
 
   script_tag(name:"summary", value:"This host is installed with Tor Browser
   and is prone to anonymity feature bypass vulnerability.");
@@ -54,31 +61,22 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 7.0.9 or later.");
 
+  script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"https://www.bleepingcomputer.com/news/security/tormoil-vulnerability-leaks-real-ip-address-from-tor-browser-users");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("gb_tor_browser_detect_lin.nasl");
-  script_mandatory_keys("TorBrowser/Linux/Ver");
-  script_xref(name:"URL", value:"https://www.torproject.org/download/download-easy.html.en");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-torbVer = "";
-
-infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+if(!infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE)) exit(0);
 torbVer = infos['version'];
 torPath = infos['location'];
 
-if(version_is_less(version:torbVer, test_version:"7.0.9"))
-{
-  report = report_fixed_ver( installed_version:torbVer, fixed_version:"7.0.9", install_path:torPath);
-  security_message(data:report);
-  exit(0);
+if(version_is_less(version:torbVer, test_version:"7.0.9")){
+  report = report_fixed_ver(installed_version:torbVer, fixed_version:"7.0.9", install_path:torPath);
+  security_message(port:0, data:report);
 }
+
 exit(0);

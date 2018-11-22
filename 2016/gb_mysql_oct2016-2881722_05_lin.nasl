@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_05_lin.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_mysql_oct2016-2881722_05_lin.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 05 - Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809379");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2016-5624");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:49:42 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 05 - Linux");
 
@@ -43,14 +43,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified
-  error within the 'Server:DML' component. ");
+  error within the 'Server:DML' component.");
 
   script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow a remote authenticated user to cause denial of
   service conditions.");
 
   script_tag(name:"affected", value:"Oracle Mysql version 5.5.51 and earlier
-  on Linux");
+  on Linux.");
 
   script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
@@ -66,6 +66,7 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
   script_require_ports("Services/mysql", 3306);
+
   exit(0);
 }
 

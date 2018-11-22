@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln01_feb16.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln01_feb16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
-# IBM Websphere Apllication Server Multiple Vulnerabilities-01 Feb16
+# IBM Websphere Application Server Multiple Vulnerabilities-01 Feb16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,15 +29,15 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806873");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2015-4938", "CVE-2015-1932");
   script_bugtraq_id(76466, 76463);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 17:20:05 +0530 (Tue, 16 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-01 Feb16");
+  script_name("IBM Websphere Application Server Multiple Vulnerabilities-01 Feb16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to multiple vulnerabilities.");

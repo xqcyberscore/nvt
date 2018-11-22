@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 12291 2018-11-09 14:55:44Z cfischer $
+# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,18 +29,13 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 12291 $");
+  script_version("$Revision: 12465 $");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:55:44 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
-  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/19525");
-  script_xref(name:"URL", value:"http://code.google.com/p/iis-shortname-scanner-poc");
-  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/iis_tilde_shortname_disclosure.txt");
-  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf");
-
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
@@ -48,16 +43,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/19525");
+  script_xref(name:"URL", value:"http://code.google.com/p/iis-shortname-scanner-poc");
+  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/iis_tilde_shortname_disclosure.txt");
+  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information that could aid in further attacks.");
-  script_tag(name:"affected", value:"Microsoft Internet Information Services versions 7.5 and prior");
+
+  script_tag(name:"affected", value:"Microsoft Internet Information Services versions 7.5 and prior.");
+
   script_tag(name:"insight", value:"Microsoft IIS fails to validate a specially crafted GET request
   containing a '~' tilde character, which allows to disclose all short-names of
   folders and files having 4 letters extensions.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Microsoft IIS Webserver and is prone to
   information disclosure vulnerability.");
 
@@ -89,7 +93,7 @@ possible_letters = make_list('0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 ## List of all possible files
 files = make_list("a.aspx","a.shtml","a.asp","a.asmx","a.ashx","a.config","a.php","a.jpg","a.xxx","");
 
-# nb: Keep to make openvas-nasl-lint happy...
+# nb: To make openvas-nasl-lint happy...
 count = 0;
 valid_letter = "";
 

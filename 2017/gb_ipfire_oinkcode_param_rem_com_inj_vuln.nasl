@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 12083 2018-10-25 09:48:10Z cfischer $
+# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 12467 2018-11-21 14:04:59Z cfischer $
 #
 # IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability
 #
@@ -25,18 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811728");
-  script_version("$Revision: 12083 $");
+  script_version("$Revision: 12467 $");
   script_cve_id("CVE-2017-9757");
   script_bugtraq_id(99173);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:04:59 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 16:29:23 +0530 (Wed, 06 Sep 2017)");
-  script_tag(name:"qod_type", value:"package");
   script_name("IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ipfire/system-release");
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42149");
+  script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-19-core-update-112-released");
 
   script_tag(name:"summary", value:"This host is running IPFire and is prone to
   remote command injection vulnerability.");
@@ -56,22 +63,13 @@ if (description)
   script_tag(name:"solution", value:"Upgrade to IPFire version 2.19 Core
   Update 112 or later.");
 
+  script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42149");
-  script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-19-core-update-112-released");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ipfire/system-release");
   exit(0);
 }
 
 include("version_func.inc");
-
-report = "";
 
 if(!rls = get_kb_item("ipfire/system-release")){
   exit(0);
@@ -91,18 +89,15 @@ if(!vers[1]){
 core_update = eregmatch( pattern:'core([0-9]+)', string:rls );
 if(core_update[1]){
   core = core_update[1];
-}
-else{
+} else {
   core = 0;
 }
 
-##Combine Core Version with Version
 firVersion = version + '.' + core;
 
-if(version_is_less( version:firVersion, test_version:"2.19.112"))
-{
-  report_fixed_ver(installed_version: version + ' Core Update' + core,  fixed_version: "2.19 Core Update 112");
-  security_message( data:report );
-  exit(0);
+if(version_is_less( version:firVersion, test_version:"2.19.112")){
+  report = report_fixed_ver( installed_version:version + ' Core Update' + core, fixed_version:"2.19 Core Update 112");
+  security_message( port:0, data:report );
 }
+
 exit(0);

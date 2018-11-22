@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_auth_bypass.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_canon_printers_auth_bypass.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
 #
 # Canon Printers Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113207");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 13:10:45 +0200 (Wed, 06 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,12 +52,17 @@ if( description )
 
   script_tag(name:"summary", value:"Canon Printers LBP6650, LBP3370, LBP3460 and LBP7550C
   are prone to an authentication bypass vulnerability.");
+
   script_tag(name:"vuldetect", value:"Tries to bypass administrator authentication.");
+
   script_tag(name:"insight", value:"The authentication is handled by a cookie, which can be modified.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain
   administrative control over the target system.");
+
   script_tag(name:"affected", value:"Canon Printers LBP6650, LBP3370, LBP3460 and LBP7550C.");
-  script_tag(name:"solution", value:"No known solution is available as of 06th June, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 22nd November, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://gist.github.com/huykha/2dfbe97810e96a05e67359fd9e7cc9ff");

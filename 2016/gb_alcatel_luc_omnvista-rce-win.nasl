@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Alcatel Lucent Omnivista 8770 - Remote Code Execution Vulnerability (Windows)
 #
@@ -30,33 +30,13 @@ CPE = "cpe:/a:alcatel-lucent:omnivista";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107112");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 12465 $");
   script_cve_id("CVE-2016-9796");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 13:00:46 +0530 (Fri, 23 Dec 2016)");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("Alcatel Lucent Omnivista 8770 - Remote Code Execution Vulnerability (Windows)");
-
-  script_tag(name:"summary", value:"This host is installed with Alcatel Lucent Omnivista 8770  and is prone to a remote command execution vulnerability.");
-
-  script_tag(name:"vuldetect", value:"Send a crafted giop packet request and check the response");
-
-  script_tag(name:"insight", value:"The flaw is due to the fact that determined ORBs are exposed and they can be invoked without authentication.");
-
-  script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to execute arbitrary code.");
-
-  script_tag(name:"affected", value:"Alcatel Lucent Omnivista 8770 2.0, 2.6 and 3.0");
-
-  script_tag(name:"solution", value:"The vendor position is to refer to the technical guidelines of the product security deployment to mitigate this issue,
-  which means applying proper firewall rules to prevent unauthorised clients to connect to the Omnivista server.");
-
-  script_tag(name:"solution_type", value:"Workaround");
-
-  script_xref(name:"URL", value:"http://blog.malerisch.net/2016/12/alcatel-omnivista-8770-unauth-rce-giop-corba.html");
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40862/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
@@ -64,19 +44,41 @@ if(description)
   script_require_ports("Services/www", 80, 30024);
   script_mandatory_keys("alc-luc-omnvista/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://blog.malerisch.net/2016/12/alcatel-omnivista-8770-unauth-rce-giop-corba.html");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40862/");
+
+  script_tag(name:"summary", value:"This host is installed with Alcatel Lucent Omnivista 8770  and is prone to a remote command execution vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Send a crafted giop packet request and check the response.");
+
+  script_tag(name:"insight", value:"The flaw is due to the fact that determined ORBs are exposed and they can be invoked without authentication.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to execute arbitrary code.");
+
+  script_tag(name:"affected", value:"Alcatel Lucent Omnivista 8770 2.0, 2.6 and 3.0.");
+
+  script_tag(name:"solution", value:"The vendor position is to refer to the technical guidelines of the product security deployment to mitigate this issue,
+  which means applying proper firewall rules to prevent unauthorised clients to connect to the Omnivista server.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Workaround");
+
   exit(0);
 }
 
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! ver = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ver != "8770" ) exit ( 0 );
 
-if ( ! Ver = get_app_version( cpe:CPE, port: port)) exit( 0 );
-if ( Ver != "8770" ) exit ( 0 );
 giopport = 30024;
+
 if( ! get_port_state( giopport ) ) exit( 0 );
 soc = open_sock_tcp( giopport );
 if( ! soc ) exit( 0 );
+
 req = raw_string( 0x47, 0x49, 0x4f, 0x50, 0x01, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x01, 0x26, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00,
@@ -122,10 +124,11 @@ sleep( 5 );
 res = recv( socket:soc, length:4096 );
 len = strlen( res );
 if( ! len ) exit( 0 );
-data = "";
+
+data = ""; # nb: To make openvas-nasl-lint happy...
 for( i = 0; i < len; i = i + 1 ) {
   if( ( ord( res[i] ) >= 61 ) ) {
-    data = data + res[i];
+    data += res[i];
   }
 }
 
@@ -148,7 +151,7 @@ if( ! len ) exit( 0 );
 data = "";
 for( i = 0; i < len; i = i + 1 ) {
   if( ( ord( res[i] ) >= 61 ) ) {
-    data = data + res[i];
+    data += res[i];
   }
 }
 

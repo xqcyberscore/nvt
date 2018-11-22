@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_access_bypass_vuln.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_canon_printers_access_bypass_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
 #
 # Canon MF210/MF220 Series Printers Access Bypass Vulnerability
 #
@@ -27,12 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813416");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12474 $");
   script_cve_id("CVE-2018-11711");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 11:37:19 +0530 (Tue, 05 Jun 2018)");
+
   script_name("Canon MF210/MF220 Series Printers Access Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Canon Printer and is
@@ -50,7 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Canon printers MF210 and MF220 Series");
 
-  script_tag(name:"solution", value:"No known solution is available as of 05th June, 2018.
+  script_tag(name:"solution", value:"No known solution is available as of 22nd November, 2018.
   Information regarding this issue will be updated once solution details are available.
   For updates refer to Reference links.");
 

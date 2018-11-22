@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_default_pw.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_sierrawireless_acemanager_default_pw.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Sierra Wireless AceManager Default Password
 #
@@ -30,20 +30,13 @@ CPE = 'cpe:/h:sierra_wireless:acemanager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106077");
-  script_version("$Revision: 11008 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 12465 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:21:09 +0700 (Tue, 17 May 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-
-  script_tag(name:"qod_type", value:"remote_vul");
-
-  script_tag(name:"solution_type", value:"Workaround");
-
   script_name("Sierra Wireless AceManager Default Password");
-
   script_category(ACT_ATTACK);
-
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_sierrawireless_acemanager_detect.nasl");
@@ -56,6 +49,9 @@ if(description)
   script_tag(name:"affected", value:"Sierra Wireless devices with AceManager installed.");
 
   script_tag(name:"solution", value:"Change the password.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"Workaround");
 
   exit(0);
 }
@@ -71,7 +67,7 @@ useragent = get_http_user_agent();
 host = http_host_name(port: port);
 
 users = make_list("user", "viewer");
-found_users = "";
+found_users = ""; # nb: To make openvas-nasl-lint happy...
 
 foreach user (users) {
   data = '<request xmlns="urn:acemanager">\r\n' +

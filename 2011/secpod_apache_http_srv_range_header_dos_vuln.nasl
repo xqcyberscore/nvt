@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Apache httpd Web Server Range Header Denial of Service Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901203");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12465 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_bugtraq_id(49303);
   script_cve_id("CVE-2011-3192");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Apache httpd Web Server Range Header Denial of Service Vulnerability");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");
@@ -45,21 +44,25 @@ if(description)
   script_mandatory_keys("apache/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
-  cause a denial of service.");
-  script_tag(name:"affected", value:"Apache 1.3.x, 2.0.x through 2.0.64 and 2.2.x through 2.2.19");
-  script_tag(name:"insight", value:"The flaw is caused the way Apache httpd web server handles certain requests
-  with multiple overlapping ranges, which causes significant memory and CPU
-  usage on the server leading to application crash and system can become
-  unstable.");
-  script_tag(name:"solution", value:"Please refer below link for fix and mitigate this issue until full fix.");
-  script_tag(name:"summary", value:"This host is running Apache httpd web server and is prone to denial
-  of service vulnerability.");
-
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17696");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/104441");
   script_xref(name:"URL", value:"http://marc.info/?l=apache-httpd-dev&m=131420013520206&w=2");
   script_xref(name:"URL", value:"http://mail-archives.apache.org/mod_mbox/httpd-dev/201108.mbox/%3CCAAPSnn2PO-d-C4nQt_TES2RRWiZr7urefhTKPWBC1b+K1Dqc7g@mail.gmail.com%3E");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to
+  cause a denial of service.");
+
+  script_tag(name:"affected", value:"Apache 1.3.x, 2.0.x through 2.0.64 and 2.2.x through 2.2.19.");
+
+  script_tag(name:"insight", value:"The flaw is caused the way Apache httpd web server handles certain requests
+  with multiple overlapping ranges, which causes significant memory and CPU
+  usage on the server leading to application crash and system can become unstable.");
+
+  script_tag(name:"solution", value:"Please see the references for a fix to mitigate this issue.");
+
+  script_tag(name:"summary", value:"This host is running Apache httpd web server and is prone to denial
+  of service vulnerability.");
+
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -67,23 +70,23 @@ if(description)
 }
 
 include("http_func.inc");
-
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 ## Expected response will be 206 Partial Content on both
 req1 = string("HEAD / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+              "User-Agent: ", useragent, "\r\n",
               "Accept-Encoding: gzip\r\n",
               "Range: bytes=0-100\r\n",
               "Connection: close\r\n",
               "\r\n" );
 
-range_bytes = "";
+range_bytes = ""; # nb: To make openvas-nasl-lint happy...
 for (i = 0; i < 30; i++){
   range_bytes += "5-" + i;
   if(i < 29) range_bytes += ",";
@@ -93,7 +96,7 @@ for (i = 0; i < 30; i++){
 ## Expected response will be 206 Partial Content on vulnerable
 req2 = string("HEAD / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+              "User-Agent: ", useragent, "\r\n",
               "Accept-Encoding: gzip\r\n",
               "Range: bytes=" + range_bytes + "\r\n",
               "Connection: close\r\n",

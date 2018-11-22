@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-025.nasl 12149 2018-10-29 10:48:30Z asteins $
+# $Id: gb_ms16-025.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Microsoft Windows Library Loading Remote Code Execution Vulnerability (3140709)
 #
@@ -27,16 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806896");
-  script_version("$Revision: 12149 $");
+  script_version("$Revision: 12465 $");
   script_cve_id("CVE-2016-0100");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-29 11:48:30 +0100 (Mon, 29 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:53:44 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Library Loading Remote Code Execution Vulnerability (3140709)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3140709");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-025");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft Bulletin MS16-025");
+  update according to Microsoft Bulletin MS16-025.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -48,42 +57,28 @@ if(description)
   them to install programs, and to take complete control of an affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3140709");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-025");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
 if(hotfix_check_sp(winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                          item:"CommonFilesDir");
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(!sysPath ){
   exit(0);
 }
@@ -93,10 +88,10 @@ if(!sysVer){
   exit(0);
 }
 
-if (sysVer =~ "^(6\.0\.6002\.1)"){
+if (sysVer =~ "^6\.0\.6002\.1"){
   Vulnerable_range = "Less than 6.0.6002.19598";
 }
-else if (sysVer =~ "^(6\.0\.6002\.2)"){
+else if (sysVer =~ "^6\.0\.6002\.2"){
   Vulnerable_range = "6.0.6002.23000 - 6.0.6002.23909";
 }
 

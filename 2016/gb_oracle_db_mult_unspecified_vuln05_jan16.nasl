@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln05_jan16.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_oracle_db_mult_unspecified_vuln05_jan16.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities -05 Jan16
 #
@@ -23,12 +23,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:database_server";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807040");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2014-6546", "CVE-2014-6467", "CVE-2014-6545", "CVE-2014-6453",
                 "CVE-2014-6560", "CVE-2014-6455", "CVE-2014-6537", "CVE-2014-6547",
                 "CVE-2014-4293", "CVE-2014-4292", "CVE-2014-4291", "CVE-2014-4290",
@@ -44,7 +45,7 @@ if(description)
                     75838, 75851, 75852, 72158, 72134, 72145);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities -05 Jan16");
 
@@ -61,7 +62,7 @@ if(description)
   via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle Database Server versions
-  11.1.0.7, 11.2.0.3, 11.2.0.4, 12.1.0.1, and 12.1.0.2 ");
+  11.1.0.7, 11.2.0.3, 11.2.0.4, 12.1.0.1, and 12.1.0.2.");
 
   script_tag(name:"solution", value:"Apply the patches from the referenced advisory.");
 
@@ -75,6 +76,7 @@ if(description)
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");
   script_mandatory_keys("OracleDatabaseServer/installed");
+
   exit(0);
 }
 
@@ -89,7 +91,7 @@ if(!dbVer = get_app_version(cpe:CPE, port:dbPort)){
   exit(0);
 }
 
-if(dbVer =~ "^(12|11)")
+if(dbVer =~ "^1[12]")
 {
   if(version_is_equal(version:dbVer, test_version:"12.1.0.1") ||
      version_is_equal(version:dbVer, test_version:"12.1.0.2") ||

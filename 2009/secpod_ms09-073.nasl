@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-073.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms09-073.nasl 12457 2018-11-21 10:10:54Z cfischer $
 #
 # WordPad and Office Text Converters Remote Code Execution Vulnerability (975539)
 #
@@ -28,62 +28,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to crash an affected
-  application or execute arbitrary code by tricking a user into opening a
-  specially crafted document.
-  Impact Level: System/Apllication";
-tag_affected = "Microsoft Works 8.5
-  Microsoft Office Converter Pack
-  Microsoft Office XP Service Pack 3
-  Microsoft Office 2003 Service Pack 3
-  Microsoft Office Word 2002 Service Pack 3
-  Microsoft Office Word 2003 Service Pack 3
-  Microsoft Windows XP  Service Pack 3 and prior
-  Microsoft Windows 2K3 Service Pack 2 and prior
-  Microsoft Windows 2000  Service Pack 4 and prior";
-tag_insight = "The issue is caused by a memory corruption error in the way that the text
-  converter for Word 97 (included as part of WordPad and as part of the Office
-  text converters) parses a specially crafted Word 97 document.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms09-073.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-073.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901068");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 11:10:54 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-12-09 16:08:24 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-2506");
   script_name("WordPad and Office Text Converters Remote Code Execution Vulnerability (975539)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/973904");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/975008");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/974882");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/977304");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3438");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS09-073.mspx");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/973904");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/975008");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/974882");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/977304");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3438");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS09-073.mspx");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash an affected
+  application or execute arbitrary code by tricking a user into opening a specially crafted document.");
+
+  script_tag(name:"affected", value:"Microsoft Works 8.5
+
+  Microsoft Office Converter Pack
+
+  Microsoft Office XP Service Pack 3
+
+  Microsoft Office 2003 Service Pack 3
+
+  Microsoft Office Word 2002 Service Pack 3
+
+  Microsoft Office Word 2003 Service Pack 3
+
+  Microsoft Windows XP  Service Pack 3 and prior
+
+  Microsoft Windows 2K3 Service Pack 2 and prior
+
+  Microsoft Windows 2000  Service Pack 4 and prior");
+
+  script_tag(name:"insight", value:"The issue is caused by a memory corruption error in the way that the text
+  converter for Word 97 (included as part of WordPad and as part of the Office
+  text converters) parses a specially crafted Word 97 document.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-073.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms09-073.mspx");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -99,8 +104,7 @@ if(hotfix_missing(name:"973904") == 0){
   exit(0);
 }
 
-dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows" +
-                         "\CurrentVersion", item:"ProgramFilesDir");
+dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!dllPath){
   exit(0);
 }
@@ -115,5 +119,8 @@ if(!dllVer){
 }
 
 if(version_is_less(version:dllVer, test_version:"2003.1100.8165.0")){
-  security_message(0);
+  report = report_fixed_ver(installed_version:dllVer, fixed_version:"2003.1100.8165.0", file_checked:dllPath);
+  security_message(port:0, data:report );
 }
+
+exit(0);

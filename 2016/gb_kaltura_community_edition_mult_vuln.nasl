@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaltura_community_edition_mult_vuln.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_kaltura_community_edition_mult_vuln.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
 # Kaltura Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:kaltura:kaltura";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807700");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12456 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-03-18 12:26:14 +0530 (Fri, 18 Mar 2016)");
   script_name("Kaltura Multiple Vulnerabilities");
 
@@ -53,12 +53,11 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute code, to upload file and to gain access.");
 
-  script_tag(name:"affected", value:"Kaltura version 11.1.0-2 and prior");
+  script_tag(name:"affected", value:"Kaltura version 11.1.0-2 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to version 11.7.0-2 or later.  -----
-  NOTE: Fixes are not available for some of the issues in version 11.0.0-2.
+  script_tag(name:"solution", value:"Upgrade to version 11.7.0-2 or later.
 
-  - ---- ");
+  NOTE: Fixes are not available for some of the issues in version 11.0.0-2.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +73,7 @@ if(description)
   script_dependencies("gb_kaltura_community_edition_detect.nasl");
   script_mandatory_keys("kaltura/installed");
   script_xref(name:"URL", value:"https://www.corp.kaltura.com/");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 12456 2018-11-21 09:45:52Z cfischer $
 #
 # IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808651");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 12456 $");
   script_cve_id("CVE-2016-2960");
   script_bugtraq_id(92354);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:45:52 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 10:35:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with IBM Websphere
-  apllication server and is prone to Denial of Service vulnerability.");
+  application server and is prone to Denial of Service vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 

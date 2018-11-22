@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-109.nasl 12455 2018-11-21 09:17:27Z cfischer $
+# $Id: gb_silverlight_ms16-109.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3182373)
 #
@@ -29,14 +29,22 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809309");
-  script_version("$Revision: 12455 $");
+  script_version("$Revision: 12465 $");
   script_cve_id("CVE-2016-3367");
   script_bugtraq_id(92837);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 10:17:27 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:56:33 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3182373)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("gb_ms_silverlight_detect.nasl");
+  script_mandatory_keys("Microsoft/Silverlight/Installed");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3182373");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-109");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-109.");
@@ -55,24 +63,13 @@ if(description)
   listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3182373");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-109");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("gb_ms_silverlight_detect.nasl");
-  script_mandatory_keys("Microsoft/Silverlight/Installed");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-msl_ver = "";
 
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
@@ -82,8 +79,8 @@ if(msl_ver=~ "^5\.")
 {
   if(version_is_less(version:msl_ver, test_version:"5.1.50709.0"))
   {
-    report = 'Silverlight version:     ' + msl_ver  + '\n' +
-             'Vulnerable range:  5.0 - 5.1.50708.0' + '\n' ;
+    report = 'Silverlight version: ' + msl_ver  + '\n' +
+             'Vulnerable range:    5.0 - 5.1.50708.0';
     security_message(data:report);
     exit(0);
   }

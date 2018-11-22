@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4341.nasl 12450 2018-11-21 07:56:32Z cfischer $
+# $Id: deb_4341.nasl 12473 2018-11-22 03:34:31Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4341-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,7 +31,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704341");
-  script_version("$Revision: 12450 $");
+  script_version("$Revision: 12473 $");
   script_cve_id("CVE-2017-10268", "CVE-2017-10378", "CVE-2017-15365", "CVE-2018-2562", "CVE-2018-2612",
                 "CVE-2018-2622", "CVE-2018-2640", "CVE-2018-2665", "CVE-2018-2668", "CVE-2018-2755",
                 "CVE-2018-2761", "CVE-2018-2766", "CVE-2018-2767", "CVE-2018-2771", "CVE-2018-2781",
@@ -40,10 +40,10 @@ if(description)
                 "CVE-2018-3081", "CVE-2018-3143", "CVE-2018-3156", "CVE-2018-3174", "CVE-2018-3251",
                 "CVE-2018-3282");
   script_name("Debian Security Advisory DSA 4341-1 (mariadb-10.1 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:56:32 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 04:34:31 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-19 00:00:00 +0100 (Mon, 19 Nov 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

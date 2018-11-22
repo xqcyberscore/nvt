@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_default_credentials.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_tomcat_default_credentials.nasl 12465 2018-11-21 13:24:34Z cfischer $
 #
 # Apache Tomcat Manager Remote Unauthorized Access Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103550");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 12465 $");
   script_name("Apache Tomcat Manager Remote Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-21 14:24:34 +0100 (Wed, 21 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 17:19:15 +0200 (Wed, 22 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -89,7 +89,7 @@ credentials = make_list( "tomcat:tomcat",
 host = http_host_name( dont_add_port:TRUE );
 
 vuln = FALSE;
-report = "";
+report = ""; # nb: To make openvas-nasl-lint happy...
 
 # nb: Set by gb_apache_tomcat_detect.nasl
 authRequireUrls = get_kb_list( "www/" + host + "/" + port + "/ApacheTomcat/auth_required" );

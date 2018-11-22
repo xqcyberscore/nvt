@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_dvr_info_discl_vuln.nasl 12025 2018-10-23 08:16:52Z mmartin $
+# $Id: gb_mult_dvr_info_discl_vuln.nasl 12474 2018-11-22 04:39:06Z ckuersteiner $
 #
 # Multiple DVR Products Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141062");
-  script_version("$Revision: 12025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-23 10:16:52 +0200 (Tue, 23 Oct 2018) $");
+  script_version("$Revision: 12474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 05:39:06 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 14:37:44 +0700 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,7 @@ sensitive credential information via a direct request for the download.rsp URI."
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 06th June, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 22nd November, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://misteralfa-hack.blogspot.com/2018/05/0day-dvr-multivendor.html");
