@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3797_1.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
+# $Id: gb_suse_2018_3797_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for ImageMagick openSUSE-SU-2018:3797-1 (ImageMagick)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852129");
-  script_version("$Revision: 12447 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2018-17966", "CVE-2018-18016", "CVE-2018-18024");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-17 06:15:37 +0100 (Sat, 17 Nov 2018)");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2018:3797-1 (ImageMagick)");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:3797_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-11/msg00020.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-11/msg00020.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'ImageMagick'
   package(s) announced via the openSUSE-SU-2018:3797_1 advisory.");

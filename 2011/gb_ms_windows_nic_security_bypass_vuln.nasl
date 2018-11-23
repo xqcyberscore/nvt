@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_nic_security_bypass_vuln.nasl 12010 2018-10-22 08:23:57Z mmartin $
+# $Id: gb_ms_windows_nic_security_bypass_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Windows IPv4 Default Configuration Security Bypass Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801914");
-  script_version("$Revision: 12010 $");
+  script_version("$Revision: 12490 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2010-0232");
   script_tag(name:"cvss_base", value:"7.2");
@@ -43,46 +43,34 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass
-certain security restrictions and hijack all network traffic without any user.");
+  certain security restrictions and hijack all network traffic without any user.");
+
   script_tag(name:"affected", value:"Windows 7 Service Pack 1 and prior
-Windows Vista Service Pack 2 and prior
-Windows Server 2008 Service Pack 2 and prior");
+
+  Windows Vista Service Pack 2 and prior
+
+  Windows Server 2008 Service Pack 2 and prior");
+
   script_tag(name:"insight", value:"The default Network Interception Configuration prefers a new IPv6
-and DHCPv6 service over a currently used IPv4 and DHCPv4 service upon receipt of
-an IPv6 Router Advertisement (RA), and does not provide an option to ignore an
-unexpected RA, which allows remote attackers to conduct man-in-the-middle attacks.");
+  and DHCPv6 service over a currently used IPv4 and DHCPv4 service upon receipt of
+  an IPv6 Router Advertisement (RA), and does not provide an option to ignore an
+  unexpected RA, which allows remote attackers to conduct man-in-the-middle attacks.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
-is prone to security bypass vulnerability.
 
-This NVT has been replaced by NVT secpod_ms10-015.nasl
-(OID:1.3.6.1.4.1.25623.1.0.900740).");
+  script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
+  is prone to security bypass vulnerability.
+
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.900740.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 exit(66); ## This NVT is deprecated as addressed in secpod_ms10-015.nasl.
-
-include("smb_nt.inc");
-include("secpod_reg.inc");
-
-if(hotfix_check_sp(winVista:3, win2008:3, win7:2) <= 0){
-  exit(0);
-}
-
-dkey = registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters");
-if(!dkey){
-  exit(0);
-}
-
-dValue = registry_get_dword(key:dkey, item:"DisabledComponents");
-if(dValue != NULL && dValue == 0){
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
-}

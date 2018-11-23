@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: secpod_ms12-034.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902832");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 12485 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49120");
@@ -54,6 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to gain escalated privileges
   and execute arbitrary code.");
+
   script_tag(name:"affected", value:"Microsoft .NET Framework 4
 
   Microsoft Silverlight 4 and 5
@@ -96,12 +97,16 @@ if(description)
 
   - An error in win32k.sys related to scrollbar calculations can be exploited
     to execute arbitrary code in the context of another process.");
+
   script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
   install the hotfixes from the referenced advisory.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-034.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -192,11 +197,12 @@ if(dllv3 && (hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0))
   }
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007, 2010
-if(get_kb_item("MS/Office/Ver") =~ "^[12|14].*")
+if(officeVer && officeVer =~ "^1[24]\.")
 {
-  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(path)
   {
     foreach ver (make_list("OFFICE12", "OFFICE14"))
@@ -216,10 +222,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^[12|14].*")
 }
 
 ## MS Office 2003
-if(get_kb_item("MS/Office/Ver") =~ "^11.*")
+if(officeVer && officeVer =~ "^11\.")
 {
-  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                         item:"ProgramFilesDir");
+  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
   if(offPath)
   {
     offPath = offPath + "\Microsoft Office\OFFICE11";

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871829");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-15 06:56:26 +0200 (Thu, 15 Jun 2017)");
   script_cve_id("CVE-2017-5470", "CVE-2017-5472", "CVE-2017-7749", "CVE-2017-7750",
                 "CVE-2017-7751", "CVE-2017-7752", "CVE-2017-7754", "CVE-2017-7756",
@@ -55,7 +55,7 @@ if(description)
   Nakano, Christian Holler, Andrew McCreight, Gary Kwong, Andre Bargull, Carsten
   Book, Jesse Schwartzentruber, Julian Hector, Marcia Knous, Ronald Crane, Samuel
   Erb, Holger Fuhrmannek, Tyson Smith, Abhishek Arya, and F. Alonso (revskills) as
-  the original reporters. ");
+  the original reporters.");
   script_tag(name:"affected", value:"firefox on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Server (v. 7),
@@ -63,7 +63,7 @@ if(description)
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1440-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00016.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00016.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3260-01_samba.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_3260-01_samba.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for samba RHSA-2017:3260-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812301");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 07:37:11 +0100 (Mon, 27 Nov 2017)");
   script_cve_id("CVE-2017-14746", "CVE-2017-15275");
   script_tag(name:"cvss_base", value:"7.5");
@@ -62,7 +62,7 @@ Samba Team) as the original reporter of CVE-2017-15275.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:3260-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00030.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-November/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

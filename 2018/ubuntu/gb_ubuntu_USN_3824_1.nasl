@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3824_1.nasl 12388 2018-11-16 15:07:41Z mmartin $
+# $Id: gb_ubuntu_USN_3824_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3824-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843826");
-  script_version("$Revision: 12388 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2018-3136", "CVE-2018-3139", "CVE-2018-3149", "CVE-2018-3169", "CVE-2018-3180");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 16:07:41 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-16 06:00:09 +0100 (Fri, 16 Nov 2018)");
   script_name("Ubuntu Update for openjdk-7 USN-3824-1");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
 
   script_xref(name:"USN", value:"3824-1");
-  script_xref(name:"URL" , value:"http://www.ubuntu.com/usn/usn-3824-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3824-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'openjdk-7'
   package(s) announced via the USN-3824-1 advisory.");

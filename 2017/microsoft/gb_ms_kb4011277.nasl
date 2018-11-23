@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011277.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ms_kb4011277.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4011277)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812249");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2017-11934");
   script_bugtraq_id(102064);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 12:08:40 +0530 (Wed, 13 Dec 2017)");
   script_name("Microsoft Office 2013 Service Pack 1 Information Disclosure Vulnerability (KB4011277)");
 
@@ -60,22 +60,20 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_mandatory_keys("MS/Office/Ver");
+  script_mandatory_keys("MS/Office/Ver", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-comPath = "";
-ortVer = "";
-report = "";
+officeVer = get_kb_item("MS/Office/Ver");
 
-if(get_kb_item("MS/Office/Ver") =~ "^15.*")
+if(officeVer && officeVer =~ "^15\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if(!os_arch){

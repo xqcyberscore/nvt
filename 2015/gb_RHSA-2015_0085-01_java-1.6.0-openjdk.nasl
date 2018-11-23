@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871305");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 05:49:23 +0100 (Tue, 27 Jan 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6585", "CVE-2014-6587", "CVE-2014-6591",
                 "CVE-2014-6593", "CVE-2014-6601", "CVE-2015-0383", "CVE-2015-0395",
@@ -94,7 +94,7 @@ application or applet could possi ...
   Red Hat Enterprise Linux Workstation (v. 6)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:0085-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-January/msg00029.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-January/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

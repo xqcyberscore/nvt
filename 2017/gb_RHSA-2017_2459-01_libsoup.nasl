@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2459-01_libsoup.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2459-01_libsoup.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for libsoup RHSA-2017:2459-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871879");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-11 07:21:23 +0200 (Fri, 11 Aug 2017)");
   script_cve_id("CVE-2017-2885");
   script_tag(name:"cvss_base", value:"7.5");
@@ -46,12 +46,12 @@ if(description)
   server functionality or by tricking a user into connecting to a malicious HTTP
   server with an application using the libsoup HTTP client functionality.
   (CVE-2017-2885) Red Hat would like to thank Aleksandar Nikolic (Cisco Talos) for
-  reporting this issue. ");
+  reporting this issue.");
   script_tag(name:"affected", value:"libsoup on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2459-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00053.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00053.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

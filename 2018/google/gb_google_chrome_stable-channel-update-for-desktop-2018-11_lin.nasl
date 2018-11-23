@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-11_lin.nasl 12312 2018-11-12 08:38:28Z santu $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2018-11_lin.nasl 12477 2018-11-22 07:50:21Z cfischer $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2018-11)-Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814154");
-  script_version("$Revision: 12312 $");
+  script_version("$Revision: 12477 $");
   script_cve_id("CVE-2018-1747");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-12 09:38:28 +0100 (Mon, 12 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-12 12:28:09 +0530 (Mon, 12 Nov 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2018-11)-Linux");
 
@@ -56,8 +56,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL" , value:"https://chromereleases.googleblog.com/2018/11/stable-channel-update-for-desktop.html");
-  script_xref(name:"URL" , value:"https://www.google.com/chrome");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/11/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"https://www.google.com/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

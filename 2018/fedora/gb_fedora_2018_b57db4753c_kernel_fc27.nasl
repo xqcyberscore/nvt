@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b57db4753c_kernel_fc27.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_fedora_2018_b57db4753c_kernel_fc27.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
 #
 # Fedora Update for kernel FEDORA-2018-b57db4753c
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874695");
-  script_version("$Revision: 10247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 12496 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-06-18 06:02:23 +0200 (Mon, 18 Jun 2018)");
   script_cve_id("CVE-2018-10853", "CVE-2018-11506", "CVE-2018-10840", "CVE-2018-3639", 
                 "CVE-2018-1120", "CVE-2018-10322", "CVE-2018-10323", "CVE-2018-1108", 
@@ -42,8 +42,8 @@ if(description)
                 "CVE-2017-8824", "CVE-2017-1000405", "CVE-2017-16649", "CVE-2017-16650", 
                 "CVE-2017-16644", "CVE-2017-16647", "CVE-2017-15115", "CVE-2017-16532", 
                 "CVE-2017-16538", "CVE-2017-12193");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2018-b57db4753c");
   script_tag(name:"summary", value:"Check the version of kernel");

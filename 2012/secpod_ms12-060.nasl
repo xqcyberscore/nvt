@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-060.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: secpod_ms12-060.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901211");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 12485 $");
   script_bugtraq_id(54948);
   script_cve_id("CVE-2012-1856");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:46 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50247");
@@ -44,8 +44,10 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code
   within the context of the application.");
+
   script_tag(name:"affected", value:"Microsoft Visual Basic 6.0
 
   Microsoft Commerce Server 2009
@@ -77,17 +79,21 @@ if(description)
   Microsoft SQL Server 2000 Analysis Services Service Pack 4
 
   Microsoft SQL Server 2005 Express Edition with Advanced Services Service Pack 4");
+
   script_tag(name:"insight", value:"The flaw is due to an error within the TabStrip ActiveX control
   in MSCOMCTL.OCX file and can be exploited to execute arbitrary code.");
+
   script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
   install the hotfixes from the referenced advisory.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-060.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -103,10 +109,12 @@ if(!sysPath){
   exit(0);
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mscomctl.Ocx");
 if(sysVer)
 {
-  if(get_kb_item("MS/Office/Ver") =~ "^[11|12|14].*")
+  if(officeVer && officeVer =~ "^1[124]\.")
   {
     if(version_is_less(version:sysVer, test_version:"6.1.98.34"))
     {
@@ -114,22 +122,6 @@ if(sysVer)
       exit(0);
     }
   }
-
-  ## TODO: Need to update once we get proper info
-  ## Patch is not getting applied on 2005
-  #foreach ver (make_list("2005", "10"))
-  #{
-  #  key = "SOFTWARE\Microsoft\Windows\CurrentVersion" +
-  #        "\Uninstall\Microsoft SQL Server " + ver;
-  #  if(registry_key_exists(key:key))
-  #  {
-  #    if(version_is_less(version:sysVer, test_version:"6.1.98.34"))
-  #    {
-  #      security_message( port: 0, data: "The target host was found to be vulnerable" );
-  #      exit(0);
-  #    }
-  #  }
-  #}
 
   key = "SOFTWARE\Microsoft\Visual Basic\6.0";
   if(registry_key_exists(key:key))
@@ -155,8 +147,7 @@ if(sysVer)
   }
 }
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL " +
-      "Server 2000 Analysis Services";
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL Server 2000 Analysis Services";
 if(registry_key_exists(key:key))
 {
   path = registry_get_sz(key:key, item:"InstallLocation");
@@ -171,8 +162,7 @@ if(registry_key_exists(key:key))
   }
 }
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL " +
-      "Server 2000";
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL Server 2000";
 if(registry_key_exists(key:key))
 {
   path = registry_get_sz(key:key, item:"InstallLocation");

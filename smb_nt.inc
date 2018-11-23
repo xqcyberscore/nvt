@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 12058 2018-10-24 12:42:55Z cfischer $
+# $Id: smb_nt.inc 12495 2018-11-22 17:02:03Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12058 $
+# $Revision: 12495 $
 #
 ###############################################################################
 
@@ -4781,7 +4781,6 @@ function registry_enum_value( soc, uid, tid, pipe, reply ) {
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_enum_value" );
   if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_enum_value" );
   if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_enum_value" );
-  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_enum_value" );
   if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_enum_value" );
 
   if( strlen( uid ) == 8 ) {

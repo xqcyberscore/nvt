@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461486.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_ms_kb4461486.nasl 12477 2018-11-22 07:50:21Z cfischer $
 #
 # Microsoft Outlook 2013 Service Pack 1 Multiple Vulnerabilities (KB4461486)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814163");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 12477 $");
   script_cve_id("CVE-2018-8522", "CVE-2018-8524", "CVE-2018-8576", "CVE-2018-8582");
   script_bugtraq_id(105820, 105823, 105822, 105825);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 12:58:38 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Outlook 2013 Service Pack 1 Multiple Vulnerabilities (KB4461486)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KB4461486");
+  update according to Microsoft KB4461486.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -46,7 +46,7 @@ if(description)
   - The way that Microsoft Outlook parses specially modified rule export files.
 
   - Microsoft Outlook software when it fails to properly handle objects in
-    memory. ");
+    memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to take control of an affected system and use a specially crafted
@@ -60,16 +60,16 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/help/4461486");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4461486");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/Outlook/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
@@ -77,12 +77,11 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
-if(!outlookVer|| !(outlookVer =~ "^15\.")){
+if(!outlookVer|| outlookVer !~ "^15\."){
   exit(0);
 }
 
-outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                              "\App Paths\OUTLOOK.EXE", item:"Path");
+outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OUTLOOK.EXE", item:"Path");
 if(!outlookFile){
   exit(0);
 }
@@ -92,11 +91,11 @@ if(!outlookVer){
   exit(0);
 }
 
-if(version_in_range(version:outlookVer, test_version:"15.0", test_version2:"15.0.5085.0999"))
-{
+if(version_in_range(version:outlookVer, test_version:"15.0", test_version2:"15.0.5085.0999")){
   report = report_fixed_ver(file_checked: outlookFile + "\outlook.exe",
                             file_version:outlookVer, vulnerable_range:"15.0 - 15.0.5075.0999");
   security_message(data:report);
   exit(0);
 }
+
 exit(99);

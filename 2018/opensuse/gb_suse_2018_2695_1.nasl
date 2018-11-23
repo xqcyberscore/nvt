@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2695_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2018_2695_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for compat-openssl098 openSUSE-SU-2018:2695-1 (compat-openssl098)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851888");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-13 07:20:59 +0200 (Thu, 13 Sep 2018)");
   script_cve_id("CVE-2018-0732", "CVE-2018-0737", "CVE-2018-0739");
   script_tag(name:"cvss_base", value:"5.0");
@@ -78,7 +78,7 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2018:2695_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00023.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00023.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

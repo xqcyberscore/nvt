@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2308_1.nasl 12294 2018-11-09 15:31:55Z cfischer $
+# $Id: gb_suse_2018_2308_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for cgit openSUSE-SU-2018:2308-1 (cgit)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852095");
-  script_version("$Revision: 12294 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2018-14912");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 16:31:55 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:47:36 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for cgit openSUSE-SU-2018:2308-1 (cgit)");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2308_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00045.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00045.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'cgit'
   package(s) announced via the openSUSE-SU-2018:2308_1 advisory.");

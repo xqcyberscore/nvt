@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871107");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 12:39:35 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-1447", "CVE-2013-6045", "CVE-2013-6052", "CVE-2013-6054");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,7 @@ effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"RHSA", value:"2013:1850-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-December/msg00032.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-December/msg00032.html");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'openjpeg'
   package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);

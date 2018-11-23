@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871313");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 05:39:18 +0100 (Wed, 11 Feb 2015)");
   script_cve_id("CVE-2014-3528", "CVE-2014-3580", "CVE-2014-8108");
   script_tag(name:"cvss_base", value:"5.0");
@@ -70,7 +70,7 @@ serving Subversion repositories via the svn:// protocol.");
   script_tag(name:"affected", value:"subversion on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:0166-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-February/msg00018.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-February/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

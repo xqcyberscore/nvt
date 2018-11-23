@@ -25,12 +25,12 @@
 
 if(description)
 {
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-October/msg00003.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-October/msg00003.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870497");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-10-10 16:05:48 +0200 (Mon, 10 Oct 2011)");
   script_xref(name:"RHSA", value:"2011:1359-01");
   script_cve_id("CVE-2010-4818", "CVE-2010-4819");

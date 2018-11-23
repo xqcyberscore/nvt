@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_python_mult_vuln_win_900105.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_python_mult_vuln_win_900105.nasl 12492 2018-11-22 14:07:01Z cfischer $
 #
 # Python Multiple Vulnerabilities (Windows)
 #
@@ -24,30 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
+CPE = "cpe:/a:python:python";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900105");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
-  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
+  script_version("$Revision: 12492 $");
   script_bugtraq_id(30491);
   script_cve_id("CVE-2008-2315", "CVE-2008-2316", "CVE-2008-3142", "CVE-2008-3143", "CVE-2008-3144");
-  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 15:07:01 +0100 (Thu, 22 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_copyright("Copyright (C) 2008 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_name("Python Multiple Vulnerabilities (Windows)");
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445);
+  script_dependencies("gb_python_detect_win.nasl");
+  script_mandatory_keys("python6432/win/detected");
 
   script_xref(name:"URL", value:"http://bugs.python.org/issue2588");
   script_xref(name:"URL", value:"http://bugs.python.org/issue2589");
   script_xref(name:"URL", value:"http://bugs.python.org/issue2620");
+  script_xref(name:"URL", value:"http://svn.python.org");
 
   script_tag(name:"summary", value:"The host is installed with Python, which is prone to multiple
-   vulnerabilities.");
+  vulnerabilities.");
 
   script_tag(name:"insight", value:"The flaws exist due to integer overflow in,
 
@@ -62,10 +64,10 @@ if(description)
   - the PyOS_vsnprintf() function when passing zero-length strings can
   lead to memory corruption.");
 
-  script_tag(name:"affected", value:"Python 2.5.2 and prior on Linux (All).");
+  script_tag(name:"affected", value:"Python 2.5.2 and prior on Windows (All).");
 
-  script_tag(name:"solution", value:"Fix is available in the SVN repository,
-  http://svn.python.org");
+  script_tag(name:"solution", value:"A fix is available in the SVN repository,
+  please see the references for more information.");
 
   script_tag(name:"impact", value:"Successful exploitation could potentially causes attackers to
   execute arbitrary code or create a denial of service condition.");
@@ -76,23 +78,18 @@ if(description)
   exit(0);
 }
 
-include("smb_nt.inc");
-include("secpod_smb_func.inc");
+include("version_func.inc");
+include("host_details.inc");
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) )
+  exit( 0 );
 
-foreach entry(registry_enum_keys(key:key)){
+vers = infos['version'];
+path = infos['location'];
 
-  pyName = registry_get_sz(key:key + entry, item:"DisplayName");
-
-  if(pyName && "Python" >< pyName) {
-
-    if(egrep(pattern:"Python ([01]\..*|2\.([0-4]\..*|5\.[0-2]))$", string:pyName)){
-      security_message( port: 0, data: "The target host was found to be vulnerable" );
-      exit(0);
-    }
-    exit(99);
-  }
+if( egrep( pattern:"([01]\..*|2\.([0-4]\..*|5\.[0-2]))$", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references", install_path:path );
+  security_message( port:0, data:report );
 }
 
-exit(0);
+exit( 0 );

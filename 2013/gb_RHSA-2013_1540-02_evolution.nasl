@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871074");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 10:43:56 +0530 (Thu, 21 Nov 2013)");
   script_cve_id("CVE-2013-4166");
   script_tag(name:"cvss_base", value:"7.5");
@@ -83,7 +83,7 @@ update to take effect.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"RHSA", value:"2013:1540-02");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00018.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-November/msg00018.html");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'evolution'
   package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);

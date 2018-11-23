@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremeparr_priv_esc_vuln.nasl 6900 2017-08-11 08:03:42Z cfischer $
+# $Id: gb_extremeparr_priv_esc_vuln.nasl 12501 2018-11-23 10:23:37Z cfischer $
 #
 # SUN Solaris Privilege Escalation Vulnerability (Extremeparr)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811259");
-  script_version("$Revision: 6900 $");
+  script_version("$Revision: 12501 $");
   script_cve_id("CVE-2017-3622");
   script_bugtraq_id(97774);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-11 10:03:42 +0200 (Fri, 11 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 11:23:37 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 19:15:41 +0530 (Fri, 28 Jul 2017)");
   script_name("SUN Solaris Privilege Escalation Vulnerability (Extremeparr)");
 
@@ -70,23 +70,19 @@ if(description)
   script_family("Solaris Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/solosversion");
+
   exit(0);
 }
 
 include("version_func.inc");
+include("solaris.inc");
 
+version = get_ssh_solosversion();
 
-## Variable Initialization
-version = "";
-
-## Get Solaris Version
-version = get_kb_item("ssh/login/solosversion");
-
-##Solaris 10 is affected
-if(version == "10")
-{
+if(version == "10"){
   report = report_fixed_ver( installed_version:version, fixed_version:"Apply Patch or Upgrade to latest Release");
   security_message( data:report);
   exit(0);
 }
+
 exit(0);

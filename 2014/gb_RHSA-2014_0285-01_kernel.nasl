@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871139");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:49:55 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2013-2929", "CVE-2013-4483", "CVE-2013-4554", "CVE-2013-6381",
                 "CVE-2013-6383", "CVE-2013-6885", "CVE-2013-7263", "CVE-2013-7265");
@@ -90,7 +90,7 @@ and recvmmsg system calls. (CVE-2013-7263, Low)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"RHSA", value:"2014:0285-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-March/msg00017.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2014-March/msg00017.html");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'kernel'
   package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);

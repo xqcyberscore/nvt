@@ -25,10 +25,10 @@
 
 if(description)
 {
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00036.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-May/msg00036.html");
   script_oid("1.3.6.1.4.1.25623.1.0.870441");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-06-06 16:56:27 +0200 (Mon, 06 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

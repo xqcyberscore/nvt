@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omron_cx-supervisor_detect.nasl 12247 2018-11-07 15:23:07Z jschulte $
+# $Id: gb_omron_cx-supervisor_detect.nasl 12481 2018-11-22 09:11:53Z jschulte $
 #
 # Omron CX-Supervisor Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113289");
-  script_version("$Revision: 12247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 16:23:07 +0100 (Wed, 07 Nov 2018) $");
+  script_version("$Revision: 12481 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 10:11:53 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-07 15:50:00 +0100 (Wed, 07 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,6 +84,8 @@ foreach keypart( make_list_unique( registry_enum_keys( key: base_key_one ), regi
   # The items "VersionMajor" and "VersionMinor" will contain hex-representations
   # of the major, respectively minor, version.
 
+  # Though Omron advocates their version like this: 3.4.1.0 on their website,
+  # they actually just follow a major.minor.patch pattern, so 3.41.0 for example
   vers = registry_get_sz( key: key, item: "DisplayVersion" );
   if( ! isnull( vers ) && vers != "" ) {
     version = vers;

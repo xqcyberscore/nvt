@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871496");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:23:13 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-8710", "CVE-2014-8711", "CVE-2014-8712", "CVE-2014-8713",
                 "CVE-2014-8714", "CVE-2015-0562", "CVE-2015-0563", "CVE-2015-0564",
@@ -80,7 +80,7 @@ Wireshark must be restarted for the update to take effect.");
   script_tag(name:"affected", value:"wireshark on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:2393-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00045.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00045.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

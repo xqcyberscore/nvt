@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871839");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-14 15:55:01 +0530 (Fri, 14 Jul 2017)");
   script_cve_id("CVE-2017-3142", "CVE-2017-3143");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,12 +54,12 @@ if(description)
   issues. Bug Fix(es): * ICANN is planning to perform a Root Zone DNSSEC Key
   Signing Key (KSK) rollover during October 2017. Maintaining an up-to-date KSK,
   by adding the new root zone KSK, is essential for ensuring that validating DNS
-  resolvers continue to function following the rollover. (BZ#1459649) ");
+  resolvers continue to function following the rollover. (BZ#1459649)");
   script_tag(name:"affected", value:"bind on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1680-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-July/msg00005.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-July/msg00005.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

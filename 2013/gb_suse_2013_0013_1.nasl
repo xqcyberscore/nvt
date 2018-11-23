@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0013_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0013_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for mysql-community-server openSUSE-SU-2013:0013-1 (mysql-community-server)
 #
@@ -26,10 +26,9 @@
 
 if(description)
 {
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00001.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850388");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:32 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-5611");
   script_tag(name:"cvss_base", value:"6.5");
@@ -46,10 +45,12 @@ if(description)
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
   script_tag(name:"affected", value:"mysql-community-server on openSUSE 12.1");
   script_tag(name:"insight", value:"mysql community server was updated to 5.5.28, fixing bugs
-  and security issues. See
-  http://dev.mysql.com/doc/refman/5.5/en/news-5-5-27.html
-  http://dev.mysql.com/doc/refman/5.5/en/news-5-5-28.html");
+  and security issues. See the references for more information.");
   script_tag(name:"solution", value:"Please install the updated packages.");
+
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00001.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.5/en/news-5-5-27.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/refman/5.5/en/news-5-5-28.html");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-072.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms13-072.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2845537)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903401");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,22 +36,28 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 16:10:36 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2845537)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-072.");
+  Microsoft Bulletin MS13-072.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to error exists when processing XML data and some
-unspecified errors.");
+  unspecified errors.");
+
   script_tag(name:"affected", value:"Microsoft Office 2003 Service Pack 3 and prior
-Microsoft Office 2007 Service Pack 3 and prior");
+
+  Microsoft Office 2007 Service Pack 3 and prior");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.");
+  code, cause memory corruption and compromise the system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,7 +72,9 @@ code, cause memory corruption and compromise the system.");
   script_dependencies("secpod_ms_office_detection_900025.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver", "MS/Office/InstallPath");
+
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-072");
+
   exit(0);
 }
 
@@ -75,8 +83,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2003, 2007
-if(!(get_kb_item("MS/Office/Ver") =~ "^(11|12).*")){
+if(!officeVer || officeVer !~ "^1[12]\."){
   exit(0);
 }
 

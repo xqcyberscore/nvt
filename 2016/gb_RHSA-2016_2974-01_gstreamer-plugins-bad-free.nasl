@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871732");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-22 05:44:49 +0100 (Thu, 22 Dec 2016)");
   script_cve_id("CVE-2016-9445", "CVE-2016-9447");
   script_tag(name:"cvss_base", value:"6.8");
@@ -63,7 +63,7 @@ Note: This updates removes the vulnerable Nintendo NSF plug-in.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2016:2974-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-December/msg00026.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2016-December/msg00026.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

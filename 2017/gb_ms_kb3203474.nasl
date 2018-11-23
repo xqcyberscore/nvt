@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203474.nasl 11879 2018-10-12 12:48:49Z mmartin $
+# $Id: gb_ms_kb3203474.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB3203474)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811667");
-  script_version("$Revision: 11879 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2017-8630");
   script_bugtraq_id(100732);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:18:23 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB3203474)");
 
@@ -63,17 +63,22 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+if(!officeVer){
+  exit(0);
+}
+
 # Office 2016
-if(get_kb_item("MS/Office/Ver") =~ "^16.*")
+if(officeVer =~ "^16\.")
 {
   comPath = registry_get_sz(key:"SOFTWARE\Microsoft\Office\16.0\Access\InstallRoot",
                            item:"Path");

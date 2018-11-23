@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3808_1.nasl 12289 2018-11-09 14:18:58Z bshakeel $
+# $Id: gb_ubuntu_USN_3808_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # Ubuntu Update for ruby2.5 USN-3808-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843806");
-  script_version("$Revision: 12289 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2018-16395", "CVE-2018-16396");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 15:18:58 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-06 05:59:58 +0100 (Tue, 06 Nov 2018)");
   script_name("Ubuntu Update for ruby2.5 USN-3808-1");
   script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|18\.10|16\.04 LTS)");
   script_xref(name:"USN", value:"3808-1");
-  script_xref(name:"URL" , value:"http://www.ubuntu.com/usn/usn-3808-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3808-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'ruby2.5'
   package(s) announced via the USN-3808-1 advisory.");

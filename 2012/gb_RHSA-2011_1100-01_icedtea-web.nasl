@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.870699");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-06-06 10:50:25 +0530 (Wed, 06 Jun 2012)");
   script_cve_id("CVE-2011-2513", "CVE-2011-2514");
   script_tag(name:"cvss_base", value:"6.8");
@@ -67,7 +67,7 @@ if(description)
   contain backported patches to correct these issues.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00032.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2011-July/msg00032.html");
 
   exit(0);
 }

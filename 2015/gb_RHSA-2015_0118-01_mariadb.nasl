@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871311");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 13:26:08 +0530 (Fri, 17 Apr 2015)");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0391", "CVE-2015-0411", "CVE-2015-0432");
@@ -57,7 +57,7 @@ these issues. After installing this update, the MariaDB server daemon
   script_tag(name:"affected", value:"mariadb on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:0118-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-February/msg00005.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-February/msg00005.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

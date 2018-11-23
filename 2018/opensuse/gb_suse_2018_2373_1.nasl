@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2373_1.nasl 12277 2018-11-09 09:04:58Z cfischer $
+# $Id: gb_suse_2018_2373_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for nemo-extensions openSUSE-SU-2018:2373-1 (nemo-extensions)
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852009");
-  script_version("$Revision: 12277 $");
+  script_version("$Revision: 12497 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 10:04:58 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:33:53 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for nemo-extensions openSUSE-SU-2018:2373-1 (nemo-extensions)");
   script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if(description)
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:2373_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00053.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00053.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'nemo-extensions'
   package(s) announced via the openSUSE-SU-2018:2373_1 advisory.");

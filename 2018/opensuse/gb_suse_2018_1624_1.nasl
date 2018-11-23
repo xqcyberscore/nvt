@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1624_1.nasl 12379 2018-11-16 10:51:56Z cfischer $
+# $Id: gb_suse_2018_1624_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for curl openSUSE-SU-2018:1624-1 (curl)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852067");
-  script_version("$Revision: 12379 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2018-1000300", "CVE-2018-1000301");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 11:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:02 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for curl openSUSE-SU-2018:1624-1 (curl)");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSELeap15\.0");
 
   script_xref(name:"openSUSE-SU", value:"2018:1624_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-06/msg00015.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-06/msg00015.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'curl'
   package(s) announced via the openSUSE-SU-2018:1624_1 advisory.");

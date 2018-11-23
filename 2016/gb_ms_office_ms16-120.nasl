@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-120.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms_office_ms16-120.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3192884)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807371");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2016-3209", "CVE-2016-3262", "CVE-2016-3263", "CVE-2016-3396", "CVE-2016-7182");
   script_bugtraq_id(93385, 93390, 93394, 93380, 93395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 10:48:54 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3192884)");
 
@@ -68,17 +68,19 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007/2010
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
+if(!officeVer || officeVer !~ "^1[24]\."){
   exit(0);
 }
 
@@ -93,10 +95,10 @@ if(msPath)
 
     if(msdllVer)
     {
-      if(msdllVer =~ "^12"){
+      if(msdllVer =~ "^12\."){
         Vulnerable_range  =  "12.0 - 12.0.6757.4999";
       }
-      else if(msdllVer =~ "^14"){
+      else if(msdllVer =~ "^14\."){
         Vulnerable_range  =  "14.0 - 14.0.7174.4999";
       }
 

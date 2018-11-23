@@ -27,61 +27,55 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to get sensitive information
-  from cookies and corrupt the session state.
-  Impact Level: System/Application";
-tag_affected = "Microsoft, XML Core Service version 3.0/4.0/5.0/6.0 on Windows (all)";
-tag_insight = "Microsoft XML Core Service fails to properly restrict access from the web
-  pages to Set-Cookie2 HTTP response headers via XMLHttpRequest calls, which
-  are related to the HTTPOnly protection mechanism.";
-tag_solution = "No solution or patch was made available for at least one year since disclosure
-  of this vulnerability. Likely none will be provided anymore. General solution
-  options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one.
-  For updates refer to http://www.microsoft.com";
-tag_summary = "This host is installed with Microsoft XML Core Service and is prone
-  to information disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900314");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-0419");
   script_bugtraq_id(33803);
   script_name("Microsoft XML Core Service Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://www.mindedsecurity.com/MSA01240108.html");
-  script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=380418");
-  script_xref(name : "URL" , value : "http://msdn.microsoft.com/hi-in/xml/default(en-us).aspx");
+  script_xref(name:"URL", value:"http://www.mindedsecurity.com/MSA01240108.html");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=380418");
+  script_xref(name:"URL", value:"http://msdn.microsoft.com/hi-in/xml/default(en-us).aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("secpod_reg_enum.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to get sensitive information
+  from cookies and corrupt the session state.");
+
+  script_tag(name:"affected", value:"Microsoft, XML Core Service version 3.0/4.0/5.0/6.0 on Windows (all)");
+
+  script_tag(name:"insight", value:"Microsoft XML Core Service fails to properly restrict access from the web
+  pages to Set-Cookie2 HTTP response headers via XMLHttpRequest calls, which
+  are related to the HTTPOnly protection mechanism.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is installed with Microsoft XML Core Service and is prone
+  to information disclosure vulnerability.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup", item:"Install Path");
 if(!sysPath){
@@ -96,12 +90,13 @@ file4a = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sysPath + "\msx
 file4r = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sysPath + "\msxml4r.dll");
 file3 = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sysPath + "\msxml3.dll");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 # Microsoft Office 2003 & 2007
-if((get_kb_item("MS/Office/Ver") =~ "11\..*|12\..*")||
+if((officeVer && officeVer =~ "^1[12]\.")||
    registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
-  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools",
-                               item:"SharedFilesDir");
+  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools", item:"SharedFilesDir");
   if(dllPath)
   {
     share2 = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
@@ -118,7 +113,7 @@ if(!isnull(file6) && !isnull(share))
   {
     if(version_is_less_equal(version:dll6Ver, test_version:"6.20.1099.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -132,7 +127,7 @@ if(!isnull(file6r) && !isnull(share))
   {
     if(version_is_less_equal(version:dll6rVer, test_version:"6.0.3883.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -146,7 +141,7 @@ if(!isnull(file5) && !isnull(share2))
   {
     if(version_is_less_equal(version:dll5Ver, test_version:"5.20.1087.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -160,7 +155,7 @@ if(!isnull(file4) && !isnull(share))
   {
     if(version_is_less_equal(version:dll4Ver, test_version:"4.20.9870.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -174,7 +169,7 @@ if(!isnull(file4a) && !isnull(share))
   {
     if(version_is_less_equal(version:dll4aVer, test_version:"4.10.9404.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -188,7 +183,7 @@ if(!isnull(file4r) && !isnull(share))
   {
     if(version_is_less_equal(version:dll4rVer, test_version:"4.10.9404.0"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -201,7 +196,7 @@ if(!isnull(file3) && !isnull(share))
   if(dll3Ver != NULL)
   {
     if(version_is_less_equal(version:dll3Ver, test_version:"8.100.1048.0")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

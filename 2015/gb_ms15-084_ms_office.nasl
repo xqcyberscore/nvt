@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-084_ms_office.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ms15-084_ms_office.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # MS Office XML Core Services Information Disclosure Vulnerability (3080129)
 #
@@ -23,15 +23,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805951");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2015-2434", "CVE-2015-2471", "CVE-2015-2440");
   script_bugtraq_id(76232, 76257, 76229);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 10:29:39 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Office XML Core Services Information Disclosure Vulnerability (3080129)");
@@ -54,12 +55,14 @@ if(description)
   sensitive data.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior.
+
   Microsoft InfoPath 2007 Service Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2825645");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3080129");
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-084");
@@ -70,6 +73,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -78,13 +82,14 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007
-if(!get_kb_item("MS/Office/Ver") =~ "^12.*"){
+if(!officeVer || officeVer !~ "^12\."){
   exit(0);
 }
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(path)
 {
   filePath = path + "\Microsoft Shared\OFFICE12" ;

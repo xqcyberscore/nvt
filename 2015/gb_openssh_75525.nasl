@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_75525.nasl 12083 2018-10-25 09:48:10Z cfischer $
+# $Id: gb_openssh_75525.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability
 #
@@ -34,15 +34,14 @@ if(description)
   script_cve_id("CVE-2015-5352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 12083 $");
+  script_version("$Revision: 12490 $");
   script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 11:48:10 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-07-09 10:06:32 +0200 (Thu, 09 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("ssh_detect.nasl");
-  script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75525");
@@ -57,7 +56,7 @@ if(description)
 
   script_tag(name:"summary", value:"OpenSSH is prone to a security-bypass vulnerability.
 
-  This NVT has been replaced by NVT gb_openssh_security_bypass_vuln.nasl (1.3.6.1.4.1.25623.1.0.806049)");
+  This NVT has been replaced by OID 1.3.6.1.4.1.25623.1.0.806049.");
 
   script_tag(name:"affected", value:"OpenSSH < 6.9");
 
@@ -69,19 +68,4 @@ if(description)
   exit(0);
 }
 
-# This NVT has been replaced by NVT gb_openssh_security_bypass_vuln.nasl (1.3.6.1.4.1.25623.1.0.806049)
-exit(66);
-
-include("version_func.inc");
-include("host_details.inc");
-
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
-
-if( version_is_less( version:vers, test_version:"6.9" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"6.9" );
-  security_message( port:port, data:report );
-  exit( 0 );
-}
-
-exit( 99 );
+exit(66); # Replaced by gb_openssh_security_bypass_vuln.nasl (1.3.6.1.4.1.25623.1.0.806049)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2473-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2473-01_kernel.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:2473-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871884");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-16 07:29:39 +0200 (Wed, 16 Aug 2017)");
   script_cve_id("CVE-2017-7533");
   script_tag(name:"cvss_base", value:"6.9");
@@ -53,12 +53,12 @@ if(description)
   Hat Enterprise Linux 7.4 template caused all the VMs to become unresponsive in
   the 'Image Locked' state. This update fixes the direct I/O feature of the file
   system, and VMs created from a Red Hat Enterprise Linux 7.4 template now work as
-  expected. (BZ#1475669) ");
+  expected. (BZ#1475669)");
   script_tag(name:"affected", value:"kernel on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2473-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00059.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

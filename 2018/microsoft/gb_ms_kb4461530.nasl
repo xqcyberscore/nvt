@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461530.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_ms_kb4461530.nasl 12477 2018-11-22 07:50:21Z cfischer $
 #
 # Microsoft Excel 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4461530)
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814157");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 12477 $");
   script_cve_id("CVE-2018-8577");
   script_bugtraq_id(105834);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 11:14:15 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Excel 2010 Service Pack 2 Remote Code Execution Vulnerability (KB4461530)");
 
   script_tag(name:"summary", value:"This host is missing an important security
-  update according to Microsoft KB4461530");
+  update according to Microsoft KB4461530.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
-  Excel software it fails to properly handle objects in memory. ");
+  Excel software it fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user.");
@@ -55,12 +55,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/help/4461530");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4461530");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Excel/Version");
+
   exit(0);
 }
 
@@ -77,7 +78,7 @@ if(!excelPath){
   excelPath = "Unable to fetch the install path";
 }
 
-if(excelVer =~ "^(14\.)" && version_is_less(version:excelVer, test_version:"14.0.7224.5000"))
+if(excelVer =~ "^14\." && version_is_less(version:excelVer, test_version:"14.0.7224.5000"))
 {
   report = report_fixed_ver(file_checked:excelPath + "Excel.exe",
                             file_version:excelVer, vulnerable_range:"14.0 - 14.0.7224.4999");

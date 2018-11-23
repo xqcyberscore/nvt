@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rpc_kcms.nasl 12057 2018-10-24 12:23:19Z cfischer $
+# $Id: rpc_kcms.nasl 12501 2018-11-23 10:23:37Z cfischer $
 #
 # Kcms Profile Server
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10832");
-  script_version("$Revision: 12057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:23:19 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 11:23:37 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2605);
   script_tag(name:"cvss_base", value:"4.6");
@@ -66,8 +66,9 @@ if(description)
 include("misc_func.inc");
 include("host_details.inc");
 include("byte_func.inc");
+include("solaris.inc");
 
-version = get_kb_item( "ssh/login/solosversion" );
+version = get_ssh_solosversion();
 if( version && ereg( pattern:"5\.1[0-9]", string:version ) ) exit(0);
 
 RPC_PROG = 100221;

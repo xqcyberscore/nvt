@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2283_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2018_2283_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for ceph openSUSE-SU-2018:2283-1 (ceph)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851846");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:01:00 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-10861", "CVE-2018-1128", "CVE-2018-1129");
   script_tag(name:"cvss_base", value:"5.5");
@@ -56,11 +56,9 @@ if(description)
 
   - bluestore: db.slow used when db is not full (bsc#1092874)
 
-  - Upstream fixes and improvements, see
-  <a  rel='nofollow' href='https://ceph.com/releases/12-2-7-luminous-released/'>https://ceph.com/releases/12-2-7-luminous-released/
+  - Upstream fixes and improvements, see the linked references.
 
   This update was imported from the SUSE:SLE-12-SP3:Update update project.
-
 
   Patch Instructions:
 
@@ -77,7 +75,9 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2018:2283_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00029.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00029.html");
+  script_xref(name:"URL", value:"https://ceph.com/releases/12-2-7-luminous-released/");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

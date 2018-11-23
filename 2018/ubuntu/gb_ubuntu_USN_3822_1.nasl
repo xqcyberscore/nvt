@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3822_1.nasl 12449 2018-11-21 07:50:18Z cfischer $
+# $Id: gb_ubuntu_USN_3822_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # Ubuntu Update for linux USN-3822-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843824");
-  script_version("$Revision: 12449 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2016-9588", "CVE-2017-13168", "CVE-2017-16649", "CVE-2018-16658", "CVE-2018-9363");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 08:50:18 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 06:00:08 +0100 (Thu, 15 Nov 2018)");
   script_name("Ubuntu Update for linux USN-3822-1");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
 
   script_xref(name:"USN", value:"3822-1");
-  script_xref(name:"URL" , value:"http://www.ubuntu.com/usn/usn-3822-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3822-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'
   package(s) announced via the USN-3822-1 advisory.");

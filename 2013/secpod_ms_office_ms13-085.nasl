@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_ms13-085.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: secpod_ms_office_ms13-085.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2885080)
 #
@@ -27,28 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903407");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3890");
   script_bugtraq_id(62829, 62824);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 10:10:42 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2885080)");
 
-
   script_tag(name:"summary", value:"This host is missing an important security update according to
-Microsoft Bulletin MS13-085.");
+  Microsoft Bulletin MS13-085.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to error when processing Microsoft Word binary
-documents can be exploited to cause a memory corruption");
+  documents can be exploited to cause a memory corruption");
+
   script_tag(name:"affected", value:"Microsoft Office 2013
-Microsoft Office 2007 Service Pack 3 and prior
-Microsoft Office 2010 Service Pack 2 and prior");
+
+  Microsoft Office 2007 Service Pack 3 and prior
+
+  Microsoft Office 2010 Service Pack 2 and prior");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.");
+  code, cause memory corruption and compromise the system.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,26 +72,27 @@ code, cause memory corruption and compromise the system.");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 # Microsoft Office 2007 Service Pack 2 and
 # Microsoft Office 2010 Service Pack 1 and prior
 # Microsoft Office 2013 Service Pack 1 and prior
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14|15].*"){
+if(!officeVer || officeVer !~ "^1[245]\."){
   exit(0);
 }
 
 foreach offpath (make_list("12.0", "14.0", "15.0"))
 {
-  comPath = registry_get_sz(key:"SOFTWARE\Microsoft\Office\" + offpath  + "\Access\InstallRoot",
-                           item:"Path");
+  comPath = registry_get_sz(key:"SOFTWARE\Microsoft\Office\" + offpath  + "\Access\InstallRoot", item:"Path");
   if(comPath)
   {
     ortVer = fetch_file_version(sysPath:comPath, file_name:"Oart.dll");

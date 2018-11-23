@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-052.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms08-052.nasl 12488 2018-11-22 13:14:03Z cfischer $
 #
 # Microsoft GDI Plus Remote Code Execution Vulnerabilities (954593)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801725");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12488 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:14:03 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-18 10:00:48 +0100 (Tue, 18 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -43,48 +43,66 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_ms_visual_prdts_detect.nasl",
-                      "secpod_office_products_version_900032.nasl",
+  script_dependencies("secpod_ms_visual_prdts_detect.nasl", "secpod_office_products_version_900032.nasl",
                       "smb_reg_service_pack.nasl", "gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash an affected application
   or execute arbitrary code.");
+
   script_tag(name:"affected", value:"Microsoft SQL Server 2005 SP 2/3
+
   Microsoft Office Excel Viewer 2007
+
   Microsoft Office XP/2003 SP 3 and prior
+
   Microsoft Office Visio 2002 SP 2 and prior
+
   Microsoft Office Groove 2007 SP1 and prior
+
   Microsoft Excel  Viewer 2003 SP 3 and prior
+
   Microsoft Office 2007 System SP 1/2 and prior
+
   Microsoft Office Word Viewer 2003 SP 3 and prior
+
   Microsoft Office Visio Viewer 2007 SP 2 and prior
+
   Microsoft Office PowerPoint Viewer 2007 SP 2 and prior
+
   Microsoft Visual Studio 2008 SP 1 and prior
+
   Microsoft Visual Studio .NET 2003 SP 1 and prior
+
   Microsoft Windows 2000 SP4 with Internet Explorer 6 SP 1
+
   Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats SP 1/2
+
   Microsoft Office PowerPoint Viewer 2003
+
   Microsoft Office PowerPoint Viewer 2007 Service Pack 1");
+
   script_tag(name:"insight", value:"The issues are caused by memory corruptions, integer, heap and buffer
   overflows, and input validation errors in GDI+ when rendering malformed WMF,
   PNG, TIFF and BMP images, or when processing Office Art Property Tables in
   Office documents.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-052.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
 
 function FileVer (file, path)
 {
@@ -96,11 +114,9 @@ function FileVer (file, path)
   return ver;
 }
 
-
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win2008:3) <= 0){
   exit(0);
 }
-
 
 # Visio 2002
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
@@ -113,8 +129,7 @@ foreach item (registry_enum_keys(key:key))
   appName = registry_get_sz(item:"DisplayName", key:key + item);
   if("Visio" >< appName)
   {
-    offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"CommonFilesDir");
+    offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
     if(offPath)
     {
       offPath += "\Microsoft Shared\OFFICE10";
@@ -131,11 +146,12 @@ foreach item (registry_enum_keys(key:key))
   }
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 # Office XP
-if(get_kb_item("MS/Office/Ver") =~ "^10\..*")
+if(officeVer && officeVer =~ "^10\.")
 {
-  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"CommonFilesDir");
+  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(offPath)
   {
     offPath += "\Microsoft Shared\OFFICE10";
@@ -169,18 +185,22 @@ if(offPath)
   }
 }
 
+visioViewVer = get_kb_item("SMB/Office/VisioViewer/Ver");
+grooveVer = get_kb_item("SMB/Office/Groove/Version");
+xlViewVer = get_kb_item("SMB/Office/XLView/Version");
+ppViewVer = get_kb_item("SMB/Office/PPView/Version");
+cptPackVer = get_kb_item("SMB/Office/ComptPack/Version");
 
 # Office 2007 or Groove 2007 or Excel Viewer or PowerPoint Viewer or
 # Office Compatibility Pack 2007 or Visio Viewer 2007
-if(((get_kb_item("MS/Office/Ver") =~ "^12\..*") ||
-    (get_kb_item("SMB/Office/VisioViewer/Ver") =~ "^12\..*") ||
-    (get_kb_item("SMB/Office/Groove/Version") =~ "^12\..*") ||
-    (get_kb_item("SMB/Office/XLView/Version") =~ "^12\..*") ||
-    (get_kb_item("SMB/Office/PPView/Version")) =~ "^12\..*")||
-    (get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*"))
+if((officeVer && officeVer =~ "^12\.") ||
+   (visioViewVer && visioViewVer =~ "^12\.") ||
+   (grooveVer && grooveVer =~ "^12\.") ||
+   (xlViewVer && xlViewVer =~ "^12\.") ||
+   (ppViewVer && ppViewVer =~ "^12\.") ||
+   (cptPackVer && cptPackVer =~ "^12\."))
 {
-  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(offPath)
   {
     offPath += "\Microsoft Shared\OFFICE12";
@@ -196,11 +216,12 @@ if(((get_kb_item("MS/Office/Ver") =~ "^12\..*") ||
   }
 }
 
+visStudNetVer = get_kb_item("Microsoft/VisualStudio.Net/Ver");
+
 # Microsoft Visual Studio .Net 2003 and Microsoft Visual Studio .Net 2002
-if(egrep(pattern:"^7\..*", string:get_kb_item("Microsoft/VisualStudio.Net/Ver")))
+if(visStudNetVer && visStudNetVer =~ "^7\.")
 {
-  vsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"CommonFilesDir");
+  vsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(vsPath)
   {
     vsPath = vsPath + "\Microsoft Shared\Office10";
@@ -216,11 +237,12 @@ if(egrep(pattern:"^7\..*", string:get_kb_item("Microsoft/VisualStudio.Net/Ver"))
   }
 }
 
+visStudVer = get_kb_item("Microsoft/VisualStudio/Ver");
+
 # Visual Studio 2008
-if(egrep(pattern:"^9\..*", string:get_kb_item("Microsoft/VisualStudio/Ver")))
+if(visStudVer && visStudVer =~ "^9\.")
 {
-  vsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SDKs\Windows",
-                           item:"CurrentInstallFolder");
+  vsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SDKs\Windows", item:"CurrentInstallFolder");
   if(vsPath)
   {
     vsPath = vsPath + "\Bootstrapper\Packages\ReportViewer";
@@ -239,10 +261,9 @@ if(egrep(pattern:"^9\..*", string:get_kb_item("Microsoft/VisualStudio/Ver")))
 if(hotfix_check_sp(win2k:5) > 0)
 {
   ieVer = get_kb_item("MS/IE/EXE/Ver");
-  if(ieVer =~ "^6\.0\.2800")
+  if(ieVer && ieVer =~ "^6\.0\.2800")
   {
-    dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"CommonFilesDir");
+    dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
     if(dllPath)
     {
       dllPath += "\Microsoft Shared\VGX";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2860-01_postgresql.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2860-01_postgresql.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for postgresql RHSA-2017:2860-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812013");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 09:13:46 +0200 (Fri, 06 Oct 2017)");
   script_cve_id("CVE-2017-7546");
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,7 @@ der Ham as the original reporters.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2860-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-October/msg00007.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-October/msg00007.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

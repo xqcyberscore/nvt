@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871372");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 06:34:27 +0200 (Wed, 10 Jun 2015)");
   script_cve_id("CVE-2014-9419", "CVE-2014-9420", "CVE-2014-9585", "CVE-2015-1805",
                 "CVE-2015-3331");
@@ -88,7 +88,7 @@ enhancements. The system must be rebooted for this update to take effect.");
   Red Hat Enterprise Linux Workstation (v. 6)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:1081-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-June/msg00009.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-June/msg00009.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

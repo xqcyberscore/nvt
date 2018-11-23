@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3809_1.nasl 12302 2018-11-09 17:58:33Z cfischer $
+# $Id: gb_ubuntu_USN_3809_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # Ubuntu Update for openssh USN-3809-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843809");
-  script_version("$Revision: 12302 $");
+  script_version("$Revision: 12497 $");
   script_cve_id("CVE-2016-10708", "CVE-2018-15473");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-09 18:58:33 +0100 (Fri, 09 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-07 06:02:39 +0100 (Wed, 07 Nov 2018)");
   script_name("Ubuntu Update for openssh USN-3809-1");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
 
   script_xref(name:"USN", value:"3809-1");
-  script_xref(name:"URL" , value:"http://www.ubuntu.com/usn/usn-3809-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3809-1/");
 
   script_tag(name:"summary", value:"The remote host is missing an update for
 the 'openssh' package(s) announced via the USN-3809-1 advisory.");

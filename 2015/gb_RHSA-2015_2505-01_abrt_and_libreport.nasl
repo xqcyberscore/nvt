@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871509");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 08:26:57 +0100 (Tue, 24 Nov 2015)");
   script_cve_id("CVE-2015-5273", "CVE-2015-5287", "CVE-2015-5302");
   script_tag(name:"cvss_base", value:"6.9");
@@ -79,7 +79,7 @@ packages, which contain backported patches to correct these issues.");
   script_tag(name:"affected", value:"abrt and libreport on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"RHSA", value:"2015:2505-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00059.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2015-November/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

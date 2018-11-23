@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wordpad_mult_vuln.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: secpod_ms_wordpad_mult_vuln.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # WordPad and Office Text Converter Memory Corruption Vulnerability (960477)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900065");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-12 16:11:26 +0100 (Fri, 12 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,8 +46,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker craft malicious arbitrary codes
   into the files and can trick the user to open those crafted documents which
-  may lead to remote arbitrary code execution inside the context of the affected
-  system.");
+  may lead to remote arbitrary code execution inside the context of the affected system.");
+
   script_tag(name:"affected", value:"WordPad on MS Windows 2K/XP/2K3
 
   MS Office 2000 Word Service Pack 3
@@ -55,17 +55,21 @@ if(description)
   MS Office XP Word Service Pack 3
 
   MS Office Converters Pack");
+
   script_tag(name:"insight", value:"- Input validation error when parsing document files i.e. Office files, RTF,
-    Wordperfect files or Write files.");
+  Wordperfect files or Write files.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
   Bulletin MS09-010.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -77,8 +81,7 @@ if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
   exit(0);
 }
 
-dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools",
-                          item:"SharedFilesDir");
+dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools", item:"SharedFilesDir");
 if(!dllPath){
   exit(0);
 }
@@ -89,9 +92,12 @@ file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
 
 dllVer = GetVer(file:file, share:share);
 
+officeVer = get_kb_item("MS/Office/Ver");
+wordVer = get_kb_item("SMB/Office/Word/Version");
+
 # Patch check for Office 2K and XP
-if(get_kb_item("SMB/Office/Word/Version") =~ "^(9|10)\..*" &&
-   get_kb_item("MS/Office/Ver") =~ "^(9|10)\..*")
+if(wordVer && wordVer =~ "^(9|10)\." &&
+   officeVer && officeVer =~ "^(9|10)\.")
 {
   if(dllVer)
   {

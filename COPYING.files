@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 22 Nov 2018 08:18:20 +0100
+# Automatically created on:  Fri, 23 Nov 2018 11:36:15 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38528,6 +38528,9 @@
 2018/adobe/gb_adobe_flash_player_apsb18-39_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-39_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-39_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-44_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-44_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-44_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_eol_win.nasl: GPLv2+
@@ -38558,6 +38561,9 @@
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_win.nasl: GPLv2+
 2018/adobe/gb_adobe_framemaker_priv_escal_vuln_win.nasl: GPLv2+
 2018/adobe/gb_adobe_illustrator_code_exec_vuln_apsa08-07_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_illustrator_dll_hijacking_vuln_apsb10-29_win.nasl: GPLv2+
@@ -38609,6 +38615,7 @@
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-24.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-31.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-39.nasl: GPLv2+
+2018/adobe/gb_flash_player_for_ie_edge_apsb18-44.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_jan17.nasl: GPLv2+
 2018/anydesk/gb_anydesk_dll_preloading_vuln.nasl: GPLv2+
 2018/apache/gb_apache_activemq_info_disc_vuln_lin.nasl: GPLv2+
@@ -38915,6 +38922,9 @@
 2018/centos/gb_CESA-2018_3006_firefox_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3403_thunderbird_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_3406_python-paramiko_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3409_java_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3522_spice-server_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_3531_thunderbird_centos6.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_5392896132_dhcp_fc26.nasl: GPLv2+
 2018/centos/gb_fedora_2018_98684f429b_xen_fc27.nasl: GPLv2+
@@ -39705,6 +39715,9 @@
 2018/debian/deb_dla_1583.nasl: GPLv2+
 2018/debian/deb_dla_1584.nasl: GPLv2+
 2018/debian/deb_dla_1585.nasl: GPLv2+
+2018/debian/deb_dla_1586.nasl: GPLv2+
+2018/debian/deb_dla_1587.nasl: GPLv2+
+2018/debian/deb_dla_1590.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41183,6 +41196,7 @@
 2018/fedora/gb_fedora_2018_fb2afee474_libsoup_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_fb582aabcc_firefox_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_fbe4017846_dnsmasq_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_fc3018b1bd_NetworkManager_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_fc47f3c85d_glibc-arm-linux-gnu_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_fc9c5969b4_exiv2_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_fd29597fa4_rubygem-sprockets_fc27.nasl: GPLv2+
@@ -41809,6 +41823,8 @@
 2018/microsoft/gb_ms_powershell_sec_bypass_vuln_july18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_sec_bypass_vuln_july18_win.nasl: GPLv2+
 2018/microsoft/gb_ms_pp_viewer_kb4092444.nasl: GPLv2+
+2018/microsoft/gb_ms_project_2010_kb4022147.nasl: GPLv2+
+2018/microsoft/gb_ms_project_2013_kb4461489.nasl: GPLv2+
 2018/microsoft/gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl: GPLv2+
 2018/microsoft/gb_ms_visual_studio2017_info_disc_vuln.nasl: GPLv2+
 2018/microsoft/gb_ms_visual_studio_2017_mult_vuln_july18.nasl: GPLv2+
@@ -41824,6 +41840,8 @@
 2018/microsoft/gb_system_io_pipelines_dos_vuln_sep18_win.nasl: GPLv2+
 2018/microsoft/gb_windows_iexpress_untrusted_search_path_vuln.nasl: GPLv2+
 2018/microsoft/gb_windows_mail_client_info_disc_vuln.nasl: GPLv2+
+2018/microsoft/gb_yammer_desktop_rce_vuln_macosx.nasl: GPLv2+
+2018/microsoft/gb_yammer_desktop_rce_vuln_win.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_auth_bypass_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_dos_vuln.nasl: GPLv2+
 2018/mikrotik/gb_mikrotik_mult_vuln.nasl: GPLv2+
@@ -42512,6 +42530,14 @@
 2018/opensuse/gb_suse_2018_3803_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3804_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3805_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3817_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3818_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3819_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3824_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3825_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3827_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3828_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3837_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -42661,6 +42687,7 @@
 2018/owncloud/gb_owncloud_xss_n_csrf_vuln_mar18_win.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_cmd_inj_vuln.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_dos_vuln_nov18.nasl: GPLv2+
+2018/paessler/gb_prtg_netmon_mult_vuln_oct18.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_rce_vuln_nov18.nasl: GPLv2+
 2018/paessler/gb_prtg_netmon_stack_overflow_vuln.nasl: GPLv2+
 2018/panasonic/gb_panasonic_ip_camera_default_credentials.nasl: GPLv2+
@@ -44341,6 +44368,7 @@ gb_ibm_websphere_detect_giop.nasl: GPLv2+
 gb_ibm_websphere_detect.nasl: GPLv2+
 gb_ibm_websphere_mq_detect_lin.nasl: GPLv2+
 gb_ibm_websphere_mq_detect.nasl: GPLv2+
+gb_ibm_websphere_mq_mqi_detect.nasl: GPLv2+
 gb_ibm_websphere_portal_detect.nasl: GPLv2+
 gb_icecast_detect.nasl: GPLv2+
 gb_icewarp_mail_detect.nasl: GPLv2+
@@ -44593,6 +44621,7 @@ gb_ms_money_detect.nasl: GPLv2+
 gb_ms_office_click2run_detect_win.nasl: GPLv2+
 gb_ms_office_web_apps_detect.nasl: GPLv2+
 gb_ms_onenote_detect.nasl: GPLv2+
+gb_ms_project_detect_win.nasl: GPLv2+
 gb_ms_project_server_detect.nasl: GPLv2+
 gb_ms_scom_detect_win.nasl: GPLv2+
 gb_ms_sharepoint_sever_n_foundation_detect.nasl: GPLv2+
@@ -45125,6 +45154,7 @@ gb_thunderbird_detect_lin.nasl: GPLv2+
 gb_thunderbird_detect_portable_win.nasl: GPLv2+
 gb_thunderbird_detect_win.nasl: GPLv2+
 gb_thycotic_secret_server_detect.nasl: GPLv2+
+gb_tibco_ftl_detect_win.nasl: GPLv2+
 gb_tibco_tibbr_detect.nasl: GPLv2+
 gb_tigervnc_detect_win.nasl: GPLv2+
 gb_titan_ftp_detect.nasl: GPLv2+
@@ -45293,6 +45323,8 @@ gb_xwiki_enterprise_detect.nasl: GPLv2+
 gb_xzeres_442SR_wind_turbine_detect.nasl: GPLv2+
 gb_yabsoft_aihs_detect.nasl: GPLv2+
 gb_yahoo_msg_detect.nasl: GPLv2+
+gb_yammer_desktop_detect_macosx.nasl: GPLv2+
+gb_yammer_desktop_detect_win.nasl: GPLv2+
 gb_yawcam_detect.nasl: GPLv2+
 gb_yealink_ip_phone_detect.nasl: GPLv2+
 gb_yealink_ip_phone_http_detect.nasl: GPLv2+
@@ -61478,6 +61510,8 @@ gsf/2018/microsoft/gb_ms_kb4462929.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4463097.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4467701.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4467706.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_team_foundation_server_rce_vuln.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_team_foundation_server_xss_vuln.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_excel_services_kb4018343.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
@@ -61826,6 +61860,8 @@ gsf/2018/symantec/gb_symantec_encryption_server_symsa1458_dos_vuln.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_messaging_gateway_SYMSA1461.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_mult_vuln.nasl: GPLv2+
+gsf/2018/teltonika/gb_teltonika_rut9xx_rce_vuln.nasl: GPLv2+
+gsf/2018/tibco/gb_tibco_ftl_csrf_vuln_win.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_ddi_xss_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
 gsf/2018/tridium/gb_tridium_niagara_mult_vuln.nasl: GPLv2+
@@ -61876,6 +61912,7 @@ gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_lin.nasl: GPLv
 gsf/2018/vmware/gb_vmware_workstation_vnc_dos_vuln_VMSA-2018-0008_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_l1_ter_fault_side_channel_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0001.nasl: GPLv2+
+gsf/2018/vmware/gb_vsphere_data_protection_mult_vuln_VMSA-2018-0029.nasl: GPLv2+
 gsf/2018/wowza/gb_wowza_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/xovis/gb_xovis_pc_mult_vuln.nasl: GPLv2+

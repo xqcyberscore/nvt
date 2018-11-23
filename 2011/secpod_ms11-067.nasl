@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-067.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ms11-067.nasl 12494 2018-11-22 15:41:52Z cfischer $
 #
 # Microsoft Report Viewer Information Disclosure Vulnerability (2578230)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900299");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:41:52 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-08-11 06:41:03 +0200 (Thu, 11 Aug 2011)");
   script_bugtraq_id(49033);
   script_cve_id("CVE-2011-1976");
@@ -49,38 +49,44 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary HTML and
   script code in a user's browser session in context of an affected site.");
+
   script_tag(name:"affected", value:"Microsoft Visual Studio 2005 Service Pack 1
+
   Microsoft Report Viewer 2005 Service Pack 1 Re-distributable Package");
+
   script_tag(name:"insight", value:"A flaw is due to an unspecified input passed to the Microsoft Report
   Viewer Control is not properly sanitised before being returned to the user.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-067.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(egrep(pattern:"^8\..*", string:get_kb_item("Microsoft/VisualStudio/Ver")))
+visStudVer = get_kb_item("Microsoft/VisualStudio/Ver");
+
+if(visStudVer && visStudVer =~ "^8\.")
 {
   ## MS11-067 Hotfix check
   if((hotfix_missing(name:"2548826") == 1))
   {
-    studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\8.0",
-                                 item:"InstallDir");
+    studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\8.0", item:"InstallDir");
     if(studioPath){
       reportViewPath = studioPath - "\Common7\IDE\" + "\ReportViewer";
-      sysVer = fetch_file_version(sysPath:reportViewPath,
-               file_name:"Microsoft.ReportViewer.WebForms.dll");
+      sysVer = fetch_file_version(sysPath:reportViewPath, file_name:"Microsoft.ReportViewer.WebForms.dll");
 
-      if(sysVer)
+      if(sysVer && sysVer =~ "^8\.")
       {
         if(version_in_range(version:sysVer, test_version:"8.0", test_version2:"8.0.50727.5676")){
           security_message( port: 0, data: "The target host was found to be vulnerable" );
@@ -111,10 +117,9 @@ foreach item (registry_enum_keys(key:key))
   if("\Microsoft.NET\Framework" >< path)
   {
     reportViewPath =  path + "\Microsoft Report Viewer Redistributable 2005";
-    sysVer = fetch_file_version(sysPath:reportViewPath,
-             file_name:"Install.res.1025.dll");
+    sysVer = fetch_file_version(sysPath:reportViewPath, file_name:"Install.res.1025.dll");
 
-    if(sysVer)
+    if(sysVer && sysVer =~ "^8\.")
     {
       if(version_in_range(version:sysVer, test_version:"8.0.50727", test_version2:"8.0.50727.5676"))
       {

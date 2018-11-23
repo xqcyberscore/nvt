@@ -43,8 +43,8 @@ if(description)
   correct this issue. For the update to take effect, all applications linked
   to the GnuTLS library must be restarted.");
   script_oid("1.3.6.1.4.1.25623.1.0.871001");
-  script_version("$Revision: 12382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:51:56 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-05-31 09:50:26 +0530 (Fri, 31 May 2013)");
   script_cve_id("CVE-2013-2116", "CVE-2013-1619");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,7 @@ if(description)
   script_name("RedHat Update for gnutls RHSA-2013:0883-01");
 
   script_xref(name:"RHSA", value:"2013:0883-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2013-May/msg00038.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2013-May/msg00038.html");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'gnutls'
   package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);

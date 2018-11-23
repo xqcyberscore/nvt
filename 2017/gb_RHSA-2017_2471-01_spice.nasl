@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2471-01_spice.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2471-01_spice.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for spice RHSA-2017:2471-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871881");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 07:28:08 +0200 (Tue, 15 Aug 2017)");
   script_cve_id("CVE-2017-7506");
   script_tag(name:"cvss_base", value:"6.5");
@@ -47,13 +47,13 @@ if(description)
   authenticated attacker could send specially crafted messages to the spice
   server, causing out-of-bounds memory accesses, leading to parts of server memory
   being leaked or a crash. (CVE-2017-7506) This issue was discovered by Frediano
-  Ziglio (Red Hat). ");
+  Ziglio (Red Hat).");
   script_tag(name:"affected", value:"spice on
   Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2471-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00057.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00057.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

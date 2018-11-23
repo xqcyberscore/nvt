@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-097.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms_office_ms16-097.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3177393)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807873");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2016-3301", "CVE-2016-3303", "CVE-2016-3304");
   script_bugtraq_id(92288, 92301, 92302);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 14:44:44 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3177393)");
 
@@ -48,6 +48,7 @@ if(description)
   attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
+
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -67,6 +68,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -75,13 +77,14 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007/2010
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
+if(!officeVer || officeVer !~ "^1[24]\."){
   exit(0);
 }
 
-msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(msPath)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
@@ -91,10 +94,10 @@ if(msPath)
 
     if(msdllVer)
     {
-      if(msdllVer =~ "^12"){
+      if(msdllVer =~ "^12\."){
         Vulnerable_range  =  "12.0 - 12.0.6751.4999";
       }
-      else if(msdllVer =~ "^14"){
+      else if(msdllVer =~ "^14\."){
         Vulnerable_range  =  "14.0 - 14.0.7172.4999";
       }
 

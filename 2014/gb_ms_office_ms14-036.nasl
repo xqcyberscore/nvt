@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms14-036.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_ms_office_ms14-036.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2967487)
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804460");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:17:32 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2967487)");
 
-
   script_tag(name:"summary", value:"This host is missing a critical security update according to
-Microsoft Bulletin MS14-036.");
+  Microsoft Bulletin MS14-036.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"The flaws are due to,
 
   - An error within Unicode Scripts Processor can be exploited to execute
@@ -47,13 +48,17 @@ Microsoft Bulletin MS14-036.");
 
   - An error within GDI+ when validating images can be exploited to execute
   arbitrary code via a specially crafted image file.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code in the context of the currently logged-in user, which may lead to a
-complete compromise of an affected computer.");
+  code in the context of the currently logged-in user, which may lead to a complete compromise of an affected computer.");
+
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 2
- Microsoft Office 2010 Service Pack 1");
+
+  Microsoft Office 2010 Service Pack 1");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
   the hotfixes from the referenced advisory.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,7 +73,9 @@ complete compromise of an affected computer.");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-036");
+
   exit(0);
 }
 
@@ -77,13 +84,14 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007/2010
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
+if(!officeVer || officeVer !~ "^1[24]\."){
   exit(0);
 }
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(path)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
@@ -103,10 +111,9 @@ if(path)
 
 
 ## MS Office 2010
-if(get_kb_item("MS/Office/Ver") =~ "^[12|14].*")
+if(officeVer && officeVer =~ "^1[24]\.")
 {
-  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"ProgramFilesDir");
+  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
   if(!path)
   {
     foreach ver (make_list("OFFICE12", "OFFICE14"))

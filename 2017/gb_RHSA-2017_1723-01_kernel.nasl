@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1723-01_kernel.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_1723-01_kernel.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:1723-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871842");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 07:11:29 +0200 (Wed, 12 Jul 2017)");
   script_cve_id("CVE-2017-7895");
   script_tag(name:"cvss_base", value:"10.0");
@@ -97,7 +97,7 @@ fixes xfs_dir2_leaf_readbuf(), and the soft lock up no longer occurs  ...
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1723-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-July/msg00010.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-July/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871659");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-09-13 05:45:09 +0200 (Tue, 13 Sep 2016)");
   script_cve_id("CVE-2015-8916", "CVE-2015-8917", "CVE-2015-8919", "CVE-2015-8920",
 		"CVE-2015-8921", "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924",
@@ -99,7 +99,7 @@ ISO9660 vol ...
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2016:1844-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2016-September/msg00014.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2016-September/msg00014.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

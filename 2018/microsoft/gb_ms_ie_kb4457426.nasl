@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_kb4457426.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_ie_kb4457426.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4457426)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814001");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12496 $");
   script_cve_id("CVE-2018-8447", "CVE-2018-8452", "CVE-2018-8315", "CVE-2018-8457",
                 "CVE-2018-8470");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 09:30:00 +0530 (Wed, 12 Sep 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4457426)");

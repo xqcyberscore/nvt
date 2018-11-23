@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-069_900058.nasl 12404 2018-11-19 08:40:38Z cfischer $
+# $Id: secpod_ms08-069_900058.nasl 12485 2018-11-22 11:39:45Z cfischer $
 # Description: Microsoft XML Core Services Remote Code Execution Vulnerability (955218)
 #
 # Authors:
@@ -23,12 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900058");
-  script_version("$Revision: 12404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 09:40:38 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-11-12 16:32:06 +0100 (Wed, 12 Nov 2008)");
   script_bugtraq_id(21872, 32204);
   script_cve_id("CVE-2007-0099", "CVE-2008-4029", "CVE-2008-4033");
@@ -43,15 +42,23 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to conduct cross domain
   scripting attacks and read data from another domain in IE and also execute
   arbitrary code by tricking a user into visiting a malicious web page.");
+
   script_tag(name:"affected", value:"Microsoft XML Core Services 3.0/4.0/5.0/6.0
+
   Microsoft Windows 2K Service Pack 4 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Office 2003 & 2007.
+
   Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats.");
+
   script_tag(name:"insight", value:"The flaws are due to,
 
   - a memory corruption error when parsing malformed XML content.
@@ -60,12 +67,16 @@ if(description)
     (DTDs).
 
   - an error in the way MSXML handles transfer-encoding headers.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
   and update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-069.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -78,12 +89,13 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win2008:3, win7:1) <= 0
   exit(0);
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 # Microsoft Office 2003 & 2007
-if((get_kb_item("MS/Office/Ver") =~ "11\..*|12\..*")||
+if((officeVer && officeVer =~ "^1[12]\.")||
    registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
-  sharedPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools",
-                               item:"SharedFilesDir");
+  sharedPath = registry_get_sz(key:"SOFTWARE\Microsoft\Shared Tools", item:"SharedFilesDir");
   if(sharedPath)
   {
     share2 = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sharedPath);
@@ -92,8 +104,7 @@ if((get_kb_item("MS/Office/Ver") =~ "11\..*|12\..*")||
   }
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup", item:"Install Path");
 if(sysPath)
 {
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);

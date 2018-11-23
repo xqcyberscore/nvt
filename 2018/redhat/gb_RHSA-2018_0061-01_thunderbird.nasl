@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0061-01_thunderbird.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2018_0061-01_thunderbird.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for thunderbird RHSA-2018:0061-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812606");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-08 07:38:10 +0100 (Mon, 08 Jan 2018)");
   script_cve_id("CVE-2017-7829", "CVE-2017-7846", "CVE-2017-7847", "CVE-2017-7848");
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,13 +45,13 @@ if(description)
   potentially, execute arbitrary code with the privileges of the user running
   Thunderbird. (CVE-2017-7846, CVE-2017-7847, CVE-2017-7848, CVE-2017-7829) Red
   Hat would like to thank the Mozilla project for reporting these issues. Upstream
-  acknowledges cure53 and Sabri Haddouche as the original reporters. ");
+  acknowledges cure53 and Sabri Haddouche as the original reporters.");
   script_tag(name:"affected", value:"thunderbird on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2018:0061-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2018-January/msg00053.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2018-January/msg00053.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

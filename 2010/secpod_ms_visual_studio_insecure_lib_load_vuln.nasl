@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_studio_insecure_lib_load_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_ms_visual_studio_insecure_lib_load_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Visual Studio Insecure Library Loading Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902255");
-  script_version("$Revision: 11553 $");
+  script_version("$Revision: 12490 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3190");
   script_tag(name:"cvss_base", value:"9.3");
@@ -43,31 +43,28 @@ if(description)
   script_family("Windows");
   script_dependencies("secpod_ms_visual_prdts_detect.nasl");
   script_mandatory_keys("Microsoft/VisualStudio/Ver");
-  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute
-arbitrary code and conduct DLL hijacking attacks.");
-  script_tag(name:"affected", value:"Microsoft Visual Studio");
-  script_tag(name:"insight", value:"The flaw is due to 'ATL MFC Trace Tool'(AtlTraceTool8.exe)
-loading libraries in an insecure manner. This can be exploited to load
-arbitrary libraries by tricking a user into opening a TRC file located on a
-remote WebDAV or SMB share.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-and update mentioned hotfixes in the advisory from the below link.
-http://www.microsoft.com/technet/security/Bulletin/MS11-025.mspx");
-  script_tag(name:"summary", value:"This host is installed with Microsoft Visual Studio and is prone
-to insecure library loading vulnerability.
 
-This NVT has been replaced by NVT secpod_ms11-025.nasl
-(OID:1.3.6.1.4.1.25623.1.0.900285).");
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute
+  arbitrary code and conduct DLL hijacking attacks.");
+  script_tag(name:"affected", value:"Microsoft Visual Studio");
+
+  script_tag(name:"insight", value:"The flaw is due to 'ATL MFC Trace Tool'(AtlTraceTool8.exe)
+  loading libraries in an insecure manner. This can be exploited to load
+  arbitrary libraries by tricking a user into opening a TRC file located on a remote WebDAV or SMB share.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
+  and update mentioned hotfixes in the advisory");
+
+  script_tag(name:"summary", value:"This host is installed with Microsoft Visual Studio and is prone
+  to insecure library loading vulnerability.
+
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.900285.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS11-025.mspx");
   exit(0);
 }
 
 exit(66); ## This NVT is deprecated as addressed in secpod_ms11-025.nasl
-
-include("smb_nt.inc");
-
-vsVer = get_kb_item("Microsoft/VisualStudio/Ver");
-if(vsVer){
- security_message( port: 0, data: "The target host was found to be vulnerable" );
-}

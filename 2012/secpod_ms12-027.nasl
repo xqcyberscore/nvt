@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-027.nasl 11876 2018-10-12 12:20:01Z cfischer $
+# $Id: secpod_ms12-027.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (2664258)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902829");
-  script_version("$Revision: 11876 $");
+  script_version("$Revision: 12485 $");
   script_bugtraq_id(52911);
   script_cve_id("CVE-2012-0158");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-04-11 11:11:11 +0530 (Wed, 11 Apr 2012)");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (2664258)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48786");
@@ -45,54 +45,69 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code
   within the context of the application.");
+
   script_tag(name:"affected", value:"Microsoft SQL Server 2008
   Microsoft Visual Basic 6.0
+
   Microsoft Commerce Server 2009
+
   Microsoft SQL Server 2005 Service Pack 4
+
   Microsoft SQL Server 2000 Service Pack 4
+
   Microsoft Visual FoxPro 9.0 Service Pack 2
+
   Microsoft Visual FoxPro 8.0 Service Pack 1
+
   Microsoft Commerce Server 2007 Service Pack 2
+
   Microsoft Commerce Server 2002 Service Pack 4
+
   Microsoft Office 2010 Service Pack 1 and prior
+
   Microsoft Office 2007 Service Pack 3 and prior
+
   Microsoft Office 2003 Service Pack 3 and prior
+
   Microsoft SQL Server 2000 Analysis Services Service Pack 4");
+
   script_tag(name:"insight", value:"The flaw is due to an error within the ListView, ListView2, TreeView
   and TreeView2 ActiveX controls in MSCOMCTL.OCX in the Common Controls and can
   be exploited to corrupt memory.");
+
   script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
   install the hotfixes from the referenced advisory.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-027.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
-
 sysPath = smb_get_systemroot();
-if(! sysPath){
+if(!sysPath){
   exit(0);
 }
 
 sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mscomctl.Ocx");
-if(! sysVer){
+if(!sysVer){
   exit(0);
 }
 
-if(get_kb_item("MS/Office/Ver") =~ "^[11|12|14].*")
+officeVer = get_kb_item("MS/Office/Ver");
+
+if(officeVer && officeVer =~ "^1[124]\.")
 {
   if(version_is_less(version:sysVer, test_version:"6.1.98.33"))
   {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-025.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ms11-025.nasl 12494 2018-11-22 15:41:52Z cfischer $
 #
 # Microsoft Foundation Class (MFC) Library Remote Code Execution Vulnerability (2500212)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900285");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12494 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:41:52 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_bugtraq_id(42811);
   script_cve_id("CVE-2010-3190");
@@ -52,22 +52,29 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code which
   may result in memory corruption on the affected system.");
+
   script_tag(name:"affected", value:"Microsoft Visual Studio 2010
+
   Microsoft Visual Studio 2005 SP 1 and prior
+
   Microsoft Visual Studio 2008 SP 1 and prior
+
   Microsoft Visual Studio .NET 2003 SP 1 and prior");
+
   script_tag(name:"insight", value:"A flaw exists in the Microsoft Foundation Class (MFC) Library, when
-  applications built using MFC incorrectly restrict the path used for
-  loading external libraries.");
+  applications built using MFC incorrectly restrict the path used for loading external libraries.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-025.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -80,41 +87,36 @@ if((hotfix_missing(name:"2538218") == 0)||(hotfix_missing(name:"2538241") == 0) 
   exit(0);
 }
 
-if(egrep(pattern:"^(8|9|10)\..*", string:get_kb_item("Microsoft" +
-                                                   "/VisualStudio/Ver")))
+visStudVer = get_kb_item("Microsoft/VisualStudio/Ver");
+
+if(visStudVer && visStudVer =~ "^([89]|10)\.")
 {
-  studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\8.0",
-                               item:"InstallDir");
+  studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\8.0", item:"InstallDir");
   if(studioPath){
-    atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86\Microsoft.VC80.ATL"+
-                           "\atl80.dll";
+    atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86\Microsoft.VC80.ATL\atl80.dll";
   }
   else
   {
-    studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\9.0",
-                                 item:"InstallDir");
+    studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\9.0", item:"InstallDir");
     if(studioPath){
-      atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86" +
-                                "\Microsoft.VC90.ATL" + "\atl90.dll";
+      atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86\Microsoft.VC90.ATL" + "\atl90.dll";
     }
     else
     {
-      studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\10.0",
-                                   item:"InstallDir");
+      studioPath = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\10.0", item:"InstallDir");
       if(studioPath){
-        atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86\Microsoft.VC" +
-                               "100.ATL\atl100.dll";
+        atlPath = studioPath - "\Common7\IDE" + "VC\redist\x86\Microsoft.VC100.ATL\atl100.dll";
       }
     }
   }
 }
 
-if(atlPath != NULL)
+if(atlPath)
 {
   share = ereg_replace(pattern:"([A-Za-z]):.*", replace:"\1$", string:atlPath);
   file = ereg_replace(pattern:"[A-Za-z]:(.*)", replace:"\1", string:atlPath);
   atlVer = GetVer(file:file, share:share);
-  if(atlVer != NULL)
+  if(atlVer && atlVer =~ "^([89]|10)\.")
   {
     ## Visual Studio 2008 SP1 version 9.0 <  9.0.30729.6161 and
     ## Visual Studio 2010 version 10.0 < 10.0.30319.460
@@ -134,7 +136,9 @@ if(hotfix_missing(name:"2465373") == 0){
   exit(0);
 }
 
-if(egrep(pattern:"^(7)\..*", string:get_kb_item("Microsoft/VisualStudio.Net/Ver")))
+visStudNetVer = get_kb_item("Microsoft/VisualStudio.Net/Ver");
+
+if(visStudNetVer && visStudNetVer =~ "^7\.")
 {
   vsnfile1 = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup", item:"Install Path");
   if(!vsnfile1){
@@ -142,11 +146,10 @@ if(egrep(pattern:"^(7)\..*", string:get_kb_item("Microsoft/VisualStudio.Net/Ver"
   }
 
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:vsnfile1);
-  vsnfile2 = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                          string:vsnfile1 + "\atl71.dll");
+  vsnfile2 = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:vsnfile1 + "\atl71.dll");
   vsnetVer = GetVer(file:vsnfile2, share:share);
 
-  if(vsnetVer)
+  if(vsnetVer && vsnetVer =~ "^7\.")
   {
     if(version_in_range(version:vsnetVer, test_version:"7.0", test_version2:"7.10.6118.0")){
       security_message( port: 0, data: "The target host was found to be vulnerable" );

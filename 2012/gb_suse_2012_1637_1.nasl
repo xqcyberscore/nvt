@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2012_1637_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2012_1637_1.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850379");
-  script_version("$Revision: 12381 $");
+  script_version("$Revision: 12490 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 09:52:50 +0530 (Fri, 14 Dec 2012)");
   script_cve_id("CVE-2012-5130", "CVE-2012-5131", "CVE-2012-5132", "CVE-2012-5133",
                 "CVE-2012-5134", "CVE-2012-5135", "CVE-2012-5136", "CVE-2012-5137",
@@ -38,16 +38,19 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"openSUSE-SU", value:"2012:1637_1");
   script_name("SuSE Update for Chromium openSUSE-SU-2012:1637-1 (Chromium)");
-
-  script_tag(name:"summary", value:"The remote host is missing an update for the 'Chromium'
-  package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/suse", "ssh/login/rpms", re:"ssh/login/release=openSUSE12\.1");
+
+  script_tag(name:"summary", value:"The remote host is missing an update for the 'Chromium'
+  package(s) announced via the referenced advisory.");
+
   script_tag(name:"affected", value:"Chromium on openSUSE 12.1");
+
   script_tag(name:"solution", value:"Please install the updated packages.");
+
   script_tag(name:"insight", value:"Chromium was updated to 25.0.1343
 
   * Security Fixes (bnc#791234 and bnc#792154):
@@ -76,7 +79,7 @@ if(description)
 
   - Update to 25.0.1335
 
-  * {gtk} Fixed &lt;input&gt; selection renders white text on
+  * {gtk} Fixed <input> selection renders white text on
   white background in apps. (Issue: 158422)
 
   * Fixed translate infobar button to show selected
@@ -110,91 +113,12 @@ if(description)
 
   - add explicit buildrequire on libbz2-devel
 
-This NVT has been replaced by NVT gb_suse_2012_1637_1.nasl
-(OID:1.3.6.1.4.1.25623.1.0.850385).");
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.850385.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
 
-exit(66); ## This NVT is deprecated as addressed in gb_suse_2012_1637_1.nasl
-
-include("pkg-lib-rpm.inc");
-
-release = rpm_get_ssh_release();
-if(!release) exit(0);
-res = "";
-
-if(release == "openSUSE12.1")
-{
-
-  if ((res = isrpmvuln(pkg:"chromedriver", rpm:"chromedriver~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromedriver-debuginfo", rpm:"chromedriver-debuginfo~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium", rpm:"chromium~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-debuginfo", rpm:"chromium-debuginfo~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-debugsource", rpm:"chromium-debugsource~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-desktop-gnome", rpm:"chromium-desktop-gnome~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-desktop-kde", rpm:"chromium-desktop-kde~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-ffmpegsumo", rpm:"chromium-ffmpegsumo~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-ffmpegsumo-debuginfo", rpm:"chromium-ffmpegsumo-debuginfo~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-suid-helper", rpm:"chromium-suid-helper~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if ((res = isrpmvuln(pkg:"chromium-suid-helper-debuginfo", rpm:"chromium-suid-helper-debuginfo~25.0.1343.0~1.43.1", rls:"openSUSE12.1")) != NULL)
-  {
-    security_message(data:res);
-    exit(0);
-  }
-
-  if (__pkg_match) exit(99);
-  exit(0);
-}
+exit(66); ## This NVT is deprecated as addressed in 2013/gb_suse_2012_1637_1.nasl

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_cache_timing_info_disc_vuln_win.nasl 12475 2018-11-22 07:07:07Z cfischer $
+# $Id: gb_openssl_cache_timing_info_disc_vuln_win.nasl 12496 2018-11-23 03:21:34Z ckuersteiner $
 #
-# OpenSSL: Cache Timing Side Channel Attack Information Disclosure Vulnerability (Windows)
+# OpenSSL: 1.0.2 < 1.0.2p / 1.1.0 < 1.1.0i Multiple Vulnerabilities (Windows)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,38 +29,14 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813153");
-  script_version("$Revision: 12475 $");
-  script_cve_id("CVE-2018-0737");
-  script_bugtraq_id(103766);
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:07:07 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 12496 $");
+  script_cve_id("CVE-2018-0732", "CVE-2018-0737");
+  script_bugtraq_id(103766, 104442);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 04:21:34 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 18:19:03 +0530 (Mon, 23 Apr 2018)");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_name("OpenSSL: Cache Timing Side Channel Attack Information Disclosure Vulnerability (Windows)");
-
-  script_tag(name:"summary", value:"This host is running OpenSSL and is prone
-  to cache timing side channel attack information disclosure vulnerability.");
-
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-
-  script_tag(name:"insight", value:"The flaw exists due to an error during the RSA
-  key generation process which can lead to cache timing attacks.");
-
-  script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to recover the private key which may aid in further attacks.");
-
-  script_tag(name:"affected", value:"OpenSSL all versions prior to 1.1.0i and OpenSSL
-  1.0.2x prior to 1.0.2p");
-
-  script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0i or 1.0.2p or
-  later. See the references for more details.");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
-  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20180416.txt");
-  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q2/50");
-
+  script_name("OpenSSL: 1.0.2 < 1.0.2p / 1.1.0 < 1.1.0i Multiple Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -68,29 +44,68 @@ if(description)
   script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20180416.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20180612.txt");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q2/50");
+  script_xref(name:"URL", value:"https://github.com/openssl/openssl/commit/ea7abeeabf92b7aca160bdd0208636d4da69f4f4");
+  script_xref(name:"URL", value:"https://github.com/openssl/openssl/commit/3984ef0b72831da8b3ece4745cac4f8575b19098");
+  script_xref(name:"URL", value:"https://github.com/openssl/openssl/commit/6939eab03a6e23d2bd2c3f5e34fe1d48e542e787");
+  script_xref(name:"URL", value:"https://github.com/openssl/openssl/commit/349a41da1ad88ad87825414752a8ff5fdd6a6c3f");
+
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone
+  to multiple vulnerabilities.");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
+  script_tag(name:"insight", value:"The flaws exist due to:
+
+  - During key agreement in a TLS handshake using a DH(E) based ciphersuite a malicious server can send
+  a very large prime value to the client (CVE-2018-0732).
+
+  - The OpenSSL RSA Key generation algorithm has been shown to be vulnerable to a cache timing side channel
+  attack (CVE-2018-0737).");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker:
+
+  - to cause the client to spend an unreasonably long period of time generating a key for this prime resulting
+  in a hang until the client has finished. This could be exploited in a Denial Of Service attack (CVE-2018-0732).
+
+  - with sufficient access to mount cache timing attacks during the RSA key generation process could recover the
+  private key (CVE-2018-0737).");
+
+  script_tag(name:"affected", value:"OpenSSL 1.1.0-1.1.0h and 1.0.2-1.0.2o.");
+
+  script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0i or 1.0.2p or
+  later. See the references for more details.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-if(isnull(sslPort = get_app_port(cpe:CPE)))
-  exit(0);
+if( isnull( port = get_app_port( cpe:CPE ) ) )
+  exit( 0 );
 
-if(!infos = get_app_version_and_location(cpe:CPE, port:sslPort, exit_no_version:TRUE))
-  exit(0);
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) )
+  exit( 0 );
 
-sslVer = infos['version'];
-sslPath = infos['location'];
+vers = infos['version'];
+path = infos['location'];
 
-if(sslVer =~ "^1\.0\.2" && version_is_less(version:sslVer, test_version:"1.0.2p")){
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.0.2p");
-  security_message(data:report, port:sslPort);
-  exit(0);
-} else if(version_is_less(version:sslVer, test_version:"1.1.0i")){
-  report = report_fixed_ver(installed_version:sslVer, fixed_version:"1.1.0i");
-  security_message(data:report, port:sslPort);
-  exit(0);
+if( version_in_range( version:vers, test_version:"1.1.0", test_version2:"1.1.0h" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.0i", install_path:path );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
+if( version_in_range( version:vers, test_version:"1.0.2", test_version2:"1.0.2o" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.0.2p", install_path:path );
+  security_message( port:port, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

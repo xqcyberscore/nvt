@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2492-01_xmlsec1.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2492-01_xmlsec1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for xmlsec1 RHSA-2017:2492-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811726");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 07:32:50 +0200 (Mon, 21 Aug 2017)");
   script_cve_id("CVE-2017-1000061");
   script_tag(name:"cvss_base", value:"5.8");
@@ -53,7 +53,7 @@ URLs, leading to information disclosure or denial of service.
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2492-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00071.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00071.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

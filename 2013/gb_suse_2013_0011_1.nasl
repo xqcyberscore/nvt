@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2013_0011_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2013_0011_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for mariadb openSUSE-SU-2013:0011-1 (mariadb)
 #
@@ -26,10 +26,9 @@
 
 if(description)
 {
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00000.html");
   script_oid("1.3.6.1.4.1.25623.1.0.850423");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:17 +0530 (Mon, 11 Mar 2013)");
   script_cve_id("CVE-2012-4414", "CVE-2012-5611");
   script_tag(name:"cvss_base", value:"6.5");
@@ -47,17 +46,15 @@ if(description)
   script_tag(name:"affected", value:"mariadb on openSUSE 12.2");
   script_tag(name:"solution", value:"Please install the updated packages.");
   script_tag(name:"insight", value:"MariaDB was updated to 5.5.28a, fixing bugs and security
-  issues:
+  issues. See the referenced release notes and changelogs for more information.");
 
-  * Release notes:
-  http://kb.askmonty.org/v/mariadb-5528a-release-notes
-  http://kb.askmonty.org/v/mariadb-5528-release-notes
-  http://kb.askmonty.org/v/mariadb-5527-release-notes
-
-  * Changelog:
-  http://kb.askmonty.org/v/mariadb-5528a-changelog
-  http://kb.askmonty.org/v/mariadb-5528-changelog
-  http://kb.askmonty.org/v/mariadb-5527-changelog");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2013-01/msg00000.html");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5528a-release-notes");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5528-release-notes");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5527-release-notes");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5528a-changelog");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5528-changelog");
+  script_xref(name:"URL", value:"http://kb.askmonty.org/v/mariadb-5527-changelog");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

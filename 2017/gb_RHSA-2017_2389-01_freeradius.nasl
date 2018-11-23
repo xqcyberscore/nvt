@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2389-01_freeradius.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_2389-01_freeradius.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for freeradius RHSA-2017:2389-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871859");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:50 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2017-10978", "CVE-2017-10983", "CVE-2017-10984",
                 "CVE-2017-10985", "CVE-2017-10986", "CVE-2017-10987");
@@ -62,12 +62,12 @@ if(description)
   FreeRADIUS server by sending a specially crafted DHCP request. (CVE-2017-10986,
   CVE-2017-10987) Red Hat would like to thank the FreeRADIUS project for reporting
   these issues. Upstream acknowledges Guido Vranken as the original reporter of
-  these issues. ");
+  these issues.");
   script_tag(name:"affected", value:"freeradius on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:2389-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00030.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

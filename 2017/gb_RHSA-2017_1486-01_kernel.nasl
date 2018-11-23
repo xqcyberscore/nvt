@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871832");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 06:58:06 +0200 (Tue, 20 Jun 2017)");
   script_cve_id("CVE-2017-1000364");
   script_tag(name:"cvss_base", value:"6.2");
@@ -59,7 +59,7 @@ Red Hat would like to thank Qualys Research Labs for reporting this issue.");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1486-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00034.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00034.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

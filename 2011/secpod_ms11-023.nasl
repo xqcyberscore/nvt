@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-023.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ms11-023.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2489293)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902364");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,11 +47,14 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a Word file from a network share or via a malicious
-  Office document.");
+  tricking a user into opening a Word file from a network share or via a malicious Office document.");
+
   script_tag(name:"affected", value:"Microsoft Office XP Service Pack 3
+
   Microsoft Office 2003 Service Pack 3
+
   Microsoft Office 2007 Service Pack 2");
+
   script_tag(name:"insight", value:"The flaws are caused by,
 
   - an error in a shared component that incorrectly restricts the path used for
@@ -59,26 +62,30 @@ if(description)
 
   - an error when dereferencing data structures within Office files containing
     graphic objects.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS11-023.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office XP, 2003, 2007
-if(get_kb_item("MS/Office/Ver") =~ "^[10|11|12].*")
+if(officeVer && officeVer =~ "^1[012]\.")
 {
-  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(!path) {
     exit(0);
   }

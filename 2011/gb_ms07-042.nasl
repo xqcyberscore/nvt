@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-042.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms07-042.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (936227)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801715");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 09:03:25 +0100 (Fri, 14 Jan 2011)");
   script_cve_id("CVE-2007-2223");
   script_bugtraq_id(25301);
@@ -50,6 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute arbitrary code in
   the context of the user running the application.");
+
   script_tag(name:"affected", value:"Microsoft XML Core Services 3.0/4.0/5.0/6.0
 
   Microsoft Windows 2K Service Pack 4 and prior
@@ -65,15 +66,18 @@ if(description)
   Microsoft Office 2007
 
   Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats");
+
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error in the 'substringData()'
   method of an XMLDOM/TextNode JavaScript object.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS07-042.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -90,8 +94,10 @@ function FileVer (file, path)
   return ver;
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## Office 2003
-if(get_kb_item("MS/Office/Ver") =~ "^11\..*")
+if(officeVer && officeVer =~ "^11\.")
 {
   offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
@@ -111,10 +117,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^11\..*")
 }
 
 ## Office 2007
-if(get_kb_item("MS/Office/Ver") =~ "^12\..*")
+if(officeVer && officeVer =~ "^12\.")
 {
-  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+  offPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(offPath)
   {
     offPath += "\Microsoft Shared\OFFICE12";
@@ -134,8 +139,7 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup", item:"Install Path");
 if(sysPath)
 {
   dllVer = fetch_file_version(sysPath:sysPath, file_name:"Msxml3.dll");
@@ -160,8 +164,7 @@ if(sysPath)
   }
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                      item:"PathName");
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"PathName");
 if(!sysPath){
   exit(0);
 }

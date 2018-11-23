@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871288");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 06:23:33 +0100 (Wed, 12 Nov 2014)");
   script_cve_id("CVE-2014-3185", "CVE-2014-3611", "CVE-2014-3645", "CVE-2014-3646");
   script_tag(name:"cvss_base", value:"6.9");
@@ -96,7 +96,7 @@ MAX_AH_AUTH_LEN parameter has been set to 64. (BZ#1149083)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"RHSA", value:"2014:1843-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2014-November/msg00026.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2014-November/msg00026.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

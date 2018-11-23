@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0095-01_java-1.8.0-openjdk.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2018_0095-01_java-1.8.0-openjdk.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for java-1.8.0-openjdk RHSA-2018:0095-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.910002");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-18 07:34:59 +0100 (Thu, 18 Jan 2018)");
   script_cve_id("CVE-2018-2579", "CVE-2018-2582", "CVE-2018-2588", "CVE-2018-2599",
                 "CVE-2018-2602", "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629",
@@ -100,7 +100,7 @@ component of OpenJDK did not guarantee sufficie ...
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2018:0095-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2018-January/msg00061.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2018-January/msg00061.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

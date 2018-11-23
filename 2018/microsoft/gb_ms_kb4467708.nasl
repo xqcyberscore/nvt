@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4467708.nasl 12352 2018-11-14 15:03:21Z santu $
+# $Id: gb_ms_kb4467708.nasl 12477 2018-11-22 07:50:21Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4467708)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814180");
-  script_version("$Revision: 12352 $");
+  script_version("$Revision: 12477 $");
   script_cve_id("CVE-2018-8562", "CVE-2018-8564", "CVE-2018-8256", "CVE-2018-8407",
                 "CVE-2018-8415", "CVE-2018-8417", "CVE-2018-8454", "CVE-2018-8471",
                 "CVE-2018-8476", "CVE-2018-8485", "CVE-2018-8541", "CVE-2018-8542",
@@ -38,12 +38,12 @@ if(description)
                 "CVE-2018-8592");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 16:03:21 +0100 (Wed, 14 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 08:50:21 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 17:32:14 +0530 (Wed, 14 Nov 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4467708)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
-  update according to Microsoft KB4467708");
+  update according to Microsoft KB4467708.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -99,7 +99,7 @@ if(description)
   - in Windows 10 version 1809 when installed from physical media (USB, DVD, etc.
 
   - when Kernel Remote Procedure Call Provider driver improperly
-    initializes objects in memory. ");
+    initializes objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code, bypass security restrictions and load improperly signed
@@ -118,16 +118,16 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name:"URL" , value:"https://support.microsoft.com/en-us/help/4467708");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4467708");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

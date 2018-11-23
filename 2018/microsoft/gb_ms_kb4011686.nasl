@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011686.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_ms_kb4011686.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB4011686)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812905");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2018-0851");
   script_bugtraq_id(102870);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 10:01:49 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB4011686)");
 
@@ -72,7 +72,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("MS/Office/Ver") =~ "^16.*")
+officeVer = get_kb_item("MS/Office/Ver");
+if(!officeVer){
+  exit(0);
+}
+
+if(officeVer =~ "^16\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if("x86" >< os_arch){
@@ -90,7 +95,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^16.*")
     {
       offPath = propath + "\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\Office16";
       offdllVer = fetch_file_version(sysPath:offPath, file_name:"mso.dll");
-      if(!offdllVer || !(offdllVer =~ "^(16\.)")){
+      if(!offdllVer || offdllVer !~ "^16\."){
         exit(0);
       }
 

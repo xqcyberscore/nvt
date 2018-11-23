@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-070.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms_office_ms16-070.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (3163610)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808228");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2016-0025");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-06-16 11:22:43 +0530 (Thu, 16 Jun 2016)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (3163610)");
 
@@ -64,6 +64,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -72,8 +73,13 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+if(!officeVer){
+  exit(0);
+}
+
 ## MS Office 2016
-if(get_kb_item("MS/Office/Ver") =~ "^16.*")
+if(officeVer =~ "^16\.")
 {
   msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"ProgramFilesDir");
@@ -85,7 +91,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^16.*")
 
     exeVer = fetch_file_version(sysPath:offPath, file_name:"firstrun.exe");
 
-    if(exeVer && exeVer =~ "^16")
+    if(exeVer && exeVer =~ "^16\.")
     {
       if(version_in_range(version:exeVer, test_version:"16.0", test_version2:"16.0.4387.999"))
       {

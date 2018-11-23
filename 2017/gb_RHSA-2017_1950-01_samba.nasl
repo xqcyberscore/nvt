@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1950-01_samba.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_1950-01_samba.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for samba RHSA-2017:1950-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871870");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:10 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2017-9461");
   script_tag(name:"cvss_base", value:"7.8");
@@ -47,12 +47,12 @@ if(description)
   Samba client could use this flaw to cause the smbd daemon to enter an infinite
   loop and use an excessive amount of CPU and memory. (CVE-2017-9461) Additional
   Changes: For detailed information on changes in this release, see the Red Hat
-  Enterprise Linux 7.4 Release Notes linked from the References section. ");
+  Enterprise Linux 7.4 Release Notes linked from the References section.");
   script_tag(name:"affected", value:"samba on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1950-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00012.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00012.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

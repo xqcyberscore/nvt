@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-051.nasl 11865 2018-10-12 10:03:43Z cfischer $
+# $Id: secpod_ms13-051.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2839571)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902976");
-  script_version("$Revision: 11865 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2013-1331");
   script_bugtraq_id(60408);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 09:09:10 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2839571)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53747");
@@ -46,17 +46,24 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code as
   the logged-on user.");
+
   script_tag(name:"affected", value:"Microsoft Office 2003 Service Pack 3");
+
   script_tag(name:"insight", value:"The flaw is due to an error when processing PNG files and can be exploited
   to cause a buffer overflow via a specially crafted file.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   install the hotfixes from the referenced advisory.");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-051.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -65,13 +72,14 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2003
-if(!get_kb_item("MS/Office/Ver") =~ "^[11].*"){
+if(!officeVer || officeVer !~ "^11\."){
   exit(0);
 }
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                       item:"CommonFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(!path){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-072.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: secpod_ms11-072.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2587505)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902727");
-  script_version("$Revision: 11997 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_version("$Revision: 12485 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_cve_id("CVE-2011-1986", "CVE-2011-1987", "CVE-2011-1988",
                 "CVE-2011-1989", "CVE-2011-1990");
@@ -46,27 +46,41 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
   with the privileges of the user running the affected application.");
+
   script_tag(name:"affected", value:"Microsoft Excel 2003 Service Pack 3
+
   Microsoft Excel 2007 Service Pack 2
+
   Microsoft Office 2007 Service Pack 2
+
   Microsoft Excel Viewer Service Pack 2
+
   Microsoft Excel 2010 Service Pack 1 and prior
+
   Microsoft Office 2010 Service Pack 1 and prior
+
   Excel Services installed on Microsoft Office SharePoint Server 2007 Service Pack 2
+
   Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats Service Pack 2");
+
   script_tag(name:"insight", value:"The flaws are caused by memory corruption, array-indexing and use-after-free
   errors when handling the crafted Excel files.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS11-072.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/45932/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2553072");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2553073");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2553089");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-072");
+
   exit(0);
 }
 
@@ -89,7 +103,7 @@ if(excelVer =~ "^(11|12|14)\..*")
 
 # Microsoft Office Excel Viewer 2007
 excelVer = get_kb_item(name:"SMB/Office/XLView/Version");
-if(!isnull(excelVer))
+if(excelVer && excelVer =~ "^12\.")
 {
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6565.4999"))
   {
@@ -98,10 +112,12 @@ if(!isnull(excelVer))
   }
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+comptVer = get_kb_item("SMB/Office/ComptPack/Version");
+
+if(comptVer && comptVer =~ "^12\.")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-  if(xlcnvVer)
+  if(xlcnvVer && xlcnvVer =~ "^12\.")
   {
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6565.5002"))
     {
@@ -111,12 +127,13 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
   }
 }
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 # Microsoft Office 2007 Service Pack 2 and
 # Microsoft Office 2010 Service Pack 1 and prior
-if(get_kb_item("MS/Office/Ver") =~ "^[12|14].*")
+if(officeVer && officeVer =~ "^1[24]\.")
 {
-  path12 = registry_get_sz(key:"SOFTWARE\Microsoft\Office\12.0\Access\InstallRoot",
-                            item:"Path");
+  path12 = registry_get_sz(key:"SOFTWARE\Microsoft\Office\12.0\Access\InstallRoot", item:"Path");
   if(path12)
   {
     ort12Ver = fetch_file_version(sysPath:path12, file_name:"Oart.dll");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_excel_art_object_code_exec_vuln.nasl 12010 2018-10-22 08:23:57Z mmartin $
+# $Id: gb_ms_office_excel_art_object_code_exec_vuln.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Excel 2003 Invalid Object Type Remote Code Execution Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801597");
-  script_version("$Revision: 12010 $");
+  script_version("$Revision: 12485 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-22 10:23:57 +0200 (Mon, 22 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0980");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,33 +44,28 @@ if(description)
   script_family("Windows");
   script_dependencies("secpod_office_products_version_900032.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("MS/Office/Ver", "SMB/Office/Excel/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-codes, cause memory corruption and other attacks in the context of the
-application through crafting malicious codes inside a Excel file.");
+  codes, cause memory corruption and other attacks in the context of the
+  application through crafting malicious codes inside a Excel file.");
+
   script_tag(name:"affected", value:"Microsoft Office Excel 2003");
+
   script_tag(name:"insight", value:"The flaw occurs when parsing a document with a malformed Excel
-document. When parsing an office art object, the application fails to put
-appropriate trust parameters.");
+  document. When parsing an office art object, the application fails to put appropriate trust parameters.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"This host is installed with Microsoft Office Excel and is prone
-to multiple remote code execution vulnerability.
 
-This NVT has been replaced by NVT secpod_ms11-021.nasl
-(OID:1.3.6.1.4.1.25623.1.0.902410).");
+  script_tag(name:"summary", value:"This host is installed with Microsoft Office Excel and is prone
+  to multiple remote code execution vulnerability.
+
+  This NVT has been replaced by NVT (OID:1.3.6.1.4.1.25623.1.0.902410).");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 exit(66); ## This NVT is deprecated as addressed in secpod_ms11-021.nasl.
-
-if(!get_kb_item("MS/Office/Ver") =~ "^11\.*"){
-  exit(0);
-}
-
-excelVer = get_kb_item("SMB/Office/Excel/Version");
-
-if(excelVer &&  excelVer =~ "^11\.*"){
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
-}

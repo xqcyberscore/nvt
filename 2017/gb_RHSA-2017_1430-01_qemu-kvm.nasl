@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871828");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 12:59:30 +0200 (Tue, 13 Jun 2017)");
   script_cve_id("CVE-2017-7718", "CVE-2017-7980");
   script_tag(name:"cvss_base", value:"4.6");
@@ -55,12 +55,12 @@ if(description)
   virtual machines in some cases became unresponsive when the 'pty' back end of a
   serial device performed an irregular I/O communication. This update improves the
   handling of serial I/O on guests, which prevents the described problem from
-  occurring. (BZ#1452332) ");
+  occurring. (BZ#1452332)");
   script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1430-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00013.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-June/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1856-01_qemu-kvm.nasl 12380 2018-11-16 11:03:48Z cfischer $
+# $Id: gb_RHSA-2017_1856-01_qemu-kvm.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # RedHat Update for qemu-kvm RHSA-2017:1856-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871866");
-  script_version("$Revision: 12380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:03:48 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:53 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2016-4020", "CVE-2017-2633", "CVE-2017-5898");
   script_tag(name:"cvss_base", value:"4.0");
@@ -56,12 +56,12 @@ if(description)
   Inc.) for reporting CVE-2017-5898 and Donghai Zdh (Alibaba Inc.) for reporting
   CVE-2016-4020. Additional Changes: For detailed information on changes in this
   release, see the Red Hat Enterprise Linux 7.4 Release Notes linked from the
-  References section. ");
+  References section.");
   script_tag(name:"affected", value:"qemu-kvm on Red Hat Enterprise Linux Server (v. 7)");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
   script_xref(name:"RHSA", value:"2017:1856-01");
-  script_xref(name:"URL" , value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00010.html");
+  script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2017-August/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

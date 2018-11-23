@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-097.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ms_office_ms15-097.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Graphics Component Buffer Overflow Vulnerability (3089656)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806116");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:09:01 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Graphics Component Buffer Overflow Vulnerability (3089656)");
 
@@ -47,6 +47,7 @@ if(description)
   attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
+
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -66,22 +67,23 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007/2010
-if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
+if(!officeVer || officeVer !~ "^1[24]\."){
   exit(0);
 }
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                            item:"CommonFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(path)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))

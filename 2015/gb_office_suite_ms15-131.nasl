@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms15-131.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_office_suite_ms15-131.nasl 12485 2018-11-22 11:39:45Z cfischer $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3116111)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806174");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12485 $");
   script_cve_id("CVE-2015-6118", "CVE-2015-6124", "CVE-2015-6172");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 12:39:45 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 12:09:07 +0530 (Wed, 09 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3116111)");
@@ -49,7 +49,9 @@ if(description)
   execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
+
   Microsoft Office 2010 Service Pack 2 and prior
+
   Microsoft Office 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -68,20 +70,21 @@ if(description)
   script_dependencies("secpod_ms_office_detection_900025.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+officeVer = get_kb_item("MS/Office/Ver");
+
 ## MS Office 2007
-if(get_kb_item("MS/Office/Ver") =~ "^12.*")
+if(officeVer && officeVer =~ "^12\.")
 {
-  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                           item:"CommonFilesDir");
+  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   if(dllPath)
   {
     msoVer  =  fetch_file_version(sysPath:dllPath, file_name:"Microsoft Shared\OFFICE12\mso.dll");
@@ -115,10 +118,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^12.*")
 ## For office 2010 Wwlibcxm.dll is mentioned and it is not available so ignoring
 ## version check for office 2010 https://support.microsoft.com/en-us/kb/2965311
 ## MS Office 2010
-if(get_kb_item("MS/Office/Ver") =~ "^14.*")
+if(officeVer && officeVer =~ "^14\.")
 {
-  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                item:"CommonFilesDir");
+  dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 
   if(dllPath)
   {

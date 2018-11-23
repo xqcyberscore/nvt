@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows2k3_active_directory_bof_vuln.nasl 11997 2018-10-20 11:59:41Z mmartin $
+# $Id: gb_ms_windows2k3_active_directory_bof_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Microsoft Windows2k3 Active Directory 'BROWSER ELECTION' Buffer Overflow Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801598");
-  script_version("$Revision: 11997 $");
+  script_version("$Revision: 12490 $");
   script_tag(name:"deprecated", value:TRUE);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-20 13:59:41 +0200 (Sat, 20 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-02-18 17:42:11 +0100 (Fri, 18 Feb 2011)");
   script_cve_id("CVE-2011-0654");
   script_bugtraq_id(46360);
@@ -44,44 +44,28 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to execute arbitrary code
-with SYSTEM-level privileges or cause a denial of service condition.");
+  with SYSTEM-level privileges or cause a denial of service condition.");
+
   script_tag(name:"affected", value:"Microsoft Windows 2K3 Service Pack 2 and prior");
+
   script_tag(name:"insight", value:"The flaw is due to an error in Active Directory in 'Mrxsmb.sys',
-which fails to perform adequate boundary-checks on user-supplied data in crafted
-BROWSER ELECTION request.");
+  which fails to perform adequate boundary-checks on user-supplied data in crafted BROWSER ELECTION request.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
   release, disable respective features, remove the product or replace the product by another one.");
-  script_tag(name:"summary", value:"This host is installed with Active Directory and is prone to buffer
-overflow vulnerability.
 
-This NVT has been replaced by NVT secpod_ms11-019.nasl
-(OID:1.3.6.1.4.1.25623.1.0.900279).");
+  script_tag(name:"summary", value:"This host is installed with Active Directory and is prone to buffer
+  overflow vulnerability.
+
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.900279.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 exit(66); ## This NVT is deprecated as addressed in secpod_ms11-019.nasl.
-
-include("smb_nt.inc");
-include("secpod_reg.inc");
-include("version_func.inc");
-include("secpod_smb_func.inc");
-
-if(hotfix_check_sp(win2003:3) <= 0){
-  exit(0);
-}
-
-sysPath = smb_get_systemroot();
-if(!sysPath){
-  exit(0);
-}
-
-dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\mrxsmb.sys");
-if(dllVer){
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
-}

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2213_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_suse_2018_2213_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for python-dulwich openSUSE-SU-2018:2213-1 (python-dulwich)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851834");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 05:49:34 +0200 (Tue, 07 Aug 2018)");
   script_cve_id("CVE-2017-16228");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,10 +44,9 @@ if(description)
   attackers to execute arbitrary commands via an ssh URL with an initial
   dash character in the hostname (bsc#1066430).
 
-  For detailed changes please see <a  rel='nofollow' href='https://www.dulwich.io/code/dulwich/'>https://www.dulwich.io/code/dulwich/
+  For detailed changes please see the linked references.
 
   This update was imported from the SUSE:SLE-12:Update update project.
-
 
   Patch Instructions:
 
@@ -64,7 +63,9 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2018:2213_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00014.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-08/msg00014.html");
+  script_xref(name:"URL", value:"https://www.dulwich.io/code/dulwich/");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

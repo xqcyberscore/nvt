@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 12490 2018-11-22 13:45:33Z cfischer $
 #
 # Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806529");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12490 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2015-0578");
   script_bugtraq_id(72718);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-22 14:45:33 +0100 (Thu, 22 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 12:27:12 +0530 (Fri, 20 Nov 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Cisco ASA Software and
   is prone to denial of service vulnerability.
-  This NVT has been replaced by NVT gb_cisco_asa_CSCur45455.nasl
-   (OID:1.3.6.1.4.1.25623.1.0.106053).");
+
+  This NVT has been replaced by OID:1.3.6.1.4.1.25623.1.0.106053.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
@@ -74,71 +74,10 @@ if(description)
   script_family("CISCO");
   script_dependencies("gb_cisco_asa_version.nasl");
   script_mandatory_keys("cisco_asa/version");
+
   script_xref(name:"URL", value:"http://www.cisco.com");
+
   exit(0);
 }
 
-exit(66); ## This NVT is deprecated as addressed in
-## gb_cisco_asa_CSCur45455.nasl(1.3.6.1.4.1.25623.1.0.106053).
-
-include("version_func.inc");
-include("host_details.inc");
-
-if(!cisVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
-
-cisVer = ereg_replace(string:cisVer, pattern:"\(([0-9.]+)\)", replace:".\1");
-
-if(cisVer =~ "^(7|8|9)\.")
-{
-  if(version_in_range(version:cisVer, test_version:"7.2", test_version2:"8.2.5.57"))
-  {
-    fix = "8.2(5.58)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"8.3", test_version2:"8.4.7.28"))
-  {
-    fix = "8.4(7.29)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"8.5", test_version2:"9.0.4.36"))
-  {
-    fix = "9.0(4.37)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"9.1", test_version2:"9.1.6.7"))
-  {
-    fix = "9.1(6.8)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"9.2", test_version2:"9.2.3"))
-  {
-    fix = "9.2(4)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"9.3", test_version2:"9.3.3.4"))
-  {
-    fix = "9.3(3.5)";
-    VULN = TRUE;
-  }
-
-  else if(version_in_range(version:cisVer, test_version:"9.4", test_version2:"9.4.1"))
-  {
-    fix = "9.4(2)";
-    VULN = TRUE;
-  }
-
-  if(VULN)
-  {
-    report = 'Installed version: ' + cisVer + '\n' +
-             'Fixed version:     ' + fix + '\n';
-    security_message(data:report);
-    exit(0);
-  }
-}
+exit(66); ## This NVT is deprecated as addressed in gb_cisco_asa_CSCur45455.nasl(1.3.6.1.4.1.25623.1.0.106053).

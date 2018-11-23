@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2602_1.nasl 12447 2018-11-21 04:17:12Z ckuersteiner $
+# $Id: gb_suse_2018_2602_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
 #
 # SuSE Update for spice openSUSE-SU-2018:2602-1 (spice)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851879");
-  script_version("$Revision: 12447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 05:17:12 +0100 (Wed, 21 Nov 2018) $");
+  script_version("$Revision: 12497 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-05 06:54:17 +0200 (Wed, 05 Sep 2018)");
   script_cve_id("CVE-2018-10873", "CVE-2018-10893");
   script_tag(name:"cvss_base", value:"6.5");
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"openSUSE-SU", value:"2018:2602_1");
-  script_xref(name:"URL" , value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00009.html");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-security-announce/2018-09/msg00009.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
