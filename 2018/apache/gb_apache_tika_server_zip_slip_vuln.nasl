@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_zip_slip_vuln.nasl 11667 2018-09-28 07:49:01Z santu $
+# $Id: gb_apache_tika_server_zip_slip_vuln.nasl 12512 2018-11-23 14:21:52Z mmartin $
 #
 # Apache Tika Server Zip Slip Arbitrary File Overwrite Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814055");
-  script_version("$Revision: 11667 $");
+  script_version("$Revision: 12512 $");
   script_cve_id("CVE-2018-11762");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:49:01 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:21:52 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-27 15:38:59 +0530 (Thu, 27 Sep 2018)");
   script_name("Apache Tika Server Zip Slip Arbitrary File Overwrite Vulnerability");
 

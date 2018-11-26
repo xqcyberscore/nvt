@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compatibility_pack_kb4092444.nasl 11822 2018-10-10 13:34:32Z santu $
+# $Id: gb_ms_compatibility_pack_kb4092444.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (KB4092444)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814255");
-  script_version("$Revision: 11822 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2018-8427", "CVE-2018-8432");
   script_bugtraq_id(105453, 105458);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 15:34:32 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-10 08:59:02 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (KB4092444)");
 
@@ -63,16 +63,17 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if("x86" >< os_arch){
@@ -92,7 +93,7 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 
     offPath = commonpath + "\Microsoft Shared\OFFICE12" ;
     msdllVer = fetch_file_version(sysPath:offPath, file_name:"Ogl.dll");
-    if(msdllVer =~ "^(12\.)" && version_is_less(version:msdllVer, test_version:"12.0.6803.5000"))
+    if(msdllVer && msdllVer =~ "^12\." && version_is_less(version:msdllVer, test_version:"12.0.6803.5000"))
     {
       report = report_fixed_ver(file_checked:offPath + "\Ogl.dll",
                                 file_version:msdllVer, vulnerable_range:"12.0 - 12.0.6803.4999");

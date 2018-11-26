@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 11526 2018-09-21 15:24:10Z cfischer $
+# $Id: find_service1.nasl 12521 2018-11-26 07:14:39Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 11526 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:24:10 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 12521 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-26 08:14:39 +0100 (Mon, 26 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -944,6 +944,28 @@ if( r =~ "^:.* NOTICE AUTH :\*\*\* Looking up your hostname" ||
 if( port == 514 && "getnameinfo: Temporary failure in name resolution" >< r ) {
   register_service( port:port, proto:"rsh", message:"A rsh service seems to be running on this port." );
   log_message( port:port, data:"A rsh service seems to be running on this port." );
+  exit( 0 );
+}
+
+# https://nmap.org/book/nping-man-echo-mode.html
+# 0x00:  01 01 00 18 65 23 33 C8 5B FB 9A 3D 00 00 00 00    ....e#3.[..=....
+# 0x10:  56 5A 7B BE DF CC B2 0D CF 2B 9E 79 ED D6 70 FE    VZ{......+.y..p.
+# 0x20:  74 46 96 FF 72 3F 0B 68 F6 A1 D3 85 C1 BD 54 64    tF..r?.h......Td
+# 0x30:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x40:  17 F9 B0 49 07 8F 33 55 F3 19 4F 1E F4 4A F0 46    ...I..3U..O..J.F
+# 0x50:  1E 5E 68 55 D5 A4 45 5E FA 18 D7 72 66 D8 AE EA    .^hU..E^...rf...
+#
+# or:
+#
+# 0x00:  01 01 00 18 5E EB 28 9B 5B FB 9A 24 00 00 00 00    ....^.(.[..$....
+# 0x10:  E6 18 A4 F8 8B E3 55 A6 72 BE 37 A7 7E 83 5A 54    ......U.r.7.~.ZT
+# 0x20:  48 A1 D1 77 5C FE 50 B6 45 AA 31 AB 08 FB CC 5D    H..w\.P.E.1....]
+# 0x30:  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00    ................
+# 0x40:  B3 8F 34 BD B6 A6 6A 6D 4F E5 2E 53 EB 0B DE AD    ..4...jmO..S....
+# 0x50:  01 DF 28 BD F0 28 90 EF CE C2 08 3B 23 59 E6 61    ..(..(.....;#Y.a
+if( rhexstr =~ "^01010018.{16}00000000.{64}0{32}.{64}$" ) {
+  register_service( port:port, proto:"nping-echo", message:"An nping-echo server seems to be running on this port." );
+  log_message( port:port, data:"An nping-echo server seems to be running on this port." );
   exit( 0 );
 }
 

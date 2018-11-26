@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 23 Nov 2018 11:36:15 +0100
+# Automatically created on:  Mon, 26 Nov 2018 10:01:38 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39718,6 +39718,11 @@
 2018/debian/deb_dla_1586.nasl: GPLv2+
 2018/debian/deb_dla_1587.nasl: GPLv2+
 2018/debian/deb_dla_1590.nasl: GPLv2+
+2018/debian/deb_dla_1591.nasl: GPLv2+
+2018/debian/deb_dla_1592.nasl: GPLv2+
+2018/debian/deb_dla_1593.nasl: GPLv2+
+2018/debian/deb_dla_1594.nasl: GPLv2+
+2018/debian/deb_dla_1595.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41825,6 +41830,7 @@
 2018/microsoft/gb_ms_pp_viewer_kb4092444.nasl: GPLv2+
 2018/microsoft/gb_ms_project_2010_kb4022147.nasl: GPLv2+
 2018/microsoft/gb_ms_project_2013_kb4461489.nasl: GPLv2+
+2018/microsoft/gb_ms_project_2016_kb4461478.nasl: GPLv2+
 2018/microsoft/gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl: GPLv2+
 2018/microsoft/gb_ms_visual_studio2017_info_disc_vuln.nasl: GPLv2+
 2018/microsoft/gb_ms_visual_studio_2017_mult_vuln_july18.nasl: GPLv2+
@@ -42041,6 +42047,7 @@
 2018/nuuo/gb_nuuo_nvr_mult_vuln.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvr_rce_vuln.nasl: GPLv2+
 2018/ocs_inventory/gb_ocs_inventory_ng_mult_vuln.nasl: GPLv2+
+2018/ocs_inventory/gb_ocs_inventory_ng_rem_sh_upl_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_mult_vuln.nasl: GPLv2+
@@ -42859,6 +42866,7 @@
 2018/sensiolabs/gb_symfony_mult_vuln.nasl: GPLv2+
 2018/shibboleth/gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl: GPLv2+
 2018/smf/gb_simple_machines_forum_security_bypass_vuln_may18.nasl: GPLv2+
+2018/solarwinds/gb_dameware_mini_rc_bof_vuln.nasl: GPLv2+
 2018/sollaesystems/gb_sollaesystems_devices_default_telnet_credentials.nasl: GPLv2+
 2018/sonos/gb_sonos_info_discl_vuln.nasl: GPLv2+
 2018/sony/gb_sony_network_camera_default_credentials.nasl: GPLv2+
@@ -43371,6 +43379,7 @@
 2018/webmin/gb_webmin_xss_vuln1_win.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln_mar18_lin.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln_mar18_win.nasl: GPLv2+
+2018/western_digital/gb_wd_mycloud_default_creds.nasl: GPLv2+
 2018/western_digital/gb_wd_nas_rce_vuln.nasl: GPLv2+
 2018/western_digital/gb_wd_wdtv_rce_vuln.nasl: GPLv2+
 2018/wireshark/gb_wireshark_coap_n_steam_ihs_disc_diss_dos_vuln_macosx.nasl: GPLv2+
@@ -43991,6 +44000,7 @@ gb_cyclades_detect.nasl: GPLv2+
 gb_cygwin_detect_win.nasl: GPLv2+
 gb_dahua_devices_detect.nasl: GPLv2+
 gb_dalim_es_detect.nasl: GPLv2+
+gb_dameware_mini_rc_detect_win.nasl: GPLv2+
 gb_dasan_gpon_ont_detect.nasl: GPLv2+
 gb_dedecms_detect.nasl: GPLv2+
 gb_default_credentials_options.nasl: GPLv2+
@@ -61109,6 +61119,7 @@ gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-027.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-085.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-101.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-157.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-18-325.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortiweb_FG-IR-17-279.nasl: GPLv2+
 gsf/2018/gb_mult_ip_cameras_mult_vuln.nasl: GPLv2+
 gsf/2018/harmonic/gb_harmonic_nsg_9000_devices_mult_vuln.nasl: GPLv2+
@@ -61879,6 +61890,7 @@ gsf/2018/vmware/gb_vmware_esxi_vmxnet3_stack_memory_usage_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_3D_accel_dos_vuln_vmsa-2018-0025_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_code_exec_vuln_VMSA-2018-0022_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_guest_access_control_vuln_macosx.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_fusion_int_overflow_vuln_vmsa-2018-0030_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_l1_ter_fault_side_channel_vuln_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_mult_vuln_VMSA-2018-0013_macosx.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_fusion_nat_service_mult_code_exec_vuln_macosx.nasl: GPLv2+
@@ -61898,6 +61910,8 @@ gsf/2018/vmware/gb_vmware_workstation_code_exec_vuln_VMSA-2018-0022_win.nasl: GP
 gsf/2018/vmware/gb_vmware_workstation_dos_vuln_VMSA-2018-0013_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_guest_access_control_vuln_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_guest_access_control_vuln_win.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_int_overflow_vuln_vmsa-2018-0030_lin.nasl: GPLv2+
+gsf/2018/vmware/gb_vmware_workstation_int_overflow_vuln_vmsa-2018-0030_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_l1_ter_fault_side_channel_vuln_lin.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_l1_ter_fault_side_channel_vuln_win.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_workstation_mult_vuln_VMSA-2018-0016_lin.nasl: GPLv2+

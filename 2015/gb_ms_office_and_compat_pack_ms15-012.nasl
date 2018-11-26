@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 11872 2018-10-12 11:22:41Z cfischer $
+# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805046");
-  script_version("$Revision: 11872 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2015-0063", "CVE-2015-0064");
   script_bugtraq_id(72460, 72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 11:47:10 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)");
 
@@ -67,19 +67,20 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Prdts/Installed");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-  if(xlcnvVer)
+  if(xlcnvVer && xlcnvVer =~ "^12\.")
   {
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6715.4999"))
     {
@@ -90,15 +91,14 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 }
 
 wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-if(wordcnvVer && wordcnvVer =~ "^12.*")
+if(wordcnvVer && wordcnvVer =~ "^12\.")
 {
   # Office Word Converter
-  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+  path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
   if(path)
   {
     sysVer = fetch_file_version(sysPath:path + "\Microsoft Office\Office12", file_name:"Wordcnv.dll");
-    if(sysVer)
+    if(sysVer && sysVer =~ "^12\.")
     {
       if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6715.4999"))
       {

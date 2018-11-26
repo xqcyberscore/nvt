@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_server_41389.nasl 11498 2018-09-20 10:34:34Z jschulte $
+# $Id: gb_sun_java_web_server_41389.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Sun Java System Web Server Admin Interface Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100703");
-  script_version("$Revision: 11498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 12513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-07-07 12:47:04 +0200 (Wed, 07 Jul 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -67,7 +67,9 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 
-if( get_kb_item( "Sun/JavaSysWebServ/Ver" ) !~ "^7\.0" ) exit( 0 );
+sysWebVer = get_kb_item( "Sun/JavaSysWebServ/Ver" );
+if( ! sysWebVer || sysWebVer !~ "^7\.0" ) exit( 0 );
+
 port = get_http_port( default:8989 );
 if( ! version = get_kb_item( "Sun/JavaSysWebServ/" + port + "/Ver" ) ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4092466.nasl 12236 2018-11-07 05:34:17Z ckuersteiner $
+# $Id: gb_ms_kb4092466.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack SP3 Information Disclosure Vulnerability (KB4092466)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814106");
-  script_version("$Revision: 12236 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2018-8429");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-07 06:34:17 +0100 (Wed, 07 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 11:36:36 +0530 (Wed, 12 Sep 2018)");
   script_name("Microsoft Office Compatibility Pack SP3 Information Disclosure Vulnerability (KB4092466)");
 
@@ -61,16 +61,17 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if("x86" >< os_arch){
@@ -87,12 +88,11 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
     if(msPath)
     {
       xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-
-      if(xlcnvVer && xlcnvVer =~ "^12.*")
+      if(xlcnvVer && xlcnvVer =~ "^12\.")
       {
         offpath = msPath + "\Microsoft Office\Office12";
         sysVer = fetch_file_version(sysPath:offpath, file_name:"excelcnv.exe");
-        if(sysVer && version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6803.4999"))
+        if(sysVer && sysVer =~ "^12\." && version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6803.4999"))
         {
           report = report_fixed_ver(file_checked:offpath + "\excelcnv.exe",
                                     file_version:sysVer, vulnerable_range:"12.0 - 12.0.6803.4999");

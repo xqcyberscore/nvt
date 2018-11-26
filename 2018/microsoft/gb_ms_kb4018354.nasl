@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018354.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_ms_kb4018354.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Information Disclosure Vulnerability (KB4018354)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813134");
-  script_version("$Revision: 12120 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2018-0950");
   script_bugtraq_id(103642);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 14:42:32 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Information Disclosure Vulnerability (KB4018354)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to error when Office
   renders Rich Text Format (RTF) email messages containing OLE  objects when
-  a message is opened or previewed. ");
+  a message is opened or previewed.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain access to potentially sensitive information.");
@@ -63,16 +63,17 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if("x86" >< os_arch){
@@ -89,12 +90,12 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
     if(msPath)
     {
       wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-      if(wordcnvVer && wordcnvVer =~ "^(12\.)")
+      if(wordcnvVer && wordcnvVer =~ "^12\.")
       {
         offpath = msPath + "\Microsoft Office\Office12";
         {
           sysVer = fetch_file_version(sysPath:offpath, file_name:"wordcnv.dll");
-          if(sysVer && sysVer =~ "^(12\.0)")
+          if(sysVer && sysVer =~ "^12\.0")
           {
             if(version_is_less(version:sysVer, test_version:"12.0.6787.5000"))
             {

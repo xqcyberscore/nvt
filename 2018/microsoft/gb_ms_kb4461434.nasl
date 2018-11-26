@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4461434.nasl 11822 2018-10-10 13:34:32Z santu $
+# $Id: gb_ms_kb4461434.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft PowerPoint 2016 Remote Code Execution Vulnerability (KB4461434)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814245");
-  script_version("$Revision: 11822 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2018-8501");
   script_bugtraq_id(105497);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 15:34:32 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-10 09:30:14 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft PowerPoint 2016 Remote Code Execution Vulnerability (KB4461434)");
 
@@ -62,8 +62,9 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_mandatory_keys("SMB/Office/PowerPnt/Version");
+  script_mandatory_keys("SMB/Office/PowerPnt/Version", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -72,7 +73,8 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/PowerPnt/Version") =~ "^16\..*")
+pwrPntVer = get_kb_item("SMB/Office/PowerPnt/Version");
+if(pwrPntVer && pwrPntVer =~ "^16\.")
 {
   os_arch = get_kb_item("SMB/Windows/Arch");
   if("x86" >< os_arch){
@@ -91,14 +93,14 @@ if(get_kb_item("SMB/Office/PowerPnt/Version") =~ "^16\..*")
       offPath = msPath + "\Microsoft Office\root\OFFICE16" ;
       exeVer  = fetch_file_version(sysPath:offPath, file_name:"ppcore.dll");
       if(!exeVer){
-        exit(0);
+        continue;
       }
-      if(exeVer =~ "^16\." && version_is_less(version:exeVer, test_version:"16.0.4756.1000"))
+      if(exeVer && exeVer =~ "^16\." && version_is_less(version:exeVer, test_version:"16.0.4756.1000"))
       {
         report = report_fixed_ver(file_checked:offPath + "\ppcore.dll",
                                   file_version:exeVer, vulnerable_range:"16.0 - 16.0.4756.999");
-          security_message(data:report);
-          exit(0);
+        security_message(data:report);
+        exit(0);
       }
     }
   }

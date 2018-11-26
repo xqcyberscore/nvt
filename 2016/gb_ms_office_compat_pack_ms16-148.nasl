@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms16-148.nasl 11969 2018-10-18 14:53:42Z asteins $
+# $Id: gb_ms_office_compat_pack_ms16-148.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (3204068)
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809753");
-  script_version("$Revision: 11969 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2016-7262", "CVE-2016-7264", "CVE-2016-7265", "CVE-2016-7266",
                 "CVE-2016-7268", "CVE-2016-7290", "CVE-2016-7291");
   script_bugtraq_id(94769, 94721, 94662, 94672, 94670, 94671);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 16:53:42 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 11:48:46 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (3204068)");
@@ -72,30 +73,29 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/XLCnv/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-
-  if(xlcnvVer && xlcnvVer =~ "^12.*")
+  if(xlcnvVer && xlcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
     sysVer = fetch_file_version(sysPath:offpath, file_name:"excelcnv.exe");
-    if(sysVer)
+    if(sysVer && sysVer =~ "^12\.")
     {
       ## https://support.microsoft.com/en-us/kb/3128022
       if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6762.4999"))
@@ -110,12 +110,12 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
   }
 
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^12.*")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
     {
       sysVer = fetch_file_version(sysPath:offpath, file_name:"Wordcnv.dll");
-      if(sysVer)
+      if(sysVer && sysVer =~ "^12\.")
       {
         ## https://support.microsoft.com/en-us/kb/3128024
         if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6762.4999"))

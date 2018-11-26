@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_info_disc_vuln.nasl 12406 2018-11-19 09:03:22Z cfischer $
+# $Id: gb_ms_ie_info_disc_vuln.nasl 12511 2018-11-23 12:41:39Z cfischer $
 #
 # Microsoft Internet Explorer 'mshtml.dll' Information Disclosure Vulnerability
 #
@@ -27,21 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801606");
-  script_version("$Revision: 12406 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 10:03:22 +0100 (Mon, 19 Nov 2018) $");
-  script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
+  script_version("$Revision: 12511 $");
   script_bugtraq_id(41247);
   script_cve_id("CVE-2010-3886");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 13:41:39 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_name("Microsoft Internet Explorer 'mshtml.dll' Information Disclosure Vulnerability");
-  script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Windows");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version");
-  script_require_ports(139, 445);
+
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2010-06/0259.html");
+  script_xref(name:"URL", value:"http://reversemode.com/index.php?option=com_content&task=view&id=68&Itemid=1");
+  script_xref(name:"URL", value:"http://www.eeye.com/Resources/Security-Center/Research/Zero-Day-Tracker/2010/20100630");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain access to
   sensitive information that may aid in further attacks.");
@@ -61,48 +63,11 @@ if(description)
   information disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
-  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2010-06/0259.html");
-  script_xref(name:"URL", value:"http://reversemode.com/index.php?option=com_content&task=view&id=68&Itemid=1");
-  script_xref(name:"URL", value:"http://www.eeye.com/Resources/Security-Center/Research/Zero-Day-Tracker/2010/20100630");
+  script_tag(name:"qod_type", value:"executable_version");
 
   script_tag(name:"deprecated", value:TRUE); # Plugin may result in FP
 
   exit(0);
 }
 
-include("smb_nt.inc");
-include("secpod_reg.inc");
-include("version_func.inc");
-include("secpod_smb_func.inc");
-
 exit(66); # Plugin may result in FP
-
-ieVer = get_kb_item("MS/IE/Version");
-if(!ieVer){
-  exit(0);
-}
-
-if(version_is_less(version:ieVer, test_version:"9"))
-{
-  sysPath = smb_get_system32root();
-  if(sysPath)
-  {
-    dllVer = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
-    if(!isnull(dllVer))
-    {
-      security_message( port: 0, data: "The target host was found to be vulnerable" );
-      exit(0);
-    }
-  }
-
-  sysPath = smb_get_system32root();
-  if(!sysPath){
-    exit(0);
-  }
-
-  dllVer = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
-  if(!isnull(dllVer)) {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
-}

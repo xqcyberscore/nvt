@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011265.nasl 11983 2018-10-19 10:04:45Z mmartin $
+# $Id: gb_ms_kb4011265.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Multiple Vulnerabilities (KB4011265)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812123");
-  script_version("$Revision: 11983 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2017-11854");
   script_bugtraq_id(101746);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 12:04:45 +0200 (Fri, 19 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 00:24:36 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Multiple Vulnerabilities (KB4011265)");
 
@@ -65,35 +65,30 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-wordcnvVer = "";
-path = "";
-sysVer = "";
-offpath = "";
-
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^(12\.)")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
 
     sysVer = fetch_file_version(sysPath:offpath, file_name:"wordcnv.dll");
-    if(sysVer)
+    if(sysVer && sysVer =~ "^12\.")
     {
       if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6780.4999"))
       {

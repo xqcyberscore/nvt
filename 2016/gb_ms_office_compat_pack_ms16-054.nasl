@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms16-054.nasl 12051 2018-10-24 09:14:54Z asteins $
+# $Id: gb_ms_office_compat_pack_ms16-054.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (3155544)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807327");
-  script_version("$Revision: 12051 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2016-0198");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 11:14:54 +0200 (Wed, 24 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 15:37:44 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (3155544)");
@@ -66,6 +66,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms16-054");
+
   exit(0);
 }
 
@@ -73,18 +74,18 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^12.*")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     # Office Word Converter
-    path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+    path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
     if(path)
     {
       sysVer = fetch_file_version(sysPath:path + "\Microsoft Office\Office12", file_name:"Wordcnv.dll");
-      if(sysVer)
+      if(sysVer && sysVer =~ "^12\.")
       {
         if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6748.4999"))
         {

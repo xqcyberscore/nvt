@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 11125 2018-08-26 21:14:30Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Sun Java System Web Server Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100567");
-  script_version("$Revision: 11125 $");
+  script_version("$Revision: 12513 $");
   script_bugtraq_id(37874, 37910);
   script_cve_id("CVE-2010-0272", "CVE-2010-0273", "CVE-2010-0360",
                 "CVE-2010-0361", "CVE-2010-0388", "CVE-2010-0389");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 23:14:30 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation lets the attackers to discover process memory
   locations or execute arbitrary code in the context of an affected system
-  or cause the application to crash via a long URI in an HTTP OPTIONS request.
-
-  Impact Level: System/Application");
+  or cause the application to crash via a long URI in an HTTP OPTIONS request.");
 
   script_tag(name:"affected", value:"Sun Java System Web Server 7.0 Update 7 and prior.");
 
@@ -90,7 +88,8 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 
-if( get_kb_item( "Sun/JavaSysWebServ/Ver") !~ "^7\." ) exit( 0 );
+sysWebVer = get_kb_item( "Sun/JavaSysWebServ/Ver" );
+if( ! sysWebVer || sysWebVer !~ "^7\.0" ) exit( 0 );
 
 port = get_http_port( default:8989 );
 if( ! version = get_kb_item( "Sun/JavaSysWebServ/" + port + "/Ver" ) ) exit( 0 );

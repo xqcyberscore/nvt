@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011720.nasl 12410 2018-11-19 10:06:05Z cfischer $
+# $Id: gb_ms_kb4011720.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB4011720)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812984");
-  script_version("$Revision: 12410 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2018-0922");
   script_bugtraq_id(103314);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 11:06:05 +0100 (Mon, 19 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 10:06:49 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB4011720)");
 
@@ -67,27 +67,26 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^(12\.)")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
     {
       sysVer = fetch_file_version(sysPath:offpath, file_name:"wordcnv.dll");
-      if(sysVer)
+      if(sysVer && sysVer =~ "^12\.")
       {
         if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6786.4999"))
         {

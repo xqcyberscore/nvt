@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_web_detect.nasl 11628 2018-09-26 16:59:12Z cfischer $
+# $Id: gb_wd_mycloud_web_detect.nasl 12514 2018-11-23 17:24:53Z cfischer $
 #
 # Western Digital MyCloud Products Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108034");
-  script_version("$Revision: 11628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 18:59:12 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 12514 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 18:24:53 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 10:00:00 +0100 (Wed, 04 Jan 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -53,7 +53,6 @@ include("host_details.inc");
 include("cpe.inc");
 
 port = get_http_port( default:80 );
-
 res = http_get_cache( item:"/", port:port );
 
 # Possible response:
@@ -67,15 +66,17 @@ res = http_get_cache( item:"/", port:port );
 #var _PROJECT_MODEL_ID_AURORA = "WDMyCloudDL2100";
 #var _PROJECT_MODEL_ID_BLACKICE = "WDMyCloudEX1100";
 #var MODEL_ID = "WDMyCloudMirror";
+#var MODEL_ID = "MyCloudEX2Ultra";
 #
 # The latest "MODEL_ID" is what's currently running on the device.
 
-if( res =~ "^HTTP/1\.[01] 200" && ( 'MODEL_ID = "WDMyCloud"' >< res || "/web/images/logo_WDMyCloud.png" >< res ) ) {
+if( res =~ "^HTTP/1\.[01] 200" && ( res =~ 'MODEL_ID = "(WD)?MyCloud.+"' || "/web/images/logo_WDMyCloud.png" >< res ) ) {
 
   version = "unknown";
 
   # nb: This only offers the major version and seems to be available via 443 only
   # <info><ip></ip><device>WDMyCloudEX4100</device><hw_ver>WDMyCloudEX4100</hw_ver><version>2.30</version><url></url></info>
+  # <info><ip></ip><device>MyCloudEX2Ultra</device><hw_ver>MyCloudEX2Ultra</hw_ver><version>2.30</version><url></url></info>
   # <info><ip></ip><device>$devicename</device><hw_ver>WDMyCloudMirror</hw_ver><version>2.11</version><url></url></info>
   url  = "/xml/info.xml";
   req  = http_get( item:url, port:port );
@@ -86,7 +87,8 @@ if( res =~ "^HTTP/1\.[01] 200" && ( 'MODEL_ID = "WDMyCloud"' >< res || "/web/ima
     extra = "Model: " + model[1];
   } else {
     model = eregmatch( pattern:"<hw_ver>([a-zA-Z0-9]+)</hw_ver>", string:res2 );
-    if( model[1] ) extra = "Model: " + model[1];
+    if( model[1] )
+      extra = "Model: " + model[1];
   }
 
   vers = eregmatch( pattern:"<version>([0-9.]+)</version>", string:res2 );

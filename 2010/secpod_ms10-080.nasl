@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-080.nasl 11560 2018-09-24 06:18:38Z cfischer $
+# $Id: secpod_ms10-080.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2293211)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902264");
-  script_version("$Revision: 11560 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:18:38 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-3230", "CVE-2010-3231", "CVE-2010-3232", "CVE-2010-3233",
                 "CVE-2010-3234", "CVE-2010-3235", "CVE-2010-3236", "CVE-2010-3237",
@@ -46,6 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
   tricking a user into opening a malicious Excel file.");
+
   script_tag(name:"affected", value:"Microsoft Excel Viewer Service Pack 2
 
   Microsoft Office Excel 2002 Service Pack 3
@@ -57,6 +58,7 @@ if(description)
   Microsoft Office Compatibility Pack for Word,
 
   Excel, and PowerPoint 2007 File Formats Service Pack 2");
+
   script_tag(name:"insight", value:"The flaws are due to:
 
   - An integer overflow error when processing record information
@@ -83,20 +85,23 @@ if(description)
   - An out-of-bounds memory write when processing malformed data
 
   - A memory corruption error when processing malformed Ghost records");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
 
-  http://www.microsoft.com/technet/security/bulletin/ms10-080.mspx");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the referenced link.");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-080.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2345017");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2344893");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2345035");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2345088");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2344875");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2627");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-080.mspx");
 
   exit(0);
 }
@@ -109,7 +114,7 @@ if(hotfix_check_sp(xp:4, win2003:3) <= 0){
 }
 
 excelVer = get_kb_item("SMB/Office/Excel/Version");
-if(excelVer =~ "^1[012]\..*")
+if(excelVer && excelVer =~ "^1[012]\.")
 {
   if(version_in_range(version:excelVer, test_version:"10.0", test_version2:"10.0.6865") ||
      version_in_range(version:excelVer, test_version:"11.0", test_version2:"11.0.8327") ||
@@ -120,10 +125,11 @@ if(excelVer =~ "^1[012]\..*")
   }
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-  if(xlcnvVer)
+  if(xlcnvVer && xlcnvVer =~ "^12\.")
   {
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6545.4999"))
     {
@@ -134,7 +140,7 @@ if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 }
 
 excelVer = get_kb_item(name:"SMB/Office/XLView/Version");
-if(!isnull(excelVer))
+if(excelVer && excelVer =~ "^12\.")
 {
   # Xlview.exe 12 < 12.0.6545.5000
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6545.4999")){

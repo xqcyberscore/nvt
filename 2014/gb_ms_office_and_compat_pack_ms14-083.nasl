@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms14-083.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_ms_office_and_compat_pack_ms14-083.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3017347)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805024");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2014-6360", "CVE-2014-6361");
   script_bugtraq_id(71500, 71501);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 10:52:06 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3017347)");
 
@@ -66,17 +66,18 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/XLCnv/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
-  if(xlcnvVer)
+  if(xlcnvVer && xlcnvVer =~ "^12\.")
   {
     ## took the file excelconv.exe which is updated after patch
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6713.4999"))

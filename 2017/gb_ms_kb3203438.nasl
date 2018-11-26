@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203438.nasl 11962 2018-10-18 10:51:32Z mmartin $
+# $Id: gb_ms_kb3203438.nasl 12513 2018-11-23 14:24:09Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3203438)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811302");
-  script_version("$Revision: 11962 $");
+  script_version("$Revision: 12513 $");
   script_cve_id("CVE-2017-8509");
   script_bugtraq_id(98812);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-18 12:51:32 +0200 (Thu, 18 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 17:08:02 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Remote Code Execution Vulnerability (KB3203438)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to remote code execution
   vulnerability exist in Microsoft Office software when the Office software fails
-  to properly handle objects in memory. ");
+  to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   perform actions in the security context of the current user.");
@@ -62,6 +62,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -71,21 +72,21 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                              item:"ProgramFilesDir");
+path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^(12\.)")
+cmpPckVer = get_kb_item("SMB/Office/ComptPack/Version");
+if(cmpPckVer && cmpPckVer =~ "^12\.")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
-  if(wordcnvVer && wordcnvVer =~ "^(12\.)")
+  if(wordcnvVer && wordcnvVer =~ "^12\.")
   {
     offpath = path + "\Microsoft Office\Office12";
     {
       sysVer = fetch_file_version(sysPath:offpath, file_name:"wordcnv.dll");
-      if(sysVer)
+      if(sysVer && sysVer =~ "^12\.")
       {
         if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6770.4999"))
         {
