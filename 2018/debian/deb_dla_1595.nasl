@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1595.nasl 12522 2018-11-26 07:41:25Z cfischer $
+# $Id: deb_dla_1595.nasl 12542 2018-11-27 07:40:24Z cfischer $
 #
 # Auto-generated from advisory DLA 1595-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891595");
-  script_version("$Revision: 12522 $");
+  script_version("$Revision: 12542 $");
   script_cve_id("CVE-2018-19490", "CVE-2018-19491", "CVE-2018-19492");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1595-1] gnuplot5 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 08:41:25 +0100 (Mon, 26 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-27 08:40:24 +0100 (Tue, 27 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-26 00:00:00 +0100 (Mon, 26 Nov 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,8 +55,10 @@ if(description)
 
 We recommend that you upgrade your gnuplot5 packages.");
   script_tag(name:"summary",  value:"gnuplot5, a command-line driven interactive plotting program, has been
-  examined with fuzzing by Tim Blazytko, Cornelius Aschermann, Sergej Schumilo and Nils Bars. They found
-  various overflow cases which might lead to the execution of arbitrary code.
+examined with fuzzing by Tim Blazytko, Cornelius Aschermann, Sergej
+Schumilo and Nils Bars.
+They found various overflow cases which might lead to the execution of
+arbitrary code.
 
   Due to special toolchain hardening in Debian, CVE-2018-19492 is not security relevant, but it is a bug and
   the patch was applied for the sake of completeness. Probably some downstream project does not have the same toolchain settings.");
@@ -73,9 +75,6 @@ report = "";
 if ((res = isdpkgvuln(pkg:"gnuplot5", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"gnuplot5", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
-    report += res;
-}
 if ((res = isdpkgvuln(pkg:"gnuplot5-data", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
@@ -83,6 +82,9 @@ if ((res = isdpkgvuln(pkg:"gnuplot5-doc", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_reg
     report += res;
 }
 if ((res = isdpkgvuln(pkg:"gnuplot5-nox", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
+    report += res;
+}
+if ((res = isdpkgvuln(pkg:"gnuplot5-qt", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 if ((res = isdpkgvuln(pkg:"gnuplot5-x11", ver:"5.0.0~rc+dfsg2-1+deb8u1", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {

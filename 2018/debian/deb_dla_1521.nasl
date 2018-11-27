@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1521.nasl 11644 2018-09-27 08:04:59Z cfischer $
+# $Id: deb_dla_1521.nasl 12523 2018-11-26 09:24:07Z mmartin $
 #
 # Auto-generated from advisory DLA 1521-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891521");
-  script_version("$Revision: 11644 $");
+  script_version("$Revision: 12523 $");
   script_cve_id("CVE-2018-16586", "CVE-2018-16587");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1521-1] otrs2 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 10:04:59 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-27 00:00:00 +0200 (Thu, 27 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

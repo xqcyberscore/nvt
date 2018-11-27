@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_inedo_proget_csrf_vuln.nasl 11707 2018-10-01 10:08:31Z ckuersteiner $
+# $Id: gb_inedo_proget_csrf_vuln.nasl 12544 2018-11-27 08:19:05Z mmartin $
 #
 # Inedo ProGet < 5.0.4 CSRF Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:inedo:proget";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141541");
-  script_version("$Revision: 11707 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 12:08:31 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 12544 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-27 09:19:05 +0100 (Tue, 27 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-01 16:20:09 +0700 (Mon, 01 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15608");
 

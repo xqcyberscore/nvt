@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4103.nasl 8634 2018-02-02 08:11:09Z teissa $
+# $Id: deb_4103.nasl 12523 2018-11-26 09:24:07Z mmartin $
 #
 # Auto-generated from advisory DSA 4103-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704103");
-  script_version("$Revision: 8634 $");
+  script_version("$Revision: 12523 $");
   script_cve_id("CVE-2017-15420", "CVE-2017-15429", "CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033", "CVE-2018-6034", "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037", "CVE-2018-6038", "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041", "CVE-2018-6042", "CVE-2018-6043", "CVE-2018-6045", "CVE-2018-6046", "CVE-2018-6047", "CVE-2018-6048", "CVE-2018-6049", "CVE-2018-6050", "CVE-2018-6051", "CVE-2018-6052", "CVE-2018-6053", "CVE-2018-6054");
   script_name("Debian Security Advisory DSA 4103-1 (chromium-browser - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 09:11:09 +0100 (Fri, 02 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 00:00:00 +0100 (Wed, 31 Jan 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

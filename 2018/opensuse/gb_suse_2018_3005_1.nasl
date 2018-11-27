@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3005_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_3005_1.nasl 12523 2018-11-26 09:24:07Z mmartin $
 #
 # SuSE Update for otrs openSUSE-SU-2018:3005-1 (otrs)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852071");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 12523 $");
   script_cve_id("CVE-2018-14593", "CVE-2018-16586", "CVE-2018-16587");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-26 10:24:07 +0100 (Mon, 26 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:41:29 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for otrs openSUSE-SU-2018:3005-1 (otrs)");
   script_category(ACT_GATHER_INFO);

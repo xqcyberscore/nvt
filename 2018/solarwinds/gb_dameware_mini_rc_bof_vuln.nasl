@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dameware_mini_rc_bof_vuln.nasl 12517 2018-11-24 12:26:00Z mmartin $
+# $Id: gb_dameware_mini_rc_bof_vuln.nasl 12530 2018-11-26 12:52:20Z asteins $
 #
 # DameWare Mini Remote Control < 12.1 Buffer Overflow Vulnerability (Windows)
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107379");
-  script_version("$Revision: 12517 $");
+  script_version("$Revision: 12530 $");
   script_cve_id("CVE-2018-12897");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-24 13:26:00 +0100 (Sat, 24 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-26 13:52:20 +0100 (Mon, 26 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-24 13:15:04 +0100 (Sat, 24 Nov 2018)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,17 +43,13 @@ if(description)
   script_dependencies("gb_dameware_mini_rc_detect_win.nasl");
   script_mandatory_keys("dameware/mini_remote_control/win/detected");
 
-  script_tag(name:"summary", value:"DameWare Mini Remote Control < 12.1 is prone to a local buffer overflow vulnerability.");
-
-  script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
-
-  script_tag(name:"insight", value:"The flaw exists due to insecure handling of a user input buffer which ultimately allows for overwriting Structured Exception Handler (SEH) addresses and the subsequent hijacking of execution flow.");
-
-  script_tag(name:"impact", value:"Successful exploitation will allow
-  local attackers to conduct buffer overflow attacks on the affected system.");
-  script_tag(name:"affected", value:"DameWare Mini Remote Control < 12.1.");
-
-  script_tag(name:"solution", value:"Upgrade to DameWare Mini Remote Control 12.1 or later.");
+  script_tag(name:"summary", value:"DameWare Mini Remote Control is prone to a local buffer overflow vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw exists due to insecure handling of a user input buffer which ultimately allows
+  for overwriting Structured Exception Handler (SEH) addresses and the subsequent hijacking of execution flow.");
+  script_tag(name:"impact", value:"Successful exploitation will allow local attackers to conduct buffer overflow attacks on the affected system.");
+  script_tag(name:"affected", value:"DameWare Mini Remote Control before version 12.1.");
+  script_tag(name:"solution", value:"Upgrade DameWare Mini Remote Control to version 12.1 or later.");
 
   script_xref(name:"URL", value:"https://labs.nettitude.com/blog/solarwinds-cve-2018-12897-dameware-mini-remote-control-local-seh-buffer-overflow/");
 
@@ -72,9 +68,10 @@ if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) {
 vers = infos['version'];
 path = infos['location'];
 
-if (version_is_less (version:vers, test_version:"12.1")){
+if(version_is_less(version:vers, test_version:"12.1")) {
   report = report_fixed_ver(installed_version:vers, fixed_version:"12.1", install_path:path);
   security_message(port:0, data:report);
   exit(0);
 }
+
 exit(99);

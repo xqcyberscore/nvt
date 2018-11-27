@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 12262 2018-11-08 13:34:21Z emoss $
+# $Id: ssh_func.inc 12532 2018-11-26 13:44:42Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12262 $
+# $Revision: 12532 $
 #
 ###############################################################################
 
@@ -2623,29 +2623,35 @@ function ssh_rand_str( length, charset ) {
   return s;
 }
 
-# @brief looks on linux host if a given file
-#        can be found / accessed
+# @brief looks on linux host via SSH if a given file can be found / accessed.
 #
-# @param socket (optional) an open socket. If
-#             non given, a new one will be
-#             opened
-#        file the file to check the existence
-#             (filepath)
+# @param sock an open SSH socket (optional). If non given, a new one will be opened.
+# @param file the file to check the existence(filepath)
 #
-# @return TRUE or FALSE
+# @return TRUE if the file can be found / accessed, FALSE otherwise and NULL if not all
+#         required parameters are passed or no connection could be opened to the target.
 #
-function ssh_check_file_existence( socket, file ) {
-	if( ! socket ){
-		socket = ssh_login_or_reuse_connection();
-	}
-	if( ! file ){
-		set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#ssh_check_file_existence" );
-		return;
-	}
-	cmd = '[ -f ' + file + ' ] && echo "TRUE" || echo "FALSE"';
-	file_exists = ssh_cmd(cmd:cmd, socket:socket);
-	if(file_exists == 'TRUE')
-		return(TRUE);
-	if(file_exists == 'FALSE')
-		return(FALSE);
+function ssh_check_file_existence( sock, file ) {
+
+  local_var sock, file;
+  local_var cmd, file_exists;
+
+  if( ! sock ) {
+    sock = ssh_login_or_reuse_connection();
+  }
+
+  if( ! file ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#ssh_check_file_existence" );
+    return;
+  }
+
+  cmd = '[ -f ' + file + ' ] && echo "TRUE" || echo "FALSE"';
+  file_exists = ssh_cmd( cmd:cmd, socket:sock );
+
+  if( file_exists == 'TRUE' )
+    return TRUE;
+  else if( file_exists == 'FALSE' )
+    return FALSE;
+  else
+    return;
 }

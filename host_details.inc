@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12435 2018-11-20 11:07:28Z cfischer $
+# $Id: host_details.inc 12524 2018-11-26 10:34:36Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12435 $
+# $Revision: 12524 $
 #
 ###############################################################################
 
@@ -127,6 +127,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -221,6 +222,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.812377", # gb_dlink_dsl_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106015", # gb_dlink_dns_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103689", # gb_dlink_dir_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -471,7 +473,7 @@ function host_runs() {
 
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
-    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link|' +
+    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
