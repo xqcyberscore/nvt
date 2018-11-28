@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 27 Nov 2018 10:03:52 +0100
+# Automatically created on:  Wed, 28 Nov 2018 11:06:07 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -41897,6 +41897,8 @@
 2018/moodle/gb_moodle_msa-18-0017_win.nasl: GPLv2+
 2018/moodle/gb_moodle_msa-18-0019_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_msa-18-0019_win.nasl: GPLv2+
+2018/moodle/gb_moodle_msa-18-0020_lin.nasl: GPLv2+
+2018/moodle/gb_moodle_msa-18-0020_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_jul17_01_lin.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_jul17_01_win.nasl: GPLv2+
 2018/moodle/gb_moodle_mult_vuln_jul18_01_lin.nasl: GPLv2+
@@ -42886,6 +42888,7 @@
 2018/solarwinds/gb_dameware_mini_rc_bof_vuln_mar16.nasl: GPLv2+
 2018/solarwinds/gb_dameware_mini_rc_bof_vuln.nasl: GPLv2+
 2018/solarwinds/gb_dameware_mini_rc_bof_vuln_nov15.nasl: GPLv2+
+2018/solarwinds/gb_dameware_remote_support_bof_vuln_jul13.nasl: GPLv2+
 2018/sollaesystems/gb_sollaesystems_devices_default_telnet_credentials.nasl: GPLv2+
 2018/sonos/gb_sonos_info_discl_vuln.nasl: GPLv2+
 2018/sony/gb_sony_network_camera_default_credentials.nasl: GPLv2+
@@ -44402,6 +44405,7 @@ gb_ibm_urbancode_deploy_detect.nasl: GPLv2+
 gb_ibm_websphere_datapower_xc10_detect.nasl: GPLv2+
 gb_ibm_websphere_detect_giop.nasl: GPLv2+
 gb_ibm_websphere_detect.nasl: GPLv2+
+gb_ibm_websphere_mq_consolidation.nasl: GPLv2+
 gb_ibm_websphere_mq_detect_lin.nasl: GPLv2+
 gb_ibm_websphere_mq_detect.nasl: GPLv2+
 gb_ibm_websphere_mq_mqi_detect.nasl: GPLv2+
@@ -45176,6 +45180,7 @@ gb_teamviewer_detect_lin.nasl: GPLv2+
 gb_teamviewer_detect_macosx.nasl: GPLv2+
 gb_teamviewer_win_detect.nasl: GPLv2+
 gb_technicolor_tc7200_snmp_detect.nasl: GPLv2+
+gb_teledyne_dalsa_sherlock_detect_win.nasl: GPLv2+
 gb_telegram_desktop_detect_win.nasl: GPLv2+
 gb_teleopti_wfm_detect.nasl: GPLv2+
 gb_telepark_wiki_detect.nasl: GPLv2+
@@ -61258,23 +61263,33 @@ gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729563.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10729571.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_xss_vuln_ibm10730703.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln01_swg22015617_win.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_oct17.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22003852_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22004378_win.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22005392.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22012982_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22012982.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22012982_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22015617_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22015617.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_dos_vuln_swg22015617_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mitm_vuln_swg22016346_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mult_vuln_nov18_1.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_swg22012983.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_swg22012992.nasl: GPLv2+
@@ -61898,6 +61913,7 @@ gsf/2018/symantec/gb_sep_multiple_vuln_SYMSA1454.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_encryption_server_symsa1458_dos_vuln.nasl: GPLv2+
 gsf/2018/symantec/gb_symantec_messaging_gateway_SYMSA1461.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
+gsf/2018/teledyne/gb_teledyne_dalsa_sherlock_bof_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_mult_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_rce_vuln.nasl: GPLv2+
 gsf/2018/tibco/gb_tibco_ftl_csrf_vuln_win.nasl: GPLv2+

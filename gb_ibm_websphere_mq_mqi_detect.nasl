@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mqi_detect.nasl 12499 2018-11-23 10:08:39Z ckuersteiner $
+# $Id: gb_ibm_websphere_mq_mqi_detect.nasl 12552 2018-11-28 04:39:18Z ckuersteiner $
 #
 # IBM WebSphere MQ Detection (MQI)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141712");
-  script_version("$Revision: 12499 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 11:08:39 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 12552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-28 05:39:18 +0100 (Wed, 28 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-23 10:29:03 +0700 (Fri, 23 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,9 +54,8 @@ The script sends a MQI request to the server and attempts to detect IBM WebSpher
   exit(0);
 }
 
-include("cpe.inc");
-include("misc_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 # Based on https://github.com/rapid7/metasploit-framework/pull/10876 and
 # https://github.com/boundary/wireshark/blob/master/epan/dissectors/packet-mq.c
@@ -191,19 +190,15 @@ for (i=0; i<3; i++) {
 close(sock);
 
 if (found) {
-  set_kb_item(name: "IBM/Websphere/MQ/installed", value: TRUE);
+  set_kb_item(name: "ibm_websphere_mq/detected", value: TRUE);
 
   register_service(port: port, proto: "websphere_mq");
 
-  cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:ibm:websphere_mq:");
-  if (!cpe)
-    cpe = 'cpe:/a:ibm:websphere_mq';
+  if (version != "unknown")
+    set_kb_item(name: "ibm_websphere_mq/mqi/" + port + "/version", value: version);
 
-  register_product(cpe: cpe, location: port + "/tcp", port: port, service: "websphere_mq");
+  set_kb_item(name: "ibm_websphere_mq/mqi/port", value: port);
 
-  log_message(data: build_detection_report(app: "IBM WebSphere MQ", version: version, install: port + "/tcp",
-                                           cpe: cpe, extra: extra),
-              port: port);
   exit(0);
 }
 

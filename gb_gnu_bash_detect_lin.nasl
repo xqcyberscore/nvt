@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_bash_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_gnu_bash_detect_lin.nasl 12551 2018-11-27 14:35:38Z cfischer $
 #
 # GNU Bash Version Detection (Linux)
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108258");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12551 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-27 15:35:38 +0100 (Tue, 27 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 12:31:0 +0200 (Fri, 20 Oct 2017)");
   script_name("GNU Bash Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -67,15 +67,15 @@ foreach binary( binaries ) {
 
   if( version[1] ) {
 
-    set_kb_item( name:"bash/Linux/Ver", value:version[1] );
-    set_kb_item( name:"bash/Linux/detected", value:TRUE );
+    set_kb_item( name:"bash/linux/ver", value:version[1] );
+    set_kb_item( name:"bash/linux/detected", value:TRUE );
     found = TRUE;
 
     cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:gnu:bash:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:gnu:bash";
 
-    register_product( cpe:cpe, location:binary );
+    register_product( cpe:cpe, location:binary, port:0, service:"ssh-login" );
 
     log_message( data:build_detection_report( app:"GNU bash",
                                               version:version[1],
@@ -93,19 +93,19 @@ if( ! found ) {
 
     version = "unknown";
     install = "unknown";
-    set_kb_item( name:"bash/Linux/detected", value:TRUE );
+    set_kb_item( name:"bash/linux/detected", value:TRUE );
 
     vers = eregmatch( pattern:"GNU bash, version ([0-9.]+)", string:result );
     if( vers[1] ) {
       version = vers[1];
-      set_kb_item( name:"bash/Linux/Ver", value:version );
+      set_kb_item( name:"bash/linux/ver", value:version );
     }
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:gnu:bash:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:gnu:bash";
 
-    register_product( cpe:cpe, location:install );
+    register_product( cpe:cpe, location:install, port:0, service:"ssh-login" );
 
     log_message( data:build_detection_report( app:"GNU bash",
                                               version:version,
