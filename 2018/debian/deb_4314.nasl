@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4314.nasl 11851 2018-10-12 06:01:23Z cfischer $
+# $Id: deb_4314.nasl 12568 2018-11-29 07:50:34Z mmartin $
 #
 # Auto-generated from advisory DSA 4314-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704314");
-  script_version("$Revision: 11851 $");
+  script_version("$Revision: 12568 $");
   script_cve_id("CVE-2018-18065");
   script_name("Debian Security Advisory DSA 4314-1 (net-snmp - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 08:01:23 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 08:50:34 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-11 00:00:00 +0200 (Thu, 11 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

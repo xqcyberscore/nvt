@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 28 Nov 2018 11:06:07 +0100
+# Automatically created on:  Thu, 29 Nov 2018 11:31:43 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39235,6 +39235,8 @@
 2018/debian/deb_4341.nasl: GPLv2+
 2018/debian/deb_4343.nasl: GPLv2+
 2018/debian/deb_4344.nasl: GPLv2+
+2018/debian/deb_4345.nasl: GPLv2+
+2018/debian/deb_4346.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39729,6 +39731,7 @@
 2018/debian/deb_dla_1595.nasl: GPLv2+
 2018/debian/deb_dla_1596.nasl: GPLv2+
 2018/debian/deb_dla_1597.nasl: GPLv2+
+2018/debian/deb_dla_1598.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41388,6 +41391,7 @@
 2018/infoblox/gb_infoblox_netmri_rxss_vuln.nasl: GPLv2+
 2018/infoblox/gb_infoblox_netmri_shell_escape_priv_esc.nasl: GPLv2+
 2018/intelbras/gb_ncloud300_router_auth_bypass_vuln.nasl: GPLv2+
+2018/intelbras/gb_ncloud300_router_default_telnet_credentials.nasl: GPLv2+
 2018/intel/gb_intel_amt_intel-sa-00141.nasl: GPLv2+
 2018/intel/gb_intel_amt_mult_bof_n_mem_corr_vuln.nasl: GPLv2+
 2018/invisionpower/gb_invision_sqli_vuln.nasl: GPLv2+
@@ -42827,6 +42831,8 @@
 2018/qnap/gb_qnap_qts_mult_clamav_vuln_june18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_mult_php_vuln_june18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_nas-201808-13.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_nas-201809-20.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_nas-201811-22.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_rce_vuln_jun18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_vpnfilter_malware.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_xss_vuln_apr18.nasl: GPLv2+
@@ -42865,8 +42871,12 @@
 2018/rsa/gb_rsa_auth_agent_web_iis_mult_vuln_win.nasl: GPLv2+
 2018/samba/gb_samba_ad_ldap_info_disc_vuln_aug18.nasl: GPLv2+
 2018/samba/gb_samba_dns_ldap_dos_vuln_aug18.nasl: GPLv2+
+2018/samba/gb_samba_dos_vuln1.nasl: GPLv2+
+2018/samba/gb_samba_dos_vuln2.nasl: GPLv2+
 2018/samba/gb_samba_libsmbclient_heap_bof_vuln_aug18.nasl: GPLv2+
 2018/samba/gb_samba_multiple_vuln_aug18.nasl: GPLv2+
+2018/samba/gb_samba_mult_vuln1.nasl: GPLv2+
+2018/samba/gb_samba_mult_vuln2.nasl: GPLv2+
 2018/samba/gb_samba_mult_vuln.nasl: GPLv2+
 2018/samba/gb_samba_priv_delegation_vuln_nov18.nasl: GPLv2+
 2018/samba/gb_samba_priv_esc_vuln_nov18.nasl: GPLv2+
@@ -44316,6 +44326,7 @@ gb_hp_diagnostics_server_detect.nasl: GPLv2+
 gb_hpe_cisss_detect.nasl: GPLv2+
 gb_hpe_insight_management_sizer_detect.nasl: GPLv2+
 gb_hpe_loadrunner_detect.nasl: GPLv2+
+gb_hpe_moonshot_prov_manager_detect.nasl: GPLv2+
 gb_hpe_nnmi_detect.nasl: GPLv2+
 gb_hpe_officeconnect_switch_snmp_detect.nasl: GPLv2+
 gb_hpe_operations_orchestration_detect.nasl: GPLv2+
@@ -44432,6 +44443,7 @@ gb_informix_detect.nasl: GPLv2+
 gb_ingate_firewall_detect.nasl: GPLv2+
 gb_ingate_siparator_detect.nasl: GPLv2+
 gb_intel_amt_webui_detect.nasl: GPLv2+
+gb_intelbras_ncloud_devices_http_detect.nasl: GPLv2+
 gb_intelbras_roteador_wireless_n_wrn_devices_detect.nasl: GPLv2+
 gb_intel_management_engine_detect.nasl: GPLv2+
 gb_intel_standard_manageability_detect.nasl: GPLv2+
@@ -45306,6 +45318,9 @@ gb_vx_search_enterprise_detect.nasl: GPLv2+
 gb_wampserver_detect.nasl: GPLv2+
 gb_watchguard_fireware_detect.nasl: GPLv2+
 gb_wd_mybook_live_detect.nasl: GPLv2+
+gb_wd_mycloud_consolidation.nasl: GPLv2+
+gb_wd_mycloud_snmp_detect.nasl: GPLv2+
+gb_wd_mycloud_ssh_login_detect.nasl: GPLv2+
 gb_wd_mycloud_web_detect.nasl: GPLv2+
 gb_wd_sharespace_web_detect.nasl: GPLv2+
 gb_wd_wdtv_detect.nasl: GPLv2+
@@ -61097,6 +61112,7 @@ gsf/2018/f5/gb_f5_big_ip_K55225440.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K58084500.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62201098.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62201745.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K62532311.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62712037.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K62750376.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K64208870.nasl: GPLv2+
@@ -61160,6 +61176,7 @@ gsf/2018/hid/gb_hid_vertx_rce_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
+gsf/2018/hp/gb_hpe_mpm_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_officeconnect_switches_inf_disc_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_universal_cmdb_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_universal_csrf_vuln.nasl: GPLv2+
@@ -61611,6 +61628,7 @@ gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln1.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-supervisor_mult_vuln_mar18.nasl: GPLv2+
 gsf/2018/omron/gb_omron_cx-supervisor_mult_vuln_nov18_1.nasl: GPLv2+
 gsf/2018/openxchange/gb_open_xchange_appsuite_mult_vuln_sep18.nasl: GPLv2+
 gsf/2018/opmantek/gb_open_audit_mult_vuln.nasl: GPLv2+

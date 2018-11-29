@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3792_3.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3792_3.nasl 12568 2018-11-29 07:50:34Z mmartin $
 #
 # Ubuntu Update for net-snmp USN-3792-3
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843702");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 12568 $");
   script_cve_id("CVE-2018-18065");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 08:50:34 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:08:47 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for net-snmp USN-3792-3");
   script_category(ACT_GATHER_INFO);

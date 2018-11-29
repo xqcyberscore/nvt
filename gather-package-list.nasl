@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 12304 2018-11-10 12:18:34Z cfischer $
+# $Id: gather-package-list.nasl 12560 2018-11-28 13:36:42Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 12304 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-10 13:18:34 +0100 (Sat, 10 Nov 2018) $");
+  script_version("$Revision: 12560 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-28 14:36:42 +0100 (Wed, 28 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -453,9 +453,8 @@ if( "HyperIP Command Line Interface" >< uname ) {
   show_version = ssh_cmd( socket:sock, cmd:"showVersion", nosh:TRUE, return_errors:FALSE, pty:TRUE, timeout:20, retry:10, pattern:"Product Version" );
 
   # Product Version ............ HyperIP 6.1.1 11-Jan-2018 13:09 (build 2) (r9200)
-  if( "Product Version" >< show_version && "HyperIP" >< show_version ) {
+  if( "Product Version" >< show_version && "HyperIP" >< show_version )
     set_kb_item( name:"hyperip/ssh-login/" + port + "/show_version", value:show_version );
-  }
 
   set_kb_item( name:"hyperip/ssh-login/" + port + "/uname", value:uname );
   set_kb_item( name:"hyperip/ssh-login/show_version_or_uname", value:TRUE );
@@ -729,48 +728,48 @@ if( uname =~ "Cisco NGIPS(v)?" && "Cisco Fire Linux OS" >< uname )
   if( "Cisco Fire Linux OS" >< uname )
   {
     cpe = 'cpe:/o:cisco:fire_linux_os';
-    version = eregmatch( pattern:'Cisco Fire Linux OS v([^ ]+)', string:uname );
+    version = eregmatch(pattern: 'Cisco Fire Linux OS v([^ ]+)', string: uname );
     if( ! isnull( version[1] ) )
     {
       cpe += ':' + version[1];
-      set_kb_item( name:"cisco/fire_linux_os/version", value:version[1] );
+      set_kb_item(name: "cisco/fire_linux_os/version", value: version[1]);
     }
 
-    build = eregmatch( pattern:'\\(build ([^)]+)\\)', string: uname);
-    if( ! isnull( build[1] ) ) set_kb_item( name:"cisco/fire_linux_os/build", value:build[1] );
+    build = eregmatch(pattern: '\\(build ([^)]+)\\)', string: uname);
+    if( ! isnull( build[1] ) ) set_kb_item(name: "cisco/fire_linux_os/build", value: build[1] );
 
-    register_and_report_os( os:"Cisco Fire Linux OS", cpe:cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os(os: "Cisco Fire Linux OS", cpe: cpe, banner_type: "SSH login", desc: SCRIPT_DESC, runs_key: "unixoide" );
 
     report = 'We are able to login and detect that you are running Cisco Fire Linux OS';
 
     if( version[1] ) report += '\nVersion: ' + version[1];
     if( build[1] ) report += '\nBuild: ' + build[1];
 
-    log_message( port:port, data:report );
+    log_message(port: port, data: report);
   }
 
-  set_kb_item( name:"cisco/ngips/uname", value:uname );
+  set_kb_item(name: "cisco/ngips/uname", value: uname);
   exit( 0 );
 }
 
 if( "CLINFR0329  Invalid command" >< uname )
 {
-  show_ver = ssh_cmd(socket:sock, cmd:"show version all", nosh:TRUE, return_errors:TRUE, pty:FALSE);
+  show_ver = ssh_cmd(socket: sock, cmd: "show version all", nosh: TRUE, return_errors: FALSE, pty: FALSE);
   if( show_ver && "Check Point Gaia" >< show_ver )
   {
     gaia_cpe = 'cpe:/o:checkpoint:gaia_os';
     set_kb_item(name: "checkpoint_fw/detected", value: TRUE);
 
-    version = eregmatch( pattern:'Product version Check Point Gaia (R[^\r\n]+)', string:show_ver );
+    version = eregmatch(pattern: 'Product version Check Point Gaia (R[^\r\n]+)', string: show_ver);
     if( ! isnull( version[1] ) )
     {
       gaia_cpe += ':' + tolower(version[1]);
-      set_kb_item( name:"checkpoint_fw/ssh/version", value:version[1] );
+      set_kb_item(name: "checkpoint_fw/ssh/version", value: version[1]);
     }
 
-    register_and_report_os( os:"Check Point Gaia", cpe:gaia_cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    register_and_report_os(os: "Check Point Gaia", cpe: gaia_cpe, banner_type: "SSH login", desc: SCRIPT_DESC, runs_key: "unixoide" );
 
-    build = eregmatch( pattern:'OS build ([^\r\n]+)', string:show_ver );
+    build = eregmatch(pattern: 'OS build ([^\r\n]+)', string: show_ver);
     if( ! isnull( build[1] ) ) set_kb_item( name:"checkpoint_fw/ssh/build", value:build[1] );
 
     report = 'We are able to login and detect that you are running Check Point Gaia.';
@@ -785,10 +784,10 @@ if( "CLINFR0329  Invalid command" >< uname )
 
 if( "% Unknown command" >< uname )
 {
-   show_ver = ssh_cmd( socket:sock, cmd:"show version", return_errors:TRUE, pty:TRUE, nosh:TRUE, timeout:20, retry:10, pattern:"NSX Manager");
+   show_ver = ssh_cmd( socket:sock, cmd:"show version", return_errors:FALSE, pty:TRUE, nosh:TRUE, timeout:20, retry:10, pattern:"NSX Manager" );
    if( show_ver && "NSX Manager" >< show_ver )
    {
-     set_kb_item( name:"vmware_nsx/show_ver", value:show_ver);
+     set_kb_item( name:"vmware_nsx/show_ver", value:show_ver );
      set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
      set_kb_item( name:"ssh/force/pty", value:TRUE );
      set_kb_item( name:"vmware_nsx/detected_by", value:"SSH" );
@@ -801,7 +800,7 @@ if( "JUNOS" >< uname && "Junos Space" >!< uname )
   if( "unknown command" >< uname )
   {
     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
-    set_kb_item( name:"junos/cli", value:TRUE);
+    set_kb_item( name:"junos/cli", value:TRUE );
   }
   set_kb_item( name:"junos/detected", value:TRUE );
   exit( 0 );
@@ -1087,47 +1086,67 @@ if( "Unknown action 0" >< uname ) {
   }
 }
 
-rls = ssh_cmd( socket:sock, cmd:"cat /opt/vmware/etc/appliance-manifest.xml", return_errors:TRUE );
+rls = ssh_cmd( socket:sock, cmd:"cat /opt/vmware/etc/appliance-manifest.xml", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/opt/vmware/etc/appliance-manifest.xml: ' + rls + '\n\n';
+
 if( rls =~ "<product>vSphere Data Protection [^<]+</product>" ) {
   set_kb_item( name:"vmware/vSphere_Data_Protection/rls", value:rls );
   exit( 0 );
 }
 
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/Novell-VA-release", return_errors:TRUE );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/Novell-VA-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/Novell-VA-release: ' + rls + '\n\n';
+
 if( "singleWordProductName=Filr" >< rls ) {
   set_kb_item( name:'filr/ssh/rls', value:rls );
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/vmware/text_top", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/vmware/text_top", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/vmware/text_top: ' + rls + '\n\n';
+
 if( "VMware vRealize Log Insight" >< rls ) {
-  set_kb_item( name:"vmware/vrealize_log_insight/rls", value:rls);
+  set_kb_item( name:"vmware/vrealize_log_insight/rls", value:rls );
   exit( 0 );
 }
 
 if( "linux" >< tolower( uname ) ) {
   # Cisco MSE 10.x
-  mse_status = ssh_cmd( socket:sock, cmd:"cmxctl version", return_errors:TRUE, nosh:TRUE, pty:TRUE );
+  mse_status = ssh_cmd( socket:sock, cmd:"cmxctl version", return_errors:FALSE, nosh:TRUE, pty:TRUE );
   if( "Build Version" >< mse_status && "cmx-" >< mse_status && "Build Time" >< mse_status ) {
     set_kb_item( name:"cisco_mse/status", value:mse_status );
     exit( 0 );
   }
 
   # Cisco MSE <= 8.x
-  mse_status = ssh_cmd(socket:sock, cmd:"getserverinfo", return_errors:TRUE, pty:TRUE, timeout:30, retry:10, pattern:"Total Elements" );
+  mse_status = ssh_cmd( socket:sock, cmd:"getserverinfo", return_errors:FALSE, pty:TRUE, timeout:30, retry:10, pattern:"Total Elements" );
   if( "Product name: Cisco Mobility Service Engine" >< mse_status ) {
     set_kb_item( name:"cisco_mse/status", value:mse_status );
     exit( 0 );
   }
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/github/enterprise-release", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/github/enterprise-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/github/enterprise-release: ' + rls + '\n\n';
+
 if( "RELEASE_VERSION" >< rls && "RELEASE_BUILD_ID" >< rls ) {
   set_kb_item( name:"github/enterprise/rls", value:rls );
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/cisco-release", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/cisco-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/cisco-release: ' + rls + '\n\n';
+
 if( "Cisco IPICS Enterprise Linux Server" >< rls ) { # Cisco IPICS Enterprise Linux Server release 4.5(1) Build 10p12
   set_kb_item( name:"cisco/ipics/detected", value:TRUE );
   register_and_report_os( os:rls, cpe:"cpe:/o:cisco:linux", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -1135,25 +1154,33 @@ if( "Cisco IPICS Enterprise Linux Server" >< rls ) { # Cisco IPICS Enterprise Li
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/.qradar_install_version", return_errors:TRUE );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/.qradar_install_version", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/.qradar_install_version: ' + rls + '\n\n';
+
 if( rls =~ '^[0-9]\\.[0-9]\\.[0-9]\\.20(1|2)[0-9]+' ) {
   rls = chomp( rls );
   set_kb_item( name:"qradar/version", value:rls );
-  typ =  ssh_cmd(socket:sock, cmd:"cat /etc/.product_name", return_errors:TRUE );
+  typ = ssh_cmd( socket:sock, cmd:"cat /etc/.product_name", return_errors:FALSE );
   if( ! isnull( typ ) ) set_kb_item( name:'qradar/product_name', value:typ );
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/nitrosecurity-release", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/nitrosecurity-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/nitrosecurity-release: ' + rls + '\n\n';
+
 if( "McAfee ETM " >< rls ) {
-  buildinfo = ssh_cmd(socket:sock, cmd:"cat /etc/NitroGuard/.buildinfo", return_errors:TRUE);
+  buildinfo = ssh_cmd( socket:sock, cmd:"cat /etc/NitroGuard/.buildinfo", return_errors:FALSE );
   if( "VERSION" >< buildinfo && "MAINTVER" >< buildinfo ) {
     set_kb_item( name:"mcafee/etm/buildinfo", value:buildinfo );
     exit( 0 );
   }
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/system-release", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/system-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/system-release: ' + rls + '\n\n';
@@ -1186,7 +1213,7 @@ if( "EyesOfNetwork release" >< rls ) {
   buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
   register_rpms( buf:buf );
 
-  buf = ssh_cmd( socket:sock, cmd:"cat /etc/system-release-cpe" );
+  buf = ssh_cmd( socket:sock, cmd:"cat /etc/system-release-cpe", return_errors:FALSE );
 
   # EON 4.0 has a wrong cpe:/o:centos:linux in the system-release-cpe
   buf = str_replace( string:buf, find:"centos:linux", replace:"centos:centos" );
@@ -1204,7 +1231,7 @@ if( "EyesOfNetwork release" >< rls ) {
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/pgp-release", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/pgp-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/pgp-release: ' + rls + '\n\n';
@@ -1213,21 +1240,24 @@ if( "Symantec Encryption Server" >< rls ) {
   set_kb_item( name:"symantec_encryption_server/installed", value:TRUE );
   set_kb_item( name:"symantec_encryption_server/rls", value:rls );
 
-  mp = ssh_cmd(socket:sock, cmd:"cat /etc/oem-suffix", return_errors:TRUE);
+  mp = ssh_cmd( socket:sock, cmd:"cat /etc/oem-suffix", return_errors:FALSE );
   if( ! isnull( mp ) )
-    set_kb_item( name:"symantec_encryption_server/MP", value: chomp( mp ) );
+    set_kb_item( name:"symantec_encryption_server/MP", value:chomp( mp ) );
 
-  oem_release = ssh_cmd(socket:sock, cmd:"cat /etc/oem-release", return_errors:TRUE);
+  oem_release = ssh_cmd( socket:sock, cmd:"cat /etc/oem-release", return_errors:FALSE );
   if( ! isnull( oem_release ) )
-    set_kb_item( name:"symantec_encryption_server/oem-release", value: chomp( oem_release ) );
+    set_kb_item( name:"symantec_encryption_server/oem-release", value:chomp( oem_release ) );
 
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /VERSION", return_errors:TRUE);
+rls = ssh_cmd( socket:sock, cmd:"cat /VERSION", return_errors:TRUE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/VERSION: ' + rls + '\n\n';
 
 if( "Syntax Error: unexpected argument" >< rls ) {
-  rls = ssh_cmd(socket:sock, cmd:'run util bash -c "cat /VERSION"', nosh:TRUE);
+  rls = ssh_cmd( socket:sock, cmd:'run util bash -c "cat /VERSION"', nosh:TRUE );
   if( "BIG-" >< rls || "Product: EM" >< rls ) {
     set_kb_item( name:"f5/shell_is_tmsh", value:TRUE );
     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
@@ -1252,22 +1282,49 @@ if( "Product: EM" >< rls && "BaseBuild" >< rls ) {
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/meg-release");
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/meg-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/meg-release: ' + rls + '\n\n';
+
 if( rls =~ "^McAfee" ) {
   set_kb_item( name:"mcafee/OS", value:TRUE ); # gb_mcafee_*_version.nasl
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/esrs-release");
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/esrs-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/esrs-release: ' + rls + '\n\n';
+
 if( chomp( rls ) =~ "^[0-9]+\.[0-9]+\.[0-9]$" ) {
-  set_kb_item( name:"ems/esrs/rls", value:rls);
+  set_kb_item( name:"ems/esrs/rls", value:rls );
+  exit( 0 );
+}
+
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/NAS_CFG/config.xml", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/NAS_CFG/config.xml (truncated): ' + substr( rls, 0, 300 ) + '\n\n';
+
+# <config>
+#       *snip*
+#       <hw_ver>MyCloudEX2Ultra</hw_ver>
+# or:
+# <config>
+#       *snip*
+#       <hw_ver>WDMyCloudMirror</hw_ver>
+if( rls =~ "<hw_ver>(WD)?MyCloud.*</hw_ver>" ) {
+  set_kb_item( name:"wd-mycloud/ssh-login/" + port + "/cfg_file", value:rls );
+  set_kb_item( name:"wd-mycloud/ssh-login/port", value:port );
+  set_kb_item( name:"wd-mycloud/ssh-login/cfg_file", value:TRUE );
   exit( 0 );
 }
 
 # oraclelinux is almost like rhel .. but ..
-rls = ssh_cmd(socket:sock, cmd:"rpm -qf /etc/redhat-release");
+rls = ssh_cmd( socket:sock, cmd:"rpm -qf /etc/redhat-release", return_errors:TRUE );
 
-if( "No such file or directory" >!< rls && strlen( rls ) )
+if( "rpm: not found" >!< rls && strlen( rls ) )
   _unknown_os_info += 'rpm -qf /etc/redhat-release: ' + rls + '\n\n';
 
 if( "oraclelinux-release-4" >< rls ) {
@@ -1331,7 +1388,7 @@ if( "oraclelinux-release-7" >< rls ) {
 }
 
 # Ok...let's first check if this is a RedHat/Fedora Core/Mandrake release
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/redhat-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/redhat-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/redhat-release: ' + rls + '\n\n';
@@ -1970,7 +2027,7 @@ if( "CentOS release 2" >< rls ) {
 }
 
 # Hmmm...is it Ubuntu?
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/lsb-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/lsb-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/lsb-release: ' + rls + '\n\n';
@@ -2226,7 +2283,7 @@ if( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?' ) {
   }
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/issue");
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/issue", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/issue: ' + rls + '\n\n';
@@ -2243,7 +2300,7 @@ if( ! isnull( match ) ) {
 }
 
 # How about Conectiva Linux?
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/conectiva-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/conectiva-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/conectiva-release: ' + rls + '\n\n';
@@ -2280,7 +2337,7 @@ if( "Conectiva Linux 10" >< rls ) {
 #- Turbolinux Home
 #- Turbolinux 10 F...
 
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/turbolinux-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/turbolinux-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/turbolinux-release: ' + rls + '\n\n';
@@ -2333,7 +2390,7 @@ if( "Turbolinux" >< rls ) {
 }
 
 # Hmmm...is it Debian?
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/debian_version" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/debian_version", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/debian_version: ' + rls + '\n\n';
@@ -2466,7 +2523,7 @@ if( "buster/sid" >< rls ) {
 }
 
 # How about Slackware?
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/slackware-version" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/slackware-version", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/slackware-version: ' + rls + '\n\n';
@@ -2746,7 +2803,7 @@ if( "Slackware 1.00" >< rls ) {
 
 # How about SuSe? and openSUSE?
 # https://en.wikipedia.org/wiki/SUSE_Linux_distributions
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/os-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/os-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/os-release: ' + rls + '\n\n';
@@ -2816,7 +2873,7 @@ if( "NAME=NixOS" >< rls || "ID=nixos" >< rls ) {
 }
 
 # nb: In SLES12+ /etc/SuSE-release is deprecated in favor of /etc/os-release
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/SuSE-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/SuSE-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/SuSE-release: ' + rls + '\n\n';
@@ -3056,7 +3113,10 @@ if( "SuSE Linux 7.3 " >< rls ) {
   exit( 0 );
 }
 
-rls = ssh_cmd(socket:sock, cmd:"cat /etc/release");
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/release: ' + rls + '\n\n';
 
 if( "Endian Firewall " >< rls ) {
   set_kb_item( name:"endian_firewall/release", value:rls );
@@ -3064,76 +3124,80 @@ if( "Endian Firewall " >< rls ) {
 }
 
 # How about Trustix?
-rls2 = ssh_cmd(socket:sock, cmd:"cat /etc/trustix-release");
-if("Trustix Secure Linux release 3.0.5"><rls ||
-       "Trustix Secure Linux release 3.0.5"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 3.0.5"));
-    register_detected_os(os:"Trustix 3.0.5", oskey:"TSL3.0.5");
-    exit(0);
+rls2 = ssh_cmd( socket:sock, cmd:"cat /etc/trustix-release", return_errors:FALSE );
+
+if( "No such file or directory" >!< rls2 && strlen( rls2 ) )
+  _unknown_os_info += '/etc/trustix-release: ' + rls2 + '\n\n';
+
+if( "Trustix Secure Linux release 3.0.5" >< rls ||
+    "Trustix Secure Linux release 3.0.5" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 3.0.5" );
+  register_detected_os( os:"Trustix 3.0.5", oskey:"TSL3.0.5" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 3.0"><rls ||
-       "Trustix Secure Linux release 3.0"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 3.0"));
-    register_detected_os(os:"Trustix 3.0", oskey:"TSL3.0");
-    exit(0);
+if( "Trustix Secure Linux release 3.0" >< rls ||
+    "Trustix Secure Linux release 3.0" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 3.0" );
+  register_detected_os( os:"Trustix 3.0", oskey:"TSL3.0" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 2.2"><rls ||
-       "Trustix Secure Linux release 2.2"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.2"));
-    register_detected_os(os:"Trustix 2.2", oskey:"TSL2.2");
-    exit(0);
+if( "Trustix Secure Linux release 2.2" >< rls ||
+    "Trustix Secure Linux release 2.2" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 2.2" );
+  register_detected_os( os:"Trustix 2.2", oskey:"TSL2.2" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 2.1"><rls ||
-       "Trustix Secure Linux release 2.1"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.1"));
-    register_detected_os(os:"Trustix 2.1", oskey:"TSL2.1");
-    exit(0);
+if( "Trustix Secure Linux release 2.1" >< rls ||
+    "Trustix Secure Linux release 2.1" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 2.1" );
+  register_detected_os( os:"Trustix 2.1", oskey:"TSL2.1" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 2.0"><rls ||
-       "Trustix Secure Linux release 2.0"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 2.0"));
-    register_detected_os(os:"Trustix 2.0", oskey:"TSL2.0");
-    exit(0);
+if( "Trustix Secure Linux release 2.0" >< rls ||
+    "Trustix Secure Linux release 2.0" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 2.0" );
+  register_detected_os( os:"Trustix 2.0", oskey:"TSL2.0" );
+  exit( 0 );
 }
 if("Trustix Secure Linux release 1.5"><rls ||
-       "Trustix Secure Linux release 1.5"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.5"));
-    register_detected_os(os:"Trustix 1.5", oskey:"TSL1.5");
-    exit(0);
+    "Trustix Secure Linux release 1.5"><rls2) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 1.5" );
+  register_detected_os( os:"Trustix 1.5", oskey:"TSL1.5" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 1.2"><rls ||
-       "Trustix Secure Linux release 1.2"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.2"));
-    register_detected_os(os:"Trustix 1.2", oskey:"TSL1.2");
-    exit(0);
+if( "Trustix Secure Linux release 1.2" >< rls ||
+    "Trustix Secure Linux release 1.2" >< rls2) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 1.2" );
+  register_detected_os( os:"Trustix 1.2", oskey:"TSL1.2" );
+  exit( 0 );
 }
-if("Trustix Secure Linux release 1.1"><rls ||
-       "Trustix Secure Linux release 1.1"><rls2) {
-    buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'");
-    register_rpms( buf:buf );
-    log_message(port:port, data:string("We are able to login and detect that you are running Trustix 1.1"));
-    register_detected_os(os:"Trustix 1.1", oskey:"TSL1.1");
-    exit(0);
+if( "Trustix Secure Linux release 1.1" >< rls ||
+    "Trustix Secure Linux release 1.1" >< rls2 ) {
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};\n'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running Trustix 1.1" );
+  register_detected_os( os:"Trustix 1.1", oskey:"TSL1.1" );
+  exit( 0 );
 }
 # Missing Trustix e-2
 
 # How about Gentoo? Note, just check that its ANY gentoo release, since the build
 # doesn't matter for purposes of checking package version numbers.
-rls = ssh_cmd( socket:sock, cmd:"cat /etc/gentoo-release" );
+rls = ssh_cmd( socket:sock, cmd:"cat /etc/gentoo-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/gentoo-release: ' + rls + '\n\n';
@@ -3154,7 +3218,7 @@ if( "Gentoo" >< rls ) {
 }
 
 # EulerOS
-rls = ssh_cmd( socket: sock, cmd:"cat /etc/euleros-release" );
+rls = ssh_cmd( socket: sock, cmd:"cat /etc/euleros-release", return_errors:FALSE );
 
 if( "No such file or directory" >!< rls && strlen( rls ) )
   _unknown_os_info += '/etc/euleros-release: ' + rls + '\n\n';
@@ -3185,7 +3249,6 @@ if( "EulerOS release 2.0 (SP1)" >< rls ) {
 }
 
 # Non GNU/Linux platforms:
-
 
 ## HP-UX Operating System
 if( "HP-UX" >< uname ) {
@@ -3519,10 +3582,12 @@ if( uname ) {
   report += '(missing list of installed packages) though SSH login provided and works.';
 }
 
-log_message( port:port, data:report );
-
 if( _unknown_os_info ) {
   register_unknown_os_banner( banner:_unknown_os_info, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
+  report += '\n\n' + "Please see the VT 'Unknown OS and Service Banner Reporting' (OID: 1.3.6.1.4.1.25623.1.0.108441) ";
+  report += "for possible ways to identify this OS.";
 }
+
+log_message( port:port, data:report );
 
 exit( 0 );

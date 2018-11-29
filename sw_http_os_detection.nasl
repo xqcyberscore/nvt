@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 12434 2018-11-20 11:03:44Z cfischer $
+# $Id: sw_http_os_detection.nasl 12563 2018-11-28 15:16:22Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 12434 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-20 12:03:44 +0100 (Tue, 20 Nov 2018) $");
+  script_version("$Revision: 12563 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-28 16:16:22 +0100 (Wed, 28 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -100,6 +100,10 @@ function check_http_banner( port, banner ) {
 
     # e.g. Server: libwebsockets or server: libwebsockets
     if( egrep( pattern:"^Server: libwebsockets$", string:banner, icase:TRUE ) ) return;
+
+    # e.g. Server: mt-daapd/svn-1696 or Server: mt-daapd/0.2.4.1
+    # Cross-Platform
+    if( egrep( pattern:"^Server: mt-daapd/?([0-9.]+|svn-[0-9]+)?$", string:banner, icase:TRUE ) ) return;
 
     if( banner == "Server:" ||
         banner == "Server: " ||

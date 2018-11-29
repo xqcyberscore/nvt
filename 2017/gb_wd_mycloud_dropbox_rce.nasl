@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_dropbox_rce.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_wd_mycloud_dropbox_rce.nasl 12561 2018-11-28 13:48:33Z cfischer $
 #
 # WD MyCloud Products Dropbox App Remote Command Execution Vulnerability
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:western_digital:mycloud_nas';
+CPE_PREFIX = "cpe:/o:wdc";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108246");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 12561 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-28 14:48:33 +0100 (Wed, 28 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-09-26 08:00:00 +0200 (Tue, 26 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,9 +38,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_wd_mycloud_web_detect.nasl");
+  script_dependencies("gb_wd_mycloud_consolidation.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("WD-MyCloud/www/detected");
+  script_mandatory_keys("wd-mycloud/http/detected");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3397");
   script_xref(name:"URL", value:"https://community.wd.com/t/new-release-my-cloud-dropbox-2-00-8-22-17/214582");
@@ -66,10 +66,20 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_port_from_cpe_prefix( cpe:CPE_PREFIX, service:"www", first_cpe_only:TRUE ) )
+  exit( 0 );
 
-if( dir == "/" ) dir = "";
+CPE = infos["cpe"];
+if( ! CPE || "my_cloud" >!< CPE )
+  exit( 0 );
+
+port = infos["port"];
+
+if( ! dir = get_app_location( cpe:CPE, port:port ) )
+  exit( 0 );
+
+if( dir == "/" )
+  dir = "";
 
 url = dir + "/Dropbox/php/dropbox.php?cmd=getBlacklist&account=;echo%20`id`;";
 

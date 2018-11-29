@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 12213 2018-11-05 10:04:22Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 12573 2018-11-29 09:52:12Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 12213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-05 11:04:22 +0100 (Mon, 05 Nov 2018) $");
+  script_version("$Revision: 12573 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 10:52:12 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -88,6 +88,11 @@ genericfiles = make_array(
 "/id_ecdsa", 'SSH Private-Key publicly accessible.#-#^-----(BEGIN|END) (EC|ENCRYPTED|OPENSSH) PRIVATE KEY-----',
 "/id_ed25519", 'SSH Private-Key publicly accessible.#-#^-----(BEGIN|END) (ENCRYPTED|OPENSSH) PRIVATE KEY-----',
 "/.env", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
+"/.env_staging", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
+"/.env_local", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
+"/.env_production", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
+"/.env_hosted", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
+"/.env_baremetal", 'Laravel ".env" files present that may contain database credentials.#-#(APP_ENV|DB_DATABASE|DB_USERNAME|DB_PASSWORD)=',
 "/app/config/parameters.yml", 'Contao CMS or PrestaShop Database Configuration File containing a username and/or password.#-#parameters ?:#-#database_(user|password) ?:',
 "/config.development.json", 'Ghost Database Configuration File containing a username and/or password.#-#"database" ?:#-#"(user|password)"',
 "/config.production.json", 'Ghost Database Configuration File containing a username and/or password.#-#"database" ?:#-#"(user|password)"',

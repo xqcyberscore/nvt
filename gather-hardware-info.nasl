@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-hardware-info.nasl 9409 2018-04-09 13:22:51Z cfischer $
+# $Id: gather-hardware-info.nasl 12562 2018-11-28 15:06:04Z cfischer $
 #
 # Gather Linux Hardware Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103996");
-  script_version("$Revision: 9409 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 15:22:51 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 12562 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-28 16:06:04 +0100 (Wed, 28 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-05 14:24:03 +0200 (Tue, 05 Apr 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,17 +54,81 @@ include("ssh_func.inc");
 SCRIPT_DESC = "Gather Linux Hardware Information";
 
 sock = ssh_login_or_reuse_connection();
-if( ! sock ) exit( 0 );
+if( ! sock )
+  exit( 0 );
 
 # -- Get the CPU information -- #
 cpuinfo = ssh_cmd( socket:sock, cmd:"cat /proc/cpuinfo" );
 cpus = make_array();
 cpunumber = 0;
+
+# BusyBox v1.20.2 single core CPU output of cat /proc/cpuinfo:
+# Processor	: Marvell PJ4Bv7 Processor rev 1 (v7l)
+# BogoMIPS	: 1196.85
+# Features	: swp half thumb fastmult vfp edsp vfpv3 vfpv3d16 tls 
+# CPU implementer	: 0x56
+# CPU architecture: 7
+# CPU variant	: 0x1
+# CPU part	: 0x581
+# CPU revision	: 1
+# 
+# Hardware	: Marvell Armada-370
+# Revision	: 0000
+# Serial		: 0000000000000000
+
+# BusyBox v1.20.2 dual core CPU output of cat /proc/cpuinfo:
+# processor	: 0
+# model name	: ARMv7 Processor rev 1 (v7l)
+# BogoMIPS	: 2655.84
+# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+# CPU implementer	: 0x41
+# CPU architecture: 7
+# CPU variant	: 0x4
+# CPU part	: 0xc09
+# CPU revision	: 1
+# 
+# processor	: 1
+# model name	: ARMv7 Processor rev 1 (v7l)
+# BogoMIPS	: 2655.84
+# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+# CPU implementer	: 0x41
+# CPU architecture: 7
+# CPU variant	: 0x4
+# CPU part	: 0xc09
+# CPU revision	: 1
+# 
+# Hardware	: Marvell Armada 380/381/382/385/388 (Device Tree)
+# Revision	: 0000
+# Serial		: 0000000000000000
+
+# Standard-Linux
+# processor	: 0
+# vendor_id	: GenuineIntel
+# cpu family	: 6
+# model		: 78
+# model name	: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+# *snip*
+# processor	: 1
+# vendor_id	: GenuineIntel
+# cpu family	: 6
+# model		: 78
+# model name	: Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+
+if( cpuinfo =~ "Hardware.*: " )
+  cpu_regex = "^(Hardware.*: )(.*)$";
+else
+  cpu_regex = "^(model name.*: )(.*)$";
+
 foreach line( split( cpuinfo ) ) {
 
-  if( line =~ "^processor" ) cpunumber++;
+  if( line =~ "^processor.*: " ) {
+    cpunumber++;
+    continue;
+  }
 
-  v = eregmatch( string:line, pattern:"^(model name.*: )(.*).$", icase:TRUE );
+  line = chomp( line );
+
+  v = eregmatch( string:line, pattern:cpu_regex, icase:TRUE );
   if( ! isnull( v ) ) {
     if( isnull( cpus[v[2]] ) ) {
       cpus[v[2]] = 1;
