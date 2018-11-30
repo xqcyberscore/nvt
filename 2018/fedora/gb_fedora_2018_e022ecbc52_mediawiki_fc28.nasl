@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e022ecbc52_mediawiki_fc28.nasl 11820 2018-10-10 12:13:33Z santu $
+# $Id: gb_fedora_2018_e022ecbc52_mediawiki_fc28.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # Fedora Update for mediawiki FEDORA-2018-e022ecbc52
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875159");
-  script_version("$Revision: 11820 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:13:33 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 12590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-08 08:26:01 +0200 (Mon, 08 Oct 2018)");
   script_cve_id("CVE-2018-0503", "CVE-2018-0505", "CVE-2018-0504");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mediawiki FEDORA-2018-e022ecbc52");
   script_tag(name:"summary", value:"Check the version of mediawiki");

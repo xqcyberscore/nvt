@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 12462 2018-11-21 12:31:36Z cfischer $
+# $Id: gb_dlink_dir_detect.nasl 12591 2018-11-30 08:08:40Z cfischer $
 #
 # D-Link DIR Devices Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103689");
-  script_version("$Revision: 12462 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 13:31:36 +0100 (Wed, 21 Nov 2018) $");
+  script_version("$Revision: 12591 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:08:40 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -299,7 +299,7 @@ if( "Server: WebServer" >< banner ) {
     if( hw_ver[1] ) {
       hw_version = hw_ver[1];
     } else {
-      hw_ver = eregmatch( pattern:'"Firmware Version"\\);</script> : ([^<]+)</td>', string:buf );
+      hw_ver = eregmatch( pattern:'"Hardware Version"\\);</script> : ([^<]+)</td>', string:buf );
       if( hw_ver[1] )
         hw_version = hw_ver[1];
     }

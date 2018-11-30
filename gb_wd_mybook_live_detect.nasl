@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mybook_live_detect.nasl 12330 2018-11-13 10:01:14Z ckuersteiner $
+# $Id: gb_wd_mybook_live_detect.nasl 12584 2018-11-29 15:18:23Z cfischer $
 #
 # WD My Book Live Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141679");
-  script_version("$Revision: 12330 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-13 11:01:14 +0100 (Tue, 13 Nov 2018) $");
+  script_version("$Revision: 12584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 16:18:23 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-13 12:55:06 +0700 (Tue, 13 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,6 +79,7 @@ if ("<title>MY BOOK&reg; LIVE&trade;</title>" >< res && "device_rebooting_text" 
     concUrl = url;
   }
 
+  set_kb_item(name: "wd/product/detected", value: TRUE);
   set_kb_item(name: "wd_mybook_live/detected", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/h:western_digital:my_book_live:");

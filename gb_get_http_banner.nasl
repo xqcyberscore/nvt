@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 12524 2018-11-26 10:34:36Z cfischer $
+# $Id: gb_get_http_banner.nasl 12591 2018-11-30 08:08:40Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 12524 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 11:34:36 +0100 (Mon, 26 Nov 2018) $");
+  script_version("$Revision: 12591 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:08:40 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -367,7 +367,7 @@ set_mandatory_key( key:"voipnow", regex: "Server: voipnow", banner:banner );
 set_mandatory_key( key:"D-LinkDNS", regex: "Server: (lighttpd/|GoAhead-Webs)", banner:banner );
 set_mandatory_key( key:"D-LinkDIR", regex: "Server: (Linux, ((HTTP/1\.1)|(WEBACCESS/1\.0)), DIR|Mathopd/|WebServer)", banner:banner );
 set_mandatory_key( key:"D-LinkDSL", regex:"Server: (Boa/|micro_httpd|Linux,|RomPager/)", banner:banner ); # For gb_dlink_dsl_detect.nasl
-set_mandatory_key( key:"D-LinkDWR", regex:"Server: (GoAhead-Webs|server|Alpha_webserv)", banner:banner ); # For gb_dlink_dwr_detect.nasl
+set_mandatory_key( key:"D-LinkDWR", regex:"Server: (GoAhead-Webs|server|Alpha_webserv|WebServer)", banner:banner ); # For gb_dlink_dwr_detect.nasl
 set_mandatory_key( key:"Cohu", regex: "Server: Cohu Camera", banner:banner );
 set_mandatory_key( key:"HTTPserv", regex: "Server: .*HTTPserv:", banner:banner );
 set_mandatory_key( key:"ABwww", regex: "Server: A-B WWW", banner:banner );
@@ -379,5 +379,6 @@ set_mandatory_key( key:"CirCarLife", regex: "Server: CirCarLife Scada", banner:b
 set_mandatory_key( key:"mt-daapd", regex: "Server: mt-daapd", banner:banner );
 set_mandatory_key( key:"Promotic", regex: "Server: pm", banner:banner );
 set_mandatory_key( key:"ServersCheck_Monitoring_Server", regex: "Server: ServersCheck_Monitoring_Server", banner:banner );
+set_mandatory_key( key:"IWB", regex: "Server: IWB Web-Server", banner:banner );
 
 exit( 0 );

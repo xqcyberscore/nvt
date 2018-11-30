@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2852_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_2852_1.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # SuSE Update for shadow openSUSE-SU-2018:2852-1 (shadow)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852038");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 12590 $");
   script_cve_id("CVE-2018-16588");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:36:14 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for shadow openSUSE-SU-2018:2852-1 (shadow)");
   script_category(ACT_GATHER_INFO);

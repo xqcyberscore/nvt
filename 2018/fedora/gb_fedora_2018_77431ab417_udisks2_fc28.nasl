@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_77431ab417_udisks2_fc28.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_fedora_2018_77431ab417_udisks2_fc28.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # Fedora Update for udisks2 FEDORA-2018-77431ab417
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875125");
-  script_version("$Revision: 11734 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_version("$Revision: 12590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:06 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-17336");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for udisks2 FEDORA-2018-77431ab417");
   script_tag(name:"summary", value:"Check the version of udisks2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 12552 2018-11-28 04:39:18Z ckuersteiner $
+# $Id: gb_ibm_websphere_mq_dos_vuln.nasl 12576 2018-11-29 10:48:52Z cfischer $
 #
 # IBM WebSphere MQ Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ibm:websphere_mq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106909");
-  script_version("$Revision: 12552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 05:39:18 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12576 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 11:48:52 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 12:09:42 +0700 (Tue, 27 Jun 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");
-  script_mandatory_keys("IBM/Websphere/MQ/Win/Ver");
+  script_mandatory_keys("ibm_websphere_mq/detected");
 
   script_tag(name:"summary", value:"IBM WebSphere MQ could allow an authenticated user to cause a denial of
 service to the MQXR channel when trace is enabled.");

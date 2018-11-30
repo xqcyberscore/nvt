@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_lin.nasl 11754 2018-10-05 03:41:50Z ckuersteiner $
+# $Id: gb_mediawiki_mult_vuln_lin.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # MediaWiki Multiple Vulnerabilities Sept18 (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141564");
-  script_version("$Revision: 11754 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 05:41:50 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 09:52:00 +0700 (Fri, 05 Oct 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-0503", "CVE-2018-0504", "CVE-2018-0505");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_csrf_vuln.nasl 11785 2018-10-09 05:49:49Z ckuersteiner $
+# $Id: gb_hp_printers_csrf_vuln.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # HP Printers CSRF Vulnerability
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141573");
-  script_version("$Revision: 11785 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 07:49:49 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 12590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-09 09:01:36 +0700 (Tue, 09 Oct 2018)");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-5921");
 

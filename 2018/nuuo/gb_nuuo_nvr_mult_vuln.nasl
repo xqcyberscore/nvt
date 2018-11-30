@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvr_mult_vuln.nasl 11478 2018-09-19 15:33:19Z cfischer $
+# $Id: gb_nuuo_nvr_mult_vuln.nasl 12588 2018-11-30 02:14:44Z ckuersteiner $
 #
 # NUUO NVR < 3.9.1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nuuo:nuuo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141484");
-  script_version("$Revision: 11478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 17:33:19 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 12588 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 03:14:44 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 08:45:02 +0700 (Tue, 18 Sep 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,6 +62,7 @@ if (description)
 
   script_tag(name:"solution", value:"Update to version 3.9.1 (03.09.0001.0000) or later.");
 
+  script_xref(name:"URL", value:"https://www.nuuo.com/NewsDetail.php?id=0425");
   script_xref(name:"URL", value:"https://github.com/tenable/poc/tree/master/nuuo/nvrmini2");
   script_xref(name:"URL", value:"https://www.tenable.com/blog/tenable-research-advisory-peekaboo-critical-vulnerability-in-nuuo-network-video-recorder");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3775_1.nasl 12381 2018-11-16 11:16:30Z cfischer $
+# $Id: gb_ubuntu_USN_3775_1.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # Ubuntu Update for linux USN-3775-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843648");
-  script_version("$Revision: 12381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-16 12:16:30 +0100 (Fri, 16 Nov 2018) $");
+  script_version("$Revision: 12590 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-10-02 08:13:36 +0200 (Tue, 02 Oct 2018)");
   script_cve_id("CVE-2018-15594", "CVE-2018-15572", "CVE-2018-14634",
                 "CVE-2018-14633", "CVE-2018-6554", "CVE-2018-6555");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3775-1");
   script_tag(name:"summary", value:"The remote host is missing an update for the 'linux'

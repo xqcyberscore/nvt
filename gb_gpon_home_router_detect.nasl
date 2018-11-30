@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_home_router_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_gpon_home_router_detect.nasl 12593 2018-11-30 08:49:46Z cfischer $
 #
 # GPON Home Router Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113169");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12593 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:49:46 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:40:00 +0200 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,9 +59,17 @@ include( "cpe.inc" );
 port = get_http_port( default: 8080 );
 
 res = http_get_cache( port: port, item: "/login.html" );
+res2 = http_get_cache( port: port, item: "/" );
 
 if( res =~ '<form id="XForm" name="XForm" method="post" action="/GponForm/LoginForm">' ||
-    res =~ 'var XOntName = \'GPON Home Gateway\';') {
+    res =~ 'var XOntName = \'GPON Home Gateway\';' ||
+    ( res2 =~ "^HTTP/1\.[01] 200" &&
+        # nb: Both have line breaks in between
+      ( res2 =~ "<title>.*GPON Home Gateway.*</title>" ||
+        res2 =~ "<td colspan.*GPON Home Gateway.*</td>" )
+    )
+  ) {
+
   set_kb_item( name: "gpon/home_router/detected", value: TRUE );
 
   CPE = "cpe:/o:gpon:home_router";
@@ -69,8 +77,7 @@ if( res =~ '<form id="XForm" name="XForm" method="post" action="/GponForm/LoginF
   register_and_report_cpe( app: "GPON Home Router",
                            cpename: CPE,
                            insloc: "/",
-                           regPort: port,
-                           conclUrl: "/login.html" );
+                           regPort: port );
 }
 
 exit( 0 );

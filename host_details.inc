@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12572 2018-11-29 09:40:42Z cfischer $
+# $Id: host_details.inc 12575 2018-11-29 10:41:31Z ckuersteiner $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12572 $
+# $Revision: 12575 $
 #
 ###############################################################################
 
@@ -130,6 +130,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -227,6 +228,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.113293", # gb_dlink_dwr_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl

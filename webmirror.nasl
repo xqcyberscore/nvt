@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 11992 2018-10-19 13:42:04Z cfischer $
+# $Id: webmirror.nasl 12582 2018-11-29 14:50:22Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 11992 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-19 15:42:04 +0200 (Fri, 19 Oct 2018) $");
+  script_version("$Revision: 12582 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 15:50:22 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -911,7 +911,7 @@ function pre_parse( src_page, data, port, host ) {
     # <script type="text/javascript" src="https://magentocore.net/mage/mage.js"></script>
     # <script type='text/javascript' src='https://magentocore.net/mage/mage.js'></script>
     # <script type="text/javascript" src="https://magentocore.net/mage/poter/poter1.30.js"></script>
-    if( "magentocore.net" >< js_src[1] && ( "mage.js" >< js_src[1] || js_src[1] =~ "poter[0-9.]+\.js" ) ) {
+    if( js_src[1] =~ "^https?://" && ( "mage.js" >< js_src[1] || js_src[1] =~ "poter[0-9.]+\.js" ) ) {
       set_kb_item( name:"www/compromised_webapp/detected", value:TRUE );
       set_kb_item( name:"www/" + host + "/" + port + "/content/compromised_webapp", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + "#----#" + js_src[0] + "#----#Magentocore.net Skimmer, https://gwillem.gitlab.io/2018/08/30/magentocore.net_skimmer_most_aggressive_to_date/" );
     }

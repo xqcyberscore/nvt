@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dwr_detect.nasl 12527 2018-11-26 11:07:42Z cfischer $
+# $Id: gb_dlink_dwr_detect.nasl 12591 2018-11-30 08:08:40Z cfischer $
 #
 # D-Link DWR Devices Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113293");
-  script_version("$Revision: 12527 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-26 12:07:42 +0100 (Mon, 26 Nov 2018) $");
+  script_version("$Revision: 12591 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:08:40 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-08 16:44:00 +0100 (Thu, 08 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -111,6 +111,24 @@ if( ! detected ) {
   }
 }
 
+# nb: DWR-118 in turn has "Server: WebServer" which seems to have the
+# same/similar software base like D-Link DIR- devices (see gb_dlink_dir_detect.nasl).
+if( ! detected ) {
+
+  url = "/";
+  res = http_get_cache( port: port, item: url );
+
+  # <title>D-Link DWR-118</title>
+  # <td><script>I18N("h", "Model Name");</script> : DWR-118</td>
+  if( res =~ "^HTTP/1\.[01] 200" &&
+      ( "D-Link logo" >< res || res =~ "COPYRIGHT.*D-Link" || "dlinkrouter.local" >< res ) &&
+      ( res =~ "<title>D-Link DWR-[0-9+]</title>" ||
+        res =~ "Model Name.+DWR-[0-9]+" ) ) {
+    detected = TRUE;
+    concl_url = report_vuln_url( port: port, url: url, url_only: TRUE );
+  }
+}
+
 if( detected ) {
 
   set_kb_item( name: "Host/is_dlink_device", value: TRUE );
@@ -157,6 +175,39 @@ if( detected ) {
     hw_ver = eregmatch( string: infos, pattern: '"hw_ver":"([^"]+)"', icase: FALSE );
     if( hw_ver[1] )
       hw_version = hw_ver[1];
+  }
+
+  # <td><script>I18N("h", "Model Name");</script> : DWR-118</td>
+  # <td><script>I18N("h", "Hardware Version");</script> : B1</td>
+  # <td><script>I18N("h", "Firmware Version");</script> : 2.06CP</td>
+  if( model == "unknown" ) {
+    mo = eregmatch( pattern: '"Model Name"\\);</script> : DWR-([0-9A-Z]+)<', string: res );
+    if( mo[1] ) {
+      model = mo[1];
+      info[0] = mo[0];
+    }
+  }
+
+  if( fw_version == "unknown" ) {
+    fw_ver = eregmatch( pattern: '"Firmware Version"\\);</script> : ([0-9.]+)([a-zA-Z]*)?</td>', string: res );
+    if( fw_ver[1] ) {
+      fw_version = fw_ver[1];
+      if( info[0] )
+        info[0] += '\n' + fw_ver[0];
+      else
+        info[0] = fw_ver[0];
+    }
+  }
+
+  if( hw_version == "unknown" ) {
+    hw_ver = eregmatch( pattern: '"Hardware Version"\\);</script> : ([^<]+)</td>', string: res );
+    if( hw_ver[1] ) {
+      hw_version = hw_ver[1];
+      if( info[0] )
+        info[0] += '\n' + hw_ver[0];
+      else
+        info[0] = hw_ver[0];
+    }
   }
 
   if( model != "unknown" ) {

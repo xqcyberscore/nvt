@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_consolidation.nasl 12560 2018-11-28 13:36:42Z cfischer $
+# $Id: gb_wd_mycloud_consolidation.nasl 12584 2018-11-29 15:18:23Z cfischer $
 #
 # Western Digital MyCloud Products Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108488");
-  script_version("$Revision: 12560 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 14:36:42 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-29 16:18:23 +0100 (Thu, 29 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-28 14:02:54 +0100 (Wed, 28 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -106,7 +106,7 @@ if( detected_version != "unknown" )
   os_cpe += ":" + detected_version;
 
 register_and_report_os( os:os_app, cpe:os_cpe, desc:"Western Digital MyCloud Products Detection Consolidation", runs_key:"unixoide" );
-
+set_kb_item(name: "wd/product/detected", value: TRUE);
 location = "/";
 
 if( ssh_login_ports = get_kb_list( "wd-mycloud/ssh-login/port" ) ) {

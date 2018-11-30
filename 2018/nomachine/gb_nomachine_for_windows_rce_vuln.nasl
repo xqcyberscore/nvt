@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nomachine_for_windows_rce_vuln.nasl 12470 2018-11-21 14:47:25Z mmartin $
+# $Id: gb_nomachine_for_windows_rce_vuln.nasl 12590 2018-11-30 07:32:04Z asteins $
 #
 # NoMachine for Windows Trojan File Remote Code Execution Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107372");
-  script_version("$Revision: 12470 $");
+  script_version("$Revision: 12590 $");
   script_cve_id("CVE-2018-17890");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-21 15:47:25 +0100 (Wed, 21 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 08:32:04 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-19 15:08:42 +0100 (Mon, 19 Nov 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("NoMachine for Windows Trojan File Remote Code Execution Vulnerability (Windows)");
