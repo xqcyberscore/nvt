@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-031.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_ms08-031.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Cumulative Security Update for Internet Explorer (950759)
 #
@@ -27,47 +27,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allow remote attackers to execute arbitrary
-  code by tricking user into visiting a specially crafted web page and to read
-  data from a Web page in another domain in Internet Explorer. Attackers can
-  use above issues to poison web caches, steal credentials, launch cross-site
-  scripting, HTML-injection, and session-hijacking attacks.
-  Impact Level: Application";
-tag_summary = "This host has Microsoft Internet Explorer installed, which is
-  prone to HTTP request splitting/smuggling and HTML Objects Memory Corruption
-  Vulnerabilities.";
-
-tag_affected = "Microsoft Internet Explorer 5.01 & 6 SP1 for Microsoft Windows 2000
-  Microsoft Internet Explorer 6 for Microsoft Windows 2003 and XP
-  Microsoft Internet Explorer 7 for Microsoft Windows 2003 and XP
-  Microsoft Internet Explorer 7 on MS Windows 2008 and Vista";
-tag_insight = "The flaws are due to
-  - a memory corruption error while processing a Web page that contains certain
-    unexpected method calls to HTML objects.
-  - failure of setRequestHeader method of the XMLHttpRequest object to block
-    dangerous HTTP request headers when certain 8-bit character sequences are
-    appended to a header name.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://www.microsoft.com/technet/security/bulletin/ms08-031.mspx";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800103");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-09-29 16:48:05 +0200 (Mon, 29 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2008-1442","CVE-2008-1544");
+  script_cve_id("CVE-2008-1442", "CVE-2008-1544");
   script_bugtraq_id(28379, 29556);
   script_xref(name:"CB-A", value:"08-0096");
   script_name("Cumulative Security Update for Internet Explorer (950759)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/30575");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/29453");
-  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/0980");
-  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/1778");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-031.mspx");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/30575");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/29453");
+  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/0980");
+  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/1778");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-031.mspx");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
@@ -75,13 +51,31 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation allow remote attackers to execute arbitrary
+  code by tricking user into visiting a specially crafted web page and to read
+  data from a Web page in another domain in Internet Explorer. Attackers can
+  use above issues to poison web caches, steal credentials, launch cross-site
+  scripting, HTML-injection, and session-hijacking attacks.");
+  script_tag(name:"affected", value:"Microsoft Internet Explorer 5.01 & 6 SP1 for Microsoft Windows 2000
+  Microsoft Internet Explorer 6 for Microsoft Windows 2003 and XP
+  Microsoft Internet Explorer 7 for Microsoft Windows 2003 and XP
+  Microsoft Internet Explorer 7 on MS Windows 2008 and Vista");
+  script_tag(name:"insight", value:"The flaws are due to
+
+  - a memory corruption error while processing a Web page that contains certain
+    unexpected method calls to HTML objects.
+
+  - failure of setRequestHeader method of the XMLHttpRequest object to block
+    dangerous HTTP request headers when certain 8-bit character sequences are
+    appended to a header name.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host has Microsoft Internet Explorer installed, which is
+  prone to HTTP request splitting/smuggling and HTML Objects Memory Corruption
+  Vulnerabilities.");
   exit(0);
 }
 
@@ -92,7 +86,6 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 include("secpod_ie_supersede.inc");
 
-# Check the hotfix applicability to each OS
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
 }
@@ -132,7 +125,6 @@ if(hotfix_check_sp(win2k:5) > 0)
     exit(0);
   }
 
-  # Check for IE version 5
   if(ereg(pattern:"^5\..*", string:ieVer))
   {
     if(ereg(pattern:"(5\.00\.(([0-2]?[0-9]?[0-9]?[0-9]|3?([0-7][0-9][0-9]" +
@@ -143,7 +135,6 @@ if(hotfix_check_sp(win2k:5) > 0)
     exit(0);
   }
 
-  # Check for IE version 6
   if(ereg(pattern:"^6\..*", string:ieVer))
   {
     if(ereg(pattern:"(6\.00\.(([01]?[0-9]?[0-9]?[0-9]|2([0-7][0-9][0-9]" +
@@ -160,10 +151,9 @@ if(hotfix_check_sp(xp:4) > 0)
   vers = get_version(dllPath:sysFile, string:"prod", offs:2000000);
   if(vers == NULL){
     exit(0);
-  } 
+  }
 
   SP = get_kb_item("SMB/WinXP/ServicePack");
-  #Check for IE version 6
   if(ereg(pattern:"^6\..*", string:ieVer))
   {
     if("Service Pack 2" >< SP)
@@ -188,7 +178,6 @@ if(hotfix_check_sp(xp:4) > 0)
     }
   }
 
-  # Check for IE version 7
   if(ereg(pattern:"^7\..*", string:ieVer))
   {
     if(ereg(pattern:"(7\.00\.([0-5]?[0-9]?[0-9]?[0-9]\..*|6000\.(0?[0-9]?" +
@@ -209,7 +198,6 @@ if(hotfix_check_sp(win2003:3) > 0)
   }
 
   SP = get_kb_item("SMB/Win2003/ServicePack");
-  #Check for IE version 6
   if(ereg(pattern:"^6\..*", string:ieVer))
   {
     if("Service Pack 2" >< SP)
@@ -234,7 +222,6 @@ if(hotfix_check_sp(win2003:3) > 0)
     }
   }
 
-  #Check for IE version 7
   if(ereg(pattern:"^7\..*", string:ieVer))
   {
     if(ereg(pattern:"(7\.00\.([0-5]?[0-9]?[0-9]?[0-9]\..*|6000\.(0?[0-9]?" +
@@ -247,7 +234,6 @@ if(hotfix_check_sp(win2003:3) > 0)
   }
 }
 
-## Get the 'mshtml.dll' path for Windows Vista and 2008 Server
  dllPath = smb_get_system32root();
  if(!dllPath){
    exit(0);
@@ -256,29 +242,25 @@ if(hotfix_check_sp(win2003:3) > 0)
  dllVer = fetch_file_version(sysPath:dllPath, file_name:"\mshtml.dll");
  if(dllVer)
  {
-   # Windows Vista
    if(hotfix_check_sp(winVista:2) > 0)
    {
      SP = get_kb_item("SMB/WinVista/ServicePack");
      if("Service Pack 1" >< SP)
      {
-       # Grep for mshtml.dll version < 7.0.6001.18063
        if(version_in_range(version:dllVer, test_version:"7.0", test_version2:"7.0.6001.18062")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
        }
          exit(0);
      }
    }
 
-   # Windows Server 2008
    else if(hotfix_check_sp(win2008:2) > 0)
    {
      SP = get_kb_item("SMB/Win2008/ServicePack");
      if("Service Pack 1" >< SP)
      {
-       # Grep for mshtml.dll version < 7.0.6001.18063
        if(version_in_range(version:dllVer, test_version:"7.0", test_version2:"7.0.6001.18062")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
        }
          exit(0);
      }

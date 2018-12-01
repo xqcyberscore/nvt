@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Novell iPrint ActiveX control Stack-based BOF Vulnerability
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attack could lead to execution of arbitrary code via a long target
-  frame option value, which crashes the browser and may allow code execution.
-  Impact Level: Application";
-tag_affected = "Novell iPrint Client version 5.06 and prior on Windows.";
-tag_insight = "The issue is due to the improper handling of user requests sent to the
-  ExecuteRequest method in ienipp.ocx file.";
-tag_solution = "Novell iPrint Client version 5.06 is obsoleted, Upgrade to
-  Novell iPrint Client version higher than 5.06.
-  For updates refer to http://download.novell.com/index.jsp";
-tag_summary = "The host is installed with Novell iPrint, and is prone to stack
-  based buffer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800070");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,14 +39,20 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful attack could lead to execution of arbitrary code via a long target
+  frame option value, which crashes the browser and may allow code execution.");
+  script_tag(name:"affected", value:"Novell iPrint Client version 5.06 and prior on Windows.");
+  script_tag(name:"insight", value:"The issue is due to the improper handling of user requests sent to the
+  ExecuteRequest method in ienipp.ocx file.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Novell iPrint Client version 5.06 is obsoleted, Upgrade to
+  Novell iPrint Client version higher than 5.06.");
+  script_tag(name:"summary", value:"The host is installed with Novell iPrint, and is prone to stack
+  based buffer overflow vulnerability.");
+  script_xref(name:"URL", value:"http://download.novell.com/index.jsp");
   exit(0);
 }
 
@@ -80,6 +74,6 @@ novVer = eregmatch(pattern:"v([0-9.]+)", string:iPrintVer);
 if(novVer[1] != NULL)
 {
   if(version_is_less_equal(version:novVer[1], test_version:"5.06")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

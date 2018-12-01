@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_default_creds.nasl 12566 2018-11-28 16:31:48Z cfischer $
+# $Id: gb_wd_mycloud_default_creds.nasl 12598 2018-11-30 10:59:00Z cfischer $
 #
 # Western Digital MyCloud NAS Default Credentials (HTTP)
 #
@@ -30,10 +30,10 @@ CPE_PREFIX = "cpe:/o:wdc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108485");
-  script_version("$Revision: 12566 $");
+  script_version("$Revision: 12598 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 17:31:48 +0100 (Wed, 28 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 11:59:00 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-23 17:50:04 +0100 (Fri, 23 Nov 2018)");
   script_name("Western Digital MyCloud NAS Default Credentials (HTTP)");
   script_category(ACT_ATTACK);
@@ -115,14 +115,12 @@ foreach password( passwords ) {
   #
   # 2.11.178 and 2.30.183 FW versions:
   # <?xml version="1.0" encoding="UTF-8"?><config><logd_eula>1</logd_eula><res>1</res></config>
-  # and:
-  # Set-Cookie: username=admin; path=/
+  # and: Set-Cookie: username=admin; path=/
   #
   # 2.31.149 FW version (newline between the response):
   # <?xml version="1.0" encoding="UTF-8"?>
   # <config><logd_eula>1</logd_eula><res>1</res></config>
-  # and:
-  # Set-Cookie: WD-CSRF-TOKEN=31f9708ef34b295679589ac35f434a4b8513a932de53c8be902d54a7362cf8b0; path=/
+  # and: Set-Cookie: WD-CSRF-TOKEN=31f9708ef34b295679589ac35f434a4b8513a932de53c8be902d54a7362cf8b0; path=/
   if( res =~ "^HTTP/1\.[01] 200" && res =~ '<\\?xml version="1\\.0" encoding="UTF-8"\\?>.*<config><logd_eula>[0-9]</logd_eula><res>[12]</res></config>' &&
       ( "Set-Cookie: username=" + username + ";" >< res || "Set-Cookie: WD-CSRF-TOKEN=" >< res ) ) {
 

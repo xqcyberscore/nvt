@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sim_unauth_access_vuln_win.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_hp_sim_unauth_access_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # HP Systems Insight Manager Unauthorized Access Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800033");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-21 16:25:40 +0200 (Tue, 21 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,18 +46,14 @@ if(description)
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01571962");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain unauthorized
-  access to the data.
-
-  Impact Level: Application");
+  access to the data.");
 
   script_tag(name:"affected", value:"HP SIM prior to 5.2 with Update 2 (C.05.02.02.00) on Windows");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the application which allows
   unauthorized access to certain data.");
 
-  script_tag(name:"solution", value:"Update to HP SIM version 5.2 with Update 2 (C.05.02.02.00)
-
-  http://h20392.www2.hp.com/portal/swdepot/index.do");
+  script_tag(name:"solution", value:"Update to HP SIM version 5.2 with Update 2 (C.05.02.02.00).");
 
   script_tag(name:"summary", value:"This host is running HP Systems Insight Manager (SIM) and is prone
   to security bypass vulnerability.");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_mssql7.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: smb_mssql7.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: SMB Registry : SQL7 Patches
 #
 # Authors:
@@ -25,22 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote SQL server seems to be vulnerable to the
-SQL abuse vulnerability described in technet article
-Q256052. This problem allows an attacker who has to ability
-to execute SQL queries on this host to gain elevated privileges.";
-
-tag_solution = "http://support.microsoft.com/default.aspx?scid=kb;en-us;256052
-Reference : http://online.securityfocus.com/archive/1/285915
-Reference : http://online.securityfocus.com/advisories/4308";
-
 # Should also cover BID:4135/CVE-2002-0056
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10642");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5205);
   script_tag(name:"cvss_base", value:"7.2");
@@ -55,9 +46,19 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"The vendor has releases updates, please see the references for more information.");
 
+  script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=kb;en-us;256052");
+  script_xref(name:"URL", value:"http://online.securityfocus.com/archive/1/285915");
+  script_xref(name:"URL", value:"http://online.securityfocus.com/advisories/4308");
+
+  script_tag(name:"summary", value:"The remote SQL server seems to be vulnerable to the
+  SQL abuse vulnerability described in technet article Q256052.");
+
+  script_tag(name:"impact", value:"This problem allows an attacker who has to ability
+  to execute SQL queries on this host to gain elevated privileges.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
   exit(0);
@@ -77,7 +78,7 @@ function check_key(key)
 {
  item = "AllowInProcess";
  value = registry_get_dword(key:key, item:item);
- if(value != NULL && strlen(value) == 4) 
+ if(value != NULL && strlen(value) == 4)
  {
    item = "DisallowAdHocAccess";
    value = registry_get_dword(key:key, item:item);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_vp6_codec_bof_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_winamp_vp6_codec_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Winamp VP6 Content Parsing Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801542");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-11-16 10:37:01 +0100 (Tue, 16 Nov 2010)");
   script_cve_id("CVE-2010-1523");
   script_tag(name:"cvss_base", value:"9.3");
@@ -48,8 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by an error in the VP6 codec (vp6.w5s) when parsing VP6
   video content. This can be exploited to cause a heap-based buffer overflow
   via a specially crafted media file or stream.");
-  script_tag(name:"solution", value:"upgrade to Winamp 5.59 Beta build 3033 or later,
-  For updates refer to http://www.winamp.com/media-player");
+  script_tag(name:"solution", value:"upgrade to Winamp 5.59 Beta build 3033 or later.");
   script_tag(name:"summary", value:"This host is installed with Winamp and is prone to heap-based
   buffer overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
@@ -59,6 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.winamp.com/media-player");
   exit(0);
 }
 

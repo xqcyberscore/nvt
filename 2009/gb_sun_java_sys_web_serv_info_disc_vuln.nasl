@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 11118 2018-08-26 14:03:36Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_info_disc_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Sun Java System Web Server '.jsp' Information Disclosure Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800658");
-  script_version("$Revision: 11118 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 16:03:36 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1786");
 
   script_tag(name:"impact", value:"Successful exploitation will lets the attackers to execute
-  arbitrary code, gain sensitive information.
-
-  Impact Level: System/Application");
+  arbitrary code, gain sensitive information.");
 
   script_tag(name:"affected", value:"Sun Java System Web Server versions 6.1 and before 6.1 SP11
   and Sun Java System Web Server versions 7.0 update 5 on Windows.");

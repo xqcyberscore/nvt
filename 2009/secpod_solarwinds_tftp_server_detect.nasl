@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_tftp_server_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
+# $Id: secpod_solarwinds_tftp_server_detect.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # SolarWinds TFTP Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900930");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10880 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SolarWinds TFTP Server Version Detection");

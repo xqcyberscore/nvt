@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_etrust_scm_mult_vuln.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_ca_etrust_scm_mult_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # CA eTrust SCM Multiple HTTP Gateway Service Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800101");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-09-26 14:12:58 +0200 (Fri, 26 Sep 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,27 +53,18 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to
 
   - boundary error in the HTTP Gateway service (icihttp.exe running on
-    port 8080), when converting content of an FTP request listing from raw
-    text to HTML.
+  port 8080), when converting content of an FTP request listing from raw text to HTML.
 
   - insufficient bounds checking on certain FTP requests by sending a specially
-    crafted FTP requests containing an overly long LIST/PASV commands that can
-    cause stack-based buffer overflow.");
+  crafted FTP requests containing an overly long LIST/PASV commands that can cause stack-based buffer overflow.");
 
   script_tag(name:"summary", value:"The host is installed with CA eTrust Secure Content Manager which
   is prone to arbitrary code execution and DoS Vulnerabilities.");
 
-  script_tag(name:"solution", value:"Apply patch QO99987,
-  https://support.ca.com/irj/portal/ano...s?reqPage=search&searchID=QO99987
-
-  *****
-  NOTE : Ignore this warning, if above mentioned patch is applied already.
-  *****");
+  script_tag(name:"solution", value:"Apply patch QO99987.");
 
   script_tag(name:"impact", value:"Successful exploitation allow attackers to execute arbitrary code or
-  compromise complete system under the system context or denying of service.
-
-  Impact Level : System");
+  compromise complete system under the system context or denying of service.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

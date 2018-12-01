@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cursorarts_zipwrangler_bof_vuln.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: secpod_cursorarts_zipwrangler_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # CursorArts ZipWrangler 'ZIP Processing' Buffer Overflow Vulnerability
 #
@@ -24,49 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute
-arbitrary code with a specially crafted ZIP file.
-
-Impact Level: Application.";
-
-tag_affected = "CursorArts ZipWrangler version 1.20.";
-
-tag_insight = "The flaw exists due to boundary error when processing certain
-ZIP files, which leads to stack-based buffer overflow by tricking a user into
-opening a specially crafted ZIP file.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with CursorArts ZipWrangler and is prone
-to buffer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902071");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_cve_id("CVE-2010-1685");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("CursorArts ZipWrangler 'ZIP Processing' Buffer Overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39575");
-  script_xref(name : "URL" , value : "http://www.corelan.be:8800/index.php/forum/security-advisories/corelan-10-031-zip-wrangler-1-20-buffer-overflow/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39575");
+  script_xref(name:"URL", value:"http://www.corelan.be:8800/index.php/forum/security-advisories/corelan-10-031-zip-wrangler-1-20-buffer-overflow/");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaw exists due to boundary error when processing certain
+ZIP files, which leads to stack-based buffer overflow by tricking a user into
+opening a specially crafted ZIP file.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with CursorArts ZipWrangler and is prone
+to buffer overflow vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
+arbitrary code with a specially crafted ZIP file.");
+  script_tag(name:"affected", value:"CursorArts ZipWrangler version 1.20.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -86,17 +74,14 @@ if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Check for ZipWrangler DisplayName
 zipName = registry_get_sz(key:key, item:"DisplayName");
 if("ZipWrangler" >< zipName)
 {
-  ## Grep the version for ZipWrangler
   zipVer = eregmatch(pattern:" version ([0-9.]+)", string:zipName);
   if(zipVer[1] != NULL)
   {
-    ## Check for ZipWrangler version equal to '1.20'
     if(version_is_equal(version:zipVer[1], test_version:"1.20")){
-      security_message(0) ;
+      security_message( port: 0, data: "The target host was found to be vulnerable" ) ;
     }
   }
 }

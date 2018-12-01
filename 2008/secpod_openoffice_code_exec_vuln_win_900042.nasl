@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_code_exec_vuln_win_900042.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_openoffice_code_exec_vuln_win_900042.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # OpenOffice rtl_allocateMemory() Remote Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900042");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-09-02 07:39:00 +0200 (Tue, 02 Sep 2008)");
   script_bugtraq_id(30866);
   script_cve_id("CVE-2008-3282");
@@ -53,8 +53,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenOffice.org 2.4.1 and prior on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to OpenOffice.org Version 3.2.0 or later,
-  For updates refer to http://download.openoffice.org/index.html");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice.org Version 3.2.0 or later.");
 
   script_tag(name:"impact", value:"Attackers can cause an out of bounds array access by tricking a
   user into opening a malicious document, also allow execution of arbitrary code.");
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://download.openoffice.org/index.html");
   exit(0);
 }
 

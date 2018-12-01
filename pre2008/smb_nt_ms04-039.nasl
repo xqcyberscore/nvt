@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-039.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: smb_nt_ms04-039.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: ISA Server 2000 and Proxy Server 2.0 Internet Content Spoofing (888258)
 #
 # Authors:
@@ -22,20 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The ISA Server 2000 and Proxy Server 2.0 have been found to be vulnerable to
-a spoofing vulnerability that could enable an attacker to spoof trusted Internet 
-content. Users could believe they are accessing trusted Internet content when 
-in reality they are accessing malicious Internet content, for example a 
-malicious Web site. However, an attacker would first have to persuade a user to 
-visit the attacker's to attempt to exploit this vulnerability.
-
-See http://www.microsoft.com/technet/security/bulletin/ms04-039.mspx";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15714");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,13 +35,26 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 Jeff Adams");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The ISA Server 2000 and Proxy Server 2.0 have been found to be vulnerable to
+  a spoofing vulnerability that could enable an attacker to spoof trusted Internet
+  content. Users could believe they are accessing trusted Internet content when
+  in reality they are accessing malicious Internet content, for example a
+  malicious Web site. However, an attacker would first have to persuade a user to
+  visit the attacker's to attempt to exploit this vulnerability.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms04-039.mspx");
 
   script_tag(name:"qod_type", value:"registry");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   exit(0);
 }

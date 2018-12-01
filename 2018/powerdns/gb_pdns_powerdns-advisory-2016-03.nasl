@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2016-03.nasl 11310 2018-09-11 04:42:07Z ckuersteiner $
+# $Id: gb_pdns_powerdns-advisory-2016-03.nasl 12596 2018-11-30 10:18:30Z cfischer $
 #
-# PowerDNS Authoritative Server DoS Vulnerability
+# PowerDNS Authoritative Server < 3.4.11 / 4.0 < 4.0.2 DoS Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,19 +30,19 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141466");
-  script_version("$Revision: 11310 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 06:42:07 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 12596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 11:18:30 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 10:27:37 +0700 (Tue, 11 Sep 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_cve_id("CVE-2016-7072");
+  script_cve_id("CVE-2016-7072", "CVE-2016-2120");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("PowerDNS Authoritative Server DoS Vulnerability");
+  script_name("PowerDNS Authoritative Server < 3.4.11 / 4.0 < 4.0.2 DoS Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -64,6 +64,7 @@ descriptors since its connection will be closed just after being accepted, it mi
   script_tag(name:"solution", value:"Upgrade to version 3.4.11, 4.0.2 or later.");
 
   script_xref(name:"URL", value:"https://doc.powerdns.com/md/security/powerdns-advisory-2016-03/");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/md/security/powerdns-advisory-2016-05/");
 
   exit(0);
 }

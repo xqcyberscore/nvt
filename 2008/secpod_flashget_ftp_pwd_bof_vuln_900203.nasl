@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_flashget_ftp_pwd_bof_vuln_900203.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_flashget_ftp_pwd_bof_vuln_900203.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # FlashGet FTP PWD Response Remote Buffer Overflow Vulnerability.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900203");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-4321");
   script_bugtraq_id(30685);
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"FlashGet 1.9 (1.9.6.1073) and prior versions on Windows (All).");
 
-  script_tag(name:"solution", value:"Upgrade to FlashGet version 3.3 or later
-  For updates refer to http://www.flashget.com/index_en.htm");
+  script_tag(name:"solution", value:"Upgrade to FlashGet version 3.3 or later");
 
   script_tag(name:"impact", value:"Successful exploitation will allow execution of arbitrary
   code by tricking a user into connecting to a malicious ftp server.");
@@ -60,6 +59,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.flashget.com/index_en.htm");
   exit(0);
 }
 

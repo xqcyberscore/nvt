@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avast_av_aswrdr_bof_vuln.nasl 10921 2018-08-10 18:42:30Z cfischer $
+# $Id: secpod_avast_av_aswrdr_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # avast! 'aswRdr.sys' Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900985");
-  script_version("$Revision: 10921 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 20:42:30 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,19 +48,18 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("Avast!/AV/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a Denial of
-  Service or potentially gain escalated privileges.
-  Impact Level: System/Application");
+  Service or potentially gain escalated privileges.");
   script_tag(name:"affected", value:"avast! Home and Professional version 4.8.1356 and prior on Windows.");
   script_tag(name:"insight", value:"The vulnerability is due to an error in 'aswRdr.sys' when processing
   IOCTLs. This can be exploited to corrupt kernel memory via a specially crafted
   0x80002024 IOCTL.");
-  script_tag(name:"solution", value:"Upgrade to avast! Home and Professional version 4.8.1367 or later
-  For updates refer to http://www.avast.com/eng/download.html");
+  script_tag(name:"solution", value:"Upgrade to avast! Home and Professional version 4.8.1367 or later");
   script_tag(name:"summary", value:"This host is installed with avast! AntiVirus and is prone to Buffer
   Overflow vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.avast.com/eng/download.html");
   exit(0);
 }
 

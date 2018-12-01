@@ -1,6 +1,6 @@
 ############################################################################
 # OpenVAS Vulnerability Test
-# $Id: conficker.nasl 10421 2018-07-05 12:17:22Z cfischer $
+# $Id: conficker.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Conficker Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900091");
-  script_version("$Revision: 10421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 13:24:25 +0200 (Fri, 17 Apr 2009)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -44,8 +44,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Malware");
   script_name("Conficker Detection");
-  script_dependencies("nmap_nse/gb_nmap_p2p_conficker.nasl", "nmap_nse/gb_nmap_smb_check_vulns.nasl", "os_detection.nasl",
-                      "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_dependencies("nmap_nse/gb_nmap_p2p_conficker.nasl", "nmap_nse/gb_nmap_smb_check_vulns.nasl",
+                      "os_detection.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("SMB/samba");
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to take complete
   control of an affected system and capable of stealing all kind of sensitive information and can even
-  spread across the Network.
-
-  Impact Level: System/Network.");
+  spread across the Network.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior.
 
@@ -68,11 +66,7 @@ if(description)
   Microsoft Windows 2003 Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx
-
-  and
+  and update mentioned hotfixes in the advisory  and
 
   Use Conficker Removal Tools, or Known Security Products to remove conficker worm.");
 
@@ -97,6 +91,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");
 
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
   exit(0);
 }
 

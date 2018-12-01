@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hmailserver_imap_dos_vuln_900109.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: secpod_hmailserver_imap_dos_vuln_900109.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: hMailServer IMAP Denial of Service Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900109");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3676");
   script_bugtraq_id(30663);
@@ -43,6 +43,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/495361");
   script_xref(name:"URL", value:"http://secunia.com/advisories/31480/");
+  script_xref(name:"URL", value:"http://www.hmailserver.com/?page=download_mirrors&downloadid=144");
 
   script_tag(name:"summary", value:"This host is running hMailServer, which is prone to
   Denial of Service vulnerability.");
@@ -52,14 +53,10 @@ if(description)
 
   script_tag(name:"affected", value:"hMailServer version 4.4.1 - Build 273 and prior");
 
-  script_tag(name:"solution", value:"Fixed in development version 4.4.2 (build 279)
-
-  http://www.hmailserver.com/?page=download_mirrors&downloadid=144");
+  script_tag(name:"solution", value:"Fixed in development version 4.4.2 (build 279).");
 
   script_tag(name:"impact", value:"Exploitation will cause the server to crash and deny access
-  to legitimate users.
-
-  Impact Level : Application/System");
+  to legitimate users.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

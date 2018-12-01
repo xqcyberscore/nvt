@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-052.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms09-052.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows Media Player ASF Heap Overflow Vulnerability (974112)
 #
@@ -24,51 +24,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to crash an affected player
-  or execute arbitrary code on the affected application.
-  Impact Level: Application";
-tag_affected = "Microsoft Windows Media Player 6.4
-  Microsoft Windows 2K  Service Pack 4 and prior.
-  Microsoft Windows XP  Service Pack 3 and prior.
-  Microsoft Windows 2K3 Service Pack 2 and prior.";
-tag_insight = "A heap-based overflow error occurs while processing malformed ASF files,
-  which can be exploited by tricking a user into opening a malformed ASF file
-  or visiting a malicious web page.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://www.microsoft.com/technet/security/bulletin/ms09-052.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-052.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900879");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-14 16:47:08 +0200 (Wed, 14 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-2527");
   script_bugtraq_id(36644);
   script_name("Microsoft Windows Media Player ASF Heap Overflow Vulnerability (974112)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/974112");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2888");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS09-052.mspx");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/974112");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2888");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS09-052.mspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash an affected player
+  or execute arbitrary code on the affected application.");
+  script_tag(name:"affected", value:"Microsoft Windows Media Player 6.4
+  Microsoft Windows 2K  Service Pack 4 and prior.
+  Microsoft Windows XP  Service Pack 3 and prior.
+  Microsoft Windows 2K3 Service Pack 2 and prior.");
+  script_tag(name:"insight", value:"A heap-based overflow error occurs while processing malformed ASF files,
+  which can be exploited by tricking a user into opening a malformed ASF file
+  or visiting a malicious web page.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-052.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms09-052.mspx");
   exit(0);
 }
 
@@ -103,8 +96,7 @@ if(!dllVer){
 
 if(!isnull(dllVer))
 {
-  # Grep for strmdll.dll version < 4.1.0.3938
   if(version_is_less(version:dllVer, test_version:"4.1.0.3938")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

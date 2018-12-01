@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_sql_server_2000_activex_bof_vuln_900125.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: secpod_ms_sql_server_2000_activex_bof_vuln_900125.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Microsoft SQL Server 2000 sqlvdir.dll ActiveX Buffer Overflow Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900125");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_cve_id("CVE-2008-4110");
   script_bugtraq_id(31129);
@@ -59,9 +59,7 @@ if(description)
   product or replace the product by another one.");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute
-  arbitrary code and failed attepts causes denial-of-service conditions.
-
-  Impact Level : Application");
+  arbitrary code and failed attepts causes denial-of-service conditions.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");

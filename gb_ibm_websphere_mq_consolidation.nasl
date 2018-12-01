@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_consolidation.nasl 12552 2018-11-28 04:39:18Z ckuersteiner $
+# $Id: gb_ibm_websphere_mq_consolidation.nasl 12598 2018-11-30 10:59:00Z cfischer $
 #
 # IBM WebSphere MQ Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141717");
-  script_version("$Revision: 12552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 05:39:18 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12598 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 11:59:00 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-28 11:36:08 +0700 (Wed, 28 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,14 +93,12 @@ if (bin_path = get_kb_item("ibm_websphere_mq/lin/local/path")) {
 
   register_product(cpe: cpe, location: bin_path, port: 0, service: "ssh-login");
 }
-# Windows x86
 else if (x86_path = get_kb_item("ibm_websphere_mq/win/x86/path")) {
   extra += 'Local Detection on Windows (x86):\n';
   extra += '   Path:  ' + x86_path + '\n';
 
   register_product(cpe: cpe, location: x86_path, port: 0, service: "smb-login");
 }
-# Windows x64
 else if (x64_path = get_kb_item("ibm_websphere_mq/win/x64/path")) {
   extra += 'Local Detection on Windows (x64):\n';
   extra += '   Path:  ' + x64_path + '\n';

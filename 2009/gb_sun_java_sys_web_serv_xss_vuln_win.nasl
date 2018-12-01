@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_xss_vuln_win.nasl 11118 2018-08-26 14:03:36Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_xss_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Sun Java System Web Server XSS Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800811");
-  script_version("$Revision: 11118 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 16:03:36 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,11 +44,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/35338");
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-116648-23-1");
+  script_xref(name:"URL", value:"http://www.sun.com/download/index.jsp");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-259588-1");
 
   script_tag(name:"impact", value:"Successful exploitation will lets the attackers to execute arbitrary code,
-  gain sensitive information by conducting XSS attacks in the context of a affected site.
-
-  Impact Level: System/Application");
+  gain sensitive information by conducting XSS attacks in the context of a affected site.");
 
   script_tag(name:"affected", value:"Sun Java System Web Server versions 6.1 and before 6.1 SP11 on Windows.");
 
@@ -57,11 +57,7 @@ if(description)
   exploited to inject arbitrary web script or HTML via the query string in
   situations that result in a 502 Gateway error.");
 
-  script_tag(name:"solution", value:"Update to Web Server version 6.1 SP11
-
-  http://www.sun.com/download/index.jsp
-
-  http://sunsolve.sun.com/search/document.do?assetkey=1-66-259588-1");
+  script_tag(name:"solution", value:"Update to Web Server version 6.1 SP11.");
 
   script_tag(name:"summary", value:"This host has Sun Java Web Server running on Windows, which is prone
   to Cross-Site Scripting vulnerability.");

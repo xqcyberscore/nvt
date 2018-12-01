@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realvnc_remote_code_exe_vuln_win_900162.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: secpod_realvnc_remote_code_exe_vuln_win_900162.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: RealVNC VNC Viewer Remote Code Execution Vulnerability (Windows)
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900162");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_cve_id("CVE-2008-4770");
   script_bugtraq_id(31832);
@@ -45,19 +45,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.realvnc.com/products/free/4.1/release-notes.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow execution of arbitrary code when user
-  connects to a malicious server.
-
-  Impact Level: Application");
+  connects to a malicious server.");
 
   script_tag(name:"affected", value:"RealVNC VNC Free Edition version prior to 4.1.3");
 
-  script_tag(name:"solution", value:"Update to version 4.1.3
-  http://www.realvnc.com/products/download.html");
+  script_tag(name:"solution", value:"Update to version 4.1.3.");
 
   script_tag(name:"summary", value:"This host has RealVNC VNC Viewer installed and is prone to security
-  vulnerability.
+  vulnerability.");
 
-  The flaw is due to error in 'CMsgReader::readRect()' function in
+  script_tag(name:"insight", value:"The flaw is due to error in 'CMsgReader::readRect()' function in
   common/rfb/CMsgReader.cxx processing encoding types, and is exploited by
   sending specially crafted messages to the application.");
 

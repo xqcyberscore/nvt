@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-050.nasl 10213 2018-06-15 10:04:26Z cfischer $
+# $Id: smb_nt_ms02-050.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Certificate Validation Flaw Could Enable Identity Spoofing (Q328145)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11145");
-  script_version("$Revision: 10213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5410);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2002-1183","CVE-2002-0862");
+  script_cve_id("CVE-2002-1183", "CVE-2002-0862");
   script_name("Certificate Validation Flaw Could Enable Identity Spoofing (Q328145)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 SECNAP Network Security, LLC");
@@ -71,7 +71,9 @@ if(description)
 
   Microsoft Outlook Express for Mac");
 
-  script_tag(name:"solution", value:"The vendor has released updates, please see http://www.microsoft.com/technet/security/bulletin/ms02-050.mspx");
+  script_tag(name:"solution", value:"The vendor has released updates, please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-050.mspx");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

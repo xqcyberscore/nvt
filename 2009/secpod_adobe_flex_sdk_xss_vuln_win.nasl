@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flex_sdk_xss_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_adobe_flex_sdk_xss_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Adobe Flex SDK Cross-Site Scripting Vulnerability (Windows)
 #
@@ -24,31 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Flex SDK version 3.4
-  http://opensource.adobe.com/wiki/display/flexsdk/Download+Flex+3
-
-  ****************************************************************
-  Note: This script detects Adobe Flex SDK installed as part of Adobe
-  Flex Builder only. If SDK is installed separately, manual verification
-  is required.
-  ****************************************************************";
-
-tag_impact = "Successful exploitation could allow remote attackers to cause XSS attacks by
-  injecting arbitrary web script or HTML via the query string on the affected
-  application.
-  Impact Level: Application";
-tag_affected = "Adobe Flex SDK version prior to 3.4 on Windows";
-tag_insight = "The flaw is due to error in 'index.template.html' in the express-install
-  templates and it occurs when the installed Flash version is older than a
-  specified 'requiredMajorVersion' value.";
-tag_summary = "This host is installed with Adobe Flex SDK and is prone to
-  Cross-Site Scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900829");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-08-27 13:43:20 +0200 (Thu, 27 Aug 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -56,27 +36,46 @@ if(description)
   script_bugtraq_id(36087);
   script_name("Adobe Flex SDK Cross-Site Scripting Vulnerability (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36374");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/52608");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb09-13.html");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/505948/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36374");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/52608");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb09-13.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/505948/100/0/threaded");
+  script_xref(name:"URL", value:"http://opensource.adobe.com/wiki/display/flexsdk/Download+Flex+3");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause XSS attacks by
+  injecting arbitrary web script or HTML via the query string on the affected application.");
+
+  script_tag(name:"affected", value:"Adobe Flex SDK version prior to 3.4 on Windows");
+
+  script_tag(name:"insight", value:"The flaw is due to error in 'index.template.html' in the express-install
+  templates and it occurs when the installed Flash version is older than a
+  specified 'requiredMajorVersion' value.");
+
+  script_tag(name:"summary", value:"This host is installed with Adobe Flex SDK and is prone to
+  Cross-Site Scripting vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to Flex SDK version 3.4.
+
+  ****************************************************************
+
+  Note: This script detects Adobe Flex SDK installed as part of Adobe
+  Flex Builder only. If SDK is installed separately, manual verification
+  is required.
+
+  ****************************************************************");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
@@ -106,9 +105,8 @@ foreach item (registry_enum_keys(key:key))
 
       if(!isnull(sdkVer[1]))
       {
-        # Check for Flex SDK version < 3.4
         if(version_is_less(version:sdkVer, test_version:"3.4")){
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
       }
     }

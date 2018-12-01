@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_sftp_remote_dos_vuln_900165.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_freesshd_sftp_remote_dos_vuln_900165.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: freeSSHd SFTP 'rename' and 'realpath' Remote DoS Vulnerability
 #
 # Authors:
@@ -23,27 +23,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_summary = "The host is running freeSSHd SSH server and is prone to
-  remote denial of service vulnerability.
-
-  NULL pointer de-referencing errors in SFTP 'rename' and 'realpath' commands.
-  These can be exploited by passing overly long string passed as an argument to
-  the affected commands.";
-
-tag_impact = "Successful exploitation will cause denial of service.
-  Impact Level: Application";
-tag_affected = "freeSSHd freeSSHd version 1.2.1.14 and prior on Windows (all)";
-tag_solution = "Upgrade to freeSSHd version 1.2.6 or later.
-  For updates refer to http://www.freesshd.com/index.php?ctt=download";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900165");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-31 14:50:32 +0100 (Fri, 31 Oct 2008)");
   script_cve_id("CVE-2008-4762");
- script_bugtraq_id(31872);
+  script_bugtraq_id(31872);
   script_copyright("Copyright (C) 2008 SecPod");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -51,41 +38,42 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Denial of Service");
   script_name("freeSSHd SFTP 'rename' and 'realpath' Remote DoS Vulnerability");
-  script_xref(name : "URL" , value : "http://freesshd.com/index.php");
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/6800");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32366/");
+  script_xref(name:"URL", value:"http://freesshd.com/index.php");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/6800");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32366/");
 
-  script_dependencies("secpod_reg_enum.nasl", "ssh_detect.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports("Services/ssh", 22, 139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_require_ports(139, 445);
+
+  script_tag(name:"impact", value:"Successful exploitation will cause denial of service.");
+
+  script_tag(name:"affected", value:"freeSSHd freeSSHd version 1.2.1.14 and prior on Windows (all)");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to freeSSHd version 1.2.6 or later.");
+
+  script_tag(name:"summary", value:"The host is running freeSSHd SSH server and is prone to
+  remote denial of service vulnerability.
+
+  NULL pointer de-referencing errors in SFTP 'rename' and 'realpath' commands.
+  These can be exploited by passing overly long string passed as an argument to
+  the affected commands.");
+
+  script_xref(name:"URL", value:"http://www.freesshd.com/index.php?ctt=download");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
-
-sshdPort = get_kb_item("Services/ssh");
-if(!sshdPort){
-  sshdPort = 22;
-}
-
-# check if FreeSSHd is listening
-banner = get_kb_item("SSH/banner/" + sshdPort);
-if("WeOnlyDo" >!< banner || "WeOnlyDo-wodFTPD" >< banner){
-  exit(0);
-} 
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-sshdPath = registry_get_sz(key:"SYSTEM\CurrentControlSet\Services\FreeSSHDService",
-                           item:"ImagePath");
+sshdPath = registry_get_sz(key:"SYSTEM\CurrentControlSet\Services\FreeSSHDService", item:"ImagePath");
 if(!sshdPath){
   exit(0);
 }
@@ -144,8 +132,7 @@ if(!fid){
 
 fileVer = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid);
 
-# Grep for freeSSHd version 1.2.1.14 and prior
-if(egrep(pattern:"^1\.([01](\..*)|2(\.[01](\.[0-9]|\.1[0-4])?)?)$", 
+if(egrep(pattern:"^1\.([01](\..*)|2(\.[01](\.[0-9]|\.1[0-4])?)?)$",
          string:fileVer)){
-  security_message(sshdPort);
+  security_message(port:0);
 }

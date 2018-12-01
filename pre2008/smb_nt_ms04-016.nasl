@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-016.nasl 10213 2018-06-15 10:04:26Z cfischer $
+# $Id: smb_nt_ms04-016.nasl 12603 2018-11-30 14:57:24Z cfischer $
 #
 # Vulnerability in DirectPlay Could Allow Denial of Service (839643)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12267");
-  script_version("$Revision: 10213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 12603 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:57:24 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10487);
   script_cve_id("CVE-2004-0202");
@@ -39,8 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/registry_enumerated", "SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"summary", value:"A denial of service vulnerability exists in the implementation of the
   IDirectPlay4 application programming interface (API) of Microsoft DirectPlay because of a lack of robust
@@ -50,7 +49,9 @@ if(description)
   an attacker who successfully exploited this vulnerability could cause the DirectPlay application to fail.
   The user would have to restart the application to resume functionality.");
 
-  script_tag(name:"solution", value:"The vendor has released updates, please see http://www.microsoft.com/technet/security/bulletin/ms04-016.mspx");
+  script_tag(name:"solution", value:"The vendor has released updates, please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms04-016.mspx");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

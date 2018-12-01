@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-052.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: smb_nt_ms02-052.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Flaw in Microsoft VM Could Allow Code Execution (810030)
 #
 # Authors:
@@ -22,57 +22,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Hotfix to fix Flaw in Microsoft VM
-could Allow Code Execution (810030)
-
-Impact of vulnerability: Three vulnerabilities, the most
-serious of which could enable an attacker to gain complete
-control over a user's system. 
-
-Maximum Severity Rating: Critical 
-
-Recommendation: Administrators should install the patch immediately. 
-
-Affected Software: 
-
-Versions of the Microsoft virtual machine (Microsoft VM) are
-identified by build numbers, which can be determined using the
-JVIEW tool as discussed in the FAQ. All builds of the Microsoft
-VM up to and including build 5.0.3805 are affected by these
-vulnerabilities. 
-
-Supersedes :
-
-http://www.microsoft.com/technet/security/bulletin/ms02-052.mspx
-
-See :
-http://www.microsoft.com/technet/security/bulletin/ms02-069.mspx
-
-Also Note: Requires full registry access (Administrator)
-to run the test.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11177");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6371, 6372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name:"IAVA", value:"2003-B-0002");
-  script_cve_id("CVE-2002-1257","CVE-2002-1258","CVE-2002-1183","CVE-2002-0862");
+  script_cve_id("CVE-2002-1257", "CVE-2002-1258", "CVE-2002-1183", "CVE-2002-0862");
   script_name("Flaw in Microsoft VM Could Allow Code Execution (810030)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 SECNAP Network Security, LLC");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"Hotfix to fix Flaw in Microsoft VM
+  could Allow Code Execution (810030)");
+
+  script_tag(name:"impact", value:"Three vulnerabilities, the most
+  serious of which could enable an attacker to gain complete
+  control over a user's system.");
+
+  script_tag(name:"solution", value:"Versions of the Microsoft virtual machine (Microsoft VM) are
+  identified by build numbers, which can be determined using the JVIEW tool as discussed in the FAQ.
+  All builds of the Microsoft VM up to and including build 5.0.3805 are affected by these
+  vulnerabilities.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-052.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms02-069.mspx");
 
   script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"The vendor has releases updates, please see the references for more information.");
 
   exit(0);
 }

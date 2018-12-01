@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_justsystems_ichitaro_code_exec_vuln_900207.nasl 11570 2018-09-24 11:54:11Z cfischer $
+# $Id: secpod_justsystems_ichitaro_code_exec_vuln_900207.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Ichitaro Document Handling Unspecified Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900207");
-  script_version("$Revision: 11570 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 13:54:11 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-09-02 07:39:00 +0200 (Tue, 02 Sep 2008)");
   script_cve_id("CVE-2008-3919");
   script_bugtraq_id(30828);
@@ -45,8 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/31603/");
   script_xref(name:"URL", value:"http://www.justsystems.com/jp/info/pd8002.html");
 
-  script_tag(name:"solution", value:"Upgrade to Justsystem Ichitaro 2010 or later,
-  For updates refer to http://www.ichitaro.com");
+  script_tag(name:"solution", value:"Upgrade to Justsystem Ichitaro 2010 or later.");
 
   script_tag(name:"summary", value:"This host is running Ichitaro, which is prone to Unspecified Remote
   Code Execution Vulnerability.");
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ichitaro.com");
   exit(0);
 }
 

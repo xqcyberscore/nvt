@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_trendmicro_officescan_cgiparsing_bof_vuln_900164.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability
 #
 # Authors:
@@ -23,34 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_summary = "This host is installed with Trend Micro OfficeScan and is prone to
-  stack based buffer overflow vulnerability.
-
-  The vulnerability is due to boundary error in the CGI modules when
-  processing specially crafted HTTP request.";
-
-tag_solution = "Apply patch
-  Apply patch Trend Micro OfficeScan Corporate Edition 8.0 from,
-  http://www.trendmicro.com/ftp/products/patches/OSCE_8.0_SP1_Patch1_Win_EN_CriticalPatch_B3110.exe
-
-  Apply patch Trend Micro OfficeScan Corporate Edition 7.3 from,
-  http://www.trendmicro.com/ftp/products/patches/OSCE_7.3_Win_EN_CriticalPatch_B1374.exe
- 
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Allows an attacker to execute arbitrary code, which may facilitate a complete
-  compromise of vulnerable system.
-  Impact Level: Application";
-tag_affected = "TrendMicro OfficeScan Corporate Edition 7.3 Build prior to 1374.
-  TrendMicro OfficeScan Corporate Edition 8.0 Build prior to 3110.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900164");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-29 14:53:11 +0100 (Wed, 29 Oct 2008)");
   script_bugtraq_id(31859);
   script_cve_id("CVE-2008-3862");
@@ -62,18 +39,34 @@ if(description)
   script_family("Buffer overflow");
   script_name("Trend Micro OfficeScan CGI Parsing Buffer Overflow Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32005/");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2008/Oct/0169.html");
-  script_xref(name : "URL" , value : "http://www.trendmicro.com/ftp/documentation/readme/OSCE_7.3_CriticalPatch_B1374_readme.txt");
-  script_xref(name : "URL" , value : "http://www.trendmicro.com/ftp/documentation/readme/OSCE_8.0_sp1p1_CriticalPatch_B3110_readme.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32005/");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2008/Oct/0169.html");
+  script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/documentation/readme/OSCE_7.3_CriticalPatch_B1374_readme.txt");
+  script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/documentation/readme/OSCE_8.0_sp1p1_CriticalPatch_B3110_readme.txt");
+  script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/products/patches/OSCE_8.0_SP1_Patch1_Win_EN_CriticalPatch_B3110.exe");
+  script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/products/patches/OSCE_7.3_Win_EN_CriticalPatch_B1374.exe");
 
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"impact", value:"Allows an attacker to execute arbitrary code, which may facilitate a complete
+  compromise of vulnerable system.");
+
+  script_tag(name:"affected", value:"TrendMicro OfficeScan Corporate Edition 7.3 Build prior to 1374.
+
+  TrendMicro OfficeScan Corporate Edition 8.0 Build prior to 3110.");
+
+  script_tag(name:"solution", value:"Apply the referenced updates.");
+
+  script_tag(name:"summary", value:"This host is installed with Trend Micro OfficeScan and is prone to
+  stack based buffer overflow vulnerability.
+
+  The vulnerability is due to boundary error in the CGI modules when
+  processing specially crafted HTTP request.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -147,8 +140,7 @@ if(!fid){
 
 fileVer = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid);
 
-# Grep for OfficeScan prior to 8.0 build 3110 (SP1 Patch 1)
 if(egrep(pattern:"^(8\.0(\.0(\.[0-2]?[0-9]?[0-9]?[0-9]|\.30[0-9][0-9]|\.310" +
                  "[0-9])?)?)$", string:fileVer)){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

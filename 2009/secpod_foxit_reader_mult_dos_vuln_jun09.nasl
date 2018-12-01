@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_reader_mult_dos_vuln_jun09.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: secpod_foxit_reader_mult_dos_vuln_jun09.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Foxit Reader Multiple Denial of Service Vulnerabilities - Jun09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900683");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,11 +47,11 @@ if(description)
   script_xref(name:"URL", value:"http://www.foxitsoftware.com/pdf/reader/security.htm#0602");
 
   script_tag(name:"impact", value:"Successful exploitation will let attacker execute arbitrary code or crash an
-  affected application.
+  affected application.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Foxit Reader 3.0 before Build 1817 and JPEG2000/JBIG2 Decoder
   before 2.0.2009.616.");
+
   script_tag(name:"insight", value:"Multiple errors exist in the Foxit JPEG2000/JBIG2 Decoder add-on.
 
   - An error occurs while processing a negative value for the stream offset
@@ -59,10 +59,11 @@ if(description)
 
   - A fatal error while decoding JPX header which results in a subsequent
     invalid address access.");
+
   script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to
   multiple Denial of Service vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to the latest version.
-  http://www.foxitsoftware.com/downloads/");
+
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");

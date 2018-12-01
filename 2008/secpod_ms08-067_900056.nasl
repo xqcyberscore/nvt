@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-067_900056.nasl 10421 2018-07-05 12:17:22Z cfischer $
+# $Id: secpod_ms08-067_900056.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Vulnerability in Server Service Could Allow Remote Code Execution (958644)
 #
 # Authors:
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900056");
-  script_version("$Revision: 10421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-30 14:46:44 +0100 (Thu, 30 Oct 2008)");
   script_bugtraq_id(31874);
   script_cve_id("CVE-2008-4250");
@@ -53,6 +53,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securitytracker.com/id?1021091");
   script_xref(name:"URL", value:"http://blogs.securiteam.com/index.php/archives/1150");
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/dd452420.aspx");
 
   script_tag(name:"affected", value:"Microsoft Windows 2K Service Pack 4 and prior.
 
@@ -64,9 +65,7 @@ if(description)
   handle specially crafted RPC requests.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms08-067.mspx");
+  and update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS08-067.");
@@ -74,11 +73,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to take
   complete control of an affected system.
 
-  Impact Level: System
-
   Variants of Conficker worm are based on the above described vulnerability.
   More details regarding the worm and means to resolve this can be found at,
-  http://technet.microsoft.com/en-us/security/dd452420.aspx");
+  the linked references.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -403,5 +400,4 @@ if(ord(netpath_cmp_resp[84]) == 00 && ord(netpath_cmp_resp[85]) == 00 &&
   security_message(port);
 }
 
-## Close the socket
 close(soc);

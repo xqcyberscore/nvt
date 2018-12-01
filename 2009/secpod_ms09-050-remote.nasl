@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-050-remote.nasl 8215 2017-12-21 11:46:59Z cfischer $
+# $Id: secpod_ms09-050-remote.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows SMB2 Negotiation Protocol Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900965");
-  script_version("$Revision: 8215 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 12:46:59 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 12:43:47 +0200 (Thu, 15 Oct 2009)");
   script_bugtraq_id(36299);
   script_cve_id("CVE-2009-2526", "CVE-2009-2532", "CVE-2009-3103");
@@ -45,35 +45,25 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS09-050.mspx");
 
-  tag_impact = "An attacker can exploit this issue to execute code with SYSTEM-level
-  privileges; failed exploit attempts will likely cause denial-of-service
-  conditions.
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute code with SYSTEM-level
+  privileges. Failed exploit attempts will likely cause denial-of-service conditions.");
 
-  Impact Level: System";
-
-  tag_affected = "- Windows 7 RC
+  script_tag(name:"affected", value:"- Windows 7 RC
 
   - Windows Vista and
 
-  - Windows 2008 Server";
+  - Windows 2008 Server");
 
-  tag_insight = "Multiple vulnerabilities exists,
+  script_tag(name:"insight", value:"Multiple vulnerabilities exists,
 
   - A denial of service vulnerability exists in the way that Microsoft Server
-    Message Block (SMB) Protocol software handles specially crafted SMB version
-    2 (SMBv2) packets.
+  Message Block (SMB) Protocol software handles specially crafted SMB version 2 (SMBv2) packets.
 
   - Unauthenticated remote code execution vulnerability exists in the way
-    that Microsoft Server Message Block (SMB) Protocol software handles
-    specially crafted SMB packets.";
+  that Microsoft Server Message Block (SMB) Protocol software handles specially crafted SMB packets.");
 
-  tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-050.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-050.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -118,9 +108,7 @@ if( resp ) {
     security_message( port:port );
     exit( 0 );
   }
-
   exit( 99 );
-
 }
 
 exit( 0 );

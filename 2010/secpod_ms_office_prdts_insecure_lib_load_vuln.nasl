@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: secpod_ms_office_prdts_insecure_lib_load_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Office Products Insecure Library Loading Vulnerability
 #
@@ -27,50 +27,45 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902254");
-  script_version("$Revision: 10022 $");
+  script_version("$Revision: 12602 $");
   script_cve_id("CVE-2010-3141", "CVE-2010-3142", "CVE-2010-3146", "CVE-2010-3148");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:16:10 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Products Insecure Library Loading Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with microsoft
+  script_tag(name:"summary", value:"This host is installed with microsoft
   product(s) and is prone to insecure library loading vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to the application
+  script_tag(name:"insight", value:"The flaw is due to the application
   insecurely loading certain libraries from the current working directory,
   which could allow attackers to execute arbitrary code by tricking a user into
   opening a file from a network share.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow the
-  attackers to execute arbitrary code and conduct DLL hijacking attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow the
+  attackers to execute arbitrary code and conduct DLL hijacking attacks.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Microsoft Visio 2003,
+  script_tag(name:"affected", value:"Microsoft Visio 2003,
 
   Microsoft Office Groove 2007,
 
   Microsoft Office PowerPoint 2007/2010");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
-  hotfixes mentioned in the advisory from the below link.
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms11-055");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
+  hotfixes mentioned in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14723/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14782/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14746/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14744/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2188");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2192");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14723/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14782/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14746/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14744/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2188");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2192");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 SecPod");
@@ -79,6 +74,7 @@ if(description)
   script_mandatory_keys("MS/Office/Ver", "MS/Office/Prdts/Installed");
   script_require_ports(139, 445);
 
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-055");
   exit(0);
 }
 

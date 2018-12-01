@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: secpod_mailenable_imap_dos_vuln_900104.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # MailEnable IMAP Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900104");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_cve_id("CVE-2008-3449");
   script_bugtraq_id(30498);
@@ -38,11 +38,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_name("MailEnable IMAP Denial of Service Vulnerability");
-  script_dependencies("secpod_reg_enum.nasl", "find_service.nasl", "smtpserver_detect.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445, "Services/imap", 143);
+  script_require_ports(139, 445);
 
   script_xref(name:"URL", value:"http://www.mailenable.com/hotfix/");
+  script_xref(name:"URL", value:"http://www.mailenable.com/hotfix/ME-10042.EXE");
   script_xref(name:"URL", value:"http://secunia.com/advisories/31325");
 
   script_tag(name:"summary", value:"The host is running MailEnable Mail Server, which prone to Denial
@@ -51,11 +52,8 @@ if(description)
   to the same folder.");
   script_tag(name:"affected", value:"MailEnable Enterprise Edition 3.52 and Professional Edition 3.52
   and prior on Windows (all)");
-  script_tag(name:"solution", value:"Apply Patch,
-  http://www.mailenable.com/hotfix/ME-10042.EXE");
-  script_tag(name:"impact", value:"Successful exploitation will potentially cause a service crash.
-
-  Impact Level : Application");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
+  script_tag(name:"impact", value:"Successful exploitation will potentially cause a service crash.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,27 +62,19 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("imap_func.inc");
 
 if( ! get_kb_item( "SMB/WindowsVersion" ) ) exit( 0 );
 
-port = get_imap_port( default:143 );
-
-if( "IMAP4rev1" >!< get_imap_banner( port:port ) ) exit( 0 );
-
-mailVer = registry_get_sz( key:"SOFTWARE\Mail Enable\Mail Enable",
-                           item:"Professional Version" );
+mailVer = registry_get_sz( key:"SOFTWARE\Mail Enable\Mail Enable", item:"Professional Version" );
 
 if( ! mailVer ) {
-  mailVer = registry_get_sz( key:"SOFTWARE\Mail Enable\Mail Enable",
-                             item:"Enterprise Version" );
+  mailVer = registry_get_sz( key:"SOFTWARE\Mail Enable\Mail Enable", item:"Enterprise Version" );
   if( ! mailVer ) {
     exit( 0 );
   }
 }
 
 if( registry_key_exists( key:"SOFTWARE\Mail Enable\Mail Enable\Updates\ME-10042" ) ) exit( 0 );
-
 
 if( egrep( pattern:"^([0-2]\..*|3\.([0-4]?[0-9]|5[0-2]))$", string:mailVer ) ) {
   security_message( port:port );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msrpc_dcom2.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: msrpc_dcom2.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft RPC Interface Buffer Overrun (KB824146)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102015");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-11-16 11:47:06 +0100 (Mon, 16 Nov 2009)");
   script_cve_id("CVE-2003-0715", "CVE-2003-0528", "CVE-2003-0605");
   script_bugtraq_id(8458, 8460);
@@ -44,9 +44,11 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name:"solution", value:"see http://www.microsoft.com/technet/security/bulletin/MS03-039.mspx");
+  script_tag(name:"solution", value:"The vendor has released updates, please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS03-039.mspx");
 
   script_tag(name:"summary", value:"The remote host is running a version of Windows which has a flaw in
   its RPC interface which may allow an attacker to execute arbitrary code

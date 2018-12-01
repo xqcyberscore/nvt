@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms10-009.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms10-009.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows TCP/IP Could Allow Remote Code Execution (974145)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801479");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-11-25 08:29:59 +0100 (Thu, 25 Nov 2010)");
   script_cve_id("CVE-2010-0239", "CVE-2010-0240", "CVE-2010-0241",
                 "CVE-2010-0242");
@@ -46,31 +46,33 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code with system privileges. Failed exploit attempts will likely result in
-  denial-of-service conditions.
-  Impact Level: System/Application");
+  denial-of-service conditions.");
   script_tag(name:"affected", value:"Microsoft Windows Vista Service Pack 1/2 and prior.
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
   script_tag(name:"insight", value:"The flaws are due to Windows TCP/IP stack,
+
   - not performing the appropriate level of bounds checking on specially crafted
     'ICMPv6' Router Advertisement packets.
+
   - fails to properly handle malformed Encapsulating Security Payloads (ESP) over
     UDP datagram fragments while running a custom network driver that splits the
     UDP header into multiple MDLs, which could be exploited by remote attackers
     to execute arbitrary code by sending specially crafted IP datagram fragments
     to a vulnerable system.
+
   - not performing the appropriate level of bounds checking on specially crafted
     ICMPv6 Route Information packets, which could be exploited by remote
     attackers to execute arbitrary code by sending specially crafted ICMPv6
     packets to a vulnerable system.
+
   - not properly handling TCP packets with a malformed selective acknowledgment
     (SACK) value.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms10-009.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-009.");

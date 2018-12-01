@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_personal_ftp_server_dos_vuln_900127.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: secpod_personal_ftp_server_dos_vuln_900127.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Personal FTP Server RETR Command Remote Denial of Service Vulnerability
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900127");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_cve_id("CVE-2008-4136");
   script_bugtraq_id(31173);
@@ -56,9 +56,7 @@ if(description)
   product or replace the product by another one.");
 
   script_tag(name:"impact", value:"Successful exploitation will deny the service by sending
-  multiple RETR commands with an arbitrary argument.
-
-  Impact Level : Application");
+  multiple RETR commands with an arbitrary argument.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");

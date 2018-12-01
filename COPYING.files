@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 30 Nov 2018 10:04:01 +0100
+# Automatically created on:  Fri, 30 Nov 2018 17:19:56 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -61203,6 +61203,7 @@ gsf/2018/hid/gb_hid_vertx_rce_vuln.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_CVE-2016-2509.nasl: GPLv2+
 gsf/2018/hirschmann/gb_hirschmann_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_data_protector_mult_vuln_feb18.nasl: GPLv2+
+gsf/2018/hp/gb_hpe_mpm_mult_vuln1.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_mpm_mult_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_officeconnect_switches_inf_disc_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hpe_universal_cmdb_priv_esc_vuln.nasl: GPLv2+

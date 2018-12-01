@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tvp_taghandling_bof_vuln_900409.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_tvp_taghandling_bof_vuln_900409.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Total Video Player 'TVP type' Tag Handling Remote BOF Vulnerability
 #
 # Authors:
@@ -23,32 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute malicious
-arbitrary codes and can cause denial of service.
-
-Impact Level: Application";
-
-tag_affected = "EffectMatrix Software, Total Video Player version 1.31
-and prior on Windows.";
-
-tag_insight = "The vulnerability is caused when the application parses a '.au'
-file containing specially crafted 'TVP type' tags containing overly long strings.
-These can be exploited by lack of bound checking in user supplied data before
-copying it to an insufficiently sized memory buffer.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with Total Video Player and is prone to
-remote Buffer Overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900409");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_bugtraq_id(32456);
   script_copyright("Copyright (C) 2008 SecPod");
@@ -59,21 +38,35 @@ if(description)
   script_family("Denial of Service");
   script_name("Total Video Player 'TVP type' Tag Handling Remote BOF Vulnerability");
 
-  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/7219");
-  script_xref(name : "URL" , value : "http://www.juniper.net/security/auto/vulnerabilities/vuln32456.html");
+  script_xref(name:"URL", value:"http://milw0rm.com/exploits/7219");
+  script_xref(name:"URL", value:"http://www.juniper.net/security/auto/vulnerabilities/vuln32456.html");
 
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute malicious
+  arbitrary codes and can cause denial of service.");
+
+  script_tag(name:"affected", value:"EffectMatrix Software, Total Video Player version 1.31
+  and prior on Windows.");
+
+  script_tag(name:"insight", value:"The vulnerability is caused when the application parses a '.au'
+  file containing specially crafted 'TVP type' tags containing overly long strings.
+  These can be exploited by lack of bound checking in user supplied data before
+  copying it to an insufficiently sized memory buffer.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is installed with Total Video Player and is prone to
+  remote Buffer Overflow vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -97,9 +90,8 @@ foreach entries (keys)
   tvpName = registry_get_sz(key:key + entries, item:"DisplayName");
   pattern = "Player ([0]\..*|1\.([0-2]?[0-9]|3[01]))($|[^.0-9])";
 
-  #Grep for version 1.31 or prior
   if("E.M. Total Video Player" >< tvpName &&
      egrep(pattern:pattern, string:tvpName)){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msrpc_dcom.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: msrpc_dcom.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft RPC Interface Buffer Overrun (823980)
 #
@@ -25,7 +25,6 @@
 ###############################################################################
 
 # [LSD] Critical security vulnerability in Microsoft Operating Systems
-# Check methods based on Eeye's MSRPC scanner 1.03
 #
 # Updated 7/29/2003 - Now works for NT4
 # Updated 8/13/2003 - Now works for Win 95/98/ME
@@ -33,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11808");
-  script_version("$Revision: 7287 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(8205);
   script_cve_id("CVE-2003-0352");
@@ -47,22 +46,20 @@ if(description)
   script_family("Gain a shell remotely");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  tag_summary = "The remote host is running a version of Windows which has a flaw in
+  script_tag(name:"solution", value:"The vendor has releases updates, please see the references for more information.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS03-026.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS04-012.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS05-012.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS05-051.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS06-018.mspx");
+
+  script_tag(name:"summary", value:"The remote host is running a version of Windows which has a flaw in
   its RPC interface which may allow an attacker to execute arbitrary code
   and gain SYSTEM privileges. There is at least one Worm which is
-  currently exploiting this vulnerability. Namely, the MsBlaster worm.";
-
-  tag_solution = "see
-  http://www.microsoft.com/technet/security/bulletin/MS03-026.mspx
-  http://www.microsoft.com/technet/security/bulletin/MS04-012.mspx
-  http://www.microsoft.com/technet/security/bulletin/MS05-012.mspx
-  http://www.microsoft.com/technet/security/bulletin/MS05-051.mspx
-  http://www.microsoft.com/technet/security/bulletin/MS06-018.mspx";
-
-  script_tag(name:"solution" , value:tag_solution);
-  script_tag(name:"summary" , value:tag_summary);
+  currently exploiting this vulnerability. Namely, the MsBlaster worm.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -77,7 +74,6 @@ if(hotfix_check_sp(xp:3, win2k:5, win2003:2) <= 0){
   exit(0);
 }
 
-# Check for update rollup
 rollUp = registry_key_exists(key:"SOFTWARE\Microsoft\Updates\Windows 2000\SP5\Update Rollup 1");
 if(rollUp){
   exit(0);
@@ -89,7 +85,6 @@ if(hotfix_missing(name:"828741") == 0 || hotfix_missing(name:"873333") == 0 ||
   exit(0);
 }
 
-# Check for Hotfix 823980 (MS03-026)
 if(hotfix_missing(name:"823980") == 1){
   security_message(port:get_kb_item("SMB/transport"));
   exit(0);

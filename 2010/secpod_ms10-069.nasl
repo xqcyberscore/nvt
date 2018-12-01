@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-069.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: secpod_ms10-069.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Windows Client/Server Runtime Subsystem Privilege Elevation Vulnerability (2121546)
 #
@@ -23,46 +23,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code with
-  SYSTEM privileges.
-  Impact Level: System";
-tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2003 Service Pack 2.";
-tag_insight = "The flaw is caused by a heap overflow error in the
-  'Windows Client/Server Runtime Subsystem (CSRSS)' which does not always
-  allocate sufficient memory when handling specific user transactions.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/MS10-069.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-069.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902301");
-  script_version("$Revision: 8250 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-1891");
   script_bugtraq_id(43121);
   script_name("Windows Client/Server Runtime Subsystem Privilege Elevation Vulnerability (2121546)");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2390");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS10-069.mspx");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2390");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS10-069.mspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code with
+  SYSTEM privileges.");
+  script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2003 Service Pack 2.");
+  script_tag(name:"insight", value:"The flaw is caused by a heap overflow error in the
+  'Windows Client/Server Runtime Subsystem (CSRSS)' which does not always
+  allocate sufficient memory when handling specific user transactions.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS10-069.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,7 +69,6 @@ include("secpod_smb_func.inc");
 if(hotfix_check_sp(xp:4, win2003:3) <= 0){
   exit(0);
 }
-# Check Hotfix Missing
 if(hotfix_missing(name:"2121546") == 0){
   exit(0);
 }
@@ -96,32 +87,28 @@ if(!sysVer){
   exit(0);
 }
 
-# Windows XP
 if(hotfix_check_sp(xp:4) > 0)
 {
   SP = get_kb_item("SMB/WinXP/ServicePack");
   if("Service Pack 3" >< SP)
   {
-    # Grep for Winsrv.dll < 5.1.2600.6001
     if(version_is_less(version:sysVer, test_version:"5.1.2600.6001")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
 
-# Windows 2003
 else if(hotfix_check_sp(win2003:3) > 0)
 {
   SP = get_kb_item("SMB/Win2003/ServicePack");
   if("Service Pack 2" >< SP)
   {
-    # Grep for Winsrv.dll version < 5.2.3790.4729
     if(version_is_less(version:sysVer, test_version:"5.2.3790.4729")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
     exit(0);
   }
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

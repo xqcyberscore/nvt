@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skype_extras_manager_unspecified_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_skype_extras_manager_unspecified_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Skype Extras Manager Unspecified Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801302");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2009-4741");
   script_bugtraq_id(36459);
@@ -47,12 +47,12 @@ if(description)
   script_tag(name:"impact", value:"It has unknown impact and attack vectors.");
   script_tag(name:"affected", value:"Skype version prior to 4.1.0.179 on windows.");
   script_tag(name:"insight", value:"The flaw is caused by unspecified errors in the 'Extras Manager component'.");
-  script_tag(name:"solution", value:"Upgrade to Skype version 4.1.0.179 or later,
-  For updates refer to http://www.skype.com/intl/en/download/skype/windows/");
+  script_tag(name:"solution", value:"Upgrade to Skype version 4.1.0.179 or later.");
   script_tag(name:"summary", value:"The host is installed with Skype and is prone to unspecified
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.skype.com/intl/en/download/skype/windows/");
   exit(0);
 }
 

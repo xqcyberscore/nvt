@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_stuxnet_unspecified_vuln.nasl 10200 2018-06-14 14:39:20Z cfischer $
+# $Id: gb_ms_windows_stuxnet_unspecified_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows 32-bit Platforms Unspecified vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801527");
-  script_version("$Revision: 10200 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 16:39:20 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-3888", "CVE-2010-3889");
   script_tag(name:"cvss_base", value:"7.2");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.symantec.com/connect/blogs/stuxnet-using-three-additional-zero-day-vulnerabilities");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to gain privileges or
-  compromise the vulnerable system via unknown vectors.
-
-  Impact Level: Application");
+  compromise the vulnerable system via unknown vectors.");
 
   script_tag(name:"affected", value:"All Windows platforms");
 

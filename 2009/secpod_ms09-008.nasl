@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-008.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: secpod_ms09-008.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Vulnerabilities in DNS and WINS Server Could Allow Spoofing (962238)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900088");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-03-11 16:41:30 +0100 (Wed, 11 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -42,15 +42,13 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-008");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute specially crafted
   DNS queries to poison the DNS cache and can redirect traffic by registering WPAD or ISATP in the WINS
-  database pointing to any desired IP address.
-
-  Impact Level: System");
+  database pointing to any desired IP address.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2K Server Service Pack 4 and prior.
 
@@ -68,9 +66,7 @@ if(description)
     ISATAP entries.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-008");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-008.");

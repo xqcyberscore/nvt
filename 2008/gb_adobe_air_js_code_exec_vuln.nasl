@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_js_code_exec_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_adobe_air_js_code_exec_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Adobe AIR JavaScript Code Execution Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Remote exploitation could lead to unauthorized disclosure of
-  information, modification of files, and disruption of service.
-  Impact Level: Application";
-tag_affected = "Adobe AIR 1.1 and earlier on Windows.";
-tag_insight = "The issue is due to improper sanitization of Javascript in the
-  application.";
-tag_solution = "Upgrade to Adobe AIR 1.5
-  http://get.adobe.com/air";
-tag_summary = "This host has Adobe AIR installed, and is prone to privilege
-  escalation vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800065");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -50,17 +39,27 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"impact", value:"Remote exploitation could lead to unauthorized disclosure of
+  information, modification of files, and disruption of service.");
+
+  script_tag(name:"affected", value:"Adobe AIR 1.1 and earlier on Windows.");
+
+  script_tag(name:"insight", value:"The issue is due to improper sanitization of Javascript in the
+  application.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to Adobe AIR 1.5.");
+
+  script_tag(name:"summary", value:"This host has Adobe AIR installed, and is prone to privilege
+  escalation vulnerability.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
@@ -74,6 +73,6 @@ airVer = registry_get_sz(item:"DisplayVersion",
 if(airVer)
 {
   if(version_is_less(version:airVer, test_version:"1.5.0.7220")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

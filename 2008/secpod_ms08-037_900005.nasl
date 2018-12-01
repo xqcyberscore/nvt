@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-037_900005.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-037_900005.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Vulnerabilities in DNS Could Allow Spoofing (953230)
 #
 # Authors:
@@ -23,59 +23,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Successful execution of exploit could allow unauthenticated
-        attackers to retrieve sensitive information and will redirect internet
-        traffic to any server of the attacker's choosing.
- Impact Level : SYSTEM";
-
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
- update mentioned hotfixes in the advisory from the below link.
- http://www.microsoft.com/technet/security/bulletin/ms08-037.mspx";
-
-tag_insight = "The flaws exist due to the DNS protocol fail to provide an adequate
-        amount of entropy when performing DNS queries for Transaction ID
-        and Source Port parameters that can be exploited to poison the
-        DNS cache by inserting responses records into the DNS server or
-        client cache.";
-
-
-tag_summary = "This host is missing critical security update according to
- Microsoft Bulletin MS08-037.";
-
-tag_affected = "- DNS Client/Server on Windows (All).";
-
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.900005");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
- script_bugtraq_id(30132);
- script_cve_id("CVE-2008-1447", "CVE-2008-1454");
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"9.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
- script_category(ACT_GATHER_INFO);
- script_family("Windows : Microsoft Bulletins");
- script_name("Vulnerabilities in DNS Could Allow Spoofing (953230)");
+  script_oid("1.3.6.1.4.1.25623.1.0.900005");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
+  script_bugtraq_id(30132);
+  script_cve_id("CVE-2008-1447", "CVE-2008-1454");
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"cvss_base", value:"9.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
+  script_category(ACT_GATHER_INFO);
+  script_family("Windows : Microsoft Bulletins");
+  script_name("Vulnerabilities in DNS Could Allow Spoofing (953230)");
 
- script_dependencies("secpod_reg_enum.nasl");
- script_require_ports(139, 445);
- script_mandatory_keys("SMB/WindowsVersion");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated");
 
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name:"qod_type", value:"registry");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://secunia.com/advisories/30925/");
- script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/800113");
- script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2008/Jul/1020438.html");
- script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-037.mspx");
- exit(0);
+  script_tag(name:"affected", value:"- DNS Client/Server on Windows (All).");
+  script_tag(name:"summary", value:"This host is missing critical security update according to
+ Microsoft Bulletin MS08-037.");
+  script_tag(name:"insight", value:"The flaws exist due to the DNS protocol fail to provide an adequate
+        amount of entropy when performing DNS queries for Transaction ID
+        and Source Port parameters that can be exploited to poison the
+        DNS cache by inserting responses records into the DNS server or
+        client cache.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+ update mentioned hotfixes in the advisory");
+  script_tag(name:"impact", value:"Successful execution of exploit could allow unauthenticated
+        attackers to retrieve sensitive information and will redirect internet
+        traffic to any server of the attacker's choosing.");
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/30925/");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/800113");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2008/Jul/1020438.html");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-037.mspx");
+  exit(0);
 }
 
 
@@ -192,7 +179,6 @@ if(description)
  }
 
 
- # Check for DNS Client and DNS Server
  if(!registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\Dnscache") &&
     !registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\DNS")){
         exit(0);
@@ -214,7 +200,7 @@ if(description)
                          "][0-9]|1([0-8][0-9]|9[0-4])))\..*|2195\.(" +
                          "[0-6]?[0-9]?[0-9]?[0-9]|7(0[0-9][0-9]|1[0" +
                          "-5][0-9]|16[01])))$", string:fileVer)){
-        	security_message(0);
+        	security_message( port: 0, data: "The target host was found to be vulnerable" );
         }
         exit(0);
  }
@@ -229,7 +215,7 @@ if(description)
                                  "-9][0-9]))\..*|2600\.([0-2]?[0-9]?[0-9]?[" +
                                  "0-9]|3([0-2][0-9][0-9]|3[0-8][0-9]|39[0-3])))$",
                          string:fileVer)){
-                        security_message(0);
+                        security_message( port: 0, data: "The target host was found to be vulnerable" );
                 }
                 exit(0);
         }
@@ -241,11 +227,11 @@ if(description)
                                  "-9][0-9]))\..*|2600\.([0-4]?[0-9]?[0-9]?[" +
                                  "0-9]|5([0-5][0-9][0-9]|6[01][0-9]|62[0-4])))$",
                          string:fileVer)){
-                        security_message(0);
+                        security_message( port: 0, data: "The target host was found to be vulnerable" );
                 }
                 exit(0);
         }
-	security_message(0);
+	security_message( port: 0, data: "The target host was found to be vulnerable" );
  }
 
  else if(hotfix_check_sp(win2003:3) > 0)
@@ -258,7 +244,7 @@ if(description)
 				 "[0-9][0-9]|7[0-8][0-9]))\..*|3790\.([0-2]?" +
 				 "[0-9]?[0-9]?[0-9]|30[0-9][0-9]|31([0-5][0-9]|60)))$",
                          string:fileVer)){
-                	security_message(0);
+                	security_message( port: 0, data: "The target host was found to be vulnerable" );
                 }
                 exit(0);
         }
@@ -270,9 +256,9 @@ if(description)
 			         "[0-9][0-9]|7[0-8][0-9]))\..*|3790\.([0-3]?" +
 				 "[0-9]?[0-9]?[0-9]|4([0-2][0-9][0-9]|3(0" +
 				 "[0-9]|1[0-7]))))$", string:fileVer)){
-                	security_message(0);
+                	security_message( port: 0, data: "The target host was found to be vulnerable" );
                 }
                 exit(0);
         }
-	security_message(0);
+	security_message( port: 0, data: "The target host was found to be vulnerable" );
  }

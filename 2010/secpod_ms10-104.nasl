@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-104.nasl 8269 2018-01-02 07:28:22Z teissa $
+# $Id: secpod_ms10-104.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft SharePoint Could Allow Remote Code Execution Vulnerability (2455005)
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code in
-  the security context of a guest account.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Office SharePoint Server 2007 Service Pack 2";
-tag_insight = "The flaws are due an error in the 'Document Conversions Launcher Service'
-  when handling specially crafted 'Simple Object Access Protocol (SOAP)'
-  requests in a SharePoint server environment that is using the Document
-  Conversions Load Balancer Service.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS10-104.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-104";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902324");
-  script_version("$Revision: 8269 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_cve_id("CVE-2010-3964");
   script_bugtraq_id(45264);
@@ -55,18 +41,24 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
+  the security context of a guest account.");
+  script_tag(name:"affected", value:"Microsoft Office SharePoint Server 2007 Service Pack 2");
+  script_tag(name:"insight", value:"The flaws are due an error in the 'Document Conversions Launcher Service'
+  when handling specially crafted 'Simple Object Access Protocol (SOAP)'
+  requests in a SharePoint server environment that is using the Document
+  Conversions Load Balancer Service.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS10-104");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42631");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3226");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-104.mspx");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42631");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3226");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS10-104.mspx");
   exit(0);
 }
 
@@ -82,7 +74,6 @@ if((hotfix_missing(name:"2433089") == 0)){
   exit(0);
 }
 
-# Check for existence of Microsoft SharePoint
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 
 if(!registry_key_exists(key:key)) {
@@ -104,10 +95,9 @@ foreach item (registry_enum_keys(key:key))
     vers = GetVer(file:file, share:share);
     if(vers)
     {
-      ## Check for Microsoft.office.server.conversions.launcher.exe version < 12.0.6547.5000
       if(version_is_less(version:vers, test_version:"12.0.6547.5000"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

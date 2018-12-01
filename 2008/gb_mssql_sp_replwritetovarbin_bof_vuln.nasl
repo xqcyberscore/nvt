@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mssql_sp_replwritetovarbin_bof_vuln.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_mssql_sp_replwritetovarbin_bof_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft SQL Server sp_replwritetovarbin() BOF Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800082");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-12-16 16:12:00 +0100 (Tue, 16 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -49,8 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.sec-consult.com/files/20081209_mssql-2000-sp_replwritetovarbin_memwrite.txt");
 
   script_tag(name:"impact", value:"Successful exploitation could result in heap based buffer overflow via
-  specially crafted arguments passed to the affected application.
-  Impact Level: Application");
+  specially crafted arguments passed to the affected application.");
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2000 and 2005 on Windows.");
 
@@ -58,9 +57,7 @@ if(description)
   function sp_replwritetovarbin() SQL procedure.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-
-  https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2009/ms09-004");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-004.");

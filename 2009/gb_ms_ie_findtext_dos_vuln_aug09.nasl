@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_findtext_dos_vuln_aug09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ms_ie_findtext_dos_vuln_aug09.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Internet Explorer 'findText()' Unicode Parsing DoS Vulnerability
 #
@@ -24,38 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to cause
-the application to crash.
-
-Impact Level: Application";
-
-tag_affected = "Microsoft, Internet Explorer version 7.x/8.x";
-
-tag_insight = "The flaw is due to error in mshtml.dll file and it can causes
-while calling the JavaScript findText method with a crafted Unicode string in
-the first argument, and only one additional argument, as demonstrated by a
-second argument of -1.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host has Internet Explorer installed and is prone to Denial
-of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800861");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-08-07 07:29:21 +0200 (Fri, 07 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-2655");
   script_bugtraq_id(35799);
   script_name("Microsoft Internet Explorer 'findText()' Unicode Parsing DoS Vulnerability");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9253");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9253");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,11 +44,18 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version", "SMB/WinXP/ServicePack");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause
+the application to crash.");
+  script_tag(name:"affected", value:"Microsoft, Internet Explorer version 7.x/8.x");
+  script_tag(name:"insight", value:"The flaw is due to error in mshtml.dll file and it can causes
+while calling the JavaScript findText method with a crafted Unicode string in
+the first argument, and only one additional argument, as demonstrated by a
+second argument of -1.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host has Internet Explorer installed and is prone to Denial
+of Service vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -78,13 +65,10 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-# Check for XP SP3
 SP = get_kb_item("SMB/WinXP/ServicePack");
 if("Service Pack 3" >< SP)
 {
-  # Get for Internet Explorer Version
   ieVer = get_kb_item("MS/IE/Version");
-  # Check for IE 7/8
   if(ieVer =~ "^[7|8]\..*")
   {
     dllPath = registry_get_sz(item:"Install Path",
@@ -93,17 +77,15 @@ if("Service Pack 3" >< SP)
     share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
     file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
 
-    # Get for mshtml.dll Version
     mshtmlVer = GetVer(file:file, share:share);
     if(isnull(mshtmlVer))
       exit(0);
 
-    # Check for DLL version 7.0 <= 7.0.6000.16890 or 8.0 <= 8.0.6001.18812
     if(version_in_range(version:mshtmlVer, test_version:"7.0",
                                           test_version2:"7.0.6000.16890")||
        version_in_range(version:mshtmlVer, test_version:"8.0",
                                           test_version2:"8.0.6001.18812")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

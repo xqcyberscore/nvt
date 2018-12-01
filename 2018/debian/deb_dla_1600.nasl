@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1600.nasl 12592 2018-11-30 08:48:08Z cfischer $
+# $Id: deb_dla_1600.nasl 12601 2018-11-30 14:21:53Z mmartin $
 #
 # Auto-generated from advisory DLA 1600-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891600");
-  script_version("$Revision: 12592 $");
+  script_version("$Revision: 12601 $");
   script_cve_id("CVE-2015-8915", "CVE-2016-10209", "CVE-2016-10349", "CVE-2016-10350", "CVE-2016-8687",
                 "CVE-2016-8688", "CVE-2016-8689", "CVE-2017-14166", "CVE-2017-14501", "CVE-2017-14502",
                 "CVE-2017-14503", "CVE-2017-5601");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1600-1] libarchive security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 09:48:08 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:21:53 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2018-11-30 00:00:00 +0100 (Fri, 30 Nov 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

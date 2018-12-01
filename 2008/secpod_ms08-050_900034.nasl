@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-050_900034.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-050_900034.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Windows Messenger Could Allow Information Disclosure Vulnerability (955702
 #
 # Authors:
@@ -23,52 +23,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Remote attackers can log on to a user's Messenger client as a user,
-        and can initiate audio and video chat sessions without user interaction.
- Impact Level : Network";
-
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
- update mentioned hotfixes in the advisory from the below link,
- http://www.microsoft.com/technet/security/bulletin/ms08-050.mspx";
-
-tag_affected = "Windows Messenger 4.7 on MS Windows 2K/XP
-        Windows Messenger 5.1 on MS Windows 2K/XP/2003";
-
-tag_insight = "Issue is in the Messenger.UIAutomation.1 ActiveX control being marked
-        safe-for-scripting, which allows changing state, obtain contact information
-        and a user's login ID.";
-
-
-tag_summary = "This host is missing a critical security update according to
- Microsoft Bulletin MS08-050.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.900034");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
- script_bugtraq_id(30551);
- script_cve_id("CVE-2008-0082");
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_category(ACT_GATHER_INFO);
- script_family("Windows : Microsoft Bulletins");
- script_name("Windows Messenger Could Allow Information Disclosure Vulnerability (955702)");
- script_dependencies("secpod_reg_enum.nasl");
- script_require_ports(139, 445);
- script_mandatory_keys("SMB/WindowsVersion");
+  script_oid("1.3.6.1.4.1.25623.1.0.900034");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
+  script_bugtraq_id(30551);
+  script_cve_id("CVE-2008-0082");
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_category(ACT_GATHER_INFO);
+  script_family("Windows : Microsoft Bulletins");
+  script_name("Windows Messenger Could Allow Information Disclosure Vulnerability (955702)");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated");
 
- script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-050.mspx");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name:"qod_type", value:"registry");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-050.mspx");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+ Microsoft Bulletin MS08-050.");
+  script_tag(name:"insight", value:"Issue is in the Messenger.UIAutomation.1 ActiveX control being marked
+        safe-for-scripting, which allows changing state, obtain contact information
+        and a user's login ID.");
+  script_tag(name:"affected", value:"Windows Messenger 4.7 on MS Windows 2K/XP
+        Windows Messenger 5.1 on MS Windows 2K/XP/2003");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+ update mentioned hotfixes in the advisory");
+  script_tag(name:"impact", value:"Remote attackers can log on to a user's Messenger client as a user,
+        and can initiate audio and video chat sessions without user interaction.");
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 
@@ -112,7 +99,7 @@ if(description)
 
 	# Grep < 5.1.0715
         if(ereg(pattern:"^5\.1\.0?([0-6]?[0-9]?[0-9]|70[0-9]|71[0-4])0?$", string:vers)){
-                security_message(0);
+                security_message( port: 0, data: "The target host was found to be vulnerable" );
 	}
         exit(0);
  }
@@ -140,6 +127,6 @@ if(description)
 
 	# Grep < 4.7.3002
 	if(ereg(pattern:"^4\.7\.([0-2]?[0-9]?[0-9]?[0-9]|300[01])0?$", string:vers)){
-               	security_message(0);
+               	security_message( port: 0, data: "The target host was found to be vulnerable" );
 	}
  }

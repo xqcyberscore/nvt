@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-059_900049.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-059_900049.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Host Integration Server RPC Service Remote Code Execution Vulnerability (956695)
 #
 # Authors:
@@ -23,26 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-059.mspx";
-
-tag_impact = "Successful exploitation could allow local attackers to bypass the
-  authentication mechanism and can access administrative functionalities via
-  a specially crafted RPC request.
-  Impact Level: System";
-tag_affected = "Microsoft Host Integration Server 2000/2004/2006 (Server) on Windows.
-  Microsoft Host Integration Server 2000/2004 (Client) on Windows.";
-tag_insight = "The issue is due to an error in the SNA Remote Procedure Call (RPC) service.";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-059.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900049");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31620);
   script_cve_id("CVE-2008-3466");
@@ -52,16 +38,21 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_name("Host Integration Server RPC Service Remote Code Execution Vulnerability (956695)");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-059.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-059.mspx");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could allow local attackers to bypass the
+  authentication mechanism and can access administrative functionalities via
+  a specially crafted RPC request.");
+  script_tag(name:"affected", value:"Microsoft Host Integration Server 2000/2004/2006 (Server) on Windows.
+  Microsoft Host Integration Server 2000/2004 (Client) on Windows.");
+  script_tag(name:"insight", value:"The issue is due to an error in the SNA Remote Procedure Call (RPC) service.");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS08-059.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -95,8 +86,7 @@ file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
                      string:hisPath + "system\Snarpcsv.exe");
 
 hisVer = GetVer(file:file, share:share);
-# Grep Snarpcsv.exe version < 7.0.2900.0
 if(ereg(pattern:"^7\.0\.([01]?[0-9]?[0-9]?[0-9]|2[0-8][0-9][0-9])\.0$",
         string:hisVer)){
-   security_message(0);
+   security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-060_900050.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-060_900050.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Active Directory Could Allow Remote Code Execution Vulnerability (957280)
 #
 # Authors:
@@ -23,25 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-060.mspx";
-
-tag_impact = "Successful exploitation could result in buffer overflow via a
-  specially crafted request.
-  Impact Level: System";
-tag_affected = "Microsoft Windows 2000 Server Service Pack 4 and prior.";
-tag_insight = "The flaw is due to an incorrect memory allocation when processing LDAP
-  and LDAPS requests.";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-060.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900050");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31609);
   script_cve_id("CVE-2008-4023");
@@ -51,16 +38,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_name("Active Directory Could Allow Remote Code Execution Vulnerability (957280)");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-060.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-060.mspx");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could result in buffer overflow via a
+  specially crafted request.");
+  script_tag(name:"affected", value:"Microsoft Windows 2000 Server Service Pack 4 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to an incorrect memory allocation when processing LDAP
+  and LDAPS requests.");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS08-060.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,7 +71,6 @@ if(!registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\NTDS\Performance"
   exit(0);
 }
 
-# Check for Hotfix 957280 (MS08-060)
 if(hotfix_missing(name:"957280") == 0){
   exit(0);
 }
@@ -100,7 +90,6 @@ if(!ntdsVer){
   exit(0);
 }
 
-# Grep Snarpcsv.exe version < 5.0.2195.7178
 if(ereg(pattern:"^5\.0\.2195\.([0-6]?[0-9]?[0-9]?[0-9]|70[0-9][0-9]|" +
                 "71([0-6][0-9]|7[0-7]))$", string:ntdsVer)){
    security_message(port:0);

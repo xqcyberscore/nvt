@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-036.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms09-036.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows ASP.NET Denial of Service Vulnerability(970957)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801482");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-12-13 14:33:55 +0100 (Mon, 13 Dec 2010)");
   script_cve_id("CVE-2009-1536");
   script_bugtraq_id(35985);
@@ -45,12 +45,11 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
   pool on the affected web server to become unresponsive, denying service to
-  legitimate users.
-  Impact Level: System/Application");
+  legitimate users.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5/SP 1
   Microsoft .NET Framework 2.0 SP 1/SP 2");
   script_tag(name:"insight", value:"The flaws is caused by caused by an error in ASP.NET when managing request
@@ -58,8 +57,7 @@ if(description)
   HTTP requests and cause the web server with ASP.NET in integrated mode to
   become non-responsive.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS09-036");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-036.");

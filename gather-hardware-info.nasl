@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-hardware-info.nasl 12562 2018-11-28 15:06:04Z cfischer $
+# $Id: gather-hardware-info.nasl 12598 2018-11-30 10:59:00Z cfischer $
 #
 # Gather Linux Hardware Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103996");
-  script_version("$Revision: 12562 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-28 16:06:04 +0100 (Wed, 28 Nov 2018) $");
+  script_version("$Revision: 12598 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 11:59:00 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2011-04-05 14:24:03 +0200 (Tue, 05 Apr 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,13 +65,13 @@ cpunumber = 0;
 # BusyBox v1.20.2 single core CPU output of cat /proc/cpuinfo:
 # Processor	: Marvell PJ4Bv7 Processor rev 1 (v7l)
 # BogoMIPS	: 1196.85
-# Features	: swp half thumb fastmult vfp edsp vfpv3 vfpv3d16 tls 
+# Features	: swp half thumb fastmult vfp edsp vfpv3 vfpv3d16 tls
 # CPU implementer	: 0x56
 # CPU architecture: 7
 # CPU variant	: 0x1
 # CPU part	: 0x581
 # CPU revision	: 1
-# 
+#
 # Hardware	: Marvell Armada-370
 # Revision	: 0000
 # Serial		: 0000000000000000
@@ -80,23 +80,23 @@ cpunumber = 0;
 # processor	: 0
 # model name	: ARMv7 Processor rev 1 (v7l)
 # BogoMIPS	: 2655.84
-# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls
 # CPU implementer	: 0x41
 # CPU architecture: 7
 # CPU variant	: 0x4
 # CPU part	: 0xc09
 # CPU revision	: 1
-# 
+#
 # processor	: 1
 # model name	: ARMv7 Processor rev 1 (v7l)
 # BogoMIPS	: 2655.84
-# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls 
+# Features	: swp half thumb fastmult vfp edsp neon vfpv3 tls
 # CPU implementer	: 0x41
 # CPU architecture: 7
 # CPU variant	: 0x4
 # CPU part	: 0xc09
 # CPU revision	: 1
-# 
+#
 # Hardware	: Marvell Armada 380/381/382/385/388 (Device Tree)
 # Revision	: 0000
 # Serial		: 0000000000000000

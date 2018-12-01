@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_ext_manager_insecure_lib_load_vuln_win.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: gb_adobe_ext_manager_insecure_lib_load_vuln_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Adobe Extension Manager CS5 Insecure Library Loading Vulnerability (Windows)
 #
@@ -27,37 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801509");
-  script_version("$Revision: 10022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-3154");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Adobe Extension Manager CS5 Insecure Library Loading Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14784/");
-  script_xref(name : "URL" , value : "https://launchpad.net/bugs/cve/2010-3154");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14784/");
+  script_xref(name:"URL", value:"https://launchpad.net/bugs/cve/2010-3154");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
-  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain
 libraries from the current working directory, which could allow attackers to
 execute arbitrary code by tricking a user into opening a file from a network share.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with Adobe Extension Manager CS5 and is
+  script_tag(name:"summary", value:"This host is installed with Adobe Extension Manager CS5 and is
 prone to insecure library loading vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary
-code and conduct DLL hijacking attacks.
-
-Impact Level: Application.");
-  script_tag(name : "affected" , value : "Adobe Extension Manager CS5 5.0.0.298 on windows.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
+code and conduct DLL hijacking attacks.");
+  script_tag(name:"affected", value:"Adobe Extension Manager CS5 5.0.0.298 on windows.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -94,6 +92,6 @@ aemVer = GetVer(file:file, share:share);
 if(!isnull(aemVer))
 {
   if(version_is_equal(version:aemVer, test_version:"5.0.0.298")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

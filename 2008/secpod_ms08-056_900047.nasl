@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-056_900047.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms08-056_900047.nasl 12602 2018-11-30 14:36:58Z cfischer $
 # Description: Microsoft Office Information Disclosure Vulnerability (957699)
 #
 # Authors:
@@ -23,25 +23,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://www.microsoft.com/technet/security/bulletin/ms08-056.mspx";
-
-tag_impact = "Successful exploitation could allow documents incorrectly rendered
-  in the web browser, leading to cross site scripting attack.
-  Impact Level: Application";
-tag_affected = "Microsoft Office XP Service Pack 3 on Windows (All).";
-tag_insight = "The flaw exists due to the way that Office processes documents using the CDO
-  Protocol (cdo:) and the Content-Disposition Attachment header.";
-tag_summary = "This host is missing critical security update according to
-  Microsoft Bulletin MS08-056.";
-
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900047");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-15 19:56:48 +0200 (Wed, 15 Oct 2008)");
   script_bugtraq_id(31693);
   script_cve_id("CVE-2008-4020");
@@ -51,15 +38,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_name("Microsoft Office nformation Disclosure Vulnerability (957699)");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-056.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms08-056.mspx");
   script_dependencies("secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation could allow documents incorrectly rendered
+  in the web browser, leading to cross site scripting attack.");
+  script_tag(name:"affected", value:"Microsoft Office XP Service Pack 3 on Windows (All).");
+  script_tag(name:"insight", value:"The flaw exists due to the way that Office processes documents using the CDO
+  Protocol (cdo:) and the Content-Disposition Attachment header.");
+  script_tag(name:"summary", value:"This host is missing critical security update according to
+  Microsoft Bulletin MS08-056.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -82,6 +73,6 @@ if(offVer =~ "^10\.")
 {
   if(registry_key_exists(key:"SOFTWARE\Classes\PROTOCOLS\Handler\cdo") &&
      registry_key_exists(key:"SOFTWARE\Classes\CDO")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

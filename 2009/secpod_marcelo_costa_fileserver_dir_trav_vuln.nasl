@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_marcelo_costa_fileserver_dir_trav_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Marcelo Costa FileServer Component Directory Traversal Vulnerability
 #
@@ -26,39 +26,19 @@
 
 CPE = "cpe:/a:microsoft:messenger_plus%21_live";
 
-tag_impact = "Successful exploitation will allow attackers to cause Directory
-Traversal attacks on the affected product.
-
-Impact Level: System/Application";
-
-tag_affected = "Marcelo Costa FileServer version 1.0";
-
-tag_insight = "Error in the FileServer component which may allows remote
-authenticated users to list arbitrary directories and read arbitrary files via
-a .. (dot dot) in a pathname.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Marcelo Costa FileServer with Windows Live
-Messenger and Messenger Plus! Live, and is prone to directory traversal
-vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900810");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
   script_cve_id("CVE-2009-2544");
   script_name("Marcelo Costa FileServer Component Directory Traversal Vulnerability");
 
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9093");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/382773.php");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9093");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/382773.php");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -67,11 +47,18 @@ if(description)
   script_dependencies("gb_ms_win_live_messenger_detect.nasl");
   script_mandatory_keys("MS/MessengerPlus/Installed", "MS/MessengerPlus/Path");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause Directory
+Traversal attacks on the affected product.");
+  script_tag(name:"affected", value:"Marcelo Costa FileServer version 1.0");
+  script_tag(name:"insight", value:"Error in the FileServer component which may allows remote
+authenticated users to list arbitrary directories and read arbitrary files via
+a .. (dot dot) in a pathname.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Marcelo Costa FileServer with Windows Live
+Messenger and Messenger Plus! Live, and is prone to directory traversal
+vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -86,7 +73,6 @@ version  = infos['version'];
 plusPath = infos['location'];
 if( ! plusPath ) exit( 0 );
 
-# Check for Messenger Plus! Live Installation
 if( version =~ "^4\..*" )
 {
   fsPath = NULL;
@@ -106,12 +92,10 @@ if( version =~ "^4\..*" )
     if(isnull(fileSrvTxt)){
       exit(0);
     }
-    # Grep for FileServer Version
     costaVer = egrep(pattern:"[0-9.]+", string:fileSrvTxt);
 
-    # Check for FileServer Version
     if(costaVer && version_is_equal(version:costaVer, test_version:"1.0")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

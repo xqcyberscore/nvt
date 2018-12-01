@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_video_stream_sec_vuln.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_adobe_fms_video_stream_sec_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Adobe Flash Media Server Video Stream Capture Security Issue
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800069");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,16 +43,14 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/advisories/apsa08-11.html");
 
-  script_tag(name:"impact", value:"Successful attack could lead to capture and archive delivered video.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful attack could lead to capture and archive delivered video.");
 
   script_tag(name:"affected", value:"Adobe Flash Media Server 3.0.x prior to 3.0.3 and 3.5.x prior to 3.5.1 on Windows.");
 
   script_tag(name:"insight", value:"The security issue is that it is possible to establish RTMPE/RTMPTE sessions
   to Flash Media Server when SWF verification is not enabled.");
 
-  script_tag(name:"solution", value:"Upgrade Adobe Flash Media Server version 3.0.3, 3.5.1 or later,
-  For updates refer to http://www.adobe.com/products/flashmediaserver/");
+  script_tag(name:"solution", value:"Upgrade Adobe Flash Media Server version 3.0.3, 3.5.1 or later.");
 
   script_tag(name:"summary", value:"The host is running Adobe Flash Media Server (FMS), and is prone
   to a video streaming vulnerability.");
@@ -60,6 +58,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name:"URL", value:"http://www.adobe.com/products/flashmediaserver/");
   exit(0);
 }
 

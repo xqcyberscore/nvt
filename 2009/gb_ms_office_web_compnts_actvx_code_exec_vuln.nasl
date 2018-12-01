@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_compnts_actvx_code_exec_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ms_office_web_compnts_actvx_code_exec_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Office Web Components ActiveX Control Code Execution Vulnerability
 #
@@ -27,26 +27,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://www.microsoft.com/technet/security/bulletin/ms09-043.mspx
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.800845");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2009-1136", "CVE-2009-0562", "CVE-2009-2496", "CVE-2009-1534");
+  script_bugtraq_id(35642, 35990, 35991, 35992);
+  script_name("Microsoft Office Web Components ActiveX Control Code Execution Vulnerability");
 
-  Workaround:
-  Set the killbit for the CLSID
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35800/");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/957638");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1867");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/advisory/973472.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms09-043.mspx");
 
-  {0002E541-0000-0000-C000-000000000046}
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"executable_version");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_mandatory_keys("SMB/registry_enumerated");
+  script_require_ports(139, 445);
 
-  {0002E559-0000-0000-C000-000000000046}
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code which may
+  result in a Denial of Service condition on the affected system.");
 
-  {0002E55B-0000-0000-C000-000000000046}
-
-  http://support.microsoft.com/kb/240797";
-
-tag_impact = "Successful exploitation will let the attacker execute arbitrary code which may
-  result in a Denial of Service condition on the affected system.
-
-  Impact Level: System/Application";
-tag_affected = "Microsoft Office XP/2003 SP 3 and prior
+  script_tag(name:"affected", value:"Microsoft Office XP/2003 SP 3 and prior
 
   Microsoft Visual Studio .NET 2003 SP 1 and prior
 
@@ -56,52 +67,34 @@ tag_affected = "Microsoft Office XP/2003 SP 3 and prior
 
   Microsoft ISA Server 2006 Standard/Enterprise Edition SP 1 and prior
 
-  Microsoft Office 2003 Web Components for 2007 Microsoft Office system SP 1";
-tag_insight = "- Error exists in the OWC10.Spreadsheet ActiveX control that can be
-    exploited via specially crafted parameters passed to the
-    'msDataSourceObject()' method.
+  Microsoft Office 2003 Web Components for 2007 Microsoft Office system SP 1");
+
+  script_tag(name:"insight", value:"- Error exists in the OWC10.Spreadsheet ActiveX control that can be
+  exploited via specially crafted parameters passed to the 'msDataSourceObject()' method.
 
   - Error occurs when loading and unloading the OWC10 ActiveX control.
 
   - Error exists in the OWC10.Spreadsheet ActiveX control related to the
-    'BorderAround()' method via accessing certain methods in a specific order.
+  'BorderAround()' method via accessing certain methods in a specific order.
 
   - A boundary error in the Office Web Components ActiveX control which can be
-    exploited to cause a buffer overflow.";
-tag_summary = "This host is installed with Microsoft Office Web Components ActiveX Control
-  and is prone to code execution vulnerability.";
+  exploited to cause a buffer overflow.");
 
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.800845");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2009-07-18 09:37:41 +0200 (Sat, 18 Jul 2009)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2009-1136", "CVE-2009-0562", "CVE-2009-2496", "CVE-2009-1534");
-  script_bugtraq_id(35642, 35990, 35991, 35992);
-  script_name("Microsoft Office Web Components ActiveX Control Code Execution Vulnerability");
+  script_tag(name:"summary", value:"This host is installed with Microsoft Office Web Components ActiveX Control
+  and is prone to code execution vulnerability.");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35800/");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/957638");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/1867");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/advisory/973472.mspx");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms09-043.mspx");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory  Workaround:
+  Set the killbit for the CLSID
 
-  script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  {0002E541-0000-0000-C000-000000000046}
+
+  {0002E559-0000-0000-C000-000000000046}
+
+  {0002E55B-0000-0000-C000-000000000046}");
+
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/240797");
+
   exit(0);
 }
 
@@ -124,7 +117,6 @@ function getWebCmpntsVer(webpath, webfile)
   file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
                       string:webdllpath + webpath + webfile);
 
-  # Get for file version
   webdllVer = GetVer(share:share, file:file);
 
   if(webdllVer == NULL){
@@ -142,19 +134,16 @@ if((hotfix_missing(name:"947320") == 0)||(hotfix_missing(name:"947319") == 0)||
   exit(0);
 }
 
-# Check for Office Installation
 if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
   # Path for OWC10.dll file
   dllPath = "\Common Files\Microsoft Shared\Web Components";
 
-  # Grep for OWC10.dll file version for
   # Office XP Web Components for Office XP/2003
   dllVer = getWebCmpntsVer(webpath:dllPath, webfile:"\10\OWC10.DLL");
 
   if(dllVer == NULL)
   {
-    # Grep for OWC11.dll file version for
     # Office 2003 Web Components for Office 2003/2007
     dllVer = getWebCmpntsVer(webpath:dllPath, webfile:"\11\OWC11.DLL");
   }
@@ -168,18 +157,16 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
        version_in_range(version:dllVer, test_version:"11.0", test_version2:"11.0.8303.0")||
        version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6502.4999"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
 }
 
-# Check for ISA Server Installation
 if(registry_key_exists(key:"SOFTWARE\Microsoft\Fpc"))
 {
-  # Grep for Install path of ISA Server
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
-  if(registry_key_exists(key:key)) 
+  if(registry_key_exists(key:key))
   {
   foreach item (registry_enum_keys(key:key))
   {
@@ -187,18 +174,17 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Fpc"))
     if("Microsoft ISA Server 2006 Service Pack 1" >< isaName ||
        "Microsoft ISA Server 2004 Service Pack 3" >< isaName)
     {
-      # Check if Kill-Bit is set for ActiveX control
       if(is_killbit_set(clsid:"{0002E541-0000-0000-C000-000000000046}") == 0)
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
       else if(is_killbit_set(clsid:"{0002E559-0000-0000-C000-000000000046}") == 0)
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
       else if(is_killbit_set(clsid:"{0002E55B-0000-0000-C000-000000000046}") == 0)
-       security_message(0);
+       security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
     else if(isaName =~ "Microsoft ISA Server [2004|2006]")
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -216,7 +202,7 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\VisualStudio\7.0"))
     # Msowc.dll version 9.0 < 9.0.0.8977 for Visual Studio .NET 2003 SP1
     if(version_in_range(version:dllVer, test_version:"9.0",
                                        test_version2:"9.0.0.8976")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
     }
   }
 }

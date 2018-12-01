@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-055.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms09-055.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)
 #
@@ -27,10 +27,51 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.900880");
+  script_version("$Revision: 12602 $");
+  script_cve_id("CVE-2009-2493");
+  script_bugtraq_id(35828);
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_tag(name:"creation_date", value:"2009-10-14 18:36:58 +0200 (Wed, 14 Oct 2009)");
+  script_name("Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)");
 
-  http://www.microsoft.com/technet/security/bulletin/ms09-055.mspx
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/973525");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2890");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS09-055.mspx");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/advisory/972890.mspx");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2009 SecPod");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute arbitrary code,
+  and can compromise a vulnerable system.");
+
+  script_tag(name:"affected", value:"Microsoft Windows 7
+
+  Microsoft Windows 2K SP4/XP SP3/2K3 SP2 and prior
+
+  Microsoft Windows Vista Service Pack 1/2 and prior
+
+  Microsoft Windows Server 2008 Service Pack 1/2 and prior");
+
+  script_tag(name:"insight", value:"The flaw is due to ane errors in the ATL headers that handle
+  instantiation of an object from data streams, which could allow attackers to
+  instantiate arbitrary objects in Internet Explorer that can bypass certain
+  related security policies.");
+
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-055.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory
 
   Workaround:
   Set the killbit for the following CLSIDs,
@@ -41,57 +82,11 @@ tag_solution = "Run Windows Update and update the listed hotfixes or download an
   {A9A7297E-969C-43F1-A1EF-51EBEA36F850}, {DD8C2179-1B4A-4951-B432-5DE3D1507142}
   {4F1E5B1A-2A80-42ca-8532-2D05CB959537}, {27A3D328-D206-4106-8D33-1AA39B13394B}
   {DB640C86-731C-484A-AAAF-750656C9187D}, {15721a53-8448-4731-8bfc-ed11e128e444}
-  {3267123E-530D-4E73-9DA7-79F01D86A89F}
-  http://www.microsoft.com/technet/security/advisory/972890.mspx";
+  {3267123E-530D-4E73-9DA7-79F01D86A89F}");
 
-tag_impact = "Successful exploitation will let the remote attackers execute arbitrary code,
-  and can compromise a vulnerable system.
-
-  Impact Level: System.";
-tag_affected = "Microsoft Windows 7
-
-  Microsoft Windows 2K SP4/XP SP3/2K3 SP2 and prior
-
-  Microsoft Windows Vista Service Pack 1/2 and prior
-
-  Microsoft Windows Server 2008 Service Pack 1/2 and prior";
-tag_insight = "The flaw is due to ane errors in the ATL headers that handle
-  instantiation of an object from data streams, which could allow attackers to
-  instantiate arbitrary objects in Internet Explorer that can bypass certain
-  related security policies.";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-055.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.900880");
-  script_version("$Revision: 9350 $");
-  script_cve_id("CVE-2009-2493");
-  script_bugtraq_id(35828);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2009-10-14 18:36:58 +0200 (Wed, 14 Oct 2009)");
-  script_name("Microsoft Windows ATL COM Initialization Code Execution Vulnerability (973525)");
-
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/973525");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2890");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/MS09-055.mspx");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -109,7 +104,6 @@ if(hotfix_missing(name:"973525") == 0){
   exit(0);
 }
 
-# Check if Kill-Bit is set for ActiveX control
 clsids = make_list(
   "{0002E531-0000-0000-C000-000000000046}", "{4C85388F-1500-11D1-A0DF-00C04FC9E20F}",
   "{0002E532-0000-0000-C000-000000000046}", "{0002E554-0000-0000-C000-000000000046}",
@@ -122,10 +116,9 @@ clsids = make_list(
 
 foreach clsid (clsids)
 {
-  ## Check if Kill-Bit is set for ActiveX control
   if(is_killbit_set(clsid:clsid) == 0)
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

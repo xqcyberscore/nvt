@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wincomlpd_total_mult_vuln.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_wincomlpd_total_mult_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # WinComLPD Total Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800063");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-11-26 16:25:46 +0100 (Wed, 26 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow execution of arbitrary code
   or crashing the remote wincomlpd service by simply using negative values like
-  0x80/0xff for the 8 bit numbers and 0x8000/0xffff for the data blocks.
-
-  Impact Level: System");
+  0x80/0xff for the 8 bit numbers and 0x8000/0xffff for the data blocks.");
 
   script_tag(name:"affected", value:"WinCom LPD Total 3.0.2.623 and prior on Windows.");
 

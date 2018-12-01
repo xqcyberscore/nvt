@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dangerous_activex_ctrl.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_dangerous_activex_ctrl.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Detection of Dangerous ActiveX Control
 #
@@ -23,17 +23,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script will list all the vulnerable activex controls installed
-  on the remote windows machine with references and cause.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900188");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 9350 $");
+  script_version("$Revision: 12602 $");
   script_cve_id("CVE-2008-5002", "CVE-2008-4919", "CVE-2008-4342",
                 "CVE-2008-5232", "CVE-2008-5492");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_name("Detection of Dangerous ActiveX Control");
@@ -41,10 +38,17 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script will list all the vulnerable activex controls installed
+  on the remote windows machine with references and cause.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
   exit(0);
 }
 

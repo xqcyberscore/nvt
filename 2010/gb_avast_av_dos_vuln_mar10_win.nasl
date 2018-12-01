@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_dos_vuln_mar10_win.nasl 10921 2018-08-10 18:42:30Z cfischer $
+# $Id: gb_avast_av_dos_vuln_mar10_win.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Aast! Antivirus 'aavmker4.sys' Denial Of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800479");
-  script_version("$Revision: 10921 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 20:42:30 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,19 +49,18 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("Avast!/AV/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will let the local attackers to cause a Denial of
-  Service or gain escalated privileges on the victim's system.
-  Impact Level: System/Application");
+  Service or gain escalated privileges on the victim's system.");
   script_tag(name:"affected", value:"avast! Home and Professional version 4.8 to 4.8.1368.0 and
   avast! Home and Professional version 5.0 before 5.0.418.0 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error in the 'aavmker4.sys' kernel driver when
   processing certain IOCTLs. This can be exploited to corrupt kernel memory
   via a specially crafted 0xb2d60030 IOCTL.");
-  script_tag(name:"solution", value:"Upgrade to avast! version  5.0.418  or later
-  For updates refer to http://www.avast.com/eng/download.html");
+  script_tag(name:"solution", value:"Upgrade to avast! version  5.0.418  or later");
   script_tag(name:"summary", value:"This host is installed with avast! AntiVirus and is prone to Denial
   Of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.avast.com/eng/download.html");
   exit(0);
 }
 

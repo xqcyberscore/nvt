@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-040.nasl 11262 2018-09-06 09:06:46Z cfischer $
+# $Id: gb_ms08-040.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # MS SQL Server Elevation of Privilege Vulnerabilities (941203)
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800105");
-  script_version("$Revision: 11262 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:26:50 +0200 (Tue, 14 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code,
   with a crafted SQL expression or Exposure of sensitive information or
-  Privilege escalation.
-
-  Impact Level: System");
+  Privilege escalation.");
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2000 Service Pack 4
 
@@ -75,9 +73,7 @@ if(description)
   - buffer overflow error, while processing malformed insert statements.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-
-  https://docs.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-040");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host has Microsoft SQL Server, which is prone to Privilege
   Escalation Vulnerabilities.");

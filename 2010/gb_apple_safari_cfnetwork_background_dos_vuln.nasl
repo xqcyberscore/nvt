@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_cfnetwork_background_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_safari_cfnetwork_background_dos_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Apple Safari 'background' Remote Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800485");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari version 4.0.3 (4.31.9.1) and 4.0.4(5.31.21.10)");
   script_tag(name:"insight", value:"The flaw exists due to error in 'cfnetwork.dll' file in CFNetwork when processing
   'BACKGROUND' attribute of a 'BODY' element via a long string.");
-  script_tag(name:"solution", value:"Upgrade to  Apple Safari version 4.0.5 or later,
-  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to  Apple Safari version 4.0.5 or later.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
   to Denial of Service vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads");
   exit(0);
 }
 

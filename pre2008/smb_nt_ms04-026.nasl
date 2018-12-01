@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-026.nasl 10213 2018-06-15 10:04:26Z cfischer $
+# $Id: smb_nt_ms04-026.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Vulnerability in Exchange Server 5.5 Outlook Web Access XSS (842436)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14254");
-  script_version("$Revision: 10213 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:04:26 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10902);
   script_tag(name:"cvss_base", value:"6.8");
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "find_service.nasl", "http_version.nasl" );
+  script_dependencies("secpod_reg_enum.nasl", "find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("SMB/registry_enumerated");
 
@@ -59,7 +59,9 @@ if(description)
   It may also be possible to exploit the vulnerability to manipulate Web browser caches
   and intermediate proxy server caches, and put spoofed content in those caches.");
 
-  script_tag(name:"solution", value:"Apply the Windows Updates described in http://www.microsoft.com/technet/security/bulletin/ms04-026.mspx");
+  script_tag(name:"solution", value:"Apply the Windows Updates described in the references.");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms04-026.mspx");
 
   script_tag(name:"summary", value:"The remote host is running a version of the Outlook Web Access which contains
   cross site scripting flaws.");
@@ -74,7 +76,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("secpod_reg.inc");
 
-# we will first ensure that OWA is running
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 

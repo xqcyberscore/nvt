@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_tls_ssl_spoofing_vuln.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms_tls_ssl_spoofing_vuln.nasl 12602 2018-11-30 14:36:58Z cfischer $
 #
 # Microsoft Windows TLS/SSL Spoofing Vulnerability (977377)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800466");
-  script_version("$Revision: 10984 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 12602 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -45,12 +45,11 @@ if(description)
   script_family("Windows");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to prepend content into a
   legitimate, client-initiated request to a server in the context of a valid
-  TLS/SSL-authenticated session.
-  Impact Level: System");
+  TLS/SSL-authenticated session.");
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior
   Microsoft Windows 2000 Service Pack 4 and prior
   Microsoft Windows 2003 Service Pack 2 and prior");
@@ -58,8 +57,7 @@ if(description)
   attack to introduce and execute a request in the protected TLS/SSL session
   between a client and a server.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/advisory/977377.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host installed with TLS/SSL protocol which is prone to Spoofing
   Vulnerability");
