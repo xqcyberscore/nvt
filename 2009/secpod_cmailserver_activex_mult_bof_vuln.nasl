@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cmailserver_activex_mult_bof_vuln.nasl 3898 2009-08-19 12:45:380Z aug
+# $Id: secpod_cmailserver_activex_mult_bof_vuln.nasl 12608 2018-11-30 17:27:57Z cfischer $
 #
 # CMailServer ActiveX Control Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900918");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12608 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-11-30 18:27:57 +0100 (Fri, 30 Nov 2018) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 30 Nov 2018 17:19:56 +0100
+# Automatically created on:  Mon, 03 Dec 2018 11:31:13 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39238,6 +39238,8 @@
 2018/debian/deb_4345.nasl: GPLv2+
 2018/debian/deb_4346.nasl: GPLv2+
 2018/debian/deb_4347.nasl: GPLv2+
+2018/debian/deb_4348.nasl: GPLv2+
+2018/debian/deb_4349.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39733,7 +39735,10 @@
 2018/debian/deb_dla_1596.nasl: GPLv2+
 2018/debian/deb_dla_1597.nasl: GPLv2+
 2018/debian/deb_dla_1598.nasl: GPLv2+
+2018/debian/deb_dla_1599.nasl: GPLv2+
 2018/debian/deb_dla_1600.nasl: GPLv2+
+2018/debian/deb_dla_1601.nasl: GPLv2+
+2018/debian/deb_dla_1602.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42844,6 +42849,7 @@
 2018/qnap/gb_qnap_qts_nas-201808-13.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_nas-201809-20.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_nas-201811-22.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_nas-201811-29.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_rce_vuln_jun18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_vpnfilter_malware.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_xss_vuln_apr18.nasl: GPLv2+
@@ -44096,7 +44102,9 @@ gb_dlink_dir_detect.nasl: GPLv2+
 gb_dlink_dns_detect.nasl: GPLv2+
 gb_dlink_dsl_detect.nasl: GPLv2+
 gb_dlink_dwr_detect.nasl: GPLv2+
+gb_dlink_wifimanager_consolidation.nasl: GPLv2+
 gb_dlink_wifimanger_detect.nasl: GPLv2+
+gb_dlink_wifimanger_detect_win.nasl: GPLv2+
 gb_dlxspot_web_detect.nasl: GPLv2+
 gb_dm_filemanager_detect.nasl: GPLv2+
 gb_dnaLIMS_detect.nasl: GPLv2+
@@ -45035,6 +45043,7 @@ gb_sawmill_detect.nasl: GPLv2+
 gb_scalix_detect.nasl: GPLv2+
 gb_schneider_clearscada_detect.nasl: GPLv2+
 gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl: GPLv2+
+gb_schneider_electric_software_update_detect_win.nasl: GPLv2+
 gb_schneider_homelynk_controller_detect.nasl: GPLv2+
 gb_schneider_indusoft_http_detect.nasl: GPLv2+
 gb_schneider_intouch_http_detect.nasl: GPLv2+
@@ -60989,6 +60998,7 @@ gsf/2018/diskboss/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
 gsf/2018/d-link/gb_dlink_dwr_rce_vuln.nasl: GPLv2+
 gsf/2018/d-link/gb_dlink_wifimanager_mult_vuln.nasl: GPLv2+
+gsf/2018/d-link/gb_dlink_wifimanager_mult_vuln_nov18.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_default_credentials.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_xss_vuln1.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_xss_vuln.nasl: GPLv2+
@@ -61119,6 +61129,7 @@ gsf/2018/f5/gb_f5_big_ip_K46121888.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K46940010.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K48224824.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K49440608.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K49711130.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50254952.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K50459349.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K51079478.nasl: GPLv2+
@@ -61918,6 +61929,7 @@ gsf/2018/schneider/gb_indusoft_web_studio_rce_vuln_aug18.nasl: GPLv2+
 gsf/2018/schneider/gb_intouch_machine_edition_rce_vuln_aug18.nasl: GPLv2+
 gsf/2018/schneider/gb_pelco_sarix_ip_camera_mult_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_clearscada_dos_vuln.nasl: GPLv2+
+gsf/2018/schneider/gb_schneider_electric_software_update_ce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_indusoft_rce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_intoch_rce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+

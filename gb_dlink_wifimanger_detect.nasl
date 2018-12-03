@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_wifimanger_detect.nasl 11756 2018-10-05 08:38:23Z ckuersteiner $
+# $Id: gb_dlink_wifimanger_detect.nasl 12620 2018-12-03 09:54:13Z ckuersteiner $
 #
-# D-Link Central WiFiManager Software Controller Detection
+# D-Link Central WiFiManager Software Controller Detection (HTTP)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141570");
-  script_version("$Revision: 11756 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 10:38:23 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12620 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:54:13 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 11:56:43 +0700 (Fri, 05 Oct 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_name("D-Link Central WiFiManager Software Controller Detection");
+  script_name("D-Link Central WiFiManager Software Controller Detection (HTTP");
 
   script_tag(name:"summary", value:"Detection of D-Link Central WiFiManager Software Controller.
 
-The script sends a connection request to the server and attempts to detect D-Link Central WiFiManager Software
-Controller.");
+The script sends a HTTP connection request to the server and attempts to detect D-Link Central WiFiManager
+Software Controller.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -50,8 +50,6 @@ Controller.");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
-
-  script_xref(name:"URL", value:"http://us.dlink.com/products/business-solutions/central-wifimanager-software-controller/");
 
   exit(0);
 }
@@ -71,13 +69,8 @@ if ("Central WiFiManager" >< res) {
   version = "unknown";
 
   set_kb_item(name: "dlink_central_wifimanager/detected", value: TRUE);
+  set_kb_item(name: "dlink_central_wifimanager/http/port", value: port);
 
-  cpe = 'cpe:/a:d-link:central_wifimanager';
-
-  register_product(cpe: cpe, location: "/", port: port);
-
-  log_message(data: build_detection_report(app: "D-Link Central WiFiManager Software Controller", version: version,                                           install: "/", cpe: cpe),
-              port: port);
   exit(0);
 }
 

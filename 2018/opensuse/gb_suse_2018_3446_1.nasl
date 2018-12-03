@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3446_1.nasl 12497 2018-11-23 08:28:21Z cfischer $
+# $Id: gb_suse_2018_3446_1.nasl 12619 2018-12-03 09:51:24Z mmartin $
 #
 # SuSE Update for zziplib openSUSE-SU-2018:3446-1 (zziplib)
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852039");
-  script_version("$Revision: 12497 $");
+  script_version("$Revision: 12619 $");
   script_cve_id("CVE-2018-17828");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:51:24 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:36:18 +0200 (Fri, 26 Oct 2018)");
   script_name("SuSE Update for zziplib openSUSE-SU-2018:3446-1 (zziplib)");
   script_category(ACT_GATHER_INFO);

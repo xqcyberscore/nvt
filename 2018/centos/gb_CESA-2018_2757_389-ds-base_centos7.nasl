@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_CESA-2018_2757_389-ds-base_centos7.nasl 12619 2018-12-03 09:51:24Z mmartin $
 #
 # CentOS Update for 389-ds-base CESA-2018:2757 centos7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882954");
-  script_version("$Revision: 11734 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_version("$Revision: 12619 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 10:51:24 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:02:18 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-10850", "CVE-2018-10935", "CVE-2018-14624", "CVE-2018-14638");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for 389-ds-base CESA-2018:2757 centos7 ");
   script_tag(name:"summary", value:"Check the version of 389-ds-base");

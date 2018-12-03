@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_detect.nasl 10851 2018-08-09 08:19:54Z cfischer $
+# $Id: phpbb_detect.nasl 12612 2018-12-02 08:39:05Z cfischer $
 #
 # phpBB Forum Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100033");
-  script_version("$Revision: 10851 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:19:54 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-02 09:39:05 +0100 (Sun, 02 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,18 +94,39 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
       }
     }
 
-    #/docs/INSTALL.html in 3.1.x is currently not reliable
+    #/docs/INSTALL.html in 3.1.x+ is currently not reliable (3.2.4 has e.g. 3.2.1)
     if( ! version_is_less_equal( version:vers, test_version:"3.1.0" ) ) {
+
+      # Overwriting the not reliable version from the INSTALL.html above
+      vers = "unknown";
+
       url = dir + "/docs/CHANGELOG.html";
       req = http_get( item:url, port:port );
       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-      # Version is always "Changes since 3.1.x + 1"
-      version = eregmatch( string:buf, pattern:"Changes since 3.([1-9]).([0-9]+)" );
-      if( ! isnull( version[1] ) && ! isnull( version[2] ) ) {
+      # Version is always "Changes since 3.1.x + 1" with some special cases handled below.
+      version = eregmatch( string:buf, pattern:"Changes since 3.([1-9]).([0-9]+)(-[a-zA-Z]+[0-9]*)?" );
+      if( ! isnull( version[1] ) && ! isnull( version[2] ) && ( isnull( version[3] ) || "-PL" >< version[3] ) ) {
         conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
         version[2]++;
         vers = "3." + version[1] + "." + version[2];
+
+      # There are special cases like "Changes since 3.2.4-RC1" or "Changes since 3.2.0-a1"
+      # where the actual version is/was 3.2.4/3.2.0. Unfortnately we don't now if the next version
+      # was e.g. RC2 or the final release so we assume the next version as the "final" one.
+      } else if( ! isnull( version[1] ) && ! isnull( version[2] ) && ! isnull( version[3] ) ) {
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+        vers = "3." + version[1] + "." + version[2];
+      }
+
+      # Another special handling for "Changes since 3.0.x" or "Changes since 3.1.x"
+      if( vers == "unknown" ) {
+        version = eregmatch( string:buf, pattern:"Changes since 3.([0-9]).x" );
+        if( ! isnull( version[1] ) ) {
+          conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+          version[1]++;
+          vers = "3." + version[1] + ".0";
+        }
       }
     }
 
