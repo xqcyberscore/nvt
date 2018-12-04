@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_js_info_disc_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_firefox_js_info_disc_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Firefox Information Disclosure Vulnerability Jan09 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900449");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-28 13:27:12 +0100 (Wed, 28 Jan 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:P/A:N");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox version from 2.0 to 3.0.5 on Linux.");
   script_tag(name:"insight", value:"The Web Browser fails to properly enforce the same-origin policy, which leads
   to cross-domain information disclosure.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.getfirefox.com");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
   to information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.getfirefox.com");
   exit(0);
 }
 

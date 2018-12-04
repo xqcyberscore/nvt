@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_bof_vuln_lin_mar09.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_vlc_media_player_bof_vuln_lin_mar09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # VLC Media Player Stack Overflow Vulnerability (Lin-Mar09)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900531");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,13 +51,13 @@ if(description)
   script_tag(name:"affected", value:"VLC media player 0.9.8a and prior on Linux.");
   script_tag(name:"insight", value:"This flaw is due to improper boundary checking in status.xml in the web
   interface by an overly long request.");
-  script_tag(name:"solution", value:"Upgrade to VLC media player version 1.0 or later,
-  For updates refer to http://www.videolan.org/vlc");
+  script_tag(name:"solution", value:"Upgrade to VLC media player version 1.0 or later.");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
   Stack Overflow Vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc");
   exit(0);
 }
 

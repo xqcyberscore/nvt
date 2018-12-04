@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_weechat.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_weechat.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Auto generated from VID 81826d12-317a-11e2-9186-406186f3d89d
 #
@@ -29,9 +29,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.72600");
-  script_version("$Revision: 11762 $");
+  script_version("$Revision: 12634 $");
   script_cve_id("CVE-2012-5534");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:47:32 -0500 (Mon, 26 Nov 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,14 +44,13 @@ if(description)
 
   script_tag(name:"insight", value:"The following packages are affected:
 
-  weechat
-   weechat-devel");
+  weechat, weechat-devel");
 
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");
 
-  script_xref(name:"URL", value:"http://weechat.org/security/
-https://savannah.nongnu.org/bugs/?37764");
+  script_xref(name:"URL", value:"http://weechat.org/security/");
+  script_xref(name:"URL", value:"https://savannah.nongnu.org/bugs/?37764");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/81826d12-317a-11e2-9186-406186f3d89d.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

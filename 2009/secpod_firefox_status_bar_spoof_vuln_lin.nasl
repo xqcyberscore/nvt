@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_status_bar_spoof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_firefox_status_bar_spoof_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Firefox Status Bar Spoofing Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900447");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-28 13:27:12 +0100 (Wed, 28 Jan 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"Firefox doesn't properly handle the crafted URL which is being displayed in
   the user's browser which lets the attacker perform clickjacking attack and
   can spoof the user redirect to a different arbitrary malformed website.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.getfirefox.com");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
   to status bar spoofing vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.getfirefox.com");
   exit(0);
 }
 

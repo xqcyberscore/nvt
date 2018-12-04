@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_jul09.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_jul09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - Jul09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900695");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,11 +55,11 @@ if(description)
     in Javascript within sandbox.
 
   - Error while allocating memory buffers for a renderer (tab) process.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome version 2.0.172.37.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 2.0.172.37.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host has Google Chrome installed and is prone to Multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

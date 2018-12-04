@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_default_perms.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: mozilla_default_perms.nasl 12621 2018-12-03 10:50:25Z cfischer $
 # Description: Mozilla/Firefox default installation file permission flaw
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15432");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11166);
   script_cve_id("CVE-2004-0906");
@@ -44,8 +44,8 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "solution" , value : "Update to the latest version of the software");
-  script_tag(name : "summary" , value : "The remote host is using Mozilla and/or Firefox, an alternative web browser.
+  script_tag(name:"solution", value:"Update to the latest version of the software");
+  script_tag(name:"summary", value:"The remote host is using Mozilla and/or Firefox, an alternative web browser.
   The remote version of this software is prone to an improper file permission
   setting.
 

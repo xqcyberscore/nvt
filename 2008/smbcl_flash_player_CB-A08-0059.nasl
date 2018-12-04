@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_flash_player_CB-A08-0059.nasl 11190 2018-09-03 11:25:15Z cfischer $
+# $Id: smbcl_flash_player_CB-A08-0059.nasl 12623 2018-12-03 13:11:38Z cfischer $
 # Description: Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)
 #
 # Authors:
@@ -30,13 +30,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90019");
-  script_version("$Revision: 11190 $");
+  script_version("$Revision: 12623 $");
   script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
                 "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
   script_bugtraq_id(26930, 28694, 26966, 27034, 28696, 28697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:25:15 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)");
@@ -67,6 +67,7 @@ if(description)
     7.0.70.0 does not sufficiently restrict the interpretation and usage of
     cross-domain policy files, which makes it easier for remote attackers to
     conduct cross-domain and cross-site scripting (XSS) attacks.
+
   - CVE 2007-6637
     Multiple cross-site scripting (XSS) vulnerabilities in Adobe Flash Player
     allow remote attackers to inject arbitrary web script or HTML via a crafted
@@ -90,7 +91,7 @@ if(description)
   and earlier on Windows.");
 
   script_tag(name:"solution", value:"All Adobe Flash Player users should
-  upgrade to the latest version: http://get.adobe.com/flashplayer");
+  upgrade to the latest version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

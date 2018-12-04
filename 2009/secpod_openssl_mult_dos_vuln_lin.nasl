@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900653");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,6 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial-of-service
   conditions, crash the client, and exhaust all memory.");
 
+  script_xref(name:"URL", value:"http://www.openssl.org/source/");
   exit(0);
 }
 
@@ -77,7 +78,7 @@ aff_os1 = string("\n Affected Software/OS: \n" +
                  "OpenSSL version 0.9.8 to version 0.9.8k on Linux.\n");
 
 fix1 = string("\n Fix: Apply patches or upgrade to the latest version." +
-              "\n For updates refer tohttp://www.openssl.org/source/ ");
+              "\n ");
 
 ref1 = string("\n References:" +
               "\n http://secunia.com/advisories/35128" +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_symphony";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802963");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 12634 $");
   script_cve_id("CVE-2010-5204");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 15:01:39 +0530 (Mon, 17 Sep 2012)");
   script_name("IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)");
 
@@ -49,26 +49,28 @@ if(description)
   script_dependencies("gb_ibm_lotus_symphony_detect_win.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("IBM/Lotus/Symphony/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-code on the target system.");
-  script_tag(name:"affected", value:"IBM Lotus Symphony version 1.3.0 Revision 20090908.0900");
-  script_tag(name:"insight", value:"The flaw is due to the way it loads dynamic-link libraries
-(e.g. eclipse_1114.dll and emser645mi.dll) in an insecure manner. This can
-be exploited to load arbitrary libraries by tricking a user into e.g. opening
-a ODT, STW, or SXW file located on a remote WebDAV or SMB share.");
-  script_tag(name:"summary", value:"This host is installed with IBM Lotus Symphony and is prone to
-multiple untrusted search path vulnerabilities.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.
 
-Apply the workaround");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
+  code on the target system.");
+
+  script_tag(name:"affected", value:"IBM Lotus Symphony version 1.3.0 Revision 20090908.0900");
+
+  script_tag(name:"insight", value:"The flaw is due to the way it loads dynamic-link libraries
+  (e.g. eclipse_1114.dll and emser645mi.dll) in an insecure manner. This can
+  be exploited to load arbitrary libraries by tricking a user into e.g. opening
+  a ODT, STW, or SXW file located on a remote WebDAV or SMB share.");
+
+  script_tag(name:"summary", value:"This host is installed with IBM Lotus Symphony and is prone to
+  multiple untrusted search path vulnerabilities.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2264107
 
-http://technet.microsoft.com/en-us/security/advisory/2269637#EGF");
   exit(0);
 }
 

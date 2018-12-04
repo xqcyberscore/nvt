@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_js_info_disc_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_apple_safari_js_info_disc_vuln.nasl 12631 2018-12-03 15:32:54Z cfischer $
 #
 # Apple Safari JavaScript Engine Cross Domain Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900075");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12631 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:32:54 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:P/A:N");
@@ -49,13 +49,13 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari 3.1.2 and prior on Windows.");
   script_tag(name:"insight", value:"Undefined function in the JavaScript implementation of the browser fails
   to properly enforce the origin policy and leaves temporary footprints.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0 or later
-  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0 or later");
   script_tag(name:"summary", value:"The host is running Apple Safari web browser which is prone
   to information disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads");
   exit(0);
 }
 

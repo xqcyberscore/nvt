@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3794_1.nasl 12126 2018-10-26 13:00:10Z cfischer $
+# $Id: gb_ubuntu_USN_3794_1.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Ubuntu Update for moin USN-3794-1
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843688");
-  script_version("$Revision: 12126 $");
+  script_version("$Revision: 12637 $");
   script_cve_id("CVE-2017-5934");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 15:00:10 +0200 (Fri, 26 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-26 06:07:06 +0200 (Fri, 26 Oct 2018)");
   script_name("Ubuntu Update for moin USN-3794-1");
   script_category(ACT_GATHER_INFO);

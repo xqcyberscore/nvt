@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_rubygem-rails4.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_rubygem-rails4.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Auto generated from VID 31db9a18-e289-11e1-a57d-080027a27dbf
 #
@@ -32,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2012-3463", "CVE-2012-3464", "CVE-2012-3465");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12634 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: rubygem-rails");
   script_category(ACT_GATHER_INFO);
@@ -44,9 +44,7 @@ if(description)
 
   script_tag(name:"insight", value:"The following packages are affected:
 
-  rubygem-rails
-   rubygem-actionpack
-   rubygem-activesupport
+  rubygem-rails, rubygem-actionpack, rubygem-activesupport
 
 CVE-2012-3463
 Cross-site scripting (XSS) vulnerability in
@@ -70,9 +68,9 @@ script or HTML via malformed HTML markup.");
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");
 
-  script_xref(name:"URL", value:"https://groups.google.com/d/msg/rubyonrails-security/fV3QUToSMSw/eHBSFOUYHpYJ
-https://groups.google.com/d/msg/rubyonrails-security/kKGNeMrnmiY/r2yM7xy-G48J
-https://groups.google.com/d/msg/rubyonrails-security/FgVEtBajcTY/tYLS1JJTu38J");
+  script_xref(name:"URL", value:"https://groups.google.com/d/msg/rubyonrails-security/fV3QUToSMSw/eHBSFOUYHpYJ");
+  script_xref(name:"URL", value:"https://groups.google.com/d/msg/rubyonrails-security/kKGNeMrnmiY/r2yM7xy-G48J");
+  script_xref(name:"URL", value:"https://groups.google.com/d/msg/rubyonrails-security/FgVEtBajcTY/tYLS1JJTu38J");
   script_xref(name:"URL", value:"http://weblog.rubyonrails.org/2012/8/9/ann-rails-3-2-8-has-been-released/");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/31db9a18-e289-11e1-a57d-080027a27dbf.html");
 

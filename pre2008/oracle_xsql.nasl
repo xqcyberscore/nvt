@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_xsql.nasl 8908 2018-02-21 15:08:27Z cfischer $
+# $Id: oracle_xsql.nasl 12621 2018-12-03 10:50:25Z cfischer $
 #
 # Oracle XSQL Stylesheet Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10594");
-  script_version("$Revision: 8908 $");
+  script_version("$Revision: 12621 $");
   script_cve_id("CVE-2001-0126");
   script_bugtraq_id(2295);
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 16:08:27 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,18 +42,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Oracle/banner"); # The check below is quite unreliable these days so just run it against Oracle servers
 
-  tag_summary = "The Oracle XSQL Servlet allows arbitrary Java code to be executed by an attacker by supplying
-  the URL of a malicious XSLT stylesheet when making a request to an XSQL page.";
-
-  tag_solution = "Until Oracle changes the default behavior for the XSQL servlet to disallow client supplied stylesheets,
+  script_tag(name:"summary", value:"The Oracle XSQL Servlet allows arbitrary Java code to be executed by an attacker by supplying
+  the URL of a malicious XSLT stylesheet when making a request to an XSQL page.");
+  script_tag(name:"solution", value:"Until Oracle changes the default behavior for the XSQL servlet to disallow client supplied stylesheets,
   you can workaround this problem as follows. Add allow-client-style='no' on the document element of every xsql page on
   your server.
 
   This plug-in tests for this vulnerability using a sample page, airport.xsql, which is supplied with the Oracle XSQL
-  servlet. Sample code should always be removed from production servers.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  servlet. Sample code should always be removed from production servers.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Workaround");

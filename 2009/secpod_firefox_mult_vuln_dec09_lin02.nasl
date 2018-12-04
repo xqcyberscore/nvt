@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_mult_vuln_dec09_lin02.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_firefox_mult_vuln_dec09_lin02.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Firefox Multiple Vulnerabilities Dec-09 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902006");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,14 +53,18 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_lin.nasl");
   script_mandatory_keys("Firefox/Linux/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct spoofing attacks,
   bypass certain security restrictions, manipulate certain data, disclose
   sensitive information, or compromise a user's system.");
+
   script_tag(name:"affected", value:"Firefox version prior to 3.5.6 on Linux.");
+
   script_tag(name:"insight", value:"For more information about vulnerabilities on Firefox, refer the links
   mentioned in references.");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 3.5.6,
-  http://www.mozilla.com/en-US/firefox/all.html");
+
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.5.6.");
+
   script_tag(name:"summary", value:"The host is installed with Firefox Browser and is prone to multiple
   vulnerabilities.");
 
@@ -69,10 +73,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-# Firefox Check
 ffVer = get_kb_item("Firefox/Linux/Ver");
 if(ffVer)
 {

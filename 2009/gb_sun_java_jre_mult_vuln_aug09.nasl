@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_sun_java_jre_mult_vuln_aug09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Sun Java JDK/JRE Multiple Vulnerabilities - Aug09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800867");
-  script_version("$Revision: 10144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -38,20 +38,18 @@ if(description)
   script_bugtraq_id(35939, 35943, 35944);
   script_name("Sun Java JDK/JRE Multiple Vulnerabilities - Aug09");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36159");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36162");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36180");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36199");
-  script_xref(name : "URL" , value : "http://java.sun.com/javase/6/webnotes/6u15.html");
-  script_xref(name : "URL" , value : "http://java.sun.com/j2se/1.5.0/ReleaseNotes.html");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-66-263408-1");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-66-263409-1");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-66-263488-1");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-125136-16-1");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-125139-16-1");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-118667-22-1");
-
-
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36159");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36162");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36180");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36199");
+  script_xref(name:"URL", value:"http://java.sun.com/javase/6/webnotes/6u15.html");
+  script_xref(name:"URL", value:"http://java.sun.com/j2se/1.5.0/ReleaseNotes.html");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-263408-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-263409-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-263488-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-125136-16-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-125139-16-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-118667-22-1");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -59,28 +57,23 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl", "gb_java_prdts_detect_lin.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win_or_Linux/installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allows remote attacker to gain privileges via
-  untrusted applet or Java Web Start application in the context of the affected
-  system.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Sun Java JDK/JRE version 6 before Update 15 or 5.0 before Update 20");
-  script_tag(name : "insight" , value : "Refer to the reference links for more information on the vulnerabilities.");
-  script_tag(name : "summary" , value : "This host is installed with Sun Java JDK/JRE and is prone to
+
+  script_tag(name:"impact", value:"Successful exploitation could allows remote attacker to gain privileges via
+  untrusted applet or Java Web Start application in the context of the affected system.");
+
+  script_tag(name:"affected", value:"Sun Java JDK/JRE version 6 before Update 15 or 5.0 before Update 20");
+
+  script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
+
+  script_tag(name:"summary", value:"This host is installed with Sun Java JDK/JRE and is prone to
   multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to JDK/JRE version 6 Update 15 or 5 Update 20
 
-  http://java.sun.com/javase/downloads/index.jsp
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
+  script_tag(name:"solution", value:"Upgrade to JDK/JRE version 6 Update 15 or 5 Update 20.");
 
-  or apply the patch from the references.
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****");
-  script_tag(name : "solution_type" , value : "VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 

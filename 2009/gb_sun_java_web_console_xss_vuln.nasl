@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_console_xss_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_sun_java_web_console_xss_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Sun Java Web Console Multiple XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800826");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"insight", value:"Errors in help jsp script that is not properly sanitising input data before
   being returned to the user, which can be exploited to cause web script or
   HTML code injection.");
-  script_tag(name:"solution", value:"Apply patch from below link,
-  http://sunsolve.sun.com/search/document.do?assetkey=1-66-262428-1");
+  script_tag(name:"solution", value:"Apply patch");
   script_tag(name:"summary", value:"The host is running Java Web Console and is prone to Multiple
   Cross-Site Scripting Vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-262428-1");
   exit(0);
 }
 

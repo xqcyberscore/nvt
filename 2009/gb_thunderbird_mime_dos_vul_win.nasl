@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mime_dos_vul_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_thunderbird_mime_dos_vul_win.nasl 12625 2018-12-03 13:38:32Z cfischer $
 #
 # Thunderbird DoS attacks via malformed MIME emails (Windows)
 #
@@ -27,39 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800501");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12625 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:38:32 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2008-5430");
+  script_bugtraq_id(32869);
   script_name("Thunderbird DoS attacks via malformed MIME emails (Windows)");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/364761.php");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-68.html");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could result in disruption or unavailability
-  of service.
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "Thunderbird version 2.0.0.14 and prior on Windows.");
-  script_tag(name : "solution" , value : "Upgrade to Thunderbird version 3.0.4 or later
-  For updates refer to http://www.mozilla.com/en-US/products/thunderbird/");
-  script_tag(name : "summary" , value : "The host is running Mozilla Thunderbird which is prone to denial
-  of service vulnerability.
 
-  Vulnerability:
-  Flaw is due to improper handling of multipart/mixed e-mail messages
-  with many MIME parts and e-mail messages with many Content-type: message/rfc822
-  headers.");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/364761.php");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/products/thunderbird/");
+
+  script_tag(name:"impact", value:"Successful exploitation could result in disruption or unavailability
+  of service.");
+
+  script_tag(name:"affected", value:"Thunderbird version 2.0.0.14 and prior on Windows.");
+
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version 3.0.4 or later");
+
+  script_tag(name:"summary", value:"The host is running Mozilla Thunderbird which is prone to a denial
+  of service vulnerability.");
+
+  script_tag(name:"insight", value:"Flaw is due to improper handling of multipart/mixed e-mail messages
+  with many MIME parts and e-mail messages with many Content-type: message/rfc822 headers.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -68,7 +70,6 @@ if(!tbVer){
   exit(0);
 }
 
-# Thunderbird version <= 2.0.0.14
 if(version_is_less_equal(version:tbVer, test_version:"2.0.0.14")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

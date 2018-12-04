@@ -1,12 +1,12 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_explorer_version.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: smb_explorer_version.nasl 12623 2018-12-03 13:11:38Z cfischer $
 # Description: Internet Explorer version check
 #
 # Authors:
 # Montgomery County Maryland
 #
 # Copyright:
-# Copyright (C) 2006 Montgomery County Maryland
+# Copyright (C) 2008 Montgomery County Maryland
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -21,18 +21,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-
-tag_summary = "The remote host is running a version of Internet Explorer which is not 
-supported by Microsoft any more.
-
-Description :
-
-The remote host has a non-supported version of Internet Explorer installed. 
-
-Non-supported versions of Internet Explorer may contain critical security 
-vulnerabilities as no new security patches will be released for those.";
-
-tag_solution = "Update Internet Explorer.";
 
 # For reference, below are the released Internet Explorer versions.
 # This information is from:
@@ -77,30 +65,40 @@ tag_solution = "Update Internet Explorer.";
 #  6.00.2600.0000	Internet Explorer 6
 #  6.00.2800.1106	Internet Explorer 6 Service Pack 1 (Windows XP SP1)
 #  6.00.2900.2180	Internet Explorer 6 Service Pack 2 (Windows XP SP2)
-#  6.00.3663.0000	Internet Explorer 6 for Microsoft Windows Server 2003 RC1 
+#  6.00.3663.0000	Internet Explorer 6 for Microsoft Windows Server 2003 RC1
 #  6.00.3718.0000	Internet Explorer 6 for Windows Server 2003 RC2
 #  6.00.3790.0000	Internet Explorer 6 for Windows Server 2003 (released)
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80041");
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_name("Internet Explorer version check");
   script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2006 Montgomery County Maryland"); 
+  script_copyright("This script is Copyright (C) 2008 Montgomery County Maryland");
   script_family("Windows");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Update Internet Explorer.");
+
+  script_tag(name:"summary", value:"The remote host is running a version of Internet Explorer which is not
+  supported by Microsoft any more.
+
+Description :
+
+The remote host has a non-supported version of Internet Explorer installed.
+
+Non-supported versions of Internet Explorer may contain critical security
+vulnerabilities as no new security patches will be released for those.");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/gp/lifesupsps/#Internet_Explorer");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
   exit(0);
@@ -118,7 +116,6 @@ warning = 0;
 version = get_kb_item("MS/IE/Version");
 if( ! version )exit(0);
 
-# Check for 4.x, 5.x, 6.00.2462/2479/2600 build numbers
 if ( 	(ereg(pattern:"^[4-5]\.", string:version)) ||
 	(ereg(pattern:"^6\.0+\.(2462|2479|2600)", string:version))  )
 {

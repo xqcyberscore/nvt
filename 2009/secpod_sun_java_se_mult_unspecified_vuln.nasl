@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: secpod_sun_java_se_mult_unspecified_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Sun Java SE Multiple Unspecified Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900819");
-  script_version("$Revision: 10144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -36,8 +36,8 @@ if(description)
                 "CVE-2009-2724");
   script_name("Sun Java SE Multiple Unspecified Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://java.sun.com/j2se/1.5.0/ReleaseNotes.html");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-21-118667-22-1");
+  script_xref(name:"URL", value:"http://java.sun.com/j2se/1.5.0/ReleaseNotes.html");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-118667-22-1");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -45,28 +45,22 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl", "gb_java_prdts_detect_lin.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win_or_Linux/installed");
-  script_tag(name : "impact" , value : "Impact is unknown.
 
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Sun Java SE version 5.0 before Update 20");
-  script_tag(name : "insight" , value : "Refer to the SunSolve bugId 6406003/6429594/6444262 for more information.");
-  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to multiple
+  script_tag(name:"impact", value:"Impact is unknown.");
+
+  script_tag(name:"affected", value:"Sun Java SE version 5.0 before Update 20");
+
+  script_tag(name:"insight", value:"Refer to the SunSolve bugId 6406003/6429594/6444262 for more information.");
+
+  script_tag(name:"summary", value:"This host is installed with Sun Java SE and is prone to multiple
   unspecified vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Java SE version 5 Update 20
-  http://java.sun.com/javase/downloads/index_jdk5.jsp
 
-  or
+  script_tag(name:"solution", value:"Upgrade to Java SE version 5 Update 20.");
 
-  Apply the patch from the references
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****");
-  script_tag(name : "solution_type" , value : "VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 

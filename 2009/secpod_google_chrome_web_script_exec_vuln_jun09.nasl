@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Google Chrome Web Script Execution Vulnerabilities - June09
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2009-2060", "CVE-2009-2071", "CVE-2009-2068");
 
   script_oid("1.3.6.1.4.1.25623.1.0.900370");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -65,11 +65,11 @@ if(description)
     https. This can be exploited by modifying an http page to include an https
     iframe that references a script file on an http site, related to
     'HTTP-Intended-but-HTTPS-Loadable (HPIHSL) pages.'");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host has Google Chrome installed and is prone to Web Script
   Execution vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

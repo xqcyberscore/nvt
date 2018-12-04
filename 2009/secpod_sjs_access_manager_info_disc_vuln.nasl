@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sjs_access_manager_info_disc_vuln.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: secpod_sjs_access_manager_info_disc_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Sun Java System Access Manager Information Disclosure vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900195");
-  script_version("$Revision: 10864 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -44,11 +44,10 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/36167");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2176");
   script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-255968-1");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-21-126356-03-1");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote unprivileged user to gain the
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"Java System Access Manager version 7.0 2005Q4 and 7.1");
 
@@ -59,12 +58,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running Java System Access Manager and is prone to
   information disclosure vulnerability.");
 
-  script_tag(name:"solution", value:"Apply the security updates.
-  http://sunsolve.sun.com/search/document.do?assetkey=1-21-126356-03-1
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the security updates from the referenced advisories.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # nb: The version check below is completely broken...

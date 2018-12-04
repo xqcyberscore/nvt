@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_ivr_mult_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_realplayer_ivr_mult_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # RealPlayer IVR Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800509");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,11 +55,11 @@ if(description)
 
   - A vulnerability that allows an attacker to write one null byte to an
     arbitrary memory address by using an overly long file name length value.");
-  script_tag(name:"solution", value:"Upgrage to the latest version,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrage to the latest version.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running RealPlayer which is prone to IVR multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

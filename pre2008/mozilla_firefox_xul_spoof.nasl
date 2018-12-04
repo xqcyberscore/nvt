@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_firefox_xul_spoof.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: mozilla_firefox_xul_spoof.nasl 12621 2018-12-03 10:50:25Z cfischer $
 # Description: Mozilla/Firefox user interface spoofing
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14181");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10796, 10832);
   script_cve_id("CVE-2004-0763", "CVE-2004-0764");
@@ -42,8 +42,8 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "solution" , value : "None at this time");
-  script_tag(name : "summary" , value : "The remote host is using Mozilla and/or Firefox, an alternative web browser.
+  script_tag(name:"solution", value:"None at this time");
+  script_tag(name:"summary", value:"The remote host is using Mozilla and/or Firefox, an alternative web browser.
   This web browser supports the XUL (XML User Interface Language), a language
   designed to manipulate the user interface of the browser itself.
 
@@ -54,7 +54,7 @@ if(description)
   In addition to this, the remote version of this browser is vulnerable to a
   flaw which may allow a malicious web site to spoof security properties
   such as SSL certificates and URIs.");
-  script_xref(name : "URL" , value : "http://www.nd.edu/~jsmith30/xul/test/spoof.html");
+  script_xref(name:"URL", value:"http://www.nd.edu/~jsmith30/xul/test/spoof.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

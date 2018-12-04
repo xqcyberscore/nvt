@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_backend_open_redirection_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
+# $Id: gb_typo3_backend_open_redirection_vuln.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # TYPO3 Backend Open Redirection Vulnerability
 #
@@ -29,28 +29,35 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804214");
-  script_version("$Revision: 11867 $");
+  script_version("$Revision: 12634 $");
   script_bugtraq_id(42029);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 19:55:38 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Backend Open Redirection Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct phishing
-attacks.");
+  attacks.");
+
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to get sensitive
-information.");
+  information.");
+
   script_tag(name:"insight", value:"An error exists in Backend, which fails to sanitize 'redirect'
-parameter properly");
+  parameter properly");
+
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.1.14, 4.2.13, 4.3.4, 4.4.1 or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to open redirection
-vulnerability.");
+  vulnerability.");
+
   script_tag(name:"affected", value:"TYPO3 version before 4.1.14 and below, 4.2.0 to 4.2.13, 4.3.0 to 4.3.3 and 4.4.0");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/40742/");
-  script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-012");
+  script_xref(name:"URL", value:"https://typo3.org/security/advisory/typo3-sa-2010-012/");
+
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
@@ -59,8 +66,6 @@ vulnerability.");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
 
-  script_xref(name:"URL", value:"http://typo3.org/
-http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-012");
   exit(0);
 }
 

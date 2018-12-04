@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_mult_vuln_nov08_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_thunderbird_mult_vuln_nov08_win.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities November-08 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800059");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -37,33 +37,34 @@ if(description)
                 "CVE-2008-5052");
   script_bugtraq_id(32281);
   script_name("Mozilla Thunderbird Multiple Vulnerabilities November-08 (Windows)");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-48.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-50.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-52.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-55.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-56.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-58.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-48.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-50.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-52.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-55.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-56.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-58.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could result in remote arbitrary code execution,
+
+  script_tag(name:"impact", value:"Successful exploitation could result in remote arbitrary code execution,
   bypass security restrictions, spoofing attacks, sensitive information
-  disclosure, and JavaScript code that can be executed with the privileges
-  of the signed user.
-  Impact Level: System");
-  script_tag(name : "affected" , value : "Thunderbird version prior to 2.0.0.18 on Windows.");
-  script_tag(name : "solution" , value : "Upgrade to Thunderbird version 2.0.0.18
-  http://www.mozilla.com/en-US/thunderbird/all.html");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla Thunderbird and is prone to
+  disclosure, and JavaScript code that can be executed with the privileges of the signed user.");
+
+  script_tag(name:"affected", value:"Thunderbird version prior to 2.0.0.18 on Windows.");
+
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version 2.0.0.18.");
+
+  script_tag(name:"summary", value:"The host is installed with Mozilla Thunderbird and is prone to
   multiple vulnerabilities.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
-
 
 include("version_func.inc");
 

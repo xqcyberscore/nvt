@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_info_disc_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: secpod_mozilla_prdts_info_disc_vuln_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Mozilla Products Information Disclosure Vulnerability (Windows)
 #
@@ -27,47 +27,49 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900910");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-19 06:49:38 +0200 (Wed, 19 Aug 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2008-6961");
   script_bugtraq_id(32363);
   script_name("Mozilla Products Information Disclosure Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32714");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32715");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/46734");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-59.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32714");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32715");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46734");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2008/mfsa2008-59.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let the attackers obtain the mailbox URI of the
-  recipient or disclose comments placed in a forwarded email.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Seamonkey version prior to 1.1.13 and
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attackers obtain the mailbox URI of the
+  recipient or disclose comments placed in a forwarded email.");
+
+  script_tag(name:"affected", value:"Seamonkey version prior to 1.1.13 and
   Thunderbird version prior to 2.0.0.18 on Windows.");
-  script_tag(name : "insight" , value : "A flaw exists in the JavaScript code embedded in mailnews which can be
-  exploited using scripts which read the '.documentURI' or '.textContent'
-  DOM properties.");
-  script_tag(name : "solution" , value : "Upgrade to Seamonkey version 1.1.13 or later
-  http://www.seamonkey-project.org/releases
-  Upgrade to Thunderbird version 2.0.0.18 or later
-  http://www.mozillamessaging.com/en-US/thunderbird/all.html");
-  script_tag(name : "summary" , value : "The host is installed with Thunderbird/Seamonkey and is prone to
+
+  script_tag(name:"insight", value:"A flaw exists in the JavaScript code embedded in mailnews which can be
+  exploited using scripts which read the '.documentURI' or '.textContent' DOM properties.");
+
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.13 or later
+
+  Upgrade to Thunderbird version 2.0.0.18 or later.");
+
+  script_tag(name:"summary", value:"The host is installed with Thunderbird/Seamonkey and is prone to
   Information Disclosure vulnerability.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
 include("version_func.inc");
 
-# Seamonkey Check
 smVer = get_kb_item("Seamonkey/Win/Ver");
 
 if(smVer != NULL)
@@ -78,7 +80,6 @@ if(smVer != NULL)
   }
 }
 
-# Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 
 if(tbVer != NULL)

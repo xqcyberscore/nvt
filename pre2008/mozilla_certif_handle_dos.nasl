@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_certif_handle_dos.nasl 9912 2018-05-18 13:54:07Z cfischer $
+# $Id: mozilla_certif_handle_dos.nasl 12621 2018-12-03 10:50:25Z cfischer $
 # Description: Mozilla/Firefox security manager certificate handling DoS
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14668");
-  script_version("$Revision: 9912 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10703);
   script_cve_id("CVE-2004-0758");
@@ -44,8 +44,8 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "solution" , value : "Upgrade to the latest version of this software");
-  script_tag(name : "summary" , value : "The remote host is using Mozilla, an alternative web browser.
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software");
+  script_tag(name:"summary", value:"The remote host is using Mozilla, an alternative web browser.
 
   The Mozilla Personal Security Manager (PSM) contains  a flaw
   that may permit a attacker to import silently a certificate into
@@ -65,7 +65,7 @@ if(!mozVer){
 }
 
 if(version_in_range(version:mozVer, test_version:"1.5", test_version2:"1.7")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }
 
 

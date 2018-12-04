@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_pdf_js_rest_bypass_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_opera_pdf_js_rest_bypass_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Opera PDF Javascript Security Bypass Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900636");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 08:03:45 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"insight", value:"An error in Adobe Acrobat JavaScript protocol handler in the context of browser
   when a PDF file is opened in it via execute DOM calls in response to a
   javascript: URI.");
-  script_tag(name:"solution", value:"Upgrade to Opera Version 10 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera Version 10 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to PDF
   Javascript Security Bypass Vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute arbitrary code result in
@@ -55,6 +54,7 @@ if(description)
   attacks and steal generic information from website.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

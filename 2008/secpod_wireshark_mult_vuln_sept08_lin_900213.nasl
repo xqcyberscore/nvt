@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 7522 2017-10-20 08:19:44Z cfischer $
+# $Id: secpod_wireshark_mult_vuln_sept08_lin_900213.nasl 12623 2018-12-03 13:11:38Z cfischer $
 # Description: Wireshark Multiple Vulnerabilities - Sept-08 (Linux)
 #
 # Authors:
@@ -23,38 +23,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900213";
-
 if(description)
 {
- script_oid(SCRIPT_OID);
- script_version("$Revision: 7522 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:19:44 +0200 (Fri, 20 Oct 2017) $");
- script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
- script_bugtraq_id(31009);
- script_cve_id("CVE-2008-3146", "CVE-2008-3932", "CVE-2008-3933");
- script_copyright("Copyright (C) 2008 SecPod");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"executable_version");
- script_family("Denial of Service");
- script_name("Wireshark Multiple Vulnerabilities - Sept08 (Linux)");
- script_dependencies("gather-package-list.nasl", "gb_wireshark_detect_lin.nasl");
- script_mandatory_keys("Wireshark/Linux/Ver");
- script_xref(name:"URL", value:"http://secunia.com/advisories/31674");
- script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2493");
- script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2008-05.html");
+  script_oid("1.3.6.1.4.1.25623.1.0.900213");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
+  script_tag(name:"creation_date", value:"2008-09-10 17:51:23 +0200 (Wed, 10 Sep 2008)");
+  script_bugtraq_id(31009);
+  script_cve_id("CVE-2008-3146", "CVE-2008-3932", "CVE-2008-3933");
+  script_copyright("Copyright (C) 2008 SecPod");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"executable_version");
+  script_family("Denial of Service");
+  script_name("Wireshark Multiple Vulnerabilities - Sept08 (Linux)");
+  script_dependencies("gather-package-list.nasl", "gb_wireshark_detect_lin.nasl");
+  script_mandatory_keys("Wireshark/Linux/Ver");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/31674");
+  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2493");
+  script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2008-05.html");
 
- script_tag(name:"summary", value:"Check for vulnerable version of Wireshark/Ethereal");
- script_tag(name:"affected", value:"Wireshark versions 1.0.2 and prior on Linux (All).");
- script_tag(name:"solution", value:"Upgrade to wireshark 1.0.3 or later.
-http://www.wireshark.org/download.html");
- script_tag(name:"impact", value:"Successful exploitation could result in denial of service
+  script_tag(name:"summary", value:"Check for vulnerable version of Wireshark/Ethereal");
+  script_tag(name:"affected", value:"Wireshark versions 1.0.2 and prior on Linux (All).");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to wireshark 1.0.3 or later.");
+  script_tag(name:"impact", value:"Successful exploitation could result in denial of service
 condition or application crash by injecting a series of malformed
-packets or by convincing the victim to read a malformed packet.
-Impact Level : Application");
- exit(0);
+packets or by convincing the victim to read a malformed packet.");
+  exit(0);
 }
 
 include("ssh_func.inc");
@@ -122,7 +119,7 @@ include("host_details.inc");
         }
  }
 
-ver = get_app_version(cpe:"cpe:/a:wireshark:wireshark", nvt:SCRIPT_OID);
+ver = get_app_version(cpe:"cpe:/a:wireshark:wireshark");
 
 if(egrep(pattern:"wireshark 0\.99\.[1-5]$", string:ver))
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_url_file_info_dis_vuln.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_firefox_url_file_info_dis_vuln.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Firefox .url Shortcut File Information Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800031");
-  script_version("$Revision: 9910 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-10-17 14:35:03 +0200 (Fri, 17 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -45,21 +45,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/497091/100/0/threaded");
 
   script_tag(name:"impact", value:"Successful remote exploitation could result in disclosure of sensitive
-  information.
-  Impact Level: System");
+  information.");
   script_tag(name:"affected", value:"Firefox version 3.0.1 to 3.0.3 on Windows.");
   script_tag(name:"insight", value:"The Browser does not properly identify the context of Windows .url shortcut
   files, which allows remote attackers to bypass the Same Origin Policy and
   obtain sensitive information via an HTML document that is directly accessible
   through a filesystem.");
-  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all-older.html");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6.3 or later.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser, that is prone
   to information disclosure vulnerability.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all-older.html");
   exit(0);
 }
 
@@ -72,5 +71,5 @@ if(!ffVer){
 }
 
 if(version_in_range(version:ffVer, test_version:"3.0.1", test_version2:"3.0.3")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

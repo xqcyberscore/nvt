@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_debugger_privilege_escalation_vuln_win.nasl 12577 2018-11-29 11:43:34Z santu $
+# $Id: gb_nodejs_debugger_privilege_escalation_vuln_win.nasl 12622 2018-12-03 10:55:22Z cfischer $
 #
 # Node.js 'debugger' Privilege Escalation Vulnerability-(Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814519");
-  script_version("$Revision: 12577 $");
+  script_version("$Revision: 12622 $");
   script_cve_id("CVE-2018-12120");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-29 12:43:34 +0100 (Thu, 29 Nov 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:55:22 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-29 13:25:38 +0530 (Thu, 29 Nov 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js 'debugger' Privilege Escalation Vulnerability-(Windows)");
@@ -63,9 +63,9 @@ if(description)
   script_family("General");
   script_dependencies("gb_nodejs_detect_win.nasl");
   script_mandatory_keys("Nodejs/Win/Ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -76,11 +76,9 @@ appPath = infos['location'];
 
 if(version_is_less(version:nodejsVer, test_version:"6.15.0"))
 {
-  if(fix)
-  {
-    report = report_fixed_ver(installed_version:nodejsVer, fixed_version:"6.15.0", install_path:appPath);
-    security_message(data:report);
-    exit(0);
-  }
+  report = report_fixed_ver(installed_version:nodejsVer, fixed_version:"6.15.0", install_path:appPath);
+  security_message(data:report);
+  exit(0);
 }
+
 exit(99);

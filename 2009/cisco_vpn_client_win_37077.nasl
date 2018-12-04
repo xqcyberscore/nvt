@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_win_37077.nasl 5486 2017-03-04 18:08:45Z cfi $
+# $Id: cisco_vpn_client_win_37077.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Cisco VPN Client for Windows 'StartServiceCtrlDispatche' Local Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100357");
-  script_version("$Revision: 5486 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 19:08:45 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,22 +45,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.cisco.com/warp/public/cc/pd/sqsw/vpncl/index.shtml");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=19445");
 
-  tag_summary = "Cisco VPN Client for Windows is prone to a local denial-of-service
-  vulnerability.";
-
-  tag_impact = "A local attacker can exploit this issue to crash the application,
-  resulting in a denial-of-service condition.";
-
-  tag_affected = "This issue affects Cisco VPN Client for Windows versions prior
-  5.0.06.0100.";
-
-  tag_solution = "Vendor updates are available. Please see the references for more
-  information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"Cisco VPN Client for Windows is prone to a local denial-of-service
+  vulnerability.");
+  script_tag(name:"impact", value:"A local attacker can exploit this issue to crash the application,
+  resulting in a denial-of-service condition.");
+  script_tag(name:"affected", value:"This issue affects Cisco VPN Client for Windows versions prior
+  5.0.06.0100.");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+  information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

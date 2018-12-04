@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_ftp_clnt_xss_vuln_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_firefox_ftp_clnt_xss_vuln_win.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Firefox Web Browser FTP Client XSS Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800042");
-  script_version("$Revision: 9910 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,23 +44,21 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/31855/exploit");
 
   script_tag(name:"impact", value:"Successful remote attack result in injection of arbitrary web
-  script or HTML code.
-
-  Impact Level: Application");
+  script or HTML code.");
   script_tag(name:"affected", value:"Firefox version 3.0.1 to 3.0.3 on Windows.");
   script_tag(name:"insight", value:"The flaw is due to the way browser handles web script or html via
   ftp://URL for an html document within a JPG, PDF, or TXT files.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.
-  For updates refer to http://www.mozilla.org/en-US");
+  features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
   to Cross Site Scripting (XSS) Vulnerability.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
 
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US");
   exit(0);
 }
 

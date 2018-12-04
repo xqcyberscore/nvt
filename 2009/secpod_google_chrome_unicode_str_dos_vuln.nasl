@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_unicode_str_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_google_chrome_unicode_str_dos_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Google Chrome Unicode String Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900805");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-23 21:05:26 +0200 (Thu, 23 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,11 +48,11 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome version 2.x to 2.0.172 on Windows.");
   script_tag(name:"insight", value:"Error occurs when application fails to handle user supplied input into the
   'write' method via a long Unicode string argument.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to Denial of
   Service vulnerability.");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

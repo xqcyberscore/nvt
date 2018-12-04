@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_1fc39f2d13_clamav_fc27.nasl 12056 2018-10-24 12:04:11Z santu $
+# $Id: gb_fedora_2018_1fc39f2d13_clamav_fc27.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Fedora Update for clamav FEDORA-2018-1fc39f2d13
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875200");
-  script_version("$Revision: 12056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-24 14:04:11 +0200 (Wed, 24 Oct 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-17 06:38:06 +0200 (Wed, 17 Oct 2018)");
   script_cve_id("CVE-2018-15378", "CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682",
                 "CVE-2018-14679", "CVE-2012-6706", "CVE-2017-6419", "CVE-2017-11423",
                 "CVE-2018-1000085", "CVE-2018-0202", "CVE-2017-12374", "CVE-2017-12375",
                 "CVE-2017-12376", "CVE-2017-12377", "CVE-2017-12378", "CVE-2017-12379",
                 "CVE-2017-12380", "CVE-2017-6420", "CVE-2017-6418");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for clamav FEDORA-2018-1fc39f2d13");
   script_tag(name:"summary", value:"Check the version of clamav");

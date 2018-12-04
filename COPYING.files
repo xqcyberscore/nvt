@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 03 Dec 2018 11:31:13 +0100
+# Automatically created on:  Tue, 04 Dec 2018 09:48:22 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -44482,6 +44482,7 @@ gb_interspire_iem_detect.nasl: GPLv2+
 gb_intouch_machine_edition_detect_win.nasl: GPLv2+
 gb_investintech_prdts_detect.nasl: GPLv2+
 gb_invoiceplane_detect.nasl: GPLv2+
+gb_invt_electric_vt_designer_detect_win.nasl: GPLv2+
 gb_iojs_detect_win.nasl: GPLv2+
 gb_ipam_detect.nasl: GPLv2+
 gb_ipass_open_mobile_detect_win.nasl: GPLv2+
@@ -44877,6 +44878,7 @@ gb_ox_app_suite_detect.nasl: GPLv2+
 gb_ox_server_detect.nasl: GPLv2+
 gb_pacific_timesheet_detect.nasl: GPLv2+
 gb_pacsone_detect.nasl: GPLv2+
+gb_palo_alto_expedition_detect.nasl: GPLv2+
 gb_palo_alto_panOS_version.nasl: GPLv2+
 gb_palo_alto_version_api.nasl: GPLv2+
 gb_palo_alto_webgui_detect.nasl: GPLv2+
@@ -61359,6 +61361,7 @@ gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012416.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22013097.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22014392.nasl: GPLv2+
 gsf/2018/idashboards/gb_idashboard_mult_vuln.nasl: GPLv2+
+gsf/2018/invt_electric/gb_invt_electric_vt_designer_mult_vuln.nasl: GPLv2+
 gsf/2018/ipconfigure/gb_ipconfigure_orchid_vms_dir_trav_vuln_nov18.nasl: GPLv2+
 gsf/2018/ipecs/gb_ipecs_cm_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/ipecs/gb_ipecs_nms_mult_vuln.nasl: GPLv2+
@@ -61685,6 +61688,9 @@ gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_01.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_02.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_webLogic_server_cpuoct2018-4428296_03.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_wls_wsat_rce_vuln.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_paloalto_expedition_http_default_credentials.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_paloalto_expedition_info_discl_vuln.nasl: GPLv2+
+gsf/2018/paloaltonetworks/gb_paloalto_expedition_ssh_default_credentials.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_807_xss_vuln.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_mult_vuln.nasl: GPLv2+
 gsf/2018/paloaltonetworks/gb_panos_pan_sa-2017-0030.nasl: GPLv2+

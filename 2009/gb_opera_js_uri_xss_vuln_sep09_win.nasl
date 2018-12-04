@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_js_uri_xss_vuln_sep09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_opera_js_uri_xss_vuln_sep09_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Opera 'javascript: URI' XSS Vulnerability - Sep09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800874");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,12 +47,12 @@ if(description)
   script_tag(name:"insight", value:"Error occurs when application fails to sanitise the 'javascript:' and 'data:'
   URIs in Location headers in HTTP responses, which can be exploited via vectors
   related to injecting a Location header.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 9.64 or later and 10.10 or later.
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 9.64 or later and 10.10 or later.");
   script_tag(name:"summary", value:"This host is installed with Opera Web Browser and is prone to
   Cross-Site Scripting vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/");
   exit(0);
 }
 

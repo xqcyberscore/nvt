@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-060.nasl 10590 2018-07-24 11:54:34Z cfischer $
+# $Id: secpod_ms09-060.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # MS ATL ActiveX Controls for MS Office Could Allow Remote Code Execution (973965)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901040");
-  script_version("$Revision: 10590 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 13:54:34 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-10-14 16:47:08 +0200 (Wed, 14 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2009-0901", "CVE-2009-2493","CVE-2009-2495");
+  script_cve_id("CVE-2009-0901", "CVE-2009-2493", "CVE-2009-2495");
   script_bugtraq_id(35828, 35830, 35832);
   script_name("MS ATL ActiveX Controls for MS Office Could Allow Remote Code Execution (973965)");
   script_category(ACT_GATHER_INFO);
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms09-060");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code with SYSTEM privileges, and can cause Denial of Service.
-
-  Impact Level: System/Application");
+  code with SYSTEM privileges, and can cause Denial of Service.");
 
   script_tag(name:"affected", value:"Microsoft Office Outlook 2002/2003/2007
 
@@ -67,9 +65,7 @@ if(description)
     initialized, leading to arbitrary code execution.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms09-060");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS09-060.");

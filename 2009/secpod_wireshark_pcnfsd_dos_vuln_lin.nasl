@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_pcnfsd_dos_vuln_lin.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wireshark_pcnfsd_dos_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Wireshark PCNFSD Dissector Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900560");
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,16 +46,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/1408");
 
   script_tag(name:"impact", value:"Successful exploitation will let the user crash the application to cause
-  denial of service condition.
+  denial of service condition.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Wireshark version 0.8.20 through 1.0.7 on Linux.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in the PCNFSD dissector when processing specially
   crafted large PCNFSD packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.8
-  http://www.wireshark.org/download.html");
+
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.8.");
+
   script_tag(name:"summary", value:"The remote host is installed with Wireshark and is prone to
   denial of service vulnerability.");
+
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_eff94da132_clamav_fc28.nasl 11877 2018-10-12 12:31:50Z santu $
+# $Id: gb_fedora_2018_eff94da132_clamav_fc28.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Fedora Update for clamav FEDORA-2018-eff94da132
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875163");
-  script_version("$Revision: 11877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:31:50 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-09 08:54:13 +0200 (Tue, 09 Oct 2018)");
   script_cve_id("CVE-2018-15378", "CVE-2018-14680", "CVE-2018-14681", "CVE-2018-14682",
                 "CVE-2018-14679");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for clamav FEDORA-2018-eff94da132");
   script_tag(name:"summary", value:"Check the version of clamav");

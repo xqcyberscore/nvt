@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9iAS_too_long_url.nasl 6695 2017-07-12 11:17:53Z cfischer $
+# $Id: oracle9iAS_too_long_url.nasl 12621 2018-12-03 10:50:25Z cfischer $
 #
 # Oracle9iAS too long URL
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11081");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 12621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3443);
   script_tag(name:"cvss_base", value:"7.5");
@@ -52,15 +52,13 @@ if(description)
   script_mandatory_keys("Oracle/banner");
   script_require_ports("Services/www", 1100, 4000, 4001, 4002);
 
-  tag_summary = "It may be possible to make the Oracle9i application server
+  script_tag(name:"solution", value:"Upgrade your server.");
+
+  script_tag(name:"summary", value:"It may be possible to make the Oracle9i application server
   crash or execute arbitrary code by sending it a too long url
-  specially crafted URL.";
+  specially crafted URL.");
 
-  tag_solution = "Upgrade your server.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

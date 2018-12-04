@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1504.nasl 11378 2018-09-13 13:32:03Z cfischer $
+# $Id: deb_dla_1504.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Auto-generated from advisory DLA 1504-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891504");
-  script_version("$Revision: 11378 $");
+  script_version("$Revision: 12637 $");
   script_cve_id("CVE-2018-11645", "CVE-2018-15908", "CVE-2018-15909", "CVE-2018-15910", "CVE-2018-15911",
                 "CVE-2018-16509", "CVE-2018-16511", "CVE-2018-16513", "CVE-2018-16539", "CVE-2018-16540",
                 "CVE-2018-16541", "CVE-2018-16542", "CVE-2018-16585", "CVE-2018-16802");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1504-1] ghostscript security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:32:03 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-13 00:00:00 +0200 (Thu, 13 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

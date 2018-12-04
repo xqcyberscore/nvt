@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freebsd_avahi.nasl 11762 2018-10-05 10:54:12Z cfischer $
+# $Id: freebsd_avahi.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Auto generated from VID 8b986a05-4dbe-11e0-8b9a-02e0184b8d35
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69366");
-  script_version("$Revision: 11762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 12634 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2011-05-12 19:21:50 +0200 (Thu, 12 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,14 +44,8 @@ if(description)
 
   script_tag(name:"insight", value:"The following packages are affected:
 
-  avahi
-   avahi-app
-   avahi-autoipd
-   avahi-gtk
-   avahi-libdns
-   avahi-qt3
-   avahi-qt4
-   avahi-sharp
+  avahi, avahi-app, avahi-autoipd, avahi-gtk, avahi-libdns,
+  avahi-qt3, avahi-qt4, avahi-sharp
 
 CVE-2011-1002
 avahi-core/socket.c in avahi-daemon in Avahi before 0.6.29 allows
@@ -69,8 +63,8 @@ different vulnerability than CVE-2008-5081.");
   script_tag(name:"solution", value:"Update your system with the appropriate patches or
   software upgrades.");
 
-  script_xref(name:"URL", value:"http://secunia.com/advisories/43361/
-https://bugzilla.redhat.com/show_bug.cgi?id=667187");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43361/");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=667187");
   script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/8b986a05-4dbe-11e0-8b9a-02e0184b8d35.html");
 
   script_tag(name:"summary", value:"The remote host is missing an update to the system

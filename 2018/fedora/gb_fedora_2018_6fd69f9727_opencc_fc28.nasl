@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6fd69f9727_opencc_fc28.nasl 12067 2018-10-25 07:10:45Z santu $
+# $Id: gb_fedora_2018_6fd69f9727_opencc_fc28.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Fedora Update for opencc FEDORA-2018-6fd69f9727
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875222");
-  script_version("$Revision: 12067 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 09:10:45 +0200 (Thu, 25 Oct 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-24 06:55:43 +0200 (Wed, 24 Oct 2018)");
   script_cve_id("CVE-2018-16982");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for opencc FEDORA-2018-6fd69f9727");
   script_tag(name:"summary", value:"Check the version of opencc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_gif_dos_vuln_nov09_win.nasl 9912 2018-05-18 13:54:07Z cfischer $
+# $Id: secpod_firefox_gif_dos_vuln_nov09_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Mozilla Firefox 'GIF' File DoS Vulnerability - Nov09 (Windows)
 #
@@ -27,38 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900894");
-  script_version("$Revision: 9912 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-3978");
   script_name("Mozilla Firefox 'GIF' File DoS Vulnerability - Nov09 (Windows)");
-  script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=525326");
-  script_xref(name : "URL" , value : "https://wiki.mozilla.org/Releases/Firefox_3.5.5/Test_Plan");
-  script_xref(name : "URL" , value : "http://hg.mozilla.org/releases/mozilla-1.9.1/rev/edf189567edc");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=525326");
+  script_xref(name:"URL", value:"https://wiki.mozilla.org/Releases/Firefox_3.5.5/Test_Plan");
+  script_xref(name:"URL", value:"http://hg.mozilla.org/releases/mozilla-1.9.1/rev/edf189567edc");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allows remote attacker to cause a vulnerable
-  application to crash.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox version prior to 3.5.5 on Windows.");
-  script_tag(name : "insight" , value : "A NULL pointer dereference error in 'nsGIFDecoder2::GifWrite' function in
+
+  script_tag(name:"impact", value:"Successful exploitation could allows remote attacker to cause a vulnerable
+  application to crash.");
+
+  script_tag(name:"affected", value:"Mozilla Firefox version prior to 3.5.5 on Windows.");
+
+  script_tag(name:"insight", value:"A NULL pointer dereference error in 'nsGIFDecoder2::GifWrite' function in
   'decoders/gif/nsGIFDecoder2.cpp' in libpr0n, which can be exploited to cause
   application crash via an animated 'GIF' file with a large image size.");
-  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.5 or later,
-  http://www.mozilla.com/en-US/firefox/all.html");
-  script_tag(name : "summary" , value : "The host is installed with Firefox browser and is prone to Denial
+
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.5.5 or later.");
+
+  script_tag(name:"summary", value:"The host is installed with Firefox browser and is prone to Denial
   of Service vulnerabilities.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
@@ -68,5 +72,5 @@ if(!ffVer){
 }
 
 if(version_is_less(version:ffVer, test_version:"3.5.5")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

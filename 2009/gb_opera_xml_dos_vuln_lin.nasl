@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xml_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_opera_xml_dos_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Opera Web Browser XML Denial Of Service Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800551");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Opera version 9.64 and prior on Linux.");
   script_tag(name:"insight", value:"This flaw is due to improper boundary check while parsing XML
   documents containing an overly large number of nested elements.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 10.00 or later.
-  For updates refer to http://www.opera.com/download");
+  script_tag(name:"solution", value:"Upgrade to Opera version 10.00 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
   XML Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download");
   exit(0);
 }
 

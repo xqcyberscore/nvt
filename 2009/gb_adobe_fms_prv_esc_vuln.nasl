@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_prv_esc_vuln.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_adobe_fms_prv_esc_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Adobe Flash Media Server Privilege Escalation Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:adobe:flash_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800560");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,28 +46,19 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb09-05.html");
 
-  tag_impact = "Successful attack could result in execution of crafted RPC Calls to the
+  script_tag(name:"impact", value:"Successful attack could result in execution of crafted RPC Calls to the
   ActionScript file and cause injection of remote procedures into the context
-  of the affected system.
+  of the affected system.");
 
-  Impact Level: System";
+  script_tag(name:"affected", value:"Adobe Flash Media Server before 3.0.4, 3.5.x before 3.5.2 on all platforms.");
 
-  tag_affected = "Adobe Flash Media Server before 3.0.4, 3.5.x before 3.5.2 on all platforms.";
+  script_tag(name:"insight", value:"This flaw is caused while executing RPC calls made to an ActionScript file
+  running under Flash Media Server.");
 
-  tag_insight = "This flaw is caused while executing RPC calls made to an ActionScript file
-  running under Flash Media Server.";
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Media Server 3.5.2 or 3.0.4 or later.");
 
-  tag_solution = "Upgrade to Adobe Flash Media Server 3.5.2 or 3.0.4 or greater.
-  http://www.adobe.com/downloads";
-
-  tag_summary = "This host has Adobe Flash Media Server installed and is prone to
-  Privilege Escalation vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host has Adobe Flash Media Server installed and is prone to
+  Privilege Escalation vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

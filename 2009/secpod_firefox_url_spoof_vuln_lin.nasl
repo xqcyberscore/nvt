@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_url_spoof_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_firefox_url_spoof_vuln_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Firefox URL Spoofing And Phising Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900512");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -50,14 +50,14 @@ if(description)
   characters in IDN domain names. This renders the user vulnerable to URL
   spoofing and phising attacks as the atatcker may redirect the user to a
   different arbitrary malformed website.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox browser and is prone
   to URL spoofing and phising vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.mozilla.org/projects/security/tld-idn-policy-list.html");
   script_xref(name:"URL", value:"http://www.blackhat.com/html/bh-dc-09/bh-dc-09-speakers.html#Marlinspike");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/");
   exit(0);
 }
 

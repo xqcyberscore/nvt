@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_replay_attack_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_tor_replay_attack_vuln_win.nasl 12636 2018-12-04 08:02:40Z cfischer $
 #
 # Tor Replay Attack Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900322");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12636 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:02:40 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -42,27 +42,34 @@ if(description)
   script_family("General");
   script_dependencies("gb_tor_detect_win.nasl");
   script_mandatory_keys("Tor/Win/Ver");
+
   script_tag(name:"affected", value:"Tor version 0.2.0.34 and prior on Windows.");
+
   script_tag(name:"insight", value:"Flaw is in the data flow at the end of the circuit which lets the attacker
   to modify the relayed data.");
-  script_tag(name:"solution", value:"Upgrade to Tor version 0.2.1.25 or later,
-  For updates refer to https://www.torproject.org");
+
+  script_tag(name:"solution", value:"Upgrade to Tor version 0.2.1.25 or later.");
+
   script_tag(name:"summary", value:"This host is installed with Tor Anonymity Proxy and is prone
   to replay attack vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker cause replay attacks
   in the network and can compromise router functionalities.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name:"URL", value:"https://www.torproject.org");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 
 torVer = get_kb_item("Tor/Win/Ver");
-if(torVer != NULL)
-{
-  if(version_is_less_equal(version:torVer, test_version:"0.2.0.34")){
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-  }
+if(!torVer)
+  exit(0);
+
+if(version_is_less_equal(version:torVer, test_version:"0.2.0.34")){
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

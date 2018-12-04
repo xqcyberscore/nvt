@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_smtp_dos_vuln_lin.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_wireshark_smtp_dos_vuln_lin.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Wireshark SMTP Processing Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:wireshark:wireshark';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800075");
-  script_version("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-12-04 14:15:00 +0100 (Thu, 04 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,13 +46,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2008/3231");
 
   script_tag(name:"impact", value:"Successful attacks may cause the application to crash via specially
-  crafted packets.
-  Impact Level: Application");
+  crafted packets.");
+
   script_tag(name:"affected", value:"Wireshark versions 1.0.4 and prior on Linux");
+
   script_tag(name:"insight", value:"The flaw is due to an error in the SMTP dissector while processing
   large SMTP packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.5
-  http://www.wireshark.org/download.html");
+
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.0.5.");
+
   script_tag(name:"summary", value:"The Remote host is installed with Wireshark and is prone to
   denial of service vulnerability.");
 

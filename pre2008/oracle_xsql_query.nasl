@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_xsql_query.nasl 8908 2018-02-21 15:08:27Z cfischer $
+# $Id: oracle_xsql_query.nasl 12621 2018-12-03 10:50:25Z cfischer $
 #
 # Oracle XSQL Sample Application Vulnerability
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10613");
-  script_version("$Revision: 8908 $");
+  script_version("$Revision: 12621 $");
   script_cve_id("CVE-2002-1630", "CVE-2002-1631", "CVE-2002-1632");
   script_bugtraq_id(6556);
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 16:08:27 +0100 (Wed, 21 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 11:50:25 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,19 +48,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/717827");
 
-  tag_summary = "One of the sample applications that comes with
+  script_tag(name:"summary", value:"One of the sample applications that comes with
   the Oracle XSQL Servlet allows an attacker to make arbitrary queries to
-  the Oracle database (under an unprivileged account).";
-
-  tag_impact = "Whilst not allowing an attacker to delete or modify database
-  contents, this flaw can be used to enumerate database users and view table names.";
-
-  tag_solution = "Sample applications should always be removed from
-  production servers.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  the Oracle database (under an unprivileged account).");
+  script_tag(name:"impact", value:"Whilst not allowing an attacker to delete or modify database
+  contents, this flaw can be used to enumerate database users and view table names.");
+  script_tag(name:"solution", value:"Sample applications should always be removed from
+  production servers.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Workaround");

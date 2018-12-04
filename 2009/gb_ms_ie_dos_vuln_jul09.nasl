@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_dos_vuln_jul09.nasl 6527 2017-07-05 05:56:34Z cfischer $
+# $Id: gb_ms_ie_dos_vuln_jul09.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Microsoft Internet Explorer Denial Of Service Vulnerability - July09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800669");
-  script_version("$Revision: 6527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 07:56:34 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-22 21:36:53 +0200 (Wed, 22 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -46,17 +46,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/504969/100/0/threaded");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of
-  service by exhausting memory.
-
-  Impact Level: Application");
+  service by exhausting memory.");
   script_tag(name:"affected", value:"Internet Explorer Version 5.x, 6.x, 7.x and 8.x");
   script_tag(name:"insight", value:"Error exists while calling the select method with a large
   integer, that results in continuos allocation of x+n bytes of memory exhausting
   memory after a while.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is installed with Internet Explorer and is prone to
   Denial Of Service vulnerability.");
 
@@ -71,7 +68,6 @@ include("version_func.inc");
 
 if(!ieVer = get_kb_item("MS/IE/Version")) exit(0);
 
-# Check for Internet Explorer version 5.0 to 8.0.6001.18702
 if(version_in_range(version:ieVer, test_version:"5.0",
                                    test_version2:"8.0.6001.18702")){
   report = report_fixed_ver(installed_version:ieVer, fixed_version:"N/A");

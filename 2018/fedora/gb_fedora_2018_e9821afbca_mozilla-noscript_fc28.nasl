@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e9821afbca_mozilla-noscript_fc28.nasl 11698 2018-09-29 03:57:28Z santu $
+# $Id: gb_fedora_2018_e9821afbca_mozilla-noscript_fc28.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Fedora Update for mozilla-noscript FEDORA-2018-e9821afbca
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875111");
-  script_version("$Revision: 11698 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 05:57:28 +0200 (Sat, 29 Sep 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 13:35:19 +0200 (Fri, 28 Sep 2018)");
   script_cve_id("CVE-2018-16983");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mozilla-noscript FEDORA-2018-e9821afbca");
   script_tag(name:"summary", value:"Check the version of mozilla-noscript");

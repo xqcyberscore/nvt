@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lighttpd_31600.nasl 12595 2018-11-30 09:55:36Z cfischer $
+# $Id: lighttpd_31600.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # Lighttpd < 1.4.20 Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:lighttpd:lighttpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100449");
-  script_version("$Revision: 12595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 10:55:36 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-14 12:06:50 +0100 (Thu, 14 Jan 2010)");
   script_bugtraq_id(31600);
   script_cve_id("CVE-2008-4360", "CVE-2008-4359");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_name("Lighttpd < 1.4.20 Multiple Vulnerabilities");
 

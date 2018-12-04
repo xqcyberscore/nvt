@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_insecure_saving_download_file.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_firefox_insecure_saving_download_file.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Insecure Saving Of Downloadable File In Mozilla Firefox (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900869");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,13 +52,13 @@ if(description)
   'Downloads' window. This can be exploited to trick a user into opening a file
   with potentially malicious content by placing it in the /tmp directory before
   the download takes place.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to insecure
   saving of downloadable file.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/");
   exit(0);
 }
 

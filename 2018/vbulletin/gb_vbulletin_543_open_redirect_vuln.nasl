@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_543_open_redirect_vuln.nasl 12423 2018-11-19 15:20:08Z cfischer $
+# $Id: gb_vbulletin_543_open_redirect_vuln.nasl 12637 2018-12-04 08:36:44Z mmartin $
 #
 # vBulletin 5.x < 5.4.4 Open Redirect Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112418");
-  script_version("$Revision: 12423 $");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-19 16:20:08 +0100 (Mon, 19 Nov 2018) $");
+  script_version("$Revision: 12637 $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:36:44 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-08 09:07:22 +0100 (Thu, 08 Nov 2018)");
 
   script_cve_id("CVE-2018-15493");

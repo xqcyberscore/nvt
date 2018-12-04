@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871172");
-  script_version("$Revision: 12497 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 09:28:21 +0100 (Fri, 23 Nov 2018) $");
+  script_version("$Revision: 12634 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 15:44:30 +0530 (Mon, 09 Jun 2014)");
   script_cve_id("CVE-2010-5298", "CVE-2014-0195", "CVE-2014-0198", "CVE-2014-0221",
                 "CVE-2014-0224", "CVE-2014-3470");
@@ -35,10 +35,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("RedHat Update for openssl RHSA-2014:0625-01");
 
-
   script_tag(name:"affected", value:"openssl on Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),
   Red Hat Enterprise Linux Workstation (v. 6)");
+
   script_tag(name:"insight", value:"OpenSSL is a toolkit that implements the Secure Sockets Layer (SSL v2/v3)
 and Transport Layer Security (TLS v1) protocols, as well as a
 full-strength, general purpose cryptography library.
@@ -81,25 +81,26 @@ contain backported patches to correct these issues. For the update to take
 effect, all services linked to the OpenSSL library (such as httpd and other
 SSL-enabled services) must be restarted or the system rebooted.
 
-4. Solution: ...
-
   Description truncated, please see the referenced URL(s) for more information.");
+
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"RHSA", value:"2014:0625-01");
   script_xref(name:"URL", value:"https://www.redhat.com/archives/rhsa-announce/2014-June/msg00009.html");
+
   script_tag(name:"summary", value:"The remote host is missing an update for the 'openssl'
   package(s) announced via the referenced advisory.");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/rhel", "ssh/login/rpms", re:"ssh/login/release=RHENT_6");
 
-  script_xref(name:"URL", value:"https://access.redhat.com/site/articles/904433
+  script_xref(name:"URL", value:"https://access.redhat.com/site/articles/904433");
 
-A");
   exit(0);
 }
 

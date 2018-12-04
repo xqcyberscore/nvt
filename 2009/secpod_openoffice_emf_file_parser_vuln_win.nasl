@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_emf_file_parser_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_openoffice_emf_file_parser_vuln_win.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # OpenOffice EMF File Parser Remote Command Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901018");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,12 +46,12 @@ if(description)
   script_tag(name:"affected", value:"OpenOffice Version 2.x and 3.x on windows.");
   script_tag(name:"insight", value:"An Unspecified error occurs in the parser of EMF files when parsing certain
   crafted EMF files.");
-  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.1.1 or later
-  For updates refer to http://www.openoffice.org/");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.1.1 or later");
   script_tag(name:"summary", value:"The host has OpenOffice installed and is prone to Remote Command
   Execution Vulnerability");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.openoffice.org/");
   exit(0);
 }
 

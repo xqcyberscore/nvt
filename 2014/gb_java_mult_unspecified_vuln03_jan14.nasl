@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_jan14.nasl 11878 2018-10-12 12:40:08Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln03_jan14.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Oracle Java SE Multiple Unspecified Vulnerabilities-03 Jan 2014 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804191");
-  script_version("$Revision: 11878 $");
+  script_version("$Revision: 12634 $");
   script_cve_id("CVE-2013-5884", "CVE-2013-5896", "CVE-2013-5905", "CVE-2013-5906",
                 "CVE-2013-5907", "CVE-2014-0368", "CVE-2014-0373", "CVE-2014-0376",
                 "CVE-2014-0411", "CVE-2014-0416", "CVE-2014-0417", "CVE-2014-0422",
@@ -38,22 +38,26 @@ if(description)
                     64918, 64937, 64932, 64921, 64914, 64935);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2014-01-22 10:20:04 +0530 (Wed, 22 Jan 2014)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-03 Jan 2014 (Windows)");
 
-
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to multiple
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"Multiple unspecified vulnerabilities exists, For more details about the
-vulnerabilities refer the reference section.");
+  vulnerabilities refer the reference section.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to affect confidentiality,
-integrity and availability via unknown vectors.");
+  integrity and availability via unknown vectors.");
+
   script_tag(name:"affected", value:"Oracle Java SE 7 update 45 and prior, Java SE 6 update 65 and prior, Java SE 5
-update 55 and prior on Windows");
-  script_tag(name:"solution", value:"Apply the patch Ignore this warning if above mentioned patch is installed.
-*****");
+  update 55 and prior on Windows");
+
+  script_tag(name:"solution", value:"Apply the patch from the references advisory.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,10 +70,7 @@ update 55 and prior on Windows");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
-  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html
 
-*****
-NOTE:");
   exit(0);
 }
 

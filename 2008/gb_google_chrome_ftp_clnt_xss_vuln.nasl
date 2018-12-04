@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_ftp_clnt_xss_vuln.nasl 11555 2018-09-22 15:24:22Z cfischer $
+# $Id: gb_google_chrome_ftp_clnt_xss_vuln.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # Google Chrome Web Browser FTP Client XSS Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800121");
-  script_version("$Revision: 11555 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-10-31 15:07:51 +0100 (Fri, 31 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,11 +51,11 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.
-For updates refer to https://www.google.com/intl/en/chrome/browser ");
+features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is installed with Goole Chrome Web Browser and is prone to
   Cross Site Scripting (XSS) Vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"https://www.google.com/intl/en/chrome/browser");
   exit(0);
 }
 

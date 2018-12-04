@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wiretap_dos_vuln_nov09_lin.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: gb_wireshark_wiretap_dos_vuln_nov09_lin.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Wireshark 'wiretap/erf.c' Unsigned Integer Wrap Vulnerability - Nov09 (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801037");
-  script_version("$Revision: 4970 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-11-04 07:03:36 +0100 (Wed, 04 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,14 +47,15 @@ if(description)
   script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=3849");
 
   script_tag(name:"impact", value:"Successful remote exploitation will allow attacker to execute arbitrary code
-  or cause a Denial of Service.
+  or cause a Denial of Service.");
 
-  Impact Level: Application.");
   script_tag(name:"affected", value:"Wireshark version prior to 1.2.2 on Linux.");
+
   script_tag(name:"insight", value:"The flaw exists due to an integer overflow error in 'wiretap/erf.c' when
   processing an 'erf' file causes Wireshark to allocate a very large buffer.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.2
-  http://www.wireshark.org/download.html");
+
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.2.");
+
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone unsigned integer
   wrap vulnerability.");
 
@@ -69,7 +70,6 @@ include("host_details.inc");
 
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
-# Alert for Wireshark version prior to 1.2.2
 if(version_is_less(version:ver, test_version:"1.2.2")) {
   report = report_fixed_ver(installed_version:ver, fixed_version:"1.2.2");
   security_message(data:report);

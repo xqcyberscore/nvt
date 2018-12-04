@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_wpp_enterprise_library_re_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ms_wpp_enterprise_library_re_dos_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Microsoft Windows Patterns & Practices EntLib DOS Vulnerability
 #
@@ -24,44 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful attack could allow attackers to crash application or CPU consumption
-  and to cause denial of service.
-  Impact Level: Application";
-tag_affected = "Microsoft Windows Patterns & Practices Enterprise Library 3.1, 4.0 and 4.1";
-tag_insight = "An error occurs in Blocks/Common/Src/Configuration/Manageability/Adm/
-  AdmContentBuilder.cs while processing an input string composed of many '\' ie
-  backslash characters followed by a double quote related to a certain regular
-  expression.";
-tag_solution = "Upgrade to Microsoft Windows Patterns & Practices Enterprise Library 5.0
-  or later. For updates refer to http://www.codeplex.com/entlib";
-tag_summary = "This host has Microsoft Windows Patterns & Practices Enterprise
-  Library installed and is prone to Denial of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900957");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-29 09:16:03 +0200 (Tue, 29 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-3275");
   script_name("Microsoft Windows Patterns & Practices EntLib DOS Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/506453/100/0/threaded");
-  script_xref(name : "URL" , value : "http://www.checkmarx.com/Upload/Documents/PDF/Checkmarx_OWASP_IL_2009_ReDoS.pdf");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/506453/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.checkmarx.com/Upload/Documents/PDF/Checkmarx_OWASP_IL_2009_ReDoS.pdf");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_ms_wpp_enterprise_library_detect.nasl");
   script_mandatory_keys("MS/WPP/EntLib/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful attack could allow attackers to crash application or CPU consumption
+  and to cause denial of service.");
+  script_tag(name:"affected", value:"Microsoft Windows Patterns & Practices Enterprise Library 3.1, 4.0 and 4.1");
+  script_tag(name:"insight", value:"An error occurs in Blocks/Common/Src/Configuration/Manageability/Adm/
+  AdmContentBuilder.cs while processing an input string composed of many '\' ie
+  backslash characters followed by a double quote related to a certain regular
+  expression.");
+  script_tag(name:"solution", value:"Upgrade to Microsoft Windows Patterns & Practices Enterprise Library 5.0
+  or later.");
+  script_tag(name:"summary", value:"This host has Microsoft Windows Patterns & Practices Enterprise
+  Library installed and is prone to Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.codeplex.com/entlib");
   exit(0);
 }
 
@@ -73,9 +67,8 @@ if(isnull(entlibVer)){
   exit(0);
 }
 
-# Grep for the version 3.1, 4.0 and 4.1
 if(version_is_equal(version:entlibVer, test_version:"3.1.0.0") ||
    version_is_equal(version:entlibVer, test_version:"4.0.0.0") ||
    version_is_equal(version:entlibVer, test_version:"4.1.0.0")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

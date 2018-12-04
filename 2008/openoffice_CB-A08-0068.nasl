@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openoffice_CB-A08-0068.nasl 4552 2016-11-17 11:43:25Z cfi $
+# $Id: openoffice_CB-A08-0068.nasl 12623 2018-12-03 13:11:38Z cfischer $
 #
 # OpenOffice.org <= 2.4.1 vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90029");
-  script_version("$Revision: 4552 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 12:43:25 +0100 (Thu, 17 Nov 2016) $");
+  script_version("$Revision: 12623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 14:11:38 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-09-09 22:57:12 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,8 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.openoffice.org/security/cves/CVE-2008-2152.html");
 
-  tag_summary = "The remote host is probably affected by the vulnerabilities described in
+  script_tag(name:"solution", value:"All OpenOffice.org users should upgrade to the latest version.");
+  script_tag(name:"summary", value:"The remote host is probably affected by the vulnerabilities described in
   CVE-2008-2152 or CVE-2008-3282 on 64-bit platform's
 
   OpenOffice.org <= 2.4.1 vulnerability
@@ -56,20 +57,15 @@ if(description)
      sal/rtl/source/alloc_global.c in OpenOffice.org (OOo)
      2.0 through 2.4 allows remote attackers to execute
      arbitrary code via a crafted file that triggers a
-     heap-based buffer overflow. 
+     heap-based buffer overflow.
    CVE-2008-3282
      Integer overflow in the rtl_allocateMemory function
      in sal/rtl/source/alloc_global.c in the memory allocator
      in OpenOffice.org (OOo) 2.4.1, on 64-bit platforms, allows
      remote attackers to cause a denial of service (application
      crash) or possibly execute arbitrary code via a crafted
-     document, related to a 'numeric truncation error,' a
-     different vulnerability than CVE-2008-2152.";
-
-  tag_solution = "All OpenOffice.org users should upgrade to the latest version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+     document, related to a 'numeric truncation error, ' a
+     different vulnerability than CVE-2008-2152.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

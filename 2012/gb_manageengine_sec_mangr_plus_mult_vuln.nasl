@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 12634 2018-12-04 07:26:26Z cfischer $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802483");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 12634 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 08:26:26 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22092/");
@@ -39,6 +39,8 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117520/manageenginesmp-sql.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117522/manageengine-sql.rb.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117519/manageenginemp-traversal.txt");
+  script_xref(name:"URL", value:"http://bonitas.zohocorp.com/4264259/scanfi/31May2012/SMP_Vul_fix.zip");
+  script_xref(name:"URL", value:"http://www.manageengine.com/products/security-manager");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,10 +51,12 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform
-directory traversal attacks, read/download the arbitrary files and to manipulate
-SQL queries by injecting arbitrary SQL code.");
+  directory traversal attacks, read/download the arbitrary files and to manipulate
+  SQL queries by injecting arbitrary SQL code.");
+
   script_tag(name:"affected", value:"ManageEngine Security Manager Plus version 5.5 build 5505
-and prior");
+  and prior");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An input passed to the 'f' parameter via 'store' script is not properly
@@ -62,19 +66,14 @@ and prior");
 
   - The SQL injection is possible on the 'Advanced Search', the input is not
   validated correctly.");
-  script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version,
 
-http://bonitas.zohocorp.com/4264259/scanfi/31May2012/SMP_Vul_fix.zip Ignore this warning if above mentioned patch is installed.
-*****");
+  script_tag(name:"solution", value:"Apply the patch from the referenced link or update to latest version.");
+
   script_tag(name:"summary", value:"This host is running Zoho ManageEngine Security Manager Plus
-and is prone to multiple vulnerabilities.");
+  and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"http://www.manageengine.com/products/security-manager
-
-*****
-NOTE:");
   exit(0);
 }
 

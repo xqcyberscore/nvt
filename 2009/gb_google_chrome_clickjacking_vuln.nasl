@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_clickjacking_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: gb_google_chrome_clickjacking_vuln.nasl 12629 2018-12-03 15:19:43Z cfischer $
 #
 # Google Chrome Clickjacking Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800223");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-03 16:19:43 +0100 (Mon, 03 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,11 +54,11 @@ if(description)
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution
   options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one.
-  For updates refer to http://googlechromereleases.blogspot.com");
+  remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to
   clickjacking vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com");
   exit(0);
 }
 
