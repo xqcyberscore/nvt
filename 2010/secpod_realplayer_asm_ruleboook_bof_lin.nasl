@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_asm_ruleboook_bof_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_realplayer_asm_ruleboook_bof_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # RealNetworks RealPlayer ASM RuleBook BOF Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902110");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,12 +50,12 @@ if(description)
   code execution.");
   script_tag(name:"affected", value:"RealPlayer versions 10.x and 11.0.0 on Linux platforms.");
   script_tag(name:"insight", value:"The buffer overflow error occurs when processing a malformed 'ASM RuleBook'.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 11.0.5 or later.
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 11.0.5 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to Buffer
   Overflow vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct10_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_opera_mult_vuln_oct10_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities October-10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801474");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-4043", "CVE-2010-4044", "CVE-2010-4046", "CVE-2010-4045",
                 "CVE-2010-4047", "CVE-2010-4049", "CVE-2010-4048", "CVE-2010-4050");
@@ -70,12 +70,12 @@ if(description)
     with an error page.
 
   - Error in 'SVG' document in an 'IMG' element.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 10.63 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 10.63 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

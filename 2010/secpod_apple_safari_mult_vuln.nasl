@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_apple_safari_mult_vuln.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Apple Safari multiple vulnerabilities (Mar10)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902025");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2010-1029", "CVE-2010-1939", "CVE-2010-1939");
   script_bugtraq_id(38398, 39990);
@@ -69,13 +69,13 @@ application crash or possibly execute arbitrary code on the system.");
 
   - Includes HTTP basic authentication credentials in an HTTP request if a web page
    that requires HTTP basic authentication redirects to a different domain.");
-  script_tag(name:"solution", value:"Upgrade to Apple Saferi 5.0 or later,
-For updates refer to http://support.apple.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple Saferi 5.0 or later.");
   script_tag(name:"summary", value:"The host is running Apple Saferi and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://support.apple.com/downloads");
   exit(0);
 }
 

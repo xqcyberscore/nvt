@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_insecure_lib_load_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: secpod_mozilla_prdts_insecure_lib_load_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Products Insecure Library Loading Vulnerability (Windows)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902242");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-3131");
   script_name("Mozilla Products Insecure Library Loading Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41095");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14783/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2169");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/513324/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41095");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14783/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2169");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/513324/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -45,37 +45,36 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                        "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute
-arbitrary code and conduct DLL hijacking attacks.
 
-Impact Level: Application");
-  script_tag(name : "affected" , value : "Thunderbird version 3.1.2
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute
+  arbitrary code and conduct DLL hijacking attacks.");
 
-SeaMonkey version 2.0.6
+  script_tag(name:"affected", value:"Thunderbird version 3.1.2
 
-Firefox version 3.6.8 and prior on Windows.");
-  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain
-libraries from the current working directory, which could allow attackers to
-execute arbitrary code by tricking a user into opening a file.");
-  script_tag(name : "solution" , value : "Upgrade Thunderbird to 3.1.3 or later
+  SeaMonkey version 2.0.6
 
-Upgrade SeaMonkey to 2.0.7 or later
+  Firefox version 3.6.8 and prior on Windows.");
 
-Upgrade Firefox 3.6.9 or later
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain
+  libraries from the current working directory, which could allow attackers to
+  execute arbitrary code by tricking a user into opening a file.");
 
-http://www.mozilla.com/en-US/firefox/all.html
+  script_tag(name:"solution", value:"Upgrade Thunderbird to 3.1.3 or later
 
-http://www.mozillamessaging.com/en-US/thunderbird");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird
-and is prone to insecure library loading vulnerability.");
+  Upgrade SeaMonkey to 2.0.7 or later
+
+  Upgrade Firefox 3.6.9 or later");
+
+  script_tag(name:"summary", value:"The host is installed with Mozilla Firefox/Seamonkey/Thunderbird
+  and is prone to insecure library loading vulnerability.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
 include("version_func.inc");
-
 
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
@@ -87,9 +86,8 @@ if(ffVer)
   }
 }
 
-# Seamonkey Check
 smVer = get_kb_item("Seamonkey/Win/Ver");
-if(smVer != NULL)
+if(smVer)
 {
   if(version_is_equal(version:smVer, test_version:"2.0.6"))
   {
@@ -98,9 +96,8 @@ if(smVer != NULL)
   }
 }
 
-## Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-if(tbVer != NULL)
+if(tbVer)
 {
   if(version_is_equal(version:tbVer, test_version:"3.1.2")){
     security_message( port: 0, data: "The target host was found to be vulnerable" );

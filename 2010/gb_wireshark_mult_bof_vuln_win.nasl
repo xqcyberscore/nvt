@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_bof_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_wireshark_mult_bof_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Wireshark Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800290");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.2.0 to 1.2.5 and 0.9.15 to 1.0.10");
   script_tag(name:"insight", value:"The flaws are caused by buffer overflow errors in the LWRES dissector when
   processing malformed data or packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.6 or 1.0.11
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.6 or 1.0.11");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple Buffer
   Overflow vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

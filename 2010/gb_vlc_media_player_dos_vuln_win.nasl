@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_win.nasl 8485 2018-01-22 07:57:57Z teissa $
+# $Id: gb_vlc_media_player_dos_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # VLC Media Player Meta-Information Denial of Service Vulnerability (Windows)
 #
@@ -26,43 +26,36 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation could allow attackers to crash the affected
-  application, denying service to legitimate users.
-  Impact Level: Application";
-tag_affected = "VLC media player version prior to 1.1.3 on Windows.";
-tag_insight = "The flaw is due to an input validation error when trying to extract
-  meta-informations about input media through 'ID3v2' tags.";
-tag_solution = "Upgrade to the VLC media player version 1.1.3 or later,
-  For updates refer to http://www.videolan.org/vlc/";
-tag_summary = "The host is installed with VLC Media Player and is prone to Denial
-  of Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801429");
-  script_version("$Revision: 8485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-22 08:57:57 +0100 (Mon, 22 Jan 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-2937");
   script_bugtraq_id(42386);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("VLC Media Player Meta-Information Denial of Service Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/");
-  script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1004.html");
-  
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/");
+  script_xref(name:"URL", value:"http://www.videolan.org/security/sa1004.html");
+
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash the affected
+  application, denying service to legitimate users.");
+  script_tag(name:"affected", value:"VLC media player version prior to 1.1.3 on Windows.");
+  script_tag(name:"insight", value:"The flaw is due to an input validation error when trying to extract
+  meta-informations about input media through 'ID3v2' tags.");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.3 or later.");
+  script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone to Denial
+  of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 
@@ -73,7 +66,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for VLC Media Player Version less than 1.1.3
 if( version_is_less( version:vers, test_version:"1.1.3" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.1.3", install_path:path );
   security_message( port:0, data:report );

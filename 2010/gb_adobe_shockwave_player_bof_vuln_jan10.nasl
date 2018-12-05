@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_bof_vuln_jan10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_adobe_shockwave_player_bof_vuln_jan10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Shockwave Player 3D Model Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800443");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,13 +53,13 @@ if(description)
   script_tag(name:"insight", value:"These flaws are caused by buffer and integer overflow errors when processing
   Shockwave files or 3D models, which could be exploited to execute arbitrary
   code by tricking a user into visiting a specially crafted web page.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.6.606 or later.
-  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.6.606 or later.");
   script_tag(name:"summary", value:"This host has Adobe Shockwave Player installed and is prone to
   Buffer Overflow vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/otherversions/");
   exit(0);
 }
 

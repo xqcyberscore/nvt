@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-079.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: secpod_ms10-079.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2293194)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902265");
-  script_version("$Revision: 10639 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2747", "CVE-2010-2748", "CVE-2010-2750", "CVE-2010-3214",
                 "CVE-2010-3215", "CVE-2010-3216", "CVE-2010-3217", "CVE-2010-3218",
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2626");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted word document.
-
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted word document.");
 
   script_tag(name:"affected", value:"Microsoft Word 2010
 
@@ -70,32 +68,31 @@ if(description)
 
   script_tag(name:"insight", value:"The flaws are due to:
 
-   - An uninitialized pointer error when processing malformed data in a Word file
+  - An uninitialized pointer error when processing malformed data in a Word file
 
-   - An improper boundary check when processing certain data in a Word file
+  - An improper boundary check when processing certain data in a Word file
 
-   - An error when handling index values within a Word document
+  - An error when handling index values within a Word document
 
-   - A stack overflow error when processing malformed data within a Word
+  - A stack overflow error when processing malformed data within a Word
      document
 
-   - An error when handling return values, bookmarks, pointers while parsing
+  - An error when handling return values, bookmarks, pointers while parsing
      a specially crafted Word
 
-   - A heap overflow error when handling malformed records within a Word file
+  - A heap overflow error when handling malformed records within a Word file
 
-   - An error when handling indexes while parsing a specially crafted Word file");
+  - An error when handling indexes while parsing a specially crafted Word file");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms10-079.mspx");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-079.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-079.mspx");
   exit(0);
 }
 

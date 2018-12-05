@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ass_bof_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_vlc_media_player_ass_bof_vuln_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # VLC Media Player ASS File Buffer Overflow Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800445");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to stack-based buffer overflow error in Aegisub Advanced
   SubStation ('.ass') file handler that fails to perform adequate boundary
   checks on user-supplied input.");
-  script_tag(name:"solution", value:"Upgrade to VLC Media Player version 1.0.5 or later
-  For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name:"solution", value:"Upgrade to VLC Media Player version 1.0.5 or later");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
   Stack-Based Buffer Overflow Vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

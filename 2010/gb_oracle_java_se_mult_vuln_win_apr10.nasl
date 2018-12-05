@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_mult_vuln_win_apr10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800499");
-  script_version("$Revision: 10144 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-07 16:20:50 +0200 (Wed, 07 Apr 2010)");
   script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085",
                 "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090",
@@ -43,9 +43,9 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Oracle Java SE Multiple Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/0747");
-  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Mar/1023774.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/0747");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Mar/1023774.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -53,31 +53,36 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK_or_JRE/Win/installed");
-  script_tag(name : "impact" , value : "Successful attacks will allow attackers to affect confidentiality, integrity,
-  and availability via unknown vectors.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Sun Java SE version 6 Update 18, 5.0 Update 23 on Windows.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to memory corruptions, buffer overflows, input
+
+  script_tag(name:"impact", value:"Successful attacks will allow attackers to affect confidentiality, integrity,
+  and availability via unknown vectors.");
+
+  script_tag(name:"affected", value:"Sun Java SE version 6 Update 18, 5.0 Update 23 on Windows.");
+
+  script_tag(name:"insight", value:"Multiple flaws are due to memory corruptions, buffer overflows, input
   validation and implementation errors in following components,
 
-   - HotSpot Server
+  - HotSpot Server
 
-   - Java Runtime Environment
+  - Java Runtime Environment
 
-   - Java Web Start
+  - Java Web Start
 
-   - Java Plug-in
+  - Java Plug-in
 
-   - Java 2D
+  - Java 2D
 
-   - Sound and
+  - Sound and
 
-   - imageIO components,");
-  script_tag(name : "solution" , value : "Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24,
-  http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Sun Java SE and is prone to multiple
+  - imageIO components.");
+
+  script_tag(name:"solution", value:"Upgrade to SE 6 Update 19, JDK and JRE 5.0 Update 24.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"This host is installed with Sun Java SE and is prone to multiple
   vulnerabilities.");
+
   exit(0);
 }
 

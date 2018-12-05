@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_win_dec10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_realplayer_mult_vuln_win_dec10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Dec10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801671");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,13 +65,13 @@ if(description)
 
   - Heap-based buffer overflow when parsing 'AAC', 'IVR',
     'RealMedia', and 'RealPix' files");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer 14.0.1.609 (Build 12.0.1.609) or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer 14.0.1.609 (Build 12.0.1.609) or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

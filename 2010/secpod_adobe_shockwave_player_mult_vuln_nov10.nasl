@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_mult_vuln_nov10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_adobe_shockwave_player_mult_vuln_nov10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Nov-10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901167");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:49:11 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-2581", "CVE-2010-2582", "CVE-2010-3653", "CVE-2010-3655",
                 "CVE-2010-4084", "CVE-2010-4085", "CVE-2010-4086", "CVE-2010-4087",
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The multiple flaws are caused by memory corruptions and buffer overflow errors
   in the 'DIRAPI.dll' and 'IML32.dll' modules when processing malformed Shockwave
   or Director files.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.9.615
-  For updates refer to http://get.adobe.com/shockwave/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.9.615");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple vulnerabilities.");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2826");
@@ -61,6 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/");
   exit(0);
 }
 

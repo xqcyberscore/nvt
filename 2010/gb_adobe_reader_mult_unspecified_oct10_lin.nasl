@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_oct10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_adobe_reader_mult_unspecified_oct10_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities -Oct10 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801525");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-18 15:37:53 +0200 (Mon, 18 Oct 2010)");
   script_cve_id("CVE-2010-2887");
   script_bugtraq_id(43740);
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Reader version 8.x before 8.2.5 and 9.x before 9.4 on linux");
   script_tag(name:"insight", value:"An unspecified flaw is present in the application which can be exploited
   through an unknown attack vectors.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.4 or 8.2.5
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.4 or 8.2.5");
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple
   unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

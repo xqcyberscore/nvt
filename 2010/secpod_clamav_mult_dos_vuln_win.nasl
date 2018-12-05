@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_mult_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_clamav_mult_dos_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # ClamAV 'cli_pdf()' and 'cli_scanicon()' Denial of Service Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902189");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-05-28 16:52:49 +0200 (Fri, 28 May 2010)");
   script_cve_id("CVE-2010-1639", "CVE-2010-1640");
   script_bugtraq_id(40318, 40317);
@@ -55,12 +55,12 @@ if(description)
   - Error exists within the 'parseicon()' function in 'libclamav/pe_icons.c'
     when processing 'PE' icons. This can be exploited to trigger an out-of-bounds
     access when reading data and potentially cause a crash.");
-  script_tag(name:"solution", value:"Upgrade to ClamAV 0.96.1 or later,
-  For updates refer to http://www.clamav.net");
+  script_tag(name:"solution", value:"Upgrade to ClamAV 0.96.1 or later.");
   script_tag(name:"summary", value:"This host has ClamAV installed, and is prone to multiple Denial of Service
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.clamav.net");
   exit(0);
 }
 

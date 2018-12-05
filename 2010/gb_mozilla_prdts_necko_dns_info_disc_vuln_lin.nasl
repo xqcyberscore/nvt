@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_lin.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Products Necko DNS Information Disclosure Vulnerability (Linux)
 #
@@ -24,69 +24,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the patch or Upgrade to  Mozilla Necko version 1.9.1
-  http://www.mozilla.com/en-US/products/
-  https://bug492196.bugzilla.mozilla.org/attachment.cgi?id=377824
-
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation will let the attackers obtain the network location of
-  the applications user by logging DNS requests.
-  Impact Level: Application";
-tag_affected = "Mozilla Thunderbird version 3.0.1 and
-  Seamonkey with Mozilla Necko version 1.9.0 and prior on Linux.";
-tag_insight = "The flaw exists while DNS prefetching, when the app type is 'APP_TYPE_MAIL'
-  or 'APP_TYPE_EDITOR'";
-tag_summary = "The host is installed with Thundebird/Seamonkey and is prone to
-  Information Disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800456");
-  script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-4629");
   script_name("Mozilla Products Necko DNS Information Disclosure Vulnerability (Linux)");
 
-  script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=492196");
-  script_xref(name : "URL" , value : "https://secure.grepular.com/DNS_Prefetch_Exposure_on_Thunderbird_and_Webmail");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=492196");
+  script_xref(name:"URL", value:"https://bug492196.bugzilla.mozilla.org/attachment.cgi?id=377824");
+  script_xref(name:"URL", value:"https://secure.grepular.com/DNS_Prefetch_Exposure_on_Thunderbird_and_Webmail");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_seamonkey_detect_lin.nasl", "gb_thunderbird_detect_lin.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Linux/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_tag(name:"impact", value:"Successful exploitation will let the attackers obtain the network location of
+  the applications user by logging DNS requests.");
+
+  script_tag(name:"affected", value:"Mozilla Thunderbird version 3.0.1 and
+  Seamonkey with Mozilla Necko version 1.9.0 and prior on Linux.");
+
+  script_tag(name:"insight", value:"The flaw exists while DNS prefetching, when the app type is 'APP_TYPE_MAIL'
+  or 'APP_TYPE_EDITOR'");
+
+  script_tag(name:"summary", value:"The host is installed with Thundebird/Seamonkey and is prone to
+  Information Disclosure vulnerability.");
+
+  script_tag(name:"solution", value:"Apply the referenced updates or upgrade to Mozilla Necko version 1.9.1.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 
-# Thunderbird Check
 fpVer = get_kb_item("Thunderbird/Linux/Ver");
 if(!isnull(fpVer))
 {
   if(version_is_less_equal(version:fpVer, test_version:"3.0.1"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
 
-# Seamonkey Check
 seaVer = get_kb_item("Seamonkey/Linux/Ver");
 if(!seaVer){
   exit(0);
@@ -119,7 +110,7 @@ foreach binaryName (modName)
   {
     if(version_is_less(version:seaver[1], test_version:"1.9.1"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       ssh_close_connection();
       exit(0);
     }

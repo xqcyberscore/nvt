@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_hmi_snmp_detect.nasl 12344 2018-11-14 09:58:21Z ckuersteiner $
+# $Id: gb_simatic_hmi_snmp_detect.nasl 12652 2018-12-04 14:15:10Z cfischer $
 #
 # Siemens SIMATIC HMI Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141682");
-  script_version("$Revision: 12344 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 10:58:21 +0100 (Wed, 14 Nov 2018) $");
+  script_version("$Revision: 12652 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 15:15:10 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 13:52:50 +0700 (Wed, 14 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,6 +61,7 @@ if (!sysdesc)
 
 # Siemens, SIMATIC HMI, TP900 Comfort, 6AV2 124-0JC01-0AX0, HW: 0, SW: V 13 0 1
 # Siemens, SIMATIC HMI, KTP600 Basic Mono PN, 6AV6647-0AB11-3AX0, HW:1, FW:V01.06.00
+# Siemens, SIMATIC HMI, MP377, 6AV6 644-0AA01-2AX0, HW: 0, SW: V 1 0 4
 if ("Siemens, SIMATIC HMI" >< sysdesc) {
   set_kb_item(name: 'simatic_hmi/detected', value: TRUE);
   set_kb_item(name: "simatic_hmi/snmp/detected", value: TRUE);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_arbitrary_code_exec_vuln_oct10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_adobe_shockwave_player_arbitrary_code_exec_vuln_oct10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Shockwave player Arbitrary Code Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801476");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-11-02 18:01:36 +0100 (Tue, 02 Nov 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,13 +51,13 @@ cause a denial-of-service condition.");
   script_tag(name:"insight", value:"The flaw is due to a memory corruption error in the Director
 (DIRAPI.dll) module when processing and calculating offsets while parsing
 'rcsL' chunks in a Director file.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.5.9.615,
-For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.5.9.615.");
   script_tag(name:"summary", value:"This host has Adobe Shockwave Player installed and is prone to
 arbitrary code execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/otherversions/");
   exit(0);
 }
 

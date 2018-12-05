@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codesys_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_codesys_detect.nasl 12651 2018-12-04 13:50:53Z cfischer $
 #
 # CODESYS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140500");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12651 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 14:50:53 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 08:54:19 +0700 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,15 +94,18 @@ register_service(port: port, proto: "codesys");
 
 os_name = bin2string(ddata:substr(recv, 64, 95), noprint_replacement: '');
 set_kb_item(name: "codesys/os_name", value: os_name);
+set_kb_item(name: "codesys/" + port + "/os_name", value: os_name);
+
 os_details = bin2string(ddata:substr(recv, 96, 127), noprint_replacement: '');
 set_kb_item(name: "codesys/os_details", value: os_details);
+set_kb_item(name: "codesys/" + port + "/os_details", value: os_details);
+
 type =  bin2string(ddata:substr(recv, 128, 159), noprint_replacement: '');
 
-report = "A CODESYS service is running at this port.\n\nThe following information was extracted:\n\n" +
-         "OS Name:       " + os_name + "\n" +
-         "OS Details:    " + os_details + "\n" +
-         "Product Type:  " + type + "\n";
+report = 'A CODESYS service is running at this port.\n\nThe following information was extracted:\n\n' +
+         'OS Name:       ' + os_name + '\n' +
+         'OS Details:    ' + os_details + '\n' +
+         'Product Type:  ' + type;
 
 log_message(port: port, data: report);
-
 exit(0);

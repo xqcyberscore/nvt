@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xslt_info_disc_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_opera_xslt_info_disc_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Opera 'XSLT' Information Disclosure Vulnerability - (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801310");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1310");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,12 +50,12 @@ if(description)
   cause Opera to retrieve the wrong contents for the resulting document. These
   contents will appear randomly from the cached versions of any Web page that
   has previously been visited.");
-  script_tag(name:"solution", value:"Upgrade to the opera version 10.51 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to the opera version 10.51 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
   information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800493");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari version prior to 4.0.5 (5.31.22.7) on Windows.");
   script_tag(name:"insight", value:"For more information about vulnerabilities on Apple Safari, go through the links
   mentioned in references.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 4.0.5,
-  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 4.0.5.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
   to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads");
   exit(0);
 }
 

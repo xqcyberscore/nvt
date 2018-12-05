@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: gb_vlc_media_player_insecure_lib_load_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # VLC Media Player File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801500");
-  script_version("$Revision: 10022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_cve_id("CVE-2010-3124");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("VLC Media Player File Opening Insecure Library Loading Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41107");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14750/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2172");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/08/25/9");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/08/25/10");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41107");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14750/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2172");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/08/25/9");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/08/25/10");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -48,22 +48,20 @@ if(description)
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
 
-  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain libraries
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain libraries
   from the current working directory, which could allow attackers to execute
   arbitrary code by tricking a user into opening a file from a network share.");
-  script_tag(name : "solution" , value : "Upgrade to VLC version 1.1.4 or apply patch from below link,
-  For updates refer to http://www.videolan.org/vlc/");
-  script_tag(name : "summary" , value : "This host is installed with VLC media player and is prone to insecure
+  script_tag(name:"solution", value:"Upgrade to VLC version 1.1.4 or apply patch from below link.");
+  script_tag(name:"summary", value:"This host is installed with VLC media player and is prone to insecure
   library loading vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute arbitrary code and
-  conduct DLL hijacking attacks.
-
-  Impact Level: Application.");
-  script_tag(name : "affected" , value : "VLC Media Player version 1.1.3 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute arbitrary code and
+  conduct DLL hijacking attacks.");
+  script_tag(name:"affected", value:"VLC Media Player version 1.1.3 and prior.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

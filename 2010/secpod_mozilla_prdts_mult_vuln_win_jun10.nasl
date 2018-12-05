@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_mult_vuln_win_jun10.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: secpod_mozilla_prdts_mult_vuln_win_jun10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities june-10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902204");
-  script_version("$Revision: 10135 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-07-01 15:58:11 +0200 (Thu, 01 Jul 2010)");
   script_cve_id("CVE-2010-1196", "CVE-2010-1200", "CVE-2010-1199", "CVE-2010-1202");
   script_bugtraq_id(41050);
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Mozilla Products Multiple Vulnerabilities june-10 (Windows)");
 
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-29.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-26.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2010/mfsa2010-30.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-29.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-26.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-30.html");
 
 
   script_tag(name:"qod_type", value:"registry");
@@ -48,40 +48,44 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to to cause a denial of service
-  or execute arbitrary code.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Seamonkey version prior to 2.0.5,
+
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to to cause a denial of service
+  or execute arbitrary code.");
+
+  script_tag(name:"affected", value:"Seamonkey version prior to 2.0.5,
+
   Thunderbird version proior to 3.0.5 and
+
   Firefox version 3.5.x before 3.5.10 and 3.6.x before 3.6.4");
-  script_tag(name : "insight" , value : "The flaws are due to:
-   - Integer overflow in the 'nsGenericDOMDataNode::SetTextInternal' function,
-     which allows remote attackers to execute arbitrary code via a DOM node
-     with a long text value.
-   - Multiple unspecified vulnerabilities in the browser engine, which allows
-     attackers to cause a denial of service or execute arbitrary code via
-     unknown vectors.
-   - Integer overflow in the 'XSLT' node sorting implementation, which allows
-     attackers to execute arbitrary code via a large text value for a node.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
+
+  script_tag(name:"insight", value:"The flaws are due to:
+
+  - Integer overflow in the 'nsGenericDOMDataNode::SetTextInternal' function,
+  which allows remote attackers to execute arbitrary code via a DOM node
+  with a long text value.
+
+  - Multiple unspecified vulnerabilities in the browser engine, which allows
+  attackers to cause a denial of service or execute arbitrary code via
+  unknown vectors.
+
+  - Integer overflow in the 'XSLT' node sorting implementation, which allows
+  attackers to execute arbitrary code via a large text value for a node.");
+
+  script_tag(name:"summary", value:"The host is installed with Mozilla Firefox/Seamonkey/Thunderbird and is prone
   to multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Firefox version 3.5.10 or 3.6.4,
-  http://www.mozilla.com/en-US/firefox/all.html
+
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.5.10 or 3.6.4,
 
   Upgrade to Seamonkey version 2.0.5,
-  http://www.seamonkey-project.org/releases/
 
-  Upgrade to Thunderbird version 3.0.5,
-  http://www.mozillamessaging.com/en-US/thunderbird/");
+  Upgrade to Thunderbird version 3.0.5.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-
 include("version_func.inc");
-
 
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(ffVer)
@@ -94,7 +98,6 @@ if(ffVer)
     }
 }
 
-# Seamonkey Check
 smVer = get_kb_item("Seamonkey/Win/Ver");
 if(smVer != NULL)
 {
@@ -105,7 +108,6 @@ if(smVer != NULL)
   }
 }
 
-# Thunderbird Check
 tbVer = get_kb_item("Thunderbird/Win/Ver");
 if(tbVer != NULL)
 {

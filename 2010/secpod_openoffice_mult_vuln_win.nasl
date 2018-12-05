@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_mult_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_openoffice_mult_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # OpenOffice.org Buffer Overflow and Directory Traversal Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902283");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-30 16:09:21 +0200 (Mon, 30 Aug 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -63,12 +63,12 @@ if(description)
   - A directory traversal error related to 'zip/jar' package extraction
 
   - A buffer overflow error when processing malformed PPT files");
-  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.3.0 or later
-  For updates refer to http://www.openoffice.org/");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice Version 3.3.0 or later");
   script_tag(name:"summary", value:"The host has OpenOffice installed and is prone to buffer overflow
   and directory traversal vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.openoffice.org/");
   exit(0);
 }
 

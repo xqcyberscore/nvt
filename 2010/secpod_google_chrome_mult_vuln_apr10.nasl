@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities (win)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902050");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_cve_id("CVE-2010-1502", "CVE-2010-1767", "CVE-2010-1500", "CVE-2010-1503",
                 "CVE-2010-1504", "CVE-2010-1505", "CVE-2010-1506", "CVE-2010-1767");
@@ -70,11 +70,11 @@ if(description)
   - Pages that might load with privileges of the 'New Tab page'.
 
   - An unspecified error in 'V8 bindings' causes a denial of service");
-  script_tag(name:"solution", value:"Upgrade to the version 4.1.249.1059 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the version 4.1.249.1059 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Google Chrome Web Browser and is prone
   to multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

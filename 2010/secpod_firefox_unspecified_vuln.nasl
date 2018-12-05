@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_unspecified_vuln.nasl 9912 2018-05-18 13:54:07Z cfischer $
+# $Id: secpod_firefox_unspecified_vuln.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Firefox Unspecified Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902027");
-  script_version("$Revision: 9912 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:54:07 +0200 (Fri, 18 May 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2010-1028");
   script_tag(name:"cvss_base", value:"9.3");
@@ -42,20 +42,19 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to execute arbitrary code.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox 3.6 and prior");
-  script_tag(name : "insight" , value : "The flaw is caused by unspecified errors and unknown attack vectors.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html");
-  script_tag(name : "summary" , value : "The host is running Mozilla Firefox and is prone to unspecified
+  script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code.");
+  script_tag(name:"affected", value:"Mozilla Firefox 3.6 and prior");
+  script_tag(name:"insight", value:"The flaw is caused by unspecified errors and unknown attack vectors.");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
+  script_tag(name:"summary", value:"The host is running Mozilla Firefox and is prone to unspecified
   vulnerability.");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38608");
-  script_xref(name : "URL" , value : "http://www.h-online.com/security/news/item/Zero-day-exploit-for-Firefox-3-6-936124.html");
-  script_xref(name : "URL" , value : "http://blog.psi2.de/en/2010/02/20/going-commercial-with-firefox-vulnerabilities/comment-page-1/#comment-666");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38608");
+  script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Zero-day-exploit-for-Firefox-3-6-936124.html");
+  script_xref(name:"URL", value:"http://blog.psi2.de/en/2010/02/20/going-commercial-with-firefox-vulnerabilities/comment-page-1/#comment-666");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/upgrade.html");
   exit(0);
 }
 
@@ -68,5 +67,5 @@ if(!foxVer){
 }
 
 if(version_is_less_equal(version:foxVer, test_version:"3.6")){
-   security_message(0);
+   security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

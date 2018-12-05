@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: host_details.inc 12575 2018-11-29 10:41:31Z ckuersteiner $
+# $Id: host_details.inc 12652 2018-12-04 14:15:10Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12575 $
+# $Revision: 12652 $
 #
 ###############################################################################
 
@@ -131,6 +131,8 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -229,6 +231,8 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108488", # gb_wd_mycloud_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108491", # gb_intelbras_ncloud_devices_http_detect.nasl
     "1.3.6.1.4.1.25623.1.0.141736", # gb_ricoh_iwb_detect.nasl
+    "1.3.6.1.4.1.25623.1.0.108494", # gb_codesys_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.141684", # gb_simatic_hmi_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -481,7 +485,7 @@ function host_runs() {
   if( "linux" >< tolower( ospattern ) )
     ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|d-link(:| )d|' +
                 'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz|my_?cloud|' +
-                'intelbras(: | )ncloud)';
+                'intelbras(:| )ncloud|ricoh:iwb|nucleus(_| )rtos|vxworks|chip-rtos|simatic(_| )hmi)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

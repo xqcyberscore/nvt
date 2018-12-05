@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_untrusted_search_path_vuln_win.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: gb_adobe_flash_player_untrusted_search_path_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Flash Player Untrusted search path vulnerability (Windows)
 #
@@ -26,47 +26,35 @@
 
 CPE = "cpe:/a:adobe:flash_player";
 
-tag_impact = "Successful exploitation will allow attackers to trigger user to
-save a malicious dll file in users Desktop.
-
-Impact Level: Application/System.";
-
-tag_affected = "Adobe Flash Player version 10.1.0 through 10.1.82.76";
-
-tag_solution = "Upgrade to Adobe Flash Player version 10.1.102.64 or later.
-For updates refer to http://www.adobe.com/support/flashplayer/downloads.html";
-
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-untrusted search path vulnerability.";
-
-tag_insight = "The application passes an insufficiently qualified path in
-loading its external libraries 'dwmapi.dll'.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801465");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-28 11:50:37 +0200 (Thu, 28 Oct 2010)");
   script_cve_id("CVE-2010-3976");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Adobe Flash Player Untrusted search path vulnerability (windows)");
-  script_xref(name : "URL" , value : "http://www.derkeiler.com/Mailing-Lists/securityfocus/bugtraq/2010-09/msg00070.html");
-  script_xref(name : "URL" , value : "http://core.yehg.net/lab/pr0js/advisories/dll_hijacking/[flash_player]_10.1.x_insecure_dll_hijacking_(dwmapi.dll)");
+  script_xref(name:"URL", value:"http://www.derkeiler.com/Mailing-Lists/securityfocus/bugtraq/2010-09/msg00070.html");
+  script_xref(name:"URL", value:"http://core.yehg.net/lab/pr0js/advisories/dll_hijacking/[flash_player]_10.1.x_insecure_dll_hijacking_(dwmapi.dll)");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to trigger user to
+save a malicious dll file in users Desktop.");
+  script_tag(name:"affected", value:"Adobe Flash Player version 10.1.0 through 10.1.82.76");
+  script_tag(name:"insight", value:"The application passes an insufficiently qualified path in
+loading its external libraries 'dwmapi.dll'.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.1.102.64 or later.");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+untrusted search path vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/flashplayer/downloads.html");
   exit(0);
 }
 

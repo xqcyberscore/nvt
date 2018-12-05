@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_nov10_win.nasl 8246 2017-12-26 07:29:20Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln_nov10_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Windows)
 #
@@ -26,22 +26,11 @@
 
 CPE = "cpe:/a:adobe:flash_player";
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary code or cause
-  a denial of service via unknown vectors.
-  Impact Level: Application/System";
-tag_affected = "Adobe Flash Player version 10.1.85.3 and prior on Windows";
-tag_insight = "The flaws are caused by unspecified errors, that can be exploited to execute
-  arbitrary code or cause a denial of service.";
-tag_solution = "Upgrade to Adobe Flash Player version 10.1.102.64 or later
-  For details refer, http://www.adobe.com/downloads/";
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-  multiple unspecified vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801629");
-  script_version("$Revision: 8246 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-11-12 15:34:28 +0100 (Fri, 12 Nov 2010)");
   script_cve_id("CVE-2010-3636", "CVE-2010-3637", "CVE-2010-3638", "CVE-2010-3639",
                 "CVE-2010-3640", "CVE-2010-3641", "CVE-2010-3642", "CVE-2010-3643",
@@ -51,21 +40,25 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41917");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb10-26.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41917");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-26.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code or cause
+  a denial of service via unknown vectors.");
+  script_tag(name:"affected", value:"Adobe Flash Player version 10.1.85.3 and prior on Windows");
+  script_tag(name:"insight", value:"The flaws are caused by unspecified errors, that can be exploited to execute
+  arbitrary code or cause a denial of service.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.1.102.64 or later");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+  multiple unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

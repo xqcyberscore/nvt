@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_asn_ber_dissector_bof_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_wireshark_asn_ber_dissector_bof_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Wireshark ASN.1 BER Dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902195");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-06-22 13:34:32 +0200 (Tue, 22 Jun 2010)");
   script_cve_id("CVE-2010-2284");
   script_tag(name:"cvss_base", value:"8.3");
@@ -48,12 +48,12 @@ if(description)
   script_tag(name:"impact", value:"It has unknown impact and remote attack vectors.");
   script_tag(name:"affected", value:"Wireshark version 0.10.13 to 1.0.13 and 1.2.0 to 1.2.8 on windows.");
   script_tag(name:"insight", value:"The flaw is caused by a buffer overflow error within the 'ASN.1 BER' dissector.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.0.14 or 1.2.9:
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.0.14 or 1.2.9:");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to buffer overflow
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

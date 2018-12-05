@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_40317.nasl 4908 2017-01-02 13:33:15Z cfi $
+# $Id: gb_clamav_40317.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # ClamAV 'cli_pdf()' PDF File Processing Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100652");
-  script_version("$Revision: 4908 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:33:15 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:42:13 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -47,16 +47,12 @@ if(description)
   script_xref(name:"URL", value:"http://git.clamav.net/gitweb?p=clamav-devel.git;a=blob_plain;f=ChangeLog;hb=clamav-0.96.1");
   script_xref(name:"URL", value:"http://www.clamav.net/");
 
-  tag_summary = "ClamAV is prone to a vulnerability that attackers can exploit
-  to cause denial-of-service conditions.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_affected = "Versions prior to ClamAV 0.96.1 are vulnerable.";
+  script_tag(name:"summary", value:"ClamAV is prone to a vulnerability that attackers can exploit
+  to cause denial-of-service conditions.");
 
-  tag_solution = "Updates are available; please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"affected", value:"Versions prior to ClamAV 0.96.1 are vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -74,14 +70,14 @@ if(!ver) {
   ver = get_kb_item("ClamAV/Lin/Ver");
   if(!ver) {
     ver = get_kb_item("ClamAV/Win/Ver");
-  }  
-}  
+  }
+}
 
 if(!ver)exit(0);
 
 if(version_is_less(version:ver, test_version:"0.96.1")){
-    security_message(port:port);
-    exit(0);
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);

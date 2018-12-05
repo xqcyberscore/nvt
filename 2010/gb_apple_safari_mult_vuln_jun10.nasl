@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jun10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_safari_mult_vuln_jun10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities (June-10)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801362");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-06-16 08:26:33 +0200 (Wed, 16 Jun 2010)");
   script_cve_id("CVE-2010-1385", "CVE-2010-1384", "CVE-2010-1390", "CVE-2010-1389",
                 "CVE-2010-1391", "CVE-2010-1393", "CVE-2010-1392", "CVE-2010-1394",
@@ -62,20 +62,18 @@ if(description)
   checks, gain knowledge of sensitive information or execute arbitrary code
   by tricking a user into visiting a specially crafted web page.");
   script_tag(name:"affected", value:"Apple Safari version prior to 5.0(5.33.16.0) on Windows.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0 or later,
-  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
   to multiple vulnerabilities.");
   script_tag(name:"insight", value:"The multiple issues are caused by use-after-free, double free, integer
   truncation, heap overflow, memory corruption, uninitialized memory access,
   input validation and implementation errors in ColorSync and WebKit.
 
-  NOTE: For more information, refer to,
-
-  http://lists.apple.com/archives/security-announce/2010/Jun/msg00000.html");
+  NOTE: For more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads");
   exit(0);
 }
 

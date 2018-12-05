@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_43555.nasl 4908 2017-01-02 13:33:15Z cfi $
+# $Id: gb_clamav_43555.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # ClamAV 'find_stream_bounds()' PDF File Processing Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100830");
-  script_version("$Revision: 4908 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 14:33:15 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 12:56:18 +0200 (Wed, 29 Sep 2010)");
   script_bugtraq_id(43555);
   script_tag(name:"cvss_base", value:"9.3");
@@ -47,21 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.clamav.net/");
   script_xref(name:"URL", value:"http://comments.gmane.org/gmane.comp.security.oss.general/3547");
 
-  tag_summary = "ClamAV is prone to a denial-of-service vulnerability because
-  it fails to properly bounds-check specially crafted PDF files.";
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
-  tag_impact = "An attacker can exploit this issue to cause denial-of-service
+  script_tag(name:"summary", value:"ClamAV is prone to a denial-of-service vulnerability because
+  it fails to properly bounds-check specially crafted PDF files.");
+
+  script_tag(name:"affected", value:"ClamAV 0.96.2 is vulnerable. Other versions may also be affected.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service
   conditions. Due to the nature of this issue, arbitrary code execution
-  may be possible; this has not been confirmed.";
-
-  tag_affected = "ClamAV 0.96.2 is vulnerable; other versions may also be affected.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  may be possible but this has not been confirmed.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -79,15 +74,14 @@ if(!ver) {
   ver = get_kb_item("ClamAV/Lin/Ver");
   if(!ver) {
     ver = get_kb_item("ClamAV/Win/Ver");
-  }  
-}  
+  }
+}
 
 if(!ver)exit(0);
 
 if(version_is_equal(version:ver, test_version:"0.96.2")){
-    security_message(port:port);
-    exit(0);
+  security_message(port:port);
+  exit(0);
 }
 
 exit(0);
-

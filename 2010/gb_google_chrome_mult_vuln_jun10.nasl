@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jun10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_jun10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - June 10
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800785");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_cve_id("CVE-2010-2105", "CVE-2010-2106", "CVE-2010-2107",
                 "CVE-2010-2108", "CVE-2010-2109", "CVE-2010-2110");
@@ -66,11 +66,11 @@ if(description)
 
   - It does not properly execute 'JavaScript' code in the extension context,
     which has unspecified impact and remote attack vectors.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 5.0.375.55 or later,
-  For updates refer to http://www.google.com/chromeVer");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 5.0.375.55 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.google.com/chromeVer");
   exit(0);
 }
 

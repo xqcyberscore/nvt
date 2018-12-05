@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_unspecified_vuln_mar10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_firefox_unspecified_vuln_mar10_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Mozilla Firefox Unspecified Vulnerability Mar-10 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902148");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_cve_id("CVE-2010-1122");
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,12 +45,12 @@ if(description)
   script_tag(name:"impact", value:"Impact is currently unknown.");
   script_tag(name:"affected", value:"Mozilla Firefox version 3.5.x through 3.5.8 on Linux.");
   script_tag(name:"insight", value:"Vulnerability details are currently not available.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/upgrade.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.3 or later");
   script_tag(name:"summary", value:"The host is installed with mozilla Firefox and is prone to
   unspecified vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/upgrade.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win01_july10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_opera_mult_vuln_win01_july10.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities july-10 (Win01)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801369");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 18:57:03 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2657", "CVE-2010-2658", "CVE-2010-2662", "CVE-2010-2663",
                 "CVE-2010-2664");
@@ -66,11 +66,11 @@ if(description)
 
   - Error in the handling of certain HTML content that has an unclosed 'SPAN' element
     with absolute positioning.");
-  script_tag(name:"solution", value:"Upgrade to Opera 10.60 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera 10.60 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Opera web browser and is prone to
   multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

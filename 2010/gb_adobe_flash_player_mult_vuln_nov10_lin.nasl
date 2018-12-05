@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_nov10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_nov10_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801630");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-11-12 15:34:28 +0100 (Fri, 12 Nov 2010)");
   script_cve_id("CVE-2010-3636", "CVE-2010-3637", "CVE-2010-3638", "CVE-2010-3639",
                 "CVE-2010-3640", "CVE-2010-3641", "CVE-2010-3642", "CVE-2010-3643",
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version 10.1.85.3 and prior on Linux");
   script_tag(name:"insight", value:"The flaws are caused by unspecified errors, that can be exploited to execute
   arbitrary code or cause a denial of service.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.1.102.64 or later
-  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.1.102.64 or later");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902228");
-  script_version("$Revision: 10590 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 13:54:34 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
-  script_cve_id("CVE-2010-1900","CVE-2010-1901", "CVE-2010-1902", "CVE-2010-1903");
+  script_cve_id("CVE-2010-1900", "CVE-2010-1901", "CVE-2010-1902", "CVE-2010-1903");
   script_bugtraq_id(42133, 42132);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-056.mspx");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted Excel document.
-
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted Excel document.");
 
   script_tag(name:"affected", value:"Microsoft Office Word Viewer
 
@@ -71,9 +69,7 @@ if(description)
   arbitrary code.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://www.microsoft.com/technet/security/bulletin/ms10-056.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-056.");
 

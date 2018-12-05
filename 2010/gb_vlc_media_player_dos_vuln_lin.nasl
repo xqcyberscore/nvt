@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_vlc_media_player_dos_vuln_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # VLC Media Player Meta-Information Denial of Service Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801430");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-19 10:23:11 +0200 (Thu, 19 Aug 2010)");
   script_cve_id("CVE-2010-2937");
   script_bugtraq_id(42386);
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"VLC media player version prior to 1.1.3 on Linux.");
   script_tag(name:"insight", value:"The flaw is due to an input validation error when trying to extract
   meta-informations about input media through 'ID3v2' tags.");
-  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.3 or later,
-  For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name:"solution", value:"Upgrade to the VLC media player version 1.1.3 or later.");
   script_tag(name:"summary", value:"The host is installed with VLC Media Player and is prone to Denial
   of Service vulnerability.");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

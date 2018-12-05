@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_dec10_win01.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_dec10_win01.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - Dec10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801678");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_bugtraq_id(45170);
   script_cve_id("CVE-2010-4482", "CVE-2010-4483", "CVE-2010-4484",
@@ -76,11 +76,11 @@ if(description)
   - Use after free error in mouse dragging event handling.
 
   - A double free error in XPath handling.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 8.0.552.215 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 8.0.552.215 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

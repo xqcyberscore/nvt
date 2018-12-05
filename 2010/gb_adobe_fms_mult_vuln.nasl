@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_fms_mult_vuln.nasl 4711 2016-12-08 10:12:18Z cfi $
+# $Id: gb_adobe_fms_mult_vuln.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Adobe Flash Media Server multiple vulnerabilities.
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100551");
-  script_version("$Revision: 4711 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 11:12:18 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-25 19:45:44 +0100 (Thu, 25 Mar 2010)");
-  script_bugtraq_id(37420,37419);
-  script_cve_id("CVE-2009-3792","CVE-2009-3791");
+  script_bugtraq_id(37420, 37419);
+  script_cve_id("CVE-2009-3792", "CVE-2009-3791");
   script_name("Adobe Flash Media Server multiple vulnerabilities");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,22 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.adobe.com/products/flashmediaserver/");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb09-18.html");
 
-  tag_summary = "Adobe Flash Media Server is prone to a directory-traversal
-  vulnerability and to a remote denial-of-service vulnerability.";
-
-  tag_impact = "Exploiting the directory-traversal issue can allow an attacker to load
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"impact", value:"Exploiting the directory-traversal issue can allow an attacker to load
   arbitrary Dynamic Linked Libraries (DLLs) present on the server. This
   could help the attacker launch further attacks.
 
   Successful exploits of the denial-of-service vulnerability will allow
   attackers to consume an excessive amount of CPU resources, denying
-  service to legitimate users.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  service to legitimate users.");
+  script_tag(name:"summary", value:"Adobe Flash Media Server is prone to a directory-traversal
+  vulnerability and to a remote denial-of-service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

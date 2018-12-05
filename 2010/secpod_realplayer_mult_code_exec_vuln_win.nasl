@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_mult_code_exec_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_realplayer_mult_code_exec_vuln_win.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902105");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,12 +55,12 @@ if(description)
   script_tag(name:"insight", value:"Buffer overflow errors exists, when processing a malformed 'ASM Rulebook',
   'GIF file', 'media file', 'IVR file', 'SIPR Codec', 'SMIL file', 'Skin',
   and 'set_parameter' method.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 10.5(6.0.12.1741) or 11.0.5
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 10.5(6.0.12.1741) or 11.0.5");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple code
   execution vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

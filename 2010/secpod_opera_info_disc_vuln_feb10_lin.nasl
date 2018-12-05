@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_vuln_feb10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_opera_info_disc_vuln_feb10_lin.nasl 12653 2018-12-04 15:31:25Z cfischer $
 #
 # Opera Information Disclosure Vulnerability - (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902123");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12653 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,12 +48,12 @@ information via a crafted document.");
   script_tag(name:"insight", value:"- Opera permits cross-origin loading of CSS stylesheets even when the
 stylesheet download has an incorrect MIME type and the stylesheet document
 is malformed.");
-  script_tag(name:"solution", value:"Update to Opera version 10.10
-For updates refer to http://www.opera.com/download/?custom=yes");
+  script_tag(name:"solution", value:"Update to Opera version 10.10");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
   Information Disclosure vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.opera.com/download/?custom=yes");
   exit(0);
 }
 
