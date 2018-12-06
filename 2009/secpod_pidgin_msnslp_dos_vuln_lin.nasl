@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_msnslp_dos_vuln_lin.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_pidgin_msnslp_dos_vuln_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Pidgin MSN SLP Packets Denial Of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pidgin:pidgin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900920");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,15 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2303");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code, corrupt memory
-  and cause the application to crash.
+  and cause the application to crash.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Pidgin version prior to 2.5.9 on Linux.");
+
   script_tag(name:"insight", value:"An error in the 'msn_slplink_process_msg()' function while processing
   malformed MSN SLP packets which can be exploited to overwrite an
   arbitrary memory location.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.5.9
-  http://pidgin.im/download");
+
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.5.9.");
+
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to Denial of Service
   vulnerability.");
 

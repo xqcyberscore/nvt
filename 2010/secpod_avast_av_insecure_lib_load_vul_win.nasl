@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avast_av_insecure_lib_load_vul_win.nasl 10022 2018-05-30 09:20:48Z cfischer $
+# $Id: secpod_avast_av_insecure_lib_load_vul_win.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Avast! Antivirus File Opening Insecure Library Loading Vulnerability (Windows)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902241");
-  script_version("$Revision: 10022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:20:48 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3126");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Avast! Antivirus File Opening Insecure Library Loading Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41109");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14743/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2175");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41109");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14743/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2175");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
@@ -44,22 +44,20 @@ if(description)
   script_dependencies("gb_avast_av_detect_win.nasl");
   script_mandatory_keys("Avast!/AV/Win/Ver");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute
-arbitrary code and conduct DLL hijacking attacks.
-
-Impact Level: Application");
-  script_tag(name : "affected" , value : "Avast! Antivirus version 5.0.594 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute
+arbitrary code and conduct DLL hijacking attacks.");
+  script_tag(name:"affected", value:"Avast! Antivirus version 5.0.594 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain
 libraries from the current working directory, which could allow attackers
 to execute arbitrary code by tricking a user into opening a license file.");
-  script_tag(name : "solution" , value : "Upgrade to version 5.0.677 or later,
-For updates refer to http://www.avast.com/eng/download.html");
-  script_tag(name : "summary" , value : "This host is installed with avast! AntiVirus and is prone to
+  script_tag(name:"solution", value:"Upgrade to version 5.0.677 or later.");
+  script_tag(name:"summary", value:"This host is installed with avast! AntiVirus and is prone to
 insecure library loading vulnerability.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.avast.com/eng/download.html");
   exit(0);
 }
 
@@ -72,5 +70,5 @@ if(isnull(avastVer)){
 }
 
 if(version_is_less_equal(version:avastVer, test_version:"5.0.594")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

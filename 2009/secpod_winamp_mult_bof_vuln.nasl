@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_mult_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_winamp_mult_bof_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Winamp AIFF File Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900197");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-29 15:16:47 +0100 (Thu, 29 Jan 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"affected", value:"Winamp version 5.541 and prior on Windows");
   script_tag(name:"insight", value:"Application fails to play a large Common Chunk (COMM) header value in an AIFF
   file and a large invalid value in an MP3 file.");
-  script_tag(name:"solution", value:"Upgrade to Winamp version 5.57 or later,
-  For updates refer to http://www.winamp.com");
+  script_tag(name:"solution", value:"Upgrade to Winamp version 5.57 or later.");
   script_tag(name:"summary", value:"This host is installed with Winamp and is prone to Buffer Overflow
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.winamp.com");
   exit(0);
 }
 

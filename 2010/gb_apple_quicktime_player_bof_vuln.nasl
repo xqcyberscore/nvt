@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_player_bof_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_quicktime_player_bof_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # QuickTime Player Streaming Debug Error Logging Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801427");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-1799");
   script_bugtraq_id(41962);
@@ -52,13 +52,13 @@ if(description)
   script_tag(name:"affected", value:"QuickTime Player version prior to 7.6.7");
   script_tag(name:"insight", value:"The flaw is due to a boundary error in 'QuickTimeStreaming.qtx' when
   constructing a string to write to a debug log file.");
-  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.6.7 or later
-  For updates refer to http://www.apple.com/quicktime/download/");
+  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.6.7 or later");
   script_tag(name:"summary", value:"The host is running QuickTime Player and is prone to buffer overflow
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/quicktime/download/");
   exit(0);
 }
 

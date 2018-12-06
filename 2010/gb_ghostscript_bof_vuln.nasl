@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ghostscript_bof_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ghostscript_bof_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ghostscript 'iscan.c' PDF Handling Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801411");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-07-26 16:14:51 +0200 (Mon, 26 Jul 2010)");
   script_bugtraq_id(41593);
   script_cve_id("CVE-2009-4897");
@@ -51,13 +51,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper bounds checking by 'iscan.c' when
   processing malicious 'PDF' files, which leads to open a specially-crafted
   PDF file.");
-  script_tag(name:"solution", value:"Upgrade to Ghostscript version 8.71 or later,
-  For updates refer to http://www.ghostscript.com/");
+  script_tag(name:"solution", value:"Upgrade to Ghostscript version 8.71 or later.");
   script_tag(name:"summary", value:"This host is installed with Ghostscript and is prone to
   buffer overflow vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ghostscript.com/");
   exit(0);
 }
 

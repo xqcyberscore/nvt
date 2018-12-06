@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_hmi_consolidation.nasl 12344 2018-11-14 09:58:21Z ckuersteiner $
+# $Id: gb_simatic_hmi_consolidation.nasl 12659 2018-12-05 09:26:36Z cfischer $
 #
 # Siemens SIMATIC HMI Device Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141684");
-  script_version("$Revision: 12344 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 10:58:21 +0100 (Wed, 14 Nov 2018) $");
+  script_version("$Revision: 12659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 10:26:36 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 15:35:48 +0700 (Wed, 14 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,81 +57,107 @@ include("host_details.inc");
 if (!get_kb_item("simatic_hmi/detected"))
   exit(0);
 
-detected_version = "unknown";
-detected_model   = "unknown";
+detected_fw_version = "unknown";
+detected_hw_version = "unknown";
+detected_model      = "unknown";
 
-# Version
 foreach source (make_list("http", "snmp")) {
-  if (detected_version != "unknown")
-    break;
 
-  version_list = get_kb_list("simatic_hmi/" + source + "/*/version");
-  foreach version (version_list) {
-    if (version && version != "unknown") {
-      detected_version = version;
-      set_kb_item(name: "simatic_hmi/version", value: version);
+  fw_version_list = get_kb_list("simatic_hmi/" + source + "/*/fw_version");
+  foreach fw_version (fw_version_list) {
+    if (fw_version && fw_version != "unknown") {
+      detected_fw_version = fw_version;
+      set_kb_item(name: "simatic_hmi/fw_version", value: fw_version);
+      break;
     }
   }
-}
 
-# Model
-foreach source (make_list("http", "snmp")) {
-  if (detected_model != "unknown")
-    break;
+  hw_version_list = get_kb_list("simatic_hmi/" + source + "/*/hw_version");
+  foreach hw_version (hw_version_list) {
+    if (hw_version && hw_version != "unknown") {
+      detected_hw_version = hw_version;
+      set_kb_item(name: "simatic_hmi/hw_version", value: hw_version);
+      break;
+    }
+  }
 
   model_list = get_kb_list("simatic_hmi/" + source + "/*/model");
   foreach model (model_list) {
     if (model && model != "unknown") {
       detected_model = model;
       set_kb_item(name: "simatic_hmi/model", value: model);
+      break;
     }
   }
 }
 
+# https://cache.industry.siemens.com/dl/files/300/109481300/att_871072/v5/109481300_Panel_SecurityGuidelines_en.pdf
+# Page 9 "Panel operating system"
+# Basic Panels
+# SIMATIC HMI Basic Panels have an operating system that is configured and created by Siemens.
+# Comfort Panels
+# SIMATIC HMI Comfort Panels have a "WinCE Embedded" operating system specially configured for SIEMENS.
+# nb: If no "Comfort" and "Basic" is included we're assuming Windows CE for now.
+if ("Comfort" >< detected_model || "Basic" >!< detected_model) {
+  os_name = "Windows CE";
+  os_cpe  = "cpe:/o:microsoft:windows_ce";
+} else {
+  os_name = "Siemens SIMATIC HMI OS";
+  os_cpe  = "cpe:/o:siemens:simatic_hmi_os";
+}
+
+register_and_report_os(os: os_name, cpe: os_cpe, desc: "Siemens SIMATIC HMI Device Detection Consolidation", runs_key: "windows");
+
 app_name = "Siemens SIMATIC HMI ";
-if (detected_model != "unknown")
-  app_name += detected_model;
+hw_name = "Siemens SIMATIC HMI ";
 
-app_cpe = 'cpe:/a:siemens:simatic_hmi';
-os_cpe = 'cpe:/o:siemens:simatic_hmi';
+if (detected_model != "unknown") {
+  _detected_model = str_replace(find: " ", string: detected_model, replace: "_" );
+  _detected_model = tolower( _detected_model );
+  app_name += detected_model + " Firmware";
+  app_cpe = "cpe:/a:siemens:simatic_hmi_" + _detected_model + "_firmware";
+  hw_name += detected_model;
+  hw_cpe = "cpe:/h:siemens:simatic_hmi_" + _detected_model;
+} else {
+  app_name += " Unknown Model Firmware";
+  app_cpe = "cpe:/a:siemens:simatic_hmi_unknown_model_firmware";
+  hw_name += " Unknown Model";
+  hw_cpe = "cpe:/h:siemens:simatic_hmi_unknown_model";
+}
 
-# SNMP
+if (detected_fw_version != "unknown")
+  app_cpe += ":" + detected_fw_version;
+
+if (detected_hw_version != "unknown")
+  hw_cpe += ":" + detected_hw_version;
+
 if (snmp_ports = get_kb_list("simatic_hmi/snmp/port")) {
   foreach port (snmp_ports) {
     extra += 'SNMP on port ' + port + '/udp\n';
 
-    hw_version = get_kb_item("simatic_hmi/snmp/" + port + "/hw_version");
-    if (hw_version) {
-      extra += '  HW Version:     ' + hw_version + '\n';
-      replace_kb_item(name: "simatic_hmi/hw_version", value: hw_version);
-    }
+    concluded = get_kb_item('simatic_hmi/snmp/' + port + '/concluded');
+    if (concluded)
+      extra += 'Concluded from SNMP SysDesc: ' + concluded + '\n';
 
     register_product(cpe: app_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
-    register_product(cpe: os_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
+    register_product(cpe: hw_cpe, location: port + '/tcp', port: port, service: "snmp", proto: "udp");
   }
 }
 
-# HTTP
 if (http_ports = get_kb_list("simatic_hmi/http/port")) {
   foreach port (http_ports) {
     extra += 'HTTP(s) on port ' + port + '/tcp\n';
 
     register_product(cpe: app_cpe, location: '/', port: port, service: "www");
-    register_product(cpe: os_cpe, location: '/', port: port, service: "www");
+    register_product(cpe: hw_cpe, location: '/', port: port, service: "www");
   }
 }
 
-
-os_name = "Siemens SIMATIC HMI Firmware";
-
-register_and_report_os(os: os_name, version: detected_version, cpe: os_cpe,
-                       desc: "Siemens SIMATIC HMI Device Detection Consolidation", runs_key: "unixoide");
-
-report  = build_detection_report(app: app_name, version: detected_version,
+report  = build_detection_report(app: app_name, version: detected_fw_version,
                                  install: "/", cpe: app_cpe);
 report += '\n\n';
-report += build_detection_report(app: os_name, version: detected_version,
-                                 install: "/", cpe: os_cpe);
+report += build_detection_report(app: hw_name, version: detected_hw_version,
+                                 install: "/", cpe: hw_cpe);
 
 if (extra) {
   report += '\n\nDetection methods:\n';

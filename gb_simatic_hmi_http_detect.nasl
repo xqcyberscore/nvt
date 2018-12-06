@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_hmi_http_detect.nasl 12344 2018-11-14 09:58:21Z ckuersteiner $
+# $Id: gb_simatic_hmi_http_detect.nasl 12659 2018-12-05 09:26:36Z cfischer $
 #
 # Siemens SIMATIC HMI Device Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141683");
-  script_version("$Revision: 12344 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-14 10:58:21 +0100 (Wed, 14 Nov 2018) $");
+  script_version("$Revision: 12659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 10:26:36 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-14 14:38:36 +0700 (Wed, 14 Nov 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,6 +63,7 @@ if ('Device Status of HMI_Panel' >< res && 'Welcome on HMI_Panel' >< res) {
   set_kb_item(name: "simatic_hmi/http/detected", value: TRUE);
   set_kb_item(name: "simatic_hmi/http/port", value: port);
 
+  # <b>Device Type</b></td><td class=\"sph_td\">TP700 Comfort&nbsp;</td>
   mod = eregmatch(pattern: 'Device Type</b></td><td class="sph_td">([^&;]+)', string: res);
   if (!isnull(mod[1]))
     set_kb_item(name: "simatic_hmi/http/" + port + "/model", value: chomp(mod[1]));
@@ -71,7 +72,7 @@ if ('Device Status of HMI_Panel' >< res && 'Welcome on HMI_Panel' >< res) {
   vers = eregmatch(pattern: 'Image version<.*>V([0-9._]+)', string: res);
   if (!isnull(vers[1])) {
     version = str_replace( string: vers[1], find: "_", replace: ".");
-    set_kb_item(name: "simatic_hmi/http/" + port + "/version", value: version);
+    set_kb_item(name: "simatic_hmi/http/" + port + "/fw_version", value: version);
   }
 }
 

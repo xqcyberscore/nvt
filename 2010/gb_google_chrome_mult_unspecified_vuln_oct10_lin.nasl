@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_unspecified_vuln_oct10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_google_chrome_mult_unspecified_vuln_oct10_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Google Chrome multiple unspecified vulnerabilities - October 10(Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801459");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-10-07 09:42:58 +0200 (Thu, 07 Oct 2010)");
   script_cve_id("CVE-2010-1822", "CVE-2010-3729", "CVE-2010-3730");
   script_tag(name:"cvss_base", value:"9.3");
@@ -52,12 +52,12 @@ if(description)
   - Buffer mismanagement in the SPDY protocol.
 
   - Bad cast with malformed SVG.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 6.0.472.62 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 6.0.472.62 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple unspecified
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_mult_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_pidgin_libpurple_mult_dos_vuln_win.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Pidgin Libpurple 'purple_base64_decode()' Denial of Service Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801536");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-11-04 14:21:53 +0100 (Thu, 04 Nov 2010)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"The issues are caused by errors in 'libpurple' that does not validate the return
   value from 'purple_base64_decode()' function when processing malformed Yahoo!,
   MSN, MySpaceIM, XMPP or NTLM data.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.4 or later.
-  For updates refer to  http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.4 or later.");
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to Denial of Service
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://pidgin.im/download");
   exit(0);
 }
 

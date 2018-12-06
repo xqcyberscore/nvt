@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_xstatus_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_pidgin_xstatus_dos_vuln_win.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Pidgin 'X-Status' Message Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901137");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41881);
   script_cve_id("CVE-2010-2528");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by a NULL pointer dereference error when processing
   malformed 'X-Status' messages, which could be exploited by attackers to
   crash an affected application, creating a denial of service condition.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.2 or later,
-  For updates refer to http://pidgin.im/download/windows/");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Pidgin and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://pidgin.im/download/windows/");
   exit(0);
 }
 

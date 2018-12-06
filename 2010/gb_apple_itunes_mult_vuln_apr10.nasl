@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_apr10.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: gb_apple_itunes_mult_vuln_apr10.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Apr10
 #
@@ -26,35 +26,19 @@
 
 CPE = "cpe:/a:apple:itunes";
 
-tag_impact = "Successful exploitation could allow the attacker to cause denial of service and
-  obtain system privileges during installation.
-  Impact Level: Application";
-tag_affected = "Apple iTunes version prior to 9.1 (9.1.0.79)";
-tag_insight = "Multiple flaws are due to:
-  - An infinite loop issue in the handling of 'MP4' files. A maliciously
-    crafted podcast may be able to cause an infinite loop in iTunes, and prevent
-    its operation even after it is relaunched.
-  - A privilege escalation issue in Windows installation package. During
-    the installation process, a race condition may allow a local user to modify
-    a file that is then executed with system privileges.";
-tag_solution = "Upgrade to Apple Apple iTunes version 9.1 or later,
-  For updates refer to http://www.apple.com/itunes/download/";
-tag_summary = "This host has iTunes installed, which is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800495");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-0531", "CVE-2010-0532");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Apple iTunes Multiple Vulnerabilities - Apr10");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39135");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/392444.php");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2010//Mar/msg00003.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39135");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/392444.php");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2010//Mar/msg00003.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -62,11 +46,23 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow the attacker to cause denial of service and
+  obtain system privileges during installation.");
+  script_tag(name:"affected", value:"Apple iTunes version prior to 9.1 (9.1.0.79)");
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
+  - An infinite loop issue in the handling of 'MP4' files. A maliciously
+    crafted podcast may be able to cause an infinite loop in iTunes, and prevent
+    its operation even after it is relaunched.
+
+  - A privilege escalation issue in Windows installation package. During
+    the installation process, a race condition may allow a local user to modify
+    a file that is then executed with system privileges.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to Apple Apple iTunes version 9.1 or later.");
+  script_tag(name:"summary", value:"This host has iTunes installed, which is prone to multiple
+  vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes/download/");
   exit(0);
 }
 

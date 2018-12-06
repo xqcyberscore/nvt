@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_oscar_dos_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_pidgin_oscar_dos_vuln_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Pidgin OSCAR Protocol Denial Of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pidgin:pidgin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800824");
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,15 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://developer.pidgin.im/ticket/9483");
   script_xref(name:"URL", value:"http://pidgin.im/pipermail/devel/2009-May/008227.html");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a application crash.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a application crash.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Pidgin version prior to 2.5.8 on Linux");
-  script_tag(name:"insight", value:"Error in OSCAR protocol implementation leads to the application misinterpreting 
-  the ICQWebMessage message type as ICQSMS message type via a crafted ICQ web 
+
+  script_tag(name:"insight", value:"Error in OSCAR protocol implementation leads to the application misinterpreting
+  the ICQWebMessage message type as ICQSMS message type via a crafted ICQ web
   message that triggers allocation of a large amount of memory.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.5.8,
-  http://pidgin.im/download");
+
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.5.8.");
+
   script_tag(name:"summary", value:"This host has installed Pidgin and is prone to Denial of Service
   vulnerability.");
 

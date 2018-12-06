@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ghostscript_code_exec_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ghostscript_code_exec_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ghostscript Arbitrary Code Execution Vulnerability.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801269");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-08 14:19:28 +0200 (Wed, 08 Sep 2010)");
   script_cve_id("CVE-2009-3743");
   script_tag(name:"cvss_base", value:"9.3");
@@ -50,13 +50,13 @@ if(description)
   interpreter in Ghostscript that allows remote attackers to execute arbitrary
   code or cause a denial of service (heap memory corruption) via a malformed
   TrueType font in a document.");
-  script_tag(name:"solution", value:"Upgrade to Ghostscript version 8.71 or later,
-  For updates refer to http://www.ghostscript.com/");
+  script_tag(name:"solution", value:"Upgrade to Ghostscript version 8.71 or later.");
   script_tag(name:"summary", value:"This host is installed with Ghostscript and is prone to
   arbitrary code execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ghostscript.com/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_sep10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_google_chrome_mult_vuln_sep10_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Google Chrome multiple vulnerabilities Sep-10 (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901154");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_cve_id("CVE-2010-1825", "CVE-2010-1824", "CVE-2010-1823",
                 "CVE-2010-3411", "CVE-2010-3412", "CVE-2010-3413",
@@ -70,12 +70,12 @@ if(description)
   - An unspecified error related to Khmer handling can be exploited to corrupt memory.
 
   - The application does not prompt for extension history access.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 6.0.472.59 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 6.0.472.59 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

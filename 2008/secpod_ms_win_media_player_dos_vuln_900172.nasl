@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_media_player_dos_vuln_900172.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: secpod_ms_win_media_player_dos_vuln_900172.nasl 12670 2018-12-05 14:14:20Z cfischer $
 # Description: Microsoft Windows Media Player 'MIDI' or 'DAT' File DoS Vulnerability
 #
 # Authors:
@@ -23,26 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_summary = "This host is installed with Windows Media Player and is prone to
-  denial of service vulnerability.
-
-  The vulnerability is due to error in handling 'MIDI' or 'DAT' file,
-  related to 'MThd Header Parsing'.";
-
-tag_impact = "Successful exploitation will cause denial of service.
-  Impact Level: Application";
-tag_affected = "Microsoft Windows Media Player versions 9.x, 10.x and 11.x";
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.
-For updates refer to http://windows.microsoft.com/en-us/windows/windows-media ";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900172");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-11-11 15:58:44 +0100 (Tue, 11 Nov 2008)");
   script_bugtraq_id(32077);
   script_cve_id("CVE-2008-4927");
@@ -53,22 +38,28 @@ if(description)
   script_family("Denial of Service");
   script_name("Microsoft Windows Media Player 'MIDI' or 'DAT' File DoS Vulnerability");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/data/vulnerabilities/exploits/32077.py");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/data/vulnerabilities/exploits/32077.py");
 
   script_dependencies("secpod_ms_win_media_player_detect_900173.nasl");
   script_mandatory_keys("Win/MediaPlayer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will cause denial of service.");
+  script_tag(name:"affected", value:"Microsoft Windows Media Player versions 9.x, 10.x and 11.x");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with Windows Media Player and is prone to
+  denial of service vulnerability.
+
+  The vulnerability is due to error in handling 'MIDI' or 'DAT' file,
+  related to 'MThd Header Parsing'.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://windows.microsoft.com/en-us/windows/windows-media");
   exit(0);
 }
 
 if( ! version = get_kb_item( "Win/MediaPlayer/Ver" ) ) exit( 0 );
 
-# Check the versions 9.x , 10.x and 11.x
 if( version =~ "^(9|1[01])\..*$" ) {
   security_message( port:0 );
   exit( 0 );

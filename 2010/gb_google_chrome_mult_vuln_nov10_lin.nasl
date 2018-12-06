@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_nov10_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - November 10(Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801541");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_cve_id("CVE-2010-4008", "CVE-2010-4198", "CVE-2010-4199", "CVE-2010-4197",
                 "CVE-2010-4201", "CVE-2010-4203", "CVE-2010-4202", "CVE-2010-4204",
@@ -71,12 +71,12 @@ if(description)
   - A type confusions with event objects
 
   - An out-of-bounds array access when handling SVGs");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 7.0.517.44 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 7.0.517.44 or later.");
   script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

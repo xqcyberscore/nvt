@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_http_header_inj_vuln_lin.nasl 10314 2018-06-25 11:59:52Z cfischer $
+# $Id: gb_ruby_rails_http_header_inj_vuln_lin.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ruby on Rails redirect_to() HTTP Header Injection Vulnerability - Linux
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800144");
-  script_version("$Revision: 10314 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:59:52 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful attack could lead to execution of arbitrary HTML or scripting code
   in the context of an affected application or allow Cross Site Request Forgery
-  (CSRF), Cross Site Scripting (XSS) and HTTP Request Smuggling Attacks.
-
-  Impact Level: Application");
+  (CSRF), Cross Site Scripting (XSS) and HTTP Request Smuggling Attacks.");
 
   script_tag(name:"affected", value:"Ruby on Rails Version before 2.0.5 on Linux.");
 
@@ -60,12 +58,7 @@ if(description)
   script_tag(name:"summary", value:"The host is running Ruby on Rails, which is prone to HTTP Header
   Injection Vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to higher Version or Apply patches from,
-  http://github.com/rails/rails/commit/7282ed863ca7e6f928bae9162c9a63a98775a19d
-
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is manually applied.
-  *****");
+  script_tag(name:"solution", value:"Update to version 2.0.5 or later.");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

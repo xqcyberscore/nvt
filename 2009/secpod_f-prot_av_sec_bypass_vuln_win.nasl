@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_sec_bypass_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_f-prot_av_sec_bypass_vuln_win.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # F-PROT AntiVirus Security Bypass Vulnerability (Windows)
 #
@@ -26,22 +26,11 @@
 
 CPE = "cpe:/a:f-prot:f-prot_antivirus";
 
-tag_impact = "Attackers can exploit this issue to bypass the malware detection and
-  to execute arbitrary code.
-  Impact Level: System/Application";
-tag_affected = "F-PROT AV version 6.0.9.1 and prior on Windows.";
-tag_insight = "The flaw is due to an error in the file parsing engine while
-  processing specially crafted CAB files.";
-tag_solution = "Upgrade to F-PROT AV version 6.0.9.3 or later
-  For updates refer to http://www.f-prot.com/";
-tag_summary = "The host is installed with F-PROT AntiVirus and is prone to
-  Security Bypass vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900554");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,15 +43,19 @@ if(description)
   script_dependencies("secpod_f-prot_av_detect_win.nasl");
   script_mandatory_keys("F-Prot/AV/Win/Installed");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass the malware detection and
+  to execute arbitrary code.");
+  script_tag(name:"affected", value:"F-PROT AV version 6.0.9.1 and prior on Windows.");
+  script_tag(name:"insight", value:"The flaw is due to an error in the file parsing engine while
+  processing specially crafted CAB files.");
+  script_tag(name:"solution", value:"Upgrade to F-PROT AV version 6.0.9.3 or later");
+  script_tag(name:"summary", value:"The host is installed with F-PROT AntiVirus and is prone to
+  Security Bypass vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/50427");
-  script_xref(name : "URL" , value : "http://blog.zoller.lu/2009/04/advisory-f-prot-frisk-cab-bypass.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/50427");
+  script_xref(name:"URL", value:"http://blog.zoller.lu/2009/04/advisory-f-prot-frisk-cab-bypass.html");
+  script_xref(name:"URL", value:"http://www.f-prot.com/");
   exit(0);
 }
 

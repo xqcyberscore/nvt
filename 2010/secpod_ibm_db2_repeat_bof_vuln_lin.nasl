@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_repeat_bof_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_ibm_db2_repeat_bof_vuln_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # IBM DB2 REPEAT Buffer Overflow and TLS Renegotiation Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902174");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_cve_id("CVE-2010-1560");
   script_tag(name:"cvss_base", value:"4.0");
@@ -55,12 +55,12 @@ if(description)
   - An error in the 'TLS' implementation while handling session 're-negotiations'
     which can be exploited to insert arbitrary plaintext into an existing TLS
     session via Man-in-the-Middle (MitM) attacks.");
-  script_tag(name:"solution", value:"Update IBM DB2 9.1 FP9,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+  script_tag(name:"solution", value:"Update IBM DB2 9.1 FP9.");
   script_tag(name:"summary", value:"The host is installed with IBM DB2 and is prone to buffer overflow
   and TLS renegotiation vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
   exit(0);
 }
 

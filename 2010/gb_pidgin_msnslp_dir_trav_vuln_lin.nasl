@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msnslp_dir_trav_vuln_lin.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pidgin_msnslp_dir_trav_vuln_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # Pidgin MSN Custom Smileys File Disclosure Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pidgin:pidgin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800422");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,26 +45,22 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/37953/");
   script_xref(name:"URL", value:"http://www.pidgin.im/news/security/?id=42");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3662");
+  script_xref(name:"URL", value:"http://developer.pidgin.im/viewmtn/revision/info/c64a1adc8bda2b4aeaae1f273541afbc4f71b810");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to gain knowledge of sensitive information
-  via directory traversal attacks.
+  via directory traversal attacks.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Pidgin version prior to 2.6.4 on Linux.");
+
   script_tag(name:"insight", value:"This issue is due to an error in 'slp.c' within the 'MSN protocol plugin'
-  in 'libpurple' when processing application/x-msnmsgrp2p MSN emoticon (aka custom
-  smiley) request.");
+  in 'libpurple' when processing application/x-msnmsgrp2p MSN emoticon (aka custom smiley) request.");
+
   script_tag(name:"summary", value:"This host has Pidgin installed and is prone to File Disclosure
   vulnerability");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to Pidgin version 2.6.5
-  http://pidgin.im/download
-  http://developer.pidgin.im/viewmtn/revision/info/c64a1adc8bda2b4aeaae1f273541afbc4f71b810
 
-  *****
-  NOTE: Please ignore this warning if the patch is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to Pidgin version 2.6.5.");
 
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

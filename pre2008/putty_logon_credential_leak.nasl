@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: putty_logon_credential_leak.nasl 12602 2018-11-30 14:36:58Z cfischer $
+# $Id: putty_logon_credential_leak.nasl 12663 2018-12-05 12:22:06Z jschulte $
 #
 # PuTTY SSH2 authentication password persistence weakness
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14263");
-  script_version("$Revision: 12602 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-30 15:36:58 +0100 (Fri, 30 Nov 2018) $");
+  script_version("$Revision: 12663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 13:22:06 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6724);
   script_cve_id("CVE-2003-0048");
@@ -42,9 +42,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
-  script_require_ports(139, 445);
-  script_dependencies("smb_reg_service_pack.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_dependencies("secpod_putty_version.nasl");
+  script_mandatory_keys("putty/version");
 
   script_tag(name:"solution", value:"Upgrade to the newest version of PuTTY");
   script_tag(name:"summary", value:"PuTTY is a free SSH client.
@@ -58,23 +58,19 @@ if(description)
   exit(0);
 }
 
-include("smb_nt.inc");
+CPE = "cpe:/a:putty:putty";
+
+include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
 
-path = registry_get_sz(item:"DisplayName",
-       key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1");
-
-if(!path){
-  exit(0);
-}
-
-puttyVer = ereg_replace(pattern:"(.* version) ([0-9.]+.*)", replace:"\1", string:path);
-log_message(data:"ver " + puttyVer);
-if(!puttyVer){
-  exit(0);
-}
+if(!infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE)) exit( 0 );
+puttyVer = infos["version"];
+location = infos["location"];
 
 if(version_is_less_equal(version:puttyVer, test_version:"0.54a")){
-  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  report = report_fixed_ver(installed_version:puttyVer, fixed_version:"0.70", install_path:location);
+  security_message(port:0, data:report);
+  exit(0);
 }
+
+exit(99);

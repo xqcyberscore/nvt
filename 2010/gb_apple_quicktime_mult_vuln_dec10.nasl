@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_dec10.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_apple_quicktime_mult_vuln_dec10.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Apple QuickTime Multiple vulnerabilities - Dec10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801680");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_cve_id("CVE-2010-1508", "CVE-2010-0530", "CVE-2010-3800",
                 "CVE-2010-3801", "CVE-2010-3802", "CVE-2010-4009");
@@ -65,13 +65,13 @@ if(description)
     Virtual Reality) movie files.
 
   - An integer overflow error when processing movie files.");
-  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.6.9 or later
-  For updates refer to http://www.apple.com/quicktime/download/");
+  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.6.9 or later");
   script_tag(name:"summary", value:"The host is running QuickTime Player and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.apple.com/quicktime/download/");
   exit(0);
 }
 

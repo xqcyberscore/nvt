@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_unspesified_vuln_lin.nasl 9992 2018-05-29 05:51:26Z cfischer $
+# $Id: gb_ibm_db2_unspesified_vuln_lin.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # IBM DB2 Unspecified Vulnerability (Linux)
 #
@@ -27,36 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801003");
-  script_version("$Revision: 9992 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 07:51:26 +0200 (Tue, 29 May 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3473");
   script_name("IBM DB2 Unspecified Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36890");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21403619");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21386689");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36890");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21403619");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21386689");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("secpod_ibm_db2_detect_linux_900217.nasl");
   script_mandatory_keys("Linux/IBM_db2/Ver");
-  script_tag(name : "impact" , value : "Unknown impact.
 
-  Impact Level: System/Application.");
-  script_tag(name : "affected" , value : "IBM DB2 version 9.1 prior to Fixpak 8");
-  script_tag(name : "insight" , value : "An unspecified error in the handling of 'SET SESSION AUTHORIZATION'
+  script_tag(name:"impact", value:"Unknown impact.");
+
+  script_tag(name:"affected", value:"IBM DB2 version 9.1 prior to Fixpak 8");
+
+  script_tag(name:"insight", value:"An unspecified error in the handling of 'SET SESSION AUTHORIZATION'
   statements that can be exploited to execute the statement without having
   the required privileges.");
-  script_tag(name : "solution" , value : "Update DB2 9.1 Fixpak 8 or later.
 
-  http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
-  script_tag(name : "summary" , value : "The host is installed with IBM DB2 and is prone to unspecified
+  script_tag(name:"solution", value:"Update DB2 9.1 Fixpak 8 or later.");
+
+  script_tag(name:"summary", value:"The host is installed with IBM DB2 and is prone to unspecified
   vulnerability.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

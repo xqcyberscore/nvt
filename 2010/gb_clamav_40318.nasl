@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_40318.nasl 12653 2018-12-04 15:31:25Z cfischer $
+# $Id: gb_clamav_40318.nasl 12668 2018-12-05 13:07:54Z cfischer $
 #
 # ClamAV 'parseicon()' Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100656");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12668 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 14:07:54 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 18:01:00 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"affected", value:"ClamAV 0.96 is vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
 
   exit(0);
 }
@@ -78,7 +78,6 @@ if(!ver)exit(0);
 
 if(version_is_less(version:ver, test_version:"0.96.1")){
   security_message(port:port);
-  exit(0);
 }
 
 exit(0);

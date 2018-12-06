@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_winamp_mult_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Winamp Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801659");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-2586", "CVE-2010-4370", "CVE-2010-4371",
                 "CVE-2010-4372", "CVE-2010-4373", "CVE-2010-4374");
@@ -59,8 +59,7 @@ if(description)
 
   - An error in in_mp4 plugin allows remote attackers to cause a denial of
     service via crafted metadata or albumart in an invalid MP4 file.");
-  script_tag(name:"solution", value:"upgrade to Winamp 5.6 or later,
-  For updates refer to http://www.winamp.com/media-player");
+  script_tag(name:"solution", value:"upgrade to Winamp 5.6 or later.");
   script_tag(name:"summary", value:"This host is installed with Winamp and is prone to multiple
   vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
@@ -69,6 +68,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.winamp.com/media-player");
   exit(0);
 }
 

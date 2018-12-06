@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_45152.nasl 12653 2018-12-04 15:31:25Z cfischer $
+# $Id: gb_clamav_45152.nasl 12668 2018-12-05 13:07:54Z cfischer $
 #
 # ClamAV Prior to 0.96.5 Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100932");
-  script_version("$Revision: 12653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 16:31:25 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12668 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 14:07:54 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-02 19:42:22 +0100 (Thu, 02 Dec 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,13 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://freshmeat.net/projects/clamav/releases/325193");
 
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"ClamAV is prone to multiple vulnerabilities.");
+
   script_tag(name:"affected", value:"Versions prior to ClamAV 0.96.5 are vulnerable.");
+
   script_tag(name:"impact", value:"Attackers may exploit these issues to cause denial-of-service
   conditions or potentially execute arbitrary code in the context of the application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
 
   exit(0);
 }
@@ -75,9 +78,7 @@ if(!ver) {
 if(!ver)exit(0);
 
 if(version_is_less(version:ver, test_version:"0.96.5")){
-    security_message(port:port);
-    exit(0);
+  security_message(port:port);
 }
 
 exit(0);
-

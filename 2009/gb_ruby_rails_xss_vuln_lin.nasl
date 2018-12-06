@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_xss_vuln_lin.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ruby_rails_xss_vuln_lin.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ruby on Rails 'strip_tags' Cross Site Scripting Vulnerability (Linux)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801078");
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-12-09 07:52:52 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,19 +51,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site or
-  steal cookie-based authentication credentials and launch other attacks.
+  steal cookie-based authentication credentials and launch other attacks.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Ruby on Rails version before 2.3.5");
+
   script_tag(name:"insight", value:"This issue is due to the error in 'strip_tagi()' function which is
   not properly escaping non-printable ascii characters.");
-  script_tag(name:"solution", value:"Apply the security patches or upgrade to Ruby on Rails version 2.3.5
-  http://github.com/rails/rails/
-  http://rubyonrails.org/download
 
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is manually applied.
-  *****");
+  script_tag(name:"solution", value:"Update to Ruby on Rails version 2.3.5 or later.");
+
   script_tag(name:"summary", value:"The host is running Ruby on Rails, which is prone to Cross Site
   Scripting Vulnerability.");
 

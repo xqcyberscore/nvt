@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_sec_bypass_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_ruby_rails_sec_bypass_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ruby on Rails Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801653");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-3933");
   script_tag(name:"cvss_base", value:"6.4");
@@ -47,20 +47,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2719");
   script_xref(name:"URL", value:"http://weblog.rubyonrails.org/2010/10/15/security-vulnerability-in-nested-attributes-code-in-ruby-on-rails-2-3-9-and-3-0-0");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate arbitrary records.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate arbitrary records.");
   script_tag(name:"affected", value:"Ruby on Rails versions 2.3.9 and 3.0.0");
   script_tag(name:"insight", value:"The flaw is due to an input validation error when handling nested
   attributes, which can be exploited to manipulate arbitrary records by changing form input parameter names.");
-  script_tag(name:"solution", value:"Upgrade to Ruby On Rails version 3.0.1 or 2.3.10
-  For updates refer to http://rubyonrails.org/download");
+  script_tag(name:"solution", value:"Upgrade to Ruby On Rails version 3.0.1 or 2.3.10");
   script_tag(name:"summary", value:"This host is running Ruby on Rails and is prone to security bypass
   vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://rubyonrails.org/download");
   exit(0);
 }
 
@@ -70,7 +68,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check Ruby on Rails version
 if( version_is_equal( version:vers, test_version:"2.3.9" ) ||
     version_is_equal( version:vers, test_version:"3.0.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.3.10/3.0.1" );

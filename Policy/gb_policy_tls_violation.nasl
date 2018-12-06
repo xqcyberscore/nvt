@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_tls_violation.nasl 10958 2018-08-14 13:49:12Z cfischer $
+# $Id: gb_policy_tls_violation.nasl 12662 2018-12-05 11:27:06Z cfischer $
 #
 # SSL/TLS: Policy Check Violations
 #
@@ -47,7 +47,7 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105780");
-  script_version("$Revision: 10958 $");
+  script_version("$Revision: 12662 $");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 12:27:06 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 14:30:12 +0200 (Tue, 28 Jun 2016)");
   script_name("SSL/TLS: Policy Check Violations");
   script_category(ACT_END);
@@ -74,14 +74,19 @@ if(description)
 
 include("ssl_funcs.inc");
 
-if( ! port = get_ssl_port() ) exit( 0 );
+if( ! port = get_ssl_port() )
+  exit( 0 );
 
 policy_violating_ssl_versions = get_kb_item( "tls_policy/policy_violating_ssl_versions/" + port );
-if( ! policy_violating_ssl_versions ) exit( 0 );
+if( ! policy_violating_ssl_versions )
+  exit( 0 );
 
 minimum_TLS = get_kb_item( "tls_policy/minimum_TLS" );
 
-report = 'Minimum allowed TLS version: ' + minimum_TLS + '\n\nThe following SSL/TLS versions are supported by the remote service and violating the TLS policy:\n\n' + str_replace( string:policy_violating_ssl_versions, find:" ", replace:'\n' ) + '\n';
+report  = 'Minimum allowed SSL/TLS version: ' + minimum_TLS + '\n\n';
+report += 'The following SSL/TLS versions are supported by the remote service and violating the SSL/TLS policy:\n\n';
+report += str_replace( string:policy_violating_ssl_versions, find:" ", replace:'\n' );
+
 if( use_severity )
   security_message( port:port, data:report );
 else

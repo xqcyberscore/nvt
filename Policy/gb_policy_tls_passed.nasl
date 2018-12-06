@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_tls_passed.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: gb_policy_tls_passed.nasl 12662 2018-12-05 11:27:06Z cfischer $
 #
 # SSL/TLS: Policy Check OK
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105781");
-  script_version("$Revision: 10530 $");
+  script_version("$Revision: 12662 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 12:27:06 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 15:37:57 +0200 (Tue, 28 Jun 2016)");
   script_name("SSL/TLS: Policy Check OK");
   script_category(ACT_END);
@@ -49,18 +49,23 @@ if(description)
 
 include("ssl_funcs.inc");
 
-if( ! port = get_ssl_port() ) exit( 0 );
+if( ! port = get_ssl_port() )
+  exit( 0 );
 
-if( ! passed = get_kb_item( "tls_policy/test_passed/" + port ) ) exit( 0 );
+if( ! passed = get_kb_item( "tls_policy/test_passed/" + port ) )
+  exit( 0 );
 
-supported_versions = get_kb_list("tls_version/" + port + "/version");
+minimum_TLS = get_kb_item( "tls_policy/minimum_TLS" );
 
-report = 'The following SSL/TLS versions are supported by the remote service:\n\n';
+supported_versions = get_kb_list( "tls_version_get/" + port + "/version" );
 
-foreach sv ( sort( supported_versions ) )
+report  = 'Minimum allowed TLS version: ' + minimum_TLS + '\n\n';
+report += 'The following SSL/TLS versions are supported by the remote service:\n\n';
+
+foreach sv( sort( supported_versions ) )
   report += sv + '\n';
 
-report += '\nSSL/TLS policy test passed\n';
+report += '\nSSL/TLS policy test passed.';
 
 log_message( port:port, data:report );
 exit( 0 );

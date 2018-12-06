@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 12494 2018-11-22 15:41:52Z cfischer $
+# $Id: secpod_ibm_db2_8_udb_mult_vuln_lin_900216.nasl 12670 2018-12-05 14:14:20Z cfischer $
 # Description: IBM DB2 Universal Database Multiple Vulnerabilities - Sept08 (Linux)
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900216");
-  script_version("$Revision: 12494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-22 16:41:52 +0100 (Thu, 22 Nov 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
   script_bugtraq_id(31058);
   script_cve_id("CVE-2008-2154", "CVE-2008-3958", "CVE-2008-3960");
@@ -56,7 +56,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Update to Fixpak 17 or later.
- 
+
   *****
 
   NOTE : Ignore this warning, if above mentioned patch is already applied.

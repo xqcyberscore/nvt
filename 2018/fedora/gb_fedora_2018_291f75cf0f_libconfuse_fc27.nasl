@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_291f75cf0f_libconfuse_fc27.nasl 12638 2018-12-04 08:40:36Z santu $
+# $Id: gb_fedora_2018_291f75cf0f_libconfuse_fc27.nasl 12665 2018-12-05 12:28:29Z mmartin $
 #
 # Fedora Update for libconfuse FEDORA-2018-291f75cf0f
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875289");
-  script_version("$Revision: 12638 $");
+  script_version("$Revision: 12665 $");
   script_cve_id("CVE-2018-14447");
   script_bugtraq_id(106054);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:40:36 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 13:28:29 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:49 +0530 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for libconfuse FEDORA-2018-291f75cf0f");
   script_category(ACT_GATHER_INFO);

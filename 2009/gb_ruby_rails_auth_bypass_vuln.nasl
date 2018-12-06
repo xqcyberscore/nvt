@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_auth_bypass_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_ruby_rails_auth_bypass_vuln.nasl 12673 2018-12-05 15:02:55Z cfischer $
 #
 # Ruby on Rails Authentication Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800912");
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 12673 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 16:02:55 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,20 +48,16 @@ if(description)
   script_xref(name:"URL", value:"http://weblog.rubyonrails.org/2009/6/3/security-problem-with-authenticate_with_http_digest");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass authentication by
-  providing an invalid username with an empty password and gain unauthorized access to the system.
+  providing an invalid username with an empty password and gain unauthorized access to the system.");
 
-  Impact Level: Application");
   script_tag(name:"affected", value:"Ruby on Rails version 2.3.2 and prior");
+
   script_tag(name:"insight", value:"This Flaw is caused During login process, the digest authentication functionality
   (http_authentication.rb) returns a 'nil' instead of 'false' when the provided
-  username is not found and then proceeds to verify this value against the
-  provided password.");
-  script_tag(name:"solution", value:"Apply the security patches
-  http://github.com/rails/rails/commit/056ddbdcfb07f0b5c7e6ed8a35f6c3b55b4ab489
+  username is not found and then proceeds to verify this value against the provided password.");
 
-  *****
-  NOTE: Ignore this warning, if above mentioned patch is manually applied.
-  *****");
+  script_tag(name:"solution", value:"Update to version 2.3.3 or later.");
+
   script_tag(name:"summary", value:"The host is running Ruby on Rails, which is prone to Authentication
   Bypass Vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_mult_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: secpod_ibm_db2_mult_vuln_win.nasl 12670 2018-12-05 14:14:20Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101106");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12670 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-05 15:14:20 +0100 (Wed, 05 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-08-24 07:49:31 +0200 (Mon, 24 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,12 +53,12 @@ if(description)
 
   - An unspecified error when processing malformed packets can be exploited
     to cause DB2JDS to crash creating a denial of service condition.");
-  script_tag(name:"solution", value:"Update IBM DB2 Version 8.1 Fixpak 18,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg24024075");
+  script_tag(name:"solution", value:"Update IBM DB2 Version 8.1 Fixpak 18.");
   script_tag(name:"summary", value:"The host is installed with IBM DB2 and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg24024075");
   exit(0);
 }
 
