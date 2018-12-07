@@ -92,7 +92,6 @@ if(description)
   script_add_preference(name:"Data length : ", type:"entry", value:"");
   script_add_preference(name:"Run dangerous port scans even if safe checks are set", type:"checkbox", value:"no");
   script_add_preference(name:"Log nmap output", type:"checkbox", value:"no");
-  script_add_preference(name:"Defeat RST Ratelimit", value:"no", type:"checkbox");
 
   script_tag(name:"summary", value:"This plugin runs nmap to find open ports.");
 
@@ -176,13 +175,8 @@ if( ! res ) {
 
   argv[i++] = "-n";
   argv[i++] = "-Pn"; # Nmap ping is not reliable
+  argv[i++] = "--defeat-rst-ratelimit";
   argv[i++] = "-oG";
-
-  p = script_get_preference("Defeat RST Ratelimit");
-  if ("yes" >< p)
-  {
-  	argv[i++] = "--defeat-rst-ratelimit";
-  }
 
   tmpdir = get_tmp_dir();
   if( tmpdir && strlen( tmpdir ) ) {

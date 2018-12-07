@@ -69,7 +69,7 @@ fixtext = 'Set following UI path accordingly:
 Computer Configuration/Windows Settings/Security Settings/Windows Firewall with Advanced Security/
 Windows Firewall with Advanced Security/Windows Firewall Properties/' + title;
 type = 'HKLM';
-key = 'SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\PrivateProfile';
+key = 'SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\StandardProfile';
 item = 'DefaultInboundAction';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);

@@ -81,7 +81,7 @@ value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
 if(value == ''){
-  value = '0';
+  value = '3';
 }
 
 if(int(value) == int(default)){

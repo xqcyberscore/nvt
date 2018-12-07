@@ -112,8 +112,6 @@ function kb_check_macos_release( vers_regex, name_regex ) {
 # in the list is greater that the given one.
 #
 
-include("version_func.inc");
-
 function isosxpkgvuln(fixed, diff) {
     list=get_kb_item("ssh/login/osx_pkgs");
     if (!list) exit (0);
