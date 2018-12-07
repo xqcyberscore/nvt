@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ffmpeg_mult_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_ffmpeg_mult_vuln_lin.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # FFmpeg Multiple Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800468");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,9 +45,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_ffmpeg_detect_lin.nasl");
   script_mandatory_keys("FFmpeg/Linux/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation could result in Denial of service condition(application
   crash or infinite loop) or possibly allow execution of arbitrary code.");
+
   script_tag(name:"affected", value:"FFmpeg version 0.5 on Linux.");
+
   script_tag(name:"insight", value:"The multiple flaws are due to:
 
   - An out-of-bounds array index error in 'vorbis_dec.c'
@@ -63,19 +66,17 @@ if(description)
   - Integer underflow error in 'mov.c'
 
   - Type confusion error in 'mov.c'/'utils.c'");
+
   script_tag(name:"summary", value:"This host is installed with FFmpeg and is prone to multiple
   vulnerabilities");
-  script_tag(name:"solution", value:"Upgrad to FFmpeg version 0.5.2 or later,
-  For updates refer to http://www.ffmpeg.org/download.html
 
-  Workaround:
-  Apply workaround from below link,
-  http://scarybeastsecurity.blogspot.com/2009/09/patching-ffmpeg-into-shape.html");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"solution", value:"Upgrad to FFmpeg version 0.5.2 or later.");
+
+  script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

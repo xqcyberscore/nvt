@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_password_info_disc_vuln_macosx.nasl 11544 2018-09-21 20:30:26Z cfischer $
+# $Id: gb_mozilla_firefox_password_info_disc_vuln_macosx.nasl 12697 2018-12-07 07:56:28Z mmartin $
 #
 # Mozilla Firefox 'Password' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813893");
-  script_version("$Revision: 11544 $");
+  script_version("$Revision: 12697 $");
   script_cve_id("CVE-2018-12383");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:30:26 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 13:22:59 +0530 (Thu, 06 Sep 2018)");
   script_name("Mozilla Firefox 'Password' Information Disclosure Vulnerability (MAC OS X)");
 

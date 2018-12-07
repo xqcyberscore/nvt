@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxmail_mailto_bof_vuln.nasl 11290 2018-09-07 13:11:08Z jschulte $
+# $Id: gb_foxmail_mailto_bof_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # FoxMail Client Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800220");
-  script_version("$Revision: 11290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 15:11:08 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -45,8 +45,7 @@ if(description)
   script_mandatory_keys("Foxmail/Win/Ver");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert a long crafted
-  URI in the MAILTO field and can cause a stack overflow to the application.
-  Impact Level: Application");
+  URI in the MAILTO field and can cause a stack overflow to the application.");
   script_tag(name:"affected", value:"Foxmail version 6.5 or prior on Windows.");
   script_tag(name:"insight", value:"This flaw is due to lack of sanitization and boundary check in the user
   supplied data which can be exploited by adding a long URL length in the

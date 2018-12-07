@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_4ae94c8deb_community-mysql_fc27.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_4ae94c8deb_community-mysql_fc27.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Fedora Update for community-mysql FEDORA-2018-4ae94c8deb
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875314");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2018-3276", "CVE-2018-3200", "CVE-2018-3284", "CVE-2018-3173", "CVE-2018-3162", "CVE-2018-3247", "CVE-2018-3156", "CVE-2018-3161", "CVE-2018-3278", "CVE-2018-3282", "CVE-2018-3187", "CVE-2018-3277", "CVE-2018-3144", "CVE-2018-3133", "CVE-2018-3143", "CVE-2018-3283", "CVE-2018-3171", "CVE-2018-3251", "CVE-2018-3185", "CVE-2018-3155", "CVE-2018-2767", "CVE-2018-3056", "CVE-2018-3058", "CVE-2018-3060", "CVE-2018-3061", "CVE-2018-3062", "CVE-2018-3064", "CVE-2018-3065", "CVE-2018-3066", "CVE-2018-3070", "CVE-2018-3071", "CVE-2018-3077", "CVE-2018-3081", "CVE-2018-2755", "CVE-2018-2758", "CVE-2018-2759", "CVE-2018-2761", "CVE-2018-2762", "CVE-2018-2766", "CVE-2018-2769", "CVE-2018-2771", "CVE-2018-2773", "CVE-2018-2775", "CVE-2018-2776", "CVE-2018-2777", "CVE-2018-2778", "CVE-2018-2779", "CVE-2018-2780", "CVE-2018-2781", "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2786", "CVE-2018-2787", "CVE-2018-2810", "CVE-2018-2812", "CVE-2018-2813", "CVE-2018-2816", "CVE-2018-2817", "CVE-2018-2818", "CVE-2018-2819", "CVE-2018-2839", "CVE-2018-2846", "CVE-2017-10155", "CVE-2017-10227", "CVE-2017-10268", "CVE-2017-10276", "CVE-2017-10279", "CVE-2017-10283", "CVE-2017-10286", "CVE-2017-10294", "CVE-2017-10314", "CVE-2017-10378", "CVE-2017-10379", "CVE-2017-10384");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:24:29 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for community-mysql FEDORA-2018-4ae94c8deb");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rekonq_mult_xss_vuln.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: gb_rekonq_mult_xss_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # rekonq 'Error Page' Cross-Site Scripting Vulnerabilities.
 #
@@ -24,32 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################i###############################################
 
-tag_impact = "Successful exploitation will allow attackers to crash fresh
-instance, inject the malicious content into error message, access the cookies
-when the hostname under which the cookies have been set.
-
-Impact Level: Application.";
-
-tag_affected = "Rekonq version 0.5 and prior.";
-
-tag_insight = "The multiple flaws are due to:
-- An error in the handling of a URL associated with a nonexistent domain name
-  which is related to 'webpage.cpp',
-- An error in hanlding of unspecified vectors related to 'webview.cpp'
-- An error in the handing of 'about:' views for favorites, bookmarks, closed
-  tabs, and history.";
-
-tag_solution = "Upgrade to version 0.6 or later,
-For updates refer to http://sourceforge.net/projects/rekonq/files";
-
-tag_summary = "This host is installed with rekonq and is prone to cross-site
-scripting vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801422");
-  script_version("$Revision: 8338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_cve_id("CVE-2010-2536");
   script_tag(name:"cvss_base", value:"4.3");
@@ -62,29 +41,44 @@ if(description)
   script_dependencies("gb_rekonq_detect.nasl");
   script_mandatory_keys("rekonq/Linux/Ver");
 
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The multiple flaws are due to:
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/40646");
-  script_xref(name : "URL" , value : "https://bugs.kde.org/show_bug.cgi?id=217464");
-  script_xref(name : "URL" , value : "http://marc.info/?l=oss-security&m=127971194610788&w=2");
+  - An error in the handling of a URL associated with a nonexistent domain name
+  which is related to 'webpage.cpp',
+
+  - An error in handling of unspecified vectors related to 'webview.cpp'
+
+  - An error in the handing of 'about:' views for favorites, bookmarks, closed
+  tabs, and history.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"solution", value:"Upgrade to version 0.6 or later.");
+
+  script_tag(name:"summary", value:"This host is installed with rekonq and is prone to cross-site
+  scripting vulnerabilities.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash fresh
+  instance, inject the malicious content into error message, access the cookies
+  when the hostname under which the cookies have been set.");
+
+  script_tag(name:"affected", value:"Rekonq version 0.5 and prior.");
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40646");
+  script_xref(name:"URL", value:"https://bugs.kde.org/show_bug.cgi?id=217464");
+  script_xref(name:"URL", value:"http://marc.info/?l=oss-security&m=127971194610788&w=2");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/rekonq/files");
 
   exit(0);
 }
 
-
 include("version_func.inc");
 
-## Get the version from KB
 rekonqVer = get_kb_item("rekonq/Linux/Ver");
 if(!rekonqVer){
   exit(0);
 }
 
-## Check rekonq version <= 0.5
 if(version_is_less_equal(version:rekonqVer, test_version:"0.5.0")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

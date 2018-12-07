@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_3948_1.nasl 12638 2018-12-04 08:40:36Z santu $
+# $Id: gb_suse_2018_3948_1.nasl 12697 2018-12-07 07:56:28Z mmartin $
 #
 # SuSE Update for tiff openSUSE-SU-2018:3948-1 (tiff)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.852153");
-  script_version("$Revision: 12638 $");
+  script_version("$Revision: 12697 $");
   script_cve_id("CVE-2018-12900", "CVE-2018-18557", "CVE-2018-18661");
   script_bugtraq_id(106054);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 09:40:36 +0100 (Tue, 04 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 12:40:33 +0530 (Tue, 04 Dec 2018)");
   script_name("SuSE Update for tiff openSUSE-SU-2018:3948-1 (tiff)");
   script_category(ACT_GATHER_INFO);

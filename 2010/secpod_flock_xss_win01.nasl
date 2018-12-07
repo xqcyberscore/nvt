@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_flock_xss_win01.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_flock_xss_win01.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # Flock Browser RSS Feed Cross site scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902314");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3262");
   script_bugtraq_id(43225);
@@ -48,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Flock versions 3.0 to 3.0.0.4113");
   script_tag(name:"insight", value:"The flaw is due to the improper validation of user-supplied input
   when processing RSS feeds.");
-  script_tag(name:"solution", value:"Upgrade to the Flock version 3.0.0.4114
-  For updates refer to http://www.flock.com/");
+  script_tag(name:"solution", value:"Upgrade to the Flock version 3.0.0.4114");
   script_tag(name:"summary", value:"This host is installed with Flock browser and is prone to cross
   site scripting vulnerability.");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/61820");
@@ -57,6 +56,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.flock.com/");
   exit(0);
 }
 

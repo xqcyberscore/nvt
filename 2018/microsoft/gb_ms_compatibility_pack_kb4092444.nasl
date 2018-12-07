@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compatibility_pack_kb4092444.nasl 12513 2018-11-23 14:24:09Z cfischer $
+# $Id: gb_ms_compatibility_pack_kb4092444.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (KB4092444)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814255");
-  script_version("$Revision: 12513 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2018-8427", "CVE-2018-8432");
   script_bugtraq_id(105453, 105458);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-23 15:24:09 +0100 (Fri, 23 Nov 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-10 08:59:02 +0530 (Wed, 10 Oct 2018)");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (KB4092444)");
 

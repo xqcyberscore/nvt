@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 12532 2018-11-26 13:44:42Z cfischer $
+# $Id: ssh_func.inc 12686 2018-12-06 13:35:22Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 12532 $
+# $Revision: 12686 $
 #
 ###############################################################################
 
@@ -2623,12 +2623,12 @@ function ssh_rand_str( length, charset ) {
   return s;
 }
 
-# @brief looks on linux host via SSH if a given file can be found / accessed.
+# @brief looks on linux host via SSH if a given file can be found.
 #
 # @param sock an open SSH socket (optional). If non given, a new one will be opened.
 # @param file the file to check the existence(filepath)
 #
-# @return TRUE if the file can be found / accessed, FALSE otherwise and NULL if not all
+# @return TRUE if the file can be found, FALSE otherwise and NULL if not all
 #         required parameters are passed or no connection could be opened to the target.
 #
 function ssh_check_file_existence( sock, file ) {
@@ -2651,6 +2651,39 @@ function ssh_check_file_existence( sock, file ) {
   if( file_exists == 'TRUE' )
     return TRUE;
   else if( file_exists == 'FALSE' )
+    return FALSE;
+  else
+    return;
+}
+
+# @brief looks on linux host via SSH if a given file can be read.
+#
+# @param sock an open SSH socket (optional). If non given, a new one will be opened.
+# @param file the file to check if it can be read(filepath)
+#
+# @return TRUE if the file can be read, FALSE otherwise and NULL if not all
+#         required parameters are passed or no connection could be opened to the target.
+#
+function ssh_check_file_readable( sock, file ) {
+
+  local_var sock, file;
+  local_var cmd, file_readable;
+
+  if( ! sock ) {
+    sock = ssh_login_or_reuse_connection();
+  }
+
+  if( ! file ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#ssh_check_file_existence" );
+    return;
+  }
+
+  cmd = '[ -r ' + file + ' ] && echo "TRUE" || echo "FALSE"';
+  file_readable = ssh_cmd( cmd:cmd, socket:sock );
+
+  if( file_readable == 'TRUE' )
+    return TRUE;
+  else if( file_readable == 'FALSE' )
     return FALSE;
   else
     return;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_mem_corruption_n_bof_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_freetype_mem_corruption_n_bof_vuln_win.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # FreeType Memory Corruption and Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901143");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-2497", "CVE-2010-2498", "CVE-2010-2499",
                 "CVE-2010-2500", "CVE-2010-2519", "CVE-2010-2520",
@@ -64,13 +64,13 @@ if(description)
 
   - An error in the 'psh_glyph_find_strong_pointr()' function in
    'pshinter/pshalgo.c'.
-  when processing malformed font files, ");
-  script_tag(name:"solution", value:"Upgrade to FreeType version 2.4.2 or later,
-  For updates refer to http://www.freetype.org/");
+  when processing malformed font files.");
+  script_tag(name:"solution", value:"Upgrade to FreeType version 2.4.2 or later.");
   script_tag(name:"summary", value:"This host is installed with FreeType and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.freetype.org/");
   exit(0);
 }
 

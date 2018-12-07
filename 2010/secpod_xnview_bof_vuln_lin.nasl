@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xnview_bof_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_xnview_bof_vuln_lin.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # XnView DICOM Parsing Integer Overflow Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900754");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_bugtraq_id(38629);
   script_cve_id("CVE-2009-4001");
@@ -48,8 +48,7 @@ if(description)
   arbitrary code on the system with elevated privileges or cause the
   application to crash.");
   script_tag(name:"affected", value:"XnView versions prior to 1.97.2 on linux");
-  script_tag(name:"solution", value:"Update to XnView version 1.97.2
-  For updates refer to http://www.xnview.com/");
+  script_tag(name:"solution", value:"Update to XnView version 1.97.2");
   script_tag(name:"summary", value:"This host has XnView installed and is prone to integer overflow
   vulnerability.
 
@@ -60,6 +59,7 @@ if(description)
   file.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
 

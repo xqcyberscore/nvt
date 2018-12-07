@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firewall_builder_priv_esc_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_firewall_builder_priv_esc_vuln_lin.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # Firewall Builder Privilege Escalation Vulnerability (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800996");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the application generating scripts, which are using
   temporary files in an insecure manner. This can be exploited to overwrite
   arbitrary files via symlink attack.");
-  script_tag(name:"solution", value:"Update to version 3.0.7
-  For updates refer to http://www.fwbuilder.org/");
+  script_tag(name:"solution", value:"Update to version 3.0.7");
   script_tag(name:"summary", value:"The host is running Firewall Builder and is prone to Privilege
   Escalation vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.fwbuilder.org/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pgp_desktop_data_spoofing_vuln.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: gb_pgp_desktop_data_spoofing_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # PGP Desktop Signed Data Spoofing Vulnerability
 #
@@ -23,28 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to spoof signed
-data by concatenating an additional message to the end of a legitimately
-signed message.";
-
-tag_affected = "PGP Desktop version 10.0.x to 10.0.3 and 10.1.0";
-
-tag_insight = "This flaw is caused by an error when verifying encrypted
-or signed data, which could allow attackers to insert unsigned packets
-or encrypted data into an OpenPGP message containing signed and/or
-encrypted data.";
-
-tag_solution = "Upgrade to version 10.0.3 SP2, 10.1.0 SP1 or higher,
-For updates refer to http://www.pgp.com/products/desktop/index.html";
-
-tag_summary = "This host is running PGP Desktop and is prone to signed data
-spoofing Vulnerability";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801552");
-  script_version("$Revision: 8447 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:49:11 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -57,17 +40,25 @@ if(description)
   script_dependencies("gb_pgp_desktop_detect_win.nasl");
   script_mandatory_keys("PGPDesktop/Win/Ver");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to spoof signed
+data by concatenating an additional message to the end of a legitimately
+signed message.");
+  script_tag(name:"affected", value:"PGP Desktop version 10.0.x to 10.0.3 and 10.1.0");
+  script_tag(name:"insight", value:"This flaw is caused by an error when verifying encrypted
+or signed data, which could allow attackers to insert unsigned packets
+or encrypted data into an OpenPGP message containing signed and/or
+encrypted data.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Upgrade to version 10.0.3 SP2, 10.1.0 SP1 or higher.");
+  script_tag(name:"summary", value:"This host is running PGP Desktop and is prone to signed data
+spoofing Vulnerability");
 
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/300785");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3026");
-  script_xref(name : "URL" , value : "https://pgp.custhelp.com/app/answers/detail/a_id/2290");
-  script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20101118_00");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/300785");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3026");
+  script_xref(name:"URL", value:"https://pgp.custhelp.com/app/answers/detail/a_id/2290");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2010&suid=20101118_00");
 
+  script_xref(name:"URL", value:"http://www.pgp.com/products/desktop/index.html");
   exit(0);
 }
 
@@ -81,5 +72,5 @@ if(!ver){
 
 if(version_is_equal(version:ver, test_version:"10.1.0") ||
    version_in_range(version:ver, test_version:"10.0.0", test_version2:"10.0.3.1")){
-   security_message(0);
+   security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

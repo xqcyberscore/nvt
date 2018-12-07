@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_dbe9da512d_soundtouch_fc27.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_dbe9da512d_soundtouch_fc27.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Fedora Update for soundtouch FEDORA-2018-dbe9da512d
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875343");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2018-17098", "CVE-2018-17096", "CVE-2018-17097", "CVE-2018-14044", "CVE-2018-14045", "CVE-2018-1000223", "CVE-2017-9258", "CVE-2017-9259", "CVE-2017-9260");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:38:34 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for soundtouch FEDORA-2018-dbe9da512d");
   script_category(ACT_GATHER_INFO);

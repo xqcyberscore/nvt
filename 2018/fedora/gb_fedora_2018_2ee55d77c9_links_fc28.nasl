@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_2ee55d77c9_links_fc28.nasl 12661 2018-12-05 10:53:21Z santu $
+# $Id: gb_fedora_2018_2ee55d77c9_links_fc28.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Fedora Update for links FEDORA-2018-2ee55d77c9
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875328");
-  script_version("$Revision: 12661 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2017-11114");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 11:53:21 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-04 08:32:37 +0100 (Tue, 04 Dec 2018)");
   script_name("Fedora Update for links FEDORA-2018-2ee55d77c9");
   script_category(ACT_GATHER_INFO);

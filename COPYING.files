@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 06 Dec 2018 10:40:43 +0100
+# Automatically created on:  Fri, 07 Dec 2018 09:49:10 +0100
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38528,6 +38528,9 @@
 2018/adobe/gb_adobe_flash_player_apsb18-39_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-39_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-39_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-42_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-42_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_apsb18-42_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-44_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-44_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-44_win.nasl: GPLv2+
@@ -38561,6 +38564,9 @@
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-39_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-42_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-42_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-42_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsb18-44_win.nasl: GPLv2+
@@ -38691,11 +38697,13 @@
 2018/apple/gb_apple_icloud_HT208932.nasl: GPLv2+
 2018/apple/gb_apple_icloud_HT209141.nasl: GPLv2+
 2018/apple/gb_apple_icloud_HT209198.nasl: GPLv2+
+2018/apple/gb_apple_icloud_HT209346.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208474.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208694.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208852.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT208933.nasl: GPLv2+
 2018/apple/gb_apple_itunes_HT209197.nasl: GPLv2+
+2018/apple/gb_apple_itunes_HT209345.nasl: GPLv2+
 2018/apple/gb_apple_itunes_mult_vuln_HT209140.nasl: GPLv2+
 2018/apple/gb_apple_macosx_code_exec_vuln_may_18.nasl: GPLv2+
 2018/apple/gb_apple_macosx_dos_vuln_may_18.nasl: GPLv2+
@@ -38717,6 +38725,10 @@
 2018/apple/gb_apple_macosx_HT209193_04.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT209193_05.nasl: GPLv2+
 2018/apple/gb_apple_macosx_HT209193_06.nasl: GPLv2+
+2018/apple/gb_apple_macosx_HT209341_01.nasl: GPLv2+
+2018/apple/gb_apple_macosx_HT209341_02.nasl: GPLv2+
+2018/apple/gb_apple_macosx_HT209341_03.nasl: GPLv2+
+2018/apple/gb_apple_macosx_HT209341_04.nasl: GPLv2+
 2018/apple/gb_apple_macosx_info_disc_vuln_HT208465.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mem_corruption_vuln_HT208535.nasl: GPLv2+
 2018/apple/gb_apple_macosx_mult_vuln01_HT205375.nasl: GPLv2+
@@ -38732,6 +38744,7 @@
 2018/apple/gb_apple_safari_HT208934.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT209109.nasl: GPLv2+
 2018/apple/gb_apple_safari_HT209196.nasl: GPLv2+
+2018/apple/gb_apple_safari_HT209344.nasl: GPLv2+
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
 2018/argus_surveillance/gb_argus_surveillance_dvr_mult_vuln.nasl: GPLv2+
@@ -41390,6 +41403,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-11_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-11_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-11_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-12_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-12_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-12_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl: GPLv2+
@@ -44133,6 +44149,9 @@ gb_corel_pdf_fusion_detect_win.nasl: GPLv2+
 gb_coremailxt_detect.nasl: GPLv2+
 gb_couchdb_detect.nasl: GPLv2+
 gb_cpcreator_detect.nasl: GPLv2+
+gb_cradlepoint_router_consolidation.nasl: GPLv2+
+gb_cradlepoint_router_http_detect.nasl: GPLv2+
+gb_cradlepoint_router_snmp_detect.nasl: GPLv2+
 gb_crestron_airmedia_snmp_detect.nasl: GPLv2+
 gb_crestron_cip_detect.nasl: GPLv2+
 gb_crestron_ctp_detect.nasl: GPLv2+
@@ -44364,6 +44383,7 @@ gb_geovision_ip_camera_remote_detect.nasl: GPLv2+
 gb_ge_snmp_web_interface_adapter_detect.nasl: GPLv2+
 gb_get_http_banner.nasl: GPLv2+
 gb_getsimple_cms_detect.nasl: GPLv2+
+gb_gfi_kerio_connect_detect_win.nasl: GPLv2+
 gb_gigaset_sx762_detect.nasl: GPLv2+
 gb_git_detect_win.nasl: GPLv2+
 gb_gitea_detect.nasl: GPLv2+
@@ -44890,6 +44910,9 @@ gb_octopus_deploy_detect.nasl: GPLv2+
 gb_odoo_remote_detect.nasl: GPLv2+
 gb_offiria_remote_detect.nasl: GPLv2+
 gb_old_adobe_reader_detect_win.nasl: GPLv2+
+gb_omron_cx-one_detect.nasl: GPLv2+
+gb_omron_cx-programmer_detect.nasl: GPLv2+
+gb_omron_cx-server_detect.nasl: GPLv2+
 gb_omron_cx-supervisor_detect.nasl: GPLv2+
 gb_op5_detect.nasl: GPLv2+
 gb_opac_kpwinsql_detect.nasl: GPLv2+
@@ -45351,6 +45374,7 @@ gb_tp_link_wireless_range_extender_detect.nasl: GPLv2+
 gb_trane_tracer_sc_detect.nasl: GPLv2+
 gb_trane_tracer_sc_web_detect.nasl: GPLv2+
 gb_trango_devices_detect.nasl: GPLv2+
+gb_trendmicro_antivirus_detect_macosx.nasl: GPLv2+
 gb_trendmicro_antivirus_plus_detect_win.nasl: GPLv2+
 gb_trend_micro_data_loss_prevention_detect.nasl: GPLv2+
 gb_trendmicro_deep_discovery_inspector_detect.nasl: GPLv2+
@@ -45441,6 +45465,10 @@ gb_vtiger_crm_detect.nasl: GPLv2+
 gb_vtscada_detect.nasl: GPLv2+
 gb_v-webmail_detect.nasl: GPLv2+
 gb_vx_search_enterprise_detect.nasl: GPLv2+
+gb_wago_plc_consolidation.nasl: GPLv2+
+gb_wago_plc_ethernetip_detect.nasl: GPLv2+
+gb_wago_plc_http_detect.nasl: GPLv2+
+gb_wago_plc_snmp_detect.nasl: GPLv2+
 gb_wampserver_detect.nasl: GPLv2+
 gb_watchguard_fireware_detect.nasl: GPLv2+
 gb_wd_mybook_live_detect.nasl: GPLv2+
@@ -45524,6 +45552,8 @@ gb_zimbra_admin_console_detect.nasl: GPLv2+
 gb_zkteco_zkbiosecurity_detect.nasl: GPLv2+
 gb_zkteco_zktimeweb_detect.nasl: GPLv2+
 gb_zoneminder_detect.nasl: GPLv2+
+gb_zoom_client_detect_macosx.nasl: GPLv2+
+gb_zoom_client_detect_win.nasl: GPLv2+
 gb_zpanel_detect.nasl: GPLv2+
 gb_zte_zxdsl_831CII_telnet_detect.nasl: GPLv2+
 gb_ztree_detect.nasl: GPLv2+
@@ -61330,6 +61360,7 @@ gsf/2018/hp/gb_hp_ilo_hpesbhf03894en_us.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_rce_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_dir_trav_vuln_hpesbhf03872.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_mult_vuln_hpesbhf03745_win.nasl: GPLv2+
+gsf/2018/hp/gb_hp_imc_mult_vuln_hpesbhf03906_win.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_rce_vuln_hpesbhf03864.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_rce_vuln_hpesbhf03901.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_rce_vuln_hpesbhf03902.nasl: GPLv2+
@@ -61772,6 +61803,12 @@ gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln1.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-one_mult_vuln_dec18_1.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-programmer_mult_vuln_dec18_1.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-programmer_mult_vuln_dec18_2.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-programmer_mult_vuln_dec18_3.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-server_mult_vuln_dec18_1.nasl: GPLv2+
+gsf/2018/omron/gb_omron_cx-server_mult_vuln_dec18_2.nasl: GPLv2+
 gsf/2018/omron/gb_omron_cx-supervisor_mult_vuln_mar18.nasl: GPLv2+
 gsf/2018/omron/gb_omron_cx-supervisor_mult_vuln_nov18_1.nasl: GPLv2+
 gsf/2018/openxchange/gb_open_xchange_appsuite_mult_vuln_sep18.nasl: GPLv2+
@@ -62093,6 +62130,7 @@ gsf/2018/teledyne/gb_teledyne_dalsa_sherlock_bof_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_mult_vuln.nasl: GPLv2+
 gsf/2018/teltonika/gb_teltonika_rut9xx_rce_vuln.nasl: GPLv2+
 gsf/2018/tibco/gb_tibco_ftl_csrf_vuln_win.nasl: GPLv2+
+gsf/2018/trendmicro/gb_trendmicro_antivirus_mult_priv_escal_vuln_macosx.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_ddi_xss_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
 gsf/2018/tridium/gb_tridium_niagara_mult_vuln.nasl: GPLv2+
@@ -62252,6 +62290,10 @@ gsf/PCIDSS/v2.0/PCIDSS_M8.5.13.a.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.14.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.5.nasl: GPLv2+
 gsf/PCIDSS/v2.0/PCIDSS_M8.5.9.a.nasl: GPLv2+
+gsf/Policy/gb_policy_etc_shadow_errors.nasl: GPLv2+
+gsf/Policy/gb_policy_etc_shadow.nasl: GPLv2+
+gsf/Policy/gb_policy_etc_shadow_ok.nasl: GPLv2+
+gsf/Policy/gb_policy_etc_shadow_violation.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_activex_control_initialization.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_allow_insecure_apps_catalogs.nasl: GPLv2+
 gsf/Policy/Office2013/office2013_allow_users_read_with_browsers.nasl: GPLv2+

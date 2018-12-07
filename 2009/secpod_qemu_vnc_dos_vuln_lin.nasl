@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_qemu_vnc_dos_vuln_lin.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_qemu_vnc_dos_vuln_lin.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # QEMU VNC Server Denial of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:qemu:qemu';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900970");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-10-31 09:54:01 +0100 (Sat, 31 Oct 2009)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -45,23 +45,21 @@ if(description)
 
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=505641");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2009/10/16/8");
+  script_xref(name:"URL", value:"http://git.savannah.gnu.org/cgit/qemu.git/commit/?id=753b405331");
+  script_xref(name:"URL", value:"http://git.savannah.gnu.org/cgit/qemu.git/commit/?id=198a0039c5");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause memory or CPU consumption,
-  resulting in Denial of Service condition.
+  resulting in Denial of Service condition.");
 
-  Impact level: Application/System");
   script_tag(name:"affected", value:"QEMU version 0.10.6 and prior on Linux.");
+
   script_tag(name:"insight", value:"Multiple use-after-free errors occur in 'vnc.c' in VNC server while processing
   malicious 'SetEncodings' messages sent via VNC client.");
+
   script_tag(name:"summary", value:"This host is running QEMU and is prone to Denial of Service
   vulnerability.");
-  script_tag(name:"solution", value:"Apply the available patches.
-  http://git.savannah.gnu.org/cgit/qemu.git/commit/?id=753b405331
-  http://git.savannah.gnu.org/cgit/qemu.git/commit/?id=198a0039c5
 
-  *****
-  NOTE: Ignore this warning if the above mentioned patches is already applied.
-  *****");
+  script_tag(name:"solution", value:"Apply the available patches from the referenced repositories.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -74,7 +72,6 @@ include("host_details.inc");
 
 if(!ver = get_app_version(cpe:CPE)) exit(0);
 
-# Grep for QEMU version <= 0.10.6
 if(version_is_less_equal(version:ver, test_version:"0.10.6")){
   report = report_fixed_ver(installed_version:ver, fixed_version:"0.11.0");
   security_message(data:report);

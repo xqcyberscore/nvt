@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 12106 2018-10-26 06:33:36Z cfischer $
+# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 12698 2018-12-07 08:07:50Z mmartin $
 #
 # ZKTeco ZKTime Web Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zkteco:zktime_web';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140579");
-  script_version("$Revision: 12106 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 08:33:36 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12698 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:07:50 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 12:03:16 +0700 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("ZKTeco ZKTime Web Multiple Vulnerabilities");
 
@@ -64,8 +64,7 @@ if(description)
 
   script_tag(name:"affected", value:"ZKTeco ZKTime Web version 2.0.1.12280 and probably prior.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
-  regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/145159/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Scripting.html");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/145160/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Request-Forgery.html");

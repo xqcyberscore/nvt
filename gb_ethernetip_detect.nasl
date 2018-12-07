@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ethernetip_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
+# $Id: gb_ethernetip_detect.nasl 12700 2018-12-07 08:18:55Z ckuersteiner $
 #
 # EtherNet/IP Detection
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2016 Greenbone Networks GmbH
+# Copyright (c) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106850");
-  script_version("$Revision: 11885 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 12700 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:18:55 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2017-06-09 12:24:29 +0700 (Fri, 09 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ various automation devices such as robots, PLCs, sensors, CNCs and other industr
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports(44818);
@@ -87,6 +87,7 @@ function queryEthernetIP(proto, soc) {
   dev_type = ethip_get_device_type(code: dev_type_id);
   prod_code = getword(blob: recv, pos: 52);
   revision = ord(recv[54]) + '.' + ord(recv[55]);
+  set_kb_item(name: "ethernetip/revision", value: revision);
   serialno = getdword(blob: recv, pos: 58);
   prod_len = ord(recv[62]);
   product_name = substr(recv, 63, 62 + prod_len);

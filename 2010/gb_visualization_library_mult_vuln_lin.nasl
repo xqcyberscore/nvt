@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_visualization_library_mult_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_visualization_library_mult_vuln_lin.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # Visualization Library Multiple Unspecified Vulnerabilities (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800998");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,12 +48,12 @@ if(description)
   script_tag(name:"affected", value:"Visualization Library versions prior to 2009.08.812 on Linux");
   script_tag(name:"insight", value:"The flaws are caused by multiple unspecified errors with unknown impact and
   unknown attack vectors.");
-  script_tag(name:"solution", value:"Update to version 2009.08.812 or above,
-  For updates refer to http://www.visualizationlibrary.com/downloads.php");
+  script_tag(name:"solution", value:"Update to version 2009.08.812 or above.");
   script_tag(name:"summary", value:"The host is running Visualization Library and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.visualizationlibrary.com/downloads.php");
   exit(0);
 }
 

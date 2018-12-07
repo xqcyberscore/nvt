@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1603.nasl 12658 2018-12-05 07:20:12Z cfischer $
+# $Id: deb_dla_1603.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Auto-generated from advisory DLA 1603-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891603");
-  script_version("$Revision: 12658 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2017-15377", "CVE-2017-7177", "CVE-2018-6794");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1603-1] suricata security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-05 08:20:12 +0100 (Wed, 05 Dec 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-12-05 00:00:00 +0100 (Wed, 05 Dec 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

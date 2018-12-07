@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_msa-18-0017_win.nasl 12120 2018-10-26 11:13:20Z mmartin $
+# $Id: gb_moodle_msa-18-0017_win.nasl 12697 2018-12-07 07:56:28Z mmartin $
 #
 # Moodle CMS 3.5.x < 3.5.2, 3.4.x < 3.4.5, 3.2.x < 3.3.8 and < 3.1.14 RCE Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112381");
-  script_version("$Revision: 12120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-26 13:13:20 +0200 (Fri, 26 Oct 2018) $");
+  script_version("$Revision: 12697 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 11:17:22 +0200 (Tue, 18 Sep 2018)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

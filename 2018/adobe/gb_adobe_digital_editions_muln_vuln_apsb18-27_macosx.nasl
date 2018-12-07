@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_muln_vuln_apsb18-27_macosx.nasl 11842 2018-10-11 12:41:48Z santu $
+# $Id: gb_adobe_digital_editions_muln_vuln_apsb18-27_macosx.nasl 12687 2018-12-06 13:46:21Z mmartin $
 #
 # Adobe Digital Editions Mulptiple Vulnerabilities(APSB18-27)-Mac OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814089");
-  script_version("$Revision: 11842 $");
+  script_version("$Revision: 12687 $");
   script_cve_id("CVE-2018-12814", "CVE-2018-12813", "CVE-2018-12823", "CVE-2018-12816",
                 "CVE-2018-12818", "CVE-2018-12819", "CVE-2018-12820", "CVE-2018-12821",
                 "CVE-2018-12822");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 14:41:48 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 14:46:21 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-10-11 10:35:08 +0530 (Thu, 11 Oct 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Editions Mulptiple Vulnerabilities(APSB18-27)-Mac OS X");

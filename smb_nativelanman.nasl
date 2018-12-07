@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 12065 2018-10-25 06:59:36Z cfischer $
+# $Id: smb_nativelanman.nasl 12696 2018-12-07 07:19:11Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 12065 $");
+  script_version("$Revision: 12696 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-25 08:59:36 +0200 (Thu, 25 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:19:11 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -113,7 +113,8 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
 
     if( c == 2 ) {
 
-      smb_str = hex2raw( s:out );
+      smb_str    = hex2raw( s:out );
+      smb_str_lo = tolower( smb_str );
 
       if( smb_str && ! isnull( smb_str ) ) {
         set_kb_item( name:"SMB/NativeLanManager", value:smb_str );
@@ -123,7 +124,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         report = TRUE;
       }
 
-      if( "samba" >< tolower( smb_str ) ) {
+      if( "samba" >< smb_str_lo ) {
 
         version = "unknown";
         install = port + "/tcp";
@@ -168,6 +169,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
       if( os_str && ! isnull( os_str ) ) {
 
         banner_type = "SMB/Samba banner";
+        os_str_lo   = tolower( os_str );
 
         # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessie and stretch has a os_str of "Windows 6.1"
         # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
@@ -177,8 +179,8 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         # SLES11: os_str: Unix, smb_str: Samba 3.6.3-0.58.1-3399-SUSE-CODE11-x86_64
         # SLES12: os_str: Windows 6.1, smb_str: Samba 4.4.2-29.4-3709-SUSE-SLE_12-x86_64
         # SL12: os_str: ?; smb_str: Samba 3.6.7-48.12.1-2831-SUSE-SL12.2-x86_64
-        if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && ( "debian" >< tolower( smb_str ) || "SUSE" >< smb_str || "ubuntu" >< tolower( smb_str ) ) ) ) ) {
-          if( "debian" >< tolower( smb_str ) ) {
+        if( samba && ( "windows" >< os_str_lo || ( "unix" >< os_str_lo && ( "debian" >< smb_str_lo || "SUSE" >< smb_str || "ubuntu" >< smb_str_lo ) ) ) ) {
+          if( "debian" >< smb_str_lo ) {
             # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
             # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
             if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
@@ -202,7 +204,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
               }
             }
           # Ubuntu pattern for new releases last checked on 11/2017 (up to 17.10, LTS releases: 12.04 up to 12.04.5, 14.04 up to 14.04.5, 16.04 up to 16.04.3)
-          } else if( "ubuntu" >< tolower( smb_str ) ) {
+          } else if( "ubuntu" >< smb_str_lo ) {
             # Warty
             if( "Samba 3.0.7-Ubuntu" >< smb_str ) {
               os_str = "Ubuntu 4.10";
@@ -280,7 +282,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         report = TRUE;
         banner = "OS String: " + os_str + "; SMB String: " + smb_str;
 
-        if( "windows" >< tolower( os_str ) ) {
+        if( "windows" >< os_str_lo ) {
           #Example strings:
           #smb_str: Windows 10 Pro 6.3, os_str: Windows 10 Pro 10586
           #smb_str: Windows 10 Home 6.3, os_str: Windows 10 Home 10586
@@ -290,68 +292,71 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           #smb_str: Windows Server 2008 R2 Datacenter 6.1, os_str: Windows Server 2008 R2 Datacenter 7601 Service Pack 1
           #smb_str: Windows XP 5.2, os_str: Windows XP 3790 Service Pack 2 -> Windows XP SP2, 64bit
           #smb_str: Windows Server 2016 Standard 6.3, os_str: Windows Server 2016 Standard 14393
-          if( "windows 10 " >< tolower( os_str ) ) {
+          if( "windows 10 " >< os_str_lo ) {
             cpe = "cpe:/o:microsoft:windows_10";
-            if( ver = get_version_from_build( string:os_str, win_name:"win10" ) ) cpe += ":" + ver;
+
+            if( ver = get_version_from_build( string:os_str, win_name:"win10" ) )
+              cpe += ":" + ver;
+
             register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 5.1" >< tolower( os_str ) && "windows 2000 lan manager" >< tolower( smb_str ) ) {
+          } else if( "windows 5.1" >< os_str_lo && "windows 2000 lan manager" >< smb_str_lo ) {
             register_and_report_os( os:"Windows XP", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 5.0" >< tolower( os_str ) && "windows 2000 lan manager" >< tolower( smb_str ) ) {
+          } else if( "windows 5.0" >< os_str_lo && "windows 2000 lan manager" >< smb_str_lo ) {
             register_and_report_os( os:"Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows xp 5.2" >< tolower( smb_str ) && "service pack 2" >< tolower( os_str ) ) {
+          } else if( "windows xp 5.2" >< smb_str_lo && "service pack 2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_xp:-:sp2:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows xp 5.2" >< tolower( smb_str ) ) {
+          } else if( "windows xp 5.2" >< smb_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_xp:-:-:x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows embedded" >< tolower( os_str ) ) {
-            if( "embedded 8.1" >< tolower( os_str ) ) {
+          } else if( "windows embedded" >< os_str_lo ) {
+            if( "embedded 8.1" >< os_str_lo ) {
               register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_embedded_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
             } else {
               register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_embedded", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
             }
-          } else if( "windows vista" >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {
+          } else if( "windows vista" >< os_str_lo && "service pack 1" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows vista" >< tolower( os_str ) && "service pack 2" >< tolower( os_str ) ) {
+          } else if( "windows vista" >< os_str_lo && "service pack 2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows vista " >< tolower( os_str ) ) {
+          } else if( "windows vista " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 7 " >< tolower( os_str ) && ( "service pack 1" >< tolower( os_str ) || "7601" >< os_str ) ) {
+          } else if( "windows 7 " >< os_str_lo && ( "service pack 1" >< os_str_lo || "7601" >< os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 7 " >< tolower( os_str ) && "7600" >< os_str ) {
+          } else if( "windows 7 " >< os_str_lo && "7600" >< os_str ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7:-:-:", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 7 " >< tolower( os_str ) ) {
+          } else if( "windows 7 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 8.1 " >< tolower( os_str ) ) {
+          } else if( "windows 8.1 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 8 " >< tolower( os_str ) ) {
+          } else if( "windows 8 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_8", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2003 " >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {
+          } else if( "windows server 2003 " >< os_str_lo && "service pack 1" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2003:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2003 " >< tolower( os_str ) && "service pack 2" >< tolower( os_str ) ) {
+          } else if( "windows server 2003 " >< os_str_lo && "service pack 2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2003:-:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2003 " >< tolower( os_str ) ) {
+          } else if( "windows server 2003 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2008 " >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) && "r2" >< tolower( os_str ) ) {
+          } else if( "windows server 2008 " >< os_str_lo && "service pack 1" >< os_str_lo && "r2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008:r2:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2008 " >< tolower( os_str ) && "r2" >< tolower( os_str ) ) {
+          } else if( "windows server 2008 " >< os_str_lo && "r2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server (r) 2008 " >< tolower( os_str ) && "service pack 2" >< tolower( os_str ) ) {
+          } else if( "windows server (r) 2008 " >< os_str_lo && "service pack 2" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008::sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server (r) 2008 " >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {
+          } else if( "windows server (r) 2008 " >< os_str_lo && "service pack 1" >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008::sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server (r) 2008 " >< tolower( os_str ) || "windows server 2008 " >< tolower( os_str ) ) {
+          } else if( "windows server (r) 2008 " >< os_str_lo || "windows server 2008 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           # OS String: Windows Server 2012 Datacenter 9200; SMB String: Windows Server 2012 Datacenter 6.2
-          } else if( "windows server 2012 " >< tolower( os_str ) ) {
+          } else if( "windows server 2012 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2012", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows server 2016 " >< tolower( os_str ) ) {
+          } else if( "windows server 2016 " >< os_str_lo ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_server_2016", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else {
             register_unknown_os_banner( banner:banner, banner_type_name:SCRIPT_DESC, port:port, banner_type_short:"smb_nativelanman_banner" );
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           }
-        } else if( "vxworks" >< tolower( os_str ) ) {
+        } else if( "vxworks" >< os_str_lo ) {
           register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "debian" >< tolower( os_str ) ) {
+        } else if( "debian" >< os_str_lo ) {
           if( "8" >< os_str ) {
             # nb: Starting with Wheezy (7.x) we have minor releases within the version so we don't use an exact version like 7.0 as we can't differ between the OS in the banner here
             register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
@@ -360,7 +365,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
-        } else if( "ubuntu" >< tolower( os_str ) ) {
+        } else if( "ubuntu" >< os_str_lo ) {
           if( "18.10" >< os_str ) {
             register_and_report_os( os:"Ubuntu", version:"18.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else if( "18.04" >< os_str ) {
@@ -413,7 +418,7 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         # OS String: QTS; SMB String: Samba 4.4.14
         } else if( os_str == "QTS" ) {
           register_and_report_os( os:"QNAP QTS", cpe:"cpe:/o:qnap:qts", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "unix" >< tolower( os_str ) ) {
+        } else if( "unix" >< os_str_lo ) {
           register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           # nb: We want to report an unknown banner here as well to catch reports with more detailed info
           register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smb_samba_banner", port:port );

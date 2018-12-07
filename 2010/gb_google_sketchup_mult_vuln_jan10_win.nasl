@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_mult_vuln_jan10_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: gb_google_sketchup_mult_vuln_jan10_win.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # Google SketchUp Multiple Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800435");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-01-20 08:21:11 +0100 (Wed, 20 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,12 +55,12 @@ if(description)
 
   - An integer overflow error when processing 'SKP' files which can be
      exploited to corrupt heap memory.");
-  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 7.1 M2.
-  For updates refer to http://sketchup.google.com/download/index2.html");
+  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 7.1 M2.");
   script_tag(name:"summary", value:"This host is installed with Google SketchUp and is prone to
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://sketchup.google.com/download/index2.html");
   exit(0);
 }
 

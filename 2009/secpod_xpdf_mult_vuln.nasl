@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xpdf_mult_vuln.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_xpdf_mult_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # Xpdf Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:foolabs:xpdf';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900457");
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,9 +55,9 @@ if(description)
   - Flaws in Xpdf JBIG2 Decoder which causes buffer overflow, freeing of
   arbitrary memory causing Xpdf application to crash.");
   script_tag(name:"solution", value:"Apply Xpdf v3.02 pl3 patch: ftp://ftp.foolabs.com/pub/xpdf/xpdf-3.02pl3.patch");
-  script_tag(name:"summary", value: "The PDF viewer Xpdf is prone to multiple vulnerabilities on Linux
+  script_tag(name:"summary", value:"The PDF viewer Xpdf is prone to multiple vulnerabilities on Linux
   systems that can lead to arbitrary code execution.");
-  script_tag(name: "vuldetect", value:"This test uses the xpdf detection results and checks version of each binary
+  script_tag(name:"vuldetect", value:"This test uses the xpdf detection results and checks version of each binary
   found on the target system. Version 3.02 and prior will raise a security alert.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/34755");
@@ -73,7 +73,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Grep for Xpdf version 3.02 and prior
 ver = get_app_version(cpe:CPE);
 
 if(version_is_less_equal(version:ver, test_version:"3.02")){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freetype_mult_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_freetype_mult_dos_vuln_win.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # FreeType Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901142");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_bugtraq_id(42285);
   script_cve_id("CVE-2010-3053", "CVE-2010-2808", "CVE-2010-2807",
@@ -56,12 +56,12 @@ if(description)
     type42/t42parse.c, FT_Stream_EnterFrame function in base/ftstream.c,
     ftmulti.c in the ftmulti demo program and to the 'BOUNDS' macro when
     processing fonts.");
-  script_tag(name:"solution", value:"Upgrade to FreeType version 2.4.2 or later,
-  For updates refer to http://www.freetype.org/");
+  script_tag(name:"solution", value:"Upgrade to FreeType version 2.4.2 or later.");
   script_tag(name:"summary", value:"This host is installed with FreeType and is prone to multiple Denial
   of Service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.freetype.org/");
   exit(0);
 }
 

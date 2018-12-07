@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_info_disc_vuln_apsb18-43_macosx.nasl 12362 2018-11-15 09:45:28Z santu $
+# $Id: gb_adobe_photoshop_info_disc_vuln_apsb18-43_macosx.nasl 12697 2018-12-07 07:56:28Z mmartin $
 #
 # Adobe Photoshop CC Information Disclosure Vulnerability-APSB18-28 (Mac OS X)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:adobe:photoshop_cc2018";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814197");
-  script_version("$Revision: 12362 $");
+  script_version("$Revision: 12697 $");
   script_cve_id("CVE-2018-15980");
   script_bugtraq_id(105905);
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-11-15 10:45:28 +0100 (Thu, 15 Nov 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 08:56:28 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2018-11-15 13:26:21 +0530 (Thu, 15 Nov 2018)");
   script_name("Adobe Photoshop CC Information Disclosure Vulnerability-APSB18-28 (Mac OS X)");
 

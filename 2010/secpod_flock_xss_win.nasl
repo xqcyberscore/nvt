@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_flock_xss_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_flock_xss_win.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # Flock Browser Malformed Bookmark Cross site scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902313");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_cve_id("CVE-2010-3202");
   script_bugtraq_id(42556);
@@ -49,14 +49,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to malformed favourite imported from an HTML file,
   imported from another browser, or manually created can bypass cross-origin
   protection, which has unspecified impact and attack vectors.");
-  script_tag(name:"solution", value:"Upgrade to the Flock version 3.0.0.4094
-  For updates refer to http://www.flock.com/");
+  script_tag(name:"solution", value:"Upgrade to the Flock version 3.0.0.4094");
   script_tag(name:"summary", value:"This host is installed with Flock browser and is prone to cross
   site scripting vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://flock.com/security/");
   script_xref(name:"URL", value:"http://lostmon.blogspot.com/2010/08/flock-browser-3003989-malformed.html");
+  script_xref(name:"URL", value:"http://www.flock.com/");
   exit(0);
 }
 

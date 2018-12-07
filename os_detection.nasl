@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 12652 2018-12-04 14:15:10Z cfischer $
+# $Id: os_detection.nasl 12700 2018-12-07 08:18:55Z ckuersteiner $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 12652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-12-04 15:15:10 +0100 (Tue, 04 Dec 2018) $");
+  script_version("$Revision: 12700 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-07 09:18:55 +0100 (Fri, 07 Dec 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -70,7 +70,8 @@ if(description)
                       "gb_dlink_dwr_detect.nasl", "gb_wd_mycloud_consolidation.nasl",
                       "gb_intelbras_ncloud_devices_http_detect.nasl",
                       "gb_ricoh_iwb_detect.nasl", "gb_codesys_os_detection.nasl",
-                      "gb_simatic_hmi_consolidation.nasl", "gb_windows_cpe_detect.nasl",
+                      "gb_simatic_hmi_consolidation.nasl", "gb_wago_plc_consolidation.nasl",
+                      "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
                       "gb_nec_communication_platforms_detect.nasl", "gb_ssh_os_detection.nasl",

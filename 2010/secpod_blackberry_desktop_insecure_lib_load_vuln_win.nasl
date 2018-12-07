@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_blackberry_desktop_insecure_lib_load_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
+# $Id: secpod_blackberry_desktop_insecure_lib_load_vuln_win.nasl 12690 2018-12-06 14:56:20Z cfischer $
 #
 # BlackBerry Desktop Software Insecure Library Loading Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902312");
-  script_version("$Revision: 11553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 12690 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 15:56:20 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_cve_id("CVE-2010-2600");
   script_bugtraq_id(43139);
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"BlackBerry Desktop Software version prior to 6.0.0.47");
   script_tag(name:"insight", value:"Desktop Manager passes an insufficiently qualified path to the Windows
   operating system when loading an external library.");
-  script_tag(name:"solution", value:"Upgrade to the BlackBerry Desktop Software version 6.0.0.47 or later,
-  For updates refer to http://uk.blackberry.com/services/desktop/desktop_pc.jsp");
+  script_tag(name:"solution", value:"Upgrade to the BlackBerry Desktop Software version 6.0.0.47 or later.");
   script_tag(name:"summary", value:"This host is installed with BlackBerry Desktop Software and is prone
   to Insecure Library Loading Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://uk.blackberry.com/services/desktop/desktop_pc.jsp");
   exit(0);
 }
 

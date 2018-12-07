@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_dos_vuln.nasl 6540 2017-07-05 12:42:02Z cfischer $
+# $Id: gb_gpg4win_dos_vuln.nasl 12694 2018-12-06 15:28:57Z cfischer $
 #
 # Gpg4Win Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801129");
-  script_version("$Revision: 6540 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-05 14:42:02 +0200 (Wed, 05 Jul 2017) $");
+  script_version("$Revision: 12694 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-12-06 16:28:57 +0100 (Thu, 06 Dec 2018) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -45,39 +45,31 @@ if(description)
   script_xref(name:"URL", value:"http://www.packetstormsecurity.com/0910-exploits/gpg2kleo-dos.txt");
 
   script_tag(name:"impact", value:"A remote attacker could exploit this vulnerability to cause the
-  application to crash.
-
-  Impact Level: Application");
+  application to crash.");
   script_tag(name:"affected", value:"Gpg4win version 2.0.1 KDE, Kleopatra version 2.0.11");
   script_tag(name:"insight", value:"The flaw is due to error in 'gpg2.exe' which can be exploited by
   persuading a victim to import a specially-crafted certificate containing an
   overly long signature.");
-  script_tag(name:"solution", value:"Upgrade Gpg4win to version 2.0.2 or later,
-  For updates refer to http://www.gpg4win.org/download.html
-
-  For Kleopatra, No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed with Gpg4Win, as used in KDE Kleopatra and
   is prone to Denial of Service vulnerability.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"WillNotFix");
 
+  script_xref(name:"URL", value:"http://www.gpg4win.org/download.html");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-# Get KB for Gpg4win
 gpgVer = get_kb_item("Gpg4win/Win/Ver");
 
-# Get KB for Kleopatra
 kleoVer = get_kb_item("Kleopatra/Win/Ver");
 
-# Check for Gpg4win version 2.0.1 and Kleopatra version 2.0.11
 if(version_is_equal(version:gpgVer, test_version:"2.0.1") &&
    version_is_equal(version:kleoVer,test_version:"2.0.11")){
   installed_version = "Gpg4win: " + gpgVer + ", Kleopatra: " + kleoVer;
